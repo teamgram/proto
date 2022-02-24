@@ -1,0 +1,317 @@
+// Copyright 2022 Teamgram Authors
+//  All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+// Author: teamgramio (teamgram.io@gmail.com)
+//
+
+package mtproto
+
+import (
+	"time"
+
+	"github.com/gogo/protobuf/types"
+)
+
+// MakeMessageActionEmpty
+// messageActionEmpty#b6aef7b0 = MessageAction;
+func MakeMessageActionEmpty() *MessageAction {
+	return MakeTLMessageActionEmpty(nil).To_MessageAction()
+}
+
+// MakeMessageActionChatCreate
+// messageActionChatCreate#a6638b9a title:string users:Vector<int> = MessageAction;
+func MakeMessageActionChatCreate(title string, users []int64) *MessageAction {
+	return MakeTLMessageActionChatCreate(&MessageAction{
+		Title: title,
+		Users: users,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChatEditTitle
+// messageActionChatEditTitle#b5a1ce5a title:string = MessageAction;
+func MakeMessageActionChatEditTitle(title string) *MessageAction {
+	return MakeTLMessageActionChatEditTitle(&MessageAction{
+		Title: title,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChatEditPhoto
+// messageActionChatEditPhoto#7fcb13a8 photo:Photo = MessageAction;
+func MakeMessageActionChatEditPhoto(photo *Photo) *MessageAction {
+	return MakeTLMessageActionChatEditPhoto(&MessageAction{
+		Photo: photo,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChatDeletePhoto
+// messageActionChatDeletePhoto#95e3fbef = MessageAction;
+func MakeMessageActionChatDeletePhoto() *MessageAction {
+	return MakeTLMessageActionChatDeletePhoto(&MessageAction{}).To_MessageAction()
+}
+
+// MakeMessageActionChatAddUser
+// messageActionChatAddUser#488a7337 users:Vector<int> = MessageAction;
+func MakeMessageActionChatAddUser(users ...int64) *MessageAction {
+	return MakeTLMessageActionChatAddUser(&MessageAction{
+		Users: users,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChatDeleteUser
+// messageActionChatDeleteUser#b2ae9b0c user_id:int = MessageAction;
+func MakeMessageActionChatDeleteUser(userId int64) *MessageAction {
+	return MakeTLMessageActionChatDeleteUser(&MessageAction{
+		UserId: userId,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChatJoinByLink
+// messageActionChatJoinedByLink#f89cf5e8 inviter_id:int = MessageAction;
+func MakeMessageActionChatJoinByLink(inviterId int64) *MessageAction {
+	return MakeTLMessageActionChatJoinedByLink(&MessageAction{
+		InviterId: inviterId,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChannelCreate
+// messageActionChannelCreate#95d2ac92 title:string = MessageAction;
+func MakeMessageActionChannelCreate(title string) *MessageAction {
+	return MakeTLMessageActionChannelCreate(&MessageAction{
+		Title: title,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChatMigrateTo
+// messageActionChatMigrateTo#51bdb021 channel_id:int = MessageAction;
+func MakeMessageActionChatMigrateTo(channelId int64) *MessageAction {
+	return MakeTLMessageActionChatMigrateTo(&MessageAction{
+		ChannelId: channelId,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChannelMigrateFrom
+// messageActionChannelMigrateFrom#b055eaee title:string chat_id:int = MessageAction;
+func MakeMessageActionChannelMigrateFrom(title string, chatId int64) *MessageAction {
+	return MakeTLMessageActionChannelMigrateFrom(&MessageAction{
+		Title:  title,
+		ChatId: chatId,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionPinMessage
+// messageActionPinMessage#94bd38ed = MessageAction;
+func MakeMessageActionPinMessage() *MessageAction {
+	return MakeTLMessageActionPinMessage(nil).To_MessageAction()
+}
+
+// MakeMessageActionHistoryClear
+// messageActionHistoryClear#9fbab604 = MessageAction;
+func MakeMessageActionHistoryClear() *MessageAction {
+	return MakeTLMessageActionHistoryClear(nil).To_MessageAction()
+}
+
+// MakeMessageActionGameScore
+// messageActionGameScore#92a72876 game_id:long score:int = MessageAction;
+func MakeMessageActionGameScore(gameId int64, score int32) *MessageAction {
+	return MakeTLMessageActionGameScore(&MessageAction{
+		GameId: gameId,
+		Score:  score,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionPaymentSentMe
+// messageActionPaymentSentMe#8f31b327 flags:# currency:string total_amount:long payload:bytes info:flags.0?PaymentRequestedInfo shipping_option_id:flags.1?string charge:PaymentCharge = MessageAction;
+func MakeMessageActionPaymentSentMe(currency string, totalAmount int64, payload []byte, info *PaymentRequestedInfo, shippingOptionId string, charge *PaymentCharge) *MessageAction {
+	action := MakeTLMessageActionGameScore(&MessageAction{
+		Currency:         currency,
+		TotalAmount:      totalAmount,
+		Payload:          payload,
+		Info:             info,
+		ShippingOptionId: nil,
+		Charge:           charge,
+	}).To_MessageAction()
+
+	if shippingOptionId != "" {
+		action.ShippingOptionId = &types.StringValue{Value: shippingOptionId}
+	}
+	return action
+}
+
+// MakeMessageActionPaymentSent
+// messageActionPaymentSent#40699cd0 currency:string total_amount:long = MessageAction;
+func MakeMessageActionPaymentSent(currency string, totalAmount int64) *MessageAction {
+	return MakeTLMessageActionPaymentSent(&MessageAction{
+		Currency:    currency,
+		TotalAmount: totalAmount,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionPhoneCall
+// messageActionPhoneCall#80e11a7f flags:# video:flags.2?true call_id:long reason:flags.0?PhoneCallDiscardReason duration:flags.1?int = MessageAction;
+func MakeMessageActionPhoneCall(video bool, callId int64, reason *PhoneCallDiscardReason, duration int32) *MessageAction {
+	action := MakeTLMessageActionPhoneCall(&MessageAction{
+		Video:    video,
+		CallId:   callId,
+		Reason:   reason,
+		Duration: nil,
+	}).To_MessageAction()
+	if duration > 0 {
+		action.Duration = &types.Int32Value{Value: duration}
+	}
+	return action
+}
+
+// MakeMessageActionScreenshotTaken
+// messageActionScreenshotTaken#4792929b = MessageAction;
+func MakeMessageActionScreenshotTaken() *MessageAction {
+	return MakeTLMessageActionScreenshotTaken(nil).To_MessageAction()
+}
+
+// MakeMessageActionCustomAction
+// messageActionCustomAction#fae69f56 message:string = MessageAction;
+func MakeMessageActionCustomAction(message string) *MessageAction {
+	return MakeTLMessageActionCustomAction(&MessageAction{
+		Message: message,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionBotAllowed
+// messageActionBotAllowed#abe9affe domain:string = MessageAction;
+func MakeMessageActionBotAllowed(domain string) *MessageAction {
+	return MakeTLMessageActionBotAllowed(&MessageAction{
+		Domain: domain,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionSecureValuesSentMe
+// messageActionSecureValuesSentMe#1b287353 values:Vector<SecureValue> credentials:SecureCredentialsEncrypted = MessageAction;
+func MakeMessageActionSecureValuesSentMe(values []*SecureValue, credentials *SecureCredentialsEncrypted) *MessageAction {
+	return MakeTLMessageActionSecureValuesSentMe(&MessageAction{
+		Values:      values,
+		Credentials: credentials,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionSecureValuesSent
+// messageActionSecureValuesSent#d95c6154 types:Vector<SecureValueType> = MessageAction;
+func MakeMessageActionSecureValuesSent(types []*SecureValueType) *MessageAction {
+	return MakeTLMessageActionSecureValuesSent(&MessageAction{
+		Types: types,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionContactSignUp
+// messageActionContactSignUp#f3f25f76 = MessageAction;
+func MakeMessageActionContactSignUp() *MessageAction {
+	return MakeTLMessageActionContactSignUp(nil).To_MessageAction()
+}
+
+// messageActionGeoProximityReached#98e0d697 from_id:Peer to_id:Peer distance:int = MessageAction;
+// messageActionGroupCall#7a0d7f42 flags:# call:InputGroupCall duration:flags.0?int = MessageAction;
+// messageActionInviteToGroupCall#502f92f7 call:InputGroupCall users:Vector<long> = MessageAction;
+// messageActionSetMessagesTTL#aa1afbfd period:int = MessageAction;
+// messageActionGroupCallScheduled#b3a07661 call:InputGroupCall schedule_date:int = MessageAction;
+
+// MakeMessageActionSetChatTheme
+// messageActionSetChatTheme#aa786345 emoticon:string = MessageAction;
+func MakeMessageActionSetChatTheme(emoticon string) *MessageAction {
+	return MakeTLMessageActionSetChatTheme(&MessageAction{
+		Emoticon: emoticon,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionChatJoinedByRequest
+// messageActionChatJoinedByRequest#ebbca3cb = MessageAction;
+func MakeMessageActionChatJoinedByRequest() *MessageAction {
+	return MakeTLMessageActionChatJoinedByRequest(nil).To_MessageAction()
+}
+
+func MakeContactSignUpMessage(fromId, toId int64) *Message {
+	return MakeTLMessageService(&Message{
+		// TODO(@benqi): fill it
+		Out:         true,
+		Mentioned:   false,
+		MediaUnread: false,
+		Silent:      false,
+		Post:        false,
+		Legacy:      false,
+		Id:          0,
+		FromId:      MakePeerUser(fromId),
+		PeerId:      MakePeerUser(toId),
+		ReplyTo:     nil,
+		Date:        int32(time.Now().Unix()),
+		Action:      MakeMessageActionContactSignUp(),
+		TtlPeriod:   nil,
+	}).To_Message()
+}
+
+// MakePinnedMessageService
+// messageService#2b085862 flags:#
+//	out:flags.1?true
+//	mentioned:flags.4?true
+//	media_unread:flags.5?true
+//	silent:flags.13?true
+//	post:flags.14?true
+//	legacy:flags.19?true
+//	id:int
+//	from_id:flags.8?Peer
+//	peer_id:Peer
+//	reply_to:flags.3?MessageReplyHeader
+//	date:int
+//	action:MessageAction
+//	ttl_period:flags.25?int = Message;
+func MakePinnedMessageService(slient bool, fromId int64, peer *PeerUtil, pinnedId int32) *Message {
+	message := MakeTLMessageService(&Message{
+		// TODO(@benqi): fill it
+		Out:         true,
+		Mentioned:   false,
+		MediaUnread: false,
+		Silent:      slient,
+		Post:        false,
+		Legacy:      false,
+		Id:          0,
+		FromId:      MakePeerUser(fromId),
+		PeerId:      peer.ToPeer(),
+		ReplyTo: MakeTLMessageReplyHeader(&MessageReplyHeader{
+			ReplyToMsgId:  pinnedId,
+			ReplyToPeerId: nil,
+			ReplyToTopId:  nil,
+		}).To_MessageReplyHeader(),
+		Date:      int32(time.Now().Unix()),
+		Action:    MakeMessageActionPinMessage(),
+		TtlPeriod: nil,
+	})
+	return message.To_Message()
+}
+
+func MakeSetChatThemeService(fromId int64, peer *PeerUtil, emoticon string) *Message {
+	message := MakeTLMessageService(&Message{
+		// TODO(@benqi): fill it
+		Out:         true,
+		Mentioned:   false,
+		MediaUnread: false,
+		Silent:      true,
+		Post:        false,
+		Legacy:      false,
+		Id:          0,
+		FromId:      MakePeerUser(fromId),
+		PeerId:      peer.ToPeer(),
+		ReplyTo:     nil,
+		Date:        int32(time.Now().Unix()),
+		Action:      MakeMessageActionSetChatTheme(emoticon),
+		TtlPeriod:   nil,
+	})
+	return message.To_Message()
+}
