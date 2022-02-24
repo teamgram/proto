@@ -18,7 +18,9 @@
 
 package mtproto
 
-import "strings"
+import (
+	"strings"
+)
 
 var (
 	mimeToExtension map[string]string
