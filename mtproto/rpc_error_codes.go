@@ -226,6 +226,10 @@ func NewErrFileReferenceX(second int32) error {
 }
 
 var (
+	// ErrEnterpriseIsBlocked ErrEnterpriseIsBlocked
+	ErrEnterpriseIsBlocked = status.Error(ErrBadRequest, "ERR_ENTERPRISE_IS_BLOCKED")
+
+	// ErrErrBadRequest ErrErrBadRequest
 	ErrErrBadRequest = status.Error(ErrBadRequest, "ERR_BAD_REQUEST")
 
 	// ErrThemeFormatInvalid
