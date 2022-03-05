@@ -274,6 +274,10 @@ func (p *PeerUtil) IsUser() bool {
 	return p.PeerType == PEER_SELF || p.PeerType == PEER_USER
 }
 
+func (p *PeerUtil) IsChannel() bool {
+	return p.PeerType == PEER_CHANNEL
+}
+
 func (p *PeerUtil) IsEncryptedChat() bool {
 	return p.PeerType == PEER_ENCRYPTED_CHAT
 }
@@ -512,4 +516,17 @@ func GetPeerUtilByPeerDialogId(id int64) (int32, int64) {
 			return PEER_CHANNEL, -id
 		}
 	}
+}
+
+func IsChannelInputPeer(peer *InputPeer) bool {
+	return peer.GetPredicateName() == Predicate_inputPeerChannel
+}
+
+func IsChatInputPeer(peer *InputPeer) bool {
+	return peer.GetPredicateName() == Predicate_inputPeerChat
+}
+
+func IsUserInputPeer(peer *InputPeer) bool {
+	return peer.GetPredicateName() == Predicate_inputPeerUser ||
+		peer.GetPredicateName() == Predicate_inputPeerSelf
 }
