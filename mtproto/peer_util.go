@@ -271,7 +271,7 @@ func (p *PeerUtil) IsSelf() bool {
 }
 
 func (p *PeerUtil) IsUser() bool {
-	return  p.PeerType == PEER_USER || p.PeerType == PEER_SELF
+	return p.PeerType == PEER_USER || p.PeerType == PEER_SELF
 }
 
 func (p *PeerUtil) IsChat() bool {
