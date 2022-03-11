@@ -1464,16 +1464,16 @@ const (
 	Predicate_messageBox                                         = "messageBox"
 	Predicate_updateList                                         = "updateList"
 	Predicate_help_test                                          = "help_test"
-	Predicate_account_createPredefinedUser                       = "account_createPredefinedUser"
-	Predicate_account_updatePredefinedUsername                   = "account_updatePredefinedUsername"
-	Predicate_account_updatePredefinedProfile                    = "account_updatePredefinedProfile"
-	Predicate_account_updateVerified                             = "account_updateVerified"
-	Predicate_account_updatePredefinedVerified                   = "account_updatePredefinedVerified"
-	Predicate_account_updatePredefinedCode                       = "account_updatePredefinedCode"
-	Predicate_auth_toggleBan                                     = "auth_toggleBan"
-	Predicate_users_getPredefinedUser                            = "users_getPredefinedUser"
-	Predicate_users_getPredefinedUsers                           = "users_getPredefinedUsers"
+	Predicate_predefined_createPredefinedUser                    = "predefined_createPredefinedUser"
+	Predicate_predefined_updatePredefinedUsername                = "predefined_updatePredefinedUsername"
+	Predicate_predefined_updatePredefinedProfile                 = "predefined_updatePredefinedProfile"
+	Predicate_predefined_updatePredefinedVerified                = "predefined_updatePredefinedVerified"
+	Predicate_predefined_updatePredefinedCode                    = "predefined_updatePredefinedCode"
+	Predicate_predefined_getPredefinedUser                       = "predefined_getPredefinedUser"
+	Predicate_predefined_getPredefinedUsers                      = "predefined_getPredefinedUsers"
 	Predicate_users_getMe                                        = "users_getMe"
+	Predicate_account_updateVerified                             = "account_updateVerified"
+	Predicate_auth_toggleBan                                     = "auth_toggleBan"
 	Predicate_biz_invokeBizDataRaw                               = "biz_invokeBizDataRaw"
 )
 
@@ -15368,44 +15368,44 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		0: -1058929929, // c0e202f7
 
 	},
-	Predicate_account_createPredefinedUser: {
-		0: 1924064636, // 0x72aee57c
+	Predicate_predefined_createPredefinedUser: {
+		0: 602071838, // 0x23e2e31e
 
 	},
-	Predicate_account_updatePredefinedUsername: {
-		0: 1595162427, // 0x5f143f3b
+	Predicate_predefined_updatePredefinedUsername: {
+		0: 316411194, // 0x12dc0d3a
 
 	},
-	Predicate_account_updatePredefinedProfile: {
-		0: 2091625414, // 0x7cababc6
+	Predicate_predefined_updatePredefinedProfile: {
+		0: 752679237, // 0x2cdcf945
+
+	},
+	Predicate_predefined_updatePredefinedVerified: {
+		0: 1060448425, // 0x3f3528a9
+
+	},
+	Predicate_predefined_updatePredefinedCode: {
+		0: -449440377, // 0xe5361587
+
+	},
+	Predicate_predefined_getPredefinedUser: {
+		0: 1375904789, // 0x5202a415
+
+	},
+	Predicate_predefined_getPredefinedUsers: {
+		0: 697834180, // 0x29981ac4
+
+	},
+	Predicate_users_getMe: {
+		0: 825513746, // 0x31345712
 
 	},
 	Predicate_account_updateVerified: {
 		0: 353634673, // 0x15140971
 
 	},
-	Predicate_account_updatePredefinedVerified: {
-		0: -803643097, // 0xd0196127
-
-	},
-	Predicate_account_updatePredefinedCode: {
-		0: 169499657, // 0xa1a5c09
-
-	},
 	Predicate_auth_toggleBan: {
 		0: -501253832, // 0xe21f7938
-
-	},
-	Predicate_users_getPredefinedUser: {
-		0: 1749863255, // 0x684ccb57
-
-	},
-	Predicate_users_getPredefinedUsers: {
-		0: 1795489223, // 0x6b04fdc7
-
-	},
-	Predicate_users_getMe: {
-		0: 825513746, // 0x31345712
 
 	},
 	Predicate_biz_invokeBizDataRaw: {
@@ -16912,16 +16912,16 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-1697627551: Predicate_messageBox,                                         // 0x9ad04261
 	-1877696350: Predicate_updateList,                                         // 0x9014a0a2
 	-1058929929: Predicate_help_test,                                          // c0e202f7
-	1924064636:  Predicate_account_createPredefinedUser,                       // 0x72aee57c
-	1595162427:  Predicate_account_updatePredefinedUsername,                   // 0x5f143f3b
-	2091625414:  Predicate_account_updatePredefinedProfile,                    // 0x7cababc6
-	353634673:   Predicate_account_updateVerified,                             // 0x15140971
-	-803643097:  Predicate_account_updatePredefinedVerified,                   // 0xd0196127
-	169499657:   Predicate_account_updatePredefinedCode,                       // 0xa1a5c09
-	-501253832:  Predicate_auth_toggleBan,                                     // 0xe21f7938
-	1749863255:  Predicate_users_getPredefinedUser,                            // 0x684ccb57
-	1795489223:  Predicate_users_getPredefinedUsers,                           // 0x6b04fdc7
+	602071838:   Predicate_predefined_createPredefinedUser,                    // 0x23e2e31e
+	316411194:   Predicate_predefined_updatePredefinedUsername,                // 0x12dc0d3a
+	752679237:   Predicate_predefined_updatePredefinedProfile,                 // 0x2cdcf945
+	1060448425:  Predicate_predefined_updatePredefinedVerified,                // 0x3f3528a9
+	-449440377:  Predicate_predefined_updatePredefinedCode,                    // 0xe5361587
+	1375904789:  Predicate_predefined_getPredefinedUser,                       // 0x5202a415
+	697834180:   Predicate_predefined_getPredefinedUsers,                      // 0x29981ac4
 	825513746:   Predicate_users_getMe,                                        // 0x31345712
+	353634673:   Predicate_account_updateVerified,                             // 0x15140971
+	-501253832:  Predicate_auth_toggleBan,                                     // 0xe21f7938
 	1511592262:  Predicate_biz_invokeBizDataRaw,                               // 0x5a191146
 
 }
