@@ -24,6 +24,356 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 //--------------------------------------------------------------------------------------------
+// destroy_auth_key_ok#f660e1d4 = DestroyAuthKeyRes;
+// destroy_auth_key_none#0a9f2259 = DestroyAuthKeyRes;
+// destroy_auth_key_fail#ea109b13 = DestroyAuthKeyRes;
+//
+// DestroyAuthKeyRes <--
+//  + TL_destroy_auth_key_ok
+//  + TL_destroy_auth_key_none
+//  + TL_destroy_auth_key_fail
+//
+type DestroyAuthKeyRes struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *DestroyAuthKeyRes) Reset()         { *m = DestroyAuthKeyRes{} }
+func (m *DestroyAuthKeyRes) String() string { return proto.CompactTextString(m) }
+func (*DestroyAuthKeyRes) ProtoMessage()    {}
+func (*DestroyAuthKeyRes) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{0}
+}
+func (m *DestroyAuthKeyRes) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *DestroyAuthKeyRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_DestroyAuthKeyRes.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *DestroyAuthKeyRes) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_DestroyAuthKeyRes.Merge(m, src)
+}
+func (m *DestroyAuthKeyRes) XXX_Size() int {
+	return m.Size()
+}
+func (m *DestroyAuthKeyRes) XXX_DiscardUnknown() {
+	xxx_messageInfo_DestroyAuthKeyRes.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_DestroyAuthKeyRes proto.InternalMessageInfo
+
+func (m *DestroyAuthKeyRes) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *DestroyAuthKeyRes) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+// TL_destroy_auth_key_ok
+type TLDestroyAuthKeyOk struct {
+	Data2                *DestroyAuthKeyRes `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *TLDestroyAuthKeyOk) Reset()         { *m = TLDestroyAuthKeyOk{} }
+func (m *TLDestroyAuthKeyOk) String() string { return proto.CompactTextString(m) }
+func (*TLDestroyAuthKeyOk) ProtoMessage()    {}
+func (*TLDestroyAuthKeyOk) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{1}
+}
+func (m *TLDestroyAuthKeyOk) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLDestroyAuthKeyOk) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLDestroyAuthKeyOk.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLDestroyAuthKeyOk) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLDestroyAuthKeyOk.Merge(m, src)
+}
+func (m *TLDestroyAuthKeyOk) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLDestroyAuthKeyOk) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLDestroyAuthKeyOk.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLDestroyAuthKeyOk proto.InternalMessageInfo
+
+func (m *TLDestroyAuthKeyOk) GetData2() *DestroyAuthKeyRes {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// TL_destroy_auth_key_none
+type TLDestroyAuthKeyNone struct {
+	Data2                *DestroyAuthKeyRes `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *TLDestroyAuthKeyNone) Reset()         { *m = TLDestroyAuthKeyNone{} }
+func (m *TLDestroyAuthKeyNone) String() string { return proto.CompactTextString(m) }
+func (*TLDestroyAuthKeyNone) ProtoMessage()    {}
+func (*TLDestroyAuthKeyNone) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{2}
+}
+func (m *TLDestroyAuthKeyNone) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLDestroyAuthKeyNone) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLDestroyAuthKeyNone.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLDestroyAuthKeyNone) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLDestroyAuthKeyNone.Merge(m, src)
+}
+func (m *TLDestroyAuthKeyNone) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLDestroyAuthKeyNone) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLDestroyAuthKeyNone.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLDestroyAuthKeyNone proto.InternalMessageInfo
+
+func (m *TLDestroyAuthKeyNone) GetData2() *DestroyAuthKeyRes {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// TL_destroy_auth_key_fail
+type TLDestroyAuthKeyFail struct {
+	Data2                *DestroyAuthKeyRes `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
+	XXX_unrecognized     []byte             `json:"-"`
+	XXX_sizecache        int32              `json:"-"`
+}
+
+func (m *TLDestroyAuthKeyFail) Reset()         { *m = TLDestroyAuthKeyFail{} }
+func (m *TLDestroyAuthKeyFail) String() string { return proto.CompactTextString(m) }
+func (*TLDestroyAuthKeyFail) ProtoMessage()    {}
+func (*TLDestroyAuthKeyFail) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{3}
+}
+func (m *TLDestroyAuthKeyFail) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLDestroyAuthKeyFail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLDestroyAuthKeyFail.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLDestroyAuthKeyFail) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLDestroyAuthKeyFail.Merge(m, src)
+}
+func (m *TLDestroyAuthKeyFail) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLDestroyAuthKeyFail) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLDestroyAuthKeyFail.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLDestroyAuthKeyFail proto.InternalMessageInfo
+
+func (m *TLDestroyAuthKeyFail) GetData2() *DestroyAuthKeyRes {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+//--------------------------------------------------------------------------------------------
+// resPQ#05162463 nonce:int128 server_nonce:int128 pq:string server_public_key_fingerprints:Vector<long> = ResPQ;
+//
+// ResPQ <--
+//  + TL_resPQ
+//
+type ResPQ struct {
+	PredicateName               string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor                 TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Nonce                       []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	ServerNonce                 []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
+	Pq                          string        `protobuf:"bytes,5,opt,name=pq,proto3" json:"pq,omitempty"`
+	ServerPublicKeyFingerprints []int64       `protobuf:"varint,6,rep,packed,name=server_public_key_fingerprints,json=serverPublicKeyFingerprints,proto3" json:"server_public_key_fingerprints,omitempty"`
+	XXX_NoUnkeyedLiteral        struct{}      `json:"-"`
+	XXX_unrecognized            []byte        `json:"-"`
+	XXX_sizecache               int32         `json:"-"`
+}
+
+func (m *ResPQ) Reset()         { *m = ResPQ{} }
+func (m *ResPQ) String() string { return proto.CompactTextString(m) }
+func (*ResPQ) ProtoMessage()    {}
+func (*ResPQ) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{4}
+}
+func (m *ResPQ) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *ResPQ) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_ResPQ.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *ResPQ) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ResPQ.Merge(m, src)
+}
+func (m *ResPQ) XXX_Size() int {
+	return m.Size()
+}
+func (m *ResPQ) XXX_DiscardUnknown() {
+	xxx_messageInfo_ResPQ.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ResPQ proto.InternalMessageInfo
+
+func (m *ResPQ) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *ResPQ) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *ResPQ) GetNonce() []byte {
+	if m != nil {
+		return m.Nonce
+	}
+	return nil
+}
+
+func (m *ResPQ) GetServerNonce() []byte {
+	if m != nil {
+		return m.ServerNonce
+	}
+	return nil
+}
+
+func (m *ResPQ) GetPq() string {
+	if m != nil {
+		return m.Pq
+	}
+	return ""
+}
+
+func (m *ResPQ) GetServerPublicKeyFingerprints() []int64 {
+	if m != nil {
+		return m.ServerPublicKeyFingerprints
+	}
+	return nil
+}
+
+// TL_resPQ
+type TLResPQ struct {
+	Data2                *ResPQ   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TLResPQ) Reset()         { *m = TLResPQ{} }
+func (m *TLResPQ) String() string { return proto.CompactTextString(m) }
+func (*TLResPQ) ProtoMessage()    {}
+func (*TLResPQ) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{5}
+}
+func (m *TLResPQ) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLResPQ) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLResPQ.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLResPQ) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLResPQ.Merge(m, src)
+}
+func (m *TLResPQ) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLResPQ) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLResPQ.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLResPQ proto.InternalMessageInfo
+
+func (m *TLResPQ) GetData2() *ResPQ {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+//--------------------------------------------------------------------------------------------
 // p_q_inner_data#83c95aec pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 = P_Q_inner_data;
 // p_q_inner_data_dc#a9f55f95 pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 dc:int = P_Q_inner_data;
 // p_q_inner_data_temp#3c6a84d4 pq:string p:string q:string nonce:int128 server_nonce:int128 new_nonce:int256 expires_in:int = P_Q_inner_data;
@@ -55,7 +405,7 @@ func (m *P_QInnerData) Reset()         { *m = P_QInnerData{} }
 func (m *P_QInnerData) String() string { return proto.CompactTextString(m) }
 func (*P_QInnerData) ProtoMessage()    {}
 func (*P_QInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{0}
+	return fileDescriptor_eacd2ccb4d844da1, []int{6}
 }
 func (m *P_QInnerData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -166,7 +516,7 @@ func (m *TLPQInnerData) Reset()         { *m = TLPQInnerData{} }
 func (m *TLPQInnerData) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerData) ProtoMessage()    {}
 func (*TLPQInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{1}
+	return fileDescriptor_eacd2ccb4d844da1, []int{7}
 }
 func (m *TLPQInnerData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -214,7 +564,7 @@ func (m *TLPQInnerDataDc) Reset()         { *m = TLPQInnerDataDc{} }
 func (m *TLPQInnerDataDc) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerDataDc) ProtoMessage()    {}
 func (*TLPQInnerDataDc) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{2}
+	return fileDescriptor_eacd2ccb4d844da1, []int{8}
 }
 func (m *TLPQInnerDataDc) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -262,7 +612,7 @@ func (m *TLPQInnerDataTemp) Reset()         { *m = TLPQInnerDataTemp{} }
 func (m *TLPQInnerDataTemp) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerDataTemp) ProtoMessage()    {}
 func (*TLPQInnerDataTemp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{3}
+	return fileDescriptor_eacd2ccb4d844da1, []int{9}
 }
 func (m *TLPQInnerDataTemp) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -310,7 +660,7 @@ func (m *TLPQInnerDataTempDc) Reset()         { *m = TLPQInnerDataTempDc{} }
 func (m *TLPQInnerDataTempDc) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerDataTempDc) ProtoMessage()    {}
 func (*TLPQInnerDataTempDc) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{4}
+	return fileDescriptor_eacd2ccb4d844da1, []int{10}
 }
 func (m *TLPQInnerDataTempDc) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -369,7 +719,7 @@ func (m *BindAuthKeyInner) Reset()         { *m = BindAuthKeyInner{} }
 func (m *BindAuthKeyInner) String() string { return proto.CompactTextString(m) }
 func (*BindAuthKeyInner) ProtoMessage()    {}
 func (*BindAuthKeyInner) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{5}
+	return fileDescriptor_eacd2ccb4d844da1, []int{11}
 }
 func (m *BindAuthKeyInner) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -459,7 +809,7 @@ func (m *TLBindAuthKeyInner) Reset()         { *m = TLBindAuthKeyInner{} }
 func (m *TLBindAuthKeyInner) String() string { return proto.CompactTextString(m) }
 func (*TLBindAuthKeyInner) ProtoMessage()    {}
 func (*TLBindAuthKeyInner) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{6}
+	return fileDescriptor_eacd2ccb4d844da1, []int{12}
 }
 func (m *TLBindAuthKeyInner) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -519,7 +869,7 @@ func (m *Server_DH_Params) Reset()         { *m = Server_DH_Params{} }
 func (m *Server_DH_Params) String() string { return proto.CompactTextString(m) }
 func (*Server_DH_Params) ProtoMessage()    {}
 func (*Server_DH_Params) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{7}
+	return fileDescriptor_eacd2ccb4d844da1, []int{13}
 }
 func (m *Server_DH_Params) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -602,7 +952,7 @@ func (m *TLServer_DHParamsFail) Reset()         { *m = TLServer_DHParamsFail{} }
 func (m *TLServer_DHParamsFail) String() string { return proto.CompactTextString(m) }
 func (*TLServer_DHParamsFail) ProtoMessage()    {}
 func (*TLServer_DHParamsFail) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{8}
+	return fileDescriptor_eacd2ccb4d844da1, []int{14}
 }
 func (m *TLServer_DHParamsFail) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -650,7 +1000,7 @@ func (m *TLServer_DHParamsOk) Reset()         { *m = TLServer_DHParamsOk{} }
 func (m *TLServer_DHParamsOk) String() string { return proto.CompactTextString(m) }
 func (*TLServer_DHParamsOk) ProtoMessage()    {}
 func (*TLServer_DHParamsOk) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{9}
+	return fileDescriptor_eacd2ccb4d844da1, []int{15}
 }
 func (m *TLServer_DHParamsOk) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -710,7 +1060,7 @@ func (m *Server_DHInnerData) Reset()         { *m = Server_DHInnerData{} }
 func (m *Server_DHInnerData) String() string { return proto.CompactTextString(m) }
 func (*Server_DHInnerData) ProtoMessage()    {}
 func (*Server_DHInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{10}
+	return fileDescriptor_eacd2ccb4d844da1, []int{16}
 }
 func (m *Server_DHInnerData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -807,7 +1157,7 @@ func (m *TLServer_DHInnerData) Reset()         { *m = TLServer_DHInnerData{} }
 func (m *TLServer_DHInnerData) String() string { return proto.CompactTextString(m) }
 func (*TLServer_DHInnerData) ProtoMessage()    {}
 func (*TLServer_DHInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{11}
+	return fileDescriptor_eacd2ccb4d844da1, []int{17}
 }
 func (m *TLServer_DHInnerData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -865,7 +1215,7 @@ func (m *Client_DH_Inner_Data) Reset()         { *m = Client_DH_Inner_Data{} }
 func (m *Client_DH_Inner_Data) String() string { return proto.CompactTextString(m) }
 func (*Client_DH_Inner_Data) ProtoMessage()    {}
 func (*Client_DH_Inner_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{12}
+	return fileDescriptor_eacd2ccb4d844da1, []int{18}
 }
 func (m *Client_DH_Inner_Data) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -948,7 +1298,7 @@ func (m *TLClient_DHInnerData) Reset()         { *m = TLClient_DHInnerData{} }
 func (m *TLClient_DHInnerData) String() string { return proto.CompactTextString(m) }
 func (*TLClient_DHInnerData) ProtoMessage()    {}
 func (*TLClient_DHInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{13}
+	return fileDescriptor_eacd2ccb4d844da1, []int{19}
 }
 func (m *TLClient_DHInnerData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1011,7 +1361,7 @@ func (m *SetClient_DHParamsAnswer) Reset()         { *m = SetClient_DHParamsAnsw
 func (m *SetClient_DHParamsAnswer) String() string { return proto.CompactTextString(m) }
 func (*SetClient_DHParamsAnswer) ProtoMessage()    {}
 func (*SetClient_DHParamsAnswer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{14}
+	return fileDescriptor_eacd2ccb4d844da1, []int{20}
 }
 func (m *SetClient_DHParamsAnswer) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1101,7 +1451,7 @@ func (m *TLDhGenOk) Reset()         { *m = TLDhGenOk{} }
 func (m *TLDhGenOk) String() string { return proto.CompactTextString(m) }
 func (*TLDhGenOk) ProtoMessage()    {}
 func (*TLDhGenOk) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{15}
+	return fileDescriptor_eacd2ccb4d844da1, []int{21}
 }
 func (m *TLDhGenOk) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1149,7 +1499,7 @@ func (m *TLDhGenRetry) Reset()         { *m = TLDhGenRetry{} }
 func (m *TLDhGenRetry) String() string { return proto.CompactTextString(m) }
 func (*TLDhGenRetry) ProtoMessage()    {}
 func (*TLDhGenRetry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{16}
+	return fileDescriptor_eacd2ccb4d844da1, []int{22}
 }
 func (m *TLDhGenRetry) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1197,7 +1547,7 @@ func (m *TLDhGenFail) Reset()         { *m = TLDhGenFail{} }
 func (m *TLDhGenFail) String() string { return proto.CompactTextString(m) }
 func (*TLDhGenFail) ProtoMessage()    {}
 func (*TLDhGenFail) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{17}
+	return fileDescriptor_eacd2ccb4d844da1, []int{23}
 }
 func (m *TLDhGenFail) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1233,357 +1583,13 @@ func (m *TLDhGenFail) GetData2() *SetClient_DHParamsAnswer {
 	return nil
 }
 
-//--------------------------------------------------------------------------------------------
-// destroy_auth_key_ok#f660e1d4 = DestroyAuthKeyRes;
-// destroy_auth_key_none#0a9f2259 = DestroyAuthKeyRes;
-// destroy_auth_key_fail#ea109b13 = DestroyAuthKeyRes;
-//
-// DestroyAuthKeyRes <--
-//  + TL_destroy_auth_key_ok
-//  + TL_destroy_auth_key_none
-//  + TL_destroy_auth_key_fail
-//
-type DestroyAuthKeyRes struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *DestroyAuthKeyRes) Reset()         { *m = DestroyAuthKeyRes{} }
-func (m *DestroyAuthKeyRes) String() string { return proto.CompactTextString(m) }
-func (*DestroyAuthKeyRes) ProtoMessage()    {}
-func (*DestroyAuthKeyRes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{18}
-}
-func (m *DestroyAuthKeyRes) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *DestroyAuthKeyRes) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_DestroyAuthKeyRes.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *DestroyAuthKeyRes) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_DestroyAuthKeyRes.Merge(m, src)
-}
-func (m *DestroyAuthKeyRes) XXX_Size() int {
-	return m.Size()
-}
-func (m *DestroyAuthKeyRes) XXX_DiscardUnknown() {
-	xxx_messageInfo_DestroyAuthKeyRes.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_DestroyAuthKeyRes proto.InternalMessageInfo
-
-func (m *DestroyAuthKeyRes) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *DestroyAuthKeyRes) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-// TL_destroy_auth_key_ok
-type TLDestroyAuthKeyOk struct {
-	Data2                *DestroyAuthKeyRes `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
-}
-
-func (m *TLDestroyAuthKeyOk) Reset()         { *m = TLDestroyAuthKeyOk{} }
-func (m *TLDestroyAuthKeyOk) String() string { return proto.CompactTextString(m) }
-func (*TLDestroyAuthKeyOk) ProtoMessage()    {}
-func (*TLDestroyAuthKeyOk) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{19}
-}
-func (m *TLDestroyAuthKeyOk) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLDestroyAuthKeyOk) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLDestroyAuthKeyOk.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLDestroyAuthKeyOk) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLDestroyAuthKeyOk.Merge(m, src)
-}
-func (m *TLDestroyAuthKeyOk) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLDestroyAuthKeyOk) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLDestroyAuthKeyOk.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLDestroyAuthKeyOk proto.InternalMessageInfo
-
-func (m *TLDestroyAuthKeyOk) GetData2() *DestroyAuthKeyRes {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// TL_destroy_auth_key_none
-type TLDestroyAuthKeyNone struct {
-	Data2                *DestroyAuthKeyRes `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
-}
-
-func (m *TLDestroyAuthKeyNone) Reset()         { *m = TLDestroyAuthKeyNone{} }
-func (m *TLDestroyAuthKeyNone) String() string { return proto.CompactTextString(m) }
-func (*TLDestroyAuthKeyNone) ProtoMessage()    {}
-func (*TLDestroyAuthKeyNone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{20}
-}
-func (m *TLDestroyAuthKeyNone) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLDestroyAuthKeyNone) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLDestroyAuthKeyNone.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLDestroyAuthKeyNone) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLDestroyAuthKeyNone.Merge(m, src)
-}
-func (m *TLDestroyAuthKeyNone) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLDestroyAuthKeyNone) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLDestroyAuthKeyNone.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLDestroyAuthKeyNone proto.InternalMessageInfo
-
-func (m *TLDestroyAuthKeyNone) GetData2() *DestroyAuthKeyRes {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// TL_destroy_auth_key_fail
-type TLDestroyAuthKeyFail struct {
-	Data2                *DestroyAuthKeyRes `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}           `json:"-"`
-	XXX_unrecognized     []byte             `json:"-"`
-	XXX_sizecache        int32              `json:"-"`
-}
-
-func (m *TLDestroyAuthKeyFail) Reset()         { *m = TLDestroyAuthKeyFail{} }
-func (m *TLDestroyAuthKeyFail) String() string { return proto.CompactTextString(m) }
-func (*TLDestroyAuthKeyFail) ProtoMessage()    {}
-func (*TLDestroyAuthKeyFail) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{21}
-}
-func (m *TLDestroyAuthKeyFail) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLDestroyAuthKeyFail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLDestroyAuthKeyFail.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLDestroyAuthKeyFail) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLDestroyAuthKeyFail.Merge(m, src)
-}
-func (m *TLDestroyAuthKeyFail) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLDestroyAuthKeyFail) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLDestroyAuthKeyFail.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLDestroyAuthKeyFail proto.InternalMessageInfo
-
-func (m *TLDestroyAuthKeyFail) GetData2() *DestroyAuthKeyRes {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-//--------------------------------------------------------------------------------------------
-// resPQ#05162463 nonce:int128 server_nonce:int128 pq:string server_public_key_fingerprints:Vector<long> = ResPQ;
-//
-// ResPQ <--
-//  + TL_resPQ
-//
-type ResPQ struct {
-	PredicateName               string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor                 TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	Nonce                       []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	ServerNonce                 []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
-	Pq                          string        `protobuf:"bytes,5,opt,name=pq,proto3" json:"pq,omitempty"`
-	ServerPublicKeyFingerprints []int64       `protobuf:"varint,6,rep,packed,name=server_public_key_fingerprints,json=serverPublicKeyFingerprints,proto3" json:"server_public_key_fingerprints,omitempty"`
-	XXX_NoUnkeyedLiteral        struct{}      `json:"-"`
-	XXX_unrecognized            []byte        `json:"-"`
-	XXX_sizecache               int32         `json:"-"`
-}
-
-func (m *ResPQ) Reset()         { *m = ResPQ{} }
-func (m *ResPQ) String() string { return proto.CompactTextString(m) }
-func (*ResPQ) ProtoMessage()    {}
-func (*ResPQ) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{22}
-}
-func (m *ResPQ) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *ResPQ) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_ResPQ.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *ResPQ) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ResPQ.Merge(m, src)
-}
-func (m *ResPQ) XXX_Size() int {
-	return m.Size()
-}
-func (m *ResPQ) XXX_DiscardUnknown() {
-	xxx_messageInfo_ResPQ.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ResPQ proto.InternalMessageInfo
-
-func (m *ResPQ) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *ResPQ) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *ResPQ) GetNonce() []byte {
-	if m != nil {
-		return m.Nonce
-	}
-	return nil
-}
-
-func (m *ResPQ) GetServerNonce() []byte {
-	if m != nil {
-		return m.ServerNonce
-	}
-	return nil
-}
-
-func (m *ResPQ) GetPq() string {
-	if m != nil {
-		return m.Pq
-	}
-	return ""
-}
-
-func (m *ResPQ) GetServerPublicKeyFingerprints() []int64 {
-	if m != nil {
-		return m.ServerPublicKeyFingerprints
-	}
-	return nil
-}
-
-// TL_resPQ
-type TLResPQ struct {
-	Data2                *ResPQ   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TLResPQ) Reset()         { *m = TLResPQ{} }
-func (m *TLResPQ) String() string { return proto.CompactTextString(m) }
-func (*TLResPQ) ProtoMessage()    {}
-func (*TLResPQ) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{23}
-}
-func (m *TLResPQ) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLResPQ) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLResPQ.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLResPQ) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLResPQ.Merge(m, src)
-}
-func (m *TLResPQ) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLResPQ) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLResPQ.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLResPQ proto.InternalMessageInfo
-
-func (m *TLResPQ) GetData2() *ResPQ {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
 func init() {
+	proto.RegisterType((*DestroyAuthKeyRes)(nil), "mtproto.DestroyAuthKeyRes")
+	proto.RegisterType((*TLDestroyAuthKeyOk)(nil), "mtproto.TL_destroy_auth_key_ok")
+	proto.RegisterType((*TLDestroyAuthKeyNone)(nil), "mtproto.TL_destroy_auth_key_none")
+	proto.RegisterType((*TLDestroyAuthKeyFail)(nil), "mtproto.TL_destroy_auth_key_fail")
+	proto.RegisterType((*ResPQ)(nil), "mtproto.ResPQ")
+	proto.RegisterType((*TLResPQ)(nil), "mtproto.TL_resPQ")
 	proto.RegisterType((*P_QInnerData)(nil), "mtproto.P_Q_inner_data")
 	proto.RegisterType((*TLPQInnerData)(nil), "mtproto.TL_p_q_inner_data")
 	proto.RegisterType((*TLPQInnerDataDc)(nil), "mtproto.TL_p_q_inner_data_dc")
@@ -1602,78 +1608,346 @@ func init() {
 	proto.RegisterType((*TLDhGenOk)(nil), "mtproto.TL_dh_gen_ok")
 	proto.RegisterType((*TLDhGenRetry)(nil), "mtproto.TL_dh_gen_retry")
 	proto.RegisterType((*TLDhGenFail)(nil), "mtproto.TL_dh_gen_fail")
-	proto.RegisterType((*DestroyAuthKeyRes)(nil), "mtproto.DestroyAuthKeyRes")
-	proto.RegisterType((*TLDestroyAuthKeyOk)(nil), "mtproto.TL_destroy_auth_key_ok")
-	proto.RegisterType((*TLDestroyAuthKeyNone)(nil), "mtproto.TL_destroy_auth_key_none")
-	proto.RegisterType((*TLDestroyAuthKeyFail)(nil), "mtproto.TL_destroy_auth_key_fail")
-	proto.RegisterType((*ResPQ)(nil), "mtproto.ResPQ")
-	proto.RegisterType((*TLResPQ)(nil), "mtproto.TL_resPQ")
 }
 
 func init() { proto.RegisterFile("schema.tl.handshake.proto", fileDescriptor_eacd2ccb4d844da1) }
 
 var fileDescriptor_eacd2ccb4d844da1 = []byte{
-	// 960 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x97, 0xdd, 0x72, 0xda, 0x46,
-	0x14, 0xc7, 0x2b, 0x11, 0x6c, 0x38, 0xc6, 0xe0, 0x68, 0xdc, 0x44, 0xd8, 0x13, 0x4a, 0x34, 0x6e,
-	0x4a, 0x2f, 0x82, 0x13, 0xb8, 0xe9, 0xf4, 0xce, 0x1f, 0x6d, 0x83, 0x4d, 0x3d, 0x44, 0xe6, 0xaa,
-	0x37, 0x3b, 0x8b, 0xb4, 0x91, 0x34, 0xb6, 0x56, 0x62, 0xb5, 0xd4, 0xe5, 0x19, 0xfa, 0x16, 0x79,
-	0x81, 0xbe, 0x46, 0x2f, 0xfb, 0x00, 0xbd, 0x68, 0xfd, 0x04, 0xbd, 0xea, 0x5d, 0x67, 0x3a, 0xda,
-	0x15, 0xfa, 0x08, 0xf6, 0x4c, 0x49, 0x1a, 0x8f, 0xaf, 0x60, 0xcf, 0xfe, 0xf9, 0xa3, 0xf3, 0xdb,
-	0x73, 0x8e, 0x24, 0x68, 0x46, 0x96, 0x4b, 0x7c, 0xdc, 0xe5, 0x97, 0x5d, 0x17, 0x53, 0x3b, 0x72,
-	0xf1, 0x05, 0xe9, 0x86, 0x2c, 0xe0, 0x81, 0xb6, 0xee, 0x73, 0xf1, 0x65, 0xe7, 0xb9, 0xe3, 0x71,
-	0x77, 0x36, 0xe9, 0x5a, 0x81, 0xbf, 0xef, 0x04, 0x4e, 0xb0, 0x2f, 0xc2, 0x93, 0xd9, 0x1b, 0xb1,
-	0x12, 0x0b, 0xf1, 0x4d, 0xfe, 0x6e, 0xe7, 0xd3, 0xcc, 0xd2, 0x62, 0x56, 0xbf, 0x27, 0xc3, 0xc6,
-	0x5b, 0x15, 0xea, 0x23, 0xf4, 0x1a, 0x79, 0x94, 0x12, 0x86, 0x6c, 0xcc, 0xb1, 0xf6, 0x39, 0xd4,
-	0x43, 0x46, 0x6c, 0xcf, 0xc2, 0x9c, 0x20, 0x8a, 0x7d, 0xa2, 0x2b, 0x6d, 0xa5, 0x53, 0x35, 0x37,
-	0xd3, 0xe8, 0x19, 0xf6, 0x89, 0xf6, 0x15, 0x6c, 0x58, 0x01, 0x8d, 0x38, 0x9b, 0x59, 0x3c, 0x60,
-	0xba, 0xda, 0x56, 0x3a, 0xf5, 0xde, 0xa3, 0x6e, 0x72, 0x79, 0xdd, 0xf1, 0xf0, 0x28, 0xdb, 0x35,
-	0xf3, 0x52, 0xad, 0x0e, 0x6a, 0x38, 0xd5, 0x4b, 0xc2, 0x54, 0x0d, 0xa7, 0x5a, 0x0d, 0x94, 0x50,
-	0x7f, 0x20, 0x96, 0x4a, 0x18, 0xaf, 0xa6, 0x7a, 0x59, 0xae, 0xa6, 0xda, 0x36, 0x94, 0x69, 0x40,
-	0x2d, 0xa2, 0xaf, 0xb5, 0x95, 0x4e, 0xcd, 0x94, 0x0b, 0xed, 0x29, 0xd4, 0x22, 0xc2, 0x7e, 0x24,
-	0x0c, 0xc9, 0xcd, 0x75, 0xb1, 0xb9, 0x21, 0x63, 0x67, 0x42, 0xb2, 0x0b, 0x55, 0x4a, 0xae, 0x92,
-	0xfd, 0x8a, 0xd8, 0xaf, 0x50, 0x72, 0x25, 0x37, 0xeb, 0xa0, 0xda, 0x96, 0x5e, 0x6d, 0x2b, 0x9d,
-	0xb2, 0xa9, 0xda, 0x96, 0xf6, 0x04, 0x80, 0xfc, 0x14, 0x7a, 0x8c, 0x44, 0xc8, 0xa3, 0x3a, 0x88,
-	0x78, 0x35, 0x89, 0x0c, 0xa8, 0x71, 0x08, 0x0f, 0xc7, 0x43, 0x14, 0xa2, 0x69, 0x1e, 0xd3, 0x73,
-	0x28, 0xc7, 0x9f, 0x3d, 0x41, 0x67, 0xa3, 0xf7, 0x38, 0xcd, 0xbc, 0x88, 0xd3, 0x94, 0x2a, 0xe3,
-	0x1b, 0xd8, 0x5e, 0xf2, 0x40, 0xb6, 0xb5, 0xaa, 0xcd, 0x77, 0xf0, 0x68, 0xd9, 0x86, 0x13, 0x3f,
-	0x5c, 0xd5, 0xe8, 0x04, 0x9a, 0x37, 0x1b, 0xbd, 0xc7, 0x45, 0xbd, 0x55, 0x61, 0xeb, 0xd0, 0xa3,
-	0xf6, 0xc1, 0x8c, 0xbb, 0xa7, 0x64, 0x3e, 0x88, 0x05, 0x1f, 0xbf, 0x8c, 0xd2, 0xd2, 0x88, 0x2b,
-	0xa9, 0xb4, 0x28, 0x8d, 0x2f, 0x60, 0x4b, 0x64, 0x81, 0x67, 0xdc, 0x45, 0x17, 0x64, 0x8e, 0x3c,
-	0x5b, 0xd4, 0x56, 0xc9, 0xdc, 0x8c, 0xe3, 0x8b, 0x4b, 0xb4, 0x63, 0x61, 0x48, 0x98, 0x5f, 0x10,
-	0x96, 0xa5, 0x30, 0x8e, 0x67, 0xc2, 0x67, 0xd0, 0x10, 0x8e, 0x11, 0x89, 0x22, 0x2f, 0xa0, 0xb1,
-	0x6e, 0x2d, 0x33, 0x3c, 0x97, 0xd1, 0x81, 0x9d, 0x2f, 0x22, 0xcc, 0x45, 0x49, 0x66, 0x45, 0x74,
-	0xc0, 0x8d, 0x81, 0x38, 0xb9, 0x89, 0x47, 0xed, 0xdc, 0x5f, 0x0a, 0x52, 0xfb, 0x45, 0xda, 0xcd,
-	0x34, 0xf9, 0x77, 0x99, 0x2e, 0x78, 0xff, 0xa3, 0xc0, 0xd6, 0xb9, 0xac, 0xff, 0xe3, 0x57, 0x68,
-	0x84, 0x19, 0xf6, 0xa3, 0x3b, 0xe6, 0x7d, 0x6b, 0x2b, 0x3e, 0x58, 0x6e, 0xc5, 0x3d, 0xa8, 0xa7,
-	0xad, 0x88, 0x5c, 0x1c, 0xb9, 0x82, 0x73, 0xcd, 0xac, 0x2d, 0xfa, 0xf1, 0x15, 0x8e, 0x5c, 0xed,
-	0x4b, 0xd8, 0x22, 0xd4, 0x62, 0xf3, 0x90, 0x13, 0x1b, 0x61, 0x1a, 0x5d, 0x11, 0x26, 0x38, 0x57,
-	0xcd, 0x46, 0x1a, 0x3f, 0x10, 0x61, 0xe3, 0x14, 0xf4, 0xf1, 0x10, 0x45, 0x29, 0x81, 0x50, 0x10,
-	0x40, 0x6f, 0xb0, 0x77, 0x79, 0x3b, 0xcc, 0x77, 0x81, 0x2d, 0x60, 0xca, 0x73, 0x59, 0x32, 0x0b,
-	0x2e, 0x56, 0xb7, 0xfa, 0x59, 0x85, 0xed, 0x6c, 0xef, 0x2e, 0x47, 0xea, 0x7b, 0x9f, 0x4d, 0x0d,
-	0x14, 0x47, 0x1c, 0x47, 0xd9, 0x54, 0x1c, 0xad, 0x09, 0x15, 0xdb, 0x45, 0x21, 0xf3, 0x7c, 0x92,
-	0xb0, 0x5f, 0xb7, 0xdd, 0x51, 0xbc, 0xd4, 0x1a, 0x50, 0x72, 0x10, 0x16, 0x65, 0x5d, 0x35, 0x55,
-	0xe7, 0x40, 0xfb, 0x0c, 0x12, 0x23, 0xc4, 0x63, 0x79, 0x45, 0x78, 0x80, 0x0c, 0x8d, 0x3d, 0x9f,
-	0x18, 0x67, 0xf0, 0xb8, 0x00, 0x36, 0xc7, 0xa3, 0x5f, 0x24, 0xfb, 0xe4, 0x06, 0xb2, 0xcb, 0x53,
-	0xe6, 0x77, 0x05, 0xb6, 0x8f, 0x2e, 0x3d, 0x42, 0x79, 0xbc, 0x2f, 0x1a, 0x02, 0x1d, 0xdf, 0x6f,
-	0xba, 0x4d, 0xa8, 0x30, 0xc2, 0x59, 0x6e, 0xb6, 0xac, 0x8b, 0xf5, 0xc0, 0x96, 0x3c, 0x27, 0x09,
-	0x65, 0xd5, 0x39, 0x4c, 0x70, 0x59, 0x69, 0x82, 0xff, 0x05, 0xd7, 0x4d, 0x38, 0x16, 0xb8, 0x7e,
-	0x51, 0x61, 0xf7, 0x9c, 0xf0, 0x9c, 0x63, 0x52, 0xd9, 0xb2, 0xb7, 0xee, 0x31, 0xb5, 0x67, 0xd0,
-	0x28, 0xce, 0x8b, 0x97, 0xc9, 0xc0, 0xd8, 0xcc, 0x0f, 0x8c, 0x97, 0xcb, 0xba, 0x5e, 0xf2, 0x94,
-	0x50, 0xd0, 0xf5, 0x96, 0x75, 0xfd, 0xe4, 0x81, 0xa1, 0xa0, 0xeb, 0x1b, 0x27, 0x50, 0x1b, 0x0f,
-	0x91, 0xed, 0x22, 0x87, 0xd0, 0xb8, 0xff, 0xbf, 0x2e, 0x62, 0xdf, 0xcb, 0x55, 0xe9, 0xad, 0x58,
-	0x17, 0xf4, 0xbf, 0x87, 0x46, 0xe6, 0x25, 0xce, 0xfc, 0x83, 0xec, 0x86, 0x50, 0xcf, 0xec, 0xc4,
-	0x9c, 0xfb, 0x10, 0x37, 0x0e, 0x0f, 0x8f, 0x49, 0xc4, 0x59, 0x30, 0x4f, 0xee, 0x2e, 0x26, 0xf9,
-	0xf8, 0xf7, 0x0f, 0xe3, 0x44, 0x0c, 0x5a, 0x5b, 0xfe, 0x71, 0x76, 0x0f, 0x0c, 0x2e, 0xb4, 0x17,
-	0xc5, 0x5c, 0x76, 0x52, 0xb7, 0xa5, 0xab, 0xcc, 0x78, 0xe8, 0x37, 0x79, 0xd1, 0x80, 0x92, 0xff,
-	0xcf, 0x4d, 0x70, 0x5e, 0xdd, 0xed, 0x6f, 0x05, 0xca, 0x26, 0x89, 0x46, 0xaf, 0xef, 0x71, 0x8b,
-	0xc9, 0x47, 0xf0, 0x72, 0xfa, 0x08, 0x7e, 0x04, 0xad, 0xe4, 0x27, 0xe1, 0x6c, 0x72, 0xe9, 0x59,
-	0x32, 0x7f, 0x8f, 0x3a, 0x84, 0x85, 0xcc, 0xa3, 0x3c, 0xd2, 0xd7, 0xda, 0xa5, 0x4e, 0xc9, 0xdc,
-	0x95, 0xaa, 0x91, 0x10, 0x9d, 0x92, 0xf9, 0xb7, 0x39, 0x89, 0xf1, 0x02, 0x2a, 0xe3, 0x21, 0x62,
-	0x22, 0xf5, 0xbd, 0x22, 0xb6, 0x7a, 0x9a, 0x8d, 0x20, 0x93, 0xa0, 0x3a, 0xec, 0xff, 0xf5, 0x67,
-	0xeb, 0x93, 0x5f, 0xaf, 0x5b, 0xca, 0x6f, 0xd7, 0x2d, 0xe5, 0x8f, 0xeb, 0x96, 0xf2, 0xc3, 0xd3,
-	0xdc, 0x5b, 0x0d, 0x27, 0xd8, 0x77, 0x18, 0xf6, 0xe5, 0x9b, 0xcd, 0x7e, 0xe2, 0x30, 0x59, 0x13,
-	0x1f, 0xfd, 0x7f, 0x03, 0x00, 0x00, 0xff, 0xff, 0xfa, 0x99, 0x0f, 0x4b, 0x25, 0x0d, 0x00, 0x00,
+	// 954 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x97, 0xdd, 0x72, 0xdb, 0x44,
+	0x14, 0xc7, 0x91, 0x8c, 0x13, 0xfb, 0xc4, 0xb1, 0x53, 0x4d, 0x68, 0xed, 0x64, 0x6a, 0x5c, 0x4f,
+	0x28, 0xe6, 0xa2, 0x4e, 0x6b, 0xdf, 0x30, 0xdc, 0xe5, 0x03, 0xa8, 0x13, 0x93, 0x71, 0x15, 0x5f,
+	0x71, 0xb3, 0xb3, 0x96, 0xb6, 0x92, 0x26, 0xd1, 0x4a, 0xd9, 0x5d, 0x13, 0xfc, 0x0c, 0xbc, 0x45,
+	0x5f, 0x80, 0xd7, 0xe0, 0x92, 0x07, 0xe0, 0x02, 0xf2, 0x04, 0x5c, 0x71, 0xc7, 0x0c, 0xa3, 0x5d,
+	0x7d, 0xc6, 0x29, 0x43, 0x52, 0xda, 0xc9, 0x95, 0xbd, 0x67, 0xff, 0xfa, 0x6b, 0xcf, 0x6f, 0xcf,
+	0x1e, 0x49, 0xd0, 0xe2, 0x96, 0x4b, 0x7c, 0xdc, 0x17, 0xe7, 0x7d, 0x17, 0x53, 0x9b, 0xbb, 0xf8,
+	0x8c, 0xf4, 0x43, 0x16, 0x88, 0xc0, 0x58, 0xf5, 0x85, 0xfc, 0xb3, 0xf5, 0xcc, 0xf1, 0x84, 0x3b,
+	0x9f, 0xf5, 0xad, 0xc0, 0xdf, 0x75, 0x02, 0x27, 0xd8, 0x95, 0xe1, 0xd9, 0xfc, 0xb5, 0x1c, 0xc9,
+	0x81, 0xfc, 0xa7, 0xae, 0xdb, 0xfa, 0x24, 0xb3, 0xb4, 0x98, 0x35, 0x1c, 0xa8, 0x70, 0x57, 0xc0,
+	0x83, 0x43, 0xc2, 0x05, 0x0b, 0x16, 0x7b, 0x73, 0xe1, 0x1e, 0x93, 0x85, 0x49, 0xb8, 0xf1, 0x19,
+	0xd4, 0x43, 0x46, 0x6c, 0xcf, 0xc2, 0x82, 0x20, 0x8a, 0x7d, 0xd2, 0xd4, 0x3a, 0x5a, 0xaf, 0x6a,
+	0xae, 0xa7, 0xd1, 0x13, 0xec, 0x13, 0xe3, 0x4b, 0x58, 0xb3, 0x02, 0xca, 0x05, 0x9b, 0x5b, 0x22,
+	0x60, 0x4d, 0xbd, 0xa3, 0xf5, 0xea, 0x83, 0x87, 0xfd, 0x78, 0x81, 0xfd, 0xe9, 0xf8, 0x20, 0x9b,
+	0x35, 0xf3, 0xd2, 0xee, 0x11, 0x3c, 0x9c, 0x8e, 0x91, 0xad, 0x6e, 0x8c, 0xf0, 0x5c, 0xb8, 0xe8,
+	0x8c, 0x2c, 0x50, 0x70, 0x66, 0x3c, 0x87, 0xb2, 0x8d, 0x05, 0x1e, 0xc8, 0x3b, 0xae, 0x0d, 0xb6,
+	0x52, 0xb7, 0xa5, 0x55, 0x9a, 0x4a, 0xd8, 0x1d, 0x43, 0xf3, 0x26, 0x2f, 0x1a, 0x50, 0xf2, 0xff,
+	0xb9, 0xbd, 0xc6, 0xde, 0xf9, 0x1d, 0xdc, 0xfe, 0xd2, 0xa0, 0x6c, 0x12, 0x3e, 0x79, 0xf5, 0xde,
+	0x91, 0x1a, 0x9b, 0x50, 0xa6, 0x01, 0xb5, 0x48, 0xb3, 0xd4, 0xd1, 0x7a, 0x35, 0x53, 0x0d, 0x8c,
+	0x27, 0x50, 0xe3, 0x84, 0xfd, 0x40, 0x18, 0x52, 0x93, 0x1f, 0xcb, 0xc9, 0x35, 0x15, 0x3b, 0x91,
+	0x92, 0x3a, 0xe8, 0xe1, 0x45, 0xb3, 0x2c, 0x57, 0xa3, 0x87, 0x17, 0xc6, 0x01, 0xb4, 0xe3, 0x4b,
+	0xc2, 0xf9, 0xec, 0xdc, 0xb3, 0x54, 0xfe, 0x1e, 0x75, 0x08, 0x0b, 0x99, 0x47, 0x05, 0x6f, 0xae,
+	0x74, 0x4a, 0xbd, 0x92, 0xb9, 0xad, 0x54, 0x13, 0x29, 0x3a, 0x26, 0x8b, 0x6f, 0x72, 0x92, 0xee,
+	0x73, 0xa8, 0x4c, 0xc7, 0x88, 0xc9, 0xd4, 0x77, 0x8a, 0xd8, 0xea, 0x69, 0x36, 0x92, 0x4c, 0x82,
+	0xea, 0x8d, 0x0e, 0xf5, 0x09, 0x7a, 0x85, 0x3c, 0x4a, 0x09, 0x43, 0x51, 0xec, 0xfd, 0x33, 0x53,
+	0xa9, 0x97, 0xd2, 0xd4, 0x6b, 0xa0, 0x85, 0x12, 0x51, 0xd5, 0xd4, 0xc2, 0x68, 0x94, 0x70, 0xd1,
+	0x2e, 0x32, 0xbe, 0x2b, 0xff, 0xc6, 0x77, 0x75, 0x99, 0xef, 0x36, 0x54, 0x29, 0xb9, 0x8c, 0xe7,
+	0x2b, 0x72, 0xbe, 0x42, 0xc9, 0x65, 0x0a, 0xdf, 0xb6, 0x9a, 0xd5, 0x8e, 0xd6, 0x2b, 0x9b, 0xba,
+	0x6d, 0x19, 0x8f, 0x01, 0xc8, 0x8f, 0xa1, 0xc7, 0x08, 0x47, 0x1e, 0x6d, 0x82, 0x8c, 0x57, 0xe3,
+	0xc8, 0x88, 0x76, 0xf7, 0xe1, 0xc1, 0x74, 0x8c, 0x42, 0x74, 0x91, 0xc7, 0xf4, 0xac, 0xc8, 0xf7,
+	0x51, 0x9a, 0x79, 0x11, 0x67, 0x02, 0xfa, 0x6b, 0xd8, 0x5c, 0xf2, 0x40, 0xb6, 0x75, 0x5b, 0x9b,
+	0x6f, 0xe5, 0x11, 0xbe, 0x66, 0x23, 0x88, 0x1f, 0xde, 0xd6, 0xe8, 0x08, 0x5a, 0x37, 0x1b, 0xdd,
+	0x61, 0x51, 0x6f, 0x74, 0xd8, 0xd8, 0xf7, 0xa8, 0x1d, 0x9f, 0xc4, 0x51, 0x24, 0xf8, 0xc0, 0x47,
+	0xaf, 0x94, 0x94, 0xc6, 0xe7, 0xb0, 0x21, 0xb3, 0x48, 0x7b, 0x88, 0x67, 0xcb, 0xda, 0x2a, 0x99,
+	0xeb, 0x51, 0x3c, 0x59, 0xa2, 0x1d, 0x09, 0x43, 0xc2, 0xfc, 0x82, 0xb0, 0xac, 0x84, 0x51, 0x3c,
+	0x13, 0x3e, 0x85, 0x86, 0x74, 0xe4, 0x84, 0x73, 0x2f, 0xa0, 0x91, 0x6e, 0x25, 0x33, 0x3c, 0x55,
+	0xd1, 0x91, 0x9d, 0x2f, 0x22, 0x2c, 0x64, 0x49, 0x66, 0x45, 0xb4, 0x27, 0xba, 0x23, 0xb9, 0x73,
+	0x33, 0x8f, 0xda, 0xb9, 0x5b, 0x4a, 0x52, 0xbb, 0x45, 0xda, 0xad, 0x34, 0xf9, 0xeb, 0x4c, 0x13,
+	0xde, 0x7f, 0x6b, 0xb0, 0x71, 0xaa, 0xea, 0xff, 0xf0, 0x25, 0x9a, 0x60, 0x86, 0x7d, 0x7e, 0x8f,
+	0x5b, 0xdd, 0x0e, 0xd4, 0xd3, 0xa3, 0x88, 0x5c, 0xcc, 0x5d, 0xc9, 0xb9, 0x66, 0xd6, 0x92, 0xf3,
+	0xf8, 0x12, 0x73, 0xd7, 0xf8, 0x02, 0x36, 0x08, 0xb5, 0xd8, 0x22, 0x14, 0xc4, 0x46, 0x98, 0xf2,
+	0x4b, 0xc2, 0x24, 0xe7, 0xaa, 0xd9, 0x48, 0xe3, 0x7b, 0x32, 0xdc, 0x3d, 0x96, 0x4f, 0x0b, 0x9e,
+	0x12, 0x08, 0x25, 0x01, 0xf5, 0xb4, 0x78, 0x2b, 0xcc, 0xeb, 0xc0, 0x12, 0x98, 0x6a, 0x5f, 0x96,
+	0xcc, 0x82, 0xb3, 0xdb, 0x5b, 0xfd, 0xa4, 0xc3, 0x66, 0x36, 0xf7, 0x21, 0x5b, 0xea, 0x9d, 0xf7,
+	0xa6, 0x06, 0x9a, 0x23, 0xb7, 0xa3, 0x6c, 0x6a, 0x8e, 0xd1, 0x82, 0x8a, 0xed, 0xa2, 0x90, 0x79,
+	0x3e, 0x89, 0xd9, 0xaf, 0xda, 0xee, 0x24, 0x1a, 0x1a, 0x0d, 0x28, 0x39, 0x08, 0xcb, 0xb2, 0xae,
+	0x9a, 0xba, 0xb3, 0x67, 0x7c, 0x0a, 0xb1, 0x11, 0x12, 0x91, 0xbc, 0x22, 0x3d, 0x40, 0x85, 0xa6,
+	0x9e, 0x4f, 0xba, 0x27, 0xf0, 0xa8, 0x00, 0x36, 0xc7, 0x63, 0x58, 0x24, 0xfb, 0xf8, 0x06, 0xb2,
+	0xcb, 0x5d, 0xe6, 0x37, 0x0d, 0x36, 0x0f, 0xce, 0x3d, 0x42, 0x45, 0x34, 0x2f, 0x0f, 0x04, 0x3a,
+	0xbc, 0xdf, 0x74, 0x5b, 0x50, 0x61, 0x44, 0xb0, 0x5c, 0x6f, 0x59, 0x95, 0xe3, 0x91, 0xad, 0x78,
+	0xce, 0x62, 0xca, 0xba, 0xb3, 0x1f, 0xe3, 0xb2, 0xd2, 0x04, 0xff, 0x0b, 0xae, 0x9b, 0x70, 0x24,
+	0xb8, 0x7e, 0xd6, 0x61, 0xfb, 0x94, 0x88, 0x9c, 0x63, 0x5c, 0xd9, 0xea, 0x6c, 0xdd, 0x63, 0x6a,
+	0x4f, 0xa1, 0x51, 0xec, 0x17, 0x2f, 0xe2, 0x86, 0xb1, 0x9e, 0x6f, 0x18, 0x2f, 0x96, 0x75, 0x83,
+	0xf8, 0x2d, 0xa1, 0xa0, 0x1b, 0x2c, 0xeb, 0x86, 0xf1, 0x0b, 0x43, 0x41, 0x37, 0xec, 0x1e, 0x41,
+	0x2d, 0x7a, 0x09, 0x75, 0x91, 0x43, 0x68, 0x74, 0xfe, 0xbf, 0x2a, 0x62, 0xdf, 0xc9, 0x55, 0xe9,
+	0x5b, 0xb1, 0x26, 0xf4, 0xbf, 0x83, 0x46, 0xe6, 0x25, 0xf7, 0xfc, 0x9d, 0xec, 0xc6, 0x50, 0xcf,
+	0xec, 0x64, 0x9f, 0x7b, 0x07, 0xb7, 0xfd, 0xe1, 0x9f, 0x7f, 0xb4, 0x3f, 0xfa, 0xe5, 0xaa, 0xad,
+	0xfd, 0x7a, 0xd5, 0xd6, 0x7e, 0xbf, 0x6a, 0x6b, 0xdf, 0x3f, 0xc9, 0x7d, 0xd5, 0x08, 0x82, 0x7d,
+	0x87, 0x61, 0x5f, 0x7d, 0xd9, 0xec, 0xc6, 0xbe, 0xb3, 0x15, 0xf9, 0x33, 0xfc, 0x27, 0x00, 0x00,
+	0xff, 0xff, 0xfa, 0x79, 0x01, 0x47, 0x25, 0x0d, 0x00, 0x00,
+}
+
+func (m *DestroyAuthKeyRes) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *DestroyAuthKeyRes) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *DestroyAuthKeyRes) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLDestroyAuthKeyOk) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLDestroyAuthKeyOk) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLDestroyAuthKeyOk) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLDestroyAuthKeyNone) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLDestroyAuthKeyNone) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLDestroyAuthKeyNone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLDestroyAuthKeyFail) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLDestroyAuthKeyFail) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLDestroyAuthKeyFail) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ResPQ) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ResPQ) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.ServerPublicKeyFingerprints) > 0 {
+		dAtA5 := make([]byte, len(m.ServerPublicKeyFingerprints)*10)
+		var j4 int
+		for _, num1 := range m.ServerPublicKeyFingerprints {
+			num := uint64(num1)
+			for num >= 1<<7 {
+				dAtA5[j4] = uint8(uint64(num)&0x7f | 0x80)
+				num >>= 7
+				j4++
+			}
+			dAtA5[j4] = uint8(num)
+			j4++
+		}
+		i -= j4
+		copy(dAtA[i:], dAtA5[:j4])
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(j4))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.Pq) > 0 {
+		i -= len(m.Pq)
+		copy(dAtA[i:], m.Pq)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Pq)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if len(m.ServerNonce) > 0 {
+		i -= len(m.ServerNonce)
+		copy(dAtA[i:], m.ServerNonce)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.ServerNonce)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.Nonce) > 0 {
+		i -= len(m.Nonce)
+		copy(dAtA[i:], m.Nonce)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Nonce)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLResPQ) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLResPQ) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *P_QInnerData) Marshal() (dAtA []byte, err error) {
@@ -2582,280 +2856,6 @@ func (m *TLDhGenFail) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *DestroyAuthKeyRes) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *DestroyAuthKeyRes) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *DestroyAuthKeyRes) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLDestroyAuthKeyOk) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLDestroyAuthKeyOk) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLDestroyAuthKeyOk) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLDestroyAuthKeyNone) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLDestroyAuthKeyNone) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLDestroyAuthKeyNone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLDestroyAuthKeyFail) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLDestroyAuthKeyFail) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLDestroyAuthKeyFail) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *ResPQ) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *ResPQ) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if len(m.ServerPublicKeyFingerprints) > 0 {
-		dAtA17 := make([]byte, len(m.ServerPublicKeyFingerprints)*10)
-		var j16 int
-		for _, num1 := range m.ServerPublicKeyFingerprints {
-			num := uint64(num1)
-			for num >= 1<<7 {
-				dAtA17[j16] = uint8(uint64(num)&0x7f | 0x80)
-				num >>= 7
-				j16++
-			}
-			dAtA17[j16] = uint8(num)
-			j16++
-		}
-		i -= j16
-		copy(dAtA[i:], dAtA17[:j16])
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(j16))
-		i--
-		dAtA[i] = 0x32
-	}
-	if len(m.Pq) > 0 {
-		i -= len(m.Pq)
-		copy(dAtA[i:], m.Pq)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Pq)))
-		i--
-		dAtA[i] = 0x2a
-	}
-	if len(m.ServerNonce) > 0 {
-		i -= len(m.ServerNonce)
-		copy(dAtA[i:], m.ServerNonce)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.ServerNonce)))
-		i--
-		dAtA[i] = 0x22
-	}
-	if len(m.Nonce) > 0 {
-		i -= len(m.Nonce)
-		copy(dAtA[i:], m.Nonce)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Nonce)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLResPQ) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLResPQ) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
 func encodeVarintSchemaTlHandshake(dAtA []byte, offset int, v uint64) int {
 	offset -= sovSchemaTlHandshake(v)
 	base := offset
@@ -2867,6 +2867,127 @@ func encodeVarintSchemaTlHandshake(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *DestroyAuthKeyRes) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLDestroyAuthKeyOk) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLDestroyAuthKeyNone) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLDestroyAuthKeyFail) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *ResPQ) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
+	}
+	l = len(m.Nonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.ServerNonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.Pq)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if len(m.ServerPublicKeyFingerprints) > 0 {
+		l = 0
+		for _, e := range m.ServerPublicKeyFingerprints {
+			l += sovSchemaTlHandshake(uint64(e))
+		}
+		n += 1 + sovSchemaTlHandshake(uint64(l)) + l
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLResPQ) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
 func (m *P_QInnerData) Size() (n int) {
 	if m == nil {
 		return 0
@@ -3291,132 +3412,739 @@ func (m *TLDhGenFail) Size() (n int) {
 	return n
 }
 
-func (m *DestroyAuthKeyRes) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLDestroyAuthKeyOk) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLDestroyAuthKeyNone) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLDestroyAuthKeyFail) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *ResPQ) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
-	}
-	l = len(m.Nonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.ServerNonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.Pq)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if len(m.ServerPublicKeyFingerprints) > 0 {
-		l = 0
-		for _, e := range m.ServerPublicKeyFingerprints {
-			l += sovSchemaTlHandshake(uint64(e))
-		}
-		n += 1 + sovSchemaTlHandshake(uint64(l)) + l
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLResPQ) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
 func sovSchemaTlHandshake(x uint64) (n int) {
 	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozSchemaTlHandshake(x uint64) (n int) {
 	return sovSchemaTlHandshake(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *DestroyAuthKeyRes) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: DestroyAuthKeyRes: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: DestroyAuthKeyRes: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLDestroyAuthKeyOk) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_destroy_auth_key_ok: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_destroy_auth_key_ok: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &DestroyAuthKeyRes{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLDestroyAuthKeyNone) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_destroy_auth_key_none: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_destroy_auth_key_none: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &DestroyAuthKeyRes{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLDestroyAuthKeyFail) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_destroy_auth_key_fail: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_destroy_auth_key_fail: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &DestroyAuthKeyRes{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *ResPQ) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: ResPQ: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: ResPQ: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.Nonce == nil {
+				m.Nonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.ServerNonce == nil {
+				m.ServerNonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Pq", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Pq = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 6:
+			if wireType == 0 {
+				var v int64
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowSchemaTlHandshake
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					v |= int64(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				m.ServerPublicKeyFingerprints = append(m.ServerPublicKeyFingerprints, v)
+			} else if wireType == 2 {
+				var packedLen int
+				for shift := uint(0); ; shift += 7 {
+					if shift >= 64 {
+						return ErrIntOverflowSchemaTlHandshake
+					}
+					if iNdEx >= l {
+						return io.ErrUnexpectedEOF
+					}
+					b := dAtA[iNdEx]
+					iNdEx++
+					packedLen |= int(b&0x7F) << shift
+					if b < 0x80 {
+						break
+					}
+				}
+				if packedLen < 0 {
+					return ErrInvalidLengthSchemaTlHandshake
+				}
+				postIndex := iNdEx + packedLen
+				if postIndex < 0 {
+					return ErrInvalidLengthSchemaTlHandshake
+				}
+				if postIndex > l {
+					return io.ErrUnexpectedEOF
+				}
+				var elementCount int
+				var count int
+				for _, integer := range dAtA[iNdEx:postIndex] {
+					if integer < 128 {
+						count++
+					}
+				}
+				elementCount = count
+				if elementCount != 0 && len(m.ServerPublicKeyFingerprints) == 0 {
+					m.ServerPublicKeyFingerprints = make([]int64, 0, elementCount)
+				}
+				for iNdEx < postIndex {
+					var v int64
+					for shift := uint(0); ; shift += 7 {
+						if shift >= 64 {
+							return ErrIntOverflowSchemaTlHandshake
+						}
+						if iNdEx >= l {
+							return io.ErrUnexpectedEOF
+						}
+						b := dAtA[iNdEx]
+						iNdEx++
+						v |= int64(b&0x7F) << shift
+						if b < 0x80 {
+							break
+						}
+					}
+					m.ServerPublicKeyFingerprints = append(m.ServerPublicKeyFingerprints, v)
+				}
+			} else {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerPublicKeyFingerprints", wireType)
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLResPQ) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_resPQ: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_resPQ: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &ResPQ{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *P_QInnerData) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
@@ -5971,734 +6699,6 @@ func (m *TLDhGenFail) Unmarshal(dAtA []byte) error {
 			}
 			if m.Data2 == nil {
 				m.Data2 = &SetClient_DHParamsAnswer{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *DestroyAuthKeyRes) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: DestroyAuthKeyRes: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: DestroyAuthKeyRes: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLDestroyAuthKeyOk) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_destroy_auth_key_ok: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_destroy_auth_key_ok: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &DestroyAuthKeyRes{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLDestroyAuthKeyNone) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_destroy_auth_key_none: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_destroy_auth_key_none: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &DestroyAuthKeyRes{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLDestroyAuthKeyFail) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_destroy_auth_key_fail: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_destroy_auth_key_fail: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &DestroyAuthKeyRes{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *ResPQ) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: ResPQ: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: ResPQ: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.Nonce == nil {
-				m.Nonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.ServerNonce == nil {
-				m.ServerNonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 5:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Pq", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Pq = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 6:
-			if wireType == 0 {
-				var v int64
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowSchemaTlHandshake
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					v |= int64(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				m.ServerPublicKeyFingerprints = append(m.ServerPublicKeyFingerprints, v)
-			} else if wireType == 2 {
-				var packedLen int
-				for shift := uint(0); ; shift += 7 {
-					if shift >= 64 {
-						return ErrIntOverflowSchemaTlHandshake
-					}
-					if iNdEx >= l {
-						return io.ErrUnexpectedEOF
-					}
-					b := dAtA[iNdEx]
-					iNdEx++
-					packedLen |= int(b&0x7F) << shift
-					if b < 0x80 {
-						break
-					}
-				}
-				if packedLen < 0 {
-					return ErrInvalidLengthSchemaTlHandshake
-				}
-				postIndex := iNdEx + packedLen
-				if postIndex < 0 {
-					return ErrInvalidLengthSchemaTlHandshake
-				}
-				if postIndex > l {
-					return io.ErrUnexpectedEOF
-				}
-				var elementCount int
-				var count int
-				for _, integer := range dAtA[iNdEx:postIndex] {
-					if integer < 128 {
-						count++
-					}
-				}
-				elementCount = count
-				if elementCount != 0 && len(m.ServerPublicKeyFingerprints) == 0 {
-					m.ServerPublicKeyFingerprints = make([]int64, 0, elementCount)
-				}
-				for iNdEx < postIndex {
-					var v int64
-					for shift := uint(0); ; shift += 7 {
-						if shift >= 64 {
-							return ErrIntOverflowSchemaTlHandshake
-						}
-						if iNdEx >= l {
-							return io.ErrUnexpectedEOF
-						}
-						b := dAtA[iNdEx]
-						iNdEx++
-						v |= int64(b&0x7F) << shift
-						if b < 0x80 {
-							break
-						}
-					}
-					m.ServerPublicKeyFingerprints = append(m.ServerPublicKeyFingerprints, v)
-				}
-			} else {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerPublicKeyFingerprints", wireType)
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLResPQ) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_resPQ: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_resPQ: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &ResPQ{}
 			}
 			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
