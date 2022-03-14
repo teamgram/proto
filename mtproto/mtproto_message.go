@@ -72,6 +72,7 @@ func (m *MTPRawMessage) QuickAckId() int32 {
 	return m.quickAckId
 }
 
+// Encode
 ////////////////////////////////////////////////////////////////////////////
 func (m *MTPRawMessage) Encode() []byte {
 	return m.Payload
