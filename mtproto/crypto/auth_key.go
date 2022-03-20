@@ -57,6 +57,7 @@ func NewAuthKey(keyId int64, keyData []byte) *AuthKey {
 	}
 }
 
+// CreateAuthKey
 /*
 ## android client, pushAuthKey algo:
 - authKey
