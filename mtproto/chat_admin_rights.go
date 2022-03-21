@@ -182,8 +182,8 @@ func MakeDefaultChatAdminRights() *ChatAdminRights {
 		PinMessages:    true,
 		AddAdmins:      false,
 		Anonymous:      false,
-		ManageCall:     false,
-		Other:          false,
+		ManageCall:     true,
+		Other:          true,
 	}).To_ChatAdminRights()
 }
 
