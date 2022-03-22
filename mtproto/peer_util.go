@@ -278,6 +278,10 @@ func (p *PeerUtil) IsChat() bool {
 	return p.PeerType == PEER_CHAT
 }
 
+func (p *PeerUtil) IsChatOrChannel() bool {
+	return p.PeerType == PEER_CHAT || p.PeerType == PEER_CHANNEL
+}
+
 func (p *PeerUtil) IsChatOrUser() bool {
 	return p.IsUser() || p.IsChat()
 }
