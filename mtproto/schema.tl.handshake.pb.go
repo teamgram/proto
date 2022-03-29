@@ -24,6 +24,744 @@ var _ = math.Inf
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
 //--------------------------------------------------------------------------------------------
+// server_DH_params_fail#79cb045d nonce:int128 server_nonce:int128 new_nonce_hash:int128 = Server_DH_Params;
+// server_DH_params_ok#d0e8075c nonce:int128 server_nonce:int128 encrypted_answer:string = Server_DH_Params;
+//
+// Server_DH_Params <--
+//  + TL_server_DH_params_fail
+//  + TL_server_DH_params_ok
+//
+type Server_DH_Params struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
+	NewNonceHash         []byte        `protobuf:"bytes,5,opt,name=new_nonce_hash,json=newNonceHash,proto3" json:"new_nonce_hash,omitempty"`
+	EncryptedAnswer      string        `protobuf:"bytes,6,opt,name=encrypted_answer,json=encryptedAnswer,proto3" json:"encrypted_answer,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Server_DH_Params) Reset()         { *m = Server_DH_Params{} }
+func (m *Server_DH_Params) String() string { return proto.CompactTextString(m) }
+func (*Server_DH_Params) ProtoMessage()    {}
+func (*Server_DH_Params) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{0}
+}
+func (m *Server_DH_Params) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Server_DH_Params) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Server_DH_Params.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Server_DH_Params) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Server_DH_Params.Merge(m, src)
+}
+func (m *Server_DH_Params) XXX_Size() int {
+	return m.Size()
+}
+func (m *Server_DH_Params) XXX_DiscardUnknown() {
+	xxx_messageInfo_Server_DH_Params.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Server_DH_Params proto.InternalMessageInfo
+
+func (m *Server_DH_Params) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *Server_DH_Params) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *Server_DH_Params) GetNonce() []byte {
+	if m != nil {
+		return m.Nonce
+	}
+	return nil
+}
+
+func (m *Server_DH_Params) GetServerNonce() []byte {
+	if m != nil {
+		return m.ServerNonce
+	}
+	return nil
+}
+
+func (m *Server_DH_Params) GetNewNonceHash() []byte {
+	if m != nil {
+		return m.NewNonceHash
+	}
+	return nil
+}
+
+func (m *Server_DH_Params) GetEncryptedAnswer() string {
+	if m != nil {
+		return m.EncryptedAnswer
+	}
+	return ""
+}
+
+// TL_server_DH_params_fail
+type TLServer_DHParamsFail struct {
+	Data2                *Server_DH_Params `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *TLServer_DHParamsFail) Reset()         { *m = TLServer_DHParamsFail{} }
+func (m *TLServer_DHParamsFail) String() string { return proto.CompactTextString(m) }
+func (*TLServer_DHParamsFail) ProtoMessage()    {}
+func (*TLServer_DHParamsFail) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{1}
+}
+func (m *TLServer_DHParamsFail) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLServer_DHParamsFail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLServer_DHParamsFail.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLServer_DHParamsFail) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLServer_DHParamsFail.Merge(m, src)
+}
+func (m *TLServer_DHParamsFail) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLServer_DHParamsFail) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLServer_DHParamsFail.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLServer_DHParamsFail proto.InternalMessageInfo
+
+func (m *TLServer_DHParamsFail) GetData2() *Server_DH_Params {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// TL_server_DH_params_ok
+type TLServer_DHParamsOk struct {
+	Data2                *Server_DH_Params `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *TLServer_DHParamsOk) Reset()         { *m = TLServer_DHParamsOk{} }
+func (m *TLServer_DHParamsOk) String() string { return proto.CompactTextString(m) }
+func (*TLServer_DHParamsOk) ProtoMessage()    {}
+func (*TLServer_DHParamsOk) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{2}
+}
+func (m *TLServer_DHParamsOk) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLServer_DHParamsOk) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLServer_DHParamsOk.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLServer_DHParamsOk) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLServer_DHParamsOk.Merge(m, src)
+}
+func (m *TLServer_DHParamsOk) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLServer_DHParamsOk) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLServer_DHParamsOk.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLServer_DHParamsOk proto.InternalMessageInfo
+
+func (m *TLServer_DHParamsOk) GetData2() *Server_DH_Params {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+//--------------------------------------------------------------------------------------------
+// server_DH_inner_data#b5890dba nonce:int128 server_nonce:int128 g:int dh_prime:string g_a:string server_time:int = Server_DH_inner_data;
+//
+// Server_DH_inner_data <--
+//  + TL_server_DH_inner_data
+//
+type Server_DHInnerData struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
+	G                    int32         `protobuf:"varint,5,opt,name=g,proto3" json:"g,omitempty"`
+	DhPrime              string        `protobuf:"bytes,6,opt,name=dh_prime,json=dhPrime,proto3" json:"dh_prime,omitempty"`
+	GA                   string        `protobuf:"bytes,7,opt,name=g_a,json=gA,proto3" json:"g_a,omitempty"`
+	ServerTime           int32         `protobuf:"varint,8,opt,name=server_time,json=serverTime,proto3" json:"server_time,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Server_DHInnerData) Reset()         { *m = Server_DHInnerData{} }
+func (m *Server_DHInnerData) String() string { return proto.CompactTextString(m) }
+func (*Server_DHInnerData) ProtoMessage()    {}
+func (*Server_DHInnerData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{3}
+}
+func (m *Server_DHInnerData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Server_DHInnerData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Server_DHInnerData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Server_DHInnerData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Server_DHInnerData.Merge(m, src)
+}
+func (m *Server_DHInnerData) XXX_Size() int {
+	return m.Size()
+}
+func (m *Server_DHInnerData) XXX_DiscardUnknown() {
+	xxx_messageInfo_Server_DHInnerData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Server_DHInnerData proto.InternalMessageInfo
+
+func (m *Server_DHInnerData) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *Server_DHInnerData) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *Server_DHInnerData) GetNonce() []byte {
+	if m != nil {
+		return m.Nonce
+	}
+	return nil
+}
+
+func (m *Server_DHInnerData) GetServerNonce() []byte {
+	if m != nil {
+		return m.ServerNonce
+	}
+	return nil
+}
+
+func (m *Server_DHInnerData) GetG() int32 {
+	if m != nil {
+		return m.G
+	}
+	return 0
+}
+
+func (m *Server_DHInnerData) GetDhPrime() string {
+	if m != nil {
+		return m.DhPrime
+	}
+	return ""
+}
+
+func (m *Server_DHInnerData) GetGA() string {
+	if m != nil {
+		return m.GA
+	}
+	return ""
+}
+
+func (m *Server_DHInnerData) GetServerTime() int32 {
+	if m != nil {
+		return m.ServerTime
+	}
+	return 0
+}
+
+// TL_server_DH_inner_data
+type TLServer_DHInnerData struct {
+	Data2                *Server_DHInnerData `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
+	XXX_unrecognized     []byte              `json:"-"`
+	XXX_sizecache        int32               `json:"-"`
+}
+
+func (m *TLServer_DHInnerData) Reset()         { *m = TLServer_DHInnerData{} }
+func (m *TLServer_DHInnerData) String() string { return proto.CompactTextString(m) }
+func (*TLServer_DHInnerData) ProtoMessage()    {}
+func (*TLServer_DHInnerData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{4}
+}
+func (m *TLServer_DHInnerData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLServer_DHInnerData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLServer_DHInnerData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLServer_DHInnerData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLServer_DHInnerData.Merge(m, src)
+}
+func (m *TLServer_DHInnerData) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLServer_DHInnerData) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLServer_DHInnerData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLServer_DHInnerData proto.InternalMessageInfo
+
+func (m *TLServer_DHInnerData) GetData2() *Server_DHInnerData {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+//--------------------------------------------------------------------------------------------
+// client_DH_inner_data#6643b654 nonce:int128 server_nonce:int128 retry_id:long g_b:string = Client_DH_Inner_Data;
+//
+// Client_DH_Inner_Data <--
+//  + TL_client_DH_inner_data
+//
+type Client_DH_Inner_Data struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
+	RetryId              int64         `protobuf:"varint,5,opt,name=retry_id,json=retryId,proto3" json:"retry_id,omitempty"`
+	GB                   string        `protobuf:"bytes,6,opt,name=g_b,json=gB,proto3" json:"g_b,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Client_DH_Inner_Data) Reset()         { *m = Client_DH_Inner_Data{} }
+func (m *Client_DH_Inner_Data) String() string { return proto.CompactTextString(m) }
+func (*Client_DH_Inner_Data) ProtoMessage()    {}
+func (*Client_DH_Inner_Data) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{5}
+}
+func (m *Client_DH_Inner_Data) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Client_DH_Inner_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Client_DH_Inner_Data.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Client_DH_Inner_Data) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Client_DH_Inner_Data.Merge(m, src)
+}
+func (m *Client_DH_Inner_Data) XXX_Size() int {
+	return m.Size()
+}
+func (m *Client_DH_Inner_Data) XXX_DiscardUnknown() {
+	xxx_messageInfo_Client_DH_Inner_Data.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Client_DH_Inner_Data proto.InternalMessageInfo
+
+func (m *Client_DH_Inner_Data) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *Client_DH_Inner_Data) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *Client_DH_Inner_Data) GetNonce() []byte {
+	if m != nil {
+		return m.Nonce
+	}
+	return nil
+}
+
+func (m *Client_DH_Inner_Data) GetServerNonce() []byte {
+	if m != nil {
+		return m.ServerNonce
+	}
+	return nil
+}
+
+func (m *Client_DH_Inner_Data) GetRetryId() int64 {
+	if m != nil {
+		return m.RetryId
+	}
+	return 0
+}
+
+func (m *Client_DH_Inner_Data) GetGB() string {
+	if m != nil {
+		return m.GB
+	}
+	return ""
+}
+
+// TL_client_DH_inner_data
+type TLClient_DHInnerData struct {
+	Data2                *Client_DH_Inner_Data `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
+	XXX_unrecognized     []byte                `json:"-"`
+	XXX_sizecache        int32                 `json:"-"`
+}
+
+func (m *TLClient_DHInnerData) Reset()         { *m = TLClient_DHInnerData{} }
+func (m *TLClient_DHInnerData) String() string { return proto.CompactTextString(m) }
+func (*TLClient_DHInnerData) ProtoMessage()    {}
+func (*TLClient_DHInnerData) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{6}
+}
+func (m *TLClient_DHInnerData) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLClient_DHInnerData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLClient_DHInnerData.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLClient_DHInnerData) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLClient_DHInnerData.Merge(m, src)
+}
+func (m *TLClient_DHInnerData) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLClient_DHInnerData) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLClient_DHInnerData.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLClient_DHInnerData proto.InternalMessageInfo
+
+func (m *TLClient_DHInnerData) GetData2() *Client_DH_Inner_Data {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+//--------------------------------------------------------------------------------------------
+// dh_gen_ok#3bcbf734 nonce:int128 server_nonce:int128 new_nonce_hash1:int128 = Set_client_DH_params_answer;
+// dh_gen_retry#46dc1fb9 nonce:int128 server_nonce:int128 new_nonce_hash2:int128 = Set_client_DH_params_answer;
+// dh_gen_fail#a69dae02 nonce:int128 server_nonce:int128 new_nonce_hash3:int128 = Set_client_DH_params_answer;
+//
+// Set_client_DH_params_answer <--
+//  + TL_dh_gen_ok
+//  + TL_dh_gen_retry
+//  + TL_dh_gen_fail
+//
+type SetClient_DHParamsAnswer struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
+	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
+	NewNonceHash1        []byte        `protobuf:"bytes,5,opt,name=new_nonce_hash1,json=newNonceHash1,proto3" json:"new_nonce_hash1,omitempty"`
+	NewNonceHash2        []byte        `protobuf:"bytes,6,opt,name=new_nonce_hash2,json=newNonceHash2,proto3" json:"new_nonce_hash2,omitempty"`
+	NewNonceHash3        []byte        `protobuf:"bytes,7,opt,name=new_nonce_hash3,json=newNonceHash3,proto3" json:"new_nonce_hash3,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *SetClient_DHParamsAnswer) Reset()         { *m = SetClient_DHParamsAnswer{} }
+func (m *SetClient_DHParamsAnswer) String() string { return proto.CompactTextString(m) }
+func (*SetClient_DHParamsAnswer) ProtoMessage()    {}
+func (*SetClient_DHParamsAnswer) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{7}
+}
+func (m *SetClient_DHParamsAnswer) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *SetClient_DHParamsAnswer) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_SetClient_DHParamsAnswer.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *SetClient_DHParamsAnswer) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SetClient_DHParamsAnswer.Merge(m, src)
+}
+func (m *SetClient_DHParamsAnswer) XXX_Size() int {
+	return m.Size()
+}
+func (m *SetClient_DHParamsAnswer) XXX_DiscardUnknown() {
+	xxx_messageInfo_SetClient_DHParamsAnswer.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SetClient_DHParamsAnswer proto.InternalMessageInfo
+
+func (m *SetClient_DHParamsAnswer) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *SetClient_DHParamsAnswer) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *SetClient_DHParamsAnswer) GetNonce() []byte {
+	if m != nil {
+		return m.Nonce
+	}
+	return nil
+}
+
+func (m *SetClient_DHParamsAnswer) GetServerNonce() []byte {
+	if m != nil {
+		return m.ServerNonce
+	}
+	return nil
+}
+
+func (m *SetClient_DHParamsAnswer) GetNewNonceHash1() []byte {
+	if m != nil {
+		return m.NewNonceHash1
+	}
+	return nil
+}
+
+func (m *SetClient_DHParamsAnswer) GetNewNonceHash2() []byte {
+	if m != nil {
+		return m.NewNonceHash2
+	}
+	return nil
+}
+
+func (m *SetClient_DHParamsAnswer) GetNewNonceHash3() []byte {
+	if m != nil {
+		return m.NewNonceHash3
+	}
+	return nil
+}
+
+// TL_dh_gen_ok
+type TLDhGenOk struct {
+	Data2                *SetClient_DHParamsAnswer `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *TLDhGenOk) Reset()         { *m = TLDhGenOk{} }
+func (m *TLDhGenOk) String() string { return proto.CompactTextString(m) }
+func (*TLDhGenOk) ProtoMessage()    {}
+func (*TLDhGenOk) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{8}
+}
+func (m *TLDhGenOk) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLDhGenOk) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLDhGenOk.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLDhGenOk) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLDhGenOk.Merge(m, src)
+}
+func (m *TLDhGenOk) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLDhGenOk) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLDhGenOk.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLDhGenOk proto.InternalMessageInfo
+
+func (m *TLDhGenOk) GetData2() *SetClient_DHParamsAnswer {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// TL_dh_gen_retry
+type TLDhGenRetry struct {
+	Data2                *SetClient_DHParamsAnswer `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *TLDhGenRetry) Reset()         { *m = TLDhGenRetry{} }
+func (m *TLDhGenRetry) String() string { return proto.CompactTextString(m) }
+func (*TLDhGenRetry) ProtoMessage()    {}
+func (*TLDhGenRetry) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{9}
+}
+func (m *TLDhGenRetry) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLDhGenRetry) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLDhGenRetry.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLDhGenRetry) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLDhGenRetry.Merge(m, src)
+}
+func (m *TLDhGenRetry) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLDhGenRetry) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLDhGenRetry.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLDhGenRetry proto.InternalMessageInfo
+
+func (m *TLDhGenRetry) GetData2() *SetClient_DHParamsAnswer {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// TL_dh_gen_fail
+type TLDhGenFail struct {
+	Data2                *SetClient_DHParamsAnswer `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
+	XXX_unrecognized     []byte                    `json:"-"`
+	XXX_sizecache        int32                     `json:"-"`
+}
+
+func (m *TLDhGenFail) Reset()         { *m = TLDhGenFail{} }
+func (m *TLDhGenFail) String() string { return proto.CompactTextString(m) }
+func (*TLDhGenFail) ProtoMessage()    {}
+func (*TLDhGenFail) Descriptor() ([]byte, []int) {
+	return fileDescriptor_eacd2ccb4d844da1, []int{10}
+}
+func (m *TLDhGenFail) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLDhGenFail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLDhGenFail.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLDhGenFail) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLDhGenFail.Merge(m, src)
+}
+func (m *TLDhGenFail) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLDhGenFail) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLDhGenFail.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLDhGenFail proto.InternalMessageInfo
+
+func (m *TLDhGenFail) GetData2() *SetClient_DHParamsAnswer {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+//--------------------------------------------------------------------------------------------
 // destroy_auth_key_ok#f660e1d4 = DestroyAuthKeyRes;
 // destroy_auth_key_none#0a9f2259 = DestroyAuthKeyRes;
 // destroy_auth_key_fail#ea109b13 = DestroyAuthKeyRes;
@@ -45,7 +783,7 @@ func (m *DestroyAuthKeyRes) Reset()         { *m = DestroyAuthKeyRes{} }
 func (m *DestroyAuthKeyRes) String() string { return proto.CompactTextString(m) }
 func (*DestroyAuthKeyRes) ProtoMessage()    {}
 func (*DestroyAuthKeyRes) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{0}
+	return fileDescriptor_eacd2ccb4d844da1, []int{11}
 }
 func (m *DestroyAuthKeyRes) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -100,7 +838,7 @@ func (m *TLDestroyAuthKeyOk) Reset()         { *m = TLDestroyAuthKeyOk{} }
 func (m *TLDestroyAuthKeyOk) String() string { return proto.CompactTextString(m) }
 func (*TLDestroyAuthKeyOk) ProtoMessage()    {}
 func (*TLDestroyAuthKeyOk) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{1}
+	return fileDescriptor_eacd2ccb4d844da1, []int{12}
 }
 func (m *TLDestroyAuthKeyOk) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -148,7 +886,7 @@ func (m *TLDestroyAuthKeyNone) Reset()         { *m = TLDestroyAuthKeyNone{} }
 func (m *TLDestroyAuthKeyNone) String() string { return proto.CompactTextString(m) }
 func (*TLDestroyAuthKeyNone) ProtoMessage()    {}
 func (*TLDestroyAuthKeyNone) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{2}
+	return fileDescriptor_eacd2ccb4d844da1, []int{13}
 }
 func (m *TLDestroyAuthKeyNone) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -196,7 +934,7 @@ func (m *TLDestroyAuthKeyFail) Reset()         { *m = TLDestroyAuthKeyFail{} }
 func (m *TLDestroyAuthKeyFail) String() string { return proto.CompactTextString(m) }
 func (*TLDestroyAuthKeyFail) ProtoMessage()    {}
 func (*TLDestroyAuthKeyFail) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{3}
+	return fileDescriptor_eacd2ccb4d844da1, []int{14}
 }
 func (m *TLDestroyAuthKeyFail) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -254,7 +992,7 @@ func (m *ResPQ) Reset()         { *m = ResPQ{} }
 func (m *ResPQ) String() string { return proto.CompactTextString(m) }
 func (*ResPQ) ProtoMessage()    {}
 func (*ResPQ) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{4}
+	return fileDescriptor_eacd2ccb4d844da1, []int{15}
 }
 func (m *ResPQ) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -337,7 +1075,7 @@ func (m *TLResPQ) Reset()         { *m = TLResPQ{} }
 func (m *TLResPQ) String() string { return proto.CompactTextString(m) }
 func (*TLResPQ) ProtoMessage()    {}
 func (*TLResPQ) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{5}
+	return fileDescriptor_eacd2ccb4d844da1, []int{16}
 }
 func (m *TLResPQ) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -405,7 +1143,7 @@ func (m *P_QInnerData) Reset()         { *m = P_QInnerData{} }
 func (m *P_QInnerData) String() string { return proto.CompactTextString(m) }
 func (*P_QInnerData) ProtoMessage()    {}
 func (*P_QInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{6}
+	return fileDescriptor_eacd2ccb4d844da1, []int{17}
 }
 func (m *P_QInnerData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -516,7 +1254,7 @@ func (m *TLPQInnerData) Reset()         { *m = TLPQInnerData{} }
 func (m *TLPQInnerData) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerData) ProtoMessage()    {}
 func (*TLPQInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{7}
+	return fileDescriptor_eacd2ccb4d844da1, []int{18}
 }
 func (m *TLPQInnerData) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -564,7 +1302,7 @@ func (m *TLPQInnerDataDc) Reset()         { *m = TLPQInnerDataDc{} }
 func (m *TLPQInnerDataDc) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerDataDc) ProtoMessage()    {}
 func (*TLPQInnerDataDc) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{8}
+	return fileDescriptor_eacd2ccb4d844da1, []int{19}
 }
 func (m *TLPQInnerDataDc) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -612,7 +1350,7 @@ func (m *TLPQInnerDataTemp) Reset()         { *m = TLPQInnerDataTemp{} }
 func (m *TLPQInnerDataTemp) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerDataTemp) ProtoMessage()    {}
 func (*TLPQInnerDataTemp) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{9}
+	return fileDescriptor_eacd2ccb4d844da1, []int{20}
 }
 func (m *TLPQInnerDataTemp) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -660,7 +1398,7 @@ func (m *TLPQInnerDataTempDc) Reset()         { *m = TLPQInnerDataTempDc{} }
 func (m *TLPQInnerDataTempDc) String() string { return proto.CompactTextString(m) }
 func (*TLPQInnerDataTempDc) ProtoMessage()    {}
 func (*TLPQInnerDataTempDc) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{10}
+	return fileDescriptor_eacd2ccb4d844da1, []int{21}
 }
 func (m *TLPQInnerDataTempDc) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -719,7 +1457,7 @@ func (m *BindAuthKeyInner) Reset()         { *m = BindAuthKeyInner{} }
 func (m *BindAuthKeyInner) String() string { return proto.CompactTextString(m) }
 func (*BindAuthKeyInner) ProtoMessage()    {}
 func (*BindAuthKeyInner) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{11}
+	return fileDescriptor_eacd2ccb4d844da1, []int{22}
 }
 func (m *BindAuthKeyInner) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -809,7 +1547,7 @@ func (m *TLBindAuthKeyInner) Reset()         { *m = TLBindAuthKeyInner{} }
 func (m *TLBindAuthKeyInner) String() string { return proto.CompactTextString(m) }
 func (*TLBindAuthKeyInner) ProtoMessage()    {}
 func (*TLBindAuthKeyInner) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{12}
+	return fileDescriptor_eacd2ccb4d844da1, []int{23}
 }
 func (m *TLBindAuthKeyInner) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -845,745 +1583,18 @@ func (m *TLBindAuthKeyInner) GetData2() *BindAuthKeyInner {
 	return nil
 }
 
-//--------------------------------------------------------------------------------------------
-// server_DH_params_fail#79cb045d nonce:int128 server_nonce:int128 new_nonce_hash:int128 = Server_DH_Params;
-// server_DH_params_ok#d0e8075c nonce:int128 server_nonce:int128 encrypted_answer:string = Server_DH_Params;
-//
-// Server_DH_Params <--
-//  + TL_server_DH_params_fail
-//  + TL_server_DH_params_ok
-//
-type Server_DH_Params struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
-	NewNonceHash         []byte        `protobuf:"bytes,5,opt,name=new_nonce_hash,json=newNonceHash,proto3" json:"new_nonce_hash,omitempty"`
-	EncryptedAnswer      string        `protobuf:"bytes,6,opt,name=encrypted_answer,json=encryptedAnswer,proto3" json:"encrypted_answer,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *Server_DH_Params) Reset()         { *m = Server_DH_Params{} }
-func (m *Server_DH_Params) String() string { return proto.CompactTextString(m) }
-func (*Server_DH_Params) ProtoMessage()    {}
-func (*Server_DH_Params) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{13}
-}
-func (m *Server_DH_Params) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Server_DH_Params) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Server_DH_Params.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Server_DH_Params) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Server_DH_Params.Merge(m, src)
-}
-func (m *Server_DH_Params) XXX_Size() int {
-	return m.Size()
-}
-func (m *Server_DH_Params) XXX_DiscardUnknown() {
-	xxx_messageInfo_Server_DH_Params.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Server_DH_Params proto.InternalMessageInfo
-
-func (m *Server_DH_Params) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *Server_DH_Params) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *Server_DH_Params) GetNonce() []byte {
-	if m != nil {
-		return m.Nonce
-	}
-	return nil
-}
-
-func (m *Server_DH_Params) GetServerNonce() []byte {
-	if m != nil {
-		return m.ServerNonce
-	}
-	return nil
-}
-
-func (m *Server_DH_Params) GetNewNonceHash() []byte {
-	if m != nil {
-		return m.NewNonceHash
-	}
-	return nil
-}
-
-func (m *Server_DH_Params) GetEncryptedAnswer() string {
-	if m != nil {
-		return m.EncryptedAnswer
-	}
-	return ""
-}
-
-// TL_server_DH_params_fail
-type TLServer_DHParamsFail struct {
-	Data2                *Server_DH_Params `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
-}
-
-func (m *TLServer_DHParamsFail) Reset()         { *m = TLServer_DHParamsFail{} }
-func (m *TLServer_DHParamsFail) String() string { return proto.CompactTextString(m) }
-func (*TLServer_DHParamsFail) ProtoMessage()    {}
-func (*TLServer_DHParamsFail) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{14}
-}
-func (m *TLServer_DHParamsFail) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLServer_DHParamsFail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLServer_DHParamsFail.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLServer_DHParamsFail) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLServer_DHParamsFail.Merge(m, src)
-}
-func (m *TLServer_DHParamsFail) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLServer_DHParamsFail) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLServer_DHParamsFail.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLServer_DHParamsFail proto.InternalMessageInfo
-
-func (m *TLServer_DHParamsFail) GetData2() *Server_DH_Params {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// TL_server_DH_params_ok
-type TLServer_DHParamsOk struct {
-	Data2                *Server_DH_Params `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
-	XXX_unrecognized     []byte            `json:"-"`
-	XXX_sizecache        int32             `json:"-"`
-}
-
-func (m *TLServer_DHParamsOk) Reset()         { *m = TLServer_DHParamsOk{} }
-func (m *TLServer_DHParamsOk) String() string { return proto.CompactTextString(m) }
-func (*TLServer_DHParamsOk) ProtoMessage()    {}
-func (*TLServer_DHParamsOk) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{15}
-}
-func (m *TLServer_DHParamsOk) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLServer_DHParamsOk) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLServer_DHParamsOk.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLServer_DHParamsOk) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLServer_DHParamsOk.Merge(m, src)
-}
-func (m *TLServer_DHParamsOk) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLServer_DHParamsOk) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLServer_DHParamsOk.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLServer_DHParamsOk proto.InternalMessageInfo
-
-func (m *TLServer_DHParamsOk) GetData2() *Server_DH_Params {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-//--------------------------------------------------------------------------------------------
-// server_DH_inner_data#b5890dba nonce:int128 server_nonce:int128 g:int dh_prime:string g_a:string server_time:int = Server_DH_inner_data;
-//
-// Server_DH_inner_data <--
-//  + TL_server_DH_inner_data
-//
-type Server_DHInnerData struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
-	G                    int32         `protobuf:"varint,5,opt,name=g,proto3" json:"g,omitempty"`
-	DhPrime              string        `protobuf:"bytes,6,opt,name=dh_prime,json=dhPrime,proto3" json:"dh_prime,omitempty"`
-	GA                   string        `protobuf:"bytes,7,opt,name=g_a,json=gA,proto3" json:"g_a,omitempty"`
-	ServerTime           int32         `protobuf:"varint,8,opt,name=server_time,json=serverTime,proto3" json:"server_time,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *Server_DHInnerData) Reset()         { *m = Server_DHInnerData{} }
-func (m *Server_DHInnerData) String() string { return proto.CompactTextString(m) }
-func (*Server_DHInnerData) ProtoMessage()    {}
-func (*Server_DHInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{16}
-}
-func (m *Server_DHInnerData) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Server_DHInnerData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Server_DHInnerData.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Server_DHInnerData) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Server_DHInnerData.Merge(m, src)
-}
-func (m *Server_DHInnerData) XXX_Size() int {
-	return m.Size()
-}
-func (m *Server_DHInnerData) XXX_DiscardUnknown() {
-	xxx_messageInfo_Server_DHInnerData.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Server_DHInnerData proto.InternalMessageInfo
-
-func (m *Server_DHInnerData) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *Server_DHInnerData) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *Server_DHInnerData) GetNonce() []byte {
-	if m != nil {
-		return m.Nonce
-	}
-	return nil
-}
-
-func (m *Server_DHInnerData) GetServerNonce() []byte {
-	if m != nil {
-		return m.ServerNonce
-	}
-	return nil
-}
-
-func (m *Server_DHInnerData) GetG() int32 {
-	if m != nil {
-		return m.G
-	}
-	return 0
-}
-
-func (m *Server_DHInnerData) GetDhPrime() string {
-	if m != nil {
-		return m.DhPrime
-	}
-	return ""
-}
-
-func (m *Server_DHInnerData) GetGA() string {
-	if m != nil {
-		return m.GA
-	}
-	return ""
-}
-
-func (m *Server_DHInnerData) GetServerTime() int32 {
-	if m != nil {
-		return m.ServerTime
-	}
-	return 0
-}
-
-// TL_server_DH_inner_data
-type TLServer_DHInnerData struct {
-	Data2                *Server_DHInnerData `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}            `json:"-"`
-	XXX_unrecognized     []byte              `json:"-"`
-	XXX_sizecache        int32               `json:"-"`
-}
-
-func (m *TLServer_DHInnerData) Reset()         { *m = TLServer_DHInnerData{} }
-func (m *TLServer_DHInnerData) String() string { return proto.CompactTextString(m) }
-func (*TLServer_DHInnerData) ProtoMessage()    {}
-func (*TLServer_DHInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{17}
-}
-func (m *TLServer_DHInnerData) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLServer_DHInnerData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLServer_DHInnerData.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLServer_DHInnerData) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLServer_DHInnerData.Merge(m, src)
-}
-func (m *TLServer_DHInnerData) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLServer_DHInnerData) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLServer_DHInnerData.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLServer_DHInnerData proto.InternalMessageInfo
-
-func (m *TLServer_DHInnerData) GetData2() *Server_DHInnerData {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-//--------------------------------------------------------------------------------------------
-// client_DH_inner_data#6643b654 nonce:int128 server_nonce:int128 retry_id:long g_b:string = Client_DH_Inner_Data;
-//
-// Client_DH_Inner_Data <--
-//  + TL_client_DH_inner_data
-//
-type Client_DH_Inner_Data struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
-	RetryId              int64         `protobuf:"varint,5,opt,name=retry_id,json=retryId,proto3" json:"retry_id,omitempty"`
-	GB                   string        `protobuf:"bytes,6,opt,name=g_b,json=gB,proto3" json:"g_b,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *Client_DH_Inner_Data) Reset()         { *m = Client_DH_Inner_Data{} }
-func (m *Client_DH_Inner_Data) String() string { return proto.CompactTextString(m) }
-func (*Client_DH_Inner_Data) ProtoMessage()    {}
-func (*Client_DH_Inner_Data) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{18}
-}
-func (m *Client_DH_Inner_Data) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Client_DH_Inner_Data) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Client_DH_Inner_Data.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Client_DH_Inner_Data) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Client_DH_Inner_Data.Merge(m, src)
-}
-func (m *Client_DH_Inner_Data) XXX_Size() int {
-	return m.Size()
-}
-func (m *Client_DH_Inner_Data) XXX_DiscardUnknown() {
-	xxx_messageInfo_Client_DH_Inner_Data.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Client_DH_Inner_Data proto.InternalMessageInfo
-
-func (m *Client_DH_Inner_Data) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *Client_DH_Inner_Data) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *Client_DH_Inner_Data) GetNonce() []byte {
-	if m != nil {
-		return m.Nonce
-	}
-	return nil
-}
-
-func (m *Client_DH_Inner_Data) GetServerNonce() []byte {
-	if m != nil {
-		return m.ServerNonce
-	}
-	return nil
-}
-
-func (m *Client_DH_Inner_Data) GetRetryId() int64 {
-	if m != nil {
-		return m.RetryId
-	}
-	return 0
-}
-
-func (m *Client_DH_Inner_Data) GetGB() string {
-	if m != nil {
-		return m.GB
-	}
-	return ""
-}
-
-// TL_client_DH_inner_data
-type TLClient_DHInnerData struct {
-	Data2                *Client_DH_Inner_Data `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
-}
-
-func (m *TLClient_DHInnerData) Reset()         { *m = TLClient_DHInnerData{} }
-func (m *TLClient_DHInnerData) String() string { return proto.CompactTextString(m) }
-func (*TLClient_DHInnerData) ProtoMessage()    {}
-func (*TLClient_DHInnerData) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{19}
-}
-func (m *TLClient_DHInnerData) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLClient_DHInnerData) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLClient_DHInnerData.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLClient_DHInnerData) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLClient_DHInnerData.Merge(m, src)
-}
-func (m *TLClient_DHInnerData) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLClient_DHInnerData) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLClient_DHInnerData.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLClient_DHInnerData proto.InternalMessageInfo
-
-func (m *TLClient_DHInnerData) GetData2() *Client_DH_Inner_Data {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-//--------------------------------------------------------------------------------------------
-// dh_gen_ok#3bcbf734 nonce:int128 server_nonce:int128 new_nonce_hash1:int128 = Set_client_DH_params_answer;
-// dh_gen_retry#46dc1fb9 nonce:int128 server_nonce:int128 new_nonce_hash2:int128 = Set_client_DH_params_answer;
-// dh_gen_fail#a69dae02 nonce:int128 server_nonce:int128 new_nonce_hash3:int128 = Set_client_DH_params_answer;
-//
-// Set_client_DH_params_answer <--
-//  + TL_dh_gen_ok
-//  + TL_dh_gen_retry
-//  + TL_dh_gen_fail
-//
-type SetClient_DHParamsAnswer struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
-	ServerNonce          []byte        `protobuf:"bytes,4,opt,name=server_nonce,json=serverNonce,proto3" json:"server_nonce,omitempty"`
-	NewNonceHash1        []byte        `protobuf:"bytes,5,opt,name=new_nonce_hash1,json=newNonceHash1,proto3" json:"new_nonce_hash1,omitempty"`
-	NewNonceHash2        []byte        `protobuf:"bytes,6,opt,name=new_nonce_hash2,json=newNonceHash2,proto3" json:"new_nonce_hash2,omitempty"`
-	NewNonceHash3        []byte        `protobuf:"bytes,7,opt,name=new_nonce_hash3,json=newNonceHash3,proto3" json:"new_nonce_hash3,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *SetClient_DHParamsAnswer) Reset()         { *m = SetClient_DHParamsAnswer{} }
-func (m *SetClient_DHParamsAnswer) String() string { return proto.CompactTextString(m) }
-func (*SetClient_DHParamsAnswer) ProtoMessage()    {}
-func (*SetClient_DHParamsAnswer) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{20}
-}
-func (m *SetClient_DHParamsAnswer) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *SetClient_DHParamsAnswer) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_SetClient_DHParamsAnswer.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *SetClient_DHParamsAnswer) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_SetClient_DHParamsAnswer.Merge(m, src)
-}
-func (m *SetClient_DHParamsAnswer) XXX_Size() int {
-	return m.Size()
-}
-func (m *SetClient_DHParamsAnswer) XXX_DiscardUnknown() {
-	xxx_messageInfo_SetClient_DHParamsAnswer.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_SetClient_DHParamsAnswer proto.InternalMessageInfo
-
-func (m *SetClient_DHParamsAnswer) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *SetClient_DHParamsAnswer) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *SetClient_DHParamsAnswer) GetNonce() []byte {
-	if m != nil {
-		return m.Nonce
-	}
-	return nil
-}
-
-func (m *SetClient_DHParamsAnswer) GetServerNonce() []byte {
-	if m != nil {
-		return m.ServerNonce
-	}
-	return nil
-}
-
-func (m *SetClient_DHParamsAnswer) GetNewNonceHash1() []byte {
-	if m != nil {
-		return m.NewNonceHash1
-	}
-	return nil
-}
-
-func (m *SetClient_DHParamsAnswer) GetNewNonceHash2() []byte {
-	if m != nil {
-		return m.NewNonceHash2
-	}
-	return nil
-}
-
-func (m *SetClient_DHParamsAnswer) GetNewNonceHash3() []byte {
-	if m != nil {
-		return m.NewNonceHash3
-	}
-	return nil
-}
-
-// TL_dh_gen_ok
-type TLDhGenOk struct {
-	Data2                *SetClient_DHParamsAnswer `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
-}
-
-func (m *TLDhGenOk) Reset()         { *m = TLDhGenOk{} }
-func (m *TLDhGenOk) String() string { return proto.CompactTextString(m) }
-func (*TLDhGenOk) ProtoMessage()    {}
-func (*TLDhGenOk) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{21}
-}
-func (m *TLDhGenOk) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLDhGenOk) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLDhGenOk.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLDhGenOk) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLDhGenOk.Merge(m, src)
-}
-func (m *TLDhGenOk) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLDhGenOk) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLDhGenOk.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLDhGenOk proto.InternalMessageInfo
-
-func (m *TLDhGenOk) GetData2() *SetClient_DHParamsAnswer {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// TL_dh_gen_retry
-type TLDhGenRetry struct {
-	Data2                *SetClient_DHParamsAnswer `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
-}
-
-func (m *TLDhGenRetry) Reset()         { *m = TLDhGenRetry{} }
-func (m *TLDhGenRetry) String() string { return proto.CompactTextString(m) }
-func (*TLDhGenRetry) ProtoMessage()    {}
-func (*TLDhGenRetry) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{22}
-}
-func (m *TLDhGenRetry) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLDhGenRetry) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLDhGenRetry.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLDhGenRetry) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLDhGenRetry.Merge(m, src)
-}
-func (m *TLDhGenRetry) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLDhGenRetry) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLDhGenRetry.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLDhGenRetry proto.InternalMessageInfo
-
-func (m *TLDhGenRetry) GetData2() *SetClient_DHParamsAnswer {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// TL_dh_gen_fail
-type TLDhGenFail struct {
-	Data2                *SetClient_DHParamsAnswer `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                  `json:"-"`
-	XXX_unrecognized     []byte                    `json:"-"`
-	XXX_sizecache        int32                     `json:"-"`
-}
-
-func (m *TLDhGenFail) Reset()         { *m = TLDhGenFail{} }
-func (m *TLDhGenFail) String() string { return proto.CompactTextString(m) }
-func (*TLDhGenFail) ProtoMessage()    {}
-func (*TLDhGenFail) Descriptor() ([]byte, []int) {
-	return fileDescriptor_eacd2ccb4d844da1, []int{23}
-}
-func (m *TLDhGenFail) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLDhGenFail) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLDhGenFail.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLDhGenFail) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLDhGenFail.Merge(m, src)
-}
-func (m *TLDhGenFail) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLDhGenFail) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLDhGenFail.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLDhGenFail proto.InternalMessageInfo
-
-func (m *TLDhGenFail) GetData2() *SetClient_DHParamsAnswer {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
 func init() {
+	proto.RegisterType((*Server_DH_Params)(nil), "mtproto.Server_DH_Params")
+	proto.RegisterType((*TLServer_DHParamsFail)(nil), "mtproto.TL_server_DH_params_fail")
+	proto.RegisterType((*TLServer_DHParamsOk)(nil), "mtproto.TL_server_DH_params_ok")
+	proto.RegisterType((*Server_DHInnerData)(nil), "mtproto.Server_DH_inner_data")
+	proto.RegisterType((*TLServer_DHInnerData)(nil), "mtproto.TL_server_DH_inner_data")
+	proto.RegisterType((*Client_DH_Inner_Data)(nil), "mtproto.Client_DH_Inner_Data")
+	proto.RegisterType((*TLClient_DHInnerData)(nil), "mtproto.TL_client_DH_inner_data")
+	proto.RegisterType((*SetClient_DHParamsAnswer)(nil), "mtproto.Set_client_DH_params_answer")
+	proto.RegisterType((*TLDhGenOk)(nil), "mtproto.TL_dh_gen_ok")
+	proto.RegisterType((*TLDhGenRetry)(nil), "mtproto.TL_dh_gen_retry")
+	proto.RegisterType((*TLDhGenFail)(nil), "mtproto.TL_dh_gen_fail")
 	proto.RegisterType((*DestroyAuthKeyRes)(nil), "mtproto.DestroyAuthKeyRes")
 	proto.RegisterType((*TLDestroyAuthKeyOk)(nil), "mtproto.TL_destroy_auth_key_ok")
 	proto.RegisterType((*TLDestroyAuthKeyNone)(nil), "mtproto.TL_destroy_auth_key_none")
@@ -1597,17 +1608,6 @@ func init() {
 	proto.RegisterType((*TLPQInnerDataTempDc)(nil), "mtproto.TL_p_q_inner_data_temp_dc")
 	proto.RegisterType((*BindAuthKeyInner)(nil), "mtproto.BindAuthKeyInner")
 	proto.RegisterType((*TLBindAuthKeyInner)(nil), "mtproto.TL_bind_auth_key_inner")
-	proto.RegisterType((*Server_DH_Params)(nil), "mtproto.Server_DH_Params")
-	proto.RegisterType((*TLServer_DHParamsFail)(nil), "mtproto.TL_server_DH_params_fail")
-	proto.RegisterType((*TLServer_DHParamsOk)(nil), "mtproto.TL_server_DH_params_ok")
-	proto.RegisterType((*Server_DHInnerData)(nil), "mtproto.Server_DH_inner_data")
-	proto.RegisterType((*TLServer_DHInnerData)(nil), "mtproto.TL_server_DH_inner_data")
-	proto.RegisterType((*Client_DH_Inner_Data)(nil), "mtproto.Client_DH_Inner_Data")
-	proto.RegisterType((*TLClient_DHInnerData)(nil), "mtproto.TL_client_DH_inner_data")
-	proto.RegisterType((*SetClient_DHParamsAnswer)(nil), "mtproto.Set_client_DH_params_answer")
-	proto.RegisterType((*TLDhGenOk)(nil), "mtproto.TL_dh_gen_ok")
-	proto.RegisterType((*TLDhGenRetry)(nil), "mtproto.TL_dh_gen_retry")
-	proto.RegisterType((*TLDhGenFail)(nil), "mtproto.TL_dh_gen_fail")
 }
 
 func init() { proto.RegisterFile("schema.tl.handshake.proto", fileDescriptor_eacd2ccb4d844da1) }
@@ -1615,689 +1615,65 @@ func init() { proto.RegisterFile("schema.tl.handshake.proto", fileDescriptor_eac
 var fileDescriptor_eacd2ccb4d844da1 = []byte{
 	// 954 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xcc, 0x97, 0xdd, 0x72, 0xdb, 0x44,
-	0x14, 0xc7, 0x91, 0x8c, 0x13, 0xfb, 0xc4, 0xb1, 0x53, 0x4d, 0x68, 0xed, 0x64, 0x6a, 0x5c, 0x4f,
-	0x28, 0xe6, 0xa2, 0x4e, 0x6b, 0xdf, 0x30, 0xdc, 0xe5, 0x03, 0xa8, 0x13, 0x93, 0x71, 0x15, 0x5f,
-	0x71, 0xb3, 0xb3, 0x96, 0xb6, 0x92, 0x26, 0xd1, 0x4a, 0xd9, 0x5d, 0x13, 0xfc, 0x0c, 0xbc, 0x45,
-	0x5f, 0x80, 0xd7, 0xe0, 0x92, 0x07, 0xe0, 0x02, 0xf2, 0x04, 0x5c, 0x71, 0xc7, 0x0c, 0xa3, 0x5d,
-	0x7d, 0xc6, 0x29, 0x43, 0x52, 0xda, 0xc9, 0x95, 0xbd, 0x67, 0xff, 0xfa, 0x6b, 0xcf, 0x6f, 0xcf,
-	0x1e, 0x49, 0xd0, 0xe2, 0x96, 0x4b, 0x7c, 0xdc, 0x17, 0xe7, 0x7d, 0x17, 0x53, 0x9b, 0xbb, 0xf8,
-	0x8c, 0xf4, 0x43, 0x16, 0x88, 0xc0, 0x58, 0xf5, 0x85, 0xfc, 0xb3, 0xf5, 0xcc, 0xf1, 0x84, 0x3b,
-	0x9f, 0xf5, 0xad, 0xc0, 0xdf, 0x75, 0x02, 0x27, 0xd8, 0x95, 0xe1, 0xd9, 0xfc, 0xb5, 0x1c, 0xc9,
-	0x81, 0xfc, 0xa7, 0xae, 0xdb, 0xfa, 0x24, 0xb3, 0xb4, 0x98, 0x35, 0x1c, 0xa8, 0x70, 0x57, 0xc0,
-	0x83, 0x43, 0xc2, 0x05, 0x0b, 0x16, 0x7b, 0x73, 0xe1, 0x1e, 0x93, 0x85, 0x49, 0xb8, 0xf1, 0x19,
-	0xd4, 0x43, 0x46, 0x6c, 0xcf, 0xc2, 0x82, 0x20, 0x8a, 0x7d, 0xd2, 0xd4, 0x3a, 0x5a, 0xaf, 0x6a,
-	0xae, 0xa7, 0xd1, 0x13, 0xec, 0x13, 0xe3, 0x4b, 0x58, 0xb3, 0x02, 0xca, 0x05, 0x9b, 0x5b, 0x22,
-	0x60, 0x4d, 0xbd, 0xa3, 0xf5, 0xea, 0x83, 0x87, 0xfd, 0x78, 0x81, 0xfd, 0xe9, 0xf8, 0x20, 0x9b,
-	0x35, 0xf3, 0xd2, 0xee, 0x11, 0x3c, 0x9c, 0x8e, 0x91, 0xad, 0x6e, 0x8c, 0xf0, 0x5c, 0xb8, 0xe8,
-	0x8c, 0x2c, 0x50, 0x70, 0x66, 0x3c, 0x87, 0xb2, 0x8d, 0x05, 0x1e, 0xc8, 0x3b, 0xae, 0x0d, 0xb6,
-	0x52, 0xb7, 0xa5, 0x55, 0x9a, 0x4a, 0xd8, 0x1d, 0x43, 0xf3, 0x26, 0x2f, 0x1a, 0x50, 0xf2, 0xff,
-	0xb9, 0xbd, 0xc6, 0xde, 0xf9, 0x1d, 0xdc, 0xfe, 0xd2, 0xa0, 0x6c, 0x12, 0x3e, 0x79, 0xf5, 0xde,
-	0x91, 0x1a, 0x9b, 0x50, 0xa6, 0x01, 0xb5, 0x48, 0xb3, 0xd4, 0xd1, 0x7a, 0x35, 0x53, 0x0d, 0x8c,
-	0x27, 0x50, 0xe3, 0x84, 0xfd, 0x40, 0x18, 0x52, 0x93, 0x1f, 0xcb, 0xc9, 0x35, 0x15, 0x3b, 0x91,
-	0x92, 0x3a, 0xe8, 0xe1, 0x45, 0xb3, 0x2c, 0x57, 0xa3, 0x87, 0x17, 0xc6, 0x01, 0xb4, 0xe3, 0x4b,
-	0xc2, 0xf9, 0xec, 0xdc, 0xb3, 0x54, 0xfe, 0x1e, 0x75, 0x08, 0x0b, 0x99, 0x47, 0x05, 0x6f, 0xae,
-	0x74, 0x4a, 0xbd, 0x92, 0xb9, 0xad, 0x54, 0x13, 0x29, 0x3a, 0x26, 0x8b, 0x6f, 0x72, 0x92, 0xee,
-	0x73, 0xa8, 0x4c, 0xc7, 0x88, 0xc9, 0xd4, 0x77, 0x8a, 0xd8, 0xea, 0x69, 0x36, 0x92, 0x4c, 0x82,
-	0xea, 0x8d, 0x0e, 0xf5, 0x09, 0x7a, 0x85, 0x3c, 0x4a, 0x09, 0x43, 0x51, 0xec, 0xfd, 0x33, 0x53,
-	0xa9, 0x97, 0xd2, 0xd4, 0x6b, 0xa0, 0x85, 0x12, 0x51, 0xd5, 0xd4, 0xc2, 0x68, 0x94, 0x70, 0xd1,
-	0x2e, 0x32, 0xbe, 0x2b, 0xff, 0xc6, 0x77, 0x75, 0x99, 0xef, 0x36, 0x54, 0x29, 0xb9, 0x8c, 0xe7,
-	0x2b, 0x72, 0xbe, 0x42, 0xc9, 0x65, 0x0a, 0xdf, 0xb6, 0x9a, 0xd5, 0x8e, 0xd6, 0x2b, 0x9b, 0xba,
-	0x6d, 0x19, 0x8f, 0x01, 0xc8, 0x8f, 0xa1, 0xc7, 0x08, 0x47, 0x1e, 0x6d, 0x82, 0x8c, 0x57, 0xe3,
-	0xc8, 0x88, 0x76, 0xf7, 0xe1, 0xc1, 0x74, 0x8c, 0x42, 0x74, 0x91, 0xc7, 0xf4, 0xac, 0xc8, 0xf7,
-	0x51, 0x9a, 0x79, 0x11, 0x67, 0x02, 0xfa, 0x6b, 0xd8, 0x5c, 0xf2, 0x40, 0xb6, 0x75, 0x5b, 0x9b,
-	0x6f, 0xe5, 0x11, 0xbe, 0x66, 0x23, 0x88, 0x1f, 0xde, 0xd6, 0xe8, 0x08, 0x5a, 0x37, 0x1b, 0xdd,
-	0x61, 0x51, 0x6f, 0x74, 0xd8, 0xd8, 0xf7, 0xa8, 0x1d, 0x9f, 0xc4, 0x51, 0x24, 0xf8, 0xc0, 0x47,
-	0xaf, 0x94, 0x94, 0xc6, 0xe7, 0xb0, 0x21, 0xb3, 0x48, 0x7b, 0x88, 0x67, 0xcb, 0xda, 0x2a, 0x99,
-	0xeb, 0x51, 0x3c, 0x59, 0xa2, 0x1d, 0x09, 0x43, 0xc2, 0xfc, 0x82, 0xb0, 0xac, 0x84, 0x51, 0x3c,
-	0x13, 0x3e, 0x85, 0x86, 0x74, 0xe4, 0x84, 0x73, 0x2f, 0xa0, 0x91, 0x6e, 0x25, 0x33, 0x3c, 0x55,
-	0xd1, 0x91, 0x9d, 0x2f, 0x22, 0x2c, 0x64, 0x49, 0x66, 0x45, 0xb4, 0x27, 0xba, 0x23, 0xb9, 0x73,
-	0x33, 0x8f, 0xda, 0xb9, 0x5b, 0x4a, 0x52, 0xbb, 0x45, 0xda, 0xad, 0x34, 0xf9, 0xeb, 0x4c, 0x13,
-	0xde, 0x7f, 0x6b, 0xb0, 0x71, 0xaa, 0xea, 0xff, 0xf0, 0x25, 0x9a, 0x60, 0x86, 0x7d, 0x7e, 0x8f,
-	0x5b, 0xdd, 0x0e, 0xd4, 0xd3, 0xa3, 0x88, 0x5c, 0xcc, 0x5d, 0xc9, 0xb9, 0x66, 0xd6, 0x92, 0xf3,
-	0xf8, 0x12, 0x73, 0xd7, 0xf8, 0x02, 0x36, 0x08, 0xb5, 0xd8, 0x22, 0x14, 0xc4, 0x46, 0x98, 0xf2,
-	0x4b, 0xc2, 0x24, 0xe7, 0xaa, 0xd9, 0x48, 0xe3, 0x7b, 0x32, 0xdc, 0x3d, 0x96, 0x4f, 0x0b, 0x9e,
-	0x12, 0x08, 0x25, 0x01, 0xf5, 0xb4, 0x78, 0x2b, 0xcc, 0xeb, 0xc0, 0x12, 0x98, 0x6a, 0x5f, 0x96,
-	0xcc, 0x82, 0xb3, 0xdb, 0x5b, 0xfd, 0xa4, 0xc3, 0x66, 0x36, 0xf7, 0x21, 0x5b, 0xea, 0x9d, 0xf7,
-	0xa6, 0x06, 0x9a, 0x23, 0xb7, 0xa3, 0x6c, 0x6a, 0x8e, 0xd1, 0x82, 0x8a, 0xed, 0xa2, 0x90, 0x79,
-	0x3e, 0x89, 0xd9, 0xaf, 0xda, 0xee, 0x24, 0x1a, 0x1a, 0x0d, 0x28, 0x39, 0x08, 0xcb, 0xb2, 0xae,
-	0x9a, 0xba, 0xb3, 0x67, 0x7c, 0x0a, 0xb1, 0x11, 0x12, 0x91, 0xbc, 0x22, 0x3d, 0x40, 0x85, 0xa6,
-	0x9e, 0x4f, 0xba, 0x27, 0xf0, 0xa8, 0x00, 0x36, 0xc7, 0x63, 0x58, 0x24, 0xfb, 0xf8, 0x06, 0xb2,
-	0xcb, 0x5d, 0xe6, 0x37, 0x0d, 0x36, 0x0f, 0xce, 0x3d, 0x42, 0x45, 0x34, 0x2f, 0x0f, 0x04, 0x3a,
-	0xbc, 0xdf, 0x74, 0x5b, 0x50, 0x61, 0x44, 0xb0, 0x5c, 0x6f, 0x59, 0x95, 0xe3, 0x91, 0xad, 0x78,
-	0xce, 0x62, 0xca, 0xba, 0xb3, 0x1f, 0xe3, 0xb2, 0xd2, 0x04, 0xff, 0x0b, 0xae, 0x9b, 0x70, 0x24,
-	0xb8, 0x7e, 0xd6, 0x61, 0xfb, 0x94, 0x88, 0x9c, 0x63, 0x5c, 0xd9, 0xea, 0x6c, 0xdd, 0x63, 0x6a,
-	0x4f, 0xa1, 0x51, 0xec, 0x17, 0x2f, 0xe2, 0x86, 0xb1, 0x9e, 0x6f, 0x18, 0x2f, 0x96, 0x75, 0x83,
-	0xf8, 0x2d, 0xa1, 0xa0, 0x1b, 0x2c, 0xeb, 0x86, 0xf1, 0x0b, 0x43, 0x41, 0x37, 0xec, 0x1e, 0x41,
-	0x2d, 0x7a, 0x09, 0x75, 0x91, 0x43, 0x68, 0x74, 0xfe, 0xbf, 0x2a, 0x62, 0xdf, 0xc9, 0x55, 0xe9,
-	0x5b, 0xb1, 0x26, 0xf4, 0xbf, 0x83, 0x46, 0xe6, 0x25, 0xf7, 0xfc, 0x9d, 0xec, 0xc6, 0x50, 0xcf,
-	0xec, 0x64, 0x9f, 0x7b, 0x07, 0xb7, 0xfd, 0xe1, 0x9f, 0x7f, 0xb4, 0x3f, 0xfa, 0xe5, 0xaa, 0xad,
-	0xfd, 0x7a, 0xd5, 0xd6, 0x7e, 0xbf, 0x6a, 0x6b, 0xdf, 0x3f, 0xc9, 0x7d, 0xd5, 0x08, 0x82, 0x7d,
-	0x87, 0x61, 0x5f, 0x7d, 0xd9, 0xec, 0xc6, 0xbe, 0xb3, 0x15, 0xf9, 0x33, 0xfc, 0x27, 0x00, 0x00,
-	0xff, 0xff, 0xfa, 0x79, 0x01, 0x47, 0x25, 0x0d, 0x00, 0x00,
-}
-
-func (m *DestroyAuthKeyRes) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *DestroyAuthKeyRes) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *DestroyAuthKeyRes) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLDestroyAuthKeyOk) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLDestroyAuthKeyOk) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLDestroyAuthKeyOk) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLDestroyAuthKeyNone) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLDestroyAuthKeyNone) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLDestroyAuthKeyNone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLDestroyAuthKeyFail) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLDestroyAuthKeyFail) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLDestroyAuthKeyFail) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *ResPQ) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *ResPQ) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *ResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if len(m.ServerPublicKeyFingerprints) > 0 {
-		dAtA5 := make([]byte, len(m.ServerPublicKeyFingerprints)*10)
-		var j4 int
-		for _, num1 := range m.ServerPublicKeyFingerprints {
-			num := uint64(num1)
-			for num >= 1<<7 {
-				dAtA5[j4] = uint8(uint64(num)&0x7f | 0x80)
-				num >>= 7
-				j4++
-			}
-			dAtA5[j4] = uint8(num)
-			j4++
-		}
-		i -= j4
-		copy(dAtA[i:], dAtA5[:j4])
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(j4))
-		i--
-		dAtA[i] = 0x32
-	}
-	if len(m.Pq) > 0 {
-		i -= len(m.Pq)
-		copy(dAtA[i:], m.Pq)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Pq)))
-		i--
-		dAtA[i] = 0x2a
-	}
-	if len(m.ServerNonce) > 0 {
-		i -= len(m.ServerNonce)
-		copy(dAtA[i:], m.ServerNonce)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.ServerNonce)))
-		i--
-		dAtA[i] = 0x22
-	}
-	if len(m.Nonce) > 0 {
-		i -= len(m.Nonce)
-		copy(dAtA[i:], m.Nonce)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Nonce)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLResPQ) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLResPQ) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *P_QInnerData) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *P_QInnerData) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *P_QInnerData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.ExpiresIn != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.ExpiresIn))
-		i--
-		dAtA[i] = 0x50
-	}
-	if m.Dc != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Dc))
-		i--
-		dAtA[i] = 0x48
-	}
-	if len(m.NewNonce) > 0 {
-		i -= len(m.NewNonce)
-		copy(dAtA[i:], m.NewNonce)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.NewNonce)))
-		i--
-		dAtA[i] = 0x42
-	}
-	if len(m.ServerNonce) > 0 {
-		i -= len(m.ServerNonce)
-		copy(dAtA[i:], m.ServerNonce)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.ServerNonce)))
-		i--
-		dAtA[i] = 0x3a
-	}
-	if len(m.Nonce) > 0 {
-		i -= len(m.Nonce)
-		copy(dAtA[i:], m.Nonce)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Nonce)))
-		i--
-		dAtA[i] = 0x32
-	}
-	if len(m.Q) > 0 {
-		i -= len(m.Q)
-		copy(dAtA[i:], m.Q)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Q)))
-		i--
-		dAtA[i] = 0x2a
-	}
-	if len(m.P) > 0 {
-		i -= len(m.P)
-		copy(dAtA[i:], m.P)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.P)))
-		i--
-		dAtA[i] = 0x22
-	}
-	if len(m.Pq) > 0 {
-		i -= len(m.Pq)
-		copy(dAtA[i:], m.Pq)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Pq)))
-		i--
-		dAtA[i] = 0x1a
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLPQInnerData) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLPQInnerData) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLPQInnerData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLPQInnerDataDc) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLPQInnerDataDc) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLPQInnerDataDc) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLPQInnerDataTemp) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLPQInnerDataTemp) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLPQInnerDataTemp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLPQInnerDataTempDc) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLPQInnerDataTempDc) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLPQInnerDataTempDc) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *BindAuthKeyInner) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *BindAuthKeyInner) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *BindAuthKeyInner) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.ExpiresAt != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.ExpiresAt))
-		i--
-		dAtA[i] = 0x38
-	}
-	if m.TempSessionId != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.TempSessionId))
-		i--
-		dAtA[i] = 0x30
-	}
-	if m.PermAuthKeyId != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.PermAuthKeyId))
-		i--
-		dAtA[i] = 0x28
-	}
-	if m.TempAuthKeyId != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.TempAuthKeyId))
-		i--
-		dAtA[i] = 0x20
-	}
-	if m.Nonce != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Nonce))
-		i--
-		dAtA[i] = 0x18
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLBindAuthKeyInner) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLBindAuthKeyInner) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLBindAuthKeyInner) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
+	0x14, 0xc7, 0x91, 0x4c, 0xfc, 0x71, 0xe2, 0xd8, 0xa9, 0x26, 0xb4, 0x72, 0x32, 0x35, 0xa9, 0x27,
+	0x94, 0x70, 0x51, 0xa7, 0xb5, 0x6f, 0x18, 0xee, 0xf2, 0x01, 0xd4, 0x89, 0xc9, 0xb8, 0x8a, 0xaf,
+	0xb8, 0xd9, 0x59, 0x4b, 0x5b, 0x49, 0x93, 0x68, 0xa5, 0xac, 0xd6, 0x04, 0x3f, 0x03, 0x6f, 0xd1,
+	0x17, 0xe0, 0x35, 0xb8, 0xe4, 0x01, 0xb8, 0x80, 0x3c, 0x01, 0x57, 0xdc, 0x31, 0xc3, 0xe8, 0x48,
+	0xd6, 0x87, 0xed, 0x32, 0x84, 0x42, 0x27, 0x57, 0xf6, 0x9e, 0xfd, 0xeb, 0xaf, 0x3d, 0x3f, 0x9d,
+	0x3d, 0x2b, 0x41, 0x2b, 0x34, 0x1d, 0xe6, 0xd1, 0xae, 0xbc, 0xea, 0x3a, 0x94, 0x5b, 0xa1, 0x43,
+	0x2f, 0x59, 0x37, 0x10, 0xbe, 0xf4, 0xb5, 0x8a, 0x27, 0xf1, 0xcf, 0xf6, 0x33, 0xdb, 0x95, 0xce,
+	0x74, 0xd2, 0x35, 0x7d, 0xef, 0xc0, 0xf6, 0x6d, 0xff, 0x00, 0xc3, 0x93, 0xe9, 0x6b, 0x1c, 0xe1,
+	0x00, 0xff, 0xc5, 0xd7, 0x6d, 0x7f, 0x94, 0x59, 0x9a, 0xc2, 0xec, 0xf7, 0xe2, 0x70, 0xe7, 0x4f,
+	0x05, 0x36, 0x2f, 0x98, 0xf8, 0x8e, 0x09, 0x72, 0xf2, 0x92, 0x8c, 0xa8, 0xa0, 0x5e, 0xa8, 0x7d,
+	0x02, 0x8d, 0x40, 0x30, 0xcb, 0x35, 0xa9, 0x64, 0x84, 0x53, 0x8f, 0xe9, 0xca, 0xae, 0xb2, 0x5f,
+	0x33, 0x36, 0xd2, 0xe8, 0x39, 0xf5, 0x98, 0xf6, 0x39, 0xac, 0x9b, 0x3e, 0x0f, 0xa5, 0x98, 0x9a,
+	0xd2, 0x17, 0xba, 0xba, 0xab, 0xec, 0x37, 0x7a, 0x0f, 0xbb, 0xc9, 0x02, 0xbb, 0xe3, 0xe1, 0x71,
+	0x36, 0x6b, 0xe4, 0xa5, 0xda, 0x16, 0xac, 0x71, 0x9f, 0x9b, 0x4c, 0x2f, 0xed, 0x2a, 0xfb, 0x75,
+	0x23, 0x1e, 0x68, 0x4f, 0xa0, 0x1e, 0xc6, 0x4b, 0x89, 0x27, 0x3f, 0xc4, 0xc9, 0xf5, 0x38, 0x76,
+	0x8e, 0x92, 0x3d, 0x68, 0x70, 0x76, 0x13, 0xcf, 0x13, 0x87, 0x86, 0x8e, 0xbe, 0x86, 0xa2, 0x3a,
+	0x67, 0x37, 0xa8, 0x78, 0x49, 0x43, 0x47, 0xfb, 0x0c, 0x36, 0x19, 0x37, 0xc5, 0x2c, 0x90, 0xcc,
+	0x22, 0x94, 0x87, 0x37, 0x4c, 0xe8, 0x65, 0xcc, 0xa0, 0x99, 0xc6, 0x0f, 0x31, 0xdc, 0x39, 0x03,
+	0x7d, 0x3c, 0x24, 0x61, 0x4a, 0x20, 0x40, 0x02, 0xe4, 0x35, 0x75, 0xaf, 0xb4, 0x03, 0x58, 0xb3,
+	0xa8, 0xa4, 0x3d, 0xcc, 0x7e, 0xbd, 0xd7, 0x4a, 0x33, 0x5b, 0x04, 0x66, 0xc4, 0xba, 0xce, 0x00,
+	0x1e, 0xae, 0x32, 0xf3, 0x2f, 0xef, 0x6e, 0xf5, 0x83, 0x0a, 0x5b, 0xd9, 0x9c, 0xcb, 0x39, 0x13,
+	0x24, 0x9a, 0xb9, 0xc7, 0xcf, 0xa6, 0x0e, 0x8a, 0x8d, 0x8f, 0x63, 0xcd, 0x50, 0x6c, 0xad, 0x05,
+	0x55, 0xcb, 0x21, 0x81, 0x70, 0x3d, 0x96, 0xb0, 0xaf, 0x58, 0xce, 0x28, 0x1a, 0x6a, 0x4d, 0x28,
+	0xd9, 0x84, 0xea, 0x15, 0x8c, 0xaa, 0xf6, 0xa1, 0xf6, 0x31, 0x24, 0x46, 0x44, 0x46, 0xf2, 0x2a,
+	0x7a, 0x40, 0x1c, 0x1a, 0xbb, 0x1e, 0xeb, 0x9c, 0xc3, 0xa3, 0x02, 0xd8, 0x1c, 0x8f, 0x7e, 0x91,
+	0xec, 0xe3, 0x15, 0x64, 0x33, 0xf5, 0x9c, 0xee, 0x2f, 0x0a, 0x6c, 0x1d, 0x5f, 0xb9, 0x8c, 0xcb,
+	0x68, 0x7e, 0x80, 0xf3, 0x27, 0xf7, 0x9b, 0x6e, 0x0b, 0xaa, 0x82, 0x49, 0x31, 0x23, 0xae, 0x85,
+	0x90, 0x4b, 0x46, 0x05, 0xc7, 0x03, 0x2b, 0xe6, 0x39, 0x49, 0x28, 0xab, 0xf6, 0x51, 0x82, 0xcb,
+	0x4c, 0x13, 0xfc, 0x27, 0xb8, 0x56, 0xe1, 0x98, 0xe3, 0xfa, 0x51, 0x85, 0x9d, 0x0b, 0x26, 0x73,
+	0x8e, 0x49, 0x65, 0xc7, 0x7b, 0xeb, 0x1e, 0x53, 0x7b, 0x0a, 0xcd, 0x62, 0xbf, 0x78, 0x91, 0x34,
+	0x8c, 0x8d, 0x7c, 0xc3, 0x78, 0xb1, 0xac, 0xeb, 0x21, 0xce, 0x05, 0x5d, 0x6f, 0x59, 0xd7, 0xc7,
+	0x32, 0x5e, 0xd0, 0xf5, 0x3b, 0xa7, 0x50, 0x1f, 0x0f, 0x89, 0xe5, 0x10, 0x9b, 0xf1, 0x68, 0xff,
+	0x7f, 0x51, 0xc4, 0xbe, 0x97, 0xab, 0xd2, 0xb7, 0x62, 0x9d, 0xd3, 0xff, 0x06, 0x9a, 0x99, 0x17,
+	0x3e, 0xf3, 0x77, 0xb2, 0x1b, 0x42, 0x23, 0xb3, 0xc3, 0x3e, 0xf7, 0x2e, 0x6e, 0x12, 0x1e, 0x9c,
+	0xb0, 0x50, 0x0a, 0x7f, 0x76, 0x38, 0x95, 0xce, 0x19, 0x9b, 0x19, 0xec, 0xff, 0x3f, 0x3f, 0x3a,
+	0xa7, 0xd8, 0x68, 0xad, 0xf8, 0xc6, 0x84, 0x4e, 0xa5, 0x43, 0x2e, 0xd9, 0x2c, 0x02, 0xfd, 0xbc,
+	0x98, 0xcb, 0x76, 0xea, 0xb6, 0xb4, 0xca, 0x8c, 0x87, 0xbe, 0xca, 0x8b, 0xfb, 0x9c, 0xfd, 0x77,
+	0x6e, 0xc8, 0xf9, 0xee, 0x6e, 0x7f, 0x28, 0xb0, 0x66, 0xb0, 0x70, 0xf4, 0xea, 0x1e, 0x6f, 0xb1,
+	0x06, 0xa8, 0xc1, 0x35, 0xee, 0xaa, 0x9a, 0xa1, 0x06, 0xd7, 0xda, 0x31, 0xb4, 0x93, 0x4b, 0x82,
+	0xe9, 0xe4, 0xca, 0x35, 0xe3, 0xfc, 0x5d, 0x6e, 0x33, 0x11, 0x08, 0x97, 0xcb, 0x50, 0x2f, 0xef,
+	0x96, 0xf6, 0x4b, 0xc6, 0x4e, 0xac, 0x1a, 0xa1, 0xe8, 0x8c, 0xcd, 0xbe, 0xca, 0x49, 0x3a, 0xcf,
+	0xa1, 0x3a, 0x1e, 0x12, 0x81, 0xa9, 0xef, 0x15, 0xb1, 0x35, 0xd2, 0x6c, 0x90, 0xcc, 0x1c, 0xd5,
+	0x1b, 0x15, 0x1a, 0x23, 0xf2, 0xea, 0xbd, 0x1e, 0x95, 0x71, 0xea, 0xa5, 0x34, 0xf5, 0x3a, 0x28,
+	0x01, 0x22, 0xaa, 0x19, 0x4a, 0x10, 0x8d, 0xe6, 0x5c, 0x94, 0xeb, 0x8c, 0x6f, 0xf9, 0xef, 0xf8,
+	0x56, 0x96, 0xf9, 0xee, 0x40, 0x2d, 0x6d, 0x39, 0x78, 0x34, 0xd6, 0x8d, 0xea, 0xbc, 0xd9, 0x44,
+	0x2b, 0xb0, 0x4c, 0xbd, 0x86, 0x07, 0xa6, 0x6a, 0x99, 0xda, 0x63, 0x00, 0xf6, 0x7d, 0xe0, 0x0a,
+	0x16, 0x12, 0x97, 0xeb, 0x80, 0xf1, 0x5a, 0x12, 0x19, 0xf0, 0xce, 0x11, 0x3c, 0x18, 0x0f, 0x49,
+	0x40, 0xae, 0xf3, 0x98, 0x9e, 0x15, 0xf9, 0x3e, 0x4a, 0x33, 0x2f, 0xe2, 0x9c, 0x83, 0xfe, 0x12,
+	0xb6, 0x96, 0x3c, 0x88, 0x65, 0xde, 0xd5, 0xe6, 0x6b, 0xdc, 0xc2, 0x0b, 0x36, 0x92, 0x79, 0xc1,
+	0x5d, 0x8d, 0x4e, 0xa1, 0xb5, 0xda, 0xe8, 0x5f, 0x2c, 0xea, 0x8d, 0x0a, 0x9b, 0x47, 0x2e, 0xb7,
+	0x92, 0x9d, 0x88, 0x27, 0xe1, 0x7b, 0xde, 0x7a, 0xa5, 0x79, 0x69, 0x7c, 0x0a, 0x9b, 0x98, 0x45,
+	0xda, 0x43, 0x5c, 0x0b, 0x6b, 0xab, 0x64, 0x6c, 0x44, 0xf1, 0xf9, 0x12, 0xad, 0x48, 0x18, 0x30,
+	0xe1, 0x15, 0x84, 0xf1, 0x1b, 0xc2, 0x46, 0x14, 0xcf, 0x84, 0x4f, 0xa1, 0x89, 0x8e, 0x21, 0x0b,
+	0x43, 0xd7, 0xe7, 0x91, 0xae, 0x9c, 0x19, 0x5e, 0xc4, 0xd1, 0x81, 0x95, 0x2f, 0x22, 0x2a, 0xb1,
+	0x24, 0xb3, 0x22, 0x3a, 0x94, 0xc9, 0x5b, 0xee, 0xc4, 0xe5, 0x56, 0xee, 0x96, 0x48, 0xea, 0xad,
+	0x6f, 0xb9, 0x8b, 0x4c, 0x13, 0xde, 0x47, 0xfd, 0xdf, 0x7f, 0x6b, 0x7f, 0xf0, 0xd3, 0x6d, 0x5b,
+	0xf9, 0xf9, 0xb6, 0xad, 0xfc, 0x7a, 0xdb, 0x56, 0xbe, 0x7d, 0x92, 0xfb, 0xaa, 0x91, 0x8c, 0x7a,
+	0xb6, 0xa0, 0x5e, 0xfc, 0x65, 0x73, 0x90, 0x98, 0x4d, 0xca, 0xf8, 0xd3, 0xff, 0x2b, 0x00, 0x00,
+	0xff, 0xff, 0x3d, 0x94, 0x76, 0x0e, 0x25, 0x0d, 0x00, 0x00,
 }
 
 func (m *Server_DH_Params) Marshal() (dAtA []byte, err error) {
@@ -2856,6 +2232,630 @@ func (m *TLDhGenFail) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
+func (m *DestroyAuthKeyRes) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *DestroyAuthKeyRes) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *DestroyAuthKeyRes) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLDestroyAuthKeyOk) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLDestroyAuthKeyOk) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLDestroyAuthKeyOk) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLDestroyAuthKeyNone) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLDestroyAuthKeyNone) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLDestroyAuthKeyNone) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLDestroyAuthKeyFail) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLDestroyAuthKeyFail) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLDestroyAuthKeyFail) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *ResPQ) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *ResPQ) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *ResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.ServerPublicKeyFingerprints) > 0 {
+		dAtA12 := make([]byte, len(m.ServerPublicKeyFingerprints)*10)
+		var j11 int
+		for _, num1 := range m.ServerPublicKeyFingerprints {
+			num := uint64(num1)
+			for num >= 1<<7 {
+				dAtA12[j11] = uint8(uint64(num)&0x7f | 0x80)
+				num >>= 7
+				j11++
+			}
+			dAtA12[j11] = uint8(num)
+			j11++
+		}
+		i -= j11
+		copy(dAtA[i:], dAtA12[:j11])
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(j11))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.Pq) > 0 {
+		i -= len(m.Pq)
+		copy(dAtA[i:], m.Pq)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Pq)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if len(m.ServerNonce) > 0 {
+		i -= len(m.ServerNonce)
+		copy(dAtA[i:], m.ServerNonce)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.ServerNonce)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.Nonce) > 0 {
+		i -= len(m.Nonce)
+		copy(dAtA[i:], m.Nonce)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Nonce)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLResPQ) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLResPQ) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLResPQ) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *P_QInnerData) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *P_QInnerData) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *P_QInnerData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.ExpiresIn != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.ExpiresIn))
+		i--
+		dAtA[i] = 0x50
+	}
+	if m.Dc != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Dc))
+		i--
+		dAtA[i] = 0x48
+	}
+	if len(m.NewNonce) > 0 {
+		i -= len(m.NewNonce)
+		copy(dAtA[i:], m.NewNonce)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.NewNonce)))
+		i--
+		dAtA[i] = 0x42
+	}
+	if len(m.ServerNonce) > 0 {
+		i -= len(m.ServerNonce)
+		copy(dAtA[i:], m.ServerNonce)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.ServerNonce)))
+		i--
+		dAtA[i] = 0x3a
+	}
+	if len(m.Nonce) > 0 {
+		i -= len(m.Nonce)
+		copy(dAtA[i:], m.Nonce)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Nonce)))
+		i--
+		dAtA[i] = 0x32
+	}
+	if len(m.Q) > 0 {
+		i -= len(m.Q)
+		copy(dAtA[i:], m.Q)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Q)))
+		i--
+		dAtA[i] = 0x2a
+	}
+	if len(m.P) > 0 {
+		i -= len(m.P)
+		copy(dAtA[i:], m.P)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.P)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if len(m.Pq) > 0 {
+		i -= len(m.Pq)
+		copy(dAtA[i:], m.Pq)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.Pq)))
+		i--
+		dAtA[i] = 0x1a
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLPQInnerData) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLPQInnerData) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLPQInnerData) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLPQInnerDataDc) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLPQInnerDataDc) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLPQInnerDataDc) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLPQInnerDataTemp) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLPQInnerDataTemp) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLPQInnerDataTemp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLPQInnerDataTempDc) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLPQInnerDataTempDc) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLPQInnerDataTempDc) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *BindAuthKeyInner) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *BindAuthKeyInner) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *BindAuthKeyInner) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.ExpiresAt != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.ExpiresAt))
+		i--
+		dAtA[i] = 0x38
+	}
+	if m.TempSessionId != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.TempSessionId))
+		i--
+		dAtA[i] = 0x30
+	}
+	if m.PermAuthKeyId != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.PermAuthKeyId))
+		i--
+		dAtA[i] = 0x28
+	}
+	if m.TempAuthKeyId != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.TempAuthKeyId))
+		i--
+		dAtA[i] = 0x20
+	}
+	if m.Nonce != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Nonce))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLBindAuthKeyInner) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLBindAuthKeyInner) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLBindAuthKeyInner) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlHandshake(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
 func encodeVarintSchemaTlHandshake(dAtA []byte, offset int, v uint64) int {
 	offset -= sovSchemaTlHandshake(v)
 	base := offset
@@ -2867,6 +2867,267 @@ func encodeVarintSchemaTlHandshake(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *Server_DH_Params) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
+	}
+	l = len(m.Nonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.ServerNonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.NewNonceHash)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.EncryptedAnswer)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLServer_DHParamsFail) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLServer_DHParamsOk) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *Server_DHInnerData) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
+	}
+	l = len(m.Nonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.ServerNonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.G != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.G))
+	}
+	l = len(m.DhPrime)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.GA)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.ServerTime != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.ServerTime))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLServer_DHInnerData) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *Client_DH_Inner_Data) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
+	}
+	l = len(m.Nonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.ServerNonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.RetryId != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.RetryId))
+	}
+	l = len(m.GB)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLClient_DHInnerData) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *SetClient_DHParamsAnswer) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
+	}
+	l = len(m.Nonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.ServerNonce)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.NewNonceHash1)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.NewNonceHash2)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	l = len(m.NewNonceHash3)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLDhGenOk) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLDhGenRetry) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLDhGenFail) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlHandshake(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
 func (m *DestroyAuthKeyRes) Size() (n int) {
 	if m == nil {
 		return 0
@@ -3151,272 +3412,1621 @@ func (m *TLBindAuthKeyInner) Size() (n int) {
 	return n
 }
 
-func (m *Server_DH_Params) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
-	}
-	l = len(m.Nonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.ServerNonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.NewNonceHash)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.EncryptedAnswer)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLServer_DHParamsFail) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLServer_DHParamsOk) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *Server_DHInnerData) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
-	}
-	l = len(m.Nonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.ServerNonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.G != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.G))
-	}
-	l = len(m.DhPrime)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.GA)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.ServerTime != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.ServerTime))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLServer_DHInnerData) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *Client_DH_Inner_Data) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
-	}
-	l = len(m.Nonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.ServerNonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.RetryId != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.RetryId))
-	}
-	l = len(m.GB)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLClient_DHInnerData) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *SetClient_DHParamsAnswer) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlHandshake(uint64(m.Constructor))
-	}
-	l = len(m.Nonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.ServerNonce)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.NewNonceHash1)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.NewNonceHash2)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	l = len(m.NewNonceHash3)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLDhGenOk) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLDhGenRetry) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLDhGenFail) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlHandshake(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
 func sovSchemaTlHandshake(x uint64) (n int) {
 	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozSchemaTlHandshake(x uint64) (n int) {
 	return sovSchemaTlHandshake(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *Server_DH_Params) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: Server_DH_Params: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: Server_DH_Params: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.Nonce == nil {
+				m.Nonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.ServerNonce == nil {
+				m.ServerNonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.NewNonceHash = append(m.NewNonceHash[:0], dAtA[iNdEx:postIndex]...)
+			if m.NewNonceHash == nil {
+				m.NewNonceHash = []byte{}
+			}
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field EncryptedAnswer", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.EncryptedAnswer = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLServer_DHParamsFail) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_server_DH_params_fail: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_server_DH_params_fail: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &Server_DH_Params{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLServer_DHParamsOk) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_server_DH_params_ok: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_server_DH_params_ok: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &Server_DH_Params{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *Server_DHInnerData) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: Server_DH_inner_data: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: Server_DH_inner_data: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.Nonce == nil {
+				m.Nonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.ServerNonce == nil {
+				m.ServerNonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field G", wireType)
+			}
+			m.G = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.G |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field DhPrime", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.DhPrime = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GA", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.GA = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 8:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerTime", wireType)
+			}
+			m.ServerTime = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.ServerTime |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLServer_DHInnerData) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_server_DH_inner_data: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_server_DH_inner_data: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &Server_DHInnerData{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *Client_DH_Inner_Data) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: Client_DH_Inner_Data: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: Client_DH_Inner_Data: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.Nonce == nil {
+				m.Nonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.ServerNonce == nil {
+				m.ServerNonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 5:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field RetryId", wireType)
+			}
+			m.RetryId = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.RetryId |= int64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field GB", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.GB = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLClient_DHInnerData) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_client_DH_inner_data: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_client_DH_inner_data: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &Client_DH_Inner_Data{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *SetClient_DHParamsAnswer) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: Set_client_DH_params_answer: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: Set_client_DH_params_answer: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.Nonce == nil {
+				m.Nonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
+			if m.ServerNonce == nil {
+				m.ServerNonce = []byte{}
+			}
+			iNdEx = postIndex
+		case 5:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash1", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.NewNonceHash1 = append(m.NewNonceHash1[:0], dAtA[iNdEx:postIndex]...)
+			if m.NewNonceHash1 == nil {
+				m.NewNonceHash1 = []byte{}
+			}
+			iNdEx = postIndex
+		case 6:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash2", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.NewNonceHash2 = append(m.NewNonceHash2[:0], dAtA[iNdEx:postIndex]...)
+			if m.NewNonceHash2 == nil {
+				m.NewNonceHash2 = []byte{}
+			}
+			iNdEx = postIndex
+		case 7:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash3", wireType)
+			}
+			var byteLen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				byteLen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if byteLen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + byteLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.NewNonceHash3 = append(m.NewNonceHash3[:0], dAtA[iNdEx:postIndex]...)
+			if m.NewNonceHash3 == nil {
+				m.NewNonceHash3 = []byte{}
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLDhGenOk) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_dh_gen_ok: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_dh_gen_ok: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &SetClient_DHParamsAnswer{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLDhGenRetry) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_dh_gen_retry: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_dh_gen_retry: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &SetClient_DHParamsAnswer{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLDhGenFail) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlHandshake
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_dh_gen_fail: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_dh_gen_fail: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlHandshake
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &SetClient_DHParamsAnswer{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlHandshake
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *DestroyAuthKeyRes) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
@@ -5089,1616 +6699,6 @@ func (m *TLBindAuthKeyInner) Unmarshal(dAtA []byte) error {
 			}
 			if m.Data2 == nil {
 				m.Data2 = &BindAuthKeyInner{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Server_DH_Params) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Server_DH_Params: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Server_DH_Params: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.Nonce == nil {
-				m.Nonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.ServerNonce == nil {
-				m.ServerNonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 5:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.NewNonceHash = append(m.NewNonceHash[:0], dAtA[iNdEx:postIndex]...)
-			if m.NewNonceHash == nil {
-				m.NewNonceHash = []byte{}
-			}
-			iNdEx = postIndex
-		case 6:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field EncryptedAnswer", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.EncryptedAnswer = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLServer_DHParamsFail) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_server_DH_params_fail: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_server_DH_params_fail: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &Server_DH_Params{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLServer_DHParamsOk) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_server_DH_params_ok: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_server_DH_params_ok: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &Server_DH_Params{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Server_DHInnerData) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Server_DH_inner_data: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Server_DH_inner_data: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.Nonce == nil {
-				m.Nonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.ServerNonce == nil {
-				m.ServerNonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 5:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field G", wireType)
-			}
-			m.G = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.G |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 6:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field DhPrime", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.DhPrime = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 7:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field GA", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.GA = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 8:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerTime", wireType)
-			}
-			m.ServerTime = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.ServerTime |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLServer_DHInnerData) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_server_DH_inner_data: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_server_DH_inner_data: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &Server_DHInnerData{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Client_DH_Inner_Data) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Client_DH_Inner_Data: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Client_DH_Inner_Data: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.Nonce == nil {
-				m.Nonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.ServerNonce == nil {
-				m.ServerNonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 5:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field RetryId", wireType)
-			}
-			m.RetryId = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.RetryId |= int64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 6:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field GB", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.GB = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLClient_DHInnerData) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_client_DH_inner_data: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_client_DH_inner_data: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &Client_DH_Inner_Data{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *SetClient_DHParamsAnswer) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Set_client_DH_params_answer: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Set_client_DH_params_answer: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Nonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Nonce = append(m.Nonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.Nonce == nil {
-				m.Nonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field ServerNonce", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.ServerNonce = append(m.ServerNonce[:0], dAtA[iNdEx:postIndex]...)
-			if m.ServerNonce == nil {
-				m.ServerNonce = []byte{}
-			}
-			iNdEx = postIndex
-		case 5:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash1", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.NewNonceHash1 = append(m.NewNonceHash1[:0], dAtA[iNdEx:postIndex]...)
-			if m.NewNonceHash1 == nil {
-				m.NewNonceHash1 = []byte{}
-			}
-			iNdEx = postIndex
-		case 6:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash2", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.NewNonceHash2 = append(m.NewNonceHash2[:0], dAtA[iNdEx:postIndex]...)
-			if m.NewNonceHash2 == nil {
-				m.NewNonceHash2 = []byte{}
-			}
-			iNdEx = postIndex
-		case 7:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field NewNonceHash3", wireType)
-			}
-			var byteLen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				byteLen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if byteLen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + byteLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.NewNonceHash3 = append(m.NewNonceHash3[:0], dAtA[iNdEx:postIndex]...)
-			if m.NewNonceHash3 == nil {
-				m.NewNonceHash3 = []byte{}
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLDhGenOk) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_dh_gen_ok: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_dh_gen_ok: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &SetClient_DHParamsAnswer{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLDhGenRetry) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_dh_gen_retry: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_dh_gen_retry: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &SetClient_DHParamsAnswer{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlHandshake(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLDhGenFail) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlHandshake
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_dh_gen_fail: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_dh_gen_fail: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlHandshake
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlHandshake
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &SetClient_DHParamsAnswer{}
 			}
 			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
