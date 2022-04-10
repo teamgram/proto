@@ -113,7 +113,7 @@ func MakeDialogId(fromId int64, peerType int32, peerId int64) (did DialogID) {
 
 func GetPeerIdByDialogId(userId int64, did DialogID) int64 {
 	if did.A < 0 {
-		return -did.B
+		return did.B
 	} else {
 		if userId == did.A {
 			return did.B
