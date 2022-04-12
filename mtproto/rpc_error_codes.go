@@ -1900,6 +1900,10 @@ var (
 	// ErrStickersetOwnerAnonymous
 	// | 406 | STICKERSET_OWNER_ANONYMOUS | Provided stickerset can't be installed as group stickerset to prevent admin deanonymisation. |
 	ErrStickersetOwnerAnonymous = status.Error(ErrNotAcceptable, "STICKERSET_OWNER_ANONYMOUS")
+
+	// ErrChatForwardsRestricted
+	// 406	CHAT_FORWARDS_RESTRICTED	You can't forward messages from a protected chat.
+	ErrChatForwardsRestricted = status.Error(ErrNotAcceptable, "CHAT_FORWARDS_RESTRICTED")
 )
 
 // 500 InternalServerError
