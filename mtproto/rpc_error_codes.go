@@ -1927,6 +1927,10 @@ var (
 	// db error
 	// TLRpcErrorCodes_NOTRETURN_CLIENT TLRpcErrorCodes = 700
 	ErrPushRpcClient = status.Error(ErrNotReturnClient, "NOTRETURN_CLIENT")
+
+	// ErrMigratedToChannel
+	// MIGRATED_TO_CHANNEL
+	ErrMigratedToChannel = status.Error(ErrNotReturnClient, "MIGRATED_TO_CHANNEL")
 )
 
 // StatusErrEqual is essentially a copy of testutils.StatusErrEqual(), to avoid a
