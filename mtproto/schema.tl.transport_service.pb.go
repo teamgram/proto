@@ -23,8 +23,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-//--------------------------------------------------------------------------------------------
-// rpc_drop_answer#58e4a740 req_msg_id:long = RpcDropAnswer;
 type TLRpcDropAnswer struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	ReqMsgId             int64         `protobuf:"varint,3,opt,name=req_msg_id,json=reqMsgId,proto3" json:"req_msg_id,omitempty"`
@@ -80,8 +78,6 @@ func (m *TLRpcDropAnswer) GetReqMsgId() int64 {
 	return 0
 }
 
-//--------------------------------------------------------------------------------------------
-// get_future_salts#b921bd04 num:int = FutureSalts;
 type TLGetFutureSalts struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	Num                  int32         `protobuf:"varint,3,opt,name=num,proto3" json:"num,omitempty"`
@@ -137,8 +133,6 @@ func (m *TLGetFutureSalts) GetNum() int32 {
 	return 0
 }
 
-//--------------------------------------------------------------------------------------------
-// ping#7abe77ec ping_id:long = Pong;
 type TLPing struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	PingId               int64         `protobuf:"varint,3,opt,name=ping_id,json=pingId,proto3" json:"ping_id,omitempty"`
@@ -194,8 +188,6 @@ func (m *TLPing) GetPingId() int64 {
 	return 0
 }
 
-//--------------------------------------------------------------------------------------------
-// ping_delay_disconnect#f3427b8c ping_id:long disconnect_delay:int = Pong;
 type TLPingDelayDisconnect struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	PingId               int64         `protobuf:"varint,3,opt,name=ping_id,json=pingId,proto3" json:"ping_id,omitempty"`
@@ -259,8 +251,6 @@ func (m *TLPingDelayDisconnect) GetDisconnectDelay() int32 {
 	return 0
 }
 
-//--------------------------------------------------------------------------------------------
-// destroy_session#e7512126 session_id:long = DestroySessionRes;
 type TLDestroySession struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	SessionId            int64         `protobuf:"varint,3,opt,name=session_id,json=sessionId,proto3" json:"session_id,omitempty"`
@@ -316,8 +306,6 @@ func (m *TLDestroySession) GetSessionId() int64 {
 	return 0
 }
 
-//--------------------------------------------------------------------------------------------
-// test.useError = Error;
 type TLTestUseError struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
@@ -365,8 +353,6 @@ func (m *TLTestUseError) GetConstructor() TLConstructor {
 	return CRC32_UNKNOWN
 }
 
-//--------------------------------------------------------------------------------------------
-// test.useConfigSimple = help.ConfigSimple;
 type TLTestUseConfigSimple struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
