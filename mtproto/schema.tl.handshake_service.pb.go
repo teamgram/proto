@@ -27,8 +27,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-//--------------------------------------------------------------------------------------------
-// req_pq#60469778 nonce:int128 = ResPQ;
 type TLReqPq struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
@@ -84,8 +82,6 @@ func (m *TLReqPq) GetNonce() []byte {
 	return nil
 }
 
-//--------------------------------------------------------------------------------------------
-// req_pq_multi#be7e8ef1 nonce:int128 = ResPQ;
 type TLReqPqMulti struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
@@ -141,8 +137,6 @@ func (m *TLReqPqMulti) GetNonce() []byte {
 	return nil
 }
 
-//--------------------------------------------------------------------------------------------
-// req_DH_params#d712e4be nonce:int128 server_nonce:int128 p:string q:string public_key_fingerprint:long encrypted_data:string = Server_DH_Params;
 type TLReq_DHParams struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
@@ -238,8 +232,6 @@ func (m *TLReq_DHParams) GetEncryptedData() string {
 	return ""
 }
 
-//--------------------------------------------------------------------------------------------
-// set_client_DH_params#f5045f1f nonce:int128 server_nonce:int128 encrypted_data:string = Set_client_DH_params_answer;
 type TLSetClient_DHParams struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	Nonce                []byte        `protobuf:"bytes,3,opt,name=nonce,proto3" json:"nonce,omitempty"`
@@ -311,8 +303,6 @@ func (m *TLSetClient_DHParams) GetEncryptedData() string {
 	return ""
 }
 
-//--------------------------------------------------------------------------------------------
-// destroy_auth_key#d1435160 = DestroyAuthKeyRes;
 type TLDestroyAuthKey struct {
 	Constructor          TLConstructor `protobuf:"varint,1,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
