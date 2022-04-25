@@ -288,3 +288,11 @@ func IsAnimatedStickerMessage(message *Message) bool {
 	// return message.media != null && isAnimatedStickerDocument(message.media.document, !DialogObject.isSecretDialogId(message.dialog_id))
 	return false
 }
+
+func IsBroadcastMessage(message *Message) bool {
+	return PeerIsChannel(message.GetPeerId()) && message.GetPost()
+}
+
+func IsMegagroupMessage(message *Message) bool {
+	return PeerIsChannel(message.GetPeerId()) && !message.GetPost()
+}

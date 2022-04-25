@@ -204,6 +204,18 @@ func (m *MessageBox) ToMessage(toUserId int64) *Message {
 	return message
 }
 
+func (m *MessageBox) IsOut(toUserId int64) bool {
+	if m.GetPeerType() == PEER_CHANNEL {
+		if m.GetSenderUserId() == toUserId {
+			return true
+		} else {
+			return false
+		}
+	}
+
+	return m.GetMessage().GetOut()
+}
+
 func ToSafeMessageBoxList(messages []*MessageBox) []*MessageBox {
 	if messages == nil {
 		return []*MessageBox{}
