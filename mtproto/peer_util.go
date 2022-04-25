@@ -546,3 +546,7 @@ func IsUserInputPeer(peer *InputPeer) bool {
 	return peer.GetPredicateName() == Predicate_inputPeerUser ||
 		peer.GetPredicateName() == Predicate_inputPeerSelf
 }
+
+func PeerIsChannel(peer *Peer) bool {
+	return peer.GetPredicateName() == Predicate_peerChannel
+}
