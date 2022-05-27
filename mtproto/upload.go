@@ -56,10 +56,10 @@ func MakeInputFileByLocal(
 	data := make([]byte, 512*1024)
 	i := 0
 	for {
-		n, err := f.Read(data)
-		if err != nil {
-			if err != io.EOF {
-				return nil, err
+		n, err2 := f.Read(data)
+		if err2 != nil {
+			if err2 != io.EOF {
+				return nil, err2
 			} else {
 				break
 			}
@@ -69,7 +69,8 @@ func MakeInputFileByLocal(
 			return nil, err
 		}
 
-		inputFile.Parts = int32(i + 1)
+		i += 1
+		inputFile.Parts = int32(i)
 	}
 
 	return inputFile, nil
