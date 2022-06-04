@@ -24,606 +24,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
-// Null <--
-//  + TL_null
-type Null struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *Null) Reset()         { *m = Null{} }
-func (m *Null) String() string { return proto.CompactTextString(m) }
-func (*Null) ProtoMessage()    {}
-func (*Null) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{0}
-}
-func (m *Null) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Null) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Null.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Null) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Null.Merge(m, src)
-}
-func (m *Null) XXX_Size() int {
-	return m.Size()
-}
-func (m *Null) XXX_DiscardUnknown() {
-	xxx_messageInfo_Null.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Null proto.InternalMessageInfo
-
-func (m *Null) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *Null) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-type TLNull struct {
-	Data2                *Null    `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TLNull) Reset()         { *m = TLNull{} }
-func (m *TLNull) String() string { return proto.CompactTextString(m) }
-func (*TLNull) ProtoMessage()    {}
-func (*TLNull) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{1}
-}
-func (m *TLNull) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLNull) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLNull.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLNull) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLNull.Merge(m, src)
-}
-func (m *TLNull) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLNull) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLNull.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLNull proto.InternalMessageInfo
-
-func (m *TLNull) GetData2() *Null {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// Int32 <--
-//  + TL_int32
-type Int32 struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	V                    int32         `protobuf:"varint,3,opt,name=v,proto3" json:"v,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *Int32) Reset()         { *m = Int32{} }
-func (m *Int32) String() string { return proto.CompactTextString(m) }
-func (*Int32) ProtoMessage()    {}
-func (*Int32) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{2}
-}
-func (m *Int32) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Int32) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Int32.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Int32) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Int32.Merge(m, src)
-}
-func (m *Int32) XXX_Size() int {
-	return m.Size()
-}
-func (m *Int32) XXX_DiscardUnknown() {
-	xxx_messageInfo_Int32.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Int32 proto.InternalMessageInfo
-
-func (m *Int32) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *Int32) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *Int32) GetV() int32 {
-	if m != nil {
-		return m.V
-	}
-	return 0
-}
-
-type TLInt32 struct {
-	Data2                *Int32   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TLInt32) Reset()         { *m = TLInt32{} }
-func (m *TLInt32) String() string { return proto.CompactTextString(m) }
-func (*TLInt32) ProtoMessage()    {}
-func (*TLInt32) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{3}
-}
-func (m *TLInt32) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLInt32) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLInt32.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLInt32) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLInt32.Merge(m, src)
-}
-func (m *TLInt32) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLInt32) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLInt32.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLInt32 proto.InternalMessageInfo
-
-func (m *TLInt32) GetData2() *Int32 {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// Int64 <--
-//  + TL_long
-//  + TL_int64
-type Int64 struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	V                    int64         `protobuf:"varint,3,opt,name=v,proto3" json:"v,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *Int64) Reset()         { *m = Int64{} }
-func (m *Int64) String() string { return proto.CompactTextString(m) }
-func (*Int64) ProtoMessage()    {}
-func (*Int64) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{4}
-}
-func (m *Int64) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Int64) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Int64.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Int64) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Int64.Merge(m, src)
-}
-func (m *Int64) XXX_Size() int {
-	return m.Size()
-}
-func (m *Int64) XXX_DiscardUnknown() {
-	xxx_messageInfo_Int64.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Int64 proto.InternalMessageInfo
-
-func (m *Int64) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *Int64) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *Int64) GetV() int64 {
-	if m != nil {
-		return m.V
-	}
-	return 0
-}
-
-type TLLong struct {
-	Data2                *Int64   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TLLong) Reset()         { *m = TLLong{} }
-func (m *TLLong) String() string { return proto.CompactTextString(m) }
-func (*TLLong) ProtoMessage()    {}
-func (*TLLong) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{5}
-}
-func (m *TLLong) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLLong) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLLong.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLLong) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLLong.Merge(m, src)
-}
-func (m *TLLong) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLLong) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLLong.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLLong proto.InternalMessageInfo
-
-func (m *TLLong) GetData2() *Int64 {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-type TLInt64 struct {
-	Data2                *Int64   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TLInt64) Reset()         { *m = TLInt64{} }
-func (m *TLInt64) String() string { return proto.CompactTextString(m) }
-func (*TLInt64) ProtoMessage()    {}
-func (*TLInt64) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{6}
-}
-func (m *TLInt64) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLInt64) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLInt64.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLInt64) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLInt64.Merge(m, src)
-}
-func (m *TLInt64) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLInt64) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLInt64.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLInt64 proto.InternalMessageInfo
-
-func (m *TLInt64) GetData2() *Int64 {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// Double <--
-//  + TL_double
-type Double struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	V                    float64       `protobuf:"fixed64,3,opt,name=v,proto3" json:"v,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *Double) Reset()         { *m = Double{} }
-func (m *Double) String() string { return proto.CompactTextString(m) }
-func (*Double) ProtoMessage()    {}
-func (*Double) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{7}
-}
-func (m *Double) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *Double) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_Double.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *Double) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Double.Merge(m, src)
-}
-func (m *Double) XXX_Size() int {
-	return m.Size()
-}
-func (m *Double) XXX_DiscardUnknown() {
-	xxx_messageInfo_Double.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Double proto.InternalMessageInfo
-
-func (m *Double) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *Double) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *Double) GetV() float64 {
-	if m != nil {
-		return m.V
-	}
-	return 0
-}
-
-type TLDouble struct {
-	Data2                *Double  `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TLDouble) Reset()         { *m = TLDouble{} }
-func (m *TLDouble) String() string { return proto.CompactTextString(m) }
-func (*TLDouble) ProtoMessage()    {}
-func (*TLDouble) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{8}
-}
-func (m *TLDouble) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLDouble) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLDouble.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLDouble) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLDouble.Merge(m, src)
-}
-func (m *TLDouble) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLDouble) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLDouble.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLDouble proto.InternalMessageInfo
-
-func (m *TLDouble) GetData2() *Double {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
-// String <--
-//  + TL_string
-type String struct {
-	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
-	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
-	V                    string        `protobuf:"bytes,3,opt,name=v,proto3" json:"v,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
-	XXX_unrecognized     []byte        `json:"-"`
-	XXX_sizecache        int32         `json:"-"`
-}
-
-func (m *String) Reset()         { *m = String{} }
-func (m *String) String() string { return proto.CompactTextString(m) }
-func (*String) ProtoMessage()    {}
-func (*String) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{9}
-}
-func (m *String) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *String) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_String.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *String) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_String.Merge(m, src)
-}
-func (m *String) XXX_Size() int {
-	return m.Size()
-}
-func (m *String) XXX_DiscardUnknown() {
-	xxx_messageInfo_String.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_String proto.InternalMessageInfo
-
-func (m *String) GetPredicateName() string {
-	if m != nil {
-		return m.PredicateName
-	}
-	return ""
-}
-
-func (m *String) GetConstructor() TLConstructor {
-	if m != nil {
-		return m.Constructor
-	}
-	return CRC32_UNKNOWN
-}
-
-func (m *String) GetV() string {
-	if m != nil {
-		return m.V
-	}
-	return ""
-}
-
-type TLString struct {
-	Data2                *String  `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *TLString) Reset()         { *m = TLString{} }
-func (m *TLString) String() string { return proto.CompactTextString(m) }
-func (*TLString) ProtoMessage()    {}
-func (*TLString) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{10}
-}
-func (m *TLString) XXX_Unmarshal(b []byte) error {
-	return m.Unmarshal(b)
-}
-func (m *TLString) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	if deterministic {
-		return xxx_messageInfo_TLString.Marshal(b, m, deterministic)
-	} else {
-		b = b[:cap(b)]
-		n, err := m.MarshalToSizedBuffer(b)
-		if err != nil {
-			return nil, err
-		}
-		return b[:n], nil
-	}
-}
-func (m *TLString) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_TLString.Merge(m, src)
-}
-func (m *TLString) XXX_Size() int {
-	return m.Size()
-}
-func (m *TLString) XXX_DiscardUnknown() {
-	xxx_messageInfo_TLString.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_TLString proto.InternalMessageInfo
-
-func (m *TLString) GetData2() *String {
-	if m != nil {
-		return m.Data2
-	}
-	return nil
-}
-
 // Bool <--
 //  + TL_boolFalse
 //  + TL_boolTrue
@@ -639,7 +39,7 @@ func (m *Bool) Reset()         { *m = Bool{} }
 func (m *Bool) String() string { return proto.CompactTextString(m) }
 func (*Bool) ProtoMessage()    {}
 func (*Bool) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{11}
+	return fileDescriptor_2da7b15498bf56ef, []int{0}
 }
 func (m *Bool) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -693,7 +93,7 @@ func (m *TLBoolFalse) Reset()         { *m = TLBoolFalse{} }
 func (m *TLBoolFalse) String() string { return proto.CompactTextString(m) }
 func (*TLBoolFalse) ProtoMessage()    {}
 func (*TLBoolFalse) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{12}
+	return fileDescriptor_2da7b15498bf56ef, []int{1}
 }
 func (m *TLBoolFalse) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -740,7 +140,7 @@ func (m *TLBoolTrue) Reset()         { *m = TLBoolTrue{} }
 func (m *TLBoolTrue) String() string { return proto.CompactTextString(m) }
 func (*TLBoolTrue) ProtoMessage()    {}
 func (*TLBoolTrue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{13}
+	return fileDescriptor_2da7b15498bf56ef, []int{2}
 }
 func (m *TLBoolTrue) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -790,7 +190,7 @@ func (m *True) Reset()         { *m = True{} }
 func (m *True) String() string { return proto.CompactTextString(m) }
 func (*True) ProtoMessage()    {}
 func (*True) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{14}
+	return fileDescriptor_2da7b15498bf56ef, []int{3}
 }
 func (m *True) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -844,7 +244,7 @@ func (m *TLTrue) Reset()         { *m = TLTrue{} }
 func (m *TLTrue) String() string { return proto.CompactTextString(m) }
 func (*TLTrue) ProtoMessage()    {}
 func (*TLTrue) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{15}
+	return fileDescriptor_2da7b15498bf56ef, []int{4}
 }
 func (m *TLTrue) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -896,7 +296,7 @@ func (m *Error) Reset()         { *m = Error{} }
 func (m *Error) String() string { return proto.CompactTextString(m) }
 func (*Error) ProtoMessage()    {}
 func (*Error) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{16}
+	return fileDescriptor_2da7b15498bf56ef, []int{5}
 }
 func (m *Error) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -964,7 +364,7 @@ func (m *TLError) Reset()         { *m = TLError{} }
 func (m *TLError) String() string { return proto.CompactTextString(m) }
 func (*TLError) ProtoMessage()    {}
 func (*TLError) Descriptor() ([]byte, []int) {
-	return fileDescriptor_2da7b15498bf56ef, []int{17}
+	return fileDescriptor_2da7b15498bf56ef, []int{6}
 }
 func (m *TLError) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
@@ -1000,7 +400,614 @@ func (m *TLError) GetData2() *Error {
 	return nil
 }
 
+// Null <--
+//  + TL_null
+type Null struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Null) Reset()         { *m = Null{} }
+func (m *Null) String() string { return proto.CompactTextString(m) }
+func (*Null) ProtoMessage()    {}
+func (*Null) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{7}
+}
+func (m *Null) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Null) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Null.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Null) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Null.Merge(m, src)
+}
+func (m *Null) XXX_Size() int {
+	return m.Size()
+}
+func (m *Null) XXX_DiscardUnknown() {
+	xxx_messageInfo_Null.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Null proto.InternalMessageInfo
+
+func (m *Null) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *Null) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+type TLNull struct {
+	Data2                *Null    `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TLNull) Reset()         { *m = TLNull{} }
+func (m *TLNull) String() string { return proto.CompactTextString(m) }
+func (*TLNull) ProtoMessage()    {}
+func (*TLNull) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{8}
+}
+func (m *TLNull) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLNull) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLNull.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLNull) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLNull.Merge(m, src)
+}
+func (m *TLNull) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLNull) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLNull.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLNull proto.InternalMessageInfo
+
+func (m *TLNull) GetData2() *Null {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// Int32 <--
+//  + TL_int32
+type Int32 struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	V                    int32         `protobuf:"varint,3,opt,name=v,proto3" json:"v,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Int32) Reset()         { *m = Int32{} }
+func (m *Int32) String() string { return proto.CompactTextString(m) }
+func (*Int32) ProtoMessage()    {}
+func (*Int32) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{9}
+}
+func (m *Int32) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Int32) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Int32.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Int32) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Int32.Merge(m, src)
+}
+func (m *Int32) XXX_Size() int {
+	return m.Size()
+}
+func (m *Int32) XXX_DiscardUnknown() {
+	xxx_messageInfo_Int32.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Int32 proto.InternalMessageInfo
+
+func (m *Int32) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *Int32) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *Int32) GetV() int32 {
+	if m != nil {
+		return m.V
+	}
+	return 0
+}
+
+type TLInt32 struct {
+	Data2                *Int32   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TLInt32) Reset()         { *m = TLInt32{} }
+func (m *TLInt32) String() string { return proto.CompactTextString(m) }
+func (*TLInt32) ProtoMessage()    {}
+func (*TLInt32) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{10}
+}
+func (m *TLInt32) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLInt32) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLInt32.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLInt32) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLInt32.Merge(m, src)
+}
+func (m *TLInt32) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLInt32) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLInt32.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLInt32 proto.InternalMessageInfo
+
+func (m *TLInt32) GetData2() *Int32 {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// Int64 <--
+//  + TL_long
+//  + TL_int64
+type Int64 struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	V                    int64         `protobuf:"varint,3,opt,name=v,proto3" json:"v,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Int64) Reset()         { *m = Int64{} }
+func (m *Int64) String() string { return proto.CompactTextString(m) }
+func (*Int64) ProtoMessage()    {}
+func (*Int64) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{11}
+}
+func (m *Int64) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Int64) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Int64.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Int64) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Int64.Merge(m, src)
+}
+func (m *Int64) XXX_Size() int {
+	return m.Size()
+}
+func (m *Int64) XXX_DiscardUnknown() {
+	xxx_messageInfo_Int64.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Int64 proto.InternalMessageInfo
+
+func (m *Int64) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *Int64) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *Int64) GetV() int64 {
+	if m != nil {
+		return m.V
+	}
+	return 0
+}
+
+type TLLong struct {
+	Data2                *Int64   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TLLong) Reset()         { *m = TLLong{} }
+func (m *TLLong) String() string { return proto.CompactTextString(m) }
+func (*TLLong) ProtoMessage()    {}
+func (*TLLong) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{12}
+}
+func (m *TLLong) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLLong) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLLong.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLLong) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLLong.Merge(m, src)
+}
+func (m *TLLong) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLLong) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLLong.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLLong proto.InternalMessageInfo
+
+func (m *TLLong) GetData2() *Int64 {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+type TLInt64 struct {
+	Data2                *Int64   `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TLInt64) Reset()         { *m = TLInt64{} }
+func (m *TLInt64) String() string { return proto.CompactTextString(m) }
+func (*TLInt64) ProtoMessage()    {}
+func (*TLInt64) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{13}
+}
+func (m *TLInt64) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLInt64) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLInt64.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLInt64) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLInt64.Merge(m, src)
+}
+func (m *TLInt64) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLInt64) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLInt64.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLInt64 proto.InternalMessageInfo
+
+func (m *TLInt64) GetData2() *Int64 {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// Double <--
+//  + TL_double
+type Double struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	V                    float64       `protobuf:"fixed64,3,opt,name=v,proto3" json:"v,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *Double) Reset()         { *m = Double{} }
+func (m *Double) String() string { return proto.CompactTextString(m) }
+func (*Double) ProtoMessage()    {}
+func (*Double) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{14}
+}
+func (m *Double) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *Double) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_Double.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *Double) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Double.Merge(m, src)
+}
+func (m *Double) XXX_Size() int {
+	return m.Size()
+}
+func (m *Double) XXX_DiscardUnknown() {
+	xxx_messageInfo_Double.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Double proto.InternalMessageInfo
+
+func (m *Double) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *Double) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *Double) GetV() float64 {
+	if m != nil {
+		return m.V
+	}
+	return 0
+}
+
+type TLDouble struct {
+	Data2                *Double  `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TLDouble) Reset()         { *m = TLDouble{} }
+func (m *TLDouble) String() string { return proto.CompactTextString(m) }
+func (*TLDouble) ProtoMessage()    {}
+func (*TLDouble) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{15}
+}
+func (m *TLDouble) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLDouble) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLDouble.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLDouble) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLDouble.Merge(m, src)
+}
+func (m *TLDouble) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLDouble) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLDouble.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLDouble proto.InternalMessageInfo
+
+func (m *TLDouble) GetData2() *Double {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
+// String <--
+//  + TL_string
+type String struct {
+	PredicateName        string        `protobuf:"bytes,1,opt,name=predicate_name,json=predicateName,proto3" json:"predicate_name,omitempty"`
+	Constructor          TLConstructor `protobuf:"varint,2,opt,name=constructor,proto3,enum=mtproto.TLConstructor" json:"constructor,omitempty"`
+	V                    string        `protobuf:"bytes,3,opt,name=v,proto3" json:"v,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
+}
+
+func (m *String) Reset()         { *m = String{} }
+func (m *String) String() string { return proto.CompactTextString(m) }
+func (*String) ProtoMessage()    {}
+func (*String) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{16}
+}
+func (m *String) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *String) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_String.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *String) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_String.Merge(m, src)
+}
+func (m *String) XXX_Size() int {
+	return m.Size()
+}
+func (m *String) XXX_DiscardUnknown() {
+	xxx_messageInfo_String.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_String proto.InternalMessageInfo
+
+func (m *String) GetPredicateName() string {
+	if m != nil {
+		return m.PredicateName
+	}
+	return ""
+}
+
+func (m *String) GetConstructor() TLConstructor {
+	if m != nil {
+		return m.Constructor
+	}
+	return CRC32_UNKNOWN
+}
+
+func (m *String) GetV() string {
+	if m != nil {
+		return m.V
+	}
+	return ""
+}
+
+type TLString struct {
+	Data2                *String  `protobuf:"bytes,1,opt,name=data2,proto3" json:"data2,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *TLString) Reset()         { *m = TLString{} }
+func (m *TLString) String() string { return proto.CompactTextString(m) }
+func (*TLString) ProtoMessage()    {}
+func (*TLString) Descriptor() ([]byte, []int) {
+	return fileDescriptor_2da7b15498bf56ef, []int{17}
+}
+func (m *TLString) XXX_Unmarshal(b []byte) error {
+	return m.Unmarshal(b)
+}
+func (m *TLString) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	if deterministic {
+		return xxx_messageInfo_TLString.Marshal(b, m, deterministic)
+	} else {
+		b = b[:cap(b)]
+		n, err := m.MarshalToSizedBuffer(b)
+		if err != nil {
+			return nil, err
+		}
+		return b[:n], nil
+	}
+}
+func (m *TLString) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_TLString.Merge(m, src)
+}
+func (m *TLString) XXX_Size() int {
+	return m.Size()
+}
+func (m *TLString) XXX_DiscardUnknown() {
+	xxx_messageInfo_TLString.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_TLString proto.InternalMessageInfo
+
+func (m *TLString) GetData2() *String {
+	if m != nil {
+		return m.Data2
+	}
+	return nil
+}
+
 func init() {
+	proto.RegisterType((*Bool)(nil), "mtproto.Bool")
+	proto.RegisterType((*TLBoolFalse)(nil), "mtproto.TL_boolFalse")
+	proto.RegisterType((*TLBoolTrue)(nil), "mtproto.TL_boolTrue")
+	proto.RegisterType((*True)(nil), "mtproto.True")
+	proto.RegisterType((*TLTrue)(nil), "mtproto.TL_true")
+	proto.RegisterType((*Error)(nil), "mtproto.Error")
+	proto.RegisterType((*TLError)(nil), "mtproto.TL_error")
 	proto.RegisterType((*Null)(nil), "mtproto.Null")
 	proto.RegisterType((*TLNull)(nil), "mtproto.TL_null")
 	proto.RegisterType((*Int32)(nil), "mtproto.Int32")
@@ -1012,48 +1019,326 @@ func init() {
 	proto.RegisterType((*TLDouble)(nil), "mtproto.TL_double")
 	proto.RegisterType((*String)(nil), "mtproto.String")
 	proto.RegisterType((*TLString)(nil), "mtproto.TL_string")
-	proto.RegisterType((*Bool)(nil), "mtproto.Bool")
-	proto.RegisterType((*TLBoolFalse)(nil), "mtproto.TL_boolFalse")
-	proto.RegisterType((*TLBoolTrue)(nil), "mtproto.TL_boolTrue")
-	proto.RegisterType((*True)(nil), "mtproto.True")
-	proto.RegisterType((*TLTrue)(nil), "mtproto.TL_true")
-	proto.RegisterType((*Error)(nil), "mtproto.Error")
-	proto.RegisterType((*TLError)(nil), "mtproto.TL_error")
 }
 
 func init() { proto.RegisterFile("schema.tl.core_types.proto", fileDescriptor_2da7b15498bf56ef) }
 
 var fileDescriptor_2da7b15498bf56ef = []byte{
-	// 464 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x95, 0xcd, 0x6e, 0xd3, 0x40,
-	0x10, 0xc7, 0x59, 0xea, 0xb4, 0x64, 0xd2, 0x06, 0xc9, 0x12, 0x28, 0xca, 0x21, 0x0a, 0x01, 0xa4,
-	0x5c, 0x70, 0x90, 0x1d, 0x45, 0x9c, 0xcb, 0x87, 0x84, 0x64, 0xf5, 0x10, 0x7c, 0xe2, 0x62, 0xad,
-	0x37, 0xcb, 0x36, 0x92, 0xed, 0x89, 0xd6, 0xeb, 0x00, 0x6f, 0xc1, 0x63, 0x71, 0xe4, 0x11, 0x20,
-	0x4f, 0xc0, 0x23, 0x54, 0x1e, 0x7f, 0x34, 0x39, 0xa4, 0xea, 0xa5, 0x3e, 0x79, 0x76, 0x76, 0xff,
-	0xf3, 0xff, 0x8d, 0xe5, 0x59, 0xc3, 0x30, 0x13, 0xd7, 0x32, 0xe1, 0x8e, 0x89, 0x1d, 0x81, 0x5a,
-	0x86, 0xe6, 0xe7, 0x46, 0x66, 0xce, 0x46, 0xa3, 0x41, 0xfb, 0x2c, 0x31, 0x14, 0x0c, 0xdf, 0xa8,
-	0xb5, 0xb9, 0xce, 0x23, 0x47, 0x60, 0x32, 0x53, 0xa8, 0x70, 0x46, 0xe9, 0x28, 0xff, 0x46, 0x2b,
-	0x5a, 0x50, 0x54, 0xea, 0x86, 0xcf, 0xf6, 0x6a, 0x6a, 0xe1, 0xb9, 0x65, 0x7a, 0xa2, 0xc0, 0xba,
-	0xca, 0xe3, 0xd8, 0x7e, 0x0d, 0xfd, 0x8d, 0x96, 0xab, 0xb5, 0xe0, 0x46, 0x86, 0x29, 0x4f, 0xe4,
-	0x80, 0x8d, 0xd9, 0xb4, 0xbb, 0xbc, 0x68, 0xb2, 0x57, 0x3c, 0x91, 0xf6, 0x3b, 0xe8, 0x09, 0x4c,
-	0x33, 0xa3, 0x73, 0x61, 0x50, 0x0f, 0x1e, 0x8f, 0xd9, 0xb4, 0xef, 0x3e, 0x77, 0x2a, 0x26, 0x27,
-	0xf0, 0xdf, 0xdf, 0xee, 0x2e, 0xf7, 0x8f, 0x4e, 0x1c, 0x38, 0x0b, 0xfc, 0x30, 0x2d, 0xbc, 0x5e,
-	0x42, 0x67, 0xc5, 0x0d, 0x77, 0xc9, 0xa2, 0xe7, 0x5e, 0x34, 0xf2, 0x82, 0x64, 0x59, 0xee, 0x4d,
-	0xb6, 0xd0, 0xf9, 0x9c, 0x1a, 0xcf, 0x7d, 0x70, 0x32, 0xfb, 0x1c, 0xd8, 0x76, 0x70, 0x32, 0x66,
-	0xd3, 0xce, 0x92, 0x6d, 0x27, 0x6f, 0xe1, 0x49, 0xe0, 0x87, 0x6b, 0xb2, 0x7e, 0x75, 0x08, 0xda,
-	0x6f, 0xaa, 0x11, 0xd9, 0x21, 0xe9, 0x62, 0xde, 0x22, 0xe9, 0x49, 0x41, 0x3a, 0xa3, 0x37, 0x1a,
-	0x63, 0xaa, 0xee, 0x04, 0x5d, 0xcc, 0x6b, 0xd0, 0xa6, 0xb5, 0xc5, 0xfc, 0x9e, 0x8a, 0xef, 0x70,
-	0xfa, 0x01, 0xf3, 0x28, 0x96, 0x2d, 0xf6, 0xc6, 0x8a, 0xde, 0x5c, 0xe8, 0x06, 0x7e, 0xb8, 0xaa,
-	0xbd, 0x0f, 0x58, 0x9f, 0x36, 0xe5, 0x4a, 0xb6, 0x3d, 0xd8, 0x2f, 0x46, 0xaf, 0x53, 0xd5, 0x22,
-	0x6c, 0xf7, 0x16, 0x36, 0xab, 0xbd, 0x8f, 0xc0, 0x96, 0x6c, 0x35, 0xac, 0x02, 0xeb, 0x12, 0xb1,
-	0x85, 0xb9, 0xf3, 0xe0, 0x3c, 0xf0, 0xc3, 0x08, 0x31, 0xfe, 0xc4, 0xe3, 0x4c, 0x1e, 0x1f, 0xbe,
-	0x02, 0xa7, 0xa6, 0x73, 0xa1, 0x57, 0x89, 0x02, 0x9d, 0xdf, 0x53, 0xa3, 0xc0, 0xa2, 0xc3, 0x2d,
-	0xdd, 0x24, 0xe6, 0x4e, 0xb0, 0x82, 0xa4, 0x06, 0xfb, 0xc5, 0xa0, 0xf3, 0x51, 0x6b, 0xd4, 0x0f,
-	0xff, 0x5d, 0xd8, 0x60, 0x09, 0x5c, 0xc9, 0xea, 0x36, 0xa1, 0xb8, 0xc8, 0x19, 0xf9, 0xc3, 0x0c,
-	0x2c, 0xb2, 0xa2, 0xb8, 0x9a, 0x44, 0x49, 0x50, 0x47, 0x27, 0x91, 0x98, 0xab, 0x26, 0x2e, 0xbd,
-	0xff, 0xff, 0x46, 0x8f, 0x7e, 0xef, 0x46, 0xec, 0xcf, 0x6e, 0xc4, 0xfe, 0xee, 0x46, 0xec, 0xeb,
-	0x8b, 0xbd, 0xfb, 0xdf, 0x48, 0x9e, 0x28, 0xcd, 0x93, 0xf2, 0x1f, 0x30, 0xab, 0x2a, 0x44, 0xa7,
-	0xf4, 0xf0, 0x6e, 0x02, 0x00, 0x00, 0xff, 0xff, 0x9b, 0x40, 0xa6, 0x22, 0x50, 0x06, 0x00, 0x00,
+	// 461 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xbc, 0x95, 0xbf, 0x8e, 0xd3, 0x40,
+	0x10, 0xc6, 0x59, 0x2e, 0xb9, 0x23, 0x93, 0xbb, 0x20, 0x59, 0x02, 0x45, 0x29, 0xa2, 0x10, 0x40,
+	0x4a, 0x83, 0x83, 0xec, 0x28, 0xa2, 0x3e, 0xfe, 0x48, 0x48, 0xd6, 0x15, 0xc1, 0x15, 0x8d, 0xb5,
+	0x76, 0x96, 0xbd, 0x48, 0x6b, 0x4f, 0xb4, 0x5e, 0x07, 0x78, 0x0b, 0x1e, 0x8b, 0x92, 0x47, 0x80,
+	0x3c, 0x01, 0x8f, 0x70, 0xf2, 0xf8, 0xcf, 0x39, 0x45, 0x4e, 0x69, 0x92, 0x2a, 0xb3, 0xb3, 0x3b,
+	0xf3, 0xfd, 0xbe, 0xaf, 0x88, 0x61, 0x90, 0x46, 0xb7, 0x22, 0xe6, 0xb6, 0x51, 0x76, 0x84, 0x5a,
+	0x04, 0xe6, 0xe7, 0x5a, 0xa4, 0xf6, 0x5a, 0xa3, 0x41, 0xeb, 0x22, 0x36, 0x54, 0x0c, 0xde, 0xc8,
+	0x95, 0xb9, 0xcd, 0x42, 0x3b, 0xc2, 0x78, 0x2a, 0x51, 0xe2, 0x94, 0xda, 0x61, 0xf6, 0x8d, 0x4e,
+	0x74, 0xa0, 0xaa, 0x98, 0x1b, 0x3c, 0x6b, 0xec, 0xd4, 0x91, 0xeb, 0x14, 0xed, 0xb1, 0x84, 0xd6,
+	0x35, 0xa2, 0xb2, 0x5e, 0x43, 0x6f, 0xad, 0xc5, 0x72, 0x15, 0x71, 0x23, 0x82, 0x84, 0xc7, 0xa2,
+	0xcf, 0x46, 0x6c, 0xd2, 0x59, 0x5c, 0xd5, 0xdd, 0x1b, 0x1e, 0x0b, 0xeb, 0x1d, 0x74, 0x23, 0x4c,
+	0x52, 0xa3, 0xb3, 0xc8, 0xa0, 0xee, 0x3f, 0x1e, 0xb1, 0x49, 0xcf, 0x79, 0x6e, 0x97, 0x4c, 0xb6,
+	0xef, 0xbd, 0xbf, 0xbf, 0x5d, 0x34, 0x9f, 0x8e, 0x5d, 0xb8, 0xf4, 0xbd, 0x20, 0x44, 0x54, 0x9f,
+	0xb8, 0x4a, 0x85, 0xf5, 0x12, 0xda, 0x4b, 0x6e, 0xb8, 0x43, 0x3a, 0x5d, 0xe7, 0xaa, 0xde, 0x91,
+	0xe3, 0x2c, 0x8a, 0xbb, 0xb1, 0x03, 0xdd, 0x72, 0xc8, 0xd7, 0xd9, 0x81, 0x33, 0x12, 0x5a, 0xf4,
+	0xf8, 0xe8, 0x8e, 0x6c, 0xb8, 0xf0, 0xbd, 0xc0, 0x3c, 0x08, 0x96, 0x93, 0x54, 0x60, 0xbf, 0x18,
+	0xb4, 0x3f, 0x6a, 0x8d, 0xfa, 0xe8, 0x68, 0x96, 0x05, 0xad, 0x08, 0x97, 0xa2, 0x7f, 0x36, 0x62,
+	0x93, 0xf6, 0x82, 0xea, 0xbc, 0x67, 0xc4, 0x0f, 0xd3, 0x6f, 0x91, 0x14, 0xd5, 0xe3, 0xb7, 0xf0,
+	0xc4, 0xf7, 0x02, 0x41, 0x50, 0xaf, 0x76, 0x3d, 0xf4, 0x6a, 0x1d, 0x62, 0x6e, 0xa4, 0x7b, 0x93,
+	0x29, 0x75, 0xaa, 0x74, 0x93, 0x5c, 0x6b, 0x6f, 0xba, 0x39, 0x49, 0x05, 0xb6, 0x81, 0xf6, 0xe7,
+	0xc4, 0xb8, 0xce, 0xf1, 0xc3, 0xbd, 0x04, 0xb6, 0x29, 0x93, 0x65, 0x9b, 0x32, 0xc2, 0x15, 0x49,
+	0xef, 0x8d, 0x90, 0xc8, 0x76, 0x49, 0xe7, 0xb3, 0x13, 0x92, 0x9e, 0xe5, 0xa4, 0x53, 0x4a, 0x54,
+	0x61, 0x22, 0x1f, 0x04, 0x9d, 0xcf, 0x2a, 0xd0, 0xda, 0xda, 0x7c, 0x76, 0xe0, 0xc4, 0x77, 0x38,
+	0xff, 0x80, 0x59, 0xa8, 0xc4, 0x09, 0xbd, 0xb1, 0xdc, 0x9b, 0x03, 0x1d, 0xdf, 0x0b, 0x96, 0x95,
+	0xf6, 0x0e, 0xeb, 0xd3, 0x7a, 0x5d, 0xc1, 0xd6, 0x80, 0xfd, 0x62, 0xf4, 0x2a, 0x91, 0x27, 0x84,
+	0xed, 0xdc, 0xc3, 0xa6, 0x95, 0xf6, 0x1e, 0xd8, 0x82, 0xad, 0x84, 0xbd, 0x76, 0xff, 0xff, 0x1b,
+	0x3e, 0xfa, 0xbd, 0x1d, 0xb2, 0x3f, 0xdb, 0x21, 0xfb, 0xbb, 0x1d, 0xb2, 0xaf, 0x2f, 0x1a, 0xff,
+	0xff, 0x46, 0xf0, 0x58, 0x6a, 0x1e, 0x17, 0xdf, 0x80, 0x69, 0xb9, 0x22, 0x3c, 0xa7, 0x1f, 0xf7,
+	0x2e, 0x00, 0x00, 0xff, 0xff, 0x10, 0x57, 0x60, 0x6b, 0x50, 0x06, 0x00, 0x00,
+}
+
+func (m *Bool) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *Bool) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *Bool) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLBoolFalse) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLBoolFalse) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLBoolFalse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLBoolTrue) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLBoolTrue) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLBoolTrue) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *True) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *True) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *True) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLTrue) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLTrue) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLTrue) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *Error) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *Error) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *Error) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if len(m.Text) > 0 {
+		i -= len(m.Text)
+		copy(dAtA[i:], m.Text)
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.Text)))
+		i--
+		dAtA[i] = 0x22
+	}
+	if m.Code != 0 {
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Code))
+		i--
+		dAtA[i] = 0x18
+	}
+	if m.Constructor != 0 {
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Constructor))
+		i--
+		dAtA[i] = 0x10
+	}
+	if len(m.PredicateName) > 0 {
+		i -= len(m.PredicateName)
+		copy(dAtA[i:], m.PredicateName)
+		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.PredicateName)))
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
+}
+
+func (m *TLError) Marshal() (dAtA []byte, err error) {
+	size := m.Size()
+	dAtA = make([]byte, size)
+	n, err := m.MarshalToSizedBuffer(dAtA[:size])
+	if err != nil {
+		return nil, err
+	}
+	return dAtA[:n], nil
+}
+
+func (m *TLError) MarshalTo(dAtA []byte) (int, error) {
+	size := m.Size()
+	return m.MarshalToSizedBuffer(dAtA[:size])
+}
+
+func (m *TLError) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+	i := len(dAtA)
+	_ = i
+	var l int
+	_ = l
+	if m.XXX_unrecognized != nil {
+		i -= len(m.XXX_unrecognized)
+		copy(dAtA[i:], m.XXX_unrecognized)
+	}
+	if m.Data2 != nil {
+		{
+			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
+			if err != nil {
+				return 0, err
+			}
+			i -= size
+			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
+		}
+		i--
+		dAtA[i] = 0xa
+	}
+	return len(dAtA) - i, nil
 }
 
 func (m *Null) Marshal() (dAtA []byte, err error) {
@@ -1508,291 +1793,6 @@ func (m *TLString) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *Bool) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *Bool) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Bool) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLBoolFalse) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLBoolFalse) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLBoolFalse) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLBoolTrue) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLBoolTrue) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLBoolTrue) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *True) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *True) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *True) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLTrue) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLTrue) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLTrue) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *Error) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *Error) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *Error) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if len(m.Text) > 0 {
-		i -= len(m.Text)
-		copy(dAtA[i:], m.Text)
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.Text)))
-		i--
-		dAtA[i] = 0x22
-	}
-	if m.Code != 0 {
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Code))
-		i--
-		dAtA[i] = 0x18
-	}
-	if m.Constructor != 0 {
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(m.Constructor))
-		i--
-		dAtA[i] = 0x10
-	}
-	if len(m.PredicateName) > 0 {
-		i -= len(m.PredicateName)
-		copy(dAtA[i:], m.PredicateName)
-		i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(len(m.PredicateName)))
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
-func (m *TLError) Marshal() (dAtA []byte, err error) {
-	size := m.Size()
-	dAtA = make([]byte, size)
-	n, err := m.MarshalToSizedBuffer(dAtA[:size])
-	if err != nil {
-		return nil, err
-	}
-	return dAtA[:n], nil
-}
-
-func (m *TLError) MarshalTo(dAtA []byte) (int, error) {
-	size := m.Size()
-	return m.MarshalToSizedBuffer(dAtA[:size])
-}
-
-func (m *TLError) MarshalToSizedBuffer(dAtA []byte) (int, error) {
-	i := len(dAtA)
-	_ = i
-	var l int
-	_ = l
-	if m.XXX_unrecognized != nil {
-		i -= len(m.XXX_unrecognized)
-		copy(dAtA[i:], m.XXX_unrecognized)
-	}
-	if m.Data2 != nil {
-		{
-			size, err := m.Data2.MarshalToSizedBuffer(dAtA[:i])
-			if err != nil {
-				return 0, err
-			}
-			i -= size
-			i = encodeVarintSchemaTlCoreTypes(dAtA, i, uint64(size))
-		}
-		i--
-		dAtA[i] = 0xa
-	}
-	return len(dAtA) - i, nil
-}
-
 func encodeVarintSchemaTlCoreTypes(dAtA []byte, offset int, v uint64) int {
 	offset -= sovSchemaTlCoreTypes(v)
 	base := offset
@@ -1804,6 +1804,134 @@ func encodeVarintSchemaTlCoreTypes(dAtA []byte, offset int, v uint64) int {
 	dAtA[offset] = uint8(v)
 	return base
 }
+func (m *Bool) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlCoreTypes(uint64(m.Constructor))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLBoolFalse) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLBoolTrue) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *True) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlCoreTypes(uint64(m.Constructor))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLTrue) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *Error) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	l = len(m.PredicateName)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.Constructor != 0 {
+		n += 1 + sovSchemaTlCoreTypes(uint64(m.Constructor))
+	}
+	if m.Code != 0 {
+		n += 1 + sovSchemaTlCoreTypes(uint64(m.Code))
+	}
+	l = len(m.Text)
+	if l > 0 {
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
+func (m *TLError) Size() (n int) {
+	if m == nil {
+		return 0
+	}
+	var l int
+	_ = l
+	if m.Data2 != nil {
+		l = m.Data2.Size()
+		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
+	}
+	if m.XXX_unrecognized != nil {
+		n += len(m.XXX_unrecognized)
+	}
+	return n
+}
+
 func (m *Null) Size() (n int) {
 	if m == nil {
 		return 0
@@ -2008,139 +2136,716 @@ func (m *TLString) Size() (n int) {
 	return n
 }
 
-func (m *Bool) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlCoreTypes(uint64(m.Constructor))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLBoolFalse) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLBoolTrue) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *True) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlCoreTypes(uint64(m.Constructor))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLTrue) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *Error) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	l = len(m.PredicateName)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.Constructor != 0 {
-		n += 1 + sovSchemaTlCoreTypes(uint64(m.Constructor))
-	}
-	if m.Code != 0 {
-		n += 1 + sovSchemaTlCoreTypes(uint64(m.Code))
-	}
-	l = len(m.Text)
-	if l > 0 {
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
-func (m *TLError) Size() (n int) {
-	if m == nil {
-		return 0
-	}
-	var l int
-	_ = l
-	if m.Data2 != nil {
-		l = m.Data2.Size()
-		n += 1 + l + sovSchemaTlCoreTypes(uint64(l))
-	}
-	if m.XXX_unrecognized != nil {
-		n += len(m.XXX_unrecognized)
-	}
-	return n
-}
-
 func sovSchemaTlCoreTypes(x uint64) (n int) {
 	return (math_bits.Len64(x|1) + 6) / 7
 }
 func sozSchemaTlCoreTypes(x uint64) (n int) {
 	return sovSchemaTlCoreTypes(uint64((x << 1) ^ uint64((int64(x) >> 63))))
+}
+func (m *Bool) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlCoreTypes
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: Bool: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: Bool: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLBoolFalse) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlCoreTypes
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_boolFalse: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_boolFalse: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &Bool{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLBoolTrue) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlCoreTypes
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_boolTrue: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_boolTrue: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &Bool{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *True) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlCoreTypes
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: True: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: True: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLTrue) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlCoreTypes
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_true: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_true: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &True{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *Error) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlCoreTypes
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: Error: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: Error: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.PredicateName = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		case 2:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
+			}
+			m.Constructor = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Constructor |= TLConstructor(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 3:
+			if wireType != 0 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Code", wireType)
+			}
+			m.Code = 0
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				m.Code |= int32(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+		case 4:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Text", wireType)
+			}
+			var stringLen uint64
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				stringLen |= uint64(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			intStringLen := int(stringLen)
+			if intStringLen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + intStringLen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.Text = string(dAtA[iNdEx:postIndex])
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
+}
+func (m *TLError) Unmarshal(dAtA []byte) error {
+	l := len(dAtA)
+	iNdEx := 0
+	for iNdEx < l {
+		preIndex := iNdEx
+		var wire uint64
+		for shift := uint(0); ; shift += 7 {
+			if shift >= 64 {
+				return ErrIntOverflowSchemaTlCoreTypes
+			}
+			if iNdEx >= l {
+				return io.ErrUnexpectedEOF
+			}
+			b := dAtA[iNdEx]
+			iNdEx++
+			wire |= uint64(b&0x7F) << shift
+			if b < 0x80 {
+				break
+			}
+		}
+		fieldNum := int32(wire >> 3)
+		wireType := int(wire & 0x7)
+		if wireType == 4 {
+			return fmt.Errorf("proto: TL_error: wiretype end group for non-group")
+		}
+		if fieldNum <= 0 {
+			return fmt.Errorf("proto: TL_error: illegal tag %d (wire type %d)", fieldNum, wire)
+		}
+		switch fieldNum {
+		case 1:
+			if wireType != 2 {
+				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
+			}
+			var msglen int
+			for shift := uint(0); ; shift += 7 {
+				if shift >= 64 {
+					return ErrIntOverflowSchemaTlCoreTypes
+				}
+				if iNdEx >= l {
+					return io.ErrUnexpectedEOF
+				}
+				b := dAtA[iNdEx]
+				iNdEx++
+				msglen |= int(b&0x7F) << shift
+				if b < 0x80 {
+					break
+				}
+			}
+			if msglen < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			postIndex := iNdEx + msglen
+			if postIndex < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if postIndex > l {
+				return io.ErrUnexpectedEOF
+			}
+			if m.Data2 == nil {
+				m.Data2 = &Error{}
+			}
+			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
+				return err
+			}
+			iNdEx = postIndex
+		default:
+			iNdEx = preIndex
+			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
+			if err != nil {
+				return err
+			}
+			if (skippy < 0) || (iNdEx+skippy) < 0 {
+				return ErrInvalidLengthSchemaTlCoreTypes
+			}
+			if (iNdEx + skippy) > l {
+				return io.ErrUnexpectedEOF
+			}
+			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
+			iNdEx += skippy
+		}
+	}
+
+	if iNdEx > l {
+		return io.ErrUnexpectedEOF
+	}
+	return nil
 }
 func (m *Null) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
@@ -3228,711 +3933,6 @@ func (m *TLString) Unmarshal(dAtA []byte) error {
 			}
 			if m.Data2 == nil {
 				m.Data2 = &String{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Bool) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlCoreTypes
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Bool: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Bool: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLBoolFalse) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlCoreTypes
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_boolFalse: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_boolFalse: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &Bool{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLBoolTrue) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlCoreTypes
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_boolTrue: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_boolTrue: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &Bool{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *True) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlCoreTypes
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: True: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: True: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLTrue) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlCoreTypes
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_true: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_true: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &True{}
-			}
-			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
-				return err
-			}
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *Error) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlCoreTypes
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: Error: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: Error: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field PredicateName", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.PredicateName = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		case 2:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Constructor", wireType)
-			}
-			m.Constructor = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Constructor |= TLConstructor(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 3:
-			if wireType != 0 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Code", wireType)
-			}
-			m.Code = 0
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				m.Code |= int32(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-		case 4:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Text", wireType)
-			}
-			var stringLen uint64
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				stringLen |= uint64(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			intStringLen := int(stringLen)
-			if intStringLen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + intStringLen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.Text = string(dAtA[iNdEx:postIndex])
-			iNdEx = postIndex
-		default:
-			iNdEx = preIndex
-			skippy, err := skipSchemaTlCoreTypes(dAtA[iNdEx:])
-			if err != nil {
-				return err
-			}
-			if (skippy < 0) || (iNdEx+skippy) < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if (iNdEx + skippy) > l {
-				return io.ErrUnexpectedEOF
-			}
-			m.XXX_unrecognized = append(m.XXX_unrecognized, dAtA[iNdEx:iNdEx+skippy]...)
-			iNdEx += skippy
-		}
-	}
-
-	if iNdEx > l {
-		return io.ErrUnexpectedEOF
-	}
-	return nil
-}
-func (m *TLError) Unmarshal(dAtA []byte) error {
-	l := len(dAtA)
-	iNdEx := 0
-	for iNdEx < l {
-		preIndex := iNdEx
-		var wire uint64
-		for shift := uint(0); ; shift += 7 {
-			if shift >= 64 {
-				return ErrIntOverflowSchemaTlCoreTypes
-			}
-			if iNdEx >= l {
-				return io.ErrUnexpectedEOF
-			}
-			b := dAtA[iNdEx]
-			iNdEx++
-			wire |= uint64(b&0x7F) << shift
-			if b < 0x80 {
-				break
-			}
-		}
-		fieldNum := int32(wire >> 3)
-		wireType := int(wire & 0x7)
-		if wireType == 4 {
-			return fmt.Errorf("proto: TL_error: wiretype end group for non-group")
-		}
-		if fieldNum <= 0 {
-			return fmt.Errorf("proto: TL_error: illegal tag %d (wire type %d)", fieldNum, wire)
-		}
-		switch fieldNum {
-		case 1:
-			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field Data2", wireType)
-			}
-			var msglen int
-			for shift := uint(0); ; shift += 7 {
-				if shift >= 64 {
-					return ErrIntOverflowSchemaTlCoreTypes
-				}
-				if iNdEx >= l {
-					return io.ErrUnexpectedEOF
-				}
-				b := dAtA[iNdEx]
-				iNdEx++
-				msglen |= int(b&0x7F) << shift
-				if b < 0x80 {
-					break
-				}
-			}
-			if msglen < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			postIndex := iNdEx + msglen
-			if postIndex < 0 {
-				return ErrInvalidLengthSchemaTlCoreTypes
-			}
-			if postIndex > l {
-				return io.ErrUnexpectedEOF
-			}
-			if m.Data2 == nil {
-				m.Data2 = &Error{}
 			}
 			if err := m.Data2.Unmarshal(dAtA[iNdEx:postIndex]); err != nil {
 				return err
