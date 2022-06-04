@@ -31,7 +31,7 @@ func MakePeerNotifySettings(settings *InputPeerNotifySettings) (*PeerNotifySetti
 		ShowPreviews: settings.GetShowPreviews(),
 		Silent:       settings.GetSilent(),
 		MuteUntil:    settings.GetMuteUntil(),
-		Sound:        settings.GetSound(),
+		Sound:        settings.GetSound_FLAGSTRING(),
 	}).To_PeerNotifySettings()
 
 	return notifySettings, nil
