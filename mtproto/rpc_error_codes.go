@@ -1715,6 +1715,15 @@ var (
 
 	// ErrGroupCallAnonymousForbidden GROUPCALL_ANONYMOUS_FORBIDDEN
 	ErrGroupCallAnonymousForbidden = status.Error(ErrBadRequest, "GROUPCALL_ANONYMOUS_FORBIDDEN")
+
+	// ErrRingtoneDurationTooLong RINGTONE_DURATION_TOO_LONG
+	ErrRingtoneDurationTooLong = status.Error(ErrBadRequest, "RINGTONE_DURATION_TOO_LONG")
+
+	// ErrRingtoneSizeTooBig RINGTONE_SIZE_TOO_BIG
+	ErrRingtoneSizeTooBig = status.Error(ErrBadRequest, "RINGTONE_SIZE_TOO_BIG")
+
+	// ErrorRingtoneInvalidFormat RINGTONE_INVALID_FORMAT
+	ErrorRingtoneInvalidFormat = status.Error(ErrBadRequest, "RINGTONE_INVALID_FORMAT")
 )
 
 // NewFilePartXMissing
