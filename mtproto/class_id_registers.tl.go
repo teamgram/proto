@@ -6234,6 +6234,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -928977804,
 		}
 	},
+	639215886: func() TLObject { // 0x2619a90e
+		return &TLMessagesGetStickerSet{
+			Constructor: 639215886,
+		}
+	},
 	-946871200: func() TLObject { // 0xc78fe460
 		return &TLMessagesInstallStickerSet{
 			Constructor: -946871200,
