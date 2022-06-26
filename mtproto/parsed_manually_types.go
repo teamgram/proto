@@ -170,7 +170,7 @@ func (m *TLMessage2) Decode(dBuf *DecodeBuf) error {
 	dBuf2 := NewDecodeBuf(b)
 	m.Object = dBuf2.Object()
 	if m.Object == nil {
-		err := fmt.Errorf("decode core_message error: %s", hex.EncodeToString(b))
+		err := fmt.Errorf("decode core_message error(%v): %s", dBuf2.err, hex.EncodeToString(b))
 		// log.Error(err.Error())
 		return err
 	}
