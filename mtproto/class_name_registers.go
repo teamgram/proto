@@ -9404,6 +9404,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		141: -1383294429, // ad8c9a23
 		140: -1383294429, // ad8c9a23
 		139: -1383294429, // ad8c9a23
+		71:  -1814580409, // 93d7b347
 
 	},
 	Predicate_channels_getParticipants: {
@@ -11809,6 +11810,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1109588596:  Predicate_messages_getMessages,                               // 4222fa74
 	1669245048:  Predicate_account_registerDevice,                             // 637ea878
 	1707432768:  Predicate_account_unregisterDevice,                           // 65c55b40
+	-1814580409: Predicate_channels_getMessages,                               // 93d7b347
 	85337187:    Predicate_resPQ,                                              // 5162463
 	-2083955988: Predicate_p_q_inner_data,                                     // 83c95aec
 	-1443537003: Predicate_p_q_inner_data_dc,                                  // a9f55f95

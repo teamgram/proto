@@ -7074,6 +7074,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -1383294429,
 		}
 	},
+	-1814580409: func() TLObject { // 0x93d7b347
+		return &TLChannelsGetMessages{
+			Constructor: -1814580409,
+		}
+	},
 	2010044880: func() TLObject { // 0x77ced9d0
 		return &TLChannelsGetParticipants{
 			Constructor: 2010044880,
