@@ -32,6 +32,44 @@ func (m *Document) GetFixedSize() int64 {
 	return 0
 }
 
+func (m *Document) FixData() *Document {
+	if m.Size2_INT64 == 0 {
+		m.Size2_INT64 = m.GetFixedSize()
+	}
+	if m.Size2_INT32 == 0 {
+		m.Size2_INT32 = int32(m.Size2_INT64)
+	}
+
+	return m
+}
+
+func (m *Update) FixData() *Update {
+	if m.GetMedia() != nil {
+		m.Media = m.Media.FixData()
+	}
+	if m.GetMessage_MESSAGE() != nil {
+		m.Message_MESSAGE = m.Message_MESSAGE.FixData()
+	}
+
+	return m
+}
+
+func (m *MessageMedia) FixData() *MessageMedia {
+	if m.GetDocument() != nil {
+		m.Document = m.Document.FixData()
+	}
+
+	return m
+}
+
+func (m *Message) FixData() *Message {
+	if m.GetMedia() != nil {
+		m.Media = m.Media.FixData()
+	}
+
+	return m
+}
+
 func (m *EncryptedFile) GetFixedSize() int64 {
 	if m.Size2_INT64 != 0 {
 		return m.Size2_INT64
