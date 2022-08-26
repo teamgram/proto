@@ -2,7 +2,7 @@
  * WARNING! All changes made in this file will be lost!
  * Created from 'scheme.tl' by 'mtprotoc'
  *
- * Copyright (c) 2021-present,  NebulaChat Studio (https://nebula.chat).
+ * Copyright (c) 2022-present,  Teamgram Authors.
  *  All rights reserved.
  *
  * Author: Benqi (wubenqi@gmail.com)
@@ -100,6 +100,8 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLChannelsToggleSlowMode":                   RPCContextTuple{"/mtproto.RPCChannels/channels_toggleSlowMode", func() interface{} { return new(Updates) }},
 	"TLChannelsGetInactiveChannels":              RPCContextTuple{"/mtproto.RPCChannels/channels_getInactiveChannels", func() interface{} { return new(Messages_InactiveChats) }},
 	"TLChannelsDeleteParticipantHistory":         RPCContextTuple{"/mtproto.RPCChannels/channels_deleteParticipantHistory", func() interface{} { return new(Messages_AffectedHistory) }},
+	"TLChannelsToggleJoinToSend":                 RPCContextTuple{"/mtproto.RPCChannels/channels_toggleJoinToSend", func() interface{} { return new(Updates) }},
+	"TLChannelsToggleJoinRequest":                RPCContextTuple{"/mtproto.RPCChannels/channels_toggleJoinRequest", func() interface{} { return new(Updates) }},
 	"TLChannelsDeleteHistoryAF369D42":            RPCContextTuple{"/mtproto.RPCChannels/channels_deleteHistoryAF369D42", func() interface{} { return new(Bool) }},
 	"TLMessagesExportChatInvite":                 RPCContextTuple{"/mtproto.RPCChatInvites/messages_exportChatInvite", func() interface{} { return new(ExportedChatInvite) }},
 	"TLMessagesCheckChatInvite":                  RPCContextTuple{"/mtproto.RPCChatInvites/messages_checkChatInvite", func() interface{} { return new(ChatInvite) }},
@@ -283,6 +285,8 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLMessagesSaveDefaultSendAs":                RPCContextTuple{"/mtproto.RPCMessages/messages_saveDefaultSendAs", func() interface{} { return new(Bool) }},
 	"TLMessagesTranslateText":                    RPCContextTuple{"/mtproto.RPCMessages/messages_translateText", func() interface{} { return new(Messages_TranslatedText) }},
 	"TLMessagesSearchSentMedia":                  RPCContextTuple{"/mtproto.RPCMessages/messages_searchSentMedia", func() interface{} { return new(Messages_Messages) }},
+	"TLMessagesTranscribeAudio":                  RPCContextTuple{"/mtproto.RPCMessages/messages_transcribeAudio", func() interface{} { return new(Messages_TranscribedAudio) }},
+	"TLMessagesRateTranscribedAudio":             RPCContextTuple{"/mtproto.RPCMessages/messages_rateTranscribedAudio", func() interface{} { return new(Bool) }},
 	"TLChannelsGetSendAs":                        RPCContextTuple{"/mtproto.RPCMessages/channels_getSendAs", func() interface{} { return new(Channels_SendAsPeers) }},
 	"TLHelpSaveAppLog":                           RPCContextTuple{"/mtproto.RPCMiscellaneous/help_saveAppLog", func() interface{} { return new(Bool) }},
 	"TLHelpTest":                                 RPCContextTuple{"/mtproto.RPCMiscellaneous/help_test", func() interface{} { return new(Bool) }},
@@ -317,6 +321,12 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLPaymentsSendPaymentForm":                  RPCContextTuple{"/mtproto.RPCPayments/payments_sendPaymentForm", func() interface{} { return new(Payments_PaymentResult) }},
 	"TLPaymentsGetSavedInfo":                     RPCContextTuple{"/mtproto.RPCPayments/payments_getSavedInfo", func() interface{} { return new(Payments_SavedInfo) }},
 	"TLPaymentsClearSavedInfo":                   RPCContextTuple{"/mtproto.RPCPayments/payments_clearSavedInfo", func() interface{} { return new(Bool) }},
+	"TLPaymentsExportInvoice":                    RPCContextTuple{"/mtproto.RPCPayments/payments_exportInvoice", func() interface{} { return new(Payments_ExportedInvoice) }},
+	"TLPaymentsAssignAppStoreTransaction":        RPCContextTuple{"/mtproto.RPCPayments/payments_assignAppStoreTransaction", func() interface{} { return new(Updates) }},
+	"TLPaymentsAssignPlayMarketTransaction":      RPCContextTuple{"/mtproto.RPCPayments/payments_assignPlayMarketTransaction", func() interface{} { return new(Updates) }},
+	"TLPaymentsCanPurchasePremium":               RPCContextTuple{"/mtproto.RPCPayments/payments_canPurchasePremium", func() interface{} { return new(Bool) }},
+	"TLPaymentsRequestRecurringPayment":          RPCContextTuple{"/mtproto.RPCPayments/payments_requestRecurringPayment", func() interface{} { return new(Updates) }},
+	"TLPaymentsRestorePlayMarketReceipt":         RPCContextTuple{"/mtproto.RPCPayments/payments_restorePlayMarketReceipt", func() interface{} { return new(Updates) }},
 	"TLPhotosUpdateProfilePhoto":                 RPCContextTuple{"/mtproto.RPCPhotos/photos_updateProfilePhoto", func() interface{} { return new(Photos_Photo) }},
 	"TLPhotosUploadProfilePhoto":                 RPCContextTuple{"/mtproto.RPCPhotos/photos_uploadProfilePhoto", func() interface{} { return new(Photos_Photo) }},
 	"TLPhotosDeletePhotos":                       RPCContextTuple{"/mtproto.RPCPhotos/photos_deletePhotos", func() interface{} { return new(Vector_Long) }},
@@ -398,6 +408,9 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLMessagesSearchStickerSets":                RPCContextTuple{"/mtproto.RPCStickers/messages_searchStickerSets", func() interface{} { return new(Messages_FoundStickerSets) }},
 	"TLMessagesToggleStickerSets":                RPCContextTuple{"/mtproto.RPCStickers/messages_toggleStickerSets", func() interface{} { return new(Bool) }},
 	"TLMessagesGetOldFeaturedStickers":           RPCContextTuple{"/mtproto.RPCStickers/messages_getOldFeaturedStickers", func() interface{} { return new(Messages_FeaturedStickers) }},
+	"TLMessagesGetCustomEmojiDocuments":          RPCContextTuple{"/mtproto.RPCStickers/messages_getCustomEmojiDocuments", func() interface{} { return new(Vector_Document) }},
+	"TLMessagesGetEmojiStickers":                 RPCContextTuple{"/mtproto.RPCStickers/messages_getEmojiStickers", func() interface{} { return new(Messages_AllStickers) }},
+	"TLMessagesGetFeaturedEmojiStickers":         RPCContextTuple{"/mtproto.RPCStickers/messages_getFeaturedEmojiStickers", func() interface{} { return new(Messages_FeaturedStickers) }},
 	"TLStickersCreateStickerSet":                 RPCContextTuple{"/mtproto.RPCStickers/stickers_createStickerSet", func() interface{} { return new(Messages_StickerSet) }},
 	"TLStickersRemoveStickerFromSet":             RPCContextTuple{"/mtproto.RPCStickers/stickers_removeStickerFromSet", func() interface{} { return new(Messages_StickerSet) }},
 	"TLStickersChangeStickerPosition":            RPCContextTuple{"/mtproto.RPCStickers/stickers_changeStickerPosition", func() interface{} { return new(Messages_StickerSet) }},
@@ -462,6 +475,8 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLMessagesSendWebViewResultMessage":         RPCContextTuple{"/mtproto.RPCWebview/messages_sendWebViewResultMessage", func() interface{} { return new(WebViewMessageSent) }},
 	"TLMessagesSendWebViewData":                  RPCContextTuple{"/mtproto.RPCWebview/messages_sendWebViewData", func() interface{} { return new(Updates) }},
 	"TLBizInvokeBizDataRaw":                      RPCContextTuple{"/mtproto.RPCBiz/biz_invokeBizDataRaw", func() interface{} { return new(BizDataRaw) }},
+	"TLHelpGetPremiumPromo":                      RPCContextTuple{"/mtproto.RPCHelp/help_getPremiumPromo", func() interface{} { return new(Help_PremiumPromo) }},
+	"TLPhoneSaveCallLog":                         RPCContextTuple{"/mtproto.RPCPhone/phone_saveCallLog", func() interface{} { return new(Bool) }},
 }
 
 func FindRPCContextTuple(t interface{}) *RPCContextTuple {
