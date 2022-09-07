@@ -218,11 +218,50 @@ func MakeMessageActionContactSignUp() *MessageAction {
 	return MakeTLMessageActionContactSignUp(nil).To_MessageAction()
 }
 
+// MakeMessageActionGeoProximityReached
 // messageActionGeoProximityReached#98e0d697 from_id:Peer to_id:Peer distance:int = MessageAction;
+func MakeMessageActionGeoProximityReached(fromId, toId *Peer, distance int32) *MessageAction {
+	return MakeTLMessageActionGeoProximityReached(&MessageAction{
+		FromId:   fromId,
+		ToId:     toId,
+		Distance: distance,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionGroupCall
 // messageActionGroupCall#7a0d7f42 flags:# call:InputGroupCall duration:flags.0?int = MessageAction;
+func MakeMessageActionGroupCall(call *InputGroupCall, duration int32) *MessageAction {
+	return MakeTLMessageActionGroupCall(&MessageAction{
+		Call:     call,
+		Duration: MakeFlagsInt32(duration),
+	}).To_MessageAction()
+}
+
+// MakeMessageActionInviteToGroupCall
 // messageActionInviteToGroupCall#502f92f7 call:InputGroupCall users:Vector<long> = MessageAction;
+func MakeMessageActionInviteToGroupCall(call *InputGroupCall, users ...int64) *MessageAction {
+	return MakeTLMessageActionInviteToGroupCall(&MessageAction{
+		Call:  call,
+		Users: users,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionSetMessagesTTL
 // messageActionSetMessagesTTL#aa1afbfd period:int = MessageAction;
+func MakeMessageActionSetMessagesTTL(period int32) *MessageAction {
+	return MakeTLMessageActionSetMessagesTTL(&MessageAction{
+		Period: period,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionGroupCallScheduled
 // messageActionGroupCallScheduled#b3a07661 call:InputGroupCall schedule_date:int = MessageAction;
+func MakeMessageActionGroupCallScheduled(call *InputGroupCall, scheduleDate int32) *MessageAction {
+	return MakeTLMessageActionGroupCallScheduled(&MessageAction{
+		Call:         call,
+		ScheduleDate: scheduleDate,
+	}).To_MessageAction()
+}
 
 // MakeMessageActionSetChatTheme
 // messageActionSetChatTheme#aa786345 emoticon:string = MessageAction;
@@ -236,6 +275,33 @@ func MakeMessageActionSetChatTheme(emoticon string) *MessageAction {
 // messageActionChatJoinedByRequest#ebbca3cb = MessageAction;
 func MakeMessageActionChatJoinedByRequest() *MessageAction {
 	return MakeTLMessageActionChatJoinedByRequest(nil).To_MessageAction()
+}
+
+// MakeMessageActionWebViewDataSentMe
+// messageActionWebViewDataSentMe#47dd8079 text:string data:string = MessageAction;
+func MakeMessageActionWebViewDataSentMe(text, data string) *MessageAction {
+	return MakeTLMessageActionWebViewDataSentMe(&MessageAction{
+		Text: text,
+		Data: data,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionWebViewDataSent
+// messageActionWebViewDataSent#b4c38cb5 text:string = MessageAction;
+func MakeMessageActionWebViewDataSent(text string) *MessageAction {
+	return MakeTLMessageActionWebViewDataSent(&MessageAction{
+		Text: text,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionGiftPremium
+// messageActionGiftPremium#aba0f5c6 currency:string amount:long months:int = MessageAction;
+func MakeMessageActionGiftPremium(currency string, amount int64, months int32) *MessageAction {
+	return MakeTLMessageActionGiftPremium(&MessageAction{
+		Currency: currency,
+		Amount:   amount,
+		Months:   months,
+	}).To_MessageAction()
 }
 
 func MakeContactSignUpMessage(fromId, toId int64) *Message {
