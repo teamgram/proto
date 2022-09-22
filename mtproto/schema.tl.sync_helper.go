@@ -67,6 +67,10 @@ func (m *Message) FixData() *Message {
 		m.Media = m.Media.FixData()
 	}
 
+	if m.GetReactions() != nil {
+		m.Reactions = m.Reactions.FixData()
+	}
+
 	return m
 }
 
@@ -79,4 +83,73 @@ func (m *EncryptedFile) GetFixedSize() int64 {
 	}
 
 	return 0
+}
+
+func (m *ReactionCount) FixData() *ReactionCount {
+	if m.Reaction != "" {
+		if m.Reaction_STRING == "" {
+			m.Reaction_STRING = m.Reaction
+		}
+		if m.Reaction_REACTION == nil {
+			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
+				Emoticon: m.Reaction,
+			}).To_Reaction()
+		}
+	}
+
+	if m.Reaction_STRING != "" {
+		if m.Reaction_REACTION == nil {
+			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
+				Emoticon: m.Reaction_STRING,
+			}).To_Reaction()
+		}
+	}
+
+	if m.Reaction_REACTION != nil {
+		if m.Reaction_STRING == "" {
+			m.Reaction_STRING = m.Reaction_REACTION.GetEmoticon()
+		}
+	}
+
+	return m
+}
+
+func (m *MessagePeerReaction) FixData() *MessagePeerReaction {
+	if m.Reaction != "" {
+		if m.Reaction_STRING == "" {
+			m.Reaction_STRING = m.Reaction
+		}
+		if m.Reaction_REACTION == nil {
+			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
+				Emoticon: m.Reaction,
+			}).To_Reaction()
+		}
+	}
+
+	if m.Reaction_STRING != "" {
+		if m.Reaction_REACTION == nil {
+			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
+				Emoticon: m.Reaction_STRING,
+			}).To_Reaction()
+		}
+	}
+
+	if m.Reaction_REACTION != nil {
+		if m.Reaction_STRING == "" {
+			m.Reaction_STRING = m.Reaction_REACTION.GetEmoticon()
+		}
+	}
+
+	return m
+}
+
+func (m *MessageReactions) FixData() *MessageReactions {
+	for _, v := range m.Results {
+		v.FixData()
+	}
+	for _, v := range m.RecentReactions {
+		v.FixData()
+	}
+
+	return m
 }
