@@ -3487,6 +3487,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1705297877
 		return o
 	},
+	1846886166: func() TLObject { // 0x6e153f16
+		o := MakeTLMessagesStickerSet(nil)
+		o.Data2.Constructor = 1846886166
+		return o
+	},
 	-1240849242: func() TLObject { // 0xb60a24a6
 		o := MakeTLMessagesStickerSet(nil)
 		o.Data2.Constructor = -1240849242
@@ -4782,6 +4787,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1986399595
 		return o
 	},
+	-50416996: func() TLObject { // 0xfcfeb29c
+		o := MakeTLStickerKeyword(nil)
+		o.Data2.Constructor = -50416996
+		return o
+	},
 	313694676: func() TLObject { // 0x12b299d4
 		o := MakeTLStickerPack(nil)
 		o.Data2.Constructor = 313694676
@@ -4805,6 +4815,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	872932635: func() TLObject { // 0x3407e51b
 		o := MakeTLStickerSetMultiCovered(nil)
 		o.Data2.Constructor = 872932635
+		return o
+	},
+	1087454222: func() TLObject { // 0x40d13c0e
+		o := MakeTLStickerSetFullCovered(nil)
+		o.Data2.Constructor = 1087454222
 		return o
 	},
 	451763941: func() TLObject { // 0x1aed5ee5
