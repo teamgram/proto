@@ -18,6 +18,11 @@
 
 package mtproto
 
+import (
+	"github.com/gogo/protobuf/types"
+	"time"
+)
+
 func (m *Document) GetFixedSize() int64 {
 	if m.Size2_INT64 != 0 {
 		return m.Size2_INT64
@@ -69,6 +74,14 @@ func (m *Message) FixData() *Message {
 
 	if m.GetReactions() != nil {
 		m.Reactions = m.Reactions.FixData()
+	}
+
+	if m.GetTtlPeriod() != nil {
+		ttlPeriod := m.GetTtlPeriod().GetValue() + m.GetDate() - int32(time.Now().Unix())
+		if ttlPeriod < 0 {
+			ttlPeriod = 0
+		}
+		m.TtlPeriod = &types.Int32Value{Value: ttlPeriod}
 	}
 
 	return m
