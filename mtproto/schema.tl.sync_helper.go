@@ -48,6 +48,15 @@ func (m *Document) FixData() *Document {
 	return m
 }
 
+func (m *PollResults) FixData() *PollResults {
+	if m.Solution != nil {
+		if m.SolutionEntities == nil {
+			m.SolutionEntities = []*MessageEntity{}
+		}
+	}
+	return m
+}
+
 func (m *Update) FixData() *Update {
 	if m.GetMedia() != nil {
 		m.Media = m.Media.FixData()
@@ -62,6 +71,10 @@ func (m *Update) FixData() *Update {
 func (m *MessageMedia) FixData() *MessageMedia {
 	if m.GetDocument() != nil {
 		m.Document = m.Document.FixData()
+	}
+
+	if m.GetResults() != nil {
+		m.Results = m.Results.FixData()
 	}
 
 	return m
