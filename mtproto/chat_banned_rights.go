@@ -38,23 +38,19 @@ import (
 //	until_date:int = ChatBannedRights;
 
 const (
-	VIEW_MESSAGES = 1 << 0
-	SEND_MESSAGES = 1 << 1
-	SEND_MEDIA    = 1 << 2
-	SEND_STICKERS = 1 << 3
-	SEND_GIFS     = 1 << 4
-	SEND_GAMES    = 1 << 5
-	SEND_INLINE   = 1 << 6
-	EMBED_LINKS   = 1 << 7
-	SEND_POLLS    = 1 << 8
-	CHANGE_INFO2  = 1 << 10
-	INVITE_USERS2 = 1 << 15
-	PIN_MESSAGE   = 1 << 17
+	BANNED_VIEW_MESSAGES = 1 << 0
+	BANNED_SEND_MESSAGES = 1 << 1
+	BANNED_SEND_MEDIA    = 1 << 2
+	BANNED_SEND_STICKERS = 1 << 3
+	BANNED_SEND_GIFS     = 1 << 4
+	BANNED_SEND_GAMES    = 1 << 5
+	BANNED_SEND_INLINE   = 1 << 6
+	BANNED_EMBED_LINKS   = 1 << 7
+	BANNED_SEND_POLLS    = 1 << 8
+	BANNED_CHANGE_INFO   = 1 << 10
+	BANNED_INVITE_USERS  = 1 << 15
+	BANNED_PIN_MESSAGES  = 1 << 17
 )
-
-//const (
-//	noBannedRights = 1 << 31
-//)
 
 type BannedRights int64
 
@@ -76,248 +72,27 @@ func MakeDefaultBannedRights() *ChatBannedRights {
 	}).To_ChatBannedRights()
 }
 
-//func MakeBannedRights(bannedRights *ChatBannedRights) BannedRights {
-//	var (
-//		rights BannedRights = 0
-//	)
-//
-//	if bannedRights.GetViewMessages() {
-//		rights |= VIEW_MESSAGES
-//	}
-//	if bannedRights.GetSendMessages() {
-//		rights |= SEND_MESSAGES
-//	}
-//	if bannedRights.GetSendMedia() {
-//		rights |= SEND_MEDIA
-//	}
-//	if bannedRights.GetSendStickers() {
-//		rights |= SEND_STICKERS
-//	}
-//	if bannedRights.GetSendGifs() {
-//		rights |= SEND_GIFS
-//	}
-//	if bannedRights.GetSendGames() {
-//		rights |= SEND_GAMES
-//	}
-//	if bannedRights.GetSendInline() {
-//		rights |= SEND_INLINE
-//	}
-//	if bannedRights.GetEmbedLinks() {
-//		rights |= EMBED_LINKS
-//	}
-//	if bannedRights.GetSendPolls() {
-//		rights |= SEND_POLLS
-//	}
-//	if bannedRights.GetChangeInfo() {
-//		rights |= CHANGE_INFO2
-//	}
-//	if bannedRights.GetInviteUsers() {
-//		rights |= INVITE_USERS2
-//	}
-//	if bannedRights.GetPinMessages() {
-//		rights |= PIN_MESSAGE
-//	}
-//
-//	untilDate := bannedRights.GetUntilDate()
-//	if untilDate == 0 {
-//		untilDate = math.MaxInt32
-//	}
-//	rights = BannedRights(untilDate)<<32 | rights
-//
-//	return rights
-//}
-
 func (m BannedRights) ToChatBannedRights() *ChatBannedRights {
 	if m == 0 {
 		return nil
 	}
 
 	return MakeTLChatBannedRights(&ChatBannedRights{
-		ViewMessages: (m & VIEW_MESSAGES) != 0,
-		SendMessages: (m & SEND_MESSAGES) != 0,
-		SendMedia:    (m & SEND_MEDIA) != 0,
-		SendStickers: (m & SEND_STICKERS) != 0,
-		SendGifs:     (m & SEND_GIFS) != 0,
-		SendGames:    (m & SEND_GAMES) != 0,
-		SendInline:   (m & SEND_INLINE) != 0,
-		EmbedLinks:   (m & EMBED_LINKS) != 0,
-		SendPolls:    (m & SEND_POLLS) != 0,
-		ChangeInfo:   (m & CHANGE_INFO2) != 0,
-		InviteUsers:  (m & INVITE_USERS2) != 0,
-		PinMessages:  (m & PIN_MESSAGE) != 0,
+		ViewMessages: (m & BANNED_VIEW_MESSAGES) != 0,
+		SendMessages: (m & BANNED_SEND_MESSAGES) != 0,
+		SendMedia:    (m & BANNED_SEND_MEDIA) != 0,
+		SendStickers: (m & BANNED_SEND_STICKERS) != 0,
+		SendGifs:     (m & BANNED_SEND_GIFS) != 0,
+		SendGames:    (m & BANNED_SEND_GAMES) != 0,
+		SendInline:   (m & BANNED_SEND_INLINE) != 0,
+		EmbedLinks:   (m & BANNED_EMBED_LINKS) != 0,
+		SendPolls:    (m & BANNED_SEND_POLLS) != 0,
+		ChangeInfo:   (m & BANNED_CHANGE_INFO) != 0,
+		InviteUsers:  (m & BANNED_INVITE_USERS) != 0,
+		PinMessages:  (m & BANNED_PIN_MESSAGES) != 0,
 		UntilDate:    int32(m >> 32),
 	}).To_ChatBannedRights()
 }
-
-//func (m BannedRights) NoBanRights() bool {
-//	return m.Rights == 0 && m.UntilDate == math.MaxInt32
-//}
-//
-//func (m ChatBannedRightsHelper) IsKick() bool {
-//	return m.Rights&VIEW_MESSAGES != 0 && m.UntilDate == math.MaxInt32
-//}
-//
-//func (m ChatBannedRightsHelper) IsBan(date int32) bool {
-//	return m.Rights != 0 && date <= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) IsRestrict(date int32) bool {
-//	return !m.IsKick() && m.Rights != 0 && date <= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanViewMessages(date int32) bool {
-//	return m.Rights&VIEW_MESSAGES == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanSendMessages(date int32) bool {
-//	return m.Rights&SEND_MESSAGES == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanSendMedia(date int32) bool {
-//	return m.Rights&SEND_MEDIA == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanSendStickers(date int32) bool {
-//	return m.Rights&SEND_STICKERS == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanSendGifs(date int32) bool {
-//	return m.Rights&SEND_GIFS == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanSendGames(date int32) bool {
-//	return m.Rights&SEND_GAMES == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanSendInline(date int32) bool {
-//	return m.Rights&SEND_INLINE == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanEmbedLinks(date int32) bool {
-//	return m.Rights&EMBED_LINKS == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanSendPolls(date int32) bool {
-//	return m.Rights&SEND_POLLS == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanChangeInfo(date int32) bool {
-//	return m.Rights&CHANGE_INFO2 == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanInviteUsers(date int32) bool {
-//	return m.Rights&INVITE_USERS2 == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) CanPinMessage(date int32) bool {
-//	return m.Rights&PIN_MESSAGE == 0 || date >= m.UntilDate
-//}
-//
-//func (m ChatBannedRightsHelper) DisallowChannel() bool {
-//	// return m.CanPostMessages() || m.CanEditMessages()
-//	return false
-//}
-//
-//func FromChatBannedRights(bannedRights *TLChatBannedRights) (int32, int32) {
-//	var (
-//		rights    int32 = 0
-//		untilDate int32 = 0
-//	)
-//
-//	if bannedRights.GetViewMessages() {
-//		rights |= VIEW_MESSAGES
-//	}
-//	if bannedRights.GetSendMessages() {
-//		rights |= SEND_MESSAGES
-//	}
-//	if bannedRights.GetSendMedia() {
-//		rights |= SEND_MEDIA
-//	}
-//	if bannedRights.GetSendStickers() {
-//		rights |= SEND_STICKERS
-//	}
-//	if bannedRights.GetSendGifs() {
-//		rights |= SEND_GIFS
-//	}
-//	if bannedRights.GetSendGames() {
-//		rights |= SEND_GAMES
-//	}
-//	if bannedRights.GetSendInline() {
-//		rights |= SEND_INLINE
-//	}
-//	if bannedRights.GetEmbedLinks() {
-//		rights |= EMBED_LINKS
-//	}
-//	if bannedRights.GetSendPolls() {
-//		rights |= SEND_POLLS
-//	}
-//	if bannedRights.GetChangeInfo() {
-//		rights |= CHANGE_INFO2
-//	}
-//	if bannedRights.GetInviteUsers() {
-//		rights |= INVITE_USERS2
-//	}
-//	if bannedRights.GetPinMessages() {
-//		rights |= PIN_MESSAGE
-//	}
-//
-//	untilDate = bannedRights.GetUntilDate()
-//	if rights == 0 {
-//		untilDate = 0
-//	} else if untilDate == 0 {
-//		untilDate = math.MaxInt32
-//	}
-//
-//	return rights, untilDate
-//}
-//
-//func ToChatBannedRights(rights, untilDate int32) *ChatBannedRights {
-//	if rights == 0 && untilDate == 0 {
-//		return nil
-//	}
-//
-//	bannedRights := MakeTLChatBannedRights(nil)
-//
-//	if (rights & VIEW_MESSAGES) != 0 {
-//		bannedRights.SetViewMessages(true)
-//	}
-//	if (rights & SEND_MESSAGES) != 0 {
-//		bannedRights.SetSendMessages(true)
-//	}
-//	if (rights & SEND_MEDIA) != 0 {
-//		bannedRights.SetSendMedia(true)
-//	}
-//	if (rights & SEND_STICKERS) != 0 {
-//		bannedRights.SetSendStickers(true)
-//	}
-//	if (rights & SEND_GIFS) != 0 {
-//		bannedRights.SetSendGifs(true)
-//	}
-//	if (rights & SEND_GAMES) != 0 {
-//		bannedRights.SetSendGames(true)
-//	}
-//	if (rights & SEND_INLINE) != 0 {
-//		bannedRights.SetSendInline(true)
-//	}
-//	if (rights & EMBED_LINKS) != 0 {
-//		bannedRights.SetEmbedLinks(true)
-//	}
-//	if (rights & SEND_POLLS) != 0 {
-//		bannedRights.SetSendPolls(true)
-//	}
-//	if (rights & CHANGE_INFO2) != 0 {
-//		bannedRights.SetChangeInfo(true)
-//	}
-//	if (rights & INVITE_USERS2) != 0 {
-//		bannedRights.SetInviteUsers(true)
-//	}
-//	if (rights & PIN_MESSAGE) != 0 {
-//		bannedRights.SetPinMessages(true)
-//	}
-//
-//	bannedRights.SetUntilDate(untilDate)
-//	return bannedRights.To_ChatBannedRights()
-//}
 
 func (m *ChatBannedRights) hasRights() bool {
 	return m.ViewMessages ||
@@ -407,40 +182,40 @@ func (m *ChatBannedRights) ToBannedRights() BannedRights {
 	)
 
 	if m.GetViewMessages() {
-		rights |= VIEW_MESSAGES
+		rights |= BANNED_VIEW_MESSAGES
 	}
 	if m.GetSendMessages() {
-		rights |= SEND_MESSAGES
+		rights |= BANNED_SEND_MESSAGES
 	}
 	if m.GetSendMedia() {
-		rights |= SEND_MEDIA
+		rights |= BANNED_SEND_MEDIA
 	}
 	if m.GetSendStickers() {
-		rights |= SEND_STICKERS
+		rights |= BANNED_SEND_STICKERS
 	}
 	if m.GetSendGifs() {
-		rights |= SEND_GIFS
+		rights |= BANNED_SEND_GIFS
 	}
 	if m.GetSendGames() {
-		rights |= SEND_GAMES
+		rights |= BANNED_SEND_GAMES
 	}
 	if m.GetSendInline() {
-		rights |= SEND_INLINE
+		rights |= BANNED_SEND_INLINE
 	}
 	if m.GetEmbedLinks() {
-		rights |= EMBED_LINKS
+		rights |= BANNED_EMBED_LINKS
 	}
 	if m.GetSendPolls() {
-		rights |= SEND_POLLS
+		rights |= BANNED_SEND_POLLS
 	}
 	if m.GetChangeInfo() {
-		rights |= CHANGE_INFO2
+		rights |= BANNED_CHANGE_INFO
 	}
 	if m.GetInviteUsers() {
-		rights |= INVITE_USERS2
+		rights |= BANNED_INVITE_USERS
 	}
 	if m.GetPinMessages() {
-		rights |= PIN_MESSAGE
+		rights |= BANNED_PIN_MESSAGES
 	}
 
 	untilDate := m.GetUntilDate()
