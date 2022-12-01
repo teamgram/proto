@@ -1724,6 +1724,14 @@ var (
 
 	// ErrorRingtoneInvalidFormat RINGTONE_INVALID_FORMAT
 	ErrorRingtoneInvalidFormat = status.Error(ErrBadRequest, "RINGTONE_INVALID_FORMAT")
+
+	// ErrInviteRequestSent
+	// 400	INVITE_REQUEST_SENT	You have successfully requested to join this chat or channel.
+	ErrInviteRequestSent = status.Error(ErrBadRequest, "INVITE_REQUEST_SENT")
+
+	// ErrSearchWithLinkNotSupported
+	// 400	SEARCH_WITH_LINK_NOT_SUPPORTED	You cannot provide a search query and an invite link at the same time.
+	ErrSearchWithLinkNotSupported = status.Error(ErrBadRequest, "SEARCH_WITH_LINK_NOT_SUPPORTED")
 )
 
 // NewFilePartXMissing
