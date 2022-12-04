@@ -97,6 +97,10 @@ func (m *Message) FixData() *Message {
 		m.TtlPeriod = &types.Int32Value{Value: ttlPeriod}
 	}
 
+	if m.GetAction() != nil {
+		m.Action = m.Action.FixData()
+	}
+
 	return m
 }
 
