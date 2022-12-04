@@ -24,6 +24,16 @@ import (
 	"github.com/gogo/protobuf/types"
 )
 
+func (m *MessageAction) FixData() *MessageAction {
+	if m.GetPredicateName() != Predicate_messageActionTopicEdit {
+		if m.Title_STRING == "" {
+			m.Title_STRING = m.Title
+		}
+	}
+
+	return m
+}
+
 // MakeMessageActionEmpty
 // messageActionEmpty#b6aef7b0 = MessageAction;
 func MakeMessageActionEmpty() *MessageAction {
@@ -34,8 +44,9 @@ func MakeMessageActionEmpty() *MessageAction {
 // messageActionChatCreate#a6638b9a title:string users:Vector<int> = MessageAction;
 func MakeMessageActionChatCreate(title string, users []int64) *MessageAction {
 	return MakeTLMessageActionChatCreate(&MessageAction{
-		Title: title,
-		Users: users,
+		Title:        title,
+		Title_STRING: title,
+		Users:        users,
 	}).To_MessageAction()
 }
 
@@ -43,7 +54,8 @@ func MakeMessageActionChatCreate(title string, users []int64) *MessageAction {
 // messageActionChatEditTitle#b5a1ce5a title:string = MessageAction;
 func MakeMessageActionChatEditTitle(title string) *MessageAction {
 	return MakeTLMessageActionChatEditTitle(&MessageAction{
-		Title: title,
+		Title:        title,
+		Title_STRING: title,
 	}).To_MessageAction()
 }
 
@@ -89,7 +101,8 @@ func MakeMessageActionChatJoinByLink(inviterId int64) *MessageAction {
 // messageActionChannelCreate#95d2ac92 title:string = MessageAction;
 func MakeMessageActionChannelCreate(title string) *MessageAction {
 	return MakeTLMessageActionChannelCreate(&MessageAction{
-		Title: title,
+		Title:        title,
+		Title_STRING: title,
 	}).To_MessageAction()
 }
 
@@ -105,8 +118,9 @@ func MakeMessageActionChatMigrateTo(channelId int64) *MessageAction {
 // messageActionChannelMigrateFrom#b055eaee title:string chat_id:int = MessageAction;
 func MakeMessageActionChannelMigrateFrom(title string, chatId int64) *MessageAction {
 	return MakeTLMessageActionChannelMigrateFrom(&MessageAction{
-		Title:  title,
-		ChatId: chatId,
+		Title:        title,
+		Title_STRING: title,
+		ChatId:       chatId,
 	}).To_MessageAction()
 }
 
@@ -301,6 +315,26 @@ func MakeMessageActionGiftPremium(currency string, amount int64, months int32) *
 		Currency: currency,
 		Amount:   amount,
 		Months:   months,
+	}).To_MessageAction()
+}
+
+// MakeMessageActionTopicCreate
+// messageActionTopicCreate#d999256 flags:# title:string icon_color:int icon_emoji_id:flags.0?long = MessageAction;
+func MakeMessageActionTopicCreate(title string, iconColor int32, iconEmojiId int64) *MessageAction {
+	return MakeTLMessageActionTopicCreate(&MessageAction{
+		Title_STRING: title,
+		IconColor:    iconColor,
+		IconEmojiId:  MakeFlagsInt64(iconEmojiId),
+	}).To_MessageAction()
+}
+
+// MakeMessageActionTopicEdit
+// messageActionTopicEdit#b18a431c flags:# title:flags.0?string icon_emoji_id:flags.1?long closed:flags.2?Bool = MessageAction;
+func MakeMessageActionTopicEdit(title string, iconEmojiId int64, closed *Bool) *MessageAction {
+	return MakeTLMessageActionTopicEdit(&MessageAction{
+		Title_FLAGSTRING: MakeFlagsString(title),
+		IconEmojiId:      MakeFlagsInt64(iconEmojiId),
+		Closed:           closed,
 	}).To_MessageAction()
 }
 
