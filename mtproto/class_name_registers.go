@@ -17289,6 +17289,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		141: -1126886015, // bcd51581
 		140: -1126886015, // bcd51581
 		139: -1126886015, // bcd51581
+		0:   1339007259,  // 4fcfa11b
 
 	},
 	Predicate_auth_logOut: {
@@ -26089,6 +26090,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	353634673:   Predicate_account_updateVerified,                             // 0x15140971
 	-501253832:  Predicate_auth_toggleBan,                                     // 0xe21f7938
 	1511592262:  Predicate_biz_invokeBizDataRaw,                               // 0x5a191146
+	1339007259:  Predicate_auth_signIn,                                        // 4fcfa11b
 
 }
 
