@@ -244,6 +244,10 @@ func (m *IDListHelper) PickByMessage(message *Message) {
 	if message.GetAction() != nil {
 		m.PickByMessageAction(message.GetAction())
 	}
+
+	if message.GetMedia() != nil {
+		m.PickByMessageMedia(message.Media)
+	}
 }
 
 func (m *IDListHelper) PickByMessages(messages ...*Message) {
