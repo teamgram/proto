@@ -1651,6 +1651,7 @@ const (
 	Predicate_account_updateVerified                             = "account_updateVerified"
 	Predicate_auth_toggleBan                                     = "auth_toggleBan"
 	Predicate_biz_invokeBizDataRaw                               = "biz_invokeBizDataRaw"
+	Predicate_notify_sendNotifyData                              = "notify_sendNotifyData"
 )
 
 var clazzNameRegisters2 = map[string]map[int]int32{
@@ -24348,6 +24349,10 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		0: 1511592262, // 0x5a191146
 
 	},
+	Predicate_notify_sendNotifyData: {
+		0: 2071515468, // 0x7b78d14c
+
+	},
 }
 
 var clazzIdNameRegisters2 = map[int32]string{
@@ -26089,6 +26094,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	353634673:   Predicate_account_updateVerified,                             // 0x15140971
 	-501253832:  Predicate_auth_toggleBan,                                     // 0xe21f7938
 	1511592262:  Predicate_biz_invokeBizDataRaw,                               // 0x5a191146
+	2071515468:  Predicate_notify_sendNotifyData,                              // 0x7b78d14c
 
 }
 

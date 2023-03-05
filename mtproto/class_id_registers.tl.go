@@ -8724,6 +8724,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 1511592262,
 		}
 	},
+	2071515468: func() TLObject { // 0x7b78d14c
+		return &TLNotifySendNotifyData{
+			Constructor: 2071515468,
+		}
+	},
 }
 
 func NewTLObjectByClassID(classId int32) TLObject {
