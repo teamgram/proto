@@ -1644,6 +1644,7 @@ const (
 	Predicate_botData                                            = "botData"
 	Predicate_userData                                           = "userData"
 	Predicate_immutableUser                                      = "immutableUser"
+	Predicate_mutableUsers                                       = "mutableUsers"
 	Predicate_immutableChatParticipant                           = "immutableChatParticipant"
 	Predicate_immutableChat                                      = "immutableChat"
 	Predicate_mutableChat                                        = "mutableChat"
@@ -24328,6 +24329,10 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		0: 972235212, // 0x39f321cc
 
 	},
+	Predicate_mutableUsers: {
+		0: 917538818, // 0x36b08802
+
+	},
 	Predicate_immutableChatParticipant: {
 		0: 650553001, // 0x26c6a6a9
 
@@ -26121,6 +26126,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	23110840:    Predicate_botData,                                            // 0x160a4b8
 	478939154:   Predicate_userData,                                           // 0x1c8c0812
 	972235212:   Predicate_immutableUser,                                      // 0x39f321cc
+	917538818:   Predicate_mutableUsers,                                       // 0x36b08802
 	650553001:   Predicate_immutableChatParticipant,                           // 0x26c6a6a9
 	-1557334680: Predicate_immutableChat,                                      // 0xa32cf568
 	-34609042:   Predicate_mutableChat,                                        // 0xfdefe86e

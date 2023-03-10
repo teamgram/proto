@@ -1,5 +1,17 @@
-// Copyright (c) 2021-present,  Teamgram Studio (https://teamgram.io).
+// Copyright (c) 2023-present,  Teamgram Studio (https://teamgram.io).
 //  All rights reserved.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
 //
 // Author: teamgramio (teamgram.io@gmail.com)
 //
@@ -9,14 +21,6 @@ package mtproto
 import (
 	"github.com/gogo/protobuf/types"
 )
-
-//func (m *ImmutableUser) ResetSetContacts(contacts []*ContactData) {
-//	m.Contacts = contacts
-//}
-//
-//func (m *ImmutableUser) ResetSetPrivacyRules(rules []*PrivacyKeyRules) {
-//	m.KeysPrivacyRules = rules
-//}
 
 func (m *ImmutableUser) Id() int64 {
 	return m.User.Id
@@ -139,15 +143,7 @@ func (m *ImmutableUser) EmojiStatus() *EmojiStatus {
 }
 
 func (m *ImmutableUser) CheckContact(cId int64) (bool, bool) {
-	//i := sort.Search(len(m.Contacts), func(i int) bool {
-	//	return m.Contacts[i].ContactUserId >= cId
-	//})
-	//if i < len(m.Contacts) && m.Contacts[i].ContactUserId == cId {
-	//	return true, m.Contacts[i].MutualContact
-	//} else {
-	//	return false, false
-	//}
-
+	// TODO: sort.Search
 	for _, c := range m.Contacts {
 		if cId == c.ContactUserId {
 			return true, c.MutualContact
@@ -158,19 +154,31 @@ func (m *ImmutableUser) CheckContact(cId int64) (bool, bool) {
 }
 
 func (m *ImmutableUser) GetContactData(cId int64) *ContactData {
-	//// logx.Info("GetContactData: %d ==> %s", cId, m.DebugString())
-	//i2 := sort.Search(len(m.Contacts), func(i int) bool {
-	//	// logx.Info("GetContactData: %d ==> %v", cId, m.Contacts[i].ContactUserId)
-	//	return m.Contacts[i].ContactUserId >= cId
-	//})
-	//if i2 < len(m.Contacts) && m.Contacts[i2].ContactUserId == cId {
-	//	return m.Contacts[i2]
-	//} else {
-	//	return nil
-	//}
-
+	// TODO: sort.Search
 	for _, c := range m.Contacts {
 		if cId == c.ContactUserId {
+			return c
+		}
+	}
+
+	return nil
+}
+
+func (m *ImmutableUser) CheckReverseContact(cId int64) (bool, bool) {
+	// TODO: sort.Search
+	for _, c := range m.ReverseContacts {
+		if cId == c.UserId {
+			return true, c.MutualContact
+		}
+	}
+
+	return false, false
+}
+
+func (m *ImmutableUser) GetReverseContactData(cId int64) *ContactData {
+	// TODO: sort.Search
+	for _, c := range m.ReverseContacts {
+		if cId == c.UserId {
 			return c
 		}
 	}
@@ -201,7 +209,6 @@ func (m *ImmutableUser) CheckPrivacy(keyType int, id int64) bool {
 	isContact, _ := m.CheckContact(id)
 	allow := privacyIsAllow(rules.Rules, id, isContact)
 
-	// logx.Infof("CheckPrivacy(%d, %s, %d): %v", m.Id(), rules.DebugString(), id, allow)
 	return allow
 }
 
@@ -340,4 +347,71 @@ func (m *ImmutableUser) ToDeletedUser() *User {
 		LangCode:             nil,
 		EmojiStatus:          nil,
 	}).To_User()
+}
+
+func (m *ImmutableUser) ToUser(selfUserId int64) *User {
+	if m.Deleted() {
+		return m.ToDeletedUser()
+	}
+
+	if m.Id() == selfUserId {
+		return m.ToSelfUser()
+	}
+
+	user := MakeTLUser(&User{
+		Self:                 false,
+		Contact:              false,
+		MutualContact:        false,
+		Deleted:              false,
+		Bot:                  m.IsBot(),
+		BotChatHistory:       m.BotChatHistory(),
+		BotNochats:           m.BotNochats(),
+		Verified:             m.Verified(),
+		Restricted:           m.Restricted(),
+		Min:                  false,
+		BotInlineGeo:         m.BotInlineGeo(),
+		Support:              m.Support(),
+		Scam:                 m.Scam(),
+		ApplyMinPhoto:        false,
+		Fake:                 m.Fake(),
+		BotAttachMenu:        m.BotAttachMenu(),
+		Premium:              m.Premium(),
+		Id:                   m.Id(),
+		AccessHash:           MakeFlagsInt64(m.AccessHash()),
+		FirstName:            MakeFlagsString(m.FirstName()),
+		LastName:             MakeFlagsString(m.LastName()),
+		Username:             MakeFlagsString(m.Username()),
+		Phone:                nil,
+		Photo:                nil,
+		Status:               MakeUserStatus(m.LastSeenAt, true),
+		BotInfoVersion:       MakeFlagsInt32(m.BotInfoVersion()),
+		RestrictionReason:    m.RestrictionReason(),
+		BotInlinePlaceholder: m.BotInlinePlaceholder(),
+		LangCode:             nil,
+		EmojiStatus:          m.EmojiStatus(),
+	}).To_User()
+
+	reverseContact := m.GetReverseContactData(selfUserId)
+	if reverseContact != nil {
+		user.Contact = true
+		user.MutualContact = reverseContact.MutualContact
+		user.FirstName = reverseContact.FirstName
+		user.LastName = reverseContact.LastName
+	}
+
+	// phone
+	if m.CheckPrivacy(PHONE_NUMBER, selfUserId) {
+		user.Phone = MakeFlagsString(m.Phone())
+	}
+
+	// photo
+	if m.CheckPrivacy(PROFILE_PHOTO, selfUserId) {
+		user.Photo = m.ProfilePhoto()
+	}
+
+	// status
+	allowTimestamp := m.CheckPrivacy(STATUS_TIMESTAMP, selfUserId)
+	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
+
+	return user
 }

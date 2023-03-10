@@ -3697,6 +3697,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -34609042
 		return o
 	},
+	917538818: func() TLObject { // 0x36b08802
+		o := MakeTLMutableUsers(nil)
+		o.Data2.Constructor = 917538818
+		return o
+	},
 	-1910892683: func() TLObject { // 0x8e1a1775
 		o := MakeTLNearestDc(nil)
 		o.Data2.Constructor = -1910892683
