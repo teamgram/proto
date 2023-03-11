@@ -31,14 +31,11 @@ const (
 )
 
 const (
-	ChatMemberStateNormal   = 0 // normal
-	ChatMemberStateLeft     = 1 // left
-	ChatMemberStateKicked   = 2 // kicked
-	ChatMemberStateMigrated = 3 // migrated
-
-	//ChatMemberStateAdmin    = 1 // normal
-	//ChatMemberStateCreator  = 2 // normal
-	//ChatMemberStateBanned   = 3 // kicked
+	ChatMemberStateNormal      = 0 // normal
+	ChatMemberStateLeft        = 1 // left
+	ChatMemberStateKicked      = 2 // kicked
+	ChatMemberStateMigrated    = 3 // migrated
+	ChatMemberStateChatDeleted = 4 // deleted
 )
 
 var (

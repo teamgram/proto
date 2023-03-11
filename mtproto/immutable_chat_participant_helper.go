@@ -34,6 +34,10 @@ func (m *ImmutableChatParticipant) IsChatMemberStateMigrated() bool {
 	return m.State == ChatMemberStateMigrated
 }
 
+func (m *ImmutableChatParticipant) IsChatMemberStateChatDeleted() bool {
+	return m.State == ChatMemberStateChatDeleted
+}
+
 func (m *ImmutableChatParticipant) CanViewMessages() bool {
 	if m.IsChatMemberCreator() || m.IsChatMemberAdmin() {
 		return true
