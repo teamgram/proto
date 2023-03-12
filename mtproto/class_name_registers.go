@@ -2,7 +2,7 @@
  * WARNING! All changes made in this file will be lost!
  * Created from 'scheme.tl' by 'mtprotoc'
  *
- * Copyright (c) 2022-present,  Teamgram Authors.
+ * Copyright (c) 2023-present,  Teamgram Authors.
  *  All rights reserved.
  *
  * Author: Benqi (wubenqi@gmail.com)
@@ -1638,6 +1638,8 @@ const (
 	Predicate_updateBizDataRaw                                   = "updateBizDataRaw"
 	Predicate_peerUtil                                           = "peerUtil"
 	Predicate_messageBox                                         = "messageBox"
+	Predicate_messageBoxList                                     = "messageBoxList"
+	Predicate_messageBoxListSlice                                = "messageBoxListSlice"
 	Predicate_updateList                                         = "updateList"
 	Predicate_privacyKeyRules                                    = "privacyKeyRules"
 	Predicate_contactData                                        = "contactData"
@@ -24305,6 +24307,14 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		0: 964662120, // 0x397f9368
 
 	},
+	Predicate_messageBoxList: {
+		0: 1393091297, // 0x5308e2e1
+
+	},
+	Predicate_messageBoxListSlice: {
+		0: -2136871889, // 0x80a1ec2f
+
+	},
 	Predicate_updateList: {
 		0: -1877696350, // 0x9014a0a2
 
@@ -26120,6 +26130,8 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-2083620338: Predicate_updateBizDataRaw,                                   // 0x83ce7a0e
 	602876837:   Predicate_peerUtil,                                           // 0x23ef2ba5
 	964662120:   Predicate_messageBox,                                         // 0x397f9368
+	1393091297:  Predicate_messageBoxList,                                     // 0x5308e2e1
+	-2136871889: Predicate_messageBoxListSlice,                                // 0x80a1ec2f
 	-1877696350: Predicate_updateList,                                         // 0x9014a0a2
 	-1810715178: Predicate_privacyKeyRules,                                    // 0x9412add6
 	722018346:   Predicate_contactData,                                        // 0x2b09202a
