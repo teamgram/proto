@@ -203,9 +203,13 @@ func MakeMessageActionCustomAction(message string) *MessageAction {
 
 // MakeMessageActionBotAllowed
 // messageActionBotAllowed#abe9affe domain:string = MessageAction;
+// messageActionBotAllowed#c516d679 flags:# attach_menu:flags.1?true domain:flags.0?string app:flags.2?BotApp = MessageAction;
 func MakeMessageActionBotAllowed(domain string) *MessageAction {
 	return MakeTLMessageActionBotAllowed(&MessageAction{
-		Domain: domain,
+		AttachMenu:        false,
+		Domain_STRING:     domain,
+		Domain_FLAGSTRING: MakeFlagsString(domain),
+		App:               nil,
 	}).To_MessageAction()
 }
 
