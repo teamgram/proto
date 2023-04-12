@@ -260,6 +260,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		user.MutualContact = contact.MutualContact
 		user.FirstName = contact.FirstName
 		user.LastName = contact.LastName
+		user.Phone = contact.Phone
 	}
 
 	// phone
