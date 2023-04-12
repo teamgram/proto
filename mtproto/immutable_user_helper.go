@@ -398,6 +398,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		user.MutualContact = reverseContact.MutualContact
 		user.FirstName = reverseContact.FirstName
 		user.LastName = reverseContact.LastName
+		user.Phone = reverseContact.LastName
 	}
 
 	// phone
