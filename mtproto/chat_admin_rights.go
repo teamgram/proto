@@ -18,19 +18,6 @@
 
 package mtproto
 
-// chatAdminRights#5fb224d5 flags:#
-//	change_info:flags.0?true
-//	post_messages:flags.1?true
-//	edit_messages:flags.2?true
-//	delete_messages:flags.3?true
-//	ban_users:flags.4?true
-//	invite_users:flags.5?true
-//	pin_messages:flags.7?true
-//	add_admins:flags.9?true
-//	anonymous:flags.10?true
-//	manage_call:flags.11?true
-//	other:flags.12?true = ChatAdminRights;
-//
 const (
 	ADMIN_CHANGE_INFO     int32 = 1 << 0
 	ADMIN_POST_MESSAGES   int32 = 1 << 1
@@ -43,6 +30,7 @@ const (
 	ADMIN_ANONYMOUS       int32 = 1 << 10
 	ADMIN_MANAGE_CALL     int32 = 1 << 11
 	ADMIN_OTHER           int32 = 1 << 12
+	MANAGE_TOPICS         int32 = 1 << 13
 )
 
 type AdminRights int32
@@ -83,6 +71,9 @@ func MakeChatAdminRightsHelper(adminRights *ChatAdminRights) AdminRights {
 	if adminRights.GetOther() {
 		rights |= ADMIN_OTHER
 	}
+	if adminRights.GetManageTopics() {
+		rights |= MANAGE_TOPICS
+	}
 
 	return AdminRights(rights)
 }
@@ -103,6 +94,7 @@ func (m AdminRights) ToChatAdminRights() *ChatAdminRights {
 			Anonymous:      int32(m)&ADMIN_ANONYMOUS != 0,
 			ManageCall:     int32(m)&ADMIN_MANAGE_CALL != 0,
 			Other:          int32(m)&ADMIN_OTHER != 0,
+			ManageTopics:   int32(m)&MANAGE_TOPICS != 0,
 		}).To_ChatAdminRights()
 	}
 }
@@ -155,6 +147,10 @@ func (m AdminRights) CanOther() bool {
 	return int32(m)&ADMIN_OTHER != 0
 }
 
+func (m AdminRights) CanManageTopics() bool {
+	return int32(m)&MANAGE_TOPICS != 0
+}
+
 // DisallowMegagroup
 //////////////////////////////////////////////////////////////////////////////////////////
 func (m AdminRights) DisallowMegagroup() bool {
@@ -178,6 +174,7 @@ func MakeDefaultChatAdminRights() *ChatAdminRights {
 		Anonymous:      false,
 		ManageCall:     true,
 		Other:          true,
+		ManageTopics:   false,
 	}).To_ChatAdminRights()
 }
 
@@ -227,6 +224,10 @@ func (m *ChatAdminRights) CanManageCall() bool {
 
 func (m *ChatAdminRights) CanOther() bool {
 	return m.GetOther()
+}
+
+func (m *ChatAdminRights) CanManageTopics() bool {
+	return m.GetManageTopics()
 }
 
 // DisallowMegagroup
