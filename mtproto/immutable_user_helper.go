@@ -254,6 +254,10 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		EmojiStatus:          m.EmojiStatus(),
 	}).To_User()
 
+	if m.IsBot() {
+		return user
+	}
+
 	contact := selfUser.GetContactData(m.Id())
 	if contact != nil {
 		user.Contact = true
