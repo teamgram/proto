@@ -278,7 +278,10 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 	}
 
 	// status
-	allowTimestamp := m.CheckPrivacy(STATUS_TIMESTAMP, selfUser.Id())
+	allowTimestamp := selfUser.CheckPrivacy(STATUS_TIMESTAMP, m.Id())
+	if allowTimestamp {
+		allowTimestamp = m.CheckPrivacy(STATUS_TIMESTAMP, selfUser.Id())
+	}
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
 
 	return user
@@ -388,13 +391,17 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		Username:             MakeFlagsString(m.Username()),
 		Phone:                nil,
 		Photo:                nil,
-		Status:               MakeUserStatus(m.LastSeenAt, true),
+		Status:               MakeUserStatus(m.LastSeenAt, false),
 		BotInfoVersion:       MakeFlagsInt32(m.BotInfoVersion()),
 		RestrictionReason:    m.RestrictionReason(),
 		BotInlinePlaceholder: m.BotInlinePlaceholder(),
 		LangCode:             nil,
 		EmojiStatus:          m.EmojiStatus(),
 	}).To_User()
+
+	if m.IsBot() {
+		return user
+	}
 
 	reverseContact := m.GetReverseContactData(selfUserId)
 	if reverseContact != nil {
@@ -415,6 +422,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		user.Photo = m.ProfilePhoto()
 	}
 
+	// TODO: check if we need to check privacy for status
 	// status
 	allowTimestamp := m.CheckPrivacy(STATUS_TIMESTAMP, selfUserId)
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
