@@ -1732,6 +1732,10 @@ var (
 	// ErrSearchWithLinkNotSupported
 	// 400	SEARCH_WITH_LINK_NOT_SUPPORTED	You cannot provide a search query and an invite link at the same time.
 	ErrSearchWithLinkNotSupported = status.Error(ErrBadRequest, "SEARCH_WITH_LINK_NOT_SUPPORTED")
+
+	// ErrTimeTooBig
+	// 400	TIME_TOO_BIG
+	ErrTimeTooBig = status.Error(ErrBadRequest, "TIME_TOO_BIG")
 )
 
 // NewFilePartXMissing
