@@ -93,73 +93,50 @@ func (e *EncodeBuf) Bytes(s []byte) {
 	e.buf = append(e.buf, s...)
 }
 
-func (e *EncodeBuf) VectorInt(v []int32) {
-	x := make([]byte, 4+4+len(v)*4)
+func (e *EncodeBuf) VectorInt(vList []int32) {
+	x := make([]byte, 4+4+len(vList)*4)
 	var c = int32(CRC32_vector)
 	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(v)))
+	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
 	i := 8
-	for _, v := range v {
+	for _, v := range vList {
 		binary.LittleEndian.PutUint32(x[i:], uint32(v))
 		i += 4
 	}
 	e.buf = append(e.buf, x...)
 }
 
-func (e *EncodeBuf) VectorLong(v []int64) {
-	x := make([]byte, 4+4+len(v)*8)
+func (e *EncodeBuf) VectorLong(vList []int64) {
+	x := make([]byte, 4+4+len(vList)*8)
 	var c = int32(CRC32_vector)
 	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(v)))
+	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
 	i := 8
-	for _, v := range v {
+	for _, v := range vList {
 		binary.LittleEndian.PutUint64(x[i:], uint64(v))
 		i += 8
 	}
 	e.buf = append(e.buf, x...)
 }
 
-func (e *EncodeBuf) VectorString(v []string) {
+func (e *EncodeBuf) VectorString(vList []string) {
 	x := make([]byte, 8)
 	var c = int32(CRC32_vector)
 	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(v)))
+	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
 	e.buf = append(e.buf, x...)
-	for _, v := range v {
+	for _, v := range vList {
 		e.String(v)
 	}
 }
 
-func (e *EncodeBuf) VectorBytes(v [][]byte) {
+func (e *EncodeBuf) VectorBytes(vList [][]byte) {
 	x := make([]byte, 8)
 	var c = int32(CRC32_vector)
 	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(v)))
+	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
 	e.buf = append(e.buf, x...)
-	for _, v := range v {
+	for _, v := range vList {
 		e.StringBytes(v)
 	}
 }
-
-func (e *EncodeBuf) VectorObject(v []TLObject, layer int32) {
-	x := make([]byte, 8)
-	binary.LittleEndian.PutUint32(x, uint32(CRC32_vector))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(v)))
-	e.buf = append(e.buf, x...)
-	for _, v := range v {
-		// b, _ := v.Encode(layer)
-		e.buf = append(e.buf, v.Encode(layer)...)
-	}
-}
-
-/*
-func (e *EncodeBuf) Vector(v []TLObject) {
-	x := make([]byte, 8)
-	binary.LittleEndian.PutUint32(x, CRC32_vector)
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(v)))
-	e.buf = append(e.buf, x...)
-	for _, v := range v {
-		e.buf = append(e.buf, v.encode()...)
-	}
-}
-*/
