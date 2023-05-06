@@ -27,7 +27,7 @@ const (
 )
 
 type TLObject interface {
-	Encode(layer int32) []byte
+	Encode(x *EncodeBuf, layer int32) error
 	Decode(dBuf *DecodeBuf) error
 	String() string
 	DebugString() string

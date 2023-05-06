@@ -76,13 +76,11 @@ func (m *UnencryptedMessage) MessageType() int {
 	return UNENCRYPTED_MESSAGE
 }
 
-func (m *UnencryptedMessage) Encode(layer int32) []byte {
-	buf, _ := m.encode(layer)
-	return buf
+func (m *UnencryptedMessage) Encode(x *EncodeBuf, layer int32) error {
+	return m.encode(x, layer)
 }
 
-func (m *UnencryptedMessage) encode(layer int32) ([]byte, error) {
-	x := NewEncodeBuf(512)
+func (m *UnencryptedMessage) encode(x *EncodeBuf, layer int32) error {
 	x.Long(0)
 	m.MessageId = GenerateMessageId()
 	x.Long(m.MessageId)
@@ -90,11 +88,16 @@ func (m *UnencryptedMessage) encode(layer int32) ([]byte, error) {
 	if m.Object == nil {
 		x.Int(0)
 	} else {
-		b := m.Object.Encode(layer)
-		x.Int(int32(len(b)))
-		x.Bytes(b)
+		offset := x.GetOffset()
+		x.Int(0)
+		err := m.Object.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+		x.IntOffset(offset, int32(x.GetOffset()-offset-4))
 	}
-	return x.buf, nil
+
+	return nil
 }
 
 func (m *UnencryptedMessage) Decode(b []byte) error {
@@ -165,46 +168,44 @@ func (m *EncryptedMessage2) MessageType() int {
 	return ENCRYPTED_MESSAGE
 }
 
-func (m *EncryptedMessage2) Encode(authKeyId int64, authKey []byte) ([]byte, error) {
-	buf, err := m.encode(authKeyId, authKey)
-	return buf, err
+func (m *EncryptedMessage2) Encode(x *EncodeBuf, authKeyId int64, authKey []byte) error {
+	return m.encode(x, authKeyId, authKey)
 }
 
-func (m *EncryptedMessage2) encode(authKeyId int64, authKey []byte) ([]byte, error) {
-	objData := m.Object.Encode(0)
-	var additionalSize = (32 + len(objData)) % 16
+func (m *EncryptedMessage2) encode(x *EncodeBuf, authKeyId int64, authKey []byte) error {
+	x2 := NewEncodeBuf(512)
+
+	x2.Long(m.Salt)
+	x2.Long(m.SessionId)
+	if m.MessageId == 0 {
+		m.MessageId = GenerateMessageId()
+	}
+	x2.Long(m.MessageId)
+	x2.Int(m.SeqNo)
+	offset := x2.GetOffset()
+	x2.Int(0)
+	m.Object.Encode(x2, 0)
+	//var additionalSize = (32 + len(objData)) % 16
+	szObjLen := x2.GetOffset() - offset - 4
+	x2.IntOffset(offset, int32(szObjLen))
+
+	// additionalSize
+	additionalSize := (32 + szObjLen) % 16
 	if additionalSize != 0 {
 		additionalSize = 16 - additionalSize
 	}
 	if MTPROTO_VERSION == 2 && additionalSize < 12 {
 		additionalSize += 16
 	}
+	x2.Bytes(crypto.GenerateNonce(additionalSize))
 
-	x := NewEncodeBuf(32 + len(objData) + additionalSize)
-	// x.Long(authKeyId)
-	// msgKey := make([]byte, 16)
-	// x.Bytes(msgKey)
-	x.Long(m.Salt)
-	x.Long(m.SessionId)
-	if m.MessageId == 0 {
-		m.MessageId = GenerateMessageId()
-	}
-	x.Long(m.MessageId)
-	x.Int(m.SeqNo)
-	x.Int(int32(len(objData)))
-	x.Bytes(objData)
-	x.Bytes(crypto.GenerateNonce(additionalSize))
+	// encryptedData
+	encryptedData, _ := m.encrypt(authKey, x2.GetBuf(), szObjLen)
+	x.Long(authKeyId)
+	x.Bytes(m.msgKey)
+	x.Bytes(encryptedData)
 
-	// log.Infof("Encode object: ", m.Object)
-
-	encryptedData, _ := m.encrypt(authKey, x.buf, len(objData))
-	x2 := NewEncodeBuf(56 + len(objData) + additionalSize)
-	x2.Long(authKeyId)
-	x2.Bytes(m.msgKey)
-	x2.Bytes(encryptedData)
-
-	// log.Info(x2.buf)
-	return x2.buf, nil
+	return nil
 }
 
 func (m *EncryptedMessage2) Decode(authKeyId int64, authKey, b []byte) error {

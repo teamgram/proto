@@ -47,14 +47,13 @@ func (m *TLMessageRawData) String() string {
 		m.ClassId)
 }
 
-func (m *TLMessageRawData) Encode(layer int32) []byte {
-	x := NewEncodeBuf(512)
-	// x.Int(int32(CRC32_message2))
+func (m *TLMessageRawData) Encode(x *EncodeBuf, layer int32) error {
 	x.Long(m.MsgId)
 	x.Int(m.Seqno)
 	x.Int(m.Bytes)
 	x.Bytes(m.Body)
-	return x.buf
+
+	return nil
 }
 
 func (m *TLMessageRawData) Decode(dBuf *DecodeBuf) error {
@@ -100,15 +99,14 @@ func (m *TLMsgRawDataContainer) String() string {
 	return "{msg_container#73f1f8dc}"
 }
 
-func (m *TLMsgRawDataContainer) Encode(layer int32) []byte {
-	x := NewEncodeBuf(512)
+func (m *TLMsgRawDataContainer) Encode(x *EncodeBuf, layer int32) error {
 	x.Int(int32(CRC32_msg_container))
 
 	x.Int(int32(len(m.Messages)))
-	for _, m := range m.Messages {
-		x.Bytes(m.Encode(layer))
+	for _, v := range m.Messages {
+		v.Encode(x, layer)
 	}
-	return x.buf
+	return nil
 }
 
 func (m *TLMsgRawDataContainer) Decode(dbuf *DecodeBuf) error {
@@ -147,17 +145,15 @@ func (m *TLMessage2) String() string {
 		m.Object)
 }
 
-func (m *TLMessage2) Encode(layer int32) []byte {
-	oBuf := m.Object.Encode(layer)
-	m.Bytes = int32(len(oBuf))
-
-	x := NewEncodeBuf(16 + len(oBuf))
+func (m *TLMessage2) Encode(x *EncodeBuf, layer int32) error {
 	x.Long(m.MsgId)
 	x.Int(m.Seqno)
+	offset := x.GetOffset()
 	x.Int(m.Bytes)
-	x.Bytes(oBuf)
+	m.Object.Encode(x, layer)
+	x.IntOffset(offset, int32(x.GetOffset()-offset-4))
 
-	return x.buf
+	return nil
 }
 
 func (m *TLMessage2) Decode(dBuf *DecodeBuf) error {
@@ -198,15 +194,15 @@ func (m *TLMsgContainer) String() string {
 	return "{msg_container#73f1f8dc}"
 }
 
-func (m *TLMsgContainer) Encode(layer int32) []byte {
-	x := NewEncodeBuf(512)
+func (m *TLMsgContainer) Encode(x *EncodeBuf, layer int32) error {
+	// x := NewEncodeBuf(512)
 	x.Int(int32(CRC32_msg_container))
 
 	x.Int(int32(len(m.Messages)))
-	for _, m := range m.Messages {
-		x.Bytes(m.Encode(layer))
+	for _, v := range m.Messages {
+		v.Encode(x, layer)
 	}
-	return x.buf
+	return nil
 }
 
 func (m *TLMsgContainer) Decode(dbuf *DecodeBuf) error {
@@ -239,11 +235,10 @@ func (m *TLMsgCopy) String() string {
 	return "{msg_copy#e06046b2}"
 }
 
-func (m *TLMsgCopy) Encode(layer int32) []byte {
-	x := NewEncodeBuf(512)
+func (m *TLMsgCopy) Encode(x *EncodeBuf, layer int32) error {
 	x.Int(int32(CRC32_msg_copy))
-	x.Bytes(m.OrigMessage.Encode(layer))
-	return x.buf
+	m.OrigMessage.Encode(x, layer)
+	return nil
 }
 
 func (m *TLMsgCopy) Decode(dbuf *DecodeBuf) error {
@@ -268,9 +263,9 @@ func (m *TLGzipPacked) String() string {
 	return "{gzip_packed#3072cfa1}"
 }
 
-func (m *TLGzipPacked) Encode(layer int32) []byte {
+func (m *TLGzipPacked) Encode(x *EncodeBuf, layer int32) error {
 	if len(m.PackedData) == 0 {
-		return m.PackedData
+		return nil
 	}
 
 	var (
@@ -285,17 +280,18 @@ func (m *TLGzipPacked) Encode(layer int32) []byte {
 
 	if err != nil {
 		// log.Errorf("gzip write: %v", err)
-		return m.PackedData
+		x.Bytes(m.PackedData)
+		return nil
 	}
 	if clErr != nil {
 		// log.Errorf("gzip write: %v", err)
-		return m.PackedData
+		x.Bytes(m.PackedData)
+		return nil
 	}
 
-	x := NewEncodeBuf(512)
 	x.Int(int32(CRC32_gzip_packed))
 	x.StringBytes(b.Bytes())
-	return x.buf
+	return nil
 }
 
 func (m *TLGzipPacked) Decode(dbuf *DecodeBuf) error {
@@ -352,25 +348,34 @@ func (m *TLRpcResult) String() string {
 	return "{rpc_result#f35c6d01: req_msg_id:" + string(m.ReqMsgId) + "}"
 }
 
-func (m *TLRpcResult) Encode(layer int32) []byte {
-	x := NewEncodeBuf(512)
+func (m *TLRpcResult) Encode(x *EncodeBuf, layer int32) error {
 	x.Int(int32(CRC32_rpc_result))
 	x.Long(m.ReqMsgId)
-	rawBody := m.Result.Encode(layer)
-	if len(rawBody) > 256 {
+
+	x2 := NewEncodeBuf(512)
+	m.Result.Encode(x2, layer)
+	rawBody := x2.GetBuf()
+
+	if x2.GetOffset() > 256 {
 		switch m.Result.(type) {
 		case *Upload_WebFile:
+			x.Bytes(rawBody)
 		case *Upload_CdnFile:
+			x.Bytes(rawBody)
 		case *Upload_File:
+			x.Bytes(rawBody)
 		default:
 			gzipPacked := &TLGzipPacked{
 				PackedData: rawBody,
 			}
-			rawBody = gzipPacked.Encode(layer)
+			gzipPacked.Encode(x, layer)
 		}
+	} else {
+		x.Bytes(rawBody)
 	}
-	x.Bytes(rawBody)
-	return x.buf
+
+	return nil
+
 }
 
 func (m *TLRpcResult) Decode(dbuf *DecodeBuf) error {
