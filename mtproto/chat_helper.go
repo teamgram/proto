@@ -22,6 +22,15 @@ import (
 	"time"
 )
 
+//const (
+//	ChatMemberOwner         = "creator"
+//	ChatMemberAdministrator = "administrator"
+//	ChatMemberMember        = "member"
+//	ChatMemberRestricted    = "restricted"
+//	ChatMemberLeft          = "left"
+//	ChatMemberBanned        = "kicked"
+//)
+
 const (
 	ChatMemberNormal  = 0
 	ChatMemberCreator = 1
@@ -36,11 +45,6 @@ const (
 	ChatMemberStateKicked      = 2 // kicked
 	ChatMemberStateMigrated    = 3 // migrated
 	ChatMemberStateChatDeleted = 4 // deleted
-)
-
-var (
-// Cache
-// ExportedChatInviteEmpty = mtproto.MakeTLChatInviteEmpty(&mtproto.ExportedChatInvite{}).To_ExportedChatInvite()
 )
 
 func SplitChatAndChannelIdList(idList []int64) (chatIdList, channelIdList []int64) {
