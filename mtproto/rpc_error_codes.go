@@ -1856,7 +1856,6 @@ var (
 	// | 400 | ENCRYPTION_ID_INVALID | The provided secret chat ID is invalid. |
 	ErrEncryptionIdInvalid = status.Error(400, "ENCRYPTION_ID_INVALID")
 
-	// | 400 | LANG_CODE_INVALID | The specified language code is invalid. |
 	// ErrOptionInvalid
 	// | 400 | OPTION_INVALID | Invalid option selected. |
 	ErrOptionInvalid = status.Error(400, "OPTION_INVALID")
