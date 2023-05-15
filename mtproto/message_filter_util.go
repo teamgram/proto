@@ -42,7 +42,7 @@ const (
 	MEDIA_PHOTOS_ONLY = 7  // Photo -> inputMessagesFilterPhotos
 	MEDIA_VIDEOS_ONLY = 8  // Video -> inputMessagesFilterVideo
 	//MEDIA_VOICE_FILE = 9  // VoiceFile -> inputMessagesFilterVoice
-	//MEDIA_CHAT_PHOTO = 10 // ChatPhoto -> inputMessagesFilterChatPhotos
+	MEDIA_CHAT_PHOTO = 10 // ChatPhoto -> inputMessagesFilterChatPhotos
 	//MEDIA_ROUND_FILE = 11 // RoundFile ->inputMessagesFilterRoundVideo,
 	//MEDIA_PINNED     = 12 // Pinned -> inputMessagesFilterPinned
 )
@@ -57,6 +57,8 @@ func GetMediaType(message *Message) int32 {
 		switch message.GetAction().GetPredicateName() {
 		case Predicate_messageActionPhoneCall:
 			return MEDIA_PHONE_CALL
+		case Predicate_messageActionChatEditPhoto:
+			return MEDIA_CHAT_PHOTO
 		}
 	case Predicate_message:
 		switch message.GetMedia().GetPredicateName() {
@@ -168,6 +170,8 @@ func GetMessagesFilterType(msg *Message) MessagesFilterType {
 		switch action.PredicateName {
 		case Predicate_messageActionPhoneCall:
 			r = FilterPhoneCalls
+		case Predicate_messageActionChatEditPhoto:
+			r = FilterChatPhotos
 		}
 	}
 	return r
