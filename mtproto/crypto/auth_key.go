@@ -77,7 +77,7 @@ func NewAuthKey(keyId int64, keyData []byte) *AuthKey {
 func CreateAuthKey() *AuthKey {
 	key := new(AuthKey)
 
-	key.authKey = GenerateNonce(255)
+	key.authKey = GenerateNonce(256)
 	key.authKeyId = calcAuthKeyId(key.authKey)
 	key.side = serverSide
 
