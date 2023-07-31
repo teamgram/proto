@@ -239,10 +239,15 @@ func GetDocumentAttribute(attributes []*DocumentAttribute, name string) (attribu
 	return
 }
 
+// GetVideoDuration TODO: fixed
 func GetVideoDuration(attributes []*DocumentAttribute) int32 {
 	for _, a := range attributes {
 		if a.PredicateName == Predicate_documentAttributeVideo {
-			return a.Duration
+			if a.Duration_INT32 != 0 {
+				return a.Duration_INT32
+			} else {
+				return int32(a.Duration_FLOAT64)
+			}
 		}
 	}
 	return 0
@@ -251,7 +256,11 @@ func GetVideoDuration(attributes []*DocumentAttribute) int32 {
 func GetAudioDuration(attributes []*DocumentAttribute) int32 {
 	for _, a := range attributes {
 		if a.PredicateName == Predicate_documentAttributeAudio {
-			return a.Duration
+			if a.Duration_INT32 != 0 {
+				return a.Duration_INT32
+			} else {
+				return int32(a.Duration_FLOAT64)
+			}
 		}
 	}
 	return 0
