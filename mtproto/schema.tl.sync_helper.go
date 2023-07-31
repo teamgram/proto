@@ -38,11 +38,50 @@ func (m *Document) GetFixedSize() int64 {
 }
 
 func (m *Document) FixData() *Document {
+	v := m.GetFixedSize()
+
+	if m.Size2 == 0 {
+		m.Size2 = v
+	}
 	if m.Size2_INT64 == 0 {
-		m.Size2_INT64 = m.GetFixedSize()
+		m.Size2_INT64 = v
 	}
 	if m.Size2_INT32 == 0 {
-		m.Size2_INT32 = int32(m.Size2_INT64)
+		m.Size2_INT32 = int32(v)
+	}
+
+	for i := 0; i < len(m.Attributes); i++ {
+		m.Attributes[i] = m.Attributes[i].FixData()
+	}
+
+	return m
+}
+
+func (m *DocumentAttribute) GetFixedDuration() float64 {
+	if m.Duration_FLOAT64 != 0 {
+		return m.Duration_FLOAT64
+	}
+	if m.Duration_INT32 != 0 {
+		return float64(m.Duration_INT32)
+	}
+	if m.Duration != 0 {
+		return m.Duration
+	}
+
+	return 0
+}
+
+func (m *DocumentAttribute) FixData() *DocumentAttribute {
+	v := m.GetFixedDuration()
+
+	if m.Duration == 0 {
+		m.Duration = v
+	}
+	if m.Duration_INT32 == 0 {
+		m.Duration_INT32 = int32(v)
+	}
+	if m.Duration_FLOAT64 == 0 {
+		m.Duration_FLOAT64 = v
 	}
 
 	return m
