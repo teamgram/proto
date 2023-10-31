@@ -140,6 +140,10 @@ func (m *Message) FixData() *Message {
 		m.Action = m.Action.FixData()
 	}
 
+	if m.GetReplyTo() != nil {
+		m.ReplyTo = m.ReplyTo.FixData()
+	}
+
 	return m
 }
 

@@ -34,6 +34,32 @@ func (m *MessageAction) FixData() *MessageAction {
 	return m
 }
 
+func (m *MessageReplyHeader) GetFixedReplyToMsgId() int32 {
+	if m.GetReplyToMsgId_FLAGINT32().GetValue() != 0 {
+		return m.GetReplyToMsgId_FLAGINT32().GetValue()
+	}
+	if m.GetReplyToMsgId_INT32() != 0 {
+		return m.ReplyToMsgId_INT32
+	}
+	if m.ReplyToMsgId != 0 {
+		return m.ReplyToMsgId
+	}
+
+	return 0
+}
+
+func (m *MessageReplyHeader) FixData() *MessageReplyHeader {
+	if m.GetPredicateName() != Predicate_messageReplyHeader {
+		replyToMsgId := m.GetFixedReplyToMsgId()
+		if replyToMsgId != 0 {
+			m.ReplyToMsgId_FLAGINT32 = MakeFlagsInt32(replyToMsgId)
+			m.ReplyToMsgId_INT32 = replyToMsgId
+		}
+	}
+
+	return m
+}
+
 // MakeMessageActionEmpty
 // messageActionEmpty#b6aef7b0 = MessageAction;
 func MakeMessageActionEmpty() *MessageAction {
@@ -363,6 +389,7 @@ func MakeContactSignUpMessage(fromId, toId int64) *Message {
 
 // MakePinnedMessageService
 // messageService#2b085862 flags:#
+//
 //	out:flags.1?true
 //	mentioned:flags.4?true
 //	media_unread:flags.5?true
@@ -389,9 +416,11 @@ func MakePinnedMessageService(slient bool, fromId int64, peer *PeerUtil, pinnedI
 		FromId:      MakePeerUser(fromId),
 		PeerId:      peer.ToPeer(),
 		ReplyTo: MakeTLMessageReplyHeader(&MessageReplyHeader{
-			ReplyToMsgId:  pinnedId,
-			ReplyToPeerId: nil,
-			ReplyToTopId:  nil,
+			ReplyToMsgId:           pinnedId,
+			ReplyToMsgId_INT32:     pinnedId,
+			ReplyToMsgId_FLAGINT32: MakeFlagsInt32(pinnedId),
+			ReplyToPeerId:          nil,
+			ReplyToTopId:           nil,
 		}).To_MessageReplyHeader(),
 		Date:      int32(time.Now().Unix()),
 		Action:    MakeMessageActionPinMessage(),
