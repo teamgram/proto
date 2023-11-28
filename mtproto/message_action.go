@@ -52,6 +52,7 @@ func (m *MessageReplyHeader) FixData() *MessageReplyHeader {
 	if m.GetPredicateName() == Predicate_messageReplyHeader {
 		replyToMsgId := m.GetFixedReplyToMsgId()
 		if replyToMsgId != 0 {
+			m.ReplyToMsgId = replyToMsgId
 			m.ReplyToMsgId_FLAGINT32 = MakeFlagsInt32(replyToMsgId)
 			m.ReplyToMsgId_INT32 = replyToMsgId
 		}
