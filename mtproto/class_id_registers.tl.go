@@ -1092,6 +1092,26 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1693675004
 		return o
 	},
+	1469507456: func() TLObject { // 0x5796e780
+		o := MakeTLChannelAdminLogEventActionChangePeerColor(nil)
+		o.Data2.Constructor = 1469507456
+		return o
+	},
+	1581742885: func() TLObject { // 0x5e477b25
+		o := MakeTLChannelAdminLogEventActionChangeProfilePeerColor(nil)
+		o.Data2.Constructor = 1581742885
+		return o
+	},
+	834362706: func() TLObject { // 0x31bb5d52
+		o := MakeTLChannelAdminLogEventActionChangeWallpaper(nil)
+		o.Data2.Constructor = 834362706
+		return o
+	},
+	1051328177: func() TLObject { // 0x3ea9feb1
+		o := MakeTLChannelAdminLogEventActionChangeEmojiStatus(nil)
+		o.Data2.Constructor = 1051328177
+		return o
+	},
 	1009460347: func() TLObject { // 0x3c2b247b
 		o := MakeTLChannelAdminLogEventActionChangeColor(nil)
 		o.Data2.Constructor = 1009460347
@@ -1242,6 +1262,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1704108455
 		return o
 	},
+	179174543: func() TLObject { // 0xaadfc8f
+		o := MakeTLChannel(nil)
+		o.Data2.Constructor = 179174543
+		return o
+	},
 	-1903702824: func() TLObject { // 0x8e87ccd8
 		o := MakeTLChannel(nil)
 		o.Data2.Constructor = -1903702824
@@ -1295,6 +1320,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-779165146: func() TLObject { // 0xd18ee226
 		o := MakeTLChatFull(nil)
 		o.Data2.Constructor = -779165146
+		return o
+	},
+	254528367: func() TLObject { // 0xf2bcb6f
+		o := MakeTLChannelFull(nil)
+		o.Data2.Constructor = 254528367
 		return o
 	},
 	1915758525: func() TLObject { // 0x723027bd
@@ -1970,6 +2000,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1600596305: func() TLObject { // 0xa098d6af
 		o := MakeTLHelpPassportConfig(nil)
 		o.Data2.Constructor = -1600596305
+		return o
+	},
+	-276549461: func() TLObject { // 0xef8430ab
+		o := MakeTLHelpPeerColorOption(nil)
+		o.Data2.Constructor = -276549461
 		return o
 	},
 	324785199: func() TLObject { // 0x135bd42f
@@ -2837,6 +2872,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1153562857
 		return o
 	},
+	1232373075: func() TLObject { // 0x49748553
+		o := MakeTLInputStickerSetEmojiChannelDefaultStatuses(nil)
+		o.Data2.Constructor = 1232373075
+		return o
+	},
 	853188252: func() TLObject { // 0x32da9e9c
 		o := MakeTLInputStickerSetItem(nil)
 		o.Data2.Constructor = 853188252
@@ -2870,6 +2910,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1551868097: func() TLObject { // 0xa3805f3f
 		o := MakeTLInputStorePaymentPremiumGiftCode(nil)
 		o.Data2.Constructor = -1551868097
+		return o
+	},
+	369444042: func() TLObject { // 0x160544ca
+		o := MakeTLInputStorePaymentPremiumGiveaway(nil)
+		o.Data2.Constructor = 369444042
 		return o
 	},
 	2090038758: func() TLObject { // 0x7c9375e6
@@ -3092,6 +3137,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1598009252
 		return o
 	},
+	1406648280: func() TLObject { // 0x53d7bfd8
+		o := MakeTLKeyboardButtonRequestPeer(nil)
+		o.Data2.Constructor = 1406648280
+		return o
+	},
 	218842764: func() TLObject { // 0xd0b468c
 		o := MakeTLKeyboardButtonRequestPeer(nil)
 		o.Data2.Constructor = 218842764
@@ -3155,6 +3205,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	340088945: func() TLObject { // 0x14455871
 		o := MakeTLMediaAreaSuggestedReaction(nil)
 		o.Data2.Constructor = 340088945
+		return o
+	},
+	1996756655: func() TLObject { // 0x770416af
+		o := MakeTLMediaAreaChannelPost(nil)
+		o.Data2.Constructor = 1996756655
+		return o
+	},
+	577893055: func() TLObject { // 0x2271f2bf
+		o := MakeTLInputMediaAreaChannelPost(nil)
+		o.Data2.Constructor = 577893055
 		return o
 	},
 	64088654: func() TLObject { // 0x3d1ea4e
@@ -3382,6 +3442,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1474192222
 		return o
 	},
+	827428507: func() TLObject { // 0x31518e9b
+		o := MakeTLMessageActionRequestedPeer(nil)
+		o.Data2.Constructor = 827428507
+		return o
+	},
 	-25742243: func() TLObject { // 0xfe77345d
 		o := MakeTLMessageActionRequestedPeer(nil)
 		o.Data2.Constructor = -25742243
@@ -3395,6 +3460,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1136350937: func() TLObject { // 0xbc44a927
 		o := MakeTLMessageActionSetChatWallPaper(nil)
 		o.Data2.Constructor = -1136350937
+		return o
+	},
+	1737240073: func() TLObject { // 0x678c2e09
+		o := MakeTLMessageActionGiftCode(nil)
+		o.Data2.Constructor = 1737240073
 		return o
 	},
 	-758129906: func() TLObject { // 0xd2cfdb0e
@@ -3657,9 +3727,19 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -877523576
 		return o
 	},
+	-626162256: func() TLObject { // 0xdaad85b0
+		o := MakeTLMessageMediaGiveaway(nil)
+		o.Data2.Constructor = -626162256
+		return o
+	},
 	1478887012: func() TLObject { // 0x58260664
 		o := MakeTLMessageMediaGiveaway(nil)
 		o.Data2.Constructor = 1478887012
+		return o
+	},
+	-963047320: func() TLObject { // 0xc6991068
+		o := MakeTLMessageMediaGiveawayResults(nil)
+		o.Data2.Constructor = -963047320
 		return o
 	},
 	2124445994: func() TLObject { // 0x7ea0792a
@@ -4530,6 +4610,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	1042605427: func() TLObject { // 0x3e24e573
 		o := MakeTLPaymentsBankCardData(nil)
 		o.Data2.Constructor = 1042605427
+		return o
+	},
+	675942550: func() TLObject { // 0x284a1096
+		o := MakeTLPaymentsCheckedGiftCode(nil)
+		o.Data2.Constructor = 675942550
 		return o
 	},
 	-1222446760: func() TLObject { // 0xb722f158
@@ -5832,9 +5917,19 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1340440049
 		return o
 	},
+	-1436583780: func() TLObject { // 0xaa5f789c
+		o := MakeTLStoriesStoryReactionsList(nil)
+		o.Data2.Constructor = -1436583780
+		return o
+	},
 	-560009955: func() TLObject { // 0xde9eed1d
 		o := MakeTLStoriesStoryViews(nil)
 		o.Data2.Constructor = -560009955
+		return o
+	},
+	1507299269: func() TLObject { // 0x59d78fc5
+		o := MakeTLStoriesStoryViewsList(nil)
+		o.Data2.Constructor = 1507299269
 		return o
 	},
 	1189722604: func() TLObject { // 0x46e9b9ec
@@ -5882,6 +5977,21 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1445635639
 		return o
 	},
+	1620104917: func() TLObject { // 0x6090d6d5
+		o := MakeTLStoryReaction(nil)
+		o.Data2.Constructor = 1620104917
+		return o
+	},
+	-1146411453: func() TLObject { // 0xbbab2643
+		o := MakeTLStoryReactionPublicForward(nil)
+		o.Data2.Constructor = -1146411453
+		return o
+	},
+	-808644845: func() TLObject { // 0xcfcd0f13
+		o := MakeTLStoryReactionPublicRepost(nil)
+		o.Data2.Constructor = -808644845
+		return o
+	},
 	-1329730875: func() TLObject { // 0xb0bdeac5
 		o := MakeTLStoryView(nil)
 		o.Data2.Constructor = -1329730875
@@ -5890,6 +6000,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1491424062: func() TLObject { // 0xa71aacc2
 		o := MakeTLStoryView(nil)
 		o.Data2.Constructor = -1491424062
+		return o
+	},
+	-1870436597: func() TLObject { // 0x9083670b
+		o := MakeTLStoryViewPublicForward(nil)
+		o.Data2.Constructor = -1870436597
+		return o
+	},
+	-1116418231: func() TLObject { // 0xbd74cf49
+		o := MakeTLStoryViewPublicRepost(nil)
+		o.Data2.Constructor = -1116418231
 		return o
 	},
 	-1923523370: func() TLObject { // 0x8d595cd6
@@ -6642,6 +6762,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1371598819
 		return o
 	},
+	-1407069234: func() TLObject { // 0xac21d3ce
+		o := MakeTLUpdateBotMessageReaction(nil)
+		o.Data2.Constructor = -1407069234
+		return o
+	},
+	164329305: func() TLObject { // 0x9cb7759
+		o := MakeTLUpdateBotMessageReactions(nil)
+		o.Data2.Constructor = 164329305
+		return o
+	},
 	-232290676: func() TLObject { // 0xf227868c
 		o := MakeTLUpdateUserPhoto(nil)
 		o.Data2.Constructor = -232290676
@@ -6935,6 +7065,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-528465642: func() TLObject { // 0xe0804116
 		o := MakeTLWallPaperNoFile(nil)
 		o.Data2.Constructor = -528465642
+		return o
+	},
+	925826256: func() TLObject { // 0x372efcd0
+		o := MakeTLWallPaperSettings(nil)
+		o.Data2.Constructor = 925826256
 		return o
 	},
 	499236004: func() TLObject { // 0x1dc1bca4
@@ -7717,6 +7852,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1509246514: func() TLObject { // 0xa60ab9ce
 		return &TLAccountGetDefaultBackgroundEmojis{
 			Constructor: -1509246514,
+		}
+	},
+	1999087573: func() TLObject { // 0x7727a7d5
+		return &TLAccountGetChannelDefaultEmojiStatuses{
+			Constructor: 1999087573,
+		}
+	},
+	900325589: func() TLObject { // 0x35a9e0d5
+		return &TLAccountGetChannelRestrictedStatusEmojis{
+			Constructor: 900325589,
 		}
 	},
 	227648840: func() TLObject { // 0xd91a548
@@ -8954,6 +9099,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 1703637384,
 		}
 	},
+	-1850552224: func() TLObject { // 0x91b2d060
+		return &TLMessagesSendBotRequestedPeer{
+			Constructor: -1850552224,
+		}
+	},
 	-29831141: func() TLObject { // 0xfe38d01b
 		return &TLMessagesSendBotRequestedPeer{
 			Constructor: -29831141,
@@ -9157,11 +9307,6 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1663104819: func() TLObject { // 0x9cdf08cd
 		return &TLHelpGetSupport{
 			Constructor: -1663104819,
-		}
-	},
-	-1877938321: func() TLObject { // 0x9010ef6f
-		return &TLHelpGetAppChangelog{
-			Constructor: -1877938321,
 		}
 	},
 	-333262899: func() TLObject { // 0xec22cfcd
@@ -9554,6 +9699,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 414170259,
 		}
 	},
+	-659933583: func() TLObject { // 0xd8aa3671
+		return &TLChannelsUpdateColor{
+			Constructor: -659933583,
+		}
+	},
 	1645879327: func() TLObject { // 0x621a201f
 		return &TLChannelsUpdateColor{
 			Constructor: 1645879327,
@@ -9567,6 +9717,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-2085155433: func() TLObject { // 0x83b70d97
 		return &TLChannelsGetChannelRecommendations{
 			Constructor: -2085155433,
+		}
+	},
+	-254548312: func() TLObject { // 0xf0d3e6a8
+		return &TLChannelsUpdateEmojiStatus{
+			Constructor: -254548312,
 		}
 	},
 	-1440257555: func() TLObject { // 0xaa2769ed
@@ -10039,9 +10194,9 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -589330937,
 		}
 	},
-	1445996571: func() TLObject { // 0x5630281b
-		return &TLStatsGetMessagePublicForwards{
-			Constructor: 1445996571,
+	1595212100: func() TLObject { // 0x5f150144
+		return &TLStatsGetMessagePublicForwards5F150144{
+			Constructor: 1595212100,
 		}
 	},
 	-1226791947: func() TLObject { // 0xb6e0a3f5
@@ -10324,6 +10479,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -1123805756,
 		}
 	},
+	-1179482081: func() TLObject { // 0xb9b2881f
+		return &TLStoriesGetStoryReactionsList{
+			Constructor: -1179482081,
+		}
+	},
 	1626764896: func() TLObject { // 0x60f67660
 		return &TLPremiumGetBoostsList{
 			Constructor: 1626764896,
@@ -10347,6 +10507,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	965037343: func() TLObject { // 0x39854d1f
 		return &TLPremiumGetUserBoosts{
 			Constructor: 965037343,
+		}
+	},
+	-1877938321: func() TLObject { // 0x9010ef6f
+		return &TLHelpGetAppChangelog{
+			Constructor: -1877938321,
+		}
+	},
+	1445996571: func() TLObject { // 0x5630281b
+		return &TLStatsGetMessagePublicForwards5630281B{
+			Constructor: 1445996571,
 		}
 	},
 	1279562866: func() TLObject { // 0x4c449472
