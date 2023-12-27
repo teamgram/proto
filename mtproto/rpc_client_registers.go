@@ -484,9 +484,11 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLStatsGetBroadcastStats":                     RPCContextTuple{"/mtproto.RPCStatistics/stats_getBroadcastStats", func() interface{} { return new(Stats_BroadcastStats) }},
 	"TLStatsLoadAsyncGraph":                        RPCContextTuple{"/mtproto.RPCStatistics/stats_loadAsyncGraph", func() interface{} { return new(StatsGraph) }},
 	"TLStatsGetMegagroupStats":                     RPCContextTuple{"/mtproto.RPCStatistics/stats_getMegagroupStats", func() interface{} { return new(Stats_MegagroupStats) }},
+	"TLStatsGetMessagePublicForwards5F150144":      RPCContextTuple{"/mtproto.RPCStatistics/stats_getMessagePublicForwards5F150144", func() interface{} { return new(Stats_PublicForwards) }},
 	"TLStatsGetMessageStats":                       RPCContextTuple{"/mtproto.RPCStatistics/stats_getMessageStats", func() interface{} { return new(Stats_MessageStats) }},
 	"TLStatsGetStoryStats":                         RPCContextTuple{"/mtproto.RPCStatistics/stats_getStoryStats", func() interface{} { return new(Stats_StoryStats) }},
 	"TLStatsGetStoryPublicForwards":                RPCContextTuple{"/mtproto.RPCStatistics/stats_getStoryPublicForwards", func() interface{} { return new(Stats_PublicForwards) }},
+	"TLStatsGetMessagePublicForwards5630281B":      RPCContextTuple{"/mtproto.RPCStatistics/stats_getMessagePublicForwards5630281B", func() interface{} { return new(Messages_Messages) }},
 	"TLMessagesGetStickers":                        RPCContextTuple{"/mtproto.RPCStickers/messages_getStickers", func() interface{} { return new(Messages_Stickers) }},
 	"TLMessagesGetAllStickers":                     RPCContextTuple{"/mtproto.RPCStickers/messages_getAllStickers", func() interface{} { return new(Messages_AllStickers) }},
 	"TLMessagesGetStickerSet":                      RPCContextTuple{"/mtproto.RPCStickers/messages_getStickerSet", func() interface{} { return new(Messages_StickerSet) }},
@@ -608,8 +610,6 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLMessagesGetWebPage8D9692A3":                 RPCContextTuple{"/mtproto.RPCWebPage/messages_getWebPage8D9692A3", func() interface{} { return new(Messages_WebPage) }},
 	"TLMessagesGetWebPage32CA8F91":                 RPCContextTuple{"/mtproto.RPCWebPage/messages_getWebPage32CA8F91", func() interface{} { return new(WebPage) }},
 	"TLBizInvokeBizDataRaw":                        RPCContextTuple{"/mtproto.RPCBiz/biz_invokeBizDataRaw", func() interface{} { return new(BizDataRaw) }},
-	"TLStatsGetMessagePublicForwards5F150144":      RPCContextTuple{"/mtproto.RPCStats/stats_getMessagePublicForwards5F150144", func() interface{} { return new(Stats_PublicForwards) }},
-	"TLStatsGetMessagePublicForwards5630281B":      RPCContextTuple{"/mtproto.RPCStats/stats_getMessagePublicForwards5630281B", func() interface{} { return new(Messages_Messages) }},
 }
 
 func FindRPCContextTuple(t interface{}) *RPCContextTuple {
