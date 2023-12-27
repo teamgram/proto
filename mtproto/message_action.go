@@ -176,12 +176,13 @@ func MakeMessageActionGameScore(gameId int64, score int32) *MessageAction {
 // messageActionPaymentSentMe#8f31b327 flags:# currency:string total_amount:long payload:bytes info:flags.0?PaymentRequestedInfo shipping_option_id:flags.1?string charge:PaymentCharge = MessageAction;
 func MakeMessageActionPaymentSentMe(currency string, totalAmount int64, payload []byte, info *PaymentRequestedInfo, shippingOptionId string, charge *PaymentCharge) *MessageAction {
 	action := MakeTLMessageActionGameScore(&MessageAction{
-		Currency:         currency,
-		TotalAmount:      totalAmount,
-		Payload:          payload,
-		Info:             info,
-		ShippingOptionId: nil,
-		Charge:           charge,
+		Currency_STRING:     currency,
+		Currency_FLAGSTRING: MakeFlagsString(currency),
+		TotalAmount:         totalAmount,
+		Payload:             payload,
+		Info:                info,
+		ShippingOptionId:    nil,
+		Charge:              charge,
 	}).To_MessageAction()
 
 	if shippingOptionId != "" {
@@ -194,8 +195,9 @@ func MakeMessageActionPaymentSentMe(currency string, totalAmount int64, payload 
 // messageActionPaymentSent#40699cd0 currency:string total_amount:long = MessageAction;
 func MakeMessageActionPaymentSent(currency string, totalAmount int64) *MessageAction {
 	return MakeTLMessageActionPaymentSent(&MessageAction{
-		Currency:    currency,
-		TotalAmount: totalAmount,
+		Currency_STRING:     currency,
+		Currency_FLAGSTRING: MakeFlagsString(currency),
+		TotalAmount:         totalAmount,
 	}).To_MessageAction()
 }
 
@@ -343,9 +345,11 @@ func MakeMessageActionWebViewDataSent(text string) *MessageAction {
 // messageActionGiftPremium#aba0f5c6 currency:string amount:long months:int = MessageAction;
 func MakeMessageActionGiftPremium(currency string, amount int64, months int32) *MessageAction {
 	return MakeTLMessageActionGiftPremium(&MessageAction{
-		Currency: currency,
-		Amount:   amount,
-		Months:   months,
+		Currency_STRING:     currency,
+		Currency_FLAGSTRING: MakeFlagsString(currency),
+		Amount_INT64:        amount,
+		Amount_FLAGINT64:    MakeFlagsInt64(amount),
+		Months:              months,
 	}).To_MessageAction()
 }
 
