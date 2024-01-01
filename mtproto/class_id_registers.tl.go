@@ -3227,6 +3227,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1868117372
 		return o
 	},
+	1992213009: func() TLObject { // 0x76bec211
+		o := MakeTLMessage(nil)
+		o.Data2.Constructor = 1992213009
+		return o
+	},
 	940666592: func() TLObject { // 0x38116ee0
 		o := MakeTLMessage(nil)
 		o.Data2.Constructor = 940666592
@@ -3625,6 +3630,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-297296796: func() TLObject { // 0xee479c64
 		o := MakeTLMessageExtendedMedia(nil)
 		o.Data2.Constructor = -297296796
+		return o
+	},
+	1313731771: func() TLObject { // 0x4e4df4bb
+		o := MakeTLMessageFwdHeader(nil)
+		o.Data2.Constructor = 1313731771
 		return o
 	},
 	1601666510: func() TLObject { // 0x5f777dce
@@ -4190,6 +4200,21 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1999405994: func() TLObject { // 0x88d37c56
 		o := MakeTLMessagesRecentStickers(nil)
 		o.Data2.Constructor = -1999405994
+		return o
+	},
+	-130358751: func() TLObject { // 0xf83ae221
+		o := MakeTLMessagesSavedDialogs(nil)
+		o.Data2.Constructor = -130358751
+		return o
+	},
+	1153080793: func() TLObject { // 0x44ba9dd9
+		o := MakeTLMessagesSavedDialogsSlice(nil)
+		o.Data2.Constructor = 1153080793
+		return o
+	},
+	-1071681560: func() TLObject { // 0xc01f6fe8
+		o := MakeTLMessagesSavedDialogsNotModified(nil)
+		o.Data2.Constructor = -1071681560
 		return o
 	},
 	-402498398: func() TLObject { // 0xe8025ca2
@@ -5335,6 +5360,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	289586518: func() TLObject { // 0x1142bd56
 		o := MakeTLSavedPhoneContact(nil)
 		o.Data2.Constructor = 289586518
+		return o
+	},
+	-1115174036: func() TLObject { // 0xbd87cb6c
+		o := MakeTLSavedDialog(nil)
+		o.Data2.Constructor = -1115174036
 		return o
 	},
 	-911191137: func() TLObject { // 0xc9b0539f
@@ -6772,6 +6802,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 164329305
 		return o
 	},
+	-1364222348: func() TLObject { // 0xaeaf9e74
+		o := MakeTLUpdateSavedDialogPinned(nil)
+		o.Data2.Constructor = -1364222348
+		return o
+	},
+	1751942566: func() TLObject { // 0x686c85a6
+		o := MakeTLUpdatePinnedSavedDialogs(nil)
+		o.Data2.Constructor = 1751942566
+		return o
+	},
 	-232290676: func() TLObject { // 0xf227868c
 		o := MakeTLUpdateUserPhoto(nil)
 		o.Data2.Constructor = -232290676
@@ -8039,6 +8079,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 1143203525,
 		}
 	},
+	-1481316055: func() TLObject { // 0xa7b4e929
+		return &TLMessagesSearch{
+			Constructor: -1481316055,
+		}
+	},
 	-1593989278: func() TLObject { // 0xa0fda762
 		return &TLMessagesSearch{
 			Constructor: -1593989278,
@@ -8644,6 +8689,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -709817306,
 		}
 	},
+	465367808: func() TLObject { // 0x1bbcf300
+		return &TLMessagesGetSearchCounters{
+			Constructor: 465367808,
+		}
+	},
 	11435201: func() TLObject { // 0xae7cc1
 		return &TLMessagesGetSearchCounters{
 			Constructor: 11435201,
@@ -8834,9 +8884,19 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 834782287,
 		}
 	},
+	1789130429: func() TLObject { // 0x6aa3f6bd
+		return &TLMessagesGetSearchResultsCalendar{
+			Constructor: 1789130429,
+		}
+	},
 	1240514025: func() TLObject { // 0x49f0bde9
 		return &TLMessagesGetSearchResultsCalendar{
 			Constructor: 1240514025,
+		}
+	},
+	-1669386480: func() TLObject { // 0x9c7f2f10
+		return &TLMessagesGetSearchResultsPositions{
+			Constructor: -1669386480,
 		}
 	},
 	1855292323: func() TLObject { // 0x6e9583a3
@@ -9152,6 +9212,36 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1833678516: func() TLObject { // 0x92b4494c
 		return &TLMessagesSearchEmojiStickerSets{
 			Constructor: -1833678516,
+		}
+	},
+	1401016858: func() TLObject { // 0x5381d21a
+		return &TLMessagesGetSavedDialogs{
+			Constructor: 1401016858,
+		}
+	},
+	1033519437: func() TLObject { // 0x3d9a414d
+		return &TLMessagesGetSavedHistory{
+			Constructor: 1033519437,
+		}
+	},
+	1855459371: func() TLObject { // 0x6e98102b
+		return &TLMessagesDeleteSavedHistory{
+			Constructor: 1855459371,
+		}
+	},
+	-700607264: func() TLObject { // 0xd63d94e0
+		return &TLMessagesGetPinnedSavedDialogs{
+			Constructor: -700607264,
+		}
+	},
+	-1400783906: func() TLObject { // 0xac81bbde
+		return &TLMessagesToggleSavedDialogPin{
+			Constructor: -1400783906,
+		}
+	},
+	-1955502713: func() TLObject { // 0x8b716587
+		return &TLMessagesReorderPinnedSavedDialogs{
+			Constructor: -1955502713,
 		}
 	},
 	-304838614: func() TLObject { // 0xedd4882a
