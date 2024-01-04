@@ -30,7 +30,9 @@ const (
 	ADMIN_ANONYMOUS       int32 = 1 << 10
 	ADMIN_MANAGE_CALL     int32 = 1 << 11
 	ADMIN_OTHER           int32 = 1 << 12
-	MANAGE_TOPICS         int32 = 1 << 13
+	ADMIN_POST_STORIES    int32 = 1 << 14
+	ADMIN_EDIT_STORIES    int32 = 1 << 15
+	ADMIN_DELETE_STORIES  int32 = 1 << 16
 )
 
 type AdminRights int32
@@ -72,7 +74,16 @@ func MakeChatAdminRightsHelper(adminRights *ChatAdminRights) AdminRights {
 		rights |= ADMIN_OTHER
 	}
 	if adminRights.GetManageTopics() {
-		rights |= MANAGE_TOPICS
+		rights |= ADMIN_MANAGE_TOPICS
+	}
+	if adminRights.GetPostStories() {
+		rights |= ADMIN_POST_STORIES
+	}
+	if adminRights.GetEditStories() {
+		rights |= ADMIN_EDIT_STORIES
+	}
+	if adminRights.GetDeleteStories() {
+		rights |= ADMIN_DELETE_STORIES
 	}
 
 	return AdminRights(rights)
@@ -94,7 +105,10 @@ func (m AdminRights) ToChatAdminRights() *ChatAdminRights {
 			Anonymous:      int32(m)&ADMIN_ANONYMOUS != 0,
 			ManageCall:     int32(m)&ADMIN_MANAGE_CALL != 0,
 			Other:          int32(m)&ADMIN_OTHER != 0,
-			ManageTopics:   int32(m)&MANAGE_TOPICS != 0,
+			ManageTopics:   int32(m)&ADMIN_MANAGE_TOPICS != 0,
+			PostStories:    int32(m)&ADMIN_POST_STORIES != 0,
+			EditStories:    int32(m)&ADMIN_EDIT_STORIES != 0,
+			DeleteStories:  int32(m)&ADMIN_DELETE_STORIES != 0,
 		}).To_ChatAdminRights()
 	}
 }
@@ -148,11 +162,23 @@ func (m AdminRights) CanOther() bool {
 }
 
 func (m AdminRights) CanManageTopics() bool {
-	return int32(m)&MANAGE_TOPICS != 0
+	return int32(m)&ADMIN_MANAGE_TOPICS != 0
+}
+
+func (m AdminRights) CanPostStories() bool {
+	return int32(m)&ADMIN_POST_STORIES != 0
+}
+
+func (m AdminRights) CanEditStories() bool {
+	return int32(m)&ADMIN_EDIT_STORIES != 0
+}
+
+func (m AdminRights) CanDeleteStories() bool {
+	return int32(m)&ADMIN_DELETE_STORIES != 0
 }
 
 // DisallowMegagroup
-//////////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////
 func (m AdminRights) DisallowMegagroup() bool {
 	return m.CanPostMessages() || m.CanEditMessages()
 }
@@ -175,6 +201,9 @@ func MakeDefaultChatAdminRights() *ChatAdminRights {
 		ManageCall:     true,
 		Other:          true,
 		ManageTopics:   false,
+		PostStories:    false,
+		EditStories:    false,
+		DeleteStories:  false,
 	}).To_ChatAdminRights()
 }
 
@@ -230,8 +259,20 @@ func (m *ChatAdminRights) CanManageTopics() bool {
 	return m.GetManageTopics()
 }
 
+func (m *ChatAdminRights) CanPostStories() bool {
+	return m.GetPostStories()
+}
+
+func (m *ChatAdminRights) CanEditStories() bool {
+	return m.GetEditStories()
+}
+
+func (m *ChatAdminRights) CanDeleteStories() bool {
+	return m.GetDeleteStories()
+}
+
 // DisallowMegagroup
-//////////////////////////////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////////////////////////////
 func (m *ChatAdminRights) DisallowMegagroup() bool {
 	return m.CanPostMessages() || m.CanEditMessages()
 }
