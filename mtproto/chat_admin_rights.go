@@ -30,6 +30,7 @@ const (
 	ADMIN_ANONYMOUS       int32 = 1 << 10
 	ADMIN_MANAGE_CALL     int32 = 1 << 11
 	ADMIN_OTHER           int32 = 1 << 12
+	ADMIN_MANAGE_TOPICS   int32 = 1 << 13
 	ADMIN_POST_STORIES    int32 = 1 << 14
 	ADMIN_EDIT_STORIES    int32 = 1 << 15
 	ADMIN_DELETE_STORIES  int32 = 1 << 16
