@@ -63,7 +63,7 @@ func RpcMetadataFromIncoming(ctx context.Context) *RpcMetadata {
 
 	md, err := RpcMetadataFromMD(md2)
 	if err != nil {
-		panic(mtproto.ErrInternelServerError)
+		panic(mtproto.ErrInternalServerError)
 	}
 
 	return md
