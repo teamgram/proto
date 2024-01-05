@@ -45,7 +45,7 @@ func RpcErrorFromMD(md metadata.MD) (rpcErr *mtproto.TLRpcError) {
 	// proto.Marshal()
 	buf, err := base64.StdEncoding.DecodeString(val)
 	if err != nil {
-		rpcErr = mtproto.NewRpcError(status.Convert(mtproto.ErrInternelServerError))
+		rpcErr = mtproto.NewRpcError(status.Convert(mtproto.ErrInternalServerError))
 		// log.Errorf("%v", rpcErr)
 		return
 	}
@@ -53,7 +53,7 @@ func RpcErrorFromMD(md metadata.MD) (rpcErr *mtproto.TLRpcError) {
 	rpcErr = &mtproto.TLRpcError{}
 	err = proto.Unmarshal(buf, rpcErr)
 	if err != nil {
-		rpcErr = mtproto.NewRpcError(status.Convert(mtproto.ErrInternelServerError))
+		rpcErr = mtproto.NewRpcError(status.Convert(mtproto.ErrInternalServerError))
 		// log.Errorf("%v", rpcErr)
 		return
 	}
