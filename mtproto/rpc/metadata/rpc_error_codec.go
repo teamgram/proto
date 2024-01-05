@@ -37,7 +37,7 @@ func RpcErrorFromMD(md metadata.MD) (rpcErr *mtproto.TLRpcError) {
 	val := NiceMD(md).Get(headerRpcError)
 	if val == "" {
 		// TODO(@benqi): 未设置rpc_error
-		rpcErr = mtproto.NewRpcError(status.Convert(mtproto.ErrInternelServerError))
+		rpcErr = mtproto.NewRpcError(status.Convert(mtproto.ErrInternalServerError))
 		// log.Errorf("%v", rpcErr)
 		return
 	}
