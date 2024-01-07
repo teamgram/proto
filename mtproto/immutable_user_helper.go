@@ -131,15 +131,55 @@ func (m *ImmutableUser) BotInfoVersion() int32 {
 }
 
 func (m *ImmutableUser) BotAttachMenu() bool {
-	return m.User.BotAttachMenu
+	return m.User.Bot.GetBotAttachMenu()
 }
 
 func (m *ImmutableUser) Premium() bool {
 	return m.User.Premium
 }
 
+func (m *ImmutableUser) AttachMenuEnabled() bool {
+	return m.User.Bot.GetBotAttachMenu()
+}
+
+func (m *ImmutableUser) BotCanEdit() bool {
+	return m.User.Bot.GetBotCanEdit()
+}
+
+func (m *ImmutableUser) CheckCloseFriend(id int64) bool {
+	for _, v := range m.CloseFriends {
+		if id == v {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (m *ImmutableUser) CheckStoriesHidden(id int64) bool {
+	for _, v := range m.StoriesHiddens {
+		if id == v {
+			return true
+		}
+	}
+
+	return false
+}
+
+func (m *ImmutableUser) StoriesUnavailable() bool {
+	return m.User.StoriesUnavailable
+}
+
 func (m *ImmutableUser) EmojiStatus() *EmojiStatus {
 	return m.User.EmojiStatus
+}
+
+func (m *ImmutableUser) Color() *PeerColor {
+	return m.User.Color
+}
+
+func (m *ImmutableUser) ProfileColor() *PeerColor {
+	return m.User.ProfileColor
 }
 
 func (m *ImmutableUser) CheckContact(cId int64) (bool, bool) {
