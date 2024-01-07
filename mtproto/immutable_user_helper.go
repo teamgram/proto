@@ -174,6 +174,10 @@ func (m *ImmutableUser) EmojiStatus() *EmojiStatus {
 	return m.User.EmojiStatus
 }
 
+func (m *ImmutableUser) StoriesMaxId() *types.Int32Value {
+	return MakeFlagsInt32(m.User.StoriesMaxId)
+}
+
 func (m *ImmutableUser) Color() *PeerColor {
 	return m.User.Color
 }
@@ -279,6 +283,11 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		Fake:                 m.Fake(),
 		BotAttachMenu:        m.BotAttachMenu(),
 		Premium:              m.Premium(),
+		AttachMenuEnabled:    m.AttachMenuEnabled(),
+		BotCanEdit:           m.BotCanEdit(),
+		CloseFriend:          false,
+		StoriesHidden:        false,
+		StoriesUnavailable:   m.StoriesUnavailable(),
 		Id:                   m.Id(),
 		AccessHash:           MakeFlagsInt64(m.AccessHash()),
 		FirstName:            MakeFlagsString(m.FirstName()),
@@ -292,12 +301,20 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		BotInlinePlaceholder: m.BotInlinePlaceholder(),
 		LangCode:             nil,
 		EmojiStatus:          m.EmojiStatus(),
+		Usernames:            nil,
+		StoriesMaxId:         m.StoriesMaxId(),
+		Color_FLAGPEERCOLOR:  m.Color(),
+		Color:                m.Color().GetColor(),
+		Color_FLAGINT32:      m.Color().GetColor(),
+		BackgroundEmojiId:    m.Color().GetBackgroundEmojiId(),
+		ProfileColor:         m.ProfileColor(),
 	}).To_User()
 
 	if m.IsBot() {
 		return user
 	}
 
+	// contact
 	contact := selfUser.GetContactData(m.Id())
 	if contact != nil {
 		user.Contact = true
@@ -324,6 +341,23 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 	}
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
 
+	// TODO
+	// CloseFriend
+	for _, v := range selfUser.CloseFriends {
+		if v == m.Id() {
+			user.CloseFriend = true
+			break
+		}
+	}
+
+	// StoriesHidden
+	for _, v := range selfUser.StoriesHiddens {
+		if v == m.Id() {
+			user.StoriesHidden = true
+			break
+		}
+	}
+
 	return user
 }
 
@@ -346,6 +380,11 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		Fake:                 m.Fake(),
 		BotAttachMenu:        m.BotAttachMenu(),
 		Premium:              m.Premium(),
+		AttachMenuEnabled:    m.AttachMenuEnabled(),
+		BotCanEdit:           m.BotCanEdit(),
+		CloseFriend:          false,
+		StoriesHidden:        false,
+		StoriesUnavailable:   false,
 		Id:                   m.Id(),
 		AccessHash:           MakeFlagsInt64(m.AccessHash()),
 		FirstName:            MakeFlagsString(m.FirstName()),
@@ -359,12 +398,18 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		BotInlinePlaceholder: m.BotInlinePlaceholder(),
 		LangCode:             nil,
 		EmojiStatus:          m.EmojiStatus(),
+		Usernames:            nil,
+		StoriesMaxId:         m.StoriesMaxId(),
+		Color_FLAGPEERCOLOR:  m.Color(),
+		Color:                m.Color().GetColor(),
+		Color_FLAGINT32:      m.Color().GetColor(),
+		BackgroundEmojiId:    m.Color().GetBackgroundEmojiId(),
+		ProfileColor:         m.ProfileColor(),
 	}).To_User()
 }
 
 func (m *ImmutableUser) ToDeletedUser() *User {
 	return MakeTLUser(&User{
-		Id:                   m.Id(),
 		Self:                 false,
 		Contact:              false,
 		MutualContact:        false,
@@ -382,6 +427,12 @@ func (m *ImmutableUser) ToDeletedUser() *User {
 		Fake:                 false,
 		BotAttachMenu:        false,
 		Premium:              false,
+		AttachMenuEnabled:    false,
+		BotCanEdit:           false,
+		CloseFriend:          false,
+		StoriesHidden:        false,
+		StoriesUnavailable:   false,
+		Id:                   m.Id(),
 		AccessHash:           MakeFlagsInt64(m.AccessHash()),
 		FirstName:            nil,
 		LastName:             nil,
@@ -394,6 +445,13 @@ func (m *ImmutableUser) ToDeletedUser() *User {
 		BotInlinePlaceholder: nil,
 		LangCode:             nil,
 		EmojiStatus:          nil,
+		Usernames:            nil,
+		StoriesMaxId:         nil,
+		Color_FLAGPEERCOLOR:  nil,
+		Color:                nil,
+		Color_FLAGINT32:      nil,
+		BackgroundEmojiId:    nil,
+		ProfileColor:         nil,
 	}).To_User()
 }
 
@@ -424,6 +482,11 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		Fake:                 m.Fake(),
 		BotAttachMenu:        m.BotAttachMenu(),
 		Premium:              m.Premium(),
+		AttachMenuEnabled:    m.AttachMenuEnabled(),
+		BotCanEdit:           m.BotCanEdit(),
+		CloseFriend:          false,
+		StoriesHidden:        false,
+		StoriesUnavailable:   m.StoriesUnavailable(),
 		Id:                   m.Id(),
 		AccessHash:           MakeFlagsInt64(m.AccessHash()),
 		FirstName:            MakeFlagsString(m.FirstName()),
@@ -437,6 +500,13 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		BotInlinePlaceholder: m.BotInlinePlaceholder(),
 		LangCode:             nil,
 		EmojiStatus:          m.EmojiStatus(),
+		Usernames:            nil,
+		StoriesMaxId:         m.StoriesMaxId(),
+		Color_FLAGPEERCOLOR:  m.Color(),
+		Color:                m.Color().GetColor(),
+		Color_FLAGINT32:      m.Color().GetColor(),
+		BackgroundEmojiId:    m.Color().GetBackgroundEmojiId(),
+		ProfileColor:         m.ProfileColor(),
 	}).To_User()
 
 	if m.IsBot() {
@@ -466,6 +536,10 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 	// status
 	allowTimestamp := m.CheckPrivacy(STATUS_TIMESTAMP, selfUserId)
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
+
+	// TODO
+	// CloseFriend
+	// StoriesHidden
 
 	return user
 }
