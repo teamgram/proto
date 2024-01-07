@@ -399,7 +399,7 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		LangCode:             nil,
 		EmojiStatus:          m.EmojiStatus(),
 		Usernames:            nil,
-		StoriesMaxId:         m.StoriesMaxId(),
+		StoriesMaxId:         nil,
 		Color_FLAGPEERCOLOR:  m.Color(),
 		Color:                m.Color().GetColor(),
 		Color_FLAGINT32:      m.Color().GetColor(),
