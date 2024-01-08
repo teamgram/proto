@@ -322,10 +322,8 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		user.FirstName = contact.FirstName
 		user.LastName = contact.LastName
 		user.Phone = contact.Phone
-	}
-
-	// reverse contact
-	if contact == nil {
+	} else {
+		// reverse contact
 		reverseContact := m.GetReverseContactData(selfUser.Id())
 		if reverseContact != nil {
 			user.Contact = true
@@ -411,7 +409,7 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		LangCode:             nil,
 		EmojiStatus:          m.EmojiStatus(),
 		Usernames:            nil,
-		StoriesMaxId:         nil,
+		StoriesMaxId:         m.StoriesMaxId(),
 		Color_FLAGPEERCOLOR:  m.Color(),
 		Color:                m.Color().GetColor(),
 		Color_FLAGINT32:      m.Color().GetColor(),
@@ -550,22 +548,10 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
 
 	// TODO
-	// TODO
 	// CloseFriend
-	for _, v := range m.CloseFriends {
-		if v == selfUserId {
-			user.CloseFriend = true
-			break
-		}
-	}
 
+	// TODO
 	// StoriesHidden
-	for _, v := range m.StoriesHiddens {
-		if v == selfUserId {
-			user.StoriesHidden = true
-			break
-		}
-	}
 
 	return user
 }
