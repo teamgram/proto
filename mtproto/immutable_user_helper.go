@@ -146,16 +146,6 @@ func (m *ImmutableUser) BotCanEdit() bool {
 	return m.User.Bot.GetBotCanEdit()
 }
 
-func (m *ImmutableUser) CheckCloseFriend(id int64) bool {
-	for _, v := range m.CloseFriends {
-		if id == v {
-			return true
-		}
-	}
-
-	return false
-}
-
 func (m *ImmutableUser) CheckStoriesHidden(id int64) bool {
 	for _, v := range m.StoriesHiddens {
 		if id == v {
@@ -322,6 +312,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		user.FirstName = contact.FirstName
 		user.LastName = contact.LastName
 		user.Phone = contact.Phone
+		user.CloseFriend = contact.CloseFriend
 	} else {
 		// reverse contact
 		reverseContact := m.GetReverseContactData(selfUser.Id())
@@ -331,6 +322,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 			user.FirstName = reverseContact.FirstName
 			user.LastName = reverseContact.LastName
 			user.Phone = reverseContact.Phone
+			user.CloseFriend = reverseContact.CloseFriend
 		}
 	}
 
@@ -352,14 +344,6 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
 
 	// TODO
-	// CloseFriend
-	for _, v := range selfUser.CloseFriends {
-		if v == m.Id() {
-			user.CloseFriend = true
-			break
-		}
-	}
-
 	// StoriesHidden
 	for _, v := range selfUser.StoriesHiddens {
 		if v == m.Id() {
@@ -530,6 +514,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		user.FirstName = reverseContact.FirstName
 		user.LastName = reverseContact.LastName
 		user.Phone = reverseContact.Phone
+		user.CloseFriend = reverseContact.CloseFriend
 	}
 
 	// phone
