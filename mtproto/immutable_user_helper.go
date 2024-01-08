@@ -324,6 +324,18 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		user.Phone = contact.Phone
 	}
 
+	// reverse contact
+	if contact == nil {
+		reverseContact := m.GetReverseContactData(selfUser.Id())
+		if reverseContact != nil {
+			user.Contact = true
+			user.MutualContact = reverseContact.MutualContact
+			user.FirstName = reverseContact.FirstName
+			user.LastName = reverseContact.LastName
+			user.Phone = reverseContact.Phone
+		}
+	}
+
 	// phone
 	if m.CheckPrivacy(PHONE_NUMBER, selfUser.Id()) {
 		user.Phone = MakeFlagsString(m.Phone())
@@ -538,8 +550,22 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
 
 	// TODO
+	// TODO
 	// CloseFriend
+	for _, v := range m.CloseFriends {
+		if v == selfUserId {
+			user.CloseFriend = true
+			break
+		}
+	}
+
 	// StoriesHidden
+	for _, v := range m.StoriesHiddens {
+		if v == selfUserId {
+			user.StoriesHidden = true
+			break
+		}
+	}
 
 	return user
 }
