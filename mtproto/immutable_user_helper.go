@@ -533,9 +533,6 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 	user.Status = MakeUserStatus(m.LastSeenAt, allowTimestamp)
 
 	// TODO
-	// CloseFriend
-
-	// TODO
 	// StoriesHidden
 
 	return user
