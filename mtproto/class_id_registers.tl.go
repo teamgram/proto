@@ -4227,6 +4227,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -2069878259
 		return o
 	},
+	-2003084817: func() TLObject { // 0x889b59ef
+		o := MakeTLMessagesSavedReactionTagsNotModified(nil)
+		o.Data2.Constructor = -2003084817
+		return o
+	},
+	844731658: func() TLObject { // 0x3259950a
+		o := MakeTLMessagesSavedReactionTags(nil)
+		o.Data2.Constructor = 844731658
+		return o
+	},
 	-398136321: func() TLObject { // 0xe844ebff
 		o := MakeTLMessagesSearchCounter(nil)
 		o.Data2.Constructor = -398136321
@@ -5365,6 +5375,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1115174036: func() TLObject { // 0xbd87cb6c
 		o := MakeTLSavedDialog(nil)
 		o.Data2.Constructor = -1115174036
+		return o
+	},
+	-881854424: func() TLObject { // 0xcb6ff828
+		o := MakeTLSavedReactionTag(nil)
+		o.Data2.Constructor = -881854424
 		return o
 	},
 	-911191137: func() TLObject { // 0xc9b0539f
@@ -6812,6 +6827,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1751942566
 		return o
 	},
+	969307186: func() TLObject { // 0x39c67432
+		o := MakeTLUpdateSavedReactionTags(nil)
+		o.Data2.Constructor = 969307186
+		return o
+	},
 	-232290676: func() TLObject { // 0xf227868c
 		o := MakeTLUpdateUserPhoto(nil)
 		o.Data2.Constructor = -232290676
@@ -8079,6 +8099,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 1143203525,
 		}
 	},
+	703497338: func() TLObject { // 0x29ee847a
+		return &TLMessagesSearch{
+			Constructor: 703497338,
+		}
+	},
 	-1481316055: func() TLObject { // 0xa7b4e929
 		return &TLMessagesSearch{
 			Constructor: -1481316055,
@@ -9242,6 +9267,21 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1955502713: func() TLObject { // 0x8b716587
 		return &TLMessagesReorderPinnedSavedDialogs{
 			Constructor: -1955502713,
+		}
+	},
+	1981668047: func() TLObject { // 0x761ddacf
+		return &TLMessagesGetSavedReactionTags{
+			Constructor: 1981668047,
+		}
+	},
+	1613331948: func() TLObject { // 0x60297dec
+		return &TLMessagesUpdateSavedReactionTag{
+			Constructor: 1613331948,
+		}
+	},
+	-1107741656: func() TLObject { // 0xbdf93428
+		return &TLMessagesGetDefaultTagReactions{
+			Constructor: -1107741656,
 		}
 	},
 	-304838614: func() TLObject { // 0xedd4882a
