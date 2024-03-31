@@ -293,10 +293,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		EmojiStatus:          m.EmojiStatus(),
 		Usernames:            nil,
 		StoriesMaxId:         m.StoriesMaxId(),
-		Color_FLAGPEERCOLOR:  m.Color(),
-		Color:                m.Color().GetColor(),
-		Color_FLAGINT32:      m.Color().GetColor(),
-		BackgroundEmojiId:    m.Color().GetBackgroundEmojiId(),
+		Color:                m.Color(),
 		ProfileColor:         m.ProfileColor(),
 	}).To_User()
 
@@ -394,10 +391,7 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		EmojiStatus:          m.EmojiStatus(),
 		Usernames:            nil,
 		StoriesMaxId:         m.StoriesMaxId(),
-		Color_FLAGPEERCOLOR:  m.Color(),
-		Color:                m.Color().GetColor(),
-		Color_FLAGINT32:      m.Color().GetColor(),
-		BackgroundEmojiId:    m.Color().GetBackgroundEmojiId(),
+		Color:                m.Color(),
 		ProfileColor:         m.ProfileColor(),
 	}).To_User()
 }
@@ -441,10 +435,7 @@ func (m *ImmutableUser) ToDeletedUser() *User {
 		EmojiStatus:          nil,
 		Usernames:            nil,
 		StoriesMaxId:         nil,
-		Color_FLAGPEERCOLOR:  nil,
 		Color:                nil,
-		Color_FLAGINT32:      nil,
-		BackgroundEmojiId:    nil,
 		ProfileColor:         nil,
 	}).To_User()
 }
@@ -496,10 +487,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		EmojiStatus:          m.EmojiStatus(),
 		Usernames:            nil,
 		StoriesMaxId:         m.StoriesMaxId(),
-		Color_FLAGPEERCOLOR:  m.Color(),
-		Color:                m.Color().GetColor(),
-		Color_FLAGINT32:      m.Color().GetColor(),
-		BackgroundEmojiId:    m.Color().GetBackgroundEmojiId(),
+		Color:                m.Color(),
 		ProfileColor:         m.ProfileColor(),
 	}).To_User()
 

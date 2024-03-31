@@ -26,12 +26,21 @@ var (
 	DefaultPeerNotifySettings = MakeDefaultPeerNotifySettings()
 )
 
+// MakePeerNotifySettings
+// peerNotifySettings#99622c0c flags:# show_previews:flags.0?Bool silent:flags.1?Bool mute_until:flags.2?int ios_sound:flags.3?NotificationSound android_sound:flags.4?NotificationSound other_sound:flags.5?NotificationSound stories_muted:flags.6?Bool stories_hide_sender:flags.7?Bool stories_ios_sound:flags.8?NotificationSound stories_android_sound:flags.9?NotificationSound stories_other_sound:flags.10?NotificationSound = PeerNotifySettings;
 func MakePeerNotifySettings(settings *InputPeerNotifySettings) (*PeerNotifySettings, error) {
 	notifySettings := MakeTLPeerNotifySettings(&PeerNotifySettings{
-		ShowPreviews: settings.GetShowPreviews(),
-		Silent:       settings.GetSilent(),
-		MuteUntil:    settings.GetMuteUntil(),
-		Sound:        settings.GetSound_FLAGSTRING(),
+		ShowPreviews:        settings.GetShowPreviews(),
+		Silent:              settings.GetSilent(),
+		MuteUntil:           settings.GetMuteUntil(),
+		IosSound:            nil,
+		AndroidSound:        nil,
+		OtherSound:          nil,
+		StoriesMuted:        nil,
+		StoriesHideSender:   nil,
+		StoriesIosSound:     nil,
+		StoriesAndroidSound: nil,
+		StoriesOtherSound:   nil,
 	}).To_PeerNotifySettings()
 
 	return notifySettings, nil
@@ -52,10 +61,17 @@ func MakePeerNotifySettings(settings *InputPeerNotifySettings) (*PeerNotifySetti
 */
 func MakeDefaultPeerNotifySettings() *PeerNotifySettings {
 	settings := MakeTLPeerNotifySettings(&PeerNotifySettings{
-		ShowPreviews: ToBool(true),
-		Silent:       ToBool(true),
-		MuteUntil:    &types.Int32Value{Value: 0},
-		Sound:        &types.StringValue{Value: "default"},
+		ShowPreviews:        ToBool(true),
+		Silent:              ToBool(true),
+		MuteUntil:           &types.Int32Value{Value: 0},
+		IosSound:            nil,
+		AndroidSound:        nil,
+		OtherSound:          nil,
+		StoriesMuted:        nil,
+		StoriesHideSender:   nil,
+		StoriesIosSound:     nil,
+		StoriesAndroidSound: nil,
+		StoriesOtherSound:   nil,
 	}).To_PeerNotifySettings()
 
 	return settings

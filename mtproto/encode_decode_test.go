@@ -17,10 +17,10 @@ func TestTLAccountUpdateStatus(t *testing.T) {
 	//t2 := &TLBoolTrue{}
 	// o.Offline = MakeBool(t2)
 	fmt.Println("status1: ", o)
-
-	b := o.Encode(0)
-	fmt.Println(hex.EncodeToString(b))
-	d := NewDecodeBuf(b)
+	e := NewEncodeBuf(512)
+	o.Encode(e, 0)
+	fmt.Println(hex.EncodeToString(e.GetBuf()))
+	d := NewDecodeBuf(e.GetBuf())
 	// o2 := d.Object()
 	d.Int()
 

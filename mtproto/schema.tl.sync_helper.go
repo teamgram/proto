@@ -24,12 +24,6 @@ import (
 )
 
 func (m *Document) GetFixedSize() int64 {
-	if m.Size2_INT64 != 0 {
-		return m.Size2_INT64
-	}
-	if m.Size2_INT32 != 0 {
-		return int64(m.Size2_INT32)
-	}
 	if m.Size2 != 0 {
 		return m.Size2
 	}
@@ -42,12 +36,6 @@ func (m *Document) FixData() *Document {
 
 	if m.Size2 == 0 {
 		m.Size2 = v
-	}
-	if m.Size2_INT64 == 0 {
-		m.Size2_INT64 = v
-	}
-	if m.Size2_INT32 == 0 {
-		m.Size2_INT32 = int32(v)
 	}
 
 	for i := 0; i < len(m.Attributes); i++ {
@@ -148,71 +136,14 @@ func (m *Message) FixData() *Message {
 }
 
 func (m *EncryptedFile) GetFixedSize() int64 {
-	if m.Size2_INT64 != 0 {
-		return m.Size2_INT64
-	}
-	if m.Size2_INT32 != 0 {
-		return int64(m.Size2_INT32)
-	}
-
-	return 0
+	return m.Size2
 }
 
 func (m *ReactionCount) FixData() *ReactionCount {
-	if m.Reaction != "" {
-		if m.Reaction_STRING == "" {
-			m.Reaction_STRING = m.Reaction
-		}
-		if m.Reaction_REACTION == nil {
-			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
-				Emoticon: m.Reaction,
-			}).To_Reaction()
-		}
-	}
-
-	if m.Reaction_STRING != "" {
-		if m.Reaction_REACTION == nil {
-			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
-				Emoticon: m.Reaction_STRING,
-			}).To_Reaction()
-		}
-	}
-
-	if m.Reaction_REACTION != nil {
-		if m.Reaction_STRING == "" {
-			m.Reaction_STRING = m.Reaction_REACTION.GetEmoticon()
-		}
-	}
-
 	return m
 }
 
 func (m *MessagePeerReaction) FixData() *MessagePeerReaction {
-	if m.Reaction != "" {
-		if m.Reaction_STRING == "" {
-			m.Reaction_STRING = m.Reaction
-		}
-		if m.Reaction_REACTION == nil {
-			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
-				Emoticon: m.Reaction,
-			}).To_Reaction()
-		}
-	}
-
-	if m.Reaction_STRING != "" {
-		if m.Reaction_REACTION == nil {
-			m.Reaction_REACTION = MakeTLReactionEmoji(&Reaction{
-				Emoticon: m.Reaction_STRING,
-			}).To_Reaction()
-		}
-	}
-
-	if m.Reaction_REACTION != nil {
-		if m.Reaction_STRING == "" {
-			m.Reaction_STRING = m.Reaction_REACTION.GetEmoticon()
-		}
-	}
-
 	return m
 }
 

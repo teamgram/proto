@@ -35,28 +35,18 @@ func (m *MessageAction) FixData() *MessageAction {
 }
 
 func (m *MessageReplyHeader) GetFixedReplyToMsgId() int32 {
-	if m.GetReplyToMsgId_FLAGINT32().GetValue() != 0 {
-		return m.GetReplyToMsgId_FLAGINT32().GetValue()
-	}
-	if m.GetReplyToMsgId_INT32() != 0 {
-		return m.ReplyToMsgId_INT32
-	}
-	if m.ReplyToMsgId != 0 {
-		return m.ReplyToMsgId
-	}
-
-	return 0
+	return m.GetReplyToMsgId().GetValue()
 }
 
 func (m *MessageReplyHeader) FixData() *MessageReplyHeader {
-	if m.GetPredicateName() == Predicate_messageReplyHeader {
-		replyToMsgId := m.GetFixedReplyToMsgId()
-		if replyToMsgId != 0 {
-			m.ReplyToMsgId = replyToMsgId
-			m.ReplyToMsgId_FLAGINT32 = MakeFlagsInt32(replyToMsgId)
-			m.ReplyToMsgId_INT32 = replyToMsgId
-		}
-	}
+	//if m.GetPredicateName() == Predicate_messageReplyHeader {
+	//	replyToMsgId := m.GetFixedReplyToMsgId()
+	//	if replyToMsgId != 0 {
+	//		m.ReplyToMsgId = replyToMsgId
+	//		m.ReplyToMsgId_FLAGINT32 = MakeFlagsInt32(replyToMsgId)
+	//		m.ReplyToMsgId_INT32 = replyToMsgId
+	//	}
+	//}
 
 	return m
 }
@@ -235,10 +225,9 @@ func MakeMessageActionCustomAction(message string) *MessageAction {
 // messageActionBotAllowed#c516d679 flags:# attach_menu:flags.1?true domain:flags.0?string app:flags.2?BotApp = MessageAction;
 func MakeMessageActionBotAllowed(domain string) *MessageAction {
 	return MakeTLMessageActionBotAllowed(&MessageAction{
-		AttachMenu:        false,
-		Domain_STRING:     domain,
-		Domain_FLAGSTRING: MakeFlagsString(domain),
-		App:               nil,
+		AttachMenu: false,
+		Domain:     MakeFlagsString(domain),
+		App:        nil,
 	}).To_MessageAction()
 }
 
@@ -421,11 +410,9 @@ func MakePinnedMessageService(slient bool, fromId int64, peer *PeerUtil, pinnedI
 		FromId:      MakePeerUser(fromId),
 		PeerId:      peer.ToPeer(),
 		ReplyTo: MakeTLMessageReplyHeader(&MessageReplyHeader{
-			ReplyToMsgId:           pinnedId,
-			ReplyToMsgId_INT32:     pinnedId,
-			ReplyToMsgId_FLAGINT32: MakeFlagsInt32(pinnedId),
-			ReplyToPeerId:          nil,
-			ReplyToTopId:           nil,
+			ReplyToMsgId:  MakeFlagsInt32(pinnedId),
+			ReplyToPeerId: nil,
+			ReplyToTopId:  nil,
 		}).To_MessageReplyHeader(),
 		Date:      int32(time.Now().Unix()),
 		Action:    MakeMessageActionPinMessage(),
