@@ -5722,6 +5722,21 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -2010155333
 		return o
 	},
+	-425595208: func() TLObject { // 0xe6a1eeb8
+		o := MakeTLSmsJob(nil)
+		o.Data2.Constructor = -425595208
+		return o
+	},
+	-594852657: func() TLObject { // 0xdc8b44cf
+		o := MakeTLSmsjobsEligibleToJoin(nil)
+		o.Data2.Constructor = -594852657
+		return o
+	},
+	720277905: func() TLObject { // 0x2aee9191
+		o := MakeTLSmsjobsStatus(nil)
+		o.Data2.Constructor = 720277905
+		return o
+	},
 	-313293833: func() TLObject { // 0xed5383f7
 		o := MakeTLSponsoredMessage(nil)
 		o.Data2.Constructor = -313293833
@@ -6875,6 +6890,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	969307186: func() TLObject { // 0x39c67432
 		o := MakeTLUpdateSavedReactionTags(nil)
 		o.Data2.Constructor = 969307186
+		return o
+	},
+	-245208620: func() TLObject { // 0xf16269d4
+		o := MakeTLUpdateSmsJob(nil)
+		o.Data2.Constructor = -245208620
 		return o
 	},
 	-232290676: func() TLObject { // 0xf227868c
@@ -10727,6 +10747,41 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	965037343: func() TLObject { // 0x39854d1f
 		return &TLPremiumGetUserBoosts{
 			Constructor: 965037343,
+		}
+	},
+	249313744: func() TLObject { // 0xedc39d0
+		return &TLSmsjobsIsEligibleToJoin{
+			Constructor: 249313744,
+		}
+	},
+	-1488007635: func() TLObject { // 0xa74ece2d
+		return &TLSmsjobsJoin{
+			Constructor: -1488007635,
+		}
+	},
+	-1734824589: func() TLObject { // 0x9898ad73
+		return &TLSmsjobsLeave{
+			Constructor: -1734824589,
+		}
+	},
+	155164863: func() TLObject { // 0x93fa0bf
+		return &TLSmsjobsUpdateSettings{
+			Constructor: 155164863,
+		}
+	},
+	279353576: func() TLObject { // 0x10a698e8
+		return &TLSmsjobsGetStatus{
+			Constructor: 279353576,
+		}
+	},
+	2005766191: func() TLObject { // 0x778d902f
+		return &TLSmsjobsGetSmsJob{
+			Constructor: 2005766191,
+		}
+	},
+	1327415076: func() TLObject { // 0x4f1ebf24
+		return &TLSmsjobsFinishJob{
+			Constructor: 1327415076,
 		}
 	},
 	-1877938321: func() TLObject { // 0x9010ef6f
