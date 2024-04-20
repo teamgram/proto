@@ -27,11 +27,11 @@ func FromBirthdayString(birthday string) (v *Birthday) {
 		day = 0
 	}
 
-	v = &Birthday{
+	v = MakeTLBirthday(&Birthday{
 		Year:  MakeFlagsInt32(year),
 		Month: month,
 		Day:   day,
-	}
+	}).To_Birthday()
 
 	return
 }
