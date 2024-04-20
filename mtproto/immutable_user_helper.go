@@ -176,6 +176,10 @@ func (m *ImmutableUser) ProfileColor() *PeerColor {
 	return m.User.ProfileColor
 }
 
+func (m *ImmutableUser) Birthday() int32 {
+	return m.User.Birthday
+}
+
 func (m *ImmutableUser) CheckContact(cId int64) (bool, bool) {
 	// TODO: sort.Search
 	for _, c := range m.Contacts {
