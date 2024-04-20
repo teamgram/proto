@@ -28,6 +28,8 @@ const (
 	DISALLOW_USERS             = 6
 	ALLOW_CHAT_PARTICIPANTS    = 7
 	DISALLOW_CHAT_PARTICIPANTS = 8
+	ALLOW_CLOSE_FRIENDS        = 9
+	ALLOW_PREMIUM              = 10
 )
 
 /*
@@ -41,6 +43,8 @@ inputPrivacyKeyProfilePhoto#5719bacc = InputPrivacyKey;
 inputPrivacyKeyPhoneNumber#352dafa = InputPrivacyKey;
 inputPrivacyKeyAddedByPhone#d1219bdd = InputPrivacyKey;
 inputPrivacyKeyVoiceMessages#aee69d68 = InputPrivacyKey;
+inputPrivacyKeyAbout#3823cc40 = InputPrivacyKey;
+inputPrivacyKeyBirthday#d65a11cc = InputPrivacyKey;
 ```
 */
 const (
@@ -54,7 +58,9 @@ const (
 	PHONE_NUMBER     = 7
 	ADDED_BY_PHONE   = 8
 	VOICE_MESSAGES   = 9
-	MAX_KEY_TYPE     = 9
+	ABOUT            = 10
+	BIRTHDAY         = 11
+	MAX_KEY_TYPE     = 11
 )
 
 func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
@@ -77,6 +83,10 @@ func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
 		return ADDED_BY_PHONE
 	case Predicate_inputPrivacyKeyVoiceMessages:
 		return VOICE_MESSAGES
+	case Predicate_inputPrivacyKeyAbout:
+		return ABOUT
+	case Predicate_inputPrivacyKeyBirthday:
+		return BIRTHDAY
 	}
 	return KEY_TYPE_INVALID
 }
@@ -101,6 +111,10 @@ func ToPrivacyKey(keyType int) (key *PrivacyKey) {
 		key = MakeTLPrivacyKeyAddedByPhone(nil).To_PrivacyKey()
 	case VOICE_MESSAGES:
 		key = MakeTLPrivacyKeyVoiceMessages(nil).To_PrivacyKey()
+	case ABOUT:
+		key = MakeTLPrivacyKeyAbout(nil).To_PrivacyKey()
+	case BIRTHDAY:
+		key = MakeTLPrivacyKeyBirthday(nil).To_PrivacyKey()
 	default:
 		panic("type is invalid")
 	}
@@ -118,6 +132,8 @@ inputPrivacyValueDisallowAll#d66b66c9 = InputPrivacyRule;
 inputPrivacyValueDisallowUsers#90110467 users:Vector<InputUser> = InputPrivacyRule;
 inputPrivacyValueAllowChatParticipants#4c81c1ba chats:Vector<int> = InputPrivacyRule;
 inputPrivacyValueDisallowChatParticipants#d82363af chats:Vector<int> = InputPrivacyRule;
+inputPrivacyValueAllowCloseFriends#2f453e49 = InputPrivacyRule;
+inputPrivacyValueAllowPremium#77cdc9f1 = InputPrivacyRule;
 ```
 */
 func ToPrivacyRuleByInput(userSelfId int64, inputRule *InputPrivacyRule) *PrivacyRule {
@@ -146,6 +162,10 @@ func ToPrivacyRuleByInput(userSelfId int64, inputRule *InputPrivacyRule) *Privac
 		return MakeTLPrivacyValueDisallowChatParticipants(&PrivacyRule{
 			Chats: inputRule.GetChats(),
 		}).To_PrivacyRule()
+	case Predicate_inputPrivacyValueAllowCloseFriends:
+		return MakeTLPrivacyValueAllowCloseFriends(nil).To_PrivacyRule()
+	case Predicate_inputPrivacyValueAllowPremium:
+		return MakeTLPrivacyValueAllowPremium(nil).To_PrivacyRule()
 	default:
 		// log.Errorf("type is invalid")
 	}
@@ -264,14 +284,16 @@ func CheckPrivacyIsAllow(selfId int64,
 }
 
 /*
-	privacyValueAllowContacts#fffe1bac = PrivacyRule;
-	privacyValueAllowAll#65427b82 = PrivacyRule;
-	privacyValueAllowUsers#4d5bbe0c users:Vector<int> = PrivacyRule;
-	privacyValueDisallowContacts#f888fa1a = PrivacyRule;
-	privacyValueDisallowAll#8b73e763 = PrivacyRule;
-	privacyValueDisallowUsers#c7f49b7 users:Vector<int> = PrivacyRule;
-	privacyValueAllowChatParticipants#18be796b chats:Vector<int> = PrivacyRule;
-	privacyValueDisallowChatParticipants#acae0690 chats:Vector<int> = PrivacyRule;
+privacyValueAllowContacts#fffe1bac = PrivacyRule;
+privacyValueAllowAll#65427b82 = PrivacyRule;
+privacyValueAllowUsers#4d5bbe0c users:Vector<int> = PrivacyRule;
+privacyValueDisallowContacts#f888fa1a = PrivacyRule;
+privacyValueDisallowAll#8b73e763 = PrivacyRule;
+privacyValueDisallowUsers#c7f49b7 users:Vector<int> = PrivacyRule;
+privacyValueAllowChatParticipants#18be796b chats:Vector<int> = PrivacyRule;
+privacyValueDisallowChatParticipants#acae0690 chats:Vector<int> = PrivacyRule;
+privacyValueAllowCloseFriends#f7e8d89b = PrivacyRule;
+privacyValueAllowPremium#ece9814b = PrivacyRule;
 */
 func privacyIsAllow(rules []*PrivacyRule, userId int64, isContact bool) bool {
 	ruleType := RULE_TYPE_INVALID
