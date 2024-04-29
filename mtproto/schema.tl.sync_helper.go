@@ -96,6 +96,79 @@ func (m *PollResults) FixData() *PollResults {
 	return m
 }
 
+func (m *PollAnswer) GetTextString() (text string) {
+	if m.Text != "" {
+		text = m.Text
+	}
+	if m.Text_STRING != "" {
+		text = m.Text_STRING
+	}
+	if m.Text_TEXTWITHENTITIES != nil {
+		text = m.Text_TEXTWITHENTITIES.GetText()
+	}
+
+	return
+}
+
+func (m *PollAnswer) FixData() *PollAnswer {
+	if m.Text == "" {
+		if m.Text_STRING != "" {
+			m.Text = m.Text_STRING
+		} else if m.Text_TEXTWITHENTITIES != nil {
+			m.Text = m.Text_TEXTWITHENTITIES.GetText()
+		}
+	}
+	if m.Text_STRING == "" {
+		m.Text_STRING = m.Text
+	}
+	if m.Text_TEXTWITHENTITIES == nil {
+		m.Text_TEXTWITHENTITIES = MakeTLTextWithEntities(&TextWithEntities{
+			Text:     m.Text,
+			Entities: make([]*MessageEntity, 0),
+		}).To_TextWithEntities()
+	}
+	return m
+}
+
+func (m *Poll) GetQuestionString() (q string) {
+	if m.Question != "" {
+		q = m.Question
+	}
+	if m.Question_STRING != "" {
+		q = m.Question_STRING
+	}
+	if m.Question_TEXTWITHENTITIES != nil {
+		q = m.Question_TEXTWITHENTITIES.GetText()
+	}
+
+	return
+}
+
+func (m *Poll) FixData() *Poll {
+	if m.Question == "" {
+		if m.Question_STRING != "" {
+			m.Question = m.Question_STRING
+		} else if m.Question_TEXTWITHENTITIES != nil {
+			m.Question = m.Question_TEXTWITHENTITIES.GetText()
+		}
+	}
+	if m.Question_STRING == "" {
+		m.Question_STRING = m.Question
+	}
+	if m.Question_TEXTWITHENTITIES == nil {
+		m.Question_TEXTWITHENTITIES = MakeTLTextWithEntities(&TextWithEntities{
+			Text:     m.Question,
+			Entities: make([]*MessageEntity, 0),
+		}).To_TextWithEntities()
+	}
+
+	for i := 0; i < len(m.Answers); i++ {
+		m.Answers[i] = m.Answers[i].FixData()
+	}
+
+	return m
+}
+
 func (m *Update) FixData() *Update {
 	if m.GetMedia() != nil {
 		m.Media = m.Media.FixData()
@@ -114,6 +187,10 @@ func (m *MessageMedia) FixData() *MessageMedia {
 
 	if m.GetResults() != nil {
 		m.Results = m.Results.FixData()
+	}
+
+	if m.GetPoll() != nil {
+		m.Poll = m.Poll.FixData()
 	}
 
 	return m

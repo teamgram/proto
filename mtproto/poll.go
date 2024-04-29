@@ -22,6 +22,22 @@ import (
 	"encoding/json"
 )
 
+func MakePollAnswerWithText(text string, option []byte) *PollAnswer {
+	return MakeTLPollAnswer(&PollAnswer{
+		Text:        text,
+		Text_STRING: text,
+		Text_TEXTWITHENTITIES: MakeTLTextWithEntities(&TextWithEntities{
+			Text:     text,
+			Entities: []*MessageEntity{},
+		}).To_TextWithEntities(),
+		Option: option,
+	}).To_PollAnswer()
+}
+
+//func (m *Poll) GetId() int64 {
+//	return m.Id
+//}
+
 /*
    public static void updatePollResults(TLRPC.TL_messageMediaPoll media, TLRPC.TL_pollResults results) {
        if ((results.flags & 2) != 0) {
