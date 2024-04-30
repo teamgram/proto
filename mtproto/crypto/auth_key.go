@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -198,8 +198,8 @@ func (k *AuthKey) partForMsgKey(incoming bool) []byte {
 }
 
 /*
-	| salt <br> int64	| `session_id` <br> int64 | `message_id` <br> int64 | `seq_no` <br> int32 |`message_data_length` <br> int32	| `message_data` <br> bytes | padding12..1024 <br> bytes|
-	|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+| salt <br> int64	| `session_id` <br> int64 | `message_id` <br> int64 | `seq_no` <br> int32 |`message_data_length` <br> int32	| `message_data` <br> bytes | padding12..1024 <br> bytes|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
 */
 func (k *AuthKey) AesIgeEncryptV1(rawData []byte) ([]byte, []byte, error) {
 	var additionalSize = len(rawData) % 16

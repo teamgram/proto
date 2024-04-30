@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
 package mtproto
 
 import (
-	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 var (
@@ -54,8 +54,8 @@ func MakeDefaultPeerNotifySettings() *PeerNotifySettings {
 	settings := MakeTLPeerNotifySettings(&PeerNotifySettings{
 		ShowPreviews: ToBool(true),
 		Silent:       ToBool(true),
-		MuteUntil:    &wrappers.Int32Value{Value: 0},
-		Sound:        &wrappers.StringValue{Value: "default"},
+		MuteUntil:    &wrapperspb.Int32Value{Value: 0},
+		Sound:        &wrapperspb.StringValue{Value: "default"},
 	}).To_PeerNotifySettings()
 
 	return settings

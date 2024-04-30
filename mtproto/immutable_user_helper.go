@@ -1,4 +1,4 @@
-// Copyright (c) 2023-present,  Teamgram Studio (https://teamgram.io).
+// Copyright (c) 2024-present,  Teamgram Studio (https://teamgram.io).
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
 package mtproto
 
 import (
-	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func (m *ImmutableUser) Id() int64 {
@@ -102,7 +102,7 @@ func (m *ImmutableUser) RestrictionReason() []*RestrictionReason {
 	return m.User.RestrictionReason
 }
 
-func (m *ImmutableUser) BotInlinePlaceholder() *wrappers.StringValue {
+func (m *ImmutableUser) BotInlinePlaceholder() *wrapperspb.StringValue {
 	return m.User.Bot.GetBotInlinePlaceholder()
 }
 
@@ -164,7 +164,7 @@ func (m *ImmutableUser) EmojiStatus() *EmojiStatus {
 	return m.User.EmojiStatus
 }
 
-func (m *ImmutableUser) StoriesMaxId() *wrappers.Int32Value {
+func (m *ImmutableUser) StoriesMaxId() *wrapperspb.Int32Value {
 	return MakeFlagsInt32(m.User.StoriesMaxId)
 }
 

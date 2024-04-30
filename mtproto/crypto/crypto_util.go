@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -114,13 +114,12 @@ func calcSHA256(args ...[]byte) []byte {
 }
 
 /*
- from android client:
-	byte[] dst = new byte[64];
-	Utilities.pbkdf2(password, salt, dst, 100000);
-	return dst;
+	 from android client:
+		byte[] dst = new byte[64];
+		Utilities.pbkdf2(password, salt, dst, 100000);
+		return dst;
 
-	int result = PKCS5_PBKDF2_HMAC((char *) passwordBuff, passwordLength, (uint8_t *) saltBuff, saltLength, (unsigned int) iterations, EVP_sha512(), dstLength, (uint8_t *) dstBuff);
-
+		int result = PKCS5_PBKDF2_HMAC((char *) passwordBuff, passwordLength, (uint8_t *) saltBuff, saltLength, (unsigned int) iterations, EVP_sha512(), dstLength, (uint8_t *) dstBuff);
 */
 func calcPBKDF2(password []byte, salt []byte) []byte {
 	return pbkdf2.Key(password, salt, 100000, 64, sha512.New)

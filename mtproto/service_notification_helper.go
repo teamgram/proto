@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 /*
@@ -58,7 +58,7 @@ func MakeSignInServiceNotification(user *User, authId int64, client, region, cli
 	now := time.Now()
 	notification := MakeTLUpdateServiceNotification(&Update{
 		Popup:          false,
-		InboxDate:      &wrappers.Int32Value{Value: int32(now.Unix())},
+		InboxDate:      &wrapperspb.Int32Value{Value: int32(now.Unix())},
 		Type:           fmt.Sprintf("auth%d_%d", authId, now.Unix()),
 		Message_STRING: "",
 		Media:          MakeTLMessageMediaEmpty(nil).To_MessageMedia(),

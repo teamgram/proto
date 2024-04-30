@@ -1,4 +1,4 @@
-// Copyright (c) 2019-present,  NebulaChat Studio (https://nebula.chat).
+// Copyright (c) 2024-present,  NebulaChat Studio (https://nebula.chat).
 //  All rights reserved.
 //
 // Author: Benqi (wubenqi@gmail.com)
