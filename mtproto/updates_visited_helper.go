@@ -18,23 +18,23 @@
 
 package mtproto
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////////////////////////////
 // updateShortMessage#914fbf11 flags:#
-// 	out:flags.1?true
-// 	mentioned:flags.4?true
-// 	media_unread:flags.5?true
-// 	silent:flags.13?true
-// 	id:int
-// 	user_id:int
-// 	message:string
-// 	pts:int
-// 	pts_count:int
-// 	date:int
-// 	fwd_from:flags.2?MessageFwdHeader
-// 	via_bot_id:flags.11?int
-// 	reply_to_msg_id:flags.3?int
-// 	entities:flags.7?Vector<MessageEntity> = Updates;
 //
+//	out:flags.1?true
+//	mentioned:flags.4?true
+//	media_unread:flags.5?true
+//	silent:flags.13?true
+//	id:int
+//	user_id:int
+//	message:string
+//	pts:int
+//	pts_count:int
+//	date:int
+//	fwd_from:flags.2?MessageFwdHeader
+//	via_bot_id:flags.11?int
+//	reply_to_msg_id:flags.3?int
+//	entities:flags.7?Vector<MessageEntity> = Updates;
 func makeMessageByUpdateShortMessage(userId int64, shortMessage *TLUpdateShortMessage) (message *Message) {
 	var (
 		fromId, peerId int64
@@ -68,21 +68,22 @@ func makeMessageByUpdateShortMessage(userId int64, shortMessage *TLUpdateShortMe
 }
 
 // updateShortChatMessage#16812688 flags:#
-// 	out:flags.1?true
-// 	mentioned:flags.4?true
-// 	media_unread:flags.5?true
-// 	silent:flags.13?true
-// 	id:int
-// 	from_id:int
-// 	chat_id:int
-// 	message:string
-// 	pts:int
-// 	pts_count:int
-// 	date:int
-// 	fwd_from:flags.2?MessageFwdHeader
-// 	via_bot_id:flags.11?int
-// 	reply_to_msg_id:flags.3?int
-// 	entities:flags.7?Vector<MessageEntity> = Updates;
+//
+//	out:flags.1?true
+//	mentioned:flags.4?true
+//	media_unread:flags.5?true
+//	silent:flags.13?true
+//	id:int
+//	from_id:int
+//	chat_id:int
+//	message:string
+//	pts:int
+//	pts_count:int
+//	date:int
+//	fwd_from:flags.2?MessageFwdHeader
+//	via_bot_id:flags.11?int
+//	reply_to_msg_id:flags.3?int
+//	entities:flags.7?Vector<MessageEntity> = Updates;
 func makeMessageByUpdateShortChatMessage(shortMessage *TLUpdateShortChatMessage) *Message {
 	message := MakeTLMessage(&Message{
 		Out:         shortMessage.GetOut(),

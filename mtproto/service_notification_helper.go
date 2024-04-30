@@ -22,7 +22,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/gogo/protobuf/types"
+	"github.com/golang/protobuf/ptypes/wrappers"
 )
 
 /*
@@ -58,7 +58,7 @@ func MakeSignInServiceNotification(user *User, authId int64, client, region, cli
 	now := time.Now()
 	notification := MakeTLUpdateServiceNotification(&Update{
 		Popup:          false,
-		InboxDate:      &types.Int32Value{Value: int32(now.Unix())},
+		InboxDate:      &wrappers.Int32Value{Value: int32(now.Unix())},
 		Type:           fmt.Sprintf("auth%d_%d", authId, now.Unix()),
 		Message_STRING: "",
 		Media:          MakeTLMessageMediaEmpty(nil).To_MessageMedia(),

@@ -63,27 +63,26 @@ func GenerateMessageId() int64 {
 }
 
 /*
-	uint32_t x = incoming ? 8 : 0;
-	static uint8_t sha[68];
+uint32_t x = incoming ? 8 : 0;
+static uint8_t sha[68];
 
-	SHA256_Init(&sha256Ctx);
-	SHA256_Update(&sha256Ctx, messageKey, 16);
-	SHA256_Update(&sha256Ctx, authKey + x, 36);
-	SHA256_Final(sha, &sha256Ctx);
+SHA256_Init(&sha256Ctx);
+SHA256_Update(&sha256Ctx, messageKey, 16);
+SHA256_Update(&sha256Ctx, authKey + x, 36);
+SHA256_Final(sha, &sha256Ctx);
 
-	SHA256_Init(&sha256Ctx);
-	SHA256_Update(&sha256Ctx, authKey + 40 + x, 36);
-	SHA256_Update(&sha256Ctx, messageKey, 16);
-	SHA256_Final(sha + 32, &sha256Ctx);
+SHA256_Init(&sha256Ctx);
+SHA256_Update(&sha256Ctx, authKey + 40 + x, 36);
+SHA256_Update(&sha256Ctx, messageKey, 16);
+SHA256_Final(sha + 32, &sha256Ctx);
 
-	memcpy(result, sha, 8);
-	memcpy(result + 8, sha + 32 + 8, 16);
-	memcpy(result + 8 + 16, sha + 24, 8);
+memcpy(result, sha, 8);
+memcpy(result + 8, sha + 32 + 8, 16);
+memcpy(result + 8 + 16, sha + 24, 8);
 
-	memcpy(result + 32, sha + 32, 8);
-	memcpy(result + 32 + 8, sha + 8, 16);
-	memcpy(result + 32 + 8 + 16, sha + 32 + 24, 8);
-
+memcpy(result + 32, sha + 32, 8);
+memcpy(result + 32 + 8, sha + 8, 16);
+memcpy(result + 32 + 8 + 16, sha + 32 + 24, 8);
 */
 func generateMessageKey(msgKey, authKey []byte, incoming bool) (aesKey, aesIV []byte) {
 	var x = 0

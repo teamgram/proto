@@ -19,8 +19,8 @@
 package mtproto
 
 import (
-	"github.com/gogo/protobuf/proto"
-	"github.com/gogo/protobuf/types"
+	"github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/ptypes/wrappers"
 )
 
 type DialogID struct {
@@ -193,7 +193,7 @@ func (m *MessageBox) ToMessage(toUserId int64) *Message {
 			message.FromId = MakePeerUser(m.SenderUserId)
 		} else {
 			if message.Forwards == nil {
-				message.Forwards = &types.Int32Value{Value: 0}
+				message.Forwards = &wrappers.Int32Value{Value: 0}
 			}
 		}
 	default:

@@ -19,7 +19,7 @@
 package mtproto
 
 import (
-	"github.com/gogo/protobuf/types"
+	"github.com/golang/protobuf/ptypes/wrappers"
 )
 
 const (
@@ -70,27 +70,27 @@ func FromBool(b *Bool) bool {
 	return Predicate_boolTrue == b.GetPredicateName()
 }
 
-func MakeFlagsInt32(v int32) *types.Int32Value {
+func MakeFlagsInt32(v int32) *wrappers.Int32Value {
 	if v == 0 {
 		return nil
 	} else {
-		return &types.Int32Value{Value: v}
+		return &wrappers.Int32Value{Value: v}
 	}
 }
 
-func MakeFlagsInt64(v int64) *types.Int64Value {
+func MakeFlagsInt64(v int64) *wrappers.Int64Value {
 	if v == 0 {
 		return nil
 	} else {
-		return &types.Int64Value{Value: v}
+		return &wrappers.Int64Value{Value: v}
 	}
 }
 
-func MakeFlagsString(v string) *types.StringValue {
+func MakeFlagsString(v string) *wrappers.StringValue {
 	if v == "" {
 		return nil
 	} else {
-		return &types.StringValue{Value: v}
+		return &wrappers.StringValue{Value: v}
 	}
 }
 

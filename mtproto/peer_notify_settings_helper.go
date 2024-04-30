@@ -19,7 +19,7 @@
 package mtproto
 
 import (
-	"github.com/gogo/protobuf/types"
+	"github.com/golang/protobuf/ptypes/wrappers"
 )
 
 var (
@@ -54,8 +54,8 @@ func MakeDefaultPeerNotifySettings() *PeerNotifySettings {
 	settings := MakeTLPeerNotifySettings(&PeerNotifySettings{
 		ShowPreviews: ToBool(true),
 		Silent:       ToBool(true),
-		MuteUntil:    &types.Int32Value{Value: 0},
-		Sound:        &types.StringValue{Value: "default"},
+		MuteUntil:    &wrappers.Int32Value{Value: 0},
+		Sound:        &wrappers.StringValue{Value: "default"},
 	}).To_PeerNotifySettings()
 
 	return settings

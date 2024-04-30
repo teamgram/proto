@@ -31,6 +31,7 @@ type MessageBuildHelper []MessageBuildEntry
 
 /*
 TODO(@benqi):
+
 	messageEntityUnknown#bb92ba95 offset:int length:int = MessageEntity;
 	messageEntityMention#fa04579d offset:int length:int = MessageEntity;
 	messageEntityHashtag#6f635b0d offset:int length:int = MessageEntity;

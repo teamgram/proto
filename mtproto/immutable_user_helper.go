@@ -19,7 +19,7 @@
 package mtproto
 
 import (
-	"github.com/gogo/protobuf/types"
+	"github.com/golang/protobuf/ptypes/wrappers"
 )
 
 func (m *ImmutableUser) Id() int64 {
@@ -102,7 +102,7 @@ func (m *ImmutableUser) RestrictionReason() []*RestrictionReason {
 	return m.User.RestrictionReason
 }
 
-func (m *ImmutableUser) BotInlinePlaceholder() *types.StringValue {
+func (m *ImmutableUser) BotInlinePlaceholder() *wrappers.StringValue {
 	return m.User.Bot.GetBotInlinePlaceholder()
 }
 
@@ -164,7 +164,7 @@ func (m *ImmutableUser) EmojiStatus() *EmojiStatus {
 	return m.User.EmojiStatus
 }
 
-func (m *ImmutableUser) StoriesMaxId() *types.Int32Value {
+func (m *ImmutableUser) StoriesMaxId() *wrappers.Int32Value {
 	return MakeFlagsInt32(m.User.StoriesMaxId)
 }
 
