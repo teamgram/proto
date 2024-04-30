@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@
 package mtproto
 
 import (
-	"github.com/golang/protobuf/proto"
-	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/protobuf/proto"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 type DialogID struct {
@@ -193,7 +193,7 @@ func (m *MessageBox) ToMessage(toUserId int64) *Message {
 			message.FromId = MakePeerUser(m.SenderUserId)
 		} else {
 			if message.Forwards == nil {
-				message.Forwards = &wrappers.Int32Value{Value: 0}
+				message.Forwards = &wrapperspb.Int32Value{Value: 0}
 			}
 		}
 	default:

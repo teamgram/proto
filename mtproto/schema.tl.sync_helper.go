@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ package mtproto
 import (
 	"time"
 
-	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func (m *Document) GetFixedSize() int64 {
@@ -211,7 +211,7 @@ func (m *Message) FixData() *Message {
 		if ttlPeriod < 0 {
 			ttlPeriod = 0
 		}
-		m.TtlPeriod = &wrappers.Int32Value{Value: ttlPeriod}
+		m.TtlPeriod = &wrapperspb.Int32Value{Value: ttlPeriod}
 	}
 
 	if m.GetAction() != nil {

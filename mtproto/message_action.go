@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ package mtproto
 import (
 	"time"
 
-	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 func (m *MessageAction) FixData() *MessageAction {
@@ -186,7 +186,7 @@ func MakeMessageActionPaymentSentMe(currency string, totalAmount int64, payload 
 	}).To_MessageAction()
 
 	if shippingOptionId != "" {
-		action.ShippingOptionId = &wrappers.StringValue{Value: shippingOptionId}
+		action.ShippingOptionId = &wrapperspb.StringValue{Value: shippingOptionId}
 	}
 	return action
 }
@@ -211,7 +211,7 @@ func MakeMessageActionPhoneCall(video bool, callId int64, reason *PhoneCallDisca
 		Duration: nil,
 	}).To_MessageAction()
 	if duration > 0 {
-		action.Duration = &wrappers.Int32Value{Value: duration}
+		action.Duration = &wrapperspb.Int32Value{Value: duration}
 	}
 	return action
 }

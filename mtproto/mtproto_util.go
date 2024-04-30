@@ -1,4 +1,4 @@
-// Copyright 2022 Teamgram Authors
+// Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@
 package mtproto
 
 import (
-	"github.com/golang/protobuf/ptypes/wrappers"
+	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
 const (
@@ -70,27 +70,27 @@ func FromBool(b *Bool) bool {
 	return Predicate_boolTrue == b.GetPredicateName()
 }
 
-func MakeFlagsInt32(v int32) *wrappers.Int32Value {
+func MakeFlagsInt32(v int32) *wrapperspb.Int32Value {
 	if v == 0 {
 		return nil
 	} else {
-		return &wrappers.Int32Value{Value: v}
+		return &wrapperspb.Int32Value{Value: v}
 	}
 }
 
-func MakeFlagsInt64(v int64) *wrappers.Int64Value {
+func MakeFlagsInt64(v int64) *wrapperspb.Int64Value {
 	if v == 0 {
 		return nil
 	} else {
-		return &wrappers.Int64Value{Value: v}
+		return &wrapperspb.Int64Value{Value: v}
 	}
 }
 
-func MakeFlagsString(v string) *wrappers.StringValue {
+func MakeFlagsString(v string) *wrapperspb.StringValue {
 	if v == "" {
 		return nil
 	} else {
-		return &wrappers.StringValue{Value: v}
+		return &wrapperspb.StringValue{Value: v}
 	}
 }
 
