@@ -21,7 +21,7 @@ package mtproto
 import (
 	"time"
 
-	"github.com/gogo/protobuf/types"
+	"github.com/golang/protobuf/ptypes/wrappers"
 )
 
 func (m *MessageAction) FixData() *MessageAction {
@@ -186,7 +186,7 @@ func MakeMessageActionPaymentSentMe(currency string, totalAmount int64, payload 
 	}).To_MessageAction()
 
 	if shippingOptionId != "" {
-		action.ShippingOptionId = &types.StringValue{Value: shippingOptionId}
+		action.ShippingOptionId = &wrappers.StringValue{Value: shippingOptionId}
 	}
 	return action
 }
@@ -211,7 +211,7 @@ func MakeMessageActionPhoneCall(video bool, callId int64, reason *PhoneCallDisca
 		Duration: nil,
 	}).To_MessageAction()
 	if duration > 0 {
-		action.Duration = &types.Int32Value{Value: duration}
+		action.Duration = &wrappers.Int32Value{Value: duration}
 	}
 	return action
 }

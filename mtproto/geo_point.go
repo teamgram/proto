@@ -24,7 +24,6 @@ package mtproto
 //
 // geoPointEmpty#1117dd5f = GeoPoint;
 // geoPoint#296f104 long:double lat:double access_hash:long = GeoPoint;
-//
 func MakeGeoPointByInput(geoPoint *InputGeoPoint) (geo *GeoPoint) {
 	switch geoPoint.PredicateName {
 	case Predicate_inputGeoPointEmpty:

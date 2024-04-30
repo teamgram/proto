@@ -19,8 +19,9 @@
 package mtproto
 
 import (
-	"github.com/gogo/protobuf/types"
 	"time"
+
+	"github.com/golang/protobuf/ptypes/wrappers"
 )
 
 func (m *Document) GetFixedSize() int64 {
@@ -210,7 +211,7 @@ func (m *Message) FixData() *Message {
 		if ttlPeriod < 0 {
 			ttlPeriod = 0
 		}
-		m.TtlPeriod = &types.Int32Value{Value: ttlPeriod}
+		m.TtlPeriod = &wrappers.Int32Value{Value: ttlPeriod}
 	}
 
 	if m.GetAction() != nil {

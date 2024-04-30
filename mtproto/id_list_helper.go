@@ -104,6 +104,7 @@ func (m *IDListHelper) PickByFwdFrom(fwd *MessageFwdHeader) {
 
 // PickByReplyTo
 // messageReplyHeader#a6d57763 flags:#
+//
 //	reply_to_msg_id:int
 //	reply_to_peer_id:flags.0?Peer
 //	reply_to_top_id:flags.1?int = MessageReplyHeader;
@@ -113,6 +114,7 @@ func (m *IDListHelper) PickByReplyTo(replyTo *MessageReplyHeader) {
 
 // PickByReplies
 // messageReplies#4128faac flags:#
+//
 //	comments:flags.0?true
 //	replies:int
 //	replies_pts:int
@@ -120,7 +122,6 @@ func (m *IDListHelper) PickByReplyTo(replyTo *MessageReplyHeader) {
 //	channel_id:flags.0?int
 //	max_id:flags.2?int
 //	read_max_id:flags.3?int = MessageReplies;
-//
 func (m *IDListHelper) PickByReplies(replies *MessageReplies) {
 	for _, p := range replies.GetRecentRepliers() {
 		m.PickByPeer(p)

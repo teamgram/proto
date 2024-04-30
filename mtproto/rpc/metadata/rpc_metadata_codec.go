@@ -26,7 +26,7 @@ import (
 
 	"github.com/teamgram/proto/mtproto"
 
-	"github.com/gogo/protobuf/proto"
+	"github.com/golang/protobuf/proto"
 	"google.golang.org/grpc/metadata"
 )
 
