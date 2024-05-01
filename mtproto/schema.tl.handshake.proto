@@ -1,0 +1,216 @@
+/*
+ * WARNING! All changes made in this file will be lost!
+ * Created from 'scheme.tl' by 'mtprotoc'
+ *
+ * Copyright (c) 2024-present,  Teamgram Authors.
+ *  All rights reserved.
+ *
+ * Author: Benqi (wubenqi@gmail.com)
+ */
+
+syntax = "proto3";
+
+package mtproto;
+
+// import "google/protobuf/wrappers.proto";
+import "schema.tl.crc32.proto";
+
+option go_package = "github.com/teamgram/proto/mtproto";
+
+
+// BindAuthKeyInner <--
+//  + TL_bind_auth_key_inner
+//
+message BindAuthKeyInner {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int64 nonce = 3;
+    int64 temp_auth_key_id = 4;
+    int64 perm_auth_key_id = 5;
+    int64 temp_session_id = 6;
+    int32 expires_at = 7;
+}
+
+// TL_bind_auth_key_inner
+message TL_bind_auth_key_inner {
+    BindAuthKeyInner data2 = 1;
+}
+
+
+// Client_DH_Inner_Data <--
+//  + TL_client_DH_inner_data
+//
+message Client_DH_Inner_Data {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bytes nonce = 3;
+    bytes server_nonce = 4;
+    int64 retry_id = 5;
+    string g_b = 6;
+}
+
+// TL_client_DH_inner_data
+message TL_client_DH_inner_data {
+    Client_DH_Inner_Data data2 = 1;
+}
+
+
+// DestroyAuthKeyRes <--
+//  + TL_destroy_auth_key_ok
+//  + TL_destroy_auth_key_none
+//  + TL_destroy_auth_key_fail
+//
+message DestroyAuthKeyRes {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+}
+
+// TL_destroy_auth_key_ok
+message TL_destroy_auth_key_ok {
+    DestroyAuthKeyRes data2 = 1;
+}
+
+// TL_destroy_auth_key_none
+message TL_destroy_auth_key_none {
+    DestroyAuthKeyRes data2 = 1;
+}
+
+// TL_destroy_auth_key_fail
+message TL_destroy_auth_key_fail {
+    DestroyAuthKeyRes data2 = 1;
+}
+
+
+// P_Q_inner_data <--
+//  + TL_p_q_inner_data
+//  + TL_p_q_inner_data_dc
+//  + TL_p_q_inner_data_temp
+//  + TL_p_q_inner_data_temp_dc
+//
+message P_Q_inner_data {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string pq = 3;
+    string p = 4;
+    string q = 5;
+    bytes nonce = 6;
+    bytes server_nonce = 7;
+    bytes new_nonce = 8;
+    int32 dc = 9;
+    int32 expires_in = 10;
+}
+
+// TL_p_q_inner_data
+message TL_p_q_inner_data {
+    P_Q_inner_data data2 = 1;
+}
+
+// TL_p_q_inner_data_dc
+message TL_p_q_inner_data_dc {
+    P_Q_inner_data data2 = 1;
+}
+
+// TL_p_q_inner_data_temp
+message TL_p_q_inner_data_temp {
+    P_Q_inner_data data2 = 1;
+}
+
+// TL_p_q_inner_data_temp_dc
+message TL_p_q_inner_data_temp_dc {
+    P_Q_inner_data data2 = 1;
+}
+
+
+// ResPQ <--
+//  + TL_resPQ
+//
+message ResPQ {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bytes nonce = 3;
+    bytes server_nonce = 4;
+    string pq = 5;
+    repeated int64 server_public_key_fingerprints = 6;
+}
+
+// TL_resPQ
+message TL_resPQ {
+    ResPQ data2 = 1;
+}
+
+
+// Server_DH_Params <--
+//  + TL_server_DH_params_fail
+//  + TL_server_DH_params_ok
+//
+message Server_DH_Params {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bytes nonce = 3;
+    bytes server_nonce = 4;
+    bytes new_nonce_hash = 5;
+    string encrypted_answer = 6;
+}
+
+// TL_server_DH_params_fail
+message TL_server_DH_params_fail {
+    Server_DH_Params data2 = 1;
+}
+
+// TL_server_DH_params_ok
+message TL_server_DH_params_ok {
+    Server_DH_Params data2 = 1;
+}
+
+
+// Server_DH_inner_data <--
+//  + TL_server_DH_inner_data
+//
+message Server_DH_inner_data {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bytes nonce = 3;
+    bytes server_nonce = 4;
+    int32 g = 5;
+    string dh_prime = 6;
+    string g_a = 7;
+    int32 server_time = 8;
+}
+
+// TL_server_DH_inner_data
+message TL_server_DH_inner_data {
+    Server_DH_inner_data data2 = 1;
+}
+
+
+// Set_client_DH_params_answer <--
+//  + TL_dh_gen_ok
+//  + TL_dh_gen_retry
+//  + TL_dh_gen_fail
+//
+message Set_client_DH_params_answer {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bytes nonce = 3;
+    bytes server_nonce = 4;
+    bytes new_nonce_hash1 = 5;
+    bytes new_nonce_hash2 = 6;
+    bytes new_nonce_hash3 = 7;
+}
+
+// TL_dh_gen_ok
+message TL_dh_gen_ok {
+    Set_client_DH_params_answer data2 = 1;
+}
+
+// TL_dh_gen_retry
+message TL_dh_gen_retry {
+    Set_client_DH_params_answer data2 = 1;
+}
+
+// TL_dh_gen_fail
+message TL_dh_gen_fail {
+    Set_client_DH_params_answer data2 = 1;
+}
+
+

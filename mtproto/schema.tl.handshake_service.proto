@@ -1,0 +1,71 @@
+/*
+ * WARNING! All changes made in this file will be lost!
+ * Created from 'scheme.tl' by 'mtprotoc'
+ *
+ * Copyright (c) 2024-present,  Teamgram Authors.
+ *  All rights reserved.
+ *
+ * Author: Benqi (wubenqi@gmail.com)
+ */
+
+syntax = "proto3";
+
+package mtproto;
+
+// import "google/protobuf/wrappers.proto";
+import "schema.tl.crc32.proto";
+import "schema.tl.handshake.proto";
+
+option go_package = "github.com/teamgram/proto/mtproto";
+
+
+message TL_req_pq {
+    TLConstructor  constructor = 1;
+    bytes nonce = 3;
+}
+
+message TL_req_pq_multi {
+    TLConstructor  constructor = 1;
+    bytes nonce = 3;
+}
+
+message TL_req_DH_params {
+    TLConstructor  constructor = 1;
+    bytes nonce = 3;
+    bytes server_nonce = 4;
+    string p = 5;
+    string q = 6;
+    int64 public_key_fingerprint = 7;
+    string encrypted_data = 8;
+}
+
+message TL_set_client_DH_params {
+    TLConstructor  constructor = 1;
+    bytes nonce = 3;
+    bytes server_nonce = 4;
+    string encrypted_data = 5;
+}
+
+message TL_destroy_auth_key {
+    TLConstructor  constructor = 1;
+}
+
+
+//--------------------------------------------------------------------------------------------
+// rpc
+service RPCAuthKey {
+    // req_pq#60469778 nonce:int128 = ResPQ;
+    rpc req_pq(TL_req_pq) returns (ResPQ) {}
+
+    // req_pq_multi#be7e8ef1 nonce:int128 = ResPQ;
+    rpc req_pq_multi(TL_req_pq_multi) returns (ResPQ) {}
+
+    // req_DH_params#d712e4be nonce:int128 server_nonce:int128 p:string q:string public_key_fingerprint:long encrypted_data:string = Server_DH_Params;
+    rpc req_DH_params(TL_req_DH_params) returns (Server_DH_Params) {}
+
+    // set_client_DH_params#f5045f1f nonce:int128 server_nonce:int128 encrypted_data:string = Set_client_DH_params_answer;
+    rpc set_client_DH_params(TL_set_client_DH_params) returns (Set_client_DH_params_answer) {}
+
+    // destroy_auth_key#d1435160 = DestroyAuthKeyRes;
+    rpc destroy_auth_key(TL_destroy_auth_key) returns (DestroyAuthKeyRes) {}
+}
