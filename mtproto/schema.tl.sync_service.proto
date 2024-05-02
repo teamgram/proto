@@ -2517,6 +2517,11 @@ message TL_messages_getMyStickers {
     int32 limit = 4;
 }
 
+message TL_messages_getEmojiStickerGroups {
+    TLConstructor  constructor = 1;
+    int32 hash = 3;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -4661,6 +4666,7 @@ service RPCCustomEmojis {
     rpc messages_getEmojiStatusGroups(TL_messages_getEmojiStatusGroups) returns (messages_EmojiGroups) {}
     rpc messages_getEmojiProfilePhotoGroups(TL_messages_getEmojiProfilePhotoGroups) returns (messages_EmojiGroups) {}
     rpc messages_searchCustomEmoji(TL_messages_searchCustomEmoji) returns (EmojiList) {}
+    rpc messages_getEmojiStickerGroups(TL_messages_getEmojiStickerGroups) returns (messages_EmojiGroups) {}
     rpc channels_setEmojiStickers(TL_channels_setEmojiStickers) returns (Bool) {}
 }
 

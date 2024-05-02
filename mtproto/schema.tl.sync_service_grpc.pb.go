@@ -8852,6 +8852,7 @@ const (
 	RPCCustomEmojis_MessagesGetEmojiStatusGroups_FullMethodName            = "/mtproto.RPCCustomEmojis/messages_getEmojiStatusGroups"
 	RPCCustomEmojis_MessagesGetEmojiProfilePhotoGroups_FullMethodName      = "/mtproto.RPCCustomEmojis/messages_getEmojiProfilePhotoGroups"
 	RPCCustomEmojis_MessagesSearchCustomEmoji_FullMethodName               = "/mtproto.RPCCustomEmojis/messages_searchCustomEmoji"
+	RPCCustomEmojis_MessagesGetEmojiStickerGroups_FullMethodName           = "/mtproto.RPCCustomEmojis/messages_getEmojiStickerGroups"
 	RPCCustomEmojis_ChannelsSetEmojiStickers_FullMethodName                = "/mtproto.RPCCustomEmojis/channels_setEmojiStickers"
 )
 
@@ -8870,6 +8871,7 @@ type RPCCustomEmojisClient interface {
 	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
 	MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
 	MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji, opts ...grpc.CallOption) (*EmojiList, error)
+	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
 	ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers, opts ...grpc.CallOption) (*Bool, error)
 }
 
@@ -8980,6 +8982,15 @@ func (c *rPCCustomEmojisClient) MessagesSearchCustomEmoji(ctx context.Context, i
 	return out, nil
 }
 
+func (c *rPCCustomEmojisClient) MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
+	out := new(Messages_EmojiGroups)
+	err := c.cc.Invoke(ctx, RPCCustomEmojis_MessagesGetEmojiStickerGroups_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCCustomEmojisClient) ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCCustomEmojis_ChannelsSetEmojiStickers_FullMethodName, in, out, opts...)
@@ -9004,6 +9015,7 @@ type RPCCustomEmojisServer interface {
 	MessagesGetEmojiStatusGroups(context.Context, *TLMessagesGetEmojiStatusGroups) (*Messages_EmojiGroups, error)
 	MessagesGetEmojiProfilePhotoGroups(context.Context, *TLMessagesGetEmojiProfilePhotoGroups) (*Messages_EmojiGroups, error)
 	MessagesSearchCustomEmoji(context.Context, *TLMessagesSearchCustomEmoji) (*EmojiList, error)
+	MessagesGetEmojiStickerGroups(context.Context, *TLMessagesGetEmojiStickerGroups) (*Messages_EmojiGroups, error)
 	ChannelsSetEmojiStickers(context.Context, *TLChannelsSetEmojiStickers) (*Bool, error)
 }
 
@@ -9043,6 +9055,9 @@ func (UnimplementedRPCCustomEmojisServer) MessagesGetEmojiProfilePhotoGroups(con
 }
 func (UnimplementedRPCCustomEmojisServer) MessagesSearchCustomEmoji(context.Context, *TLMessagesSearchCustomEmoji) (*EmojiList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSearchCustomEmoji not implemented")
+}
+func (UnimplementedRPCCustomEmojisServer) MessagesGetEmojiStickerGroups(context.Context, *TLMessagesGetEmojiStickerGroups) (*Messages_EmojiGroups, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiStickerGroups not implemented")
 }
 func (UnimplementedRPCCustomEmojisServer) ChannelsSetEmojiStickers(context.Context, *TLChannelsSetEmojiStickers) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsSetEmojiStickers not implemented")
@@ -9257,6 +9272,24 @@ func _RPCCustomEmojis_MessagesSearchCustomEmoji_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCCustomEmojis_MessagesGetEmojiStickerGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetEmojiStickerGroups)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCCustomEmojisServer).MessagesGetEmojiStickerGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCCustomEmojis_MessagesGetEmojiStickerGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCCustomEmojisServer).MessagesGetEmojiStickerGroups(ctx, req.(*TLMessagesGetEmojiStickerGroups))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCCustomEmojis_ChannelsSetEmojiStickers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsSetEmojiStickers)
 	if err := dec(in); err != nil {
@@ -9325,6 +9358,10 @@ var RPCCustomEmojis_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_searchCustomEmoji",
 			Handler:    _RPCCustomEmojis_MessagesSearchCustomEmoji_Handler,
+		},
+		{
+			MethodName: "messages_getEmojiStickerGroups",
+			Handler:    _RPCCustomEmojis_MessagesGetEmojiStickerGroups_Handler,
 		},
 		{
 			MethodName: "channels_setEmojiStickers",
