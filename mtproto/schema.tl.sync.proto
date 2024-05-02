@@ -26,17 +26,6 @@ message AccountDaysTTL {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int32 days = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_accountDaysTTL
@@ -52,17 +41,6 @@ message AppWebViewResult {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string url = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_appWebViewResultUrl
@@ -89,17 +67,6 @@ message AttachMenuBot {
     string short_name = 10;
     repeated AttachMenuPeerType peer_types = 11;
     repeated AttachMenuBotIcon icons = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_attachMenuBot
@@ -117,17 +84,6 @@ message AttachMenuBotIcon {
     string name = 3;
     Document icon = 4;
     repeated AttachMenuBotIconColor colors = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_attachMenuBotIcon
@@ -144,17 +100,6 @@ message AttachMenuBotIconColor {
     TLConstructor  constructor = 2;
     string name = 3;
     int32 color = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_attachMenuBotIconColor
@@ -173,17 +118,6 @@ message AttachMenuBots {
     int64 hash = 3;
     repeated AttachMenuBot bots = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_attachMenuBotsNotModified
@@ -205,17 +139,6 @@ message AttachMenuBotsBot {
     TLConstructor  constructor = 2;
     AttachMenuBot bot = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_attachMenuBotsBot
@@ -234,17 +157,6 @@ message TL_attachMenuBotsBot {
 message AttachMenuPeerType {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_attachMenuPeerTypeSameBotPM
@@ -285,17 +197,6 @@ message AuthKeyInfo {
     int64 perm_auth_key_id = 6;
     int64 temp_auth_key_id = 7;
     int64 media_temp_auth_key_id = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_authKeyInfo
@@ -328,17 +229,6 @@ message Authorization {
     string ip = 18;
     string country = 19;
     string region = 20;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_authorization
@@ -368,17 +258,6 @@ message AutoDownloadSettings {
     int32 large_queue_active_operations_max = 13;
     int32 video_size_max_INT32 = 14;
     int32 file_size_max_INT32 = 15;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_autoDownloadSettings
@@ -395,17 +274,6 @@ message AutoSaveException {
     TLConstructor  constructor = 2;
     Peer peer = 3;
     AutoSaveSettings settings = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_autoSaveException
@@ -423,17 +291,6 @@ message AutoSaveSettings {
     bool photos = 3;
     bool videos = 4;
     google.protobuf.Int64Value video_max_size = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_autoSaveSettings
@@ -459,17 +316,6 @@ message AvailableReaction {
     Document effect_animation = 11;
     Document around_animation = 12;
     Document center_icon = 13;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_availableReaction
@@ -486,17 +332,6 @@ message BankCardOpenUrl {
     TLConstructor  constructor = 2;
     string url = 3;
     string name = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_bankCardOpenUrl
@@ -515,17 +350,6 @@ message TL_bankCardOpenUrl {
 message BaseTheme {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_baseThemeClassic
@@ -563,17 +387,6 @@ message Birthday {
     int32 day = 3;
     int32 month = 4;
     google.protobuf.Int32Value year = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_birthday
@@ -589,17 +402,6 @@ message BizDataRaw {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     bytes data = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_bizDataRaw
@@ -624,17 +426,6 @@ message Boost {
     int32 expires = 10;
     google.protobuf.StringValue used_gift_slug = 11;
     google.protobuf.Int32Value multiplier = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_boost
@@ -651,17 +442,6 @@ message Booster {
     TLConstructor  constructor = 2;
     int64 user_id = 3;
     int32 expires = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_booster
@@ -685,17 +465,6 @@ message BotApp {
     Photo photo = 8;
     Document document = 9;
     int64 hash = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botAppNotModified
@@ -721,17 +490,6 @@ message BotBusinessConnection {
     int64 user_id = 6;
     int32 dc_id = 7;
     int32 date = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botBusinessConnection
@@ -748,17 +506,6 @@ message BotCommand {
     TLConstructor  constructor = 2;
     string command = 3;
     string description = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botCommand
@@ -781,17 +528,6 @@ message BotCommandScope {
     TLConstructor  constructor = 2;
     InputPeer peer = 3;
     InputUser user_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botCommandScopeDefault
@@ -849,17 +585,6 @@ message BotData {
     bool bot_attach_menu = 13;
     bool attach_menu_enabled = 14;
     bool bot_can_edit = 15;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botData
@@ -884,17 +609,6 @@ message BotInfo {
     BotMenuButton menu_button = 8;
     int64 user_id_INT64 = 9;
     string description_STRING = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botInfo
@@ -944,17 +658,6 @@ message BotInlineMessage {
     bool manual = 29;
     bool safe = 30;
     string url = 31;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botInlineMessageMediaAuto
@@ -1010,17 +713,6 @@ message BotInlineResult {
     BotInlineMessage send_message = 10;
     Photo photo = 11;
     Document document = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botInlineResult
@@ -1044,17 +736,6 @@ message BotMenuButton {
     TLConstructor  constructor = 2;
     string text = 3;
     string url = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_botMenuButtonDefault
@@ -1070,6 +751,23 @@ message TL_botMenuButtonCommands {
 // TL_botMenuButton
 message TL_botMenuButton {
     BotMenuButton data2 = 1;
+}
+
+
+// BroadcastRevenueBalances <--
+//  + TL_broadcastRevenueBalances
+//
+message BroadcastRevenueBalances {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int64 current_balance = 3;
+    int64 available_balance = 4;
+    int64 overall_revenue = 5;
+}
+
+// TL_broadcastRevenueBalances
+message TL_broadcastRevenueBalances {
+    BroadcastRevenueBalances data2 = 1;
 }
 
 
@@ -1090,17 +788,6 @@ message BroadcastRevenueTransaction {
     string provider = 9;
     google.protobuf.Int32Value transaction_date = 10;
     google.protobuf.StringValue transaction_url = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_broadcastRevenueTransactionProceeds
@@ -1129,17 +816,6 @@ message BusinessAwayMessage {
     int32 shortcut_id = 4;
     BusinessAwayMessageSchedule schedule = 5;
     BusinessRecipients recipients = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessAwayMessage
@@ -1158,17 +834,6 @@ message BusinessAwayMessageSchedule {
     TLConstructor  constructor = 2;
     int32 start_date = 3;
     int32 end_date = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessAwayMessageScheduleAlways
@@ -1200,17 +865,6 @@ message BusinessBotRecipients {
     bool exclude_selected = 7;
     repeated int64 users = 8;
     repeated int64 exclude_users = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessBotRecipients
@@ -1230,17 +884,6 @@ message BusinessChatLink {
     repeated MessageEntity entities = 5;
     google.protobuf.StringValue title = 6;
     int32 views = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessChatLink
@@ -1258,17 +901,6 @@ message BusinessGreetingMessage {
     int32 shortcut_id = 3;
     BusinessRecipients recipients = 4;
     int32 no_activity_days = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessGreetingMessage
@@ -1286,17 +918,6 @@ message BusinessIntro {
     string title = 3;
     string description = 4;
     Document sticker = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessIntro
@@ -1313,17 +934,6 @@ message BusinessLocation {
     TLConstructor  constructor = 2;
     GeoPoint geo_point = 3;
     string address = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessLocation
@@ -1344,17 +954,6 @@ message BusinessRecipients {
     bool non_contacts = 6;
     bool exclude_selected = 7;
     repeated int64 users = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessRecipients
@@ -1371,17 +970,6 @@ message BusinessWeeklyOpen {
     TLConstructor  constructor = 2;
     int32 start_minute = 3;
     int32 end_minute = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessWeeklyOpen
@@ -1399,17 +987,6 @@ message BusinessWorkHours {
     bool open_now = 3;
     string timezone_id = 4;
     repeated BusinessWeeklyOpen weekly_open = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_businessWorkHours
@@ -1425,17 +1002,6 @@ message CdnConfig {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     repeated CdnPublicKey public_keys = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_cdnConfig
@@ -1452,17 +1018,6 @@ message CdnPublicKey {
     TLConstructor  constructor = 2;
     int32 dc_id = 3;
     string public_key = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_cdnPublicKey
@@ -1481,17 +1036,6 @@ message ChannelAdminLogEvent {
     int32 date = 4;
     int64 user_id = 5;
     ChannelAdminLogEventAction action = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channelAdminLogEvent
@@ -1599,17 +1143,6 @@ message ChannelAdminLogEventAction {
     WallPaper new_value_WALLPAPER = 42;
     EmojiStatus prev_value_EMOJISTATUS = 43;
     EmojiStatus new_value_EMOJISTATUS = 44;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channelAdminLogEventActionChangeTitle
@@ -1887,17 +1420,6 @@ message ChannelAdminLogEventsFilter {
     bool invites = 18;
     bool send = 19;
     bool forums = 20;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channelAdminLogEventsFilter
@@ -1915,17 +1437,6 @@ message ChannelLocation {
     TLConstructor  constructor = 2;
     GeoPoint geo_point = 3;
     string address = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channelLocationEmpty
@@ -1948,17 +1459,6 @@ message ChannelMessagesFilter {
     TLConstructor  constructor = 2;
     bool exclude_new_messages = 3;
     repeated MessageRange ranges = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channelMessagesFilterEmpty
@@ -1997,17 +1497,6 @@ message ChannelParticipant {
     Peer peer = 14;
     int64 kicked_by = 15;
     ChatBannedRights banned_rights = 16;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channelParticipant
@@ -2057,17 +1546,6 @@ message ChannelParticipantsFilter {
     string q_STRING = 3;
     google.protobuf.StringValue q_FLAGSTRING = 4;
     google.protobuf.Int32Value top_msg_id = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channelParticipantsRecent
@@ -2174,17 +1652,7 @@ message Chat {
     google.protobuf.Int32Value until_date = 48;
     google.protobuf.Int32Value color_FLAGINT32 = 49;
     google.protobuf.Int64Value background_emoji_id = 50;
-
-
-
-
-
-
-
- google.protobuf.Int32Value color = 100; 
-
-
-
+    google.protobuf.Int32Value color = 100;
 }
 
 // TL_chatEmpty
@@ -2234,17 +1702,6 @@ message ChatAdminRights {
     bool post_stories = 15;
     bool edit_stories = 16;
     bool delete_stories = 17;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatAdminRights
@@ -2262,17 +1719,6 @@ message ChatAdminWithInvites {
     int64 admin_id = 3;
     int32 invites_count = 4;
     int32 revoked_invites_count = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatAdminWithInvites
@@ -2308,17 +1754,6 @@ message ChatBannedRights {
     bool send_docs = 21;
     bool send_plain = 22;
     int32 until_date = 23;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatBannedRights
@@ -2401,17 +1836,6 @@ message ChatFull {
     google.protobuf.Int32Value boosts_unrestrict = 59;
     StickerSet emojiset = 60;
     repeated string available_reactions_FLAGVECTORSTRING = 61;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatFull
@@ -2450,17 +1874,6 @@ message ChatInvite {
     repeated User participants = 16;
     int32 color = 17;
     int32 expires = 18;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatInviteAlready
@@ -2491,17 +1904,6 @@ message ChatInviteImporter {
     int32 date = 6;
     google.protobuf.StringValue about = 7;
     google.protobuf.Int64Value approved_by = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatInviteImporter
@@ -2517,17 +1919,6 @@ message ChatOnlines {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int32 onlines = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatOnlines
@@ -2547,17 +1938,6 @@ message ChatParticipant {
     int64 user_id = 3;
     int64 inviter_id = 4;
     int32 date = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatParticipant
@@ -2587,17 +1967,6 @@ message ChatParticipants {
     ChatParticipant self_participant = 4;
     repeated ChatParticipant participants = 5;
     int32 version = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatParticipantsForbidden
@@ -2622,17 +1991,6 @@ message ChatPhoto {
     int64 photo_id = 4;
     bytes stripped_thumb = 5;
     int32 dc_id = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatPhotoEmpty
@@ -2656,17 +2014,6 @@ message ChatReactions {
     TLConstructor  constructor = 2;
     bool allow_custom = 3;
     repeated Reaction reactions = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatReactionsNone
@@ -2701,17 +2048,6 @@ message CodeSettings {
     repeated bytes logout_tokens = 9;
     google.protobuf.StringValue token = 10;
     Bool app_sandbox = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_codeSettings
@@ -2782,17 +2118,6 @@ message Config {
     int32 stickers_faved_limit = 54;
     int32 pinned_dialogs_count_max = 55;
     int32 pinned_infolder_count_max = 56;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_config
@@ -2812,17 +2137,6 @@ message ConnectedBot {
     int64 bot_id = 4;
     BusinessBotRecipients recipients_BUSINESSBOTRECIPIENTS = 5;
     BusinessRecipients recipients_BUSINESSRECIPIENTS = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_connectedBot
@@ -2839,17 +2153,6 @@ message Contact {
     TLConstructor  constructor = 2;
     int64 user_id = 3;
     Bool mutual = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contact
@@ -2866,17 +2169,6 @@ message ContactBirthday {
     TLConstructor  constructor = 2;
     int64 contact_id = 3;
     Birthday birthday = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contactBirthday
@@ -2898,17 +2190,6 @@ message ContactData {
     bool mutual_contact = 7;
     google.protobuf.StringValue phone = 8;
     bool close_friend = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contactData
@@ -2925,17 +2206,6 @@ message ContactStatus {
     TLConstructor  constructor = 2;
     int64 user_id = 3;
     UserStatus status = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contactStatus
@@ -2951,17 +2221,6 @@ message DataJSON {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string data = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_dataJSON
@@ -2986,17 +2245,6 @@ message DcOption {
     string ip_address = 10;
     int32 port = 11;
     bytes secret = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_dcOption
@@ -3012,17 +2260,6 @@ message DefaultHistoryTTL {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int32 period = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_defaultHistoryTTL
@@ -3059,17 +2296,6 @@ message Dialog {
     int32 unread_unmuted_peers_count = 20;
     int32 unread_muted_messages_count = 21;
     int32 unread_unmuted_messages_count = 22;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_dialog
@@ -3109,17 +2335,6 @@ message DialogFilter {
     repeated InputPeer include_peers = 16;
     repeated InputPeer exclude_peers = 17;
     bool has_my_invites = 18;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_dialogFilter
@@ -3146,17 +2361,6 @@ message DialogFilterSuggested {
     TLConstructor  constructor = 2;
     DialogFilter filter = 3;
     string description = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_dialogFilterSuggested
@@ -3174,17 +2378,6 @@ message DialogPeer {
     TLConstructor  constructor = 2;
     Peer peer = 3;
     int32 folder_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_dialogPeer
@@ -3217,17 +2410,7 @@ message Document {
     int32 dc_id = 11;
     repeated DocumentAttribute attributes = 12;
     int32 size2_INT32 = 13;
-
- int64 size2 = 100; 
-
-
-
-
-
-
-
-
-
+    int64 size2 = 100;
 }
 
 // TL_documentEmpty
@@ -3274,17 +2457,7 @@ message DocumentAttribute {
     string file_name = 19;
     bool free = 20;
     bool text_color = 21;
-
-
-
-
-
- double duration = 100; 
-
-
-
-
-
+    double duration = 100;
 }
 
 // TL_documentAttributeImageSize
@@ -3345,17 +2518,6 @@ message DraftMessage {
     InputMedia media = 9;
     int32 date_INT32 = 10;
     google.protobuf.Int32Value reply_to_msg_id = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_draftMessageEmpty
@@ -3379,17 +2541,6 @@ message EmailVerification {
     TLConstructor  constructor = 2;
     string code = 3;
     string token = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emailVerificationCode
@@ -3418,17 +2569,6 @@ message EmailVerifyPurpose {
     TLConstructor  constructor = 2;
     string phone_number = 3;
     string phone_code_hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emailVerifyPurposeLoginSetup
@@ -3449,6 +2589,8 @@ message TL_emailVerifyPurposePassport {
 
 // EmojiGroup <--
 //  + TL_emojiGroup
+//  + TL_emojiGroupGreeting
+//  + TL_emojiGroupPremium
 //
 message EmojiGroup {
     string predicate_name = 1;
@@ -3456,21 +2598,20 @@ message EmojiGroup {
     string title = 3;
     int64 icon_emoji_id = 4;
     repeated string emoticons = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emojiGroup
 message TL_emojiGroup {
+    EmojiGroup data2 = 1;
+}
+
+// TL_emojiGroupGreeting
+message TL_emojiGroupGreeting {
+    EmojiGroup data2 = 1;
+}
+
+// TL_emojiGroupPremium
+message TL_emojiGroupPremium {
     EmojiGroup data2 = 1;
 }
 
@@ -3484,17 +2625,6 @@ message EmojiKeyword {
     TLConstructor  constructor = 2;
     string keyword = 3;
     repeated string emoticons = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emojiKeyword
@@ -3518,17 +2648,6 @@ message EmojiKeywordsDifference {
     int32 from_version = 4;
     int32 version = 5;
     repeated EmojiKeyword keywords = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emojiKeywordsDifference
@@ -3544,17 +2663,6 @@ message EmojiLanguage {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string lang_code = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emojiLanguage
@@ -3572,17 +2680,6 @@ message EmojiList {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated int64 document_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emojiListNotModified
@@ -3606,17 +2703,6 @@ message EmojiStatus {
     TLConstructor  constructor = 2;
     int64 document_id = 3;
     int32 until = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emojiStatusEmpty
@@ -3642,17 +2728,6 @@ message EmojiURL {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string url = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_emojiURL
@@ -3681,17 +2756,6 @@ message EncryptedChat {
     bytes g_a_or_b = 10;
     int64 key_fingerprint = 11;
     bool history_deleted = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_encryptedChatEmpty
@@ -3734,17 +2798,6 @@ message EncryptedFile {
     int32 dc_id = 6;
     int32 key_fingerprint = 7;
     int32 size2_INT32 = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_encryptedFileEmpty
@@ -3770,17 +2823,6 @@ message EncryptedMessage {
     int32 date = 5;
     bytes bytes = 6;
     EncryptedFile file = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_encryptedMessage
@@ -3813,17 +2855,6 @@ message ExportedChatInvite {
     google.protobuf.Int32Value usage = 12;
     google.protobuf.Int32Value requested = 13;
     google.protobuf.StringValue title = 14;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatInviteExported
@@ -3846,17 +2877,6 @@ message ExportedChatlistInvite {
     string title = 3;
     string url = 4;
     repeated Peer peers = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_exportedChatlistInvite
@@ -3873,17 +2893,6 @@ message ExportedContactToken {
     TLConstructor  constructor = 2;
     string url = 3;
     int32 expires = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_exportedContactToken
@@ -3900,17 +2909,6 @@ message ExportedMessageLink {
     TLConstructor  constructor = 2;
     string link = 3;
     string html = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_exportedMessageLink
@@ -3926,17 +2924,6 @@ message ExportedStoryLink {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string link = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_exportedStoryLink
@@ -3956,17 +2943,6 @@ message FileHash {
     int32 limit = 4;
     bytes hash = 5;
     int32 offset_INT32 = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_fileHash
@@ -3987,17 +2963,6 @@ message Folder {
     int32 id = 6;
     string title = 7;
     ChatPhoto photo = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_folder
@@ -4014,17 +2979,6 @@ message FolderPeer {
     TLConstructor  constructor = 2;
     Peer peer = 3;
     int32 folder_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_folderPeer
@@ -4059,17 +3013,6 @@ message ForumTopic {
     Peer from_id = 19;
     PeerNotifySettings notify_settings = 20;
     DraftMessage draft = 21;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_forumTopicDeleted
@@ -4096,17 +3039,6 @@ message Game {
     string description = 7;
     Photo photo = 8;
     Document document = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_game
@@ -4126,17 +3058,6 @@ message GeoPoint {
     double lat = 4;
     int64 access_hash = 5;
     google.protobuf.Int32Value accuracy_radius = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_geoPointEmpty
@@ -4163,17 +3084,6 @@ message GlobalPrivacySettings {
     bool hide_read_marks = 6;
     bool new_noncontact_peers_require_premium = 7;
     Bool archive_and_mute_new_noncontact_peers_FLAGBOOL = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_globalPrivacySettings
@@ -4208,17 +3118,6 @@ message GroupCall {
     google.protobuf.Int32Value unmuted_video_count = 19;
     int32 unmuted_video_limit = 20;
     int32 version = 21;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_groupCallDiscarded
@@ -4257,17 +3156,6 @@ message GroupCallParticipant {
     google.protobuf.Int64Value raise_hand_rating = 19;
     GroupCallParticipantVideo video = 20;
     GroupCallParticipantVideo presentation = 21;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_groupCallParticipant
@@ -4286,17 +3174,6 @@ message GroupCallParticipantVideo {
     string endpoint = 4;
     repeated GroupCallParticipantVideoSourceGroup source_groups = 5;
     google.protobuf.Int32Value audio_source = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_groupCallParticipantVideo
@@ -4313,17 +3190,6 @@ message GroupCallParticipantVideoSourceGroup {
     TLConstructor  constructor = 2;
     string semantics = 3;
     repeated int32 sources = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_groupCallParticipantVideoSourceGroup
@@ -4341,17 +3207,6 @@ message GroupCallStreamChannel {
     int32 channel = 3;
     int32 scale = 4;
     int64 last_timestamp_ms = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_groupCallStreamChannel
@@ -4369,17 +3224,6 @@ message HighScore {
     int32 pos = 3;
     int64 user_id = 4;
     int32 score = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_highScore
@@ -4415,17 +3259,6 @@ message ImmutableChat {
     int32 available_reactions_type = 21;
     repeated string available_reactions = 22;
     int32 ttl_period = 23;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_immutableChat
@@ -4454,17 +3287,6 @@ message ImmutableChatParticipant {
     ChatAdminRights admin_rights = 14;
     int64 date = 15;
     bool is_bot = 16;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_immutableChatParticipant
@@ -4485,17 +3307,6 @@ message ImmutableUser {
     repeated ContactData reverse_contacts = 6;
     repeated PrivacyKeyRules keys_privacy_rules = 7;
     repeated int64 stories_hiddens = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_immutableUser
@@ -4512,17 +3323,6 @@ message ImportedContact {
     TLConstructor  constructor = 2;
     int64 user_id = 3;
     int64 client_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_importedContact
@@ -4539,17 +3339,6 @@ message InlineBotSwitchPM {
     TLConstructor  constructor = 2;
     string text = 3;
     string start_param = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inlineBotSwitchPM
@@ -4566,17 +3355,6 @@ message InlineBotWebView {
     TLConstructor  constructor = 2;
     string text = 3;
     string url = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inlineBotWebView
@@ -4596,17 +3374,6 @@ message TL_inlineBotWebView {
 message InlineQueryPeerType {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inlineQueryPeerTypeSameBotPM
@@ -4650,17 +3417,6 @@ message InputAppEvent {
     string type = 4;
     int64 peer = 5;
     JSONValue data = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputAppEvent
@@ -4680,17 +3436,6 @@ message InputBotApp {
     int64 access_hash = 4;
     InputUser bot_id = 5;
     string short_name = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBotAppID
@@ -4744,17 +3489,6 @@ message InputBotInlineMessage {
     bool force_small_media = 27;
     bool optional = 28;
     string url = 29;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBotInlineMessageMediaAuto
@@ -4810,17 +3544,6 @@ message InputBotInlineMessageID {
     int64 access_hash = 5;
     int64 owner_id = 6;
     int32 id_INT32 = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBotInlineMessageID
@@ -4854,17 +3577,6 @@ message InputBotInlineResult {
     InputPhoto photo = 11;
     InputDocument document = 12;
     string short_name = 13;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBotInlineResult
@@ -4898,17 +3610,6 @@ message InputBusinessAwayMessage {
     int32 shortcut_id = 4;
     BusinessAwayMessageSchedule schedule = 5;
     InputBusinessRecipients recipients = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBusinessAwayMessage
@@ -4930,17 +3631,6 @@ message InputBusinessBotRecipients {
     bool exclude_selected = 7;
     repeated InputUser users = 8;
     repeated InputUser exclude_users = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBusinessBotRecipients
@@ -4958,17 +3648,6 @@ message InputBusinessChatLink {
     string message = 3;
     repeated MessageEntity entities = 4;
     google.protobuf.StringValue title = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBusinessChatLink
@@ -4986,17 +3665,6 @@ message InputBusinessGreetingMessage {
     int32 shortcut_id = 3;
     InputBusinessRecipients recipients = 4;
     int32 no_activity_days = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBusinessGreetingMessage
@@ -5014,17 +3682,6 @@ message InputBusinessIntro {
     string title = 3;
     string description = 4;
     InputDocument sticker = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBusinessIntro
@@ -5045,17 +3702,6 @@ message InputBusinessRecipients {
     bool non_contacts = 6;
     bool exclude_selected = 7;
     repeated InputUser users = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputBusinessRecipients
@@ -5076,17 +3722,6 @@ message InputChannel {
     int64 access_hash = 4;
     InputPeer peer = 5;
     int32 msg_id = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputChannelEmpty
@@ -5119,17 +3754,6 @@ message InputChatPhoto {
     google.protobuf.DoubleValue video_start_ts = 5;
     VideoSize video_emoji_markup = 6;
     InputPhoto id = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputChatPhotoEmpty
@@ -5155,17 +3779,6 @@ message InputChatlist {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int32 filter_id = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputChatlistDialogFilter
@@ -5184,17 +3797,6 @@ message InputCheckPasswordSRP {
     int64 srp_id = 3;
     bytes A = 4;
     bytes M1 = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputCheckPasswordEmpty
@@ -5216,17 +3818,6 @@ message InputClientProxy {
     TLConstructor  constructor = 2;
     string address = 3;
     int32 port = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputClientProxy
@@ -5244,17 +3835,6 @@ message InputCollectible {
     TLConstructor  constructor = 2;
     string username = 3;
     string phone = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputCollectibleUsername
@@ -5278,17 +3858,6 @@ message InputContact {
     string phone = 4;
     string first_name = 5;
     string last_name = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPhoneContact
@@ -5306,17 +3875,6 @@ message InputDialogPeer {
     TLConstructor  constructor = 2;
     InputPeer peer = 3;
     int32 folder_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputDialogPeer
@@ -5340,17 +3898,6 @@ message InputDocument {
     int64 id = 3;
     int64 access_hash = 4;
     bytes file_reference = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputDocumentEmpty
@@ -5372,17 +3919,6 @@ message InputEncryptedChat {
     TLConstructor  constructor = 2;
     int32 chat_id = 3;
     int64 access_hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputEncryptedChat
@@ -5405,17 +3941,6 @@ message InputEncryptedFile {
     string md5_checksum = 5;
     int32 key_fingerprint = 6;
     int64 access_hash = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputEncryptedFileEmpty
@@ -5450,17 +3975,6 @@ message InputFile {
     int32 parts = 4;
     string name = 5;
     string md5_checksum = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputFile
@@ -5506,17 +4020,6 @@ message InputFileLocation {
     int32 scale = 17;
     google.protobuf.Int32Value video_channel = 18;
     google.protobuf.Int32Value video_quality = 19;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputFileLocation
@@ -5578,17 +4081,6 @@ message InputFolderPeer {
     TLConstructor  constructor = 2;
     InputPeer peer = 3;
     int32 folder_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputFolderPeer
@@ -5608,17 +4100,6 @@ message InputGame {
     int64 access_hash = 4;
     InputUser bot_id = 5;
     string short_name = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputGameID
@@ -5642,17 +4123,6 @@ message InputGeoPoint {
     double lat = 3;
     double long = 4;
     google.protobuf.Int32Value accuracy_radius = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputGeoPointEmpty
@@ -5674,17 +4144,6 @@ message InputGroupCall {
     TLConstructor  constructor = 2;
     int64 id = 3;
     int64 access_hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputGroupCall
@@ -5706,17 +4165,6 @@ message InputInvoice {
     string slug = 5;
     InputStorePaymentPurpose purpose = 6;
     PremiumGiftCodeOption option = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputInvoiceMessage
@@ -5807,17 +4255,6 @@ message InputMedia {
     bool optional = 47;
     InputUser user_id = 48;
     BizDataRaw biz_data = 49;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputMediaEmpty
@@ -5922,17 +4359,6 @@ message InputMessage {
     TLConstructor  constructor = 2;
     int32 id = 3;
     int64 query_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputMessageID
@@ -5968,17 +4394,6 @@ message InputNotifyPeer {
     TLConstructor  constructor = 2;
     InputPeer peer = 3;
     int32 top_msg_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputNotifyPeer
@@ -6022,17 +4437,6 @@ message InputPaymentCredentials {
     DataJSON data = 6;
     DataJSON payment_data = 7;
     DataJSON payment_token = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPaymentCredentialsSaved
@@ -6076,17 +4480,6 @@ message InputPeer {
     InputPeer peer = 7;
     int32 msg_id = 8;
     string username = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPeerEmpty
@@ -6146,17 +4539,6 @@ message InputPeerNotifySettings {
     Bool stories_hide_sender = 8;
     NotificationSound stories_sound = 9;
     google.protobuf.StringValue sound_FLAGSTRING = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPeerNotifySettings
@@ -6173,17 +4555,6 @@ message InputPhoneCall {
     TLConstructor  constructor = 2;
     int64 id = 3;
     int64 access_hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPhoneCall
@@ -6202,17 +4573,6 @@ message InputPhoto {
     int64 id = 3;
     int64 access_hash = 4;
     bytes file_reference = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPhotoEmpty
@@ -6242,17 +4602,6 @@ message TL_inputPhoto {
 message InputPrivacyKey {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPrivacyKeyStatusTimestamp
@@ -6328,17 +4677,6 @@ message InputPrivacyRule {
     TLConstructor  constructor = 2;
     repeated InputUser users = 3;
     repeated int64 chats = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputPrivacyValueAllowContacts
@@ -6401,17 +4739,6 @@ message InputQuickReplyShortcut {
     TLConstructor  constructor = 2;
     string shortcut = 3;
     int32 shortcut_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputQuickReplyShortcut
@@ -6444,17 +4771,6 @@ message InputReplyTo {
     InputPeer peer = 9;
     int32 story_id = 10;
     InputUser user_id = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputReplyToMessage
@@ -6481,17 +4797,6 @@ message InputSecureFile {
     bytes file_hash = 6;
     bytes secret = 7;
     int64 access_hash = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputSecureFileUploaded
@@ -6519,17 +4824,6 @@ message InputSecureValue {
     repeated InputSecureFile translation = 8;
     repeated InputSecureFile files = 9;
     SecurePlainData plain_data = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputSecureValue
@@ -6548,17 +4842,6 @@ message InputSingleMedia {
     int64 random_id = 4;
     string message = 5;
     repeated MessageEntity entities = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputSingleMedia
@@ -6587,17 +4870,6 @@ message InputStickerSet {
     int64 access_hash = 4;
     string short_name = 5;
     string emoticon = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputStickerSetEmpty
@@ -6667,17 +4939,6 @@ message InputStickerSetItem {
     string emoji = 4;
     MaskCoords mask_coords = 5;
     google.protobuf.StringValue keywords = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputStickerSetItem
@@ -6695,17 +4956,6 @@ message InputStickeredMedia {
     TLConstructor  constructor = 2;
     InputPhoto id_INPUTPHOTO = 3;
     InputDocument id_INPUTDOCUMENT = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputStickeredMediaPhoto
@@ -6743,17 +4993,6 @@ message InputStorePaymentPurpose {
     google.protobuf.StringValue prize_description = 14;
     int64 random_id = 15;
     int32 until_date = 16;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputStorePaymentPremiumSubscription
@@ -6787,17 +5026,6 @@ message InputTheme {
     int64 id = 3;
     int64 access_hash = 4;
     string slug = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputTheme
@@ -6824,17 +5052,6 @@ message InputThemeSettings {
     repeated int32 message_colors = 7;
     InputWallPaper wallpaper = 8;
     WallPaperSettings wallpaper_settings = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputThemeSettings
@@ -6856,17 +5073,6 @@ message InputUser {
     int64 access_hash = 4;
     InputPeer peer = 5;
     int32 msg_id = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputUserEmpty
@@ -6901,17 +5107,6 @@ message InputWallPaper {
     int64 id = 3;
     int64 access_hash = 4;
     string slug = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputWallPaper
@@ -6940,17 +5135,6 @@ message InputWebDocument {
     int32 size2 = 4;
     string mime_type = 5;
     repeated DocumentAttribute attributes = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputWebDocument
@@ -6978,17 +5162,6 @@ message InputWebFileLocation {
     InputDocument document = 11;
     google.protobuf.StringValue title = 12;
     google.protobuf.StringValue performer = 13;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputWebFileLocation
@@ -7030,17 +5203,6 @@ message Invoice {
     repeated int64 suggested_tip_amounts = 15;
     google.protobuf.StringValue terms_url = 16;
     google.protobuf.StringValue recurring_terms_url = 17;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_invoice
@@ -7057,17 +5219,6 @@ message JSONObjectValue {
     TLConstructor  constructor = 2;
     string key = 3;
     JSONValue value = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_jsonObjectValue
@@ -7092,17 +5243,6 @@ message JSONValue {
     string value_STRING = 5;
     repeated JSONValue value_VECTORJSONVALUE = 6;
     repeated JSONObjectValue value_VECTORJSONOBJECTVALUE = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_jsonNull
@@ -7179,17 +5319,6 @@ message KeyboardButton {
     bool name_requested = 19;
     bool username_requested = 20;
     bool photo_requested = 21;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_keyboardButton
@@ -7285,17 +5414,6 @@ message KeyboardButtonRow {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     repeated KeyboardButton buttons = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_keyboardButtonRow
@@ -7312,17 +5430,6 @@ message LabeledPrice {
     TLConstructor  constructor = 2;
     string label = 3;
     int64 amount = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_labeledPrice
@@ -7341,17 +5448,6 @@ message LangPackDifference {
     int32 from_version = 4;
     int32 version = 5;
     repeated LangPackString strings = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_langPackDifference
@@ -7377,17 +5473,6 @@ message LangPackLanguage {
     int32 strings_count = 11;
     int32 translated_count = 12;
     string translations_url = 13;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_langPackLanguage
@@ -7412,17 +5497,6 @@ message LangPackString {
     google.protobuf.StringValue few_value = 8;
     google.protobuf.StringValue many_value = 9;
     string other_value = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_langPackString
@@ -7451,17 +5525,6 @@ message MaskCoords {
     double x = 4;
     double y = 5;
     double zoom = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_maskCoords
@@ -7496,17 +5559,6 @@ message MediaArea {
     int64 channel_id = 15;
     int32 msg_id = 16;
     InputChannel channel = 17;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_mediaAreaVenue
@@ -7551,17 +5603,6 @@ message MediaAreaCoordinates {
     double w = 5;
     double h = 6;
     double rotation = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_mediaAreaCoordinates
@@ -7619,17 +5660,6 @@ message Message {
     google.protobuf.Int32Value ttl_period = 37;
     google.protobuf.Int32Value quick_reply_shortcut_id = 38;
     MessageAction action = 39;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageEmpty
@@ -7774,17 +5804,7 @@ message MessageAction {
     Peer peer = 67;
     string domain_STRING = 68;
     BizDataRaw biz_data = 69;
-
-
-
-
- string title = 100; 
-
-
-
-
-
-
+    string title = 100;
 }
 
 // TL_messageActionEmpty
@@ -8050,17 +6070,6 @@ message MessageBox {
     int32 reply_to_top_id = 26;
     int32 ttl_period = 27;
     bool has_reaction = 28;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageBox
@@ -8078,17 +6087,6 @@ message MessageBoxList {
     TLConstructor  constructor = 2;
     repeated MessageBox box_list = 3;
     int32 count = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageBoxList
@@ -8135,17 +6133,6 @@ message MessageEntity {
     int64 user_id_INT64 = 7;
     InputUser user_id_INPUTUSER = 8;
     int64 document_id = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageEntityUnknown
@@ -8266,17 +6253,6 @@ message MessageExtendedMedia {
     PhotoSize thumb = 5;
     google.protobuf.Int32Value video_duration = 6;
     MessageMedia media = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageExtendedMediaPreview
@@ -8310,17 +6286,6 @@ message MessageFwdHeader {
     google.protobuf.StringValue saved_from_name = 13;
     google.protobuf.Int32Value saved_date = 14;
     google.protobuf.StringValue psa_type = 15;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageFwdHeader
@@ -8338,17 +6303,6 @@ message MessageInteractionCounters {
     int32 msg_id = 3;
     int32 views = 4;
     int32 forwards = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageInteractionCounters
@@ -8446,17 +6400,6 @@ message MessageMedia {
     int32 unclaimed_count = 62;
     repeated int64 winners = 63;
     BizDataRaw biz_data = 64;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageMediaEmpty
@@ -8560,17 +6503,7 @@ message MessagePeerReaction {
     int32 date = 7;
     Reaction reaction_REACTION = 8;
     string reaction_STRING = 9;
-
-
- string reaction = 100; 
-
-
-
-
-
-
-
-
+    string reaction = 100;
 }
 
 // TL_messagePeerReaction
@@ -8591,17 +6524,6 @@ message MessagePeerVote {
     bytes option = 4;
     int32 date = 5;
     repeated bytes options = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messagePeerVote
@@ -8628,17 +6550,6 @@ message MessageRange {
     TLConstructor  constructor = 2;
     int32 min_id = 3;
     int32 max_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageRange
@@ -8658,17 +6569,6 @@ message MessageReactions {
     bool reactions_as_tags = 5;
     repeated ReactionCount results = 6;
     repeated MessagePeerReaction recent_reactions = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageReactions
@@ -8690,17 +6590,6 @@ message MessageReplies {
     google.protobuf.Int64Value channel_id = 7;
     google.protobuf.Int32Value max_id = 8;
     google.protobuf.Int32Value read_max_id = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageReplies
@@ -8734,17 +6623,7 @@ message MessageReplyHeader {
     int32 story_id = 15;
     int64 user_id = 16;
     int32 reply_to_msg_id_INT32 = 17;
-
-
-
-
-
-
- int32 reply_to_msg_id = 100; 
-
-
-
-
+    int32 reply_to_msg_id = 100;
 }
 
 // TL_messageReplyHeader
@@ -8770,17 +6649,6 @@ message MessageUserVote {
     bytes option = 4;
     int32 date = 5;
     repeated bytes options = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageUserVote
@@ -8808,17 +6676,6 @@ message MessageViews {
     google.protobuf.Int32Value views = 3;
     google.protobuf.Int32Value forwards = 4;
     MessageReplies replies = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messageViews
@@ -8850,17 +6707,6 @@ message MessagesFilter {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     bool missed = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputMessagesFilterEmpty
@@ -8958,17 +6804,6 @@ message MissingInvitee {
     bool premium_would_allow_invite = 3;
     bool premium_required_for_pm = 4;
     int64 user_id = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_missingInvitee
@@ -8985,17 +6820,6 @@ message MutableChat {
     TLConstructor  constructor = 2;
     ImmutableChat chat = 3;
     repeated ImmutableChatParticipant chat_participants = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_mutableChat
@@ -9011,17 +6835,6 @@ message MutableUsers {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     repeated ImmutableUser users = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_mutableUsers
@@ -9041,17 +6854,6 @@ message MyBoost {
     int32 date = 5;
     int32 expires = 6;
     google.protobuf.Int32Value cooldown_until_date = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_myBoost
@@ -9069,17 +6871,6 @@ message NearestDc {
     string country = 3;
     int32 this_dc = 4;
     int32 nearest_dc = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_nearestDc
@@ -9100,17 +6891,6 @@ message NotificationSound {
     string title = 3;
     string data = 4;
     int64 id = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_notificationSoundDefault
@@ -9146,17 +6926,6 @@ message NotifyPeer {
     TLConstructor  constructor = 2;
     Peer peer = 3;
     int32 top_msg_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_notifyPeer
@@ -9192,17 +6961,6 @@ message OutboxReadDate {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int32 date = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_outboxReadDate
@@ -9225,17 +6983,6 @@ message Page {
     repeated Photo photos = 8;
     repeated Document documents = 9;
     google.protobuf.Int32Value views = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_page
@@ -9319,17 +7066,6 @@ message PageBlock {
     int32 zoom = 41;
     int32 w_INT32 = 42;
     int32 h_INT32 = 43;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pageBlockUnsupported
@@ -9486,17 +7222,6 @@ message PageCaption {
     TLConstructor  constructor = 2;
     RichText text = 3;
     RichText credit = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pageCaption
@@ -9514,17 +7239,6 @@ message PageListItem {
     TLConstructor  constructor = 2;
     RichText text = 3;
     repeated PageBlock blocks = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pageListItemText
@@ -9548,17 +7262,6 @@ message PageListOrderedItem {
     string num = 3;
     RichText text = 4;
     repeated PageBlock blocks = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pageListOrderedItemText
@@ -9585,17 +7288,6 @@ message PageRelatedArticle {
     google.protobuf.Int64Value photo_id = 7;
     google.protobuf.StringValue author = 8;
     google.protobuf.Int32Value published_date = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pageRelatedArticle
@@ -9618,17 +7310,6 @@ message PageTableCell {
     RichText text = 8;
     google.protobuf.Int32Value colspan = 9;
     google.protobuf.Int32Value rowspan = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pageTableCell
@@ -9644,17 +7325,6 @@ message PageTableRow {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     repeated PageTableCell cells = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pageTableRow
@@ -9674,17 +7344,6 @@ message PasswordKdfAlgo {
     bytes salt2 = 4;
     int32 g = 5;
     bytes p = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_passwordKdfAlgoUnknown
@@ -9706,17 +7365,6 @@ message PaymentCharge {
     TLConstructor  constructor = 2;
     string id = 3;
     string provider_charge_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_paymentCharge
@@ -9733,17 +7381,6 @@ message PaymentFormMethod {
     TLConstructor  constructor = 2;
     string url = 3;
     string title = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_paymentFormMethod
@@ -9762,17 +7399,6 @@ message PaymentRequestedInfo {
     google.protobuf.StringValue phone = 4;
     google.protobuf.StringValue email = 5;
     PostAddress shipping_address = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_paymentRequestedInfo
@@ -9789,17 +7415,6 @@ message PaymentSavedCredentials {
     TLConstructor  constructor = 2;
     string id = 3;
     string title = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_paymentSavedCredentialsCard
@@ -9819,17 +7434,6 @@ message Peer {
     int64 user_id = 3;
     int64 chat_id = 4;
     int64 channel_id = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerUser
@@ -9856,17 +7460,6 @@ message PeerBlocked {
     TLConstructor  constructor = 2;
     Peer peer_id = 3;
     int32 date = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerBlocked
@@ -9883,17 +7476,6 @@ message PeerColor {
     TLConstructor  constructor = 2;
     google.protobuf.Int32Value color = 3;
     google.protobuf.Int64Value background_emoji_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerColor
@@ -9912,17 +7494,6 @@ message PeerLocated {
     Peer peer = 3;
     int32 expires = 4;
     int32 distance = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerLocated
@@ -9956,17 +7527,6 @@ message PeerNotifySettings {
     NotificationSound stories_android_sound = 12;
     NotificationSound stories_other_sound = 13;
     google.protobuf.StringValue sound = 14;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerNotifySettings
@@ -9998,17 +7558,6 @@ message PeerSettings {
     google.protobuf.Int32Value request_chat_date = 16;
     google.protobuf.Int64Value business_bot_id = 17;
     google.protobuf.StringValue business_bot_manage_url = 18;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerSettings
@@ -10026,17 +7575,6 @@ message PeerStories {
     Peer peer = 3;
     google.protobuf.Int32Value max_read_id = 4;
     repeated StoryItem stories = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerStories
@@ -10055,17 +7593,6 @@ message PeerUtil {
     int32 peer_type = 4;
     int64 peer_id = 5;
     int64 access_hash = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_peerUtil
@@ -10106,17 +7633,6 @@ message PhoneCall {
     bool need_debug = 20;
     PhoneCallDiscardReason reason = 21;
     google.protobuf.Int32Value duration = 22;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phoneCallEmpty
@@ -10159,17 +7675,6 @@ message TL_phoneCallDiscarded {
 message PhoneCallDiscardReason {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phoneCallDiscardReasonMissed
@@ -10204,17 +7709,6 @@ message PhoneCallProtocol {
     int32 min_layer = 5;
     int32 max_layer = 6;
     repeated string library_versions = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phoneCallProtocol
@@ -10241,17 +7735,6 @@ message PhoneConnection {
     bool stun = 10;
     string username = 11;
     string password = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phoneConnection
@@ -10280,17 +7763,6 @@ message Photo {
     repeated PhotoSize sizes = 8;
     repeated VideoSize video_sizes = 9;
     int32 dc_id = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_photoEmpty
@@ -10321,17 +7793,6 @@ message PhotoSize {
     int32 size2 = 6;
     bytes bytes = 7;
     repeated int32 sizes = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_photoSizeEmpty
@@ -10382,17 +7843,7 @@ message Poll {
     google.protobuf.Int32Value close_period = 10;
     google.protobuf.Int32Value close_date = 11;
     string question_STRING = 12;
-
-
-
-
-
-
-
-
-
-
- string question = 100; 
+    string question = 100;
 }
 
 // TL_poll
@@ -10411,17 +7862,7 @@ message PollAnswer {
     TextWithEntities text_TEXTWITHENTITIES = 3;
     bytes option = 4;
     string text_STRING = 5;
-
-
-
-
-
-
-
-
-
- string text = 100; 
-
+    string text = 100;
 }
 
 // TL_pollAnswer
@@ -10440,17 +7881,6 @@ message PollAnswerVoters {
     bool correct = 4;
     bytes option = 5;
     int32 voters = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pollAnswerVoters
@@ -10473,17 +7903,6 @@ message PollResults {
     google.protobuf.StringValue solution = 7;
     repeated MessageEntity solution_entities = 8;
     repeated int64 recent_voters_FLAGVECTORINT64 = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_pollResults
@@ -10500,17 +7919,6 @@ message PopularContact {
     TLConstructor  constructor = 2;
     int64 client_id = 3;
     int32 importers = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_popularContact
@@ -10531,17 +7939,6 @@ message PostAddress {
     string state = 6;
     string country_iso2 = 7;
     string post_code = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_postAddress
@@ -10562,17 +7959,6 @@ message PostInteractionCounters {
     int32 forwards = 5;
     int32 reactions = 6;
     int32 story_id = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_postInteractionCountersMessage
@@ -10601,17 +7987,6 @@ message PredefinedUser {
     google.protobuf.Int64Value registered_user_id = 9;
     google.protobuf.Int32Value last_seen_at = 10;
     bool banned = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_predefinedUser
@@ -10632,17 +8007,6 @@ message PremiumGiftCodeOption {
     google.protobuf.Int32Value store_quantity = 6;
     string currency = 7;
     int64 amount = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_premiumGiftCodeOption
@@ -10662,17 +8026,6 @@ message PremiumGiftOption {
     int64 amount = 5;
     string bot_url = 6;
     google.protobuf.StringValue store_product = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_premiumGiftOption
@@ -10696,17 +8049,6 @@ message PremiumSubscriptionOption {
     int64 amount = 8;
     string bot_url = 9;
     google.protobuf.StringValue store_product = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_premiumSubscriptionOption
@@ -10725,17 +8067,6 @@ message PrepaidGiveaway {
     int32 months = 4;
     int32 quantity = 5;
     int32 date = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_prepaidGiveaway
@@ -10760,17 +8091,6 @@ message TL_prepaidGiveaway {
 message PrivacyKey {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_privacyKeyStatusTimestamp
@@ -10837,17 +8157,6 @@ message PrivacyKeyRules {
     TLConstructor  constructor = 2;
     int32 key = 3;
     repeated PrivacyRule rules = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_privacyKeyRules
@@ -10873,17 +8182,6 @@ message PrivacyRule {
     TLConstructor  constructor = 2;
     repeated int64 users = 3;
     repeated int64 chats = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_privacyValueAllowContacts
@@ -10947,17 +8245,6 @@ message PublicForward {
     Message message = 3;
     Peer peer = 4;
     StoryItem story = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_publicForwardMessage
@@ -10981,17 +8268,6 @@ message QuickReply {
     string shortcut = 4;
     int32 top_message = 5;
     int32 count = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_quickReply
@@ -11010,17 +8286,6 @@ message Reaction {
     TLConstructor  constructor = 2;
     string emoticon = 3;
     int64 document_id = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_reactionEmpty
@@ -11051,17 +8316,7 @@ message ReactionCount {
     int32 count = 5;
     bool chosen = 6;
     string reaction_STRING = 7;
-
-
-
- string reaction = 100; 
-
-
-
-
-
-
-
+    string reaction = 100;
 }
 
 // TL_reactionCount
@@ -11077,17 +8332,6 @@ message TL_reactionCount {
 message ReactionNotificationsFrom {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_reactionNotificationsFromContacts
@@ -11111,17 +8355,6 @@ message ReactionsNotifySettings {
     ReactionNotificationsFrom stories_notify_from = 4;
     NotificationSound sound = 5;
     Bool show_previews = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_reactionsNotifySettings
@@ -11138,17 +8371,6 @@ message ReadParticipantDate {
     TLConstructor  constructor = 2;
     int64 user_id = 3;
     int32 date = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_readParticipantDate
@@ -11165,17 +8387,6 @@ message ReceivedNotifyMessage {
     TLConstructor  constructor = 2;
     int32 id = 3;
     int32 flags = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_receivedNotifyMessage
@@ -11199,17 +8410,6 @@ message RecentMeUrl {
     int64 chat_id = 5;
     ChatInvite chat_invite = 6;
     StickerSetCovered set = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_recentMeUrlUnknown
@@ -11253,17 +8453,6 @@ message ReplyMarkup {
     bool resize = 6;
     bool persistent = 7;
     repeated KeyboardButtonRow rows = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_replyKeyboardHide
@@ -11302,17 +8491,6 @@ message TL_replyInlineMarkup {
 message ReportReason {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_inputReportReasonSpam
@@ -11382,17 +8560,6 @@ message RequestPeerType {
     Bool forum = 8;
     ChatAdminRights user_admin_rights = 9;
     ChatAdminRights bot_admin_rights = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_requestPeerTypeUser
@@ -11427,17 +8594,6 @@ message RequestedPeer {
     int64 chat_id = 8;
     google.protobuf.StringValue title = 9;
     int64 channel_id = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_requestedPeerUser
@@ -11465,17 +8621,6 @@ message RestrictionReason {
     string platform = 3;
     string reason = 4;
     string text = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_restrictionReason
@@ -11516,17 +8661,6 @@ message RichText {
     int32 w = 11;
     int32 h = 12;
     string name = 13;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_textEmpty
@@ -11620,17 +8754,6 @@ message SavedContact {
     string first_name = 4;
     string last_name = 5;
     int32 date = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_savedPhoneContact
@@ -11648,17 +8771,6 @@ message SavedDialog {
     bool pinned = 3;
     Peer peer = 4;
     int32 top_message = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_savedDialog
@@ -11676,17 +8788,6 @@ message SavedReactionTag {
     Reaction reaction = 3;
     google.protobuf.StringValue title = 4;
     int32 count = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_savedReactionTag
@@ -11705,17 +8806,6 @@ message SearchResultsCalendarPeriod {
     int32 min_msg_id = 4;
     int32 max_msg_id = 5;
     int32 count = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_searchResultsCalendarPeriod
@@ -11733,17 +8823,6 @@ message SearchResultsPosition {
     int32 msg_id = 3;
     int32 date = 4;
     int32 offset = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_searchResultPosition
@@ -11761,17 +8840,6 @@ message SecureCredentialsEncrypted {
     bytes data = 3;
     bytes hash = 4;
     bytes secret = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureCredentialsEncrypted
@@ -11789,17 +8857,6 @@ message SecureData {
     bytes data = 3;
     bytes data_hash = 4;
     bytes secret = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureData
@@ -11824,17 +8881,6 @@ message SecureFile {
     bytes file_hash = 8;
     bytes secret = 9;
     int32 size2_INT32 = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureFileEmpty
@@ -11857,17 +8903,6 @@ message SecurePasswordKdfAlgo {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     bytes salt = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_securePasswordKdfAlgoUnknown
@@ -11895,17 +8930,6 @@ message SecurePlainData {
     TLConstructor  constructor = 2;
     string phone = 3;
     string email = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_securePlainPhone
@@ -11931,17 +8955,6 @@ message SecureRequiredType {
     bool translation_required = 5;
     SecureValueType type = 6;
     repeated SecureRequiredType types = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureRequiredType
@@ -11964,17 +8977,6 @@ message SecureSecretSettings {
     SecurePasswordKdfAlgo secure_algo = 3;
     bytes secure_secret = 4;
     int64 secure_secret_id = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureSecretSettings
@@ -11998,17 +9000,6 @@ message SecureValue {
     repeated SecureFile files = 9;
     SecurePlainData plain_data = 10;
     bytes hash = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureValue
@@ -12038,17 +9029,6 @@ message SecureValueError {
     bytes file_hash_BYTES = 7;
     repeated bytes file_hash_VECTORBYTES = 8;
     bytes hash = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureValueErrorData
@@ -12105,17 +9085,6 @@ message SecureValueHash {
     TLConstructor  constructor = 2;
     SecureValueType type = 3;
     bytes hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureValueHash
@@ -12142,17 +9111,6 @@ message TL_secureValueHash {
 message SecureValueType {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_secureValueTypePersonalDetails
@@ -12229,17 +9187,6 @@ message SendAsPeer {
     TLConstructor  constructor = 2;
     bool premium_required = 3;
     Peer peer = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_sendAsPeer
@@ -12275,17 +9222,6 @@ message SendMessageAction {
     string emoticon = 4;
     int32 msg_id = 5;
     DataJSON interaction = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_sendMessageTypingAction
@@ -12388,17 +9324,6 @@ message ShippingOption {
     string id = 3;
     string title = 4;
     repeated LabeledPrice prices = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_shippingOption
@@ -12414,17 +9339,6 @@ message SimpleWebViewResult {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string url = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_simpleWebViewResultUrl
@@ -12442,17 +9356,6 @@ message SmsJob {
     string job_id = 3;
     string phone_number = 4;
     string text = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_smsJob
@@ -12492,17 +9395,6 @@ message SponsoredMessage {
     SponsoredWebPage webpage = 21;
     BotApp app = 22;
     google.protobuf.StringValue button_text_FLAGSTRING = 23;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_sponsoredMessage
@@ -12519,17 +9411,6 @@ message SponsoredMessageReportOption {
     TLConstructor  constructor = 2;
     string text = 3;
     bytes option = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_sponsoredMessageReportOption
@@ -12547,17 +9428,6 @@ message SponsoredWebPage {
     string url = 3;
     string site_name = 4;
     Photo photo = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_sponsoredWebPage
@@ -12574,17 +9444,6 @@ message StatsAbsValueAndPrev {
     TLConstructor  constructor = 2;
     double current = 3;
     double previous = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsAbsValueAndPrev
@@ -12601,17 +9460,6 @@ message StatsDateRangeDays {
     TLConstructor  constructor = 2;
     int32 min_date = 3;
     int32 max_date = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsDateRangeDays
@@ -12632,17 +9480,6 @@ message StatsGraph {
     string error = 4;
     DataJSON json = 5;
     google.protobuf.StringValue zoom_token = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsGraphAsync
@@ -12671,17 +9508,6 @@ message StatsGroupTopAdmin {
     int32 deleted = 4;
     int32 kicked = 5;
     int32 banned = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsGroupTopAdmin
@@ -12698,17 +9524,6 @@ message StatsGroupTopInviter {
     TLConstructor  constructor = 2;
     int64 user_id = 3;
     int32 invitations = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsGroupTopInviter
@@ -12726,17 +9541,6 @@ message StatsGroupTopPoster {
     int64 user_id = 3;
     int32 messages = 4;
     int32 avg_chars = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsGroupTopPoster
@@ -12753,17 +9557,6 @@ message StatsPercentValue {
     TLConstructor  constructor = 2;
     double part = 3;
     double total = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsPercentValue
@@ -12779,17 +9572,6 @@ message StatsURL {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string url = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_statsURL
@@ -12806,17 +9588,6 @@ message StickerKeyword {
     TLConstructor  constructor = 2;
     int64 document_id = 3;
     repeated string keyword = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stickerKeyword
@@ -12833,17 +9604,6 @@ message StickerPack {
     TLConstructor  constructor = 2;
     string emoticon = 3;
     repeated int64 documents = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stickerPack
@@ -12879,17 +9639,6 @@ message StickerSet {
     int32 hash = 20;
     bool animated = 21;
     bool videos = 22;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stickerSet
@@ -12914,17 +9663,6 @@ message StickerSetCovered {
     repeated StickerPack packs = 6;
     repeated StickerKeyword keywords = 7;
     repeated Document documents = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stickerSetCovered
@@ -12956,17 +9694,6 @@ message StoriesStealthMode {
     TLConstructor  constructor = 2;
     google.protobuf.Int32Value active_until_date = 3;
     google.protobuf.Int32Value cooldown_until_date = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_storiesStealthMode
@@ -12985,17 +9712,6 @@ message StoryFwdHeader {
     Peer from = 4;
     google.protobuf.StringValue from_name = 5;
     google.protobuf.Int32Value story_id = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_storyFwdHeader
@@ -13036,17 +9752,6 @@ message StoryItem {
     repeated PrivacyRule privacy = 21;
     StoryViews views = 22;
     Reaction sent_reaction = 23;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_storyItemDeleted
@@ -13078,17 +9783,6 @@ message StoryReaction {
     Reaction reaction = 5;
     Message message = 6;
     StoryItem story = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_storyReaction
@@ -13124,17 +9818,6 @@ message StoryView {
     Message message = 8;
     Peer peer_id = 9;
     StoryItem story = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_storyView
@@ -13168,17 +9851,6 @@ message StoryViews {
     google.protobuf.Int32Value reactions_count_FLAGINT32 = 7;
     repeated int64 recent_viewers = 8;
     int32 reactions_count_INT32 = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_storyViews
@@ -13195,17 +9867,6 @@ message TextWithEntities {
     TLConstructor  constructor = 2;
     string text = 3;
     repeated MessageEntity entities = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_textWithEntities
@@ -13231,17 +9892,6 @@ message Theme {
     repeated ThemeSettings settings = 11;
     google.protobuf.StringValue emoticon = 12;
     google.protobuf.Int32Value installs_count = 13;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_theme
@@ -13262,17 +9912,6 @@ message ThemeSettings {
     google.protobuf.Int32Value outbox_accent_color = 6;
     repeated int32 message_colors = 7;
     WallPaper wallpaper = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_themeSettings
@@ -13290,17 +9929,6 @@ message Timezone {
     string id = 3;
     string name = 4;
     int32 utc_offset = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_timezone
@@ -13317,17 +9945,6 @@ message TopPeer {
     TLConstructor  constructor = 2;
     Peer peer = 3;
     double rating = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_topPeer
@@ -13349,17 +9966,6 @@ message TL_topPeer {
 message TopPeerCategory {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_topPeerCategoryBotsPM
@@ -13412,17 +10018,6 @@ message TopPeerCategoryPeers {
     TopPeerCategory category = 3;
     int32 count = 4;
     repeated TopPeer peers = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_topPeerCategoryPeers
@@ -13742,17 +10337,6 @@ message Update {
     google.protobuf.Int32Value topic_id_FLAGINT32 = 156;
     string username = 157;
     BizDataRaw biz_data = 158;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_updateNewMessage
@@ -14453,17 +11037,6 @@ message UpdateList {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     repeated Update updates = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_updateList
@@ -14510,17 +11083,6 @@ message Updates {
     int32 seq = 25;
     MessageMedia media = 26;
     int64 auth_key_id = 27;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_updatesTooLong
@@ -14576,17 +11138,6 @@ message UrlAuthResult {
     User bot = 4;
     string domain = 5;
     string url = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_urlAuthResultRequest
@@ -14660,17 +11211,7 @@ message User {
     PeerColor profile_color = 43;
     google.protobuf.Int32Value color_FLAGINT32 = 44;
     google.protobuf.Int64Value background_emoji_id = 45;
-
-
-
-
-
-
-
-
- google.protobuf.Int32Value color = 100; 
-
-
+    google.protobuf.Int32Value color = 100;
 }
 
 // TL_userEmpty
@@ -14718,17 +11259,6 @@ message UserData {
     PeerColor profile_color = 28;
     int32 stories_max_id = 29;
     string birthday = 30;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_userData
@@ -14793,17 +11323,6 @@ message UserFull {
     google.protobuf.Int64Value personal_channel_id = 42;
     google.protobuf.Int32Value personal_channel_message = 43;
     UserStories stories_FLAGUSERSTORIES = 44;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_userFull
@@ -14824,17 +11343,6 @@ message UserProfilePhoto {
     int64 photo_id = 5;
     bytes stripped_thumb = 6;
     int32 dc_id = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_userProfilePhotoEmpty
@@ -14865,17 +11373,6 @@ message UserStatus {
     int32 expires = 3;
     int32 was_online = 4;
     bool by_me = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_userStatusEmpty
@@ -14918,17 +11415,6 @@ message UserStories {
     int64 user_id = 3;
     google.protobuf.Int32Value max_read_id = 4;
     repeated StoryItem stories = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_userStories
@@ -14946,17 +11432,6 @@ message Username {
     bool editable = 3;
     bool active = 4;
     string username = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_username
@@ -14982,17 +11457,6 @@ message VideoSize {
     repeated int32 background_colors = 9;
     InputStickerSet stickerset = 10;
     int64 sticker_id = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_videoSize
@@ -15017,17 +11481,6 @@ message TL_videoSizeStickerMarkup {
 message Void {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_void
@@ -15052,17 +11505,6 @@ message WallPaper {
     string slug = 9;
     Document document = 10;
     WallPaperSettings settings = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_wallPaper
@@ -15092,17 +11534,6 @@ message WallPaperSettings {
     google.protobuf.Int32Value intensity = 9;
     google.protobuf.Int32Value rotation = 10;
     google.protobuf.StringValue emoticon = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_wallPaperSettings
@@ -15126,17 +11557,6 @@ message WebAuthorization {
     int32 date_active = 9;
     string ip = 10;
     string region = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_webAuthorization
@@ -15157,17 +11577,6 @@ message WebDocument {
     int32 size2 = 5;
     string mime_type = 6;
     repeated DocumentAttribute attributes = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_webDocument
@@ -15214,17 +11623,6 @@ message WebPage {
     Page cached_page = 22;
     repeated WebPageAttribute attributes = 23;
     google.protobuf.Int32Value cached_page_views = 24;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_webPageEmpty
@@ -15266,17 +11664,6 @@ message WebPageAttribute {
     bool text_color = 9;
     repeated Document stickers = 10;
     int64 user_id = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_webPageAttributeTheme
@@ -15302,17 +11689,6 @@ message WebViewMessageSent {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     InputBotInlineMessageID msg_id = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_webViewMessageSent
@@ -15329,17 +11705,6 @@ message WebViewResult {
     TLConstructor  constructor = 2;
     int64 query_id = 3;
     string url = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_webViewResultUrl
@@ -15359,17 +11724,6 @@ message account_AuthorizationForm {
     repeated SecureValueError errors = 5;
     repeated User users = 6;
     google.protobuf.StringValue privacy_policy_url = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_authorizationForm
@@ -15386,17 +11740,6 @@ message account_Authorizations {
     TLConstructor  constructor = 2;
     int32 authorization_ttl_days = 3;
     repeated Authorization authorizations = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_authorizations
@@ -15414,17 +11757,6 @@ message account_AutoDownloadSettings {
     AutoDownloadSettings low = 3;
     AutoDownloadSettings medium = 4;
     AutoDownloadSettings high = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_autoDownloadSettings
@@ -15445,17 +11777,6 @@ message account_AutoSaveSettings {
     repeated AutoSaveException exceptions = 6;
     repeated Chat chats = 7;
     repeated User users = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_autoSaveSettings
@@ -15473,17 +11794,6 @@ message account_BusinessChatLinks {
     repeated BusinessChatLink links = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_businessChatLinks
@@ -15500,17 +11810,6 @@ message account_ConnectedBots {
     TLConstructor  constructor = 2;
     repeated ConnectedBot connected_bots = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_connectedBots
@@ -15527,17 +11826,6 @@ message account_ContentSettings {
     TLConstructor  constructor = 2;
     bool sensitive_enabled = 3;
     bool sensitive_can_change = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_contentSettings
@@ -15555,17 +11843,6 @@ message account_EmailVerified {
     TLConstructor  constructor = 2;
     string email = 3;
     auth_SentCode sent_code = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_emailVerified
@@ -15588,17 +11865,6 @@ message account_EmojiStatuses {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated EmojiStatus statuses = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_emojiStatusesNotModified
@@ -15632,17 +11898,6 @@ message account_Password {
     bytes secure_random = 13;
     google.protobuf.Int32Value pending_reset_date = 14;
     google.protobuf.StringValue login_email_pattern = 15;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_password
@@ -15662,17 +11917,6 @@ message account_PasswordInputSettings {
     google.protobuf.StringValue hint = 5;
     google.protobuf.StringValue email = 6;
     SecureSecretSettings new_secure_settings = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_passwordInputSettings
@@ -15689,17 +11933,6 @@ message account_PasswordSettings {
     TLConstructor  constructor = 2;
     google.protobuf.StringValue email = 3;
     SecureSecretSettings secure_settings = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_passwordSettings
@@ -15717,17 +11950,6 @@ message account_PrivacyRules {
     repeated PrivacyRule rules = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_privacyRules
@@ -15746,17 +11968,6 @@ message account_ResetPasswordResult {
     TLConstructor  constructor = 2;
     int32 retry_date = 3;
     int32 until_date = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_resetPasswordFailedWait
@@ -15786,17 +11997,6 @@ message account_ResolvedBusinessChatLinks {
     repeated MessageEntity entities = 5;
     repeated Chat chats = 6;
     repeated User users = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_resolvedBusinessChatLinks
@@ -15813,17 +12013,6 @@ message account_SavedRingtone {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     Document document = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_savedRingtone
@@ -15846,17 +12035,6 @@ message account_SavedRingtones {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated Document ringtones = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_savedRingtonesNotModified
@@ -15878,17 +12056,6 @@ message account_SentEmailCode {
     TLConstructor  constructor = 2;
     string email_pattern = 3;
     int32 length = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_sentEmailCode
@@ -15904,17 +12071,6 @@ message account_Takeout {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int64 id = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_takeout
@@ -15932,17 +12088,6 @@ message account_Themes {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated Theme themes = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_themesNotModified
@@ -15964,17 +12109,6 @@ message account_TmpPassword {
     TLConstructor  constructor = 2;
     bytes tmp_password = 3;
     int32 valid_until = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_tmpPassword
@@ -15992,17 +12126,6 @@ message account_WallPapers {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated WallPaper wallpapers = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_wallPapersNotModified
@@ -16024,17 +12147,6 @@ message account_WebAuthorizations {
     TLConstructor  constructor = 2;
     repeated WebAuthorization authorizations = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_account_webAuthorizations
@@ -16057,17 +12169,6 @@ message auth_Authorization {
     bytes future_auth_token = 6;
     User user = 7;
     help_TermsOfService terms_of_service = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_authorization
@@ -16091,17 +12192,6 @@ message TL_auth_authorizationSignUpRequired {
 message auth_CodeType {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_codeTypeSms
@@ -16138,17 +12228,6 @@ message auth_ExportedAuthorization {
     TLConstructor  constructor = 2;
     int64 id = 3;
     bytes bytes = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_exportedAuthorization
@@ -16164,17 +12243,6 @@ message auth_LoggedOut {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     bytes future_auth_token = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_loggedOut
@@ -16195,17 +12263,6 @@ message auth_LoginToken {
     bytes token = 4;
     int32 dc_id = 5;
     auth_Authorization authorization = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_loginToken
@@ -16231,17 +12288,6 @@ message auth_PasswordRecovery {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string email_pattern = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_passwordRecovery
@@ -16262,17 +12308,6 @@ message auth_SentCode {
     auth_CodeType next_type = 5;
     google.protobuf.Int32Value timeout = 6;
     auth_Authorization authorization = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_sentCode
@@ -16317,17 +12352,6 @@ message auth_SentCodeType {
     google.protobuf.Int32Value push_timeout = 14;
     google.protobuf.StringValue beginning = 15;
     google.protobuf.Int32Value next_phone_login_date = 16;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_auth_sentCodeTypeApp
@@ -16395,17 +12419,6 @@ message bots_BotInfo {
     string name = 3;
     string about = 4;
     string description = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_bots_botInfo
@@ -16423,17 +12436,6 @@ message channels_AdminLogResults {
     repeated ChannelAdminLogEvent events = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channels_adminLogResults
@@ -16451,17 +12453,6 @@ message channels_ChannelParticipant {
     ChannelParticipant participant = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channels_channelParticipant
@@ -16481,17 +12472,6 @@ message channels_ChannelParticipants {
     repeated ChannelParticipant participants = 4;
     repeated Chat chats = 5;
     repeated User users = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channels_channelParticipants
@@ -16516,17 +12496,6 @@ message channels_SendAsPeers {
     repeated Chat chats = 4;
     repeated User users = 5;
     repeated Peer peers_VECTORPEER = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channels_sendAsPeers
@@ -16545,17 +12514,6 @@ message channels_SponsoredMessageReportResult {
     TLConstructor  constructor = 2;
     string title = 3;
     repeated SponsoredMessageReportOption options = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_channels_sponsoredMessageReportResultChooseOption
@@ -16589,17 +12547,6 @@ message chatlists_ChatlistInvite {
     string title = 8;
     google.protobuf.StringValue emoticon = 9;
     repeated Peer peers = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatlists_chatlistInviteAlready
@@ -16622,17 +12569,6 @@ message chatlists_ChatlistUpdates {
     repeated Peer missing_peers = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatlists_chatlistUpdates
@@ -16649,17 +12585,6 @@ message chatlists_ExportedChatlistInvite {
     TLConstructor  constructor = 2;
     DialogFilter filter = 3;
     ExportedChatlistInvite invite = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatlists_exportedChatlistInvite
@@ -16677,17 +12602,6 @@ message chatlists_ExportedInvites {
     repeated ExportedChatlistInvite invites = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_chatlists_exportedInvites
@@ -16707,17 +12621,6 @@ message contacts_Blocked {
     repeated Chat chats = 4;
     repeated User users = 5;
     int32 count = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contacts_blocked
@@ -16739,17 +12642,6 @@ message contacts_ContactBirthdays {
     TLConstructor  constructor = 2;
     repeated ContactBirthday contacts = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contacts_contactBirthdays
@@ -16768,17 +12660,6 @@ message contacts_Contacts {
     repeated Contact contacts = 3;
     int32 saved_count = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contacts_contactsNotModified
@@ -16802,17 +12683,6 @@ message contacts_Found {
     repeated Peer results = 4;
     repeated Chat chats = 5;
     repeated User users = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contacts_found
@@ -16831,17 +12701,6 @@ message contacts_ImportedContacts {
     repeated PopularContact popular_invites = 4;
     repeated int64 retry_contacts = 5;
     repeated User users = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contacts_importedContacts
@@ -16859,17 +12718,6 @@ message contacts_ResolvedPeer {
     Peer peer = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contacts_resolvedPeer
@@ -16889,17 +12737,6 @@ message contacts_TopPeers {
     repeated TopPeerCategoryPeers categories = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_contacts_topPeersNotModified
@@ -16930,17 +12767,6 @@ message fragment_CollectibleInfo {
     string crypto_currency = 6;
     int64 crypto_amount = 7;
     string url = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_fragment_collectibleInfo
@@ -16958,17 +12784,6 @@ message help_AppConfig {
     TLConstructor  constructor = 2;
     int32 hash = 3;
     JSONValue config = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_appConfigNotModified
@@ -16997,17 +12812,6 @@ message help_AppUpdate {
     Document document = 8;
     google.protobuf.StringValue url = 9;
     Document sticker = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_appUpdate
@@ -17030,17 +12834,6 @@ message help_CountriesList {
     TLConstructor  constructor = 2;
     repeated help_Country countries = 3;
     int32 hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_countriesListNotModified
@@ -17065,17 +12858,6 @@ message help_Country {
     string default_name = 5;
     google.protobuf.StringValue name = 6;
     repeated help_CountryCode country_codes = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_country
@@ -17093,17 +12875,6 @@ message help_CountryCode {
     string country_code = 3;
     repeated string prefixes = 4;
     repeated string patterns = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_countryCode
@@ -17122,17 +12893,6 @@ message help_DeepLinkInfo {
     bool update_app = 3;
     string message = 4;
     repeated MessageEntity entities = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_deepLinkInfoEmpty
@@ -17153,17 +12913,6 @@ message help_InviteText {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string message = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_inviteText
@@ -17181,17 +12930,6 @@ message help_PassportConfig {
     TLConstructor  constructor = 2;
     int32 hash = 3;
     DataJSON countries_langs = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_passportConfigNotModified
@@ -17219,17 +12957,6 @@ message help_PeerColorOption {
     help_PeerColorSet dark_colors = 6;
     google.protobuf.Int32Value channel_min_level = 7;
     google.protobuf.Int32Value group_min_level = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_peerColorOption
@@ -17249,17 +12976,6 @@ message help_PeerColorSet {
     repeated int32 palette_colors = 4;
     repeated int32 bg_colors = 5;
     repeated int32 story_colors = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_peerColorSet
@@ -17282,17 +12998,6 @@ message help_PeerColors {
     TLConstructor  constructor = 2;
     int32 hash = 3;
     repeated help_PeerColorOption colors = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_peerColorsNotModified
@@ -17321,17 +13026,6 @@ message help_PremiumPromo {
     repeated User users = 8;
     string currency = 9;
     int64 monthly_amount = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_premiumPromo
@@ -17354,17 +13048,6 @@ message help_PromoData {
     repeated User users = 7;
     google.protobuf.StringValue psa_type = 8;
     google.protobuf.StringValue psa_message = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_promoDataEmpty
@@ -17387,17 +13070,6 @@ message help_RecentMeUrls {
     repeated RecentMeUrl urls = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_recentMeUrls
@@ -17414,17 +13086,6 @@ message help_Support {
     TLConstructor  constructor = 2;
     string phone_number = 3;
     User user = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_support
@@ -17440,17 +13101,6 @@ message help_SupportName {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string name = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_supportName
@@ -17470,17 +13120,6 @@ message help_TermsOfService {
     string text = 5;
     repeated MessageEntity entities = 6;
     google.protobuf.Int32Value min_age_confirm = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_termsOfService
@@ -17498,17 +13137,6 @@ message help_TermsOfServiceUpdate {
     TLConstructor  constructor = 2;
     int32 expires = 3;
     help_TermsOfService terms_of_service = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_termsOfServiceUpdateEmpty
@@ -17531,17 +13159,6 @@ message help_TimezonesList {
     TLConstructor  constructor = 2;
     repeated Timezone timezones = 3;
     int32 hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_timezonesListNotModified
@@ -17566,17 +13183,6 @@ message help_UserInfo {
     repeated MessageEntity entities = 4;
     string author = 5;
     int32 date = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_help_userInfoEmpty
@@ -17600,17 +13206,6 @@ message messages_AffectedFoundMessages {
     int32 pts_count = 4;
     int32 offset = 5;
     repeated int32 messages = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_affectedFoundMessages
@@ -17628,17 +13223,6 @@ message messages_AffectedHistory {
     int32 pts = 3;
     int32 pts_count = 4;
     int32 offset = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_affectedHistory
@@ -17655,17 +13239,6 @@ message messages_AffectedMessages {
     TLConstructor  constructor = 2;
     int32 pts = 3;
     int32 pts_count = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_affectedMessages
@@ -17683,17 +13256,6 @@ message messages_AllStickers {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated StickerSet sets = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_allStickersNotModified
@@ -17715,17 +13277,6 @@ message messages_ArchivedStickers {
     TLConstructor  constructor = 2;
     int32 count = 3;
     repeated StickerSetCovered sets = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_archivedStickers
@@ -17743,17 +13294,6 @@ message messages_AvailableReactions {
     TLConstructor  constructor = 2;
     int32 hash = 3;
     repeated AvailableReaction reactions = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_availableReactionsNotModified
@@ -17777,17 +13317,6 @@ message messages_BotApp {
     bool request_write_access = 4;
     bool has_settings = 5;
     BotApp app = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_botApp
@@ -17808,17 +13337,6 @@ message messages_BotCallbackAnswer {
     google.protobuf.StringValue message = 6;
     google.protobuf.StringValue url = 7;
     int32 cache_time = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_botCallbackAnswer
@@ -17842,17 +13360,6 @@ message messages_BotResults {
     repeated BotInlineResult results = 8;
     int32 cache_time = 9;
     repeated User users = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_botResults
@@ -17869,17 +13376,6 @@ message messages_ChatAdminsWithInvites {
     TLConstructor  constructor = 2;
     repeated ChatAdminWithInvites admins = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_chatAdminsWithInvites
@@ -17897,17 +13393,6 @@ message messages_ChatFull {
     ChatFull full_chat = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_chatFull
@@ -17925,17 +13410,6 @@ message messages_ChatInviteImporters {
     int32 count = 3;
     repeated ChatInviteImporter importers = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_chatInviteImporters
@@ -17953,17 +13427,6 @@ message messages_Chats {
     TLConstructor  constructor = 2;
     repeated Chat chats = 3;
     int32 count = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_chats
@@ -17984,17 +13447,6 @@ message messages_CheckedHistoryImportPeer {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string confirm_text = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_checkedHistoryImportPeer
@@ -18014,17 +13466,6 @@ message messages_DhConfig {
     int32 g = 4;
     bytes p = 5;
     int32 version = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_dhConfigNotModified
@@ -18046,17 +13487,6 @@ message messages_DialogFilters {
     TLConstructor  constructor = 2;
     bool tags_enabled = 3;
     repeated DialogFilter filters = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_dialogFilters
@@ -18078,17 +13508,6 @@ message messages_Dialogs {
     repeated Chat chats = 5;
     repeated User users = 6;
     int32 count = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_dialogs
@@ -18120,17 +13539,6 @@ message messages_DiscussionMessage {
     int32 unread_count = 7;
     repeated Chat chats = 8;
     repeated User users = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_discussionMessage
@@ -18148,17 +13556,6 @@ message messages_EmojiGroups {
     TLConstructor  constructor = 2;
     int32 hash = 3;
     repeated EmojiGroup groups = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_emojiGroupsNotModified
@@ -18182,17 +13579,6 @@ message messages_ExportedChatInvite {
     ExportedChatInvite invite = 3;
     repeated User users = 4;
     ExportedChatInvite new_invite = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_exportedChatInvite
@@ -18215,17 +13601,6 @@ message messages_ExportedChatInvites {
     int32 count = 3;
     repeated ExportedChatInvite invites = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_exportedChatInvites
@@ -18244,17 +13619,6 @@ message messages_FavedStickers {
     int64 hash = 3;
     repeated StickerPack packs = 4;
     repeated Document stickers = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_favedStickersNotModified
@@ -18281,17 +13645,6 @@ message messages_FeaturedStickers {
     int64 hash = 5;
     repeated StickerSetCovered sets = 6;
     repeated int64 unread = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_featuredStickersNotModified
@@ -18318,17 +13671,6 @@ message messages_ForumTopics {
     repeated Chat chats = 7;
     repeated User users = 8;
     int32 pts = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_forumTopics
@@ -18346,17 +13688,6 @@ message messages_FoundStickerSets {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated StickerSetCovered sets = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_foundStickerSetsNotModified
@@ -18378,17 +13709,6 @@ message messages_HighScores {
     TLConstructor  constructor = 2;
     repeated HighScore scores = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_highScores
@@ -18404,17 +13724,6 @@ message messages_HistoryImport {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int64 id = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_historyImport
@@ -18432,17 +13741,6 @@ message messages_HistoryImportParsed {
     bool pm = 3;
     bool group = 4;
     google.protobuf.StringValue title = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_historyImportParsed
@@ -18460,17 +13758,6 @@ message messages_InactiveChats {
     repeated int32 dates = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_inactiveChats
@@ -18487,17 +13774,6 @@ message messages_InvitedUsers {
     TLConstructor  constructor = 2;
     Updates updates = 3;
     repeated MissingInvitee missing_invitees = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_invitedUsers
@@ -18513,17 +13789,6 @@ message messages_MessageEditData {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     bool caption = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_messageEditData
@@ -18543,17 +13808,6 @@ message messages_MessageReactionsList {
     repeated Chat chats = 5;
     repeated User users = 6;
     google.protobuf.StringValue next_offset = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_messageReactionsList
@@ -18571,17 +13825,6 @@ message messages_MessageViews {
     repeated MessageViews views = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_messageViews
@@ -18609,17 +13852,6 @@ message messages_Messages {
     google.protobuf.Int32Value offset_id_offset = 9;
     int32 pts = 10;
     repeated ForumTopic topics = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_messages
@@ -18651,17 +13883,6 @@ message messages_MyStickers {
     TLConstructor  constructor = 2;
     int32 count = 3;
     repeated StickerSetCovered sets = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_myStickers
@@ -18681,17 +13902,6 @@ message messages_PeerDialogs {
     repeated Chat chats = 5;
     repeated User users = 6;
     updates_State state = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_peerDialogs
@@ -18709,17 +13919,6 @@ message messages_PeerSettings {
     PeerSettings settings = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_peerSettings
@@ -18739,17 +13938,6 @@ message messages_QuickReplies {
     repeated Message messages = 4;
     repeated Chat chats = 5;
     repeated User users = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_quickReplies
@@ -18772,17 +13960,6 @@ message messages_Reactions {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated Reaction reactions = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_reactionsNotModified
@@ -18807,17 +13984,6 @@ message messages_RecentStickers {
     repeated StickerPack packs = 4;
     repeated Document stickers = 5;
     repeated int32 dates = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_recentStickersNotModified
@@ -18844,17 +14010,6 @@ message messages_SavedDialogs {
     repeated Chat chats = 5;
     repeated User users = 6;
     int32 count = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_savedDialogs
@@ -18882,17 +14037,6 @@ message messages_SavedGifs {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated Document gifs = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_savedGifsNotModified
@@ -18915,17 +14059,6 @@ message messages_SavedReactionTags {
     TLConstructor  constructor = 2;
     repeated SavedReactionTag tags = 3;
     int64 hash = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_savedReactionTagsNotModified
@@ -18948,17 +14081,6 @@ message messages_SearchCounter {
     bool inexact = 3;
     MessagesFilter filter = 4;
     int32 count = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_searchCounter
@@ -18982,17 +14104,6 @@ message messages_SearchResultsCalendar {
     repeated Message messages = 9;
     repeated Chat chats = 10;
     repeated User users = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_searchResultsCalendar
@@ -19009,17 +14120,6 @@ message messages_SearchResultsPositions {
     TLConstructor  constructor = 2;
     int32 count = 3;
     repeated SearchResultsPosition positions = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_searchResultsPositions
@@ -19037,17 +14137,6 @@ message messages_SentEncryptedMessage {
     TLConstructor  constructor = 2;
     int32 date = 3;
     EncryptedFile file = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_sentEncryptedMessage
@@ -19073,17 +14162,6 @@ message messages_SponsoredMessages {
     repeated SponsoredMessage messages = 4;
     repeated Chat chats = 5;
     repeated User users = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_sponsoredMessages
@@ -19109,17 +14187,6 @@ message messages_StickerSet {
     repeated StickerPack packs = 4;
     repeated StickerKeyword keywords = 5;
     repeated Document documents = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_stickerSet
@@ -19141,17 +14208,6 @@ message messages_StickerSetInstallResult {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     repeated StickerSetCovered sets = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_stickerSetInstallResultSuccess
@@ -19174,17 +14230,6 @@ message messages_Stickers {
     TLConstructor  constructor = 2;
     int64 hash = 3;
     repeated Document stickers = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_stickersNotModified
@@ -19210,17 +14255,6 @@ message messages_TranscribedAudio {
     string text = 5;
     google.protobuf.Int32Value trial_remains_num = 6;
     google.protobuf.Int32Value trial_remains_until_date = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_transcribedAudio
@@ -19239,17 +14273,6 @@ message messages_TranslatedText {
     TLConstructor  constructor = 2;
     repeated TextWithEntities result = 3;
     string text = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_translateResult
@@ -19281,17 +14304,6 @@ message messages_VotesList {
     repeated User users = 6;
     google.protobuf.StringValue next_offset = 7;
     repeated MessageUserVote votes_VECTORMESSAGEUSERVOTE = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_votesList
@@ -19309,17 +14321,6 @@ message messages_WebPage {
     WebPage webpage = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_messages_webPage
@@ -19336,17 +14337,6 @@ message payments_BankCardData {
     TLConstructor  constructor = 2;
     string title = 3;
     repeated BankCardOpenUrl open_urls = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_bankCardData
@@ -19371,17 +14361,6 @@ message payments_CheckedGiftCode {
     google.protobuf.Int32Value used_date = 9;
     repeated Chat chats = 10;
     repeated User users = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_checkedGiftCode
@@ -19397,17 +14376,6 @@ message payments_ExportedInvoice {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string url = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_exportedInvoice
@@ -19435,17 +14403,6 @@ message payments_GiveawayInfo {
     int32 finish_date = 12;
     int32 winners_count = 13;
     int32 activated_count = 14;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_giveawayInfo
@@ -19484,17 +14441,6 @@ message payments_PaymentForm {
     repeated PaymentSavedCredentials saved_credentials_FLAGVECTORPAYMENTSAVEDCREDENTIALS = 17;
     repeated User users = 18;
     PaymentSavedCredentials saved_credentials_FLAGPAYMENTSAVEDCREDENTIALS = 19;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_paymentForm
@@ -19523,17 +14469,6 @@ message payments_PaymentReceipt {
     int64 total_amount = 14;
     string credentials_title = 15;
     repeated User users = 16;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_paymentReceipt
@@ -19551,17 +14486,6 @@ message payments_PaymentResult {
     TLConstructor  constructor = 2;
     Updates updates = 3;
     string url = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_paymentResult
@@ -19583,17 +14507,6 @@ message payments_SavedInfo {
     TLConstructor  constructor = 2;
     bool has_saved_credentials = 3;
     PaymentRequestedInfo saved_info = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_savedInfo
@@ -19610,17 +14523,6 @@ message payments_ValidatedRequestedInfo {
     TLConstructor  constructor = 2;
     google.protobuf.StringValue id = 3;
     repeated ShippingOption shipping_options = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_payments_validatedRequestedInfo
@@ -19636,17 +14538,6 @@ message phone_ExportedGroupCallInvite {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string link = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phone_exportedGroupCallInvite
@@ -19666,17 +14557,6 @@ message phone_GroupCall {
     string participants_next_offset = 5;
     repeated Chat chats = 6;
     repeated User users = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phone_groupCall
@@ -19692,17 +14572,6 @@ message phone_GroupCallStreamChannels {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     repeated GroupCallStreamChannel channels = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phone_groupCallStreamChannels
@@ -19719,17 +14588,6 @@ message phone_GroupCallStreamRtmpUrl {
     TLConstructor  constructor = 2;
     string url = 3;
     string key = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phone_groupCallStreamRtmpUrl
@@ -19750,17 +14608,6 @@ message phone_GroupParticipants {
     repeated Chat chats = 6;
     repeated User users = 7;
     int32 version = 8;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phone_groupParticipants
@@ -19778,17 +14625,6 @@ message phone_JoinAsPeers {
     repeated Peer peers = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phone_joinAsPeers
@@ -19805,17 +14641,6 @@ message phone_PhoneCall {
     TLConstructor  constructor = 2;
     PhoneCall phone_call = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_phone_phoneCall
@@ -19832,17 +14657,6 @@ message photos_Photo {
     TLConstructor  constructor = 2;
     Photo photo = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_photos_photo
@@ -19861,17 +14675,6 @@ message photos_Photos {
     repeated Photo photos = 3;
     repeated User users = 4;
     int32 count = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_photos_photos
@@ -19895,17 +14698,6 @@ message premium_BoostsList {
     repeated Boost boosts = 4;
     google.protobuf.StringValue next_offset = 5;
     repeated User users = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_premium_boostsList
@@ -19930,17 +14722,6 @@ message premium_BoostsStatus {
     string boost_url = 10;
     repeated PrepaidGiveaway prepaid_giveaways = 11;
     repeated int32 my_boost_slots = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_premium_boostsStatus
@@ -19958,17 +14739,6 @@ message premium_MyBoosts {
     repeated MyBoost my_boosts = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_premium_myBoosts
@@ -19985,17 +14755,6 @@ message smsjobs_EligibilityToJoin {
     TLConstructor  constructor = 2;
     string terms_url = 3;
     int32 monthly_sent_sms = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_smsjobs_eligibleToJoin
@@ -20018,17 +14777,6 @@ message smsjobs_Status {
     int32 total_since = 8;
     google.protobuf.StringValue last_gift_slug = 9;
     string terms_url = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_smsjobs_status
@@ -20039,27 +14787,18 @@ message TL_smsjobs_status {
 
 // stats_BroadcastRevenueStats <--
 //  + TL_stats_broadcastRevenueStats
+//  + TL_stats_broadcastRevenueStats
 //
 message stats_BroadcastRevenueStats {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     StatsGraph top_hours_graph = 3;
     StatsGraph revenue_graph = 4;
-    int64 current_balance = 5;
-    int64 available_balance = 6;
-    int64 overall_revenue = 7;
-    double usd_rate = 8;
-
-
-
-
-
-
-
-
-
-
-
+    BroadcastRevenueBalances balances = 5;
+    double usd_rate = 6;
+    int64 current_balance = 7;
+    int64 available_balance = 8;
+    int64 overall_revenue = 9;
 }
 
 // TL_stats_broadcastRevenueStats
@@ -20076,17 +14815,6 @@ message stats_BroadcastRevenueTransactions {
     TLConstructor  constructor = 2;
     int32 count = 3;
     repeated BroadcastRevenueTransaction transactions = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stats_broadcastRevenueTransactions
@@ -20102,17 +14830,6 @@ message stats_BroadcastRevenueWithdrawalUrl {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string url = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stats_broadcastRevenueWithdrawalUrl
@@ -20151,17 +14868,6 @@ message stats_BroadcastStats {
     StatsGraph story_reactions_by_emotion_graph = 23;
     repeated PostInteractionCounters recent_posts_interactions = 24;
     repeated MessageInteractionCounters recent_message_interactions = 25;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stats_broadcastStats
@@ -20193,17 +14899,6 @@ message stats_MegagroupStats {
     repeated StatsGroupTopAdmin top_admins = 17;
     repeated StatsGroupTopInviter top_inviters = 18;
     repeated User users = 19;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stats_megagroupStats
@@ -20221,17 +14916,6 @@ message stats_MessageStats {
     TLConstructor  constructor = 2;
     StatsGraph views_graph = 3;
     StatsGraph reactions_by_emotion_graph = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stats_messageStats
@@ -20251,17 +14935,6 @@ message stats_PublicForwards {
     google.protobuf.StringValue next_offset = 5;
     repeated Chat chats = 6;
     repeated User users = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stats_publicForwards
@@ -20278,17 +14951,6 @@ message stats_StoryStats {
     TLConstructor  constructor = 2;
     StatsGraph views_graph = 3;
     StatsGraph reactions_by_emotion_graph = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stats_storyStats
@@ -20304,17 +14966,6 @@ message stickers_SuggestedShortName {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     string short_name = 3;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stickers_suggestedShortName
@@ -20338,17 +14989,6 @@ message TL_stickers_suggestedShortName {
 message storage_FileType {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_storage_fileUnknown
@@ -20420,17 +15060,6 @@ message stories_AllStories {
     repeated Chat chats = 8;
     repeated User users = 9;
     repeated UserStories user_stories = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_allStoriesNotModified
@@ -20454,17 +15083,6 @@ message stories_BoostersList {
     repeated Booster boosters = 4;
     google.protobuf.StringValue next_offset = 5;
     repeated User users = 6;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_boostersList
@@ -20487,17 +15105,6 @@ message stories_BoostsStatus {
     google.protobuf.Int32Value next_level_boosts = 7;
     StatsPercentValue premium_audience = 8;
     string boost_url = 9;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_boostsStatus
@@ -20515,17 +15122,6 @@ message stories_CanApplyBoostResult {
     TLConstructor  constructor = 2;
     Peer current_boost = 3;
     repeated Chat chats = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_canApplyBoostOk
@@ -20548,17 +15144,6 @@ message stories_PeerStories {
     PeerStories stories = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_peerStories
@@ -20580,17 +15165,6 @@ message stories_Stories {
     repeated int32 pinned_to_top = 5;
     repeated Chat chats = 6;
     repeated User users = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_stories
@@ -20610,17 +15184,6 @@ message stories_StoryReactionsList {
     repeated Chat chats = 5;
     repeated User users = 6;
     google.protobuf.StringValue next_offset = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_storyReactionsList
@@ -20637,17 +15200,6 @@ message stories_StoryViews {
     TLConstructor  constructor = 2;
     repeated StoryViews views = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_storyViews
@@ -20672,17 +15224,6 @@ message stories_StoryViewsList {
     repeated Chat chats = 8;
     repeated User users = 9;
     google.protobuf.StringValue next_offset = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_storyViewsList
@@ -20699,17 +15240,6 @@ message stories_UserStories {
     TLConstructor  constructor = 2;
     UserStories stories = 3;
     repeated User users = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_stories_userStories
@@ -20735,17 +15265,6 @@ message updates_ChannelDifference {
     repeated User users = 9;
     repeated Message new_messages = 10;
     repeated Update other_updates = 11;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_updates_channelDifferenceEmpty
@@ -20783,17 +15302,6 @@ message updates_Difference {
     updates_State state = 10;
     updates_State intermediate_state = 11;
     int32 pts = 12;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_updates_differenceEmpty
@@ -20828,17 +15336,6 @@ message updates_State {
     int32 date = 5;
     int32 seq = 6;
     int32 unread_count = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_updates_state
@@ -20856,17 +15353,6 @@ message upload_CdnFile {
     TLConstructor  constructor = 2;
     bytes request_token = 3;
     bytes bytes = 4;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_upload_cdnFileReuploadNeeded
@@ -20895,17 +15381,6 @@ message upload_File {
     bytes encryption_key = 8;
     bytes encryption_iv = 9;
     repeated FileHash file_hashes = 10;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_upload_file
@@ -20930,17 +15405,6 @@ message upload_WebFile {
     storage_FileType file_type = 5;
     int32 mtime = 6;
     bytes bytes = 7;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_upload_webFile
@@ -20958,17 +15422,6 @@ message users_UserFull {
     UserFull full_user = 3;
     repeated Chat chats = 4;
     repeated User users = 5;
-
-
-
-
-
-
-
-
-
-
-
 }
 
 // TL_users_userFull

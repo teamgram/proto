@@ -245,6 +245,7 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLMessagesGetEmojiStatusGroups":               RPCContextTuple{"/mtproto.RPCCustomEmojis/messages_getEmojiStatusGroups", func() interface{} { return new(Messages_EmojiGroups) }},
 	"TLMessagesGetEmojiProfilePhotoGroups":         RPCContextTuple{"/mtproto.RPCCustomEmojis/messages_getEmojiProfilePhotoGroups", func() interface{} { return new(Messages_EmojiGroups) }},
 	"TLMessagesSearchCustomEmoji":                  RPCContextTuple{"/mtproto.RPCCustomEmojis/messages_searchCustomEmoji", func() interface{} { return new(EmojiList) }},
+	"TLMessagesGetEmojiStickerGroups":              RPCContextTuple{"/mtproto.RPCCustomEmojis/messages_getEmojiStickerGroups", func() interface{} { return new(Messages_EmojiGroups) }},
 	"TLChannelsSetEmojiStickers":                   RPCContextTuple{"/mtproto.RPCCustomEmojis/channels_setEmojiStickers", func() interface{} { return new(Bool) }},
 	"TLMessagesStartBot":                           RPCContextTuple{"/mtproto.RPCDeepLinks/messages_startBot", func() interface{} { return new(Updates) }},
 	"TLHelpGetRecentMeUrls":                        RPCContextTuple{"/mtproto.RPCDeepLinks/help_getRecentMeUrls", func() interface{} { return new(Help_RecentMeUrls) }},

@@ -887,6 +887,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -391678544
 		return o
 	},
+	-2076642874: func() TLObject { // 0x8438f1c6
+		o := MakeTLBroadcastRevenueBalances(nil)
+		o.Data2.Constructor = -2076642874
+		return o
+	},
 	1434332356: func() TLObject { // 0x557e2cc4
 		o := MakeTLBroadcastRevenueTransactionProceeds(nil)
 		o.Data2.Constructor = 1434332356
@@ -1890,6 +1895,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	2056961449: func() TLObject { // 0x7a9abda9
 		o := MakeTLEmojiGroup(nil)
 		o.Data2.Constructor = 2056961449
+		return o
+	},
+	-2133693241: func() TLObject { // 0x80d26cc7
+		o := MakeTLEmojiGroupGreeting(nil)
+		o.Data2.Constructor = -2133693241
+		return o
+	},
+	154914612: func() TLObject { // 0x93bcf34
+		o := MakeTLEmojiGroupPremium(nil)
+		o.Data2.Constructor = 154914612
 		return o
 	},
 	-709641735: func() TLObject { // 0xd5b3b9f9
@@ -6177,6 +6192,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1202287072
 		return o
 	},
+	1409802903: func() TLObject { // 0x5407e297
+		o := MakeTLStatsBroadcastRevenueStats(nil)
+		o.Data2.Constructor = 1409802903
+		return o
+	},
 	-797226067: func() TLObject { // 0xd07b4bad
 		o := MakeTLStatsBroadcastRevenueStats(nil)
 		o.Data2.Constructor = -797226067
@@ -10052,6 +10072,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-793386500: func() TLObject { // 0xd0b5e1fc
 		return &TLMessagesGetMyStickers{
 			Constructor: -793386500,
+		}
+	},
+	500711669: func() TLObject { // 0x1dd840f5
+		return &TLMessagesGetEmojiStickerGroups{
+			Constructor: 500711669,
 		}
 	},
 	-304838614: func() TLObject { // 0xedd4882a

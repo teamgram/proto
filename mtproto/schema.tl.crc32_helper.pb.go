@@ -1354,6 +1354,8 @@ const (
 	CRC32_emojiListNotModified                                        TLConstructor = 1209970170  // 481eadfa
 	CRC32_emojiList                                                   TLConstructor = 2048790993  // 7a1e11d1
 	CRC32_emojiGroup                                                  TLConstructor = 2056961449  // 7a9abda9
+	CRC32_emojiGroupGreeting                                          TLConstructor = -2133693241 // 80d26cc7
+	CRC32_emojiGroupPremium                                           TLConstructor = 154914612   // 93bcf34
 	CRC32_messages_emojiGroupsNotModified                             TLConstructor = 1874111879  // 6fb4ad87
 	CRC32_messages_emojiGroups                                        TLConstructor = -2011186869 // 881fb94b
 	CRC32_textWithEntities                                            TLConstructor = 1964978502  // 751f3146
@@ -1514,7 +1516,8 @@ const (
 	CRC32_channels_sponsoredMessageReportResultChooseOption           TLConstructor = -2073059774 // 846f9e42
 	CRC32_channels_sponsoredMessageReportResultAdsHidden              TLConstructor = 1044107055  // 3e3bcf2f
 	CRC32_channels_sponsoredMessageReportResultReported               TLConstructor = -1384544183 // ad798849
-	CRC32_stats_broadcastRevenueStats                                 TLConstructor = -797226067  // d07b4bad
+	CRC32_stats_broadcastRevenueStats_5407e297                        TLConstructor = 1409802903  // 5407e297
+	CRC32_stats_broadcastRevenueStats_d07b4bad                        TLConstructor = -797226067  // d07b4bad
 	CRC32_stats_broadcastRevenueWithdrawalUrl                         TLConstructor = -328886473  // ec659737
 	CRC32_broadcastRevenueTransactionProceeds                         TLConstructor = 1434332356  // 557e2cc4
 	CRC32_broadcastRevenueTransactionWithdrawal                       TLConstructor = 1515784568  // 5a590978
@@ -1523,6 +1526,7 @@ const (
 	CRC32_reactionNotificationsFromContacts                           TLConstructor = -1161583078 // bac3a61a
 	CRC32_reactionNotificationsFromAll                                TLConstructor = 1268654752  // 4b9e22a0
 	CRC32_reactionsNotifySettings                                     TLConstructor = 1457736048  // 56e34970
+	CRC32_broadcastRevenueBalances                                    TLConstructor = -2076642874 // 8438f1c6
 	CRC32_sponsoredWebPage                                            TLConstructor = 1035529315  // 3db8ec63
 	CRC32_updateGroupInvitePrivacyForbidden                           TLConstructor = -856651050  // ccf08ad6
 	CRC32_channelAdminLogEventActionChangeColor                       TLConstructor = 1009460347  // 3c2b247b
@@ -2022,6 +2026,7 @@ const (
 	CRC32_messages_deleteQuickReplyMessages                           TLConstructor = -519706352  // e105e910
 	CRC32_messages_toggleDialogFilterTags                             TLConstructor = -47326647   // fd2dda49
 	CRC32_messages_getMyStickers                                      TLConstructor = -793386500  // d0b5e1fc
+	CRC32_messages_getEmojiStickerGroups                              TLConstructor = 500711669   // 1dd840f5
 	CRC32_updates_getState                                            TLConstructor = -304838614  // edd4882a
 	CRC32_updates_getDifference_19c2f763                              TLConstructor = 432207715   // 19c2f763
 	CRC32_updates_getDifference_25939651                              TLConstructor = 630429265   // 25939651

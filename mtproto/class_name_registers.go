@@ -1153,6 +1153,8 @@ const (
 	Predicate_emojiListNotModified                               = "emojiListNotModified"
 	Predicate_emojiList                                          = "emojiList"
 	Predicate_emojiGroup                                         = "emojiGroup"
+	Predicate_emojiGroupGreeting                                 = "emojiGroupGreeting"
+	Predicate_emojiGroupPremium                                  = "emojiGroupPremium"
 	Predicate_messages_emojiGroupsNotModified                    = "messages_emojiGroupsNotModified"
 	Predicate_messages_emojiGroups                               = "messages_emojiGroups"
 	Predicate_textWithEntities                                   = "textWithEntities"
@@ -1302,6 +1304,7 @@ const (
 	Predicate_reactionNotificationsFromContacts                  = "reactionNotificationsFromContacts"
 	Predicate_reactionNotificationsFromAll                       = "reactionNotificationsFromAll"
 	Predicate_reactionsNotifySettings                            = "reactionsNotifySettings"
+	Predicate_broadcastRevenueBalances                           = "broadcastRevenueBalances"
 	Predicate_invokeAfterMsg                                     = "invokeAfterMsg"
 	Predicate_invokeAfterMsgs                                    = "invokeAfterMsgs"
 	Predicate_initConnection                                     = "initConnection"
@@ -1683,6 +1686,7 @@ const (
 	Predicate_messages_deleteQuickReplyMessages                  = "messages_deleteQuickReplyMessages"
 	Predicate_messages_toggleDialogFilterTags                    = "messages_toggleDialogFilterTags"
 	Predicate_messages_getMyStickers                             = "messages_getMyStickers"
+	Predicate_messages_getEmojiStickerGroups                     = "messages_getEmojiStickerGroups"
 	Predicate_updates_getState                                   = "updates_getState"
 	Predicate_updates_getDifference                              = "updates_getDifference"
 	Predicate_updates_getChannelDifference                       = "updates_getChannelDifference"
@@ -49689,6 +49693,14 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		152: 2056961449, // 7a9abda9
 
 	},
+	Predicate_emojiGroupGreeting: {
+		179: -2133693241, // 80d26cc7
+
+	},
+	Predicate_emojiGroupPremium: {
+		179: 154914612, // 93bcf34
+
+	},
 	Predicate_messages_emojiGroupsNotModified: {
 		179: 1874111879, // 6fb4ad87
 		178: 1874111879, // 6fb4ad87
@@ -51887,7 +51899,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_broadcastRevenueStats: {
-		179: -797226067, // d07b4bad
+		179: 1409802903, // 5407e297
 		178: -797226067, // d07b4bad
 		177: -797226067, // d07b4bad
 
@@ -51935,6 +51947,10 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 	Predicate_reactionsNotifySettings: {
 		179: 1457736048, // 56e34970
 		178: 1457736048, // 56e34970
+
+	},
+	Predicate_broadcastRevenueBalances: {
+		179: -2076642874, // 8438f1c6
 
 	},
 	Predicate_invokeAfterMsg: {
@@ -66366,6 +66382,10 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		177: -793386500, // d0b5e1fc
 
 	},
+	Predicate_messages_getEmojiStickerGroups: {
+		179: 500711669, // 1dd840f5
+
+	},
 	Predicate_updates_getState: {
 		179: -304838614, // edd4882a
 		178: -304838614, // edd4882a
@@ -76969,6 +76989,8 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1209970170:  Predicate_emojiListNotModified,                               // 481eadfa
 	2048790993:  Predicate_emojiList,                                          // 7a1e11d1
 	2056961449:  Predicate_emojiGroup,                                         // 7a9abda9
+	-2133693241: Predicate_emojiGroupGreeting,                                 // 80d26cc7
+	154914612:   Predicate_emojiGroupPremium,                                  // 93bcf34
 	1874111879:  Predicate_messages_emojiGroupsNotModified,                    // 6fb4ad87
 	-2011186869: Predicate_messages_emojiGroups,                               // 881fb94b
 	1964978502:  Predicate_textWithEntities,                                   // 751f3146
@@ -77109,7 +77131,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-2073059774: Predicate_channels_sponsoredMessageReportResultChooseOption,  // 846f9e42
 	1044107055:  Predicate_channels_sponsoredMessageReportResultAdsHidden,     // 3e3bcf2f
 	-1384544183: Predicate_channels_sponsoredMessageReportResultReported,      // ad798849
-	-797226067:  Predicate_stats_broadcastRevenueStats,                        // d07b4bad
+	1409802903:  Predicate_stats_broadcastRevenueStats,                        // 5407e297
 	-328886473:  Predicate_stats_broadcastRevenueWithdrawalUrl,                // ec659737
 	1434332356:  Predicate_broadcastRevenueTransactionProceeds,                // 557e2cc4
 	1515784568:  Predicate_broadcastRevenueTransactionWithdrawal,              // 5a590978
@@ -77118,6 +77140,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-1161583078: Predicate_reactionNotificationsFromContacts,                  // bac3a61a
 	1268654752:  Predicate_reactionNotificationsFromAll,                       // 4b9e22a0
 	1457736048:  Predicate_reactionsNotifySettings,                            // 56e34970
+	-2076642874: Predicate_broadcastRevenueBalances,                           // 8438f1c6
 	-878758099:  Predicate_invokeAfterMsg,                                     // cb9f372d
 	1036301552:  Predicate_invokeAfterMsgs,                                    // 3dc4b4f0
 	-1043505495: Predicate_initConnection,                                     // c1cd5ea9
@@ -77499,6 +77522,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-519706352:  Predicate_messages_deleteQuickReplyMessages,                  // e105e910
 	-47326647:   Predicate_messages_toggleDialogFilterTags,                    // fd2dda49
 	-793386500:  Predicate_messages_getMyStickers,                             // d0b5e1fc
+	500711669:   Predicate_messages_getEmojiStickerGroups,                     // 1dd840f5
 	-304838614:  Predicate_updates_getState,                                   // edd4882a
 	432207715:   Predicate_updates_getDifference,                              // 19c2f763
 	51854712:    Predicate_updates_getChannelDifference,                       // 3173d78
@@ -77745,6 +77769,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-1105295942: Predicate_fragment_getCollectibleInfo,                        // be1e85ba
 	1823064809:  Predicate_pollAnswer,                                         // 6ca9c2e9
 	-2032041631: Predicate_poll,                                               // 86e18161
+	-797226067:  Predicate_stats_broadcastRevenueStats,                        // d07b4bad
 	-908914376:  Predicate_chatFull,                                           // c9d31138
 	1153455271:  Predicate_channelFull,                                        // 44c054a7
 	-313293833:  Predicate_sponsoredMessage,                                   // ed5383f7
