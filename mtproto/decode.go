@@ -391,7 +391,7 @@ func (m *DecodeBuf) Object() (r TLObject) {
 	}
 
 	// log.Infof("newTLObjectByClassID, classID: %x", uint32(classID))
-	err := r.(TLObject).Decode(m)
+	err := r.Decode(m)
 	if err != nil {
 		m.err = fmt.Errorf("object(%x) decode error: %v", uint32(classID), err)
 	}

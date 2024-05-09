@@ -23,7 +23,6 @@ import (
 	"compress/gzip"
 	"compress/zlib"
 	"encoding/binary"
-	"encoding/hex"
 	"fmt"
 	"io"
 	"reflect"
@@ -160,19 +159,8 @@ func (m *TLMessage2) Decode(dBuf *DecodeBuf) error {
 	m.MsgId = dBuf.Long()
 	m.Seqno = dBuf.Int()
 	m.Bytes = dBuf.Int()
-	// log.Debugf("message2: {msg_id: %d, seqno: %d, bytes: %d}", m.MsgId, m.Seqno, m.Bytes)
-	b := dBuf.Bytes(int(m.Bytes))
-
-	dBuf2 := NewDecodeBuf(b)
-	m.Object = dBuf2.Object()
-	if m.Object == nil {
-		err := fmt.Errorf("decode core_message error(%v): %s", dBuf2.err, hex.EncodeToString(b))
-		// log.Error(err.Error())
-		return err
-	}
-
-	// log.Info("Sucess decoded core_message: ", m.Object.String())
-	return dBuf2.err
+	m.Object = dBuf.Object()
+	return dBuf.err
 }
 
 func (m *TLMessage2) DebugString() string {
@@ -185,9 +173,7 @@ func (m *TLMessage2) DebugString() string {
 // TLMsgContainer
 // msg_container#73f1f8dc messages:vector<message2> = MessageContainer; // parsed manually
 type TLMsgContainer struct {
-	Messages []TLMessage2
-	// RawMessages []TLMessageRawData
-
+	Messages []*TLMessage2
 }
 
 func (m *TLMsgContainer) String() string {
@@ -207,16 +193,14 @@ func (m *TLMsgContainer) Encode(x *EncodeBuf, layer int32) error {
 
 func (m *TLMsgContainer) Decode(dbuf *DecodeBuf) error {
 	len2 := dbuf.Int()
-	// log.Debugf("msg_container: messages size: %d", len)
 	for i := 0; i < int(len2); i++ {
-		// log.Debugf("msg_container: decode messages[%d]: ", i)
-		message2 := &TLMessage2{}
+		message2 := new(TLMessage2)
 		err := message2.Decode(dbuf)
 		if err != nil {
 			// log.Errorf("Decode message2 error: %v", err)
 			return err
 		}
-		m.Messages = append(m.Messages, *message2)
+		m.Messages = append(m.Messages, message2)
 	}
 	return dbuf.err
 }
@@ -228,7 +212,7 @@ func (m *TLMsgContainer) DebugString() string {
 // TLMsgCopy
 // msg_copy#e06046b2 orig_message:Message2 = MessageCopy; // parsed manually, not used - use msg_container
 type TLMsgCopy struct {
-	OrigMessage TLMessage2
+	OrigMessage *TLMessage2
 }
 
 func (m *TLMsgCopy) String() string {
@@ -244,7 +228,7 @@ func (m *TLMsgCopy) Encode(x *EncodeBuf, layer int32) error {
 func (m *TLMsgCopy) Decode(dbuf *DecodeBuf) error {
 	o := dbuf.Object()
 	message2, _ := o.(*TLMessage2)
-	m.OrigMessage = *message2
+	m.OrigMessage = message2
 	return dbuf.err
 }
 
