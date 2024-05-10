@@ -23,6 +23,7 @@ import (
 	"compress/gzip"
 	"compress/zlib"
 	"encoding/binary"
+	"encoding/hex"
 	"fmt"
 	"io"
 	"reflect"
@@ -159,8 +160,19 @@ func (m *TLMessage2) Decode(dBuf *DecodeBuf) error {
 	m.MsgId = dBuf.Long()
 	m.Seqno = dBuf.Int()
 	m.Bytes = dBuf.Int()
-	m.Object = dBuf.Object()
-	return dBuf.err
+	// log.Debugf("message2: {msg_id: %d, seqno: %d, bytes: %d}", m.MsgId, m.Seqno, m.Bytes)
+	b := dBuf.Bytes(int(m.Bytes))
+
+	dBuf2 := NewDecodeBuf(b)
+	m.Object = dBuf2.Object()
+	if m.Object == nil {
+		err := fmt.Errorf("decode core_message error(%v): %s", dBuf2.err, hex.EncodeToString(b))
+		// log.Error(err.Error())
+		return err
+	}
+
+	// log.Info("Sucess decoded core_message: ", m.Object.String())
+	return dBuf2.err
 }
 
 func (m *TLMessage2) DebugString() string {
