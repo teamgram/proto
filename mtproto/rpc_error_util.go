@@ -19,15 +19,60 @@
 package mtproto
 
 import (
+	"errors"
+	"fmt"
+
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/status"
 )
 
-func NewRpcError(e *status.Status) (err *TLRpcError) {
-	return &TLRpcError{Data2: &RpcError{
-		ErrorCode:    int32(e.Code()),
-		ErrorMessage: e.Message(),
-	}}
+func toMTProtoErrorCod(code codes.Code) codes.Code {
+	switch code {
+	case ErrSeeOther:
+		return code
+	case ErrBadRequest:
+		return code
+	case ErrUnauthorized:
+		return code
+	case ErrForbidden:
+		return code
+	case ErrNotFound:
+		return code
+	case ErrNotAcceptable:
+		return code
+	case ErrFlood:
+		return code
+	case ErrInternal:
+		return code
+	case ErrNotReturnClient:
+		return code
+	default:
+		return ErrInternal
+	}
+}
+
+func NewRpcError(e error) *TLRpcError {
+	if e == nil {
+		return nil
+	}
+
+	if rErr, ok := status.FromError(e); ok {
+		return &TLRpcError{Data2: &RpcError{
+			ErrorCode:    int32(toMTProtoErrorCod(rErr.Code())),
+			ErrorMessage: rErr.Message(),
+		}}
+	} else {
+		var err *TLRpcError
+		switch {
+		case errors.As(e, &err):
+			return err
+		default:
+			return &TLRpcError{Data2: &RpcError{
+				ErrorCode:    int32(toMTProtoErrorCod(codes.Internal)),
+				ErrorMessage: "INTERNAL_SERVER_ERROR",
+			}}
+		}
+	}
 }
 
 func (m *TLRpcError) IsOK() bool {
@@ -38,7 +83,11 @@ func (m *TLRpcError) IsOK() bool {
 }
 
 func (m *TLRpcError) Error() string {
-	return m.DebugString()
+	if m == nil {
+		return ""
+	}
+
+	return fmt.Sprintf("rpc(TLRpcError) error: code = %d desc = %s", m.Code(), m.Message())
 }
 
 func (m *TLRpcError) Code() int {
