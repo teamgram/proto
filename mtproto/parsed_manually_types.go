@@ -341,7 +341,7 @@ type TLRpcResult struct {
 }
 
 func (m *TLRpcResult) String() string {
-	return "{rpc_result#f35c6d01: req_msg_id:" + string(m.ReqMsgId) + "}"
+	return fmt.Sprintf("{rpc_result#f35c6d01: req_msg_id: %d, result: %s}", m.ReqMsgId, reflect.TypeOf(m.Result))
 }
 
 func (m *TLRpcResult) Encode(x *EncodeBuf, layer int32) error {
