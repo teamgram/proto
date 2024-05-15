@@ -22,41 +22,12 @@ import (
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
-const (
-	AuthKeyTypeUnknown   = -1
-	AuthKeyTypePerm      = 0
-	AuthKeyTypeTemp      = 1
-	AuthKeyTypeMediaTemp = 2
-)
-
 var (
 	BoolTrue       = MakeTLBoolTrue(nil).To_Bool()
 	BoolFalse      = MakeTLBoolFalse(nil).To_Bool()
 	UpdatesTooLong = MakeTLUpdatesTooLong(nil).To_Updates()
 	EmptyVoid      = MakeTLVoid(nil).To_Void()
 )
-
-func NewAuthKeyInfo(keyId int64, key []byte, keyType int) *AuthKeyInfo {
-	keyData := &AuthKeyInfo{
-		AuthKeyId:          keyId,
-		AuthKey:            key,
-		AuthKeyType:        int32(keyType),
-		PermAuthKeyId:      0,
-		TempAuthKeyId:      0,
-		MediaTempAuthKeyId: 0,
-	}
-
-	switch keyType {
-	case AuthKeyTypePerm:
-		keyData.PermAuthKeyId = keyId
-	case AuthKeyTypeTemp:
-		keyData.TempAuthKeyId = keyId
-	case AuthKeyTypeMediaTemp:
-		keyData.MediaTempAuthKeyId = keyId
-	}
-
-	return keyData
-}
 
 func ToBool(b bool) *Bool {
 	if b {
