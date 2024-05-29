@@ -2503,10 +2503,10 @@ var (
 	ErrMigratedToChannel = status.Error(ErrNotReturnClient, "MIGRATED_TO_CHANNEL")
 )
 
-// NewErrErrErrRedirectToX
+// NewErrRedirectToX
 // REDIRECT_TO_SERVER
-// ErrErrRedirectToServer = status.Error(ErrNotReturnClient, "REDIRECT_TO_SERVER")
-func NewErrErrErrRedirectToX(v string) error {
+// ErrRedirectToServer = status.Error(ErrNotReturnClient, "REDIRECT_TO_SERVER")
+func NewErrRedirectToX(v string) error {
 	return status.Errorf(ErrNotReturnClient, "REDIRECT_TO_%s", v)
 }
 
