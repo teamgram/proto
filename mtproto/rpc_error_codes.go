@@ -2503,6 +2503,13 @@ var (
 	ErrMigratedToChannel = status.Error(ErrNotReturnClient, "MIGRATED_TO_CHANNEL")
 )
 
+// NewErrErrErrRedirectToX
+// REDIRECT_TO_SERVER
+// ErrErrRedirectToServer = status.Error(ErrNotReturnClient, "REDIRECT_TO_SERVER")
+func NewErrErrErrRedirectToX(v string) error {
+	return status.Errorf(ErrNotReturnClient, "REDIRECT_TO_%s", v)
+}
+
 // StatusErrEqual is essentially a copy of testutils.StatusErrEqual(), to avoid a
 // cyclic dependency.
 func StatusErrEqual(err1, err2 error) bool {
