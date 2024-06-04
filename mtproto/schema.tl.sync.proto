@@ -2952,6 +2952,24 @@ message TL_exportedStoryLink {
 }
 
 
+// FactCheck <--
+//  + TL_factCheck
+//
+message FactCheck {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool need_check = 3;
+    google.protobuf.StringValue country = 4;
+    TextWithEntities text = 5;
+    int64 hash = 6;
+}
+
+// TL_factCheck
+message TL_factCheck {
+    FactCheck data2 = 1;
+}
+
+
 // FileHash <--
 //  + TL_fileHash
 //  + TL_fileHash
@@ -4176,6 +4194,7 @@ message TL_inputGroupCall {
 //  + TL_inputInvoiceMessage
 //  + TL_inputInvoiceSlug
 //  + TL_inputInvoicePremiumGiftCode
+//  + TL_inputInvoiceStars
 //
 message InputInvoice {
     string predicate_name = 1;
@@ -4184,7 +4203,8 @@ message InputInvoice {
     int32 msg_id = 4;
     string slug = 5;
     InputStorePaymentPurpose purpose = 6;
-    PremiumGiftCodeOption option = 7;
+    PremiumGiftCodeOption option_PREMIUMGIFTCODEOPTION = 7;
+    StarsTopupOption option_STARSTOPUPOPTION = 8;
 }
 
 // TL_inputInvoiceMessage
@@ -4199,6 +4219,11 @@ message TL_inputInvoiceSlug {
 
 // TL_inputInvoicePremiumGiftCode
 message TL_inputInvoicePremiumGiftCode {
+    InputInvoice data2 = 1;
+}
+
+// TL_inputInvoiceStars
+message TL_inputInvoiceStars {
     InputInvoice data2 = 1;
 }
 
@@ -4221,6 +4246,7 @@ message TL_inputInvoicePremiumGiftCode {
 //  + TL_inputMediaDice
 //  + TL_inputMediaStory
 //  + TL_inputMediaWebPage
+//  + TL_inputMediaInvoice
 //  + TL_inputMediaStory
 //  + TL_inputMediaInvoice
 //  + TL_inputMediaBizDataRaw
@@ -4247,7 +4273,7 @@ message InputMedia {
     google.protobuf.StringValue query = 19;
     string title = 20;
     string address = 21;
-    string provider = 22;
+    string provider_STRING = 22;
     string venue_id = 23;
     string venue_type = 24;
     string url = 25;
@@ -4256,25 +4282,26 @@ message InputMedia {
     InputWebDocument photo = 28;
     Invoice invoice = 29;
     bytes payload = 30;
-    DataJSON provider_data = 31;
-    google.protobuf.StringValue start_param = 32;
-    InputMedia extended_media = 33;
-    bool stopped = 34;
-    google.protobuf.Int32Value heading = 35;
-    google.protobuf.Int32Value period = 36;
-    google.protobuf.Int32Value proximity_notification_radius = 37;
-    Poll poll = 38;
-    repeated bytes correct_answers = 39;
-    google.protobuf.StringValue solution = 40;
-    repeated MessageEntity solution_entities = 41;
-    string emoticon = 42;
-    InputPeer peer = 43;
-    int32 id_INT32 = 44;
-    bool force_large_media = 45;
-    bool force_small_media = 46;
-    bool optional = 47;
-    InputUser user_id = 48;
-    BizDataRaw biz_data = 49;
+    google.protobuf.StringValue provider_FLAGSTRING = 31;
+    DataJSON provider_data = 32;
+    google.protobuf.StringValue start_param = 33;
+    InputMedia extended_media = 34;
+    bool stopped = 35;
+    google.protobuf.Int32Value heading = 36;
+    google.protobuf.Int32Value period = 37;
+    google.protobuf.Int32Value proximity_notification_radius = 38;
+    Poll poll = 39;
+    repeated bytes correct_answers = 40;
+    google.protobuf.StringValue solution = 41;
+    repeated MessageEntity solution_entities = 42;
+    string emoticon = 43;
+    InputPeer peer = 44;
+    int32 id_INT32 = 45;
+    bool force_large_media = 46;
+    bool force_small_media = 47;
+    bool optional = 48;
+    InputUser user_id = 49;
+    BizDataRaw biz_data = 50;
 }
 
 // TL_inputMediaEmpty
@@ -4994,6 +5021,7 @@ message TL_inputStickeredMediaDocument {
 //  + TL_inputStorePaymentGiftPremium
 //  + TL_inputStorePaymentPremiumGiftCode
 //  + TL_inputStorePaymentPremiumGiveaway
+//  + TL_inputStorePaymentStars
 //  + TL_inputStorePaymentPremiumGiveaway
 //
 message InputStorePaymentPurpose {
@@ -5013,6 +5041,7 @@ message InputStorePaymentPurpose {
     google.protobuf.StringValue prize_description = 14;
     int64 random_id = 15;
     int32 until_date = 16;
+    int64 stars = 17;
 }
 
 // TL_inputStorePaymentPremiumSubscription
@@ -5032,6 +5061,11 @@ message TL_inputStorePaymentPremiumGiftCode {
 
 // TL_inputStorePaymentPremiumGiveaway
 message TL_inputStorePaymentPremiumGiveaway {
+    InputStorePaymentPurpose data2 = 1;
+}
+
+// TL_inputStorePaymentStars
+message TL_inputStorePaymentStars {
     InputStorePaymentPurpose data2 = 1;
 }
 
@@ -5640,6 +5674,7 @@ message TL_mediaAreaCoordinates {
 //  + TL_message
 //  + TL_message
 //  + TL_message
+//  + TL_message
 //
 message Message {
     string predicate_name = 1;
@@ -5681,7 +5716,8 @@ message Message {
     google.protobuf.Int32Value ttl_period = 37;
     google.protobuf.Int32Value quick_reply_shortcut_id = 38;
     google.protobuf.Int64Value effect = 39;
-    MessageAction action = 40;
+    FactCheck factcheck = 40;
+    MessageAction action = 41;
 }
 
 // TL_messageEmpty
@@ -6144,6 +6180,7 @@ message TL_messageBoxListSlice {
 //  + TL_messageEntitySpoiler
 //  + TL_messageEntityCustomEmoji
 //  + TL_messageEntityBlockquote
+//  + TL_messageEntityBlockquote
 //
 message MessageEntity {
     string predicate_name = 1;
@@ -6155,6 +6192,7 @@ message MessageEntity {
     int64 user_id_INT64 = 7;
     InputUser user_id_INPUTUSER = 8;
     int64 document_id = 9;
+    bool collapsed = 10;
 }
 
 // TL_messageEntityUnknown
@@ -9458,6 +9496,92 @@ message TL_sponsoredWebPage {
 }
 
 
+// StarsTopupOption <--
+//  + TL_starsTopupOption
+//
+message StarsTopupOption {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool extended = 3;
+    int64 stars = 4;
+    google.protobuf.StringValue store_product = 5;
+    string currency = 6;
+    int64 amount = 7;
+}
+
+// TL_starsTopupOption
+message TL_starsTopupOption {
+    StarsTopupOption data2 = 1;
+}
+
+
+// StarsTransaction <--
+//  + TL_starsTransaction
+//
+message StarsTransaction {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool refund = 3;
+    string id = 4;
+    int64 stars = 5;
+    int32 date = 6;
+    StarsTransactionPeer peer = 7;
+    google.protobuf.StringValue title = 8;
+    google.protobuf.StringValue description = 9;
+    WebDocument photo = 10;
+}
+
+// TL_starsTransaction
+message TL_starsTransaction {
+    StarsTransaction data2 = 1;
+}
+
+
+// StarsTransactionPeer <--
+//  + TL_starsTransactionPeerUnsupported
+//  + TL_starsTransactionPeerAppStore
+//  + TL_starsTransactionPeerPlayMarket
+//  + TL_starsTransactionPeerPremiumBot
+//  + TL_starsTransactionPeerFragment
+//  + TL_starsTransactionPeer
+//
+message StarsTransactionPeer {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    Peer peer = 3;
+}
+
+// TL_starsTransactionPeerUnsupported
+message TL_starsTransactionPeerUnsupported {
+    StarsTransactionPeer data2 = 1;
+}
+
+// TL_starsTransactionPeerAppStore
+message TL_starsTransactionPeerAppStore {
+    StarsTransactionPeer data2 = 1;
+}
+
+// TL_starsTransactionPeerPlayMarket
+message TL_starsTransactionPeerPlayMarket {
+    StarsTransactionPeer data2 = 1;
+}
+
+// TL_starsTransactionPeerPremiumBot
+message TL_starsTransactionPeerPremiumBot {
+    StarsTransactionPeer data2 = 1;
+}
+
+// TL_starsTransactionPeerFragment
+message TL_starsTransactionPeerFragment {
+    StarsTransactionPeer data2 = 1;
+}
+
+// TL_starsTransactionPeer
+message TL_starsTransactionPeer {
+    StarsTransactionPeer data2 = 1;
+}
+
+
 // StatsAbsValueAndPrev <--
 //  + TL_statsAbsValueAndPrev
 //
@@ -10185,6 +10309,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateBotDeleteBusinessMessage
 //  + TL_updateNewStoryReaction
 //  + TL_updateBroadcastRevenueTransactions
+//  + TL_updateStarsBalance
 //  + TL_updateGroupInvitePrivacyForbidden
 //  + TL_updateStory
 //  + TL_updateReadStories
@@ -10355,12 +10480,13 @@ message Update {
     string connection_id = 151;
     Message reply_to_message = 152;
     BroadcastRevenueBalances balances = 153;
-    Bool blocked_BOOL = 154;
-    UserProfilePhoto photo = 155;
-    Bool previous = 156;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 157;
-    string username = 158;
-    BizDataRaw biz_data = 159;
+    int64 balance = 154;
+    Bool blocked_BOOL = 155;
+    UserProfilePhoto photo = 156;
+    Bool previous = 157;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 158;
+    string username = 159;
+    BizDataRaw biz_data = 160;
 }
 
 // TL_updateNewMessage
@@ -11040,6 +11166,11 @@ message TL_updateNewStoryReaction {
 
 // TL_updateBroadcastRevenueTransactions
 message TL_updateBroadcastRevenueTransactions {
+    Update data2 = 1;
+}
+
+// TL_updateStarsBalance
+message TL_updateStarsBalance {
     Update data2 = 1;
 }
 
@@ -14472,6 +14603,7 @@ message TL_payments_giveawayInfoResults {
 
 // payments_PaymentForm <--
 //  + TL_payments_paymentForm
+//  + TL_payments_paymentFormStars
 //  + TL_payments_paymentForm
 //  + TL_payments_paymentForm
 //
@@ -14502,9 +14634,15 @@ message TL_payments_paymentForm {
     payments_PaymentForm data2 = 1;
 }
 
+// TL_payments_paymentFormStars
+message TL_payments_paymentFormStars {
+    payments_PaymentForm data2 = 1;
+}
+
 
 // payments_PaymentReceipt <--
 //  + TL_payments_paymentReceipt
+//  + TL_payments_paymentReceiptStars
 //
 message payments_PaymentReceipt {
     string predicate_name = 1;
@@ -14523,10 +14661,16 @@ message payments_PaymentReceipt {
     int64 total_amount = 14;
     string credentials_title = 15;
     repeated User users = 16;
+    string transaction_id = 17;
 }
 
 // TL_payments_paymentReceipt
 message TL_payments_paymentReceipt {
+    payments_PaymentReceipt data2 = 1;
+}
+
+// TL_payments_paymentReceiptStars
+message TL_payments_paymentReceiptStars {
     payments_PaymentReceipt data2 = 1;
 }
 
@@ -14566,6 +14710,25 @@ message payments_SavedInfo {
 // TL_payments_savedInfo
 message TL_payments_savedInfo {
     payments_SavedInfo data2 = 1;
+}
+
+
+// payments_StarsStatus <--
+//  + TL_payments_starsStatus
+//
+message payments_StarsStatus {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int64 balance = 3;
+    repeated StarsTransaction history = 4;
+    google.protobuf.StringValue next_offset = 5;
+    repeated Chat chats = 6;
+    repeated User users = 7;
+}
+
+// TL_payments_starsStatus
+message TL_payments_starsStatus {
+    payments_StarsStatus data2 = 1;
 }
 
 
