@@ -75,6 +75,20 @@ message TL_invokeWithBusinessConnection {
     bytes query = 4;
 }
 
+message TL_invokeWithGooglePlayIntegrity {
+    TLConstructor  constructor = 1;
+    string nonce = 3;
+    string token = 4;
+    bytes query = 5;
+}
+
+message TL_invokeWithApnsSecret {
+    TLConstructor  constructor = 1;
+    string nonce = 3;
+    string secret = 4;
+    bytes query = 5;
+}
+
 message TL_auth_sendCode {
     TLConstructor  constructor = 1;
     string phone_number = 3;
@@ -155,6 +169,7 @@ message TL_auth_resendCode {
     TLConstructor  constructor = 1;
     string phone_number = 3;
     string phone_code_hash = 4;
+    google.protobuf.StringValue reason = 5;
 }
 
 message TL_auth_cancelCode {
@@ -202,7 +217,8 @@ message TL_auth_requestFirebaseSms {
     string phone_number = 3;
     string phone_code_hash = 4;
     google.protobuf.StringValue safety_net_token = 5;
-    google.protobuf.StringValue ios_push_secret = 6;
+    google.protobuf.StringValue play_integrity_token = 6;
+    google.protobuf.StringValue ios_push_secret = 7;
 }
 
 message TL_auth_resetLoginEmail {
@@ -1121,8 +1137,9 @@ message TL_messages_sendMessage {
     google.protobuf.Int32Value schedule_date = 16;
     InputPeer send_as = 17;
     InputQuickReplyShortcut quick_reply_shortcut = 18;
-    google.protobuf.Int32Value reply_to_msg_id = 19;
-    google.protobuf.Int32Value top_msg_id = 20;
+    google.protobuf.Int64Value effect = 19;
+    google.protobuf.Int32Value reply_to_msg_id = 20;
+    google.protobuf.Int32Value top_msg_id = 21;
 }
 
 message TL_messages_sendMedia {
@@ -1143,8 +1160,9 @@ message TL_messages_sendMedia {
     google.protobuf.Int32Value schedule_date = 16;
     InputPeer send_as = 17;
     InputQuickReplyShortcut quick_reply_shortcut = 18;
-    google.protobuf.Int32Value reply_to_msg_id = 19;
-    google.protobuf.Int32Value top_msg_id = 20;
+    google.protobuf.Int64Value effect = 19;
+    google.protobuf.Int32Value reply_to_msg_id = 20;
+    google.protobuf.Int32Value top_msg_id = 21;
 }
 
 message TL_messages_forwardMessages {
@@ -1721,8 +1739,9 @@ message TL_messages_sendMultiMedia {
     google.protobuf.Int32Value schedule_date = 12;
     InputPeer send_as = 13;
     InputQuickReplyShortcut quick_reply_shortcut = 14;
-    google.protobuf.Int32Value reply_to_msg_id = 15;
-    google.protobuf.Int32Value top_msg_id = 16;
+    google.protobuf.Int64Value effect = 15;
+    google.protobuf.Int32Value reply_to_msg_id = 16;
+    google.protobuf.Int32Value top_msg_id = 17;
 }
 
 message TL_messages_uploadEncryptedFile {
@@ -2522,6 +2541,11 @@ message TL_messages_getEmojiStickerGroups {
     int32 hash = 3;
 }
 
+message TL_messages_getAvailableEffects {
+    TLConstructor  constructor = 1;
+    int32 hash = 3;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3179,6 +3203,15 @@ message TL_channels_restrictSponsoredMessages {
     TLConstructor  constructor = 1;
     InputChannel channel = 3;
     Bool restricted = 4;
+}
+
+message TL_channels_searchPosts {
+    TLConstructor  constructor = 1;
+    string hashtag = 3;
+    int32 offset_rate = 4;
+    InputPeer offset_peer = 5;
+    int32 offset_id = 6;
+    int32 limit = 7;
 }
 
 message TL_bots_sendCustomRequest {
@@ -4893,7 +4926,9 @@ service RPCMessages {
     rpc messages_saveDefaultSendAs(TL_messages_saveDefaultSendAs) returns (Bool) {}
     rpc messages_searchSentMedia(TL_messages_searchSentMedia) returns (messages_Messages) {}
     rpc messages_getOutboxReadDate(TL_messages_getOutboxReadDate) returns (OutboxReadDate) {}
+    rpc messages_getAvailableEffects(TL_messages_getAvailableEffects) returns (messages_AvailableEffects) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
+    rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
 }
 
 service RPCMiniBotApps {

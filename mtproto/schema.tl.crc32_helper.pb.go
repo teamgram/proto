@@ -194,6 +194,7 @@ const (
 	CRC32_chatPhotoEmpty                                              TLConstructor = 935395612   // 37c1011c
 	CRC32_chatPhoto                                                   TLConstructor = 476978193   // 1c6e1c11
 	CRC32_messageEmpty                                                TLConstructor = -1868117372 // 90a6ca84
+	CRC32_message_bde09c2e                                            TLConstructor = -1109353426 // bde09c2e
 	CRC32_message_2357bf25                                            TLConstructor = 592953125   // 2357bf25
 	CRC32_message_a66c7efc                                            TLConstructor = -1502839044 // a66c7efc
 	CRC32_message_1e4c8a69                                            TLConstructor = 508332649   // 1e4c8a69
@@ -509,6 +510,7 @@ const (
 	CRC32_updateBotEditBusinessMessage                                TLConstructor = 132077692   // 7df587c
 	CRC32_updateBotDeleteBusinessMessage                              TLConstructor = -1607821266 // a02a982e
 	CRC32_updateNewStoryReaction                                      TLConstructor = 405070859   // 1824e40b
+	CRC32_updateBroadcastRevenueTransactions                          TLConstructor = -539401739  // dfd961f5
 	CRC32_updates_state                                               TLConstructor = -1519637954 // a56c2a3e
 	CRC32_updates_differenceEmpty                                     TLConstructor = 1567990072  // 5d75a138
 	CRC32_updates_difference                                          TLConstructor = 16030880    // f49ca0
@@ -797,7 +799,8 @@ const (
 	CRC32_auth_sentCodeTypeEmailCode_5a159841                         TLConstructor = 1511364673  // 5a159841
 	CRC32_auth_sentCodeTypeSetUpEmailRequired                         TLConstructor = -1521934870 // a5491dea
 	CRC32_auth_sentCodeTypeFragmentSms                                TLConstructor = -648651719  // d9565c39
-	CRC32_auth_sentCodeTypeFirebaseSms                                TLConstructor = -444918734  // e57b1432
+	CRC32_auth_sentCodeTypeFirebaseSms_13c90f17                       TLConstructor = 331943703   // 13c90f17
+	CRC32_auth_sentCodeTypeFirebaseSms_e57b1432                       TLConstructor = -444918734  // e57b1432
 	CRC32_auth_sentCodeTypeSmsWord                                    TLConstructor = -1542017919 // a416ac81
 	CRC32_auth_sentCodeTypeSmsPhrase                                  TLConstructor = -1284008785 // b37794af
 	CRC32_messages_botCallbackAnswer                                  TLConstructor = 911761060   // 36585ea4
@@ -1527,6 +1530,9 @@ const (
 	CRC32_reactionNotificationsFromAll                                TLConstructor = 1268654752  // 4b9e22a0
 	CRC32_reactionsNotifySettings                                     TLConstructor = 1457736048  // 56e34970
 	CRC32_broadcastRevenueBalances                                    TLConstructor = -2076642874 // 8438f1c6
+	CRC32_availableEffect                                             TLConstructor = -1815879042 // 93c3e27e
+	CRC32_messages_availableEffectsNotModified                        TLConstructor = -772957605  // d1ed9a5b
+	CRC32_messages_availableEffects                                   TLConstructor = -1109696146 // bddb616e
 	CRC32_sponsoredWebPage                                            TLConstructor = 1035529315  // 3db8ec63
 	CRC32_updateGroupInvitePrivacyForbidden                           TLConstructor = -856651050  // ccf08ad6
 	CRC32_channelAdminLogEventActionChangeColor                       TLConstructor = 1009460347  // 3c2b247b
@@ -1586,6 +1592,8 @@ const (
 	CRC32_invokeWithMessagesRange                                     TLConstructor = 911373810   // 365275f2
 	CRC32_invokeWithTakeout                                           TLConstructor = -1398145746 // aca9fd2e
 	CRC32_invokeWithBusinessConnection                                TLConstructor = -584540274  // dd289f8e
+	CRC32_invokeWithGooglePlayIntegrity                               TLConstructor = 502868356   // 1df92984
+	CRC32_invokeWithApnsSecret                                        TLConstructor = 229528824   // dae54f8
 	CRC32_auth_sendCode                                               TLConstructor = -1502141361 // a677244f
 	CRC32_auth_signUp_aac7b717                                        TLConstructor = -1429752041 // aac7b717
 	CRC32_auth_signUp_80eee427                                        TLConstructor = -2131827673 // 80eee427
@@ -1600,7 +1608,8 @@ const (
 	CRC32_auth_checkPassword                                          TLConstructor = -779399914  // d18b4d16
 	CRC32_auth_requestPasswordRecovery                                TLConstructor = -661144474  // d897bc66
 	CRC32_auth_recoverPassword                                        TLConstructor = 923364464   // 37096c70
-	CRC32_auth_resendCode                                             TLConstructor = 1056025023  // 3ef1a9bf
+	CRC32_auth_resendCode_cae47523                                    TLConstructor = -890997469  // cae47523
+	CRC32_auth_resendCode_3ef1a9bf                                    TLConstructor = 1056025023  // 3ef1a9bf
 	CRC32_auth_cancelCode                                             TLConstructor = 520357240   // 1f040578
 	CRC32_auth_dropTempAuthKeys                                       TLConstructor = -1907842680 // 8e48a188
 	CRC32_auth_exportLoginToken                                       TLConstructor = -1210022402 // b7e085fe
@@ -1608,7 +1617,8 @@ const (
 	CRC32_auth_acceptLoginToken                                       TLConstructor = -392909491  // e894ad4d
 	CRC32_auth_checkRecoveryPassword                                  TLConstructor = 221691769   // d36bf79
 	CRC32_auth_importWebTokenAuthorization                            TLConstructor = 767062953   // 2db873a9
-	CRC32_auth_requestFirebaseSms                                     TLConstructor = -1991881904 // 89464b50
+	CRC32_auth_requestFirebaseSms_8e39261e                            TLConstructor = -1908857314 // 8e39261e
+	CRC32_auth_requestFirebaseSms_89464b50                            TLConstructor = -1991881904 // 89464b50
 	CRC32_auth_resetLoginEmail                                        TLConstructor = 2123760019  // 7e960193
 	CRC32_auth_reportMissingCode                                      TLConstructor = -878841866  // cb9deff6
 	CRC32_account_registerDevice_ec86017a                             TLConstructor = -326762118  // ec86017a
@@ -1777,10 +1787,12 @@ const (
 	CRC32_messages_deleteMessages                                     TLConstructor = -443640366  // e58e95d2
 	CRC32_messages_receivedMessages                                   TLConstructor = 94983360    // 5a954c0
 	CRC32_messages_setTyping                                          TLConstructor = 1486110434  // 58943ee2
+	CRC32_messages_sendMessage_983f9745                               TLConstructor = -1740662971 // 983f9745
 	CRC32_messages_sendMessage_dff8042c                               TLConstructor = -537394132  // dff8042c
 	CRC32_messages_sendMessage_280d096f                               TLConstructor = 671943023   // 280d096f
 	CRC32_messages_sendMessage_1cc20387                               TLConstructor = 482476935   // 1cc20387
 	CRC32_messages_sendMessage_d9d75a4                                TLConstructor = 228423076   // d9d75a4
+	CRC32_messages_sendMedia_7852834e                                 TLConstructor = 2018673486  // 7852834e
 	CRC32_messages_sendMedia_7bd66041                                 TLConstructor = 2077646913  // 7bd66041
 	CRC32_messages_sendMedia_72ccc23d                                 TLConstructor = 1926021693  // 72ccc23d
 	CRC32_messages_sendMedia_7547c966                                 TLConstructor = 1967638886  // 7547c966
@@ -1878,6 +1890,7 @@ const (
 	CRC32_messages_readMentions_36e5bf4d                              TLConstructor = 921026381   // 36e5bf4d
 	CRC32_messages_readMentions_f0189d3                               TLConstructor = 251759059   // f0189d3
 	CRC32_messages_getRecentLocations                                 TLConstructor = 1881817312  // 702a40e0
+	CRC32_messages_sendMultiMedia_37b74355                            TLConstructor = 934757205   // 37b74355
 	CRC32_messages_sendMultiMedia_c964709                             TLConstructor = 211175177   // c964709
 	CRC32_messages_sendMultiMedia_456e8987                            TLConstructor = 1164872071  // 456e8987
 	CRC32_messages_sendMultiMedia_b6f11a1c                            TLConstructor = -1225713124 // b6f11a1c
@@ -2027,6 +2040,7 @@ const (
 	CRC32_messages_toggleDialogFilterTags                             TLConstructor = -47326647   // fd2dda49
 	CRC32_messages_getMyStickers                                      TLConstructor = -793386500  // d0b5e1fc
 	CRC32_messages_getEmojiStickerGroups                              TLConstructor = 500711669   // 1dd840f5
+	CRC32_messages_getAvailableEffects                                TLConstructor = -559805895  // dea20a39
 	CRC32_updates_getState                                            TLConstructor = -304838614  // edd4882a
 	CRC32_updates_getDifference_19c2f763                              TLConstructor = 432207715   // 19c2f763
 	CRC32_updates_getDifference_25939651                              TLConstructor = 630429265   // 25939651
@@ -2147,6 +2161,7 @@ const (
 	CRC32_channels_setEmojiStickers                                   TLConstructor = 1020866743  // 3cd930b7
 	CRC32_channels_reportSponsoredMessage                             TLConstructor = -1349519687 // af8ff6b9
 	CRC32_channels_restrictSponsoredMessages                          TLConstructor = -1696000743 // 9ae91519
+	CRC32_channels_searchPosts                                        TLConstructor = -778069893  // d19f987b
 	CRC32_bots_sendCustomRequest                                      TLConstructor = -1440257555 // aa2769ed
 	CRC32_bots_answerWebhookJSONQuery                                 TLConstructor = -434028723  // e6213f4d
 	CRC32_bots_setBotCommands                                         TLConstructor = 85399130    // 517165a
