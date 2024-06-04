@@ -299,6 +299,26 @@ message TL_autoSaveSettings {
 }
 
 
+// AvailableEffect <--
+//  + TL_availableEffect
+//
+message AvailableEffect {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool premium_required = 3;
+    int64 id = 4;
+    string emoticon = 5;
+    google.protobuf.Int64Value static_icon_id = 6;
+    int64 effect_sticker_id = 7;
+    google.protobuf.Int64Value effect_animation_id = 8;
+}
+
+// TL_availableEffect
+message TL_availableEffect {
+    AvailableEffect data2 = 1;
+}
+
+
 // AvailableReaction <--
 //  + TL_availableReaction
 //
@@ -5619,6 +5639,7 @@ message TL_mediaAreaCoordinates {
 //  + TL_message
 //  + TL_message
 //  + TL_message
+//  + TL_message
 //
 message Message {
     string predicate_name = 1;
@@ -5659,7 +5680,8 @@ message Message {
     repeated RestrictionReason restriction_reason = 36;
     google.protobuf.Int32Value ttl_period = 37;
     google.protobuf.Int32Value quick_reply_shortcut_id = 38;
-    MessageAction action = 39;
+    google.protobuf.Int64Value effect = 39;
+    MessageAction action = 40;
 }
 
 // TL_messageEmpty
@@ -10162,6 +10184,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateBotEditBusinessMessage
 //  + TL_updateBotDeleteBusinessMessage
 //  + TL_updateNewStoryReaction
+//  + TL_updateBroadcastRevenueTransactions
 //  + TL_updateGroupInvitePrivacyForbidden
 //  + TL_updateStory
 //  + TL_updateReadStories
@@ -10331,12 +10354,13 @@ message Update {
     BotBusinessConnection connection = 150;
     string connection_id = 151;
     Message reply_to_message = 152;
-    Bool blocked_BOOL = 153;
-    UserProfilePhoto photo = 154;
-    Bool previous = 155;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 156;
-    string username = 157;
-    BizDataRaw biz_data = 158;
+    BroadcastRevenueBalances balances = 153;
+    Bool blocked_BOOL = 154;
+    UserProfilePhoto photo = 155;
+    Bool previous = 156;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 157;
+    string username = 158;
+    BizDataRaw biz_data = 159;
 }
 
 // TL_updateNewMessage
@@ -11011,6 +11035,11 @@ message TL_updateBotDeleteBusinessMessage {
 
 // TL_updateNewStoryReaction
 message TL_updateNewStoryReaction {
+    Update data2 = 1;
+}
+
+// TL_updateBroadcastRevenueTransactions
+message TL_updateBroadcastRevenueTransactions {
     Update data2 = 1;
 }
 
@@ -12333,6 +12362,7 @@ message TL_auth_sentCodeSuccess {
 //  + TL_auth_sentCodeTypeFirebaseSms
 //  + TL_auth_sentCodeTypeSmsWord
 //  + TL_auth_sentCodeTypeSmsPhrase
+//  + TL_auth_sentCodeTypeFirebaseSms
 //  + TL_auth_sentCodeTypeEmailCode
 //
 message auth_SentCodeType {
@@ -12348,10 +12378,11 @@ message auth_SentCodeType {
     google.protobuf.Int32Value reset_pending_date = 10;
     string url = 11;
     bytes nonce = 12;
-    google.protobuf.StringValue receipt = 13;
-    google.protobuf.Int32Value push_timeout = 14;
-    google.protobuf.StringValue beginning = 15;
-    google.protobuf.Int32Value next_phone_login_date = 16;
+    bytes play_integrity_nonce = 13;
+    google.protobuf.StringValue receipt = 14;
+    google.protobuf.Int32Value push_timeout = 15;
+    google.protobuf.StringValue beginning = 16;
+    google.protobuf.Int32Value next_phone_login_date = 17;
 }
 
 // TL_auth_sentCodeTypeApp
@@ -13282,6 +13313,29 @@ message messages_ArchivedStickers {
 // TL_messages_archivedStickers
 message TL_messages_archivedStickers {
     messages_ArchivedStickers data2 = 1;
+}
+
+
+// messages_AvailableEffects <--
+//  + TL_messages_availableEffectsNotModified
+//  + TL_messages_availableEffects
+//
+message messages_AvailableEffects {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 hash = 3;
+    repeated AvailableEffect effects = 4;
+    repeated Document documents = 5;
+}
+
+// TL_messages_availableEffectsNotModified
+message TL_messages_availableEffectsNotModified {
+    messages_AvailableEffects data2 = 1;
+}
+
+// TL_messages_availableEffects
+message TL_messages_availableEffects {
+    messages_AvailableEffects data2 = 1;
 }
 
 

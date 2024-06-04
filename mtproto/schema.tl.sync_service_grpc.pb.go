@@ -15439,7 +15439,9 @@ const (
 	RPCMessages_MessagesSaveDefaultSendAs_FullMethodName         = "/mtproto.RPCMessages/messages_saveDefaultSendAs"
 	RPCMessages_MessagesSearchSentMedia_FullMethodName           = "/mtproto.RPCMessages/messages_searchSentMedia"
 	RPCMessages_MessagesGetOutboxReadDate_FullMethodName         = "/mtproto.RPCMessages/messages_getOutboxReadDate"
+	RPCMessages_MessagesGetAvailableEffects_FullMethodName       = "/mtproto.RPCMessages/messages_getAvailableEffects"
 	RPCMessages_ChannelsGetSendAs_FullMethodName                 = "/mtproto.RPCMessages/channels_getSendAs"
+	RPCMessages_ChannelsSearchPosts_FullMethodName               = "/mtproto.RPCMessages/channels_searchPosts"
 )
 
 // RPCMessagesClient is the client API for RPCMessages service.
@@ -15474,7 +15476,9 @@ type RPCMessagesClient interface {
 	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs, opts ...grpc.CallOption) (*Bool, error)
 	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia, opts ...grpc.CallOption) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate, opts ...grpc.CallOption) (*OutboxReadDate, error)
+	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects, opts ...grpc.CallOption) (*Messages_AvailableEffects, error)
 	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error)
+	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts, opts ...grpc.CallOption) (*Messages_Messages, error)
 }
 
 type rPCMessagesClient struct {
@@ -15737,9 +15741,27 @@ func (c *rPCMessagesClient) MessagesGetOutboxReadDate(ctx context.Context, in *T
 	return out, nil
 }
 
+func (c *rPCMessagesClient) MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects, opts ...grpc.CallOption) (*Messages_AvailableEffects, error) {
+	out := new(Messages_AvailableEffects)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesGetAvailableEffects_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCMessagesClient) ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error) {
 	out := new(Channels_SendAsPeers)
 	err := c.cc.Invoke(ctx, RPCMessages_ChannelsGetSendAs_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMessagesClient) ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts, opts ...grpc.CallOption) (*Messages_Messages, error) {
+	out := new(Messages_Messages)
+	err := c.cc.Invoke(ctx, RPCMessages_ChannelsSearchPosts_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -15778,7 +15800,9 @@ type RPCMessagesServer interface {
 	MessagesSaveDefaultSendAs(context.Context, *TLMessagesSaveDefaultSendAs) (*Bool, error)
 	MessagesSearchSentMedia(context.Context, *TLMessagesSearchSentMedia) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
+	MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error)
 	ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error)
+	ChannelsSearchPosts(context.Context, *TLChannelsSearchPosts) (*Messages_Messages, error)
 }
 
 // UnimplementedRPCMessagesServer should be embedded to have forward compatible implementations.
@@ -15869,8 +15893,14 @@ func (UnimplementedRPCMessagesServer) MessagesSearchSentMedia(context.Context, *
 func (UnimplementedRPCMessagesServer) MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetOutboxReadDate not implemented")
 }
+func (UnimplementedRPCMessagesServer) MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetAvailableEffects not implemented")
+}
 func (UnimplementedRPCMessagesServer) ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetSendAs not implemented")
+}
+func (UnimplementedRPCMessagesServer) ChannelsSearchPosts(context.Context, *TLChannelsSearchPosts) (*Messages_Messages, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsSearchPosts not implemented")
 }
 
 // UnsafeRPCMessagesServer may be embedded to opt out of forward compatibility for this service.
@@ -16388,6 +16418,24 @@ func _RPCMessages_MessagesGetOutboxReadDate_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMessages_MessagesGetAvailableEffects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetAvailableEffects)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesGetAvailableEffects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesGetAvailableEffects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesGetAvailableEffects(ctx, req.(*TLMessagesGetAvailableEffects))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCMessages_ChannelsGetSendAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsGetSendAs)
 	if err := dec(in); err != nil {
@@ -16402,6 +16450,24 @@ func _RPCMessages_ChannelsGetSendAs_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCMessagesServer).ChannelsGetSendAs(ctx, req.(*TLChannelsGetSendAs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMessages_ChannelsSearchPosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsSearchPosts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).ChannelsSearchPosts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_ChannelsSearchPosts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).ChannelsSearchPosts(ctx, req.(*TLChannelsSearchPosts))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -16526,8 +16592,16 @@ var RPCMessages_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCMessages_MessagesGetOutboxReadDate_Handler,
 		},
 		{
+			MethodName: "messages_getAvailableEffects",
+			Handler:    _RPCMessages_MessagesGetAvailableEffects_Handler,
+		},
+		{
 			MethodName: "channels_getSendAs",
 			Handler:    _RPCMessages_ChannelsGetSendAs_Handler,
+		},
+		{
+			MethodName: "channels_searchPosts",
+			Handler:    _RPCMessages_ChannelsSearchPosts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
