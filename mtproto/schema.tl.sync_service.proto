@@ -2546,6 +2546,25 @@ message TL_messages_getAvailableEffects {
     int32 hash = 3;
 }
 
+message TL_messages_editFactCheck {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 msg_id = 4;
+    TextWithEntities text = 5;
+}
+
+message TL_messages_deleteFactCheck {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 msg_id = 4;
+}
+
+message TL_messages_getFactCheck {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    repeated int32 msg_id = 4;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3413,6 +3432,35 @@ message TL_payments_launchPrepaidGiveaway {
     InputPeer peer = 3;
     int64 giveaway_id = 4;
     InputStorePaymentPurpose purpose = 5;
+}
+
+message TL_payments_getStarsTopupOptions {
+    TLConstructor  constructor = 1;
+}
+
+message TL_payments_getStarsStatus {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+}
+
+message TL_payments_getStarsTransactions {
+    TLConstructor  constructor = 1;
+    bool inbound = 3;
+    bool outbound = 4;
+    InputPeer peer = 5;
+    string offset = 6;
+}
+
+message TL_payments_sendStarsForm {
+    TLConstructor  constructor = 1;
+    int64 form_id = 3;
+    InputInvoice invoice = 4;
+}
+
+message TL_payments_refundStarsCharge {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
+    string charge_id = 4;
 }
 
 message TL_stickers_createStickerSet {
@@ -4386,6 +4434,9 @@ message Vector_ReadParticipantDate {
 message Vector_Document {
     repeated Document datas = 1;
 }
+message Vector_FactCheck {
+    repeated FactCheck datas = 1;
+}
 message Vector_FileHash {
     repeated FileHash datas = 1;
 }
@@ -4394,6 +4445,9 @@ message Vector_BotCommand {
 }
 message Vector_PremiumGiftCodeOption {
     repeated PremiumGiftCodeOption datas = 1;
+}
+message Vector_StarsTopupOption {
+    repeated StarsTopupOption datas = 1;
 }
 message Vector_LangPackString {
     repeated LangPackString datas = 1;
@@ -4927,6 +4981,9 @@ service RPCMessages {
     rpc messages_searchSentMedia(TL_messages_searchSentMedia) returns (messages_Messages) {}
     rpc messages_getOutboxReadDate(TL_messages_getOutboxReadDate) returns (OutboxReadDate) {}
     rpc messages_getAvailableEffects(TL_messages_getAvailableEffects) returns (messages_AvailableEffects) {}
+    rpc messages_editFactCheck(TL_messages_editFactCheck) returns (Updates) {}
+    rpc messages_deleteFactCheck(TL_messages_deleteFactCheck) returns (Updates) {}
+    rpc messages_getFactCheck(TL_messages_getFactCheck) returns (Vector_FactCheck) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
     rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
 }
@@ -4989,6 +5046,11 @@ service RPCPayments {
     rpc payments_getSavedInfo(TL_payments_getSavedInfo) returns (payments_SavedInfo) {}
     rpc payments_clearSavedInfo(TL_payments_clearSavedInfo) returns (Bool) {}
     rpc payments_exportInvoice(TL_payments_exportInvoice) returns (payments_ExportedInvoice) {}
+    rpc payments_getStarsTopupOptions(TL_payments_getStarsTopupOptions) returns (Vector_StarsTopupOption) {}
+    rpc payments_getStarsStatus(TL_payments_getStarsStatus) returns (payments_StarsStatus) {}
+    rpc payments_getStarsTransactions(TL_payments_getStarsTransactions) returns (payments_StarsStatus) {}
+    rpc payments_sendStarsForm(TL_payments_sendStarsForm) returns (payments_PaymentResult) {}
+    rpc payments_refundStarsCharge(TL_payments_refundStarsCharge) returns (Updates) {}
     rpc payments_requestRecurringPayment(TL_payments_requestRecurringPayment) returns (Updates) {}
     rpc payments_restorePlayMarketReceipt(TL_payments_restorePlayMarketReceipt) returns (Updates) {}
 }

@@ -15440,6 +15440,9 @@ const (
 	RPCMessages_MessagesSearchSentMedia_FullMethodName           = "/mtproto.RPCMessages/messages_searchSentMedia"
 	RPCMessages_MessagesGetOutboxReadDate_FullMethodName         = "/mtproto.RPCMessages/messages_getOutboxReadDate"
 	RPCMessages_MessagesGetAvailableEffects_FullMethodName       = "/mtproto.RPCMessages/messages_getAvailableEffects"
+	RPCMessages_MessagesEditFactCheck_FullMethodName             = "/mtproto.RPCMessages/messages_editFactCheck"
+	RPCMessages_MessagesDeleteFactCheck_FullMethodName           = "/mtproto.RPCMessages/messages_deleteFactCheck"
+	RPCMessages_MessagesGetFactCheck_FullMethodName              = "/mtproto.RPCMessages/messages_getFactCheck"
 	RPCMessages_ChannelsGetSendAs_FullMethodName                 = "/mtproto.RPCMessages/channels_getSendAs"
 	RPCMessages_ChannelsSearchPosts_FullMethodName               = "/mtproto.RPCMessages/channels_searchPosts"
 )
@@ -15477,6 +15480,9 @@ type RPCMessagesClient interface {
 	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia, opts ...grpc.CallOption) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate, opts ...grpc.CallOption) (*OutboxReadDate, error)
 	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects, opts ...grpc.CallOption) (*Messages_AvailableEffects, error)
+	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck, opts ...grpc.CallOption) (*Updates, error)
+	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck, opts ...grpc.CallOption) (*Updates, error)
+	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck, opts ...grpc.CallOption) (*Vector_FactCheck, error)
 	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts, opts ...grpc.CallOption) (*Messages_Messages, error)
 }
@@ -15750,6 +15756,33 @@ func (c *rPCMessagesClient) MessagesGetAvailableEffects(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *rPCMessagesClient) MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesEditFactCheck_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMessagesClient) MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesDeleteFactCheck_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMessagesClient) MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck, opts ...grpc.CallOption) (*Vector_FactCheck, error) {
+	out := new(Vector_FactCheck)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesGetFactCheck_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCMessagesClient) ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error) {
 	out := new(Channels_SendAsPeers)
 	err := c.cc.Invoke(ctx, RPCMessages_ChannelsGetSendAs_FullMethodName, in, out, opts...)
@@ -15801,6 +15834,9 @@ type RPCMessagesServer interface {
 	MessagesSearchSentMedia(context.Context, *TLMessagesSearchSentMedia) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
 	MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error)
+	MessagesEditFactCheck(context.Context, *TLMessagesEditFactCheck) (*Updates, error)
+	MessagesDeleteFactCheck(context.Context, *TLMessagesDeleteFactCheck) (*Updates, error)
+	MessagesGetFactCheck(context.Context, *TLMessagesGetFactCheck) (*Vector_FactCheck, error)
 	ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(context.Context, *TLChannelsSearchPosts) (*Messages_Messages, error)
 }
@@ -15895,6 +15931,15 @@ func (UnimplementedRPCMessagesServer) MessagesGetOutboxReadDate(context.Context,
 }
 func (UnimplementedRPCMessagesServer) MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetAvailableEffects not implemented")
+}
+func (UnimplementedRPCMessagesServer) MessagesEditFactCheck(context.Context, *TLMessagesEditFactCheck) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesEditFactCheck not implemented")
+}
+func (UnimplementedRPCMessagesServer) MessagesDeleteFactCheck(context.Context, *TLMessagesDeleteFactCheck) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteFactCheck not implemented")
+}
+func (UnimplementedRPCMessagesServer) MessagesGetFactCheck(context.Context, *TLMessagesGetFactCheck) (*Vector_FactCheck, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetFactCheck not implemented")
 }
 func (UnimplementedRPCMessagesServer) ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetSendAs not implemented")
@@ -16436,6 +16481,60 @@ func _RPCMessages_MessagesGetAvailableEffects_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMessages_MessagesEditFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesEditFactCheck)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesEditFactCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesEditFactCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesEditFactCheck(ctx, req.(*TLMessagesEditFactCheck))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMessages_MessagesDeleteFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesDeleteFactCheck)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesDeleteFactCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesDeleteFactCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesDeleteFactCheck(ctx, req.(*TLMessagesDeleteFactCheck))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMessages_MessagesGetFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetFactCheck)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesGetFactCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesGetFactCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesGetFactCheck(ctx, req.(*TLMessagesGetFactCheck))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCMessages_ChannelsGetSendAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsGetSendAs)
 	if err := dec(in); err != nil {
@@ -16594,6 +16693,18 @@ var RPCMessages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_getAvailableEffects",
 			Handler:    _RPCMessages_MessagesGetAvailableEffects_Handler,
+		},
+		{
+			MethodName: "messages_editFactCheck",
+			Handler:    _RPCMessages_MessagesEditFactCheck_Handler,
+		},
+		{
+			MethodName: "messages_deleteFactCheck",
+			Handler:    _RPCMessages_MessagesDeleteFactCheck_Handler,
+		},
+		{
+			MethodName: "messages_getFactCheck",
+			Handler:    _RPCMessages_MessagesGetFactCheck_Handler,
 		},
 		{
 			MethodName: "channels_getSendAs",
@@ -18058,6 +18169,11 @@ const (
 	RPCPayments_PaymentsGetSavedInfo_FullMethodName             = "/mtproto.RPCPayments/payments_getSavedInfo"
 	RPCPayments_PaymentsClearSavedInfo_FullMethodName           = "/mtproto.RPCPayments/payments_clearSavedInfo"
 	RPCPayments_PaymentsExportInvoice_FullMethodName            = "/mtproto.RPCPayments/payments_exportInvoice"
+	RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTopupOptions"
+	RPCPayments_PaymentsGetStarsStatus_FullMethodName           = "/mtproto.RPCPayments/payments_getStarsStatus"
+	RPCPayments_PaymentsGetStarsTransactions_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTransactions"
+	RPCPayments_PaymentsSendStarsForm_FullMethodName            = "/mtproto.RPCPayments/payments_sendStarsForm"
+	RPCPayments_PaymentsRefundStarsCharge_FullMethodName        = "/mtproto.RPCPayments/payments_refundStarsCharge"
 	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName  = "/mtproto.RPCPayments/payments_requestRecurringPayment"
 	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
 )
@@ -18076,6 +18192,11 @@ type RPCPaymentsClient interface {
 	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo, opts ...grpc.CallOption) (*Payments_SavedInfo, error)
 	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice, opts ...grpc.CallOption) (*Payments_ExportedInvoice, error)
+	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error)
+	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error)
+	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(ctx context.Context, in *TLPaymentsRestorePlayMarketReceipt, opts ...grpc.CallOption) (*Updates, error)
 }
@@ -18178,6 +18299,51 @@ func (c *rPCPaymentsClient) PaymentsExportInvoice(ctx context.Context, in *TLPay
 	return out, nil
 }
 
+func (c *rPCPaymentsClient) PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error) {
+	out := new(Vector_StarsTopupOption)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPaymentsClient) PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsStatus_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPaymentsClient) PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsTransactions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPaymentsClient) PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error) {
+	out := new(Payments_PaymentResult)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsSendStarsForm_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPaymentsClient) PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsRefundStarsCharge_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCPaymentsClient) PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCPayments_PaymentsRequestRecurringPayment_FullMethodName, in, out, opts...)
@@ -18210,6 +18376,11 @@ type RPCPaymentsServer interface {
 	PaymentsGetSavedInfo(context.Context, *TLPaymentsGetSavedInfo) (*Payments_SavedInfo, error)
 	PaymentsClearSavedInfo(context.Context, *TLPaymentsClearSavedInfo) (*Bool, error)
 	PaymentsExportInvoice(context.Context, *TLPaymentsExportInvoice) (*Payments_ExportedInvoice, error)
+	PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error)
+	PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error)
+	PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error)
+	PaymentsSendStarsForm(context.Context, *TLPaymentsSendStarsForm) (*Payments_PaymentResult, error)
+	PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error)
 	PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(context.Context, *TLPaymentsRestorePlayMarketReceipt) (*Updates, error)
 }
@@ -18247,6 +18418,21 @@ func (UnimplementedRPCPaymentsServer) PaymentsClearSavedInfo(context.Context, *T
 }
 func (UnimplementedRPCPaymentsServer) PaymentsExportInvoice(context.Context, *TLPaymentsExportInvoice) (*Payments_ExportedInvoice, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsExportInvoice not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTopupOptions not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsStatus not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTransactions not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsSendStarsForm(context.Context, *TLPaymentsSendStarsForm) (*Payments_PaymentResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsSendStarsForm not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRefundStarsCharge not implemented")
 }
 func (UnimplementedRPCPaymentsServer) PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRequestRecurringPayment not implemented")
@@ -18446,6 +18632,96 @@ func _RPCPayments_PaymentsExportInvoice_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCPayments_PaymentsGetStarsTopupOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsTopupOptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsTopupOptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsTopupOptions(ctx, req.(*TLPaymentsGetStarsTopupOptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPayments_PaymentsGetStarsStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsStatus)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsStatus(ctx, req.(*TLPaymentsGetStarsStatus))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPayments_PaymentsGetStarsTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsTransactions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsTransactions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactions(ctx, req.(*TLPaymentsGetStarsTransactions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPayments_PaymentsSendStarsForm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsSendStarsForm)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsSendStarsForm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsSendStarsForm_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsSendStarsForm(ctx, req.(*TLPaymentsSendStarsForm))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPayments_PaymentsRefundStarsCharge_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsRefundStarsCharge)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsRefundStarsCharge(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsRefundStarsCharge_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsRefundStarsCharge(ctx, req.(*TLPaymentsRefundStarsCharge))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCPayments_PaymentsRequestRecurringPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsRequestRecurringPayment)
 	if err := dec(in); err != nil {
@@ -18528,6 +18804,26 @@ var RPCPayments_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_exportInvoice",
 			Handler:    _RPCPayments_PaymentsExportInvoice_Handler,
+		},
+		{
+			MethodName: "payments_getStarsTopupOptions",
+			Handler:    _RPCPayments_PaymentsGetStarsTopupOptions_Handler,
+		},
+		{
+			MethodName: "payments_getStarsStatus",
+			Handler:    _RPCPayments_PaymentsGetStarsStatus_Handler,
+		},
+		{
+			MethodName: "payments_getStarsTransactions",
+			Handler:    _RPCPayments_PaymentsGetStarsTransactions_Handler,
+		},
+		{
+			MethodName: "payments_sendStarsForm",
+			Handler:    _RPCPayments_PaymentsSendStarsForm_Handler,
+		},
+		{
+			MethodName: "payments_refundStarsCharge",
+			Handler:    _RPCPayments_PaymentsRefundStarsCharge_Handler,
 		},
 		{
 			MethodName: "payments_requestRecurringPayment",
