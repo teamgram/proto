@@ -51,6 +51,7 @@ TODO(@benqi):
 	messageEntityStrike#bf0693d4 offset:int length:int = MessageEntity;
 	messageEntityBlockquote#20df5d0 offset:int length:int = MessageEntity;
 */
+
 func MakeTextAndMessageEntities(m MessageBuildHelper) (text string, entities []*MessageEntity) {
 	if len(m) == 0 {
 		return
