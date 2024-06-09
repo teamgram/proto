@@ -30,9 +30,7 @@ func NewIDListHelper(id ...int64) *IDListHelper {
 		ChatIdList:    []int64{},
 		ChannelIdList: []int64{},
 	}
-	if len(id) > 0 {
-		idHelper.UserIdList = id
-	}
+	idHelper.AppendUsers(id...)
 
 	return idHelper
 }
@@ -43,6 +41,7 @@ func appendIdF(idList []int64, id int64) []int64 {
 			return idList
 		}
 	}
+
 	return append(idList, id)
 }
 
