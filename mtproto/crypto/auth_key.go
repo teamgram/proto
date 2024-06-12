@@ -197,6 +197,7 @@ func (k *AuthKey) partForMsgKey(incoming bool) []byte {
 	return k.authKey[88+x : 88+x+32]
 }
 
+// AesIgeEncryptV1
 /*
 | salt <br> int64	| `session_id` <br> int64 | `message_id` <br> int64 | `seq_no` <br> int32 |`message_data_length` <br> int32	| `message_data` <br> bytes | padding12..1024 <br> bytes|
 |:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -280,11 +281,8 @@ func (k *AuthKey) AesIgeDecryptV1(msgKey, rawData []byte) ([]byte, error) {
 	//// 校验解密后的数据合法性
 	var dataLen = uint32(len(rawData))
 	messageLen := binary.LittleEndian.Uint32(x[28:])
-	// log.Info("descrypt - messageLen = ", messageLen)
 	if messageLen+32 > dataLen {
-		// 	return fmt.Errorf("Message len: %d (need less than %d)", messageLen, dbuf.size-32)
-		err = fmt.Errorf("aesIgeDecrypt data error - Wrong message length %d", messageLen)
-		// log.Error(err.Error())
+		err = fmt.Errorf("aesIgeDecrypt data(%d) error - Wrong message length %d", dataLen, messageLen)
 		return nil, err
 	}
 
@@ -300,7 +298,6 @@ func (k *AuthKey) AesIgeDecryptV1(msgKey, rawData []byte) ([]byte, error) {
 			hex.EncodeToString(k.authKey[88:88+32]),
 			hex.EncodeToString(calcMsgKey[8:8+16]),
 			hex.EncodeToString(msgKey[:16]))
-		// log.Error(err.Error())
 		return nil, err
 	}
 
@@ -327,13 +324,14 @@ func (k *AuthKey) AesIgeDecrypt(msgKey, rawData []byte) ([]byte, error) {
 	//seq := binary.LittleEndian.Uint32(x[24:])
 	messageLen := binary.LittleEndian.Uint32(x[28:])
 	//c := binary.LittleEndian.Uint32(x[32:])
-	//log.Debugf("decrypt: {salt: %d, session_id: %d, msg_id: %d, seq: %d, bytes: %d, crc32: 0x%x}",
+	//fmt.Printf("decrypt: {salt: %d, session_id: %d, msg_id: %d, seq: %d, bytes: %d, crc32: 0x%x}\n",
 	//	int64(salt),
 	//	int64(sessionId),
 	//	int64(msgId),
 	//	seq,
 	//	messageLen,
 	//	c)
+
 	//
 	//messageLen := binary.LittleEndian.Uint32(x[28:])
 	//sessionId := int64(binary.LittleEndian.Uint64(x[8:]))
