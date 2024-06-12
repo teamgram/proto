@@ -53,11 +53,13 @@ type MTPRawMessage struct {
 }
 
 func (m *MTPRawMessage) Clone() *MTPRawMessage {
+	tmp := make([]byte, len(m.Payload))
+	copy(tmp, m.Payload)
 	return &MTPRawMessage{
 		connType:   m.connType,
 		authKeyId:  m.authKeyId,
 		quickAckId: m.quickAckId,
-		Payload:    m.Payload,
+		Payload:    tmp,
 	}
 }
 
