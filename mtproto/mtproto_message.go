@@ -41,7 +41,7 @@ func NewMTPRawMessage(authKeyId int64, quickAckId int32, connType int) *MTPRawMe
 	}
 }
 
-// //////////////////////////////////////////////////////////////////////////
+// MTPRawMessage
 // 代理使用
 type MTPRawMessage struct {
 	connType   int
@@ -50,6 +50,15 @@ type MTPRawMessage struct {
 
 	// 原始数据
 	Payload []byte
+}
+
+func (m *MTPRawMessage) Clone() *MTPRawMessage {
+	return &MTPRawMessage{
+		connType:   m.connType,
+		authKeyId:  m.authKeyId,
+		quickAckId: m.quickAckId,
+		Payload:    m.Payload,
+	}
 }
 
 func (m *MTPRawMessage) String() string {
@@ -91,6 +100,7 @@ func (m *MTPRawMessage) DebugString() string {
 		len(m.Payload))
 }
 
+// NewUnencryptedRawMessage
 // //////////////////////////////////////////////////////////////////////////
 func NewUnencryptedRawMessage() *UnencryptedRawMessage {
 	return &UnencryptedRawMessage{
