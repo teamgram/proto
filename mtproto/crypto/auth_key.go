@@ -341,7 +341,7 @@ func (k *AuthKey) AesIgeDecrypt(msgKey, rawData []byte) ([]byte, error) {
 
 	if messageLen+32 > dataLen {
 		// 	return fmt.Errorf("Message len: %d (need less than %d)", messageLen, dbuf.size-32)
-		err = fmt.Errorf("aesIgeDecrypt data error - Wrong message length %d", messageLen)
+		err = fmt.Errorf("aesIgeDecrypt data(%d) error - Wrong message length %d", dataLen, messageLen)
 		// log.Error(err.Error())
 		return nil, err
 	}
