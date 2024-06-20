@@ -1596,7 +1596,7 @@ const (
 	CRC32_contactData                                                 TLConstructor = -858039014  // 0xccdb5d1a
 	CRC32_botData                                                     TLConstructor = -319608864  // 0xecf327e0
 	CRC32_userData                                                    TLConstructor = 509150835   // 0x1e590673
-	CRC32_immutableUser                                               TLConstructor = 2120676511  // 0x7e66f49f
+	CRC32_immutableUser                                               TLConstructor = 972235212   // 0x39f321cc
 	CRC32_mutableUsers                                                TLConstructor = 917538818   // 0x36b08802
 	CRC32_immutableChatParticipant                                    TLConstructor = -100771298  // 0xf9fe5a1e
 	CRC32_immutableChat                                               TLConstructor = -1557334680 // 0xa32cf568

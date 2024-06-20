@@ -1603,7 +1603,7 @@ enum TLConstructor {
     CRC32_contactData = -858039014; // 0xccdb5d1a
     CRC32_botData = -319608864; // 0xecf327e0
     CRC32_userData = 509150835; // 0x1e590673
-    CRC32_immutableUser = 2120676511; // 0x7e66f49f
+    CRC32_immutableUser = 972235212; // 0x39f321cc
     CRC32_mutableUsers = 917538818; // 0x36b08802
     CRC32_immutableChatParticipant = -100771298; // 0xf9fe5a1e
     CRC32_immutableChat = -1557334680; // 0xa32cf568
