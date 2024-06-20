@@ -2210,6 +2210,7 @@ message ContactData {
     bool mutual_contact = 7;
     google.protobuf.StringValue phone = 8;
     bool close_friend = 9;
+    bool stories_hidden = 10;
 }
 
 // TL_contactData
@@ -3344,7 +3345,6 @@ message ImmutableUser {
     repeated ContactData contacts = 5;
     repeated ContactData reverse_contacts = 6;
     repeated PrivacyKeyRules keys_privacy_rules = 7;
-    repeated int64 stories_hiddens = 8;
 }
 
 // TL_immutableUser
