@@ -305,7 +305,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		user.MutualContact = contact.MutualContact
 		user.FirstName = contact.FirstName
 		user.LastName = contact.LastName
-		user.Phone = contact.Phone
+		// user.Phone = contact.Phone
 		user.CloseFriend = contact.CloseFriend
 		user.StoriesHidden = contact.StoriesHidden
 	} else {
@@ -316,7 +316,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 			user.MutualContact = reverseContact.MutualContact
 			user.FirstName = reverseContact.FirstName
 			user.LastName = reverseContact.LastName
-			user.Phone = reverseContact.Phone
+			// user.Phone = reverseContact.Phone
 			user.CloseFriend = reverseContact.CloseFriend
 			user.StoriesHidden = reverseContact.StoriesHidden
 		}
@@ -503,7 +503,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		user.MutualContact = reverseContact.MutualContact
 		user.FirstName = reverseContact.FirstName
 		user.LastName = reverseContact.LastName
-		user.Phone = reverseContact.Phone
+		// user.Phone = reverseContact.Phone
 		user.CloseFriend = reverseContact.CloseFriend
 		user.StoriesHidden = reverseContact.StoriesHidden
 	}
