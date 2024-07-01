@@ -18159,23 +18159,25 @@ var RPCPassport_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCPayments_AccountGetTmpPassword_FullMethodName            = "/mtproto.RPCPayments/account_getTmpPassword"
-	RPCPayments_MessagesSetBotShippingResults_FullMethodName    = "/mtproto.RPCPayments/messages_setBotShippingResults"
-	RPCPayments_MessagesSetBotPrecheckoutResults_FullMethodName = "/mtproto.RPCPayments/messages_setBotPrecheckoutResults"
-	RPCPayments_PaymentsGetPaymentForm_FullMethodName           = "/mtproto.RPCPayments/payments_getPaymentForm"
-	RPCPayments_PaymentsGetPaymentReceipt_FullMethodName        = "/mtproto.RPCPayments/payments_getPaymentReceipt"
-	RPCPayments_PaymentsValidateRequestedInfo_FullMethodName    = "/mtproto.RPCPayments/payments_validateRequestedInfo"
-	RPCPayments_PaymentsSendPaymentForm_FullMethodName          = "/mtproto.RPCPayments/payments_sendPaymentForm"
-	RPCPayments_PaymentsGetSavedInfo_FullMethodName             = "/mtproto.RPCPayments/payments_getSavedInfo"
-	RPCPayments_PaymentsClearSavedInfo_FullMethodName           = "/mtproto.RPCPayments/payments_clearSavedInfo"
-	RPCPayments_PaymentsExportInvoice_FullMethodName            = "/mtproto.RPCPayments/payments_exportInvoice"
-	RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTopupOptions"
-	RPCPayments_PaymentsGetStarsStatus_FullMethodName           = "/mtproto.RPCPayments/payments_getStarsStatus"
-	RPCPayments_PaymentsGetStarsTransactions_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTransactions"
-	RPCPayments_PaymentsSendStarsForm_FullMethodName            = "/mtproto.RPCPayments/payments_sendStarsForm"
-	RPCPayments_PaymentsRefundStarsCharge_FullMethodName        = "/mtproto.RPCPayments/payments_refundStarsCharge"
-	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName  = "/mtproto.RPCPayments/payments_requestRecurringPayment"
-	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
+	RPCPayments_AccountGetTmpPassword_FullMethodName                = "/mtproto.RPCPayments/account_getTmpPassword"
+	RPCPayments_MessagesSetBotShippingResults_FullMethodName        = "/mtproto.RPCPayments/messages_setBotShippingResults"
+	RPCPayments_MessagesSetBotPrecheckoutResults_FullMethodName     = "/mtproto.RPCPayments/messages_setBotPrecheckoutResults"
+	RPCPayments_PaymentsGetPaymentForm_FullMethodName               = "/mtproto.RPCPayments/payments_getPaymentForm"
+	RPCPayments_PaymentsGetPaymentReceipt_FullMethodName            = "/mtproto.RPCPayments/payments_getPaymentReceipt"
+	RPCPayments_PaymentsValidateRequestedInfo_FullMethodName        = "/mtproto.RPCPayments/payments_validateRequestedInfo"
+	RPCPayments_PaymentsSendPaymentForm_FullMethodName              = "/mtproto.RPCPayments/payments_sendPaymentForm"
+	RPCPayments_PaymentsGetSavedInfo_FullMethodName                 = "/mtproto.RPCPayments/payments_getSavedInfo"
+	RPCPayments_PaymentsClearSavedInfo_FullMethodName               = "/mtproto.RPCPayments/payments_clearSavedInfo"
+	RPCPayments_PaymentsExportInvoice_FullMethodName                = "/mtproto.RPCPayments/payments_exportInvoice"
+	RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName         = "/mtproto.RPCPayments/payments_getStarsTopupOptions"
+	RPCPayments_PaymentsGetStarsStatus_FullMethodName               = "/mtproto.RPCPayments/payments_getStarsStatus"
+	RPCPayments_PaymentsGetStarsTransactions_FullMethodName         = "/mtproto.RPCPayments/payments_getStarsTransactions"
+	RPCPayments_PaymentsSendStarsForm_FullMethodName                = "/mtproto.RPCPayments/payments_sendStarsForm"
+	RPCPayments_PaymentsRefundStarsCharge_FullMethodName            = "/mtproto.RPCPayments/payments_refundStarsCharge"
+	RPCPayments_PaymentsGetStarsRevenueStats_FullMethodName         = "/mtproto.RPCPayments/payments_getStarsRevenueStats"
+	RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueWithdrawalUrl"
+	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName      = "/mtproto.RPCPayments/payments_requestRecurringPayment"
+	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName     = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
 )
 
 // RPCPaymentsClient is the client API for RPCPayments service.
@@ -18197,6 +18199,8 @@ type RPCPaymentsClient interface {
 	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error)
 	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error)
+	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats, opts ...grpc.CallOption) (*Payments_StarsRevenueStats, error)
+	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error)
 	PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(ctx context.Context, in *TLPaymentsRestorePlayMarketReceipt, opts ...grpc.CallOption) (*Updates, error)
 }
@@ -18344,6 +18348,24 @@ func (c *rPCPaymentsClient) PaymentsRefundStarsCharge(ctx context.Context, in *T
 	return out, nil
 }
 
+func (c *rPCPaymentsClient) PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats, opts ...grpc.CallOption) (*Payments_StarsRevenueStats, error) {
+	out := new(Payments_StarsRevenueStats)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsRevenueStats_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPaymentsClient) PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error) {
+	out := new(Payments_StarsRevenueWithdrawalUrl)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCPaymentsClient) PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCPayments_PaymentsRequestRecurringPayment_FullMethodName, in, out, opts...)
@@ -18381,6 +18403,8 @@ type RPCPaymentsServer interface {
 	PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error)
 	PaymentsSendStarsForm(context.Context, *TLPaymentsSendStarsForm) (*Payments_PaymentResult, error)
 	PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error)
+	PaymentsGetStarsRevenueStats(context.Context, *TLPaymentsGetStarsRevenueStats) (*Payments_StarsRevenueStats, error)
+	PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error)
 	PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(context.Context, *TLPaymentsRestorePlayMarketReceipt) (*Updates, error)
 }
@@ -18433,6 +18457,12 @@ func (UnimplementedRPCPaymentsServer) PaymentsSendStarsForm(context.Context, *TL
 }
 func (UnimplementedRPCPaymentsServer) PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRefundStarsCharge not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueStats(context.Context, *TLPaymentsGetStarsRevenueStats) (*Payments_StarsRevenueStats, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueStats not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueWithdrawalUrl not implemented")
 }
 func (UnimplementedRPCPaymentsServer) PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRequestRecurringPayment not implemented")
@@ -18722,6 +18752,42 @@ func _RPCPayments_PaymentsRefundStarsCharge_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCPayments_PaymentsGetStarsRevenueStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsRevenueStats)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueStats(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsRevenueStats_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueStats(ctx, req.(*TLPaymentsGetStarsRevenueStats))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsRevenueWithdrawalUrl)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueWithdrawalUrl(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueWithdrawalUrl(ctx, req.(*TLPaymentsGetStarsRevenueWithdrawalUrl))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCPayments_PaymentsRequestRecurringPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsRequestRecurringPayment)
 	if err := dec(in); err != nil {
@@ -18824,6 +18890,14 @@ var RPCPayments_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_refundStarsCharge",
 			Handler:    _RPCPayments_PaymentsRefundStarsCharge_Handler,
+		},
+		{
+			MethodName: "payments_getStarsRevenueStats",
+			Handler:    _RPCPayments_PaymentsGetStarsRevenueStats_Handler,
+		},
+		{
+			MethodName: "payments_getStarsRevenueWithdrawalUrl",
+			Handler:    _RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_Handler,
 		},
 		{
 			MethodName: "payments_requestRecurringPayment",
@@ -24430,6 +24504,7 @@ const (
 	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
 	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
 	RPCStories_StoriesTogglePinnedToTop_FullMethodName       = "/mtproto.RPCStories/stories_togglePinnedToTop"
+	RPCStories_StoriesSearchPosts_FullMethodName             = "/mtproto.RPCStories/stories_searchPosts"
 	RPCStories_UsersGetStoriesMaxIDs_FullMethodName          = "/mtproto.RPCStories/users_getStoriesMaxIDs"
 	RPCStories_ContactsToggleStoriesHidden_FullMethodName    = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
 	RPCStories_StoriesGetUserStories_FullMethodName          = "/mtproto.RPCStories/stories_getUserStories"
@@ -24465,6 +24540,7 @@ type RPCStoriesClient interface {
 	StoriesTogglePeerStoriesHidden(ctx context.Context, in *TLStoriesTogglePeerStoriesHidden, opts ...grpc.CallOption) (*Bool, error)
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList, opts ...grpc.CallOption) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop, opts ...grpc.CallOption) (*Bool, error)
+	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts, opts ...grpc.CallOption) (*Stories_FoundStories, error)
 	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(ctx context.Context, in *TLContactsToggleStoriesHidden, opts ...grpc.CallOption) (*Bool, error)
 	StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error)
@@ -24704,6 +24780,15 @@ func (c *rPCStoriesClient) StoriesTogglePinnedToTop(ctx context.Context, in *TLS
 	return out, nil
 }
 
+func (c *rPCStoriesClient) StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts, opts ...grpc.CallOption) (*Stories_FoundStories, error) {
+	out := new(Stories_FoundStories)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesSearchPosts_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCStoriesClient) UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error) {
 	out := new(Vector_Int)
 	err := c.cc.Invoke(ctx, RPCStories_UsersGetStoriesMaxIDs_FullMethodName, in, out, opts...)
@@ -24769,6 +24854,7 @@ type RPCStoriesServer interface {
 	StoriesTogglePeerStoriesHidden(context.Context, *TLStoriesTogglePeerStoriesHidden) (*Bool, error)
 	StoriesGetStoryReactionsList(context.Context, *TLStoriesGetStoryReactionsList) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(context.Context, *TLStoriesTogglePinnedToTop) (*Bool, error)
+	StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error)
 	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error)
 	StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error)
@@ -24853,6 +24939,9 @@ func (UnimplementedRPCStoriesServer) StoriesGetStoryReactionsList(context.Contex
 }
 func (UnimplementedRPCStoriesServer) StoriesTogglePinnedToTop(context.Context, *TLStoriesTogglePinnedToTop) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesTogglePinnedToTop not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesSearchPosts not implemented")
 }
 func (UnimplementedRPCStoriesServer) UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UsersGetStoriesMaxIDs not implemented")
@@ -25328,6 +25417,24 @@ func _RPCStories_StoriesTogglePinnedToTop_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStories_StoriesSearchPosts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesSearchPosts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesSearchPosts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesSearchPosts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesSearchPosts(ctx, req.(*TLStoriesSearchPosts))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCStories_UsersGetStoriesMaxIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLUsersGetStoriesMaxIDs)
 	if err := dec(in); err != nil {
@@ -25506,6 +25613,10 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "stories_togglePinnedToTop",
 			Handler:    _RPCStories_StoriesTogglePinnedToTop_Handler,
+		},
+		{
+			MethodName: "stories_searchPosts",
+			Handler:    _RPCStories_StoriesSearchPosts_Handler,
 		},
 		{
 			MethodName: "users_getStoriesMaxIDs",

@@ -1544,8 +1544,9 @@ message TL_messages_saveDraft {
     string message = 7;
     repeated MessageEntity entities = 8;
     InputMedia media = 9;
-    google.protobuf.Int32Value reply_to_msg_id = 10;
-    google.protobuf.Int32Value top_msg_id = 11;
+    google.protobuf.Int64Value effect = 10;
+    google.protobuf.Int32Value reply_to_msg_id = 11;
+    google.protobuf.Int32Value top_msg_id = 12;
 }
 
 message TL_messages_getAllDrafts {
@@ -3447,8 +3448,10 @@ message TL_payments_getStarsTransactions {
     TLConstructor  constructor = 1;
     bool inbound = 3;
     bool outbound = 4;
-    InputPeer peer = 5;
-    string offset = 6;
+    bool ascending = 5;
+    InputPeer peer = 6;
+    string offset = 7;
+    int32 limit = 8;
 }
 
 message TL_payments_sendStarsForm {
@@ -3461,6 +3464,19 @@ message TL_payments_refundStarsCharge {
     TLConstructor  constructor = 1;
     InputUser user_id = 3;
     string charge_id = 4;
+}
+
+message TL_payments_getStarsRevenueStats {
+    TLConstructor  constructor = 1;
+    bool dark = 3;
+    InputPeer peer = 4;
+}
+
+message TL_payments_getStarsRevenueWithdrawalUrl {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int64 stars = 4;
+    InputCheckPasswordSRP password = 5;
 }
 
 message TL_stickers_createStickerSet {
@@ -4096,6 +4112,14 @@ message TL_stories_togglePinnedToTop {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     repeated int32 id = 4;
+}
+
+message TL_stories_searchPosts {
+    TLConstructor  constructor = 1;
+    google.protobuf.StringValue hashtag = 3;
+    MediaArea area = 4;
+    string offset = 5;
+    int32 limit = 6;
 }
 
 message TL_premium_getBoostsList {
@@ -5051,6 +5075,8 @@ service RPCPayments {
     rpc payments_getStarsTransactions(TL_payments_getStarsTransactions) returns (payments_StarsStatus) {}
     rpc payments_sendStarsForm(TL_payments_sendStarsForm) returns (payments_PaymentResult) {}
     rpc payments_refundStarsCharge(TL_payments_refundStarsCharge) returns (Updates) {}
+    rpc payments_getStarsRevenueStats(TL_payments_getStarsRevenueStats) returns (payments_StarsRevenueStats) {}
+    rpc payments_getStarsRevenueWithdrawalUrl(TL_payments_getStarsRevenueWithdrawalUrl) returns (payments_StarsRevenueWithdrawalUrl) {}
     rpc payments_requestRecurringPayment(TL_payments_requestRecurringPayment) returns (Updates) {}
     rpc payments_restorePlayMarketReceipt(TL_payments_restorePlayMarketReceipt) returns (Updates) {}
 }
@@ -5259,6 +5285,7 @@ service RPCStories {
     rpc stories_togglePeerStoriesHidden(TL_stories_togglePeerStoriesHidden) returns (Bool) {}
     rpc stories_getStoryReactionsList(TL_stories_getStoryReactionsList) returns (stories_StoryReactionsList) {}
     rpc stories_togglePinnedToTop(TL_stories_togglePinnedToTop) returns (Bool) {}
+    rpc stories_searchPosts(TL_stories_searchPosts) returns (stories_FoundStories) {}
     rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
     rpc contacts_toggleStoriesHidden(TL_contacts_toggleStoriesHidden) returns (Bool) {}
     rpc stories_getUserStories(TL_stories_getUserStories) returns (stories_UserStories) {}

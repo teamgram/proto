@@ -2526,6 +2526,7 @@ message TL_documentAttributeCustomEmoji {
 //  + TL_draftMessageEmpty
 //  + TL_draftMessage
 //  + TL_draftMessage
+//  + TL_draftMessage
 //
 message DraftMessage {
     string predicate_name = 1;
@@ -2538,7 +2539,8 @@ message DraftMessage {
     repeated MessageEntity entities = 8;
     InputMedia media = 9;
     int32 date_INT32 = 10;
-    google.protobuf.Int32Value reply_to_msg_id = 11;
+    google.protobuf.Int64Value effect = 11;
+    google.protobuf.Int32Value reply_to_msg_id = 12;
 }
 
 // TL_draftMessageEmpty
@@ -3065,6 +3067,22 @@ message TL_forumTopic {
 }
 
 
+// FoundStory <--
+//  + TL_foundStory
+//
+message FoundStory {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    Peer peer = 3;
+    StoryItem story = 4;
+}
+
+// TL_foundStory
+message TL_foundStory {
+    FoundStory data2 = 1;
+}
+
+
 // Game <--
 //  + TL_game
 //
@@ -3107,6 +3125,24 @@ message TL_geoPointEmpty {
 // TL_geoPoint
 message TL_geoPoint {
     GeoPoint data2 = 1;
+}
+
+
+// GeoPointAddress <--
+//  + TL_geoPointAddress
+//
+message GeoPointAddress {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string country_iso2 = 3;
+    google.protobuf.StringValue state = 4;
+    google.protobuf.StringValue city = 5;
+    google.protobuf.StringValue street = 6;
+}
+
+// TL_geoPointAddress
+message TL_geoPointAddress {
+    GeoPointAddress data2 = 1;
 }
 
 
@@ -5594,6 +5630,8 @@ message TL_maskCoords {
 //  + TL_mediaAreaSuggestedReaction
 //  + TL_mediaAreaChannelPost
 //  + TL_inputMediaAreaChannelPost
+//  + TL_mediaAreaUrl
+//  + TL_mediaAreaGeoPoint
 //
 message MediaArea {
     string predicate_name = 1;
@@ -5601,18 +5639,20 @@ message MediaArea {
     MediaAreaCoordinates coordinates = 3;
     GeoPoint geo = 4;
     string title = 5;
-    string address = 6;
+    string address_STRING = 6;
     string provider = 7;
     string venue_id = 8;
     string venue_type = 9;
     int64 query_id = 10;
     string result_id = 11;
-    bool dark = 12;
-    bool flipped = 13;
-    Reaction reaction = 14;
-    int64 channel_id = 15;
-    int32 msg_id = 16;
-    InputChannel channel = 17;
+    GeoPointAddress address_FLAGGEOPOINTADDRESS = 12;
+    bool dark = 13;
+    bool flipped = 14;
+    Reaction reaction = 15;
+    int64 channel_id = 16;
+    int32 msg_id = 17;
+    InputChannel channel = 18;
+    string url = 19;
 }
 
 // TL_mediaAreaVenue
@@ -5645,8 +5685,14 @@ message TL_inputMediaAreaChannelPost {
     MediaArea data2 = 1;
 }
 
+// TL_mediaAreaUrl
+message TL_mediaAreaUrl {
+    MediaArea data2 = 1;
+}
+
 
 // MediaAreaCoordinates <--
+//  + TL_mediaAreaCoordinates
 //  + TL_mediaAreaCoordinates
 //
 message MediaAreaCoordinates {
@@ -5657,6 +5703,7 @@ message MediaAreaCoordinates {
     double w = 5;
     double h = 6;
     double rotation = 7;
+    google.protobuf.DoubleValue radius = 8;
 }
 
 // TL_mediaAreaCoordinates
@@ -9496,6 +9543,25 @@ message TL_sponsoredWebPage {
 }
 
 
+// StarsRevenueStatus <--
+//  + TL_starsRevenueStatus
+//
+message StarsRevenueStatus {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool withdrawal_enabled = 3;
+    int64 current_balance = 4;
+    int64 available_balance = 5;
+    int64 overall_revenue = 6;
+    google.protobuf.Int32Value next_withdrawal_at = 7;
+}
+
+// TL_starsRevenueStatus
+message TL_starsRevenueStatus {
+    StarsRevenueStatus data2 = 1;
+}
+
+
 // StarsTopupOption <--
 //  + TL_starsTopupOption
 //
@@ -9517,18 +9583,23 @@ message TL_starsTopupOption {
 
 // StarsTransaction <--
 //  + TL_starsTransaction
+//  + TL_starsTransaction
 //
 message StarsTransaction {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     bool refund = 3;
-    string id = 4;
-    int64 stars = 5;
-    int32 date = 6;
-    StarsTransactionPeer peer = 7;
-    google.protobuf.StringValue title = 8;
-    google.protobuf.StringValue description = 9;
-    WebDocument photo = 10;
+    bool pending = 4;
+    bool failed = 5;
+    string id = 6;
+    int64 stars = 7;
+    int32 date = 8;
+    StarsTransactionPeer peer = 9;
+    google.protobuf.StringValue title = 10;
+    google.protobuf.StringValue description = 11;
+    WebDocument photo = 12;
+    google.protobuf.Int32Value transaction_date = 13;
+    google.protobuf.StringValue transaction_url = 14;
 }
 
 // TL_starsTransaction
@@ -10310,6 +10381,8 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateNewStoryReaction
 //  + TL_updateBroadcastRevenueTransactions
 //  + TL_updateStarsBalance
+//  + TL_updateBusinessBotCallbackQuery
+//  + TL_updateStarsRevenueStatus
 //  + TL_updateGroupInvitePrivacyForbidden
 //  + TL_updateStory
 //  + TL_updateReadStories
@@ -10340,7 +10413,7 @@ message Update {
     int64 chat_id_INT64 = 11;
     Peer from_id = 12;
     ChatParticipants participants_CHATPARTICIPANTS = 13;
-    UserStatus status = 14;
+    UserStatus status_USERSTATUS = 14;
     string first_name = 15;
     string last_name = 16;
     repeated Username usernames = 17;
@@ -10481,12 +10554,13 @@ message Update {
     Message reply_to_message = 152;
     BroadcastRevenueBalances balances = 153;
     int64 balance = 154;
-    Bool blocked_BOOL = 155;
-    UserProfilePhoto photo = 156;
-    Bool previous = 157;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 158;
-    string username = 159;
-    BizDataRaw biz_data = 160;
+    StarsRevenueStatus status_STARSREVENUESTATUS = 155;
+    Bool blocked_BOOL = 156;
+    UserProfilePhoto photo = 157;
+    Bool previous = 158;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 159;
+    string username = 160;
+    BizDataRaw biz_data = 161;
 }
 
 // TL_updateNewMessage
@@ -11171,6 +11245,16 @@ message TL_updateBroadcastRevenueTransactions {
 
 // TL_updateStarsBalance
 message TL_updateStarsBalance {
+    Update data2 = 1;
+}
+
+// TL_updateBusinessBotCallbackQuery
+message TL_updateBusinessBotCallbackQuery {
+    Update data2 = 1;
+}
+
+// TL_updateStarsRevenueStatus
+message TL_updateStarsRevenueStatus {
     Update data2 = 1;
 }
 
@@ -14713,6 +14797,38 @@ message TL_payments_savedInfo {
 }
 
 
+// payments_StarsRevenueStats <--
+//  + TL_payments_starsRevenueStats
+//
+message payments_StarsRevenueStats {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    StatsGraph revenue_graph = 3;
+    StarsRevenueStatus status = 4;
+    double usd_rate = 5;
+}
+
+// TL_payments_starsRevenueStats
+message TL_payments_starsRevenueStats {
+    payments_StarsRevenueStats data2 = 1;
+}
+
+
+// payments_StarsRevenueWithdrawalUrl <--
+//  + TL_payments_starsRevenueWithdrawalUrl
+//
+message payments_StarsRevenueWithdrawalUrl {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string url = 3;
+}
+
+// TL_payments_starsRevenueWithdrawalUrl
+message TL_payments_starsRevenueWithdrawalUrl {
+    payments_StarsRevenueWithdrawalUrl data2 = 1;
+}
+
+
 // payments_StarsStatus <--
 //  + TL_payments_starsStatus
 //
@@ -15349,6 +15465,25 @@ message TL_stories_canApplyBoostOk {
 // TL_stories_canApplyBoostReplace
 message TL_stories_canApplyBoostReplace {
     stories_CanApplyBoostResult data2 = 1;
+}
+
+
+// stories_FoundStories <--
+//  + TL_stories_foundStories
+//
+message stories_FoundStories {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 count = 3;
+    repeated FoundStory stories = 4;
+    google.protobuf.StringValue next_offset = 5;
+    repeated Chat chats = 6;
+    repeated User users = 7;
+}
+
+// TL_stories_foundStories
+message TL_stories_foundStories {
+    stories_FoundStories data2 = 1;
 }
 
 
