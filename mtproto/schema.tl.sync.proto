@@ -1830,32 +1830,33 @@ message ChatFull {
     bool view_forum_as_messages = 33;
     bool restricted_sponsored = 34;
     bool can_view_revenue = 35;
-    google.protobuf.Int32Value participants_count = 36;
-    google.protobuf.Int32Value admins_count = 37;
-    google.protobuf.Int32Value kicked_count = 38;
-    google.protobuf.Int32Value banned_count = 39;
-    google.protobuf.Int32Value online_count = 40;
-    int32 read_inbox_max_id = 41;
-    int32 read_outbox_max_id = 42;
-    int32 unread_count = 43;
-    google.protobuf.Int64Value migrated_from_chat_id = 44;
-    google.protobuf.Int32Value migrated_from_max_id = 45;
-    StickerSet stickerset = 46;
-    google.protobuf.Int32Value available_min_id = 47;
-    google.protobuf.Int64Value linked_chat_id = 48;
-    ChannelLocation location = 49;
-    google.protobuf.Int32Value slowmode_seconds = 50;
-    google.protobuf.Int32Value slowmode_next_send_date = 51;
-    google.protobuf.Int32Value stats_dc = 52;
-    int32 pts = 53;
-    repeated string pending_suggestions = 54;
-    Peer default_send_as = 55;
-    PeerStories stories = 56;
-    WallPaper wallpaper = 57;
-    google.protobuf.Int32Value boosts_applied = 58;
-    google.protobuf.Int32Value boosts_unrestrict = 59;
-    StickerSet emojiset = 60;
-    repeated string available_reactions_FLAGVECTORSTRING = 61;
+    bool paid_media_allowed = 36;
+    google.protobuf.Int32Value participants_count = 37;
+    google.protobuf.Int32Value admins_count = 38;
+    google.protobuf.Int32Value kicked_count = 39;
+    google.protobuf.Int32Value banned_count = 40;
+    google.protobuf.Int32Value online_count = 41;
+    int32 read_inbox_max_id = 42;
+    int32 read_outbox_max_id = 43;
+    int32 unread_count = 44;
+    google.protobuf.Int64Value migrated_from_chat_id = 45;
+    google.protobuf.Int32Value migrated_from_max_id = 46;
+    StickerSet stickerset = 47;
+    google.protobuf.Int32Value available_min_id = 48;
+    google.protobuf.Int64Value linked_chat_id = 49;
+    ChannelLocation location = 50;
+    google.protobuf.Int32Value slowmode_seconds = 51;
+    google.protobuf.Int32Value slowmode_next_send_date = 52;
+    google.protobuf.Int32Value stats_dc = 53;
+    int32 pts = 54;
+    repeated string pending_suggestions = 55;
+    Peer default_send_as = 56;
+    PeerStories stories = 57;
+    WallPaper wallpaper = 58;
+    google.protobuf.Int32Value boosts_applied = 59;
+    google.protobuf.Int32Value boosts_unrestrict = 60;
+    StickerSet emojiset = 61;
+    repeated string available_reactions_FLAGVECTORSTRING = 62;
 }
 
 // TL_chatFull
@@ -4282,6 +4283,7 @@ message TL_inputInvoiceStars {
 //  + TL_inputMediaDice
 //  + TL_inputMediaStory
 //  + TL_inputMediaWebPage
+//  + TL_inputMediaPaidMedia
 //  + TL_inputMediaInvoice
 //  + TL_inputMediaStory
 //  + TL_inputMediaInvoice
@@ -4321,7 +4323,7 @@ message InputMedia {
     google.protobuf.StringValue provider_FLAGSTRING = 31;
     DataJSON provider_data = 32;
     google.protobuf.StringValue start_param = 33;
-    InputMedia extended_media = 34;
+    InputMedia extended_media_FLAGINPUTMEDIA = 34;
     bool stopped = 35;
     google.protobuf.Int32Value heading = 36;
     google.protobuf.Int32Value period = 37;
@@ -4336,8 +4338,10 @@ message InputMedia {
     bool force_large_media = 46;
     bool force_small_media = 47;
     bool optional = 48;
-    InputUser user_id = 49;
-    BizDataRaw biz_data = 50;
+    int64 stars_amount = 49;
+    repeated InputMedia extended_media_VECTORINPUTMEDIA = 50;
+    InputUser user_id = 51;
+    BizDataRaw biz_data = 52;
 }
 
 // TL_inputMediaEmpty
@@ -4422,6 +4426,11 @@ message TL_inputMediaStory {
 
 // TL_inputMediaWebPage
 message TL_inputMediaWebPage {
+    InputMedia data2 = 1;
+}
+
+// TL_inputMediaPaidMedia
+message TL_inputMediaPaidMedia {
     InputMedia data2 = 1;
 }
 
@@ -4930,6 +4939,22 @@ message InputSingleMedia {
 // TL_inputSingleMedia
 message TL_inputSingleMedia {
     InputSingleMedia data2 = 1;
+}
+
+
+// InputStarsTransaction <--
+//  + TL_inputStarsTransaction
+//
+message InputStarsTransaction {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool refund = 3;
+    string id = 4;
+}
+
+// TL_inputStarsTransaction
+message TL_inputStarsTransaction {
+    InputStarsTransaction data2 = 1;
 }
 
 
@@ -6435,6 +6460,7 @@ message TL_messageInteractionCounters {
 //  + TL_messageMediaStory
 //  + TL_messageMediaGiveaway
 //  + TL_messageMediaGiveawayResults
+//  + TL_messageMediaPaidMedia
 //  + TL_messageMediaGiveaway
 //  + TL_messageMediaWebPage
 //  + TL_messageMediaStory
@@ -6479,7 +6505,7 @@ message MessageMedia {
     string currency = 34;
     int64 total_amount = 35;
     string start_param = 36;
-    MessageExtendedMedia extended_media = 37;
+    MessageExtendedMedia extended_media_FLAGMESSAGEEXTENDEDMEDIA = 37;
     google.protobuf.Int32Value heading = 38;
     int32 period = 39;
     google.protobuf.Int32Value proximity_notification_radius = 40;
@@ -6506,7 +6532,9 @@ message MessageMedia {
     int32 winners_count = 61;
     int32 unclaimed_count = 62;
     repeated int64 winners = 63;
-    BizDataRaw biz_data = 64;
+    int64 stars_amount = 64;
+    repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 65;
+    BizDataRaw biz_data = 66;
 }
 
 // TL_messageMediaEmpty
@@ -6586,6 +6614,11 @@ message TL_messageMediaGiveaway {
 
 // TL_messageMediaGiveawayResults
 message TL_messageMediaGiveawayResults {
+    MessageMedia data2 = 1;
+}
+
+// TL_messageMediaPaidMedia
+message TL_messageMediaPaidMedia {
     MessageMedia data2 = 1;
 }
 
@@ -9584,6 +9617,7 @@ message TL_starsTopupOption {
 // StarsTransaction <--
 //  + TL_starsTransaction
 //  + TL_starsTransaction
+//  + TL_starsTransaction
 //
 message StarsTransaction {
     string predicate_name = 1;
@@ -9600,6 +9634,9 @@ message StarsTransaction {
     WebDocument photo = 12;
     google.protobuf.Int32Value transaction_date = 13;
     google.protobuf.StringValue transaction_url = 14;
+    bytes bot_payload = 15;
+    google.protobuf.Int32Value msg_id = 16;
+    repeated MessageMedia extended_media = 17;
 }
 
 // TL_starsTransaction
@@ -9615,6 +9652,7 @@ message TL_starsTransaction {
 //  + TL_starsTransactionPeerPremiumBot
 //  + TL_starsTransactionPeerFragment
 //  + TL_starsTransactionPeer
+//  + TL_starsTransactionPeerAds
 //
 message StarsTransactionPeer {
     string predicate_name = 1;
@@ -9649,6 +9687,11 @@ message TL_starsTransactionPeerFragment {
 
 // TL_starsTransactionPeer
 message TL_starsTransactionPeer {
+    StarsTransactionPeer data2 = 1;
+}
+
+// TL_starsTransactionPeerAds
+message TL_starsTransactionPeerAds {
     StarsTransactionPeer data2 = 1;
 }
 
@@ -10383,6 +10426,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateStarsBalance
 //  + TL_updateBusinessBotCallbackQuery
 //  + TL_updateStarsRevenueStatus
+//  + TL_updateMessageExtendedMedia
 //  + TL_updateGroupInvitePrivacyForbidden
 //  + TL_updateStory
 //  + TL_updateReadStories
@@ -10531,7 +10575,7 @@ message Update {
     string text = 129;
     EmojiStatus emoji_status = 130;
     int64 stickerset_INT64 = 131;
-    MessageExtendedMedia extended_media = 132;
+    repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 132;
     int32 topic_id_INT32 = 133;
     StoryItem story = 134;
     StoriesStealthMode stealth_mode = 135;
@@ -10555,12 +10599,13 @@ message Update {
     BroadcastRevenueBalances balances = 153;
     int64 balance = 154;
     StarsRevenueStatus status_STARSREVENUESTATUS = 155;
-    Bool blocked_BOOL = 156;
-    UserProfilePhoto photo = 157;
-    Bool previous = 158;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 159;
-    string username = 160;
-    BizDataRaw biz_data = 161;
+    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 156;
+    Bool blocked_BOOL = 157;
+    UserProfilePhoto photo = 158;
+    Bool previous = 159;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 160;
+    string username = 161;
+    BizDataRaw biz_data = 162;
 }
 
 // TL_updateNewMessage
@@ -11943,12 +11988,15 @@ message TL_webViewMessageSent {
 
 // WebViewResult <--
 //  + TL_webViewResultUrl
+//  + TL_webViewResultUrl
 //
 message WebViewResult {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-    int64 query_id = 3;
-    string url = 4;
+    bool fullsize = 3;
+    google.protobuf.Int64Value query_id_FLAGINT64 = 4;
+    string url = 5;
+    int64 query_id_INT64 = 6;
 }
 
 // TL_webViewResultUrl
@@ -12578,6 +12626,7 @@ message TL_auth_sentCodeSuccess {
 //  + TL_auth_sentCodeTypeSmsWord
 //  + TL_auth_sentCodeTypeSmsPhrase
 //  + TL_auth_sentCodeTypeFirebaseSms
+//  + TL_auth_sentCodeTypeFirebaseSms
 //  + TL_auth_sentCodeTypeEmailCode
 //
 message auth_SentCodeType {
@@ -12593,11 +12642,12 @@ message auth_SentCodeType {
     google.protobuf.Int32Value reset_pending_date = 10;
     string url = 11;
     bytes nonce = 12;
-    bytes play_integrity_nonce = 13;
-    google.protobuf.StringValue receipt = 14;
-    google.protobuf.Int32Value push_timeout = 15;
-    google.protobuf.StringValue beginning = 16;
-    google.protobuf.Int32Value next_phone_login_date = 17;
+    google.protobuf.Int64Value play_integrity_project_id = 13;
+    bytes play_integrity_nonce = 14;
+    google.protobuf.StringValue receipt = 15;
+    google.protobuf.Int32Value push_timeout = 16;
+    google.protobuf.StringValue beginning = 17;
+    google.protobuf.Int32Value next_phone_login_date = 18;
 }
 
 // TL_auth_sentCodeTypeApp
@@ -14794,6 +14844,21 @@ message payments_SavedInfo {
 // TL_payments_savedInfo
 message TL_payments_savedInfo {
     payments_SavedInfo data2 = 1;
+}
+
+
+// payments_StarsRevenueAdsAccountUrl <--
+//  + TL_payments_starsRevenueAdsAccountUrl
+//
+message payments_StarsRevenueAdsAccountUrl {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string url = 3;
+}
+
+// TL_payments_starsRevenueAdsAccountUrl
+message TL_payments_starsRevenueAdsAccountUrl {
+    payments_StarsRevenueAdsAccountUrl data2 = 1;
 }
 
 
