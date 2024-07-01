@@ -2224,16 +2224,17 @@ message TL_messages_requestWebView {
     TLConstructor  constructor = 1;
     bool from_bot_menu = 3;
     bool silent = 4;
-    InputPeer peer = 5;
-    InputUser bot = 6;
-    google.protobuf.StringValue url = 7;
-    google.protobuf.StringValue start_param = 8;
-    DataJSON theme_params = 9;
-    string platform = 10;
-    InputReplyTo reply_to = 11;
-    InputPeer send_as = 12;
-    google.protobuf.Int32Value reply_to_msg_id = 13;
-    google.protobuf.Int32Value top_msg_id = 14;
+    bool compact = 5;
+    InputPeer peer = 6;
+    InputUser bot = 7;
+    google.protobuf.StringValue url = 8;
+    google.protobuf.StringValue start_param = 9;
+    DataJSON theme_params = 10;
+    string platform = 11;
+    InputReplyTo reply_to = 12;
+    InputPeer send_as = 13;
+    google.protobuf.Int32Value reply_to_msg_id = 14;
+    google.protobuf.Int32Value top_msg_id = 15;
 }
 
 message TL_messages_prolongWebView {
@@ -2248,16 +2249,16 @@ message TL_messages_prolongWebView {
     google.protobuf.Int32Value top_msg_id = 10;
 }
 
-message TL_messages_requestSimpleWebView {
+message TL_messages_requestSimpleWebView413A3E73 {
     TLConstructor  constructor = 1;
     bool from_switch_webview = 3;
     bool from_side_menu = 4;
-    InputUser bot = 5;
-    google.protobuf.StringValue url_FLAGSTRING = 6;
-    google.protobuf.StringValue start_param = 7;
-    DataJSON theme_params = 8;
-    string platform = 9;
-    string url_STRING = 10;
+    bool compact = 5;
+    InputUser bot = 6;
+    google.protobuf.StringValue url = 7;
+    google.protobuf.StringValue start_param = 8;
+    DataJSON theme_params = 9;
+    string platform = 10;
 }
 
 message TL_messages_sendWebViewResultMessage {
@@ -2383,14 +2384,15 @@ message TL_messages_getBotApp {
     int64 hash = 4;
 }
 
-message TL_messages_requestAppWebView {
+message TL_messages_requestAppWebView53618BCE {
     TLConstructor  constructor = 1;
     bool write_allowed = 3;
-    InputPeer peer = 4;
-    InputBotApp app = 5;
-    google.protobuf.StringValue start_param = 6;
-    DataJSON theme_params = 7;
-    string platform = 8;
+    bool compact = 4;
+    InputPeer peer = 5;
+    InputBotApp app = 6;
+    google.protobuf.StringValue start_param = 7;
+    DataJSON theme_params = 8;
+    string platform = 9;
 }
 
 message TL_messages_setChatWallPaper {
@@ -3479,6 +3481,17 @@ message TL_payments_getStarsRevenueWithdrawalUrl {
     InputCheckPasswordSRP password = 5;
 }
 
+message TL_payments_getStarsRevenueAdsAccountUrl {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+}
+
+message TL_payments_getStarsTransactionsByID {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    repeated InputStarsTransaction id = 4;
+}
+
 message TL_stickers_createStickerSet {
     TLConstructor  constructor = 1;
     bool masks = 3;
@@ -4188,6 +4201,27 @@ message TL_fragment_getCollectibleInfo {
     InputCollectible collectible = 3;
 }
 
+message TL_messages_requestSimpleWebView1A46500A {
+    TLConstructor  constructor = 1;
+    bool from_switch_webview = 3;
+    bool from_side_menu = 4;
+    InputUser bot = 5;
+    google.protobuf.StringValue url = 6;
+    google.protobuf.StringValue start_param = 7;
+    DataJSON theme_params = 8;
+    string platform = 9;
+}
+
+message TL_messages_requestAppWebView8C5A3B3C {
+    TLConstructor  constructor = 1;
+    bool write_allowed = 3;
+    InputPeer peer = 4;
+    InputBotApp app = 5;
+    google.protobuf.StringValue start_param = 6;
+    DataJSON theme_params = 7;
+    string platform = 8;
+}
+
 message TL_messages_addChatUserF24753E3 {
     TLConstructor  constructor = 1;
     int64 chat_id = 3;
@@ -4275,6 +4309,15 @@ message TL_stories_getAllReadUserStories {
     TLConstructor  constructor = 1;
 }
 
+message TL_messages_requestSimpleWebView299BEC8E {
+    TLConstructor  constructor = 1;
+    bool from_switch_webview = 3;
+    InputUser bot = 4;
+    string url = 5;
+    DataJSON theme_params = 6;
+    string platform = 7;
+}
+
 message TL_messages_getAllChats {
     TLConstructor  constructor = 1;
     repeated int64 except_ids = 3;
@@ -4310,6 +4353,13 @@ message TL_account_verifyEmailECBA39DB {
     TLConstructor  constructor = 1;
     string email = 3;
     string code = 4;
+}
+
+message TL_messages_requestSimpleWebView6ABB2F73 {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string url = 4;
+    DataJSON theme_params = 5;
 }
 
 message TL_payments_requestRecurringPayment {
@@ -5015,14 +5065,18 @@ service RPCMessages {
 service RPCMiniBotApps {
     rpc messages_requestWebView(TL_messages_requestWebView) returns (WebViewResult) {}
     rpc messages_prolongWebView(TL_messages_prolongWebView) returns (Bool) {}
-    rpc messages_requestSimpleWebView(TL_messages_requestSimpleWebView) returns (SimpleWebViewResult) {}
+    rpc messages_requestSimpleWebView413A3E73(TL_messages_requestSimpleWebView413A3E73) returns (WebViewResult) {}
     rpc messages_sendWebViewResultMessage(TL_messages_sendWebViewResultMessage) returns (WebViewMessageSent) {}
     rpc messages_sendWebViewData(TL_messages_sendWebViewData) returns (Updates) {}
     rpc messages_getBotApp(TL_messages_getBotApp) returns (messages_BotApp) {}
-    rpc messages_requestAppWebView(TL_messages_requestAppWebView) returns (AppWebViewResult) {}
+    rpc messages_requestAppWebView53618BCE(TL_messages_requestAppWebView53618BCE) returns (WebViewResult) {}
     rpc bots_canSendMessage(TL_bots_canSendMessage) returns (Bool) {}
     rpc bots_allowSendMessage(TL_bots_allowSendMessage) returns (Updates) {}
     rpc bots_invokeWebViewCustomMethod(TL_bots_invokeWebViewCustomMethod) returns (DataJSON) {}
+    rpc messages_requestSimpleWebView1A46500A(TL_messages_requestSimpleWebView1A46500A) returns (SimpleWebViewResult) {}
+    rpc messages_requestAppWebView8C5A3B3C(TL_messages_requestAppWebView8C5A3B3C) returns (AppWebViewResult) {}
+    rpc messages_requestSimpleWebView299BEC8E(TL_messages_requestSimpleWebView299BEC8E) returns (SimpleWebViewResult) {}
+    rpc messages_requestSimpleWebView6ABB2F73(TL_messages_requestSimpleWebView6ABB2F73) returns (SimpleWebViewResult) {}
 }
 
 service RPCMiscellaneous {
@@ -5077,6 +5131,8 @@ service RPCPayments {
     rpc payments_refundStarsCharge(TL_payments_refundStarsCharge) returns (Updates) {}
     rpc payments_getStarsRevenueStats(TL_payments_getStarsRevenueStats) returns (payments_StarsRevenueStats) {}
     rpc payments_getStarsRevenueWithdrawalUrl(TL_payments_getStarsRevenueWithdrawalUrl) returns (payments_StarsRevenueWithdrawalUrl) {}
+    rpc payments_getStarsRevenueAdsAccountUrl(TL_payments_getStarsRevenueAdsAccountUrl) returns (payments_StarsRevenueAdsAccountUrl) {}
+    rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
     rpc payments_requestRecurringPayment(TL_payments_requestRecurringPayment) returns (Updates) {}
     rpc payments_restorePlayMarketReceipt(TL_payments_restorePlayMarketReceipt) returns (Updates) {}
 }

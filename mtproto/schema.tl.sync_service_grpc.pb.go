@@ -16720,16 +16720,20 @@ var RPCMessages_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCMiniBotApps_MessagesRequestWebView_FullMethodName           = "/mtproto.RPCMiniBotApps/messages_requestWebView"
-	RPCMiniBotApps_MessagesProlongWebView_FullMethodName           = "/mtproto.RPCMiniBotApps/messages_prolongWebView"
-	RPCMiniBotApps_MessagesRequestSimpleWebView_FullMethodName     = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView"
-	RPCMiniBotApps_MessagesSendWebViewResultMessage_FullMethodName = "/mtproto.RPCMiniBotApps/messages_sendWebViewResultMessage"
-	RPCMiniBotApps_MessagesSendWebViewData_FullMethodName          = "/mtproto.RPCMiniBotApps/messages_sendWebViewData"
-	RPCMiniBotApps_MessagesGetBotApp_FullMethodName                = "/mtproto.RPCMiniBotApps/messages_getBotApp"
-	RPCMiniBotApps_MessagesRequestAppWebView_FullMethodName        = "/mtproto.RPCMiniBotApps/messages_requestAppWebView"
-	RPCMiniBotApps_BotsCanSendMessage_FullMethodName               = "/mtproto.RPCMiniBotApps/bots_canSendMessage"
-	RPCMiniBotApps_BotsAllowSendMessage_FullMethodName             = "/mtproto.RPCMiniBotApps/bots_allowSendMessage"
-	RPCMiniBotApps_BotsInvokeWebViewCustomMethod_FullMethodName    = "/mtproto.RPCMiniBotApps/bots_invokeWebViewCustomMethod"
+	RPCMiniBotApps_MessagesRequestWebView_FullMethodName               = "/mtproto.RPCMiniBotApps/messages_requestWebView"
+	RPCMiniBotApps_MessagesProlongWebView_FullMethodName               = "/mtproto.RPCMiniBotApps/messages_prolongWebView"
+	RPCMiniBotApps_MessagesRequestSimpleWebView413A3E73_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView413A3E73"
+	RPCMiniBotApps_MessagesSendWebViewResultMessage_FullMethodName     = "/mtproto.RPCMiniBotApps/messages_sendWebViewResultMessage"
+	RPCMiniBotApps_MessagesSendWebViewData_FullMethodName              = "/mtproto.RPCMiniBotApps/messages_sendWebViewData"
+	RPCMiniBotApps_MessagesGetBotApp_FullMethodName                    = "/mtproto.RPCMiniBotApps/messages_getBotApp"
+	RPCMiniBotApps_MessagesRequestAppWebView53618BCE_FullMethodName    = "/mtproto.RPCMiniBotApps/messages_requestAppWebView53618BCE"
+	RPCMiniBotApps_BotsCanSendMessage_FullMethodName                   = "/mtproto.RPCMiniBotApps/bots_canSendMessage"
+	RPCMiniBotApps_BotsAllowSendMessage_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_allowSendMessage"
+	RPCMiniBotApps_BotsInvokeWebViewCustomMethod_FullMethodName        = "/mtproto.RPCMiniBotApps/bots_invokeWebViewCustomMethod"
+	RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView1A46500A"
+	RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_FullMethodName    = "/mtproto.RPCMiniBotApps/messages_requestAppWebView8C5A3B3C"
+	RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView299BEC8E"
+	RPCMiniBotApps_MessagesRequestSimpleWebView6ABB2F73_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView6ABB2F73"
 )
 
 // RPCMiniBotAppsClient is the client API for RPCMiniBotApps service.
@@ -16738,14 +16742,18 @@ const (
 type RPCMiniBotAppsClient interface {
 	MessagesRequestWebView(ctx context.Context, in *TLMessagesRequestWebView, opts ...grpc.CallOption) (*WebViewResult, error)
 	MessagesProlongWebView(ctx context.Context, in *TLMessagesProlongWebView, opts ...grpc.CallOption) (*Bool, error)
-	MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
+	MessagesRequestSimpleWebView413A3E73(ctx context.Context, in *TLMessagesRequestSimpleWebView413A3E73, opts ...grpc.CallOption) (*WebViewResult, error)
 	MessagesSendWebViewResultMessage(ctx context.Context, in *TLMessagesSendWebViewResultMessage, opts ...grpc.CallOption) (*WebViewMessageSent, error)
 	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData, opts ...grpc.CallOption) (*Updates, error)
 	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp, opts ...grpc.CallOption) (*Messages_BotApp, error)
-	MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView, opts ...grpc.CallOption) (*AppWebViewResult, error)
+	MessagesRequestAppWebView53618BCE(ctx context.Context, in *TLMessagesRequestAppWebView53618BCE, opts ...grpc.CallOption) (*WebViewResult, error)
 	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage, opts ...grpc.CallOption) (*Bool, error)
 	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage, opts ...grpc.CallOption) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod, opts ...grpc.CallOption) (*DataJSON, error)
+	MessagesRequestSimpleWebView1A46500A(ctx context.Context, in *TLMessagesRequestSimpleWebView1A46500A, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
+	MessagesRequestAppWebView8C5A3B3C(ctx context.Context, in *TLMessagesRequestAppWebView8C5A3B3C, opts ...grpc.CallOption) (*AppWebViewResult, error)
+	MessagesRequestSimpleWebView299BEC8E(ctx context.Context, in *TLMessagesRequestSimpleWebView299BEC8E, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
+	MessagesRequestSimpleWebView6ABB2F73(ctx context.Context, in *TLMessagesRequestSimpleWebView6ABB2F73, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
 }
 
 type rPCMiniBotAppsClient struct {
@@ -16774,9 +16782,9 @@ func (c *rPCMiniBotAppsClient) MessagesProlongWebView(ctx context.Context, in *T
 	return out, nil
 }
 
-func (c *rPCMiniBotAppsClient) MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView, opts ...grpc.CallOption) (*SimpleWebViewResult, error) {
-	out := new(SimpleWebViewResult)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestSimpleWebView_FullMethodName, in, out, opts...)
+func (c *rPCMiniBotAppsClient) MessagesRequestSimpleWebView413A3E73(ctx context.Context, in *TLMessagesRequestSimpleWebView413A3E73, opts ...grpc.CallOption) (*WebViewResult, error) {
+	out := new(WebViewResult)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestSimpleWebView413A3E73_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -16810,9 +16818,9 @@ func (c *rPCMiniBotAppsClient) MessagesGetBotApp(ctx context.Context, in *TLMess
 	return out, nil
 }
 
-func (c *rPCMiniBotAppsClient) MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView, opts ...grpc.CallOption) (*AppWebViewResult, error) {
-	out := new(AppWebViewResult)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestAppWebView_FullMethodName, in, out, opts...)
+func (c *rPCMiniBotAppsClient) MessagesRequestAppWebView53618BCE(ctx context.Context, in *TLMessagesRequestAppWebView53618BCE, opts ...grpc.CallOption) (*WebViewResult, error) {
+	out := new(WebViewResult)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestAppWebView53618BCE_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -16846,20 +16854,60 @@ func (c *rPCMiniBotAppsClient) BotsInvokeWebViewCustomMethod(ctx context.Context
 	return out, nil
 }
 
+func (c *rPCMiniBotAppsClient) MessagesRequestSimpleWebView1A46500A(ctx context.Context, in *TLMessagesRequestSimpleWebView1A46500A, opts ...grpc.CallOption) (*SimpleWebViewResult, error) {
+	out := new(SimpleWebViewResult)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) MessagesRequestAppWebView8C5A3B3C(ctx context.Context, in *TLMessagesRequestAppWebView8C5A3B3C, opts ...grpc.CallOption) (*AppWebViewResult, error) {
+	out := new(AppWebViewResult)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) MessagesRequestSimpleWebView299BEC8E(ctx context.Context, in *TLMessagesRequestSimpleWebView299BEC8E, opts ...grpc.CallOption) (*SimpleWebViewResult, error) {
+	out := new(SimpleWebViewResult)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) MessagesRequestSimpleWebView6ABB2F73(ctx context.Context, in *TLMessagesRequestSimpleWebView6ABB2F73, opts ...grpc.CallOption) (*SimpleWebViewResult, error) {
+	out := new(SimpleWebViewResult)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestSimpleWebView6ABB2F73_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCMiniBotAppsServer is the server API for RPCMiniBotApps service.
 // All implementations should embed UnimplementedRPCMiniBotAppsServer
 // for forward compatibility
 type RPCMiniBotAppsServer interface {
 	MessagesRequestWebView(context.Context, *TLMessagesRequestWebView) (*WebViewResult, error)
 	MessagesProlongWebView(context.Context, *TLMessagesProlongWebView) (*Bool, error)
-	MessagesRequestSimpleWebView(context.Context, *TLMessagesRequestSimpleWebView) (*SimpleWebViewResult, error)
+	MessagesRequestSimpleWebView413A3E73(context.Context, *TLMessagesRequestSimpleWebView413A3E73) (*WebViewResult, error)
 	MessagesSendWebViewResultMessage(context.Context, *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error)
 	MessagesSendWebViewData(context.Context, *TLMessagesSendWebViewData) (*Updates, error)
 	MessagesGetBotApp(context.Context, *TLMessagesGetBotApp) (*Messages_BotApp, error)
-	MessagesRequestAppWebView(context.Context, *TLMessagesRequestAppWebView) (*AppWebViewResult, error)
+	MessagesRequestAppWebView53618BCE(context.Context, *TLMessagesRequestAppWebView53618BCE) (*WebViewResult, error)
 	BotsCanSendMessage(context.Context, *TLBotsCanSendMessage) (*Bool, error)
 	BotsAllowSendMessage(context.Context, *TLBotsAllowSendMessage) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
+	MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error)
+	MessagesRequestAppWebView8C5A3B3C(context.Context, *TLMessagesRequestAppWebView8C5A3B3C) (*AppWebViewResult, error)
+	MessagesRequestSimpleWebView299BEC8E(context.Context, *TLMessagesRequestSimpleWebView299BEC8E) (*SimpleWebViewResult, error)
+	MessagesRequestSimpleWebView6ABB2F73(context.Context, *TLMessagesRequestSimpleWebView6ABB2F73) (*SimpleWebViewResult, error)
 }
 
 // UnimplementedRPCMiniBotAppsServer should be embedded to have forward compatible implementations.
@@ -16872,8 +16920,8 @@ func (UnimplementedRPCMiniBotAppsServer) MessagesRequestWebView(context.Context,
 func (UnimplementedRPCMiniBotAppsServer) MessagesProlongWebView(context.Context, *TLMessagesProlongWebView) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesProlongWebView not implemented")
 }
-func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView(context.Context, *TLMessagesRequestSimpleWebView) (*SimpleWebViewResult, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView not implemented")
+func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView413A3E73(context.Context, *TLMessagesRequestSimpleWebView413A3E73) (*WebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView413A3E73 not implemented")
 }
 func (UnimplementedRPCMiniBotAppsServer) MessagesSendWebViewResultMessage(context.Context, *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendWebViewResultMessage not implemented")
@@ -16884,8 +16932,8 @@ func (UnimplementedRPCMiniBotAppsServer) MessagesSendWebViewData(context.Context
 func (UnimplementedRPCMiniBotAppsServer) MessagesGetBotApp(context.Context, *TLMessagesGetBotApp) (*Messages_BotApp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetBotApp not implemented")
 }
-func (UnimplementedRPCMiniBotAppsServer) MessagesRequestAppWebView(context.Context, *TLMessagesRequestAppWebView) (*AppWebViewResult, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestAppWebView not implemented")
+func (UnimplementedRPCMiniBotAppsServer) MessagesRequestAppWebView53618BCE(context.Context, *TLMessagesRequestAppWebView53618BCE) (*WebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestAppWebView53618BCE not implemented")
 }
 func (UnimplementedRPCMiniBotAppsServer) BotsCanSendMessage(context.Context, *TLBotsCanSendMessage) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsCanSendMessage not implemented")
@@ -16895,6 +16943,18 @@ func (UnimplementedRPCMiniBotAppsServer) BotsAllowSendMessage(context.Context, *
 }
 func (UnimplementedRPCMiniBotAppsServer) BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsInvokeWebViewCustomMethod not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView1A46500A not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) MessagesRequestAppWebView8C5A3B3C(context.Context, *TLMessagesRequestAppWebView8C5A3B3C) (*AppWebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestAppWebView8C5A3B3C not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView299BEC8E(context.Context, *TLMessagesRequestSimpleWebView299BEC8E) (*SimpleWebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView299BEC8E not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView6ABB2F73(context.Context, *TLMessagesRequestSimpleWebView6ABB2F73) (*SimpleWebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView6ABB2F73 not implemented")
 }
 
 // UnsafeRPCMiniBotAppsServer may be embedded to opt out of forward compatibility for this service.
@@ -16944,20 +17004,20 @@ func _RPCMiniBotApps_MessagesProlongWebView_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCMiniBotApps_MessagesRequestSimpleWebView_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesRequestSimpleWebView)
+func _RPCMiniBotApps_MessagesRequestSimpleWebView413A3E73_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestSimpleWebView413A3E73)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView(ctx, in)
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView413A3E73(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCMiniBotApps_MessagesRequestSimpleWebView_FullMethodName,
+		FullMethod: RPCMiniBotApps_MessagesRequestSimpleWebView413A3E73_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView(ctx, req.(*TLMessagesRequestSimpleWebView))
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView413A3E73(ctx, req.(*TLMessagesRequestSimpleWebView413A3E73))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -17016,20 +17076,20 @@ func _RPCMiniBotApps_MessagesGetBotApp_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCMiniBotApps_MessagesRequestAppWebView_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesRequestAppWebView)
+func _RPCMiniBotApps_MessagesRequestAppWebView53618BCE_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestAppWebView53618BCE)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).MessagesRequestAppWebView(ctx, in)
+		return srv.(RPCMiniBotAppsServer).MessagesRequestAppWebView53618BCE(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCMiniBotApps_MessagesRequestAppWebView_FullMethodName,
+		FullMethod: RPCMiniBotApps_MessagesRequestAppWebView53618BCE_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).MessagesRequestAppWebView(ctx, req.(*TLMessagesRequestAppWebView))
+		return srv.(RPCMiniBotAppsServer).MessagesRequestAppWebView53618BCE(ctx, req.(*TLMessagesRequestAppWebView53618BCE))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -17088,6 +17148,78 @@ func _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestSimpleWebView1A46500A)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView1A46500A(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView1A46500A(ctx, req.(*TLMessagesRequestSimpleWebView1A46500A))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestAppWebView8C5A3B3C)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestAppWebView8C5A3B3C(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestAppWebView8C5A3B3C(ctx, req.(*TLMessagesRequestAppWebView8C5A3B3C))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestSimpleWebView299BEC8E)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView299BEC8E(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView299BEC8E(ctx, req.(*TLMessagesRequestSimpleWebView299BEC8E))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_MessagesRequestSimpleWebView6ABB2F73_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestSimpleWebView6ABB2F73)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView6ABB2F73(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_MessagesRequestSimpleWebView6ABB2F73_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestSimpleWebView6ABB2F73(ctx, req.(*TLMessagesRequestSimpleWebView6ABB2F73))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCMiniBotApps_ServiceDesc is the grpc.ServiceDesc for RPCMiniBotApps service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -17104,8 +17236,8 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCMiniBotApps_MessagesProlongWebView_Handler,
 		},
 		{
-			MethodName: "messages_requestSimpleWebView",
-			Handler:    _RPCMiniBotApps_MessagesRequestSimpleWebView_Handler,
+			MethodName: "messages_requestSimpleWebView413A3E73",
+			Handler:    _RPCMiniBotApps_MessagesRequestSimpleWebView413A3E73_Handler,
 		},
 		{
 			MethodName: "messages_sendWebViewResultMessage",
@@ -17120,8 +17252,8 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCMiniBotApps_MessagesGetBotApp_Handler,
 		},
 		{
-			MethodName: "messages_requestAppWebView",
-			Handler:    _RPCMiniBotApps_MessagesRequestAppWebView_Handler,
+			MethodName: "messages_requestAppWebView53618BCE",
+			Handler:    _RPCMiniBotApps_MessagesRequestAppWebView53618BCE_Handler,
 		},
 		{
 			MethodName: "bots_canSendMessage",
@@ -17134,6 +17266,22 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "bots_invokeWebViewCustomMethod",
 			Handler:    _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler,
+		},
+		{
+			MethodName: "messages_requestSimpleWebView1A46500A",
+			Handler:    _RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_Handler,
+		},
+		{
+			MethodName: "messages_requestAppWebView8C5A3B3C",
+			Handler:    _RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_Handler,
+		},
+		{
+			MethodName: "messages_requestSimpleWebView299BEC8E",
+			Handler:    _RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_Handler,
+		},
+		{
+			MethodName: "messages_requestSimpleWebView6ABB2F73",
+			Handler:    _RPCMiniBotApps_MessagesRequestSimpleWebView6ABB2F73_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -18176,6 +18324,8 @@ const (
 	RPCPayments_PaymentsRefundStarsCharge_FullMethodName            = "/mtproto.RPCPayments/payments_refundStarsCharge"
 	RPCPayments_PaymentsGetStarsRevenueStats_FullMethodName         = "/mtproto.RPCPayments/payments_getStarsRevenueStats"
 	RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueWithdrawalUrl"
+	RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueAdsAccountUrl"
+	RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTransactionsByID"
 	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName      = "/mtproto.RPCPayments/payments_requestRecurringPayment"
 	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName     = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
 )
@@ -18201,6 +18351,8 @@ type RPCPaymentsClient interface {
 	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats, opts ...grpc.CallOption) (*Payments_StarsRevenueStats, error)
 	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error)
+	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error)
+	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(ctx context.Context, in *TLPaymentsRestorePlayMarketReceipt, opts ...grpc.CallOption) (*Updates, error)
 }
@@ -18366,6 +18518,24 @@ func (c *rPCPaymentsClient) PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Con
 	return out, nil
 }
 
+func (c *rPCPaymentsClient) PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error) {
+	out := new(Payments_StarsRevenueAdsAccountUrl)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPaymentsClient) PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCPaymentsClient) PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCPayments_PaymentsRequestRecurringPayment_FullMethodName, in, out, opts...)
@@ -18405,6 +18575,8 @@ type RPCPaymentsServer interface {
 	PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error)
 	PaymentsGetStarsRevenueStats(context.Context, *TLPaymentsGetStarsRevenueStats) (*Payments_StarsRevenueStats, error)
 	PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error)
+	PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error)
+	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
 	PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(context.Context, *TLPaymentsRestorePlayMarketReceipt) (*Updates, error)
 }
@@ -18463,6 +18635,12 @@ func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueStats(context.Conte
 }
 func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueWithdrawalUrl not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueAdsAccountUrl not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTransactionsByID not implemented")
 }
 func (UnimplementedRPCPaymentsServer) PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRequestRecurringPayment not implemented")
@@ -18788,6 +18966,42 @@ func _RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_Handler(srv interface{}, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsRevenueAdsAccountUrl)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueAdsAccountUrl(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueAdsAccountUrl(ctx, req.(*TLPaymentsGetStarsRevenueAdsAccountUrl))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPayments_PaymentsGetStarsTransactionsByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsTransactionsByID)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactionsByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactionsByID(ctx, req.(*TLPaymentsGetStarsTransactionsByID))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCPayments_PaymentsRequestRecurringPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsRequestRecurringPayment)
 	if err := dec(in); err != nil {
@@ -18898,6 +19112,14 @@ var RPCPayments_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarsRevenueWithdrawalUrl",
 			Handler:    _RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_Handler,
+		},
+		{
+			MethodName: "payments_getStarsRevenueAdsAccountUrl",
+			Handler:    _RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_Handler,
+		},
+		{
+			MethodName: "payments_getStarsTransactionsByID",
+			Handler:    _RPCPayments_PaymentsGetStarsTransactionsByID_Handler,
 		},
 		{
 			MethodName: "payments_requestRecurringPayment",
