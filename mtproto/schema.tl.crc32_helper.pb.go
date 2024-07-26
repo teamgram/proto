@@ -277,6 +277,7 @@ const (
 	CRC32_messageActionGiveawayResults                                TLConstructor = 715107781   // 2a9fadc5
 	CRC32_messageActionBoostApply                                     TLConstructor = -872240531  // cc02aa6d
 	CRC32_messageActionRequestedPeerSentMe                            TLConstructor = -1816979384 // 93b31848
+	CRC32_messageActionPaymentRefunded                                TLConstructor = 1102307842  // 41b3e202
 	CRC32_dialog_d58a08c6                                             TLConstructor = -712374074  // d58a08c6
 	CRC32_dialog_a8edd0f5                                             TLConstructor = -1460809483 // a8edd0f5
 	CRC32_dialogFolder                                                TLConstructor = 1908216652  // 71bd134c

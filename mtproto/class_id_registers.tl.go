@@ -3877,6 +3877,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1816979384
 		return o
 	},
+	1102307842: func() TLObject { // 0x41b3e202
+		o := MakeTLMessageActionPaymentRefunded(nil)
+		o.Data2.Constructor = 1102307842
+		return o
+	},
 	-1065845395: func() TLObject { // 0xc0787d6d
 		o := MakeTLMessageActionSetSameChatWallPaper(nil)
 		o.Data2.Constructor = -1065845395

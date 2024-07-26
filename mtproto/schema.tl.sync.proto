@@ -1831,32 +1831,33 @@ message ChatFull {
     bool restricted_sponsored = 34;
     bool can_view_revenue = 35;
     bool paid_media_allowed = 36;
-    google.protobuf.Int32Value participants_count = 37;
-    google.protobuf.Int32Value admins_count = 38;
-    google.protobuf.Int32Value kicked_count = 39;
-    google.protobuf.Int32Value banned_count = 40;
-    google.protobuf.Int32Value online_count = 41;
-    int32 read_inbox_max_id = 42;
-    int32 read_outbox_max_id = 43;
-    int32 unread_count = 44;
-    google.protobuf.Int64Value migrated_from_chat_id = 45;
-    google.protobuf.Int32Value migrated_from_max_id = 46;
-    StickerSet stickerset = 47;
-    google.protobuf.Int32Value available_min_id = 48;
-    google.protobuf.Int64Value linked_chat_id = 49;
-    ChannelLocation location = 50;
-    google.protobuf.Int32Value slowmode_seconds = 51;
-    google.protobuf.Int32Value slowmode_next_send_date = 52;
-    google.protobuf.Int32Value stats_dc = 53;
-    int32 pts = 54;
-    repeated string pending_suggestions = 55;
-    Peer default_send_as = 56;
-    PeerStories stories = 57;
-    WallPaper wallpaper = 58;
-    google.protobuf.Int32Value boosts_applied = 59;
-    google.protobuf.Int32Value boosts_unrestrict = 60;
-    StickerSet emojiset = 61;
-    repeated string available_reactions_FLAGVECTORSTRING = 62;
+    bool can_view_stars_revenue = 37;
+    google.protobuf.Int32Value participants_count = 38;
+    google.protobuf.Int32Value admins_count = 39;
+    google.protobuf.Int32Value kicked_count = 40;
+    google.protobuf.Int32Value banned_count = 41;
+    google.protobuf.Int32Value online_count = 42;
+    int32 read_inbox_max_id = 43;
+    int32 read_outbox_max_id = 44;
+    int32 unread_count = 45;
+    google.protobuf.Int64Value migrated_from_chat_id = 46;
+    google.protobuf.Int32Value migrated_from_max_id = 47;
+    StickerSet stickerset = 48;
+    google.protobuf.Int32Value available_min_id = 49;
+    google.protobuf.Int64Value linked_chat_id = 50;
+    ChannelLocation location = 51;
+    google.protobuf.Int32Value slowmode_seconds = 52;
+    google.protobuf.Int32Value slowmode_next_send_date = 53;
+    google.protobuf.Int32Value stats_dc = 54;
+    int32 pts = 55;
+    repeated string pending_suggestions = 56;
+    Peer default_send_as = 57;
+    PeerStories stories = 58;
+    WallPaper wallpaper = 59;
+    google.protobuf.Int32Value boosts_applied = 60;
+    google.protobuf.Int32Value boosts_unrestrict = 61;
+    StickerSet emojiset = 62;
+    repeated string available_reactions_FLAGVECTORSTRING = 63;
 }
 
 // TL_chatFull
@@ -5852,6 +5853,7 @@ message TL_messageService {
 //  + TL_messageActionGiveawayResults
 //  + TL_messageActionBoostApply
 //  + TL_messageActionRequestedPeerSentMe
+//  + TL_messageActionPaymentRefunded
 //  + TL_messageActionRequestedPeer
 //  + TL_messageActionGiftCode
 //  + TL_messageActionSetChatWallPaper
@@ -6149,6 +6151,11 @@ message TL_messageActionBoostApply {
 
 // TL_messageActionRequestedPeerSentMe
 message TL_messageActionRequestedPeerSentMe {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionPaymentRefunded
+message TL_messageActionPaymentRefunded {
     MessageAction data2 = 1;
 }
 
