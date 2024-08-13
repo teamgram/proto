@@ -954,9 +954,10 @@ message TL_contacts_getTopPeers {
     bool forward_chats = 8;
     bool groups = 9;
     bool channels = 10;
-    int32 offset = 11;
-    int32 limit = 12;
-    int64 hash = 13;
+    bool bots_app = 11;
+    int32 offset = 12;
+    int32 limit = 13;
+    int64 hash = 14;
 }
 
 message TL_contacts_resetTopPeerRating {
@@ -2568,6 +2569,16 @@ message TL_messages_getFactCheck {
     repeated int32 msg_id = 4;
 }
 
+message TL_messages_requestMainWebView {
+    TLConstructor  constructor = 1;
+    bool compact = 3;
+    InputPeer peer = 4;
+    InputUser bot = 5;
+    google.protobuf.StringValue start_param = 6;
+    DataJSON theme_params = 7;
+    string platform = 8;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3333,6 +3344,52 @@ message TL_bots_invokeWebViewCustomMethod {
     DataJSON params = 5;
 }
 
+message TL_bots_getPopularAppBots {
+    TLConstructor  constructor = 1;
+    string offset = 3;
+    int32 limit = 4;
+}
+
+message TL_bots_addPreviewMedia {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string lang_code = 4;
+    InputMedia media = 5;
+}
+
+message TL_bots_editPreviewMedia {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string lang_code = 4;
+    InputMedia media = 5;
+    InputMedia new_media = 6;
+}
+
+message TL_bots_deletePreviewMedia {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string lang_code = 4;
+    repeated InputMedia media = 5;
+}
+
+message TL_bots_reorderPreviewMedias {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string lang_code = 4;
+    repeated InputMedia order = 5;
+}
+
+message TL_bots_getPreviewInfo {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string lang_code = 4;
+}
+
+message TL_bots_getPreviewMedias {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+}
+
 message TL_payments_getPaymentForm {
     TLConstructor  constructor = 1;
     InputInvoice invoice = 3;
@@ -3490,6 +3547,11 @@ message TL_payments_getStarsTransactionsByID {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     repeated InputStarsTransaction id = 4;
+}
+
+message TL_payments_getStarsGiftOptions {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
 }
 
 message TL_stickers_createStickerSet {
@@ -4517,11 +4579,17 @@ message Vector_FileHash {
 message Vector_BotCommand {
     repeated BotCommand datas = 1;
 }
+message Vector_BotPreviewMedia {
+    repeated BotPreviewMedia datas = 1;
+}
 message Vector_PremiumGiftCodeOption {
     repeated PremiumGiftCodeOption datas = 1;
 }
 message Vector_StarsTopupOption {
     repeated StarsTopupOption datas = 1;
+}
+message Vector_StarsGiftOption {
+    repeated StarsGiftOption datas = 1;
 }
 message Vector_LangPackString {
     repeated LangPackString datas = 1;
@@ -5070,9 +5138,17 @@ service RPCMiniBotApps {
     rpc messages_sendWebViewData(TL_messages_sendWebViewData) returns (Updates) {}
     rpc messages_getBotApp(TL_messages_getBotApp) returns (messages_BotApp) {}
     rpc messages_requestAppWebView53618BCE(TL_messages_requestAppWebView53618BCE) returns (WebViewResult) {}
+    rpc messages_requestMainWebView(TL_messages_requestMainWebView) returns (WebViewResult) {}
     rpc bots_canSendMessage(TL_bots_canSendMessage) returns (Bool) {}
     rpc bots_allowSendMessage(TL_bots_allowSendMessage) returns (Updates) {}
     rpc bots_invokeWebViewCustomMethod(TL_bots_invokeWebViewCustomMethod) returns (DataJSON) {}
+    rpc bots_getPopularAppBots(TL_bots_getPopularAppBots) returns (bots_PopularAppBots) {}
+    rpc bots_addPreviewMedia(TL_bots_addPreviewMedia) returns (BotPreviewMedia) {}
+    rpc bots_editPreviewMedia(TL_bots_editPreviewMedia) returns (BotPreviewMedia) {}
+    rpc bots_deletePreviewMedia(TL_bots_deletePreviewMedia) returns (Bool) {}
+    rpc bots_reorderPreviewMedias(TL_bots_reorderPreviewMedias) returns (Bool) {}
+    rpc bots_getPreviewInfo(TL_bots_getPreviewInfo) returns (bots_PreviewInfo) {}
+    rpc bots_getPreviewMedias(TL_bots_getPreviewMedias) returns (Vector_BotPreviewMedia) {}
     rpc messages_requestSimpleWebView1A46500A(TL_messages_requestSimpleWebView1A46500A) returns (SimpleWebViewResult) {}
     rpc messages_requestAppWebView8C5A3B3C(TL_messages_requestAppWebView8C5A3B3C) returns (AppWebViewResult) {}
     rpc messages_requestSimpleWebView299BEC8E(TL_messages_requestSimpleWebView299BEC8E) returns (SimpleWebViewResult) {}
@@ -5133,6 +5209,7 @@ service RPCPayments {
     rpc payments_getStarsRevenueWithdrawalUrl(TL_payments_getStarsRevenueWithdrawalUrl) returns (payments_StarsRevenueWithdrawalUrl) {}
     rpc payments_getStarsRevenueAdsAccountUrl(TL_payments_getStarsRevenueAdsAccountUrl) returns (payments_StarsRevenueAdsAccountUrl) {}
     rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
+    rpc payments_getStarsGiftOptions(TL_payments_getStarsGiftOptions) returns (Vector_StarsGiftOption) {}
     rpc payments_requestRecurringPayment(TL_payments_requestRecurringPayment) returns (Updates) {}
     rpc payments_restorePlayMarketReceipt(TL_payments_restorePlayMarketReceipt) returns (Updates) {}
 }

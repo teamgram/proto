@@ -621,14 +621,15 @@ message TL_botData {
 message BotInfo {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-    google.protobuf.Int64Value user_id_FLAGINT64 = 3;
-    google.protobuf.StringValue description_FLAGSTRING = 4;
-    Photo description_photo = 5;
-    Document description_document = 6;
-    repeated BotCommand commands = 7;
-    BotMenuButton menu_button = 8;
-    int64 user_id_INT64 = 9;
-    string description_STRING = 10;
+    bool has_preview_medias = 3;
+    google.protobuf.Int64Value user_id_FLAGINT64 = 4;
+    google.protobuf.StringValue description_FLAGSTRING = 5;
+    Photo description_photo = 6;
+    Document description_document = 7;
+    repeated BotCommand commands = 8;
+    BotMenuButton menu_button = 9;
+    int64 user_id_INT64 = 10;
+    string description_STRING = 11;
 }
 
 // TL_botInfo
@@ -771,6 +772,22 @@ message TL_botMenuButtonCommands {
 // TL_botMenuButton
 message TL_botMenuButton {
     BotMenuButton data2 = 1;
+}
+
+
+// BotPreviewMedia <--
+//  + TL_botPreviewMedia
+//
+message BotPreviewMedia {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 date = 3;
+    MessageMedia media = 4;
+}
+
+// TL_botPreviewMedia
+message TL_botPreviewMedia {
+    BotPreviewMedia data2 = 1;
 }
 
 
@@ -2457,6 +2474,7 @@ message TL_document {
 //  + TL_documentAttributeHasStickers
 //  + TL_documentAttributeCustomEmoji
 //  + TL_documentAttributeVideo
+//  + TL_documentAttributeVideo
 //
 message DocumentAttribute {
     string predicate_name = 1;
@@ -2472,14 +2490,15 @@ message DocumentAttribute {
     bool nosound = 11;
     double duration_FLOAT64 = 12;
     google.protobuf.Int32Value preload_prefix_size = 13;
-    bool voice = 14;
-    int32 duration_INT32 = 15;
-    google.protobuf.StringValue title = 16;
-    google.protobuf.StringValue performer = 17;
-    bytes waveform = 18;
-    string file_name = 19;
-    bool free = 20;
-    bool text_color = 21;
+    google.protobuf.DoubleValue video_start_ts = 14;
+    bool voice = 15;
+    int32 duration_INT32 = 16;
+    google.protobuf.StringValue title = 17;
+    google.protobuf.StringValue performer = 18;
+    bytes waveform = 19;
+    string file_name = 20;
+    bool free = 21;
+    bool text_color = 22;
     double duration = 100;
 }
 
@@ -4233,6 +4252,7 @@ message TL_inputGroupCall {
 //  + TL_inputInvoiceSlug
 //  + TL_inputInvoicePremiumGiftCode
 //  + TL_inputInvoiceStars
+//  + TL_inputInvoiceStars
 //
 message InputInvoice {
     string predicate_name = 1;
@@ -5083,6 +5103,8 @@ message TL_inputStickeredMediaDocument {
 //  + TL_inputStorePaymentGiftPremium
 //  + TL_inputStorePaymentPremiumGiftCode
 //  + TL_inputStorePaymentPremiumGiveaway
+//  + TL_inputStorePaymentStarsTopup
+//  + TL_inputStorePaymentStarsGift
 //  + TL_inputStorePaymentStars
 //  + TL_inputStorePaymentPremiumGiveaway
 //
@@ -5123,6 +5145,16 @@ message TL_inputStorePaymentPremiumGiftCode {
 
 // TL_inputStorePaymentPremiumGiveaway
 message TL_inputStorePaymentPremiumGiveaway {
+    InputStorePaymentPurpose data2 = 1;
+}
+
+// TL_inputStorePaymentStarsTopup
+message TL_inputStorePaymentStarsTopup {
+    InputStorePaymentPurpose data2 = 1;
+}
+
+// TL_inputStorePaymentStarsGift
+message TL_inputStorePaymentStarsGift {
     InputStorePaymentPurpose data2 = 1;
 }
 
@@ -5657,6 +5689,7 @@ message TL_maskCoords {
 //  + TL_mediaAreaChannelPost
 //  + TL_inputMediaAreaChannelPost
 //  + TL_mediaAreaUrl
+//  + TL_mediaAreaWeather
 //  + TL_mediaAreaGeoPoint
 //
 message MediaArea {
@@ -5679,6 +5712,9 @@ message MediaArea {
     int32 msg_id = 17;
     InputChannel channel = 18;
     string url = 19;
+    string emoji = 20;
+    double temperature_c = 21;
+    int32 color = 22;
 }
 
 // TL_mediaAreaVenue
@@ -5713,6 +5749,11 @@ message TL_inputMediaAreaChannelPost {
 
 // TL_mediaAreaUrl
 message TL_mediaAreaUrl {
+    MediaArea data2 = 1;
+}
+
+// TL_mediaAreaWeather
+message TL_mediaAreaWeather {
     MediaArea data2 = 1;
 }
 
@@ -5854,6 +5895,7 @@ message TL_messageService {
 //  + TL_messageActionBoostApply
 //  + TL_messageActionRequestedPeerSentMe
 //  + TL_messageActionPaymentRefunded
+//  + TL_messageActionGiftStars
 //  + TL_messageActionRequestedPeer
 //  + TL_messageActionGiftCode
 //  + TL_messageActionSetChatWallPaper
@@ -5934,8 +5976,10 @@ message MessageAction {
     int32 boosts = 65;
     repeated RequestedPeer peers_VECTORREQUESTEDPEER = 66;
     Peer peer = 67;
-    string domain_STRING = 68;
-    BizDataRaw biz_data = 69;
+    int64 stars = 68;
+    google.protobuf.StringValue transaction_id = 69;
+    string domain_STRING = 70;
+    BizDataRaw biz_data = 71;
     string title = 100;
 }
 
@@ -6156,6 +6200,11 @@ message TL_messageActionRequestedPeerSentMe {
 
 // TL_messageActionPaymentRefunded
 message TL_messageActionPaymentRefunded {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionGiftStars
+message TL_messageActionGiftStars {
     MessageAction data2 = 1;
 }
 
@@ -9583,6 +9632,25 @@ message TL_sponsoredWebPage {
 }
 
 
+// StarsGiftOption <--
+//  + TL_starsGiftOption
+//
+message StarsGiftOption {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool extended = 3;
+    int64 stars = 4;
+    google.protobuf.StringValue store_product = 5;
+    string currency = 6;
+    int64 amount = 7;
+}
+
+// TL_starsGiftOption
+message TL_starsGiftOption {
+    StarsGiftOption data2 = 1;
+}
+
+
 // StarsRevenueStatus <--
 //  + TL_starsRevenueStatus
 //
@@ -9632,18 +9700,19 @@ message StarsTransaction {
     bool refund = 3;
     bool pending = 4;
     bool failed = 5;
-    string id = 6;
-    int64 stars = 7;
-    int32 date = 8;
-    StarsTransactionPeer peer = 9;
-    google.protobuf.StringValue title = 10;
-    google.protobuf.StringValue description = 11;
-    WebDocument photo = 12;
-    google.protobuf.Int32Value transaction_date = 13;
-    google.protobuf.StringValue transaction_url = 14;
-    bytes bot_payload = 15;
-    google.protobuf.Int32Value msg_id = 16;
-    repeated MessageMedia extended_media = 17;
+    bool gift = 6;
+    string id = 7;
+    int64 stars = 8;
+    int32 date = 9;
+    StarsTransactionPeer peer = 10;
+    google.protobuf.StringValue title = 11;
+    google.protobuf.StringValue description = 12;
+    WebDocument photo = 13;
+    google.protobuf.Int32Value transaction_date = 14;
+    google.protobuf.StringValue transaction_url = 15;
+    bytes bot_payload = 16;
+    google.protobuf.Int32Value msg_id = 17;
+    repeated MessageMedia extended_media = 18;
 }
 
 // TL_starsTransaction
@@ -10229,6 +10298,7 @@ message TL_topPeer {
 //  + TL_topPeerCategoryPhoneCalls
 //  + TL_topPeerCategoryForwardUsers
 //  + TL_topPeerCategoryForwardChats
+//  + TL_topPeerCategoryBotsApp
 //
 message TopPeerCategory {
     string predicate_name = 1;
@@ -10272,6 +10342,11 @@ message TL_topPeerCategoryForwardUsers {
 
 // TL_topPeerCategoryForwardChats
 message TL_topPeerCategoryForwardChats {
+    TopPeerCategory data2 = 1;
+}
+
+// TL_topPeerCategoryBotsApp
+message TL_topPeerCategoryBotsApp {
     TopPeerCategory data2 = 1;
 }
 
@@ -11460,6 +11535,7 @@ message TL_urlAuthResultDefault {
 //  + TL_user
 //  + TL_user
 //  + TL_user
+//  + TL_user
 //
 message User {
     string predicate_name = 1;
@@ -11489,24 +11565,26 @@ message User {
     bool stories_unavailable = 25;
     bool contact_require_premium = 26;
     bool bot_business = 27;
-    google.protobuf.Int64Value access_hash = 28;
-    google.protobuf.StringValue first_name = 29;
-    google.protobuf.StringValue last_name = 30;
-    google.protobuf.StringValue username = 31;
-    google.protobuf.StringValue phone = 32;
-    UserProfilePhoto photo = 33;
-    UserStatus status = 34;
-    google.protobuf.Int32Value bot_info_version = 35;
-    repeated RestrictionReason restriction_reason = 36;
-    google.protobuf.StringValue bot_inline_placeholder = 37;
-    google.protobuf.StringValue lang_code = 38;
-    EmojiStatus emoji_status = 39;
-    repeated Username usernames = 40;
-    google.protobuf.Int32Value stories_max_id = 41;
-    PeerColor color_FLAGPEERCOLOR = 42;
-    PeerColor profile_color = 43;
-    google.protobuf.Int32Value color_FLAGINT32 = 44;
-    google.protobuf.Int64Value background_emoji_id = 45;
+    bool bot_has_main_app = 28;
+    google.protobuf.Int64Value access_hash = 29;
+    google.protobuf.StringValue first_name = 30;
+    google.protobuf.StringValue last_name = 31;
+    google.protobuf.StringValue username = 32;
+    google.protobuf.StringValue phone = 33;
+    UserProfilePhoto photo = 34;
+    UserStatus status = 35;
+    google.protobuf.Int32Value bot_info_version = 36;
+    repeated RestrictionReason restriction_reason = 37;
+    google.protobuf.StringValue bot_inline_placeholder = 38;
+    google.protobuf.StringValue lang_code = 39;
+    EmojiStatus emoji_status = 40;
+    repeated Username usernames = 41;
+    google.protobuf.Int32Value stories_max_id = 42;
+    PeerColor color_FLAGPEERCOLOR = 43;
+    PeerColor profile_color = 44;
+    google.protobuf.Int32Value bot_active_users = 45;
+    google.protobuf.Int32Value color_FLAGINT32 = 46;
+    google.protobuf.Int64Value background_emoji_id = 47;
     google.protobuf.Int32Value color = 100;
 }
 
@@ -12727,6 +12805,38 @@ message bots_BotInfo {
 // TL_bots_botInfo
 message TL_bots_botInfo {
     bots_BotInfo data2 = 1;
+}
+
+
+// bots_PopularAppBots <--
+//  + TL_bots_popularAppBots
+//
+message bots_PopularAppBots {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    google.protobuf.StringValue next_offset = 3;
+    repeated User users = 4;
+}
+
+// TL_bots_popularAppBots
+message TL_bots_popularAppBots {
+    bots_PopularAppBots data2 = 1;
+}
+
+
+// bots_PreviewInfo <--
+//  + TL_bots_previewInfo
+//
+message bots_PreviewInfo {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    repeated BotPreviewMedia media = 3;
+    repeated string lang_codes = 4;
+}
+
+// TL_bots_previewInfo
+message TL_bots_previewInfo {
+    bots_PreviewInfo data2 = 1;
 }
 
 
