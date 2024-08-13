@@ -16727,9 +16727,17 @@ const (
 	RPCMiniBotApps_MessagesSendWebViewData_FullMethodName              = "/mtproto.RPCMiniBotApps/messages_sendWebViewData"
 	RPCMiniBotApps_MessagesGetBotApp_FullMethodName                    = "/mtproto.RPCMiniBotApps/messages_getBotApp"
 	RPCMiniBotApps_MessagesRequestAppWebView53618BCE_FullMethodName    = "/mtproto.RPCMiniBotApps/messages_requestAppWebView53618BCE"
+	RPCMiniBotApps_MessagesRequestMainWebView_FullMethodName           = "/mtproto.RPCMiniBotApps/messages_requestMainWebView"
 	RPCMiniBotApps_BotsCanSendMessage_FullMethodName                   = "/mtproto.RPCMiniBotApps/bots_canSendMessage"
 	RPCMiniBotApps_BotsAllowSendMessage_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_allowSendMessage"
 	RPCMiniBotApps_BotsInvokeWebViewCustomMethod_FullMethodName        = "/mtproto.RPCMiniBotApps/bots_invokeWebViewCustomMethod"
+	RPCMiniBotApps_BotsGetPopularAppBots_FullMethodName                = "/mtproto.RPCMiniBotApps/bots_getPopularAppBots"
+	RPCMiniBotApps_BotsAddPreviewMedia_FullMethodName                  = "/mtproto.RPCMiniBotApps/bots_addPreviewMedia"
+	RPCMiniBotApps_BotsEditPreviewMedia_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_editPreviewMedia"
+	RPCMiniBotApps_BotsDeletePreviewMedia_FullMethodName               = "/mtproto.RPCMiniBotApps/bots_deletePreviewMedia"
+	RPCMiniBotApps_BotsReorderPreviewMedias_FullMethodName             = "/mtproto.RPCMiniBotApps/bots_reorderPreviewMedias"
+	RPCMiniBotApps_BotsGetPreviewInfo_FullMethodName                   = "/mtproto.RPCMiniBotApps/bots_getPreviewInfo"
+	RPCMiniBotApps_BotsGetPreviewMedias_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_getPreviewMedias"
 	RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView1A46500A"
 	RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_FullMethodName    = "/mtproto.RPCMiniBotApps/messages_requestAppWebView8C5A3B3C"
 	RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView299BEC8E"
@@ -16747,9 +16755,17 @@ type RPCMiniBotAppsClient interface {
 	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData, opts ...grpc.CallOption) (*Updates, error)
 	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp, opts ...grpc.CallOption) (*Messages_BotApp, error)
 	MessagesRequestAppWebView53618BCE(ctx context.Context, in *TLMessagesRequestAppWebView53618BCE, opts ...grpc.CallOption) (*WebViewResult, error)
+	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView, opts ...grpc.CallOption) (*WebViewResult, error)
 	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage, opts ...grpc.CallOption) (*Bool, error)
 	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage, opts ...grpc.CallOption) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod, opts ...grpc.CallOption) (*DataJSON, error)
+	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots, opts ...grpc.CallOption) (*Bots_PopularAppBots, error)
+	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error)
+	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error)
+	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia, opts ...grpc.CallOption) (*Bool, error)
+	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error)
+	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error)
+	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error)
 	MessagesRequestSimpleWebView1A46500A(ctx context.Context, in *TLMessagesRequestSimpleWebView1A46500A, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
 	MessagesRequestAppWebView8C5A3B3C(ctx context.Context, in *TLMessagesRequestAppWebView8C5A3B3C, opts ...grpc.CallOption) (*AppWebViewResult, error)
 	MessagesRequestSimpleWebView299BEC8E(ctx context.Context, in *TLMessagesRequestSimpleWebView299BEC8E, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
@@ -16827,6 +16843,15 @@ func (c *rPCMiniBotAppsClient) MessagesRequestAppWebView53618BCE(ctx context.Con
 	return out, nil
 }
 
+func (c *rPCMiniBotAppsClient) MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView, opts ...grpc.CallOption) (*WebViewResult, error) {
+	out := new(WebViewResult)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestMainWebView_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCMiniBotAppsClient) BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsCanSendMessage_FullMethodName, in, out, opts...)
@@ -16848,6 +16873,69 @@ func (c *rPCMiniBotAppsClient) BotsAllowSendMessage(ctx context.Context, in *TLB
 func (c *rPCMiniBotAppsClient) BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod, opts ...grpc.CallOption) (*DataJSON, error) {
 	out := new(DataJSON)
 	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsInvokeWebViewCustomMethod_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots, opts ...grpc.CallOption) (*Bots_PopularAppBots, error) {
+	out := new(Bots_PopularAppBots)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsGetPopularAppBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error) {
+	out := new(BotPreviewMedia)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsAddPreviewMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error) {
+	out := new(BotPreviewMedia)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsEditPreviewMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsDeletePreviewMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsReorderPreviewMedias_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error) {
+	out := new(Bots_PreviewInfo)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsGetPreviewInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMiniBotAppsClient) BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error) {
+	out := new(Vector_BotPreviewMedia)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsGetPreviewMedias_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -16901,9 +16989,17 @@ type RPCMiniBotAppsServer interface {
 	MessagesSendWebViewData(context.Context, *TLMessagesSendWebViewData) (*Updates, error)
 	MessagesGetBotApp(context.Context, *TLMessagesGetBotApp) (*Messages_BotApp, error)
 	MessagesRequestAppWebView53618BCE(context.Context, *TLMessagesRequestAppWebView53618BCE) (*WebViewResult, error)
+	MessagesRequestMainWebView(context.Context, *TLMessagesRequestMainWebView) (*WebViewResult, error)
 	BotsCanSendMessage(context.Context, *TLBotsCanSendMessage) (*Bool, error)
 	BotsAllowSendMessage(context.Context, *TLBotsAllowSendMessage) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
+	BotsGetPopularAppBots(context.Context, *TLBotsGetPopularAppBots) (*Bots_PopularAppBots, error)
+	BotsAddPreviewMedia(context.Context, *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
+	BotsEditPreviewMedia(context.Context, *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
+	BotsDeletePreviewMedia(context.Context, *TLBotsDeletePreviewMedia) (*Bool, error)
+	BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error)
+	BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error)
+	BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error)
 	MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error)
 	MessagesRequestAppWebView8C5A3B3C(context.Context, *TLMessagesRequestAppWebView8C5A3B3C) (*AppWebViewResult, error)
 	MessagesRequestSimpleWebView299BEC8E(context.Context, *TLMessagesRequestSimpleWebView299BEC8E) (*SimpleWebViewResult, error)
@@ -16935,6 +17031,9 @@ func (UnimplementedRPCMiniBotAppsServer) MessagesGetBotApp(context.Context, *TLM
 func (UnimplementedRPCMiniBotAppsServer) MessagesRequestAppWebView53618BCE(context.Context, *TLMessagesRequestAppWebView53618BCE) (*WebViewResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestAppWebView53618BCE not implemented")
 }
+func (UnimplementedRPCMiniBotAppsServer) MessagesRequestMainWebView(context.Context, *TLMessagesRequestMainWebView) (*WebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestMainWebView not implemented")
+}
 func (UnimplementedRPCMiniBotAppsServer) BotsCanSendMessage(context.Context, *TLBotsCanSendMessage) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsCanSendMessage not implemented")
 }
@@ -16943,6 +17042,27 @@ func (UnimplementedRPCMiniBotAppsServer) BotsAllowSendMessage(context.Context, *
 }
 func (UnimplementedRPCMiniBotAppsServer) BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsInvokeWebViewCustomMethod not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsGetPopularAppBots(context.Context, *TLBotsGetPopularAppBots) (*Bots_PopularAppBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPopularAppBots not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsAddPreviewMedia(context.Context, *TLBotsAddPreviewMedia) (*BotPreviewMedia, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsAddPreviewMedia not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsEditPreviewMedia(context.Context, *TLBotsEditPreviewMedia) (*BotPreviewMedia, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsEditPreviewMedia not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsDeletePreviewMedia(context.Context, *TLBotsDeletePreviewMedia) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsDeletePreviewMedia not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsReorderPreviewMedias not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewInfo not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewMedias not implemented")
 }
 func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView1A46500A not implemented")
@@ -17094,6 +17214,24 @@ func _RPCMiniBotApps_MessagesRequestAppWebView53618BCE_Handler(srv interface{}, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMiniBotApps_MessagesRequestMainWebView_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestMainWebView)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestMainWebView(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_MessagesRequestMainWebView_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).MessagesRequestMainWebView(ctx, req.(*TLMessagesRequestMainWebView))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCMiniBotApps_BotsCanSendMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLBotsCanSendMessage)
 	if err := dec(in); err != nil {
@@ -17144,6 +17282,132 @@ func _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler(srv interface{}, ctx 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCMiniBotAppsServer).BotsInvokeWebViewCustomMethod(ctx, req.(*TLBotsInvokeWebViewCustomMethod))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_BotsGetPopularAppBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsGetPopularAppBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsGetPopularAppBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsGetPopularAppBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsGetPopularAppBots(ctx, req.(*TLBotsGetPopularAppBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_BotsAddPreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsAddPreviewMedia)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsAddPreviewMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsAddPreviewMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsAddPreviewMedia(ctx, req.(*TLBotsAddPreviewMedia))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_BotsEditPreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsEditPreviewMedia)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsEditPreviewMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsEditPreviewMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsEditPreviewMedia(ctx, req.(*TLBotsEditPreviewMedia))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_BotsDeletePreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsDeletePreviewMedia)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsDeletePreviewMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsDeletePreviewMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsDeletePreviewMedia(ctx, req.(*TLBotsDeletePreviewMedia))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_BotsReorderPreviewMedias_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsReorderPreviewMedias)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsReorderPreviewMedias(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsReorderPreviewMedias_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsReorderPreviewMedias(ctx, req.(*TLBotsReorderPreviewMedias))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_BotsGetPreviewInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsGetPreviewInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsGetPreviewInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsGetPreviewInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsGetPreviewInfo(ctx, req.(*TLBotsGetPreviewInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMiniBotApps_BotsGetPreviewMedias_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsGetPreviewMedias)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsGetPreviewMedias(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsGetPreviewMedias_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsGetPreviewMedias(ctx, req.(*TLBotsGetPreviewMedias))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -17256,6 +17520,10 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCMiniBotApps_MessagesRequestAppWebView53618BCE_Handler,
 		},
 		{
+			MethodName: "messages_requestMainWebView",
+			Handler:    _RPCMiniBotApps_MessagesRequestMainWebView_Handler,
+		},
+		{
 			MethodName: "bots_canSendMessage",
 			Handler:    _RPCMiniBotApps_BotsCanSendMessage_Handler,
 		},
@@ -17266,6 +17534,34 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "bots_invokeWebViewCustomMethod",
 			Handler:    _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler,
+		},
+		{
+			MethodName: "bots_getPopularAppBots",
+			Handler:    _RPCMiniBotApps_BotsGetPopularAppBots_Handler,
+		},
+		{
+			MethodName: "bots_addPreviewMedia",
+			Handler:    _RPCMiniBotApps_BotsAddPreviewMedia_Handler,
+		},
+		{
+			MethodName: "bots_editPreviewMedia",
+			Handler:    _RPCMiniBotApps_BotsEditPreviewMedia_Handler,
+		},
+		{
+			MethodName: "bots_deletePreviewMedia",
+			Handler:    _RPCMiniBotApps_BotsDeletePreviewMedia_Handler,
+		},
+		{
+			MethodName: "bots_reorderPreviewMedias",
+			Handler:    _RPCMiniBotApps_BotsReorderPreviewMedias_Handler,
+		},
+		{
+			MethodName: "bots_getPreviewInfo",
+			Handler:    _RPCMiniBotApps_BotsGetPreviewInfo_Handler,
+		},
+		{
+			MethodName: "bots_getPreviewMedias",
+			Handler:    _RPCMiniBotApps_BotsGetPreviewMedias_Handler,
 		},
 		{
 			MethodName: "messages_requestSimpleWebView1A46500A",
@@ -18326,6 +18622,7 @@ const (
 	RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueWithdrawalUrl"
 	RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueAdsAccountUrl"
 	RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTransactionsByID"
+	RPCPayments_PaymentsGetStarsGiftOptions_FullMethodName          = "/mtproto.RPCPayments/payments_getStarsGiftOptions"
 	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName      = "/mtproto.RPCPayments/payments_requestRecurringPayment"
 	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName     = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
 )
@@ -18353,6 +18650,7 @@ type RPCPaymentsClient interface {
 	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error)
 	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error)
 	PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(ctx context.Context, in *TLPaymentsRestorePlayMarketReceipt, opts ...grpc.CallOption) (*Updates, error)
 }
@@ -18536,6 +18834,15 @@ func (c *rPCPaymentsClient) PaymentsGetStarsTransactionsByID(ctx context.Context
 	return out, nil
 }
 
+func (c *rPCPaymentsClient) PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error) {
+	out := new(Vector_StarsGiftOption)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsGiftOptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCPaymentsClient) PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCPayments_PaymentsRequestRecurringPayment_FullMethodName, in, out, opts...)
@@ -18577,6 +18884,7 @@ type RPCPaymentsServer interface {
 	PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error)
 	PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
+	PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error)
 	PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(context.Context, *TLPaymentsRestorePlayMarketReceipt) (*Updates, error)
 }
@@ -18641,6 +18949,9 @@ func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueAdsAccountUrl(conte
 }
 func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTransactionsByID not implemented")
+}
+func (UnimplementedRPCPaymentsServer) PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiftOptions not implemented")
 }
 func (UnimplementedRPCPaymentsServer) PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRequestRecurringPayment not implemented")
@@ -19002,6 +19313,24 @@ func _RPCPayments_PaymentsGetStarsTransactionsByID_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCPayments_PaymentsGetStarsGiftOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsGiftOptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsGiftOptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetStarsGiftOptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetStarsGiftOptions(ctx, req.(*TLPaymentsGetStarsGiftOptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCPayments_PaymentsRequestRecurringPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsRequestRecurringPayment)
 	if err := dec(in); err != nil {
@@ -19120,6 +19449,10 @@ var RPCPayments_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarsTransactionsByID",
 			Handler:    _RPCPayments_PaymentsGetStarsTransactionsByID_Handler,
+		},
+		{
+			MethodName: "payments_getStarsGiftOptions",
+			Handler:    _RPCPayments_PaymentsGetStarsGiftOptions_Handler,
 		},
 		{
 			MethodName: "payments_requestRecurringPayment",
