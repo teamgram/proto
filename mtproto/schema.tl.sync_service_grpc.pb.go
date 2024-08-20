@@ -2120,9 +2120,6 @@ const (
 	RPCBoosts_StoriesGetBoostersList_FullMethodName                 = "/mtproto.RPCBoosts/stories_getBoostersList"
 	RPCBoosts_StoriesCanApplyBoost_FullMethodName                   = "/mtproto.RPCBoosts/stories_canApplyBoost"
 	RPCBoosts_StoriesApplyBoost_FullMethodName                      = "/mtproto.RPCBoosts/stories_applyBoost"
-	RPCBoosts_UsersGetStoriesMaxIDs_FullMethodName                  = "/mtproto.RPCBoosts/users_getStoriesMaxIDs"
-	RPCBoosts_StoriesGetUserStories_FullMethodName                  = "/mtproto.RPCBoosts/stories_getUserStories"
-	RPCBoosts_StoriesGetAllReadUserStories_FullMethodName           = "/mtproto.RPCBoosts/stories_getAllReadUserStories"
 )
 
 // RPCBoostsClient is the client API for RPCBoosts service.
@@ -2139,9 +2136,6 @@ type RPCBoostsClient interface {
 	StoriesGetBoostersList(ctx context.Context, in *TLStoriesGetBoostersList, opts ...grpc.CallOption) (*Stories_BoostersList, error)
 	StoriesCanApplyBoost(ctx context.Context, in *TLStoriesCanApplyBoost, opts ...grpc.CallOption) (*Stories_CanApplyBoostResult, error)
 	StoriesApplyBoost(ctx context.Context, in *TLStoriesApplyBoost, opts ...grpc.CallOption) (*Bool, error)
-	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
-	StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error)
-	StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCBoostsClient struct {
@@ -2242,33 +2236,6 @@ func (c *rPCBoostsClient) StoriesApplyBoost(ctx context.Context, in *TLStoriesAp
 	return out, nil
 }
 
-func (c *rPCBoostsClient) UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error) {
-	out := new(Vector_Int)
-	err := c.cc.Invoke(ctx, RPCBoosts_UsersGetStoriesMaxIDs_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBoostsClient) StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error) {
-	out := new(Stories_UserStories)
-	err := c.cc.Invoke(ctx, RPCBoosts_StoriesGetUserStories_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBoostsClient) StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCBoosts_StoriesGetAllReadUserStories_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCBoostsServer is the server API for RPCBoosts service.
 // All implementations should embed UnimplementedRPCBoostsServer
 // for forward compatibility
@@ -2283,9 +2250,6 @@ type RPCBoostsServer interface {
 	StoriesGetBoostersList(context.Context, *TLStoriesGetBoostersList) (*Stories_BoostersList, error)
 	StoriesCanApplyBoost(context.Context, *TLStoriesCanApplyBoost) (*Stories_CanApplyBoostResult, error)
 	StoriesApplyBoost(context.Context, *TLStoriesApplyBoost) (*Bool, error)
-	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
-	StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error)
-	StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error)
 }
 
 // UnimplementedRPCBoostsServer should be embedded to have forward compatible implementations.
@@ -2321,15 +2285,6 @@ func (UnimplementedRPCBoostsServer) StoriesCanApplyBoost(context.Context, *TLSto
 }
 func (UnimplementedRPCBoostsServer) StoriesApplyBoost(context.Context, *TLStoriesApplyBoost) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesApplyBoost not implemented")
-}
-func (UnimplementedRPCBoostsServer) UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UsersGetStoriesMaxIDs not implemented")
-}
-func (UnimplementedRPCBoostsServer) StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetUserStories not implemented")
-}
-func (UnimplementedRPCBoostsServer) StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAllReadUserStories not implemented")
 }
 
 // UnsafeRPCBoostsServer may be embedded to opt out of forward compatibility for this service.
@@ -2523,60 +2478,6 @@ func _RPCBoosts_StoriesApplyBoost_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBoosts_UsersGetStoriesMaxIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLUsersGetStoriesMaxIDs)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBoostsServer).UsersGetStoriesMaxIDs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBoosts_UsersGetStoriesMaxIDs_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBoostsServer).UsersGetStoriesMaxIDs(ctx, req.(*TLUsersGetStoriesMaxIDs))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBoosts_StoriesGetUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStoriesGetUserStories)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBoostsServer).StoriesGetUserStories(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBoosts_StoriesGetUserStories_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBoostsServer).StoriesGetUserStories(ctx, req.(*TLStoriesGetUserStories))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBoosts_StoriesGetAllReadUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStoriesGetAllReadUserStories)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBoostsServer).StoriesGetAllReadUserStories(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBoosts_StoriesGetAllReadUserStories_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBoostsServer).StoriesGetAllReadUserStories(ctx, req.(*TLStoriesGetAllReadUserStories))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCBoosts_ServiceDesc is the grpc.ServiceDesc for RPCBoosts service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2623,18 +2524,6 @@ var RPCBoosts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "stories_applyBoost",
 			Handler:    _RPCBoosts_StoriesApplyBoost_Handler,
-		},
-		{
-			MethodName: "users_getStoriesMaxIDs",
-			Handler:    _RPCBoosts_UsersGetStoriesMaxIDs_Handler,
-		},
-		{
-			MethodName: "stories_getUserStories",
-			Handler:    _RPCBoosts_StoriesGetUserStories_Handler,
-		},
-		{
-			MethodName: "stories_getAllReadUserStories",
-			Handler:    _RPCBoosts_StoriesGetAllReadUserStories_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -23612,6 +23501,9 @@ const (
 	RPCStars_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName = "/mtproto.RPCStars/payments_getStarsRevenueAdsAccountUrl"
 	RPCStars_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCStars/payments_getStarsTransactionsByID"
 	RPCStars_PaymentsGetStarsGiftOptions_FullMethodName          = "/mtproto.RPCStars/payments_getStarsGiftOptions"
+	RPCStars_PaymentsGetStarsSubscriptions_FullMethodName        = "/mtproto.RPCStars/payments_getStarsSubscriptions"
+	RPCStars_PaymentsChangeStarsSubscription_FullMethodName      = "/mtproto.RPCStars/payments_changeStarsSubscription"
+	RPCStars_PaymentsFulfillStarsSubscription_FullMethodName     = "/mtproto.RPCStars/payments_fulfillStarsSubscription"
 )
 
 // RPCStarsClient is the client API for RPCStars service.
@@ -23628,6 +23520,9 @@ type RPCStarsClient interface {
 	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error)
+	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCStarsClient struct {
@@ -23728,6 +23623,33 @@ func (c *rPCStarsClient) PaymentsGetStarsGiftOptions(ctx context.Context, in *TL
 	return out, nil
 }
 
+func (c *rPCStarsClient) PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsSubscriptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsChangeStarsSubscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsFulfillStarsSubscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCStarsServer is the server API for RPCStars service.
 // All implementations should embed UnimplementedRPCStarsServer
 // for forward compatibility
@@ -23742,6 +23664,9 @@ type RPCStarsServer interface {
 	PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error)
+	PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error)
+	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
+	PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error)
 }
 
 // UnimplementedRPCStarsServer should be embedded to have forward compatible implementations.
@@ -23777,6 +23702,15 @@ func (UnimplementedRPCStarsServer) PaymentsGetStarsTransactionsByID(context.Cont
 }
 func (UnimplementedRPCStarsServer) PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiftOptions not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsSubscriptions not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsChangeStarsSubscription not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsFulfillStarsSubscription not implemented")
 }
 
 // UnsafeRPCStarsServer may be embedded to opt out of forward compatibility for this service.
@@ -23970,6 +23904,60 @@ func _RPCStars_PaymentsGetStarsGiftOptions_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStars_PaymentsGetStarsSubscriptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsSubscriptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsSubscriptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsSubscriptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsSubscriptions(ctx, req.(*TLPaymentsGetStarsSubscriptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsChangeStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsChangeStarsSubscription)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsChangeStarsSubscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, req.(*TLPaymentsChangeStarsSubscription))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsFulfillStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsFulfillStarsSubscription)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsFulfillStarsSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsFulfillStarsSubscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsFulfillStarsSubscription(ctx, req.(*TLPaymentsFulfillStarsSubscription))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCStars_ServiceDesc is the grpc.ServiceDesc for RPCStars service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -24016,6 +24004,18 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarsGiftOptions",
 			Handler:    _RPCStars_PaymentsGetStarsGiftOptions_Handler,
+		},
+		{
+			MethodName: "payments_getStarsSubscriptions",
+			Handler:    _RPCStars_PaymentsGetStarsSubscriptions_Handler,
+		},
+		{
+			MethodName: "payments_changeStarsSubscription",
+			Handler:    _RPCStars_PaymentsChangeStarsSubscription_Handler,
+		},
+		{
+			MethodName: "payments_fulfillStarsSubscription",
+			Handler:    _RPCStars_PaymentsFulfillStarsSubscription_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -25568,39 +25568,46 @@ var RPCStickers_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCStories_StoriesCanSendStory_FullMethodName            = "/mtproto.RPCStories/stories_canSendStory"
-	RPCStories_StoriesSendStory_FullMethodName               = "/mtproto.RPCStories/stories_sendStory"
-	RPCStories_StoriesEditStory_FullMethodName               = "/mtproto.RPCStories/stories_editStory"
-	RPCStories_StoriesDeleteStories_FullMethodName           = "/mtproto.RPCStories/stories_deleteStories"
-	RPCStories_StoriesTogglePinned_FullMethodName            = "/mtproto.RPCStories/stories_togglePinned"
-	RPCStories_StoriesGetAllStories_FullMethodName           = "/mtproto.RPCStories/stories_getAllStories"
-	RPCStories_StoriesGetPinnedStories_FullMethodName        = "/mtproto.RPCStories/stories_getPinnedStories"
-	RPCStories_StoriesGetStoriesArchive_FullMethodName       = "/mtproto.RPCStories/stories_getStoriesArchive"
-	RPCStories_StoriesGetStoriesByID_FullMethodName          = "/mtproto.RPCStories/stories_getStoriesByID"
-	RPCStories_StoriesToggleAllStoriesHidden_FullMethodName  = "/mtproto.RPCStories/stories_toggleAllStoriesHidden"
-	RPCStories_StoriesReadStories_FullMethodName             = "/mtproto.RPCStories/stories_readStories"
-	RPCStories_StoriesIncrementStoryViews_FullMethodName     = "/mtproto.RPCStories/stories_incrementStoryViews"
-	RPCStories_StoriesGetStoryViewsList_FullMethodName       = "/mtproto.RPCStories/stories_getStoryViewsList"
-	RPCStories_StoriesGetStoriesViews_FullMethodName         = "/mtproto.RPCStories/stories_getStoriesViews"
-	RPCStories_StoriesExportStoryLink_FullMethodName         = "/mtproto.RPCStories/stories_exportStoryLink"
-	RPCStories_StoriesReport_FullMethodName                  = "/mtproto.RPCStories/stories_report"
-	RPCStories_StoriesActivateStealthMode_FullMethodName     = "/mtproto.RPCStories/stories_activateStealthMode"
-	RPCStories_StoriesSendReaction_FullMethodName            = "/mtproto.RPCStories/stories_sendReaction"
-	RPCStories_StoriesGetPeerStories_FullMethodName          = "/mtproto.RPCStories/stories_getPeerStories"
-	RPCStories_StoriesGetAllReadPeerStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadPeerStories"
-	RPCStories_StoriesGetPeerMaxIDs_FullMethodName           = "/mtproto.RPCStories/stories_getPeerMaxIDs"
-	RPCStories_StoriesGetChatsToSend_FullMethodName          = "/mtproto.RPCStories/stories_getChatsToSend"
-	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
-	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
-	RPCStories_StoriesTogglePinnedToTop_FullMethodName       = "/mtproto.RPCStories/stories_togglePinnedToTop"
-	RPCStories_StoriesSearchPosts_FullMethodName             = "/mtproto.RPCStories/stories_searchPosts"
-	RPCStories_ContactsToggleStoriesHidden_FullMethodName    = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
+	RPCStories_MessagesSendPaidReaction_FullMethodName          = "/mtproto.RPCStories/messages_sendPaidReaction"
+	RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName = "/mtproto.RPCStories/messages_togglePaidReactionPrivacy"
+	RPCStories_StoriesCanSendStory_FullMethodName               = "/mtproto.RPCStories/stories_canSendStory"
+	RPCStories_StoriesSendStory_FullMethodName                  = "/mtproto.RPCStories/stories_sendStory"
+	RPCStories_StoriesEditStory_FullMethodName                  = "/mtproto.RPCStories/stories_editStory"
+	RPCStories_StoriesDeleteStories_FullMethodName              = "/mtproto.RPCStories/stories_deleteStories"
+	RPCStories_StoriesTogglePinned_FullMethodName               = "/mtproto.RPCStories/stories_togglePinned"
+	RPCStories_StoriesGetAllStories_FullMethodName              = "/mtproto.RPCStories/stories_getAllStories"
+	RPCStories_StoriesGetPinnedStories_FullMethodName           = "/mtproto.RPCStories/stories_getPinnedStories"
+	RPCStories_StoriesGetStoriesArchive_FullMethodName          = "/mtproto.RPCStories/stories_getStoriesArchive"
+	RPCStories_StoriesGetStoriesByID_FullMethodName             = "/mtproto.RPCStories/stories_getStoriesByID"
+	RPCStories_StoriesToggleAllStoriesHidden_FullMethodName     = "/mtproto.RPCStories/stories_toggleAllStoriesHidden"
+	RPCStories_StoriesReadStories_FullMethodName                = "/mtproto.RPCStories/stories_readStories"
+	RPCStories_StoriesIncrementStoryViews_FullMethodName        = "/mtproto.RPCStories/stories_incrementStoryViews"
+	RPCStories_StoriesGetStoryViewsList_FullMethodName          = "/mtproto.RPCStories/stories_getStoryViewsList"
+	RPCStories_StoriesGetStoriesViews_FullMethodName            = "/mtproto.RPCStories/stories_getStoriesViews"
+	RPCStories_StoriesExportStoryLink_FullMethodName            = "/mtproto.RPCStories/stories_exportStoryLink"
+	RPCStories_StoriesReport_FullMethodName                     = "/mtproto.RPCStories/stories_report"
+	RPCStories_StoriesActivateStealthMode_FullMethodName        = "/mtproto.RPCStories/stories_activateStealthMode"
+	RPCStories_StoriesSendReaction_FullMethodName               = "/mtproto.RPCStories/stories_sendReaction"
+	RPCStories_StoriesGetPeerStories_FullMethodName             = "/mtproto.RPCStories/stories_getPeerStories"
+	RPCStories_StoriesGetAllReadPeerStories_FullMethodName      = "/mtproto.RPCStories/stories_getAllReadPeerStories"
+	RPCStories_StoriesGetPeerMaxIDs_FullMethodName              = "/mtproto.RPCStories/stories_getPeerMaxIDs"
+	RPCStories_StoriesGetChatsToSend_FullMethodName             = "/mtproto.RPCStories/stories_getChatsToSend"
+	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName    = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
+	RPCStories_StoriesGetStoryReactionsList_FullMethodName      = "/mtproto.RPCStories/stories_getStoryReactionsList"
+	RPCStories_StoriesTogglePinnedToTop_FullMethodName          = "/mtproto.RPCStories/stories_togglePinnedToTop"
+	RPCStories_StoriesSearchPosts_FullMethodName                = "/mtproto.RPCStories/stories_searchPosts"
+	RPCStories_UsersGetStoriesMaxIDs_FullMethodName             = "/mtproto.RPCStories/users_getStoriesMaxIDs"
+	RPCStories_ContactsToggleStoriesHidden_FullMethodName       = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
+	RPCStories_StoriesGetUserStories_FullMethodName             = "/mtproto.RPCStories/stories_getUserStories"
+	RPCStories_StoriesGetAllReadUserStories_FullMethodName      = "/mtproto.RPCStories/stories_getAllReadUserStories"
 )
 
 // RPCStoriesClient is the client API for RPCStories service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCStoriesClient interface {
+	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error)
+	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error)
 	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory, opts ...grpc.CallOption) (*Bool, error)
 	StoriesSendStory(ctx context.Context, in *TLStoriesSendStory, opts ...grpc.CallOption) (*Updates, error)
 	StoriesEditStory(ctx context.Context, in *TLStoriesEditStory, opts ...grpc.CallOption) (*Updates, error)
@@ -25627,7 +25634,10 @@ type RPCStoriesClient interface {
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList, opts ...grpc.CallOption) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop, opts ...grpc.CallOption) (*Bool, error)
 	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts, opts ...grpc.CallOption) (*Stories_FoundStories, error)
+	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(ctx context.Context, in *TLContactsToggleStoriesHidden, opts ...grpc.CallOption) (*Bool, error)
+	StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error)
+	StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCStoriesClient struct {
@@ -25636,6 +25646,24 @@ type rPCStoriesClient struct {
 
 func NewRPCStoriesClient(cc grpc.ClientConnInterface) RPCStoriesClient {
 	return &rPCStoriesClient{cc}
+}
+
+func (c *rPCStoriesClient) MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCStories_MessagesSendPaidReaction_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *rPCStoriesClient) StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory, opts ...grpc.CallOption) (*Bool, error) {
@@ -25872,9 +25900,36 @@ func (c *rPCStoriesClient) StoriesSearchPosts(ctx context.Context, in *TLStories
 	return out, nil
 }
 
+func (c *rPCStoriesClient) UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error) {
+	out := new(Vector_Int)
+	err := c.cc.Invoke(ctx, RPCStories_UsersGetStoriesMaxIDs_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCStoriesClient) ContactsToggleStoriesHidden(ctx context.Context, in *TLContactsToggleStoriesHidden, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCStories_ContactsToggleStoriesHidden_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error) {
+	out := new(Stories_UserStories)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesGetUserStories_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesGetAllReadUserStories_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -25885,6 +25940,8 @@ func (c *rPCStoriesClient) ContactsToggleStoriesHidden(ctx context.Context, in *
 // All implementations should embed UnimplementedRPCStoriesServer
 // for forward compatibility
 type RPCStoriesServer interface {
+	MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error)
+	MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
 	StoriesCanSendStory(context.Context, *TLStoriesCanSendStory) (*Bool, error)
 	StoriesSendStory(context.Context, *TLStoriesSendStory) (*Updates, error)
 	StoriesEditStory(context.Context, *TLStoriesEditStory) (*Updates, error)
@@ -25911,13 +25968,22 @@ type RPCStoriesServer interface {
 	StoriesGetStoryReactionsList(context.Context, *TLStoriesGetStoryReactionsList) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(context.Context, *TLStoriesTogglePinnedToTop) (*Bool, error)
 	StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error)
+	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error)
+	StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error)
+	StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error)
 }
 
 // UnimplementedRPCStoriesServer should be embedded to have forward compatible implementations.
 type UnimplementedRPCStoriesServer struct {
 }
 
+func (UnimplementedRPCStoriesServer) MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendPaidReaction not implemented")
+}
+func (UnimplementedRPCStoriesServer) MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesTogglePaidReactionPrivacy not implemented")
+}
 func (UnimplementedRPCStoriesServer) StoriesCanSendStory(context.Context, *TLStoriesCanSendStory) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStory not implemented")
 }
@@ -25996,8 +26062,17 @@ func (UnimplementedRPCStoriesServer) StoriesTogglePinnedToTop(context.Context, *
 func (UnimplementedRPCStoriesServer) StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesSearchPosts not implemented")
 }
+func (UnimplementedRPCStoriesServer) UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersGetStoriesMaxIDs not implemented")
+}
 func (UnimplementedRPCStoriesServer) ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContactsToggleStoriesHidden not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetUserStories not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAllReadUserStories not implemented")
 }
 
 // UnsafeRPCStoriesServer may be embedded to opt out of forward compatibility for this service.
@@ -26009,6 +26084,42 @@ type UnsafeRPCStoriesServer interface {
 
 func RegisterRPCStoriesServer(s grpc.ServiceRegistrar, srv RPCStoriesServer) {
 	s.RegisterService(&RPCStories_ServiceDesc, srv)
+}
+
+func _RPCStories_MessagesSendPaidReaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSendPaidReaction)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).MessagesSendPaidReaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_MessagesSendPaidReaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).MessagesSendPaidReaction(ctx, req.(*TLMessagesSendPaidReaction))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_MessagesTogglePaidReactionPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesTogglePaidReactionPrivacy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).MessagesTogglePaidReactionPrivacy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).MessagesTogglePaidReactionPrivacy(ctx, req.(*TLMessagesTogglePaidReactionPrivacy))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _RPCStories_StoriesCanSendStory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -26479,6 +26590,24 @@ func _RPCStories_StoriesSearchPosts_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStories_UsersGetStoriesMaxIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLUsersGetStoriesMaxIDs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).UsersGetStoriesMaxIDs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_UsersGetStoriesMaxIDs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).UsersGetStoriesMaxIDs(ctx, req.(*TLUsersGetStoriesMaxIDs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCStories_ContactsToggleStoriesHidden_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLContactsToggleStoriesHidden)
 	if err := dec(in); err != nil {
@@ -26497,6 +26626,42 @@ func _RPCStories_ContactsToggleStoriesHidden_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStories_StoriesGetUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetUserStories)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesGetUserStories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesGetUserStories_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesGetUserStories(ctx, req.(*TLStoriesGetUserStories))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesGetAllReadUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetAllReadUserStories)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesGetAllReadUserStories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesGetAllReadUserStories_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesGetAllReadUserStories(ctx, req.(*TLStoriesGetAllReadUserStories))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCStories_ServiceDesc is the grpc.ServiceDesc for RPCStories service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -26504,6 +26669,14 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "mtproto.RPCStories",
 	HandlerType: (*RPCStoriesServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_sendPaidReaction",
+			Handler:    _RPCStories_MessagesSendPaidReaction_Handler,
+		},
+		{
+			MethodName: "messages_togglePaidReactionPrivacy",
+			Handler:    _RPCStories_MessagesTogglePaidReactionPrivacy_Handler,
+		},
 		{
 			MethodName: "stories_canSendStory",
 			Handler:    _RPCStories_StoriesCanSendStory_Handler,
@@ -26609,8 +26782,20 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCStories_StoriesSearchPosts_Handler,
 		},
 		{
+			MethodName: "users_getStoriesMaxIDs",
+			Handler:    _RPCStories_UsersGetStoriesMaxIDs_Handler,
+		},
+		{
 			MethodName: "contacts_toggleStoriesHidden",
 			Handler:    _RPCStories_ContactsToggleStoriesHidden_Handler,
+		},
+		{
+			MethodName: "stories_getUserStories",
+			Handler:    _RPCStories_StoriesGetUserStories_Handler,
+		},
+		{
+			MethodName: "stories_getAllReadUserStories",
+			Handler:    _RPCStories_StoriesGetAllReadUserStories_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
