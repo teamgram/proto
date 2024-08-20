@@ -4623,10 +4623,6 @@ service RPCAccentColors {
 }
 
 service RPCAccount {
-    rpc account_updateProfile(TL_account_updateProfile) returns (User) {}
-    rpc account_updateStatus(TL_account_updateStatus) returns (Bool) {}
-    rpc account_getPrivacy(TL_account_getPrivacy) returns (account_PrivacyRules) {}
-    rpc account_setPrivacy(TL_account_setPrivacy) returns (account_PrivacyRules) {}
     rpc account_deleteAccount(TL_account_deleteAccount) returns (Bool) {}
     rpc account_getAccountTTL(TL_account_getAccountTTL) returns (AccountDaysTTL) {}
     rpc account_setAccountTTL(TL_account_setAccountTTL) returns (Bool) {}
@@ -4635,12 +4631,6 @@ service RPCAccount {
     rpc account_resetAuthorization(TL_account_resetAuthorization) returns (Bool) {}
     rpc account_sendConfirmPhoneCode(TL_account_sendConfirmPhoneCode) returns (auth_SentCode) {}
     rpc account_confirmPhone(TL_account_confirmPhone) returns (Bool) {}
-    rpc account_getGlobalPrivacySettings(TL_account_getGlobalPrivacySettings) returns (GlobalPrivacySettings) {}
-    rpc account_setGlobalPrivacySettings(TL_account_setGlobalPrivacySettings) returns (GlobalPrivacySettings) {}
-    rpc account_updateBirthday(TL_account_updateBirthday) returns (Bool) {}
-    rpc messages_setDefaultHistoryTTL(TL_messages_setDefaultHistoryTTL) returns (Bool) {}
-    rpc messages_getDefaultHistoryTTL(TL_messages_getDefaultHistoryTTL) returns (DefaultHistoryTTL) {}
-    rpc account_updateVerified(TL_account_updateVerified) returns (User) {}
 }
 
 service RPCAntiSpam {
@@ -4701,6 +4691,9 @@ service RPCBoosts {
     rpc stories_getBoostersList(TL_stories_getBoostersList) returns (stories_BoostersList) {}
     rpc stories_canApplyBoost(TL_stories_canApplyBoost) returns (stories_CanApplyBoostResult) {}
     rpc stories_applyBoost(TL_stories_applyBoost) returns (Bool) {}
+    rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
+    rpc stories_getUserStories(TL_stories_getUserStories) returns (stories_UserStories) {}
+    rpc stories_getAllReadUserStories(TL_stories_getAllReadUserStories) returns (Updates) {}
 }
 
 service RPCBotAdminRight {
@@ -4728,23 +4721,40 @@ service RPCBots {
     rpc bots_getBotInfo75EC12E6(TL_bots_getBotInfo75EC12E6) returns (Vector_String) {}
 }
 
-service RPCBusiness {
-    rpc account_updateBusinessWorkHours(TL_account_updateBusinessWorkHours) returns (Bool) {}
-    rpc account_updateBusinessLocation(TL_account_updateBusinessLocation) returns (Bool) {}
-    rpc account_updateBusinessGreetingMessage(TL_account_updateBusinessGreetingMessage) returns (Bool) {}
-    rpc account_updateBusinessAwayMessage(TL_account_updateBusinessAwayMessage) returns (Bool) {}
-    rpc account_updateConnectedBot(TL_account_updateConnectedBot) returns (Updates) {}
-    rpc account_getConnectedBots(TL_account_getConnectedBots) returns (account_ConnectedBots) {}
-    rpc account_getBotBusinessConnection(TL_account_getBotBusinessConnection) returns (Updates) {}
-    rpc account_updateBusinessIntro(TL_account_updateBusinessIntro) returns (Bool) {}
-    rpc account_toggleConnectedBotPaused(TL_account_toggleConnectedBotPaused) returns (Bool) {}
-    rpc account_disablePeerConnectedBot(TL_account_disablePeerConnectedBot) returns (Bool) {}
+service RPCBusinessChatLinks {
     rpc account_createBusinessChatLink(TL_account_createBusinessChatLink) returns (BusinessChatLink) {}
     rpc account_editBusinessChatLink(TL_account_editBusinessChatLink) returns (BusinessChatLink) {}
     rpc account_deleteBusinessChatLink(TL_account_deleteBusinessChatLink) returns (Bool) {}
     rpc account_getBusinessChatLinks(TL_account_getBusinessChatLinks) returns (account_BusinessChatLinks) {}
     rpc account_resolveBusinessChatLink(TL_account_resolveBusinessChatLink) returns (account_ResolvedBusinessChatLinks) {}
-    rpc account_updatePersonalChannel(TL_account_updatePersonalChannel) returns (Bool) {}
+}
+
+service RPCBusinessConnectedBots {
+    rpc account_updateConnectedBot(TL_account_updateConnectedBot) returns (Updates) {}
+    rpc account_getConnectedBots(TL_account_getConnectedBots) returns (account_ConnectedBots) {}
+    rpc account_getBotBusinessConnection(TL_account_getBotBusinessConnection) returns (Updates) {}
+    rpc account_toggleConnectedBotPaused(TL_account_toggleConnectedBotPaused) returns (Bool) {}
+    rpc account_disablePeerConnectedBot(TL_account_disablePeerConnectedBot) returns (Bool) {}
+}
+
+service RPCBusinessGreeting {
+    rpc account_updateBusinessGreetingMessage(TL_account_updateBusinessGreetingMessage) returns (Bool) {}
+    rpc account_updateBusinessAwayMessage(TL_account_updateBusinessAwayMessage) returns (Bool) {}
+}
+
+service RPCBusinessIntro {
+    rpc account_updateBusinessIntro(TL_account_updateBusinessIntro) returns (Bool) {}
+}
+
+service RPCBusinessLocation {
+    rpc account_updateBusinessLocation(TL_account_updateBusinessLocation) returns (Bool) {}
+}
+
+service RPCBusinessOpeningHours {
+    rpc account_updateBusinessWorkHours(TL_account_updateBusinessWorkHours) returns (Bool) {}
+}
+
+service RPCBusinessQuickReply {
     rpc messages_getQuickReplies(TL_messages_getQuickReplies) returns (messages_QuickReplies) {}
     rpc messages_reorderQuickReplies(TL_messages_reorderQuickReplies) returns (Bool) {}
     rpc messages_checkQuickReplyShortcut(TL_messages_checkQuickReplyShortcut) returns (Bool) {}
@@ -4753,7 +4763,12 @@ service RPCBusiness {
     rpc messages_getQuickReplyMessages(TL_messages_getQuickReplyMessages) returns (messages_Messages) {}
     rpc messages_sendQuickReplyMessages(TL_messages_sendQuickReplyMessages) returns (Updates) {}
     rpc messages_deleteQuickReplyMessages(TL_messages_deleteQuickReplyMessages) returns (Updates) {}
-    rpc messages_toggleDialogFilterTags(TL_messages_toggleDialogFilterTags) returns (Bool) {}
+}
+
+service RPCChannelAdRevenue {
+    rpc stats_getBroadcastRevenueStats(TL_stats_getBroadcastRevenueStats) returns (stats_BroadcastRevenueStats) {}
+    rpc stats_getBroadcastRevenueWithdrawalUrl(TL_stats_getBroadcastRevenueWithdrawalUrl) returns (stats_BroadcastRevenueWithdrawalUrl) {}
+    rpc stats_getBroadcastRevenueTransactions(TL_stats_getBroadcastRevenueTransactions) returns (stats_BroadcastRevenueTransactions) {}
 }
 
 service RPCChannelRecommendations {
@@ -4793,7 +4808,6 @@ service RPCChannels {
     rpc channels_getInactiveChannels(TL_channels_getInactiveChannels) returns (messages_InactiveChats) {}
     rpc channels_deleteParticipantHistory(TL_channels_deleteParticipantHistory) returns (messages_AffectedHistory) {}
     rpc channels_toggleParticipantsHidden(TL_channels_toggleParticipantsHidden) returns (Updates) {}
-    rpc channels_updateEmojiStatus(TL_channels_updateEmojiStatus) returns (Updates) {}
     rpc channels_inviteToChannel199F3A6C(TL_channels_inviteToChannel199F3A6C) returns (Updates) {}
     rpc channels_deleteHistoryAF369D42(TL_channels_deleteHistoryAF369D42) returns (Bool) {}
 }
@@ -4831,6 +4845,7 @@ service RPCChats {
     rpc messages_deleteChat(TL_messages_deleteChat) returns (Bool) {}
     rpc messages_getMessageReadParticipants31C1C44F(TL_messages_getMessageReadParticipants31C1C44F) returns (Vector_ReadParticipantDate) {}
     rpc channels_convertToGigagroup(TL_channels_convertToGigagroup) returns (Updates) {}
+    rpc channels_setEmojiStickers(TL_channels_setEmojiStickers) returns (Bool) {}
     rpc messages_addChatUserF24753E3(TL_messages_addChatUserF24753E3) returns (Updates) {}
     rpc messages_createChat34A818(TL_messages_createChat34A818) returns (Updates) {}
     rpc messages_getAllChats(TL_messages_getAllChats) returns (messages_Chats) {}
@@ -4848,7 +4863,6 @@ service RPCConfiguration {
     rpc help_getSupportName(TL_help_getSupportName) returns (help_SupportName) {}
     rpc help_dismissSuggestion(TL_help_dismissSuggestion) returns (Bool) {}
     rpc help_getCountriesList(TL_help_getCountriesList) returns (help_CountriesList) {}
-    rpc help_getTimezonesList(TL_help_getTimezonesList) returns (help_TimezonesList) {}
     rpc help_getAppChangelog(TL_help_getAppChangelog) returns (Updates) {}
     rpc help_getAppConfig98914110(TL_help_getAppConfig98914110) returns (JSONValue) {}
 }
@@ -4876,27 +4890,15 @@ service RPCContacts {
     rpc contacts_getLocated(TL_contacts_getLocated) returns (Updates) {}
     rpc contacts_editCloseFriends(TL_contacts_editCloseFriends) returns (Bool) {}
     rpc contacts_setBlocked(TL_contacts_setBlocked) returns (Bool) {}
-    rpc contacts_getBirthdays(TL_contacts_getBirthdays) returns (contacts_ContactBirthdays) {}
-}
-
-service RPCCreditCards {
-    rpc payments_getBankCardData(TL_payments_getBankCardData) returns (payments_BankCardData) {}
 }
 
 service RPCCustomEmojis {
     rpc account_getDefaultProfilePhotoEmojis(TL_account_getDefaultProfilePhotoEmojis) returns (EmojiList) {}
     rpc account_getDefaultGroupPhotoEmojis(TL_account_getDefaultGroupPhotoEmojis) returns (EmojiList) {}
-    rpc account_getChannelDefaultEmojiStatuses(TL_account_getChannelDefaultEmojiStatuses) returns (account_EmojiStatuses) {}
-    rpc account_getChannelRestrictedStatusEmojis(TL_account_getChannelRestrictedStatusEmojis) returns (EmojiList) {}
     rpc messages_getCustomEmojiDocuments(TL_messages_getCustomEmojiDocuments) returns (Vector_Document) {}
     rpc messages_getEmojiStickers(TL_messages_getEmojiStickers) returns (messages_AllStickers) {}
     rpc messages_getFeaturedEmojiStickers(TL_messages_getFeaturedEmojiStickers) returns (messages_FeaturedStickers) {}
-    rpc messages_getEmojiGroups(TL_messages_getEmojiGroups) returns (messages_EmojiGroups) {}
-    rpc messages_getEmojiStatusGroups(TL_messages_getEmojiStatusGroups) returns (messages_EmojiGroups) {}
-    rpc messages_getEmojiProfilePhotoGroups(TL_messages_getEmojiProfilePhotoGroups) returns (messages_EmojiGroups) {}
     rpc messages_searchCustomEmoji(TL_messages_searchCustomEmoji) returns (EmojiList) {}
-    rpc messages_getEmojiStickerGroups(TL_messages_getEmojiStickerGroups) returns (messages_EmojiGroups) {}
-    rpc channels_setEmojiStickers(TL_channels_setEmojiStickers) returns (Bool) {}
 }
 
 service RPCDeepLinks {
@@ -4919,12 +4921,6 @@ service RPCDialogs {
     rpc messages_getOnlines(TL_messages_getOnlines) returns (ChatOnlines) {}
     rpc messages_hidePeerSettingsBar(TL_messages_hidePeerSettingsBar) returns (Bool) {}
     rpc messages_setHistoryTTL(TL_messages_setHistoryTTL) returns (Updates) {}
-    rpc messages_getSavedDialogs(TL_messages_getSavedDialogs) returns (messages_SavedDialogs) {}
-    rpc messages_getSavedHistory(TL_messages_getSavedHistory) returns (messages_Messages) {}
-    rpc messages_deleteSavedHistory(TL_messages_deleteSavedHistory) returns (messages_AffectedHistory) {}
-    rpc messages_getPinnedSavedDialogs(TL_messages_getPinnedSavedDialogs) returns (messages_SavedDialogs) {}
-    rpc messages_toggleSavedDialogPin(TL_messages_toggleSavedDialogPin) returns (Bool) {}
-    rpc messages_reorderPinnedSavedDialogs(TL_messages_reorderPinnedSavedDialogs) returns (Bool) {}
 }
 
 service RPCDrafts {
@@ -4940,18 +4936,33 @@ service RPCEmoji {
     rpc messages_getEmojiURL(TL_messages_getEmojiURL) returns (EmojiURL) {}
 }
 
+service RPCEmojiCategories {
+    rpc messages_getEmojiGroups(TL_messages_getEmojiGroups) returns (messages_EmojiGroups) {}
+    rpc messages_getEmojiStatusGroups(TL_messages_getEmojiStatusGroups) returns (messages_EmojiGroups) {}
+    rpc messages_getEmojiProfilePhotoGroups(TL_messages_getEmojiProfilePhotoGroups) returns (messages_EmojiGroups) {}
+    rpc messages_getEmojiStickerGroups(TL_messages_getEmojiStickerGroups) returns (messages_EmojiGroups) {}
+}
+
 service RPCEmojiStatus {
     rpc account_updateEmojiStatus(TL_account_updateEmojiStatus) returns (Bool) {}
     rpc account_getDefaultEmojiStatuses(TL_account_getDefaultEmojiStatuses) returns (account_EmojiStatuses) {}
     rpc account_getRecentEmojiStatuses(TL_account_getRecentEmojiStatuses) returns (account_EmojiStatuses) {}
     rpc account_clearRecentEmojiStatuses(TL_account_clearRecentEmojiStatuses) returns (Bool) {}
+    rpc account_getChannelDefaultEmojiStatuses(TL_account_getChannelDefaultEmojiStatuses) returns (account_EmojiStatuses) {}
+    rpc account_getChannelRestrictedStatusEmojis(TL_account_getChannelRestrictedStatusEmojis) returns (EmojiList) {}
+    rpc channels_updateEmojiStatus(TL_channels_updateEmojiStatus) returns (Updates) {}
+}
+
+service RPCFactChecks {
+    rpc messages_editFactCheck(TL_messages_editFactCheck) returns (Updates) {}
+    rpc messages_deleteFactCheck(TL_messages_deleteFactCheck) returns (Updates) {}
+    rpc messages_getFactCheck(TL_messages_getFactCheck) returns (Vector_FactCheck) {}
 }
 
 service RPCFiles {
     rpc messages_getDocumentByHash(TL_messages_getDocumentByHash) returns (Document) {}
     rpc messages_uploadMedia(TL_messages_uploadMedia) returns (MessageMedia) {}
     rpc messages_uploadEncryptedFile(TL_messages_uploadEncryptedFile) returns (EncryptedFile) {}
-    rpc messages_getExtendedMedia(TL_messages_getExtendedMedia) returns (Updates) {}
     rpc upload_saveFilePart(TL_upload_saveFilePart) returns (Bool) {}
     rpc upload_getFile(TL_upload_getFile) returns (upload_File) {}
     rpc upload_saveBigFilePart(TL_upload_saveBigFilePart) returns (Bool) {}
@@ -4961,6 +4972,10 @@ service RPCFiles {
     rpc upload_getCdnFileHashes(TL_upload_getCdnFileHashes) returns (Vector_FileHash) {}
     rpc upload_getFileHashes(TL_upload_getFileHashes) returns (Vector_FileHash) {}
     rpc help_getCdnConfig(TL_help_getCdnConfig) returns (CdnConfig) {}
+}
+
+service RPCFolderTags {
+    rpc messages_toggleDialogFilterTags(TL_messages_toggleDialogFilterTags) returns (Bool) {}
 }
 
 service RPCFolders {
@@ -5004,6 +5019,9 @@ service RPCFragment {
     rpc channels_deactivateAllUsernames(TL_channels_deactivateAllUsernames) returns (Bool) {}
     rpc bots_reorderUsernames(TL_bots_reorderUsernames) returns (Bool) {}
     rpc bots_toggleUsername(TL_bots_toggleUsername) returns (Bool) {}
+}
+
+service RPCFragmentCollectibles {
     rpc fragment_getCollectibleInfo(TL_fragment_getCollectibleInfo) returns (fragment_CollectibleInfo) {}
 }
 
@@ -5086,6 +5104,21 @@ service RPCLangpack {
     rpc langpack_getLanguage(TL_langpack_getLanguage) returns (LangPackLanguage) {}
 }
 
+service RPCMainMiniBotApps {
+    rpc messages_requestMainWebView(TL_messages_requestMainWebView) returns (WebViewResult) {}
+    rpc bots_getPopularAppBots(TL_bots_getPopularAppBots) returns (bots_PopularAppBots) {}
+    rpc bots_addPreviewMedia(TL_bots_addPreviewMedia) returns (BotPreviewMedia) {}
+    rpc bots_editPreviewMedia(TL_bots_editPreviewMedia) returns (BotPreviewMedia) {}
+    rpc bots_deletePreviewMedia(TL_bots_deletePreviewMedia) returns (Bool) {}
+    rpc bots_reorderPreviewMedias(TL_bots_reorderPreviewMedias) returns (Bool) {}
+    rpc bots_getPreviewInfo(TL_bots_getPreviewInfo) returns (bots_PreviewInfo) {}
+    rpc bots_getPreviewMedias(TL_bots_getPreviewMedias) returns (Vector_BotPreviewMedia) {}
+}
+
+service RPCMessageEffects {
+    rpc messages_getAvailableEffects(TL_messages_getAvailableEffects) returns (messages_AvailableEffects) {}
+}
+
 service RPCMessageThreads {
     rpc contacts_blockFromReplies(TL_contacts_blockFromReplies) returns (Updates) {}
     rpc messages_getReplies(TL_messages_getReplies) returns (messages_Messages) {}
@@ -5122,10 +5155,6 @@ service RPCMessages {
     rpc messages_saveDefaultSendAs(TL_messages_saveDefaultSendAs) returns (Bool) {}
     rpc messages_searchSentMedia(TL_messages_searchSentMedia) returns (messages_Messages) {}
     rpc messages_getOutboxReadDate(TL_messages_getOutboxReadDate) returns (OutboxReadDate) {}
-    rpc messages_getAvailableEffects(TL_messages_getAvailableEffects) returns (messages_AvailableEffects) {}
-    rpc messages_editFactCheck(TL_messages_editFactCheck) returns (Updates) {}
-    rpc messages_deleteFactCheck(TL_messages_deleteFactCheck) returns (Updates) {}
-    rpc messages_getFactCheck(TL_messages_getFactCheck) returns (Vector_FactCheck) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
     rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
 }
@@ -5138,17 +5167,9 @@ service RPCMiniBotApps {
     rpc messages_sendWebViewData(TL_messages_sendWebViewData) returns (Updates) {}
     rpc messages_getBotApp(TL_messages_getBotApp) returns (messages_BotApp) {}
     rpc messages_requestAppWebView53618BCE(TL_messages_requestAppWebView53618BCE) returns (WebViewResult) {}
-    rpc messages_requestMainWebView(TL_messages_requestMainWebView) returns (WebViewResult) {}
     rpc bots_canSendMessage(TL_bots_canSendMessage) returns (Bool) {}
     rpc bots_allowSendMessage(TL_bots_allowSendMessage) returns (Updates) {}
     rpc bots_invokeWebViewCustomMethod(TL_bots_invokeWebViewCustomMethod) returns (DataJSON) {}
-    rpc bots_getPopularAppBots(TL_bots_getPopularAppBots) returns (bots_PopularAppBots) {}
-    rpc bots_addPreviewMedia(TL_bots_addPreviewMedia) returns (BotPreviewMedia) {}
-    rpc bots_editPreviewMedia(TL_bots_editPreviewMedia) returns (BotPreviewMedia) {}
-    rpc bots_deletePreviewMedia(TL_bots_deletePreviewMedia) returns (Bool) {}
-    rpc bots_reorderPreviewMedias(TL_bots_reorderPreviewMedias) returns (Bool) {}
-    rpc bots_getPreviewInfo(TL_bots_getPreviewInfo) returns (bots_PreviewInfo) {}
-    rpc bots_getPreviewMedias(TL_bots_getPreviewMedias) returns (Vector_BotPreviewMedia) {}
     rpc messages_requestSimpleWebView1A46500A(TL_messages_requestSimpleWebView1A46500A) returns (SimpleWebViewResult) {}
     rpc messages_requestAppWebView8C5A3B3C(TL_messages_requestAppWebView8C5A3B3C) returns (AppWebViewResult) {}
     rpc messages_requestSimpleWebView299BEC8E(TL_messages_requestSimpleWebView299BEC8E) returns (SimpleWebViewResult) {}
@@ -5175,6 +5196,10 @@ service RPCNsfw {
     rpc account_getContentSettings(TL_account_getContentSettings) returns (account_ContentSettings) {}
 }
 
+service RPCPaidMedia {
+    rpc messages_getExtendedMedia(TL_messages_getExtendedMedia) returns (Updates) {}
+}
+
 service RPCPassport {
     rpc account_getAuthorizations(TL_account_getAuthorizations) returns (account_Authorizations) {}
     rpc account_getAllSecureValues(TL_account_getAllSecureValues) returns (Vector_SecureValue) {}
@@ -5199,27 +5224,10 @@ service RPCPayments {
     rpc payments_sendPaymentForm(TL_payments_sendPaymentForm) returns (payments_PaymentResult) {}
     rpc payments_getSavedInfo(TL_payments_getSavedInfo) returns (payments_SavedInfo) {}
     rpc payments_clearSavedInfo(TL_payments_clearSavedInfo) returns (Bool) {}
+    rpc payments_getBankCardData(TL_payments_getBankCardData) returns (payments_BankCardData) {}
     rpc payments_exportInvoice(TL_payments_exportInvoice) returns (payments_ExportedInvoice) {}
-    rpc payments_getStarsTopupOptions(TL_payments_getStarsTopupOptions) returns (Vector_StarsTopupOption) {}
-    rpc payments_getStarsStatus(TL_payments_getStarsStatus) returns (payments_StarsStatus) {}
-    rpc payments_getStarsTransactions(TL_payments_getStarsTransactions) returns (payments_StarsStatus) {}
-    rpc payments_sendStarsForm(TL_payments_sendStarsForm) returns (payments_PaymentResult) {}
-    rpc payments_refundStarsCharge(TL_payments_refundStarsCharge) returns (Updates) {}
-    rpc payments_getStarsRevenueStats(TL_payments_getStarsRevenueStats) returns (payments_StarsRevenueStats) {}
-    rpc payments_getStarsRevenueWithdrawalUrl(TL_payments_getStarsRevenueWithdrawalUrl) returns (payments_StarsRevenueWithdrawalUrl) {}
-    rpc payments_getStarsRevenueAdsAccountUrl(TL_payments_getStarsRevenueAdsAccountUrl) returns (payments_StarsRevenueAdsAccountUrl) {}
-    rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
-    rpc payments_getStarsGiftOptions(TL_payments_getStarsGiftOptions) returns (Vector_StarsGiftOption) {}
     rpc payments_requestRecurringPayment(TL_payments_requestRecurringPayment) returns (Updates) {}
     rpc payments_restorePlayMarketReceipt(TL_payments_restorePlayMarketReceipt) returns (Updates) {}
-}
-
-service RPCPhotos {
-    rpc photos_updateProfilePhoto(TL_photos_updateProfilePhoto) returns (photos_Photo) {}
-    rpc photos_uploadProfilePhoto(TL_photos_uploadProfilePhoto) returns (photos_Photo) {}
-    rpc photos_deletePhotos(TL_photos_deletePhotos) returns (Vector_Long) {}
-    rpc photos_getUserPhotos(TL_photos_getUserPhotos) returns (photos_Photos) {}
-    rpc photos_uploadContactProfilePhoto(TL_photos_uploadContactProfilePhoto) returns (photos_Photo) {}
 }
 
 service RPCPolls {
@@ -5245,6 +5253,16 @@ service RPCPremium {
     rpc payments_canPurchasePremium(TL_payments_canPurchasePremium) returns (Bool) {}
 }
 
+service RPCPrivacySettings {
+    rpc account_getPrivacy(TL_account_getPrivacy) returns (account_PrivacyRules) {}
+    rpc account_setPrivacy(TL_account_setPrivacy) returns (account_PrivacyRules) {}
+    rpc account_getGlobalPrivacySettings(TL_account_getGlobalPrivacySettings) returns (GlobalPrivacySettings) {}
+    rpc account_setGlobalPrivacySettings(TL_account_setGlobalPrivacySettings) returns (GlobalPrivacySettings) {}
+    rpc users_getIsPremiumRequiredToContact(TL_users_getIsPremiumRequiredToContact) returns (Vector_Bool) {}
+    rpc messages_setDefaultHistoryTTL(TL_messages_setDefaultHistoryTTL) returns (Bool) {}
+    rpc messages_getDefaultHistoryTTL(TL_messages_getDefaultHistoryTTL) returns (DefaultHistoryTTL) {}
+}
+
 service RPCProfileLinks {
     rpc contacts_exportContactToken(TL_contacts_exportContactToken) returns (ExportedContactToken) {}
     rpc contacts_importContactToken(TL_contacts_importContactToken) returns (User) {}
@@ -5261,9 +5279,12 @@ service RPCQrCode {
     rpc auth_acceptLoginToken(TL_auth_acceptLoginToken) returns (Authorization) {}
 }
 
-service RPCReactions {
+service RPCReactionNotification {
     rpc account_getReactionsNotifySettings(TL_account_getReactionsNotifySettings) returns (ReactionsNotifySettings) {}
     rpc account_setReactionsNotifySettings(TL_account_setReactionsNotifySettings) returns (ReactionsNotifySettings) {}
+}
+
+service RPCReactions {
     rpc messages_sendReaction(TL_messages_sendReaction) returns (Updates) {}
     rpc messages_getMessagesReactions(TL_messages_getMessagesReactions) returns (Updates) {}
     rpc messages_getMessageReactionsList(TL_messages_getMessageReactionsList) returns (messages_MessageReactionsList) {}
@@ -5276,9 +5297,6 @@ service RPCReactions {
     rpc messages_getTopReactions(TL_messages_getTopReactions) returns (messages_Reactions) {}
     rpc messages_getRecentReactions(TL_messages_getRecentReactions) returns (messages_Reactions) {}
     rpc messages_clearRecentReactions(TL_messages_clearRecentReactions) returns (Bool) {}
-    rpc messages_getSavedReactionTags(TL_messages_getSavedReactionTags) returns (messages_SavedReactionTags) {}
-    rpc messages_updateSavedReactionTag(TL_messages_updateSavedReactionTag) returns (Bool) {}
-    rpc messages_getDefaultTagReactions(TL_messages_getDefaultTagReactions) returns (messages_Reactions) {}
 }
 
 service RPCReports {
@@ -5294,6 +5312,21 @@ service RPCRingtone {
     rpc account_getSavedRingtones(TL_account_getSavedRingtones) returns (account_SavedRingtones) {}
     rpc account_saveRingtone(TL_account_saveRingtone) returns (account_SavedRingtone) {}
     rpc account_uploadRingtone(TL_account_uploadRingtone) returns (Document) {}
+}
+
+service RPCSavedMessageDialogs {
+    rpc messages_getSavedDialogs(TL_messages_getSavedDialogs) returns (messages_SavedDialogs) {}
+    rpc messages_getSavedHistory(TL_messages_getSavedHistory) returns (messages_Messages) {}
+    rpc messages_deleteSavedHistory(TL_messages_deleteSavedHistory) returns (messages_AffectedHistory) {}
+    rpc messages_getPinnedSavedDialogs(TL_messages_getPinnedSavedDialogs) returns (messages_SavedDialogs) {}
+    rpc messages_toggleSavedDialogPin(TL_messages_toggleSavedDialogPin) returns (Bool) {}
+    rpc messages_reorderPinnedSavedDialogs(TL_messages_reorderPinnedSavedDialogs) returns (Bool) {}
+}
+
+service RPCSavedMessageTags {
+    rpc messages_getSavedReactionTags(TL_messages_getSavedReactionTags) returns (messages_SavedReactionTags) {}
+    rpc messages_updateSavedReactionTag(TL_messages_updateSavedReactionTag) returns (Bool) {}
+    rpc messages_getDefaultTagReactions(TL_messages_getDefaultTagReactions) returns (messages_Reactions) {}
 }
 
 service RPCScheduledMessages {
@@ -5343,17 +5376,26 @@ service RPCSponsoredMessages {
     rpc channels_restrictSponsoredMessages(TL_channels_restrictSponsoredMessages) returns (Updates) {}
 }
 
+service RPCStars {
+    rpc payments_getStarsTopupOptions(TL_payments_getStarsTopupOptions) returns (Vector_StarsTopupOption) {}
+    rpc payments_getStarsStatus(TL_payments_getStarsStatus) returns (payments_StarsStatus) {}
+    rpc payments_getStarsTransactions(TL_payments_getStarsTransactions) returns (payments_StarsStatus) {}
+    rpc payments_sendStarsForm(TL_payments_sendStarsForm) returns (payments_PaymentResult) {}
+    rpc payments_refundStarsCharge(TL_payments_refundStarsCharge) returns (Updates) {}
+    rpc payments_getStarsRevenueStats(TL_payments_getStarsRevenueStats) returns (payments_StarsRevenueStats) {}
+    rpc payments_getStarsRevenueWithdrawalUrl(TL_payments_getStarsRevenueWithdrawalUrl) returns (payments_StarsRevenueWithdrawalUrl) {}
+    rpc payments_getStarsRevenueAdsAccountUrl(TL_payments_getStarsRevenueAdsAccountUrl) returns (payments_StarsRevenueAdsAccountUrl) {}
+    rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
+    rpc payments_getStarsGiftOptions(TL_payments_getStarsGiftOptions) returns (Vector_StarsGiftOption) {}
+}
+
 service RPCStatistics {
     rpc stats_getBroadcastStats(TL_stats_getBroadcastStats) returns (stats_BroadcastStats) {}
     rpc stats_loadAsyncGraph(TL_stats_loadAsyncGraph) returns (StatsGraph) {}
     rpc stats_getMegagroupStats(TL_stats_getMegagroupStats) returns (stats_MegagroupStats) {}
-    rpc stats_getMessagePublicForwards5F150144(TL_stats_getMessagePublicForwards5F150144) returns (stats_PublicForwards) {}
     rpc stats_getMessageStats(TL_stats_getMessageStats) returns (stats_MessageStats) {}
     rpc stats_getStoryStats(TL_stats_getStoryStats) returns (stats_StoryStats) {}
     rpc stats_getStoryPublicForwards(TL_stats_getStoryPublicForwards) returns (stats_PublicForwards) {}
-    rpc stats_getBroadcastRevenueStats(TL_stats_getBroadcastRevenueStats) returns (stats_BroadcastRevenueStats) {}
-    rpc stats_getBroadcastRevenueWithdrawalUrl(TL_stats_getBroadcastRevenueWithdrawalUrl) returns (stats_BroadcastRevenueWithdrawalUrl) {}
-    rpc stats_getBroadcastRevenueTransactions(TL_stats_getBroadcastRevenueTransactions) returns (stats_BroadcastRevenueTransactions) {}
     rpc stats_getMessagePublicForwards5630281B(TL_stats_getMessagePublicForwards5630281B) returns (messages_Messages) {}
 }
 
@@ -5419,10 +5461,7 @@ service RPCStories {
     rpc stories_getStoryReactionsList(TL_stories_getStoryReactionsList) returns (stories_StoryReactionsList) {}
     rpc stories_togglePinnedToTop(TL_stories_togglePinnedToTop) returns (Bool) {}
     rpc stories_searchPosts(TL_stories_searchPosts) returns (stories_FoundStories) {}
-    rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
     rpc contacts_toggleStoriesHidden(TL_contacts_toggleStoriesHidden) returns (Bool) {}
-    rpc stories_getUserStories(TL_stories_getUserStories) returns (stories_UserStories) {}
-    rpc stories_getAllReadUserStories(TL_stories_getAllReadUserStories) returns (Updates) {}
 }
 
 service RPCTakeout {
@@ -5442,6 +5481,10 @@ service RPCThemes {
     rpc account_getThemes(TL_account_getThemes) returns (account_Themes) {}
     rpc account_getChatThemes(TL_account_getChatThemes) returns (account_Themes) {}
     rpc messages_setChatTheme(TL_messages_setChatTheme) returns (Updates) {}
+}
+
+service RPCTimezones {
+    rpc help_getTimezonesList(TL_help_getTimezonesList) returns (help_TimezonesList) {}
 }
 
 service RPCTos {
@@ -5480,6 +5523,20 @@ service RPCUpdates {
     rpc updates_getChannelDifference(TL_updates_getChannelDifference) returns (updates_ChannelDifference) {}
 }
 
+service RPCUserProfile {
+    rpc account_updateProfile(TL_account_updateProfile) returns (User) {}
+    rpc account_updateStatus(TL_account_updateStatus) returns (Bool) {}
+    rpc account_updateBirthday(TL_account_updateBirthday) returns (Bool) {}
+    rpc account_updatePersonalChannel(TL_account_updatePersonalChannel) returns (Bool) {}
+    rpc contacts_getBirthdays(TL_contacts_getBirthdays) returns (contacts_ContactBirthdays) {}
+    rpc photos_updateProfilePhoto(TL_photos_updateProfilePhoto) returns (photos_Photo) {}
+    rpc photos_uploadProfilePhoto(TL_photos_uploadProfilePhoto) returns (photos_Photo) {}
+    rpc photos_deletePhotos(TL_photos_deletePhotos) returns (Vector_Long) {}
+    rpc photos_getUserPhotos(TL_photos_getUserPhotos) returns (photos_Photos) {}
+    rpc photos_uploadContactProfilePhoto(TL_photos_uploadContactProfilePhoto) returns (photos_Photo) {}
+    rpc account_updateVerified(TL_account_updateVerified) returns (User) {}
+}
+
 service RPCUsernames {
     rpc account_checkUsername(TL_account_checkUsername) returns (Bool) {}
     rpc account_updateUsername(TL_account_updateUsername) returns (User) {}
@@ -5491,7 +5548,6 @@ service RPCUsernames {
 service RPCUsers {
     rpc users_getUsers(TL_users_getUsers) returns (Vector_User) {}
     rpc users_getFullUser(TL_users_getFullUser) returns (users_UserFull) {}
-    rpc users_getIsPremiumRequiredToContact(TL_users_getIsPremiumRequiredToContact) returns (Vector_Bool) {}
     rpc contacts_resolvePhone(TL_contacts_resolvePhone) returns (contacts_ResolvedPeer) {}
     rpc users_getMe(TL_users_getMe) returns (User) {}
 }
@@ -5529,5 +5585,9 @@ service RPCWebPage {
 
 service RPCBiz {
     rpc biz_invokeBizDataRaw(TL_biz_invokeBizDataRaw) returns (BizDataRaw) {}
+}
+
+service RPCStats {
+    rpc stats_getMessagePublicForwards5F150144(TL_stats_getMessagePublicForwards5F150144) returns (stats_PublicForwards) {}
 }
 

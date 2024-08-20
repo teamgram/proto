@@ -264,34 +264,20 @@ var RPCAccentColors_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCAccount_AccountUpdateProfile_FullMethodName            = "/mtproto.RPCAccount/account_updateProfile"
-	RPCAccount_AccountUpdateStatus_FullMethodName             = "/mtproto.RPCAccount/account_updateStatus"
-	RPCAccount_AccountGetPrivacy_FullMethodName               = "/mtproto.RPCAccount/account_getPrivacy"
-	RPCAccount_AccountSetPrivacy_FullMethodName               = "/mtproto.RPCAccount/account_setPrivacy"
-	RPCAccount_AccountDeleteAccount_FullMethodName            = "/mtproto.RPCAccount/account_deleteAccount"
-	RPCAccount_AccountGetAccountTTL_FullMethodName            = "/mtproto.RPCAccount/account_getAccountTTL"
-	RPCAccount_AccountSetAccountTTL_FullMethodName            = "/mtproto.RPCAccount/account_setAccountTTL"
-	RPCAccount_AccountSendChangePhoneCode_FullMethodName      = "/mtproto.RPCAccount/account_sendChangePhoneCode"
-	RPCAccount_AccountChangePhone_FullMethodName              = "/mtproto.RPCAccount/account_changePhone"
-	RPCAccount_AccountResetAuthorization_FullMethodName       = "/mtproto.RPCAccount/account_resetAuthorization"
-	RPCAccount_AccountSendConfirmPhoneCode_FullMethodName     = "/mtproto.RPCAccount/account_sendConfirmPhoneCode"
-	RPCAccount_AccountConfirmPhone_FullMethodName             = "/mtproto.RPCAccount/account_confirmPhone"
-	RPCAccount_AccountGetGlobalPrivacySettings_FullMethodName = "/mtproto.RPCAccount/account_getGlobalPrivacySettings"
-	RPCAccount_AccountSetGlobalPrivacySettings_FullMethodName = "/mtproto.RPCAccount/account_setGlobalPrivacySettings"
-	RPCAccount_AccountUpdateBirthday_FullMethodName           = "/mtproto.RPCAccount/account_updateBirthday"
-	RPCAccount_MessagesSetDefaultHistoryTTL_FullMethodName    = "/mtproto.RPCAccount/messages_setDefaultHistoryTTL"
-	RPCAccount_MessagesGetDefaultHistoryTTL_FullMethodName    = "/mtproto.RPCAccount/messages_getDefaultHistoryTTL"
-	RPCAccount_AccountUpdateVerified_FullMethodName           = "/mtproto.RPCAccount/account_updateVerified"
+	RPCAccount_AccountDeleteAccount_FullMethodName        = "/mtproto.RPCAccount/account_deleteAccount"
+	RPCAccount_AccountGetAccountTTL_FullMethodName        = "/mtproto.RPCAccount/account_getAccountTTL"
+	RPCAccount_AccountSetAccountTTL_FullMethodName        = "/mtproto.RPCAccount/account_setAccountTTL"
+	RPCAccount_AccountSendChangePhoneCode_FullMethodName  = "/mtproto.RPCAccount/account_sendChangePhoneCode"
+	RPCAccount_AccountChangePhone_FullMethodName          = "/mtproto.RPCAccount/account_changePhone"
+	RPCAccount_AccountResetAuthorization_FullMethodName   = "/mtproto.RPCAccount/account_resetAuthorization"
+	RPCAccount_AccountSendConfirmPhoneCode_FullMethodName = "/mtproto.RPCAccount/account_sendConfirmPhoneCode"
+	RPCAccount_AccountConfirmPhone_FullMethodName         = "/mtproto.RPCAccount/account_confirmPhone"
 )
 
 // RPCAccountClient is the client API for RPCAccount service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCAccountClient interface {
-	AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile, opts ...grpc.CallOption) (*User, error)
-	AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus, opts ...grpc.CallOption) (*Bool, error)
-	AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error)
-	AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error)
 	AccountDeleteAccount(ctx context.Context, in *TLAccountDeleteAccount, opts ...grpc.CallOption) (*Bool, error)
 	AccountGetAccountTTL(ctx context.Context, in *TLAccountGetAccountTTL, opts ...grpc.CallOption) (*AccountDaysTTL, error)
 	AccountSetAccountTTL(ctx context.Context, in *TLAccountSetAccountTTL, opts ...grpc.CallOption) (*Bool, error)
@@ -300,12 +286,6 @@ type RPCAccountClient interface {
 	AccountResetAuthorization(ctx context.Context, in *TLAccountResetAuthorization, opts ...grpc.CallOption) (*Bool, error)
 	AccountSendConfirmPhoneCode(ctx context.Context, in *TLAccountSendConfirmPhoneCode, opts ...grpc.CallOption) (*Auth_SentCode, error)
 	AccountConfirmPhone(ctx context.Context, in *TLAccountConfirmPhone, opts ...grpc.CallOption) (*Bool, error)
-	AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error)
-	AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error)
-	AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday, opts ...grpc.CallOption) (*Bool, error)
-	MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL, opts ...grpc.CallOption) (*Bool, error)
-	MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL, opts ...grpc.CallOption) (*DefaultHistoryTTL, error)
-	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified, opts ...grpc.CallOption) (*User, error)
 }
 
 type rPCAccountClient struct {
@@ -314,42 +294,6 @@ type rPCAccountClient struct {
 
 func NewRPCAccountClient(cc grpc.ClientConnInterface) RPCAccountClient {
 	return &rPCAccountClient{cc}
-}
-
-func (c *rPCAccountClient) AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile, opts ...grpc.CallOption) (*User, error) {
-	out := new(User)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountUpdateProfile_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountUpdateStatus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error) {
-	out := new(Account_PrivacyRules)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountGetPrivacy_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error) {
-	out := new(Account_PrivacyRules)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountSetPrivacy_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *rPCAccountClient) AccountDeleteAccount(ctx context.Context, in *TLAccountDeleteAccount, opts ...grpc.CallOption) (*Bool, error) {
@@ -424,68 +368,10 @@ func (c *rPCAccountClient) AccountConfirmPhone(ctx context.Context, in *TLAccoun
 	return out, nil
 }
 
-func (c *rPCAccountClient) AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error) {
-	out := new(GlobalPrivacySettings)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountGetGlobalPrivacySettings_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error) {
-	out := new(GlobalPrivacySettings)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountSetGlobalPrivacySettings_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountUpdateBirthday_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCAccount_MessagesSetDefaultHistoryTTL_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL, opts ...grpc.CallOption) (*DefaultHistoryTTL, error) {
-	out := new(DefaultHistoryTTL)
-	err := c.cc.Invoke(ctx, RPCAccount_MessagesGetDefaultHistoryTTL_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCAccountClient) AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified, opts ...grpc.CallOption) (*User, error) {
-	out := new(User)
-	err := c.cc.Invoke(ctx, RPCAccount_AccountUpdateVerified_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCAccountServer is the server API for RPCAccount service.
 // All implementations should embed UnimplementedRPCAccountServer
 // for forward compatibility
 type RPCAccountServer interface {
-	AccountUpdateProfile(context.Context, *TLAccountUpdateProfile) (*User, error)
-	AccountUpdateStatus(context.Context, *TLAccountUpdateStatus) (*Bool, error)
-	AccountGetPrivacy(context.Context, *TLAccountGetPrivacy) (*Account_PrivacyRules, error)
-	AccountSetPrivacy(context.Context, *TLAccountSetPrivacy) (*Account_PrivacyRules, error)
 	AccountDeleteAccount(context.Context, *TLAccountDeleteAccount) (*Bool, error)
 	AccountGetAccountTTL(context.Context, *TLAccountGetAccountTTL) (*AccountDaysTTL, error)
 	AccountSetAccountTTL(context.Context, *TLAccountSetAccountTTL) (*Bool, error)
@@ -494,30 +380,12 @@ type RPCAccountServer interface {
 	AccountResetAuthorization(context.Context, *TLAccountResetAuthorization) (*Bool, error)
 	AccountSendConfirmPhoneCode(context.Context, *TLAccountSendConfirmPhoneCode) (*Auth_SentCode, error)
 	AccountConfirmPhone(context.Context, *TLAccountConfirmPhone) (*Bool, error)
-	AccountGetGlobalPrivacySettings(context.Context, *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
-	AccountSetGlobalPrivacySettings(context.Context, *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
-	AccountUpdateBirthday(context.Context, *TLAccountUpdateBirthday) (*Bool, error)
-	MessagesSetDefaultHistoryTTL(context.Context, *TLMessagesSetDefaultHistoryTTL) (*Bool, error)
-	MessagesGetDefaultHistoryTTL(context.Context, *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error)
-	AccountUpdateVerified(context.Context, *TLAccountUpdateVerified) (*User, error)
 }
 
 // UnimplementedRPCAccountServer should be embedded to have forward compatible implementations.
 type UnimplementedRPCAccountServer struct {
 }
 
-func (UnimplementedRPCAccountServer) AccountUpdateProfile(context.Context, *TLAccountUpdateProfile) (*User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateProfile not implemented")
-}
-func (UnimplementedRPCAccountServer) AccountUpdateStatus(context.Context, *TLAccountUpdateStatus) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateStatus not implemented")
-}
-func (UnimplementedRPCAccountServer) AccountGetPrivacy(context.Context, *TLAccountGetPrivacy) (*Account_PrivacyRules, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetPrivacy not implemented")
-}
-func (UnimplementedRPCAccountServer) AccountSetPrivacy(context.Context, *TLAccountSetPrivacy) (*Account_PrivacyRules, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountSetPrivacy not implemented")
-}
 func (UnimplementedRPCAccountServer) AccountDeleteAccount(context.Context, *TLAccountDeleteAccount) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountDeleteAccount not implemented")
 }
@@ -542,24 +410,6 @@ func (UnimplementedRPCAccountServer) AccountSendConfirmPhoneCode(context.Context
 func (UnimplementedRPCAccountServer) AccountConfirmPhone(context.Context, *TLAccountConfirmPhone) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountConfirmPhone not implemented")
 }
-func (UnimplementedRPCAccountServer) AccountGetGlobalPrivacySettings(context.Context, *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetGlobalPrivacySettings not implemented")
-}
-func (UnimplementedRPCAccountServer) AccountSetGlobalPrivacySettings(context.Context, *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountSetGlobalPrivacySettings not implemented")
-}
-func (UnimplementedRPCAccountServer) AccountUpdateBirthday(context.Context, *TLAccountUpdateBirthday) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBirthday not implemented")
-}
-func (UnimplementedRPCAccountServer) MessagesSetDefaultHistoryTTL(context.Context, *TLMessagesSetDefaultHistoryTTL) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesSetDefaultHistoryTTL not implemented")
-}
-func (UnimplementedRPCAccountServer) MessagesGetDefaultHistoryTTL(context.Context, *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetDefaultHistoryTTL not implemented")
-}
-func (UnimplementedRPCAccountServer) AccountUpdateVerified(context.Context, *TLAccountUpdateVerified) (*User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateVerified not implemented")
-}
 
 // UnsafeRPCAccountServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to RPCAccountServer will
@@ -570,78 +420,6 @@ type UnsafeRPCAccountServer interface {
 
 func RegisterRPCAccountServer(s grpc.ServiceRegistrar, srv RPCAccountServer) {
 	s.RegisterService(&RPCAccount_ServiceDesc, srv)
-}
-
-func _RPCAccount_AccountUpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateProfile)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountUpdateProfile(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountUpdateProfile_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountUpdateProfile(ctx, req.(*TLAccountUpdateProfile))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_AccountUpdateStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateStatus)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountUpdateStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountUpdateStatus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountUpdateStatus(ctx, req.(*TLAccountUpdateStatus))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_AccountGetPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetPrivacy)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountGetPrivacy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountGetPrivacy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountGetPrivacy(ctx, req.(*TLAccountGetPrivacy))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_AccountSetPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountSetPrivacy)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountSetPrivacy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountSetPrivacy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountSetPrivacy(ctx, req.(*TLAccountSetPrivacy))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _RPCAccount_AccountDeleteAccount_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -788,114 +566,6 @@ func _RPCAccount_AccountConfirmPhone_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCAccount_AccountGetGlobalPrivacySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetGlobalPrivacySettings)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountGetGlobalPrivacySettings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountGetGlobalPrivacySettings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountGetGlobalPrivacySettings(ctx, req.(*TLAccountGetGlobalPrivacySettings))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_AccountSetGlobalPrivacySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountSetGlobalPrivacySettings)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountSetGlobalPrivacySettings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountSetGlobalPrivacySettings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountSetGlobalPrivacySettings(ctx, req.(*TLAccountSetGlobalPrivacySettings))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_AccountUpdateBirthday_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateBirthday)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountUpdateBirthday(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountUpdateBirthday_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountUpdateBirthday(ctx, req.(*TLAccountUpdateBirthday))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_MessagesSetDefaultHistoryTTL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesSetDefaultHistoryTTL)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).MessagesSetDefaultHistoryTTL(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_MessagesSetDefaultHistoryTTL_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).MessagesSetDefaultHistoryTTL(ctx, req.(*TLMessagesSetDefaultHistoryTTL))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_MessagesGetDefaultHistoryTTL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetDefaultHistoryTTL)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).MessagesGetDefaultHistoryTTL(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_MessagesGetDefaultHistoryTTL_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).MessagesGetDefaultHistoryTTL(ctx, req.(*TLMessagesGetDefaultHistoryTTL))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCAccount_AccountUpdateVerified_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateVerified)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCAccountServer).AccountUpdateVerified(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCAccount_AccountUpdateVerified_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCAccountServer).AccountUpdateVerified(ctx, req.(*TLAccountUpdateVerified))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCAccount_ServiceDesc is the grpc.ServiceDesc for RPCAccount service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -903,22 +573,6 @@ var RPCAccount_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "mtproto.RPCAccount",
 	HandlerType: (*RPCAccountServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "account_updateProfile",
-			Handler:    _RPCAccount_AccountUpdateProfile_Handler,
-		},
-		{
-			MethodName: "account_updateStatus",
-			Handler:    _RPCAccount_AccountUpdateStatus_Handler,
-		},
-		{
-			MethodName: "account_getPrivacy",
-			Handler:    _RPCAccount_AccountGetPrivacy_Handler,
-		},
-		{
-			MethodName: "account_setPrivacy",
-			Handler:    _RPCAccount_AccountSetPrivacy_Handler,
-		},
 		{
 			MethodName: "account_deleteAccount",
 			Handler:    _RPCAccount_AccountDeleteAccount_Handler,
@@ -950,30 +604,6 @@ var RPCAccount_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "account_confirmPhone",
 			Handler:    _RPCAccount_AccountConfirmPhone_Handler,
-		},
-		{
-			MethodName: "account_getGlobalPrivacySettings",
-			Handler:    _RPCAccount_AccountGetGlobalPrivacySettings_Handler,
-		},
-		{
-			MethodName: "account_setGlobalPrivacySettings",
-			Handler:    _RPCAccount_AccountSetGlobalPrivacySettings_Handler,
-		},
-		{
-			MethodName: "account_updateBirthday",
-			Handler:    _RPCAccount_AccountUpdateBirthday_Handler,
-		},
-		{
-			MethodName: "messages_setDefaultHistoryTTL",
-			Handler:    _RPCAccount_MessagesSetDefaultHistoryTTL_Handler,
-		},
-		{
-			MethodName: "messages_getDefaultHistoryTTL",
-			Handler:    _RPCAccount_MessagesGetDefaultHistoryTTL_Handler,
-		},
-		{
-			MethodName: "account_updateVerified",
-			Handler:    _RPCAccount_AccountUpdateVerified_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -2490,6 +2120,9 @@ const (
 	RPCBoosts_StoriesGetBoostersList_FullMethodName                 = "/mtproto.RPCBoosts/stories_getBoostersList"
 	RPCBoosts_StoriesCanApplyBoost_FullMethodName                   = "/mtproto.RPCBoosts/stories_canApplyBoost"
 	RPCBoosts_StoriesApplyBoost_FullMethodName                      = "/mtproto.RPCBoosts/stories_applyBoost"
+	RPCBoosts_UsersGetStoriesMaxIDs_FullMethodName                  = "/mtproto.RPCBoosts/users_getStoriesMaxIDs"
+	RPCBoosts_StoriesGetUserStories_FullMethodName                  = "/mtproto.RPCBoosts/stories_getUserStories"
+	RPCBoosts_StoriesGetAllReadUserStories_FullMethodName           = "/mtproto.RPCBoosts/stories_getAllReadUserStories"
 )
 
 // RPCBoostsClient is the client API for RPCBoosts service.
@@ -2506,6 +2139,9 @@ type RPCBoostsClient interface {
 	StoriesGetBoostersList(ctx context.Context, in *TLStoriesGetBoostersList, opts ...grpc.CallOption) (*Stories_BoostersList, error)
 	StoriesCanApplyBoost(ctx context.Context, in *TLStoriesCanApplyBoost, opts ...grpc.CallOption) (*Stories_CanApplyBoostResult, error)
 	StoriesApplyBoost(ctx context.Context, in *TLStoriesApplyBoost, opts ...grpc.CallOption) (*Bool, error)
+	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
+	StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error)
+	StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCBoostsClient struct {
@@ -2606,6 +2242,33 @@ func (c *rPCBoostsClient) StoriesApplyBoost(ctx context.Context, in *TLStoriesAp
 	return out, nil
 }
 
+func (c *rPCBoostsClient) UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error) {
+	out := new(Vector_Int)
+	err := c.cc.Invoke(ctx, RPCBoosts_UsersGetStoriesMaxIDs_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBoostsClient) StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error) {
+	out := new(Stories_UserStories)
+	err := c.cc.Invoke(ctx, RPCBoosts_StoriesGetUserStories_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBoostsClient) StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCBoosts_StoriesGetAllReadUserStories_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCBoostsServer is the server API for RPCBoosts service.
 // All implementations should embed UnimplementedRPCBoostsServer
 // for forward compatibility
@@ -2620,6 +2283,9 @@ type RPCBoostsServer interface {
 	StoriesGetBoostersList(context.Context, *TLStoriesGetBoostersList) (*Stories_BoostersList, error)
 	StoriesCanApplyBoost(context.Context, *TLStoriesCanApplyBoost) (*Stories_CanApplyBoostResult, error)
 	StoriesApplyBoost(context.Context, *TLStoriesApplyBoost) (*Bool, error)
+	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
+	StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error)
+	StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error)
 }
 
 // UnimplementedRPCBoostsServer should be embedded to have forward compatible implementations.
@@ -2655,6 +2321,15 @@ func (UnimplementedRPCBoostsServer) StoriesCanApplyBoost(context.Context, *TLSto
 }
 func (UnimplementedRPCBoostsServer) StoriesApplyBoost(context.Context, *TLStoriesApplyBoost) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesApplyBoost not implemented")
+}
+func (UnimplementedRPCBoostsServer) UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersGetStoriesMaxIDs not implemented")
+}
+func (UnimplementedRPCBoostsServer) StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetUserStories not implemented")
+}
+func (UnimplementedRPCBoostsServer) StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAllReadUserStories not implemented")
 }
 
 // UnsafeRPCBoostsServer may be embedded to opt out of forward compatibility for this service.
@@ -2848,6 +2523,60 @@ func _RPCBoosts_StoriesApplyBoost_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCBoosts_UsersGetStoriesMaxIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLUsersGetStoriesMaxIDs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBoostsServer).UsersGetStoriesMaxIDs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBoosts_UsersGetStoriesMaxIDs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBoostsServer).UsersGetStoriesMaxIDs(ctx, req.(*TLUsersGetStoriesMaxIDs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBoosts_StoriesGetUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetUserStories)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBoostsServer).StoriesGetUserStories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBoosts_StoriesGetUserStories_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBoostsServer).StoriesGetUserStories(ctx, req.(*TLStoriesGetUserStories))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBoosts_StoriesGetAllReadUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetAllReadUserStories)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBoostsServer).StoriesGetAllReadUserStories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBoosts_StoriesGetAllReadUserStories_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBoostsServer).StoriesGetAllReadUserStories(ctx, req.(*TLStoriesGetAllReadUserStories))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCBoosts_ServiceDesc is the grpc.ServiceDesc for RPCBoosts service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2894,6 +2623,18 @@ var RPCBoosts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "stories_applyBoost",
 			Handler:    _RPCBoosts_StoriesApplyBoost_Handler,
+		},
+		{
+			MethodName: "users_getStoriesMaxIDs",
+			Handler:    _RPCBoosts_UsersGetStoriesMaxIDs_Handler,
+		},
+		{
+			MethodName: "stories_getUserStories",
+			Handler:    _RPCBoosts_StoriesGetUserStories_Handler,
+		},
+		{
+			MethodName: "stories_getAllReadUserStories",
+			Handler:    _RPCBoosts_StoriesGetAllReadUserStories_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -3586,53 +3327,881 @@ var RPCBots_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCBusiness_AccountUpdateBusinessWorkHours_FullMethodName       = "/mtproto.RPCBusiness/account_updateBusinessWorkHours"
-	RPCBusiness_AccountUpdateBusinessLocation_FullMethodName        = "/mtproto.RPCBusiness/account_updateBusinessLocation"
-	RPCBusiness_AccountUpdateBusinessGreetingMessage_FullMethodName = "/mtproto.RPCBusiness/account_updateBusinessGreetingMessage"
-	RPCBusiness_AccountUpdateBusinessAwayMessage_FullMethodName     = "/mtproto.RPCBusiness/account_updateBusinessAwayMessage"
-	RPCBusiness_AccountUpdateConnectedBot_FullMethodName            = "/mtproto.RPCBusiness/account_updateConnectedBot"
-	RPCBusiness_AccountGetConnectedBots_FullMethodName              = "/mtproto.RPCBusiness/account_getConnectedBots"
-	RPCBusiness_AccountGetBotBusinessConnection_FullMethodName      = "/mtproto.RPCBusiness/account_getBotBusinessConnection"
-	RPCBusiness_AccountUpdateBusinessIntro_FullMethodName           = "/mtproto.RPCBusiness/account_updateBusinessIntro"
-	RPCBusiness_AccountToggleConnectedBotPaused_FullMethodName      = "/mtproto.RPCBusiness/account_toggleConnectedBotPaused"
-	RPCBusiness_AccountDisablePeerConnectedBot_FullMethodName       = "/mtproto.RPCBusiness/account_disablePeerConnectedBot"
-	RPCBusiness_AccountCreateBusinessChatLink_FullMethodName        = "/mtproto.RPCBusiness/account_createBusinessChatLink"
-	RPCBusiness_AccountEditBusinessChatLink_FullMethodName          = "/mtproto.RPCBusiness/account_editBusinessChatLink"
-	RPCBusiness_AccountDeleteBusinessChatLink_FullMethodName        = "/mtproto.RPCBusiness/account_deleteBusinessChatLink"
-	RPCBusiness_AccountGetBusinessChatLinks_FullMethodName          = "/mtproto.RPCBusiness/account_getBusinessChatLinks"
-	RPCBusiness_AccountResolveBusinessChatLink_FullMethodName       = "/mtproto.RPCBusiness/account_resolveBusinessChatLink"
-	RPCBusiness_AccountUpdatePersonalChannel_FullMethodName         = "/mtproto.RPCBusiness/account_updatePersonalChannel"
-	RPCBusiness_MessagesGetQuickReplies_FullMethodName              = "/mtproto.RPCBusiness/messages_getQuickReplies"
-	RPCBusiness_MessagesReorderQuickReplies_FullMethodName          = "/mtproto.RPCBusiness/messages_reorderQuickReplies"
-	RPCBusiness_MessagesCheckQuickReplyShortcut_FullMethodName      = "/mtproto.RPCBusiness/messages_checkQuickReplyShortcut"
-	RPCBusiness_MessagesEditQuickReplyShortcut_FullMethodName       = "/mtproto.RPCBusiness/messages_editQuickReplyShortcut"
-	RPCBusiness_MessagesDeleteQuickReplyShortcut_FullMethodName     = "/mtproto.RPCBusiness/messages_deleteQuickReplyShortcut"
-	RPCBusiness_MessagesGetQuickReplyMessages_FullMethodName        = "/mtproto.RPCBusiness/messages_getQuickReplyMessages"
-	RPCBusiness_MessagesSendQuickReplyMessages_FullMethodName       = "/mtproto.RPCBusiness/messages_sendQuickReplyMessages"
-	RPCBusiness_MessagesDeleteQuickReplyMessages_FullMethodName     = "/mtproto.RPCBusiness/messages_deleteQuickReplyMessages"
-	RPCBusiness_MessagesToggleDialogFilterTags_FullMethodName       = "/mtproto.RPCBusiness/messages_toggleDialogFilterTags"
+	RPCBusinessChatLinks_AccountCreateBusinessChatLink_FullMethodName  = "/mtproto.RPCBusinessChatLinks/account_createBusinessChatLink"
+	RPCBusinessChatLinks_AccountEditBusinessChatLink_FullMethodName    = "/mtproto.RPCBusinessChatLinks/account_editBusinessChatLink"
+	RPCBusinessChatLinks_AccountDeleteBusinessChatLink_FullMethodName  = "/mtproto.RPCBusinessChatLinks/account_deleteBusinessChatLink"
+	RPCBusinessChatLinks_AccountGetBusinessChatLinks_FullMethodName    = "/mtproto.RPCBusinessChatLinks/account_getBusinessChatLinks"
+	RPCBusinessChatLinks_AccountResolveBusinessChatLink_FullMethodName = "/mtproto.RPCBusinessChatLinks/account_resolveBusinessChatLink"
 )
 
-// RPCBusinessClient is the client API for RPCBusiness service.
+// RPCBusinessChatLinksClient is the client API for RPCBusinessChatLinks service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type RPCBusinessClient interface {
-	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours, opts ...grpc.CallOption) (*Bool, error)
-	AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation, opts ...grpc.CallOption) (*Bool, error)
-	AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage, opts ...grpc.CallOption) (*Bool, error)
-	AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage, opts ...grpc.CallOption) (*Bool, error)
-	AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot, opts ...grpc.CallOption) (*Updates, error)
-	AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots, opts ...grpc.CallOption) (*Account_ConnectedBots, error)
-	AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection, opts ...grpc.CallOption) (*Updates, error)
-	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro, opts ...grpc.CallOption) (*Bool, error)
-	AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused, opts ...grpc.CallOption) (*Bool, error)
-	AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot, opts ...grpc.CallOption) (*Bool, error)
+type RPCBusinessChatLinksClient interface {
 	AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink, opts ...grpc.CallOption) (*BusinessChatLink, error)
 	AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink, opts ...grpc.CallOption) (*BusinessChatLink, error)
 	AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink, opts ...grpc.CallOption) (*Bool, error)
 	AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks, opts ...grpc.CallOption) (*Account_BusinessChatLinks, error)
 	AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink, opts ...grpc.CallOption) (*Account_ResolvedBusinessChatLinks, error)
-	AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCBusinessChatLinksClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCBusinessChatLinksClient(cc grpc.ClientConnInterface) RPCBusinessChatLinksClient {
+	return &rPCBusinessChatLinksClient{cc}
+}
+
+func (c *rPCBusinessChatLinksClient) AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink, opts ...grpc.CallOption) (*BusinessChatLink, error) {
+	out := new(BusinessChatLink)
+	err := c.cc.Invoke(ctx, RPCBusinessChatLinks_AccountCreateBusinessChatLink_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessChatLinksClient) AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink, opts ...grpc.CallOption) (*BusinessChatLink, error) {
+	out := new(BusinessChatLink)
+	err := c.cc.Invoke(ctx, RPCBusinessChatLinks_AccountEditBusinessChatLink_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessChatLinksClient) AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessChatLinks_AccountDeleteBusinessChatLink_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessChatLinksClient) AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks, opts ...grpc.CallOption) (*Account_BusinessChatLinks, error) {
+	out := new(Account_BusinessChatLinks)
+	err := c.cc.Invoke(ctx, RPCBusinessChatLinks_AccountGetBusinessChatLinks_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessChatLinksClient) AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink, opts ...grpc.CallOption) (*Account_ResolvedBusinessChatLinks, error) {
+	out := new(Account_ResolvedBusinessChatLinks)
+	err := c.cc.Invoke(ctx, RPCBusinessChatLinks_AccountResolveBusinessChatLink_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCBusinessChatLinksServer is the server API for RPCBusinessChatLinks service.
+// All implementations should embed UnimplementedRPCBusinessChatLinksServer
+// for forward compatibility
+type RPCBusinessChatLinksServer interface {
+	AccountCreateBusinessChatLink(context.Context, *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
+	AccountEditBusinessChatLink(context.Context, *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
+	AccountDeleteBusinessChatLink(context.Context, *TLAccountDeleteBusinessChatLink) (*Bool, error)
+	AccountGetBusinessChatLinks(context.Context, *TLAccountGetBusinessChatLinks) (*Account_BusinessChatLinks, error)
+	AccountResolveBusinessChatLink(context.Context, *TLAccountResolveBusinessChatLink) (*Account_ResolvedBusinessChatLinks, error)
+}
+
+// UnimplementedRPCBusinessChatLinksServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCBusinessChatLinksServer struct {
+}
+
+func (UnimplementedRPCBusinessChatLinksServer) AccountCreateBusinessChatLink(context.Context, *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountCreateBusinessChatLink not implemented")
+}
+func (UnimplementedRPCBusinessChatLinksServer) AccountEditBusinessChatLink(context.Context, *TLAccountEditBusinessChatLink) (*BusinessChatLink, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountEditBusinessChatLink not implemented")
+}
+func (UnimplementedRPCBusinessChatLinksServer) AccountDeleteBusinessChatLink(context.Context, *TLAccountDeleteBusinessChatLink) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountDeleteBusinessChatLink not implemented")
+}
+func (UnimplementedRPCBusinessChatLinksServer) AccountGetBusinessChatLinks(context.Context, *TLAccountGetBusinessChatLinks) (*Account_BusinessChatLinks, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetBusinessChatLinks not implemented")
+}
+func (UnimplementedRPCBusinessChatLinksServer) AccountResolveBusinessChatLink(context.Context, *TLAccountResolveBusinessChatLink) (*Account_ResolvedBusinessChatLinks, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountResolveBusinessChatLink not implemented")
+}
+
+// UnsafeRPCBusinessChatLinksServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCBusinessChatLinksServer will
+// result in compilation errors.
+type UnsafeRPCBusinessChatLinksServer interface {
+	mustEmbedUnimplementedRPCBusinessChatLinksServer()
+}
+
+func RegisterRPCBusinessChatLinksServer(s grpc.ServiceRegistrar, srv RPCBusinessChatLinksServer) {
+	s.RegisterService(&RPCBusinessChatLinks_ServiceDesc, srv)
+}
+
+func _RPCBusinessChatLinks_AccountCreateBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountCreateBusinessChatLink)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessChatLinksServer).AccountCreateBusinessChatLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessChatLinks_AccountCreateBusinessChatLink_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessChatLinksServer).AccountCreateBusinessChatLink(ctx, req.(*TLAccountCreateBusinessChatLink))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessChatLinks_AccountEditBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountEditBusinessChatLink)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessChatLinksServer).AccountEditBusinessChatLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessChatLinks_AccountEditBusinessChatLink_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessChatLinksServer).AccountEditBusinessChatLink(ctx, req.(*TLAccountEditBusinessChatLink))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessChatLinks_AccountDeleteBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountDeleteBusinessChatLink)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessChatLinksServer).AccountDeleteBusinessChatLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessChatLinks_AccountDeleteBusinessChatLink_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessChatLinksServer).AccountDeleteBusinessChatLink(ctx, req.(*TLAccountDeleteBusinessChatLink))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessChatLinks_AccountGetBusinessChatLinks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetBusinessChatLinks)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessChatLinksServer).AccountGetBusinessChatLinks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessChatLinks_AccountGetBusinessChatLinks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessChatLinksServer).AccountGetBusinessChatLinks(ctx, req.(*TLAccountGetBusinessChatLinks))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessChatLinks_AccountResolveBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountResolveBusinessChatLink)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessChatLinksServer).AccountResolveBusinessChatLink(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessChatLinks_AccountResolveBusinessChatLink_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessChatLinksServer).AccountResolveBusinessChatLink(ctx, req.(*TLAccountResolveBusinessChatLink))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCBusinessChatLinks_ServiceDesc is the grpc.ServiceDesc for RPCBusinessChatLinks service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCBusinessChatLinks_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCBusinessChatLinks",
+	HandlerType: (*RPCBusinessChatLinksServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_createBusinessChatLink",
+			Handler:    _RPCBusinessChatLinks_AccountCreateBusinessChatLink_Handler,
+		},
+		{
+			MethodName: "account_editBusinessChatLink",
+			Handler:    _RPCBusinessChatLinks_AccountEditBusinessChatLink_Handler,
+		},
+		{
+			MethodName: "account_deleteBusinessChatLink",
+			Handler:    _RPCBusinessChatLinks_AccountDeleteBusinessChatLink_Handler,
+		},
+		{
+			MethodName: "account_getBusinessChatLinks",
+			Handler:    _RPCBusinessChatLinks_AccountGetBusinessChatLinks_Handler,
+		},
+		{
+			MethodName: "account_resolveBusinessChatLink",
+			Handler:    _RPCBusinessChatLinks_AccountResolveBusinessChatLink_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCBusinessConnectedBots_AccountUpdateConnectedBot_FullMethodName       = "/mtproto.RPCBusinessConnectedBots/account_updateConnectedBot"
+	RPCBusinessConnectedBots_AccountGetConnectedBots_FullMethodName         = "/mtproto.RPCBusinessConnectedBots/account_getConnectedBots"
+	RPCBusinessConnectedBots_AccountGetBotBusinessConnection_FullMethodName = "/mtproto.RPCBusinessConnectedBots/account_getBotBusinessConnection"
+	RPCBusinessConnectedBots_AccountToggleConnectedBotPaused_FullMethodName = "/mtproto.RPCBusinessConnectedBots/account_toggleConnectedBotPaused"
+	RPCBusinessConnectedBots_AccountDisablePeerConnectedBot_FullMethodName  = "/mtproto.RPCBusinessConnectedBots/account_disablePeerConnectedBot"
+)
+
+// RPCBusinessConnectedBotsClient is the client API for RPCBusinessConnectedBots service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCBusinessConnectedBotsClient interface {
+	AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot, opts ...grpc.CallOption) (*Updates, error)
+	AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots, opts ...grpc.CallOption) (*Account_ConnectedBots, error)
+	AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection, opts ...grpc.CallOption) (*Updates, error)
+	AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused, opts ...grpc.CallOption) (*Bool, error)
+	AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCBusinessConnectedBotsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCBusinessConnectedBotsClient(cc grpc.ClientConnInterface) RPCBusinessConnectedBotsClient {
+	return &rPCBusinessConnectedBotsClient{cc}
+}
+
+func (c *rPCBusinessConnectedBotsClient) AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCBusinessConnectedBots_AccountUpdateConnectedBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessConnectedBotsClient) AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots, opts ...grpc.CallOption) (*Account_ConnectedBots, error) {
+	out := new(Account_ConnectedBots)
+	err := c.cc.Invoke(ctx, RPCBusinessConnectedBots_AccountGetConnectedBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessConnectedBotsClient) AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCBusinessConnectedBots_AccountGetBotBusinessConnection_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessConnectedBotsClient) AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessConnectedBots_AccountToggleConnectedBotPaused_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessConnectedBotsClient) AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessConnectedBots_AccountDisablePeerConnectedBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCBusinessConnectedBotsServer is the server API for RPCBusinessConnectedBots service.
+// All implementations should embed UnimplementedRPCBusinessConnectedBotsServer
+// for forward compatibility
+type RPCBusinessConnectedBotsServer interface {
+	AccountUpdateConnectedBot(context.Context, *TLAccountUpdateConnectedBot) (*Updates, error)
+	AccountGetConnectedBots(context.Context, *TLAccountGetConnectedBots) (*Account_ConnectedBots, error)
+	AccountGetBotBusinessConnection(context.Context, *TLAccountGetBotBusinessConnection) (*Updates, error)
+	AccountToggleConnectedBotPaused(context.Context, *TLAccountToggleConnectedBotPaused) (*Bool, error)
+	AccountDisablePeerConnectedBot(context.Context, *TLAccountDisablePeerConnectedBot) (*Bool, error)
+}
+
+// UnimplementedRPCBusinessConnectedBotsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCBusinessConnectedBotsServer struct {
+}
+
+func (UnimplementedRPCBusinessConnectedBotsServer) AccountUpdateConnectedBot(context.Context, *TLAccountUpdateConnectedBot) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateConnectedBot not implemented")
+}
+func (UnimplementedRPCBusinessConnectedBotsServer) AccountGetConnectedBots(context.Context, *TLAccountGetConnectedBots) (*Account_ConnectedBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetConnectedBots not implemented")
+}
+func (UnimplementedRPCBusinessConnectedBotsServer) AccountGetBotBusinessConnection(context.Context, *TLAccountGetBotBusinessConnection) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetBotBusinessConnection not implemented")
+}
+func (UnimplementedRPCBusinessConnectedBotsServer) AccountToggleConnectedBotPaused(context.Context, *TLAccountToggleConnectedBotPaused) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountToggleConnectedBotPaused not implemented")
+}
+func (UnimplementedRPCBusinessConnectedBotsServer) AccountDisablePeerConnectedBot(context.Context, *TLAccountDisablePeerConnectedBot) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountDisablePeerConnectedBot not implemented")
+}
+
+// UnsafeRPCBusinessConnectedBotsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCBusinessConnectedBotsServer will
+// result in compilation errors.
+type UnsafeRPCBusinessConnectedBotsServer interface {
+	mustEmbedUnimplementedRPCBusinessConnectedBotsServer()
+}
+
+func RegisterRPCBusinessConnectedBotsServer(s grpc.ServiceRegistrar, srv RPCBusinessConnectedBotsServer) {
+	s.RegisterService(&RPCBusinessConnectedBots_ServiceDesc, srv)
+}
+
+func _RPCBusinessConnectedBots_AccountUpdateConnectedBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateConnectedBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessConnectedBotsServer).AccountUpdateConnectedBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessConnectedBots_AccountUpdateConnectedBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessConnectedBotsServer).AccountUpdateConnectedBot(ctx, req.(*TLAccountUpdateConnectedBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessConnectedBots_AccountGetConnectedBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetConnectedBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessConnectedBotsServer).AccountGetConnectedBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessConnectedBots_AccountGetConnectedBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessConnectedBotsServer).AccountGetConnectedBots(ctx, req.(*TLAccountGetConnectedBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessConnectedBots_AccountGetBotBusinessConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetBotBusinessConnection)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessConnectedBotsServer).AccountGetBotBusinessConnection(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessConnectedBots_AccountGetBotBusinessConnection_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessConnectedBotsServer).AccountGetBotBusinessConnection(ctx, req.(*TLAccountGetBotBusinessConnection))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessConnectedBots_AccountToggleConnectedBotPaused_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountToggleConnectedBotPaused)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessConnectedBotsServer).AccountToggleConnectedBotPaused(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessConnectedBots_AccountToggleConnectedBotPaused_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessConnectedBotsServer).AccountToggleConnectedBotPaused(ctx, req.(*TLAccountToggleConnectedBotPaused))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessConnectedBots_AccountDisablePeerConnectedBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountDisablePeerConnectedBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessConnectedBotsServer).AccountDisablePeerConnectedBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessConnectedBots_AccountDisablePeerConnectedBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessConnectedBotsServer).AccountDisablePeerConnectedBot(ctx, req.(*TLAccountDisablePeerConnectedBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCBusinessConnectedBots_ServiceDesc is the grpc.ServiceDesc for RPCBusinessConnectedBots service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCBusinessConnectedBots_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCBusinessConnectedBots",
+	HandlerType: (*RPCBusinessConnectedBotsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_updateConnectedBot",
+			Handler:    _RPCBusinessConnectedBots_AccountUpdateConnectedBot_Handler,
+		},
+		{
+			MethodName: "account_getConnectedBots",
+			Handler:    _RPCBusinessConnectedBots_AccountGetConnectedBots_Handler,
+		},
+		{
+			MethodName: "account_getBotBusinessConnection",
+			Handler:    _RPCBusinessConnectedBots_AccountGetBotBusinessConnection_Handler,
+		},
+		{
+			MethodName: "account_toggleConnectedBotPaused",
+			Handler:    _RPCBusinessConnectedBots_AccountToggleConnectedBotPaused_Handler,
+		},
+		{
+			MethodName: "account_disablePeerConnectedBot",
+			Handler:    _RPCBusinessConnectedBots_AccountDisablePeerConnectedBot_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCBusinessGreeting_AccountUpdateBusinessGreetingMessage_FullMethodName = "/mtproto.RPCBusinessGreeting/account_updateBusinessGreetingMessage"
+	RPCBusinessGreeting_AccountUpdateBusinessAwayMessage_FullMethodName     = "/mtproto.RPCBusinessGreeting/account_updateBusinessAwayMessage"
+)
+
+// RPCBusinessGreetingClient is the client API for RPCBusinessGreeting service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCBusinessGreetingClient interface {
+	AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage, opts ...grpc.CallOption) (*Bool, error)
+	AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCBusinessGreetingClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCBusinessGreetingClient(cc grpc.ClientConnInterface) RPCBusinessGreetingClient {
+	return &rPCBusinessGreetingClient{cc}
+}
+
+func (c *rPCBusinessGreetingClient) AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessGreeting_AccountUpdateBusinessGreetingMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCBusinessGreetingClient) AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessGreeting_AccountUpdateBusinessAwayMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCBusinessGreetingServer is the server API for RPCBusinessGreeting service.
+// All implementations should embed UnimplementedRPCBusinessGreetingServer
+// for forward compatibility
+type RPCBusinessGreetingServer interface {
+	AccountUpdateBusinessGreetingMessage(context.Context, *TLAccountUpdateBusinessGreetingMessage) (*Bool, error)
+	AccountUpdateBusinessAwayMessage(context.Context, *TLAccountUpdateBusinessAwayMessage) (*Bool, error)
+}
+
+// UnimplementedRPCBusinessGreetingServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCBusinessGreetingServer struct {
+}
+
+func (UnimplementedRPCBusinessGreetingServer) AccountUpdateBusinessGreetingMessage(context.Context, *TLAccountUpdateBusinessGreetingMessage) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessGreetingMessage not implemented")
+}
+func (UnimplementedRPCBusinessGreetingServer) AccountUpdateBusinessAwayMessage(context.Context, *TLAccountUpdateBusinessAwayMessage) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessAwayMessage not implemented")
+}
+
+// UnsafeRPCBusinessGreetingServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCBusinessGreetingServer will
+// result in compilation errors.
+type UnsafeRPCBusinessGreetingServer interface {
+	mustEmbedUnimplementedRPCBusinessGreetingServer()
+}
+
+func RegisterRPCBusinessGreetingServer(s grpc.ServiceRegistrar, srv RPCBusinessGreetingServer) {
+	s.RegisterService(&RPCBusinessGreeting_ServiceDesc, srv)
+}
+
+func _RPCBusinessGreeting_AccountUpdateBusinessGreetingMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateBusinessGreetingMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessGreetingServer).AccountUpdateBusinessGreetingMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessGreeting_AccountUpdateBusinessGreetingMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessGreetingServer).AccountUpdateBusinessGreetingMessage(ctx, req.(*TLAccountUpdateBusinessGreetingMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCBusinessGreeting_AccountUpdateBusinessAwayMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateBusinessAwayMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessGreetingServer).AccountUpdateBusinessAwayMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessGreeting_AccountUpdateBusinessAwayMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessGreetingServer).AccountUpdateBusinessAwayMessage(ctx, req.(*TLAccountUpdateBusinessAwayMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCBusinessGreeting_ServiceDesc is the grpc.ServiceDesc for RPCBusinessGreeting service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCBusinessGreeting_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCBusinessGreeting",
+	HandlerType: (*RPCBusinessGreetingServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_updateBusinessGreetingMessage",
+			Handler:    _RPCBusinessGreeting_AccountUpdateBusinessGreetingMessage_Handler,
+		},
+		{
+			MethodName: "account_updateBusinessAwayMessage",
+			Handler:    _RPCBusinessGreeting_AccountUpdateBusinessAwayMessage_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCBusinessIntro_AccountUpdateBusinessIntro_FullMethodName = "/mtproto.RPCBusinessIntro/account_updateBusinessIntro"
+)
+
+// RPCBusinessIntroClient is the client API for RPCBusinessIntro service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCBusinessIntroClient interface {
+	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCBusinessIntroClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCBusinessIntroClient(cc grpc.ClientConnInterface) RPCBusinessIntroClient {
+	return &rPCBusinessIntroClient{cc}
+}
+
+func (c *rPCBusinessIntroClient) AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessIntro_AccountUpdateBusinessIntro_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCBusinessIntroServer is the server API for RPCBusinessIntro service.
+// All implementations should embed UnimplementedRPCBusinessIntroServer
+// for forward compatibility
+type RPCBusinessIntroServer interface {
+	AccountUpdateBusinessIntro(context.Context, *TLAccountUpdateBusinessIntro) (*Bool, error)
+}
+
+// UnimplementedRPCBusinessIntroServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCBusinessIntroServer struct {
+}
+
+func (UnimplementedRPCBusinessIntroServer) AccountUpdateBusinessIntro(context.Context, *TLAccountUpdateBusinessIntro) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessIntro not implemented")
+}
+
+// UnsafeRPCBusinessIntroServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCBusinessIntroServer will
+// result in compilation errors.
+type UnsafeRPCBusinessIntroServer interface {
+	mustEmbedUnimplementedRPCBusinessIntroServer()
+}
+
+func RegisterRPCBusinessIntroServer(s grpc.ServiceRegistrar, srv RPCBusinessIntroServer) {
+	s.RegisterService(&RPCBusinessIntro_ServiceDesc, srv)
+}
+
+func _RPCBusinessIntro_AccountUpdateBusinessIntro_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateBusinessIntro)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessIntroServer).AccountUpdateBusinessIntro(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessIntro_AccountUpdateBusinessIntro_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessIntroServer).AccountUpdateBusinessIntro(ctx, req.(*TLAccountUpdateBusinessIntro))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCBusinessIntro_ServiceDesc is the grpc.ServiceDesc for RPCBusinessIntro service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCBusinessIntro_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCBusinessIntro",
+	HandlerType: (*RPCBusinessIntroServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_updateBusinessIntro",
+			Handler:    _RPCBusinessIntro_AccountUpdateBusinessIntro_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCBusinessLocation_AccountUpdateBusinessLocation_FullMethodName = "/mtproto.RPCBusinessLocation/account_updateBusinessLocation"
+)
+
+// RPCBusinessLocationClient is the client API for RPCBusinessLocation service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCBusinessLocationClient interface {
+	AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCBusinessLocationClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCBusinessLocationClient(cc grpc.ClientConnInterface) RPCBusinessLocationClient {
+	return &rPCBusinessLocationClient{cc}
+}
+
+func (c *rPCBusinessLocationClient) AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessLocation_AccountUpdateBusinessLocation_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCBusinessLocationServer is the server API for RPCBusinessLocation service.
+// All implementations should embed UnimplementedRPCBusinessLocationServer
+// for forward compatibility
+type RPCBusinessLocationServer interface {
+	AccountUpdateBusinessLocation(context.Context, *TLAccountUpdateBusinessLocation) (*Bool, error)
+}
+
+// UnimplementedRPCBusinessLocationServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCBusinessLocationServer struct {
+}
+
+func (UnimplementedRPCBusinessLocationServer) AccountUpdateBusinessLocation(context.Context, *TLAccountUpdateBusinessLocation) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessLocation not implemented")
+}
+
+// UnsafeRPCBusinessLocationServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCBusinessLocationServer will
+// result in compilation errors.
+type UnsafeRPCBusinessLocationServer interface {
+	mustEmbedUnimplementedRPCBusinessLocationServer()
+}
+
+func RegisterRPCBusinessLocationServer(s grpc.ServiceRegistrar, srv RPCBusinessLocationServer) {
+	s.RegisterService(&RPCBusinessLocation_ServiceDesc, srv)
+}
+
+func _RPCBusinessLocation_AccountUpdateBusinessLocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateBusinessLocation)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessLocationServer).AccountUpdateBusinessLocation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessLocation_AccountUpdateBusinessLocation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessLocationServer).AccountUpdateBusinessLocation(ctx, req.(*TLAccountUpdateBusinessLocation))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCBusinessLocation_ServiceDesc is the grpc.ServiceDesc for RPCBusinessLocation service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCBusinessLocation_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCBusinessLocation",
+	HandlerType: (*RPCBusinessLocationServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_updateBusinessLocation",
+			Handler:    _RPCBusinessLocation_AccountUpdateBusinessLocation_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCBusinessOpeningHours_AccountUpdateBusinessWorkHours_FullMethodName = "/mtproto.RPCBusinessOpeningHours/account_updateBusinessWorkHours"
+)
+
+// RPCBusinessOpeningHoursClient is the client API for RPCBusinessOpeningHours service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCBusinessOpeningHoursClient interface {
+	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCBusinessOpeningHoursClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCBusinessOpeningHoursClient(cc grpc.ClientConnInterface) RPCBusinessOpeningHoursClient {
+	return &rPCBusinessOpeningHoursClient{cc}
+}
+
+func (c *rPCBusinessOpeningHoursClient) AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCBusinessOpeningHours_AccountUpdateBusinessWorkHours_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCBusinessOpeningHoursServer is the server API for RPCBusinessOpeningHours service.
+// All implementations should embed UnimplementedRPCBusinessOpeningHoursServer
+// for forward compatibility
+type RPCBusinessOpeningHoursServer interface {
+	AccountUpdateBusinessWorkHours(context.Context, *TLAccountUpdateBusinessWorkHours) (*Bool, error)
+}
+
+// UnimplementedRPCBusinessOpeningHoursServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCBusinessOpeningHoursServer struct {
+}
+
+func (UnimplementedRPCBusinessOpeningHoursServer) AccountUpdateBusinessWorkHours(context.Context, *TLAccountUpdateBusinessWorkHours) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessWorkHours not implemented")
+}
+
+// UnsafeRPCBusinessOpeningHoursServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCBusinessOpeningHoursServer will
+// result in compilation errors.
+type UnsafeRPCBusinessOpeningHoursServer interface {
+	mustEmbedUnimplementedRPCBusinessOpeningHoursServer()
+}
+
+func RegisterRPCBusinessOpeningHoursServer(s grpc.ServiceRegistrar, srv RPCBusinessOpeningHoursServer) {
+	s.RegisterService(&RPCBusinessOpeningHours_ServiceDesc, srv)
+}
+
+func _RPCBusinessOpeningHours_AccountUpdateBusinessWorkHours_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateBusinessWorkHours)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBusinessOpeningHoursServer).AccountUpdateBusinessWorkHours(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBusinessOpeningHours_AccountUpdateBusinessWorkHours_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBusinessOpeningHoursServer).AccountUpdateBusinessWorkHours(ctx, req.(*TLAccountUpdateBusinessWorkHours))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCBusinessOpeningHours_ServiceDesc is the grpc.ServiceDesc for RPCBusinessOpeningHours service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCBusinessOpeningHours_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCBusinessOpeningHours",
+	HandlerType: (*RPCBusinessOpeningHoursServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_updateBusinessWorkHours",
+			Handler:    _RPCBusinessOpeningHours_AccountUpdateBusinessWorkHours_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCBusinessQuickReply_MessagesGetQuickReplies_FullMethodName          = "/mtproto.RPCBusinessQuickReply/messages_getQuickReplies"
+	RPCBusinessQuickReply_MessagesReorderQuickReplies_FullMethodName      = "/mtproto.RPCBusinessQuickReply/messages_reorderQuickReplies"
+	RPCBusinessQuickReply_MessagesCheckQuickReplyShortcut_FullMethodName  = "/mtproto.RPCBusinessQuickReply/messages_checkQuickReplyShortcut"
+	RPCBusinessQuickReply_MessagesEditQuickReplyShortcut_FullMethodName   = "/mtproto.RPCBusinessQuickReply/messages_editQuickReplyShortcut"
+	RPCBusinessQuickReply_MessagesDeleteQuickReplyShortcut_FullMethodName = "/mtproto.RPCBusinessQuickReply/messages_deleteQuickReplyShortcut"
+	RPCBusinessQuickReply_MessagesGetQuickReplyMessages_FullMethodName    = "/mtproto.RPCBusinessQuickReply/messages_getQuickReplyMessages"
+	RPCBusinessQuickReply_MessagesSendQuickReplyMessages_FullMethodName   = "/mtproto.RPCBusinessQuickReply/messages_sendQuickReplyMessages"
+	RPCBusinessQuickReply_MessagesDeleteQuickReplyMessages_FullMethodName = "/mtproto.RPCBusinessQuickReply/messages_deleteQuickReplyMessages"
+)
+
+// RPCBusinessQuickReplyClient is the client API for RPCBusinessQuickReply service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCBusinessQuickReplyClient interface {
 	MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies, opts ...grpc.CallOption) (*Messages_QuickReplies, error)
 	MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies, opts ...grpc.CallOption) (*Bool, error)
 	MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut, opts ...grpc.CallOption) (*Bool, error)
@@ -3641,262 +4210,92 @@ type RPCBusinessClient interface {
 	MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages, opts ...grpc.CallOption) (*Messages_Messages, error)
 	MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages, opts ...grpc.CallOption) (*Updates, error)
 	MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages, opts ...grpc.CallOption) (*Updates, error)
-	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags, opts ...grpc.CallOption) (*Bool, error)
 }
 
-type rPCBusinessClient struct {
+type rPCBusinessQuickReplyClient struct {
 	cc grpc.ClientConnInterface
 }
 
-func NewRPCBusinessClient(cc grpc.ClientConnInterface) RPCBusinessClient {
-	return &rPCBusinessClient{cc}
+func NewRPCBusinessQuickReplyClient(cc grpc.ClientConnInterface) RPCBusinessQuickReplyClient {
+	return &rPCBusinessQuickReplyClient{cc}
 }
 
-func (c *rPCBusinessClient) AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountUpdateBusinessWorkHours_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountUpdateBusinessLocation_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountUpdateBusinessGreetingMessage_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountUpdateBusinessAwayMessage_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountUpdateConnectedBot_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots, opts ...grpc.CallOption) (*Account_ConnectedBots, error) {
-	out := new(Account_ConnectedBots)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountGetConnectedBots_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountGetBotBusinessConnection_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountUpdateBusinessIntro_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountToggleConnectedBotPaused_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountDisablePeerConnectedBot_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink, opts ...grpc.CallOption) (*BusinessChatLink, error) {
-	out := new(BusinessChatLink)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountCreateBusinessChatLink_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink, opts ...grpc.CallOption) (*BusinessChatLink, error) {
-	out := new(BusinessChatLink)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountEditBusinessChatLink_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountDeleteBusinessChatLink_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks, opts ...grpc.CallOption) (*Account_BusinessChatLinks, error) {
-	out := new(Account_BusinessChatLinks)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountGetBusinessChatLinks_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink, opts ...grpc.CallOption) (*Account_ResolvedBusinessChatLinks, error) {
-	out := new(Account_ResolvedBusinessChatLinks)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountResolveBusinessChatLink_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_AccountUpdatePersonalChannel_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCBusinessClient) MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies, opts ...grpc.CallOption) (*Messages_QuickReplies, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies, opts ...grpc.CallOption) (*Messages_QuickReplies, error) {
 	out := new(Messages_QuickReplies)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesGetQuickReplies_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesGetQuickReplies_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesReorderQuickReplies_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesReorderQuickReplies_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesCheckQuickReplyShortcut_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesCheckQuickReplyShortcut_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesEditQuickReplyShortcut_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesEditQuickReplyShortcut_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesDeleteQuickReplyShortcut_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesDeleteQuickReplyShortcut_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages, opts ...grpc.CallOption) (*Messages_Messages, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages, opts ...grpc.CallOption) (*Messages_Messages, error) {
 	out := new(Messages_Messages)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesGetQuickReplyMessages_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesGetQuickReplyMessages_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages, opts ...grpc.CallOption) (*Updates, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesSendQuickReplyMessages_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesSendQuickReplyMessages_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages, opts ...grpc.CallOption) (*Updates, error) {
+func (c *rPCBusinessQuickReplyClient) MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesDeleteQuickReplyMessages_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCBusinessQuickReply_MessagesDeleteQuickReplyMessages_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCBusinessClient) MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCBusiness_MessagesToggleDialogFilterTags_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// RPCBusinessServer is the server API for RPCBusiness service.
-// All implementations should embed UnimplementedRPCBusinessServer
+// RPCBusinessQuickReplyServer is the server API for RPCBusinessQuickReply service.
+// All implementations should embed UnimplementedRPCBusinessQuickReplyServer
 // for forward compatibility
-type RPCBusinessServer interface {
-	AccountUpdateBusinessWorkHours(context.Context, *TLAccountUpdateBusinessWorkHours) (*Bool, error)
-	AccountUpdateBusinessLocation(context.Context, *TLAccountUpdateBusinessLocation) (*Bool, error)
-	AccountUpdateBusinessGreetingMessage(context.Context, *TLAccountUpdateBusinessGreetingMessage) (*Bool, error)
-	AccountUpdateBusinessAwayMessage(context.Context, *TLAccountUpdateBusinessAwayMessage) (*Bool, error)
-	AccountUpdateConnectedBot(context.Context, *TLAccountUpdateConnectedBot) (*Updates, error)
-	AccountGetConnectedBots(context.Context, *TLAccountGetConnectedBots) (*Account_ConnectedBots, error)
-	AccountGetBotBusinessConnection(context.Context, *TLAccountGetBotBusinessConnection) (*Updates, error)
-	AccountUpdateBusinessIntro(context.Context, *TLAccountUpdateBusinessIntro) (*Bool, error)
-	AccountToggleConnectedBotPaused(context.Context, *TLAccountToggleConnectedBotPaused) (*Bool, error)
-	AccountDisablePeerConnectedBot(context.Context, *TLAccountDisablePeerConnectedBot) (*Bool, error)
-	AccountCreateBusinessChatLink(context.Context, *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
-	AccountEditBusinessChatLink(context.Context, *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
-	AccountDeleteBusinessChatLink(context.Context, *TLAccountDeleteBusinessChatLink) (*Bool, error)
-	AccountGetBusinessChatLinks(context.Context, *TLAccountGetBusinessChatLinks) (*Account_BusinessChatLinks, error)
-	AccountResolveBusinessChatLink(context.Context, *TLAccountResolveBusinessChatLink) (*Account_ResolvedBusinessChatLinks, error)
-	AccountUpdatePersonalChannel(context.Context, *TLAccountUpdatePersonalChannel) (*Bool, error)
+type RPCBusinessQuickReplyServer interface {
 	MessagesGetQuickReplies(context.Context, *TLMessagesGetQuickReplies) (*Messages_QuickReplies, error)
 	MessagesReorderQuickReplies(context.Context, *TLMessagesReorderQuickReplies) (*Bool, error)
 	MessagesCheckQuickReplyShortcut(context.Context, *TLMessagesCheckQuickReplyShortcut) (*Bool, error)
@@ -3905,656 +4304,392 @@ type RPCBusinessServer interface {
 	MessagesGetQuickReplyMessages(context.Context, *TLMessagesGetQuickReplyMessages) (*Messages_Messages, error)
 	MessagesSendQuickReplyMessages(context.Context, *TLMessagesSendQuickReplyMessages) (*Updates, error)
 	MessagesDeleteQuickReplyMessages(context.Context, *TLMessagesDeleteQuickReplyMessages) (*Updates, error)
-	MessagesToggleDialogFilterTags(context.Context, *TLMessagesToggleDialogFilterTags) (*Bool, error)
 }
 
-// UnimplementedRPCBusinessServer should be embedded to have forward compatible implementations.
-type UnimplementedRPCBusinessServer struct {
+// UnimplementedRPCBusinessQuickReplyServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCBusinessQuickReplyServer struct {
 }
 
-func (UnimplementedRPCBusinessServer) AccountUpdateBusinessWorkHours(context.Context, *TLAccountUpdateBusinessWorkHours) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessWorkHours not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountUpdateBusinessLocation(context.Context, *TLAccountUpdateBusinessLocation) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessLocation not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountUpdateBusinessGreetingMessage(context.Context, *TLAccountUpdateBusinessGreetingMessage) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessGreetingMessage not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountUpdateBusinessAwayMessage(context.Context, *TLAccountUpdateBusinessAwayMessage) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessAwayMessage not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountUpdateConnectedBot(context.Context, *TLAccountUpdateConnectedBot) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateConnectedBot not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountGetConnectedBots(context.Context, *TLAccountGetConnectedBots) (*Account_ConnectedBots, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetConnectedBots not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountGetBotBusinessConnection(context.Context, *TLAccountGetBotBusinessConnection) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetBotBusinessConnection not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountUpdateBusinessIntro(context.Context, *TLAccountUpdateBusinessIntro) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBusinessIntro not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountToggleConnectedBotPaused(context.Context, *TLAccountToggleConnectedBotPaused) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountToggleConnectedBotPaused not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountDisablePeerConnectedBot(context.Context, *TLAccountDisablePeerConnectedBot) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountDisablePeerConnectedBot not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountCreateBusinessChatLink(context.Context, *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountCreateBusinessChatLink not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountEditBusinessChatLink(context.Context, *TLAccountEditBusinessChatLink) (*BusinessChatLink, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountEditBusinessChatLink not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountDeleteBusinessChatLink(context.Context, *TLAccountDeleteBusinessChatLink) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountDeleteBusinessChatLink not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountGetBusinessChatLinks(context.Context, *TLAccountGetBusinessChatLinks) (*Account_BusinessChatLinks, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetBusinessChatLinks not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountResolveBusinessChatLink(context.Context, *TLAccountResolveBusinessChatLink) (*Account_ResolvedBusinessChatLinks, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountResolveBusinessChatLink not implemented")
-}
-func (UnimplementedRPCBusinessServer) AccountUpdatePersonalChannel(context.Context, *TLAccountUpdatePersonalChannel) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdatePersonalChannel not implemented")
-}
-func (UnimplementedRPCBusinessServer) MessagesGetQuickReplies(context.Context, *TLMessagesGetQuickReplies) (*Messages_QuickReplies, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesGetQuickReplies(context.Context, *TLMessagesGetQuickReplies) (*Messages_QuickReplies, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetQuickReplies not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesReorderQuickReplies(context.Context, *TLMessagesReorderQuickReplies) (*Bool, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesReorderQuickReplies(context.Context, *TLMessagesReorderQuickReplies) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesReorderQuickReplies not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesCheckQuickReplyShortcut(context.Context, *TLMessagesCheckQuickReplyShortcut) (*Bool, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesCheckQuickReplyShortcut(context.Context, *TLMessagesCheckQuickReplyShortcut) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesCheckQuickReplyShortcut not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesEditQuickReplyShortcut(context.Context, *TLMessagesEditQuickReplyShortcut) (*Bool, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesEditQuickReplyShortcut(context.Context, *TLMessagesEditQuickReplyShortcut) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesEditQuickReplyShortcut not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesDeleteQuickReplyShortcut(context.Context, *TLMessagesDeleteQuickReplyShortcut) (*Bool, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesDeleteQuickReplyShortcut(context.Context, *TLMessagesDeleteQuickReplyShortcut) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteQuickReplyShortcut not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesGetQuickReplyMessages(context.Context, *TLMessagesGetQuickReplyMessages) (*Messages_Messages, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesGetQuickReplyMessages(context.Context, *TLMessagesGetQuickReplyMessages) (*Messages_Messages, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetQuickReplyMessages not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesSendQuickReplyMessages(context.Context, *TLMessagesSendQuickReplyMessages) (*Updates, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesSendQuickReplyMessages(context.Context, *TLMessagesSendQuickReplyMessages) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendQuickReplyMessages not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesDeleteQuickReplyMessages(context.Context, *TLMessagesDeleteQuickReplyMessages) (*Updates, error) {
+func (UnimplementedRPCBusinessQuickReplyServer) MessagesDeleteQuickReplyMessages(context.Context, *TLMessagesDeleteQuickReplyMessages) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteQuickReplyMessages not implemented")
 }
-func (UnimplementedRPCBusinessServer) MessagesToggleDialogFilterTags(context.Context, *TLMessagesToggleDialogFilterTags) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesToggleDialogFilterTags not implemented")
-}
 
-// UnsafeRPCBusinessServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to RPCBusinessServer will
+// UnsafeRPCBusinessQuickReplyServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCBusinessQuickReplyServer will
 // result in compilation errors.
-type UnsafeRPCBusinessServer interface {
-	mustEmbedUnimplementedRPCBusinessServer()
+type UnsafeRPCBusinessQuickReplyServer interface {
+	mustEmbedUnimplementedRPCBusinessQuickReplyServer()
 }
 
-func RegisterRPCBusinessServer(s grpc.ServiceRegistrar, srv RPCBusinessServer) {
-	s.RegisterService(&RPCBusiness_ServiceDesc, srv)
+func RegisterRPCBusinessQuickReplyServer(s grpc.ServiceRegistrar, srv RPCBusinessQuickReplyServer) {
+	s.RegisterService(&RPCBusinessQuickReply_ServiceDesc, srv)
 }
 
-func _RPCBusiness_AccountUpdateBusinessWorkHours_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateBusinessWorkHours)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessWorkHours(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountUpdateBusinessWorkHours_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessWorkHours(ctx, req.(*TLAccountUpdateBusinessWorkHours))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountUpdateBusinessLocation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateBusinessLocation)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessLocation(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountUpdateBusinessLocation_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessLocation(ctx, req.(*TLAccountUpdateBusinessLocation))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountUpdateBusinessGreetingMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateBusinessGreetingMessage)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessGreetingMessage(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountUpdateBusinessGreetingMessage_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessGreetingMessage(ctx, req.(*TLAccountUpdateBusinessGreetingMessage))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountUpdateBusinessAwayMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateBusinessAwayMessage)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessAwayMessage(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountUpdateBusinessAwayMessage_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessAwayMessage(ctx, req.(*TLAccountUpdateBusinessAwayMessage))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountUpdateConnectedBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateConnectedBot)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountUpdateConnectedBot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountUpdateConnectedBot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountUpdateConnectedBot(ctx, req.(*TLAccountUpdateConnectedBot))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountGetConnectedBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetConnectedBots)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountGetConnectedBots(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountGetConnectedBots_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountGetConnectedBots(ctx, req.(*TLAccountGetConnectedBots))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountGetBotBusinessConnection_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetBotBusinessConnection)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountGetBotBusinessConnection(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountGetBotBusinessConnection_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountGetBotBusinessConnection(ctx, req.(*TLAccountGetBotBusinessConnection))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountUpdateBusinessIntro_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdateBusinessIntro)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessIntro(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountUpdateBusinessIntro_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountUpdateBusinessIntro(ctx, req.(*TLAccountUpdateBusinessIntro))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountToggleConnectedBotPaused_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountToggleConnectedBotPaused)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountToggleConnectedBotPaused(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountToggleConnectedBotPaused_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountToggleConnectedBotPaused(ctx, req.(*TLAccountToggleConnectedBotPaused))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountDisablePeerConnectedBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountDisablePeerConnectedBot)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountDisablePeerConnectedBot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountDisablePeerConnectedBot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountDisablePeerConnectedBot(ctx, req.(*TLAccountDisablePeerConnectedBot))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountCreateBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountCreateBusinessChatLink)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountCreateBusinessChatLink(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountCreateBusinessChatLink_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountCreateBusinessChatLink(ctx, req.(*TLAccountCreateBusinessChatLink))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountEditBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountEditBusinessChatLink)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountEditBusinessChatLink(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountEditBusinessChatLink_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountEditBusinessChatLink(ctx, req.(*TLAccountEditBusinessChatLink))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountDeleteBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountDeleteBusinessChatLink)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountDeleteBusinessChatLink(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountDeleteBusinessChatLink_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountDeleteBusinessChatLink(ctx, req.(*TLAccountDeleteBusinessChatLink))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountGetBusinessChatLinks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetBusinessChatLinks)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountGetBusinessChatLinks(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountGetBusinessChatLinks_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountGetBusinessChatLinks(ctx, req.(*TLAccountGetBusinessChatLinks))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountResolveBusinessChatLink_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountResolveBusinessChatLink)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountResolveBusinessChatLink(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountResolveBusinessChatLink_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountResolveBusinessChatLink(ctx, req.(*TLAccountResolveBusinessChatLink))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_AccountUpdatePersonalChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountUpdatePersonalChannel)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCBusinessServer).AccountUpdatePersonalChannel(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCBusiness_AccountUpdatePersonalChannel_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).AccountUpdatePersonalChannel(ctx, req.(*TLAccountUpdatePersonalChannel))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCBusiness_MessagesGetQuickReplies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesGetQuickReplies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesGetQuickReplies)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesGetQuickReplies(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesGetQuickReplies(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesGetQuickReplies_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesGetQuickReplies_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesGetQuickReplies(ctx, req.(*TLMessagesGetQuickReplies))
+		return srv.(RPCBusinessQuickReplyServer).MessagesGetQuickReplies(ctx, req.(*TLMessagesGetQuickReplies))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesReorderQuickReplies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesReorderQuickReplies_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesReorderQuickReplies)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesReorderQuickReplies(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesReorderQuickReplies(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesReorderQuickReplies_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesReorderQuickReplies_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesReorderQuickReplies(ctx, req.(*TLMessagesReorderQuickReplies))
+		return srv.(RPCBusinessQuickReplyServer).MessagesReorderQuickReplies(ctx, req.(*TLMessagesReorderQuickReplies))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesCheckQuickReplyShortcut_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesCheckQuickReplyShortcut_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesCheckQuickReplyShortcut)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesCheckQuickReplyShortcut(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesCheckQuickReplyShortcut(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesCheckQuickReplyShortcut_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesCheckQuickReplyShortcut_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesCheckQuickReplyShortcut(ctx, req.(*TLMessagesCheckQuickReplyShortcut))
+		return srv.(RPCBusinessQuickReplyServer).MessagesCheckQuickReplyShortcut(ctx, req.(*TLMessagesCheckQuickReplyShortcut))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesEditQuickReplyShortcut_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesEditQuickReplyShortcut_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesEditQuickReplyShortcut)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesEditQuickReplyShortcut(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesEditQuickReplyShortcut(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesEditQuickReplyShortcut_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesEditQuickReplyShortcut_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesEditQuickReplyShortcut(ctx, req.(*TLMessagesEditQuickReplyShortcut))
+		return srv.(RPCBusinessQuickReplyServer).MessagesEditQuickReplyShortcut(ctx, req.(*TLMessagesEditQuickReplyShortcut))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesDeleteQuickReplyShortcut_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesDeleteQuickReplyShortcut_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesDeleteQuickReplyShortcut)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesDeleteQuickReplyShortcut(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesDeleteQuickReplyShortcut(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesDeleteQuickReplyShortcut_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesDeleteQuickReplyShortcut_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesDeleteQuickReplyShortcut(ctx, req.(*TLMessagesDeleteQuickReplyShortcut))
+		return srv.(RPCBusinessQuickReplyServer).MessagesDeleteQuickReplyShortcut(ctx, req.(*TLMessagesDeleteQuickReplyShortcut))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesGetQuickReplyMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesGetQuickReplyMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesGetQuickReplyMessages)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesGetQuickReplyMessages(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesGetQuickReplyMessages(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesGetQuickReplyMessages_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesGetQuickReplyMessages_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesGetQuickReplyMessages(ctx, req.(*TLMessagesGetQuickReplyMessages))
+		return srv.(RPCBusinessQuickReplyServer).MessagesGetQuickReplyMessages(ctx, req.(*TLMessagesGetQuickReplyMessages))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesSendQuickReplyMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesSendQuickReplyMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesSendQuickReplyMessages)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesSendQuickReplyMessages(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesSendQuickReplyMessages(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesSendQuickReplyMessages_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesSendQuickReplyMessages_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesSendQuickReplyMessages(ctx, req.(*TLMessagesSendQuickReplyMessages))
+		return srv.(RPCBusinessQuickReplyServer).MessagesSendQuickReplyMessages(ctx, req.(*TLMessagesSendQuickReplyMessages))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesDeleteQuickReplyMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _RPCBusinessQuickReply_MessagesDeleteQuickReplyMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesDeleteQuickReplyMessages)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesDeleteQuickReplyMessages(ctx, in)
+		return srv.(RPCBusinessQuickReplyServer).MessagesDeleteQuickReplyMessages(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesDeleteQuickReplyMessages_FullMethodName,
+		FullMethod: RPCBusinessQuickReply_MessagesDeleteQuickReplyMessages_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesDeleteQuickReplyMessages(ctx, req.(*TLMessagesDeleteQuickReplyMessages))
+		return srv.(RPCBusinessQuickReplyServer).MessagesDeleteQuickReplyMessages(ctx, req.(*TLMessagesDeleteQuickReplyMessages))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCBusiness_MessagesToggleDialogFilterTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesToggleDialogFilterTags)
+// RPCBusinessQuickReply_ServiceDesc is the grpc.ServiceDesc for RPCBusinessQuickReply service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCBusinessQuickReply_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCBusinessQuickReply",
+	HandlerType: (*RPCBusinessQuickReplyServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_getQuickReplies",
+			Handler:    _RPCBusinessQuickReply_MessagesGetQuickReplies_Handler,
+		},
+		{
+			MethodName: "messages_reorderQuickReplies",
+			Handler:    _RPCBusinessQuickReply_MessagesReorderQuickReplies_Handler,
+		},
+		{
+			MethodName: "messages_checkQuickReplyShortcut",
+			Handler:    _RPCBusinessQuickReply_MessagesCheckQuickReplyShortcut_Handler,
+		},
+		{
+			MethodName: "messages_editQuickReplyShortcut",
+			Handler:    _RPCBusinessQuickReply_MessagesEditQuickReplyShortcut_Handler,
+		},
+		{
+			MethodName: "messages_deleteQuickReplyShortcut",
+			Handler:    _RPCBusinessQuickReply_MessagesDeleteQuickReplyShortcut_Handler,
+		},
+		{
+			MethodName: "messages_getQuickReplyMessages",
+			Handler:    _RPCBusinessQuickReply_MessagesGetQuickReplyMessages_Handler,
+		},
+		{
+			MethodName: "messages_sendQuickReplyMessages",
+			Handler:    _RPCBusinessQuickReply_MessagesSendQuickReplyMessages_Handler,
+		},
+		{
+			MethodName: "messages_deleteQuickReplyMessages",
+			Handler:    _RPCBusinessQuickReply_MessagesDeleteQuickReplyMessages_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCChannelAdRevenue_StatsGetBroadcastRevenueStats_FullMethodName         = "/mtproto.RPCChannelAdRevenue/stats_getBroadcastRevenueStats"
+	RPCChannelAdRevenue_StatsGetBroadcastRevenueWithdrawalUrl_FullMethodName = "/mtproto.RPCChannelAdRevenue/stats_getBroadcastRevenueWithdrawalUrl"
+	RPCChannelAdRevenue_StatsGetBroadcastRevenueTransactions_FullMethodName  = "/mtproto.RPCChannelAdRevenue/stats_getBroadcastRevenueTransactions"
+)
+
+// RPCChannelAdRevenueClient is the client API for RPCChannelAdRevenue service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCChannelAdRevenueClient interface {
+	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats, opts ...grpc.CallOption) (*Stats_BroadcastRevenueStats, error)
+	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Stats_BroadcastRevenueWithdrawalUrl, error)
+	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions, opts ...grpc.CallOption) (*Stats_BroadcastRevenueTransactions, error)
+}
+
+type rPCChannelAdRevenueClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCChannelAdRevenueClient(cc grpc.ClientConnInterface) RPCChannelAdRevenueClient {
+	return &rPCChannelAdRevenueClient{cc}
+}
+
+func (c *rPCChannelAdRevenueClient) StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats, opts ...grpc.CallOption) (*Stats_BroadcastRevenueStats, error) {
+	out := new(Stats_BroadcastRevenueStats)
+	err := c.cc.Invoke(ctx, RPCChannelAdRevenue_StatsGetBroadcastRevenueStats_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCChannelAdRevenueClient) StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Stats_BroadcastRevenueWithdrawalUrl, error) {
+	out := new(Stats_BroadcastRevenueWithdrawalUrl)
+	err := c.cc.Invoke(ctx, RPCChannelAdRevenue_StatsGetBroadcastRevenueWithdrawalUrl_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCChannelAdRevenueClient) StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions, opts ...grpc.CallOption) (*Stats_BroadcastRevenueTransactions, error) {
+	out := new(Stats_BroadcastRevenueTransactions)
+	err := c.cc.Invoke(ctx, RPCChannelAdRevenue_StatsGetBroadcastRevenueTransactions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCChannelAdRevenueServer is the server API for RPCChannelAdRevenue service.
+// All implementations should embed UnimplementedRPCChannelAdRevenueServer
+// for forward compatibility
+type RPCChannelAdRevenueServer interface {
+	StatsGetBroadcastRevenueStats(context.Context, *TLStatsGetBroadcastRevenueStats) (*Stats_BroadcastRevenueStats, error)
+	StatsGetBroadcastRevenueWithdrawalUrl(context.Context, *TLStatsGetBroadcastRevenueWithdrawalUrl) (*Stats_BroadcastRevenueWithdrawalUrl, error)
+	StatsGetBroadcastRevenueTransactions(context.Context, *TLStatsGetBroadcastRevenueTransactions) (*Stats_BroadcastRevenueTransactions, error)
+}
+
+// UnimplementedRPCChannelAdRevenueServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCChannelAdRevenueServer struct {
+}
+
+func (UnimplementedRPCChannelAdRevenueServer) StatsGetBroadcastRevenueStats(context.Context, *TLStatsGetBroadcastRevenueStats) (*Stats_BroadcastRevenueStats, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StatsGetBroadcastRevenueStats not implemented")
+}
+func (UnimplementedRPCChannelAdRevenueServer) StatsGetBroadcastRevenueWithdrawalUrl(context.Context, *TLStatsGetBroadcastRevenueWithdrawalUrl) (*Stats_BroadcastRevenueWithdrawalUrl, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StatsGetBroadcastRevenueWithdrawalUrl not implemented")
+}
+func (UnimplementedRPCChannelAdRevenueServer) StatsGetBroadcastRevenueTransactions(context.Context, *TLStatsGetBroadcastRevenueTransactions) (*Stats_BroadcastRevenueTransactions, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StatsGetBroadcastRevenueTransactions not implemented")
+}
+
+// UnsafeRPCChannelAdRevenueServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCChannelAdRevenueServer will
+// result in compilation errors.
+type UnsafeRPCChannelAdRevenueServer interface {
+	mustEmbedUnimplementedRPCChannelAdRevenueServer()
+}
+
+func RegisterRPCChannelAdRevenueServer(s grpc.ServiceRegistrar, srv RPCChannelAdRevenueServer) {
+	s.RegisterService(&RPCChannelAdRevenue_ServiceDesc, srv)
+}
+
+func _RPCChannelAdRevenue_StatsGetBroadcastRevenueStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStatsGetBroadcastRevenueStats)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCBusinessServer).MessagesToggleDialogFilterTags(ctx, in)
+		return srv.(RPCChannelAdRevenueServer).StatsGetBroadcastRevenueStats(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCBusiness_MessagesToggleDialogFilterTags_FullMethodName,
+		FullMethod: RPCChannelAdRevenue_StatsGetBroadcastRevenueStats_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCBusinessServer).MessagesToggleDialogFilterTags(ctx, req.(*TLMessagesToggleDialogFilterTags))
+		return srv.(RPCChannelAdRevenueServer).StatsGetBroadcastRevenueStats(ctx, req.(*TLStatsGetBroadcastRevenueStats))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-// RPCBusiness_ServiceDesc is the grpc.ServiceDesc for RPCBusiness service.
+func _RPCChannelAdRevenue_StatsGetBroadcastRevenueWithdrawalUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStatsGetBroadcastRevenueWithdrawalUrl)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCChannelAdRevenueServer).StatsGetBroadcastRevenueWithdrawalUrl(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCChannelAdRevenue_StatsGetBroadcastRevenueWithdrawalUrl_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCChannelAdRevenueServer).StatsGetBroadcastRevenueWithdrawalUrl(ctx, req.(*TLStatsGetBroadcastRevenueWithdrawalUrl))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCChannelAdRevenue_StatsGetBroadcastRevenueTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStatsGetBroadcastRevenueTransactions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCChannelAdRevenueServer).StatsGetBroadcastRevenueTransactions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCChannelAdRevenue_StatsGetBroadcastRevenueTransactions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCChannelAdRevenueServer).StatsGetBroadcastRevenueTransactions(ctx, req.(*TLStatsGetBroadcastRevenueTransactions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCChannelAdRevenue_ServiceDesc is the grpc.ServiceDesc for RPCChannelAdRevenue service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
-var RPCBusiness_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "mtproto.RPCBusiness",
-	HandlerType: (*RPCBusinessServer)(nil),
+var RPCChannelAdRevenue_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCChannelAdRevenue",
+	HandlerType: (*RPCChannelAdRevenueServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "account_updateBusinessWorkHours",
-			Handler:    _RPCBusiness_AccountUpdateBusinessWorkHours_Handler,
+			MethodName: "stats_getBroadcastRevenueStats",
+			Handler:    _RPCChannelAdRevenue_StatsGetBroadcastRevenueStats_Handler,
 		},
 		{
-			MethodName: "account_updateBusinessLocation",
-			Handler:    _RPCBusiness_AccountUpdateBusinessLocation_Handler,
+			MethodName: "stats_getBroadcastRevenueWithdrawalUrl",
+			Handler:    _RPCChannelAdRevenue_StatsGetBroadcastRevenueWithdrawalUrl_Handler,
 		},
 		{
-			MethodName: "account_updateBusinessGreetingMessage",
-			Handler:    _RPCBusiness_AccountUpdateBusinessGreetingMessage_Handler,
-		},
-		{
-			MethodName: "account_updateBusinessAwayMessage",
-			Handler:    _RPCBusiness_AccountUpdateBusinessAwayMessage_Handler,
-		},
-		{
-			MethodName: "account_updateConnectedBot",
-			Handler:    _RPCBusiness_AccountUpdateConnectedBot_Handler,
-		},
-		{
-			MethodName: "account_getConnectedBots",
-			Handler:    _RPCBusiness_AccountGetConnectedBots_Handler,
-		},
-		{
-			MethodName: "account_getBotBusinessConnection",
-			Handler:    _RPCBusiness_AccountGetBotBusinessConnection_Handler,
-		},
-		{
-			MethodName: "account_updateBusinessIntro",
-			Handler:    _RPCBusiness_AccountUpdateBusinessIntro_Handler,
-		},
-		{
-			MethodName: "account_toggleConnectedBotPaused",
-			Handler:    _RPCBusiness_AccountToggleConnectedBotPaused_Handler,
-		},
-		{
-			MethodName: "account_disablePeerConnectedBot",
-			Handler:    _RPCBusiness_AccountDisablePeerConnectedBot_Handler,
-		},
-		{
-			MethodName: "account_createBusinessChatLink",
-			Handler:    _RPCBusiness_AccountCreateBusinessChatLink_Handler,
-		},
-		{
-			MethodName: "account_editBusinessChatLink",
-			Handler:    _RPCBusiness_AccountEditBusinessChatLink_Handler,
-		},
-		{
-			MethodName: "account_deleteBusinessChatLink",
-			Handler:    _RPCBusiness_AccountDeleteBusinessChatLink_Handler,
-		},
-		{
-			MethodName: "account_getBusinessChatLinks",
-			Handler:    _RPCBusiness_AccountGetBusinessChatLinks_Handler,
-		},
-		{
-			MethodName: "account_resolveBusinessChatLink",
-			Handler:    _RPCBusiness_AccountResolveBusinessChatLink_Handler,
-		},
-		{
-			MethodName: "account_updatePersonalChannel",
-			Handler:    _RPCBusiness_AccountUpdatePersonalChannel_Handler,
-		},
-		{
-			MethodName: "messages_getQuickReplies",
-			Handler:    _RPCBusiness_MessagesGetQuickReplies_Handler,
-		},
-		{
-			MethodName: "messages_reorderQuickReplies",
-			Handler:    _RPCBusiness_MessagesReorderQuickReplies_Handler,
-		},
-		{
-			MethodName: "messages_checkQuickReplyShortcut",
-			Handler:    _RPCBusiness_MessagesCheckQuickReplyShortcut_Handler,
-		},
-		{
-			MethodName: "messages_editQuickReplyShortcut",
-			Handler:    _RPCBusiness_MessagesEditQuickReplyShortcut_Handler,
-		},
-		{
-			MethodName: "messages_deleteQuickReplyShortcut",
-			Handler:    _RPCBusiness_MessagesDeleteQuickReplyShortcut_Handler,
-		},
-		{
-			MethodName: "messages_getQuickReplyMessages",
-			Handler:    _RPCBusiness_MessagesGetQuickReplyMessages_Handler,
-		},
-		{
-			MethodName: "messages_sendQuickReplyMessages",
-			Handler:    _RPCBusiness_MessagesSendQuickReplyMessages_Handler,
-		},
-		{
-			MethodName: "messages_deleteQuickReplyMessages",
-			Handler:    _RPCBusiness_MessagesDeleteQuickReplyMessages_Handler,
-		},
-		{
-			MethodName: "messages_toggleDialogFilterTags",
-			Handler:    _RPCBusiness_MessagesToggleDialogFilterTags_Handler,
+			MethodName: "stats_getBroadcastRevenueTransactions",
+			Handler:    _RPCChannelAdRevenue_StatsGetBroadcastRevenueTransactions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -4682,7 +4817,6 @@ const (
 	RPCChannels_ChannelsGetInactiveChannels_FullMethodName      = "/mtproto.RPCChannels/channels_getInactiveChannels"
 	RPCChannels_ChannelsDeleteParticipantHistory_FullMethodName = "/mtproto.RPCChannels/channels_deleteParticipantHistory"
 	RPCChannels_ChannelsToggleParticipantsHidden_FullMethodName = "/mtproto.RPCChannels/channels_toggleParticipantsHidden"
-	RPCChannels_ChannelsUpdateEmojiStatus_FullMethodName        = "/mtproto.RPCChannels/channels_updateEmojiStatus"
 	RPCChannels_ChannelsInviteToChannel199F3A6C_FullMethodName  = "/mtproto.RPCChannels/channels_inviteToChannel199F3A6C"
 	RPCChannels_ChannelsDeleteHistoryAF369D42_FullMethodName    = "/mtproto.RPCChannels/channels_deleteHistoryAF369D42"
 )
@@ -4723,7 +4857,6 @@ type RPCChannelsClient interface {
 	ChannelsGetInactiveChannels(ctx context.Context, in *TLChannelsGetInactiveChannels, opts ...grpc.CallOption) (*Messages_InactiveChats, error)
 	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden, opts ...grpc.CallOption) (*Updates, error)
-	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(ctx context.Context, in *TLChannelsDeleteHistoryAF369D42, opts ...grpc.CallOption) (*Bool, error)
 }
@@ -5024,15 +5157,6 @@ func (c *rPCChannelsClient) ChannelsToggleParticipantsHidden(ctx context.Context
 	return out, nil
 }
 
-func (c *rPCChannelsClient) ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCChannels_ChannelsUpdateEmojiStatus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCChannelsClient) ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCChannels_ChannelsInviteToChannel199F3A6C_FullMethodName, in, out, opts...)
@@ -5087,7 +5211,6 @@ type RPCChannelsServer interface {
 	ChannelsGetInactiveChannels(context.Context, *TLChannelsGetInactiveChannels) (*Messages_InactiveChats, error)
 	ChannelsDeleteParticipantHistory(context.Context, *TLChannelsDeleteParticipantHistory) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(context.Context, *TLChannelsToggleParticipantsHidden) (*Updates, error)
-	ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error)
 	ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(context.Context, *TLChannelsDeleteHistoryAF369D42) (*Bool, error)
 }
@@ -5191,9 +5314,6 @@ func (UnimplementedRPCChannelsServer) ChannelsDeleteParticipantHistory(context.C
 }
 func (UnimplementedRPCChannelsServer) ChannelsToggleParticipantsHidden(context.Context, *TLChannelsToggleParticipantsHidden) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsToggleParticipantsHidden not implemented")
-}
-func (UnimplementedRPCChannelsServer) ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChannelsUpdateEmojiStatus not implemented")
 }
 func (UnimplementedRPCChannelsServer) ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsInviteToChannel199F3A6C not implemented")
@@ -5789,24 +5909,6 @@ func _RPCChannels_ChannelsToggleParticipantsHidden_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCChannels_ChannelsUpdateEmojiStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLChannelsUpdateEmojiStatus)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCChannelsServer).ChannelsUpdateEmojiStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCChannels_ChannelsUpdateEmojiStatus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCChannelsServer).ChannelsUpdateEmojiStatus(ctx, req.(*TLChannelsUpdateEmojiStatus))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCChannels_ChannelsInviteToChannel199F3A6C_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsInviteToChannel199F3A6C)
 	if err := dec(in); err != nil {
@@ -5977,10 +6079,6 @@ var RPCChannels_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "channels_toggleParticipantsHidden",
 			Handler:    _RPCChannels_ChannelsToggleParticipantsHidden_Handler,
-		},
-		{
-			MethodName: "channels_updateEmojiStatus",
-			Handler:    _RPCChannels_ChannelsUpdateEmojiStatus_Handler,
 		},
 		{
 			MethodName: "channels_inviteToChannel199F3A6C",
@@ -6580,6 +6678,7 @@ const (
 	RPCChats_MessagesDeleteChat_FullMethodName                         = "/mtproto.RPCChats/messages_deleteChat"
 	RPCChats_MessagesGetMessageReadParticipants31C1C44F_FullMethodName = "/mtproto.RPCChats/messages_getMessageReadParticipants31C1C44F"
 	RPCChats_ChannelsConvertToGigagroup_FullMethodName                 = "/mtproto.RPCChats/channels_convertToGigagroup"
+	RPCChats_ChannelsSetEmojiStickers_FullMethodName                   = "/mtproto.RPCChats/channels_setEmojiStickers"
 	RPCChats_MessagesAddChatUserF24753E3_FullMethodName                = "/mtproto.RPCChats/messages_addChatUserF24753E3"
 	RPCChats_MessagesCreateChat34A818_FullMethodName                   = "/mtproto.RPCChats/messages_createChat34A818"
 	RPCChats_MessagesGetAllChats_FullMethodName                        = "/mtproto.RPCChats/messages_getAllChats"
@@ -6606,6 +6705,7 @@ type RPCChatsClient interface {
 	MessagesDeleteChat(ctx context.Context, in *TLMessagesDeleteChat, opts ...grpc.CallOption) (*Bool, error)
 	MessagesGetMessageReadParticipants31C1C44F(ctx context.Context, in *TLMessagesGetMessageReadParticipants31C1C44F, opts ...grpc.CallOption) (*Vector_ReadParticipantDate, error)
 	ChannelsConvertToGigagroup(ctx context.Context, in *TLChannelsConvertToGigagroup, opts ...grpc.CallOption) (*Updates, error)
+	ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers, opts ...grpc.CallOption) (*Bool, error)
 	MessagesAddChatUserF24753E3(ctx context.Context, in *TLMessagesAddChatUserF24753E3, opts ...grpc.CallOption) (*Updates, error)
 	MessagesCreateChat34A818(ctx context.Context, in *TLMessagesCreateChat34A818, opts ...grpc.CallOption) (*Updates, error)
 	MessagesGetAllChats(ctx context.Context, in *TLMessagesGetAllChats, opts ...grpc.CallOption) (*Messages_Chats, error)
@@ -6756,6 +6856,15 @@ func (c *rPCChatsClient) ChannelsConvertToGigagroup(ctx context.Context, in *TLC
 	return out, nil
 }
 
+func (c *rPCChatsClient) ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCChats_ChannelsSetEmojiStickers_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCChatsClient) MessagesAddChatUserF24753E3(ctx context.Context, in *TLMessagesAddChatUserF24753E3, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCChats_MessagesAddChatUserF24753E3_FullMethodName, in, out, opts...)
@@ -6820,6 +6929,7 @@ type RPCChatsServer interface {
 	MessagesDeleteChat(context.Context, *TLMessagesDeleteChat) (*Bool, error)
 	MessagesGetMessageReadParticipants31C1C44F(context.Context, *TLMessagesGetMessageReadParticipants31C1C44F) (*Vector_ReadParticipantDate, error)
 	ChannelsConvertToGigagroup(context.Context, *TLChannelsConvertToGigagroup) (*Updates, error)
+	ChannelsSetEmojiStickers(context.Context, *TLChannelsSetEmojiStickers) (*Bool, error)
 	MessagesAddChatUserF24753E3(context.Context, *TLMessagesAddChatUserF24753E3) (*Updates, error)
 	MessagesCreateChat34A818(context.Context, *TLMessagesCreateChat34A818) (*Updates, error)
 	MessagesGetAllChats(context.Context, *TLMessagesGetAllChats) (*Messages_Chats, error)
@@ -6875,6 +6985,9 @@ func (UnimplementedRPCChatsServer) MessagesGetMessageReadParticipants31C1C44F(co
 }
 func (UnimplementedRPCChatsServer) ChannelsConvertToGigagroup(context.Context, *TLChannelsConvertToGigagroup) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsConvertToGigagroup not implemented")
+}
+func (UnimplementedRPCChatsServer) ChannelsSetEmojiStickers(context.Context, *TLChannelsSetEmojiStickers) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsSetEmojiStickers not implemented")
 }
 func (UnimplementedRPCChatsServer) MessagesAddChatUserF24753E3(context.Context, *TLMessagesAddChatUserF24753E3) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesAddChatUserF24753E3 not implemented")
@@ -7173,6 +7286,24 @@ func _RPCChats_ChannelsConvertToGigagroup_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCChats_ChannelsSetEmojiStickers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsSetEmojiStickers)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCChatsServer).ChannelsSetEmojiStickers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCChats_ChannelsSetEmojiStickers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCChatsServer).ChannelsSetEmojiStickers(ctx, req.(*TLChannelsSetEmojiStickers))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCChats_MessagesAddChatUserF24753E3_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesAddChatUserF24753E3)
 	if err := dec(in); err != nil {
@@ -7331,6 +7462,10 @@ var RPCChats_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCChats_ChannelsConvertToGigagroup_Handler,
 		},
 		{
+			MethodName: "channels_setEmojiStickers",
+			Handler:    _RPCChats_ChannelsSetEmojiStickers_Handler,
+		},
+		{
 			MethodName: "messages_addChatUserF24753E3",
 			Handler:    _RPCChats_MessagesAddChatUserF24753E3_Handler,
 		},
@@ -7365,7 +7500,6 @@ const (
 	RPCConfiguration_HelpGetSupportName_FullMethodName       = "/mtproto.RPCConfiguration/help_getSupportName"
 	RPCConfiguration_HelpDismissSuggestion_FullMethodName    = "/mtproto.RPCConfiguration/help_dismissSuggestion"
 	RPCConfiguration_HelpGetCountriesList_FullMethodName     = "/mtproto.RPCConfiguration/help_getCountriesList"
-	RPCConfiguration_HelpGetTimezonesList_FullMethodName     = "/mtproto.RPCConfiguration/help_getTimezonesList"
 	RPCConfiguration_HelpGetAppChangelog_FullMethodName      = "/mtproto.RPCConfiguration/help_getAppChangelog"
 	RPCConfiguration_HelpGetAppConfig98914110_FullMethodName = "/mtproto.RPCConfiguration/help_getAppConfig98914110"
 )
@@ -7383,7 +7517,6 @@ type RPCConfigurationClient interface {
 	HelpGetSupportName(ctx context.Context, in *TLHelpGetSupportName, opts ...grpc.CallOption) (*Help_SupportName, error)
 	HelpDismissSuggestion(ctx context.Context, in *TLHelpDismissSuggestion, opts ...grpc.CallOption) (*Bool, error)
 	HelpGetCountriesList(ctx context.Context, in *TLHelpGetCountriesList, opts ...grpc.CallOption) (*Help_CountriesList, error)
-	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList, opts ...grpc.CallOption) (*Help_TimezonesList, error)
 	HelpGetAppChangelog(ctx context.Context, in *TLHelpGetAppChangelog, opts ...grpc.CallOption) (*Updates, error)
 	HelpGetAppConfig98914110(ctx context.Context, in *TLHelpGetAppConfig98914110, opts ...grpc.CallOption) (*JSONValue, error)
 }
@@ -7477,15 +7610,6 @@ func (c *rPCConfigurationClient) HelpGetCountriesList(ctx context.Context, in *T
 	return out, nil
 }
 
-func (c *rPCConfigurationClient) HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList, opts ...grpc.CallOption) (*Help_TimezonesList, error) {
-	out := new(Help_TimezonesList)
-	err := c.cc.Invoke(ctx, RPCConfiguration_HelpGetTimezonesList_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCConfigurationClient) HelpGetAppChangelog(ctx context.Context, in *TLHelpGetAppChangelog, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCConfiguration_HelpGetAppChangelog_FullMethodName, in, out, opts...)
@@ -7517,7 +7641,6 @@ type RPCConfigurationServer interface {
 	HelpGetSupportName(context.Context, *TLHelpGetSupportName) (*Help_SupportName, error)
 	HelpDismissSuggestion(context.Context, *TLHelpDismissSuggestion) (*Bool, error)
 	HelpGetCountriesList(context.Context, *TLHelpGetCountriesList) (*Help_CountriesList, error)
-	HelpGetTimezonesList(context.Context, *TLHelpGetTimezonesList) (*Help_TimezonesList, error)
 	HelpGetAppChangelog(context.Context, *TLHelpGetAppChangelog) (*Updates, error)
 	HelpGetAppConfig98914110(context.Context, *TLHelpGetAppConfig98914110) (*JSONValue, error)
 }
@@ -7552,9 +7675,6 @@ func (UnimplementedRPCConfigurationServer) HelpDismissSuggestion(context.Context
 }
 func (UnimplementedRPCConfigurationServer) HelpGetCountriesList(context.Context, *TLHelpGetCountriesList) (*Help_CountriesList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HelpGetCountriesList not implemented")
-}
-func (UnimplementedRPCConfigurationServer) HelpGetTimezonesList(context.Context, *TLHelpGetTimezonesList) (*Help_TimezonesList, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method HelpGetTimezonesList not implemented")
 }
 func (UnimplementedRPCConfigurationServer) HelpGetAppChangelog(context.Context, *TLHelpGetAppChangelog) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method HelpGetAppChangelog not implemented")
@@ -7736,24 +7856,6 @@ func _RPCConfiguration_HelpGetCountriesList_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCConfiguration_HelpGetTimezonesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLHelpGetTimezonesList)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCConfigurationServer).HelpGetTimezonesList(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCConfiguration_HelpGetTimezonesList_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCConfigurationServer).HelpGetTimezonesList(ctx, req.(*TLHelpGetTimezonesList))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCConfiguration_HelpGetAppChangelog_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLHelpGetAppChangelog)
 	if err := dec(in); err != nil {
@@ -7834,10 +7936,6 @@ var RPCConfiguration_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCConfiguration_HelpGetCountriesList_Handler,
 		},
 		{
-			MethodName: "help_getTimezonesList",
-			Handler:    _RPCConfiguration_HelpGetTimezonesList_Handler,
-		},
-		{
 			MethodName: "help_getAppChangelog",
 			Handler:    _RPCConfiguration_HelpGetAppChangelog_Handler,
 		},
@@ -7873,7 +7971,6 @@ const (
 	RPCContacts_ContactsGetLocated_FullMethodName                  = "/mtproto.RPCContacts/contacts_getLocated"
 	RPCContacts_ContactsEditCloseFriends_FullMethodName            = "/mtproto.RPCContacts/contacts_editCloseFriends"
 	RPCContacts_ContactsSetBlocked_FullMethodName                  = "/mtproto.RPCContacts/contacts_setBlocked"
-	RPCContacts_ContactsGetBirthdays_FullMethodName                = "/mtproto.RPCContacts/contacts_getBirthdays"
 )
 
 // RPCContactsClient is the client API for RPCContacts service.
@@ -7902,7 +7999,6 @@ type RPCContactsClient interface {
 	ContactsGetLocated(ctx context.Context, in *TLContactsGetLocated, opts ...grpc.CallOption) (*Updates, error)
 	ContactsEditCloseFriends(ctx context.Context, in *TLContactsEditCloseFriends, opts ...grpc.CallOption) (*Bool, error)
 	ContactsSetBlocked(ctx context.Context, in *TLContactsSetBlocked, opts ...grpc.CallOption) (*Bool, error)
-	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays, opts ...grpc.CallOption) (*Contacts_ContactBirthdays, error)
 }
 
 type rPCContactsClient struct {
@@ -8111,15 +8207,6 @@ func (c *rPCContactsClient) ContactsSetBlocked(ctx context.Context, in *TLContac
 	return out, nil
 }
 
-func (c *rPCContactsClient) ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays, opts ...grpc.CallOption) (*Contacts_ContactBirthdays, error) {
-	out := new(Contacts_ContactBirthdays)
-	err := c.cc.Invoke(ctx, RPCContacts_ContactsGetBirthdays_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCContactsServer is the server API for RPCContacts service.
 // All implementations should embed UnimplementedRPCContactsServer
 // for forward compatibility
@@ -8146,7 +8233,6 @@ type RPCContactsServer interface {
 	ContactsGetLocated(context.Context, *TLContactsGetLocated) (*Updates, error)
 	ContactsEditCloseFriends(context.Context, *TLContactsEditCloseFriends) (*Bool, error)
 	ContactsSetBlocked(context.Context, *TLContactsSetBlocked) (*Bool, error)
-	ContactsGetBirthdays(context.Context, *TLContactsGetBirthdays) (*Contacts_ContactBirthdays, error)
 }
 
 // UnimplementedRPCContactsServer should be embedded to have forward compatible implementations.
@@ -8218,9 +8304,6 @@ func (UnimplementedRPCContactsServer) ContactsEditCloseFriends(context.Context, 
 }
 func (UnimplementedRPCContactsServer) ContactsSetBlocked(context.Context, *TLContactsSetBlocked) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContactsSetBlocked not implemented")
-}
-func (UnimplementedRPCContactsServer) ContactsGetBirthdays(context.Context, *TLContactsGetBirthdays) (*Contacts_ContactBirthdays, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ContactsGetBirthdays not implemented")
 }
 
 // UnsafeRPCContactsServer may be embedded to opt out of forward compatibility for this service.
@@ -8630,24 +8713,6 @@ func _RPCContacts_ContactsSetBlocked_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCContacts_ContactsGetBirthdays_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLContactsGetBirthdays)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCContactsServer).ContactsGetBirthdays(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCContacts_ContactsGetBirthdays_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCContactsServer).ContactsGetBirthdays(ctx, req.(*TLContactsGetBirthdays))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCContacts_ServiceDesc is the grpc.ServiceDesc for RPCContacts service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -8743,117 +8808,18 @@ var RPCContacts_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "contacts_setBlocked",
 			Handler:    _RPCContacts_ContactsSetBlocked_Handler,
 		},
-		{
-			MethodName: "contacts_getBirthdays",
-			Handler:    _RPCContacts_ContactsGetBirthdays_Handler,
-		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "schema.tl.sync_service.proto",
 }
 
 const (
-	RPCCreditCards_PaymentsGetBankCardData_FullMethodName = "/mtproto.RPCCreditCards/payments_getBankCardData"
-)
-
-// RPCCreditCardsClient is the client API for RPCCreditCards service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type RPCCreditCardsClient interface {
-	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData, opts ...grpc.CallOption) (*Payments_BankCardData, error)
-}
-
-type rPCCreditCardsClient struct {
-	cc grpc.ClientConnInterface
-}
-
-func NewRPCCreditCardsClient(cc grpc.ClientConnInterface) RPCCreditCardsClient {
-	return &rPCCreditCardsClient{cc}
-}
-
-func (c *rPCCreditCardsClient) PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData, opts ...grpc.CallOption) (*Payments_BankCardData, error) {
-	out := new(Payments_BankCardData)
-	err := c.cc.Invoke(ctx, RPCCreditCards_PaymentsGetBankCardData_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// RPCCreditCardsServer is the server API for RPCCreditCards service.
-// All implementations should embed UnimplementedRPCCreditCardsServer
-// for forward compatibility
-type RPCCreditCardsServer interface {
-	PaymentsGetBankCardData(context.Context, *TLPaymentsGetBankCardData) (*Payments_BankCardData, error)
-}
-
-// UnimplementedRPCCreditCardsServer should be embedded to have forward compatible implementations.
-type UnimplementedRPCCreditCardsServer struct {
-}
-
-func (UnimplementedRPCCreditCardsServer) PaymentsGetBankCardData(context.Context, *TLPaymentsGetBankCardData) (*Payments_BankCardData, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetBankCardData not implemented")
-}
-
-// UnsafeRPCCreditCardsServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to RPCCreditCardsServer will
-// result in compilation errors.
-type UnsafeRPCCreditCardsServer interface {
-	mustEmbedUnimplementedRPCCreditCardsServer()
-}
-
-func RegisterRPCCreditCardsServer(s grpc.ServiceRegistrar, srv RPCCreditCardsServer) {
-	s.RegisterService(&RPCCreditCards_ServiceDesc, srv)
-}
-
-func _RPCCreditCards_PaymentsGetBankCardData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetBankCardData)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCreditCardsServer).PaymentsGetBankCardData(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCreditCards_PaymentsGetBankCardData_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCreditCardsServer).PaymentsGetBankCardData(ctx, req.(*TLPaymentsGetBankCardData))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-// RPCCreditCards_ServiceDesc is the grpc.ServiceDesc for RPCCreditCards service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var RPCCreditCards_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "mtproto.RPCCreditCards",
-	HandlerType: (*RPCCreditCardsServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "payments_getBankCardData",
-			Handler:    _RPCCreditCards_PaymentsGetBankCardData_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "schema.tl.sync_service.proto",
-}
-
-const (
-	RPCCustomEmojis_AccountGetDefaultProfilePhotoEmojis_FullMethodName     = "/mtproto.RPCCustomEmojis/account_getDefaultProfilePhotoEmojis"
-	RPCCustomEmojis_AccountGetDefaultGroupPhotoEmojis_FullMethodName       = "/mtproto.RPCCustomEmojis/account_getDefaultGroupPhotoEmojis"
-	RPCCustomEmojis_AccountGetChannelDefaultEmojiStatuses_FullMethodName   = "/mtproto.RPCCustomEmojis/account_getChannelDefaultEmojiStatuses"
-	RPCCustomEmojis_AccountGetChannelRestrictedStatusEmojis_FullMethodName = "/mtproto.RPCCustomEmojis/account_getChannelRestrictedStatusEmojis"
-	RPCCustomEmojis_MessagesGetCustomEmojiDocuments_FullMethodName         = "/mtproto.RPCCustomEmojis/messages_getCustomEmojiDocuments"
-	RPCCustomEmojis_MessagesGetEmojiStickers_FullMethodName                = "/mtproto.RPCCustomEmojis/messages_getEmojiStickers"
-	RPCCustomEmojis_MessagesGetFeaturedEmojiStickers_FullMethodName        = "/mtproto.RPCCustomEmojis/messages_getFeaturedEmojiStickers"
-	RPCCustomEmojis_MessagesGetEmojiGroups_FullMethodName                  = "/mtproto.RPCCustomEmojis/messages_getEmojiGroups"
-	RPCCustomEmojis_MessagesGetEmojiStatusGroups_FullMethodName            = "/mtproto.RPCCustomEmojis/messages_getEmojiStatusGroups"
-	RPCCustomEmojis_MessagesGetEmojiProfilePhotoGroups_FullMethodName      = "/mtproto.RPCCustomEmojis/messages_getEmojiProfilePhotoGroups"
-	RPCCustomEmojis_MessagesSearchCustomEmoji_FullMethodName               = "/mtproto.RPCCustomEmojis/messages_searchCustomEmoji"
-	RPCCustomEmojis_MessagesGetEmojiStickerGroups_FullMethodName           = "/mtproto.RPCCustomEmojis/messages_getEmojiStickerGroups"
-	RPCCustomEmojis_ChannelsSetEmojiStickers_FullMethodName                = "/mtproto.RPCCustomEmojis/channels_setEmojiStickers"
+	RPCCustomEmojis_AccountGetDefaultProfilePhotoEmojis_FullMethodName = "/mtproto.RPCCustomEmojis/account_getDefaultProfilePhotoEmojis"
+	RPCCustomEmojis_AccountGetDefaultGroupPhotoEmojis_FullMethodName   = "/mtproto.RPCCustomEmojis/account_getDefaultGroupPhotoEmojis"
+	RPCCustomEmojis_MessagesGetCustomEmojiDocuments_FullMethodName     = "/mtproto.RPCCustomEmojis/messages_getCustomEmojiDocuments"
+	RPCCustomEmojis_MessagesGetEmojiStickers_FullMethodName            = "/mtproto.RPCCustomEmojis/messages_getEmojiStickers"
+	RPCCustomEmojis_MessagesGetFeaturedEmojiStickers_FullMethodName    = "/mtproto.RPCCustomEmojis/messages_getFeaturedEmojiStickers"
+	RPCCustomEmojis_MessagesSearchCustomEmoji_FullMethodName           = "/mtproto.RPCCustomEmojis/messages_searchCustomEmoji"
 )
 
 // RPCCustomEmojisClient is the client API for RPCCustomEmojis service.
@@ -8862,17 +8828,10 @@ const (
 type RPCCustomEmojisClient interface {
 	AccountGetDefaultProfilePhotoEmojis(ctx context.Context, in *TLAccountGetDefaultProfilePhotoEmojis, opts ...grpc.CallOption) (*EmojiList, error)
 	AccountGetDefaultGroupPhotoEmojis(ctx context.Context, in *TLAccountGetDefaultGroupPhotoEmojis, opts ...grpc.CallOption) (*EmojiList, error)
-	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error)
-	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis, opts ...grpc.CallOption) (*EmojiList, error)
 	MessagesGetCustomEmojiDocuments(ctx context.Context, in *TLMessagesGetCustomEmojiDocuments, opts ...grpc.CallOption) (*Vector_Document, error)
 	MessagesGetEmojiStickers(ctx context.Context, in *TLMessagesGetEmojiStickers, opts ...grpc.CallOption) (*Messages_AllStickers, error)
 	MessagesGetFeaturedEmojiStickers(ctx context.Context, in *TLMessagesGetFeaturedEmojiStickers, opts ...grpc.CallOption) (*Messages_FeaturedStickers, error)
-	MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
-	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
-	MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
 	MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji, opts ...grpc.CallOption) (*EmojiList, error)
-	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
-	ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCCustomEmojisClient struct {
@@ -8895,24 +8854,6 @@ func (c *rPCCustomEmojisClient) AccountGetDefaultProfilePhotoEmojis(ctx context.
 func (c *rPCCustomEmojisClient) AccountGetDefaultGroupPhotoEmojis(ctx context.Context, in *TLAccountGetDefaultGroupPhotoEmojis, opts ...grpc.CallOption) (*EmojiList, error) {
 	out := new(EmojiList)
 	err := c.cc.Invoke(ctx, RPCCustomEmojis_AccountGetDefaultGroupPhotoEmojis_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCCustomEmojisClient) AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error) {
-	out := new(Account_EmojiStatuses)
-	err := c.cc.Invoke(ctx, RPCCustomEmojis_AccountGetChannelDefaultEmojiStatuses_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCCustomEmojisClient) AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis, opts ...grpc.CallOption) (*EmojiList, error) {
-	out := new(EmojiList)
-	err := c.cc.Invoke(ctx, RPCCustomEmojis_AccountGetChannelRestrictedStatusEmojis_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -8946,54 +8887,9 @@ func (c *rPCCustomEmojisClient) MessagesGetFeaturedEmojiStickers(ctx context.Con
 	return out, nil
 }
 
-func (c *rPCCustomEmojisClient) MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
-	out := new(Messages_EmojiGroups)
-	err := c.cc.Invoke(ctx, RPCCustomEmojis_MessagesGetEmojiGroups_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCCustomEmojisClient) MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
-	out := new(Messages_EmojiGroups)
-	err := c.cc.Invoke(ctx, RPCCustomEmojis_MessagesGetEmojiStatusGroups_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCCustomEmojisClient) MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
-	out := new(Messages_EmojiGroups)
-	err := c.cc.Invoke(ctx, RPCCustomEmojis_MessagesGetEmojiProfilePhotoGroups_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCCustomEmojisClient) MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji, opts ...grpc.CallOption) (*EmojiList, error) {
 	out := new(EmojiList)
 	err := c.cc.Invoke(ctx, RPCCustomEmojis_MessagesSearchCustomEmoji_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCCustomEmojisClient) MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
-	out := new(Messages_EmojiGroups)
-	err := c.cc.Invoke(ctx, RPCCustomEmojis_MessagesGetEmojiStickerGroups_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCCustomEmojisClient) ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCCustomEmojis_ChannelsSetEmojiStickers_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -9006,17 +8902,10 @@ func (c *rPCCustomEmojisClient) ChannelsSetEmojiStickers(ctx context.Context, in
 type RPCCustomEmojisServer interface {
 	AccountGetDefaultProfilePhotoEmojis(context.Context, *TLAccountGetDefaultProfilePhotoEmojis) (*EmojiList, error)
 	AccountGetDefaultGroupPhotoEmojis(context.Context, *TLAccountGetDefaultGroupPhotoEmojis) (*EmojiList, error)
-	AccountGetChannelDefaultEmojiStatuses(context.Context, *TLAccountGetChannelDefaultEmojiStatuses) (*Account_EmojiStatuses, error)
-	AccountGetChannelRestrictedStatusEmojis(context.Context, *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
 	MessagesGetCustomEmojiDocuments(context.Context, *TLMessagesGetCustomEmojiDocuments) (*Vector_Document, error)
 	MessagesGetEmojiStickers(context.Context, *TLMessagesGetEmojiStickers) (*Messages_AllStickers, error)
 	MessagesGetFeaturedEmojiStickers(context.Context, *TLMessagesGetFeaturedEmojiStickers) (*Messages_FeaturedStickers, error)
-	MessagesGetEmojiGroups(context.Context, *TLMessagesGetEmojiGroups) (*Messages_EmojiGroups, error)
-	MessagesGetEmojiStatusGroups(context.Context, *TLMessagesGetEmojiStatusGroups) (*Messages_EmojiGroups, error)
-	MessagesGetEmojiProfilePhotoGroups(context.Context, *TLMessagesGetEmojiProfilePhotoGroups) (*Messages_EmojiGroups, error)
 	MessagesSearchCustomEmoji(context.Context, *TLMessagesSearchCustomEmoji) (*EmojiList, error)
-	MessagesGetEmojiStickerGroups(context.Context, *TLMessagesGetEmojiStickerGroups) (*Messages_EmojiGroups, error)
-	ChannelsSetEmojiStickers(context.Context, *TLChannelsSetEmojiStickers) (*Bool, error)
 }
 
 // UnimplementedRPCCustomEmojisServer should be embedded to have forward compatible implementations.
@@ -9029,12 +8918,6 @@ func (UnimplementedRPCCustomEmojisServer) AccountGetDefaultProfilePhotoEmojis(co
 func (UnimplementedRPCCustomEmojisServer) AccountGetDefaultGroupPhotoEmojis(context.Context, *TLAccountGetDefaultGroupPhotoEmojis) (*EmojiList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountGetDefaultGroupPhotoEmojis not implemented")
 }
-func (UnimplementedRPCCustomEmojisServer) AccountGetChannelDefaultEmojiStatuses(context.Context, *TLAccountGetChannelDefaultEmojiStatuses) (*Account_EmojiStatuses, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetChannelDefaultEmojiStatuses not implemented")
-}
-func (UnimplementedRPCCustomEmojisServer) AccountGetChannelRestrictedStatusEmojis(context.Context, *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetChannelRestrictedStatusEmojis not implemented")
-}
 func (UnimplementedRPCCustomEmojisServer) MessagesGetCustomEmojiDocuments(context.Context, *TLMessagesGetCustomEmojiDocuments) (*Vector_Document, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetCustomEmojiDocuments not implemented")
 }
@@ -9044,23 +8927,8 @@ func (UnimplementedRPCCustomEmojisServer) MessagesGetEmojiStickers(context.Conte
 func (UnimplementedRPCCustomEmojisServer) MessagesGetFeaturedEmojiStickers(context.Context, *TLMessagesGetFeaturedEmojiStickers) (*Messages_FeaturedStickers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetFeaturedEmojiStickers not implemented")
 }
-func (UnimplementedRPCCustomEmojisServer) MessagesGetEmojiGroups(context.Context, *TLMessagesGetEmojiGroups) (*Messages_EmojiGroups, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiGroups not implemented")
-}
-func (UnimplementedRPCCustomEmojisServer) MessagesGetEmojiStatusGroups(context.Context, *TLMessagesGetEmojiStatusGroups) (*Messages_EmojiGroups, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiStatusGroups not implemented")
-}
-func (UnimplementedRPCCustomEmojisServer) MessagesGetEmojiProfilePhotoGroups(context.Context, *TLMessagesGetEmojiProfilePhotoGroups) (*Messages_EmojiGroups, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiProfilePhotoGroups not implemented")
-}
 func (UnimplementedRPCCustomEmojisServer) MessagesSearchCustomEmoji(context.Context, *TLMessagesSearchCustomEmoji) (*EmojiList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSearchCustomEmoji not implemented")
-}
-func (UnimplementedRPCCustomEmojisServer) MessagesGetEmojiStickerGroups(context.Context, *TLMessagesGetEmojiStickerGroups) (*Messages_EmojiGroups, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiStickerGroups not implemented")
-}
-func (UnimplementedRPCCustomEmojisServer) ChannelsSetEmojiStickers(context.Context, *TLChannelsSetEmojiStickers) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChannelsSetEmojiStickers not implemented")
 }
 
 // UnsafeRPCCustomEmojisServer may be embedded to opt out of forward compatibility for this service.
@@ -9106,42 +8974,6 @@ func _RPCCustomEmojis_AccountGetDefaultGroupPhotoEmojis_Handler(srv interface{},
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCCustomEmojisServer).AccountGetDefaultGroupPhotoEmojis(ctx, req.(*TLAccountGetDefaultGroupPhotoEmojis))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCCustomEmojis_AccountGetChannelDefaultEmojiStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetChannelDefaultEmojiStatuses)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCustomEmojisServer).AccountGetChannelDefaultEmojiStatuses(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCustomEmojis_AccountGetChannelDefaultEmojiStatuses_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCustomEmojisServer).AccountGetChannelDefaultEmojiStatuses(ctx, req.(*TLAccountGetChannelDefaultEmojiStatuses))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCCustomEmojis_AccountGetChannelRestrictedStatusEmojis_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetChannelRestrictedStatusEmojis)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCustomEmojisServer).AccountGetChannelRestrictedStatusEmojis(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCustomEmojis_AccountGetChannelRestrictedStatusEmojis_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCustomEmojisServer).AccountGetChannelRestrictedStatusEmojis(ctx, req.(*TLAccountGetChannelRestrictedStatusEmojis))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -9200,60 +9032,6 @@ func _RPCCustomEmojis_MessagesGetFeaturedEmojiStickers_Handler(srv interface{}, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCCustomEmojis_MessagesGetEmojiGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetEmojiGroups)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiGroups(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCustomEmojis_MessagesGetEmojiGroups_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiGroups(ctx, req.(*TLMessagesGetEmojiGroups))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCCustomEmojis_MessagesGetEmojiStatusGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetEmojiStatusGroups)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiStatusGroups(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCustomEmojis_MessagesGetEmojiStatusGroups_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiStatusGroups(ctx, req.(*TLMessagesGetEmojiStatusGroups))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCCustomEmojis_MessagesGetEmojiProfilePhotoGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetEmojiProfilePhotoGroups)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiProfilePhotoGroups(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCustomEmojis_MessagesGetEmojiProfilePhotoGroups_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiProfilePhotoGroups(ctx, req.(*TLMessagesGetEmojiProfilePhotoGroups))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCCustomEmojis_MessagesSearchCustomEmoji_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesSearchCustomEmoji)
 	if err := dec(in); err != nil {
@@ -9268,42 +9046,6 @@ func _RPCCustomEmojis_MessagesSearchCustomEmoji_Handler(srv interface{}, ctx con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCCustomEmojisServer).MessagesSearchCustomEmoji(ctx, req.(*TLMessagesSearchCustomEmoji))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCCustomEmojis_MessagesGetEmojiStickerGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetEmojiStickerGroups)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiStickerGroups(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCustomEmojis_MessagesGetEmojiStickerGroups_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCustomEmojisServer).MessagesGetEmojiStickerGroups(ctx, req.(*TLMessagesGetEmojiStickerGroups))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCCustomEmojis_ChannelsSetEmojiStickers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLChannelsSetEmojiStickers)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCCustomEmojisServer).ChannelsSetEmojiStickers(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCCustomEmojis_ChannelsSetEmojiStickers_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCCustomEmojisServer).ChannelsSetEmojiStickers(ctx, req.(*TLChannelsSetEmojiStickers))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -9324,14 +9066,6 @@ var RPCCustomEmojis_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCCustomEmojis_AccountGetDefaultGroupPhotoEmojis_Handler,
 		},
 		{
-			MethodName: "account_getChannelDefaultEmojiStatuses",
-			Handler:    _RPCCustomEmojis_AccountGetChannelDefaultEmojiStatuses_Handler,
-		},
-		{
-			MethodName: "account_getChannelRestrictedStatusEmojis",
-			Handler:    _RPCCustomEmojis_AccountGetChannelRestrictedStatusEmojis_Handler,
-		},
-		{
 			MethodName: "messages_getCustomEmojiDocuments",
 			Handler:    _RPCCustomEmojis_MessagesGetCustomEmojiDocuments_Handler,
 		},
@@ -9344,28 +9078,8 @@ var RPCCustomEmojis_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCCustomEmojis_MessagesGetFeaturedEmojiStickers_Handler,
 		},
 		{
-			MethodName: "messages_getEmojiGroups",
-			Handler:    _RPCCustomEmojis_MessagesGetEmojiGroups_Handler,
-		},
-		{
-			MethodName: "messages_getEmojiStatusGroups",
-			Handler:    _RPCCustomEmojis_MessagesGetEmojiStatusGroups_Handler,
-		},
-		{
-			MethodName: "messages_getEmojiProfilePhotoGroups",
-			Handler:    _RPCCustomEmojis_MessagesGetEmojiProfilePhotoGroups_Handler,
-		},
-		{
 			MethodName: "messages_searchCustomEmoji",
 			Handler:    _RPCCustomEmojis_MessagesSearchCustomEmoji_Handler,
-		},
-		{
-			MethodName: "messages_getEmojiStickerGroups",
-			Handler:    _RPCCustomEmojis_MessagesGetEmojiStickerGroups_Handler,
-		},
-		{
-			MethodName: "channels_setEmojiStickers",
-			Handler:    _RPCCustomEmojis_ChannelsSetEmojiStickers_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -9548,12 +9262,6 @@ const (
 	RPCDialogs_MessagesGetOnlines_FullMethodName                 = "/mtproto.RPCDialogs/messages_getOnlines"
 	RPCDialogs_MessagesHidePeerSettingsBar_FullMethodName        = "/mtproto.RPCDialogs/messages_hidePeerSettingsBar"
 	RPCDialogs_MessagesSetHistoryTTL_FullMethodName              = "/mtproto.RPCDialogs/messages_setHistoryTTL"
-	RPCDialogs_MessagesGetSavedDialogs_FullMethodName            = "/mtproto.RPCDialogs/messages_getSavedDialogs"
-	RPCDialogs_MessagesGetSavedHistory_FullMethodName            = "/mtproto.RPCDialogs/messages_getSavedHistory"
-	RPCDialogs_MessagesDeleteSavedHistory_FullMethodName         = "/mtproto.RPCDialogs/messages_deleteSavedHistory"
-	RPCDialogs_MessagesGetPinnedSavedDialogs_FullMethodName      = "/mtproto.RPCDialogs/messages_getPinnedSavedDialogs"
-	RPCDialogs_MessagesToggleSavedDialogPin_FullMethodName       = "/mtproto.RPCDialogs/messages_toggleSavedDialogPin"
-	RPCDialogs_MessagesReorderPinnedSavedDialogs_FullMethodName  = "/mtproto.RPCDialogs/messages_reorderPinnedSavedDialogs"
 )
 
 // RPCDialogsClient is the client API for RPCDialogs service.
@@ -9573,12 +9281,6 @@ type RPCDialogsClient interface {
 	MessagesGetOnlines(ctx context.Context, in *TLMessagesGetOnlines, opts ...grpc.CallOption) (*ChatOnlines, error)
 	MessagesHidePeerSettingsBar(ctx context.Context, in *TLMessagesHidePeerSettingsBar, opts ...grpc.CallOption) (*Bool, error)
 	MessagesSetHistoryTTL(ctx context.Context, in *TLMessagesSetHistoryTTL, opts ...grpc.CallOption) (*Updates, error)
-	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error)
-	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory, opts ...grpc.CallOption) (*Messages_Messages, error)
-	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
-	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error)
-	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin, opts ...grpc.CallOption) (*Bool, error)
-	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCDialogsClient struct {
@@ -9706,60 +9408,6 @@ func (c *rPCDialogsClient) MessagesSetHistoryTTL(ctx context.Context, in *TLMess
 	return out, nil
 }
 
-func (c *rPCDialogsClient) MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error) {
-	out := new(Messages_SavedDialogs)
-	err := c.cc.Invoke(ctx, RPCDialogs_MessagesGetSavedDialogs_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCDialogsClient) MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory, opts ...grpc.CallOption) (*Messages_Messages, error) {
-	out := new(Messages_Messages)
-	err := c.cc.Invoke(ctx, RPCDialogs_MessagesGetSavedHistory_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCDialogsClient) MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error) {
-	out := new(Messages_AffectedHistory)
-	err := c.cc.Invoke(ctx, RPCDialogs_MessagesDeleteSavedHistory_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCDialogsClient) MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error) {
-	out := new(Messages_SavedDialogs)
-	err := c.cc.Invoke(ctx, RPCDialogs_MessagesGetPinnedSavedDialogs_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCDialogsClient) MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCDialogs_MessagesToggleSavedDialogPin_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCDialogsClient) MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCDialogs_MessagesReorderPinnedSavedDialogs_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCDialogsServer is the server API for RPCDialogs service.
 // All implementations should embed UnimplementedRPCDialogsServer
 // for forward compatibility
@@ -9777,12 +9425,6 @@ type RPCDialogsServer interface {
 	MessagesGetOnlines(context.Context, *TLMessagesGetOnlines) (*ChatOnlines, error)
 	MessagesHidePeerSettingsBar(context.Context, *TLMessagesHidePeerSettingsBar) (*Bool, error)
 	MessagesSetHistoryTTL(context.Context, *TLMessagesSetHistoryTTL) (*Updates, error)
-	MessagesGetSavedDialogs(context.Context, *TLMessagesGetSavedDialogs) (*Messages_SavedDialogs, error)
-	MessagesGetSavedHistory(context.Context, *TLMessagesGetSavedHistory) (*Messages_Messages, error)
-	MessagesDeleteSavedHistory(context.Context, *TLMessagesDeleteSavedHistory) (*Messages_AffectedHistory, error)
-	MessagesGetPinnedSavedDialogs(context.Context, *TLMessagesGetPinnedSavedDialogs) (*Messages_SavedDialogs, error)
-	MessagesToggleSavedDialogPin(context.Context, *TLMessagesToggleSavedDialogPin) (*Bool, error)
-	MessagesReorderPinnedSavedDialogs(context.Context, *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
 }
 
 // UnimplementedRPCDialogsServer should be embedded to have forward compatible implementations.
@@ -9827,24 +9469,6 @@ func (UnimplementedRPCDialogsServer) MessagesHidePeerSettingsBar(context.Context
 }
 func (UnimplementedRPCDialogsServer) MessagesSetHistoryTTL(context.Context, *TLMessagesSetHistoryTTL) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSetHistoryTTL not implemented")
-}
-func (UnimplementedRPCDialogsServer) MessagesGetSavedDialogs(context.Context, *TLMessagesGetSavedDialogs) (*Messages_SavedDialogs, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSavedDialogs not implemented")
-}
-func (UnimplementedRPCDialogsServer) MessagesGetSavedHistory(context.Context, *TLMessagesGetSavedHistory) (*Messages_Messages, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSavedHistory not implemented")
-}
-func (UnimplementedRPCDialogsServer) MessagesDeleteSavedHistory(context.Context, *TLMessagesDeleteSavedHistory) (*Messages_AffectedHistory, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteSavedHistory not implemented")
-}
-func (UnimplementedRPCDialogsServer) MessagesGetPinnedSavedDialogs(context.Context, *TLMessagesGetPinnedSavedDialogs) (*Messages_SavedDialogs, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetPinnedSavedDialogs not implemented")
-}
-func (UnimplementedRPCDialogsServer) MessagesToggleSavedDialogPin(context.Context, *TLMessagesToggleSavedDialogPin) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesToggleSavedDialogPin not implemented")
-}
-func (UnimplementedRPCDialogsServer) MessagesReorderPinnedSavedDialogs(context.Context, *TLMessagesReorderPinnedSavedDialogs) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesReorderPinnedSavedDialogs not implemented")
 }
 
 // UnsafeRPCDialogsServer may be embedded to opt out of forward compatibility for this service.
@@ -10092,114 +9716,6 @@ func _RPCDialogs_MessagesSetHistoryTTL_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCDialogs_MessagesGetSavedDialogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetSavedDialogs)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCDialogsServer).MessagesGetSavedDialogs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCDialogs_MessagesGetSavedDialogs_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCDialogsServer).MessagesGetSavedDialogs(ctx, req.(*TLMessagesGetSavedDialogs))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCDialogs_MessagesGetSavedHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetSavedHistory)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCDialogsServer).MessagesGetSavedHistory(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCDialogs_MessagesGetSavedHistory_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCDialogsServer).MessagesGetSavedHistory(ctx, req.(*TLMessagesGetSavedHistory))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCDialogs_MessagesDeleteSavedHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesDeleteSavedHistory)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCDialogsServer).MessagesDeleteSavedHistory(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCDialogs_MessagesDeleteSavedHistory_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCDialogsServer).MessagesDeleteSavedHistory(ctx, req.(*TLMessagesDeleteSavedHistory))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCDialogs_MessagesGetPinnedSavedDialogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetPinnedSavedDialogs)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCDialogsServer).MessagesGetPinnedSavedDialogs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCDialogs_MessagesGetPinnedSavedDialogs_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCDialogsServer).MessagesGetPinnedSavedDialogs(ctx, req.(*TLMessagesGetPinnedSavedDialogs))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCDialogs_MessagesToggleSavedDialogPin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesToggleSavedDialogPin)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCDialogsServer).MessagesToggleSavedDialogPin(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCDialogs_MessagesToggleSavedDialogPin_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCDialogsServer).MessagesToggleSavedDialogPin(ctx, req.(*TLMessagesToggleSavedDialogPin))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCDialogs_MessagesReorderPinnedSavedDialogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesReorderPinnedSavedDialogs)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCDialogsServer).MessagesReorderPinnedSavedDialogs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCDialogs_MessagesReorderPinnedSavedDialogs_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCDialogsServer).MessagesReorderPinnedSavedDialogs(ctx, req.(*TLMessagesReorderPinnedSavedDialogs))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCDialogs_ServiceDesc is the grpc.ServiceDesc for RPCDialogs service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -10258,30 +9774,6 @@ var RPCDialogs_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_setHistoryTTL",
 			Handler:    _RPCDialogs_MessagesSetHistoryTTL_Handler,
-		},
-		{
-			MethodName: "messages_getSavedDialogs",
-			Handler:    _RPCDialogs_MessagesGetSavedDialogs_Handler,
-		},
-		{
-			MethodName: "messages_getSavedHistory",
-			Handler:    _RPCDialogs_MessagesGetSavedHistory_Handler,
-		},
-		{
-			MethodName: "messages_deleteSavedHistory",
-			Handler:    _RPCDialogs_MessagesDeleteSavedHistory_Handler,
-		},
-		{
-			MethodName: "messages_getPinnedSavedDialogs",
-			Handler:    _RPCDialogs_MessagesGetPinnedSavedDialogs_Handler,
-		},
-		{
-			MethodName: "messages_toggleSavedDialogPin",
-			Handler:    _RPCDialogs_MessagesToggleSavedDialogPin_Handler,
-		},
-		{
-			MethodName: "messages_reorderPinnedSavedDialogs",
-			Handler:    _RPCDialogs_MessagesReorderPinnedSavedDialogs_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -10650,10 +10142,212 @@ var RPCEmoji_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCEmojiStatus_AccountUpdateEmojiStatus_FullMethodName        = "/mtproto.RPCEmojiStatus/account_updateEmojiStatus"
-	RPCEmojiStatus_AccountGetDefaultEmojiStatuses_FullMethodName  = "/mtproto.RPCEmojiStatus/account_getDefaultEmojiStatuses"
-	RPCEmojiStatus_AccountGetRecentEmojiStatuses_FullMethodName   = "/mtproto.RPCEmojiStatus/account_getRecentEmojiStatuses"
-	RPCEmojiStatus_AccountClearRecentEmojiStatuses_FullMethodName = "/mtproto.RPCEmojiStatus/account_clearRecentEmojiStatuses"
+	RPCEmojiCategories_MessagesGetEmojiGroups_FullMethodName             = "/mtproto.RPCEmojiCategories/messages_getEmojiGroups"
+	RPCEmojiCategories_MessagesGetEmojiStatusGroups_FullMethodName       = "/mtproto.RPCEmojiCategories/messages_getEmojiStatusGroups"
+	RPCEmojiCategories_MessagesGetEmojiProfilePhotoGroups_FullMethodName = "/mtproto.RPCEmojiCategories/messages_getEmojiProfilePhotoGroups"
+	RPCEmojiCategories_MessagesGetEmojiStickerGroups_FullMethodName      = "/mtproto.RPCEmojiCategories/messages_getEmojiStickerGroups"
+)
+
+// RPCEmojiCategoriesClient is the client API for RPCEmojiCategories service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCEmojiCategoriesClient interface {
+	MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
+	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
+	MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
+	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error)
+}
+
+type rPCEmojiCategoriesClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCEmojiCategoriesClient(cc grpc.ClientConnInterface) RPCEmojiCategoriesClient {
+	return &rPCEmojiCategoriesClient{cc}
+}
+
+func (c *rPCEmojiCategoriesClient) MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
+	out := new(Messages_EmojiGroups)
+	err := c.cc.Invoke(ctx, RPCEmojiCategories_MessagesGetEmojiGroups_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCEmojiCategoriesClient) MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
+	out := new(Messages_EmojiGroups)
+	err := c.cc.Invoke(ctx, RPCEmojiCategories_MessagesGetEmojiStatusGroups_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCEmojiCategoriesClient) MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
+	out := new(Messages_EmojiGroups)
+	err := c.cc.Invoke(ctx, RPCEmojiCategories_MessagesGetEmojiProfilePhotoGroups_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCEmojiCategoriesClient) MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups, opts ...grpc.CallOption) (*Messages_EmojiGroups, error) {
+	out := new(Messages_EmojiGroups)
+	err := c.cc.Invoke(ctx, RPCEmojiCategories_MessagesGetEmojiStickerGroups_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCEmojiCategoriesServer is the server API for RPCEmojiCategories service.
+// All implementations should embed UnimplementedRPCEmojiCategoriesServer
+// for forward compatibility
+type RPCEmojiCategoriesServer interface {
+	MessagesGetEmojiGroups(context.Context, *TLMessagesGetEmojiGroups) (*Messages_EmojiGroups, error)
+	MessagesGetEmojiStatusGroups(context.Context, *TLMessagesGetEmojiStatusGroups) (*Messages_EmojiGroups, error)
+	MessagesGetEmojiProfilePhotoGroups(context.Context, *TLMessagesGetEmojiProfilePhotoGroups) (*Messages_EmojiGroups, error)
+	MessagesGetEmojiStickerGroups(context.Context, *TLMessagesGetEmojiStickerGroups) (*Messages_EmojiGroups, error)
+}
+
+// UnimplementedRPCEmojiCategoriesServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCEmojiCategoriesServer struct {
+}
+
+func (UnimplementedRPCEmojiCategoriesServer) MessagesGetEmojiGroups(context.Context, *TLMessagesGetEmojiGroups) (*Messages_EmojiGroups, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiGroups not implemented")
+}
+func (UnimplementedRPCEmojiCategoriesServer) MessagesGetEmojiStatusGroups(context.Context, *TLMessagesGetEmojiStatusGroups) (*Messages_EmojiGroups, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiStatusGroups not implemented")
+}
+func (UnimplementedRPCEmojiCategoriesServer) MessagesGetEmojiProfilePhotoGroups(context.Context, *TLMessagesGetEmojiProfilePhotoGroups) (*Messages_EmojiGroups, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiProfilePhotoGroups not implemented")
+}
+func (UnimplementedRPCEmojiCategoriesServer) MessagesGetEmojiStickerGroups(context.Context, *TLMessagesGetEmojiStickerGroups) (*Messages_EmojiGroups, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiStickerGroups not implemented")
+}
+
+// UnsafeRPCEmojiCategoriesServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCEmojiCategoriesServer will
+// result in compilation errors.
+type UnsafeRPCEmojiCategoriesServer interface {
+	mustEmbedUnimplementedRPCEmojiCategoriesServer()
+}
+
+func RegisterRPCEmojiCategoriesServer(s grpc.ServiceRegistrar, srv RPCEmojiCategoriesServer) {
+	s.RegisterService(&RPCEmojiCategories_ServiceDesc, srv)
+}
+
+func _RPCEmojiCategories_MessagesGetEmojiGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetEmojiGroups)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiCategories_MessagesGetEmojiGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiGroups(ctx, req.(*TLMessagesGetEmojiGroups))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCEmojiCategories_MessagesGetEmojiStatusGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetEmojiStatusGroups)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiStatusGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiCategories_MessagesGetEmojiStatusGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiStatusGroups(ctx, req.(*TLMessagesGetEmojiStatusGroups))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCEmojiCategories_MessagesGetEmojiProfilePhotoGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetEmojiProfilePhotoGroups)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiProfilePhotoGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiCategories_MessagesGetEmojiProfilePhotoGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiProfilePhotoGroups(ctx, req.(*TLMessagesGetEmojiProfilePhotoGroups))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCEmojiCategories_MessagesGetEmojiStickerGroups_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetEmojiStickerGroups)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiStickerGroups(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiCategories_MessagesGetEmojiStickerGroups_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiCategoriesServer).MessagesGetEmojiStickerGroups(ctx, req.(*TLMessagesGetEmojiStickerGroups))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCEmojiCategories_ServiceDesc is the grpc.ServiceDesc for RPCEmojiCategories service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCEmojiCategories_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCEmojiCategories",
+	HandlerType: (*RPCEmojiCategoriesServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_getEmojiGroups",
+			Handler:    _RPCEmojiCategories_MessagesGetEmojiGroups_Handler,
+		},
+		{
+			MethodName: "messages_getEmojiStatusGroups",
+			Handler:    _RPCEmojiCategories_MessagesGetEmojiStatusGroups_Handler,
+		},
+		{
+			MethodName: "messages_getEmojiProfilePhotoGroups",
+			Handler:    _RPCEmojiCategories_MessagesGetEmojiProfilePhotoGroups_Handler,
+		},
+		{
+			MethodName: "messages_getEmojiStickerGroups",
+			Handler:    _RPCEmojiCategories_MessagesGetEmojiStickerGroups_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCEmojiStatus_AccountUpdateEmojiStatus_FullMethodName                = "/mtproto.RPCEmojiStatus/account_updateEmojiStatus"
+	RPCEmojiStatus_AccountGetDefaultEmojiStatuses_FullMethodName          = "/mtproto.RPCEmojiStatus/account_getDefaultEmojiStatuses"
+	RPCEmojiStatus_AccountGetRecentEmojiStatuses_FullMethodName           = "/mtproto.RPCEmojiStatus/account_getRecentEmojiStatuses"
+	RPCEmojiStatus_AccountClearRecentEmojiStatuses_FullMethodName         = "/mtproto.RPCEmojiStatus/account_clearRecentEmojiStatuses"
+	RPCEmojiStatus_AccountGetChannelDefaultEmojiStatuses_FullMethodName   = "/mtproto.RPCEmojiStatus/account_getChannelDefaultEmojiStatuses"
+	RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_FullMethodName = "/mtproto.RPCEmojiStatus/account_getChannelRestrictedStatusEmojis"
+	RPCEmojiStatus_ChannelsUpdateEmojiStatus_FullMethodName               = "/mtproto.RPCEmojiStatus/channels_updateEmojiStatus"
 )
 
 // RPCEmojiStatusClient is the client API for RPCEmojiStatus service.
@@ -10664,6 +10358,9 @@ type RPCEmojiStatusClient interface {
 	AccountGetDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetDefaultEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error)
 	AccountGetRecentEmojiStatuses(ctx context.Context, in *TLAccountGetRecentEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error)
 	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses, opts ...grpc.CallOption) (*Bool, error)
+	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error)
+	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis, opts ...grpc.CallOption) (*EmojiList, error)
+	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCEmojiStatusClient struct {
@@ -10710,6 +10407,33 @@ func (c *rPCEmojiStatusClient) AccountClearRecentEmojiStatuses(ctx context.Conte
 	return out, nil
 }
 
+func (c *rPCEmojiStatusClient) AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error) {
+	out := new(Account_EmojiStatuses)
+	err := c.cc.Invoke(ctx, RPCEmojiStatus_AccountGetChannelDefaultEmojiStatuses_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCEmojiStatusClient) AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis, opts ...grpc.CallOption) (*EmojiList, error) {
+	out := new(EmojiList)
+	err := c.cc.Invoke(ctx, RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCEmojiStatusClient) ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCEmojiStatus_ChannelsUpdateEmojiStatus_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCEmojiStatusServer is the server API for RPCEmojiStatus service.
 // All implementations should embed UnimplementedRPCEmojiStatusServer
 // for forward compatibility
@@ -10718,6 +10442,9 @@ type RPCEmojiStatusServer interface {
 	AccountGetDefaultEmojiStatuses(context.Context, *TLAccountGetDefaultEmojiStatuses) (*Account_EmojiStatuses, error)
 	AccountGetRecentEmojiStatuses(context.Context, *TLAccountGetRecentEmojiStatuses) (*Account_EmojiStatuses, error)
 	AccountClearRecentEmojiStatuses(context.Context, *TLAccountClearRecentEmojiStatuses) (*Bool, error)
+	AccountGetChannelDefaultEmojiStatuses(context.Context, *TLAccountGetChannelDefaultEmojiStatuses) (*Account_EmojiStatuses, error)
+	AccountGetChannelRestrictedStatusEmojis(context.Context, *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
+	ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error)
 }
 
 // UnimplementedRPCEmojiStatusServer should be embedded to have forward compatible implementations.
@@ -10735,6 +10462,15 @@ func (UnimplementedRPCEmojiStatusServer) AccountGetRecentEmojiStatuses(context.C
 }
 func (UnimplementedRPCEmojiStatusServer) AccountClearRecentEmojiStatuses(context.Context, *TLAccountClearRecentEmojiStatuses) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountClearRecentEmojiStatuses not implemented")
+}
+func (UnimplementedRPCEmojiStatusServer) AccountGetChannelDefaultEmojiStatuses(context.Context, *TLAccountGetChannelDefaultEmojiStatuses) (*Account_EmojiStatuses, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetChannelDefaultEmojiStatuses not implemented")
+}
+func (UnimplementedRPCEmojiStatusServer) AccountGetChannelRestrictedStatusEmojis(context.Context, *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetChannelRestrictedStatusEmojis not implemented")
+}
+func (UnimplementedRPCEmojiStatusServer) ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsUpdateEmojiStatus not implemented")
 }
 
 // UnsafeRPCEmojiStatusServer may be embedded to opt out of forward compatibility for this service.
@@ -10820,6 +10556,60 @@ func _RPCEmojiStatus_AccountClearRecentEmojiStatuses_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCEmojiStatus_AccountGetChannelDefaultEmojiStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetChannelDefaultEmojiStatuses)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiStatusServer).AccountGetChannelDefaultEmojiStatuses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiStatus_AccountGetChannelDefaultEmojiStatuses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiStatusServer).AccountGetChannelDefaultEmojiStatuses(ctx, req.(*TLAccountGetChannelDefaultEmojiStatuses))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetChannelRestrictedStatusEmojis)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiStatusServer).AccountGetChannelRestrictedStatusEmojis(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiStatusServer).AccountGetChannelRestrictedStatusEmojis(ctx, req.(*TLAccountGetChannelRestrictedStatusEmojis))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCEmojiStatus_ChannelsUpdateEmojiStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsUpdateEmojiStatus)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiStatusServer).ChannelsUpdateEmojiStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiStatus_ChannelsUpdateEmojiStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiStatusServer).ChannelsUpdateEmojiStatus(ctx, req.(*TLChannelsUpdateEmojiStatus))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCEmojiStatus_ServiceDesc is the grpc.ServiceDesc for RPCEmojiStatus service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -10843,6 +10633,180 @@ var RPCEmojiStatus_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "account_clearRecentEmojiStatuses",
 			Handler:    _RPCEmojiStatus_AccountClearRecentEmojiStatuses_Handler,
 		},
+		{
+			MethodName: "account_getChannelDefaultEmojiStatuses",
+			Handler:    _RPCEmojiStatus_AccountGetChannelDefaultEmojiStatuses_Handler,
+		},
+		{
+			MethodName: "account_getChannelRestrictedStatusEmojis",
+			Handler:    _RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_Handler,
+		},
+		{
+			MethodName: "channels_updateEmojiStatus",
+			Handler:    _RPCEmojiStatus_ChannelsUpdateEmojiStatus_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCFactChecks_MessagesEditFactCheck_FullMethodName   = "/mtproto.RPCFactChecks/messages_editFactCheck"
+	RPCFactChecks_MessagesDeleteFactCheck_FullMethodName = "/mtproto.RPCFactChecks/messages_deleteFactCheck"
+	RPCFactChecks_MessagesGetFactCheck_FullMethodName    = "/mtproto.RPCFactChecks/messages_getFactCheck"
+)
+
+// RPCFactChecksClient is the client API for RPCFactChecks service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCFactChecksClient interface {
+	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck, opts ...grpc.CallOption) (*Updates, error)
+	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck, opts ...grpc.CallOption) (*Updates, error)
+	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck, opts ...grpc.CallOption) (*Vector_FactCheck, error)
+}
+
+type rPCFactChecksClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCFactChecksClient(cc grpc.ClientConnInterface) RPCFactChecksClient {
+	return &rPCFactChecksClient{cc}
+}
+
+func (c *rPCFactChecksClient) MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCFactChecks_MessagesEditFactCheck_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCFactChecksClient) MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCFactChecks_MessagesDeleteFactCheck_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCFactChecksClient) MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck, opts ...grpc.CallOption) (*Vector_FactCheck, error) {
+	out := new(Vector_FactCheck)
+	err := c.cc.Invoke(ctx, RPCFactChecks_MessagesGetFactCheck_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCFactChecksServer is the server API for RPCFactChecks service.
+// All implementations should embed UnimplementedRPCFactChecksServer
+// for forward compatibility
+type RPCFactChecksServer interface {
+	MessagesEditFactCheck(context.Context, *TLMessagesEditFactCheck) (*Updates, error)
+	MessagesDeleteFactCheck(context.Context, *TLMessagesDeleteFactCheck) (*Updates, error)
+	MessagesGetFactCheck(context.Context, *TLMessagesGetFactCheck) (*Vector_FactCheck, error)
+}
+
+// UnimplementedRPCFactChecksServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCFactChecksServer struct {
+}
+
+func (UnimplementedRPCFactChecksServer) MessagesEditFactCheck(context.Context, *TLMessagesEditFactCheck) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesEditFactCheck not implemented")
+}
+func (UnimplementedRPCFactChecksServer) MessagesDeleteFactCheck(context.Context, *TLMessagesDeleteFactCheck) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteFactCheck not implemented")
+}
+func (UnimplementedRPCFactChecksServer) MessagesGetFactCheck(context.Context, *TLMessagesGetFactCheck) (*Vector_FactCheck, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetFactCheck not implemented")
+}
+
+// UnsafeRPCFactChecksServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCFactChecksServer will
+// result in compilation errors.
+type UnsafeRPCFactChecksServer interface {
+	mustEmbedUnimplementedRPCFactChecksServer()
+}
+
+func RegisterRPCFactChecksServer(s grpc.ServiceRegistrar, srv RPCFactChecksServer) {
+	s.RegisterService(&RPCFactChecks_ServiceDesc, srv)
+}
+
+func _RPCFactChecks_MessagesEditFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesEditFactCheck)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCFactChecksServer).MessagesEditFactCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCFactChecks_MessagesEditFactCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCFactChecksServer).MessagesEditFactCheck(ctx, req.(*TLMessagesEditFactCheck))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCFactChecks_MessagesDeleteFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesDeleteFactCheck)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCFactChecksServer).MessagesDeleteFactCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCFactChecks_MessagesDeleteFactCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCFactChecksServer).MessagesDeleteFactCheck(ctx, req.(*TLMessagesDeleteFactCheck))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCFactChecks_MessagesGetFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetFactCheck)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCFactChecksServer).MessagesGetFactCheck(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCFactChecks_MessagesGetFactCheck_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCFactChecksServer).MessagesGetFactCheck(ctx, req.(*TLMessagesGetFactCheck))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCFactChecks_ServiceDesc is the grpc.ServiceDesc for RPCFactChecks service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCFactChecks_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCFactChecks",
+	HandlerType: (*RPCFactChecksServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_editFactCheck",
+			Handler:    _RPCFactChecks_MessagesEditFactCheck_Handler,
+		},
+		{
+			MethodName: "messages_deleteFactCheck",
+			Handler:    _RPCFactChecks_MessagesDeleteFactCheck_Handler,
+		},
+		{
+			MethodName: "messages_getFactCheck",
+			Handler:    _RPCFactChecks_MessagesGetFactCheck_Handler,
+		},
 	},
 	Streams:  []grpc.StreamDesc{},
 	Metadata: "schema.tl.sync_service.proto",
@@ -10852,7 +10816,6 @@ const (
 	RPCFiles_MessagesGetDocumentByHash_FullMethodName   = "/mtproto.RPCFiles/messages_getDocumentByHash"
 	RPCFiles_MessagesUploadMedia_FullMethodName         = "/mtproto.RPCFiles/messages_uploadMedia"
 	RPCFiles_MessagesUploadEncryptedFile_FullMethodName = "/mtproto.RPCFiles/messages_uploadEncryptedFile"
-	RPCFiles_MessagesGetExtendedMedia_FullMethodName    = "/mtproto.RPCFiles/messages_getExtendedMedia"
 	RPCFiles_UploadSaveFilePart_FullMethodName          = "/mtproto.RPCFiles/upload_saveFilePart"
 	RPCFiles_UploadGetFile_FullMethodName               = "/mtproto.RPCFiles/upload_getFile"
 	RPCFiles_UploadSaveBigFilePart_FullMethodName       = "/mtproto.RPCFiles/upload_saveBigFilePart"
@@ -10871,7 +10834,6 @@ type RPCFilesClient interface {
 	MessagesGetDocumentByHash(ctx context.Context, in *TLMessagesGetDocumentByHash, opts ...grpc.CallOption) (*Document, error)
 	MessagesUploadMedia(ctx context.Context, in *TLMessagesUploadMedia, opts ...grpc.CallOption) (*MessageMedia, error)
 	MessagesUploadEncryptedFile(ctx context.Context, in *TLMessagesUploadEncryptedFile, opts ...grpc.CallOption) (*EncryptedFile, error)
-	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia, opts ...grpc.CallOption) (*Updates, error)
 	UploadSaveFilePart(ctx context.Context, in *TLUploadSaveFilePart, opts ...grpc.CallOption) (*Bool, error)
 	UploadGetFile(ctx context.Context, in *TLUploadGetFile, opts ...grpc.CallOption) (*Upload_File, error)
 	UploadSaveBigFilePart(ctx context.Context, in *TLUploadSaveBigFilePart, opts ...grpc.CallOption) (*Bool, error)
@@ -10912,15 +10874,6 @@ func (c *rPCFilesClient) MessagesUploadMedia(ctx context.Context, in *TLMessages
 func (c *rPCFilesClient) MessagesUploadEncryptedFile(ctx context.Context, in *TLMessagesUploadEncryptedFile, opts ...grpc.CallOption) (*EncryptedFile, error) {
 	out := new(EncryptedFile)
 	err := c.cc.Invoke(ctx, RPCFiles_MessagesUploadEncryptedFile_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCFilesClient) MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCFiles_MessagesGetExtendedMedia_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -11015,7 +10968,6 @@ type RPCFilesServer interface {
 	MessagesGetDocumentByHash(context.Context, *TLMessagesGetDocumentByHash) (*Document, error)
 	MessagesUploadMedia(context.Context, *TLMessagesUploadMedia) (*MessageMedia, error)
 	MessagesUploadEncryptedFile(context.Context, *TLMessagesUploadEncryptedFile) (*EncryptedFile, error)
-	MessagesGetExtendedMedia(context.Context, *TLMessagesGetExtendedMedia) (*Updates, error)
 	UploadSaveFilePart(context.Context, *TLUploadSaveFilePart) (*Bool, error)
 	UploadGetFile(context.Context, *TLUploadGetFile) (*Upload_File, error)
 	UploadSaveBigFilePart(context.Context, *TLUploadSaveBigFilePart) (*Bool, error)
@@ -11039,9 +10991,6 @@ func (UnimplementedRPCFilesServer) MessagesUploadMedia(context.Context, *TLMessa
 }
 func (UnimplementedRPCFilesServer) MessagesUploadEncryptedFile(context.Context, *TLMessagesUploadEncryptedFile) (*EncryptedFile, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesUploadEncryptedFile not implemented")
-}
-func (UnimplementedRPCFilesServer) MessagesGetExtendedMedia(context.Context, *TLMessagesGetExtendedMedia) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetExtendedMedia not implemented")
 }
 func (UnimplementedRPCFilesServer) UploadSaveFilePart(context.Context, *TLUploadSaveFilePart) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UploadSaveFilePart not implemented")
@@ -11132,24 +11081,6 @@ func _RPCFiles_MessagesUploadEncryptedFile_Handler(srv interface{}, ctx context.
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCFilesServer).MessagesUploadEncryptedFile(ctx, req.(*TLMessagesUploadEncryptedFile))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCFiles_MessagesGetExtendedMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetExtendedMedia)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCFilesServer).MessagesGetExtendedMedia(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCFiles_MessagesGetExtendedMedia_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCFilesServer).MessagesGetExtendedMedia(ctx, req.(*TLMessagesGetExtendedMedia))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -11336,10 +11267,6 @@ var RPCFiles_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCFiles_MessagesUploadEncryptedFile_Handler,
 		},
 		{
-			MethodName: "messages_getExtendedMedia",
-			Handler:    _RPCFiles_MessagesGetExtendedMedia_Handler,
-		},
-		{
 			MethodName: "upload_saveFilePart",
 			Handler:    _RPCFiles_UploadSaveFilePart_Handler,
 		},
@@ -11374,6 +11301,94 @@ var RPCFiles_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "help_getCdnConfig",
 			Handler:    _RPCFiles_HelpGetCdnConfig_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCFolderTags_MessagesToggleDialogFilterTags_FullMethodName = "/mtproto.RPCFolderTags/messages_toggleDialogFilterTags"
+)
+
+// RPCFolderTagsClient is the client API for RPCFolderTags service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCFolderTagsClient interface {
+	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCFolderTagsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCFolderTagsClient(cc grpc.ClientConnInterface) RPCFolderTagsClient {
+	return &rPCFolderTagsClient{cc}
+}
+
+func (c *rPCFolderTagsClient) MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCFolderTags_MessagesToggleDialogFilterTags_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCFolderTagsServer is the server API for RPCFolderTags service.
+// All implementations should embed UnimplementedRPCFolderTagsServer
+// for forward compatibility
+type RPCFolderTagsServer interface {
+	MessagesToggleDialogFilterTags(context.Context, *TLMessagesToggleDialogFilterTags) (*Bool, error)
+}
+
+// UnimplementedRPCFolderTagsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCFolderTagsServer struct {
+}
+
+func (UnimplementedRPCFolderTagsServer) MessagesToggleDialogFilterTags(context.Context, *TLMessagesToggleDialogFilterTags) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesToggleDialogFilterTags not implemented")
+}
+
+// UnsafeRPCFolderTagsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCFolderTagsServer will
+// result in compilation errors.
+type UnsafeRPCFolderTagsServer interface {
+	mustEmbedUnimplementedRPCFolderTagsServer()
+}
+
+func RegisterRPCFolderTagsServer(s grpc.ServiceRegistrar, srv RPCFolderTagsServer) {
+	s.RegisterService(&RPCFolderTags_ServiceDesc, srv)
+}
+
+func _RPCFolderTags_MessagesToggleDialogFilterTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesToggleDialogFilterTags)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCFolderTagsServer).MessagesToggleDialogFilterTags(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCFolderTags_MessagesToggleDialogFilterTags_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCFolderTagsServer).MessagesToggleDialogFilterTags(ctx, req.(*TLMessagesToggleDialogFilterTags))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCFolderTags_ServiceDesc is the grpc.ServiceDesc for RPCFolderTags service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCFolderTags_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCFolderTags",
+	HandlerType: (*RPCFolderTagsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_toggleDialogFilterTags",
+			Handler:    _RPCFolderTags_MessagesToggleDialogFilterTags_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -12489,7 +12504,6 @@ const (
 	RPCFragment_ChannelsDeactivateAllUsernames_FullMethodName = "/mtproto.RPCFragment/channels_deactivateAllUsernames"
 	RPCFragment_BotsReorderUsernames_FullMethodName           = "/mtproto.RPCFragment/bots_reorderUsernames"
 	RPCFragment_BotsToggleUsername_FullMethodName             = "/mtproto.RPCFragment/bots_toggleUsername"
-	RPCFragment_FragmentGetCollectibleInfo_FullMethodName     = "/mtproto.RPCFragment/fragment_getCollectibleInfo"
 )
 
 // RPCFragmentClient is the client API for RPCFragment service.
@@ -12503,7 +12517,6 @@ type RPCFragmentClient interface {
 	ChannelsDeactivateAllUsernames(ctx context.Context, in *TLChannelsDeactivateAllUsernames, opts ...grpc.CallOption) (*Bool, error)
 	BotsReorderUsernames(ctx context.Context, in *TLBotsReorderUsernames, opts ...grpc.CallOption) (*Bool, error)
 	BotsToggleUsername(ctx context.Context, in *TLBotsToggleUsername, opts ...grpc.CallOption) (*Bool, error)
-	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo, opts ...grpc.CallOption) (*Fragment_CollectibleInfo, error)
 }
 
 type rPCFragmentClient struct {
@@ -12577,15 +12590,6 @@ func (c *rPCFragmentClient) BotsToggleUsername(ctx context.Context, in *TLBotsTo
 	return out, nil
 }
 
-func (c *rPCFragmentClient) FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo, opts ...grpc.CallOption) (*Fragment_CollectibleInfo, error) {
-	out := new(Fragment_CollectibleInfo)
-	err := c.cc.Invoke(ctx, RPCFragment_FragmentGetCollectibleInfo_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCFragmentServer is the server API for RPCFragment service.
 // All implementations should embed UnimplementedRPCFragmentServer
 // for forward compatibility
@@ -12597,7 +12601,6 @@ type RPCFragmentServer interface {
 	ChannelsDeactivateAllUsernames(context.Context, *TLChannelsDeactivateAllUsernames) (*Bool, error)
 	BotsReorderUsernames(context.Context, *TLBotsReorderUsernames) (*Bool, error)
 	BotsToggleUsername(context.Context, *TLBotsToggleUsername) (*Bool, error)
-	FragmentGetCollectibleInfo(context.Context, *TLFragmentGetCollectibleInfo) (*Fragment_CollectibleInfo, error)
 }
 
 // UnimplementedRPCFragmentServer should be embedded to have forward compatible implementations.
@@ -12624,9 +12627,6 @@ func (UnimplementedRPCFragmentServer) BotsReorderUsernames(context.Context, *TLB
 }
 func (UnimplementedRPCFragmentServer) BotsToggleUsername(context.Context, *TLBotsToggleUsername) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsToggleUsername not implemented")
-}
-func (UnimplementedRPCFragmentServer) FragmentGetCollectibleInfo(context.Context, *TLFragmentGetCollectibleInfo) (*Fragment_CollectibleInfo, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method FragmentGetCollectibleInfo not implemented")
 }
 
 // UnsafeRPCFragmentServer may be embedded to opt out of forward compatibility for this service.
@@ -12766,24 +12766,6 @@ func _RPCFragment_BotsToggleUsername_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCFragment_FragmentGetCollectibleInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLFragmentGetCollectibleInfo)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCFragmentServer).FragmentGetCollectibleInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCFragment_FragmentGetCollectibleInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCFragmentServer).FragmentGetCollectibleInfo(ctx, req.(*TLFragmentGetCollectibleInfo))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCFragment_ServiceDesc is the grpc.ServiceDesc for RPCFragment service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -12819,9 +12801,93 @@ var RPCFragment_ServiceDesc = grpc.ServiceDesc{
 			MethodName: "bots_toggleUsername",
 			Handler:    _RPCFragment_BotsToggleUsername_Handler,
 		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCFragmentCollectibles_FragmentGetCollectibleInfo_FullMethodName = "/mtproto.RPCFragmentCollectibles/fragment_getCollectibleInfo"
+)
+
+// RPCFragmentCollectiblesClient is the client API for RPCFragmentCollectibles service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCFragmentCollectiblesClient interface {
+	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo, opts ...grpc.CallOption) (*Fragment_CollectibleInfo, error)
+}
+
+type rPCFragmentCollectiblesClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCFragmentCollectiblesClient(cc grpc.ClientConnInterface) RPCFragmentCollectiblesClient {
+	return &rPCFragmentCollectiblesClient{cc}
+}
+
+func (c *rPCFragmentCollectiblesClient) FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo, opts ...grpc.CallOption) (*Fragment_CollectibleInfo, error) {
+	out := new(Fragment_CollectibleInfo)
+	err := c.cc.Invoke(ctx, RPCFragmentCollectibles_FragmentGetCollectibleInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCFragmentCollectiblesServer is the server API for RPCFragmentCollectibles service.
+// All implementations should embed UnimplementedRPCFragmentCollectiblesServer
+// for forward compatibility
+type RPCFragmentCollectiblesServer interface {
+	FragmentGetCollectibleInfo(context.Context, *TLFragmentGetCollectibleInfo) (*Fragment_CollectibleInfo, error)
+}
+
+// UnimplementedRPCFragmentCollectiblesServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCFragmentCollectiblesServer struct {
+}
+
+func (UnimplementedRPCFragmentCollectiblesServer) FragmentGetCollectibleInfo(context.Context, *TLFragmentGetCollectibleInfo) (*Fragment_CollectibleInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method FragmentGetCollectibleInfo not implemented")
+}
+
+// UnsafeRPCFragmentCollectiblesServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCFragmentCollectiblesServer will
+// result in compilation errors.
+type UnsafeRPCFragmentCollectiblesServer interface {
+	mustEmbedUnimplementedRPCFragmentCollectiblesServer()
+}
+
+func RegisterRPCFragmentCollectiblesServer(s grpc.ServiceRegistrar, srv RPCFragmentCollectiblesServer) {
+	s.RegisterService(&RPCFragmentCollectibles_ServiceDesc, srv)
+}
+
+func _RPCFragmentCollectibles_FragmentGetCollectibleInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLFragmentGetCollectibleInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCFragmentCollectiblesServer).FragmentGetCollectibleInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCFragmentCollectibles_FragmentGetCollectibleInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCFragmentCollectiblesServer).FragmentGetCollectibleInfo(ctx, req.(*TLFragmentGetCollectibleInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCFragmentCollectibles_ServiceDesc is the grpc.ServiceDesc for RPCFragmentCollectibles service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCFragmentCollectibles_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCFragmentCollectibles",
+	HandlerType: (*RPCFragmentCollectiblesServer)(nil),
+	Methods: []grpc.MethodDesc{
 		{
 			MethodName: "fragment_getCollectibleInfo",
-			Handler:    _RPCFragment_FragmentGetCollectibleInfo_Handler,
+			Handler:    _RPCFragmentCollectibles_FragmentGetCollectibleInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -15212,6 +15278,441 @@ var RPCLangpack_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCMainMiniBotApps_MessagesRequestMainWebView_FullMethodName = "/mtproto.RPCMainMiniBotApps/messages_requestMainWebView"
+	RPCMainMiniBotApps_BotsGetPopularAppBots_FullMethodName      = "/mtproto.RPCMainMiniBotApps/bots_getPopularAppBots"
+	RPCMainMiniBotApps_BotsAddPreviewMedia_FullMethodName        = "/mtproto.RPCMainMiniBotApps/bots_addPreviewMedia"
+	RPCMainMiniBotApps_BotsEditPreviewMedia_FullMethodName       = "/mtproto.RPCMainMiniBotApps/bots_editPreviewMedia"
+	RPCMainMiniBotApps_BotsDeletePreviewMedia_FullMethodName     = "/mtproto.RPCMainMiniBotApps/bots_deletePreviewMedia"
+	RPCMainMiniBotApps_BotsReorderPreviewMedias_FullMethodName   = "/mtproto.RPCMainMiniBotApps/bots_reorderPreviewMedias"
+	RPCMainMiniBotApps_BotsGetPreviewInfo_FullMethodName         = "/mtproto.RPCMainMiniBotApps/bots_getPreviewInfo"
+	RPCMainMiniBotApps_BotsGetPreviewMedias_FullMethodName       = "/mtproto.RPCMainMiniBotApps/bots_getPreviewMedias"
+)
+
+// RPCMainMiniBotAppsClient is the client API for RPCMainMiniBotApps service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCMainMiniBotAppsClient interface {
+	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView, opts ...grpc.CallOption) (*WebViewResult, error)
+	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots, opts ...grpc.CallOption) (*Bots_PopularAppBots, error)
+	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error)
+	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error)
+	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia, opts ...grpc.CallOption) (*Bool, error)
+	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error)
+	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error)
+	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error)
+}
+
+type rPCMainMiniBotAppsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCMainMiniBotAppsClient(cc grpc.ClientConnInterface) RPCMainMiniBotAppsClient {
+	return &rPCMainMiniBotAppsClient{cc}
+}
+
+func (c *rPCMainMiniBotAppsClient) MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView, opts ...grpc.CallOption) (*WebViewResult, error) {
+	out := new(WebViewResult)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_MessagesRequestMainWebView_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots, opts ...grpc.CallOption) (*Bots_PopularAppBots, error) {
+	out := new(Bots_PopularAppBots)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsGetPopularAppBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error) {
+	out := new(BotPreviewMedia)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsAddPreviewMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error) {
+	out := new(BotPreviewMedia)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsEditPreviewMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsDeletePreviewMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsReorderPreviewMedias_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error) {
+	out := new(Bots_PreviewInfo)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsGetPreviewInfo_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error) {
+	out := new(Vector_BotPreviewMedia)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsGetPreviewMedias_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCMainMiniBotAppsServer is the server API for RPCMainMiniBotApps service.
+// All implementations should embed UnimplementedRPCMainMiniBotAppsServer
+// for forward compatibility
+type RPCMainMiniBotAppsServer interface {
+	MessagesRequestMainWebView(context.Context, *TLMessagesRequestMainWebView) (*WebViewResult, error)
+	BotsGetPopularAppBots(context.Context, *TLBotsGetPopularAppBots) (*Bots_PopularAppBots, error)
+	BotsAddPreviewMedia(context.Context, *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
+	BotsEditPreviewMedia(context.Context, *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
+	BotsDeletePreviewMedia(context.Context, *TLBotsDeletePreviewMedia) (*Bool, error)
+	BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error)
+	BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error)
+	BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error)
+}
+
+// UnimplementedRPCMainMiniBotAppsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCMainMiniBotAppsServer struct {
+}
+
+func (UnimplementedRPCMainMiniBotAppsServer) MessagesRequestMainWebView(context.Context, *TLMessagesRequestMainWebView) (*WebViewResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestMainWebView not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsGetPopularAppBots(context.Context, *TLBotsGetPopularAppBots) (*Bots_PopularAppBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPopularAppBots not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsAddPreviewMedia(context.Context, *TLBotsAddPreviewMedia) (*BotPreviewMedia, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsAddPreviewMedia not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsEditPreviewMedia(context.Context, *TLBotsEditPreviewMedia) (*BotPreviewMedia, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsEditPreviewMedia not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsDeletePreviewMedia(context.Context, *TLBotsDeletePreviewMedia) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsDeletePreviewMedia not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsReorderPreviewMedias not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewInfo not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewMedias not implemented")
+}
+
+// UnsafeRPCMainMiniBotAppsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCMainMiniBotAppsServer will
+// result in compilation errors.
+type UnsafeRPCMainMiniBotAppsServer interface {
+	mustEmbedUnimplementedRPCMainMiniBotAppsServer()
+}
+
+func RegisterRPCMainMiniBotAppsServer(s grpc.ServiceRegistrar, srv RPCMainMiniBotAppsServer) {
+	s.RegisterService(&RPCMainMiniBotApps_ServiceDesc, srv)
+}
+
+func _RPCMainMiniBotApps_MessagesRequestMainWebView_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesRequestMainWebView)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).MessagesRequestMainWebView(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_MessagesRequestMainWebView_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).MessagesRequestMainWebView(ctx, req.(*TLMessagesRequestMainWebView))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsGetPopularAppBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsGetPopularAppBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsGetPopularAppBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsGetPopularAppBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsGetPopularAppBots(ctx, req.(*TLBotsGetPopularAppBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsAddPreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsAddPreviewMedia)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsAddPreviewMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsAddPreviewMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsAddPreviewMedia(ctx, req.(*TLBotsAddPreviewMedia))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsEditPreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsEditPreviewMedia)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsEditPreviewMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsEditPreviewMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsEditPreviewMedia(ctx, req.(*TLBotsEditPreviewMedia))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsDeletePreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsDeletePreviewMedia)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsDeletePreviewMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsDeletePreviewMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsDeletePreviewMedia(ctx, req.(*TLBotsDeletePreviewMedia))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsReorderPreviewMedias_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsReorderPreviewMedias)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsReorderPreviewMedias(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsReorderPreviewMedias_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsReorderPreviewMedias(ctx, req.(*TLBotsReorderPreviewMedias))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsGetPreviewInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsGetPreviewInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsGetPreviewInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsGetPreviewInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsGetPreviewInfo(ctx, req.(*TLBotsGetPreviewInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsGetPreviewMedias_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsGetPreviewMedias)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsGetPreviewMedias(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsGetPreviewMedias_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsGetPreviewMedias(ctx, req.(*TLBotsGetPreviewMedias))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCMainMiniBotApps_ServiceDesc is the grpc.ServiceDesc for RPCMainMiniBotApps service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCMainMiniBotApps_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCMainMiniBotApps",
+	HandlerType: (*RPCMainMiniBotAppsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_requestMainWebView",
+			Handler:    _RPCMainMiniBotApps_MessagesRequestMainWebView_Handler,
+		},
+		{
+			MethodName: "bots_getPopularAppBots",
+			Handler:    _RPCMainMiniBotApps_BotsGetPopularAppBots_Handler,
+		},
+		{
+			MethodName: "bots_addPreviewMedia",
+			Handler:    _RPCMainMiniBotApps_BotsAddPreviewMedia_Handler,
+		},
+		{
+			MethodName: "bots_editPreviewMedia",
+			Handler:    _RPCMainMiniBotApps_BotsEditPreviewMedia_Handler,
+		},
+		{
+			MethodName: "bots_deletePreviewMedia",
+			Handler:    _RPCMainMiniBotApps_BotsDeletePreviewMedia_Handler,
+		},
+		{
+			MethodName: "bots_reorderPreviewMedias",
+			Handler:    _RPCMainMiniBotApps_BotsReorderPreviewMedias_Handler,
+		},
+		{
+			MethodName: "bots_getPreviewInfo",
+			Handler:    _RPCMainMiniBotApps_BotsGetPreviewInfo_Handler,
+		},
+		{
+			MethodName: "bots_getPreviewMedias",
+			Handler:    _RPCMainMiniBotApps_BotsGetPreviewMedias_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCMessageEffects_MessagesGetAvailableEffects_FullMethodName = "/mtproto.RPCMessageEffects/messages_getAvailableEffects"
+)
+
+// RPCMessageEffectsClient is the client API for RPCMessageEffects service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCMessageEffectsClient interface {
+	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects, opts ...grpc.CallOption) (*Messages_AvailableEffects, error)
+}
+
+type rPCMessageEffectsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCMessageEffectsClient(cc grpc.ClientConnInterface) RPCMessageEffectsClient {
+	return &rPCMessageEffectsClient{cc}
+}
+
+func (c *rPCMessageEffectsClient) MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects, opts ...grpc.CallOption) (*Messages_AvailableEffects, error) {
+	out := new(Messages_AvailableEffects)
+	err := c.cc.Invoke(ctx, RPCMessageEffects_MessagesGetAvailableEffects_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCMessageEffectsServer is the server API for RPCMessageEffects service.
+// All implementations should embed UnimplementedRPCMessageEffectsServer
+// for forward compatibility
+type RPCMessageEffectsServer interface {
+	MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error)
+}
+
+// UnimplementedRPCMessageEffectsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCMessageEffectsServer struct {
+}
+
+func (UnimplementedRPCMessageEffectsServer) MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetAvailableEffects not implemented")
+}
+
+// UnsafeRPCMessageEffectsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCMessageEffectsServer will
+// result in compilation errors.
+type UnsafeRPCMessageEffectsServer interface {
+	mustEmbedUnimplementedRPCMessageEffectsServer()
+}
+
+func RegisterRPCMessageEffectsServer(s grpc.ServiceRegistrar, srv RPCMessageEffectsServer) {
+	s.RegisterService(&RPCMessageEffects_ServiceDesc, srv)
+}
+
+func _RPCMessageEffects_MessagesGetAvailableEffects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetAvailableEffects)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessageEffectsServer).MessagesGetAvailableEffects(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessageEffects_MessagesGetAvailableEffects_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessageEffectsServer).MessagesGetAvailableEffects(ctx, req.(*TLMessagesGetAvailableEffects))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCMessageEffects_ServiceDesc is the grpc.ServiceDesc for RPCMessageEffects service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCMessageEffects_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCMessageEffects",
+	HandlerType: (*RPCMessageEffectsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_getAvailableEffects",
+			Handler:    _RPCMessageEffects_MessagesGetAvailableEffects_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCMessageThreads_ContactsBlockFromReplies_FullMethodName     = "/mtproto.RPCMessageThreads/contacts_blockFromReplies"
 	RPCMessageThreads_MessagesGetReplies_FullMethodName           = "/mtproto.RPCMessageThreads/messages_getReplies"
 	RPCMessageThreads_MessagesGetDiscussionMessage_FullMethodName = "/mtproto.RPCMessageThreads/messages_getDiscussionMessage"
@@ -15439,10 +15940,6 @@ const (
 	RPCMessages_MessagesSaveDefaultSendAs_FullMethodName         = "/mtproto.RPCMessages/messages_saveDefaultSendAs"
 	RPCMessages_MessagesSearchSentMedia_FullMethodName           = "/mtproto.RPCMessages/messages_searchSentMedia"
 	RPCMessages_MessagesGetOutboxReadDate_FullMethodName         = "/mtproto.RPCMessages/messages_getOutboxReadDate"
-	RPCMessages_MessagesGetAvailableEffects_FullMethodName       = "/mtproto.RPCMessages/messages_getAvailableEffects"
-	RPCMessages_MessagesEditFactCheck_FullMethodName             = "/mtproto.RPCMessages/messages_editFactCheck"
-	RPCMessages_MessagesDeleteFactCheck_FullMethodName           = "/mtproto.RPCMessages/messages_deleteFactCheck"
-	RPCMessages_MessagesGetFactCheck_FullMethodName              = "/mtproto.RPCMessages/messages_getFactCheck"
 	RPCMessages_ChannelsGetSendAs_FullMethodName                 = "/mtproto.RPCMessages/channels_getSendAs"
 	RPCMessages_ChannelsSearchPosts_FullMethodName               = "/mtproto.RPCMessages/channels_searchPosts"
 )
@@ -15479,10 +15976,6 @@ type RPCMessagesClient interface {
 	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs, opts ...grpc.CallOption) (*Bool, error)
 	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia, opts ...grpc.CallOption) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate, opts ...grpc.CallOption) (*OutboxReadDate, error)
-	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects, opts ...grpc.CallOption) (*Messages_AvailableEffects, error)
-	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck, opts ...grpc.CallOption) (*Updates, error)
-	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck, opts ...grpc.CallOption) (*Updates, error)
-	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck, opts ...grpc.CallOption) (*Vector_FactCheck, error)
 	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts, opts ...grpc.CallOption) (*Messages_Messages, error)
 }
@@ -15747,42 +16240,6 @@ func (c *rPCMessagesClient) MessagesGetOutboxReadDate(ctx context.Context, in *T
 	return out, nil
 }
 
-func (c *rPCMessagesClient) MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects, opts ...grpc.CallOption) (*Messages_AvailableEffects, error) {
-	out := new(Messages_AvailableEffects)
-	err := c.cc.Invoke(ctx, RPCMessages_MessagesGetAvailableEffects_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMessagesClient) MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCMessages_MessagesEditFactCheck_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMessagesClient) MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCMessages_MessagesDeleteFactCheck_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMessagesClient) MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck, opts ...grpc.CallOption) (*Vector_FactCheck, error) {
-	out := new(Vector_FactCheck)
-	err := c.cc.Invoke(ctx, RPCMessages_MessagesGetFactCheck_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCMessagesClient) ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error) {
 	out := new(Channels_SendAsPeers)
 	err := c.cc.Invoke(ctx, RPCMessages_ChannelsGetSendAs_FullMethodName, in, out, opts...)
@@ -15833,10 +16290,6 @@ type RPCMessagesServer interface {
 	MessagesSaveDefaultSendAs(context.Context, *TLMessagesSaveDefaultSendAs) (*Bool, error)
 	MessagesSearchSentMedia(context.Context, *TLMessagesSearchSentMedia) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
-	MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error)
-	MessagesEditFactCheck(context.Context, *TLMessagesEditFactCheck) (*Updates, error)
-	MessagesDeleteFactCheck(context.Context, *TLMessagesDeleteFactCheck) (*Updates, error)
-	MessagesGetFactCheck(context.Context, *TLMessagesGetFactCheck) (*Vector_FactCheck, error)
 	ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(context.Context, *TLChannelsSearchPosts) (*Messages_Messages, error)
 }
@@ -15928,18 +16381,6 @@ func (UnimplementedRPCMessagesServer) MessagesSearchSentMedia(context.Context, *
 }
 func (UnimplementedRPCMessagesServer) MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetOutboxReadDate not implemented")
-}
-func (UnimplementedRPCMessagesServer) MessagesGetAvailableEffects(context.Context, *TLMessagesGetAvailableEffects) (*Messages_AvailableEffects, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetAvailableEffects not implemented")
-}
-func (UnimplementedRPCMessagesServer) MessagesEditFactCheck(context.Context, *TLMessagesEditFactCheck) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesEditFactCheck not implemented")
-}
-func (UnimplementedRPCMessagesServer) MessagesDeleteFactCheck(context.Context, *TLMessagesDeleteFactCheck) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteFactCheck not implemented")
-}
-func (UnimplementedRPCMessagesServer) MessagesGetFactCheck(context.Context, *TLMessagesGetFactCheck) (*Vector_FactCheck, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetFactCheck not implemented")
 }
 func (UnimplementedRPCMessagesServer) ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetSendAs not implemented")
@@ -16463,78 +16904,6 @@ func _RPCMessages_MessagesGetOutboxReadDate_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCMessages_MessagesGetAvailableEffects_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetAvailableEffects)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMessagesServer).MessagesGetAvailableEffects(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMessages_MessagesGetAvailableEffects_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMessagesServer).MessagesGetAvailableEffects(ctx, req.(*TLMessagesGetAvailableEffects))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMessages_MessagesEditFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesEditFactCheck)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMessagesServer).MessagesEditFactCheck(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMessages_MessagesEditFactCheck_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMessagesServer).MessagesEditFactCheck(ctx, req.(*TLMessagesEditFactCheck))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMessages_MessagesDeleteFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesDeleteFactCheck)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMessagesServer).MessagesDeleteFactCheck(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMessages_MessagesDeleteFactCheck_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMessagesServer).MessagesDeleteFactCheck(ctx, req.(*TLMessagesDeleteFactCheck))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMessages_MessagesGetFactCheck_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetFactCheck)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMessagesServer).MessagesGetFactCheck(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMessages_MessagesGetFactCheck_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMessagesServer).MessagesGetFactCheck(ctx, req.(*TLMessagesGetFactCheck))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCMessages_ChannelsGetSendAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsGetSendAs)
 	if err := dec(in); err != nil {
@@ -16691,22 +17060,6 @@ var RPCMessages_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCMessages_MessagesGetOutboxReadDate_Handler,
 		},
 		{
-			MethodName: "messages_getAvailableEffects",
-			Handler:    _RPCMessages_MessagesGetAvailableEffects_Handler,
-		},
-		{
-			MethodName: "messages_editFactCheck",
-			Handler:    _RPCMessages_MessagesEditFactCheck_Handler,
-		},
-		{
-			MethodName: "messages_deleteFactCheck",
-			Handler:    _RPCMessages_MessagesDeleteFactCheck_Handler,
-		},
-		{
-			MethodName: "messages_getFactCheck",
-			Handler:    _RPCMessages_MessagesGetFactCheck_Handler,
-		},
-		{
 			MethodName: "channels_getSendAs",
 			Handler:    _RPCMessages_ChannelsGetSendAs_Handler,
 		},
@@ -16727,17 +17080,9 @@ const (
 	RPCMiniBotApps_MessagesSendWebViewData_FullMethodName              = "/mtproto.RPCMiniBotApps/messages_sendWebViewData"
 	RPCMiniBotApps_MessagesGetBotApp_FullMethodName                    = "/mtproto.RPCMiniBotApps/messages_getBotApp"
 	RPCMiniBotApps_MessagesRequestAppWebView53618BCE_FullMethodName    = "/mtproto.RPCMiniBotApps/messages_requestAppWebView53618BCE"
-	RPCMiniBotApps_MessagesRequestMainWebView_FullMethodName           = "/mtproto.RPCMiniBotApps/messages_requestMainWebView"
 	RPCMiniBotApps_BotsCanSendMessage_FullMethodName                   = "/mtproto.RPCMiniBotApps/bots_canSendMessage"
 	RPCMiniBotApps_BotsAllowSendMessage_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_allowSendMessage"
 	RPCMiniBotApps_BotsInvokeWebViewCustomMethod_FullMethodName        = "/mtproto.RPCMiniBotApps/bots_invokeWebViewCustomMethod"
-	RPCMiniBotApps_BotsGetPopularAppBots_FullMethodName                = "/mtproto.RPCMiniBotApps/bots_getPopularAppBots"
-	RPCMiniBotApps_BotsAddPreviewMedia_FullMethodName                  = "/mtproto.RPCMiniBotApps/bots_addPreviewMedia"
-	RPCMiniBotApps_BotsEditPreviewMedia_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_editPreviewMedia"
-	RPCMiniBotApps_BotsDeletePreviewMedia_FullMethodName               = "/mtproto.RPCMiniBotApps/bots_deletePreviewMedia"
-	RPCMiniBotApps_BotsReorderPreviewMedias_FullMethodName             = "/mtproto.RPCMiniBotApps/bots_reorderPreviewMedias"
-	RPCMiniBotApps_BotsGetPreviewInfo_FullMethodName                   = "/mtproto.RPCMiniBotApps/bots_getPreviewInfo"
-	RPCMiniBotApps_BotsGetPreviewMedias_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_getPreviewMedias"
 	RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView1A46500A"
 	RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_FullMethodName    = "/mtproto.RPCMiniBotApps/messages_requestAppWebView8C5A3B3C"
 	RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView299BEC8E"
@@ -16755,17 +17100,9 @@ type RPCMiniBotAppsClient interface {
 	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData, opts ...grpc.CallOption) (*Updates, error)
 	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp, opts ...grpc.CallOption) (*Messages_BotApp, error)
 	MessagesRequestAppWebView53618BCE(ctx context.Context, in *TLMessagesRequestAppWebView53618BCE, opts ...grpc.CallOption) (*WebViewResult, error)
-	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView, opts ...grpc.CallOption) (*WebViewResult, error)
 	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage, opts ...grpc.CallOption) (*Bool, error)
 	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage, opts ...grpc.CallOption) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod, opts ...grpc.CallOption) (*DataJSON, error)
-	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots, opts ...grpc.CallOption) (*Bots_PopularAppBots, error)
-	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error)
-	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error)
-	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia, opts ...grpc.CallOption) (*Bool, error)
-	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error)
-	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error)
-	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error)
 	MessagesRequestSimpleWebView1A46500A(ctx context.Context, in *TLMessagesRequestSimpleWebView1A46500A, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
 	MessagesRequestAppWebView8C5A3B3C(ctx context.Context, in *TLMessagesRequestAppWebView8C5A3B3C, opts ...grpc.CallOption) (*AppWebViewResult, error)
 	MessagesRequestSimpleWebView299BEC8E(ctx context.Context, in *TLMessagesRequestSimpleWebView299BEC8E, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
@@ -16843,15 +17180,6 @@ func (c *rPCMiniBotAppsClient) MessagesRequestAppWebView53618BCE(ctx context.Con
 	return out, nil
 }
 
-func (c *rPCMiniBotAppsClient) MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView, opts ...grpc.CallOption) (*WebViewResult, error) {
-	out := new(WebViewResult)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestMainWebView_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCMiniBotAppsClient) BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsCanSendMessage_FullMethodName, in, out, opts...)
@@ -16873,69 +17201,6 @@ func (c *rPCMiniBotAppsClient) BotsAllowSendMessage(ctx context.Context, in *TLB
 func (c *rPCMiniBotAppsClient) BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod, opts ...grpc.CallOption) (*DataJSON, error) {
 	out := new(DataJSON)
 	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsInvokeWebViewCustomMethod_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMiniBotAppsClient) BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots, opts ...grpc.CallOption) (*Bots_PopularAppBots, error) {
-	out := new(Bots_PopularAppBots)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsGetPopularAppBots_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMiniBotAppsClient) BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error) {
-	out := new(BotPreviewMedia)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsAddPreviewMedia_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMiniBotAppsClient) BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia, opts ...grpc.CallOption) (*BotPreviewMedia, error) {
-	out := new(BotPreviewMedia)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsEditPreviewMedia_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMiniBotAppsClient) BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsDeletePreviewMedia_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMiniBotAppsClient) BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsReorderPreviewMedias_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMiniBotAppsClient) BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error) {
-	out := new(Bots_PreviewInfo)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsGetPreviewInfo_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMiniBotAppsClient) BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error) {
-	out := new(Vector_BotPreviewMedia)
-	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsGetPreviewMedias_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -16989,17 +17254,9 @@ type RPCMiniBotAppsServer interface {
 	MessagesSendWebViewData(context.Context, *TLMessagesSendWebViewData) (*Updates, error)
 	MessagesGetBotApp(context.Context, *TLMessagesGetBotApp) (*Messages_BotApp, error)
 	MessagesRequestAppWebView53618BCE(context.Context, *TLMessagesRequestAppWebView53618BCE) (*WebViewResult, error)
-	MessagesRequestMainWebView(context.Context, *TLMessagesRequestMainWebView) (*WebViewResult, error)
 	BotsCanSendMessage(context.Context, *TLBotsCanSendMessage) (*Bool, error)
 	BotsAllowSendMessage(context.Context, *TLBotsAllowSendMessage) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
-	BotsGetPopularAppBots(context.Context, *TLBotsGetPopularAppBots) (*Bots_PopularAppBots, error)
-	BotsAddPreviewMedia(context.Context, *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
-	BotsEditPreviewMedia(context.Context, *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
-	BotsDeletePreviewMedia(context.Context, *TLBotsDeletePreviewMedia) (*Bool, error)
-	BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error)
-	BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error)
-	BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error)
 	MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error)
 	MessagesRequestAppWebView8C5A3B3C(context.Context, *TLMessagesRequestAppWebView8C5A3B3C) (*AppWebViewResult, error)
 	MessagesRequestSimpleWebView299BEC8E(context.Context, *TLMessagesRequestSimpleWebView299BEC8E) (*SimpleWebViewResult, error)
@@ -17031,9 +17288,6 @@ func (UnimplementedRPCMiniBotAppsServer) MessagesGetBotApp(context.Context, *TLM
 func (UnimplementedRPCMiniBotAppsServer) MessagesRequestAppWebView53618BCE(context.Context, *TLMessagesRequestAppWebView53618BCE) (*WebViewResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestAppWebView53618BCE not implemented")
 }
-func (UnimplementedRPCMiniBotAppsServer) MessagesRequestMainWebView(context.Context, *TLMessagesRequestMainWebView) (*WebViewResult, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestMainWebView not implemented")
-}
 func (UnimplementedRPCMiniBotAppsServer) BotsCanSendMessage(context.Context, *TLBotsCanSendMessage) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsCanSendMessage not implemented")
 }
@@ -17042,27 +17296,6 @@ func (UnimplementedRPCMiniBotAppsServer) BotsAllowSendMessage(context.Context, *
 }
 func (UnimplementedRPCMiniBotAppsServer) BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsInvokeWebViewCustomMethod not implemented")
-}
-func (UnimplementedRPCMiniBotAppsServer) BotsGetPopularAppBots(context.Context, *TLBotsGetPopularAppBots) (*Bots_PopularAppBots, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPopularAppBots not implemented")
-}
-func (UnimplementedRPCMiniBotAppsServer) BotsAddPreviewMedia(context.Context, *TLBotsAddPreviewMedia) (*BotPreviewMedia, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsAddPreviewMedia not implemented")
-}
-func (UnimplementedRPCMiniBotAppsServer) BotsEditPreviewMedia(context.Context, *TLBotsEditPreviewMedia) (*BotPreviewMedia, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsEditPreviewMedia not implemented")
-}
-func (UnimplementedRPCMiniBotAppsServer) BotsDeletePreviewMedia(context.Context, *TLBotsDeletePreviewMedia) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsDeletePreviewMedia not implemented")
-}
-func (UnimplementedRPCMiniBotAppsServer) BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsReorderPreviewMedias not implemented")
-}
-func (UnimplementedRPCMiniBotAppsServer) BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewInfo not implemented")
-}
-func (UnimplementedRPCMiniBotAppsServer) BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewMedias not implemented")
 }
 func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView1A46500A not implemented")
@@ -17214,24 +17447,6 @@ func _RPCMiniBotApps_MessagesRequestAppWebView53618BCE_Handler(srv interface{}, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCMiniBotApps_MessagesRequestMainWebView_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesRequestMainWebView)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).MessagesRequestMainWebView(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_MessagesRequestMainWebView_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).MessagesRequestMainWebView(ctx, req.(*TLMessagesRequestMainWebView))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCMiniBotApps_BotsCanSendMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLBotsCanSendMessage)
 	if err := dec(in); err != nil {
@@ -17282,132 +17497,6 @@ func _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler(srv interface{}, ctx 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCMiniBotAppsServer).BotsInvokeWebViewCustomMethod(ctx, req.(*TLBotsInvokeWebViewCustomMethod))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMiniBotApps_BotsGetPopularAppBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsGetPopularAppBots)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).BotsGetPopularAppBots(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_BotsGetPopularAppBots_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).BotsGetPopularAppBots(ctx, req.(*TLBotsGetPopularAppBots))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMiniBotApps_BotsAddPreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsAddPreviewMedia)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).BotsAddPreviewMedia(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_BotsAddPreviewMedia_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).BotsAddPreviewMedia(ctx, req.(*TLBotsAddPreviewMedia))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMiniBotApps_BotsEditPreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsEditPreviewMedia)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).BotsEditPreviewMedia(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_BotsEditPreviewMedia_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).BotsEditPreviewMedia(ctx, req.(*TLBotsEditPreviewMedia))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMiniBotApps_BotsDeletePreviewMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsDeletePreviewMedia)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).BotsDeletePreviewMedia(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_BotsDeletePreviewMedia_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).BotsDeletePreviewMedia(ctx, req.(*TLBotsDeletePreviewMedia))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMiniBotApps_BotsReorderPreviewMedias_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsReorderPreviewMedias)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).BotsReorderPreviewMedias(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_BotsReorderPreviewMedias_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).BotsReorderPreviewMedias(ctx, req.(*TLBotsReorderPreviewMedias))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMiniBotApps_BotsGetPreviewInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsGetPreviewInfo)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).BotsGetPreviewInfo(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_BotsGetPreviewInfo_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).BotsGetPreviewInfo(ctx, req.(*TLBotsGetPreviewInfo))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMiniBotApps_BotsGetPreviewMedias_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsGetPreviewMedias)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMiniBotAppsServer).BotsGetPreviewMedias(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMiniBotApps_BotsGetPreviewMedias_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMiniBotAppsServer).BotsGetPreviewMedias(ctx, req.(*TLBotsGetPreviewMedias))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -17520,10 +17609,6 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCMiniBotApps_MessagesRequestAppWebView53618BCE_Handler,
 		},
 		{
-			MethodName: "messages_requestMainWebView",
-			Handler:    _RPCMiniBotApps_MessagesRequestMainWebView_Handler,
-		},
-		{
 			MethodName: "bots_canSendMessage",
 			Handler:    _RPCMiniBotApps_BotsCanSendMessage_Handler,
 		},
@@ -17534,34 +17619,6 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "bots_invokeWebViewCustomMethod",
 			Handler:    _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler,
-		},
-		{
-			MethodName: "bots_getPopularAppBots",
-			Handler:    _RPCMiniBotApps_BotsGetPopularAppBots_Handler,
-		},
-		{
-			MethodName: "bots_addPreviewMedia",
-			Handler:    _RPCMiniBotApps_BotsAddPreviewMedia_Handler,
-		},
-		{
-			MethodName: "bots_editPreviewMedia",
-			Handler:    _RPCMiniBotApps_BotsEditPreviewMedia_Handler,
-		},
-		{
-			MethodName: "bots_deletePreviewMedia",
-			Handler:    _RPCMiniBotApps_BotsDeletePreviewMedia_Handler,
-		},
-		{
-			MethodName: "bots_reorderPreviewMedias",
-			Handler:    _RPCMiniBotApps_BotsReorderPreviewMedias_Handler,
-		},
-		{
-			MethodName: "bots_getPreviewInfo",
-			Handler:    _RPCMiniBotApps_BotsGetPreviewInfo_Handler,
-		},
-		{
-			MethodName: "bots_getPreviewMedias",
-			Handler:    _RPCMiniBotApps_BotsGetPreviewMedias_Handler,
 		},
 		{
 			MethodName: "messages_requestSimpleWebView1A46500A",
@@ -18145,6 +18202,94 @@ var RPCNsfw_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCPaidMedia_MessagesGetExtendedMedia_FullMethodName = "/mtproto.RPCPaidMedia/messages_getExtendedMedia"
+)
+
+// RPCPaidMediaClient is the client API for RPCPaidMedia service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCPaidMediaClient interface {
+	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia, opts ...grpc.CallOption) (*Updates, error)
+}
+
+type rPCPaidMediaClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCPaidMediaClient(cc grpc.ClientConnInterface) RPCPaidMediaClient {
+	return &rPCPaidMediaClient{cc}
+}
+
+func (c *rPCPaidMediaClient) MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCPaidMedia_MessagesGetExtendedMedia_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCPaidMediaServer is the server API for RPCPaidMedia service.
+// All implementations should embed UnimplementedRPCPaidMediaServer
+// for forward compatibility
+type RPCPaidMediaServer interface {
+	MessagesGetExtendedMedia(context.Context, *TLMessagesGetExtendedMedia) (*Updates, error)
+}
+
+// UnimplementedRPCPaidMediaServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCPaidMediaServer struct {
+}
+
+func (UnimplementedRPCPaidMediaServer) MessagesGetExtendedMedia(context.Context, *TLMessagesGetExtendedMedia) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetExtendedMedia not implemented")
+}
+
+// UnsafeRPCPaidMediaServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCPaidMediaServer will
+// result in compilation errors.
+type UnsafeRPCPaidMediaServer interface {
+	mustEmbedUnimplementedRPCPaidMediaServer()
+}
+
+func RegisterRPCPaidMediaServer(s grpc.ServiceRegistrar, srv RPCPaidMediaServer) {
+	s.RegisterService(&RPCPaidMedia_ServiceDesc, srv)
+}
+
+func _RPCPaidMedia_MessagesGetExtendedMedia_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetExtendedMedia)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaidMediaServer).MessagesGetExtendedMedia(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPaidMedia_MessagesGetExtendedMedia_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaidMediaServer).MessagesGetExtendedMedia(ctx, req.(*TLMessagesGetExtendedMedia))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCPaidMedia_ServiceDesc is the grpc.ServiceDesc for RPCPaidMedia service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCPaidMedia_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCPaidMedia",
+	HandlerType: (*RPCPaidMediaServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_getExtendedMedia",
+			Handler:    _RPCPaidMedia_MessagesGetExtendedMedia_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCPassport_AccountGetAuthorizations_FullMethodName    = "/mtproto.RPCPassport/account_getAuthorizations"
 	RPCPassport_AccountGetAllSecureValues_FullMethodName   = "/mtproto.RPCPassport/account_getAllSecureValues"
 	RPCPassport_AccountGetSecureValue_FullMethodName       = "/mtproto.RPCPassport/account_getSecureValue"
@@ -18603,28 +18748,19 @@ var RPCPassport_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCPayments_AccountGetTmpPassword_FullMethodName                = "/mtproto.RPCPayments/account_getTmpPassword"
-	RPCPayments_MessagesSetBotShippingResults_FullMethodName        = "/mtproto.RPCPayments/messages_setBotShippingResults"
-	RPCPayments_MessagesSetBotPrecheckoutResults_FullMethodName     = "/mtproto.RPCPayments/messages_setBotPrecheckoutResults"
-	RPCPayments_PaymentsGetPaymentForm_FullMethodName               = "/mtproto.RPCPayments/payments_getPaymentForm"
-	RPCPayments_PaymentsGetPaymentReceipt_FullMethodName            = "/mtproto.RPCPayments/payments_getPaymentReceipt"
-	RPCPayments_PaymentsValidateRequestedInfo_FullMethodName        = "/mtproto.RPCPayments/payments_validateRequestedInfo"
-	RPCPayments_PaymentsSendPaymentForm_FullMethodName              = "/mtproto.RPCPayments/payments_sendPaymentForm"
-	RPCPayments_PaymentsGetSavedInfo_FullMethodName                 = "/mtproto.RPCPayments/payments_getSavedInfo"
-	RPCPayments_PaymentsClearSavedInfo_FullMethodName               = "/mtproto.RPCPayments/payments_clearSavedInfo"
-	RPCPayments_PaymentsExportInvoice_FullMethodName                = "/mtproto.RPCPayments/payments_exportInvoice"
-	RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName         = "/mtproto.RPCPayments/payments_getStarsTopupOptions"
-	RPCPayments_PaymentsGetStarsStatus_FullMethodName               = "/mtproto.RPCPayments/payments_getStarsStatus"
-	RPCPayments_PaymentsGetStarsTransactions_FullMethodName         = "/mtproto.RPCPayments/payments_getStarsTransactions"
-	RPCPayments_PaymentsSendStarsForm_FullMethodName                = "/mtproto.RPCPayments/payments_sendStarsForm"
-	RPCPayments_PaymentsRefundStarsCharge_FullMethodName            = "/mtproto.RPCPayments/payments_refundStarsCharge"
-	RPCPayments_PaymentsGetStarsRevenueStats_FullMethodName         = "/mtproto.RPCPayments/payments_getStarsRevenueStats"
-	RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueWithdrawalUrl"
-	RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueAdsAccountUrl"
-	RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTransactionsByID"
-	RPCPayments_PaymentsGetStarsGiftOptions_FullMethodName          = "/mtproto.RPCPayments/payments_getStarsGiftOptions"
-	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName      = "/mtproto.RPCPayments/payments_requestRecurringPayment"
-	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName     = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
+	RPCPayments_AccountGetTmpPassword_FullMethodName            = "/mtproto.RPCPayments/account_getTmpPassword"
+	RPCPayments_MessagesSetBotShippingResults_FullMethodName    = "/mtproto.RPCPayments/messages_setBotShippingResults"
+	RPCPayments_MessagesSetBotPrecheckoutResults_FullMethodName = "/mtproto.RPCPayments/messages_setBotPrecheckoutResults"
+	RPCPayments_PaymentsGetPaymentForm_FullMethodName           = "/mtproto.RPCPayments/payments_getPaymentForm"
+	RPCPayments_PaymentsGetPaymentReceipt_FullMethodName        = "/mtproto.RPCPayments/payments_getPaymentReceipt"
+	RPCPayments_PaymentsValidateRequestedInfo_FullMethodName    = "/mtproto.RPCPayments/payments_validateRequestedInfo"
+	RPCPayments_PaymentsSendPaymentForm_FullMethodName          = "/mtproto.RPCPayments/payments_sendPaymentForm"
+	RPCPayments_PaymentsGetSavedInfo_FullMethodName             = "/mtproto.RPCPayments/payments_getSavedInfo"
+	RPCPayments_PaymentsClearSavedInfo_FullMethodName           = "/mtproto.RPCPayments/payments_clearSavedInfo"
+	RPCPayments_PaymentsGetBankCardData_FullMethodName          = "/mtproto.RPCPayments/payments_getBankCardData"
+	RPCPayments_PaymentsExportInvoice_FullMethodName            = "/mtproto.RPCPayments/payments_exportInvoice"
+	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName  = "/mtproto.RPCPayments/payments_requestRecurringPayment"
+	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
 )
 
 // RPCPaymentsClient is the client API for RPCPayments service.
@@ -18640,17 +18776,8 @@ type RPCPaymentsClient interface {
 	PaymentsSendPaymentForm(ctx context.Context, in *TLPaymentsSendPaymentForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error)
 	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo, opts ...grpc.CallOption) (*Payments_SavedInfo, error)
 	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData, opts ...grpc.CallOption) (*Payments_BankCardData, error)
 	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice, opts ...grpc.CallOption) (*Payments_ExportedInvoice, error)
-	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error)
-	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
-	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
-	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error)
-	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error)
-	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats, opts ...grpc.CallOption) (*Payments_StarsRevenueStats, error)
-	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error)
-	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error)
-	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
-	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error)
 	PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(ctx context.Context, in *TLPaymentsRestorePlayMarketReceipt, opts ...grpc.CallOption) (*Updates, error)
 }
@@ -18744,99 +18871,18 @@ func (c *rPCPaymentsClient) PaymentsClearSavedInfo(ctx context.Context, in *TLPa
 	return out, nil
 }
 
+func (c *rPCPaymentsClient) PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData, opts ...grpc.CallOption) (*Payments_BankCardData, error) {
+	out := new(Payments_BankCardData)
+	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetBankCardData_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCPaymentsClient) PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice, opts ...grpc.CallOption) (*Payments_ExportedInvoice, error) {
 	out := new(Payments_ExportedInvoice)
 	err := c.cc.Invoke(ctx, RPCPayments_PaymentsExportInvoice_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error) {
-	out := new(Vector_StarsTopupOption)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
-	out := new(Payments_StarsStatus)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsStatus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
-	out := new(Payments_StarsStatus)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsTransactions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error) {
-	out := new(Payments_PaymentResult)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsSendStarsForm_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsRefundStarsCharge_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats, opts ...grpc.CallOption) (*Payments_StarsRevenueStats, error) {
-	out := new(Payments_StarsRevenueStats)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsRevenueStats_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error) {
-	out := new(Payments_StarsRevenueWithdrawalUrl)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error) {
-	out := new(Payments_StarsRevenueAdsAccountUrl)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
-	out := new(Payments_StarsStatus)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error) {
-	out := new(Vector_StarsGiftOption)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsGiftOptions_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -18874,17 +18920,8 @@ type RPCPaymentsServer interface {
 	PaymentsSendPaymentForm(context.Context, *TLPaymentsSendPaymentForm) (*Payments_PaymentResult, error)
 	PaymentsGetSavedInfo(context.Context, *TLPaymentsGetSavedInfo) (*Payments_SavedInfo, error)
 	PaymentsClearSavedInfo(context.Context, *TLPaymentsClearSavedInfo) (*Bool, error)
+	PaymentsGetBankCardData(context.Context, *TLPaymentsGetBankCardData) (*Payments_BankCardData, error)
 	PaymentsExportInvoice(context.Context, *TLPaymentsExportInvoice) (*Payments_ExportedInvoice, error)
-	PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error)
-	PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error)
-	PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error)
-	PaymentsSendStarsForm(context.Context, *TLPaymentsSendStarsForm) (*Payments_PaymentResult, error)
-	PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error)
-	PaymentsGetStarsRevenueStats(context.Context, *TLPaymentsGetStarsRevenueStats) (*Payments_StarsRevenueStats, error)
-	PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error)
-	PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error)
-	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
-	PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error)
 	PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(context.Context, *TLPaymentsRestorePlayMarketReceipt) (*Updates, error)
 }
@@ -18920,38 +18957,11 @@ func (UnimplementedRPCPaymentsServer) PaymentsGetSavedInfo(context.Context, *TLP
 func (UnimplementedRPCPaymentsServer) PaymentsClearSavedInfo(context.Context, *TLPaymentsClearSavedInfo) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsClearSavedInfo not implemented")
 }
+func (UnimplementedRPCPaymentsServer) PaymentsGetBankCardData(context.Context, *TLPaymentsGetBankCardData) (*Payments_BankCardData, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetBankCardData not implemented")
+}
 func (UnimplementedRPCPaymentsServer) PaymentsExportInvoice(context.Context, *TLPaymentsExportInvoice) (*Payments_ExportedInvoice, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsExportInvoice not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTopupOptions not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsStatus not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTransactions not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsSendStarsForm(context.Context, *TLPaymentsSendStarsForm) (*Payments_PaymentResult, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsSendStarsForm not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRefundStarsCharge not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueStats(context.Context, *TLPaymentsGetStarsRevenueStats) (*Payments_StarsRevenueStats, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueStats not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueWithdrawalUrl not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueAdsAccountUrl not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTransactionsByID not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiftOptions not implemented")
 }
 func (UnimplementedRPCPaymentsServer) PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRequestRecurringPayment not implemented")
@@ -19133,6 +19143,24 @@ func _RPCPayments_PaymentsClearSavedInfo_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCPayments_PaymentsGetBankCardData_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetBankCardData)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaymentsServer).PaymentsGetBankCardData(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPayments_PaymentsGetBankCardData_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaymentsServer).PaymentsGetBankCardData(ctx, req.(*TLPaymentsGetBankCardData))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCPayments_PaymentsExportInvoice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsExportInvoice)
 	if err := dec(in); err != nil {
@@ -19147,186 +19175,6 @@ func _RPCPayments_PaymentsExportInvoice_Handler(srv interface{}, ctx context.Con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCPaymentsServer).PaymentsExportInvoice(ctx, req.(*TLPaymentsExportInvoice))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsTopupOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsTopupOptions)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsTopupOptions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsTopupOptions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsTopupOptions(ctx, req.(*TLPaymentsGetStarsTopupOptions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsStatus)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsStatus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsStatus(ctx, req.(*TLPaymentsGetStarsStatus))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsTransactions)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsTransactions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactions(ctx, req.(*TLPaymentsGetStarsTransactions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsSendStarsForm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsSendStarsForm)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsSendStarsForm(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsSendStarsForm_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsSendStarsForm(ctx, req.(*TLPaymentsSendStarsForm))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsRefundStarsCharge_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsRefundStarsCharge)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsRefundStarsCharge(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsRefundStarsCharge_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsRefundStarsCharge(ctx, req.(*TLPaymentsRefundStarsCharge))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsRevenueStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsRevenueStats)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueStats(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsRevenueStats_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueStats(ctx, req.(*TLPaymentsGetStarsRevenueStats))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsRevenueWithdrawalUrl)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueWithdrawalUrl(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueWithdrawalUrl(ctx, req.(*TLPaymentsGetStarsRevenueWithdrawalUrl))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsRevenueAdsAccountUrl)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueAdsAccountUrl(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsRevenueAdsAccountUrl(ctx, req.(*TLPaymentsGetStarsRevenueAdsAccountUrl))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsTransactionsByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsTransactionsByID)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactionsByID(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsTransactionsByID(ctx, req.(*TLPaymentsGetStarsTransactionsByID))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsGetStarsGiftOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsGiftOptions)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsGiftOptions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsGiftOptions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsGiftOptions(ctx, req.(*TLPaymentsGetStarsGiftOptions))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -19411,48 +19259,12 @@ var RPCPayments_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCPayments_PaymentsClearSavedInfo_Handler,
 		},
 		{
+			MethodName: "payments_getBankCardData",
+			Handler:    _RPCPayments_PaymentsGetBankCardData_Handler,
+		},
+		{
 			MethodName: "payments_exportInvoice",
 			Handler:    _RPCPayments_PaymentsExportInvoice_Handler,
-		},
-		{
-			MethodName: "payments_getStarsTopupOptions",
-			Handler:    _RPCPayments_PaymentsGetStarsTopupOptions_Handler,
-		},
-		{
-			MethodName: "payments_getStarsStatus",
-			Handler:    _RPCPayments_PaymentsGetStarsStatus_Handler,
-		},
-		{
-			MethodName: "payments_getStarsTransactions",
-			Handler:    _RPCPayments_PaymentsGetStarsTransactions_Handler,
-		},
-		{
-			MethodName: "payments_sendStarsForm",
-			Handler:    _RPCPayments_PaymentsSendStarsForm_Handler,
-		},
-		{
-			MethodName: "payments_refundStarsCharge",
-			Handler:    _RPCPayments_PaymentsRefundStarsCharge_Handler,
-		},
-		{
-			MethodName: "payments_getStarsRevenueStats",
-			Handler:    _RPCPayments_PaymentsGetStarsRevenueStats_Handler,
-		},
-		{
-			MethodName: "payments_getStarsRevenueWithdrawalUrl",
-			Handler:    _RPCPayments_PaymentsGetStarsRevenueWithdrawalUrl_Handler,
-		},
-		{
-			MethodName: "payments_getStarsRevenueAdsAccountUrl",
-			Handler:    _RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_Handler,
-		},
-		{
-			MethodName: "payments_getStarsTransactionsByID",
-			Handler:    _RPCPayments_PaymentsGetStarsTransactionsByID_Handler,
-		},
-		{
-			MethodName: "payments_getStarsGiftOptions",
-			Handler:    _RPCPayments_PaymentsGetStarsGiftOptions_Handler,
 		},
 		{
 			MethodName: "payments_requestRecurringPayment",
@@ -19461,242 +19273,6 @@ var RPCPayments_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_restorePlayMarketReceipt",
 			Handler:    _RPCPayments_PaymentsRestorePlayMarketReceipt_Handler,
-		},
-	},
-	Streams:  []grpc.StreamDesc{},
-	Metadata: "schema.tl.sync_service.proto",
-}
-
-const (
-	RPCPhotos_PhotosUpdateProfilePhoto_FullMethodName        = "/mtproto.RPCPhotos/photos_updateProfilePhoto"
-	RPCPhotos_PhotosUploadProfilePhoto_FullMethodName        = "/mtproto.RPCPhotos/photos_uploadProfilePhoto"
-	RPCPhotos_PhotosDeletePhotos_FullMethodName              = "/mtproto.RPCPhotos/photos_deletePhotos"
-	RPCPhotos_PhotosGetUserPhotos_FullMethodName             = "/mtproto.RPCPhotos/photos_getUserPhotos"
-	RPCPhotos_PhotosUploadContactProfilePhoto_FullMethodName = "/mtproto.RPCPhotos/photos_uploadContactProfilePhoto"
-)
-
-// RPCPhotosClient is the client API for RPCPhotos service.
-//
-// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
-type RPCPhotosClient interface {
-	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
-	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
-	PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos, opts ...grpc.CallOption) (*Vector_Long, error)
-	PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos, opts ...grpc.CallOption) (*Photos_Photos, error)
-	PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
-}
-
-type rPCPhotosClient struct {
-	cc grpc.ClientConnInterface
-}
-
-func NewRPCPhotosClient(cc grpc.ClientConnInterface) RPCPhotosClient {
-	return &rPCPhotosClient{cc}
-}
-
-func (c *rPCPhotosClient) PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error) {
-	out := new(Photos_Photo)
-	err := c.cc.Invoke(ctx, RPCPhotos_PhotosUpdateProfilePhoto_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPhotosClient) PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error) {
-	out := new(Photos_Photo)
-	err := c.cc.Invoke(ctx, RPCPhotos_PhotosUploadProfilePhoto_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPhotosClient) PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos, opts ...grpc.CallOption) (*Vector_Long, error) {
-	out := new(Vector_Long)
-	err := c.cc.Invoke(ctx, RPCPhotos_PhotosDeletePhotos_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPhotosClient) PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos, opts ...grpc.CallOption) (*Photos_Photos, error) {
-	out := new(Photos_Photos)
-	err := c.cc.Invoke(ctx, RPCPhotos_PhotosGetUserPhotos_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPhotosClient) PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error) {
-	out := new(Photos_Photo)
-	err := c.cc.Invoke(ctx, RPCPhotos_PhotosUploadContactProfilePhoto_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-// RPCPhotosServer is the server API for RPCPhotos service.
-// All implementations should embed UnimplementedRPCPhotosServer
-// for forward compatibility
-type RPCPhotosServer interface {
-	PhotosUpdateProfilePhoto(context.Context, *TLPhotosUpdateProfilePhoto) (*Photos_Photo, error)
-	PhotosUploadProfilePhoto(context.Context, *TLPhotosUploadProfilePhoto) (*Photos_Photo, error)
-	PhotosDeletePhotos(context.Context, *TLPhotosDeletePhotos) (*Vector_Long, error)
-	PhotosGetUserPhotos(context.Context, *TLPhotosGetUserPhotos) (*Photos_Photos, error)
-	PhotosUploadContactProfilePhoto(context.Context, *TLPhotosUploadContactProfilePhoto) (*Photos_Photo, error)
-}
-
-// UnimplementedRPCPhotosServer should be embedded to have forward compatible implementations.
-type UnimplementedRPCPhotosServer struct {
-}
-
-func (UnimplementedRPCPhotosServer) PhotosUpdateProfilePhoto(context.Context, *TLPhotosUpdateProfilePhoto) (*Photos_Photo, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PhotosUpdateProfilePhoto not implemented")
-}
-func (UnimplementedRPCPhotosServer) PhotosUploadProfilePhoto(context.Context, *TLPhotosUploadProfilePhoto) (*Photos_Photo, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PhotosUploadProfilePhoto not implemented")
-}
-func (UnimplementedRPCPhotosServer) PhotosDeletePhotos(context.Context, *TLPhotosDeletePhotos) (*Vector_Long, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PhotosDeletePhotos not implemented")
-}
-func (UnimplementedRPCPhotosServer) PhotosGetUserPhotos(context.Context, *TLPhotosGetUserPhotos) (*Photos_Photos, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PhotosGetUserPhotos not implemented")
-}
-func (UnimplementedRPCPhotosServer) PhotosUploadContactProfilePhoto(context.Context, *TLPhotosUploadContactProfilePhoto) (*Photos_Photo, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PhotosUploadContactProfilePhoto not implemented")
-}
-
-// UnsafeRPCPhotosServer may be embedded to opt out of forward compatibility for this service.
-// Use of this interface is not recommended, as added methods to RPCPhotosServer will
-// result in compilation errors.
-type UnsafeRPCPhotosServer interface {
-	mustEmbedUnimplementedRPCPhotosServer()
-}
-
-func RegisterRPCPhotosServer(s grpc.ServiceRegistrar, srv RPCPhotosServer) {
-	s.RegisterService(&RPCPhotos_ServiceDesc, srv)
-}
-
-func _RPCPhotos_PhotosUpdateProfilePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPhotosUpdateProfilePhoto)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPhotosServer).PhotosUpdateProfilePhoto(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPhotos_PhotosUpdateProfilePhoto_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPhotosServer).PhotosUpdateProfilePhoto(ctx, req.(*TLPhotosUpdateProfilePhoto))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPhotos_PhotosUploadProfilePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPhotosUploadProfilePhoto)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPhotosServer).PhotosUploadProfilePhoto(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPhotos_PhotosUploadProfilePhoto_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPhotosServer).PhotosUploadProfilePhoto(ctx, req.(*TLPhotosUploadProfilePhoto))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPhotos_PhotosDeletePhotos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPhotosDeletePhotos)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPhotosServer).PhotosDeletePhotos(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPhotos_PhotosDeletePhotos_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPhotosServer).PhotosDeletePhotos(ctx, req.(*TLPhotosDeletePhotos))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPhotos_PhotosGetUserPhotos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPhotosGetUserPhotos)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPhotosServer).PhotosGetUserPhotos(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPhotos_PhotosGetUserPhotos_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPhotosServer).PhotosGetUserPhotos(ctx, req.(*TLPhotosGetUserPhotos))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPhotos_PhotosUploadContactProfilePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPhotosUploadContactProfilePhoto)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPhotosServer).PhotosUploadContactProfilePhoto(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPhotos_PhotosUploadContactProfilePhoto_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPhotosServer).PhotosUploadContactProfilePhoto(ctx, req.(*TLPhotosUploadContactProfilePhoto))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-// RPCPhotos_ServiceDesc is the grpc.ServiceDesc for RPCPhotos service.
-// It's only intended for direct use with grpc.RegisterService,
-// and not to be introspected or modified (even as a copy)
-var RPCPhotos_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "mtproto.RPCPhotos",
-	HandlerType: (*RPCPhotosServer)(nil),
-	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "photos_updateProfilePhoto",
-			Handler:    _RPCPhotos_PhotosUpdateProfilePhoto_Handler,
-		},
-		{
-			MethodName: "photos_uploadProfilePhoto",
-			Handler:    _RPCPhotos_PhotosUploadProfilePhoto_Handler,
-		},
-		{
-			MethodName: "photos_deletePhotos",
-			Handler:    _RPCPhotos_PhotosDeletePhotos_Handler,
-		},
-		{
-			MethodName: "photos_getUserPhotos",
-			Handler:    _RPCPhotos_PhotosGetUserPhotos_Handler,
-		},
-		{
-			MethodName: "photos_uploadContactProfilePhoto",
-			Handler:    _RPCPhotos_PhotosUploadContactProfilePhoto_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -20375,6 +19951,316 @@ var RPCPremium_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCPrivacySettings_AccountGetPrivacy_FullMethodName                  = "/mtproto.RPCPrivacySettings/account_getPrivacy"
+	RPCPrivacySettings_AccountSetPrivacy_FullMethodName                  = "/mtproto.RPCPrivacySettings/account_setPrivacy"
+	RPCPrivacySettings_AccountGetGlobalPrivacySettings_FullMethodName    = "/mtproto.RPCPrivacySettings/account_getGlobalPrivacySettings"
+	RPCPrivacySettings_AccountSetGlobalPrivacySettings_FullMethodName    = "/mtproto.RPCPrivacySettings/account_setGlobalPrivacySettings"
+	RPCPrivacySettings_UsersGetIsPremiumRequiredToContact_FullMethodName = "/mtproto.RPCPrivacySettings/users_getIsPremiumRequiredToContact"
+	RPCPrivacySettings_MessagesSetDefaultHistoryTTL_FullMethodName       = "/mtproto.RPCPrivacySettings/messages_setDefaultHistoryTTL"
+	RPCPrivacySettings_MessagesGetDefaultHistoryTTL_FullMethodName       = "/mtproto.RPCPrivacySettings/messages_getDefaultHistoryTTL"
+)
+
+// RPCPrivacySettingsClient is the client API for RPCPrivacySettings service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCPrivacySettingsClient interface {
+	AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error)
+	AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error)
+	AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error)
+	AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error)
+	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact, opts ...grpc.CallOption) (*Vector_Bool, error)
+	MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL, opts ...grpc.CallOption) (*Bool, error)
+	MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL, opts ...grpc.CallOption) (*DefaultHistoryTTL, error)
+}
+
+type rPCPrivacySettingsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCPrivacySettingsClient(cc grpc.ClientConnInterface) RPCPrivacySettingsClient {
+	return &rPCPrivacySettingsClient{cc}
+}
+
+func (c *rPCPrivacySettingsClient) AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error) {
+	out := new(Account_PrivacyRules)
+	err := c.cc.Invoke(ctx, RPCPrivacySettings_AccountGetPrivacy_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPrivacySettingsClient) AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy, opts ...grpc.CallOption) (*Account_PrivacyRules, error) {
+	out := new(Account_PrivacyRules)
+	err := c.cc.Invoke(ctx, RPCPrivacySettings_AccountSetPrivacy_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPrivacySettingsClient) AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error) {
+	out := new(GlobalPrivacySettings)
+	err := c.cc.Invoke(ctx, RPCPrivacySettings_AccountGetGlobalPrivacySettings_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPrivacySettingsClient) AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings, opts ...grpc.CallOption) (*GlobalPrivacySettings, error) {
+	out := new(GlobalPrivacySettings)
+	err := c.cc.Invoke(ctx, RPCPrivacySettings_AccountSetGlobalPrivacySettings_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPrivacySettingsClient) UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact, opts ...grpc.CallOption) (*Vector_Bool, error) {
+	out := new(Vector_Bool)
+	err := c.cc.Invoke(ctx, RPCPrivacySettings_UsersGetIsPremiumRequiredToContact_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPrivacySettingsClient) MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCPrivacySettings_MessagesSetDefaultHistoryTTL_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPrivacySettingsClient) MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL, opts ...grpc.CallOption) (*DefaultHistoryTTL, error) {
+	out := new(DefaultHistoryTTL)
+	err := c.cc.Invoke(ctx, RPCPrivacySettings_MessagesGetDefaultHistoryTTL_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCPrivacySettingsServer is the server API for RPCPrivacySettings service.
+// All implementations should embed UnimplementedRPCPrivacySettingsServer
+// for forward compatibility
+type RPCPrivacySettingsServer interface {
+	AccountGetPrivacy(context.Context, *TLAccountGetPrivacy) (*Account_PrivacyRules, error)
+	AccountSetPrivacy(context.Context, *TLAccountSetPrivacy) (*Account_PrivacyRules, error)
+	AccountGetGlobalPrivacySettings(context.Context, *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
+	AccountSetGlobalPrivacySettings(context.Context, *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
+	UsersGetIsPremiumRequiredToContact(context.Context, *TLUsersGetIsPremiumRequiredToContact) (*Vector_Bool, error)
+	MessagesSetDefaultHistoryTTL(context.Context, *TLMessagesSetDefaultHistoryTTL) (*Bool, error)
+	MessagesGetDefaultHistoryTTL(context.Context, *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error)
+}
+
+// UnimplementedRPCPrivacySettingsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCPrivacySettingsServer struct {
+}
+
+func (UnimplementedRPCPrivacySettingsServer) AccountGetPrivacy(context.Context, *TLAccountGetPrivacy) (*Account_PrivacyRules, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetPrivacy not implemented")
+}
+func (UnimplementedRPCPrivacySettingsServer) AccountSetPrivacy(context.Context, *TLAccountSetPrivacy) (*Account_PrivacyRules, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountSetPrivacy not implemented")
+}
+func (UnimplementedRPCPrivacySettingsServer) AccountGetGlobalPrivacySettings(context.Context, *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetGlobalPrivacySettings not implemented")
+}
+func (UnimplementedRPCPrivacySettingsServer) AccountSetGlobalPrivacySettings(context.Context, *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountSetGlobalPrivacySettings not implemented")
+}
+func (UnimplementedRPCPrivacySettingsServer) UsersGetIsPremiumRequiredToContact(context.Context, *TLUsersGetIsPremiumRequiredToContact) (*Vector_Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersGetIsPremiumRequiredToContact not implemented")
+}
+func (UnimplementedRPCPrivacySettingsServer) MessagesSetDefaultHistoryTTL(context.Context, *TLMessagesSetDefaultHistoryTTL) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSetDefaultHistoryTTL not implemented")
+}
+func (UnimplementedRPCPrivacySettingsServer) MessagesGetDefaultHistoryTTL(context.Context, *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetDefaultHistoryTTL not implemented")
+}
+
+// UnsafeRPCPrivacySettingsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCPrivacySettingsServer will
+// result in compilation errors.
+type UnsafeRPCPrivacySettingsServer interface {
+	mustEmbedUnimplementedRPCPrivacySettingsServer()
+}
+
+func RegisterRPCPrivacySettingsServer(s grpc.ServiceRegistrar, srv RPCPrivacySettingsServer) {
+	s.RegisterService(&RPCPrivacySettings_ServiceDesc, srv)
+}
+
+func _RPCPrivacySettings_AccountGetPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetPrivacy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPrivacySettingsServer).AccountGetPrivacy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPrivacySettings_AccountGetPrivacy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPrivacySettingsServer).AccountGetPrivacy(ctx, req.(*TLAccountGetPrivacy))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPrivacySettings_AccountSetPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountSetPrivacy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPrivacySettingsServer).AccountSetPrivacy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPrivacySettings_AccountSetPrivacy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPrivacySettingsServer).AccountSetPrivacy(ctx, req.(*TLAccountSetPrivacy))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPrivacySettings_AccountGetGlobalPrivacySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetGlobalPrivacySettings)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPrivacySettingsServer).AccountGetGlobalPrivacySettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPrivacySettings_AccountGetGlobalPrivacySettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPrivacySettingsServer).AccountGetGlobalPrivacySettings(ctx, req.(*TLAccountGetGlobalPrivacySettings))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPrivacySettings_AccountSetGlobalPrivacySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountSetGlobalPrivacySettings)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPrivacySettingsServer).AccountSetGlobalPrivacySettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPrivacySettings_AccountSetGlobalPrivacySettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPrivacySettingsServer).AccountSetGlobalPrivacySettings(ctx, req.(*TLAccountSetGlobalPrivacySettings))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPrivacySettings_UsersGetIsPremiumRequiredToContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLUsersGetIsPremiumRequiredToContact)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPrivacySettingsServer).UsersGetIsPremiumRequiredToContact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPrivacySettings_UsersGetIsPremiumRequiredToContact_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPrivacySettingsServer).UsersGetIsPremiumRequiredToContact(ctx, req.(*TLUsersGetIsPremiumRequiredToContact))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPrivacySettings_MessagesSetDefaultHistoryTTL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSetDefaultHistoryTTL)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPrivacySettingsServer).MessagesSetDefaultHistoryTTL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPrivacySettings_MessagesSetDefaultHistoryTTL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPrivacySettingsServer).MessagesSetDefaultHistoryTTL(ctx, req.(*TLMessagesSetDefaultHistoryTTL))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPrivacySettings_MessagesGetDefaultHistoryTTL_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetDefaultHistoryTTL)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPrivacySettingsServer).MessagesGetDefaultHistoryTTL(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPrivacySettings_MessagesGetDefaultHistoryTTL_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPrivacySettingsServer).MessagesGetDefaultHistoryTTL(ctx, req.(*TLMessagesGetDefaultHistoryTTL))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCPrivacySettings_ServiceDesc is the grpc.ServiceDesc for RPCPrivacySettings service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCPrivacySettings_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCPrivacySettings",
+	HandlerType: (*RPCPrivacySettingsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_getPrivacy",
+			Handler:    _RPCPrivacySettings_AccountGetPrivacy_Handler,
+		},
+		{
+			MethodName: "account_setPrivacy",
+			Handler:    _RPCPrivacySettings_AccountSetPrivacy_Handler,
+		},
+		{
+			MethodName: "account_getGlobalPrivacySettings",
+			Handler:    _RPCPrivacySettings_AccountGetGlobalPrivacySettings_Handler,
+		},
+		{
+			MethodName: "account_setGlobalPrivacySettings",
+			Handler:    _RPCPrivacySettings_AccountSetGlobalPrivacySettings_Handler,
+		},
+		{
+			MethodName: "users_getIsPremiumRequiredToContact",
+			Handler:    _RPCPrivacySettings_UsersGetIsPremiumRequiredToContact_Handler,
+		},
+		{
+			MethodName: "messages_setDefaultHistoryTTL",
+			Handler:    _RPCPrivacySettings_MessagesSetDefaultHistoryTTL_Handler,
+		},
+		{
+			MethodName: "messages_getDefaultHistoryTTL",
+			Handler:    _RPCPrivacySettings_MessagesGetDefaultHistoryTTL_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCProfileLinks_ContactsExportContactToken_FullMethodName = "/mtproto.RPCProfileLinks/contacts_exportContactToken"
 	RPCProfileLinks_ContactsImportContactToken_FullMethodName = "/mtproto.RPCProfileLinks/contacts_importContactToken"
 )
@@ -20787,8 +20673,131 @@ var RPCQrCode_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCReactions_AccountGetReactionsNotifySettings_FullMethodName = "/mtproto.RPCReactions/account_getReactionsNotifySettings"
-	RPCReactions_AccountSetReactionsNotifySettings_FullMethodName = "/mtproto.RPCReactions/account_setReactionsNotifySettings"
+	RPCReactionNotification_AccountGetReactionsNotifySettings_FullMethodName = "/mtproto.RPCReactionNotification/account_getReactionsNotifySettings"
+	RPCReactionNotification_AccountSetReactionsNotifySettings_FullMethodName = "/mtproto.RPCReactionNotification/account_setReactionsNotifySettings"
+)
+
+// RPCReactionNotificationClient is the client API for RPCReactionNotification service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCReactionNotificationClient interface {
+	AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error)
+	AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error)
+}
+
+type rPCReactionNotificationClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCReactionNotificationClient(cc grpc.ClientConnInterface) RPCReactionNotificationClient {
+	return &rPCReactionNotificationClient{cc}
+}
+
+func (c *rPCReactionNotificationClient) AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error) {
+	out := new(ReactionsNotifySettings)
+	err := c.cc.Invoke(ctx, RPCReactionNotification_AccountGetReactionsNotifySettings_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCReactionNotificationClient) AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error) {
+	out := new(ReactionsNotifySettings)
+	err := c.cc.Invoke(ctx, RPCReactionNotification_AccountSetReactionsNotifySettings_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCReactionNotificationServer is the server API for RPCReactionNotification service.
+// All implementations should embed UnimplementedRPCReactionNotificationServer
+// for forward compatibility
+type RPCReactionNotificationServer interface {
+	AccountGetReactionsNotifySettings(context.Context, *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error)
+	AccountSetReactionsNotifySettings(context.Context, *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error)
+}
+
+// UnimplementedRPCReactionNotificationServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCReactionNotificationServer struct {
+}
+
+func (UnimplementedRPCReactionNotificationServer) AccountGetReactionsNotifySettings(context.Context, *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetReactionsNotifySettings not implemented")
+}
+func (UnimplementedRPCReactionNotificationServer) AccountSetReactionsNotifySettings(context.Context, *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountSetReactionsNotifySettings not implemented")
+}
+
+// UnsafeRPCReactionNotificationServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCReactionNotificationServer will
+// result in compilation errors.
+type UnsafeRPCReactionNotificationServer interface {
+	mustEmbedUnimplementedRPCReactionNotificationServer()
+}
+
+func RegisterRPCReactionNotificationServer(s grpc.ServiceRegistrar, srv RPCReactionNotificationServer) {
+	s.RegisterService(&RPCReactionNotification_ServiceDesc, srv)
+}
+
+func _RPCReactionNotification_AccountGetReactionsNotifySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetReactionsNotifySettings)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCReactionNotificationServer).AccountGetReactionsNotifySettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCReactionNotification_AccountGetReactionsNotifySettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCReactionNotificationServer).AccountGetReactionsNotifySettings(ctx, req.(*TLAccountGetReactionsNotifySettings))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCReactionNotification_AccountSetReactionsNotifySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountSetReactionsNotifySettings)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCReactionNotificationServer).AccountSetReactionsNotifySettings(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCReactionNotification_AccountSetReactionsNotifySettings_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCReactionNotificationServer).AccountSetReactionsNotifySettings(ctx, req.(*TLAccountSetReactionsNotifySettings))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCReactionNotification_ServiceDesc is the grpc.ServiceDesc for RPCReactionNotification service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCReactionNotification_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCReactionNotification",
+	HandlerType: (*RPCReactionNotificationServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_getReactionsNotifySettings",
+			Handler:    _RPCReactionNotification_AccountGetReactionsNotifySettings_Handler,
+		},
+		{
+			MethodName: "account_setReactionsNotifySettings",
+			Handler:    _RPCReactionNotification_AccountSetReactionsNotifySettings_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCReactions_MessagesSendReaction_FullMethodName              = "/mtproto.RPCReactions/messages_sendReaction"
 	RPCReactions_MessagesGetMessagesReactions_FullMethodName      = "/mtproto.RPCReactions/messages_getMessagesReactions"
 	RPCReactions_MessagesGetMessageReactionsList_FullMethodName   = "/mtproto.RPCReactions/messages_getMessageReactionsList"
@@ -20801,17 +20810,12 @@ const (
 	RPCReactions_MessagesGetTopReactions_FullMethodName           = "/mtproto.RPCReactions/messages_getTopReactions"
 	RPCReactions_MessagesGetRecentReactions_FullMethodName        = "/mtproto.RPCReactions/messages_getRecentReactions"
 	RPCReactions_MessagesClearRecentReactions_FullMethodName      = "/mtproto.RPCReactions/messages_clearRecentReactions"
-	RPCReactions_MessagesGetSavedReactionTags_FullMethodName      = "/mtproto.RPCReactions/messages_getSavedReactionTags"
-	RPCReactions_MessagesUpdateSavedReactionTag_FullMethodName    = "/mtproto.RPCReactions/messages_updateSavedReactionTag"
-	RPCReactions_MessagesGetDefaultTagReactions_FullMethodName    = "/mtproto.RPCReactions/messages_getDefaultTagReactions"
 )
 
 // RPCReactionsClient is the client API for RPCReactions service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCReactionsClient interface {
-	AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error)
-	AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error)
 	MessagesSendReaction(ctx context.Context, in *TLMessagesSendReaction, opts ...grpc.CallOption) (*Updates, error)
 	MessagesGetMessagesReactions(ctx context.Context, in *TLMessagesGetMessagesReactions, opts ...grpc.CallOption) (*Updates, error)
 	MessagesGetMessageReactionsList(ctx context.Context, in *TLMessagesGetMessageReactionsList, opts ...grpc.CallOption) (*Messages_MessageReactionsList, error)
@@ -20824,9 +20828,6 @@ type RPCReactionsClient interface {
 	MessagesGetTopReactions(ctx context.Context, in *TLMessagesGetTopReactions, opts ...grpc.CallOption) (*Messages_Reactions, error)
 	MessagesGetRecentReactions(ctx context.Context, in *TLMessagesGetRecentReactions, opts ...grpc.CallOption) (*Messages_Reactions, error)
 	MessagesClearRecentReactions(ctx context.Context, in *TLMessagesClearRecentReactions, opts ...grpc.CallOption) (*Bool, error)
-	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags, opts ...grpc.CallOption) (*Messages_SavedReactionTags, error)
-	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag, opts ...grpc.CallOption) (*Bool, error)
-	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions, opts ...grpc.CallOption) (*Messages_Reactions, error)
 }
 
 type rPCReactionsClient struct {
@@ -20835,24 +20836,6 @@ type rPCReactionsClient struct {
 
 func NewRPCReactionsClient(cc grpc.ClientConnInterface) RPCReactionsClient {
 	return &rPCReactionsClient{cc}
-}
-
-func (c *rPCReactionsClient) AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error) {
-	out := new(ReactionsNotifySettings)
-	err := c.cc.Invoke(ctx, RPCReactions_AccountGetReactionsNotifySettings_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCReactionsClient) AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings, opts ...grpc.CallOption) (*ReactionsNotifySettings, error) {
-	out := new(ReactionsNotifySettings)
-	err := c.cc.Invoke(ctx, RPCReactions_AccountSetReactionsNotifySettings_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *rPCReactionsClient) MessagesSendReaction(ctx context.Context, in *TLMessagesSendReaction, opts ...grpc.CallOption) (*Updates, error) {
@@ -20963,39 +20946,10 @@ func (c *rPCReactionsClient) MessagesClearRecentReactions(ctx context.Context, i
 	return out, nil
 }
 
-func (c *rPCReactionsClient) MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags, opts ...grpc.CallOption) (*Messages_SavedReactionTags, error) {
-	out := new(Messages_SavedReactionTags)
-	err := c.cc.Invoke(ctx, RPCReactions_MessagesGetSavedReactionTags_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCReactionsClient) MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCReactions_MessagesUpdateSavedReactionTag_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCReactionsClient) MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions, opts ...grpc.CallOption) (*Messages_Reactions, error) {
-	out := new(Messages_Reactions)
-	err := c.cc.Invoke(ctx, RPCReactions_MessagesGetDefaultTagReactions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCReactionsServer is the server API for RPCReactions service.
 // All implementations should embed UnimplementedRPCReactionsServer
 // for forward compatibility
 type RPCReactionsServer interface {
-	AccountGetReactionsNotifySettings(context.Context, *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error)
-	AccountSetReactionsNotifySettings(context.Context, *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error)
 	MessagesSendReaction(context.Context, *TLMessagesSendReaction) (*Updates, error)
 	MessagesGetMessagesReactions(context.Context, *TLMessagesGetMessagesReactions) (*Updates, error)
 	MessagesGetMessageReactionsList(context.Context, *TLMessagesGetMessageReactionsList) (*Messages_MessageReactionsList, error)
@@ -21008,21 +20962,12 @@ type RPCReactionsServer interface {
 	MessagesGetTopReactions(context.Context, *TLMessagesGetTopReactions) (*Messages_Reactions, error)
 	MessagesGetRecentReactions(context.Context, *TLMessagesGetRecentReactions) (*Messages_Reactions, error)
 	MessagesClearRecentReactions(context.Context, *TLMessagesClearRecentReactions) (*Bool, error)
-	MessagesGetSavedReactionTags(context.Context, *TLMessagesGetSavedReactionTags) (*Messages_SavedReactionTags, error)
-	MessagesUpdateSavedReactionTag(context.Context, *TLMessagesUpdateSavedReactionTag) (*Bool, error)
-	MessagesGetDefaultTagReactions(context.Context, *TLMessagesGetDefaultTagReactions) (*Messages_Reactions, error)
 }
 
 // UnimplementedRPCReactionsServer should be embedded to have forward compatible implementations.
 type UnimplementedRPCReactionsServer struct {
 }
 
-func (UnimplementedRPCReactionsServer) AccountGetReactionsNotifySettings(context.Context, *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountGetReactionsNotifySettings not implemented")
-}
-func (UnimplementedRPCReactionsServer) AccountSetReactionsNotifySettings(context.Context, *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountSetReactionsNotifySettings not implemented")
-}
 func (UnimplementedRPCReactionsServer) MessagesSendReaction(context.Context, *TLMessagesSendReaction) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendReaction not implemented")
 }
@@ -21059,15 +21004,6 @@ func (UnimplementedRPCReactionsServer) MessagesGetRecentReactions(context.Contex
 func (UnimplementedRPCReactionsServer) MessagesClearRecentReactions(context.Context, *TLMessagesClearRecentReactions) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesClearRecentReactions not implemented")
 }
-func (UnimplementedRPCReactionsServer) MessagesGetSavedReactionTags(context.Context, *TLMessagesGetSavedReactionTags) (*Messages_SavedReactionTags, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSavedReactionTags not implemented")
-}
-func (UnimplementedRPCReactionsServer) MessagesUpdateSavedReactionTag(context.Context, *TLMessagesUpdateSavedReactionTag) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesUpdateSavedReactionTag not implemented")
-}
-func (UnimplementedRPCReactionsServer) MessagesGetDefaultTagReactions(context.Context, *TLMessagesGetDefaultTagReactions) (*Messages_Reactions, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetDefaultTagReactions not implemented")
-}
 
 // UnsafeRPCReactionsServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to RPCReactionsServer will
@@ -21078,42 +21014,6 @@ type UnsafeRPCReactionsServer interface {
 
 func RegisterRPCReactionsServer(s grpc.ServiceRegistrar, srv RPCReactionsServer) {
 	s.RegisterService(&RPCReactions_ServiceDesc, srv)
-}
-
-func _RPCReactions_AccountGetReactionsNotifySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountGetReactionsNotifySettings)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCReactionsServer).AccountGetReactionsNotifySettings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCReactions_AccountGetReactionsNotifySettings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCReactionsServer).AccountGetReactionsNotifySettings(ctx, req.(*TLAccountGetReactionsNotifySettings))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCReactions_AccountSetReactionsNotifySettings_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountSetReactionsNotifySettings)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCReactionsServer).AccountSetReactionsNotifySettings(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCReactions_AccountSetReactionsNotifySettings_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCReactionsServer).AccountSetReactionsNotifySettings(ctx, req.(*TLAccountSetReactionsNotifySettings))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _RPCReactions_MessagesSendReaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -21332,60 +21232,6 @@ func _RPCReactions_MessagesClearRecentReactions_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCReactions_MessagesGetSavedReactionTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetSavedReactionTags)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCReactionsServer).MessagesGetSavedReactionTags(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCReactions_MessagesGetSavedReactionTags_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCReactionsServer).MessagesGetSavedReactionTags(ctx, req.(*TLMessagesGetSavedReactionTags))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCReactions_MessagesUpdateSavedReactionTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesUpdateSavedReactionTag)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCReactionsServer).MessagesUpdateSavedReactionTag(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCReactions_MessagesUpdateSavedReactionTag_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCReactionsServer).MessagesUpdateSavedReactionTag(ctx, req.(*TLMessagesUpdateSavedReactionTag))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCReactions_MessagesGetDefaultTagReactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetDefaultTagReactions)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCReactionsServer).MessagesGetDefaultTagReactions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCReactions_MessagesGetDefaultTagReactions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCReactionsServer).MessagesGetDefaultTagReactions(ctx, req.(*TLMessagesGetDefaultTagReactions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCReactions_ServiceDesc is the grpc.ServiceDesc for RPCReactions service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -21393,14 +21239,6 @@ var RPCReactions_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "mtproto.RPCReactions",
 	HandlerType: (*RPCReactionsServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "account_getReactionsNotifySettings",
-			Handler:    _RPCReactions_AccountGetReactionsNotifySettings_Handler,
-		},
-		{
-			MethodName: "account_setReactionsNotifySettings",
-			Handler:    _RPCReactions_AccountSetReactionsNotifySettings_Handler,
-		},
 		{
 			MethodName: "messages_sendReaction",
 			Handler:    _RPCReactions_MessagesSendReaction_Handler,
@@ -21448,18 +21286,6 @@ var RPCReactions_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_clearRecentReactions",
 			Handler:    _RPCReactions_MessagesClearRecentReactions_Handler,
-		},
-		{
-			MethodName: "messages_getSavedReactionTags",
-			Handler:    _RPCReactions_MessagesGetSavedReactionTags_Handler,
-		},
-		{
-			MethodName: "messages_updateSavedReactionTag",
-			Handler:    _RPCReactions_MessagesUpdateSavedReactionTag_Handler,
-		},
-		{
-			MethodName: "messages_getDefaultTagReactions",
-			Handler:    _RPCReactions_MessagesGetDefaultTagReactions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -21895,6 +21721,441 @@ var RPCRingtone_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "account_uploadRingtone",
 			Handler:    _RPCRingtone_AccountUploadRingtone_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCSavedMessageDialogs_MessagesGetSavedDialogs_FullMethodName           = "/mtproto.RPCSavedMessageDialogs/messages_getSavedDialogs"
+	RPCSavedMessageDialogs_MessagesGetSavedHistory_FullMethodName           = "/mtproto.RPCSavedMessageDialogs/messages_getSavedHistory"
+	RPCSavedMessageDialogs_MessagesDeleteSavedHistory_FullMethodName        = "/mtproto.RPCSavedMessageDialogs/messages_deleteSavedHistory"
+	RPCSavedMessageDialogs_MessagesGetPinnedSavedDialogs_FullMethodName     = "/mtproto.RPCSavedMessageDialogs/messages_getPinnedSavedDialogs"
+	RPCSavedMessageDialogs_MessagesToggleSavedDialogPin_FullMethodName      = "/mtproto.RPCSavedMessageDialogs/messages_toggleSavedDialogPin"
+	RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_FullMethodName = "/mtproto.RPCSavedMessageDialogs/messages_reorderPinnedSavedDialogs"
+)
+
+// RPCSavedMessageDialogsClient is the client API for RPCSavedMessageDialogs service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCSavedMessageDialogsClient interface {
+	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error)
+	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory, opts ...grpc.CallOption) (*Messages_Messages, error)
+	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
+	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error)
+	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin, opts ...grpc.CallOption) (*Bool, error)
+	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCSavedMessageDialogsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCSavedMessageDialogsClient(cc grpc.ClientConnInterface) RPCSavedMessageDialogsClient {
+	return &rPCSavedMessageDialogsClient{cc}
+}
+
+func (c *rPCSavedMessageDialogsClient) MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error) {
+	out := new(Messages_SavedDialogs)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesGetSavedDialogs_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageDialogsClient) MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory, opts ...grpc.CallOption) (*Messages_Messages, error) {
+	out := new(Messages_Messages)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesGetSavedHistory_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageDialogsClient) MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error) {
+	out := new(Messages_AffectedHistory)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesDeleteSavedHistory_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageDialogsClient) MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error) {
+	out := new(Messages_SavedDialogs)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesGetPinnedSavedDialogs_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageDialogsClient) MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesToggleSavedDialogPin_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageDialogsClient) MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCSavedMessageDialogsServer is the server API for RPCSavedMessageDialogs service.
+// All implementations should embed UnimplementedRPCSavedMessageDialogsServer
+// for forward compatibility
+type RPCSavedMessageDialogsServer interface {
+	MessagesGetSavedDialogs(context.Context, *TLMessagesGetSavedDialogs) (*Messages_SavedDialogs, error)
+	MessagesGetSavedHistory(context.Context, *TLMessagesGetSavedHistory) (*Messages_Messages, error)
+	MessagesDeleteSavedHistory(context.Context, *TLMessagesDeleteSavedHistory) (*Messages_AffectedHistory, error)
+	MessagesGetPinnedSavedDialogs(context.Context, *TLMessagesGetPinnedSavedDialogs) (*Messages_SavedDialogs, error)
+	MessagesToggleSavedDialogPin(context.Context, *TLMessagesToggleSavedDialogPin) (*Bool, error)
+	MessagesReorderPinnedSavedDialogs(context.Context, *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
+}
+
+// UnimplementedRPCSavedMessageDialogsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCSavedMessageDialogsServer struct {
+}
+
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesGetSavedDialogs(context.Context, *TLMessagesGetSavedDialogs) (*Messages_SavedDialogs, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSavedDialogs not implemented")
+}
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesGetSavedHistory(context.Context, *TLMessagesGetSavedHistory) (*Messages_Messages, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSavedHistory not implemented")
+}
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesDeleteSavedHistory(context.Context, *TLMessagesDeleteSavedHistory) (*Messages_AffectedHistory, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteSavedHistory not implemented")
+}
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesGetPinnedSavedDialogs(context.Context, *TLMessagesGetPinnedSavedDialogs) (*Messages_SavedDialogs, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetPinnedSavedDialogs not implemented")
+}
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesToggleSavedDialogPin(context.Context, *TLMessagesToggleSavedDialogPin) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesToggleSavedDialogPin not implemented")
+}
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesReorderPinnedSavedDialogs(context.Context, *TLMessagesReorderPinnedSavedDialogs) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesReorderPinnedSavedDialogs not implemented")
+}
+
+// UnsafeRPCSavedMessageDialogsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCSavedMessageDialogsServer will
+// result in compilation errors.
+type UnsafeRPCSavedMessageDialogsServer interface {
+	mustEmbedUnimplementedRPCSavedMessageDialogsServer()
+}
+
+func RegisterRPCSavedMessageDialogsServer(s grpc.ServiceRegistrar, srv RPCSavedMessageDialogsServer) {
+	s.RegisterService(&RPCSavedMessageDialogs_ServiceDesc, srv)
+}
+
+func _RPCSavedMessageDialogs_MessagesGetSavedDialogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetSavedDialogs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetSavedDialogs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesGetSavedDialogs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetSavedDialogs(ctx, req.(*TLMessagesGetSavedDialogs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageDialogs_MessagesGetSavedHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetSavedHistory)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetSavedHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesGetSavedHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetSavedHistory(ctx, req.(*TLMessagesGetSavedHistory))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageDialogs_MessagesDeleteSavedHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesDeleteSavedHistory)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesDeleteSavedHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesDeleteSavedHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesDeleteSavedHistory(ctx, req.(*TLMessagesDeleteSavedHistory))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageDialogs_MessagesGetPinnedSavedDialogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetPinnedSavedDialogs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetPinnedSavedDialogs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesGetPinnedSavedDialogs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetPinnedSavedDialogs(ctx, req.(*TLMessagesGetPinnedSavedDialogs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageDialogs_MessagesToggleSavedDialogPin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesToggleSavedDialogPin)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesToggleSavedDialogPin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesToggleSavedDialogPin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesToggleSavedDialogPin(ctx, req.(*TLMessagesToggleSavedDialogPin))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesReorderPinnedSavedDialogs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesReorderPinnedSavedDialogs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesReorderPinnedSavedDialogs(ctx, req.(*TLMessagesReorderPinnedSavedDialogs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCSavedMessageDialogs_ServiceDesc is the grpc.ServiceDesc for RPCSavedMessageDialogs service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCSavedMessageDialogs_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCSavedMessageDialogs",
+	HandlerType: (*RPCSavedMessageDialogsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_getSavedDialogs",
+			Handler:    _RPCSavedMessageDialogs_MessagesGetSavedDialogs_Handler,
+		},
+		{
+			MethodName: "messages_getSavedHistory",
+			Handler:    _RPCSavedMessageDialogs_MessagesGetSavedHistory_Handler,
+		},
+		{
+			MethodName: "messages_deleteSavedHistory",
+			Handler:    _RPCSavedMessageDialogs_MessagesDeleteSavedHistory_Handler,
+		},
+		{
+			MethodName: "messages_getPinnedSavedDialogs",
+			Handler:    _RPCSavedMessageDialogs_MessagesGetPinnedSavedDialogs_Handler,
+		},
+		{
+			MethodName: "messages_toggleSavedDialogPin",
+			Handler:    _RPCSavedMessageDialogs_MessagesToggleSavedDialogPin_Handler,
+		},
+		{
+			MethodName: "messages_reorderPinnedSavedDialogs",
+			Handler:    _RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCSavedMessageTags_MessagesGetSavedReactionTags_FullMethodName   = "/mtproto.RPCSavedMessageTags/messages_getSavedReactionTags"
+	RPCSavedMessageTags_MessagesUpdateSavedReactionTag_FullMethodName = "/mtproto.RPCSavedMessageTags/messages_updateSavedReactionTag"
+	RPCSavedMessageTags_MessagesGetDefaultTagReactions_FullMethodName = "/mtproto.RPCSavedMessageTags/messages_getDefaultTagReactions"
+)
+
+// RPCSavedMessageTagsClient is the client API for RPCSavedMessageTags service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCSavedMessageTagsClient interface {
+	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags, opts ...grpc.CallOption) (*Messages_SavedReactionTags, error)
+	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag, opts ...grpc.CallOption) (*Bool, error)
+	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions, opts ...grpc.CallOption) (*Messages_Reactions, error)
+}
+
+type rPCSavedMessageTagsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCSavedMessageTagsClient(cc grpc.ClientConnInterface) RPCSavedMessageTagsClient {
+	return &rPCSavedMessageTagsClient{cc}
+}
+
+func (c *rPCSavedMessageTagsClient) MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags, opts ...grpc.CallOption) (*Messages_SavedReactionTags, error) {
+	out := new(Messages_SavedReactionTags)
+	err := c.cc.Invoke(ctx, RPCSavedMessageTags_MessagesGetSavedReactionTags_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageTagsClient) MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCSavedMessageTags_MessagesUpdateSavedReactionTag_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageTagsClient) MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions, opts ...grpc.CallOption) (*Messages_Reactions, error) {
+	out := new(Messages_Reactions)
+	err := c.cc.Invoke(ctx, RPCSavedMessageTags_MessagesGetDefaultTagReactions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCSavedMessageTagsServer is the server API for RPCSavedMessageTags service.
+// All implementations should embed UnimplementedRPCSavedMessageTagsServer
+// for forward compatibility
+type RPCSavedMessageTagsServer interface {
+	MessagesGetSavedReactionTags(context.Context, *TLMessagesGetSavedReactionTags) (*Messages_SavedReactionTags, error)
+	MessagesUpdateSavedReactionTag(context.Context, *TLMessagesUpdateSavedReactionTag) (*Bool, error)
+	MessagesGetDefaultTagReactions(context.Context, *TLMessagesGetDefaultTagReactions) (*Messages_Reactions, error)
+}
+
+// UnimplementedRPCSavedMessageTagsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCSavedMessageTagsServer struct {
+}
+
+func (UnimplementedRPCSavedMessageTagsServer) MessagesGetSavedReactionTags(context.Context, *TLMessagesGetSavedReactionTags) (*Messages_SavedReactionTags, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSavedReactionTags not implemented")
+}
+func (UnimplementedRPCSavedMessageTagsServer) MessagesUpdateSavedReactionTag(context.Context, *TLMessagesUpdateSavedReactionTag) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesUpdateSavedReactionTag not implemented")
+}
+func (UnimplementedRPCSavedMessageTagsServer) MessagesGetDefaultTagReactions(context.Context, *TLMessagesGetDefaultTagReactions) (*Messages_Reactions, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetDefaultTagReactions not implemented")
+}
+
+// UnsafeRPCSavedMessageTagsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCSavedMessageTagsServer will
+// result in compilation errors.
+type UnsafeRPCSavedMessageTagsServer interface {
+	mustEmbedUnimplementedRPCSavedMessageTagsServer()
+}
+
+func RegisterRPCSavedMessageTagsServer(s grpc.ServiceRegistrar, srv RPCSavedMessageTagsServer) {
+	s.RegisterService(&RPCSavedMessageTags_ServiceDesc, srv)
+}
+
+func _RPCSavedMessageTags_MessagesGetSavedReactionTags_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetSavedReactionTags)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageTagsServer).MessagesGetSavedReactionTags(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageTags_MessagesGetSavedReactionTags_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageTagsServer).MessagesGetSavedReactionTags(ctx, req.(*TLMessagesGetSavedReactionTags))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageTags_MessagesUpdateSavedReactionTag_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesUpdateSavedReactionTag)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageTagsServer).MessagesUpdateSavedReactionTag(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageTags_MessagesUpdateSavedReactionTag_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageTagsServer).MessagesUpdateSavedReactionTag(ctx, req.(*TLMessagesUpdateSavedReactionTag))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageTags_MessagesGetDefaultTagReactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetDefaultTagReactions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageTagsServer).MessagesGetDefaultTagReactions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageTags_MessagesGetDefaultTagReactions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageTagsServer).MessagesGetDefaultTagReactions(ctx, req.(*TLMessagesGetDefaultTagReactions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCSavedMessageTags_ServiceDesc is the grpc.ServiceDesc for RPCSavedMessageTags service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCSavedMessageTags_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCSavedMessageTags",
+	HandlerType: (*RPCSavedMessageTagsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_getSavedReactionTags",
+			Handler:    _RPCSavedMessageTags_MessagesGetSavedReactionTags_Handler,
+		},
+		{
+			MethodName: "messages_updateSavedReactionTag",
+			Handler:    _RPCSavedMessageTags_MessagesUpdateSavedReactionTag_Handler,
+		},
+		{
+			MethodName: "messages_getDefaultTagReactions",
+			Handler:    _RPCSavedMessageTags_MessagesGetDefaultTagReactions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -23341,16 +23602,433 @@ var RPCSponsoredMessages_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCStars_PaymentsGetStarsTopupOptions_FullMethodName         = "/mtproto.RPCStars/payments_getStarsTopupOptions"
+	RPCStars_PaymentsGetStarsStatus_FullMethodName               = "/mtproto.RPCStars/payments_getStarsStatus"
+	RPCStars_PaymentsGetStarsTransactions_FullMethodName         = "/mtproto.RPCStars/payments_getStarsTransactions"
+	RPCStars_PaymentsSendStarsForm_FullMethodName                = "/mtproto.RPCStars/payments_sendStarsForm"
+	RPCStars_PaymentsRefundStarsCharge_FullMethodName            = "/mtproto.RPCStars/payments_refundStarsCharge"
+	RPCStars_PaymentsGetStarsRevenueStats_FullMethodName         = "/mtproto.RPCStars/payments_getStarsRevenueStats"
+	RPCStars_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName = "/mtproto.RPCStars/payments_getStarsRevenueWithdrawalUrl"
+	RPCStars_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName = "/mtproto.RPCStars/payments_getStarsRevenueAdsAccountUrl"
+	RPCStars_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCStars/payments_getStarsTransactionsByID"
+	RPCStars_PaymentsGetStarsGiftOptions_FullMethodName          = "/mtproto.RPCStars/payments_getStarsGiftOptions"
+)
+
+// RPCStarsClient is the client API for RPCStars service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCStarsClient interface {
+	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error)
+	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error)
+	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error)
+	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats, opts ...grpc.CallOption) (*Payments_StarsRevenueStats, error)
+	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error)
+	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error)
+	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error)
+}
+
+type rPCStarsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCStarsClient(cc grpc.ClientConnInterface) RPCStarsClient {
+	return &rPCStarsClient{cc}
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error) {
+	out := new(Vector_StarsTopupOption)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsTopupOptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsStatus_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsTransactions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm, opts ...grpc.CallOption) (*Payments_PaymentResult, error) {
+	out := new(Payments_PaymentResult)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsSendStarsForm_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsRefundStarsCharge_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats, opts ...grpc.CallOption) (*Payments_StarsRevenueStats, error) {
+	out := new(Payments_StarsRevenueStats)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsRevenueStats_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueWithdrawalUrl, error) {
+	out := new(Payments_StarsRevenueWithdrawalUrl)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error) {
+	out := new(Payments_StarsRevenueAdsAccountUrl)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsTransactionsByID_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error) {
+	out := new(Vector_StarsGiftOption)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsGiftOptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCStarsServer is the server API for RPCStars service.
+// All implementations should embed UnimplementedRPCStarsServer
+// for forward compatibility
+type RPCStarsServer interface {
+	PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error)
+	PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error)
+	PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error)
+	PaymentsSendStarsForm(context.Context, *TLPaymentsSendStarsForm) (*Payments_PaymentResult, error)
+	PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error)
+	PaymentsGetStarsRevenueStats(context.Context, *TLPaymentsGetStarsRevenueStats) (*Payments_StarsRevenueStats, error)
+	PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error)
+	PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error)
+	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
+	PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error)
+}
+
+// UnimplementedRPCStarsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCStarsServer struct {
+}
+
+func (UnimplementedRPCStarsServer) PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTopupOptions not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsStatus not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTransactions not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsSendStarsForm(context.Context, *TLPaymentsSendStarsForm) (*Payments_PaymentResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsSendStarsForm not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsRefundStarsCharge(context.Context, *TLPaymentsRefundStarsCharge) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRefundStarsCharge not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsRevenueStats(context.Context, *TLPaymentsGetStarsRevenueStats) (*Payments_StarsRevenueStats, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueStats not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsRevenueWithdrawalUrl(context.Context, *TLPaymentsGetStarsRevenueWithdrawalUrl) (*Payments_StarsRevenueWithdrawalUrl, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueWithdrawalUrl not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsRevenueAdsAccountUrl not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTransactionsByID not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiftOptions not implemented")
+}
+
+// UnsafeRPCStarsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCStarsServer will
+// result in compilation errors.
+type UnsafeRPCStarsServer interface {
+	mustEmbedUnimplementedRPCStarsServer()
+}
+
+func RegisterRPCStarsServer(s grpc.ServiceRegistrar, srv RPCStarsServer) {
+	s.RegisterService(&RPCStars_ServiceDesc, srv)
+}
+
+func _RPCStars_PaymentsGetStarsTopupOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsTopupOptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsTopupOptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsTopupOptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsTopupOptions(ctx, req.(*TLPaymentsGetStarsTopupOptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetStarsStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsStatus)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsStatus(ctx, req.(*TLPaymentsGetStarsStatus))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetStarsTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsTransactions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsTransactions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsTransactions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsTransactions(ctx, req.(*TLPaymentsGetStarsTransactions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsSendStarsForm_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsSendStarsForm)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsSendStarsForm(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsSendStarsForm_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsSendStarsForm(ctx, req.(*TLPaymentsSendStarsForm))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsRefundStarsCharge_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsRefundStarsCharge)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsRefundStarsCharge(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsRefundStarsCharge_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsRefundStarsCharge(ctx, req.(*TLPaymentsRefundStarsCharge))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetStarsRevenueStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsRevenueStats)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsRevenueStats(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsRevenueStats_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsRevenueStats(ctx, req.(*TLPaymentsGetStarsRevenueStats))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetStarsRevenueWithdrawalUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsRevenueWithdrawalUrl)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsRevenueWithdrawalUrl(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsRevenueWithdrawalUrl_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsRevenueWithdrawalUrl(ctx, req.(*TLPaymentsGetStarsRevenueWithdrawalUrl))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetStarsRevenueAdsAccountUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsRevenueAdsAccountUrl)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsRevenueAdsAccountUrl(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsRevenueAdsAccountUrl(ctx, req.(*TLPaymentsGetStarsRevenueAdsAccountUrl))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetStarsTransactionsByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsTransactionsByID)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsTransactionsByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsTransactionsByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsTransactionsByID(ctx, req.(*TLPaymentsGetStarsTransactionsByID))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetStarsGiftOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsGiftOptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsGiftOptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsGiftOptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsGiftOptions(ctx, req.(*TLPaymentsGetStarsGiftOptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCStars_ServiceDesc is the grpc.ServiceDesc for RPCStars service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCStars_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCStars",
+	HandlerType: (*RPCStarsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "payments_getStarsTopupOptions",
+			Handler:    _RPCStars_PaymentsGetStarsTopupOptions_Handler,
+		},
+		{
+			MethodName: "payments_getStarsStatus",
+			Handler:    _RPCStars_PaymentsGetStarsStatus_Handler,
+		},
+		{
+			MethodName: "payments_getStarsTransactions",
+			Handler:    _RPCStars_PaymentsGetStarsTransactions_Handler,
+		},
+		{
+			MethodName: "payments_sendStarsForm",
+			Handler:    _RPCStars_PaymentsSendStarsForm_Handler,
+		},
+		{
+			MethodName: "payments_refundStarsCharge",
+			Handler:    _RPCStars_PaymentsRefundStarsCharge_Handler,
+		},
+		{
+			MethodName: "payments_getStarsRevenueStats",
+			Handler:    _RPCStars_PaymentsGetStarsRevenueStats_Handler,
+		},
+		{
+			MethodName: "payments_getStarsRevenueWithdrawalUrl",
+			Handler:    _RPCStars_PaymentsGetStarsRevenueWithdrawalUrl_Handler,
+		},
+		{
+			MethodName: "payments_getStarsRevenueAdsAccountUrl",
+			Handler:    _RPCStars_PaymentsGetStarsRevenueAdsAccountUrl_Handler,
+		},
+		{
+			MethodName: "payments_getStarsTransactionsByID",
+			Handler:    _RPCStars_PaymentsGetStarsTransactionsByID_Handler,
+		},
+		{
+			MethodName: "payments_getStarsGiftOptions",
+			Handler:    _RPCStars_PaymentsGetStarsGiftOptions_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCStatistics_StatsGetBroadcastStats_FullMethodName                = "/mtproto.RPCStatistics/stats_getBroadcastStats"
 	RPCStatistics_StatsLoadAsyncGraph_FullMethodName                   = "/mtproto.RPCStatistics/stats_loadAsyncGraph"
 	RPCStatistics_StatsGetMegagroupStats_FullMethodName                = "/mtproto.RPCStatistics/stats_getMegagroupStats"
-	RPCStatistics_StatsGetMessagePublicForwards5F150144_FullMethodName = "/mtproto.RPCStatistics/stats_getMessagePublicForwards5F150144"
 	RPCStatistics_StatsGetMessageStats_FullMethodName                  = "/mtproto.RPCStatistics/stats_getMessageStats"
 	RPCStatistics_StatsGetStoryStats_FullMethodName                    = "/mtproto.RPCStatistics/stats_getStoryStats"
 	RPCStatistics_StatsGetStoryPublicForwards_FullMethodName           = "/mtproto.RPCStatistics/stats_getStoryPublicForwards"
-	RPCStatistics_StatsGetBroadcastRevenueStats_FullMethodName         = "/mtproto.RPCStatistics/stats_getBroadcastRevenueStats"
-	RPCStatistics_StatsGetBroadcastRevenueWithdrawalUrl_FullMethodName = "/mtproto.RPCStatistics/stats_getBroadcastRevenueWithdrawalUrl"
-	RPCStatistics_StatsGetBroadcastRevenueTransactions_FullMethodName  = "/mtproto.RPCStatistics/stats_getBroadcastRevenueTransactions"
 	RPCStatistics_StatsGetMessagePublicForwards5630281B_FullMethodName = "/mtproto.RPCStatistics/stats_getMessagePublicForwards5630281B"
 )
 
@@ -23361,13 +24039,9 @@ type RPCStatisticsClient interface {
 	StatsGetBroadcastStats(ctx context.Context, in *TLStatsGetBroadcastStats, opts ...grpc.CallOption) (*Stats_BroadcastStats, error)
 	StatsLoadAsyncGraph(ctx context.Context, in *TLStatsLoadAsyncGraph, opts ...grpc.CallOption) (*StatsGraph, error)
 	StatsGetMegagroupStats(ctx context.Context, in *TLStatsGetMegagroupStats, opts ...grpc.CallOption) (*Stats_MegagroupStats, error)
-	StatsGetMessagePublicForwards5F150144(ctx context.Context, in *TLStatsGetMessagePublicForwards5F150144, opts ...grpc.CallOption) (*Stats_PublicForwards, error)
 	StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats, opts ...grpc.CallOption) (*Stats_MessageStats, error)
 	StatsGetStoryStats(ctx context.Context, in *TLStatsGetStoryStats, opts ...grpc.CallOption) (*Stats_StoryStats, error)
 	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards, opts ...grpc.CallOption) (*Stats_PublicForwards, error)
-	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats, opts ...grpc.CallOption) (*Stats_BroadcastRevenueStats, error)
-	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Stats_BroadcastRevenueWithdrawalUrl, error)
-	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions, opts ...grpc.CallOption) (*Stats_BroadcastRevenueTransactions, error)
 	StatsGetMessagePublicForwards5630281B(ctx context.Context, in *TLStatsGetMessagePublicForwards5630281B, opts ...grpc.CallOption) (*Messages_Messages, error)
 }
 
@@ -23406,15 +24080,6 @@ func (c *rPCStatisticsClient) StatsGetMegagroupStats(ctx context.Context, in *TL
 	return out, nil
 }
 
-func (c *rPCStatisticsClient) StatsGetMessagePublicForwards5F150144(ctx context.Context, in *TLStatsGetMessagePublicForwards5F150144, opts ...grpc.CallOption) (*Stats_PublicForwards, error) {
-	out := new(Stats_PublicForwards)
-	err := c.cc.Invoke(ctx, RPCStatistics_StatsGetMessagePublicForwards5F150144_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCStatisticsClient) StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats, opts ...grpc.CallOption) (*Stats_MessageStats, error) {
 	out := new(Stats_MessageStats)
 	err := c.cc.Invoke(ctx, RPCStatistics_StatsGetMessageStats_FullMethodName, in, out, opts...)
@@ -23442,33 +24107,6 @@ func (c *rPCStatisticsClient) StatsGetStoryPublicForwards(ctx context.Context, i
 	return out, nil
 }
 
-func (c *rPCStatisticsClient) StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats, opts ...grpc.CallOption) (*Stats_BroadcastRevenueStats, error) {
-	out := new(Stats_BroadcastRevenueStats)
-	err := c.cc.Invoke(ctx, RPCStatistics_StatsGetBroadcastRevenueStats_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStatisticsClient) StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl, opts ...grpc.CallOption) (*Stats_BroadcastRevenueWithdrawalUrl, error) {
-	out := new(Stats_BroadcastRevenueWithdrawalUrl)
-	err := c.cc.Invoke(ctx, RPCStatistics_StatsGetBroadcastRevenueWithdrawalUrl_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStatisticsClient) StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions, opts ...grpc.CallOption) (*Stats_BroadcastRevenueTransactions, error) {
-	out := new(Stats_BroadcastRevenueTransactions)
-	err := c.cc.Invoke(ctx, RPCStatistics_StatsGetBroadcastRevenueTransactions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCStatisticsClient) StatsGetMessagePublicForwards5630281B(ctx context.Context, in *TLStatsGetMessagePublicForwards5630281B, opts ...grpc.CallOption) (*Messages_Messages, error) {
 	out := new(Messages_Messages)
 	err := c.cc.Invoke(ctx, RPCStatistics_StatsGetMessagePublicForwards5630281B_FullMethodName, in, out, opts...)
@@ -23485,13 +24123,9 @@ type RPCStatisticsServer interface {
 	StatsGetBroadcastStats(context.Context, *TLStatsGetBroadcastStats) (*Stats_BroadcastStats, error)
 	StatsLoadAsyncGraph(context.Context, *TLStatsLoadAsyncGraph) (*StatsGraph, error)
 	StatsGetMegagroupStats(context.Context, *TLStatsGetMegagroupStats) (*Stats_MegagroupStats, error)
-	StatsGetMessagePublicForwards5F150144(context.Context, *TLStatsGetMessagePublicForwards5F150144) (*Stats_PublicForwards, error)
 	StatsGetMessageStats(context.Context, *TLStatsGetMessageStats) (*Stats_MessageStats, error)
 	StatsGetStoryStats(context.Context, *TLStatsGetStoryStats) (*Stats_StoryStats, error)
 	StatsGetStoryPublicForwards(context.Context, *TLStatsGetStoryPublicForwards) (*Stats_PublicForwards, error)
-	StatsGetBroadcastRevenueStats(context.Context, *TLStatsGetBroadcastRevenueStats) (*Stats_BroadcastRevenueStats, error)
-	StatsGetBroadcastRevenueWithdrawalUrl(context.Context, *TLStatsGetBroadcastRevenueWithdrawalUrl) (*Stats_BroadcastRevenueWithdrawalUrl, error)
-	StatsGetBroadcastRevenueTransactions(context.Context, *TLStatsGetBroadcastRevenueTransactions) (*Stats_BroadcastRevenueTransactions, error)
 	StatsGetMessagePublicForwards5630281B(context.Context, *TLStatsGetMessagePublicForwards5630281B) (*Messages_Messages, error)
 }
 
@@ -23508,9 +24142,6 @@ func (UnimplementedRPCStatisticsServer) StatsLoadAsyncGraph(context.Context, *TL
 func (UnimplementedRPCStatisticsServer) StatsGetMegagroupStats(context.Context, *TLStatsGetMegagroupStats) (*Stats_MegagroupStats, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StatsGetMegagroupStats not implemented")
 }
-func (UnimplementedRPCStatisticsServer) StatsGetMessagePublicForwards5F150144(context.Context, *TLStatsGetMessagePublicForwards5F150144) (*Stats_PublicForwards, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StatsGetMessagePublicForwards5F150144 not implemented")
-}
 func (UnimplementedRPCStatisticsServer) StatsGetMessageStats(context.Context, *TLStatsGetMessageStats) (*Stats_MessageStats, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StatsGetMessageStats not implemented")
 }
@@ -23519,15 +24150,6 @@ func (UnimplementedRPCStatisticsServer) StatsGetStoryStats(context.Context, *TLS
 }
 func (UnimplementedRPCStatisticsServer) StatsGetStoryPublicForwards(context.Context, *TLStatsGetStoryPublicForwards) (*Stats_PublicForwards, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StatsGetStoryPublicForwards not implemented")
-}
-func (UnimplementedRPCStatisticsServer) StatsGetBroadcastRevenueStats(context.Context, *TLStatsGetBroadcastRevenueStats) (*Stats_BroadcastRevenueStats, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StatsGetBroadcastRevenueStats not implemented")
-}
-func (UnimplementedRPCStatisticsServer) StatsGetBroadcastRevenueWithdrawalUrl(context.Context, *TLStatsGetBroadcastRevenueWithdrawalUrl) (*Stats_BroadcastRevenueWithdrawalUrl, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StatsGetBroadcastRevenueWithdrawalUrl not implemented")
-}
-func (UnimplementedRPCStatisticsServer) StatsGetBroadcastRevenueTransactions(context.Context, *TLStatsGetBroadcastRevenueTransactions) (*Stats_BroadcastRevenueTransactions, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StatsGetBroadcastRevenueTransactions not implemented")
 }
 func (UnimplementedRPCStatisticsServer) StatsGetMessagePublicForwards5630281B(context.Context, *TLStatsGetMessagePublicForwards5630281B) (*Messages_Messages, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StatsGetMessagePublicForwards5630281B not implemented")
@@ -23598,24 +24220,6 @@ func _RPCStatistics_StatsGetMegagroupStats_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCStatistics_StatsGetMessagePublicForwards5F150144_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStatsGetMessagePublicForwards5F150144)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStatisticsServer).StatsGetMessagePublicForwards5F150144(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStatistics_StatsGetMessagePublicForwards5F150144_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStatisticsServer).StatsGetMessagePublicForwards5F150144(ctx, req.(*TLStatsGetMessagePublicForwards5F150144))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCStatistics_StatsGetMessageStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLStatsGetMessageStats)
 	if err := dec(in); err != nil {
@@ -23670,60 +24274,6 @@ func _RPCStatistics_StatsGetStoryPublicForwards_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCStatistics_StatsGetBroadcastRevenueStats_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStatsGetBroadcastRevenueStats)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStatisticsServer).StatsGetBroadcastRevenueStats(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStatistics_StatsGetBroadcastRevenueStats_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStatisticsServer).StatsGetBroadcastRevenueStats(ctx, req.(*TLStatsGetBroadcastRevenueStats))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStatistics_StatsGetBroadcastRevenueWithdrawalUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStatsGetBroadcastRevenueWithdrawalUrl)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStatisticsServer).StatsGetBroadcastRevenueWithdrawalUrl(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStatistics_StatsGetBroadcastRevenueWithdrawalUrl_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStatisticsServer).StatsGetBroadcastRevenueWithdrawalUrl(ctx, req.(*TLStatsGetBroadcastRevenueWithdrawalUrl))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStatistics_StatsGetBroadcastRevenueTransactions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStatsGetBroadcastRevenueTransactions)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStatisticsServer).StatsGetBroadcastRevenueTransactions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStatistics_StatsGetBroadcastRevenueTransactions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStatisticsServer).StatsGetBroadcastRevenueTransactions(ctx, req.(*TLStatsGetBroadcastRevenueTransactions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCStatistics_StatsGetMessagePublicForwards5630281B_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLStatsGetMessagePublicForwards5630281B)
 	if err := dec(in); err != nil {
@@ -23762,10 +24312,6 @@ var RPCStatistics_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCStatistics_StatsGetMegagroupStats_Handler,
 		},
 		{
-			MethodName: "stats_getMessagePublicForwards5F150144",
-			Handler:    _RPCStatistics_StatsGetMessagePublicForwards5F150144_Handler,
-		},
-		{
 			MethodName: "stats_getMessageStats",
 			Handler:    _RPCStatistics_StatsGetMessageStats_Handler,
 		},
@@ -23776,18 +24322,6 @@ var RPCStatistics_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "stats_getStoryPublicForwards",
 			Handler:    _RPCStatistics_StatsGetStoryPublicForwards_Handler,
-		},
-		{
-			MethodName: "stats_getBroadcastRevenueStats",
-			Handler:    _RPCStatistics_StatsGetBroadcastRevenueStats_Handler,
-		},
-		{
-			MethodName: "stats_getBroadcastRevenueWithdrawalUrl",
-			Handler:    _RPCStatistics_StatsGetBroadcastRevenueWithdrawalUrl_Handler,
-		},
-		{
-			MethodName: "stats_getBroadcastRevenueTransactions",
-			Handler:    _RPCStatistics_StatsGetBroadcastRevenueTransactions_Handler,
 		},
 		{
 			MethodName: "stats_getMessagePublicForwards5630281B",
@@ -25060,10 +25594,7 @@ const (
 	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
 	RPCStories_StoriesTogglePinnedToTop_FullMethodName       = "/mtproto.RPCStories/stories_togglePinnedToTop"
 	RPCStories_StoriesSearchPosts_FullMethodName             = "/mtproto.RPCStories/stories_searchPosts"
-	RPCStories_UsersGetStoriesMaxIDs_FullMethodName          = "/mtproto.RPCStories/users_getStoriesMaxIDs"
 	RPCStories_ContactsToggleStoriesHidden_FullMethodName    = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
-	RPCStories_StoriesGetUserStories_FullMethodName          = "/mtproto.RPCStories/stories_getUserStories"
-	RPCStories_StoriesGetAllReadUserStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadUserStories"
 )
 
 // RPCStoriesClient is the client API for RPCStories service.
@@ -25096,10 +25627,7 @@ type RPCStoriesClient interface {
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList, opts ...grpc.CallOption) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop, opts ...grpc.CallOption) (*Bool, error)
 	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts, opts ...grpc.CallOption) (*Stories_FoundStories, error)
-	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(ctx context.Context, in *TLContactsToggleStoriesHidden, opts ...grpc.CallOption) (*Bool, error)
-	StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error)
-	StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCStoriesClient struct {
@@ -25344,36 +25872,9 @@ func (c *rPCStoriesClient) StoriesSearchPosts(ctx context.Context, in *TLStories
 	return out, nil
 }
 
-func (c *rPCStoriesClient) UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error) {
-	out := new(Vector_Int)
-	err := c.cc.Invoke(ctx, RPCStories_UsersGetStoriesMaxIDs_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCStoriesClient) ContactsToggleStoriesHidden(ctx context.Context, in *TLContactsToggleStoriesHidden, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCStories_ContactsToggleStoriesHidden_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStoriesClient) StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error) {
-	out := new(Stories_UserStories)
-	err := c.cc.Invoke(ctx, RPCStories_StoriesGetUserStories_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStoriesClient) StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCStories_StoriesGetAllReadUserStories_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -25410,10 +25911,7 @@ type RPCStoriesServer interface {
 	StoriesGetStoryReactionsList(context.Context, *TLStoriesGetStoryReactionsList) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(context.Context, *TLStoriesTogglePinnedToTop) (*Bool, error)
 	StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error)
-	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error)
-	StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error)
-	StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error)
 }
 
 // UnimplementedRPCStoriesServer should be embedded to have forward compatible implementations.
@@ -25498,17 +25996,8 @@ func (UnimplementedRPCStoriesServer) StoriesTogglePinnedToTop(context.Context, *
 func (UnimplementedRPCStoriesServer) StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesSearchPosts not implemented")
 }
-func (UnimplementedRPCStoriesServer) UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UsersGetStoriesMaxIDs not implemented")
-}
 func (UnimplementedRPCStoriesServer) ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContactsToggleStoriesHidden not implemented")
-}
-func (UnimplementedRPCStoriesServer) StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetUserStories not implemented")
-}
-func (UnimplementedRPCStoriesServer) StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAllReadUserStories not implemented")
 }
 
 // UnsafeRPCStoriesServer may be embedded to opt out of forward compatibility for this service.
@@ -25990,24 +26479,6 @@ func _RPCStories_StoriesSearchPosts_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCStories_UsersGetStoriesMaxIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLUsersGetStoriesMaxIDs)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStoriesServer).UsersGetStoriesMaxIDs(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStories_UsersGetStoriesMaxIDs_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStoriesServer).UsersGetStoriesMaxIDs(ctx, req.(*TLUsersGetStoriesMaxIDs))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCStories_ContactsToggleStoriesHidden_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLContactsToggleStoriesHidden)
 	if err := dec(in); err != nil {
@@ -26022,42 +26493,6 @@ func _RPCStories_ContactsToggleStoriesHidden_Handler(srv interface{}, ctx contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCStoriesServer).ContactsToggleStoriesHidden(ctx, req.(*TLContactsToggleStoriesHidden))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStories_StoriesGetUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStoriesGetUserStories)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStoriesServer).StoriesGetUserStories(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStories_StoriesGetUserStories_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStoriesServer).StoriesGetUserStories(ctx, req.(*TLStoriesGetUserStories))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStories_StoriesGetAllReadUserStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStoriesGetAllReadUserStories)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStoriesServer).StoriesGetAllReadUserStories(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStories_StoriesGetAllReadUserStories_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStoriesServer).StoriesGetAllReadUserStories(ctx, req.(*TLStoriesGetAllReadUserStories))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -26174,20 +26609,8 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCStories_StoriesSearchPosts_Handler,
 		},
 		{
-			MethodName: "users_getStoriesMaxIDs",
-			Handler:    _RPCStories_UsersGetStoriesMaxIDs_Handler,
-		},
-		{
 			MethodName: "contacts_toggleStoriesHidden",
 			Handler:    _RPCStories_ContactsToggleStoriesHidden_Handler,
-		},
-		{
-			MethodName: "stories_getUserStories",
-			Handler:    _RPCStories_StoriesGetUserStories_Handler,
-		},
-		{
-			MethodName: "stories_getAllReadUserStories",
-			Handler:    _RPCStories_StoriesGetAllReadUserStories_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -26771,6 +27194,94 @@ var RPCThemes_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_setChatTheme",
 			Handler:    _RPCThemes_MessagesSetChatTheme_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCTimezones_HelpGetTimezonesList_FullMethodName = "/mtproto.RPCTimezones/help_getTimezonesList"
+)
+
+// RPCTimezonesClient is the client API for RPCTimezones service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCTimezonesClient interface {
+	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList, opts ...grpc.CallOption) (*Help_TimezonesList, error)
+}
+
+type rPCTimezonesClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCTimezonesClient(cc grpc.ClientConnInterface) RPCTimezonesClient {
+	return &rPCTimezonesClient{cc}
+}
+
+func (c *rPCTimezonesClient) HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList, opts ...grpc.CallOption) (*Help_TimezonesList, error) {
+	out := new(Help_TimezonesList)
+	err := c.cc.Invoke(ctx, RPCTimezones_HelpGetTimezonesList_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCTimezonesServer is the server API for RPCTimezones service.
+// All implementations should embed UnimplementedRPCTimezonesServer
+// for forward compatibility
+type RPCTimezonesServer interface {
+	HelpGetTimezonesList(context.Context, *TLHelpGetTimezonesList) (*Help_TimezonesList, error)
+}
+
+// UnimplementedRPCTimezonesServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCTimezonesServer struct {
+}
+
+func (UnimplementedRPCTimezonesServer) HelpGetTimezonesList(context.Context, *TLHelpGetTimezonesList) (*Help_TimezonesList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method HelpGetTimezonesList not implemented")
+}
+
+// UnsafeRPCTimezonesServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCTimezonesServer will
+// result in compilation errors.
+type UnsafeRPCTimezonesServer interface {
+	mustEmbedUnimplementedRPCTimezonesServer()
+}
+
+func RegisterRPCTimezonesServer(s grpc.ServiceRegistrar, srv RPCTimezonesServer) {
+	s.RegisterService(&RPCTimezones_ServiceDesc, srv)
+}
+
+func _RPCTimezones_HelpGetTimezonesList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLHelpGetTimezonesList)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCTimezonesServer).HelpGetTimezonesList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCTimezones_HelpGetTimezonesList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCTimezonesServer).HelpGetTimezonesList(ctx, req.(*TLHelpGetTimezonesList))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCTimezones_ServiceDesc is the grpc.ServiceDesc for RPCTimezones service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCTimezones_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCTimezones",
+	HandlerType: (*RPCTimezonesServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "help_getTimezonesList",
+			Handler:    _RPCTimezones_HelpGetTimezonesList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -27750,6 +28261,464 @@ var RPCUpdates_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCUserProfile_AccountUpdateProfile_FullMethodName            = "/mtproto.RPCUserProfile/account_updateProfile"
+	RPCUserProfile_AccountUpdateStatus_FullMethodName             = "/mtproto.RPCUserProfile/account_updateStatus"
+	RPCUserProfile_AccountUpdateBirthday_FullMethodName           = "/mtproto.RPCUserProfile/account_updateBirthday"
+	RPCUserProfile_AccountUpdatePersonalChannel_FullMethodName    = "/mtproto.RPCUserProfile/account_updatePersonalChannel"
+	RPCUserProfile_ContactsGetBirthdays_FullMethodName            = "/mtproto.RPCUserProfile/contacts_getBirthdays"
+	RPCUserProfile_PhotosUpdateProfilePhoto_FullMethodName        = "/mtproto.RPCUserProfile/photos_updateProfilePhoto"
+	RPCUserProfile_PhotosUploadProfilePhoto_FullMethodName        = "/mtproto.RPCUserProfile/photos_uploadProfilePhoto"
+	RPCUserProfile_PhotosDeletePhotos_FullMethodName              = "/mtproto.RPCUserProfile/photos_deletePhotos"
+	RPCUserProfile_PhotosGetUserPhotos_FullMethodName             = "/mtproto.RPCUserProfile/photos_getUserPhotos"
+	RPCUserProfile_PhotosUploadContactProfilePhoto_FullMethodName = "/mtproto.RPCUserProfile/photos_uploadContactProfilePhoto"
+	RPCUserProfile_AccountUpdateVerified_FullMethodName           = "/mtproto.RPCUserProfile/account_updateVerified"
+)
+
+// RPCUserProfileClient is the client API for RPCUserProfile service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCUserProfileClient interface {
+	AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile, opts ...grpc.CallOption) (*User, error)
+	AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus, opts ...grpc.CallOption) (*Bool, error)
+	AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday, opts ...grpc.CallOption) (*Bool, error)
+	AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel, opts ...grpc.CallOption) (*Bool, error)
+	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays, opts ...grpc.CallOption) (*Contacts_ContactBirthdays, error)
+	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
+	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
+	PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos, opts ...grpc.CallOption) (*Vector_Long, error)
+	PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos, opts ...grpc.CallOption) (*Photos_Photos, error)
+	PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
+	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified, opts ...grpc.CallOption) (*User, error)
+}
+
+type rPCUserProfileClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCUserProfileClient(cc grpc.ClientConnInterface) RPCUserProfileClient {
+	return &rPCUserProfileClient{cc}
+}
+
+func (c *rPCUserProfileClient) AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile, opts ...grpc.CallOption) (*User, error) {
+	out := new(User)
+	err := c.cc.Invoke(ctx, RPCUserProfile_AccountUpdateProfile_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCUserProfile_AccountUpdateStatus_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCUserProfile_AccountUpdateBirthday_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCUserProfile_AccountUpdatePersonalChannel_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays, opts ...grpc.CallOption) (*Contacts_ContactBirthdays, error) {
+	out := new(Contacts_ContactBirthdays)
+	err := c.cc.Invoke(ctx, RPCUserProfile_ContactsGetBirthdays_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error) {
+	out := new(Photos_Photo)
+	err := c.cc.Invoke(ctx, RPCUserProfile_PhotosUpdateProfilePhoto_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error) {
+	out := new(Photos_Photo)
+	err := c.cc.Invoke(ctx, RPCUserProfile_PhotosUploadProfilePhoto_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos, opts ...grpc.CallOption) (*Vector_Long, error) {
+	out := new(Vector_Long)
+	err := c.cc.Invoke(ctx, RPCUserProfile_PhotosDeletePhotos_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos, opts ...grpc.CallOption) (*Photos_Photos, error) {
+	out := new(Photos_Photos)
+	err := c.cc.Invoke(ctx, RPCUserProfile_PhotosGetUserPhotos_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error) {
+	out := new(Photos_Photo)
+	err := c.cc.Invoke(ctx, RPCUserProfile_PhotosUploadContactProfilePhoto_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserProfileClient) AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified, opts ...grpc.CallOption) (*User, error) {
+	out := new(User)
+	err := c.cc.Invoke(ctx, RPCUserProfile_AccountUpdateVerified_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCUserProfileServer is the server API for RPCUserProfile service.
+// All implementations should embed UnimplementedRPCUserProfileServer
+// for forward compatibility
+type RPCUserProfileServer interface {
+	AccountUpdateProfile(context.Context, *TLAccountUpdateProfile) (*User, error)
+	AccountUpdateStatus(context.Context, *TLAccountUpdateStatus) (*Bool, error)
+	AccountUpdateBirthday(context.Context, *TLAccountUpdateBirthday) (*Bool, error)
+	AccountUpdatePersonalChannel(context.Context, *TLAccountUpdatePersonalChannel) (*Bool, error)
+	ContactsGetBirthdays(context.Context, *TLContactsGetBirthdays) (*Contacts_ContactBirthdays, error)
+	PhotosUpdateProfilePhoto(context.Context, *TLPhotosUpdateProfilePhoto) (*Photos_Photo, error)
+	PhotosUploadProfilePhoto(context.Context, *TLPhotosUploadProfilePhoto) (*Photos_Photo, error)
+	PhotosDeletePhotos(context.Context, *TLPhotosDeletePhotos) (*Vector_Long, error)
+	PhotosGetUserPhotos(context.Context, *TLPhotosGetUserPhotos) (*Photos_Photos, error)
+	PhotosUploadContactProfilePhoto(context.Context, *TLPhotosUploadContactProfilePhoto) (*Photos_Photo, error)
+	AccountUpdateVerified(context.Context, *TLAccountUpdateVerified) (*User, error)
+}
+
+// UnimplementedRPCUserProfileServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCUserProfileServer struct {
+}
+
+func (UnimplementedRPCUserProfileServer) AccountUpdateProfile(context.Context, *TLAccountUpdateProfile) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateProfile not implemented")
+}
+func (UnimplementedRPCUserProfileServer) AccountUpdateStatus(context.Context, *TLAccountUpdateStatus) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateStatus not implemented")
+}
+func (UnimplementedRPCUserProfileServer) AccountUpdateBirthday(context.Context, *TLAccountUpdateBirthday) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateBirthday not implemented")
+}
+func (UnimplementedRPCUserProfileServer) AccountUpdatePersonalChannel(context.Context, *TLAccountUpdatePersonalChannel) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdatePersonalChannel not implemented")
+}
+func (UnimplementedRPCUserProfileServer) ContactsGetBirthdays(context.Context, *TLContactsGetBirthdays) (*Contacts_ContactBirthdays, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ContactsGetBirthdays not implemented")
+}
+func (UnimplementedRPCUserProfileServer) PhotosUpdateProfilePhoto(context.Context, *TLPhotosUpdateProfilePhoto) (*Photos_Photo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhotosUpdateProfilePhoto not implemented")
+}
+func (UnimplementedRPCUserProfileServer) PhotosUploadProfilePhoto(context.Context, *TLPhotosUploadProfilePhoto) (*Photos_Photo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhotosUploadProfilePhoto not implemented")
+}
+func (UnimplementedRPCUserProfileServer) PhotosDeletePhotos(context.Context, *TLPhotosDeletePhotos) (*Vector_Long, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhotosDeletePhotos not implemented")
+}
+func (UnimplementedRPCUserProfileServer) PhotosGetUserPhotos(context.Context, *TLPhotosGetUserPhotos) (*Photos_Photos, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhotosGetUserPhotos not implemented")
+}
+func (UnimplementedRPCUserProfileServer) PhotosUploadContactProfilePhoto(context.Context, *TLPhotosUploadContactProfilePhoto) (*Photos_Photo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhotosUploadContactProfilePhoto not implemented")
+}
+func (UnimplementedRPCUserProfileServer) AccountUpdateVerified(context.Context, *TLAccountUpdateVerified) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountUpdateVerified not implemented")
+}
+
+// UnsafeRPCUserProfileServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCUserProfileServer will
+// result in compilation errors.
+type UnsafeRPCUserProfileServer interface {
+	mustEmbedUnimplementedRPCUserProfileServer()
+}
+
+func RegisterRPCUserProfileServer(s grpc.ServiceRegistrar, srv RPCUserProfileServer) {
+	s.RegisterService(&RPCUserProfile_ServiceDesc, srv)
+}
+
+func _RPCUserProfile_AccountUpdateProfile_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateProfile)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).AccountUpdateProfile(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_AccountUpdateProfile_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).AccountUpdateProfile(ctx, req.(*TLAccountUpdateProfile))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_AccountUpdateStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateStatus)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).AccountUpdateStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_AccountUpdateStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).AccountUpdateStatus(ctx, req.(*TLAccountUpdateStatus))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_AccountUpdateBirthday_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateBirthday)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).AccountUpdateBirthday(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_AccountUpdateBirthday_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).AccountUpdateBirthday(ctx, req.(*TLAccountUpdateBirthday))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_AccountUpdatePersonalChannel_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdatePersonalChannel)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).AccountUpdatePersonalChannel(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_AccountUpdatePersonalChannel_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).AccountUpdatePersonalChannel(ctx, req.(*TLAccountUpdatePersonalChannel))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_ContactsGetBirthdays_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLContactsGetBirthdays)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).ContactsGetBirthdays(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_ContactsGetBirthdays_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).ContactsGetBirthdays(ctx, req.(*TLContactsGetBirthdays))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_PhotosUpdateProfilePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhotosUpdateProfilePhoto)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).PhotosUpdateProfilePhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_PhotosUpdateProfilePhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).PhotosUpdateProfilePhoto(ctx, req.(*TLPhotosUpdateProfilePhoto))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_PhotosUploadProfilePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhotosUploadProfilePhoto)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).PhotosUploadProfilePhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_PhotosUploadProfilePhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).PhotosUploadProfilePhoto(ctx, req.(*TLPhotosUploadProfilePhoto))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_PhotosDeletePhotos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhotosDeletePhotos)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).PhotosDeletePhotos(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_PhotosDeletePhotos_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).PhotosDeletePhotos(ctx, req.(*TLPhotosDeletePhotos))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_PhotosGetUserPhotos_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhotosGetUserPhotos)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).PhotosGetUserPhotos(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_PhotosGetUserPhotos_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).PhotosGetUserPhotos(ctx, req.(*TLPhotosGetUserPhotos))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_PhotosUploadContactProfilePhoto_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhotosUploadContactProfilePhoto)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).PhotosUploadContactProfilePhoto(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_PhotosUploadContactProfilePhoto_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).PhotosUploadContactProfilePhoto(ctx, req.(*TLPhotosUploadContactProfilePhoto))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserProfile_AccountUpdateVerified_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountUpdateVerified)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserProfileServer).AccountUpdateVerified(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserProfile_AccountUpdateVerified_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserProfileServer).AccountUpdateVerified(ctx, req.(*TLAccountUpdateVerified))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCUserProfile_ServiceDesc is the grpc.ServiceDesc for RPCUserProfile service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCUserProfile_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCUserProfile",
+	HandlerType: (*RPCUserProfileServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_updateProfile",
+			Handler:    _RPCUserProfile_AccountUpdateProfile_Handler,
+		},
+		{
+			MethodName: "account_updateStatus",
+			Handler:    _RPCUserProfile_AccountUpdateStatus_Handler,
+		},
+		{
+			MethodName: "account_updateBirthday",
+			Handler:    _RPCUserProfile_AccountUpdateBirthday_Handler,
+		},
+		{
+			MethodName: "account_updatePersonalChannel",
+			Handler:    _RPCUserProfile_AccountUpdatePersonalChannel_Handler,
+		},
+		{
+			MethodName: "contacts_getBirthdays",
+			Handler:    _RPCUserProfile_ContactsGetBirthdays_Handler,
+		},
+		{
+			MethodName: "photos_updateProfilePhoto",
+			Handler:    _RPCUserProfile_PhotosUpdateProfilePhoto_Handler,
+		},
+		{
+			MethodName: "photos_uploadProfilePhoto",
+			Handler:    _RPCUserProfile_PhotosUploadProfilePhoto_Handler,
+		},
+		{
+			MethodName: "photos_deletePhotos",
+			Handler:    _RPCUserProfile_PhotosDeletePhotos_Handler,
+		},
+		{
+			MethodName: "photos_getUserPhotos",
+			Handler:    _RPCUserProfile_PhotosGetUserPhotos_Handler,
+		},
+		{
+			MethodName: "photos_uploadContactProfilePhoto",
+			Handler:    _RPCUserProfile_PhotosUploadContactProfilePhoto_Handler,
+		},
+		{
+			MethodName: "account_updateVerified",
+			Handler:    _RPCUserProfile_AccountUpdateVerified_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCUsernames_AccountCheckUsername_FullMethodName    = "/mtproto.RPCUsernames/account_checkUsername"
 	RPCUsernames_AccountUpdateUsername_FullMethodName   = "/mtproto.RPCUsernames/account_updateUsername"
 	RPCUsernames_ContactsResolveUsername_FullMethodName = "/mtproto.RPCUsernames/contacts_resolveUsername"
@@ -27986,11 +28955,10 @@ var RPCUsernames_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCUsers_UsersGetUsers_FullMethodName                      = "/mtproto.RPCUsers/users_getUsers"
-	RPCUsers_UsersGetFullUser_FullMethodName                   = "/mtproto.RPCUsers/users_getFullUser"
-	RPCUsers_UsersGetIsPremiumRequiredToContact_FullMethodName = "/mtproto.RPCUsers/users_getIsPremiumRequiredToContact"
-	RPCUsers_ContactsResolvePhone_FullMethodName               = "/mtproto.RPCUsers/contacts_resolvePhone"
-	RPCUsers_UsersGetMe_FullMethodName                         = "/mtproto.RPCUsers/users_getMe"
+	RPCUsers_UsersGetUsers_FullMethodName        = "/mtproto.RPCUsers/users_getUsers"
+	RPCUsers_UsersGetFullUser_FullMethodName     = "/mtproto.RPCUsers/users_getFullUser"
+	RPCUsers_ContactsResolvePhone_FullMethodName = "/mtproto.RPCUsers/contacts_resolvePhone"
+	RPCUsers_UsersGetMe_FullMethodName           = "/mtproto.RPCUsers/users_getMe"
 )
 
 // RPCUsersClient is the client API for RPCUsers service.
@@ -27999,7 +28967,6 @@ const (
 type RPCUsersClient interface {
 	UsersGetUsers(ctx context.Context, in *TLUsersGetUsers, opts ...grpc.CallOption) (*Vector_User, error)
 	UsersGetFullUser(ctx context.Context, in *TLUsersGetFullUser, opts ...grpc.CallOption) (*Users_UserFull, error)
-	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact, opts ...grpc.CallOption) (*Vector_Bool, error)
 	ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone, opts ...grpc.CallOption) (*Contacts_ResolvedPeer, error)
 	UsersGetMe(ctx context.Context, in *TLUsersGetMe, opts ...grpc.CallOption) (*User, error)
 }
@@ -28030,15 +28997,6 @@ func (c *rPCUsersClient) UsersGetFullUser(ctx context.Context, in *TLUsersGetFul
 	return out, nil
 }
 
-func (c *rPCUsersClient) UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact, opts ...grpc.CallOption) (*Vector_Bool, error) {
-	out := new(Vector_Bool)
-	err := c.cc.Invoke(ctx, RPCUsers_UsersGetIsPremiumRequiredToContact_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCUsersClient) ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone, opts ...grpc.CallOption) (*Contacts_ResolvedPeer, error) {
 	out := new(Contacts_ResolvedPeer)
 	err := c.cc.Invoke(ctx, RPCUsers_ContactsResolvePhone_FullMethodName, in, out, opts...)
@@ -28063,7 +29021,6 @@ func (c *rPCUsersClient) UsersGetMe(ctx context.Context, in *TLUsersGetMe, opts 
 type RPCUsersServer interface {
 	UsersGetUsers(context.Context, *TLUsersGetUsers) (*Vector_User, error)
 	UsersGetFullUser(context.Context, *TLUsersGetFullUser) (*Users_UserFull, error)
-	UsersGetIsPremiumRequiredToContact(context.Context, *TLUsersGetIsPremiumRequiredToContact) (*Vector_Bool, error)
 	ContactsResolvePhone(context.Context, *TLContactsResolvePhone) (*Contacts_ResolvedPeer, error)
 	UsersGetMe(context.Context, *TLUsersGetMe) (*User, error)
 }
@@ -28077,9 +29034,6 @@ func (UnimplementedRPCUsersServer) UsersGetUsers(context.Context, *TLUsersGetUse
 }
 func (UnimplementedRPCUsersServer) UsersGetFullUser(context.Context, *TLUsersGetFullUser) (*Users_UserFull, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UsersGetFullUser not implemented")
-}
-func (UnimplementedRPCUsersServer) UsersGetIsPremiumRequiredToContact(context.Context, *TLUsersGetIsPremiumRequiredToContact) (*Vector_Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UsersGetIsPremiumRequiredToContact not implemented")
 }
 func (UnimplementedRPCUsersServer) ContactsResolvePhone(context.Context, *TLContactsResolvePhone) (*Contacts_ResolvedPeer, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContactsResolvePhone not implemented")
@@ -28135,24 +29089,6 @@ func _RPCUsers_UsersGetFullUser_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCUsers_UsersGetIsPremiumRequiredToContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLUsersGetIsPremiumRequiredToContact)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCUsersServer).UsersGetIsPremiumRequiredToContact(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCUsers_UsersGetIsPremiumRequiredToContact_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCUsersServer).UsersGetIsPremiumRequiredToContact(ctx, req.(*TLUsersGetIsPremiumRequiredToContact))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCUsers_ContactsResolvePhone_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLContactsResolvePhone)
 	if err := dec(in); err != nil {
@@ -28203,10 +29139,6 @@ var RPCUsers_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "users_getFullUser",
 			Handler:    _RPCUsers_UsersGetFullUser_Handler,
-		},
-		{
-			MethodName: "users_getIsPremiumRequiredToContact",
-			Handler:    _RPCUsers_UsersGetIsPremiumRequiredToContact_Handler,
 		},
 		{
 			MethodName: "contacts_resolvePhone",
@@ -29270,6 +30202,94 @@ var RPCBiz_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "biz_invokeBizDataRaw",
 			Handler:    _RPCBiz_BizInvokeBizDataRaw_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCStats_StatsGetMessagePublicForwards5F150144_FullMethodName = "/mtproto.RPCStats/stats_getMessagePublicForwards5F150144"
+)
+
+// RPCStatsClient is the client API for RPCStats service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCStatsClient interface {
+	StatsGetMessagePublicForwards5F150144(ctx context.Context, in *TLStatsGetMessagePublicForwards5F150144, opts ...grpc.CallOption) (*Stats_PublicForwards, error)
+}
+
+type rPCStatsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCStatsClient(cc grpc.ClientConnInterface) RPCStatsClient {
+	return &rPCStatsClient{cc}
+}
+
+func (c *rPCStatsClient) StatsGetMessagePublicForwards5F150144(ctx context.Context, in *TLStatsGetMessagePublicForwards5F150144, opts ...grpc.CallOption) (*Stats_PublicForwards, error) {
+	out := new(Stats_PublicForwards)
+	err := c.cc.Invoke(ctx, RPCStats_StatsGetMessagePublicForwards5F150144_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCStatsServer is the server API for RPCStats service.
+// All implementations should embed UnimplementedRPCStatsServer
+// for forward compatibility
+type RPCStatsServer interface {
+	StatsGetMessagePublicForwards5F150144(context.Context, *TLStatsGetMessagePublicForwards5F150144) (*Stats_PublicForwards, error)
+}
+
+// UnimplementedRPCStatsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCStatsServer struct {
+}
+
+func (UnimplementedRPCStatsServer) StatsGetMessagePublicForwards5F150144(context.Context, *TLStatsGetMessagePublicForwards5F150144) (*Stats_PublicForwards, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StatsGetMessagePublicForwards5F150144 not implemented")
+}
+
+// UnsafeRPCStatsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCStatsServer will
+// result in compilation errors.
+type UnsafeRPCStatsServer interface {
+	mustEmbedUnimplementedRPCStatsServer()
+}
+
+func RegisterRPCStatsServer(s grpc.ServiceRegistrar, srv RPCStatsServer) {
+	s.RegisterService(&RPCStats_ServiceDesc, srv)
+}
+
+func _RPCStats_StatsGetMessagePublicForwards5F150144_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStatsGetMessagePublicForwards5F150144)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStatsServer).StatsGetMessagePublicForwards5F150144(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStats_StatsGetMessagePublicForwards5F150144_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStatsServer).StatsGetMessagePublicForwards5F150144(ctx, req.(*TLStatsGetMessagePublicForwards5F150144))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCStats_ServiceDesc is the grpc.ServiceDesc for RPCStats service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCStats_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCStats",
+	HandlerType: (*RPCStatsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "stats_getMessagePublicForwards5F150144",
+			Handler:    _RPCStats_StatsGetMessagePublicForwards5F150144_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
