@@ -1347,7 +1347,6 @@ message TL_messages_exportChatInvite {
     google.protobuf.Int32Value expire_date = 6;
     google.protobuf.Int32Value usage_limit = 7;
     google.protobuf.StringValue title = 8;
-    StarsSubscriptionPricing subscription_pricing = 9;
 }
 
 message TL_messages_checkChatInvite {
@@ -2050,13 +2049,12 @@ message TL_messages_getAdminsWithInvites {
 message TL_messages_getChatInviteImporters {
     TLConstructor  constructor = 1;
     bool requested = 3;
-    bool subscription_expired = 4;
-    InputPeer peer = 5;
-    google.protobuf.StringValue link = 6;
-    google.protobuf.StringValue q = 7;
-    int32 offset_date = 8;
-    InputUser offset_user = 9;
-    int32 limit = 10;
+    InputPeer peer = 4;
+    google.protobuf.StringValue link = 5;
+    google.protobuf.StringValue q = 6;
+    int32 offset_date = 7;
+    InputUser offset_user = 8;
+    int32 limit = 9;
 }
 
 message TL_messages_setHistoryTTL {
@@ -2157,8 +2155,7 @@ message TL_messages_setChatAvailableReactions {
     InputPeer peer = 3;
     ChatReactions available_reactions_CHATREACTIONS = 4;
     google.protobuf.Int32Value reactions_limit = 5;
-    Bool paid_enabled = 6;
-    repeated string available_reactions_VECTORSTRING = 7;
+    repeated string available_reactions_VECTORSTRING = 6;
 }
 
 message TL_messages_getAvailableReactions {
@@ -2582,22 +2579,6 @@ message TL_messages_requestMainWebView {
     string platform = 8;
 }
 
-message TL_messages_sendPaidReaction {
-    TLConstructor  constructor = 1;
-    bool private = 3;
-    InputPeer peer = 4;
-    int32 msg_id = 5;
-    int32 count = 6;
-    int64 random_id = 7;
-}
-
-message TL_messages_togglePaidReactionPrivacy {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    int32 msg_id = 4;
-    Bool private = 5;
-}
-
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -2970,10 +2951,8 @@ message TL_channels_exportMessageLink {
 
 message TL_channels_toggleSignatures {
     TLConstructor  constructor = 1;
-    bool signatures_enabled = 3;
-    bool profiles_enabled = 4;
-    InputChannel channel = 5;
-    Bool enabled = 6;
+    InputChannel channel = 3;
+    Bool enabled = 4;
 }
 
 message TL_channels_getAdminedPublicChannels {
@@ -3529,10 +3508,9 @@ message TL_payments_getStarsTransactions {
     bool inbound = 3;
     bool outbound = 4;
     bool ascending = 5;
-    google.protobuf.StringValue subscription_id = 6;
-    InputPeer peer = 7;
-    string offset = 8;
-    int32 limit = 9;
+    InputPeer peer = 6;
+    string offset = 7;
+    int32 limit = 8;
 }
 
 message TL_payments_sendStarsForm {
@@ -3574,26 +3552,6 @@ message TL_payments_getStarsTransactionsByID {
 message TL_payments_getStarsGiftOptions {
     TLConstructor  constructor = 1;
     InputUser user_id = 3;
-}
-
-message TL_payments_getStarsSubscriptions {
-    TLConstructor  constructor = 1;
-    bool missing_balance = 3;
-    InputPeer peer = 4;
-    string offset = 5;
-}
-
-message TL_payments_changeStarsSubscription {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    string subscription_id = 4;
-    Bool canceled = 5;
-}
-
-message TL_payments_fulfillStarsSubscription {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    string subscription_id = 4;
 }
 
 message TL_stickers_createStickerSet {
@@ -5252,9 +5210,6 @@ service RPCPayments {
     rpc payments_getStarsRevenueAdsAccountUrl(TL_payments_getStarsRevenueAdsAccountUrl) returns (payments_StarsRevenueAdsAccountUrl) {}
     rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
     rpc payments_getStarsGiftOptions(TL_payments_getStarsGiftOptions) returns (Vector_StarsGiftOption) {}
-    rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
-    rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
-    rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
     rpc payments_requestRecurringPayment(TL_payments_requestRecurringPayment) returns (Updates) {}
     rpc payments_restorePlayMarketReceipt(TL_payments_restorePlayMarketReceipt) returns (Updates) {}
 }
@@ -5324,8 +5279,6 @@ service RPCReactions {
     rpc messages_getSavedReactionTags(TL_messages_getSavedReactionTags) returns (messages_SavedReactionTags) {}
     rpc messages_updateSavedReactionTag(TL_messages_updateSavedReactionTag) returns (Bool) {}
     rpc messages_getDefaultTagReactions(TL_messages_getDefaultTagReactions) returns (messages_Reactions) {}
-    rpc messages_sendPaidReaction(TL_messages_sendPaidReaction) returns (Updates) {}
-    rpc messages_togglePaidReactionPrivacy(TL_messages_togglePaidReactionPrivacy) returns (Bool) {}
 }
 
 service RPCReports {

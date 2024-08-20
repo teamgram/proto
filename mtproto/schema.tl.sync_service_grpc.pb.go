@@ -18623,9 +18623,6 @@ const (
 	RPCPayments_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName = "/mtproto.RPCPayments/payments_getStarsRevenueAdsAccountUrl"
 	RPCPayments_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCPayments/payments_getStarsTransactionsByID"
 	RPCPayments_PaymentsGetStarsGiftOptions_FullMethodName          = "/mtproto.RPCPayments/payments_getStarsGiftOptions"
-	RPCPayments_PaymentsGetStarsSubscriptions_FullMethodName        = "/mtproto.RPCPayments/payments_getStarsSubscriptions"
-	RPCPayments_PaymentsChangeStarsSubscription_FullMethodName      = "/mtproto.RPCPayments/payments_changeStarsSubscription"
-	RPCPayments_PaymentsFulfillStarsSubscription_FullMethodName     = "/mtproto.RPCPayments/payments_fulfillStarsSubscription"
 	RPCPayments_PaymentsRequestRecurringPayment_FullMethodName      = "/mtproto.RPCPayments/payments_requestRecurringPayment"
 	RPCPayments_PaymentsRestorePlayMarketReceipt_FullMethodName     = "/mtproto.RPCPayments/payments_restorePlayMarketReceipt"
 )
@@ -18654,9 +18651,6 @@ type RPCPaymentsClient interface {
 	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error)
-	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
-	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
-	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(ctx context.Context, in *TLPaymentsRestorePlayMarketReceipt, opts ...grpc.CallOption) (*Updates, error)
 }
@@ -18849,33 +18843,6 @@ func (c *rPCPaymentsClient) PaymentsGetStarsGiftOptions(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *rPCPaymentsClient) PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
-	out := new(Payments_StarsStatus)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsGetStarsSubscriptions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsChangeStarsSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCPaymentsClient) PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCPayments_PaymentsFulfillStarsSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCPaymentsClient) PaymentsRequestRecurringPayment(ctx context.Context, in *TLPaymentsRequestRecurringPayment, opts ...grpc.CallOption) (*Updates, error) {
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCPayments_PaymentsRequestRecurringPayment_FullMethodName, in, out, opts...)
@@ -18918,9 +18885,6 @@ type RPCPaymentsServer interface {
 	PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error)
-	PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error)
-	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
-	PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error)
 	PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error)
 	PaymentsRestorePlayMarketReceipt(context.Context, *TLPaymentsRestorePlayMarketReceipt) (*Updates, error)
 }
@@ -18988,15 +18952,6 @@ func (UnimplementedRPCPaymentsServer) PaymentsGetStarsTransactionsByID(context.C
 }
 func (UnimplementedRPCPaymentsServer) PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiftOptions not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsSubscriptions not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsChangeStarsSubscription not implemented")
-}
-func (UnimplementedRPCPaymentsServer) PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsFulfillStarsSubscription not implemented")
 }
 func (UnimplementedRPCPaymentsServer) PaymentsRequestRecurringPayment(context.Context, *TLPaymentsRequestRecurringPayment) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsRequestRecurringPayment not implemented")
@@ -19376,60 +19331,6 @@ func _RPCPayments_PaymentsGetStarsGiftOptions_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCPayments_PaymentsGetStarsSubscriptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsSubscriptions)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsSubscriptions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsGetStarsSubscriptions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsGetStarsSubscriptions(ctx, req.(*TLPaymentsGetStarsSubscriptions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsChangeStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsChangeStarsSubscription)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsChangeStarsSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsChangeStarsSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsChangeStarsSubscription(ctx, req.(*TLPaymentsChangeStarsSubscription))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCPayments_PaymentsFulfillStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsFulfillStarsSubscription)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaymentsServer).PaymentsFulfillStarsSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPayments_PaymentsFulfillStarsSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaymentsServer).PaymentsFulfillStarsSubscription(ctx, req.(*TLPaymentsFulfillStarsSubscription))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCPayments_PaymentsRequestRecurringPayment_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsRequestRecurringPayment)
 	if err := dec(in); err != nil {
@@ -19552,18 +19453,6 @@ var RPCPayments_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarsGiftOptions",
 			Handler:    _RPCPayments_PaymentsGetStarsGiftOptions_Handler,
-		},
-		{
-			MethodName: "payments_getStarsSubscriptions",
-			Handler:    _RPCPayments_PaymentsGetStarsSubscriptions_Handler,
-		},
-		{
-			MethodName: "payments_changeStarsSubscription",
-			Handler:    _RPCPayments_PaymentsChangeStarsSubscription_Handler,
-		},
-		{
-			MethodName: "payments_fulfillStarsSubscription",
-			Handler:    _RPCPayments_PaymentsFulfillStarsSubscription_Handler,
 		},
 		{
 			MethodName: "payments_requestRecurringPayment",
@@ -20915,8 +20804,6 @@ const (
 	RPCReactions_MessagesGetSavedReactionTags_FullMethodName      = "/mtproto.RPCReactions/messages_getSavedReactionTags"
 	RPCReactions_MessagesUpdateSavedReactionTag_FullMethodName    = "/mtproto.RPCReactions/messages_updateSavedReactionTag"
 	RPCReactions_MessagesGetDefaultTagReactions_FullMethodName    = "/mtproto.RPCReactions/messages_getDefaultTagReactions"
-	RPCReactions_MessagesSendPaidReaction_FullMethodName          = "/mtproto.RPCReactions/messages_sendPaidReaction"
-	RPCReactions_MessagesTogglePaidReactionPrivacy_FullMethodName = "/mtproto.RPCReactions/messages_togglePaidReactionPrivacy"
 )
 
 // RPCReactionsClient is the client API for RPCReactions service.
@@ -20940,8 +20827,6 @@ type RPCReactionsClient interface {
 	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags, opts ...grpc.CallOption) (*Messages_SavedReactionTags, error)
 	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag, opts ...grpc.CallOption) (*Bool, error)
 	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions, opts ...grpc.CallOption) (*Messages_Reactions, error)
-	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error)
-	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCReactionsClient struct {
@@ -21105,24 +20990,6 @@ func (c *rPCReactionsClient) MessagesGetDefaultTagReactions(ctx context.Context,
 	return out, nil
 }
 
-func (c *rPCReactionsClient) MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCReactions_MessagesSendPaidReaction_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCReactionsClient) MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCReactions_MessagesTogglePaidReactionPrivacy_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCReactionsServer is the server API for RPCReactions service.
 // All implementations should embed UnimplementedRPCReactionsServer
 // for forward compatibility
@@ -21144,8 +21011,6 @@ type RPCReactionsServer interface {
 	MessagesGetSavedReactionTags(context.Context, *TLMessagesGetSavedReactionTags) (*Messages_SavedReactionTags, error)
 	MessagesUpdateSavedReactionTag(context.Context, *TLMessagesUpdateSavedReactionTag) (*Bool, error)
 	MessagesGetDefaultTagReactions(context.Context, *TLMessagesGetDefaultTagReactions) (*Messages_Reactions, error)
-	MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error)
-	MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
 }
 
 // UnimplementedRPCReactionsServer should be embedded to have forward compatible implementations.
@@ -21202,12 +21067,6 @@ func (UnimplementedRPCReactionsServer) MessagesUpdateSavedReactionTag(context.Co
 }
 func (UnimplementedRPCReactionsServer) MessagesGetDefaultTagReactions(context.Context, *TLMessagesGetDefaultTagReactions) (*Messages_Reactions, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetDefaultTagReactions not implemented")
-}
-func (UnimplementedRPCReactionsServer) MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendPaidReaction not implemented")
-}
-func (UnimplementedRPCReactionsServer) MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesTogglePaidReactionPrivacy not implemented")
 }
 
 // UnsafeRPCReactionsServer may be embedded to opt out of forward compatibility for this service.
@@ -21527,42 +21386,6 @@ func _RPCReactions_MessagesGetDefaultTagReactions_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCReactions_MessagesSendPaidReaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesSendPaidReaction)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCReactionsServer).MessagesSendPaidReaction(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCReactions_MessagesSendPaidReaction_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCReactionsServer).MessagesSendPaidReaction(ctx, req.(*TLMessagesSendPaidReaction))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCReactions_MessagesTogglePaidReactionPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesTogglePaidReactionPrivacy)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCReactionsServer).MessagesTogglePaidReactionPrivacy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCReactions_MessagesTogglePaidReactionPrivacy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCReactionsServer).MessagesTogglePaidReactionPrivacy(ctx, req.(*TLMessagesTogglePaidReactionPrivacy))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCReactions_ServiceDesc is the grpc.ServiceDesc for RPCReactions service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -21637,14 +21460,6 @@ var RPCReactions_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_getDefaultTagReactions",
 			Handler:    _RPCReactions_MessagesGetDefaultTagReactions_Handler,
-		},
-		{
-			MethodName: "messages_sendPaidReaction",
-			Handler:    _RPCReactions_MessagesSendPaidReaction_Handler,
-		},
-		{
-			MethodName: "messages_togglePaidReactionPrivacy",
-			Handler:    _RPCReactions_MessagesTogglePaidReactionPrivacy_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
