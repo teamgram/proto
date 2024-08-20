@@ -40,7 +40,7 @@ func MakeInputFileByLocal(
 
 	//if fi.
 	inputFile := MakeTLInputFile(&InputFile{
-		Id:          rand.Int63(),
+		Id_INT64:    rand.Int63(),
 		Parts:       0,
 		Name:        "", // file,
 		Md5Checksum: "",
@@ -65,7 +65,7 @@ func MakeInputFileByLocal(
 			}
 		}
 
-		if err = cb(inputFile.Id, int32(i), data[:n]); err != nil {
+		if err = cb(inputFile.Id_INT64, int32(i), data[:n]); err != nil {
 			return nil, err
 		}
 
@@ -81,7 +81,7 @@ func MakeInputFile(
 	fileData []byte,
 	cb func(fileId int64, filePart int32, bytes []byte) error) (*InputFile, error) {
 	file := MakeTLInputFile(&InputFile{
-		Id:          rand.Int63(),
+		Id_INT64:    rand.Int63(),
 		Parts:       0,
 		Name:        fileName,
 		Md5Checksum: "",
@@ -90,11 +90,11 @@ func MakeInputFile(
 	// fileId := rand.Int63()
 	for i := 0; i < len(fileData); i = i + 512*1024 {
 		if i+512*1024 >= len(fileData) {
-			if err := cb(file.Id, file.Parts, fileData[i:]); err != nil {
+			if err := cb(file.Id_INT64, file.Parts, fileData[i:]); err != nil {
 				return nil, err
 			}
 		} else {
-			if err := cb(file.Id, file.Parts, fileData[i:i+512*1024]); err != nil {
+			if err := cb(file.Id_INT64, file.Parts, fileData[i:i+512*1024]); err != nil {
 				return nil, err
 			}
 		}
