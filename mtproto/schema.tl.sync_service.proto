@@ -2584,11 +2584,12 @@ message TL_messages_requestMainWebView {
 
 message TL_messages_sendPaidReaction {
     TLConstructor  constructor = 1;
-    bool private = 3;
-    InputPeer peer = 4;
-    int32 msg_id = 5;
-    int32 count = 6;
-    int64 random_id = 7;
+    InputPeer peer = 3;
+    int32 msg_id = 4;
+    int32 count = 5;
+    int64 random_id = 6;
+    Bool private_FLAGBOOL = 7;
+    bool private_FLAGBOOLEAN = 8;
 }
 
 message TL_messages_togglePaidReactionPrivacy {
@@ -2596,6 +2597,10 @@ message TL_messages_togglePaidReactionPrivacy {
     InputPeer peer = 3;
     int32 msg_id = 4;
     Bool private = 5;
+}
+
+message TL_messages_getPaidReactionPrivacy {
+    TLConstructor  constructor = 1;
 }
 
 message TL_updates_getState {
@@ -3594,6 +3599,10 @@ message TL_payments_fulfillStarsSubscription {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     string subscription_id = 4;
+}
+
+message TL_payments_getStarsGiveawayOptions {
+    TLConstructor  constructor = 1;
 }
 
 message TL_stickers_createStickerSet {
@@ -4633,6 +4642,9 @@ message Vector_StarsTopupOption {
 message Vector_StarsGiftOption {
     repeated StarsGiftOption datas = 1;
 }
+message Vector_StarsGiveawayOption {
+    repeated StarsGiveawayOption datas = 1;
+}
 message Vector_LangPackString {
     repeated LangPackString datas = 1;
 }
@@ -5338,6 +5350,7 @@ service RPCReactions {
     rpc messages_clearRecentReactions(TL_messages_clearRecentReactions) returns (Bool) {}
     rpc messages_sendPaidReaction(TL_messages_sendPaidReaction) returns (Updates) {}
     rpc messages_togglePaidReactionPrivacy(TL_messages_togglePaidReactionPrivacy) returns (Bool) {}
+    rpc messages_getPaidReactionPrivacy(TL_messages_getPaidReactionPrivacy) returns (Updates) {}
 }
 
 service RPCReports {
@@ -5431,6 +5444,7 @@ service RPCStars {
     rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
     rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
     rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
+    rpc payments_getStarsGiveawayOptions(TL_payments_getStarsGiveawayOptions) returns (Vector_StarsGiveawayOption) {}
 }
 
 service RPCStatistics {
