@@ -1887,6 +1887,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1662637586
 		return o
 	},
+	1137015880: func() TLObject { // 0x43c57c48
+		o := MakeTLDocumentAttributeVideo(nil)
+		o.Data2.Constructor = 1137015880
+		return o
+	},
 	389652397: func() TLObject { // 0x17399fad
 		o := MakeTLDocumentAttributeVideo(nil)
 		o.Data2.Constructor = 389652397
@@ -3592,6 +3597,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -916050683
 		return o
 	},
+	1976723854: func() TLObject { // 0x75d2698e
+		o := MakeTLKeyboardButtonCopy(nil)
+		o.Data2.Constructor = 1976723854
+		return o
+	},
 	2002815875: func() TLObject { // 0x77608b83
 		o := MakeTLKeyboardButtonRow(nil)
 		o.Data2.Constructor = 2002815875
@@ -4200,6 +4210,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1618676578: func() TLObject { // 0x9f84f49e
 		o := MakeTLMessageMediaUnsupported(nil)
 		o.Data2.Constructor = -1618676578
+		return o
+	},
+	-581497899: func() TLObject { // 0xdd570bd5
+		o := MakeTLMessageMediaDocument(nil)
+		o.Data2.Constructor = -581497899
 		return o
 	},
 	1291114285: func() TLObject { // 0x4cf4d72d
@@ -11177,6 +11192,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	1785624660: func() TLObject { // 0x6a6e7854
 		return &TLChannelsToggleParticipantsHidden{
 			Constructor: 1785624660,
+		}
+	},
+	21257589: func() TLObject { // 0x1445d75
+		return &TLChannelsClickSponsoredMessage{
+			Constructor: 21257589,
 		}
 	},
 	414170259: func() TLObject { // 0x18afbc93

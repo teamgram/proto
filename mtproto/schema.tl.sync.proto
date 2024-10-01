@@ -2505,6 +2505,7 @@ message TL_document {
 //  + TL_documentAttributeCustomEmoji
 //  + TL_documentAttributeVideo
 //  + TL_documentAttributeVideo
+//  + TL_documentAttributeVideo
 //
 message DocumentAttribute {
     string predicate_name = 1;
@@ -2521,14 +2522,15 @@ message DocumentAttribute {
     double duration_FLOAT64 = 12;
     google.protobuf.Int32Value preload_prefix_size = 13;
     google.protobuf.DoubleValue video_start_ts = 14;
-    bool voice = 15;
-    int32 duration_INT32 = 16;
-    google.protobuf.StringValue title = 17;
-    google.protobuf.StringValue performer = 18;
-    bytes waveform = 19;
-    string file_name = 20;
-    bool free = 21;
-    bool text_color = 22;
+    google.protobuf.StringValue video_codec = 15;
+    bool voice = 16;
+    int32 duration_INT32 = 17;
+    google.protobuf.StringValue title = 18;
+    google.protobuf.StringValue performer = 19;
+    bytes waveform = 20;
+    string file_name = 21;
+    bool free = 22;
+    bool text_color = 23;
     double duration = 100;
 }
 
@@ -5498,6 +5500,7 @@ message TL_jsonObject {
 //  + TL_keyboardButtonSimpleWebView
 //  + TL_keyboardButtonRequestPeer
 //  + TL_inputKeyboardButtonRequestPeer
+//  + TL_keyboardButtonCopy
 //  + TL_keyboardButtonRequestPeer
 //  + TL_keyboardButtonSwitchInline
 //
@@ -5523,6 +5526,7 @@ message KeyboardButton {
     bool name_requested = 19;
     bool username_requested = 20;
     bool photo_requested = 21;
+    string copy_text = 22;
 }
 
 // TL_keyboardButton
@@ -5607,6 +5611,11 @@ message TL_keyboardButtonRequestPeer {
 
 // TL_inputKeyboardButtonRequestPeer
 message TL_inputKeyboardButtonRequestPeer {
+    KeyboardButton data2 = 1;
+}
+
+// TL_keyboardButtonCopy
+message TL_keyboardButtonCopy {
     KeyboardButton data2 = 1;
 }
 
@@ -6585,6 +6594,7 @@ message TL_messageInteractionCounters {
 //  + TL_messageMediaGiveaway
 //  + TL_messageMediaGiveawayResults
 //  + TL_messageMediaPaidMedia
+//  + TL_messageMediaDocument
 //  + TL_messageMediaGiveaway
 //  + TL_messageMediaGiveawayResults
 //  + TL_messageMediaGiveaway
@@ -6611,7 +6621,7 @@ message MessageMedia {
     bool round = 14;
     bool voice = 15;
     Document document = 16;
-    Document alt_document = 17;
+    repeated Document alt_documents = 17;
     bool force_large_media = 18;
     bool force_small_media = 19;
     bool manual = 20;
@@ -6661,8 +6671,9 @@ message MessageMedia {
     repeated int64 winners = 64;
     int64 stars_amount = 65;
     repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 66;
-    int32 months_INT32 = 67;
-    BizDataRaw biz_data = 68;
+    Document alt_document = 67;
+    int32 months_INT32 = 68;
+    BizDataRaw biz_data = 69;
 }
 
 // TL_messageMediaEmpty

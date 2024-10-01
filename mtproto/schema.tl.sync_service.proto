@@ -3209,8 +3209,10 @@ message TL_channels_toggleParticipantsHidden {
 
 message TL_channels_clickSponsoredMessage {
     TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    bytes random_id = 4;
+    bool media = 3;
+    bool fullscreen = 4;
+    InputChannel channel = 5;
+    bytes random_id = 6;
 }
 
 message TL_channels_updateColor {
