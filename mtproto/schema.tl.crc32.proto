@@ -220,6 +220,7 @@ enum TLConstructor {
     CRC32_messageMediaGeo = 1457575028; // 56e0d474
     CRC32_messageMediaContact = 1882335561; // 70322949
     CRC32_messageMediaUnsupported = -1618676578; // 9f84f49e
+    CRC32_messageMediaDocument_dd570bd5 = -581497899; // dd570bd5
     CRC32_messageMediaDocument_4cf4d72d = 1291114285; // 4cf4d72d
     CRC32_messageMediaDocument_9cb070d7 = -1666158377; // 9cb070d7
     CRC32_messageMediaWebPage_ddf10c3b = -571405253; // ddf10c3b
@@ -660,6 +661,7 @@ enum TLConstructor {
     CRC32_documentAttributeImageSize = 1815593308; // 6c37c15c
     CRC32_documentAttributeAnimated = 297109817; // 11b58939
     CRC32_documentAttributeSticker = 1662637586; // 6319d612
+    CRC32_documentAttributeVideo_43c57c48 = 1137015880; // 43c57c48
     CRC32_documentAttributeVideo_17399fad = 389652397; // 17399fad
     CRC32_documentAttributeVideo_d38ff1c2 = -745541182; // d38ff1c2
     CRC32_documentAttributeVideo_ef02ce6 = 250621158; // ef02ce6
@@ -735,6 +737,7 @@ enum TLConstructor {
     CRC32_keyboardButtonRequestPeer_53d7bfd8 = 1406648280; // 53d7bfd8
     CRC32_keyboardButtonRequestPeer_d0b468c = 218842764; // d0b468c
     CRC32_inputKeyboardButtonRequestPeer = -916050683; // c9662d05
+    CRC32_keyboardButtonCopy = 1976723854; // 75d2698e
     CRC32_keyboardButtonRow = 2002815875; // 77608b83
     CRC32_replyKeyboardHide = -1606526075; // a03e5b85
     CRC32_replyKeyboardForceReply = -2035021048; // 86b40b08
@@ -2254,7 +2257,8 @@ enum TLConstructor {
     CRC32_channels_toggleAntiSpam = 1760814315; // 68f3e4eb
     CRC32_channels_reportAntiSpamFalsePositive = -1471109485; // a850a693
     CRC32_channels_toggleParticipantsHidden = 1785624660; // 6a6e7854
-    CRC32_channels_clickSponsoredMessage = 414170259; // 18afbc93
+    CRC32_channels_clickSponsoredMessage_1445d75 = 21257589; // 1445d75
+    CRC32_channels_clickSponsoredMessage_18afbc93 = 414170259; // 18afbc93
     CRC32_channels_updateColor_d8aa3671 = -659933583; // d8aa3671
     CRC32_channels_updateColor_621a201f = 1645879327; // 621a201f
     CRC32_channels_toggleViewForumAsMessages = -1757889771; // 9738bb15

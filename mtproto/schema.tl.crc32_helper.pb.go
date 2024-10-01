@@ -213,6 +213,7 @@ const (
 	CRC32_messageMediaGeo                                             TLConstructor = 1457575028  // 56e0d474
 	CRC32_messageMediaContact                                         TLConstructor = 1882335561  // 70322949
 	CRC32_messageMediaUnsupported                                     TLConstructor = -1618676578 // 9f84f49e
+	CRC32_messageMediaDocument_dd570bd5                               TLConstructor = -581497899  // dd570bd5
 	CRC32_messageMediaDocument_4cf4d72d                               TLConstructor = 1291114285  // 4cf4d72d
 	CRC32_messageMediaDocument_9cb070d7                               TLConstructor = -1666158377 // 9cb070d7
 	CRC32_messageMediaWebPage_ddf10c3b                                TLConstructor = -571405253  // ddf10c3b
@@ -653,6 +654,7 @@ const (
 	CRC32_documentAttributeImageSize                                  TLConstructor = 1815593308  // 6c37c15c
 	CRC32_documentAttributeAnimated                                   TLConstructor = 297109817   // 11b58939
 	CRC32_documentAttributeSticker                                    TLConstructor = 1662637586  // 6319d612
+	CRC32_documentAttributeVideo_43c57c48                             TLConstructor = 1137015880  // 43c57c48
 	CRC32_documentAttributeVideo_17399fad                             TLConstructor = 389652397   // 17399fad
 	CRC32_documentAttributeVideo_d38ff1c2                             TLConstructor = -745541182  // d38ff1c2
 	CRC32_documentAttributeVideo_ef02ce6                              TLConstructor = 250621158   // ef02ce6
@@ -728,6 +730,7 @@ const (
 	CRC32_keyboardButtonRequestPeer_53d7bfd8                          TLConstructor = 1406648280  // 53d7bfd8
 	CRC32_keyboardButtonRequestPeer_d0b468c                           TLConstructor = 218842764   // d0b468c
 	CRC32_inputKeyboardButtonRequestPeer                              TLConstructor = -916050683  // c9662d05
+	CRC32_keyboardButtonCopy                                          TLConstructor = 1976723854  // 75d2698e
 	CRC32_keyboardButtonRow                                           TLConstructor = 2002815875  // 77608b83
 	CRC32_replyKeyboardHide                                           TLConstructor = -1606526075 // a03e5b85
 	CRC32_replyKeyboardForceReply                                     TLConstructor = -2035021048 // 86b40b08
@@ -2247,7 +2250,8 @@ const (
 	CRC32_channels_toggleAntiSpam                                     TLConstructor = 1760814315  // 68f3e4eb
 	CRC32_channels_reportAntiSpamFalsePositive                        TLConstructor = -1471109485 // a850a693
 	CRC32_channels_toggleParticipantsHidden                           TLConstructor = 1785624660  // 6a6e7854
-	CRC32_channels_clickSponsoredMessage                              TLConstructor = 414170259   // 18afbc93
+	CRC32_channels_clickSponsoredMessage_1445d75                      TLConstructor = 21257589    // 1445d75
+	CRC32_channels_clickSponsoredMessage_18afbc93                     TLConstructor = 414170259   // 18afbc93
 	CRC32_channels_updateColor_d8aa3671                               TLConstructor = -659933583  // d8aa3671
 	CRC32_channels_updateColor_621a201f                               TLConstructor = 1645879327  // 621a201f
 	CRC32_channels_toggleViewForumAsMessages                          TLConstructor = -1757889771 // 9738bb15
