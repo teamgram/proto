@@ -20699,6 +20699,8 @@ const (
 	RPCReactions_MessagesGetTopReactions_FullMethodName           = "/mtproto.RPCReactions/messages_getTopReactions"
 	RPCReactions_MessagesGetRecentReactions_FullMethodName        = "/mtproto.RPCReactions/messages_getRecentReactions"
 	RPCReactions_MessagesClearRecentReactions_FullMethodName      = "/mtproto.RPCReactions/messages_clearRecentReactions"
+	RPCReactions_MessagesSendPaidReaction_FullMethodName          = "/mtproto.RPCReactions/messages_sendPaidReaction"
+	RPCReactions_MessagesTogglePaidReactionPrivacy_FullMethodName = "/mtproto.RPCReactions/messages_togglePaidReactionPrivacy"
 )
 
 // RPCReactionsClient is the client API for RPCReactions service.
@@ -20717,6 +20719,8 @@ type RPCReactionsClient interface {
 	MessagesGetTopReactions(ctx context.Context, in *TLMessagesGetTopReactions, opts ...grpc.CallOption) (*Messages_Reactions, error)
 	MessagesGetRecentReactions(ctx context.Context, in *TLMessagesGetRecentReactions, opts ...grpc.CallOption) (*Messages_Reactions, error)
 	MessagesClearRecentReactions(ctx context.Context, in *TLMessagesClearRecentReactions, opts ...grpc.CallOption) (*Bool, error)
+	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error)
+	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCReactionsClient struct {
@@ -20835,6 +20839,24 @@ func (c *rPCReactionsClient) MessagesClearRecentReactions(ctx context.Context, i
 	return out, nil
 }
 
+func (c *rPCReactionsClient) MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCReactions_MessagesSendPaidReaction_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCReactionsClient) MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCReactions_MessagesTogglePaidReactionPrivacy_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCReactionsServer is the server API for RPCReactions service.
 // All implementations should embed UnimplementedRPCReactionsServer
 // for forward compatibility
@@ -20851,6 +20873,8 @@ type RPCReactionsServer interface {
 	MessagesGetTopReactions(context.Context, *TLMessagesGetTopReactions) (*Messages_Reactions, error)
 	MessagesGetRecentReactions(context.Context, *TLMessagesGetRecentReactions) (*Messages_Reactions, error)
 	MessagesClearRecentReactions(context.Context, *TLMessagesClearRecentReactions) (*Bool, error)
+	MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error)
+	MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
 }
 
 // UnimplementedRPCReactionsServer should be embedded to have forward compatible implementations.
@@ -20892,6 +20916,12 @@ func (UnimplementedRPCReactionsServer) MessagesGetRecentReactions(context.Contex
 }
 func (UnimplementedRPCReactionsServer) MessagesClearRecentReactions(context.Context, *TLMessagesClearRecentReactions) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesClearRecentReactions not implemented")
+}
+func (UnimplementedRPCReactionsServer) MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendPaidReaction not implemented")
+}
+func (UnimplementedRPCReactionsServer) MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesTogglePaidReactionPrivacy not implemented")
 }
 
 // UnsafeRPCReactionsServer may be embedded to opt out of forward compatibility for this service.
@@ -21121,6 +21151,42 @@ func _RPCReactions_MessagesClearRecentReactions_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCReactions_MessagesSendPaidReaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSendPaidReaction)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCReactionsServer).MessagesSendPaidReaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCReactions_MessagesSendPaidReaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCReactionsServer).MessagesSendPaidReaction(ctx, req.(*TLMessagesSendPaidReaction))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCReactions_MessagesTogglePaidReactionPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesTogglePaidReactionPrivacy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCReactionsServer).MessagesTogglePaidReactionPrivacy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCReactions_MessagesTogglePaidReactionPrivacy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCReactionsServer).MessagesTogglePaidReactionPrivacy(ctx, req.(*TLMessagesTogglePaidReactionPrivacy))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCReactions_ServiceDesc is the grpc.ServiceDesc for RPCReactions service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -21175,6 +21241,14 @@ var RPCReactions_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_clearRecentReactions",
 			Handler:    _RPCReactions_MessagesClearRecentReactions_Handler,
+		},
+		{
+			MethodName: "messages_sendPaidReaction",
+			Handler:    _RPCReactions_MessagesSendPaidReaction_Handler,
+		},
+		{
+			MethodName: "messages_togglePaidReactionPrivacy",
+			Handler:    _RPCReactions_MessagesTogglePaidReactionPrivacy_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -25568,46 +25642,42 @@ var RPCStickers_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCStories_MessagesSendPaidReaction_FullMethodName          = "/mtproto.RPCStories/messages_sendPaidReaction"
-	RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName = "/mtproto.RPCStories/messages_togglePaidReactionPrivacy"
-	RPCStories_StoriesCanSendStory_FullMethodName               = "/mtproto.RPCStories/stories_canSendStory"
-	RPCStories_StoriesSendStory_FullMethodName                  = "/mtproto.RPCStories/stories_sendStory"
-	RPCStories_StoriesEditStory_FullMethodName                  = "/mtproto.RPCStories/stories_editStory"
-	RPCStories_StoriesDeleteStories_FullMethodName              = "/mtproto.RPCStories/stories_deleteStories"
-	RPCStories_StoriesTogglePinned_FullMethodName               = "/mtproto.RPCStories/stories_togglePinned"
-	RPCStories_StoriesGetAllStories_FullMethodName              = "/mtproto.RPCStories/stories_getAllStories"
-	RPCStories_StoriesGetPinnedStories_FullMethodName           = "/mtproto.RPCStories/stories_getPinnedStories"
-	RPCStories_StoriesGetStoriesArchive_FullMethodName          = "/mtproto.RPCStories/stories_getStoriesArchive"
-	RPCStories_StoriesGetStoriesByID_FullMethodName             = "/mtproto.RPCStories/stories_getStoriesByID"
-	RPCStories_StoriesToggleAllStoriesHidden_FullMethodName     = "/mtproto.RPCStories/stories_toggleAllStoriesHidden"
-	RPCStories_StoriesReadStories_FullMethodName                = "/mtproto.RPCStories/stories_readStories"
-	RPCStories_StoriesIncrementStoryViews_FullMethodName        = "/mtproto.RPCStories/stories_incrementStoryViews"
-	RPCStories_StoriesGetStoryViewsList_FullMethodName          = "/mtproto.RPCStories/stories_getStoryViewsList"
-	RPCStories_StoriesGetStoriesViews_FullMethodName            = "/mtproto.RPCStories/stories_getStoriesViews"
-	RPCStories_StoriesExportStoryLink_FullMethodName            = "/mtproto.RPCStories/stories_exportStoryLink"
-	RPCStories_StoriesReport_FullMethodName                     = "/mtproto.RPCStories/stories_report"
-	RPCStories_StoriesActivateStealthMode_FullMethodName        = "/mtproto.RPCStories/stories_activateStealthMode"
-	RPCStories_StoriesSendReaction_FullMethodName               = "/mtproto.RPCStories/stories_sendReaction"
-	RPCStories_StoriesGetPeerStories_FullMethodName             = "/mtproto.RPCStories/stories_getPeerStories"
-	RPCStories_StoriesGetAllReadPeerStories_FullMethodName      = "/mtproto.RPCStories/stories_getAllReadPeerStories"
-	RPCStories_StoriesGetPeerMaxIDs_FullMethodName              = "/mtproto.RPCStories/stories_getPeerMaxIDs"
-	RPCStories_StoriesGetChatsToSend_FullMethodName             = "/mtproto.RPCStories/stories_getChatsToSend"
-	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName    = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
-	RPCStories_StoriesGetStoryReactionsList_FullMethodName      = "/mtproto.RPCStories/stories_getStoryReactionsList"
-	RPCStories_StoriesTogglePinnedToTop_FullMethodName          = "/mtproto.RPCStories/stories_togglePinnedToTop"
-	RPCStories_StoriesSearchPosts_FullMethodName                = "/mtproto.RPCStories/stories_searchPosts"
-	RPCStories_UsersGetStoriesMaxIDs_FullMethodName             = "/mtproto.RPCStories/users_getStoriesMaxIDs"
-	RPCStories_ContactsToggleStoriesHidden_FullMethodName       = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
-	RPCStories_StoriesGetUserStories_FullMethodName             = "/mtproto.RPCStories/stories_getUserStories"
-	RPCStories_StoriesGetAllReadUserStories_FullMethodName      = "/mtproto.RPCStories/stories_getAllReadUserStories"
+	RPCStories_StoriesCanSendStory_FullMethodName            = "/mtproto.RPCStories/stories_canSendStory"
+	RPCStories_StoriesSendStory_FullMethodName               = "/mtproto.RPCStories/stories_sendStory"
+	RPCStories_StoriesEditStory_FullMethodName               = "/mtproto.RPCStories/stories_editStory"
+	RPCStories_StoriesDeleteStories_FullMethodName           = "/mtproto.RPCStories/stories_deleteStories"
+	RPCStories_StoriesTogglePinned_FullMethodName            = "/mtproto.RPCStories/stories_togglePinned"
+	RPCStories_StoriesGetAllStories_FullMethodName           = "/mtproto.RPCStories/stories_getAllStories"
+	RPCStories_StoriesGetPinnedStories_FullMethodName        = "/mtproto.RPCStories/stories_getPinnedStories"
+	RPCStories_StoriesGetStoriesArchive_FullMethodName       = "/mtproto.RPCStories/stories_getStoriesArchive"
+	RPCStories_StoriesGetStoriesByID_FullMethodName          = "/mtproto.RPCStories/stories_getStoriesByID"
+	RPCStories_StoriesToggleAllStoriesHidden_FullMethodName  = "/mtproto.RPCStories/stories_toggleAllStoriesHidden"
+	RPCStories_StoriesReadStories_FullMethodName             = "/mtproto.RPCStories/stories_readStories"
+	RPCStories_StoriesIncrementStoryViews_FullMethodName     = "/mtproto.RPCStories/stories_incrementStoryViews"
+	RPCStories_StoriesGetStoryViewsList_FullMethodName       = "/mtproto.RPCStories/stories_getStoryViewsList"
+	RPCStories_StoriesGetStoriesViews_FullMethodName         = "/mtproto.RPCStories/stories_getStoriesViews"
+	RPCStories_StoriesExportStoryLink_FullMethodName         = "/mtproto.RPCStories/stories_exportStoryLink"
+	RPCStories_StoriesReport_FullMethodName                  = "/mtproto.RPCStories/stories_report"
+	RPCStories_StoriesActivateStealthMode_FullMethodName     = "/mtproto.RPCStories/stories_activateStealthMode"
+	RPCStories_StoriesSendReaction_FullMethodName            = "/mtproto.RPCStories/stories_sendReaction"
+	RPCStories_StoriesGetPeerStories_FullMethodName          = "/mtproto.RPCStories/stories_getPeerStories"
+	RPCStories_StoriesGetAllReadPeerStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadPeerStories"
+	RPCStories_StoriesGetPeerMaxIDs_FullMethodName           = "/mtproto.RPCStories/stories_getPeerMaxIDs"
+	RPCStories_StoriesGetChatsToSend_FullMethodName          = "/mtproto.RPCStories/stories_getChatsToSend"
+	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
+	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
+	RPCStories_StoriesTogglePinnedToTop_FullMethodName       = "/mtproto.RPCStories/stories_togglePinnedToTop"
+	RPCStories_StoriesSearchPosts_FullMethodName             = "/mtproto.RPCStories/stories_searchPosts"
+	RPCStories_UsersGetStoriesMaxIDs_FullMethodName          = "/mtproto.RPCStories/users_getStoriesMaxIDs"
+	RPCStories_ContactsToggleStoriesHidden_FullMethodName    = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
+	RPCStories_StoriesGetUserStories_FullMethodName          = "/mtproto.RPCStories/stories_getUserStories"
+	RPCStories_StoriesGetAllReadUserStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadUserStories"
 )
 
 // RPCStoriesClient is the client API for RPCStories service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCStoriesClient interface {
-	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error)
-	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error)
 	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory, opts ...grpc.CallOption) (*Bool, error)
 	StoriesSendStory(ctx context.Context, in *TLStoriesSendStory, opts ...grpc.CallOption) (*Updates, error)
 	StoriesEditStory(ctx context.Context, in *TLStoriesEditStory, opts ...grpc.CallOption) (*Updates, error)
@@ -25646,24 +25716,6 @@ type rPCStoriesClient struct {
 
 func NewRPCStoriesClient(cc grpc.ClientConnInterface) RPCStoriesClient {
 	return &rPCStoriesClient{cc}
-}
-
-func (c *rPCStoriesClient) MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCStories_MessagesSendPaidReaction_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStoriesClient) MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *rPCStoriesClient) StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory, opts ...grpc.CallOption) (*Bool, error) {
@@ -25940,8 +25992,6 @@ func (c *rPCStoriesClient) StoriesGetAllReadUserStories(ctx context.Context, in 
 // All implementations should embed UnimplementedRPCStoriesServer
 // for forward compatibility
 type RPCStoriesServer interface {
-	MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error)
-	MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
 	StoriesCanSendStory(context.Context, *TLStoriesCanSendStory) (*Bool, error)
 	StoriesSendStory(context.Context, *TLStoriesSendStory) (*Updates, error)
 	StoriesEditStory(context.Context, *TLStoriesEditStory) (*Updates, error)
@@ -25978,12 +26028,6 @@ type RPCStoriesServer interface {
 type UnimplementedRPCStoriesServer struct {
 }
 
-func (UnimplementedRPCStoriesServer) MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendPaidReaction not implemented")
-}
-func (UnimplementedRPCStoriesServer) MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesTogglePaidReactionPrivacy not implemented")
-}
 func (UnimplementedRPCStoriesServer) StoriesCanSendStory(context.Context, *TLStoriesCanSendStory) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStory not implemented")
 }
@@ -26084,42 +26128,6 @@ type UnsafeRPCStoriesServer interface {
 
 func RegisterRPCStoriesServer(s grpc.ServiceRegistrar, srv RPCStoriesServer) {
 	s.RegisterService(&RPCStories_ServiceDesc, srv)
-}
-
-func _RPCStories_MessagesSendPaidReaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesSendPaidReaction)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStoriesServer).MessagesSendPaidReaction(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStories_MessagesSendPaidReaction_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStoriesServer).MessagesSendPaidReaction(ctx, req.(*TLMessagesSendPaidReaction))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStories_MessagesTogglePaidReactionPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesTogglePaidReactionPrivacy)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStoriesServer).MessagesTogglePaidReactionPrivacy(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStoriesServer).MessagesTogglePaidReactionPrivacy(ctx, req.(*TLMessagesTogglePaidReactionPrivacy))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _RPCStories_StoriesCanSendStory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -26669,14 +26677,6 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "mtproto.RPCStories",
 	HandlerType: (*RPCStoriesServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "messages_sendPaidReaction",
-			Handler:    _RPCStories_MessagesSendPaidReaction_Handler,
-		},
-		{
-			MethodName: "messages_togglePaidReactionPrivacy",
-			Handler:    _RPCStories_MessagesTogglePaidReactionPrivacy_Handler,
-		},
 		{
 			MethodName: "stories_canSendStory",
 			Handler:    _RPCStories_StoriesCanSendStory_Handler,

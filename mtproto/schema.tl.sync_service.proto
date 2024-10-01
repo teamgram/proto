@@ -5336,6 +5336,8 @@ service RPCReactions {
     rpc messages_getTopReactions(TL_messages_getTopReactions) returns (messages_Reactions) {}
     rpc messages_getRecentReactions(TL_messages_getRecentReactions) returns (messages_Reactions) {}
     rpc messages_clearRecentReactions(TL_messages_clearRecentReactions) returns (Bool) {}
+    rpc messages_sendPaidReaction(TL_messages_sendPaidReaction) returns (Updates) {}
+    rpc messages_togglePaidReactionPrivacy(TL_messages_togglePaidReactionPrivacy) returns (Bool) {}
 }
 
 service RPCReports {
@@ -5477,8 +5479,6 @@ service RPCStickers {
 }
 
 service RPCStories {
-    rpc messages_sendPaidReaction(TL_messages_sendPaidReaction) returns (Updates) {}
-    rpc messages_togglePaidReactionPrivacy(TL_messages_togglePaidReactionPrivacy) returns (Bool) {}
     rpc stories_canSendStory(TL_stories_canSendStory) returns (Bool) {}
     rpc stories_sendStory(TL_stories_sendStory) returns (Updates) {}
     rpc stories_editStory(TL_stories_editStory) returns (Updates) {}
