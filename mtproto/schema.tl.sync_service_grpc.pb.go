@@ -20701,6 +20701,7 @@ const (
 	RPCReactions_MessagesClearRecentReactions_FullMethodName      = "/mtproto.RPCReactions/messages_clearRecentReactions"
 	RPCReactions_MessagesSendPaidReaction_FullMethodName          = "/mtproto.RPCReactions/messages_sendPaidReaction"
 	RPCReactions_MessagesTogglePaidReactionPrivacy_FullMethodName = "/mtproto.RPCReactions/messages_togglePaidReactionPrivacy"
+	RPCReactions_MessagesGetPaidReactionPrivacy_FullMethodName    = "/mtproto.RPCReactions/messages_getPaidReactionPrivacy"
 )
 
 // RPCReactionsClient is the client API for RPCReactions service.
@@ -20721,6 +20722,7 @@ type RPCReactionsClient interface {
 	MessagesClearRecentReactions(ctx context.Context, in *TLMessagesClearRecentReactions, opts ...grpc.CallOption) (*Bool, error)
 	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error)
 	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error)
+	MessagesGetPaidReactionPrivacy(ctx context.Context, in *TLMessagesGetPaidReactionPrivacy, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCReactionsClient struct {
@@ -20857,6 +20859,15 @@ func (c *rPCReactionsClient) MessagesTogglePaidReactionPrivacy(ctx context.Conte
 	return out, nil
 }
 
+func (c *rPCReactionsClient) MessagesGetPaidReactionPrivacy(ctx context.Context, in *TLMessagesGetPaidReactionPrivacy, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCReactions_MessagesGetPaidReactionPrivacy_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCReactionsServer is the server API for RPCReactions service.
 // All implementations should embed UnimplementedRPCReactionsServer
 // for forward compatibility
@@ -20875,6 +20886,7 @@ type RPCReactionsServer interface {
 	MessagesClearRecentReactions(context.Context, *TLMessagesClearRecentReactions) (*Bool, error)
 	MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error)
 	MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
+	MessagesGetPaidReactionPrivacy(context.Context, *TLMessagesGetPaidReactionPrivacy) (*Updates, error)
 }
 
 // UnimplementedRPCReactionsServer should be embedded to have forward compatible implementations.
@@ -20922,6 +20934,9 @@ func (UnimplementedRPCReactionsServer) MessagesSendPaidReaction(context.Context,
 }
 func (UnimplementedRPCReactionsServer) MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesTogglePaidReactionPrivacy not implemented")
+}
+func (UnimplementedRPCReactionsServer) MessagesGetPaidReactionPrivacy(context.Context, *TLMessagesGetPaidReactionPrivacy) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetPaidReactionPrivacy not implemented")
 }
 
 // UnsafeRPCReactionsServer may be embedded to opt out of forward compatibility for this service.
@@ -21187,6 +21202,24 @@ func _RPCReactions_MessagesTogglePaidReactionPrivacy_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCReactions_MessagesGetPaidReactionPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetPaidReactionPrivacy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCReactionsServer).MessagesGetPaidReactionPrivacy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCReactions_MessagesGetPaidReactionPrivacy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCReactionsServer).MessagesGetPaidReactionPrivacy(ctx, req.(*TLMessagesGetPaidReactionPrivacy))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCReactions_ServiceDesc is the grpc.ServiceDesc for RPCReactions service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -21249,6 +21282,10 @@ var RPCReactions_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_togglePaidReactionPrivacy",
 			Handler:    _RPCReactions_MessagesTogglePaidReactionPrivacy_Handler,
+		},
+		{
+			MethodName: "messages_getPaidReactionPrivacy",
+			Handler:    _RPCReactions_MessagesGetPaidReactionPrivacy_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -23578,6 +23615,7 @@ const (
 	RPCStars_PaymentsGetStarsSubscriptions_FullMethodName        = "/mtproto.RPCStars/payments_getStarsSubscriptions"
 	RPCStars_PaymentsChangeStarsSubscription_FullMethodName      = "/mtproto.RPCStars/payments_changeStarsSubscription"
 	RPCStars_PaymentsFulfillStarsSubscription_FullMethodName     = "/mtproto.RPCStars/payments_fulfillStarsSubscription"
+	RPCStars_PaymentsGetStarsGiveawayOptions_FullMethodName      = "/mtproto.RPCStars/payments_getStarsGiveawayOptions"
 )
 
 // RPCStarsClient is the client API for RPCStars service.
@@ -23597,6 +23635,7 @@ type RPCStarsClient interface {
 	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions, opts ...grpc.CallOption) (*Vector_StarsGiveawayOption, error)
 }
 
 type rPCStarsClient struct {
@@ -23724,6 +23763,15 @@ func (c *rPCStarsClient) PaymentsFulfillStarsSubscription(ctx context.Context, i
 	return out, nil
 }
 
+func (c *rPCStarsClient) PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions, opts ...grpc.CallOption) (*Vector_StarsGiveawayOption, error) {
+	out := new(Vector_StarsGiveawayOption)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsGiveawayOptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCStarsServer is the server API for RPCStars service.
 // All implementations should embed UnimplementedRPCStarsServer
 // for forward compatibility
@@ -23741,6 +23789,7 @@ type RPCStarsServer interface {
 	PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error)
 	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
 	PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error)
+	PaymentsGetStarsGiveawayOptions(context.Context, *TLPaymentsGetStarsGiveawayOptions) (*Vector_StarsGiveawayOption, error)
 }
 
 // UnimplementedRPCStarsServer should be embedded to have forward compatible implementations.
@@ -23785,6 +23834,9 @@ func (UnimplementedRPCStarsServer) PaymentsChangeStarsSubscription(context.Conte
 }
 func (UnimplementedRPCStarsServer) PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsFulfillStarsSubscription not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetStarsGiveawayOptions(context.Context, *TLPaymentsGetStarsGiveawayOptions) (*Vector_StarsGiveawayOption, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiveawayOptions not implemented")
 }
 
 // UnsafeRPCStarsServer may be embedded to opt out of forward compatibility for this service.
@@ -24032,6 +24084,24 @@ func _RPCStars_PaymentsFulfillStarsSubscription_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStars_PaymentsGetStarsGiveawayOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsGiveawayOptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetStarsGiveawayOptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetStarsGiveawayOptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetStarsGiveawayOptions(ctx, req.(*TLPaymentsGetStarsGiveawayOptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCStars_ServiceDesc is the grpc.ServiceDesc for RPCStars service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -24090,6 +24160,10 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_fulfillStarsSubscription",
 			Handler:    _RPCStars_PaymentsFulfillStarsSubscription_Handler,
+		},
+		{
+			MethodName: "payments_getStarsGiveawayOptions",
+			Handler:    _RPCStars_PaymentsGetStarsGiveawayOptions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
