@@ -226,7 +226,7 @@ func MakeMessageActionScreenshotTaken() *MessageAction {
 // messageActionCustomAction#fae69f56 message:string = MessageAction;
 func MakeMessageActionCustomAction(message string) *MessageAction {
 	return MakeTLMessageActionCustomAction(&MessageAction{
-		Message: message,
+		Message_STRING: message,
 	}).To_MessageAction()
 }
 
