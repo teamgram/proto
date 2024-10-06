@@ -4295,6 +4295,7 @@ message TL_inputGroupCall {
 //  + TL_inputInvoicePremiumGiftCode
 //  + TL_inputInvoiceStars
 //  + TL_inputInvoiceChatInviteSubscription
+//  + TL_inputInvoiceStarGift
 //  + TL_inputInvoiceStars
 //
 message InputInvoice {
@@ -4306,7 +4307,11 @@ message InputInvoice {
     InputStorePaymentPurpose purpose = 6;
     PremiumGiftCodeOption option_PREMIUMGIFTCODEOPTION = 7;
     string hash = 8;
-    StarsTopupOption option_STARSTOPUPOPTION = 9;
+    bool hide_name = 9;
+    InputUser user_id = 10;
+    int64 gift_id = 11;
+    TextWithEntities message = 12;
+    StarsTopupOption option_STARSTOPUPOPTION = 13;
 }
 
 // TL_inputInvoiceMessage
@@ -4331,6 +4336,11 @@ message TL_inputInvoiceStars {
 
 // TL_inputInvoiceChatInviteSubscription
 message TL_inputInvoiceChatInviteSubscription {
+    InputInvoice data2 = 1;
+}
+
+// TL_inputInvoiceStarGift
+message TL_inputInvoiceStarGift {
     InputInvoice data2 = 1;
 }
 
@@ -5962,6 +5972,7 @@ message TL_messageService {
 //  + TL_messageActionPaymentRefunded
 //  + TL_messageActionGiftStars
 //  + TL_messageActionPrizeStars
+//  + TL_messageActionStarGift
 //  + TL_messageActionGiveawayLaunch
 //  + TL_messageActionGiveawayResults
 //  + TL_messageActionRequestedPeer
@@ -6001,7 +6012,7 @@ message MessageAction {
     int64 call_id = 22;
     PhoneCallDiscardReason reason = 23;
     google.protobuf.Int32Value duration = 24;
-    string message = 25;
+    string message_STRING = 25;
     bool attach_menu = 26;
     bool from_request = 27;
     google.protobuf.StringValue domain_FLAGSTRING = 28;
@@ -6050,8 +6061,14 @@ message MessageAction {
     google.protobuf.StringValue transaction_id_FLAGSTRING = 71;
     string transaction_id_STRING = 72;
     int32 giveaway_msg_id = 73;
-    string domain_STRING = 74;
-    BizDataRaw biz_data = 75;
+    bool name_hidden = 74;
+    bool saved = 75;
+    bool converted = 76;
+    StarGift gift = 77;
+    TextWithEntities message_FLAGTEXTWITHENTITIES = 78;
+    int64 convert_stars = 79;
+    string domain_STRING = 80;
+    BizDataRaw biz_data = 81;
     string title = 100;
 }
 
@@ -6282,6 +6299,11 @@ message TL_messageActionGiftStars {
 
 // TL_messageActionPrizeStars
 message TL_messageActionPrizeStars {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionStarGift
+message TL_messageActionStarGift {
     MessageAction data2 = 1;
 }
 
@@ -6934,6 +6956,22 @@ message TL_messageReplyHeader {
 // TL_messageReplyStoryHeader
 message TL_messageReplyStoryHeader {
     MessageReplyHeader data2 = 1;
+}
+
+
+// MessageReportOption <--
+//  + TL_messageReportOption
+//
+message MessageReportOption {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string text = 3;
+    bytes option = 4;
+}
+
+// TL_messageReportOption
+message TL_messageReportOption {
+    MessageReportOption data2 = 1;
 }
 
 
@@ -8858,6 +8896,36 @@ message TL_inputReportReasonPersonalDetails {
 }
 
 
+// ReportResult <--
+//  + TL_reportResultChooseOption
+//  + TL_reportResultAddComment
+//  + TL_reportResultReported
+//
+message ReportResult {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string title = 3;
+    repeated MessageReportOption options = 4;
+    bool optional = 5;
+    bytes option = 6;
+}
+
+// TL_reportResultChooseOption
+message TL_reportResultChooseOption {
+    ReportResult data2 = 1;
+}
+
+// TL_reportResultAddComment
+message TL_reportResultAddComment {
+    ReportResult data2 = 1;
+}
+
+// TL_reportResultReported
+message TL_reportResultReported {
+    ReportResult data2 = 1;
+}
+
+
 // RequestPeerType <--
 //  + TL_requestPeerTypeUser
 //  + TL_requestPeerTypeChat
@@ -9752,6 +9820,27 @@ message TL_sponsoredWebPage {
 }
 
 
+// StarGift <--
+//  + TL_starGift
+//
+message StarGift {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool limited = 3;
+    int64 id = 4;
+    Document sticker = 5;
+    int64 stars = 6;
+    google.protobuf.Int32Value availability_remains = 7;
+    google.protobuf.Int32Value availability_total = 8;
+    int64 convert_stars = 9;
+}
+
+// TL_starGift
+message TL_starGift {
+    StarGift data2 = 1;
+}
+
+
 // StarsGiftOption <--
 //  + TL_starsGiftOption
 //
@@ -9892,6 +9981,7 @@ message TL_starsTopupOption {
 //  + TL_starsTransaction
 //  + TL_starsTransaction
 //  + TL_starsTransaction
+//  + TL_starsTransaction
 //
 message StarsTransaction {
     string predicate_name = 1;
@@ -9915,6 +10005,7 @@ message StarsTransaction {
     repeated MessageMedia extended_media = 19;
     google.protobuf.Int32Value subscription_period = 20;
     google.protobuf.Int32Value giveaway_post_id = 21;
+    StarGift stargift = 22;
 }
 
 // TL_starsTransaction
@@ -11867,6 +11958,7 @@ message TL_userData {
 //  + TL_userFull
 //  + TL_userFull
 //  + TL_userFull
+//  + TL_userFull
 //
 message UserFull {
     string predicate_name = 1;
@@ -11912,7 +12004,8 @@ message UserFull {
     Birthday birthday = 41;
     google.protobuf.Int64Value personal_channel_id = 42;
     google.protobuf.Int32Value personal_channel_message = 43;
-    UserStories stories_FLAGUSERSTORIES = 44;
+    google.protobuf.Int32Value stargifts_count = 44;
+    UserStories stories_FLAGUSERSTORIES = 45;
 }
 
 // TL_userFull
@@ -11943,6 +12036,28 @@ message TL_userProfilePhotoEmpty {
 // TL_userProfilePhoto
 message TL_userProfilePhoto {
     UserProfilePhoto data2 = 1;
+}
+
+
+// UserStarGift <--
+//  + TL_userStarGift
+//
+message UserStarGift {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool name_hidden = 3;
+    bool unsaved = 4;
+    google.protobuf.Int64Value from_id = 5;
+    int32 date = 6;
+    StarGift gift = 7;
+    TextWithEntities message = 8;
+    google.protobuf.Int32Value msg_id = 9;
+    google.protobuf.Int64Value convert_stars = 10;
+}
+
+// TL_userStarGift
+message TL_userStarGift {
+    UserStarGift data2 = 1;
 }
 
 
@@ -15074,6 +15189,7 @@ message TL_payments_giveawayInfoResults {
 // payments_PaymentForm <--
 //  + TL_payments_paymentForm
 //  + TL_payments_paymentFormStars
+//  + TL_payments_paymentFormStarGift
 //  + TL_payments_paymentForm
 //  + TL_payments_paymentForm
 //
@@ -15106,6 +15222,11 @@ message TL_payments_paymentForm {
 
 // TL_payments_paymentFormStars
 message TL_payments_paymentFormStars {
+    payments_PaymentForm data2 = 1;
+}
+
+// TL_payments_paymentFormStarGift
+message TL_payments_paymentFormStarGift {
     payments_PaymentForm data2 = 1;
 }
 
@@ -15183,6 +15304,28 @@ message TL_payments_savedInfo {
 }
 
 
+// payments_StarGifts <--
+//  + TL_payments_starGiftsNotModified
+//  + TL_payments_starGifts
+//
+message payments_StarGifts {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 hash = 3;
+    repeated StarGift gifts = 4;
+}
+
+// TL_payments_starGiftsNotModified
+message TL_payments_starGiftsNotModified {
+    payments_StarGifts data2 = 1;
+}
+
+// TL_payments_starGifts
+message TL_payments_starGifts {
+    payments_StarGifts data2 = 1;
+}
+
+
 // payments_StarsRevenueAdsAccountUrl <--
 //  + TL_payments_starsRevenueAdsAccountUrl
 //
@@ -15250,6 +15393,24 @@ message payments_StarsStatus {
 // TL_payments_starsStatus
 message TL_payments_starsStatus {
     payments_StarsStatus data2 = 1;
+}
+
+
+// payments_UserStarGifts <--
+//  + TL_payments_userStarGifts
+//
+message payments_UserStarGifts {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 count = 3;
+    repeated UserStarGift gifts = 4;
+    google.protobuf.StringValue next_offset = 5;
+    repeated User users = 6;
+}
+
+// TL_payments_userStarGifts
+message TL_payments_userStarGifts {
+    payments_UserStarGifts data2 = 1;
 }
 
 

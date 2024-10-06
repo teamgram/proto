@@ -296,6 +296,7 @@ enum TLConstructor {
     CRC32_messageActionPaymentRefunded = 1102307842; // 41b3e202
     CRC32_messageActionGiftStars = 1171632161; // 45d5b021
     CRC32_messageActionPrizeStars = -1341372510; // b00c47a2
+    CRC32_messageActionStarGift = -1682706620; // 9bb3ef44
     CRC32_dialog_d58a08c6 = -712374074; // d58a08c6
     CRC32_dialog_a8edd0f5 = -1460809483; // a8edd0f5
     CRC32_dialogFolder = 1908216652; // 71bd134c
@@ -340,6 +341,7 @@ enum TLConstructor {
     CRC32_inputReportReasonFake = -170010905; // f5ddd6e7
     CRC32_inputReportReasonIllegalDrugs = 177124030; // a8eb2be
     CRC32_inputReportReasonPersonalDetails = -1631091139; // 9ec7863d
+    CRC32_userFull_1f58e369 = 525919081; // 1f58e369
     CRC32_userFull_cc997720 = -862357728; // cc997720
     CRC32_userFull_22ff3e85 = 587153029; // 22ff3e85
     CRC32_userFull_b9b12c6c = -1179571092; // b9b12c6c
@@ -956,6 +958,7 @@ enum TLConstructor {
     CRC32_payments_paymentForm_b0133b37 = -1340916937; // b0133b37
     CRC32_payments_paymentForm_1694761b = 378828315; // 1694761b
     CRC32_payments_paymentFormStars = 2079764828; // 7bf6b15c
+    CRC32_payments_paymentFormStarGift = -1272590367; // b425cfe1
     CRC32_payments_validatedRequestedInfo = -784000893; // d1451883
     CRC32_payments_paymentResult = 1314881805; // 4e5f810d
     CRC32_payments_paymentVerificationNeeded = -666824391; // d8411139
@@ -1356,6 +1359,7 @@ enum TLConstructor {
     CRC32_inputInvoiceStars_65f00ce3 = 1710230755; // 65f00ce3
     CRC32_inputInvoiceStars_1da33ad8 = 497236696; // 1da33ad8
     CRC32_inputInvoiceChatInviteSubscription = 887591921; // 34e793f1
+    CRC32_inputInvoiceStarGift = 634962392; // 25d8c1d8
     CRC32_payments_exportedInvoice = -1362048039; // aed0cbd9
     CRC32_messages_transcribedAudio_cfb9d957 = -809903785; // cfb9d957
     CRC32_messages_transcribedAudio_93752c52 = -1821037486; // 93752c52
@@ -1603,6 +1607,7 @@ enum TLConstructor {
     CRC32_starsTransactionPeer = -670195363; // d80da15d
     CRC32_starsTransactionPeerAds = 1617438738; // 60682812
     CRC32_starsTopupOption = 198776256; // bd915c0
+    CRC32_starsTransaction_a9ee4c2 = 178185410; // a9ee4c2
     CRC32_starsTransaction_ee7522d5 = -294313259; // ee7522d5
     CRC32_starsTransaction_433aeb2b = 1127934763; // 433aeb2b
     CRC32_starsTransaction_2db5418f = 766853519; // 2db5418f
@@ -1627,6 +1632,15 @@ enum TLConstructor {
     CRC32_messageReactor = 1269016922; // 4ba3a95a
     CRC32_starsGiveawayOption = -1798404822; // 94ce852a
     CRC32_starsGiveawayWinnersOption = 1411605001; // 54236209
+    CRC32_starGift = -1365150482; // aea174ee
+    CRC32_payments_starGiftsNotModified = -1551326360; // a388a368
+    CRC32_payments_starGifts = -1877571094; // 901689ea
+    CRC32_userStarGift = -291202450; // eea49a6e
+    CRC32_payments_userStarGifts = 1801827607; // 6b65b517
+    CRC32_messageReportOption = 2030298073; // 7903e3d9
+    CRC32_reportResultChooseOption = -253435722; // f0e4e0b6
+    CRC32_reportResultAddComment = 1862904881; // 6f09ac31
+    CRC32_reportResultReported = -1917633461; // 8db33c4b
     CRC32_inputStorePaymentStars = 1326377183; // 4f0ee8df
     CRC32_simpleWebViewResultUrl = -2010155333; // 882f76bb
     CRC32_appWebViewResultUrl = 1008422669; // 3c1b4f0d
@@ -1899,7 +1913,7 @@ enum TLConstructor {
     CRC32_messages_forwardMessages_cc30290b = -869258997; // cc30290b
     CRC32_messages_reportSpam = -820669733; // cf1592db
     CRC32_messages_getPeerSettings = -270948702; // efd9a6a2
-    CRC32_messages_report = -1991005362; // 8953ab4e
+    CRC32_messages_reportFC78AF9B = -59199589; // fc78af9b
     CRC32_messages_getChats = 1240027791; // 49e9528f
     CRC32_messages_getFullChat = -1364194508; // aeb00b34
     CRC32_messages_editChatTitle = 1937260541; // 73783ffd
@@ -2322,7 +2336,8 @@ enum TLConstructor {
     CRC32_payments_getStarsTransactions_69da4557 = 1775912279; // 69da4557
     CRC32_payments_getStarsTransactions_97938d5a = -1751937702; // 97938d5a
     CRC32_payments_getStarsTransactions_673ac2f9 = 1731904249; // 673ac2f9
-    CRC32_payments_sendStarsForm = 45839133; // 2bb731d
+    CRC32_payments_sendStarsForm_7998c914 = 2040056084; // 7998c914
+    CRC32_payments_sendStarsForm_2bb731d = 45839133; // 2bb731d
     CRC32_payments_refundStarsCharge = 632196938; // 25ae8f4a
     CRC32_payments_getStarsRevenueStats = -652215594; // d91ffad6
     CRC32_payments_getStarsRevenueWithdrawalUrl = 331081907; // 13bbe8b3
@@ -2333,6 +2348,10 @@ enum TLConstructor {
     CRC32_payments_changeStarsSubscription = -948500360; // c7770878
     CRC32_payments_fulfillStarsSubscription = -866391117; // cc5bebb3
     CRC32_payments_getStarsGiveawayOptions = -1122042562; // bd1efd3e
+    CRC32_payments_getStarGifts = -1000983152; // c4563590
+    CRC32_payments_getUserStarGifts = 1584580577; // 5e72c7e1
+    CRC32_payments_saveStarGift = -2018709362; // 87acf08e
+    CRC32_payments_convertStarGift = 69328935; // 421e027
     CRC32_stickers_createStickerSet = -1876841625; // 9021ab67
     CRC32_stickers_removeStickerFromSet = -143257775; // f7760f51
     CRC32_stickers_changeStickerPosition = -4795190; // ffb6d4ca
@@ -2438,8 +2457,7 @@ enum TLConstructor {
     CRC32_stories_getStoriesViews_9a75d6a6 = -1703553370; // 9a75d6a6
     CRC32_stories_exportStoryLink_7b8def20 = 2072899360; // 7b8def20
     CRC32_stories_exportStoryLink_16e443ce = 384058318; // 16e443ce
-    CRC32_stories_report_1923fa8c = 421788300; // 1923fa8c
-    CRC32_stories_report_c95be06a = -916725654; // c95be06a
+    CRC32_stories_report19D8EB45 = 433646405; // 19d8eb45
     CRC32_stories_activateStealthMode = 1471926630; // 57bbd166
     CRC32_stories_sendReaction_7fd736b2 = 2144810674; // 7fd736b2
     CRC32_stories_sendReaction_49aaa9b3 = 1235921331; // 49aaa9b3
@@ -2464,6 +2482,8 @@ enum TLConstructor {
     CRC32_smsjobs_getSmsJob = 2005766191; // 778d902f
     CRC32_smsjobs_finishJob = 1327415076; // 4f1ebf24
     CRC32_fragment_getCollectibleInfo = -1105295942; // be1e85ba
+    CRC32_messages_report8953AB4E = -1991005362; // 8953ab4e
+    CRC32_stories_report1923FA8C = 421788300; // 1923fa8c
     CRC32_messages_requestSimpleWebView1A46500A = 440815626; // 1a46500a
     CRC32_messages_requestAppWebView8C5A3B3C = -1940243652; // 8c5a3b3c
     CRC32_messages_addChatUserF24753E3 = -230206493; // f24753e3
@@ -2481,6 +2501,7 @@ enum TLConstructor {
     CRC32_contacts_toggleStoriesHidden = 1967110245; // 753fb865
     CRC32_stories_getUserStories = -1764415264; // 96d528e0
     CRC32_stories_getAllReadUserStories = 1922848300; // 729c562c
+    CRC32_stories_reportC95BE06A = -916725654; // c95be06a
     CRC32_messages_requestSimpleWebView299BEC8E = 698084494; // 299bec8e
     CRC32_messages_getAllChats = -2023787330; // 875f74be
     CRC32_bots_getBotInfo75EC12E6 = 1978405606; // 75ec12e6
