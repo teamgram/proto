@@ -1194,11 +1194,11 @@ message TL_messages_getPeerSettings {
     InputPeer peer = 3;
 }
 
-message TL_messages_report {
+message TL_messages_reportFC78AF9B {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     repeated int32 id = 4;
-    ReportReason reason = 5;
+    bytes option = 5;
     string message = 6;
 }
 
@@ -3607,6 +3607,31 @@ message TL_payments_getStarsGiveawayOptions {
     TLConstructor  constructor = 1;
 }
 
+message TL_payments_getStarGifts {
+    TLConstructor  constructor = 1;
+    int32 hash = 3;
+}
+
+message TL_payments_getUserStarGifts {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
+    string offset = 4;
+    int32 limit = 5;
+}
+
+message TL_payments_saveStarGift {
+    TLConstructor  constructor = 1;
+    bool unsave = 3;
+    InputUser user_id = 4;
+    int32 msg_id = 5;
+}
+
+message TL_payments_convertStarGift {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
+    int32 msg_id = 4;
+}
+
 message TL_stickers_createStickerSet {
     TLConstructor  constructor = 1;
     bool masks = 3;
@@ -4178,13 +4203,12 @@ message TL_stories_exportStoryLink {
     InputUser user_id = 5;
 }
 
-message TL_stories_report {
+message TL_stories_report19D8EB45 {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     repeated int32 id = 4;
-    ReportReason reason = 5;
+    bytes option = 5;
     string message = 6;
-    InputUser user_id = 7;
 }
 
 message TL_stories_activateStealthMode {
@@ -4316,6 +4340,22 @@ message TL_fragment_getCollectibleInfo {
     InputCollectible collectible = 3;
 }
 
+message TL_messages_report8953AB4E {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    repeated int32 id = 4;
+    ReportReason reason = 5;
+    string message = 6;
+}
+
+message TL_stories_report1923FA8C {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    repeated int32 id = 4;
+    ReportReason reason = 5;
+    string message = 6;
+}
+
 message TL_messages_requestSimpleWebView1A46500A {
     TLConstructor  constructor = 1;
     bool from_switch_webview = 3;
@@ -4422,6 +4462,14 @@ message TL_stories_getUserStories {
 
 message TL_stories_getAllReadUserStories {
     TLConstructor  constructor = 1;
+}
+
+message TL_stories_reportC95BE06A {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
+    repeated int32 id = 4;
+    ReportReason reason = 5;
+    string message = 6;
 }
 
 message TL_messages_requestSimpleWebView299BEC8E {
@@ -5359,9 +5407,10 @@ service RPCReports {
     rpc account_reportPeer(TL_account_reportPeer) returns (Bool) {}
     rpc account_reportProfilePhoto(TL_account_reportProfilePhoto) returns (Bool) {}
     rpc messages_reportSpam(TL_messages_reportSpam) returns (Bool) {}
-    rpc messages_report(TL_messages_report) returns (Bool) {}
+    rpc messages_reportFC78AF9B(TL_messages_reportFC78AF9B) returns (ReportResult) {}
     rpc messages_reportEncryptedSpam(TL_messages_reportEncryptedSpam) returns (Bool) {}
     rpc channels_reportSpam(TL_channels_reportSpam) returns (Bool) {}
+    rpc messages_report8953AB4E(TL_messages_report8953AB4E) returns (Bool) {}
 }
 
 service RPCRingtone {
@@ -5447,12 +5496,17 @@ service RPCStars {
     rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
     rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
     rpc payments_getStarsGiveawayOptions(TL_payments_getStarsGiveawayOptions) returns (Vector_StarsGiveawayOption) {}
+    rpc payments_getStarGifts(TL_payments_getStarGifts) returns (payments_StarGifts) {}
+    rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
+    rpc payments_saveStarGift(TL_payments_saveStarGift) returns (Bool) {}
+    rpc payments_convertStarGift(TL_payments_convertStarGift) returns (Bool) {}
 }
 
 service RPCStatistics {
     rpc stats_getBroadcastStats(TL_stats_getBroadcastStats) returns (stats_BroadcastStats) {}
     rpc stats_loadAsyncGraph(TL_stats_loadAsyncGraph) returns (StatsGraph) {}
     rpc stats_getMegagroupStats(TL_stats_getMegagroupStats) returns (stats_MegagroupStats) {}
+    rpc stats_getMessagePublicForwards5F150144(TL_stats_getMessagePublicForwards5F150144) returns (stats_PublicForwards) {}
     rpc stats_getMessageStats(TL_stats_getMessageStats) returns (stats_MessageStats) {}
     rpc stats_getStoryStats(TL_stats_getStoryStats) returns (stats_StoryStats) {}
     rpc stats_getStoryPublicForwards(TL_stats_getStoryPublicForwards) returns (stats_PublicForwards) {}
@@ -5510,7 +5564,7 @@ service RPCStories {
     rpc stories_getStoryViewsList(TL_stories_getStoryViewsList) returns (stories_StoryViewsList) {}
     rpc stories_getStoriesViews(TL_stories_getStoriesViews) returns (stories_StoryViews) {}
     rpc stories_exportStoryLink(TL_stories_exportStoryLink) returns (ExportedStoryLink) {}
-    rpc stories_report(TL_stories_report) returns (Bool) {}
+    rpc stories_report19D8EB45(TL_stories_report19D8EB45) returns (ReportResult) {}
     rpc stories_activateStealthMode(TL_stories_activateStealthMode) returns (Updates) {}
     rpc stories_sendReaction(TL_stories_sendReaction) returns (Updates) {}
     rpc stories_getPeerStories(TL_stories_getPeerStories) returns (stories_PeerStories) {}
@@ -5521,10 +5575,12 @@ service RPCStories {
     rpc stories_getStoryReactionsList(TL_stories_getStoryReactionsList) returns (stories_StoryReactionsList) {}
     rpc stories_togglePinnedToTop(TL_stories_togglePinnedToTop) returns (Bool) {}
     rpc stories_searchPosts(TL_stories_searchPosts) returns (stories_FoundStories) {}
+    rpc stories_report1923FA8C(TL_stories_report1923FA8C) returns (Bool) {}
     rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
     rpc contacts_toggleStoriesHidden(TL_contacts_toggleStoriesHidden) returns (Bool) {}
     rpc stories_getUserStories(TL_stories_getUserStories) returns (stories_UserStories) {}
     rpc stories_getAllReadUserStories(TL_stories_getAllReadUserStories) returns (Updates) {}
+    rpc stories_reportC95BE06A(TL_stories_reportC95BE06A) returns (Bool) {}
 }
 
 service RPCTakeout {
@@ -5648,9 +5704,5 @@ service RPCWebPage {
 
 service RPCBiz {
     rpc biz_invokeBizDataRaw(TL_biz_invokeBizDataRaw) returns (BizDataRaw) {}
-}
-
-service RPCStats {
-    rpc stats_getMessagePublicForwards5F150144(TL_stats_getMessagePublicForwards5F150144) returns (stats_PublicForwards) {}
 }
 
