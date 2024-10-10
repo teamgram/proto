@@ -11940,6 +11940,7 @@ message UserData {
     PeerColor profile_color = 28;
     int32 stories_max_id = 29;
     string birthday = 30;
+    int64 personal_channel_id = 31;
 }
 
 // TL_userData
