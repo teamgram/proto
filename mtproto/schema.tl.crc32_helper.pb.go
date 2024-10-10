@@ -1681,7 +1681,7 @@ const (
 	CRC32_privacyKeyRules                                             TLConstructor = -1810715178 // 0x9412add6
 	CRC32_contactData                                                 TLConstructor = -858039014  // 0xccdb5d1a
 	CRC32_botData                                                     TLConstructor = -319608864  // 0xecf327e0
-	CRC32_userData                                                    TLConstructor = 509150835   // 0x1e590673
+	CRC32_userData                                                    TLConstructor = 1396316255  // 0x533a185f
 	CRC32_immutableUser                                               TLConstructor = 972235212   // 0x39f321cc
 	CRC32_mutableUsers                                                TLConstructor = 917538818   // 0x36b08802
 	CRC32_immutableChatParticipant                                    TLConstructor = -100771298  // 0xf9fe5a1e
