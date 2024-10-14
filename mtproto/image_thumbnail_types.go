@@ -20,6 +20,7 @@ const (
 	PhotoSZDSize        = 1280
 	PhotoSZUSize        = 320
 	PhotoSZVSize        = 800
+	PhotoSZFSize        = 512
 )
 
 const (
@@ -37,6 +38,7 @@ const (
 	PhotoSZDType        = "d"
 	VideoSZUType        = "u"
 	VideoSZVType        = "v"
+	VideoSZFType        = "f"
 )
 
 const (
@@ -54,6 +56,7 @@ const (
 	PhotoSZPathLocalId     = 11
 	PhotoSZWLargeLocalId   = 12
 	PhotoSZDLocalId        = 13
+	VideoSZFLocalId        = 14
 )
 
 func PhotoSizeIsVideo(t string) bool {
@@ -61,6 +64,8 @@ func PhotoSizeIsVideo(t string) bool {
 	case VideoSZUType:
 		return true
 	case VideoSZVType:
+		return true
+	case VideoSZFType:
 		return true
 	}
 	return false
@@ -71,6 +76,8 @@ func LocalIdIsVideo(localId int) bool {
 	case VideoSZULocalId:
 		return true
 	case VideoSZVLocalId:
+		return true
+	case VideoSZFLocalId:
 		return true
 	}
 	return false
@@ -106,6 +113,8 @@ func GetSizeTypeByLocalId(localId int) string {
 		return VideoSZUType
 	case VideoSZVLocalId:
 		return VideoSZVType
+	case VideoSZFLocalId:
+		return VideoSZFType
 	}
 
 	return ""
@@ -141,6 +150,8 @@ func GetSizeLocalIdByType(t string) int {
 		return VideoSZULocalId
 	case VideoSZVType:
 		return VideoSZVLocalId
+	case VideoSZFType:
+		return VideoSZFLocalId
 	}
 
 	return -1
