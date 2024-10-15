@@ -2099,6 +2099,10 @@ var (
 	// ErrBotPaymentsDisabled
 	// | 400 | BOT_PAYMENTS_DISABLED | Please enable bot payments in botfather before calling this method. |
 	ErrBotPaymentsDisabled = status.Error(ErrBadRequest, "BOT_PAYMENTS_DISABLED")
+
+	// ErrMessageNotReadYet
+	// 400	MESSAGE_NOT_READ_YET	The specified message wasn't read yet.
+	ErrMessageNotReadYet = status.Error(ErrBadRequest, "MESSAGE_NOT_READ_YET")
 )
 
 // 401 UNAUTHORIZED
