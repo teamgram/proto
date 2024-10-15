@@ -198,16 +198,7 @@ func IsNewGifDocument(document *Document) bool {
 	return false
 }
 
-// GetDocumentAttribute
-/*
-documentAttributeImageSize#6c37c15c w:int h:int = DocumentAttribute;
-documentAttributeAnimated#11b58939 = DocumentAttribute;
-documentAttributeSticker#6319d612 flags:# mask:flags.1?true alt:string stickerset:InputStickerSet mask_coords:flags.0?MaskCoords = DocumentAttribute;
-documentAttributeVideo#ef02ce6 flags:# round_message:flags.0?true supports_streaming:flags.1?true duration:int w:int h:int = DocumentAttribute;
-documentAttributeAudio#9852f9c6 flags:# voice:flags.10?true duration:int title:flags.0?string performer:flags.1?string waveform:flags.2?bytes = DocumentAttribute;
-documentAttributeFilename#15590068 file_name:string = DocumentAttribute;
-documentAttributeHasStickers#9801d2f7 = DocumentAttribute;
-*/
+// GetDocumentAttribute - get document attribute by name
 func GetDocumentAttribute(attributes []*DocumentAttribute, name string) (attribute *DocumentAttribute) {
 	for _, a := range attributes {
 		if a.PredicateName == name {
@@ -231,6 +222,9 @@ func GetDocumentAttribute(attributes []*DocumentAttribute, name string) (attribu
 				attribute = a
 				break
 			case Predicate_documentAttributeHasStickers:
+				attribute = a
+				break
+			case Predicate_documentAttributeCustomEmoji:
 				attribute = a
 				break
 			}
