@@ -268,6 +268,7 @@ const (
 	CRC32_messageActionChatJoinedByRequest                            TLConstructor = -339958837  // ebbca3cb
 	CRC32_messageActionWebViewDataSentMe                              TLConstructor = 1205698681  // 47dd8079
 	CRC32_messageActionWebViewDataSent                                TLConstructor = -1262252875 // b4c38cb5
+	CRC32_messageActionGiftPremium_6c6274fa                           TLConstructor = 1818391802  // 6c6274fa
 	CRC32_messageActionGiftPremium_c83d6aec                           TLConstructor = -935499028  // c83d6aec
 	CRC32_messageActionGiftPremium_aba0f5c6                           TLConstructor = -1415514682 // aba0f5c6
 	CRC32_messageActionTopicCreate                                    TLConstructor = 228168278   // d999256
@@ -278,6 +279,7 @@ const (
 	CRC32_messageActionRequestedPeer_fe77345d                         TLConstructor = -25742243   // fe77345d
 	CRC32_messageActionSetChatWallPaper_5060a3f4                      TLConstructor = 1348510708  // 5060a3f4
 	CRC32_messageActionSetChatWallPaper_bc44a927                      TLConstructor = -1136350937 // bc44a927
+	CRC32_messageActionGiftCode_56d03994                              TLConstructor = 1456486804  // 56d03994
 	CRC32_messageActionGiftCode_678c2e09                              TLConstructor = 1737240073  // 678c2e09
 	CRC32_messageActionGiftCode_d2cfdb0e                              TLConstructor = -758129906  // d2cfdb0e
 	CRC32_messageActionGiveawayLaunch_a80f51e4                        TLConstructor = -1475391004 // a80f51e4
@@ -1360,7 +1362,8 @@ const (
 	CRC32_help_premiumPromo_8a4f3c29                                  TLConstructor = -1974518743 // 8a4f3c29
 	CRC32_inputStorePaymentPremiumSubscription                        TLConstructor = -1502273946 // a6751e66
 	CRC32_inputStorePaymentGiftPremium                                TLConstructor = 1634697192  // 616f7fe8
-	CRC32_inputStorePaymentPremiumGiftCode                            TLConstructor = -1551868097 // a3805f3f
+	CRC32_inputStorePaymentPremiumGiftCode_fb790393                   TLConstructor = -75955309   // fb790393
+	CRC32_inputStorePaymentPremiumGiftCode_a3805f3f                   TLConstructor = -1551868097 // a3805f3f
 	CRC32_inputStorePaymentPremiumGiveaway_160544ca                   TLConstructor = 369444042   // 160544ca
 	CRC32_inputStorePaymentPremiumGiveaway_7c9375e6                   TLConstructor = 2090038758  // 7c9375e6
 	CRC32_inputStorePaymentStarsTopup                                 TLConstructor = -572715178  // dddd0f56

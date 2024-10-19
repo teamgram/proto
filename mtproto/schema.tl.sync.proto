@@ -5167,6 +5167,7 @@ message TL_inputStickeredMediaDocument {
 //  + TL_inputStorePaymentStarsTopup
 //  + TL_inputStorePaymentStarsGift
 //  + TL_inputStorePaymentStarsGiveaway
+//  + TL_inputStorePaymentPremiumGiftCode
 //  + TL_inputStorePaymentStars
 //  + TL_inputStorePaymentPremiumGiveaway
 //
@@ -5180,15 +5181,16 @@ message InputStorePaymentPurpose {
     int64 amount = 7;
     repeated InputUser users_VECTORINPUTUSER = 8;
     InputPeer boost_peer = 9;
-    bool only_new_subscribers = 10;
-    bool winners_are_visible = 11;
-    repeated InputPeer additional_peers = 12;
-    repeated string countries_iso2 = 13;
-    google.protobuf.StringValue prize_description = 14;
-    int64 random_id = 15;
-    int32 until_date = 16;
-    int64 stars = 17;
-    int32 users_INT32 = 18;
+    TextWithEntities message = 10;
+    bool only_new_subscribers = 11;
+    bool winners_are_visible = 12;
+    repeated InputPeer additional_peers = 13;
+    repeated string countries_iso2 = 14;
+    google.protobuf.StringValue prize_description = 15;
+    int64 random_id = 16;
+    int32 until_date = 17;
+    int64 stars = 18;
+    int32 users_INT32 = 19;
 }
 
 // TL_inputStorePaymentPremiumSubscription
@@ -5973,6 +5975,8 @@ message TL_messageService {
 //  + TL_messageActionGiftStars
 //  + TL_messageActionPrizeStars
 //  + TL_messageActionStarGift
+//  + TL_messageActionGiftPremium
+//  + TL_messageActionGiftCode
 //  + TL_messageActionGiveawayLaunch
 //  + TL_messageActionGiveawayResults
 //  + TL_messageActionRequestedPeer
@@ -6034,38 +6038,38 @@ message MessageAction {
     int32 months = 44;
     google.protobuf.StringValue crypto_currency = 45;
     google.protobuf.Int64Value crypto_amount = 46;
-    int32 icon_color = 47;
-    google.protobuf.Int64Value icon_emoji_id = 48;
-    google.protobuf.StringValue title_FLAGSTRING = 49;
-    Bool closed = 50;
-    Bool hidden = 51;
-    int32 button_id = 52;
-    repeated Peer peers_VECTORPEER = 53;
-    bool same = 54;
-    bool for_both = 55;
-    WallPaper wallpaper = 56;
-    bool via_giveaway = 57;
-    bool unclaimed = 58;
-    Peer boost_peer = 59;
-    string slug = 60;
-    google.protobuf.StringValue currency_FLAGSTRING = 61;
-    google.protobuf.Int64Value amount_FLAGINT64 = 62;
-    google.protobuf.Int64Value stars_FLAGINT64 = 63;
-    bool stars_FLAGBOOLEAN = 64;
-    int32 winners_count = 65;
-    int32 unclaimed_count = 66;
-    int32 boosts = 67;
-    repeated RequestedPeer peers_VECTORREQUESTEDPEER = 68;
-    Peer peer = 69;
-    int64 stars_INT64 = 70;
-    google.protobuf.StringValue transaction_id_FLAGSTRING = 71;
-    string transaction_id_STRING = 72;
-    int32 giveaway_msg_id = 73;
-    bool name_hidden = 74;
-    bool saved = 75;
-    bool converted = 76;
-    StarGift gift = 77;
-    TextWithEntities message_FLAGTEXTWITHENTITIES = 78;
+    TextWithEntities message_FLAGTEXTWITHENTITIES = 47;
+    int32 icon_color = 48;
+    google.protobuf.Int64Value icon_emoji_id = 49;
+    google.protobuf.StringValue title_FLAGSTRING = 50;
+    Bool closed = 51;
+    Bool hidden = 52;
+    int32 button_id = 53;
+    repeated Peer peers_VECTORPEER = 54;
+    bool same = 55;
+    bool for_both = 56;
+    WallPaper wallpaper = 57;
+    bool via_giveaway = 58;
+    bool unclaimed = 59;
+    Peer boost_peer = 60;
+    string slug = 61;
+    google.protobuf.StringValue currency_FLAGSTRING = 62;
+    google.protobuf.Int64Value amount_FLAGINT64 = 63;
+    google.protobuf.Int64Value stars_FLAGINT64 = 64;
+    bool stars_FLAGBOOLEAN = 65;
+    int32 winners_count = 66;
+    int32 unclaimed_count = 67;
+    int32 boosts = 68;
+    repeated RequestedPeer peers_VECTORREQUESTEDPEER = 69;
+    Peer peer = 70;
+    int64 stars_INT64 = 71;
+    google.protobuf.StringValue transaction_id_FLAGSTRING = 72;
+    string transaction_id_STRING = 73;
+    int32 giveaway_msg_id = 74;
+    bool name_hidden = 75;
+    bool saved = 76;
+    bool converted = 77;
+    StarGift gift = 78;
     int64 convert_stars = 79;
     string domain_STRING = 80;
     BizDataRaw biz_data = 81;
