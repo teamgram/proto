@@ -6537,6 +6537,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1035529315
 		return o
 	},
+	1237678029: func() TLObject { // 0x49c577cd
+		o := MakeTLStarGift(nil)
+		o.Data2.Constructor = 1237678029
+		return o
+	},
 	-1365150482: func() TLObject { // 0xaea174ee
 		o := MakeTLStarGift(nil)
 		o.Data2.Constructor = -1365150482
@@ -6575,6 +6580,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	198776256: func() TLObject { // 0xbd915c0
 		o := MakeTLStarsTopupOption(nil)
 		o.Data2.Constructor = 198776256
+		return o
+	},
+	903148150: func() TLObject { // 0x35d4f276
+		o := MakeTLStarsTransaction(nil)
+		o.Data2.Constructor = 903148150
 		return o
 	},
 	178185410: func() TLObject { // 0xa9ee4c2
@@ -6640,6 +6650,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	1617438738: func() TLObject { // 0x60682812
 		o := MakeTLStarsTransactionPeerAds(nil)
 		o.Data2.Constructor = 1617438738
+		return o
+	},
+	-110658899: func() TLObject { // 0xf9677aad
+		o := MakeTLStarsTransactionPeerAPI(nil)
+		o.Data2.Constructor = -110658899
 		return o
 	},
 	-884757282: func() TLObject { // 0xcb43acde
@@ -7490,6 +7505,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	967122427: func() TLObject { // 0x39a51dfb
 		o := MakeTLUpdateNewScheduledMessage(nil)
 		o.Data2.Constructor = 967122427
+		return o
+	},
+	-223929981: func() TLObject { // 0xf2a71983
+		o := MakeTLUpdateDeleteScheduledMessages(nil)
+		o.Data2.Constructor = -223929981
 		return o
 	},
 	-1870238482: func() TLObject { // 0x90866cee
@@ -10729,6 +10749,26 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 1193563562,
 		}
 	},
+	1731909873: func() TLObject { // 0x673ad8f1
+		return &TLMessagesViewSponsoredMessage{
+			Constructor: 1731909873,
+		}
+	},
+	252261477: func() TLObject { // 0xf093465
+		return &TLMessagesClickSponsoredMessage{
+			Constructor: 252261477,
+		}
+	},
+	452189112: func() TLObject { // 0x1af3dbb8
+		return &TLMessagesReportSponsoredMessage{
+			Constructor: 452189112,
+		}
+	},
+	-1680673735: func() TLObject { // 0x9bd2f439
+		return &TLMessagesGetSponsoredMessages{
+			Constructor: -1680673735,
+		}
+	},
 	-304838614: func() TLObject { // 0xedd4882a
 		return &TLUpdatesGetState{
 			Constructor: -304838614,
@@ -11174,16 +11214,6 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 187239529,
 		}
 	},
-	-1095836780: func() TLObject { // 0xbeaedb94
-		return &TLChannelsViewSponsoredMessage{
-			Constructor: -1095836780,
-		}
-	},
-	-333377601: func() TLObject { // 0xec210fbf
-		return &TLChannelsGetSponsoredMessages{
-			Constructor: -333377601,
-		}
-	},
 	231174382: func() TLObject { // 0xdc770ee
 		return &TLChannelsGetSendAs{
 			Constructor: 231174382,
@@ -11279,16 +11309,6 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 1785624660,
 		}
 	},
-	21257589: func() TLObject { // 0x1445d75
-		return &TLChannelsClickSponsoredMessage{
-			Constructor: 21257589,
-		}
-	},
-	414170259: func() TLObject { // 0x18afbc93
-		return &TLChannelsClickSponsoredMessage{
-			Constructor: 414170259,
-		}
-	},
 	-659933583: func() TLObject { // 0xd8aa3671
 		return &TLChannelsUpdateColor{
 			Constructor: -659933583,
@@ -11327,11 +11347,6 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	1020866743: func() TLObject { // 0x3cd930b7
 		return &TLChannelsSetEmojiStickers{
 			Constructor: 1020866743,
-		}
-	},
-	-1349519687: func() TLObject { // 0xaf8ff6b9
-		return &TLChannelsReportSponsoredMessage{
-			Constructor: -1349519687,
 		}
 	},
 	-1696000743: func() TLObject { // 0x9ae91519
@@ -11979,14 +11994,29 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -1505526026,
 		}
 	},
+	-142021095: func() TLObject { // 0xf788ee19
+		return &TLStatsGetBroadcastRevenueStats{
+			Constructor: -142021095,
+		}
+	},
 	1977595505: func() TLObject { // 0x75dfb671
 		return &TLStatsGetBroadcastRevenueStats{
 			Constructor: 1977595505,
 		}
 	},
+	-1644889427: func() TLObject { // 0x9df4faad
+		return &TLStatsGetBroadcastRevenueWithdrawalUrl{
+			Constructor: -1644889427,
+		}
+	},
 	711323507: func() TLObject { // 0x2a65ef73
 		return &TLStatsGetBroadcastRevenueWithdrawalUrl{
 			Constructor: 711323507,
+		}
+	},
+	1889078125: func() TLObject { // 0x70990b6d
+		return &TLStatsGetBroadcastRevenueTransactions{
+			Constructor: 1889078125,
 		}
 	},
 	6891535: func() TLObject { // 0x69280f
@@ -12264,6 +12294,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 187268763,
 		}
 	},
+	-780072697: func() TLObject { // 0xd1810907
+		return &TLStoriesSearchPosts{
+			Constructor: -780072697,
+		}
+	},
 	1827279210: func() TLObject { // 0x6cea116a
 		return &TLStoriesSearchPosts{
 			Constructor: 1827279210,
@@ -12332,6 +12367,31 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1105295942: func() TLObject { // 0xbe1e85ba
 		return &TLFragmentGetCollectibleInfo{
 			Constructor: -1105295942,
+		}
+	},
+	-1095836780: func() TLObject { // 0xbeaedb94
+		return &TLChannelsViewSponsoredMessage{
+			Constructor: -1095836780,
+		}
+	},
+	-333377601: func() TLObject { // 0xec210fbf
+		return &TLChannelsGetSponsoredMessages{
+			Constructor: -333377601,
+		}
+	},
+	21257589: func() TLObject { // 0x1445d75
+		return &TLChannelsClickSponsoredMessage{
+			Constructor: 21257589,
+		}
+	},
+	414170259: func() TLObject { // 0x18afbc93
+		return &TLChannelsClickSponsoredMessage{
+			Constructor: 414170259,
+		}
+	},
+	-1349519687: func() TLObject { // 0xaf8ff6b9
+		return &TLChannelsReportSponsoredMessage{
+			Constructor: -1349519687,
 		}
 	},
 	-1991005362: func() TLObject { // 0x8953ab4e

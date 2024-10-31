@@ -522,6 +522,10 @@ func MakePeerDialogId(peerType int32, peerId int64) int64 {
 	return id
 }
 
+func MakePeerUtilDialogId(peer *PeerUtil) int64 {
+	return MakePeerDialogId(peer.PeerType, peer.PeerId)
+}
+
 func GetPeerUtilByPeerDialogId(id int64) (int32, int64) {
 	if id > 0 {
 		return PEER_USER, id

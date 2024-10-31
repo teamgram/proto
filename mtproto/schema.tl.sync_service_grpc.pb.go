@@ -23367,11 +23367,15 @@ var RPCSmsjobs_ServiceDesc = grpc.ServiceDesc{
 
 const (
 	RPCSponsoredMessages_AccountToggleSponsoredMessages_FullMethodName    = "/mtproto.RPCSponsoredMessages/account_toggleSponsoredMessages"
+	RPCSponsoredMessages_MessagesViewSponsoredMessage_FullMethodName      = "/mtproto.RPCSponsoredMessages/messages_viewSponsoredMessage"
+	RPCSponsoredMessages_MessagesClickSponsoredMessage_FullMethodName     = "/mtproto.RPCSponsoredMessages/messages_clickSponsoredMessage"
+	RPCSponsoredMessages_MessagesReportSponsoredMessage_FullMethodName    = "/mtproto.RPCSponsoredMessages/messages_reportSponsoredMessage"
+	RPCSponsoredMessages_MessagesGetSponsoredMessages_FullMethodName      = "/mtproto.RPCSponsoredMessages/messages_getSponsoredMessages"
+	RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_FullMethodName = "/mtproto.RPCSponsoredMessages/channels_restrictSponsoredMessages"
 	RPCSponsoredMessages_ChannelsViewSponsoredMessage_FullMethodName      = "/mtproto.RPCSponsoredMessages/channels_viewSponsoredMessage"
 	RPCSponsoredMessages_ChannelsGetSponsoredMessages_FullMethodName      = "/mtproto.RPCSponsoredMessages/channels_getSponsoredMessages"
 	RPCSponsoredMessages_ChannelsClickSponsoredMessage_FullMethodName     = "/mtproto.RPCSponsoredMessages/channels_clickSponsoredMessage"
 	RPCSponsoredMessages_ChannelsReportSponsoredMessage_FullMethodName    = "/mtproto.RPCSponsoredMessages/channels_reportSponsoredMessage"
-	RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_FullMethodName = "/mtproto.RPCSponsoredMessages/channels_restrictSponsoredMessages"
 )
 
 // RPCSponsoredMessagesClient is the client API for RPCSponsoredMessages service.
@@ -23379,11 +23383,15 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCSponsoredMessagesClient interface {
 	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages, opts ...grpc.CallOption) (*Bool, error)
+	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage, opts ...grpc.CallOption) (*Bool, error)
+	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage, opts ...grpc.CallOption) (*Bool, error)
+	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage, opts ...grpc.CallOption) (*Channels_SponsoredMessageReportResult, error)
+	MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages, opts ...grpc.CallOption) (*Messages_SponsoredMessages, error)
+	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsViewSponsoredMessage(ctx context.Context, in *TLChannelsViewSponsoredMessage, opts ...grpc.CallOption) (*Bool, error)
 	ChannelsGetSponsoredMessages(ctx context.Context, in *TLChannelsGetSponsoredMessages, opts ...grpc.CallOption) (*Messages_SponsoredMessages, error)
 	ChannelsClickSponsoredMessage(ctx context.Context, in *TLChannelsClickSponsoredMessage, opts ...grpc.CallOption) (*Bool, error)
 	ChannelsReportSponsoredMessage(ctx context.Context, in *TLChannelsReportSponsoredMessage, opts ...grpc.CallOption) (*Channels_SponsoredMessageReportResult, error)
-	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCSponsoredMessagesClient struct {
@@ -23397,6 +23405,51 @@ func NewRPCSponsoredMessagesClient(cc grpc.ClientConnInterface) RPCSponsoredMess
 func (c *rPCSponsoredMessagesClient) AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCSponsoredMessages_AccountToggleSponsoredMessages_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSponsoredMessagesClient) MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCSponsoredMessages_MessagesViewSponsoredMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSponsoredMessagesClient) MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCSponsoredMessages_MessagesClickSponsoredMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSponsoredMessagesClient) MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage, opts ...grpc.CallOption) (*Channels_SponsoredMessageReportResult, error) {
+	out := new(Channels_SponsoredMessageReportResult)
+	err := c.cc.Invoke(ctx, RPCSponsoredMessages_MessagesReportSponsoredMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSponsoredMessagesClient) MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages, opts ...grpc.CallOption) (*Messages_SponsoredMessages, error) {
+	out := new(Messages_SponsoredMessages)
+	err := c.cc.Invoke(ctx, RPCSponsoredMessages_MessagesGetSponsoredMessages_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSponsoredMessagesClient) ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -23439,25 +23492,20 @@ func (c *rPCSponsoredMessagesClient) ChannelsReportSponsoredMessage(ctx context.
 	return out, nil
 }
 
-func (c *rPCSponsoredMessagesClient) ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages, opts ...grpc.CallOption) (*Updates, error) {
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCSponsoredMessagesServer is the server API for RPCSponsoredMessages service.
 // All implementations should embed UnimplementedRPCSponsoredMessagesServer
 // for forward compatibility
 type RPCSponsoredMessagesServer interface {
 	AccountToggleSponsoredMessages(context.Context, *TLAccountToggleSponsoredMessages) (*Bool, error)
+	MessagesViewSponsoredMessage(context.Context, *TLMessagesViewSponsoredMessage) (*Bool, error)
+	MessagesClickSponsoredMessage(context.Context, *TLMessagesClickSponsoredMessage) (*Bool, error)
+	MessagesReportSponsoredMessage(context.Context, *TLMessagesReportSponsoredMessage) (*Channels_SponsoredMessageReportResult, error)
+	MessagesGetSponsoredMessages(context.Context, *TLMessagesGetSponsoredMessages) (*Messages_SponsoredMessages, error)
+	ChannelsRestrictSponsoredMessages(context.Context, *TLChannelsRestrictSponsoredMessages) (*Updates, error)
 	ChannelsViewSponsoredMessage(context.Context, *TLChannelsViewSponsoredMessage) (*Bool, error)
 	ChannelsGetSponsoredMessages(context.Context, *TLChannelsGetSponsoredMessages) (*Messages_SponsoredMessages, error)
 	ChannelsClickSponsoredMessage(context.Context, *TLChannelsClickSponsoredMessage) (*Bool, error)
 	ChannelsReportSponsoredMessage(context.Context, *TLChannelsReportSponsoredMessage) (*Channels_SponsoredMessageReportResult, error)
-	ChannelsRestrictSponsoredMessages(context.Context, *TLChannelsRestrictSponsoredMessages) (*Updates, error)
 }
 
 // UnimplementedRPCSponsoredMessagesServer should be embedded to have forward compatible implementations.
@@ -23466,6 +23514,21 @@ type UnimplementedRPCSponsoredMessagesServer struct {
 
 func (UnimplementedRPCSponsoredMessagesServer) AccountToggleSponsoredMessages(context.Context, *TLAccountToggleSponsoredMessages) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountToggleSponsoredMessages not implemented")
+}
+func (UnimplementedRPCSponsoredMessagesServer) MessagesViewSponsoredMessage(context.Context, *TLMessagesViewSponsoredMessage) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesViewSponsoredMessage not implemented")
+}
+func (UnimplementedRPCSponsoredMessagesServer) MessagesClickSponsoredMessage(context.Context, *TLMessagesClickSponsoredMessage) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesClickSponsoredMessage not implemented")
+}
+func (UnimplementedRPCSponsoredMessagesServer) MessagesReportSponsoredMessage(context.Context, *TLMessagesReportSponsoredMessage) (*Channels_SponsoredMessageReportResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesReportSponsoredMessage not implemented")
+}
+func (UnimplementedRPCSponsoredMessagesServer) MessagesGetSponsoredMessages(context.Context, *TLMessagesGetSponsoredMessages) (*Messages_SponsoredMessages, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSponsoredMessages not implemented")
+}
+func (UnimplementedRPCSponsoredMessagesServer) ChannelsRestrictSponsoredMessages(context.Context, *TLChannelsRestrictSponsoredMessages) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsRestrictSponsoredMessages not implemented")
 }
 func (UnimplementedRPCSponsoredMessagesServer) ChannelsViewSponsoredMessage(context.Context, *TLChannelsViewSponsoredMessage) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsViewSponsoredMessage not implemented")
@@ -23478,9 +23541,6 @@ func (UnimplementedRPCSponsoredMessagesServer) ChannelsClickSponsoredMessage(con
 }
 func (UnimplementedRPCSponsoredMessagesServer) ChannelsReportSponsoredMessage(context.Context, *TLChannelsReportSponsoredMessage) (*Channels_SponsoredMessageReportResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsReportSponsoredMessage not implemented")
-}
-func (UnimplementedRPCSponsoredMessagesServer) ChannelsRestrictSponsoredMessages(context.Context, *TLChannelsRestrictSponsoredMessages) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChannelsRestrictSponsoredMessages not implemented")
 }
 
 // UnsafeRPCSponsoredMessagesServer may be embedded to opt out of forward compatibility for this service.
@@ -23508,6 +23568,96 @@ func _RPCSponsoredMessages_AccountToggleSponsoredMessages_Handler(srv interface{
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCSponsoredMessagesServer).AccountToggleSponsoredMessages(ctx, req.(*TLAccountToggleSponsoredMessages))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSponsoredMessages_MessagesViewSponsoredMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesViewSponsoredMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSponsoredMessagesServer).MessagesViewSponsoredMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSponsoredMessages_MessagesViewSponsoredMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSponsoredMessagesServer).MessagesViewSponsoredMessage(ctx, req.(*TLMessagesViewSponsoredMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSponsoredMessages_MessagesClickSponsoredMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesClickSponsoredMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSponsoredMessagesServer).MessagesClickSponsoredMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSponsoredMessages_MessagesClickSponsoredMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSponsoredMessagesServer).MessagesClickSponsoredMessage(ctx, req.(*TLMessagesClickSponsoredMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSponsoredMessages_MessagesReportSponsoredMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesReportSponsoredMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSponsoredMessagesServer).MessagesReportSponsoredMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSponsoredMessages_MessagesReportSponsoredMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSponsoredMessagesServer).MessagesReportSponsoredMessage(ctx, req.(*TLMessagesReportSponsoredMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSponsoredMessages_MessagesGetSponsoredMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetSponsoredMessages)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSponsoredMessagesServer).MessagesGetSponsoredMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSponsoredMessages_MessagesGetSponsoredMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSponsoredMessagesServer).MessagesGetSponsoredMessages(ctx, req.(*TLMessagesGetSponsoredMessages))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsRestrictSponsoredMessages)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSponsoredMessagesServer).ChannelsRestrictSponsoredMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSponsoredMessagesServer).ChannelsRestrictSponsoredMessages(ctx, req.(*TLChannelsRestrictSponsoredMessages))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -23584,24 +23734,6 @@ func _RPCSponsoredMessages_ChannelsReportSponsoredMessage_Handler(srv interface{
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLChannelsRestrictSponsoredMessages)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCSponsoredMessagesServer).ChannelsRestrictSponsoredMessages(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCSponsoredMessagesServer).ChannelsRestrictSponsoredMessages(ctx, req.(*TLChannelsRestrictSponsoredMessages))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCSponsoredMessages_ServiceDesc is the grpc.ServiceDesc for RPCSponsoredMessages service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -23612,6 +23744,26 @@ var RPCSponsoredMessages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "account_toggleSponsoredMessages",
 			Handler:    _RPCSponsoredMessages_AccountToggleSponsoredMessages_Handler,
+		},
+		{
+			MethodName: "messages_viewSponsoredMessage",
+			Handler:    _RPCSponsoredMessages_MessagesViewSponsoredMessage_Handler,
+		},
+		{
+			MethodName: "messages_clickSponsoredMessage",
+			Handler:    _RPCSponsoredMessages_MessagesClickSponsoredMessage_Handler,
+		},
+		{
+			MethodName: "messages_reportSponsoredMessage",
+			Handler:    _RPCSponsoredMessages_MessagesReportSponsoredMessage_Handler,
+		},
+		{
+			MethodName: "messages_getSponsoredMessages",
+			Handler:    _RPCSponsoredMessages_MessagesGetSponsoredMessages_Handler,
+		},
+		{
+			MethodName: "channels_restrictSponsoredMessages",
+			Handler:    _RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_Handler,
 		},
 		{
 			MethodName: "channels_viewSponsoredMessage",
@@ -23628,10 +23780,6 @@ var RPCSponsoredMessages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "channels_reportSponsoredMessage",
 			Handler:    _RPCSponsoredMessages_ChannelsReportSponsoredMessage_Handler,
-		},
-		{
-			MethodName: "channels_restrictSponsoredMessages",
-			Handler:    _RPCSponsoredMessages_ChannelsRestrictSponsoredMessages_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
