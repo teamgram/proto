@@ -1129,19 +1129,18 @@ message TL_messages_sendMessage {
     bool noforwards = 7;
     bool update_stickersets_order = 8;
     bool invert_media = 9;
-    bool allow_paid_floodskip = 10;
-    InputPeer peer = 11;
-    InputReplyTo reply_to = 12;
-    string message = 13;
-    int64 random_id = 14;
-    ReplyMarkup reply_markup = 15;
-    repeated MessageEntity entities = 16;
-    google.protobuf.Int32Value schedule_date = 17;
-    InputPeer send_as = 18;
-    InputQuickReplyShortcut quick_reply_shortcut = 19;
-    google.protobuf.Int64Value effect = 20;
-    google.protobuf.Int32Value reply_to_msg_id = 21;
-    google.protobuf.Int32Value top_msg_id = 22;
+    InputPeer peer = 10;
+    InputReplyTo reply_to = 11;
+    string message = 12;
+    int64 random_id = 13;
+    ReplyMarkup reply_markup = 14;
+    repeated MessageEntity entities = 15;
+    google.protobuf.Int32Value schedule_date = 16;
+    InputPeer send_as = 17;
+    InputQuickReplyShortcut quick_reply_shortcut = 18;
+    google.protobuf.Int64Value effect = 19;
+    google.protobuf.Int32Value reply_to_msg_id = 20;
+    google.protobuf.Int32Value top_msg_id = 21;
 }
 
 message TL_messages_sendMedia {
@@ -1152,20 +1151,19 @@ message TL_messages_sendMedia {
     bool noforwards = 6;
     bool update_stickersets_order = 7;
     bool invert_media = 8;
-    bool allow_paid_floodskip = 9;
-    InputPeer peer = 10;
-    InputReplyTo reply_to = 11;
-    InputMedia media = 12;
-    string message = 13;
-    int64 random_id = 14;
-    ReplyMarkup reply_markup = 15;
-    repeated MessageEntity entities = 16;
-    google.protobuf.Int32Value schedule_date = 17;
-    InputPeer send_as = 18;
-    InputQuickReplyShortcut quick_reply_shortcut = 19;
-    google.protobuf.Int64Value effect = 20;
-    google.protobuf.Int32Value reply_to_msg_id = 21;
-    google.protobuf.Int32Value top_msg_id = 22;
+    InputPeer peer = 9;
+    InputReplyTo reply_to = 10;
+    InputMedia media = 11;
+    string message = 12;
+    int64 random_id = 13;
+    ReplyMarkup reply_markup = 14;
+    repeated MessageEntity entities = 15;
+    google.protobuf.Int32Value schedule_date = 16;
+    InputPeer send_as = 17;
+    InputQuickReplyShortcut quick_reply_shortcut = 18;
+    google.protobuf.Int64Value effect = 19;
+    google.protobuf.Int32Value reply_to_msg_id = 20;
+    google.protobuf.Int32Value top_msg_id = 21;
 }
 
 message TL_messages_forwardMessages {
@@ -1176,15 +1174,14 @@ message TL_messages_forwardMessages {
     bool drop_author = 6;
     bool drop_media_captions = 7;
     bool noforwards = 8;
-    bool allow_paid_floodskip = 9;
-    InputPeer from_peer = 10;
-    repeated int32 id = 11;
-    repeated int64 random_id = 12;
-    InputPeer to_peer = 13;
-    google.protobuf.Int32Value top_msg_id = 14;
-    google.protobuf.Int32Value schedule_date = 15;
-    InputPeer send_as = 16;
-    InputQuickReplyShortcut quick_reply_shortcut = 17;
+    InputPeer from_peer = 9;
+    repeated int32 id = 10;
+    repeated int64 random_id = 11;
+    InputPeer to_peer = 12;
+    google.protobuf.Int32Value top_msg_id = 13;
+    google.protobuf.Int32Value schedule_date = 14;
+    InputPeer send_as = 15;
+    InputQuickReplyShortcut quick_reply_shortcut = 16;
 }
 
 message TL_messages_reportSpam {
@@ -1739,16 +1736,15 @@ message TL_messages_sendMultiMedia {
     bool noforwards = 6;
     bool update_stickersets_order = 7;
     bool invert_media = 8;
-    bool allow_paid_floodskip = 9;
-    InputPeer peer = 10;
-    InputReplyTo reply_to = 11;
-    repeated InputSingleMedia multi_media = 12;
-    google.protobuf.Int32Value schedule_date = 13;
-    InputPeer send_as = 14;
-    InputQuickReplyShortcut quick_reply_shortcut = 15;
-    google.protobuf.Int64Value effect = 16;
-    google.protobuf.Int32Value reply_to_msg_id = 17;
-    google.protobuf.Int32Value top_msg_id = 18;
+    InputPeer peer = 9;
+    InputReplyTo reply_to = 10;
+    repeated InputSingleMedia multi_media = 11;
+    google.protobuf.Int32Value schedule_date = 12;
+    InputPeer send_as = 13;
+    InputQuickReplyShortcut quick_reply_shortcut = 14;
+    google.protobuf.Int64Value effect = 15;
+    google.protobuf.Int32Value reply_to_msg_id = 16;
+    google.protobuf.Int32Value top_msg_id = 17;
 }
 
 message TL_messages_uploadEncryptedFile {
@@ -2607,32 +2603,6 @@ message TL_messages_getPaidReactionPrivacy {
     TLConstructor  constructor = 1;
 }
 
-message TL_messages_viewSponsoredMessage {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    bytes random_id = 4;
-}
-
-message TL_messages_clickSponsoredMessage {
-    TLConstructor  constructor = 1;
-    bool media = 3;
-    bool fullscreen = 4;
-    InputPeer peer = 5;
-    bytes random_id = 6;
-}
-
-message TL_messages_reportSponsoredMessage {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    bytes random_id = 4;
-    bytes option = 5;
-}
-
-message TL_messages_getSponsoredMessages {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-}
-
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3105,6 +3075,17 @@ message TL_channels_convertToGigagroup {
     InputChannel channel = 3;
 }
 
+message TL_channels_viewSponsoredMessage {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    bytes random_id = 4;
+}
+
+message TL_channels_getSponsoredMessages {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+}
+
 message TL_channels_getSendAs {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
@@ -3226,6 +3207,14 @@ message TL_channels_toggleParticipantsHidden {
     Bool enabled = 4;
 }
 
+message TL_channels_clickSponsoredMessage {
+    TLConstructor  constructor = 1;
+    bool media = 3;
+    bool fullscreen = 4;
+    InputChannel channel = 5;
+    bytes random_id = 6;
+}
+
 message TL_channels_updateColor {
     TLConstructor  constructor = 1;
     bool for_profile = 3;
@@ -3262,6 +3251,13 @@ message TL_channels_setEmojiStickers {
     TLConstructor  constructor = 1;
     InputChannel channel = 3;
     InputStickerSet stickerset = 4;
+}
+
+message TL_channels_reportSponsoredMessage {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    bytes random_id = 4;
+    bytes option = 5;
 }
 
 message TL_channels_restrictSponsoredMessages {
@@ -4006,23 +4002,20 @@ message TL_stats_getStoryPublicForwards {
 message TL_stats_getBroadcastRevenueStats {
     TLConstructor  constructor = 1;
     bool dark = 3;
-    InputPeer peer = 4;
-    InputChannel channel = 5;
+    InputChannel channel = 4;
 }
 
 message TL_stats_getBroadcastRevenueWithdrawalUrl {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
+    InputChannel channel = 3;
     InputCheckPasswordSRP password = 4;
-    InputChannel channel = 5;
 }
 
 message TL_stats_getBroadcastRevenueTransactions {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
+    InputChannel channel = 3;
     int32 offset = 4;
     int32 limit = 5;
-    InputChannel channel = 6;
 }
 
 message TL_chatlists_exportChatlistInvite {
@@ -4277,9 +4270,8 @@ message TL_stories_searchPosts {
     TLConstructor  constructor = 1;
     google.protobuf.StringValue hashtag = 3;
     MediaArea area = 4;
-    InputPeer peer = 5;
-    string offset = 6;
-    int32 limit = 7;
+    string offset = 5;
+    int32 limit = 6;
 }
 
 message TL_premium_getBoostsList {
@@ -4346,32 +4338,6 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
-}
-
-message TL_channels_viewSponsoredMessage {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    bytes random_id = 4;
-}
-
-message TL_channels_getSponsoredMessages {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-}
-
-message TL_channels_clickSponsoredMessage {
-    TLConstructor  constructor = 1;
-    bool media = 3;
-    bool fullscreen = 4;
-    InputChannel channel = 5;
-    bytes random_id = 6;
-}
-
-message TL_channels_reportSponsoredMessage {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    bytes random_id = 4;
-    bytes option = 5;
 }
 
 message TL_messages_report8953AB4E {
@@ -5508,15 +5474,11 @@ service RPCSmsjobs {
 
 service RPCSponsoredMessages {
     rpc account_toggleSponsoredMessages(TL_account_toggleSponsoredMessages) returns (Bool) {}
-    rpc messages_viewSponsoredMessage(TL_messages_viewSponsoredMessage) returns (Bool) {}
-    rpc messages_clickSponsoredMessage(TL_messages_clickSponsoredMessage) returns (Bool) {}
-    rpc messages_reportSponsoredMessage(TL_messages_reportSponsoredMessage) returns (channels_SponsoredMessageReportResult) {}
-    rpc messages_getSponsoredMessages(TL_messages_getSponsoredMessages) returns (messages_SponsoredMessages) {}
-    rpc channels_restrictSponsoredMessages(TL_channels_restrictSponsoredMessages) returns (Updates) {}
     rpc channels_viewSponsoredMessage(TL_channels_viewSponsoredMessage) returns (Bool) {}
     rpc channels_getSponsoredMessages(TL_channels_getSponsoredMessages) returns (messages_SponsoredMessages) {}
     rpc channels_clickSponsoredMessage(TL_channels_clickSponsoredMessage) returns (Bool) {}
     rpc channels_reportSponsoredMessage(TL_channels_reportSponsoredMessage) returns (channels_SponsoredMessageReportResult) {}
+    rpc channels_restrictSponsoredMessages(TL_channels_restrictSponsoredMessages) returns (Updates) {}
 }
 
 service RPCStars {

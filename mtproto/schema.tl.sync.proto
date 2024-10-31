@@ -5884,32 +5884,31 @@ message Message {
     bool noforwards = 14;
     bool invert_media = 15;
     bool offline = 16;
-    bool video_processing_pending = 17;
-    Peer from_id = 18;
-    google.protobuf.Int32Value from_boosts_applied = 19;
-    Peer saved_peer_id = 20;
-    MessageFwdHeader fwd_from = 21;
-    google.protobuf.Int64Value via_bot_id = 22;
-    google.protobuf.Int64Value via_business_bot_id = 23;
-    MessageReplyHeader reply_to = 24;
-    int32 date = 25;
-    string message = 26;
-    MessageMedia media = 27;
-    ReplyMarkup reply_markup = 28;
-    repeated MessageEntity entities = 29;
-    google.protobuf.Int32Value views = 30;
-    google.protobuf.Int32Value forwards = 31;
-    MessageReplies replies = 32;
-    google.protobuf.Int32Value edit_date = 33;
-    google.protobuf.StringValue post_author = 34;
-    google.protobuf.Int64Value grouped_id = 35;
-    MessageReactions reactions = 36;
-    repeated RestrictionReason restriction_reason = 37;
-    google.protobuf.Int32Value ttl_period = 38;
-    google.protobuf.Int32Value quick_reply_shortcut_id = 39;
-    google.protobuf.Int64Value effect = 40;
-    FactCheck factcheck = 41;
-    MessageAction action = 42;
+    Peer from_id = 17;
+    google.protobuf.Int32Value from_boosts_applied = 18;
+    Peer saved_peer_id = 19;
+    MessageFwdHeader fwd_from = 20;
+    google.protobuf.Int64Value via_bot_id = 21;
+    google.protobuf.Int64Value via_business_bot_id = 22;
+    MessageReplyHeader reply_to = 23;
+    int32 date = 24;
+    string message = 25;
+    MessageMedia media = 26;
+    ReplyMarkup reply_markup = 27;
+    repeated MessageEntity entities = 28;
+    google.protobuf.Int32Value views = 29;
+    google.protobuf.Int32Value forwards = 30;
+    MessageReplies replies = 31;
+    google.protobuf.Int32Value edit_date = 32;
+    google.protobuf.StringValue post_author = 33;
+    google.protobuf.Int64Value grouped_id = 34;
+    MessageReactions reactions = 35;
+    repeated RestrictionReason restriction_reason = 36;
+    google.protobuf.Int32Value ttl_period = 37;
+    google.protobuf.Int32Value quick_reply_shortcut_id = 38;
+    google.protobuf.Int64Value effect = 39;
+    FactCheck factcheck = 40;
+    MessageAction action = 41;
 }
 
 // TL_messageEmpty
@@ -9991,7 +9990,6 @@ message TL_starsTopupOption {
 //  + TL_starsTransaction
 //  + TL_starsTransaction
 //  + TL_starsTransaction
-//  + TL_starsTransaction
 //
 message StarsTransaction {
     string predicate_name = 1;
@@ -10016,7 +10014,6 @@ message StarsTransaction {
     google.protobuf.Int32Value subscription_period = 20;
     google.protobuf.Int32Value giveaway_post_id = 21;
     StarGift stargift = 22;
-    google.protobuf.Int32Value floodskip_number = 23;
 }
 
 // TL_starsTransaction
@@ -10033,7 +10030,6 @@ message TL_starsTransaction {
 //  + TL_starsTransactionPeerFragment
 //  + TL_starsTransactionPeer
 //  + TL_starsTransactionPeerAds
-//  + TL_starsTransactionPeerAPI
 //
 message StarsTransactionPeer {
     string predicate_name = 1;
@@ -10073,11 +10069,6 @@ message TL_starsTransactionPeer {
 
 // TL_starsTransactionPeerAds
 message TL_starsTransactionPeerAds {
-    StarsTransactionPeer data2 = 1;
-}
-
-// TL_starsTransactionPeerAPI
-message TL_starsTransactionPeerAPI {
     StarsTransactionPeer data2 = 1;
 }
 
@@ -10820,7 +10811,6 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateStarsRevenueStatus
 //  + TL_updateBotPurchasedPaidMedia
 //  + TL_updatePaidReactionPrivacy
-//  + TL_updateDeleteScheduledMessages
 //  + TL_updateMessageExtendedMedia
 //  + TL_updateGroupInvitePrivacyForbidden
 //  + TL_updateStory
@@ -10931,79 +10921,78 @@ message Update {
     repeated FolderPeer folder_peers = 90;
     PeerSettings settings = 91;
     repeated PeerLocated peers = 92;
-    repeated int32 sent_messages = 93;
-    Theme theme = 94;
-    repeated bytes options = 95;
-    DialogFilter filter = 96;
-    repeated int32 order_VECTORINT32 = 97;
-    int64 phone_call_id = 98;
-    int32 forwards = 99;
-    int32 top_msg_id_INT32 = 100;
-    int32 read_max_id = 101;
-    google.protobuf.Int64Value broadcast_id = 102;
-    google.protobuf.Int32Value broadcast_post = 103;
-    bool blocked_FLAGBOOLEAN = 104;
-    bool blocked_my_stories_from = 105;
-    Peer peer_id = 106;
-    InputGroupCall call_INPUTGROUPCALL = 107;
-    repeated GroupCallParticipant participants_VECTORGROUPCALLPARTICIPANT = 108;
-    GroupCall call_GROUPCALL = 109;
-    google.protobuf.Int32Value ttl_period = 110;
-    int64 actor_id = 111;
-    ChatParticipant prev_participant_FLAGCHATPARTICIPANT = 112;
-    ChatParticipant new_participant_FLAGCHATPARTICIPANT = 113;
-    ExportedChatInvite invite = 114;
-    bool via_chatlist = 115;
-    ChannelParticipant prev_participant_FLAGCHANNELPARTICIPANT = 116;
-    ChannelParticipant new_participant_FLAGCHANNELPARTICIPANT = 117;
-    Bool stopped = 118;
-    bool presentation = 119;
-    DataJSON params = 120;
-    int64 bot_id = 121;
-    repeated BotCommand commands = 122;
-    int32 requests_pending = 123;
-    repeated int64 recent_requesters = 124;
-    string about = 125;
-    MessageReactions reactions_MESSAGEREACTIONS = 126;
-    BotMenuButton button = 127;
-    bool pending = 128;
-    int64 transcription_id = 129;
-    string text = 130;
-    EmojiStatus emoji_status = 131;
-    int64 stickerset_INT64 = 132;
-    repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 133;
-    int32 topic_id_INT32 = 134;
-    StoryItem story = 135;
-    StoriesStealthMode stealth_mode = 136;
-    int32 story_id = 137;
-    Reaction reaction = 138;
-    Boost boost = 139;
-    Bool enabled = 140;
-    bool wallpaper_overridden = 141;
-    WallPaper wallpaper = 142;
-    Peer actor = 143;
-    repeated Reaction old_reactions = 144;
-    repeated Reaction new_reactions = 145;
-    repeated ReactionCount reactions_VECTORREACTIONCOUNT = 146;
-    string job_id = 147;
-    repeated QuickReply quick_replies = 148;
-    QuickReply quick_reply = 149;
-    int32 shortcut_id = 150;
-    BotBusinessConnection connection = 151;
-    string connection_id = 152;
-    Message reply_to_message = 153;
-    BroadcastRevenueBalances balances = 154;
-    int64 balance = 155;
-    StarsRevenueStatus status_STARSREVENUESTATUS = 156;
-    string payload_STRING = 157;
-    Bool private = 158;
-    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 159;
-    Bool blocked_BOOL = 160;
-    UserProfilePhoto photo = 161;
-    Bool previous = 162;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 163;
-    string username = 164;
-    BizDataRaw biz_data = 165;
+    Theme theme = 93;
+    repeated bytes options = 94;
+    DialogFilter filter = 95;
+    repeated int32 order_VECTORINT32 = 96;
+    int64 phone_call_id = 97;
+    int32 forwards = 98;
+    int32 top_msg_id_INT32 = 99;
+    int32 read_max_id = 100;
+    google.protobuf.Int64Value broadcast_id = 101;
+    google.protobuf.Int32Value broadcast_post = 102;
+    bool blocked_FLAGBOOLEAN = 103;
+    bool blocked_my_stories_from = 104;
+    Peer peer_id = 105;
+    InputGroupCall call_INPUTGROUPCALL = 106;
+    repeated GroupCallParticipant participants_VECTORGROUPCALLPARTICIPANT = 107;
+    GroupCall call_GROUPCALL = 108;
+    google.protobuf.Int32Value ttl_period = 109;
+    int64 actor_id = 110;
+    ChatParticipant prev_participant_FLAGCHATPARTICIPANT = 111;
+    ChatParticipant new_participant_FLAGCHATPARTICIPANT = 112;
+    ExportedChatInvite invite = 113;
+    bool via_chatlist = 114;
+    ChannelParticipant prev_participant_FLAGCHANNELPARTICIPANT = 115;
+    ChannelParticipant new_participant_FLAGCHANNELPARTICIPANT = 116;
+    Bool stopped = 117;
+    bool presentation = 118;
+    DataJSON params = 119;
+    int64 bot_id = 120;
+    repeated BotCommand commands = 121;
+    int32 requests_pending = 122;
+    repeated int64 recent_requesters = 123;
+    string about = 124;
+    MessageReactions reactions_MESSAGEREACTIONS = 125;
+    BotMenuButton button = 126;
+    bool pending = 127;
+    int64 transcription_id = 128;
+    string text = 129;
+    EmojiStatus emoji_status = 130;
+    int64 stickerset_INT64 = 131;
+    repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 132;
+    int32 topic_id_INT32 = 133;
+    StoryItem story = 134;
+    StoriesStealthMode stealth_mode = 135;
+    int32 story_id = 136;
+    Reaction reaction = 137;
+    Boost boost = 138;
+    Bool enabled = 139;
+    bool wallpaper_overridden = 140;
+    WallPaper wallpaper = 141;
+    Peer actor = 142;
+    repeated Reaction old_reactions = 143;
+    repeated Reaction new_reactions = 144;
+    repeated ReactionCount reactions_VECTORREACTIONCOUNT = 145;
+    string job_id = 146;
+    repeated QuickReply quick_replies = 147;
+    QuickReply quick_reply = 148;
+    int32 shortcut_id = 149;
+    BotBusinessConnection connection = 150;
+    string connection_id = 151;
+    Message reply_to_message = 152;
+    BroadcastRevenueBalances balances = 153;
+    int64 balance = 154;
+    StarsRevenueStatus status_STARSREVENUESTATUS = 155;
+    string payload_STRING = 156;
+    Bool private = 157;
+    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 158;
+    Bool blocked_BOOL = 159;
+    UserProfilePhoto photo = 160;
+    Bool previous = 161;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 162;
+    string username = 163;
+    BizDataRaw biz_data = 164;
 }
 
 // TL_updateNewMessage
@@ -11997,36 +11986,35 @@ message UserFull {
     bool contact_require_premium = 14;
     bool read_dates_private = 15;
     bool sponsored_enabled = 16;
-    bool can_view_revenue = 17;
-    int64 id = 18;
-    google.protobuf.StringValue about = 19;
-    PeerSettings settings = 20;
-    Photo personal_photo = 21;
-    Photo profile_photo = 22;
-    Photo fallback_photo = 23;
-    PeerNotifySettings notify_settings = 24;
-    BotInfo bot_info = 25;
-    google.protobuf.Int32Value pinned_msg_id = 26;
-    int32 common_chats_count = 27;
-    google.protobuf.Int32Value folder_id = 28;
-    google.protobuf.Int32Value ttl_period = 29;
-    google.protobuf.StringValue theme_emoticon = 30;
-    google.protobuf.StringValue private_forward_name = 31;
-    ChatAdminRights bot_group_admin_rights = 32;
-    ChatAdminRights bot_broadcast_admin_rights = 33;
-    repeated PremiumGiftOption premium_gifts = 34;
-    WallPaper wallpaper = 35;
-    PeerStories stories_FLAGPEERSTORIES = 36;
-    BusinessWorkHours business_work_hours = 37;
-    BusinessLocation business_location = 38;
-    BusinessGreetingMessage business_greeting_message = 39;
-    BusinessAwayMessage business_away_message = 40;
-    BusinessIntro business_intro = 41;
-    Birthday birthday = 42;
-    google.protobuf.Int64Value personal_channel_id = 43;
-    google.protobuf.Int32Value personal_channel_message = 44;
-    google.protobuf.Int32Value stargifts_count = 45;
-    UserStories stories_FLAGUSERSTORIES = 46;
+    int64 id = 17;
+    google.protobuf.StringValue about = 18;
+    PeerSettings settings = 19;
+    Photo personal_photo = 20;
+    Photo profile_photo = 21;
+    Photo fallback_photo = 22;
+    PeerNotifySettings notify_settings = 23;
+    BotInfo bot_info = 24;
+    google.protobuf.Int32Value pinned_msg_id = 25;
+    int32 common_chats_count = 26;
+    google.protobuf.Int32Value folder_id = 27;
+    google.protobuf.Int32Value ttl_period = 28;
+    google.protobuf.StringValue theme_emoticon = 29;
+    google.protobuf.StringValue private_forward_name = 30;
+    ChatAdminRights bot_group_admin_rights = 31;
+    ChatAdminRights bot_broadcast_admin_rights = 32;
+    repeated PremiumGiftOption premium_gifts = 33;
+    WallPaper wallpaper = 34;
+    PeerStories stories_FLAGPEERSTORIES = 35;
+    BusinessWorkHours business_work_hours = 36;
+    BusinessLocation business_location = 37;
+    BusinessGreetingMessage business_greeting_message = 38;
+    BusinessAwayMessage business_away_message = 39;
+    BusinessIntro business_intro = 40;
+    Birthday birthday = 41;
+    google.protobuf.Int64Value personal_channel_id = 42;
+    google.protobuf.Int32Value personal_channel_message = 43;
+    google.protobuf.Int32Value stargifts_count = 44;
+    UserStories stories_FLAGUSERSTORIES = 45;
 }
 
 // TL_userFull
