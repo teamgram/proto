@@ -463,8 +463,7 @@ enum TLConstructor {
     CRC32_updatePeerSettings = 1786671974; // 6a7e7366
     CRC32_updatePeerLocated = -1263546448; // b4afcfb0
     CRC32_updateNewScheduledMessage = 967122427; // 39a51dfb
-    CRC32_updateDeleteScheduledMessages_f2a71983 = -223929981; // f2a71983
-    CRC32_updateDeleteScheduledMessages_90866cee = -1870238482; // 90866cee
+    CRC32_updateDeleteScheduledMessages = -1870238482; // 90866cee
     CRC32_updateTheme = -2112423005; // 8216fba3
     CRC32_updateGeoLiveViewed = -2027964103; // 871fb939
     CRC32_updateLoginToken = 1448076945; // 564fe691
@@ -1610,9 +1609,7 @@ enum TLConstructor {
     CRC32_starsTransactionPeerFragment = -382740222; // e92fd902
     CRC32_starsTransactionPeer = -670195363; // d80da15d
     CRC32_starsTransactionPeerAds = 1617438738; // 60682812
-    CRC32_starsTransactionPeerAPI = -110658899; // f9677aad
     CRC32_starsTopupOption = 198776256; // bd915c0
-    CRC32_starsTransaction_35d4f276 = 903148150; // 35d4f276
     CRC32_starsTransaction_a9ee4c2 = 178185410; // a9ee4c2
     CRC32_starsTransaction_ee7522d5 = -294313259; // ee7522d5
     CRC32_starsTransaction_433aeb2b = 1127934763; // 433aeb2b
@@ -2168,10 +2165,6 @@ enum TLConstructor {
     CRC32_messages_sendPaidReaction_25c8fe3e = 633929278; // 25c8fe3e
     CRC32_messages_togglePaidReactionPrivacy = -2070228073; // 849ad397
     CRC32_messages_getPaidReactionPrivacy = 1193563562; // 472455aa
-    CRC32_messages_viewSponsoredMessage = 1731909873; // 673ad8f1
-    CRC32_messages_clickSponsoredMessage = 252261477; // f093465
-    CRC32_messages_reportSponsoredMessage = 452189112; // 1af3dbb8
-    CRC32_messages_getSponsoredMessages = -1680673735; // 9bd2f439
     CRC32_updates_getState = -304838614; // edd4882a
     CRC32_updates_getDifference_19c2f763 = 432207715; // 19c2f763
     CRC32_updates_getDifference_25939651 = 630429265; // 25939651
@@ -2261,6 +2254,8 @@ enum TLConstructor {
     CRC32_channels_toggleSlowMode = -304832784; // edd49ef0
     CRC32_channels_getInactiveChannels = 300429806; // 11e831ee
     CRC32_channels_convertToGigagroup = 187239529; // b290c69
+    CRC32_channels_viewSponsoredMessage = -1095836780; // beaedb94
+    CRC32_channels_getSponsoredMessages = -333377601; // ec210fbf
     CRC32_channels_getSendAs = 231174382; // dc770ee
     CRC32_channels_deleteParticipantHistory = 913655003; // 367544db
     CRC32_channels_toggleJoinToSend = -456419968; // e4cb9580
@@ -2280,6 +2275,8 @@ enum TLConstructor {
     CRC32_channels_toggleAntiSpam = 1760814315; // 68f3e4eb
     CRC32_channels_reportAntiSpamFalsePositive = -1471109485; // a850a693
     CRC32_channels_toggleParticipantsHidden = 1785624660; // 6a6e7854
+    CRC32_channels_clickSponsoredMessage_1445d75 = 21257589; // 1445d75
+    CRC32_channels_clickSponsoredMessage_18afbc93 = 414170259; // 18afbc93
     CRC32_channels_updateColor_d8aa3671 = -659933583; // d8aa3671
     CRC32_channels_updateColor_621a201f = 1645879327; // 621a201f
     CRC32_channels_toggleViewForumAsMessages = -1757889771; // 9738bb15
@@ -2288,6 +2285,7 @@ enum TLConstructor {
     CRC32_channels_updateEmojiStatus = -254548312; // f0d3e6a8
     CRC32_channels_setBoostsToUnblockRestrictions = -1388733202; // ad399cee
     CRC32_channels_setEmojiStickers = 1020866743; // 3cd930b7
+    CRC32_channels_reportSponsoredMessage = -1349519687; // af8ff6b9
     CRC32_channels_restrictSponsoredMessages = -1696000743; // 9ae91519
     CRC32_channels_searchPosts = -778069893; // d19f987b
     CRC32_bots_sendCustomRequest = -1440257555; // aa2769ed
@@ -2417,12 +2415,9 @@ enum TLConstructor {
     CRC32_stats_getMessageStats = -1226791947; // b6e0a3f5
     CRC32_stats_getStoryStats = 927985472; // 374fef40
     CRC32_stats_getStoryPublicForwards = -1505526026; // a6437ef6
-    CRC32_stats_getBroadcastRevenueStats_f788ee19 = -142021095; // f788ee19
-    CRC32_stats_getBroadcastRevenueStats_75dfb671 = 1977595505; // 75dfb671
-    CRC32_stats_getBroadcastRevenueWithdrawalUrl_9df4faad = -1644889427; // 9df4faad
-    CRC32_stats_getBroadcastRevenueWithdrawalUrl_2a65ef73 = 711323507; // 2a65ef73
-    CRC32_stats_getBroadcastRevenueTransactions_70990b6d = 1889078125; // 70990b6d
-    CRC32_stats_getBroadcastRevenueTransactions_69280f = 6891535; // 69280f
+    CRC32_stats_getBroadcastRevenueStats = 1977595505; // 75dfb671
+    CRC32_stats_getBroadcastRevenueWithdrawalUrl = 711323507; // 2a65ef73
+    CRC32_stats_getBroadcastRevenueTransactions = 6891535; // 69280f
     CRC32_chatlists_exportChatlistInvite = -2072885362; // 8472478e
     CRC32_chatlists_deleteExportedInvite = 1906072670; // 719c5c5e
     CRC32_chatlists_editExportedInvite = 1698543165; // 653db63d
@@ -2477,8 +2472,7 @@ enum TLConstructor {
     CRC32_stories_togglePeerStoriesHidden = -1123805756; // bd0415c4
     CRC32_stories_getStoryReactionsList = -1179482081; // b9b2881f
     CRC32_stories_togglePinnedToTop = 187268763; // b297e9b
-    CRC32_stories_searchPosts_d1810907 = -780072697; // d1810907
-    CRC32_stories_searchPosts_6cea116a = 1827279210; // 6cea116a
+    CRC32_stories_searchPosts = 1827279210; // 6cea116a
     CRC32_premium_getBoostsList = 1626764896; // 60f67660
     CRC32_premium_getMyBoosts = 199719754; // be77b4a
     CRC32_premium_applyBoost = 1803396934; // 6b7da746
@@ -2492,11 +2486,6 @@ enum TLConstructor {
     CRC32_smsjobs_getSmsJob = 2005766191; // 778d902f
     CRC32_smsjobs_finishJob = 1327415076; // 4f1ebf24
     CRC32_fragment_getCollectibleInfo = -1105295942; // be1e85ba
-    CRC32_channels_viewSponsoredMessage = -1095836780; // beaedb94
-    CRC32_channels_getSponsoredMessages = -333377601; // ec210fbf
-    CRC32_channels_clickSponsoredMessage_1445d75 = 21257589; // 1445d75
-    CRC32_channels_clickSponsoredMessage_18afbc93 = 414170259; // 18afbc93
-    CRC32_channels_reportSponsoredMessage = -1349519687; // af8ff6b9
     CRC32_messages_report8953AB4E = -1991005362; // 8953ab4e
     CRC32_stories_report1923FA8C = 421788300; // 1923fa8c
     CRC32_messages_requestSimpleWebView1A46500A = 440815626; // 1a46500a
