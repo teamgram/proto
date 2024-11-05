@@ -1,19 +1,7 @@
 // Copyright 2024 Teamgram Authors
 //  All rights reserved.
 //
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//   http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
-//
-// Author: teamgramio (teamgram.io@gmail.com)
+// Author: Benqi (wubenqi@gmail.com)
 //
 
 package mtproto
@@ -23,64 +11,74 @@ import (
 	"compress/gzip"
 	"compress/zlib"
 	"encoding/binary"
-	"encoding/hex"
 	"fmt"
 	"io"
-	"reflect"
+
+	"github.com/teamgram/proto/bin"
+	"github.com/teamgram/proto/iface"
 )
+
+const (
+	ClazzID_msg_container = 0x73f1f8dc
+	ClazzID_msg_copy      = 0xe06046b2
+	ClazzID_gzip_packed   = 0x3072cfa1
+	ClazzID_rpc_result    = 0xf35c6d01
+)
+
+func init() {
+	iface.RegisterClazzID(ClazzID_msg_container, func() iface.TLObject { return &TLMsgRawDataContainer{} })
+	iface.RegisterClazzID(ClazzID_msg_copy, func() iface.TLObject { return &TLMsgCopy{} })
+	iface.RegisterClazzID(ClazzID_gzip_packed, func() iface.TLObject { return &TLGzipPacked{} })
+	iface.RegisterClazzID(ClazzID_rpc_result, func() iface.TLObject { return &TLRpcResult{} })
+}
 
 // TLMessageRawData
 // message2 msg_id:long seqno:int bytes:int body:Object = Message2; // parsed manually
 type TLMessageRawData struct {
-	MsgId   int64
-	Seqno   int32
-	Bytes   int32
-	ClassId int32
-	Body    []byte
+	MsgId   int64  `json:"msg_id"`
+	Seqno   int32  `json:"seqno"`
+	Bytes   int32  `json:"bytes"`
+	ClazzID uint32 `json:"clazz_id"`
+	Body    []byte `json:"body"`
 }
 
-func (m *TLMessageRawData) String() string {
-	return fmt.Sprintf("{message2#5bb8e511 - msg_id: %d, seq_no: %d, bytes: %d, class_id: %d}",
-		m.MsgId,
-		m.Seqno,
-		m.Bytes,
-		m.ClassId)
+func (m *TLMessageRawData) ClazzName() string {
+	return "message2"
 }
 
-func (m *TLMessageRawData) Encode(x *EncodeBuf, layer int32) error {
-	x.Long(m.MsgId)
-	x.Int(m.Seqno)
-	x.Int(m.Bytes)
-	x.Bytes(m.Body)
+func (m *TLMessageRawData) Encode(x *bin.Encoder, layer int32) {
+	_ = layer
 
-	return nil
+	x.PutInt64(m.MsgId)
+	x.PutInt32(m.Seqno)
+	x.PutInt32(m.Bytes)
+	x.Put(m.Body)
 }
 
-func (m *TLMessageRawData) Decode(dBuf *DecodeBuf) error {
-	m.MsgId = dBuf.Long()
-	m.Seqno = dBuf.Int()
-	m.Bytes = dBuf.Int()
-	b := dBuf.Bytes(int(m.Bytes))
-	if dBuf.err != nil {
-		return dBuf.err
+func (m *TLMessageRawData) Decode(d *bin.Decoder) (err error) {
+	m.MsgId, err = d.Int64()
+	if err != nil {
+		return
 	}
-	if len(b) < 4 {
-		return fmt.Errorf("decode error")
-	}
-	m.ClassId = int32(binary.LittleEndian.Uint32(b))
-	if !CheckClassID(m.ClassId) {
-		return fmt.Errorf("not register classId: %d", m.ClassId)
-	}
-	m.Body = b
-	return nil
-}
 
-func (m *TLMessageRawData) DebugString() string {
-	return fmt.Sprintf(`{"message2#5bb8e511": {"msg_id": %d, "seq_no": %d, "bytes": %d, "class_id": "0x%x"}}`,
-		m.MsgId,
-		m.Seqno,
-		m.Bytes,
-		uint32(m.ClassId))
+	m.Seqno, err = d.Int32()
+	if err != nil {
+		return
+	}
+
+	m.Bytes, err = d.Int32()
+	if err != nil {
+		return
+	}
+
+	m.ClazzID, err = d.ClazzID()
+	if err != nil {
+		return
+	}
+
+	m.Body = d.Raw()
+
+	return
 }
 
 // TLMsgRawDataContainer
@@ -89,44 +87,35 @@ type TLMsgRawDataContainer struct {
 	Messages []*TLMessageRawData
 }
 
-func NewTLMsgRawDataContainer() *TLMsgRawDataContainer {
-	return &TLMsgRawDataContainer{
-		Messages: []*TLMessageRawData{},
-	}
+func (m *TLMsgRawDataContainer) ClazzName() string {
+	return "msg_container"
 }
 
-func (m *TLMsgRawDataContainer) String() string {
-	return "{msg_container#73f1f8dc}"
-}
-
-func (m *TLMsgRawDataContainer) Encode(x *EncodeBuf, layer int32) error {
-	x.Int(int32(CRC32_msg_container))
-
-	x.Int(int32(len(m.Messages)))
+func (m *TLMsgRawDataContainer) Encode(x *bin.Encoder, layer int32) {
+	x.PutClazzID(ClazzID_msg_container)
+	x.PutInt(len(m.Messages))
 	for _, v := range m.Messages {
 		v.Encode(x, layer)
 	}
-	return nil
 }
 
-func (m *TLMsgRawDataContainer) Decode(dbuf *DecodeBuf) error {
-	len := dbuf.Int()
-	// log.Infof("msg_container: messages size: %d", len)
-	for i := 0; i < int(len); i++ {
-		// log.Infof("msg_container: decode messages[%d]: ", i)
-		message2 := &TLMessageRawData{}
-		err := message2.Decode(dbuf)
+func (m *TLMsgRawDataContainer) Decode(d *bin.Decoder) error {
+	len2, err := d.Int()
+	if err != nil {
+		return err
+	}
+
+	m.Messages = make([]*TLMessageRawData, 0, len2)
+	for i := 0; i < len2; i++ {
+		message2 := new(TLMessageRawData)
+		err = message2.Decode(d)
 		if err != nil {
-			// log.Errorf("Decode message2 error: %v", err)
 			return err
 		}
 		m.Messages = append(m.Messages, message2)
 	}
-	return dbuf.err
-}
 
-func (m *TLMsgRawDataContainer) DebugString() string {
-	return fmt.Sprintf(`{"msg_container#73f1f8dc": []}`)
+	return nil
 }
 
 // TLMessage2
@@ -135,51 +124,53 @@ type TLMessage2 struct {
 	MsgId  int64
 	Seqno  int32
 	Bytes  int32
-	Object TLObject
+	Object iface.TLObject
 }
 
-func (m *TLMessage2) String() string {
-	return fmt.Sprintf("{message2#5bb8e511 - msg_id: %d, seq_no: %d, object: {%v}}",
-		m.MsgId,
-		m.Seqno,
-		m.Object)
+func (m *TLMessage2) ClazzName() string {
+	return "message2"
 }
 
-func (m *TLMessage2) Encode(x *EncodeBuf, layer int32) error {
-	x.Long(m.MsgId)
-	x.Int(m.Seqno)
-	offset := x.GetOffset()
-	x.Int(m.Bytes)
+func (m *TLMessage2) Encode(x *bin.Encoder, layer int32) {
+	x.PutInt64(m.MsgId)
+	x.PutInt32(m.Seqno)
+
+	offset := x.Len()
+
+	x.PutInt32(m.Bytes)
 	m.Object.Encode(x, layer)
-	x.IntOffset(offset, int32(x.GetOffset()-offset-4))
+	b := x.Bytes()
 
-	return nil
+	binary.LittleEndian.PutUint32(b[offset:], uint32(x.Len()-offset-4))
 }
 
-func (m *TLMessage2) Decode(dBuf *DecodeBuf) error {
-	m.MsgId = dBuf.Long()
-	m.Seqno = dBuf.Int()
-	m.Bytes = dBuf.Int()
-	// log.Debugf("message2: {msg_id: %d, seqno: %d, bytes: %d}", m.MsgId, m.Seqno, m.Bytes)
-	b := dBuf.Bytes(int(m.Bytes))
-
-	dBuf2 := NewDecodeBuf(b)
-	m.Object = dBuf2.Object()
-	if m.Object == nil {
-		err := fmt.Errorf("decode core_message error(%v): %s", dBuf2.err, hex.EncodeToString(b))
-		// log.Error(err.Error())
-		return err
+func (m *TLMessage2) Decode(d *bin.Decoder) (err error) {
+	m.MsgId, err = d.Int64()
+	if err != nil {
+		return
 	}
 
-	// log.Info("Sucess decoded core_message: ", m.Object.String())
-	return dBuf2.err
-}
+	m.Seqno, err = d.Int32()
+	if err != nil {
+		return
+	}
 
-func (m *TLMessage2) DebugString() string {
-	return fmt.Sprintf(`{"message2#5bb8e511": {"msg_id": %d, "seq_no": %d, "object": "%s"}`,
-		m.MsgId,
-		m.Seqno,
-		reflect.TypeOf(m.Object))
+	m.Bytes, err = d.Int32()
+	if err != nil {
+		return
+	}
+
+	if int(m.Bytes) < d.Len() {
+		err = io.ErrUnexpectedEOF
+		return
+	}
+
+	m.Object, err = iface.DecodeObject(d)
+	if err != nil {
+		return
+	}
+
+	return
 }
 
 // TLMsgContainer
@@ -188,37 +179,38 @@ type TLMsgContainer struct {
 	Messages []*TLMessage2
 }
 
-func (m *TLMsgContainer) String() string {
-	return "{msg_container#73f1f8dc}"
+func (m *TLMsgContainer) ClazzName() string {
+	return "msg_container"
 }
 
-func (m *TLMsgContainer) Encode(x *EncodeBuf, layer int32) error {
-	// x := NewEncodeBuf(512)
-	x.Int(int32(CRC32_msg_container))
+func (m *TLMsgContainer) Encode(x *bin.Encoder, layer int32) {
+	x.PutClazzID(ClazzID_msg_container)
 
-	x.Int(int32(len(m.Messages)))
+	x.PutInt(len(m.Messages))
 	for _, v := range m.Messages {
 		v.Encode(x, layer)
 	}
-	return nil
 }
 
-func (m *TLMsgContainer) Decode(dbuf *DecodeBuf) error {
-	len2 := dbuf.Int()
-	for i := 0; i < int(len2); i++ {
+func (m *TLMsgContainer) Decode(d *bin.Decoder) error {
+	len2, err := d.Int()
+	if err != nil {
+		return err
+	}
+
+	m.Messages = make([]*TLMessage2, 0, len2)
+
+	for i := 0; i < len2; i++ {
 		message2 := new(TLMessage2)
-		err := message2.Decode(dbuf)
+		err = message2.Decode(d)
 		if err != nil {
 			// log.Errorf("Decode message2 error: %v", err)
 			return err
 		}
 		m.Messages = append(m.Messages, message2)
 	}
-	return dbuf.err
-}
 
-func (m *TLMsgContainer) DebugString() string {
-	return fmt.Sprintf(`{"msg_container#73f1f8dc": []}`)
+	return nil
 }
 
 // TLMsgCopy
@@ -227,41 +219,40 @@ type TLMsgCopy struct {
 	OrigMessage *TLMessage2
 }
 
-func (m *TLMsgCopy) String() string {
-	return "{msg_copy#e06046b2}"
+func (m *TLMsgCopy) ClazzName() string {
+	return "msg_copy"
 }
 
-func (m *TLMsgCopy) Encode(x *EncodeBuf, layer int32) error {
-	x.Int(int32(CRC32_msg_copy))
+func (m *TLMsgCopy) Encode(x *bin.Encoder, layer int32) {
+	x.PutClazzID(ClazzID_msg_copy)
 	m.OrigMessage.Encode(x, layer)
-	return nil
 }
 
-func (m *TLMsgCopy) Decode(dbuf *DecodeBuf) error {
-	o := dbuf.Object()
-	message2, _ := o.(*TLMessage2)
+func (m *TLMsgCopy) Decode(d *bin.Decoder) error {
+	message2 := new(TLMessage2)
+	err := message2.Decode(d)
+	if err != nil {
+		return err
+	}
 	m.OrigMessage = message2
-	return dbuf.err
-}
 
-func (m *TLMsgCopy) DebugString() string {
-	return fmt.Sprintf(`{"msg_copy#e06046b2": {"orig_message": %s}}`, m.OrigMessage.DebugString())
+	return nil
 }
 
 // TLGzipPacked
 // gzip_packed#3072cfa1 packed_data:string = Object; // parsed manually
 type TLGzipPacked struct {
 	PackedData []byte
-	Obj        TLObject
+	Obj        iface.TLObject
 }
 
-func (m *TLGzipPacked) String() string {
-	return "{gzip_packed#3072cfa1}"
+func (m *TLGzipPacked) ClazzName() string {
+	return "msg_copy"
 }
 
-func (m *TLGzipPacked) Encode(x *EncodeBuf, layer int32) error {
+func (m *TLGzipPacked) Encode(x *bin.Encoder, layer int32) {
 	if len(m.PackedData) == 0 {
-		return nil
+		return
 	}
 
 	var (
@@ -271,115 +262,116 @@ func (m *TLGzipPacked) Encode(x *EncodeBuf, layer int32) error {
 	gz := gzip.NewWriter(b)
 	// _, err = io.Copy(gz, bytes.NewBuffer(m.PackedData))
 	_, err = gz.Write(m.PackedData)
-	gz.Flush()
+	_ = gz.Flush()
 	clErr := gz.Close()
 
 	if err != nil {
 		// log.Errorf("gzip write: %v", err)
-		x.Bytes(m.PackedData)
-		return nil
+		x.Put(m.PackedData)
+		return
 	}
 	if clErr != nil {
 		// log.Errorf("gzip write: %v", err)
-		x.Bytes(m.PackedData)
-		return nil
+		x.Put(m.PackedData)
+		return
 	}
 
-	x.Int(int32(CRC32_gzip_packed))
-	x.StringBytes(b.Bytes())
-	return nil
+	x.PutClazzID(ClazzID_gzip_packed)
+	x.PutBytes(b.Bytes())
 }
 
-func (m *TLGzipPacked) Decode(dbuf *DecodeBuf) error {
-	data := dbuf.StringBytes()
-	if dbuf.err != nil {
-		return dbuf.err
+func (m *TLGzipPacked) Decode(d *bin.Decoder) error {
+	data, err := d.Bytes()
+	if err != nil {
+		return err
 	}
 
 	var (
-		gz  io.ReadCloser
-		err error
+		gz io.ReadCloser
+		// err error
 	)
-	if gz, err = gzip.NewReader(bytes.NewBuffer(data)); err != nil {
-		if gz, err = zlib.NewReader(bytes.NewBuffer(data)); err != nil {
-			dbuf.err = err
+
+	gz, err = gzip.NewReader(bytes.NewBuffer(data))
+	if err != nil {
+		gz, err = zlib.NewReader(bytes.NewBuffer(data))
+		if err != nil {
 			return fmt.Errorf("gzip read1: %v", err)
 		}
 	}
 
-	var buf bytes.Buffer
+	var (
+		buf bytes.Buffer
+	)
+
 	_, err = io.Copy(&buf, gz)
 	clErr := gz.Close()
 
 	if err != nil {
-		dbuf.err = err
 		return fmt.Errorf("gzip read2: %v", err)
 	}
 	if clErr != nil {
-		dbuf.err = clErr
 		return clErr
 	}
 
 	m.PackedData = buf.Bytes()
 
-	dbuf2 := NewDecodeBuf(m.PackedData)
-	m.Obj = dbuf2.Object()
-	dbuf.err = dbuf2.err
+	d2 := bin.NewDecoder(m.PackedData)
+	m.Obj, err = iface.DecodeObject(d2)
+	if err != nil {
+		return err
+	}
 
-	return dbuf.err
-}
-
-func (m *TLGzipPacked) DebugString() string {
-	return fmt.Sprintf(`{"gzip_packed#3072cfa1": {}}`)
+	return nil
 }
 
 // TLRpcResult
 // rpc_result#f35c6d01 req_msg_id:long result:Object = RpcResult; // parsed manually
 type TLRpcResult struct {
 	ReqMsgId int64
-	Result   TLObject
+	Result   iface.TLObject
 }
 
-func (m *TLRpcResult) String() string {
-	return fmt.Sprintf("{rpc_result#f35c6d01: req_msg_id: %d, result: %s}", m.ReqMsgId, reflect.TypeOf(m.Result))
+func (m *TLRpcResult) ClazzName() string {
+	return "rpc_result"
 }
 
-func (m *TLRpcResult) Encode(x *EncodeBuf, layer int32) error {
-	x.Int(int32(CRC32_rpc_result))
-	x.Long(m.ReqMsgId)
+func (m *TLRpcResult) Encode(x *bin.Encoder, layer int32) {
+	x.PutClazzID(ClazzID_rpc_result)
+	x.PutInt64(m.ReqMsgId)
 
-	x2 := NewEncodeBuf(512)
+	x2 := bin.NewEncoder()
+	defer x2.End()
+
 	m.Result.Encode(x2, layer)
-	rawBody := x2.GetBuf()
+	// rawBody := x2.GetBuf()
 
-	if x2.GetOffset() > 256 {
+	if x2.Len() > 256 {
 		switch m.Result.(type) {
-		case *Upload_WebFile:
-			x.Bytes(rawBody)
-		case *Upload_CdnFile:
-			x.Bytes(rawBody)
-		case *Upload_File:
-			x.Bytes(rawBody)
+		//case *Upload_WebFile:
+		//	x.Bytes(rawBody)
+		//case *Upload_CdnFile:
+		//	x.Bytes(rawBody)
+		//case *Upload_File:
+		//	x.Bytes(rawBody)
 		default:
 			gzipPacked := &TLGzipPacked{
-				PackedData: rawBody,
+				PackedData: x2.Bytes(),
 			}
 			gzipPacked.Encode(x, layer)
 		}
 	} else {
-		x.Bytes(rawBody)
+		x.Put(x2.Bytes())
 	}
 
-	return nil
-
 }
 
-func (m *TLRpcResult) Decode(dbuf *DecodeBuf) error {
-	m.ReqMsgId = dbuf.Long()
-	m.Result = dbuf.Object()
-	return dbuf.err
-}
+func (m *TLRpcResult) Decode(d *bin.Decoder) (err error) {
+	m.ReqMsgId, err = d.Int64()
+	if err != nil {
+		return
+	}
 
-func (m *TLRpcResult) DebugString() string {
-	return fmt.Sprintf(`{"rpc_result#f35c6d01": {"req_msg_id": %d}}`, m.ReqMsgId)
+	m.Result, err = iface.DecodeObject(d)
+
+	return
 }
