@@ -32,13 +32,15 @@ func (m *TLResPQ) ClazzName() string {
 	return "message2"
 }
 
-func (m *TLResPQ) Encode(x *bin.Encoder, layer int32) {
+func (m *TLResPQ) Encode(x *bin.Encoder, layer int32) error {
 	_ = layer
 
 	//x.PutInt64(m.MsgId)
 	//x.PutInt32(m.Seqno)
 	//x.PutInt32(m.Bytes)
 	//x.Put(m.Body)
+
+	return nil
 }
 
 func (m *TLResPQ) Decode(d *bin.Decoder) (err error) {

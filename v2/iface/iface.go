@@ -17,8 +17,10 @@ const (
 )
 
 type TLObject interface {
-	Encode(x *bin.Encoder, layer int32)
+	Encode(x *bin.Encoder, layer int32) error
 	Decode(d *bin.Decoder) error
+	// EncodeBare(x *bin.Encoder, layer int32) error
+	// DecodeBare(d *bin.Decoder) error
 	// ClazzID() uint32
 	// ClazzName() string
 	// String() string
@@ -46,9 +48,20 @@ func DecodeObject(d *bin.Decoder) (TLObject, error) {
 	return r, nil
 }
 
+func EncodeObject(obj TLObject, layer int32) ([]byte, error) {
+	x := bin.NewEncoder()
+
+	err := obj.Encode(x, layer)
+	if err != nil {
+		return nil, err
+	}
+
+	return x.Bytes(), nil
+}
+
 func WriteObjectList[T TLObject](e *bin.Encoder, layer int32, vList []T) {
 	e.PutInt(len(vList))
 	for _, obj := range vList {
-		obj.Encode(e, layer)
+		_ = obj.Encode(e, layer)
 	}
 }

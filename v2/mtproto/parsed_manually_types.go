@@ -91,12 +91,14 @@ func (m *TLMsgRawDataContainer) ClazzName() string {
 	return "msg_container"
 }
 
-func (m *TLMsgRawDataContainer) Encode(x *bin.Encoder, layer int32) {
+func (m *TLMsgRawDataContainer) Encode(x *bin.Encoder, layer int32) error {
 	x.PutClazzID(ClazzID_msg_container)
 	x.PutInt(len(m.Messages))
 	for _, v := range m.Messages {
 		v.Encode(x, layer)
 	}
+
+	return nil
 }
 
 func (m *TLMsgRawDataContainer) Decode(d *bin.Decoder) error {
@@ -131,7 +133,7 @@ func (m *TLMessage2) ClazzName() string {
 	return "message2"
 }
 
-func (m *TLMessage2) Encode(x *bin.Encoder, layer int32) {
+func (m *TLMessage2) Encode(x *bin.Encoder, layer int32) error {
 	x.PutInt64(m.MsgId)
 	x.PutInt32(m.Seqno)
 
@@ -142,6 +144,8 @@ func (m *TLMessage2) Encode(x *bin.Encoder, layer int32) {
 	b := x.Bytes()
 
 	binary.LittleEndian.PutUint32(b[offset:], uint32(x.Len()-offset-4))
+
+	return nil
 }
 
 func (m *TLMessage2) Decode(d *bin.Decoder) (err error) {
@@ -183,13 +187,15 @@ func (m *TLMsgContainer) ClazzName() string {
 	return "msg_container"
 }
 
-func (m *TLMsgContainer) Encode(x *bin.Encoder, layer int32) {
+func (m *TLMsgContainer) Encode(x *bin.Encoder, layer int32) error {
 	x.PutClazzID(ClazzID_msg_container)
 
 	x.PutInt(len(m.Messages))
 	for _, v := range m.Messages {
 		v.Encode(x, layer)
 	}
+
+	return nil
 }
 
 func (m *TLMsgContainer) Decode(d *bin.Decoder) error {
@@ -223,9 +229,11 @@ func (m *TLMsgCopy) ClazzName() string {
 	return "msg_copy"
 }
 
-func (m *TLMsgCopy) Encode(x *bin.Encoder, layer int32) {
+func (m *TLMsgCopy) Encode(x *bin.Encoder, layer int32) error {
 	x.PutClazzID(ClazzID_msg_copy)
 	m.OrigMessage.Encode(x, layer)
+
+	return nil
 }
 
 func (m *TLMsgCopy) Decode(d *bin.Decoder) error {
@@ -250,9 +258,9 @@ func (m *TLGzipPacked) ClazzName() string {
 	return "msg_copy"
 }
 
-func (m *TLGzipPacked) Encode(x *bin.Encoder, layer int32) {
+func (m *TLGzipPacked) Encode(x *bin.Encoder, layer int32) error {
 	if len(m.PackedData) == 0 {
-		return
+		return nil
 	}
 
 	var (
@@ -268,16 +276,18 @@ func (m *TLGzipPacked) Encode(x *bin.Encoder, layer int32) {
 	if err != nil {
 		// log.Errorf("gzip write: %v", err)
 		x.Put(m.PackedData)
-		return
+		return nil
 	}
 	if clErr != nil {
 		// log.Errorf("gzip write: %v", err)
 		x.Put(m.PackedData)
-		return
+		return nil
 	}
 
 	x.PutClazzID(ClazzID_gzip_packed)
 	x.PutBytes(b.Bytes())
+
+	return nil
 }
 
 func (m *TLGzipPacked) Decode(d *bin.Decoder) error {
@@ -335,7 +345,7 @@ func (m *TLRpcResult) ClazzName() string {
 	return "rpc_result"
 }
 
-func (m *TLRpcResult) Encode(x *bin.Encoder, layer int32) {
+func (m *TLRpcResult) Encode(x *bin.Encoder, layer int32) error {
 	x.PutClazzID(ClazzID_rpc_result)
 	x.PutInt64(m.ReqMsgId)
 
@@ -362,6 +372,8 @@ func (m *TLRpcResult) Encode(x *bin.Encoder, layer int32) {
 	} else {
 		x.Put(x2.Bytes())
 	}
+
+	return nil
 }
 
 func (m *TLRpcResult) Decode(d *bin.Decoder) (err error) {
