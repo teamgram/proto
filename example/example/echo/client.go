@@ -13,7 +13,7 @@ import (
 
 // Client is designed to provide IDL-compatible methods with call-option parameter for kitex framework.
 type Client interface {
-	Echo(ctx context.Context, req *example.TLExampleEcho, callOptions ...callopt.Option) (r example.Echo, err error)
+	Echo(ctx context.Context, req *example.TLExampleEcho, callOptions ...callopt.Option) (r *example.Echo, err error)
 }
 
 // NewClient creates a client for the service defined in IDL.
@@ -45,7 +45,7 @@ type kEchoClient struct {
 	*kClient
 }
 
-func (p *kEchoClient) Echo(ctx context.Context, req *example.TLExampleEcho, callOptions ...callopt.Option) (r example.Echo, err error) {
+func (p *kEchoClient) Echo(ctx context.Context, req *example.TLExampleEcho, callOptions ...callopt.Option) (r *example.Echo, err error) {
 	ctx = client.NewCtxWithCallOptions(ctx, callOptions)
 	return p.kClient.Echo(ctx, req)
 }

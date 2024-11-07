@@ -5,9 +5,9 @@
 ///////////////////////////////
 
 ---types---
-echo request:string = Echo;
+echo Message:string = Echo;
 
 ---functions---
-example.echo request:string = Echo;
+example.echo Message:string = Echo;
 
 // LAYER 0

@@ -24,8 +24,22 @@ func init() {
 }
 
 type Echo struct {
-	ClazzName string         `json:"_name"`
-	Data2     iface.TLObject `json:"_data2"`
+	ClazzName string    `json:"_name"`
+	Clazz     EchoClazz `json:"_clazz"`
+}
+
+//func (p *Echo) Unmarshal(in []byte) error {
+//	p.Clazz = new(TLEcho)
+//	var msg example.Echo
+//	if err := json.Unmarshal(in, &msg); err != nil {
+//		return err
+//	}
+//	// p.Success = &msg
+//	return nil
+//}
+
+type EchoClazz interface {
+	EchoName() string
 }
 
 // TLEcho
@@ -35,7 +49,7 @@ type TLEcho struct {
 }
 
 func (m *TLEcho) EchoName() string {
-	return "Echo"
+	return "echo"
 }
 
 func (m *TLEcho) Encode(x *bin.Encoder, layer int32) {
@@ -68,5 +82,5 @@ func (m *TLExampleEcho) Decode(d *bin.Decoder) (err error) {
 }
 
 type RPCEcho interface {
-	ExampleEcho(ctx context.Context, req *TLExampleEcho) (r Echo, err error)
+	ExampleEcho(ctx context.Context, req *TLExampleEcho) (r *Echo, err error)
 }

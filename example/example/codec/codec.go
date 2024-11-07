@@ -21,6 +21,7 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
+
 	"github.com/teamgram/proto/bin"
 	"github.com/teamgram/proto/iface"
 
@@ -59,6 +60,8 @@ func (jc *JsonCodec) Encode(ctx context.Context, message remote.Message, out rem
 	x.End()
 	validData.(iface.TLObject).Encode(x, 0)
 	payload := x.Bytes()
+
+	// payload, err := json.Marshal(validData)
 	//if err != nil {
 	//	return perrors.NewProtocolError(fmt.Errorf("json encode, marshal payload failed: %w", err))
 	//}
@@ -127,15 +130,18 @@ func (jc *JsonCodec) Decode(ctx context.Context, message remote.Message, in remo
 		return exception
 	}
 
-	var (
-		data2 iface.TLObject
-	)
+	//var (
+	//	data2 iface.TLObject
+	//)
 
 	d := bin.NewDecoder(data.Payload)
-	data2, err = iface.DecodeObject(d)
-	// message.Data().(iface.TLObject) = data2
+	// data2, err = iface.DecodeObject(d)
+	err = message.Data().(iface.TLObject).Decode(d)
+	//.Clazz = data2
 
-	err = json.Unmarshal(data.Payload, message.Data())
+	//fmt.Printf("%s\n", data.Payload)
+	//fmt.Println(reflect.TypeOf(message.Data()))
+	//err = json.Unmarshal(data.Payload, message.Data())
 	if err != nil {
 		return perrors.NewProtocolError(fmt.Errorf("json decode, unmarshal payload failed: %w", err))
 	}

@@ -36,12 +36,12 @@ const (
 
 // WordLen represents 4-byte sequence.
 // Values in TL are generally aligned to Word.
-const WordLen = 4
+const Size32 = 4
 
 func nearestPaddedValueLength(l int) int {
-	n := WordLen * (l / WordLen)
+	n := Size32 * (l / Size32)
 	if n < l {
-		n += WordLen
+		n += Size32
 	}
 	return n
 }

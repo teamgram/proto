@@ -6,6 +6,7 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
+	"github.com/teamgram/proto/bin"
 
 	"github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"
@@ -77,6 +78,24 @@ func (p *EchoArgs) Unmarshal(in []byte) error {
 	return nil
 }
 
+func (p *EchoArgs) Encode(x *bin.Encoder, layer int32) []byte {
+	if !p.IsSetReq() {
+		return nil
+	}
+	// return json.Marshal(p.Req)
+
+	return nil
+}
+
+func (p *EchoArgs) Decode(in []byte) error {
+	msg := new(example.TLExampleEcho)
+	if err := json.Unmarshal(in, msg); err != nil {
+		return err
+	}
+	p.Req = msg
+	return nil
+}
+
 var EchoArgs_Req_DEFAULT *example.TLExampleEcho
 
 func (p *EchoArgs) GetReq() *example.TLExampleEcho {
@@ -91,10 +110,10 @@ func (p *EchoArgs) IsSetReq() bool {
 }
 
 type EchoResult struct {
-	Success example.Echo
+	Success *example.Echo `json:"success"`
 }
 
-var EchoResult_Success_DEFAULT example.Echo
+var EchoResult_Success_DEFAULT *example.Echo
 
 func (p *EchoResult) Marshal(out []byte) ([]byte, error) {
 	if !p.IsSetSuccess() {
@@ -104,15 +123,20 @@ func (p *EchoResult) Marshal(out []byte) ([]byte, error) {
 }
 
 func (p *EchoResult) Unmarshal(in []byte) error {
-	var msg example.Echo
-	if err := json.Unmarshal(in, &msg); err != nil {
+	var (
+		msg = &example.Echo{
+			ClazzName: "Echo",
+			Clazz:     &example.TLEcho{},
+		}
+	)
+	if err := json.Unmarshal(in, msg); err != nil {
 		return err
 	}
 	p.Success = msg
 	return nil
 }
 
-func (p *EchoResult) GetSuccess() example.Echo {
+func (p *EchoResult) GetSuccess() *example.Echo {
 	if !p.IsSetSuccess() {
 		return EchoResult_Success_DEFAULT
 	}
@@ -120,7 +144,7 @@ func (p *EchoResult) GetSuccess() example.Echo {
 }
 
 func (p *EchoResult) SetSuccess(x interface{}) {
-	p.Success = x.(example.Echo)
+	p.Success = x.(*example.Echo)
 }
 
 func (p *EchoResult) IsSetSuccess() bool {
@@ -137,10 +161,17 @@ func newServiceClient(c client.Client) *kClient {
 	}
 }
 
-func (p *kClient) Echo(ctx context.Context, req *example.TLExampleEcho) (r example.Echo, err error) {
+func (p *kClient) Echo(ctx context.Context, req *example.TLExampleEcho) (r *example.Echo, err error) {
 	var _args EchoArgs
 	_args.Req = req
-	var _result EchoResult
+	var (
+		_result = EchoResult{
+			Success: &example.Echo{
+				ClazzName: "Echo",
+				Clazz:     &example.TLEcho{},
+			},
+		}
+	)
 	if err = p.c.Call(ctx, "echo", &_args, &_result); err != nil {
 		return
 	}

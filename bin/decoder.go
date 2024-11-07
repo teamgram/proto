@@ -49,7 +49,7 @@ func (d *Decoder) Skip(n int) {
 
 // PeekClazzID returns next type id in Buffer, but does not consume it.
 func (d *Decoder) PeekClazzID() (uint32, error) {
-	if len(d.buf) < WordLen {
+	if len(d.buf) < Size32 {
 		return 0, io.ErrUnexpectedEOF
 	}
 	v := binary.LittleEndian.Uint32(d.buf)
@@ -79,7 +79,7 @@ func (d *Decoder) Uint32() (uint32, error) {
 	if err != nil {
 		return 0, err
 	}
-	d.buf = d.buf[WordLen:]
+	d.buf = d.buf[Size32:]
 	return v, nil
 }
 
@@ -94,7 +94,7 @@ func (d *Decoder) Int64() (int64, error) {
 
 // Uint64 decodes 64-bit unsigned integer from Buffer.
 func (d *Decoder) Uint64() (uint64, error) {
-	const size = WordLen * 2
+	const size = Size32 * 2
 	if len(d.buf) < size {
 		return 0, io.ErrUnexpectedEOF
 	}
@@ -132,10 +132,10 @@ func (d *Decoder) Bool() (bool, error) {
 	}
 	switch v {
 	case ClazzID_boolTrue:
-		d.buf = d.buf[WordLen:]
+		d.buf = d.buf[Size32:]
 		return true, nil
 	case ClazzID_boolFalse:
-		d.buf = d.buf[WordLen:]
+		d.buf = d.buf[Size32:]
 		return false, nil
 	default:
 		return false, NewUnexpectedClazzID(v)
@@ -153,7 +153,7 @@ func (d *Decoder) ConsumeClazzID(id uint32) error {
 	if v != id {
 		return NewUnexpectedClazzID(v)
 	}
-	d.buf = d.buf[WordLen:]
+	d.buf = d.buf[Size32:]
 	return nil
 }
 
