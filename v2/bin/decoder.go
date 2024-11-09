@@ -48,12 +48,12 @@ func (d *Decoder) Skip(n int) {
 }
 
 // PeekClazzID returns next type id in Buffer, but does not consume it.
-func (d *Decoder) PeekClazzID() (uint32, error) {
+func (d *Decoder) PeekClazzID() (int32, error) {
 	if len(d.buf) < WordLen {
 		return 0, io.ErrUnexpectedEOF
 	}
 	v := binary.LittleEndian.Uint32(d.buf)
-	return v, nil
+	return int32(v), nil
 }
 
 // PeekN returns n bytes from Buffer to target, but does not consume it.
@@ -69,16 +69,16 @@ func (d *Decoder) PeekN(target []byte, n int) error {
 }
 
 // ClazzID decodes type id from Buffer.
-func (d *Decoder) ClazzID() (uint32, error) {
-	return d.Uint32()
+func (d *Decoder) ClazzID() (int32, error) {
+	return d.Int32()
 }
 
 // Uint32 decodes unsigned 32-bit integer from Buffer.
 func (d *Decoder) Uint32() (uint32, error) {
-	v, err := d.PeekClazzID()
-	if err != nil {
-		return 0, err
+	if len(d.buf) < WordLen {
+		return 0, io.ErrUnexpectedEOF
 	}
+	v := binary.LittleEndian.Uint32(d.buf)
 	d.buf = d.buf[WordLen:]
 	return v, nil
 }
@@ -145,7 +145,7 @@ func (d *Decoder) ConsumeN(target []byte, n int) error {
 // ConsumeClazzID decodes type id from Buffer. If id differs from provided,
 // the *UnexpectedIDErr{ID: gotID} will be returned and buffer will be
 // not consumed.
-func (d *Decoder) ConsumeClazzID(id uint32) error {
+func (d *Decoder) ConsumeClazzID(id int32) error {
 	v, err := d.PeekClazzID()
 	if err != nil {
 		return err

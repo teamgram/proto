@@ -4,7 +4,7 @@
 // Author: Benqi (wubenqi@gmail.com)
 //
 
-package mtproto
+package mt
 
 import (
 	"bytes"
@@ -19,10 +19,11 @@ import (
 )
 
 const (
-	ClazzID_msg_container = 0x73f1f8dc
-	ClazzID_msg_copy      = 0xe06046b2
-	ClazzID_gzip_packed   = 0x3072cfa1
-	ClazzID_rpc_result    = 0xf35c6d01
+	ClazzID_message2      = 1538843921 // parsed_manually_types
+	ClazzID_msg_container = 1945237724 // parsed_manually_types
+	ClazzID_msg_copy      = 530561358  // parsed_manually_types
+	ClazzID_gzip_packed   = 812830625  // parsed_manually_types
+	ClazzID_rpc_result    = -212046591 // parsed_manually_types
 )
 
 func init() {
@@ -38,7 +39,7 @@ type TLMessageRawData struct {
 	MsgId   int64  `json:"msg_id"`
 	Seqno   int32  `json:"seqno"`
 	Bytes   int32  `json:"bytes"`
-	ClazzID uint32 `json:"clazz_id"`
+	ClazzID int32  `json:"clazz_id"`
 	Body    []byte `json:"body"`
 }
 
@@ -46,13 +47,15 @@ func (m *TLMessageRawData) ClazzName() string {
 	return "message2"
 }
 
-func (m *TLMessageRawData) Encode(x *bin.Encoder, layer int32) {
+func (m *TLMessageRawData) Encode(x *bin.Encoder, layer int32) error {
 	_ = layer
 
 	x.PutInt64(m.MsgId)
 	x.PutInt32(m.Seqno)
 	x.PutInt32(m.Bytes)
 	x.Put(m.Body)
+
+	return nil
 }
 
 func (m *TLMessageRawData) Decode(d *bin.Decoder) (err error) {
@@ -255,7 +258,7 @@ type TLGzipPacked struct {
 }
 
 func (m *TLGzipPacked) ClazzName() string {
-	return "msg_copy"
+	return "gzip_packed"
 }
 
 func (m *TLGzipPacked) Encode(x *bin.Encoder, layer int32) error {
@@ -346,7 +349,11 @@ func (m *TLRpcResult) ClazzName() string {
 }
 
 func (m *TLRpcResult) Encode(x *bin.Encoder, layer int32) error {
-	x.PutClazzID(ClazzID_rpc_result)
+	var (
+		c = ClazzID_rpc_result
+	)
+
+	x.PutClazzID(uint32(c))
 	x.PutInt64(m.ReqMsgId)
 
 	x2 := bin.NewEncoder()

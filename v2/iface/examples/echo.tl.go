@@ -7,9 +7,12 @@
 package main
 
 import (
+	"encoding/hex"
 	"fmt"
+
 	"github.com/teamgram/proto/v2/bin"
 	"github.com/teamgram/proto/v2/iface"
+	"github.com/teamgram/proto/v2/mt"
 )
 
 const (
@@ -113,4 +116,13 @@ func main() {
 	default:
 		panic("unknown type")
 	}
+
+	reqPQ := &mt.TLReqPq{
+		ClazzID: mt.ClazzID_resPQ,
+		Nonce:   bin.Int128{},
+	}
+
+	x := bin.NewEncoder()
+	_ = reqPQ.Encode(x, 0)
+	fmt.Println(hex.EncodeToString(x.Bytes()))
 }

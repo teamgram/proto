@@ -22,14 +22,14 @@ func (i *InvalidLengthError) Error() string {
 
 // UnexpectedClazzIDErr means that unknown or unexpected type id was decoded.
 type UnexpectedClazzIDErr struct {
-	ClazzID uint32
+	ClazzID int32
 }
 
 func (e *UnexpectedClazzIDErr) Error() string {
-	return fmt.Sprintf("unexpected clazzID %#x", e.ClazzID)
+	return fmt.Sprintf("unexpected clazzID %#x", uint32(e.ClazzID))
 }
 
 // NewUnexpectedClazzID return new UnexpectedClazzIDErr.
-func NewUnexpectedClazzID(id uint32) error {
+func NewUnexpectedClazzID(id int32) error {
 	return &UnexpectedClazzIDErr{ClazzID: id}
 }
