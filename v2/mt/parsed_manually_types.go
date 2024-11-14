@@ -27,6 +27,7 @@ const (
 )
 
 func init() {
+	iface.RegisterClazzID(ClazzID_message2, func() iface.TLObject { return &TLMessage2{} })
 	iface.RegisterClazzID(ClazzID_msg_container, func() iface.TLObject { return &TLMsgRawDataContainer{} })
 	iface.RegisterClazzID(ClazzID_msg_copy, func() iface.TLObject { return &TLMsgCopy{} })
 	iface.RegisterClazzID(ClazzID_gzip_packed, func() iface.TLObject { return &TLGzipPacked{} })
@@ -98,7 +99,7 @@ func (m *TLMsgRawDataContainer) Encode(x *bin.Encoder, layer int32) error {
 	x.PutClazzID(ClazzID_msg_container)
 	x.PutInt(len(m.Messages))
 	for _, v := range m.Messages {
-		v.Encode(x, layer)
+		_ = v.Encode(x, layer)
 	}
 
 	return nil
@@ -143,7 +144,7 @@ func (m *TLMessage2) Encode(x *bin.Encoder, layer int32) error {
 	offset := x.Len()
 
 	x.PutInt32(m.Bytes)
-	m.Object.Encode(x, layer)
+	_ = m.Object.Encode(x, layer)
 	b := x.Bytes()
 
 	binary.LittleEndian.PutUint32(b[offset:], uint32(x.Len()-offset-4))
@@ -195,7 +196,7 @@ func (m *TLMsgContainer) Encode(x *bin.Encoder, layer int32) error {
 
 	x.PutInt(len(m.Messages))
 	for _, v := range m.Messages {
-		v.Encode(x, layer)
+		_ = v.Encode(x, layer)
 	}
 
 	return nil
@@ -234,7 +235,7 @@ func (m *TLMsgCopy) ClazzName() string {
 
 func (m *TLMsgCopy) Encode(x *bin.Encoder, layer int32) error {
 	x.PutClazzID(ClazzID_msg_copy)
-	m.OrigMessage.Encode(x, layer)
+	_ = m.OrigMessage.Encode(x, layer)
 
 	return nil
 }
@@ -262,6 +263,8 @@ func (m *TLGzipPacked) ClazzName() string {
 }
 
 func (m *TLGzipPacked) Encode(x *bin.Encoder, layer int32) error {
+	_ = layer
+
 	if len(m.PackedData) == 0 {
 		return nil
 	}
@@ -359,7 +362,7 @@ func (m *TLRpcResult) Encode(x *bin.Encoder, layer int32) error {
 	x2 := bin.NewEncoder()
 	defer x2.End()
 
-	m.Result.Encode(x2, layer)
+	_ = m.Result.Encode(x2, layer)
 	// rawBody := x2.GetBuf()
 
 	if x2.Len() > 256 {
@@ -374,7 +377,7 @@ func (m *TLRpcResult) Encode(x *bin.Encoder, layer int32) error {
 			gzipPacked := &TLGzipPacked{
 				PackedData: x2.Bytes(),
 			}
-			gzipPacked.Encode(x, layer)
+			_ = gzipPacked.Encode(x, layer)
 		}
 	} else {
 		x.Put(x2.Bytes())

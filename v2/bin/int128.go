@@ -7,6 +7,7 @@
 package bin
 
 import (
+	"encoding/hex"
 	"math/big"
 )
 
@@ -32,4 +33,19 @@ func (i *Int128) Encode(x *Encoder, layer int) {
 // BigInt returns corresponding big.Int value.
 func (i *Int128) BigInt() *big.Int {
 	return big.NewInt(0).SetBytes(i[:])
+}
+
+func (i *Int128) Zero() bool {
+	if i == nil {
+		return true
+	}
+	if !(*i == Int128{}) {
+		return false
+	}
+
+	return true
+}
+
+func (i *Int128) ToHex() string {
+	return hex.EncodeToString(i[:])
 }
