@@ -16,3 +16,5 @@
 # vendor/
 /mtproto/crypto/tools/tools
 .DS_Store
+/rpc/client/client
+/rpc/server/server

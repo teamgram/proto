@@ -33,7 +33,7 @@ type ZRpcCodec struct {
 	printDebugInfo bool
 }
 
-func NewJsonCodec(debug bool) remote.Codec {
+func NewZRpcCodec(debug bool) remote.Codec {
 	return &ZRpcCodec{printDebugInfo: debug}
 }
 

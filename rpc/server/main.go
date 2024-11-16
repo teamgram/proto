@@ -39,8 +39,8 @@ func (s *EchoImpl) Echo(ctx context.Context, req *api.Request) (resp *api.Respon
 }
 
 func main() {
-	codec := codec.NewJsonCodec(true)
-	svr := echo.NewServer(new(EchoImpl), server.WithCodec(codec))
+	zCodec := codec.NewZRpcCodec(true)
+	svr := echo.NewServer(new(EchoImpl), server.WithCodec(zCodec))
 	if err := svr.Run(); err != nil {
 		log.Println("server stopped with error:", err)
 	} else {

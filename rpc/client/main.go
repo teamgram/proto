@@ -28,14 +28,14 @@ import (
 )
 
 func main() {
-	codec := codec.NewJsonCodec(true)
-	client, err := echo.NewClient("echo", client.WithHostPorts("0.0.0.0:8888"), client.WithCodec(codec))
+	zCodec := codec.NewZRpcCodec(true)
+	cli, err := echo.NewClient("echo", client.WithHostPorts("0.0.0.0:8888"), client.WithCodec(zCodec))
 	if err != nil {
 		log.Fatal(err)
 	}
 	for {
 		req := &api.Request{Message: "my request"}
-		resp, err := client.Echo(context.Background(), req)
+		resp, err := cli.Echo(context.Background(), req)
 		if err != nil {
 			log.Fatal(err)
 		}
