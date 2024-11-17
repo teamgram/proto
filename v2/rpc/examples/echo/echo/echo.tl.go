@@ -224,6 +224,8 @@ func (m *TLEcho2) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
+// TLEchosEcho
+// echos.echo message:string = Echo;
 type TLEchosEcho struct {
 	ClazzID int32  `json:"_id"`
 	Message string `json:"message"`

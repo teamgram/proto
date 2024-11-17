@@ -8,7 +8,7 @@ import (
 	"fmt"
 
 	"github.com/teamgram/proto/v2/bin"
-	api "github.com/teamgram/proto/v2/rpc/echo"
+	api "github.com/teamgram/proto/v2/rpc/examples/echo/echo"
 
 	"github.com/cloudwego/kitex/client"
 	kitex "github.com/cloudwego/kitex/pkg/serviceinfo"

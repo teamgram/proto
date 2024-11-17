@@ -21,8 +21,9 @@ import (
 	"time"
 
 	"github.com/teamgram/proto/v2/rpc/codec"
-	api "github.com/teamgram/proto/v2/rpc/echo"
-	"github.com/teamgram/proto/v2/rpc/echo/echo"
+	echoclient "github.com/teamgram/proto/v2/rpc/examples/echo/client"
+	api "github.com/teamgram/proto/v2/rpc/examples/echo/echo"
+	"github.com/teamgram/proto/v2/rpc/examples/echo/echo/echo"
 
 	"github.com/cloudwego/kitex/client"
 )
@@ -33,12 +34,14 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	cli2 := echoclient.NewEchoClient(cli)
 	for {
 		req := &api.TLEchosEcho{
 			ClazzID: api.ClazzID_echos_echo,
 			Message: "my request",
 		}
-		resp, err := cli.EchosEcho(context.Background(), req)
+		resp, err := cli2.EchosEcho(context.Background(), req)
 		if err != nil {
 			log.Fatal(err)
 		}

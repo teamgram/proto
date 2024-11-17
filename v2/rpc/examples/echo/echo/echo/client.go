@@ -5,7 +5,7 @@ package echo
 import (
 	"context"
 
-	api "github.com/teamgram/proto/v2/rpc/echo"
+	api "github.com/teamgram/proto/v2/rpc/examples/echo/echo"
 
 	client "github.com/cloudwego/kitex/client"
 	callopt "github.com/cloudwego/kitex/client/callopt"
