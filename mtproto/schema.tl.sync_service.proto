@@ -2233,16 +2233,17 @@ message TL_messages_requestWebView {
     bool from_bot_menu = 3;
     bool silent = 4;
     bool compact = 5;
-    InputPeer peer = 6;
-    InputUser bot = 7;
-    google.protobuf.StringValue url = 8;
-    google.protobuf.StringValue start_param = 9;
-    DataJSON theme_params = 10;
-    string platform = 11;
-    InputReplyTo reply_to = 12;
-    InputPeer send_as = 13;
-    google.protobuf.Int32Value reply_to_msg_id = 14;
-    google.protobuf.Int32Value top_msg_id = 15;
+    bool fullscreen = 6;
+    InputPeer peer = 7;
+    InputUser bot = 8;
+    google.protobuf.StringValue url = 9;
+    google.protobuf.StringValue start_param = 10;
+    DataJSON theme_params = 11;
+    string platform = 12;
+    InputReplyTo reply_to = 13;
+    InputPeer send_as = 14;
+    google.protobuf.Int32Value reply_to_msg_id = 15;
+    google.protobuf.Int32Value top_msg_id = 16;
 }
 
 message TL_messages_prolongWebView {
@@ -2262,11 +2263,12 @@ message TL_messages_requestSimpleWebView413A3E73 {
     bool from_switch_webview = 3;
     bool from_side_menu = 4;
     bool compact = 5;
-    InputUser bot = 6;
-    google.protobuf.StringValue url = 7;
-    google.protobuf.StringValue start_param = 8;
-    DataJSON theme_params = 9;
-    string platform = 10;
+    bool fullscreen = 6;
+    InputUser bot = 7;
+    google.protobuf.StringValue url = 8;
+    google.protobuf.StringValue start_param = 9;
+    DataJSON theme_params = 10;
+    string platform = 11;
 }
 
 message TL_messages_sendWebViewResultMessage {
@@ -2396,11 +2398,12 @@ message TL_messages_requestAppWebView53618BCE {
     TLConstructor  constructor = 1;
     bool write_allowed = 3;
     bool compact = 4;
-    InputPeer peer = 5;
-    InputBotApp app = 6;
-    google.protobuf.StringValue start_param = 7;
-    DataJSON theme_params = 8;
-    string platform = 9;
+    bool fullscreen = 5;
+    InputPeer peer = 6;
+    InputBotApp app = 7;
+    google.protobuf.StringValue start_param = 8;
+    DataJSON theme_params = 9;
+    string platform = 10;
 }
 
 message TL_messages_setChatWallPaper {
@@ -2579,11 +2582,12 @@ message TL_messages_getFactCheck {
 message TL_messages_requestMainWebView {
     TLConstructor  constructor = 1;
     bool compact = 3;
-    InputPeer peer = 4;
-    InputUser bot = 5;
-    google.protobuf.StringValue start_param = 6;
-    DataJSON theme_params = 7;
-    string platform = 8;
+    bool fullscreen = 4;
+    InputPeer peer = 5;
+    InputUser bot = 6;
+    google.protobuf.StringValue start_param = 7;
+    DataJSON theme_params = 8;
+    string platform = 9;
 }
 
 message TL_messages_sendPaidReaction {
@@ -2631,6 +2635,19 @@ message TL_messages_reportSponsoredMessage {
 message TL_messages_getSponsoredMessages {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
+}
+
+message TL_messages_savePreparedInlineMessage {
+    TLConstructor  constructor = 1;
+    InputBotInlineResult result = 3;
+    InputUser user_id = 4;
+    repeated InlineQueryPeerType peer_types = 5;
+}
+
+message TL_messages_getPreparedInlineMessage {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string id = 4;
 }
 
 message TL_updates_getState {
@@ -3422,6 +3439,25 @@ message TL_bots_getPreviewMedias {
     InputUser bot = 3;
 }
 
+message TL_bots_updateUserEmojiStatus {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
+    EmojiStatus emoji_status = 4;
+}
+
+message TL_bots_toggleUserEmojiStatusPermission {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    Bool enabled = 4;
+}
+
+message TL_bots_checkDownloadFileParams {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    string file_name = 4;
+    string url = 5;
+}
+
 message TL_payments_getPaymentForm {
     TLConstructor  constructor = 1;
     InputInvoice invoice = 3;
@@ -3634,6 +3670,14 @@ message TL_payments_convertStarGift {
     TLConstructor  constructor = 1;
     InputUser user_id = 3;
     int32 msg_id = 4;
+}
+
+message TL_payments_botCancelStarsSubscription {
+    TLConstructor  constructor = 1;
+    bool restore = 3;
+    InputUser user_id = 4;
+    google.protobuf.StringValue invoice_slug = 5;
+    google.protobuf.StringValue charge_id = 6;
 }
 
 message TL_stickers_createStickerSet {
@@ -5223,6 +5267,8 @@ service RPCInlineBot {
     rpc messages_getBotCallbackAnswer(TL_messages_getBotCallbackAnswer) returns (messages_BotCallbackAnswer) {}
     rpc messages_setBotCallbackAnswer(TL_messages_setBotCallbackAnswer) returns (Bool) {}
     rpc messages_sendBotRequestedPeer(TL_messages_sendBotRequestedPeer) returns (Updates) {}
+    rpc messages_savePreparedInlineMessage(TL_messages_savePreparedInlineMessage) returns (messages_BotPreparedInlineMessage) {}
+    rpc messages_getPreparedInlineMessage(TL_messages_getPreparedInlineMessage) returns (messages_PreparedInlineMessage) {}
 }
 
 service RPCInternalBot {
@@ -5248,6 +5294,9 @@ service RPCMainMiniBotApps {
     rpc bots_reorderPreviewMedias(TL_bots_reorderPreviewMedias) returns (Bool) {}
     rpc bots_getPreviewInfo(TL_bots_getPreviewInfo) returns (bots_PreviewInfo) {}
     rpc bots_getPreviewMedias(TL_bots_getPreviewMedias) returns (Vector_BotPreviewMedia) {}
+    rpc bots_updateUserEmojiStatus(TL_bots_updateUserEmojiStatus) returns (Bool) {}
+    rpc bots_toggleUserEmojiStatusPermission(TL_bots_toggleUserEmojiStatusPermission) returns (Bool) {}
+    rpc bots_checkDownloadFileParams(TL_bots_checkDownloadFileParams) returns (Bool) {}
 }
 
 service RPCMessageEffects {
@@ -5538,6 +5587,7 @@ service RPCStars {
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_saveStarGift(TL_payments_saveStarGift) returns (Bool) {}
     rpc payments_convertStarGift(TL_payments_convertStarGift) returns (Bool) {}
+    rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
 }
 
 service RPCStatistics {

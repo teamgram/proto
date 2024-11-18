@@ -298,7 +298,8 @@ enum TLConstructor {
     CRC32_messageActionPaymentRefunded = 1102307842; // 41b3e202
     CRC32_messageActionGiftStars = 1171632161; // 45d5b021
     CRC32_messageActionPrizeStars = -1341372510; // b00c47a2
-    CRC32_messageActionStarGift = -1682706620; // 9bb3ef44
+    CRC32_messageActionStarGift_8557637 = 139818551; // 8557637
+    CRC32_messageActionStarGift_9bb3ef44 = -1682706620; // 9bb3ef44
     CRC32_dialog_d58a08c6 = -712374074; // d58a08c6
     CRC32_dialog_a8edd0f5 = -1460809483; // a8edd0f5
     CRC32_dialogFolder = 1908216652; // 71bd134c
@@ -545,6 +546,7 @@ enum TLConstructor {
     CRC32_updateStarsRevenueStatus = -1518030823; // a584b019
     CRC32_updateBotPurchasedPaidMedia = 675009298; // 283bd312
     CRC32_updatePaidReactionPrivacy = 1372224236; // 51ca7aec
+    CRC32_updateBotSubscriptionExpire = 756270830; // 2d13c6ee
     CRC32_updates_state = -1519637954; // a56c2a3e
     CRC32_updates_differenceEmpty = 1567990072; // 5d75a138
     CRC32_updates_difference = 16030880; // f49ca0
@@ -630,6 +632,7 @@ enum TLConstructor {
     CRC32_inputPrivacyKeyVoiceMessages = -1360618136; // aee69d68
     CRC32_inputPrivacyKeyAbout = 941870144; // 3823cc40
     CRC32_inputPrivacyKeyBirthday = -698740276; // d65a11cc
+    CRC32_inputPrivacyKeyStarGiftsAutoSave = -512548031; // e1732341
     CRC32_privacyKeyStatusTimestamp = -1137792208; // bc2eab30
     CRC32_privacyKeyChatInvite = 1343122938; // 500e6dfa
     CRC32_privacyKeyPhoneCall = 1030105979; // 3d662b7b
@@ -641,6 +644,7 @@ enum TLConstructor {
     CRC32_privacyKeyVoiceMessages = 110621716; // 697f414
     CRC32_privacyKeyAbout = -1534675103; // a486b761
     CRC32_privacyKeyBirthday = 536913176; // 2000a518
+    CRC32_privacyKeyStarGiftsAutoSave = 749010424; // 2ca4fdf8
     CRC32_inputPrivacyValueAllowContacts = 218751099; // d09e07b
     CRC32_inputPrivacyValueAllowAll = 407582158; // 184b35ce
     CRC32_inputPrivacyValueAllowUsers = 320652927; // 131cc67f
@@ -651,6 +655,8 @@ enum TLConstructor {
     CRC32_inputPrivacyValueDisallowChatParticipants = -380694650; // e94f0f86
     CRC32_inputPrivacyValueAllowCloseFriends = 793067081; // 2f453e49
     CRC32_inputPrivacyValueAllowPremium = 2009975281; // 77cdc9f1
+    CRC32_inputPrivacyValueAllowBots = 1515179237; // 5a4fcce5
+    CRC32_inputPrivacyValueDisallowBots = -991594219; // c4e57915
     CRC32_privacyValueAllowContacts = -123988; // fffe1bac
     CRC32_privacyValueAllowAll = 1698855810; // 65427b82
     CRC32_privacyValueAllowUsers = -1198497870; // b8905fb2
@@ -661,6 +667,8 @@ enum TLConstructor {
     CRC32_privacyValueDisallowChatParticipants = 1103656293; // 41c87565
     CRC32_privacyValueAllowCloseFriends = -135735141; // f7e8d89b
     CRC32_privacyValueAllowPremium = -320241333; // ece9814b
+    CRC32_privacyValueAllowBots = 558242653; // 21461b5d
+    CRC32_privacyValueDisallowBots = -156895185; // f6a5f82f
     CRC32_account_privacyRules = 1352683077; // 50a04e45
     CRC32_accountDaysTTL = -1194283041; // b8d0afdf
     CRC32_documentAttributeImageSize = 1815593308; // 6c37c15c
@@ -719,6 +727,7 @@ enum TLConstructor {
     CRC32_messages_stickerSet_b60a24a6 = -1240849242; // b60a24a6
     CRC32_messages_stickerSetNotModified = -738646805; // d3f924eb
     CRC32_botCommand = -1032140601; // c27ac8c7
+    CRC32_botInfo_36607333 = 912290611; // 36607333
     CRC32_botInfo_82437e74 = -2109505932; // 82437e74
     CRC32_botInfo_8f300b57 = -1892676777; // 8f300b57
     CRC32_botInfo_e4169b5d = -468280483; // e4169b5d
@@ -943,6 +952,7 @@ enum TLConstructor {
     CRC32_phoneCallDiscardReasonBusy = -84416311; // faf7e8c9
     CRC32_dataJSON = 2104790276; // 7d748d04
     CRC32_labeledPrice = -886477832; // cb296bf8
+    CRC32_invoice_49ee584 = 77522308; // 49ee584
     CRC32_invoice_5db95a15 = 1572428309; // 5db95a15
     CRC32_invoice_3e85a91b = 1048946971; // 3e85a91b
     CRC32_invoice_cd886e0 = 215516896; // cd886e0
@@ -1634,7 +1644,8 @@ enum TLConstructor {
     CRC32_botPreviewMedia = 602479523; // 23e91ba3
     CRC32_bots_previewInfo = 212278628; // ca71d64
     CRC32_starsSubscriptionPricing = 88173912; // 5416d58
-    CRC32_starsSubscription = 1401868056; // 538ecf18
+    CRC32_starsSubscription_2e6eab1a = 779004698; // 2e6eab1a
+    CRC32_starsSubscription_538ecf18 = 1401868056; // 538ecf18
     CRC32_messageReactor = 1269016922; // 4ba3a95a
     CRC32_starsGiveawayOption = -1798404822; // 94ce852a
     CRC32_starsGiveawayWinnersOption = 1411605001; // 54236209
@@ -1648,6 +1659,9 @@ enum TLConstructor {
     CRC32_reportResultChooseOption = -253435722; // f0e4e0b6
     CRC32_reportResultAddComment = 1862904881; // 6f09ac31
     CRC32_reportResultReported = -1917633461; // 8db33c4b
+    CRC32_messages_botPreparedInlineMessage = -1899035375; // 8ecf0511
+    CRC32_messages_preparedInlineMessage = -11046771; // ff57708d
+    CRC32_botAppSettings = -912582320; // c99b1950
     CRC32_inputStorePaymentStars = 1326377183; // 4f0ee8df
     CRC32_simpleWebViewResultUrl = -2010155333; // 882f76bb
     CRC32_appWebViewResultUrl = 1008422669; // 3c1b4f0d
@@ -2172,6 +2186,8 @@ enum TLConstructor {
     CRC32_messages_clickSponsoredMessage = 252261477; // f093465
     CRC32_messages_reportSponsoredMessage = 452189112; // 1af3dbb8
     CRC32_messages_getSponsoredMessages = -1680673735; // 9bd2f439
+    CRC32_messages_savePreparedInlineMessage = -232816849; // f21f7f2f
+    CRC32_messages_getPreparedInlineMessage = -2055291464; // 857ebdb8
     CRC32_updates_getState = -304838614; // edd4882a
     CRC32_updates_getDifference_19c2f763 = 432207715; // 19c2f763
     CRC32_updates_getDifference_25939651 = 630429265; // 25939651
@@ -2314,6 +2330,9 @@ enum TLConstructor {
     CRC32_bots_reorderPreviewMedias = -1238895702; // b627f3aa
     CRC32_bots_getPreviewInfo = 1111143341; // 423ab3ad
     CRC32_bots_getPreviewMedias = -1566222003; // a2a5594d
+    CRC32_bots_updateUserEmojiStatus = -308334395; // ed9f30c5
+    CRC32_bots_toggleUserEmojiStatusPermission = 115237778; // 6de6392
+    CRC32_bots_checkDownloadFileParams = 1342666121; // 50077589
     CRC32_payments_getPaymentForm_37148dbb = 924093883; // 37148dbb
     CRC32_payments_getPaymentForm_8a333c8d = -1976353651; // 8a333c8d
     CRC32_payments_getPaymentReceipt = 611897804; // 2478d1cc
@@ -2358,6 +2377,7 @@ enum TLConstructor {
     CRC32_payments_getUserStarGifts = 1584580577; // 5e72c7e1
     CRC32_payments_saveStarGift = -2018709362; // 87acf08e
     CRC32_payments_convertStarGift = 69328935; // 421e027
+    CRC32_payments_botCancelStarsSubscription = 1475996902; // 57f9ece6
     CRC32_stickers_createStickerSet = -1876841625; // 9021ab67
     CRC32_stickers_removeStickerFromSet = -143257775; // f7760f51
     CRC32_stickers_changeStickerPosition = -4795190; // ffb6d4ca

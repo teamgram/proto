@@ -291,7 +291,8 @@ const (
 	CRC32_messageActionPaymentRefunded                                TLConstructor = 1102307842  // 41b3e202
 	CRC32_messageActionGiftStars                                      TLConstructor = 1171632161  // 45d5b021
 	CRC32_messageActionPrizeStars                                     TLConstructor = -1341372510 // b00c47a2
-	CRC32_messageActionStarGift                                       TLConstructor = -1682706620 // 9bb3ef44
+	CRC32_messageActionStarGift_8557637                               TLConstructor = 139818551   // 8557637
+	CRC32_messageActionStarGift_9bb3ef44                              TLConstructor = -1682706620 // 9bb3ef44
 	CRC32_dialog_d58a08c6                                             TLConstructor = -712374074  // d58a08c6
 	CRC32_dialog_a8edd0f5                                             TLConstructor = -1460809483 // a8edd0f5
 	CRC32_dialogFolder                                                TLConstructor = 1908216652  // 71bd134c
@@ -538,6 +539,7 @@ const (
 	CRC32_updateStarsRevenueStatus                                    TLConstructor = -1518030823 // a584b019
 	CRC32_updateBotPurchasedPaidMedia                                 TLConstructor = 675009298   // 283bd312
 	CRC32_updatePaidReactionPrivacy                                   TLConstructor = 1372224236  // 51ca7aec
+	CRC32_updateBotSubscriptionExpire                                 TLConstructor = 756270830   // 2d13c6ee
 	CRC32_updates_state                                               TLConstructor = -1519637954 // a56c2a3e
 	CRC32_updates_differenceEmpty                                     TLConstructor = 1567990072  // 5d75a138
 	CRC32_updates_difference                                          TLConstructor = 16030880    // f49ca0
@@ -623,6 +625,7 @@ const (
 	CRC32_inputPrivacyKeyVoiceMessages                                TLConstructor = -1360618136 // aee69d68
 	CRC32_inputPrivacyKeyAbout                                        TLConstructor = 941870144   // 3823cc40
 	CRC32_inputPrivacyKeyBirthday                                     TLConstructor = -698740276  // d65a11cc
+	CRC32_inputPrivacyKeyStarGiftsAutoSave                            TLConstructor = -512548031  // e1732341
 	CRC32_privacyKeyStatusTimestamp                                   TLConstructor = -1137792208 // bc2eab30
 	CRC32_privacyKeyChatInvite                                        TLConstructor = 1343122938  // 500e6dfa
 	CRC32_privacyKeyPhoneCall                                         TLConstructor = 1030105979  // 3d662b7b
@@ -634,6 +637,7 @@ const (
 	CRC32_privacyKeyVoiceMessages                                     TLConstructor = 110621716   // 697f414
 	CRC32_privacyKeyAbout                                             TLConstructor = -1534675103 // a486b761
 	CRC32_privacyKeyBirthday                                          TLConstructor = 536913176   // 2000a518
+	CRC32_privacyKeyStarGiftsAutoSave                                 TLConstructor = 749010424   // 2ca4fdf8
 	CRC32_inputPrivacyValueAllowContacts                              TLConstructor = 218751099   // d09e07b
 	CRC32_inputPrivacyValueAllowAll                                   TLConstructor = 407582158   // 184b35ce
 	CRC32_inputPrivacyValueAllowUsers                                 TLConstructor = 320652927   // 131cc67f
@@ -644,6 +648,8 @@ const (
 	CRC32_inputPrivacyValueDisallowChatParticipants                   TLConstructor = -380694650  // e94f0f86
 	CRC32_inputPrivacyValueAllowCloseFriends                          TLConstructor = 793067081   // 2f453e49
 	CRC32_inputPrivacyValueAllowPremium                               TLConstructor = 2009975281  // 77cdc9f1
+	CRC32_inputPrivacyValueAllowBots                                  TLConstructor = 1515179237  // 5a4fcce5
+	CRC32_inputPrivacyValueDisallowBots                               TLConstructor = -991594219  // c4e57915
 	CRC32_privacyValueAllowContacts                                   TLConstructor = -123988     // fffe1bac
 	CRC32_privacyValueAllowAll                                        TLConstructor = 1698855810  // 65427b82
 	CRC32_privacyValueAllowUsers                                      TLConstructor = -1198497870 // b8905fb2
@@ -654,6 +660,8 @@ const (
 	CRC32_privacyValueDisallowChatParticipants                        TLConstructor = 1103656293  // 41c87565
 	CRC32_privacyValueAllowCloseFriends                               TLConstructor = -135735141  // f7e8d89b
 	CRC32_privacyValueAllowPremium                                    TLConstructor = -320241333  // ece9814b
+	CRC32_privacyValueAllowBots                                       TLConstructor = 558242653   // 21461b5d
+	CRC32_privacyValueDisallowBots                                    TLConstructor = -156895185  // f6a5f82f
 	CRC32_account_privacyRules                                        TLConstructor = 1352683077  // 50a04e45
 	CRC32_accountDaysTTL                                              TLConstructor = -1194283041 // b8d0afdf
 	CRC32_documentAttributeImageSize                                  TLConstructor = 1815593308  // 6c37c15c
@@ -712,6 +720,7 @@ const (
 	CRC32_messages_stickerSet_b60a24a6                                TLConstructor = -1240849242 // b60a24a6
 	CRC32_messages_stickerSetNotModified                              TLConstructor = -738646805  // d3f924eb
 	CRC32_botCommand                                                  TLConstructor = -1032140601 // c27ac8c7
+	CRC32_botInfo_36607333                                            TLConstructor = 912290611   // 36607333
 	CRC32_botInfo_82437e74                                            TLConstructor = -2109505932 // 82437e74
 	CRC32_botInfo_8f300b57                                            TLConstructor = -1892676777 // 8f300b57
 	CRC32_botInfo_e4169b5d                                            TLConstructor = -468280483  // e4169b5d
@@ -936,6 +945,7 @@ const (
 	CRC32_phoneCallDiscardReasonBusy                                  TLConstructor = -84416311   // faf7e8c9
 	CRC32_dataJSON                                                    TLConstructor = 2104790276  // 7d748d04
 	CRC32_labeledPrice                                                TLConstructor = -886477832  // cb296bf8
+	CRC32_invoice_49ee584                                             TLConstructor = 77522308    // 49ee584
 	CRC32_invoice_5db95a15                                            TLConstructor = 1572428309  // 5db95a15
 	CRC32_invoice_3e85a91b                                            TLConstructor = 1048946971  // 3e85a91b
 	CRC32_invoice_cd886e0                                             TLConstructor = 215516896   // cd886e0
@@ -1627,7 +1637,8 @@ const (
 	CRC32_botPreviewMedia                                             TLConstructor = 602479523   // 23e91ba3
 	CRC32_bots_previewInfo                                            TLConstructor = 212278628   // ca71d64
 	CRC32_starsSubscriptionPricing                                    TLConstructor = 88173912    // 5416d58
-	CRC32_starsSubscription                                           TLConstructor = 1401868056  // 538ecf18
+	CRC32_starsSubscription_2e6eab1a                                  TLConstructor = 779004698   // 2e6eab1a
+	CRC32_starsSubscription_538ecf18                                  TLConstructor = 1401868056  // 538ecf18
 	CRC32_messageReactor                                              TLConstructor = 1269016922  // 4ba3a95a
 	CRC32_starsGiveawayOption                                         TLConstructor = -1798404822 // 94ce852a
 	CRC32_starsGiveawayWinnersOption                                  TLConstructor = 1411605001  // 54236209
@@ -1641,6 +1652,9 @@ const (
 	CRC32_reportResultChooseOption                                    TLConstructor = -253435722  // f0e4e0b6
 	CRC32_reportResultAddComment                                      TLConstructor = 1862904881  // 6f09ac31
 	CRC32_reportResultReported                                        TLConstructor = -1917633461 // 8db33c4b
+	CRC32_messages_botPreparedInlineMessage                           TLConstructor = -1899035375 // 8ecf0511
+	CRC32_messages_preparedInlineMessage                              TLConstructor = -11046771   // ff57708d
+	CRC32_botAppSettings                                              TLConstructor = -912582320  // c99b1950
 	CRC32_inputStorePaymentStars                                      TLConstructor = 1326377183  // 4f0ee8df
 	CRC32_simpleWebViewResultUrl                                      TLConstructor = -2010155333 // 882f76bb
 	CRC32_appWebViewResultUrl                                         TLConstructor = 1008422669  // 3c1b4f0d
@@ -2165,6 +2179,8 @@ const (
 	CRC32_messages_clickSponsoredMessage                              TLConstructor = 252261477   // f093465
 	CRC32_messages_reportSponsoredMessage                             TLConstructor = 452189112   // 1af3dbb8
 	CRC32_messages_getSponsoredMessages                               TLConstructor = -1680673735 // 9bd2f439
+	CRC32_messages_savePreparedInlineMessage                          TLConstructor = -232816849  // f21f7f2f
+	CRC32_messages_getPreparedInlineMessage                           TLConstructor = -2055291464 // 857ebdb8
 	CRC32_updates_getState                                            TLConstructor = -304838614  // edd4882a
 	CRC32_updates_getDifference_19c2f763                              TLConstructor = 432207715   // 19c2f763
 	CRC32_updates_getDifference_25939651                              TLConstructor = 630429265   // 25939651
@@ -2307,6 +2323,9 @@ const (
 	CRC32_bots_reorderPreviewMedias                                   TLConstructor = -1238895702 // b627f3aa
 	CRC32_bots_getPreviewInfo                                         TLConstructor = 1111143341  // 423ab3ad
 	CRC32_bots_getPreviewMedias                                       TLConstructor = -1566222003 // a2a5594d
+	CRC32_bots_updateUserEmojiStatus                                  TLConstructor = -308334395  // ed9f30c5
+	CRC32_bots_toggleUserEmojiStatusPermission                        TLConstructor = 115237778   // 6de6392
+	CRC32_bots_checkDownloadFileParams                                TLConstructor = 1342666121  // 50077589
 	CRC32_payments_getPaymentForm_37148dbb                            TLConstructor = 924093883   // 37148dbb
 	CRC32_payments_getPaymentForm_8a333c8d                            TLConstructor = -1976353651 // 8a333c8d
 	CRC32_payments_getPaymentReceipt                                  TLConstructor = 611897804   // 2478d1cc
@@ -2351,6 +2370,7 @@ const (
 	CRC32_payments_getUserStarGifts                                   TLConstructor = 1584580577  // 5e72c7e1
 	CRC32_payments_saveStarGift                                       TLConstructor = -2018709362 // 87acf08e
 	CRC32_payments_convertStarGift                                    TLConstructor = 69328935    // 421e027
+	CRC32_payments_botCancelStarsSubscription                         TLConstructor = 1475996902  // 57f9ece6
 	CRC32_stickers_createStickerSet                                   TLConstructor = -1876841625 // 9021ab67
 	CRC32_stickers_removeStickerFromSet                               TLConstructor = -143257775  // f7760f51
 	CRC32_stickers_changeStickerPosition                              TLConstructor = -4795190    // ffb6d4ca

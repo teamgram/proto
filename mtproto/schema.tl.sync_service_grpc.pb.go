@@ -14459,13 +14459,15 @@ var RPCImportedChats_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCInlineBot_MessagesGetInlineBotResults_FullMethodName  = "/mtproto.RPCInlineBot/messages_getInlineBotResults"
-	RPCInlineBot_MessagesSetInlineBotResults_FullMethodName  = "/mtproto.RPCInlineBot/messages_setInlineBotResults"
-	RPCInlineBot_MessagesSendInlineBotResult_FullMethodName  = "/mtproto.RPCInlineBot/messages_sendInlineBotResult"
-	RPCInlineBot_MessagesEditInlineBotMessage_FullMethodName = "/mtproto.RPCInlineBot/messages_editInlineBotMessage"
-	RPCInlineBot_MessagesGetBotCallbackAnswer_FullMethodName = "/mtproto.RPCInlineBot/messages_getBotCallbackAnswer"
-	RPCInlineBot_MessagesSetBotCallbackAnswer_FullMethodName = "/mtproto.RPCInlineBot/messages_setBotCallbackAnswer"
-	RPCInlineBot_MessagesSendBotRequestedPeer_FullMethodName = "/mtproto.RPCInlineBot/messages_sendBotRequestedPeer"
+	RPCInlineBot_MessagesGetInlineBotResults_FullMethodName       = "/mtproto.RPCInlineBot/messages_getInlineBotResults"
+	RPCInlineBot_MessagesSetInlineBotResults_FullMethodName       = "/mtproto.RPCInlineBot/messages_setInlineBotResults"
+	RPCInlineBot_MessagesSendInlineBotResult_FullMethodName       = "/mtproto.RPCInlineBot/messages_sendInlineBotResult"
+	RPCInlineBot_MessagesEditInlineBotMessage_FullMethodName      = "/mtproto.RPCInlineBot/messages_editInlineBotMessage"
+	RPCInlineBot_MessagesGetBotCallbackAnswer_FullMethodName      = "/mtproto.RPCInlineBot/messages_getBotCallbackAnswer"
+	RPCInlineBot_MessagesSetBotCallbackAnswer_FullMethodName      = "/mtproto.RPCInlineBot/messages_setBotCallbackAnswer"
+	RPCInlineBot_MessagesSendBotRequestedPeer_FullMethodName      = "/mtproto.RPCInlineBot/messages_sendBotRequestedPeer"
+	RPCInlineBot_MessagesSavePreparedInlineMessage_FullMethodName = "/mtproto.RPCInlineBot/messages_savePreparedInlineMessage"
+	RPCInlineBot_MessagesGetPreparedInlineMessage_FullMethodName  = "/mtproto.RPCInlineBot/messages_getPreparedInlineMessage"
 )
 
 // RPCInlineBotClient is the client API for RPCInlineBot service.
@@ -14479,6 +14481,8 @@ type RPCInlineBotClient interface {
 	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer, opts ...grpc.CallOption) (*Messages_BotCallbackAnswer, error)
 	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer, opts ...grpc.CallOption) (*Bool, error)
 	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer, opts ...grpc.CallOption) (*Updates, error)
+	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage, opts ...grpc.CallOption) (*Messages_BotPreparedInlineMessage, error)
+	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage, opts ...grpc.CallOption) (*Messages_PreparedInlineMessage, error)
 }
 
 type rPCInlineBotClient struct {
@@ -14552,6 +14556,24 @@ func (c *rPCInlineBotClient) MessagesSendBotRequestedPeer(ctx context.Context, i
 	return out, nil
 }
 
+func (c *rPCInlineBotClient) MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage, opts ...grpc.CallOption) (*Messages_BotPreparedInlineMessage, error) {
+	out := new(Messages_BotPreparedInlineMessage)
+	err := c.cc.Invoke(ctx, RPCInlineBot_MessagesSavePreparedInlineMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCInlineBotClient) MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage, opts ...grpc.CallOption) (*Messages_PreparedInlineMessage, error) {
+	out := new(Messages_PreparedInlineMessage)
+	err := c.cc.Invoke(ctx, RPCInlineBot_MessagesGetPreparedInlineMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCInlineBotServer is the server API for RPCInlineBot service.
 // All implementations should embed UnimplementedRPCInlineBotServer
 // for forward compatibility
@@ -14563,6 +14585,8 @@ type RPCInlineBotServer interface {
 	MessagesGetBotCallbackAnswer(context.Context, *TLMessagesGetBotCallbackAnswer) (*Messages_BotCallbackAnswer, error)
 	MessagesSetBotCallbackAnswer(context.Context, *TLMessagesSetBotCallbackAnswer) (*Bool, error)
 	MessagesSendBotRequestedPeer(context.Context, *TLMessagesSendBotRequestedPeer) (*Updates, error)
+	MessagesSavePreparedInlineMessage(context.Context, *TLMessagesSavePreparedInlineMessage) (*Messages_BotPreparedInlineMessage, error)
+	MessagesGetPreparedInlineMessage(context.Context, *TLMessagesGetPreparedInlineMessage) (*Messages_PreparedInlineMessage, error)
 }
 
 // UnimplementedRPCInlineBotServer should be embedded to have forward compatible implementations.
@@ -14589,6 +14613,12 @@ func (UnimplementedRPCInlineBotServer) MessagesSetBotCallbackAnswer(context.Cont
 }
 func (UnimplementedRPCInlineBotServer) MessagesSendBotRequestedPeer(context.Context, *TLMessagesSendBotRequestedPeer) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendBotRequestedPeer not implemented")
+}
+func (UnimplementedRPCInlineBotServer) MessagesSavePreparedInlineMessage(context.Context, *TLMessagesSavePreparedInlineMessage) (*Messages_BotPreparedInlineMessage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSavePreparedInlineMessage not implemented")
+}
+func (UnimplementedRPCInlineBotServer) MessagesGetPreparedInlineMessage(context.Context, *TLMessagesGetPreparedInlineMessage) (*Messages_PreparedInlineMessage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetPreparedInlineMessage not implemented")
 }
 
 // UnsafeRPCInlineBotServer may be embedded to opt out of forward compatibility for this service.
@@ -14728,6 +14758,42 @@ func _RPCInlineBot_MessagesSendBotRequestedPeer_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCInlineBot_MessagesSavePreparedInlineMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSavePreparedInlineMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCInlineBotServer).MessagesSavePreparedInlineMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCInlineBot_MessagesSavePreparedInlineMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCInlineBotServer).MessagesSavePreparedInlineMessage(ctx, req.(*TLMessagesSavePreparedInlineMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCInlineBot_MessagesGetPreparedInlineMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetPreparedInlineMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCInlineBotServer).MessagesGetPreparedInlineMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCInlineBot_MessagesGetPreparedInlineMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCInlineBotServer).MessagesGetPreparedInlineMessage(ctx, req.(*TLMessagesGetPreparedInlineMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCInlineBot_ServiceDesc is the grpc.ServiceDesc for RPCInlineBot service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -14762,6 +14828,14 @@ var RPCInlineBot_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_sendBotRequestedPeer",
 			Handler:    _RPCInlineBot_MessagesSendBotRequestedPeer_Handler,
+		},
+		{
+			MethodName: "messages_savePreparedInlineMessage",
+			Handler:    _RPCInlineBot_MessagesSavePreparedInlineMessage_Handler,
+		},
+		{
+			MethodName: "messages_getPreparedInlineMessage",
+			Handler:    _RPCInlineBot_MessagesGetPreparedInlineMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -15167,14 +15241,17 @@ var RPCLangpack_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCMainMiniBotApps_MessagesRequestMainWebView_FullMethodName = "/mtproto.RPCMainMiniBotApps/messages_requestMainWebView"
-	RPCMainMiniBotApps_BotsGetPopularAppBots_FullMethodName      = "/mtproto.RPCMainMiniBotApps/bots_getPopularAppBots"
-	RPCMainMiniBotApps_BotsAddPreviewMedia_FullMethodName        = "/mtproto.RPCMainMiniBotApps/bots_addPreviewMedia"
-	RPCMainMiniBotApps_BotsEditPreviewMedia_FullMethodName       = "/mtproto.RPCMainMiniBotApps/bots_editPreviewMedia"
-	RPCMainMiniBotApps_BotsDeletePreviewMedia_FullMethodName     = "/mtproto.RPCMainMiniBotApps/bots_deletePreviewMedia"
-	RPCMainMiniBotApps_BotsReorderPreviewMedias_FullMethodName   = "/mtproto.RPCMainMiniBotApps/bots_reorderPreviewMedias"
-	RPCMainMiniBotApps_BotsGetPreviewInfo_FullMethodName         = "/mtproto.RPCMainMiniBotApps/bots_getPreviewInfo"
-	RPCMainMiniBotApps_BotsGetPreviewMedias_FullMethodName       = "/mtproto.RPCMainMiniBotApps/bots_getPreviewMedias"
+	RPCMainMiniBotApps_MessagesRequestMainWebView_FullMethodName          = "/mtproto.RPCMainMiniBotApps/messages_requestMainWebView"
+	RPCMainMiniBotApps_BotsGetPopularAppBots_FullMethodName               = "/mtproto.RPCMainMiniBotApps/bots_getPopularAppBots"
+	RPCMainMiniBotApps_BotsAddPreviewMedia_FullMethodName                 = "/mtproto.RPCMainMiniBotApps/bots_addPreviewMedia"
+	RPCMainMiniBotApps_BotsEditPreviewMedia_FullMethodName                = "/mtproto.RPCMainMiniBotApps/bots_editPreviewMedia"
+	RPCMainMiniBotApps_BotsDeletePreviewMedia_FullMethodName              = "/mtproto.RPCMainMiniBotApps/bots_deletePreviewMedia"
+	RPCMainMiniBotApps_BotsReorderPreviewMedias_FullMethodName            = "/mtproto.RPCMainMiniBotApps/bots_reorderPreviewMedias"
+	RPCMainMiniBotApps_BotsGetPreviewInfo_FullMethodName                  = "/mtproto.RPCMainMiniBotApps/bots_getPreviewInfo"
+	RPCMainMiniBotApps_BotsGetPreviewMedias_FullMethodName                = "/mtproto.RPCMainMiniBotApps/bots_getPreviewMedias"
+	RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_FullMethodName           = "/mtproto.RPCMainMiniBotApps/bots_updateUserEmojiStatus"
+	RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_FullMethodName = "/mtproto.RPCMainMiniBotApps/bots_toggleUserEmojiStatusPermission"
+	RPCMainMiniBotApps_BotsCheckDownloadFileParams_FullMethodName         = "/mtproto.RPCMainMiniBotApps/bots_checkDownloadFileParams"
 )
 
 // RPCMainMiniBotAppsClient is the client API for RPCMainMiniBotApps service.
@@ -15189,6 +15266,9 @@ type RPCMainMiniBotAppsClient interface {
 	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error)
 	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error)
 	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error)
+	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus, opts ...grpc.CallOption) (*Bool, error)
+	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission, opts ...grpc.CallOption) (*Bool, error)
+	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCMainMiniBotAppsClient struct {
@@ -15271,6 +15351,33 @@ func (c *rPCMainMiniBotAppsClient) BotsGetPreviewMedias(ctx context.Context, in 
 	return out, nil
 }
 
+func (c *rPCMainMiniBotAppsClient) BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMainMiniBotAppsClient) BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsCheckDownloadFileParams_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCMainMiniBotAppsServer is the server API for RPCMainMiniBotApps service.
 // All implementations should embed UnimplementedRPCMainMiniBotAppsServer
 // for forward compatibility
@@ -15283,6 +15390,9 @@ type RPCMainMiniBotAppsServer interface {
 	BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error)
 	BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error)
 	BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error)
+	BotsUpdateUserEmojiStatus(context.Context, *TLBotsUpdateUserEmojiStatus) (*Bool, error)
+	BotsToggleUserEmojiStatusPermission(context.Context, *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
+	BotsCheckDownloadFileParams(context.Context, *TLBotsCheckDownloadFileParams) (*Bool, error)
 }
 
 // UnimplementedRPCMainMiniBotAppsServer should be embedded to have forward compatible implementations.
@@ -15312,6 +15422,15 @@ func (UnimplementedRPCMainMiniBotAppsServer) BotsGetPreviewInfo(context.Context,
 }
 func (UnimplementedRPCMainMiniBotAppsServer) BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewMedias not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsUpdateUserEmojiStatus(context.Context, *TLBotsUpdateUserEmojiStatus) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsUpdateUserEmojiStatus not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsToggleUserEmojiStatusPermission(context.Context, *TLBotsToggleUserEmojiStatusPermission) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsToggleUserEmojiStatusPermission not implemented")
+}
+func (UnimplementedRPCMainMiniBotAppsServer) BotsCheckDownloadFileParams(context.Context, *TLBotsCheckDownloadFileParams) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsCheckDownloadFileParams not implemented")
 }
 
 // UnsafeRPCMainMiniBotAppsServer may be embedded to opt out of forward compatibility for this service.
@@ -15469,6 +15588,60 @@ func _RPCMainMiniBotApps_BotsGetPreviewMedias_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsUpdateUserEmojiStatus)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsUpdateUserEmojiStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsUpdateUserEmojiStatus(ctx, req.(*TLBotsUpdateUserEmojiStatus))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsToggleUserEmojiStatusPermission)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsToggleUserEmojiStatusPermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsToggleUserEmojiStatusPermission(ctx, req.(*TLBotsToggleUserEmojiStatusPermission))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMainMiniBotApps_BotsCheckDownloadFileParams_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsCheckDownloadFileParams)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMainMiniBotAppsServer).BotsCheckDownloadFileParams(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMainMiniBotApps_BotsCheckDownloadFileParams_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMainMiniBotAppsServer).BotsCheckDownloadFileParams(ctx, req.(*TLBotsCheckDownloadFileParams))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCMainMiniBotApps_ServiceDesc is the grpc.ServiceDesc for RPCMainMiniBotApps service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -15507,6 +15680,18 @@ var RPCMainMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "bots_getPreviewMedias",
 			Handler:    _RPCMainMiniBotApps_BotsGetPreviewMedias_Handler,
+		},
+		{
+			MethodName: "bots_updateUserEmojiStatus",
+			Handler:    _RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_Handler,
+		},
+		{
+			MethodName: "bots_toggleUserEmojiStatusPermission",
+			Handler:    _RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_Handler,
+		},
+		{
+			MethodName: "bots_checkDownloadFileParams",
+			Handler:    _RPCMainMiniBotApps_BotsCheckDownloadFileParams_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -23805,6 +23990,7 @@ const (
 	RPCStars_PaymentsGetUserStarGifts_FullMethodName             = "/mtproto.RPCStars/payments_getUserStarGifts"
 	RPCStars_PaymentsSaveStarGift_FullMethodName                 = "/mtproto.RPCStars/payments_saveStarGift"
 	RPCStars_PaymentsConvertStarGift_FullMethodName              = "/mtproto.RPCStars/payments_convertStarGift"
+	RPCStars_PaymentsBotCancelStarsSubscription_FullMethodName   = "/mtproto.RPCStars/payments_botCancelStarsSubscription"
 )
 
 // RPCStarsClient is the client API for RPCStars service.
@@ -23829,6 +24015,7 @@ type RPCStarsClient interface {
 	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCStarsClient struct {
@@ -24001,6 +24188,15 @@ func (c *rPCStarsClient) PaymentsConvertStarGift(ctx context.Context, in *TLPaym
 	return out, nil
 }
 
+func (c *rPCStarsClient) PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsBotCancelStarsSubscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCStarsServer is the server API for RPCStars service.
 // All implementations should embed UnimplementedRPCStarsServer
 // for forward compatibility
@@ -24023,6 +24219,7 @@ type RPCStarsServer interface {
 	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
 	PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error)
 	PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
 }
 
 // UnimplementedRPCStarsServer should be embedded to have forward compatible implementations.
@@ -24082,6 +24279,9 @@ func (UnimplementedRPCStarsServer) PaymentsSaveStarGift(context.Context, *TLPaym
 }
 func (UnimplementedRPCStarsServer) PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsConvertStarGift not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsBotCancelStarsSubscription not implemented")
 }
 
 // UnsafeRPCStarsServer may be embedded to opt out of forward compatibility for this service.
@@ -24419,6 +24619,24 @@ func _RPCStars_PaymentsConvertStarGift_Handler(srv interface{}, ctx context.Cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStars_PaymentsBotCancelStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsBotCancelStarsSubscription)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsBotCancelStarsSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsBotCancelStarsSubscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsBotCancelStarsSubscription(ctx, req.(*TLPaymentsBotCancelStarsSubscription))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCStars_ServiceDesc is the grpc.ServiceDesc for RPCStars service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -24497,6 +24715,10 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_convertStarGift",
 			Handler:    _RPCStars_PaymentsConvertStarGift_Handler,
+		},
+		{
+			MethodName: "payments_botCancelStarsSubscription",
+			Handler:    _RPCStars_PaymentsBotCancelStarsSubscription_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
