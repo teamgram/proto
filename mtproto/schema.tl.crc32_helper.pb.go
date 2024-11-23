@@ -1811,7 +1811,8 @@ const (
 	CRC32_account_createTheme                                         TLConstructor = 1697530880  // 652e4400
 	CRC32_account_updateTheme                                         TLConstructor = 737414348   // 2bf40ccc
 	CRC32_account_saveTheme                                           TLConstructor = -229175188  // f257106c
-	CRC32_account_installTheme                                        TLConstructor = -953697477  // c727bb3b
+	CRC32_account_installTheme_c727bb3b                               TLConstructor = -953697477  // c727bb3b
+	CRC32_account_installTheme_7ae43737                               TLConstructor = 2061776695  // 7ae43737
 	CRC32_account_getTheme_3a5869ec                                   TLConstructor = 978872812   // 3a5869ec
 	CRC32_account_getTheme_8d9d742b                                   TLConstructor = -1919060949 // 8d9d742b
 	CRC32_account_getThemes                                           TLConstructor = 1913054296  // 7206e458

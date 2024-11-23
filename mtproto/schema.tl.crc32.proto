@@ -1818,7 +1818,8 @@ enum TLConstructor {
     CRC32_account_createTheme = 1697530880; // 652e4400
     CRC32_account_updateTheme = 737414348; // 2bf40ccc
     CRC32_account_saveTheme = -229175188; // f257106c
-    CRC32_account_installTheme = -953697477; // c727bb3b
+    CRC32_account_installTheme_c727bb3b = -953697477; // c727bb3b
+    CRC32_account_installTheme_7ae43737 = 2061776695; // 7ae43737
     CRC32_account_getTheme_3a5869ec = 978872812; // 3a5869ec
     CRC32_account_getTheme_8d9d742b = -1919060949; // 8d9d742b
     CRC32_account_getThemes = 1913054296; // 7206e458

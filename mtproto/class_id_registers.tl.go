@@ -9004,6 +9004,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -953697477,
 		}
 	},
+	2061776695: func() TLObject { // 0x7ae43737
+		return &TLAccountInstallTheme{
+			Constructor: 2061776695,
+		}
+	},
 	978872812: func() TLObject { // 0x3a5869ec
 		return &TLAccountGetTheme{
 			Constructor: 978872812,
