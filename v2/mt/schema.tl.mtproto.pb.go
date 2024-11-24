@@ -34,7 +34,7 @@ func DecodeBindAuthKeyInner(d *bin.Decoder) (BindAuthKeyInner, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_bind_auth_key_inner:
 		x := &TLBindAuthKeyInner{}
@@ -47,12 +47,12 @@ func DecodeBindAuthKeyInner(d *bin.Decoder) (BindAuthKeyInner, error) {
 
 // TLBindAuthKeyInner <--
 type TLBindAuthKeyInner struct {
-	ClazzID       int32 `json:"_id"`
-	Nonce         int64 `json:"nonce"`
-	TempAuthKeyId int64 `json:"temp_auth_key_id"`
-	PermAuthKeyId int64 `json:"perm_auth_key_id"`
-	TempSessionId int64 `json:"temp_session_id"`
-	ExpiresAt     int32 `json:"expires_at"`
+	ClazzID       uint32 `json:"_id"`
+	Nonce         int64  `json:"nonce"`
+	TempAuthKeyId int64  `json:"temp_auth_key_id"`
+	PermAuthKeyId int64  `json:"perm_auth_key_id"`
+	TempSessionId int64  `json:"temp_session_id"`
+	ExpiresAt     int32  `json:"expires_at"`
 }
 
 func (m *TLBindAuthKeyInner) BindAuthKeyInnerClazzName() string {
@@ -79,7 +79,7 @@ func (m *TLBindAuthKeyInner) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_bind_auth_key_inner, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -100,10 +100,10 @@ func (m *TLBindAuthKeyInner) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -120,7 +120,7 @@ func DecodeClientDHInnerData(d *bin.Decoder) (ClientDHInnerData, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_client_DH_inner_data:
 		x := &TLClientDHInnerData{}
@@ -133,7 +133,7 @@ func DecodeClientDHInnerData(d *bin.Decoder) (ClientDHInnerData, error) {
 
 // TLClientDHInnerData <--
 type TLClientDHInnerData struct {
-	ClazzID     int32      `json:"_id"`
+	ClazzID     uint32     `json:"_id"`
 	Nonce       bin.Int128 `json:"nonce"`
 	ServerNonce bin.Int128 `json:"server_nonce"`
 	RetryId     int64      `json:"retry_id"`
@@ -163,7 +163,7 @@ func (m *TLClientDHInnerData) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_client_DH_inner_data, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -183,10 +183,10 @@ func (m *TLClientDHInnerData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -205,7 +205,7 @@ func DecodeDestroyAuthKeyRes(d *bin.Decoder) (DestroyAuthKeyRes, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_destroy_auth_key_ok:
 		x := &TLDestroyAuthKeyOk{}
@@ -226,7 +226,7 @@ func DecodeDestroyAuthKeyRes(d *bin.Decoder) (DestroyAuthKeyRes, error) {
 
 // TLDestroyAuthKeyOk <--
 type TLDestroyAuthKeyOk struct {
-	ClazzID int32 `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 }
 
 func (m *TLDestroyAuthKeyOk) DestroyAuthKeyResClazzName() string {
@@ -247,7 +247,7 @@ func (m *TLDestroyAuthKeyOk) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_destroy_auth_key_ok, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -263,16 +263,16 @@ func (m *TLDestroyAuthKeyOk) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLDestroyAuthKeyNone <--
 type TLDestroyAuthKeyNone struct {
-	ClazzID int32 `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 }
 
 func (m *TLDestroyAuthKeyNone) DestroyAuthKeyResClazzName() string {
@@ -293,7 +293,7 @@ func (m *TLDestroyAuthKeyNone) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_destroy_auth_key_none, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -309,16 +309,16 @@ func (m *TLDestroyAuthKeyNone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLDestroyAuthKeyFail <--
 type TLDestroyAuthKeyFail struct {
-	ClazzID int32 `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 }
 
 func (m *TLDestroyAuthKeyFail) DestroyAuthKeyResClazzName() string {
@@ -339,7 +339,7 @@ func (m *TLDestroyAuthKeyFail) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_destroy_auth_key_fail, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -355,10 +355,10 @@ func (m *TLDestroyAuthKeyFail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -378,7 +378,7 @@ func DecodePQInnerData(d *bin.Decoder) (PQInnerData, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_p_q_inner_data:
 		x := &TLPQInnerData{}
@@ -403,7 +403,7 @@ func DecodePQInnerData(d *bin.Decoder) (PQInnerData, error) {
 
 // TLPQInnerData <--
 type TLPQInnerData struct {
-	ClazzID     int32      `json:"_id"`
+	ClazzID     uint32     `json:"_id"`
 	Pq          string     `json:"pq"`
 	P           string     `json:"p"`
 	Q           string     `json:"q"`
@@ -437,7 +437,7 @@ func (m *TLPQInnerData) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_p_q_inner_data, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -459,16 +459,16 @@ func (m *TLPQInnerData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLPQInnerDataDc <--
 type TLPQInnerDataDc struct {
-	ClazzID     int32      `json:"_id"`
+	ClazzID     uint32     `json:"_id"`
 	Pq          string     `json:"pq"`
 	P           string     `json:"p"`
 	Q           string     `json:"q"`
@@ -504,7 +504,7 @@ func (m *TLPQInnerDataDc) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_p_q_inner_data_dc, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -527,16 +527,16 @@ func (m *TLPQInnerDataDc) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLPQInnerDataTemp <--
 type TLPQInnerDataTemp struct {
-	ClazzID     int32      `json:"_id"`
+	ClazzID     uint32     `json:"_id"`
 	Pq          string     `json:"pq"`
 	P           string     `json:"p"`
 	Q           string     `json:"q"`
@@ -572,7 +572,7 @@ func (m *TLPQInnerDataTemp) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_p_q_inner_data_temp, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -595,16 +595,16 @@ func (m *TLPQInnerDataTemp) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLPQInnerDataTempDc <--
 type TLPQInnerDataTempDc struct {
-	ClazzID     int32      `json:"_id"`
+	ClazzID     uint32     `json:"_id"`
 	Pq          string     `json:"pq"`
 	P           string     `json:"p"`
 	Q           string     `json:"q"`
@@ -642,7 +642,7 @@ func (m *TLPQInnerDataTempDc) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_p_q_inner_data_temp_dc, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -666,10 +666,10 @@ func (m *TLPQInnerDataTempDc) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -686,7 +686,7 @@ func DecodeResPQ(d *bin.Decoder) (ResPQ, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_resPQ:
 		x := &TLResPQ{}
@@ -699,7 +699,7 @@ func DecodeResPQ(d *bin.Decoder) (ResPQ, error) {
 
 // TLResPQ <--
 type TLResPQ struct {
-	ClazzID                     int32      `json:"_id"`
+	ClazzID                     uint32     `json:"_id"`
 	Nonce                       bin.Int128 `json:"nonce"`
 	ServerNonce                 bin.Int128 `json:"server_nonce"`
 	Pq                          string     `json:"pq"`
@@ -730,7 +730,7 @@ func (m *TLResPQ) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_resPQ, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -751,10 +751,10 @@ func (m *TLResPQ) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -771,7 +771,7 @@ func DecodeServerDHInnerData(d *bin.Decoder) (ServerDHInnerData, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_server_DH_inner_data:
 		x := &TLServerDHInnerData{}
@@ -784,7 +784,7 @@ func DecodeServerDHInnerData(d *bin.Decoder) (ServerDHInnerData, error) {
 
 // TLServerDHInnerData <--
 type TLServerDHInnerData struct {
-	ClazzID     int32      `json:"_id"`
+	ClazzID     uint32     `json:"_id"`
 	Nonce       bin.Int128 `json:"nonce"`
 	ServerNonce bin.Int128 `json:"server_nonce"`
 	G           int32      `json:"g"`
@@ -818,7 +818,7 @@ func (m *TLServerDHInnerData) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_server_DH_inner_data, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -840,10 +840,10 @@ func (m *TLServerDHInnerData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -861,7 +861,7 @@ func DecodeServerDHParams(d *bin.Decoder) (ServerDHParams, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_server_DH_params_fail:
 		x := &TLServerDHParamsFail{}
@@ -878,7 +878,7 @@ func DecodeServerDHParams(d *bin.Decoder) (ServerDHParams, error) {
 
 // TLServerDHParamsFail <--
 type TLServerDHParamsFail struct {
-	ClazzID      int32      `json:"_id"`
+	ClazzID      uint32     `json:"_id"`
 	Nonce        bin.Int128 `json:"nonce"`
 	ServerNonce  bin.Int128 `json:"server_nonce"`
 	NewNonceHash bin.Int128 `json:"new_nonce_hash"`
@@ -906,7 +906,7 @@ func (m *TLServerDHParamsFail) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_server_DH_params_fail, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -925,16 +925,16 @@ func (m *TLServerDHParamsFail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLServerDHParamsOk <--
 type TLServerDHParamsOk struct {
-	ClazzID         int32      `json:"_id"`
+	ClazzID         uint32     `json:"_id"`
 	Nonce           bin.Int128 `json:"nonce"`
 	ServerNonce     bin.Int128 `json:"server_nonce"`
 	EncryptedAnswer string     `json:"encrypted_answer"`
@@ -962,7 +962,7 @@ func (m *TLServerDHParamsOk) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_server_DH_params_ok, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -981,10 +981,10 @@ func (m *TLServerDHParamsOk) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1003,7 +1003,7 @@ func DecodeSetClientDHParamsAnswer(d *bin.Decoder) (SetClientDHParamsAnswer, err
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_dh_gen_ok:
 		x := &TLDhGenOk{}
@@ -1024,7 +1024,7 @@ func DecodeSetClientDHParamsAnswer(d *bin.Decoder) (SetClientDHParamsAnswer, err
 
 // TLDhGenOk <--
 type TLDhGenOk struct {
-	ClazzID       int32      `json:"_id"`
+	ClazzID       uint32     `json:"_id"`
 	Nonce         bin.Int128 `json:"nonce"`
 	ServerNonce   bin.Int128 `json:"server_nonce"`
 	NewNonceHash1 bin.Int128 `json:"new_nonce_hash1"`
@@ -1052,7 +1052,7 @@ func (m *TLDhGenOk) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_dh_gen_ok, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1071,16 +1071,16 @@ func (m *TLDhGenOk) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLDhGenRetry <--
 type TLDhGenRetry struct {
-	ClazzID       int32      `json:"_id"`
+	ClazzID       uint32     `json:"_id"`
 	Nonce         bin.Int128 `json:"nonce"`
 	ServerNonce   bin.Int128 `json:"server_nonce"`
 	NewNonceHash2 bin.Int128 `json:"new_nonce_hash2"`
@@ -1108,7 +1108,7 @@ func (m *TLDhGenRetry) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_dh_gen_retry, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1127,16 +1127,16 @@ func (m *TLDhGenRetry) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLDhGenFail <--
 type TLDhGenFail struct {
-	ClazzID       int32      `json:"_id"`
+	ClazzID       uint32     `json:"_id"`
 	Nonce         bin.Int128 `json:"nonce"`
 	ServerNonce   bin.Int128 `json:"server_nonce"`
 	NewNonceHash3 bin.Int128 `json:"new_nonce_hash3"`
@@ -1164,7 +1164,7 @@ func (m *TLDhGenFail) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_dh_gen_fail, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1183,10 +1183,10 @@ func (m *TLDhGenFail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1203,7 +1203,7 @@ func DecodeAccessPointRule(d *bin.Decoder) (AccessPointRule, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_accessPointRule:
 		x := &TLAccessPointRule{}
@@ -1216,7 +1216,7 @@ func DecodeAccessPointRule(d *bin.Decoder) (AccessPointRule, error) {
 
 // TLAccessPointRule <--
 type TLAccessPointRule struct {
-	ClazzID          int32    `json:"_id"`
+	ClazzID          uint32   `json:"_id"`
 	PhonePrefixRules string   `json:"phone_prefix_rules"`
 	DcId             int32    `json:"dc_id"`
 	Ips              []IpPort `json:"ips"`
@@ -1248,7 +1248,7 @@ func (m *TLAccessPointRule) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_accessPointRule, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1279,10 +1279,10 @@ func (m *TLAccessPointRule) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1300,7 +1300,7 @@ func DecodeBadMsgNotification(d *bin.Decoder) (BadMsgNotification, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_bad_msg_notification:
 		x := &TLBadMsgNotification{}
@@ -1317,10 +1317,10 @@ func DecodeBadMsgNotification(d *bin.Decoder) (BadMsgNotification, error) {
 
 // TLBadMsgNotification <--
 type TLBadMsgNotification struct {
-	ClazzID     int32 `json:"_id"`
-	BadMsgId    int64 `json:"bad_msg_id"`
-	BadMsgSeqno int32 `json:"bad_msg_seqno"`
-	ErrorCode   int32 `json:"error_code"`
+	ClazzID     uint32 `json:"_id"`
+	BadMsgId    int64  `json:"bad_msg_id"`
+	BadMsgSeqno int32  `json:"bad_msg_seqno"`
+	ErrorCode   int32  `json:"error_code"`
 }
 
 func (m *TLBadMsgNotification) BadMsgNotificationClazzName() string {
@@ -1345,7 +1345,7 @@ func (m *TLBadMsgNotification) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_bad_msg_notification, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1364,20 +1364,20 @@ func (m *TLBadMsgNotification) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLBadServerSalt <--
 type TLBadServerSalt struct {
-	ClazzID       int32 `json:"_id"`
-	BadMsgId      int64 `json:"bad_msg_id"`
-	BadMsgSeqno   int32 `json:"bad_msg_seqno"`
-	ErrorCode     int32 `json:"error_code"`
-	NewServerSalt int64 `json:"new_server_salt"`
+	ClazzID       uint32 `json:"_id"`
+	BadMsgId      int64  `json:"bad_msg_id"`
+	BadMsgSeqno   int32  `json:"bad_msg_seqno"`
+	ErrorCode     int32  `json:"error_code"`
+	NewServerSalt int64  `json:"new_server_salt"`
 }
 
 func (m *TLBadServerSalt) BadMsgNotificationClazzName() string {
@@ -1403,7 +1403,7 @@ func (m *TLBadServerSalt) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_bad_server_salt, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1423,10 +1423,10 @@ func (m *TLBadServerSalt) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1444,7 +1444,7 @@ func DecodeDestroySessionRes(d *bin.Decoder) (DestroySessionRes, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_destroy_session_ok:
 		x := &TLDestroySessionOk{}
@@ -1461,8 +1461,8 @@ func DecodeDestroySessionRes(d *bin.Decoder) (DestroySessionRes, error) {
 
 // TLDestroySessionOk <--
 type TLDestroySessionOk struct {
-	ClazzID   int32 `json:"_id"`
-	SessionId int64 `json:"session_id"`
+	ClazzID   uint32 `json:"_id"`
+	SessionId int64  `json:"session_id"`
 }
 
 func (m *TLDestroySessionOk) DestroySessionResClazzName() string {
@@ -1485,7 +1485,7 @@ func (m *TLDestroySessionOk) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_destroy_session_ok, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1502,17 +1502,17 @@ func (m *TLDestroySessionOk) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLDestroySessionNone <--
 type TLDestroySessionNone struct {
-	ClazzID   int32 `json:"_id"`
-	SessionId int64 `json:"session_id"`
+	ClazzID   uint32 `json:"_id"`
+	SessionId int64  `json:"session_id"`
 }
 
 func (m *TLDestroySessionNone) DestroySessionResClazzName() string {
@@ -1535,7 +1535,7 @@ func (m *TLDestroySessionNone) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_destroy_session_none, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1552,10 +1552,10 @@ func (m *TLDestroySessionNone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1572,7 +1572,7 @@ func DecodeFutureSalt(d *bin.Decoder) (FutureSalt, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_future_salt:
 		x := &TLFutureSalt{}
@@ -1585,10 +1585,10 @@ func DecodeFutureSalt(d *bin.Decoder) (FutureSalt, error) {
 
 // TLFutureSalt <--
 type TLFutureSalt struct {
-	ClazzID    int32 `json:"_id"`
-	ValidSince int32 `json:"valid_since"`
-	ValidUntil int32 `json:"valid_until"`
-	Salt       int64 `json:"salt"`
+	ClazzID    uint32 `json:"_id"`
+	ValidSince int32  `json:"valid_since"`
+	ValidUntil int32  `json:"valid_until"`
+	Salt       int64  `json:"salt"`
 }
 
 func (m *TLFutureSalt) FutureSaltClazzName() string {
@@ -1613,7 +1613,7 @@ func (m *TLFutureSalt) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_future_salt, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1632,10 +1632,10 @@ func (m *TLFutureSalt) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1652,7 +1652,7 @@ func DecodeFutureSalts(d *bin.Decoder) (FutureSalts, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_future_salts:
 		x := &TLFutureSalts{}
@@ -1665,7 +1665,7 @@ func DecodeFutureSalts(d *bin.Decoder) (FutureSalts, error) {
 
 // TLFutureSalts <--
 type TLFutureSalts struct {
-	ClazzID  int32           `json:"_id"`
+	ClazzID  uint32          `json:"_id"`
 	ReqMsgId int64           `json:"req_msg_id"`
 	Now      int32           `json:"now"`
 	Salts    []*TLFutureSalt `json:"salts"`
@@ -1697,7 +1697,7 @@ func (m *TLFutureSalts) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_future_salts, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1729,10 +1729,10 @@ func (m *TLFutureSalts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1749,7 +1749,7 @@ func DecodeHelpConfigSimple(d *bin.Decoder) (HelpConfigSimple, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_help_configSimple:
 		x := &TLHelpConfigSimple{}
@@ -1762,7 +1762,7 @@ func DecodeHelpConfigSimple(d *bin.Decoder) (HelpConfigSimple, error) {
 
 // TLHelpConfigSimple <--
 type TLHelpConfigSimple struct {
-	ClazzID int32             `json:"_id"`
+	ClazzID uint32            `json:"_id"`
 	Date    int32             `json:"date"`
 	Expires int32             `json:"expires"`
 	Rules   []AccessPointRule `json:"rules"`
@@ -1794,7 +1794,7 @@ func (m *TLHelpConfigSimple) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_help_configSimple, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1825,10 +1825,10 @@ func (m *TLHelpConfigSimple) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1845,7 +1845,7 @@ func DecodeHttpWait(d *bin.Decoder) (HttpWait, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_http_wait:
 		x := &TLHttpWait{}
@@ -1858,10 +1858,10 @@ func DecodeHttpWait(d *bin.Decoder) (HttpWait, error) {
 
 // TLHttpWait <--
 type TLHttpWait struct {
-	ClazzID   int32 `json:"_id"`
-	MaxDelay  int32 `json:"max_delay"`
-	WaitAfter int32 `json:"wait_after"`
-	MaxWait   int32 `json:"max_wait"`
+	ClazzID   uint32 `json:"_id"`
+	MaxDelay  int32  `json:"max_delay"`
+	WaitAfter int32  `json:"wait_after"`
+	MaxWait   int32  `json:"max_wait"`
 }
 
 func (m *TLHttpWait) HttpWaitClazzName() string {
@@ -1886,7 +1886,7 @@ func (m *TLHttpWait) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_http_wait, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1905,10 +1905,10 @@ func (m *TLHttpWait) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -1926,7 +1926,7 @@ func DecodeIpPort(d *bin.Decoder) (IpPort, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_ipPort:
 		x := &TLIpPort{}
@@ -1943,9 +1943,9 @@ func DecodeIpPort(d *bin.Decoder) (IpPort, error) {
 
 // TLIpPort <--
 type TLIpPort struct {
-	ClazzID int32 `json:"_id"`
-	Ipv4    int32 `json:"ipv4"`
-	Port    int32 `json:"port"`
+	ClazzID uint32 `json:"_id"`
+	Ipv4    int32  `json:"ipv4"`
+	Port    int32  `json:"port"`
 }
 
 func (m *TLIpPort) IpPortClazzName() string {
@@ -1969,7 +1969,7 @@ func (m *TLIpPort) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_ipPort, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -1987,16 +1987,16 @@ func (m *TLIpPort) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLIpPortSecret <--
 type TLIpPortSecret struct {
-	ClazzID int32  `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 	Ipv4    int32  `json:"ipv4"`
 	Port    int32  `json:"port"`
 	Secret  []byte `json:"secret"`
@@ -2024,7 +2024,7 @@ func (m *TLIpPortSecret) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_ipPortSecret, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2043,10 +2043,10 @@ func (m *TLIpPortSecret) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2064,7 +2064,7 @@ func DecodeMsgDetailedInfo(d *bin.Decoder) (MsgDetailedInfo, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msg_detailed_info:
 		x := &TLMsgDetailedInfo{}
@@ -2081,11 +2081,11 @@ func DecodeMsgDetailedInfo(d *bin.Decoder) (MsgDetailedInfo, error) {
 
 // TLMsgDetailedInfo <--
 type TLMsgDetailedInfo struct {
-	ClazzID     int32 `json:"_id"`
-	MsgId       int64 `json:"msg_id"`
-	AnswerMsgId int64 `json:"answer_msg_id"`
-	Bytes       int32 `json:"bytes"`
-	Status      int32 `json:"status"`
+	ClazzID     uint32 `json:"_id"`
+	MsgId       int64  `json:"msg_id"`
+	AnswerMsgId int64  `json:"answer_msg_id"`
+	Bytes       int32  `json:"bytes"`
+	Status      int32  `json:"status"`
 }
 
 func (m *TLMsgDetailedInfo) MsgDetailedInfoClazzName() string {
@@ -2111,7 +2111,7 @@ func (m *TLMsgDetailedInfo) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_msg_detailed_info, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2131,19 +2131,19 @@ func (m *TLMsgDetailedInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLMsgNewDetailedInfo <--
 type TLMsgNewDetailedInfo struct {
-	ClazzID     int32 `json:"_id"`
-	AnswerMsgId int64 `json:"answer_msg_id"`
-	Bytes       int32 `json:"bytes"`
-	Status      int32 `json:"status"`
+	ClazzID     uint32 `json:"_id"`
+	AnswerMsgId int64  `json:"answer_msg_id"`
+	Bytes       int32  `json:"bytes"`
+	Status      int32  `json:"status"`
 }
 
 func (m *TLMsgNewDetailedInfo) MsgDetailedInfoClazzName() string {
@@ -2168,7 +2168,7 @@ func (m *TLMsgNewDetailedInfo) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_msg_new_detailed_info, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2187,10 +2187,10 @@ func (m *TLMsgNewDetailedInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2207,7 +2207,7 @@ func DecodeMsgResendReq(d *bin.Decoder) (MsgResendReq, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msg_resend_req:
 		x := &TLMsgResendReq{}
@@ -2220,7 +2220,7 @@ func DecodeMsgResendReq(d *bin.Decoder) (MsgResendReq, error) {
 
 // TLMsgResendReq <--
 type TLMsgResendReq struct {
-	ClazzID int32   `json:"_id"`
+	ClazzID uint32  `json:"_id"`
 	MsgIds  []int64 `json:"msg_ids"`
 }
 
@@ -2244,7 +2244,7 @@ func (m *TLMsgResendReq) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_msg_resend_req, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2262,10 +2262,10 @@ func (m *TLMsgResendReq) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2282,7 +2282,7 @@ func DecodeMsgsAck(d *bin.Decoder) (MsgsAck, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_ack:
 		x := &TLMsgsAck{}
@@ -2295,7 +2295,7 @@ func DecodeMsgsAck(d *bin.Decoder) (MsgsAck, error) {
 
 // TLMsgsAck <--
 type TLMsgsAck struct {
-	ClazzID int32   `json:"_id"`
+	ClazzID uint32  `json:"_id"`
 	MsgIds  []int64 `json:"msg_ids"`
 }
 
@@ -2319,7 +2319,7 @@ func (m *TLMsgsAck) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_msgs_ack, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2337,10 +2337,10 @@ func (m *TLMsgsAck) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2357,7 +2357,7 @@ func DecodeMsgsAllInfo(d *bin.Decoder) (MsgsAllInfo, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_all_info:
 		x := &TLMsgsAllInfo{}
@@ -2370,7 +2370,7 @@ func DecodeMsgsAllInfo(d *bin.Decoder) (MsgsAllInfo, error) {
 
 // TLMsgsAllInfo <--
 type TLMsgsAllInfo struct {
-	ClazzID int32   `json:"_id"`
+	ClazzID uint32  `json:"_id"`
 	MsgIds  []int64 `json:"msg_ids"`
 	Info    string  `json:"info"`
 }
@@ -2397,7 +2397,7 @@ func (m *TLMsgsAllInfo) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_msgs_all_info, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2417,10 +2417,10 @@ func (m *TLMsgsAllInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2437,7 +2437,7 @@ func DecodeMsgsStateInfo(d *bin.Decoder) (MsgsStateInfo, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_state_info:
 		x := &TLMsgsStateInfo{}
@@ -2450,7 +2450,7 @@ func DecodeMsgsStateInfo(d *bin.Decoder) (MsgsStateInfo, error) {
 
 // TLMsgsStateInfo <--
 type TLMsgsStateInfo struct {
-	ClazzID  int32  `json:"_id"`
+	ClazzID  uint32 `json:"_id"`
 	ReqMsgId int64  `json:"req_msg_id"`
 	Info     string `json:"info"`
 }
@@ -2476,7 +2476,7 @@ func (m *TLMsgsStateInfo) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_msgs_state_info, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2494,10 +2494,10 @@ func (m *TLMsgsStateInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2514,7 +2514,7 @@ func DecodeMsgsStateReq(d *bin.Decoder) (MsgsStateReq, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_state_req:
 		x := &TLMsgsStateReq{}
@@ -2527,7 +2527,7 @@ func DecodeMsgsStateReq(d *bin.Decoder) (MsgsStateReq, error) {
 
 // TLMsgsStateReq <--
 type TLMsgsStateReq struct {
-	ClazzID int32   `json:"_id"`
+	ClazzID uint32  `json:"_id"`
 	MsgIds  []int64 `json:"msg_ids"`
 }
 
@@ -2551,7 +2551,7 @@ func (m *TLMsgsStateReq) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_msgs_state_req, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2569,10 +2569,10 @@ func (m *TLMsgsStateReq) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2589,7 +2589,7 @@ func DecodeNewSession(d *bin.Decoder) (NewSession, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_new_session_created:
 		x := &TLNewSessionCreated{}
@@ -2602,10 +2602,10 @@ func DecodeNewSession(d *bin.Decoder) (NewSession, error) {
 
 // TLNewSessionCreated <--
 type TLNewSessionCreated struct {
-	ClazzID    int32 `json:"_id"`
-	FirstMsgId int64 `json:"first_msg_id"`
-	UniqueId   int64 `json:"unique_id"`
-	ServerSalt int64 `json:"server_salt"`
+	ClazzID    uint32 `json:"_id"`
+	FirstMsgId int64  `json:"first_msg_id"`
+	UniqueId   int64  `json:"unique_id"`
+	ServerSalt int64  `json:"server_salt"`
 }
 
 func (m *TLNewSessionCreated) NewSessionClazzName() string {
@@ -2630,7 +2630,7 @@ func (m *TLNewSessionCreated) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_new_session_created, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2649,10 +2649,10 @@ func (m *TLNewSessionCreated) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2669,7 +2669,7 @@ func DecodePong(d *bin.Decoder) (Pong, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_pong:
 		x := &TLPong{}
@@ -2682,9 +2682,9 @@ func DecodePong(d *bin.Decoder) (Pong, error) {
 
 // TLPong <--
 type TLPong struct {
-	ClazzID int32 `json:"_id"`
-	MsgId   int64 `json:"msg_id"`
-	PingId  int64 `json:"ping_id"`
+	ClazzID uint32 `json:"_id"`
+	MsgId   int64  `json:"msg_id"`
+	PingId  int64  `json:"ping_id"`
 }
 
 func (m *TLPong) PongClazzName() string {
@@ -2708,7 +2708,7 @@ func (m *TLPong) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_pong, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2726,10 +2726,10 @@ func (m *TLPong) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2748,7 +2748,7 @@ func DecodeRpcDropAnswer(d *bin.Decoder) (RpcDropAnswer, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_rpc_answer_unknown:
 		x := &TLRpcAnswerUnknown{}
@@ -2769,7 +2769,7 @@ func DecodeRpcDropAnswer(d *bin.Decoder) (RpcDropAnswer, error) {
 
 // TLRpcAnswerUnknown <--
 type TLRpcAnswerUnknown struct {
-	ClazzID int32 `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 }
 
 func (m *TLRpcAnswerUnknown) RpcDropAnswerClazzName() string {
@@ -2790,7 +2790,7 @@ func (m *TLRpcAnswerUnknown) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_rpc_answer_unknown, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2806,16 +2806,16 @@ func (m *TLRpcAnswerUnknown) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLRpcAnswerDroppedRunning <--
 type TLRpcAnswerDroppedRunning struct {
-	ClazzID int32 `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 }
 
 func (m *TLRpcAnswerDroppedRunning) RpcDropAnswerClazzName() string {
@@ -2836,7 +2836,7 @@ func (m *TLRpcAnswerDroppedRunning) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_rpc_answer_dropped_running, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2852,19 +2852,19 @@ func (m *TLRpcAnswerDroppedRunning) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLRpcAnswerDropped <--
 type TLRpcAnswerDropped struct {
-	ClazzID int32 `json:"_id"`
-	MsgId   int64 `json:"msg_id"`
-	SeqNo   int32 `json:"seq_no"`
-	Bytes   int32 `json:"bytes"`
+	ClazzID uint32 `json:"_id"`
+	MsgId   int64  `json:"msg_id"`
+	SeqNo   int32  `json:"seq_no"`
+	Bytes   int32  `json:"bytes"`
 }
 
 func (m *TLRpcAnswerDropped) RpcDropAnswerClazzName() string {
@@ -2889,7 +2889,7 @@ func (m *TLRpcAnswerDropped) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_rpc_answer_dropped, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2908,10 +2908,10 @@ func (m *TLRpcAnswerDropped) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -2928,7 +2928,7 @@ func DecodeRpcError(d *bin.Decoder) (RpcError, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_rpc_error:
 		x := &TLRpcError{}
@@ -2941,7 +2941,7 @@ func DecodeRpcError(d *bin.Decoder) (RpcError, error) {
 
 // TLRpcError <--
 type TLRpcError struct {
-	ClazzID      int32  `json:"_id"`
+	ClazzID      uint32 `json:"_id"`
 	ErrorCode    int32  `json:"error_code"`
 	ErrorMessage string `json:"error_message"`
 }
@@ -2967,7 +2967,7 @@ func (m *TLRpcError) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_rpc_error, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -2985,10 +2985,10 @@ func (m *TLRpcError) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -3011,7 +3011,7 @@ func DecodeTlsBlock(d *bin.Decoder) (TlsBlock, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_tlsBlockString:
 		x := &TLTlsBlockString{}
@@ -3048,7 +3048,7 @@ func DecodeTlsBlock(d *bin.Decoder) (TlsBlock, error) {
 
 // TLTlsBlockString <--
 type TLTlsBlockString struct {
-	ClazzID int32  `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 	Data    string `json:"data"`
 }
 
@@ -3072,7 +3072,7 @@ func (m *TLTlsBlockString) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsBlockString, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3089,17 +3089,17 @@ func (m *TLTlsBlockString) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLTlsBlockRandom <--
 type TLTlsBlockRandom struct {
-	ClazzID int32 `json:"_id"`
-	Length  int32 `json:"length"`
+	ClazzID uint32 `json:"_id"`
+	Length  int32  `json:"length"`
 }
 
 func (m *TLTlsBlockRandom) TlsBlockClazzName() string {
@@ -3122,7 +3122,7 @@ func (m *TLTlsBlockRandom) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsBlockRandom, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3139,17 +3139,17 @@ func (m *TLTlsBlockRandom) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLTlsBlockZero <--
 type TLTlsBlockZero struct {
-	ClazzID int32 `json:"_id"`
-	Length  int32 `json:"length"`
+	ClazzID uint32 `json:"_id"`
+	Length  int32  `json:"length"`
 }
 
 func (m *TLTlsBlockZero) TlsBlockClazzName() string {
@@ -3172,7 +3172,7 @@ func (m *TLTlsBlockZero) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsBlockZero, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3189,16 +3189,16 @@ func (m *TLTlsBlockZero) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLTlsBlockDomain <--
 type TLTlsBlockDomain struct {
-	ClazzID int32 `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 }
 
 func (m *TLTlsBlockDomain) TlsBlockClazzName() string {
@@ -3219,7 +3219,7 @@ func (m *TLTlsBlockDomain) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsBlockDomain, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3235,17 +3235,17 @@ func (m *TLTlsBlockDomain) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLTlsBlockGrease <--
 type TLTlsBlockGrease struct {
-	ClazzID int32 `json:"_id"`
-	Seed    int32 `json:"seed"`
+	ClazzID uint32 `json:"_id"`
+	Seed    int32  `json:"seed"`
 }
 
 func (m *TLTlsBlockGrease) TlsBlockClazzName() string {
@@ -3268,7 +3268,7 @@ func (m *TLTlsBlockGrease) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsBlockGrease, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3285,16 +3285,16 @@ func (m *TLTlsBlockGrease) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLTlsBlockPublicKey <--
 type TLTlsBlockPublicKey struct {
-	ClazzID int32 `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 }
 
 func (m *TLTlsBlockPublicKey) TlsBlockClazzName() string {
@@ -3315,7 +3315,7 @@ func (m *TLTlsBlockPublicKey) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsBlockPublicKey, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3331,16 +3331,16 @@ func (m *TLTlsBlockPublicKey) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
 // TLTlsBlockScope <--
 type TLTlsBlockScope struct {
-	ClazzID int32      `json:"_id"`
+	ClazzID uint32     `json:"_id"`
 	Entries []TlsBlock `json:"entries"`
 }
 
@@ -3364,7 +3364,7 @@ func (m *TLTlsBlockScope) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsBlockScope, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3392,10 +3392,10 @@ func (m *TLTlsBlockScope) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }
 
@@ -3412,7 +3412,7 @@ func DecodeTlsClientHello(d *bin.Decoder) (TlsClientHello, error) {
 		return nil, err
 	}
 
-	clazzName := iface.GetClazzNameByID(int32(id))
+	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_tlsClientHello:
 		x := &TLTlsClientHello{}
@@ -3425,7 +3425,7 @@ func DecodeTlsClientHello(d *bin.Decoder) (TlsClientHello, error) {
 
 // TLTlsClientHello <--
 type TLTlsClientHello struct {
-	ClazzID int32      `json:"_id"`
+	ClazzID uint32     `json:"_id"`
 	Blocks  []TlsBlock `json:"blocks"`
 }
 
@@ -3453,7 +3453,7 @@ func (m *TLTlsClientHello) Encode(x *bin.Encoder, layer int32) error {
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_tlsClientHello, int(layer))
-	if f, ok := encodeF[uint32(clazzId)]; ok {
+	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
@@ -3482,9 +3482,9 @@ func (m *TLTlsClientHello) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
-	if f, ok := decodeF[uint32(m.ClazzID)]; ok {
+	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
-		return fmt.Errorf("invalid constructor: %x", uint32(m.ClazzID))
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
 	}
 }

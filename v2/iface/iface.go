@@ -18,16 +18,16 @@ import (
 
 // Basic TL types.
 const (
-	ClazzID_int32     = -1932527041 // 0x8ccffa3f
-	ClazzID_long      = 1253220205  // 0x4ab29f6d
-	ClazzID_int64     = -1568590240 // 0xa2813660
-	ClazzID_double    = 1431132616  // 0x554d59c8
-	ClazzID_string    = 194458693   // 0xb973445
-	ClazzID_void      = 470303800   // 0x1c084438
-	ClazzID_boolFalse = -1132882121 // bc799737
-	ClazzID_boolTrue  = -1720552011 // 997275b5
-	CClazzID_true     = 1072550713  // 3fedd339
-	ClazzID_vector    = 481674261
+	ClazzID_int32     = 0x8ccffa3f // 0x8ccffa3f
+	ClazzID_long      = 0x4ab29f6d // 0x4ab29f6d
+	ClazzID_int64     = 0xa2813660 // 0xa2813660
+	ClazzID_double    = 0x554d59c8 // 0x554d59c8
+	ClazzID_string    = 0xb973445  // 0xb973445
+	ClazzID_void      = 0x1c084438 // 0x1c084438
+	ClazzID_boolFalse = 0xbc799737 // bc799737
+	ClazzID_boolTrue  = 0x997275b5 // 997275b5
+	CClazzID_true     = 0x3fedd339 // 3fedd339
+	ClazzID_vector    = 0x1cb5c415
 )
 
 // Size32 represents 4-byte sequence.
@@ -90,16 +90,16 @@ func EncodeObjectList[T TLObject](x *bin.Encoder, vList []T, layer int32) error 
 // EncodeBool serializes bare boolean.
 func EncodeBool(x *bin.Encoder, v bool) {
 	var (
-		c int32
+		c uint32
 	)
 
 	switch v {
 	case true:
-		c = int32(ClazzID_boolTrue)
-		x.PutClazzID(uint32(c))
+		c = ClazzID_boolTrue
+		x.PutClazzID(c)
 	case false:
-		c = int32(ClazzID_boolFalse)
-		x.PutClazzID(uint32(c))
+		c = ClazzID_boolFalse
+		x.PutClazzID(c)
 	}
 }
 

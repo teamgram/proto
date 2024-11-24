@@ -7,19 +7,19 @@
 package iface
 
 var (
-	clazzNameRegisters2   = make(map[string]map[int]int32)
-	clazzIdNameRegisters2 = make(map[int32]string)
+	clazzNameRegisters2   = make(map[string]map[int]uint32)
+	clazzIdNameRegisters2 = make(map[uint32]string)
 )
 
-func RegisterClazzName(clazzName string, layer int, clazzId int32) {
+func RegisterClazzName(clazzName string, layer int, clazzId uint32) {
 	if _, ok := clazzNameRegisters2[clazzName]; !ok {
-		clazzNameRegisters2[clazzName] = make(map[int]int32)
+		clazzNameRegisters2[clazzName] = make(map[int]uint32)
 	}
 	clazzNameRegisters2[clazzName][layer] = clazzId
 	clazzIdNameRegisters2[clazzId] = clazzName
 }
 
-func GetClazzIDByName(clazzName string, layer int) int32 {
+func GetClazzIDByName(clazzName string, layer int) uint32 {
 	if m, ok := clazzNameRegisters2[clazzName]; ok {
 		m2, ok2 := m[layer]
 		if ok2 {
@@ -33,11 +33,11 @@ func GetClazzIDByName(clazzName string, layer int) int32 {
 	return 0
 }
 
-func RegisterClazzIDName(clazzName string, clazzId int32) {
+func RegisterClazzIDName(clazzName string, clazzId uint32) {
 	clazzIdNameRegisters2[clazzId] = clazzName
 }
 
-func GetClazzNameByID(clazzId int32) string {
+func GetClazzNameByID(clazzId uint32) string {
 	if clazzName, ok := clazzIdNameRegisters2[clazzId]; ok {
 		return clazzName
 	}

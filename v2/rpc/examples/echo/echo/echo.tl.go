@@ -38,7 +38,7 @@ func init() {
 //   - TLWorldEmpty
 //   - TLWorld
 type Echo struct {
-	ClazzID   int32  `json:"_id"`
+	ClazzID   uint32 `json:"_id"`
 	ClazzName string `json:"_name"`
 	Message   string `json:"message"`
 	Message2  string `json:"message2"`
@@ -227,7 +227,7 @@ func (m *TLEcho2) Decode(d *bin.Decoder) (err error) {
 // TLEchosEcho
 // echos.echo message:string = Echo;
 type TLEchosEcho struct {
-	ClazzID int32  `json:"_id"`
+	ClazzID uint32 `json:"_id"`
 	Message string `json:"message"`
 }
 

@@ -7,14 +7,14 @@
 package iface
 
 var (
-	clazzIdRegisters2 = make(map[int32]func() TLObject)
+	clazzIdRegisters2 = make(map[uint32]func() TLObject)
 )
 
-func RegisterClazzID(clazzId int32, f func() TLObject) {
+func RegisterClazzID(clazzId uint32, f func() TLObject) {
 	clazzIdRegisters2[clazzId] = f
 }
 
-func NewTLObjectByClazzID(clazzId int32) TLObject {
+func NewTLObjectByClazzID(clazzId uint32) TLObject {
 	f, ok := clazzIdRegisters2[clazzId]
 	if !ok {
 		return nil
@@ -22,7 +22,7 @@ func NewTLObjectByClazzID(clazzId int32) TLObject {
 	return f()
 }
 
-func CheckClazzID(clazzId int32) (ok bool) {
+func CheckClazzID(clazzId uint32) (ok bool) {
 	_, ok = clazzIdRegisters2[clazzId]
 	return
 }

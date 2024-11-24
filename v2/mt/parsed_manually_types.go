@@ -40,7 +40,7 @@ type TLMessageRawData struct {
 	MsgId   int64  `json:"msg_id"`
 	Seqno   int32  `json:"seqno"`
 	Bytes   int32  `json:"bytes"`
-	ClazzID int32  `json:"clazz_id"`
+	ClazzID uint32 `json:"clazz_id"`
 	Body    []byte `json:"body"`
 }
 
