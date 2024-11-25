@@ -154,24 +154,23 @@ func (m *Echo) Match(f1 func(c *TLEcho) interface{}, f2 func(c *TLEcho2) interfa
 	return nil
 }
 
-func (m *Echo) Match2(f ...interface{}) interface{} {
+func (m *Echo) Match2(f ...interface{}) {
 	switch c := m.EchoClazz.(type) {
 	case *TLEcho:
 		for _, v := range f {
 			if f1, ok := v.(func(c *TLEcho) interface{}); ok {
-				return f1(c)
+				f1(c)
 			}
 		}
 	case *TLEcho2:
 		for _, v := range f {
 			if f1, ok := v.(func(c *TLEcho2) interface{}); ok {
-				return f1(c)
+				f1(c)
 			}
 		}
 	default:
 		//
 	}
-	return nil
 }
 
 type TLEchosEcho struct {

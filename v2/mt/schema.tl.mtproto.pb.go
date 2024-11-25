@@ -21,14 +21,14 @@ var (
 	_ iface.TLObject
 )
 
-// BindAuthKeyInner <--
+// BindAuthKeyInnerClazz <--
 //   - TL_BindAuthKeyInner
-type BindAuthKeyInner interface {
+type BindAuthKeyInnerClazz interface {
 	iface.TLObject
 	BindAuthKeyInnerClazzName() string
 }
 
-func DecodeBindAuthKeyInner(d *bin.Decoder) (BindAuthKeyInner, error) {
+func DecodeBindAuthKeyInnerClazz(d *bin.Decoder) (BindAuthKeyInnerClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -107,14 +107,55 @@ func (m *TLBindAuthKeyInner) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// ClientDHInnerData <--
+// BindAuthKeyInner <--
+type BindAuthKeyInner struct {
+	// ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	BindAuthKeyInnerClazz
+}
+
+func MakeBindAuthKeyInner(c BindAuthKeyInnerClazz) *BindAuthKeyInner {
+	return &BindAuthKeyInner{
+		// ClazzID:   c.ClazzID(),
+		ClazzName:             c.BindAuthKeyInnerClazzName(),
+		BindAuthKeyInnerClazz: c,
+	}
+}
+
+func (m *BindAuthKeyInner) Encode(x *bin.Encoder, layer int32) error {
+	if m.BindAuthKeyInnerClazz != nil {
+		return m.BindAuthKeyInnerClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("BindAuthKeyInner - invalid Clazz")
+}
+
+func (m *BindAuthKeyInner) Decode(d *bin.Decoder) (err error) {
+	m.BindAuthKeyInnerClazz, err = DecodeBindAuthKeyInnerClazz(d)
+	return
+}
+
+func (m *BindAuthKeyInner) Match(f ...interface{}) {
+	switch c := m.BindAuthKeyInnerClazz.(type) {
+	case *TLBindAuthKeyInner:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLBindAuthKeyInner) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// ClientDHInnerDataClazz <--
 //   - TL_ClientDHInnerData
-type ClientDHInnerData interface {
+type ClientDHInnerDataClazz interface {
 	iface.TLObject
 	ClientDHInnerDataClazzName() string
 }
 
-func DecodeClientDHInnerData(d *bin.Decoder) (ClientDHInnerData, error) {
+func DecodeClientDHInnerDataClazz(d *bin.Decoder) (ClientDHInnerDataClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -190,16 +231,57 @@ func (m *TLClientDHInnerData) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// DestroyAuthKeyRes <--
+// ClientDHInnerData <--
+type ClientDHInnerData struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	ClientDHInnerDataClazz
+}
+
+func MakeClientDHInnerData(c ClientDHInnerDataClazz) *ClientDHInnerData {
+	return &ClientDHInnerData{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		ClientDHInnerDataClazz: c,
+	}
+}
+
+func (m *ClientDHInnerData) Encode(x *bin.Encoder, layer int32) error {
+	if m.ClientDHInnerDataClazz != nil {
+		return m.ClientDHInnerDataClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("ClientDHInnerData - invalid Clazz")
+}
+
+func (m *ClientDHInnerData) Decode(d *bin.Decoder) (err error) {
+	m.ClientDHInnerDataClazz, err = DecodeClientDHInnerDataClazz(d)
+	return
+}
+
+func (m *ClientDHInnerData) Match(f ...interface{}) {
+	switch c := m.ClientDHInnerDataClazz.(type) {
+	case *TLClientDHInnerData:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLClientDHInnerData) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// DestroyAuthKeyResClazz <--
 //   - TL_DestroyAuthKeyOk
 //   - TL_DestroyAuthKeyNone
 //   - TL_DestroyAuthKeyFail
-type DestroyAuthKeyRes interface {
+type DestroyAuthKeyResClazz interface {
 	iface.TLObject
 	DestroyAuthKeyResClazzName() string
 }
 
-func DecodeDestroyAuthKeyRes(d *bin.Decoder) (DestroyAuthKeyRes, error) {
+func DecodeDestroyAuthKeyResClazz(d *bin.Decoder) (DestroyAuthKeyResClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -362,17 +444,70 @@ func (m *TLDestroyAuthKeyFail) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// PQInnerData <--
+// DestroyAuthKeyRes <--
+type DestroyAuthKeyRes struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	DestroyAuthKeyResClazz
+}
+
+func MakeDestroyAuthKeyRes(c DestroyAuthKeyResClazz) *DestroyAuthKeyRes {
+	return &DestroyAuthKeyRes{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		DestroyAuthKeyResClazz: c,
+	}
+}
+
+func (m *DestroyAuthKeyRes) Encode(x *bin.Encoder, layer int32) error {
+	if m.DestroyAuthKeyResClazz != nil {
+		return m.DestroyAuthKeyResClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("DestroyAuthKeyRes - invalid Clazz")
+}
+
+func (m *DestroyAuthKeyRes) Decode(d *bin.Decoder) (err error) {
+	m.DestroyAuthKeyResClazz, err = DecodeDestroyAuthKeyResClazz(d)
+	return
+}
+
+func (m *DestroyAuthKeyRes) Match(f ...interface{}) {
+	switch c := m.DestroyAuthKeyResClazz.(type) {
+	case *TLDestroyAuthKeyOk:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDestroyAuthKeyOk) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLDestroyAuthKeyNone:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDestroyAuthKeyNone) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLDestroyAuthKeyFail:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDestroyAuthKeyFail) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// PQInnerDataClazz <--
 //   - TL_PQInnerData
 //   - TL_PQInnerDataDc
 //   - TL_PQInnerDataTemp
 //   - TL_PQInnerDataTempDc
-type PQInnerData interface {
+type PQInnerDataClazz interface {
 	iface.TLObject
 	PQInnerDataClazzName() string
 }
 
-func DecodePQInnerData(d *bin.Decoder) (PQInnerData, error) {
+func DecodePQInnerDataClazz(d *bin.Decoder) (PQInnerDataClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -673,14 +808,73 @@ func (m *TLPQInnerDataTempDc) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// ResPQ <--
+// PQInnerData <--
+type PQInnerData struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	PQInnerDataClazz
+}
+
+func MakePQInnerData(c PQInnerDataClazz) *PQInnerData {
+	return &PQInnerData{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		PQInnerDataClazz: c,
+	}
+}
+
+func (m *PQInnerData) Encode(x *bin.Encoder, layer int32) error {
+	if m.PQInnerDataClazz != nil {
+		return m.PQInnerDataClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("PQInnerData - invalid Clazz")
+}
+
+func (m *PQInnerData) Decode(d *bin.Decoder) (err error) {
+	m.PQInnerDataClazz, err = DecodePQInnerDataClazz(d)
+	return
+}
+
+func (m *PQInnerData) Match(f ...interface{}) {
+	switch c := m.PQInnerDataClazz.(type) {
+	case *TLPQInnerData:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLPQInnerData) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLPQInnerDataDc:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLPQInnerDataDc) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLPQInnerDataTemp:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLPQInnerDataTemp) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLPQInnerDataTempDc:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLPQInnerDataTempDc) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// ResPQClazz <--
 //   - TL_ResPQ
-type ResPQ interface {
+type ResPQClazz interface {
 	iface.TLObject
 	ResPQClazzName() string
 }
 
-func DecodeResPQ(d *bin.Decoder) (ResPQ, error) {
+func DecodeResPQClazz(d *bin.Decoder) (ResPQClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -758,14 +952,55 @@ func (m *TLResPQ) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// ServerDHInnerData <--
+// ResPQ <--
+type ResPQ struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	ResPQClazz
+}
+
+func MakeResPQ(c ResPQClazz) *ResPQ {
+	return &ResPQ{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		ResPQClazz: c,
+	}
+}
+
+func (m *ResPQ) Encode(x *bin.Encoder, layer int32) error {
+	if m.ResPQClazz != nil {
+		return m.ResPQClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("ResPQ - invalid Clazz")
+}
+
+func (m *ResPQ) Decode(d *bin.Decoder) (err error) {
+	m.ResPQClazz, err = DecodeResPQClazz(d)
+	return
+}
+
+func (m *ResPQ) Match(f ...interface{}) {
+	switch c := m.ResPQClazz.(type) {
+	case *TLResPQ:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLResPQ) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// ServerDHInnerDataClazz <--
 //   - TL_ServerDHInnerData
-type ServerDHInnerData interface {
+type ServerDHInnerDataClazz interface {
 	iface.TLObject
 	ServerDHInnerDataClazzName() string
 }
 
-func DecodeServerDHInnerData(d *bin.Decoder) (ServerDHInnerData, error) {
+func DecodeServerDHInnerDataClazz(d *bin.Decoder) (ServerDHInnerDataClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -847,15 +1082,56 @@ func (m *TLServerDHInnerData) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// ServerDHParams <--
+// ServerDHInnerData <--
+type ServerDHInnerData struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	ServerDHInnerDataClazz
+}
+
+func MakeServerDHInnerData(c ServerDHInnerDataClazz) *ServerDHInnerData {
+	return &ServerDHInnerData{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		ServerDHInnerDataClazz: c,
+	}
+}
+
+func (m *ServerDHInnerData) Encode(x *bin.Encoder, layer int32) error {
+	if m.ServerDHInnerDataClazz != nil {
+		return m.ServerDHInnerDataClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("ServerDHInnerData - invalid Clazz")
+}
+
+func (m *ServerDHInnerData) Decode(d *bin.Decoder) (err error) {
+	m.ServerDHInnerDataClazz, err = DecodeServerDHInnerDataClazz(d)
+	return
+}
+
+func (m *ServerDHInnerData) Match(f ...interface{}) {
+	switch c := m.ServerDHInnerDataClazz.(type) {
+	case *TLServerDHInnerData:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLServerDHInnerData) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// ServerDHParamsClazz <--
 //   - TL_ServerDHParamsFail
 //   - TL_ServerDHParamsOk
-type ServerDHParams interface {
+type ServerDHParamsClazz interface {
 	iface.TLObject
 	ServerDHParamsClazzName() string
 }
 
-func DecodeServerDHParams(d *bin.Decoder) (ServerDHParams, error) {
+func DecodeServerDHParamsClazz(d *bin.Decoder) (ServerDHParamsClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -988,16 +1264,63 @@ func (m *TLServerDHParamsOk) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// SetClientDHParamsAnswer <--
+// ServerDHParams <--
+type ServerDHParams struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	ServerDHParamsClazz
+}
+
+func MakeServerDHParams(c ServerDHParamsClazz) *ServerDHParams {
+	return &ServerDHParams{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		ServerDHParamsClazz: c,
+	}
+}
+
+func (m *ServerDHParams) Encode(x *bin.Encoder, layer int32) error {
+	if m.ServerDHParamsClazz != nil {
+		return m.ServerDHParamsClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("ServerDHParams - invalid Clazz")
+}
+
+func (m *ServerDHParams) Decode(d *bin.Decoder) (err error) {
+	m.ServerDHParamsClazz, err = DecodeServerDHParamsClazz(d)
+	return
+}
+
+func (m *ServerDHParams) Match(f ...interface{}) {
+	switch c := m.ServerDHParamsClazz.(type) {
+	case *TLServerDHParamsFail:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLServerDHParamsFail) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLServerDHParamsOk:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLServerDHParamsOk) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// SetClientDHParamsAnswerClazz <--
 //   - TL_DhGenOk
 //   - TL_DhGenRetry
 //   - TL_DhGenFail
-type SetClientDHParamsAnswer interface {
+type SetClientDHParamsAnswerClazz interface {
 	iface.TLObject
 	SetClientDHParamsAnswerClazzName() string
 }
 
-func DecodeSetClientDHParamsAnswer(d *bin.Decoder) (SetClientDHParamsAnswer, error) {
+func DecodeSetClientDHParamsAnswerClazz(d *bin.Decoder) (SetClientDHParamsAnswerClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1190,14 +1513,67 @@ func (m *TLDhGenFail) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// AccessPointRule <--
+// SetClientDHParamsAnswer <--
+type SetClientDHParamsAnswer struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	SetClientDHParamsAnswerClazz
+}
+
+func MakeSetClientDHParamsAnswer(c SetClientDHParamsAnswerClazz) *SetClientDHParamsAnswer {
+	return &SetClientDHParamsAnswer{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		SetClientDHParamsAnswerClazz: c,
+	}
+}
+
+func (m *SetClientDHParamsAnswer) Encode(x *bin.Encoder, layer int32) error {
+	if m.SetClientDHParamsAnswerClazz != nil {
+		return m.SetClientDHParamsAnswerClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("SetClientDHParamsAnswer - invalid Clazz")
+}
+
+func (m *SetClientDHParamsAnswer) Decode(d *bin.Decoder) (err error) {
+	m.SetClientDHParamsAnswerClazz, err = DecodeSetClientDHParamsAnswerClazz(d)
+	return
+}
+
+func (m *SetClientDHParamsAnswer) Match(f ...interface{}) {
+	switch c := m.SetClientDHParamsAnswerClazz.(type) {
+	case *TLDhGenOk:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDhGenOk) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLDhGenRetry:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDhGenRetry) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLDhGenFail:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDhGenFail) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// AccessPointRuleClazz <--
 //   - TL_AccessPointRule
-type AccessPointRule interface {
+type AccessPointRuleClazz interface {
 	iface.TLObject
 	AccessPointRuleClazzName() string
 }
 
-func DecodeAccessPointRule(d *bin.Decoder) (AccessPointRule, error) {
+func DecodeAccessPointRuleClazz(d *bin.Decoder) (AccessPointRuleClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1216,10 +1592,10 @@ func DecodeAccessPointRule(d *bin.Decoder) (AccessPointRule, error) {
 
 // TLAccessPointRule <--
 type TLAccessPointRule struct {
-	ClazzID          uint32   `json:"_id"`
-	PhonePrefixRules string   `json:"phone_prefix_rules"`
-	DcId             int32    `json:"dc_id"`
-	Ips              []IpPort `json:"ips"`
+	ClazzID          uint32    `json:"_id"`
+	PhonePrefixRules string    `json:"phone_prefix_rules"`
+	DcId             int32     `json:"dc_id"`
+	Ips              []*IpPort `json:"ips"`
 }
 
 func (m *TLAccessPointRule) AccessPointRuleClazzName() string {
@@ -1268,10 +1644,12 @@ func (m *TLAccessPointRule) Decode(d *bin.Decoder) (err error) {
 			// }
 			l2, err2 := d.Int()
 			_ = err2
-			v2 := make([]IpPort, l2)
+			v2 := make([]*IpPort, l2)
 			for i := 0; i < l2; i++ {
-				v2[i], err2 = DecodeIpPort(d)
+				vv := new(IpPort)
+				err2 = vv.Decode(d)
 				_ = err2
+				v2[i] = vv
 			}
 			m.Ips = v2
 
@@ -1286,15 +1664,56 @@ func (m *TLAccessPointRule) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// BadMsgNotification <--
+// AccessPointRule <--
+type AccessPointRule struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	AccessPointRuleClazz
+}
+
+func MakeAccessPointRule(c AccessPointRuleClazz) *AccessPointRule {
+	return &AccessPointRule{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		AccessPointRuleClazz: c,
+	}
+}
+
+func (m *AccessPointRule) Encode(x *bin.Encoder, layer int32) error {
+	if m.AccessPointRuleClazz != nil {
+		return m.AccessPointRuleClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("AccessPointRule - invalid Clazz")
+}
+
+func (m *AccessPointRule) Decode(d *bin.Decoder) (err error) {
+	m.AccessPointRuleClazz, err = DecodeAccessPointRuleClazz(d)
+	return
+}
+
+func (m *AccessPointRule) Match(f ...interface{}) {
+	switch c := m.AccessPointRuleClazz.(type) {
+	case *TLAccessPointRule:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLAccessPointRule) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// BadMsgNotificationClazz <--
 //   - TL_BadMsgNotification
 //   - TL_BadServerSalt
-type BadMsgNotification interface {
+type BadMsgNotificationClazz interface {
 	iface.TLObject
 	BadMsgNotificationClazzName() string
 }
 
-func DecodeBadMsgNotification(d *bin.Decoder) (BadMsgNotification, error) {
+func DecodeBadMsgNotificationClazz(d *bin.Decoder) (BadMsgNotificationClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1430,15 +1849,62 @@ func (m *TLBadServerSalt) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// DestroySessionRes <--
+// BadMsgNotification <--
+type BadMsgNotification struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	BadMsgNotificationClazz
+}
+
+func MakeBadMsgNotification(c BadMsgNotificationClazz) *BadMsgNotification {
+	return &BadMsgNotification{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		BadMsgNotificationClazz: c,
+	}
+}
+
+func (m *BadMsgNotification) Encode(x *bin.Encoder, layer int32) error {
+	if m.BadMsgNotificationClazz != nil {
+		return m.BadMsgNotificationClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("BadMsgNotification - invalid Clazz")
+}
+
+func (m *BadMsgNotification) Decode(d *bin.Decoder) (err error) {
+	m.BadMsgNotificationClazz, err = DecodeBadMsgNotificationClazz(d)
+	return
+}
+
+func (m *BadMsgNotification) Match(f ...interface{}) {
+	switch c := m.BadMsgNotificationClazz.(type) {
+	case *TLBadMsgNotification:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLBadMsgNotification) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLBadServerSalt:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLBadServerSalt) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// DestroySessionResClazz <--
 //   - TL_DestroySessionOk
 //   - TL_DestroySessionNone
-type DestroySessionRes interface {
+type DestroySessionResClazz interface {
 	iface.TLObject
 	DestroySessionResClazzName() string
 }
 
-func DecodeDestroySessionRes(d *bin.Decoder) (DestroySessionRes, error) {
+func DecodeDestroySessionResClazz(d *bin.Decoder) (DestroySessionResClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1559,14 +2025,61 @@ func (m *TLDestroySessionNone) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// FutureSalt <--
+// DestroySessionRes <--
+type DestroySessionRes struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	DestroySessionResClazz
+}
+
+func MakeDestroySessionRes(c DestroySessionResClazz) *DestroySessionRes {
+	return &DestroySessionRes{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		DestroySessionResClazz: c,
+	}
+}
+
+func (m *DestroySessionRes) Encode(x *bin.Encoder, layer int32) error {
+	if m.DestroySessionResClazz != nil {
+		return m.DestroySessionResClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("DestroySessionRes - invalid Clazz")
+}
+
+func (m *DestroySessionRes) Decode(d *bin.Decoder) (err error) {
+	m.DestroySessionResClazz, err = DecodeDestroySessionResClazz(d)
+	return
+}
+
+func (m *DestroySessionRes) Match(f ...interface{}) {
+	switch c := m.DestroySessionResClazz.(type) {
+	case *TLDestroySessionOk:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDestroySessionOk) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLDestroySessionNone:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLDestroySessionNone) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// FutureSaltClazz <--
 //   - TL_FutureSalt
-type FutureSalt interface {
+type FutureSaltClazz interface {
 	iface.TLObject
 	FutureSaltClazzName() string
 }
 
-func DecodeFutureSalt(d *bin.Decoder) (FutureSalt, error) {
+func DecodeFutureSaltClazz(d *bin.Decoder) (FutureSaltClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1639,14 +2152,55 @@ func (m *TLFutureSalt) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// FutureSalts <--
+// FutureSalt <--
+type FutureSalt struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	FutureSaltClazz
+}
+
+func MakeFutureSalt(c FutureSaltClazz) *FutureSalt {
+	return &FutureSalt{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		FutureSaltClazz: c,
+	}
+}
+
+func (m *FutureSalt) Encode(x *bin.Encoder, layer int32) error {
+	if m.FutureSaltClazz != nil {
+		return m.FutureSaltClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("FutureSalt - invalid Clazz")
+}
+
+func (m *FutureSalt) Decode(d *bin.Decoder) (err error) {
+	m.FutureSaltClazz, err = DecodeFutureSaltClazz(d)
+	return
+}
+
+func (m *FutureSalt) Match(f ...interface{}) {
+	switch c := m.FutureSaltClazz.(type) {
+	case *TLFutureSalt:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLFutureSalt) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// FutureSaltsClazz <--
 //   - TL_FutureSalts
-type FutureSalts interface {
+type FutureSaltsClazz interface {
 	iface.TLObject
 	FutureSaltsClazzName() string
 }
 
-func DecodeFutureSalts(d *bin.Decoder) (FutureSalts, error) {
+func DecodeFutureSaltsClazz(d *bin.Decoder) (FutureSaltsClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1736,14 +2290,55 @@ func (m *TLFutureSalts) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// HelpConfigSimple <--
+// FutureSalts <--
+type FutureSalts struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	FutureSaltsClazz
+}
+
+func MakeFutureSalts(c FutureSaltsClazz) *FutureSalts {
+	return &FutureSalts{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		FutureSaltsClazz: c,
+	}
+}
+
+func (m *FutureSalts) Encode(x *bin.Encoder, layer int32) error {
+	if m.FutureSaltsClazz != nil {
+		return m.FutureSaltsClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("FutureSalts - invalid Clazz")
+}
+
+func (m *FutureSalts) Decode(d *bin.Decoder) (err error) {
+	m.FutureSaltsClazz, err = DecodeFutureSaltsClazz(d)
+	return
+}
+
+func (m *FutureSalts) Match(f ...interface{}) {
+	switch c := m.FutureSaltsClazz.(type) {
+	case *TLFutureSalts:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLFutureSalts) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// HelpConfigSimpleClazz <--
 //   - TL_HelpConfigSimple
-type HelpConfigSimple interface {
+type HelpConfigSimpleClazz interface {
 	iface.TLObject
 	HelpConfigSimpleClazzName() string
 }
 
-func DecodeHelpConfigSimple(d *bin.Decoder) (HelpConfigSimple, error) {
+func DecodeHelpConfigSimpleClazz(d *bin.Decoder) (HelpConfigSimpleClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1762,10 +2357,10 @@ func DecodeHelpConfigSimple(d *bin.Decoder) (HelpConfigSimple, error) {
 
 // TLHelpConfigSimple <--
 type TLHelpConfigSimple struct {
-	ClazzID uint32            `json:"_id"`
-	Date    int32             `json:"date"`
-	Expires int32             `json:"expires"`
-	Rules   []AccessPointRule `json:"rules"`
+	ClazzID uint32             `json:"_id"`
+	Date    int32              `json:"date"`
+	Expires int32              `json:"expires"`
+	Rules   []*AccessPointRule `json:"rules"`
 }
 
 func (m *TLHelpConfigSimple) HelpConfigSimpleClazzName() string {
@@ -1814,10 +2409,12 @@ func (m *TLHelpConfigSimple) Decode(d *bin.Decoder) (err error) {
 			// }
 			l2, err2 := d.Int()
 			_ = err2
-			v2 := make([]AccessPointRule, l2)
+			v2 := make([]*AccessPointRule, l2)
 			for i := 0; i < l2; i++ {
-				v2[i], err2 = DecodeAccessPointRule(d)
+				vv := new(AccessPointRule)
+				err2 = vv.Decode(d)
 				_ = err2
+				v2[i] = vv
 			}
 			m.Rules = v2
 
@@ -1832,14 +2429,55 @@ func (m *TLHelpConfigSimple) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// HttpWait <--
+// HelpConfigSimple <--
+type HelpConfigSimple struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	HelpConfigSimpleClazz
+}
+
+func MakeHelpConfigSimple(c HelpConfigSimpleClazz) *HelpConfigSimple {
+	return &HelpConfigSimple{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		HelpConfigSimpleClazz: c,
+	}
+}
+
+func (m *HelpConfigSimple) Encode(x *bin.Encoder, layer int32) error {
+	if m.HelpConfigSimpleClazz != nil {
+		return m.HelpConfigSimpleClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("HelpConfigSimple - invalid Clazz")
+}
+
+func (m *HelpConfigSimple) Decode(d *bin.Decoder) (err error) {
+	m.HelpConfigSimpleClazz, err = DecodeHelpConfigSimpleClazz(d)
+	return
+}
+
+func (m *HelpConfigSimple) Match(f ...interface{}) {
+	switch c := m.HelpConfigSimpleClazz.(type) {
+	case *TLHelpConfigSimple:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLHelpConfigSimple) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// HttpWaitClazz <--
 //   - TL_HttpWait
-type HttpWait interface {
+type HttpWaitClazz interface {
 	iface.TLObject
 	HttpWaitClazzName() string
 }
 
-func DecodeHttpWait(d *bin.Decoder) (HttpWait, error) {
+func DecodeHttpWaitClazz(d *bin.Decoder) (HttpWaitClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -1912,15 +2550,56 @@ func (m *TLHttpWait) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// IpPort <--
+// HttpWait <--
+type HttpWait struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	HttpWaitClazz
+}
+
+func MakeHttpWait(c HttpWaitClazz) *HttpWait {
+	return &HttpWait{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		HttpWaitClazz: c,
+	}
+}
+
+func (m *HttpWait) Encode(x *bin.Encoder, layer int32) error {
+	if m.HttpWaitClazz != nil {
+		return m.HttpWaitClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("HttpWait - invalid Clazz")
+}
+
+func (m *HttpWait) Decode(d *bin.Decoder) (err error) {
+	m.HttpWaitClazz, err = DecodeHttpWaitClazz(d)
+	return
+}
+
+func (m *HttpWait) Match(f ...interface{}) {
+	switch c := m.HttpWaitClazz.(type) {
+	case *TLHttpWait:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLHttpWait) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// IpPortClazz <--
 //   - TL_IpPort
 //   - TL_IpPortSecret
-type IpPort interface {
+type IpPortClazz interface {
 	iface.TLObject
 	IpPortClazzName() string
 }
 
-func DecodeIpPort(d *bin.Decoder) (IpPort, error) {
+func DecodeIpPortClazz(d *bin.Decoder) (IpPortClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2050,15 +2729,62 @@ func (m *TLIpPortSecret) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// MsgDetailedInfo <--
+// IpPort <--
+type IpPort struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	IpPortClazz
+}
+
+func MakeIpPort(c IpPortClazz) *IpPort {
+	return &IpPort{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		IpPortClazz: c,
+	}
+}
+
+func (m *IpPort) Encode(x *bin.Encoder, layer int32) error {
+	if m.IpPortClazz != nil {
+		return m.IpPortClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("IpPort - invalid Clazz")
+}
+
+func (m *IpPort) Decode(d *bin.Decoder) (err error) {
+	m.IpPortClazz, err = DecodeIpPortClazz(d)
+	return
+}
+
+func (m *IpPort) Match(f ...interface{}) {
+	switch c := m.IpPortClazz.(type) {
+	case *TLIpPort:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLIpPort) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLIpPortSecret:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLIpPortSecret) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// MsgDetailedInfoClazz <--
 //   - TL_MsgDetailedInfo
 //   - TL_MsgNewDetailedInfo
-type MsgDetailedInfo interface {
+type MsgDetailedInfoClazz interface {
 	iface.TLObject
 	MsgDetailedInfoClazzName() string
 }
 
-func DecodeMsgDetailedInfo(d *bin.Decoder) (MsgDetailedInfo, error) {
+func DecodeMsgDetailedInfoClazz(d *bin.Decoder) (MsgDetailedInfoClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2194,14 +2920,61 @@ func (m *TLMsgNewDetailedInfo) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// MsgResendReq <--
+// MsgDetailedInfo <--
+type MsgDetailedInfo struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	MsgDetailedInfoClazz
+}
+
+func MakeMsgDetailedInfo(c MsgDetailedInfoClazz) *MsgDetailedInfo {
+	return &MsgDetailedInfo{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		MsgDetailedInfoClazz: c,
+	}
+}
+
+func (m *MsgDetailedInfo) Encode(x *bin.Encoder, layer int32) error {
+	if m.MsgDetailedInfoClazz != nil {
+		return m.MsgDetailedInfoClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("MsgDetailedInfo - invalid Clazz")
+}
+
+func (m *MsgDetailedInfo) Decode(d *bin.Decoder) (err error) {
+	m.MsgDetailedInfoClazz, err = DecodeMsgDetailedInfoClazz(d)
+	return
+}
+
+func (m *MsgDetailedInfo) Match(f ...interface{}) {
+	switch c := m.MsgDetailedInfoClazz.(type) {
+	case *TLMsgDetailedInfo:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLMsgDetailedInfo) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLMsgNewDetailedInfo:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLMsgNewDetailedInfo) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// MsgResendReqClazz <--
 //   - TL_MsgResendReq
-type MsgResendReq interface {
+type MsgResendReqClazz interface {
 	iface.TLObject
 	MsgResendReqClazzName() string
 }
 
-func DecodeMsgResendReq(d *bin.Decoder) (MsgResendReq, error) {
+func DecodeMsgResendReqClazz(d *bin.Decoder) (MsgResendReqClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2269,14 +3042,55 @@ func (m *TLMsgResendReq) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// MsgsAck <--
+// MsgResendReq <--
+type MsgResendReq struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	MsgResendReqClazz
+}
+
+func MakeMsgResendReq(c MsgResendReqClazz) *MsgResendReq {
+	return &MsgResendReq{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		MsgResendReqClazz: c,
+	}
+}
+
+func (m *MsgResendReq) Encode(x *bin.Encoder, layer int32) error {
+	if m.MsgResendReqClazz != nil {
+		return m.MsgResendReqClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("MsgResendReq - invalid Clazz")
+}
+
+func (m *MsgResendReq) Decode(d *bin.Decoder) (err error) {
+	m.MsgResendReqClazz, err = DecodeMsgResendReqClazz(d)
+	return
+}
+
+func (m *MsgResendReq) Match(f ...interface{}) {
+	switch c := m.MsgResendReqClazz.(type) {
+	case *TLMsgResendReq:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLMsgResendReq) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// MsgsAckClazz <--
 //   - TL_MsgsAck
-type MsgsAck interface {
+type MsgsAckClazz interface {
 	iface.TLObject
 	MsgsAckClazzName() string
 }
 
-func DecodeMsgsAck(d *bin.Decoder) (MsgsAck, error) {
+func DecodeMsgsAckClazz(d *bin.Decoder) (MsgsAckClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2344,14 +3158,55 @@ func (m *TLMsgsAck) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// MsgsAllInfo <--
+// MsgsAck <--
+type MsgsAck struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	MsgsAckClazz
+}
+
+func MakeMsgsAck(c MsgsAckClazz) *MsgsAck {
+	return &MsgsAck{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		MsgsAckClazz: c,
+	}
+}
+
+func (m *MsgsAck) Encode(x *bin.Encoder, layer int32) error {
+	if m.MsgsAckClazz != nil {
+		return m.MsgsAckClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("MsgsAck - invalid Clazz")
+}
+
+func (m *MsgsAck) Decode(d *bin.Decoder) (err error) {
+	m.MsgsAckClazz, err = DecodeMsgsAckClazz(d)
+	return
+}
+
+func (m *MsgsAck) Match(f ...interface{}) {
+	switch c := m.MsgsAckClazz.(type) {
+	case *TLMsgsAck:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLMsgsAck) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// MsgsAllInfoClazz <--
 //   - TL_MsgsAllInfo
-type MsgsAllInfo interface {
+type MsgsAllInfoClazz interface {
 	iface.TLObject
 	MsgsAllInfoClazzName() string
 }
 
-func DecodeMsgsAllInfo(d *bin.Decoder) (MsgsAllInfo, error) {
+func DecodeMsgsAllInfoClazz(d *bin.Decoder) (MsgsAllInfoClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2424,14 +3279,55 @@ func (m *TLMsgsAllInfo) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// MsgsStateInfo <--
+// MsgsAllInfo <--
+type MsgsAllInfo struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	MsgsAllInfoClazz
+}
+
+func MakeMsgsAllInfo(c MsgsAllInfoClazz) *MsgsAllInfo {
+	return &MsgsAllInfo{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		MsgsAllInfoClazz: c,
+	}
+}
+
+func (m *MsgsAllInfo) Encode(x *bin.Encoder, layer int32) error {
+	if m.MsgsAllInfoClazz != nil {
+		return m.MsgsAllInfoClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("MsgsAllInfo - invalid Clazz")
+}
+
+func (m *MsgsAllInfo) Decode(d *bin.Decoder) (err error) {
+	m.MsgsAllInfoClazz, err = DecodeMsgsAllInfoClazz(d)
+	return
+}
+
+func (m *MsgsAllInfo) Match(f ...interface{}) {
+	switch c := m.MsgsAllInfoClazz.(type) {
+	case *TLMsgsAllInfo:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLMsgsAllInfo) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// MsgsStateInfoClazz <--
 //   - TL_MsgsStateInfo
-type MsgsStateInfo interface {
+type MsgsStateInfoClazz interface {
 	iface.TLObject
 	MsgsStateInfoClazzName() string
 }
 
-func DecodeMsgsStateInfo(d *bin.Decoder) (MsgsStateInfo, error) {
+func DecodeMsgsStateInfoClazz(d *bin.Decoder) (MsgsStateInfoClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2501,14 +3397,55 @@ func (m *TLMsgsStateInfo) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// MsgsStateReq <--
+// MsgsStateInfo <--
+type MsgsStateInfo struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	MsgsStateInfoClazz
+}
+
+func MakeMsgsStateInfo(c MsgsStateInfoClazz) *MsgsStateInfo {
+	return &MsgsStateInfo{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		MsgsStateInfoClazz: c,
+	}
+}
+
+func (m *MsgsStateInfo) Encode(x *bin.Encoder, layer int32) error {
+	if m.MsgsStateInfoClazz != nil {
+		return m.MsgsStateInfoClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("MsgsStateInfo - invalid Clazz")
+}
+
+func (m *MsgsStateInfo) Decode(d *bin.Decoder) (err error) {
+	m.MsgsStateInfoClazz, err = DecodeMsgsStateInfoClazz(d)
+	return
+}
+
+func (m *MsgsStateInfo) Match(f ...interface{}) {
+	switch c := m.MsgsStateInfoClazz.(type) {
+	case *TLMsgsStateInfo:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLMsgsStateInfo) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// MsgsStateReqClazz <--
 //   - TL_MsgsStateReq
-type MsgsStateReq interface {
+type MsgsStateReqClazz interface {
 	iface.TLObject
 	MsgsStateReqClazzName() string
 }
 
-func DecodeMsgsStateReq(d *bin.Decoder) (MsgsStateReq, error) {
+func DecodeMsgsStateReqClazz(d *bin.Decoder) (MsgsStateReqClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2576,14 +3513,55 @@ func (m *TLMsgsStateReq) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// NewSession <--
+// MsgsStateReq <--
+type MsgsStateReq struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	MsgsStateReqClazz
+}
+
+func MakeMsgsStateReq(c MsgsStateReqClazz) *MsgsStateReq {
+	return &MsgsStateReq{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		MsgsStateReqClazz: c,
+	}
+}
+
+func (m *MsgsStateReq) Encode(x *bin.Encoder, layer int32) error {
+	if m.MsgsStateReqClazz != nil {
+		return m.MsgsStateReqClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("MsgsStateReq - invalid Clazz")
+}
+
+func (m *MsgsStateReq) Decode(d *bin.Decoder) (err error) {
+	m.MsgsStateReqClazz, err = DecodeMsgsStateReqClazz(d)
+	return
+}
+
+func (m *MsgsStateReq) Match(f ...interface{}) {
+	switch c := m.MsgsStateReqClazz.(type) {
+	case *TLMsgsStateReq:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLMsgsStateReq) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// NewSessionClazz <--
 //   - TL_NewSessionCreated
-type NewSession interface {
+type NewSessionClazz interface {
 	iface.TLObject
 	NewSessionClazzName() string
 }
 
-func DecodeNewSession(d *bin.Decoder) (NewSession, error) {
+func DecodeNewSessionClazz(d *bin.Decoder) (NewSessionClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2656,14 +3634,55 @@ func (m *TLNewSessionCreated) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// Pong <--
+// NewSession <--
+type NewSession struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	NewSessionClazz
+}
+
+func MakeNewSession(c NewSessionClazz) *NewSession {
+	return &NewSession{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		NewSessionClazz: c,
+	}
+}
+
+func (m *NewSession) Encode(x *bin.Encoder, layer int32) error {
+	if m.NewSessionClazz != nil {
+		return m.NewSessionClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("NewSession - invalid Clazz")
+}
+
+func (m *NewSession) Decode(d *bin.Decoder) (err error) {
+	m.NewSessionClazz, err = DecodeNewSessionClazz(d)
+	return
+}
+
+func (m *NewSession) Match(f ...interface{}) {
+	switch c := m.NewSessionClazz.(type) {
+	case *TLNewSessionCreated:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLNewSessionCreated) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// PongClazz <--
 //   - TL_Pong
-type Pong interface {
+type PongClazz interface {
 	iface.TLObject
 	PongClazzName() string
 }
 
-func DecodePong(d *bin.Decoder) (Pong, error) {
+func DecodePongClazz(d *bin.Decoder) (PongClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2733,16 +3752,57 @@ func (m *TLPong) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// RpcDropAnswer <--
+// Pong <--
+type Pong struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	PongClazz
+}
+
+func MakePong(c PongClazz) *Pong {
+	return &Pong{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		PongClazz: c,
+	}
+}
+
+func (m *Pong) Encode(x *bin.Encoder, layer int32) error {
+	if m.PongClazz != nil {
+		return m.PongClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("Pong - invalid Clazz")
+}
+
+func (m *Pong) Decode(d *bin.Decoder) (err error) {
+	m.PongClazz, err = DecodePongClazz(d)
+	return
+}
+
+func (m *Pong) Match(f ...interface{}) {
+	switch c := m.PongClazz.(type) {
+	case *TLPong:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLPong) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// RpcDropAnswerClazz <--
 //   - TL_RpcAnswerUnknown
 //   - TL_RpcAnswerDroppedRunning
 //   - TL_RpcAnswerDropped
-type RpcDropAnswer interface {
+type RpcDropAnswerClazz interface {
 	iface.TLObject
 	RpcDropAnswerClazzName() string
 }
 
-func DecodeRpcDropAnswer(d *bin.Decoder) (RpcDropAnswer, error) {
+func DecodeRpcDropAnswerClazz(d *bin.Decoder) (RpcDropAnswerClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2915,14 +3975,67 @@ func (m *TLRpcAnswerDropped) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// RpcError <--
+// RpcDropAnswer <--
+type RpcDropAnswer struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	RpcDropAnswerClazz
+}
+
+func MakeRpcDropAnswer(c RpcDropAnswerClazz) *RpcDropAnswer {
+	return &RpcDropAnswer{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		RpcDropAnswerClazz: c,
+	}
+}
+
+func (m *RpcDropAnswer) Encode(x *bin.Encoder, layer int32) error {
+	if m.RpcDropAnswerClazz != nil {
+		return m.RpcDropAnswerClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("RpcDropAnswer - invalid Clazz")
+}
+
+func (m *RpcDropAnswer) Decode(d *bin.Decoder) (err error) {
+	m.RpcDropAnswerClazz, err = DecodeRpcDropAnswerClazz(d)
+	return
+}
+
+func (m *RpcDropAnswer) Match(f ...interface{}) {
+	switch c := m.RpcDropAnswerClazz.(type) {
+	case *TLRpcAnswerUnknown:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLRpcAnswerUnknown) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLRpcAnswerDroppedRunning:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLRpcAnswerDroppedRunning) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLRpcAnswerDropped:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLRpcAnswerDropped) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// RpcErrorClazz <--
 //   - TL_RpcError
-type RpcError interface {
+type RpcErrorClazz interface {
 	iface.TLObject
 	RpcErrorClazzName() string
 }
 
-func DecodeRpcError(d *bin.Decoder) (RpcError, error) {
+func DecodeRpcErrorClazz(d *bin.Decoder) (RpcErrorClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -2992,7 +4105,48 @@ func (m *TLRpcError) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// TlsBlock <--
+// RpcError <--
+type RpcError struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	RpcErrorClazz
+}
+
+func MakeRpcError(c RpcErrorClazz) *RpcError {
+	return &RpcError{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		RpcErrorClazz: c,
+	}
+}
+
+func (m *RpcError) Encode(x *bin.Encoder, layer int32) error {
+	if m.RpcErrorClazz != nil {
+		return m.RpcErrorClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("RpcError - invalid Clazz")
+}
+
+func (m *RpcError) Decode(d *bin.Decoder) (err error) {
+	m.RpcErrorClazz, err = DecodeRpcErrorClazz(d)
+	return
+}
+
+func (m *RpcError) Match(f ...interface{}) {
+	switch c := m.RpcErrorClazz.(type) {
+	case *TLRpcError:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLRpcError) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// TlsBlockClazz <--
 //   - TL_TlsBlockString
 //   - TL_TlsBlockRandom
 //   - TL_TlsBlockZero
@@ -3000,12 +4154,12 @@ func (m *TLRpcError) Decode(d *bin.Decoder) (err error) {
 //   - TL_TlsBlockGrease
 //   - TL_TlsBlockPublicKey
 //   - TL_TlsBlockScope
-type TlsBlock interface {
+type TlsBlockClazz interface {
 	iface.TLObject
 	TlsBlockClazzName() string
 }
 
-func DecodeTlsBlock(d *bin.Decoder) (TlsBlock, error) {
+func DecodeTlsBlockClazz(d *bin.Decoder) (TlsBlockClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -3340,8 +4494,8 @@ func (m *TLTlsBlockPublicKey) Decode(d *bin.Decoder) (err error) {
 
 // TLTlsBlockScope <--
 type TLTlsBlockScope struct {
-	ClazzID uint32     `json:"_id"`
-	Entries []TlsBlock `json:"entries"`
+	ClazzID uint32      `json:"_id"`
+	Entries []*TlsBlock `json:"entries"`
 }
 
 func (m *TLTlsBlockScope) TlsBlockClazzName() string {
@@ -3381,10 +4535,12 @@ func (m *TLTlsBlockScope) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]TlsBlock, l3)
+			v3 := make([]*TlsBlock, l3)
 			for i := 0; i < l3; i++ {
-				v3[i], err3 = DecodeTlsBlock(d)
+				vv := new(TlsBlock)
+				err3 = vv.Decode(d)
 				_ = err3
+				v3[i] = vv
 			}
 			m.Entries = v3
 
@@ -3399,14 +4555,91 @@ func (m *TLTlsBlockScope) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// TlsClientHello <--
+// TlsBlock <--
+type TlsBlock struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	TlsBlockClazz
+}
+
+func MakeTlsBlock(c TlsBlockClazz) *TlsBlock {
+	return &TlsBlock{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		TlsBlockClazz: c,
+	}
+}
+
+func (m *TlsBlock) Encode(x *bin.Encoder, layer int32) error {
+	if m.TlsBlockClazz != nil {
+		return m.TlsBlockClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("TlsBlock - invalid Clazz")
+}
+
+func (m *TlsBlock) Decode(d *bin.Decoder) (err error) {
+	m.TlsBlockClazz, err = DecodeTlsBlockClazz(d)
+	return
+}
+
+func (m *TlsBlock) Match(f ...interface{}) {
+	switch c := m.TlsBlockClazz.(type) {
+	case *TLTlsBlockString:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsBlockString) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLTlsBlockRandom:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsBlockRandom) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLTlsBlockZero:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsBlockZero) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLTlsBlockDomain:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsBlockDomain) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLTlsBlockGrease:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsBlockGrease) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLTlsBlockPublicKey:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsBlockPublicKey) interface{}); ok {
+				f1(c)
+			}
+		}
+	case *TLTlsBlockScope:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsBlockScope) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
+	}
+}
+
+// TlsClientHelloClazz <--
 //   - TL_TlsClientHello
-type TlsClientHello interface {
+type TlsClientHelloClazz interface {
 	iface.TLObject
 	TlsClientHelloClazzName() string
 }
 
-func DecodeTlsClientHello(d *bin.Decoder) (TlsClientHello, error) {
+func DecodeTlsClientHelloClazz(d *bin.Decoder) (TlsClientHelloClazz, error) {
 	id, err := d.PeekClazzID()
 	if err != nil {
 		return nil, err
@@ -3425,8 +4658,8 @@ func DecodeTlsClientHello(d *bin.Decoder) (TlsClientHello, error) {
 
 // TLTlsClientHello <--
 type TLTlsClientHello struct {
-	ClazzID uint32     `json:"_id"`
-	Blocks  []TlsBlock `json:"blocks"`
+	ClazzID uint32      `json:"_id"`
+	Blocks  []*TlsBlock `json:"blocks"`
 }
 
 func (m *TLTlsClientHello) TlsClientHelloClazzName() string {
@@ -3471,10 +4704,12 @@ func (m *TLTlsClientHello) Decode(d *bin.Decoder) (err error) {
 			// }
 			l0, err2 := d.Int()
 			_ = err2
-			v0 := make([]TlsBlock, l0)
+			v0 := make([]*TlsBlock, l0)
 			for i := 0; i < l0; i++ {
-				v0[i], err2 = DecodeTlsBlock(d)
+				vv := new(TlsBlock)
+				err2 = vv.Decode(d)
 				_ = err2
+				v0[i] = vv
 			}
 			m.Blocks = v0
 
@@ -3486,5 +4721,46 @@ func (m *TLTlsClientHello) Decode(d *bin.Decoder) (err error) {
 		return f()
 	} else {
 		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TlsClientHello <--
+type TlsClientHello struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	TlsClientHelloClazz
+}
+
+func MakeTlsClientHello(c TlsClientHelloClazz) *TlsClientHello {
+	return &TlsClientHello{
+		// ClazzID:   c.ClazzID(),
+		// ClazzName: c.ClazzName(),
+		TlsClientHelloClazz: c,
+	}
+}
+
+func (m *TlsClientHello) Encode(x *bin.Encoder, layer int32) error {
+	if m.TlsClientHelloClazz != nil {
+		return m.TlsClientHelloClazz.Encode(x, layer)
+	}
+
+	return fmt.Errorf("TlsClientHello - invalid Clazz")
+}
+
+func (m *TlsClientHello) Decode(d *bin.Decoder) (err error) {
+	m.TlsClientHelloClazz, err = DecodeTlsClientHelloClazz(d)
+	return
+}
+
+func (m *TlsClientHello) Match(f ...interface{}) {
+	switch c := m.TlsClientHelloClazz.(type) {
+	case *TLTlsClientHello:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLTlsClientHello) interface{}); ok {
+				f1(c)
+			}
+		}
+	default:
+		//
 	}
 }
