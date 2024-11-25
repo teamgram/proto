@@ -75,8 +75,103 @@ func (m *TLEcho2) Decode(d *bin.Decoder) (err error) {
 	return
 }
 
-type Echo interface {
+type EchoClazz interface {
 	EchoName() string
+}
+
+type Echo struct {
+	ClazzID   uint32 `json:"_id"`
+	ClazzName string `json:"_name"`
+	// EchoName() string
+	EchoClazz
+}
+
+func MakeEcho(e EchoClazz) *Echo {
+	switch c := e.(type) {
+	case *TLEcho:
+		return &Echo{
+			ClazzID:   ClazzID_echo,
+			ClazzName: "echo",
+			EchoClazz: c,
+		}
+	case *TLEcho2:
+		return &Echo{
+			ClazzID:   ClazzID_echo2,
+			ClazzName: "echo2",
+			EchoClazz: c,
+		}
+	default:
+		//
+	}
+	return nil
+}
+
+func (m *Echo) Encode(x *bin.Encoder, layer int32) error {
+	clazzName := m.ClazzName
+	if clazzName == "" {
+		clazzName = iface.GetClazzNameByID(m.ClazzID)
+	}
+
+	switch clazzName {
+	case "echo":
+		t := &TLEcho{}
+		return t.Encode(x, layer)
+	case "echo2":
+		t := &TLEcho2{}
+		return t.Encode(x, layer)
+	default:
+		return nil
+	}
+}
+
+func (m *Echo) Decode(d *bin.Decoder) (err error) {
+	m.ClazzID, err = d.ClazzID()
+	if err != nil {
+		return
+	}
+
+	switch m.ClazzID {
+	case ClazzID_echo:
+		m.ClazzName = "echo"
+	case ClazzID_echo2:
+		m.ClazzName = "echo2"
+	default:
+		err = fmt.Errorf("invalid constructorId: 0x%x", m.ClazzID)
+	}
+
+	return
+}
+
+func (m *Echo) Match(f1 func(c *TLEcho) interface{}, f2 func(c *TLEcho2) interface{}) interface{} {
+	switch c := m.EchoClazz.(type) {
+	case *TLEcho:
+		return f1(c)
+	case *TLEcho2:
+		return f2(c)
+	default:
+		//
+	}
+	return nil
+}
+
+func (m *Echo) Match2(f ...interface{}) interface{} {
+	switch c := m.EchoClazz.(type) {
+	case *TLEcho:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLEcho) interface{}); ok {
+				return f1(c)
+			}
+		}
+	case *TLEcho2:
+		for _, v := range f {
+			if f1, ok := v.(func(c *TLEcho2) interface{}); ok {
+				return f1(c)
+			}
+		}
+	default:
+		//
+	}
+	return nil
 }
 
 type TLEchosEcho struct {
@@ -96,27 +191,48 @@ func (m *TLEchosEcho) Decode(d *bin.Decoder) (err error) {
 }
 
 type RPCEchos interface {
-	EchosEcho(in *TLEchosEcho) (Echo, error)
+	EchosEcho(in *TLEchosEcho) (*Echo, error)
 }
 
 func main() {
-	var (
-		echo Echo
-	)
+	//var (
+	//	echo Echo
+	//)
+	//
+	//echo = &TLEcho{Message: "hello"}
+	//
+	//switch t := echo.(type) {
+	//case nil:
+	//	fmt.Println("nil")
+	//case *TLEcho:
+	//	fmt.Println(t.EchoName())
+	//case *TLEcho2:
+	//	fmt.Println(t.EchoName())
+	//default:
+	//	panic("unknown type")
+	//}
 
-	echo = &TLEcho{Message: "hello"}
+	echo := MakeEcho(&TLEcho{Message: "echo"})
+	echo.Match(
+		func(c *TLEcho) interface{} {
+			fmt.Println(c.Message)
+			return nil
+		},
+		func(c *TLEcho2) interface{} {
+			fmt.Println(c.Message)
+			return nil
+		})
 
-	switch t := echo.(type) {
-	case nil:
-		fmt.Println("nil")
-	case *TLEcho:
-		fmt.Println(t.EchoName())
-	case *TLEcho2:
-		fmt.Println(t.EchoName())
-	default:
-		panic("unknown type")
-	}
-
+	echo = MakeEcho(&TLEcho2{Message: "echo2"})
+	echo.Match2(
+		func(c *TLEcho) interface{} {
+			fmt.Println(c.Message)
+			return nil
+		},
+		func(c *TLEcho2) interface{} {
+			fmt.Println(c.Message)
+			return nil
+		})
 	reqPQ := &mt.TLReqPq{
 		ClazzID: mt.ClazzID_resPQ,
 		Nonce:   bin.Int128{},

@@ -19,15 +19,17 @@ import (
 )
 
 const (
-	ClazzID_message2      = 1538843921 // parsed_manually_types
-	ClazzID_msg_container = 1945237724 // parsed_manually_types
-	ClazzID_msg_copy      = 530561358  // parsed_manually_types
-	ClazzID_gzip_packed   = 812830625  // parsed_manually_types
-	ClazzID_rpc_result    = -212046591 // parsed_manually_types
+	// ClazzID_message2      = 1538843921 // parsed_manually_types
+
+	ClazzID_msg_container = 0x73f1f8dc // parsed_manually_types
+	ClazzID_msg_copy      = 0xe06046b2 // parsed_manually_types
+	ClazzID_gzip_packed   = 0x3072cfa1 // parsed_manually_types
+	ClazzID_rpc_result    = 0xf35c6d01 // parsed_manually_types
 )
 
 func init() {
-	iface.RegisterClazzID(ClazzID_message2, func() iface.TLObject { return &TLMessage2{} })
+	// iface.RegisterClazzID(ClazzID_message2, func() iface.TLObject { return &TLMessage2{} })
+
 	iface.RegisterClazzID(ClazzID_msg_container, func() iface.TLObject { return &TLMsgRawDataContainer{} })
 	iface.RegisterClazzID(ClazzID_msg_copy, func() iface.TLObject { return &TLMsgCopy{} })
 	iface.RegisterClazzID(ClazzID_gzip_packed, func() iface.TLObject { return &TLGzipPacked{} })
