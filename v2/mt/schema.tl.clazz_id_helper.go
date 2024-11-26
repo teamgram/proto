@@ -69,7 +69,4 @@ const (
 	ClazzID_ping                       = 0x7abe77ec // 7abe77ec
 	ClazzID_ping_delay_disconnect      = 0xf3427b8c // f3427b8c
 	ClazzID_destroy_session            = 0xe7512126 // e7512126
-	ClazzID_test_useError              = 0xee75af01 // ee75af01
-	ClazzID_test_useConfigSimple       = 0xf9b7b23d // f9b7b23d
-	ClazzID_test_parseInputAppEvent    = 0xbb0d87f1 // bb0d87f1
 )

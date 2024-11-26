@@ -73,9 +73,6 @@ const (
 	ClazzName_ping                       = "ping"
 	ClazzName_ping_delay_disconnect      = "ping_delay_disconnect"
 	ClazzName_destroy_session            = "destroy_session"
-	ClazzName_test_useError              = "test_useError"
-	ClazzName_test_useConfigSimple       = "test_useConfigSimple"
-	ClazzName_test_parseInputAppEvent    = "test_parseInputAppEvent"
 )
 
 func init() {
@@ -138,9 +135,6 @@ func init() {
 	iface.RegisterClazzName(ClazzName_ping, 0, 0x7abe77ec)                       // 7abe77ec
 	iface.RegisterClazzName(ClazzName_ping_delay_disconnect, 0, 0xf3427b8c)      // f3427b8c
 	iface.RegisterClazzName(ClazzName_destroy_session, 0, 0xe7512126)            // e7512126
-	iface.RegisterClazzName(ClazzName_test_useError, 0, 0xee75af01)              // ee75af01
-	iface.RegisterClazzName(ClazzName_test_useConfigSimple, 0, 0xf9b7b23d)       // f9b7b23d
-	iface.RegisterClazzName(ClazzName_test_parseInputAppEvent, 0, 0xbb0d87f1)    // bb0d87f1
 
 	//RegisterClazzIDNameList
 	iface.RegisterClazzIDName(ClazzName_resPQ, 0x5162463)                       // 5162463
@@ -201,7 +195,4 @@ func init() {
 	iface.RegisterClazzIDName(ClazzName_ping, 0x7abe77ec)                       // 7abe77ec
 	iface.RegisterClazzIDName(ClazzName_ping_delay_disconnect, 0xf3427b8c)      // f3427b8c
 	iface.RegisterClazzIDName(ClazzName_destroy_session, 0xe7512126)            // e7512126
-	iface.RegisterClazzIDName(ClazzName_test_useError, 0xee75af01)              // ee75af01
-	iface.RegisterClazzIDName(ClazzName_test_useConfigSimple, 0xf9b7b23d)       // f9b7b23d
-	iface.RegisterClazzIDName(ClazzName_test_parseInputAppEvent, 0xbb0d87f1)    // bb0d87f1
 }
