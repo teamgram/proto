@@ -295,6 +295,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 	}).To_User()
 
 	if m.IsBot() {
+		user.Photo = m.ProfilePhoto()
 		return user
 	}
 
@@ -494,6 +495,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 	}).To_User()
 
 	if m.IsBot() {
+		user.Photo = m.ProfilePhoto()
 		return user
 	}
 
