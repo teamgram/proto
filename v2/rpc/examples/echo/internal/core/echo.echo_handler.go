@@ -10,7 +10,7 @@ import (
 	"github.com/teamgram/proto/v2/rpc/examples/echo/echo"
 )
 
-func (c *EchoCore) EchosEcho(in *echo.TLEchosEcho) (resp *echo.Echo, err error) {
+func (c *EchoCore) EchoEcho(in *echo.TLEchoEcho) (resp *echo.Echo, err error) {
 	// do something here
 	/*
 		temp, ok1 := metainfo.GetValue(c.ctx, "temp")
@@ -24,7 +24,7 @@ func (c *EchoCore) EchosEcho(in *echo.TLEchosEcho) (resp *echo.Echo, err error) 
 		klog.Debug("echo called")
 	*/
 
-	return echo.MaleTLEcho(&echo.Echo{
+	return echo.MakeEcho(&echo.TLEcho{
 		Message: in.Message,
-	}).ToClazzEcho(), nil
+	}), nil
 }

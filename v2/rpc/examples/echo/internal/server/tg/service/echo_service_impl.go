@@ -8,6 +8,7 @@ package service
 
 import (
 	"context"
+	"encoding/json"
 
 	"github.com/teamgram/proto/v2/rpc/examples/echo/echo"
 	"github.com/teamgram/proto/v2/rpc/examples/echo/internal/core"
@@ -15,17 +16,18 @@ import (
 	"github.com/cloudwego/kitex/pkg/klog"
 )
 
-// EchosEcho
-// echos.echo message:string = Echo;
-func (s *Service) EchosEcho(ctx context.Context, request *echo.TLEchosEcho) (*echo.Echo, error) {
+// EchoEcho
+// echo.echo message:string = Echo;
+func (s *Service) EchoEcho(ctx context.Context, request *echo.TLEchoEcho) (*echo.Echo, error) {
 	c := core.New(ctx, s.svcCtx)
 	klog.Infof("echos.echo - metadata: {}, request: %v", request)
 
-	r, err := c.EchosEcho(request)
+	r, err := c.EchoEcho(request)
 	if err != nil {
 		return nil, err
 	}
 
-	klog.Infof("echos.echo - reply: %v", r)
+	txt, _ := json.Marshal(r)
+	klog.Infof("echos.echo - reply: %s", string(txt))
 	return r, err
 }

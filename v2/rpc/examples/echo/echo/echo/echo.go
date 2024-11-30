@@ -22,7 +22,7 @@ var echoServiceInfo = newServiceInfo()
 
 func newServiceInfo() *kitex.ServiceInfo {
 	serviceName := "Echo"
-	handlerType := (*api.RPCEchos)(nil)
+	handlerType := (*api.RPCEcho)(nil)
 	methods := map[string]kitex.MethodInfo{
 		"echo": kitex.NewMethodInfo(echoHandler, newEchoArgs, newEchoResult, false),
 	}
@@ -43,7 +43,7 @@ func newServiceInfo() *kitex.ServiceInfo {
 func echoHandler(ctx context.Context, handler interface{}, arg, result interface{}) error {
 	realArg := arg.(*EchoArgs)
 	realResult := result.(*EchoResult)
-	success, err := handler.(api.RPCEchos).EchosEcho(ctx, realArg.Req)
+	success, err := handler.(api.RPCEcho).EchoEcho(ctx, realArg.Req)
 	if err != nil {
 		return err
 	}
@@ -60,7 +60,7 @@ func newEchoResult() interface{} {
 }
 
 type EchoArgs struct {
-	Req *api.TLEchosEcho
+	Req *api.TLEchoEcho
 }
 
 func (p *EchoArgs) Marshal(out []byte) ([]byte, error) {
@@ -71,7 +71,7 @@ func (p *EchoArgs) Marshal(out []byte) ([]byte, error) {
 }
 
 func (p *EchoArgs) Unmarshal(in []byte) error {
-	msg := new(api.TLEchosEcho)
+	msg := new(api.TLEchoEcho)
 	if err := json.Unmarshal(in, msg); err != nil {
 		return err
 	}
@@ -88,16 +88,16 @@ func (p *EchoArgs) Encode(x *bin.Encoder, layer int32) error {
 }
 
 func (p *EchoArgs) Decode(d *bin.Decoder) (err error) {
-	msg := new(api.TLEchosEcho)
+	msg := new(api.TLEchoEcho)
 	msg.ClazzID, _ = d.ClazzID()
 	msg.Decode(d)
 	p.Req = msg
 	return nil
 }
 
-var EchoArgs_Req_DEFAULT *api.TLEchosEcho
+var EchoArgs_Req_DEFAULT *api.TLEchoEcho
 
-func (p *EchoArgs) GetReq() *api.TLEchosEcho {
+func (p *EchoArgs) GetReq() *api.TLEchoEcho {
 	if !p.IsSetReq() {
 		return EchoArgs_Req_DEFAULT
 	}
@@ -172,7 +172,7 @@ func newServiceClient(c client.Client) *kClient {
 	}
 }
 
-func (p *kClient) Echo(ctx context.Context, req *api.TLEchosEcho) (r *api.Echo, err error) {
+func (p *kClient) Echo(ctx context.Context, req *api.TLEchoEcho) (r *api.Echo, err error) {
 	var _args EchoArgs
 	_args.Req = req
 	var _result EchoResult

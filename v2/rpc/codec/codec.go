@@ -18,6 +18,7 @@ package codec
 import (
 	"context"
 	"encoding/binary"
+	"encoding/hex"
 	"encoding/json"
 	"errors"
 	"fmt"
@@ -65,7 +66,7 @@ func (jc *ZRpcCodec) Encode(ctx context.Context, message remote.Message, out rem
 	//	return perrors.NewProtocolError(fmt.Errorf("json encode, marshal payload failed: %w", err))
 	//}
 	if jc.printDebugInfo {
-		klog.Infof("encoded payload: %s\n", payload)
+		klog.Infof("encoded payload: %s\n", hex.EncodeToString(payload))
 	}
 	data := &Meta{
 		ServiceName: message.RPCInfo().Invocation().ServiceName(),
@@ -118,7 +119,7 @@ func (jc *ZRpcCodec) Decode(ctx context.Context, message remote.Message, in remo
 		return err
 	}
 	if jc.printDebugInfo {
-		klog.Infof("encoded payload: %s\n", data.Payload)
+		klog.Infof("encoded payload: %s\n", hex.EncodeToString(data.Payload))
 	}
 	if remote.MessageType(data.MsgType) == remote.Exception {
 		var exception Exception

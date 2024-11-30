@@ -8,7 +8,7 @@ import (
 )
 
 // NewServer creates a server.Server with the given handler and options.
-func NewServer(handler api.RPCEchos, opts ...server.Option) server.Server {
+func NewServer(handler api.RPCEcho, opts ...server.Option) server.Server {
 	var options []server.Option
 
 	options = append(options, opts...)

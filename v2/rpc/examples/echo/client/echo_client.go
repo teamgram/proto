@@ -14,7 +14,7 @@ import (
 )
 
 type EchoClient interface {
-	EchosEcho(ctx context.Context, req *api.TLEchosEcho) (r *api.Echo, err error)
+	EchosEcho(ctx context.Context, req *api.TLEchoEcho) (r *api.Echo, err error)
 }
 
 type defaultEchoClient struct {
@@ -29,6 +29,6 @@ func NewEchoClient(cli echo.Client) EchoClient {
 
 // EchosEcho
 // echos.echo message:string = Echo;
-func (m *defaultEchoClient) EchosEcho(ctx context.Context, in *api.TLEchosEcho) (*api.Echo, error) {
-	return m.cli.EchosEcho(ctx, in)
+func (m *defaultEchoClient) EchosEcho(ctx context.Context, in *api.TLEchoEcho) (*api.Echo, error) {
+	return m.cli.EchoEcho(ctx, in)
 }

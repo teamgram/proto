@@ -9,7 +9,7 @@ import (
 )
 
 // NewInvoker creates a server.Invoker with the given handler and options.
-func NewInvoker(handler api.RPCEchos, opts ...server.Option) server.Invoker {
+func NewInvoker(handler api.RPCEcho, opts ...server.Option) server.Invoker {
 	var options []server.Option
 
 	options = append(options, opts...)

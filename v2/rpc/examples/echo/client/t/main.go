@@ -37,8 +37,8 @@ func main() {
 
 	cli2 := echoclient.NewEchoClient(cli)
 	for {
-		req := &api.TLEchosEcho{
-			ClazzID: api.ClazzID_echos_echo,
+		req := &api.TLEchoEcho{
+			ClazzID: api.ClazzID_echo_echo,
 			Message: "my request",
 		}
 		resp, err := cli2.EchosEcho(context.Background(), req)
