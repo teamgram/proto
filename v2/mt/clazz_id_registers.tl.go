@@ -74,6 +74,9 @@ func init() {
 	iface.RegisterClazzID(0xd712e4be, func() iface.TLObject { return &TLReqDHParams{ClazzID: 0xd712e4be} })         // 0xd712e4be
 	iface.RegisterClazzID(0xf5045f1f, func() iface.TLObject { return &TLSetClientDHParams{ClazzID: 0xf5045f1f} })   // 0xf5045f1f
 	iface.RegisterClazzID(0xd1435160, func() iface.TLObject { return &TLDestroyAuthKey{ClazzID: 0xd1435160} })      // 0xd1435160
+	iface.RegisterClazzID(0xc0e202f7, func() iface.TLObject { return &TLHelpTest{ClazzID: 0xc0e202f7} })            // 0xc0e202f7
+	iface.RegisterClazzID(0xee75af01, func() iface.TLObject { return &TLTestUseError{ClazzID: 0xee75af01} })        // 0xee75af01
+	iface.RegisterClazzID(0xf9b7b23d, func() iface.TLObject { return &TLTestUseConfigSimple{ClazzID: 0xf9b7b23d} }) // 0xf9b7b23d
 	iface.RegisterClazzID(0x58e4a740, func() iface.TLObject { return &TLRpcDropAnswer{ClazzID: 0x58e4a740} })       // 0x58e4a740
 	iface.RegisterClazzID(0xb921bd04, func() iface.TLObject { return &TLGetFutureSalts{ClazzID: 0xb921bd04} })      // 0xb921bd04
 	iface.RegisterClazzID(0x7abe77ec, func() iface.TLObject { return &TLPing{ClazzID: 0x7abe77ec} })                // 0x7abe77ec

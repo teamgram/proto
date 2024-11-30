@@ -87,6 +87,37 @@ func EncodeObjectList[T TLObject](x *bin.Encoder, vList []T, layer int32) error 
 	return nil
 }
 
+func DecodeObjectList[T TLObject](d *bin.Decoder) ([]T, error) {
+	if err := d.ConsumeClazzID(ClazzID_vector); err != nil {
+		return nil, err
+	}
+	n, err := d.Int()
+	if err != nil {
+		return nil, err
+	}
+	if n < 0 {
+		return nil, &bin.InvalidLengthError{
+			Length: n,
+			Where:  "vector",
+		}
+	}
+
+	vList := make([]T, n)
+	for i := 0; i < n; i++ {
+		var (
+			obj TLObject
+		)
+
+		obj, err = DecodeObject(d)
+		if err != nil {
+			return nil, err
+		}
+		vList[i] = obj.(T)
+	}
+
+	return vList, nil
+}
+
 // EncodeBool serializes bare boolean.
 func EncodeBool(x *bin.Encoder, v bool) {
 	var (

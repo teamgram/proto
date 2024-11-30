@@ -72,10 +72,10 @@ func (m *Echo) Decode(d *bin.Decoder) (err error) {
 
 	switch uint32(m.ClazzID) {
 	case ClazzID_echo:
-		m2 := MaleTLEcho(m)
+		m2 := MakeTLEcho(m)
 		err = m2.Decode(d)
 	case ClazzID_echo2:
-		m2 := MaleTLEcho2(m)
+		m2 := MakeTLEcho(m)
 		err = m2.Decode(d)
 	default:
 		err = fmt.Errorf("invalid constructorId: 0x%x", uint32(m.ClazzID))
@@ -104,7 +104,7 @@ type TLEcho struct {
 	Data2 *Echo `json:"_data2"`
 }
 
-func MaleTLEcho(data2 *Echo) *TLEcho {
+func MakeTLEcho(data2 *Echo) *TLEcho {
 	if data2 == nil {
 		return &TLEcho{Data2: &Echo{
 			ClazzName: ClazzName_echo,

@@ -64,6 +64,9 @@ const (
 	ClazzID_tlsBlockGrease             = 0xe675a1c1 // e675a1c1
 	ClazzID_tlsBlockPublicKey          = 0x9eb95b5c // 9eb95b5c
 	ClazzID_tlsBlockScope              = 0xe725d44f // e725d44f
+	ClazzID_help_test                  = 0xc0e202f7 // c0e202f7
+	ClazzID_test_useError              = 0xee75af01 // ee75af01
+	ClazzID_test_useConfigSimple       = 0xf9b7b23d // f9b7b23d
 	ClazzID_rpc_drop_answer            = 0x58e4a740 // 58e4a740
 	ClazzID_get_future_salts           = 0xb921bd04 // b921bd04
 	ClazzID_ping                       = 0x7abe77ec // 7abe77ec

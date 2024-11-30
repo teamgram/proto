@@ -68,6 +68,9 @@ const (
 	ClazzName_tlsBlockGrease             = "tlsBlockGrease"
 	ClazzName_tlsBlockPublicKey          = "tlsBlockPublicKey"
 	ClazzName_tlsBlockScope              = "tlsBlockScope"
+	ClazzName_help_test                  = "help_test"
+	ClazzName_test_useError              = "test_useError"
+	ClazzName_test_useConfigSimple       = "test_useConfigSimple"
 	ClazzName_rpc_drop_answer            = "rpc_drop_answer"
 	ClazzName_get_future_salts           = "get_future_salts"
 	ClazzName_ping                       = "ping"
@@ -130,6 +133,9 @@ func init() {
 	iface.RegisterClazzName(ClazzName_tlsBlockGrease, 0, 0xe675a1c1)             // e675a1c1
 	iface.RegisterClazzName(ClazzName_tlsBlockPublicKey, 0, 0x9eb95b5c)          // 9eb95b5c
 	iface.RegisterClazzName(ClazzName_tlsBlockScope, 0, 0xe725d44f)              // e725d44f
+	iface.RegisterClazzName(ClazzName_help_test, 0, 0xc0e202f7)                  // c0e202f7
+	iface.RegisterClazzName(ClazzName_test_useError, 0, 0xee75af01)              // ee75af01
+	iface.RegisterClazzName(ClazzName_test_useConfigSimple, 0, 0xf9b7b23d)       // f9b7b23d
 	iface.RegisterClazzName(ClazzName_rpc_drop_answer, 0, 0x58e4a740)            // 58e4a740
 	iface.RegisterClazzName(ClazzName_get_future_salts, 0, 0xb921bd04)           // b921bd04
 	iface.RegisterClazzName(ClazzName_ping, 0, 0x7abe77ec)                       // 7abe77ec
@@ -190,6 +196,9 @@ func init() {
 	iface.RegisterClazzIDName(ClazzName_tlsBlockGrease, 0xe675a1c1)             // e675a1c1
 	iface.RegisterClazzIDName(ClazzName_tlsBlockPublicKey, 0x9eb95b5c)          // 9eb95b5c
 	iface.RegisterClazzIDName(ClazzName_tlsBlockScope, 0xe725d44f)              // e725d44f
+	iface.RegisterClazzIDName(ClazzName_help_test, 0xc0e202f7)                  // c0e202f7
+	iface.RegisterClazzIDName(ClazzName_test_useError, 0xee75af01)              // ee75af01
+	iface.RegisterClazzIDName(ClazzName_test_useConfigSimple, 0xf9b7b23d)       // f9b7b23d
 	iface.RegisterClazzIDName(ClazzName_rpc_drop_answer, 0x58e4a740)            // 58e4a740
 	iface.RegisterClazzIDName(ClazzName_get_future_salts, 0xb921bd04)           // b921bd04
 	iface.RegisterClazzIDName(ClazzName_ping, 0x7abe77ec)                       // 7abe77ec
