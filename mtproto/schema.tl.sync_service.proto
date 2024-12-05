@@ -942,6 +942,7 @@ message TL_contacts_search {
 message TL_contacts_resolveUsername {
     TLConstructor  constructor = 1;
     string username = 3;
+    google.protobuf.StringValue referer = 4;
 }
 
 message TL_contacts_getTopPeers {
@@ -2650,6 +2651,17 @@ message TL_messages_getPreparedInlineMessage {
     string id = 4;
 }
 
+message TL_messages_searchStickers {
+    TLConstructor  constructor = 1;
+    bool emojis = 3;
+    string q = 4;
+    string emoticon = 5;
+    repeated string lang_code = 6;
+    int32 offset = 7;
+    int32 limit = 8;
+    int64 hash = 9;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3458,6 +3470,17 @@ message TL_bots_checkDownloadFileParams {
     string url = 5;
 }
 
+message TL_bots_getAdminedBots {
+    TLConstructor  constructor = 1;
+}
+
+message TL_bots_updateStarRefProgram {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+    int32 commission_permille = 4;
+    google.protobuf.Int32Value duration_months = 5;
+}
+
 message TL_payments_getPaymentForm {
     TLConstructor  constructor = 1;
     InputInvoice invoice = 3;
@@ -3679,6 +3702,42 @@ message TL_payments_botCancelStarsSubscription {
     string charge_id_STRING = 5;
     google.protobuf.StringValue invoice_slug = 6;
     google.protobuf.StringValue charge_id_FLAGSTRING = 7;
+}
+
+message TL_payments_getConnectedStarRefBots {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    google.protobuf.Int32Value offset_date = 4;
+    google.protobuf.StringValue offset_link = 5;
+    int32 limit = 6;
+}
+
+message TL_payments_getConnectedStarRefBot {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    InputUser bot = 4;
+}
+
+message TL_payments_getSuggestedStarRefBots {
+    TLConstructor  constructor = 1;
+    bool order_by_revenue = 3;
+    bool order_by_date = 4;
+    InputPeer peer = 5;
+    string offset = 6;
+    int32 limit = 7;
+}
+
+message TL_payments_connectStarRefBot {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    InputUser bot = 4;
+}
+
+message TL_payments_editConnectedStarRefBot {
+    TLConstructor  constructor = 1;
+    bool revoked = 3;
+    InputPeer peer = 4;
+    string link = 5;
 }
 
 message TL_stickers_createStickerSet {
@@ -4898,6 +4957,7 @@ service RPCBots {
     rpc bots_getBotCommands(TL_bots_getBotCommands) returns (Vector_BotCommand) {}
     rpc bots_setBotInfo(TL_bots_setBotInfo) returns (Bool) {}
     rpc bots_getBotInfoDCD914FD(TL_bots_getBotInfoDCD914FD) returns (bots_BotInfo) {}
+    rpc bots_getAdminedBots(TL_bots_getAdminedBots) returns (Vector_User) {}
     rpc bots_getBotInfo75EC12E6(TL_bots_getBotInfo75EC12E6) returns (Vector_String) {}
 }
 
@@ -5570,6 +5630,7 @@ service RPCSponsoredMessages {
 }
 
 service RPCStars {
+    rpc bots_updateStarRefProgram(TL_bots_updateStarRefProgram) returns (StarRefProgram) {}
     rpc payments_getStarsTopupOptions(TL_payments_getStarsTopupOptions) returns (Vector_StarsTopupOption) {}
     rpc payments_getStarsStatus(TL_payments_getStarsStatus) returns (payments_StarsStatus) {}
     rpc payments_getStarsTransactions(TL_payments_getStarsTransactions) returns (payments_StarsStatus) {}
@@ -5589,6 +5650,11 @@ service RPCStars {
     rpc payments_saveStarGift(TL_payments_saveStarGift) returns (Bool) {}
     rpc payments_convertStarGift(TL_payments_convertStarGift) returns (Bool) {}
     rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
+    rpc payments_getConnectedStarRefBots(TL_payments_getConnectedStarRefBots) returns (payments_ConnectedStarRefBots) {}
+    rpc payments_getConnectedStarRefBot(TL_payments_getConnectedStarRefBot) returns (payments_ConnectedStarRefBots) {}
+    rpc payments_getSuggestedStarRefBots(TL_payments_getSuggestedStarRefBots) returns (payments_SuggestedStarRefBots) {}
+    rpc payments_connectStarRefBot(TL_payments_connectStarRefBot) returns (payments_ConnectedStarRefBots) {}
+    rpc payments_editConnectedStarRefBot(TL_payments_editConnectedStarRefBot) returns (payments_ConnectedStarRefBots) {}
 }
 
 service RPCStatistics {
@@ -5624,6 +5690,7 @@ service RPCStickers {
     rpc messages_getOldFeaturedStickers(TL_messages_getOldFeaturedStickers) returns (messages_FeaturedStickers) {}
     rpc messages_searchEmojiStickerSets(TL_messages_searchEmojiStickerSets) returns (messages_FoundStickerSets) {}
     rpc messages_getMyStickers(TL_messages_getMyStickers) returns (messages_MyStickers) {}
+    rpc messages_searchStickers(TL_messages_searchStickers) returns (messages_FoundStickers) {}
     rpc stickers_createStickerSet(TL_stickers_createStickerSet) returns (messages_StickerSet) {}
     rpc stickers_removeStickerFromSet(TL_stickers_removeStickerFromSet) returns (messages_StickerSet) {}
     rpc stickers_changeStickerPosition(TL_stickers_changeStickerPosition) returns (messages_StickerSet) {}

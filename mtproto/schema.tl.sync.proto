@@ -2235,6 +2235,28 @@ message TL_connectedBot {
 }
 
 
+// ConnectedBotStarRef <--
+//  + TL_connectedBotStarRef
+//
+message ConnectedBotStarRef {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool revoked = 3;
+    string url = 4;
+    int32 date = 5;
+    int64 bot_id = 6;
+    int32 commission_permille = 7;
+    google.protobuf.Int32Value duration_months = 8;
+    int64 participants = 9;
+    int64 revenue = 10;
+}
+
+// TL_connectedBotStarRef
+message TL_connectedBotStarRef {
+    ConnectedBotStarRef data2 = 1;
+}
+
+
 // Contact <--
 //  + TL_contact
 //
@@ -9915,6 +9937,41 @@ message TL_starGift {
 }
 
 
+// StarRefProgram <--
+//  + TL_starRefProgram
+//
+message StarRefProgram {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int64 bot_id = 3;
+    int32 commission_permille = 4;
+    google.protobuf.Int32Value duration_months = 5;
+    google.protobuf.Int32Value end_date = 6;
+    StarsAmount daily_revenue_per_user = 7;
+}
+
+// TL_starRefProgram
+message TL_starRefProgram {
+    StarRefProgram data2 = 1;
+}
+
+
+// StarsAmount <--
+//  + TL_starsAmount
+//
+message StarsAmount {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int64 amount = 3;
+    int32 nanos = 4;
+}
+
+// TL_starsAmount
+message TL_starsAmount {
+    StarsAmount data2 = 1;
+}
+
+
 // StarsGiftOption <--
 //  + TL_starsGiftOption
 //
@@ -9975,15 +10032,19 @@ message TL_starsGiveawayWinnersOption {
 
 // StarsRevenueStatus <--
 //  + TL_starsRevenueStatus
+//  + TL_starsRevenueStatus
 //
 message StarsRevenueStatus {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     bool withdrawal_enabled = 3;
-    int64 current_balance = 4;
-    int64 available_balance = 5;
-    int64 overall_revenue = 6;
+    StarsAmount current_balance_STARSAMOUNT = 4;
+    StarsAmount available_balance_STARSAMOUNT = 5;
+    StarsAmount overall_revenue_STARSAMOUNT = 6;
     google.protobuf.Int32Value next_withdrawal_at = 7;
+    int64 current_balance_INT64 = 8;
+    int64 available_balance_INT64 = 9;
+    int64 overall_revenue_INT64 = 10;
 }
 
 // TL_starsRevenueStatus
@@ -10062,6 +10123,7 @@ message TL_starsTopupOption {
 //  + TL_starsTransaction
 //  + TL_starsTransaction
 //  + TL_starsTransaction
+//  + TL_starsTransaction
 //
 message StarsTransaction {
     string predicate_name = 1;
@@ -10072,7 +10134,7 @@ message StarsTransaction {
     bool gift = 6;
     bool reaction = 7;
     string id = 8;
-    int64 stars = 9;
+    StarsAmount stars_STARSAMOUNT = 9;
     int32 date = 10;
     StarsTransactionPeer peer = 11;
     google.protobuf.StringValue title = 12;
@@ -10087,6 +10149,10 @@ message StarsTransaction {
     google.protobuf.Int32Value giveaway_post_id = 21;
     StarGift stargift = 22;
     google.protobuf.Int32Value floodskip_number = 23;
+    google.protobuf.Int32Value starref_commission_permille = 24;
+    Peer starref_peer = 25;
+    StarsAmount starref_amount = 26;
+    int64 stars_INT64 = 27;
 }
 
 // TL_starsTransaction
@@ -10890,6 +10956,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateStarsRevenueStatus
 //  + TL_updateBotPurchasedPaidMedia
 //  + TL_updatePaidReactionPrivacy
+//  + TL_updateStarsBalance
 //  + TL_updateBotSubscriptionExpire
 //  + TL_updateDeleteScheduledMessages
 //  + TL_updateMessageExtendedMedia
@@ -11064,19 +11131,20 @@ message Update {
     string connection_id = 152;
     Message reply_to_message = 153;
     BroadcastRevenueBalances balances = 154;
-    int64 balance = 155;
+    StarsAmount balance_STARSAMOUNT = 155;
     StarsRevenueStatus status_STARSREVENUESTATUS = 156;
     string payload_STRING = 157;
     Bool private = 158;
-    string invoice_slug = 159;
-    int32 until_date = 160;
-    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 161;
-    Bool blocked_BOOL = 162;
-    UserProfilePhoto photo = 163;
-    Bool previous = 164;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 165;
-    string username = 166;
-    BizDataRaw biz_data = 167;
+    int64 balance_INT64 = 159;
+    string invoice_slug = 160;
+    int32 until_date = 161;
+    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 162;
+    Bool blocked_BOOL = 163;
+    UserProfilePhoto photo = 164;
+    Bool previous = 165;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 166;
+    string username = 167;
+    BizDataRaw biz_data = 168;
 }
 
 // TL_updateNewMessage
@@ -12057,6 +12125,7 @@ message TL_userData {
 //  + TL_userFull
 //  + TL_userFull
 //  + TL_userFull
+//  + TL_userFull
 //
 message UserFull {
     string predicate_name = 1;
@@ -12105,7 +12174,8 @@ message UserFull {
     google.protobuf.Int64Value personal_channel_id = 44;
     google.protobuf.Int32Value personal_channel_message = 45;
     google.protobuf.Int32Value stargifts_count = 46;
-    UserStories stories_FLAGUSERSTORIES = 47;
+    StarRefProgram starref_program = 47;
+    UserStories stories_FLAGUSERSTORIES = 48;
 }
 
 // TL_userFull
@@ -14585,6 +14655,29 @@ message TL_messages_foundStickerSets {
 }
 
 
+// messages_FoundStickers <--
+//  + TL_messages_foundStickersNotModified
+//  + TL_messages_foundStickers
+//
+message messages_FoundStickers {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    google.protobuf.Int32Value next_offset = 3;
+    int64 hash = 4;
+    repeated Document stickers = 5;
+}
+
+// TL_messages_foundStickersNotModified
+message TL_messages_foundStickersNotModified {
+    messages_FoundStickers data2 = 1;
+}
+
+// TL_messages_foundStickers
+message TL_messages_foundStickers {
+    messages_FoundStickers data2 = 1;
+}
+
+
 // messages_HighScores <--
 //  + TL_messages_highScores
 //
@@ -15272,6 +15365,23 @@ message TL_payments_checkedGiftCode {
 }
 
 
+// payments_ConnectedStarRefBots <--
+//  + TL_payments_connectedStarRefBots
+//
+message payments_ConnectedStarRefBots {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 count = 3;
+    repeated ConnectedBotStarRef connected_bots = 4;
+    repeated User users = 5;
+}
+
+// TL_payments_connectedStarRefBots
+message TL_payments_connectedStarRefBots {
+    payments_ConnectedStarRefBots data2 = 1;
+}
+
+
 // payments_ExportedInvoice <--
 //  + TL_payments_exportedInvoice
 //
@@ -15512,11 +15622,12 @@ message TL_payments_starsRevenueWithdrawalUrl {
 // payments_StarsStatus <--
 //  + TL_payments_starsStatus
 //  + TL_payments_starsStatus
+//  + TL_payments_starsStatus
 //
 message payments_StarsStatus {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-    int64 balance = 3;
+    StarsAmount balance_STARSAMOUNT = 3;
     repeated StarsSubscription subscriptions = 4;
     google.protobuf.StringValue subscriptions_next_offset = 5;
     google.protobuf.Int64Value subscriptions_missing_balance = 6;
@@ -15524,11 +15635,30 @@ message payments_StarsStatus {
     google.protobuf.StringValue next_offset = 8;
     repeated Chat chats = 9;
     repeated User users = 10;
+    int64 balance_INT64 = 11;
 }
 
 // TL_payments_starsStatus
 message TL_payments_starsStatus {
     payments_StarsStatus data2 = 1;
+}
+
+
+// payments_SuggestedStarRefBots <--
+//  + TL_payments_suggestedStarRefBots
+//
+message payments_SuggestedStarRefBots {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 count = 3;
+    repeated StarRefProgram suggested_bots = 4;
+    repeated User users = 5;
+    google.protobuf.StringValue next_offset = 6;
+}
+
+// TL_payments_suggestedStarRefBots
+message TL_payments_suggestedStarRefBots {
+    payments_SuggestedStarRefBots data2 = 1;
 }
 
 

@@ -2948,6 +2948,7 @@ const (
 	RPCBots_BotsGetBotCommands_FullMethodName     = "/mtproto.RPCBots/bots_getBotCommands"
 	RPCBots_BotsSetBotInfo_FullMethodName         = "/mtproto.RPCBots/bots_setBotInfo"
 	RPCBots_BotsGetBotInfoDCD914FD_FullMethodName = "/mtproto.RPCBots/bots_getBotInfoDCD914FD"
+	RPCBots_BotsGetAdminedBots_FullMethodName     = "/mtproto.RPCBots/bots_getAdminedBots"
 	RPCBots_BotsGetBotInfo75EC12E6_FullMethodName = "/mtproto.RPCBots/bots_getBotInfo75EC12E6"
 )
 
@@ -2960,6 +2961,7 @@ type RPCBotsClient interface {
 	BotsGetBotCommands(ctx context.Context, in *TLBotsGetBotCommands, opts ...grpc.CallOption) (*Vector_BotCommand, error)
 	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo, opts ...grpc.CallOption) (*Bool, error)
 	BotsGetBotInfoDCD914FD(ctx context.Context, in *TLBotsGetBotInfoDCD914FD, opts ...grpc.CallOption) (*Bots_BotInfo, error)
+	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots, opts ...grpc.CallOption) (*Vector_User, error)
 	BotsGetBotInfo75EC12E6(ctx context.Context, in *TLBotsGetBotInfo75EC12E6, opts ...grpc.CallOption) (*Vector_String, error)
 }
 
@@ -3016,6 +3018,15 @@ func (c *rPCBotsClient) BotsGetBotInfoDCD914FD(ctx context.Context, in *TLBotsGe
 	return out, nil
 }
 
+func (c *rPCBotsClient) BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots, opts ...grpc.CallOption) (*Vector_User, error) {
+	out := new(Vector_User)
+	err := c.cc.Invoke(ctx, RPCBots_BotsGetAdminedBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCBotsClient) BotsGetBotInfo75EC12E6(ctx context.Context, in *TLBotsGetBotInfo75EC12E6, opts ...grpc.CallOption) (*Vector_String, error) {
 	out := new(Vector_String)
 	err := c.cc.Invoke(ctx, RPCBots_BotsGetBotInfo75EC12E6_FullMethodName, in, out, opts...)
@@ -3034,6 +3045,7 @@ type RPCBotsServer interface {
 	BotsGetBotCommands(context.Context, *TLBotsGetBotCommands) (*Vector_BotCommand, error)
 	BotsSetBotInfo(context.Context, *TLBotsSetBotInfo) (*Bool, error)
 	BotsGetBotInfoDCD914FD(context.Context, *TLBotsGetBotInfoDCD914FD) (*Bots_BotInfo, error)
+	BotsGetAdminedBots(context.Context, *TLBotsGetAdminedBots) (*Vector_User, error)
 	BotsGetBotInfo75EC12E6(context.Context, *TLBotsGetBotInfo75EC12E6) (*Vector_String, error)
 }
 
@@ -3055,6 +3067,9 @@ func (UnimplementedRPCBotsServer) BotsSetBotInfo(context.Context, *TLBotsSetBotI
 }
 func (UnimplementedRPCBotsServer) BotsGetBotInfoDCD914FD(context.Context, *TLBotsGetBotInfoDCD914FD) (*Bots_BotInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsGetBotInfoDCD914FD not implemented")
+}
+func (UnimplementedRPCBotsServer) BotsGetAdminedBots(context.Context, *TLBotsGetAdminedBots) (*Vector_User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsGetAdminedBots not implemented")
 }
 func (UnimplementedRPCBotsServer) BotsGetBotInfo75EC12E6(context.Context, *TLBotsGetBotInfo75EC12E6) (*Vector_String, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsGetBotInfo75EC12E6 not implemented")
@@ -3161,6 +3176,24 @@ func _RPCBots_BotsGetBotInfoDCD914FD_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCBots_BotsGetAdminedBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsGetAdminedBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCBotsServer).BotsGetAdminedBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCBots_BotsGetAdminedBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCBotsServer).BotsGetAdminedBots(ctx, req.(*TLBotsGetAdminedBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCBots_BotsGetBotInfo75EC12E6_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLBotsGetBotInfo75EC12E6)
 	if err := dec(in); err != nil {
@@ -3205,6 +3238,10 @@ var RPCBots_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "bots_getBotInfoDCD914FD",
 			Handler:    _RPCBots_BotsGetBotInfoDCD914FD_Handler,
+		},
+		{
+			MethodName: "bots_getAdminedBots",
+			Handler:    _RPCBots_BotsGetAdminedBots_Handler,
 		},
 		{
 			MethodName: "bots_getBotInfo75EC12E6",
@@ -23972,6 +24009,7 @@ var RPCSponsoredMessages_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCStars_BotsUpdateStarRefProgram_FullMethodName             = "/mtproto.RPCStars/bots_updateStarRefProgram"
 	RPCStars_PaymentsGetStarsTopupOptions_FullMethodName         = "/mtproto.RPCStars/payments_getStarsTopupOptions"
 	RPCStars_PaymentsGetStarsStatus_FullMethodName               = "/mtproto.RPCStars/payments_getStarsStatus"
 	RPCStars_PaymentsGetStarsTransactions_FullMethodName         = "/mtproto.RPCStars/payments_getStarsTransactions"
@@ -23991,12 +24029,18 @@ const (
 	RPCStars_PaymentsSaveStarGift_FullMethodName                 = "/mtproto.RPCStars/payments_saveStarGift"
 	RPCStars_PaymentsConvertStarGift_FullMethodName              = "/mtproto.RPCStars/payments_convertStarGift"
 	RPCStars_PaymentsBotCancelStarsSubscription_FullMethodName   = "/mtproto.RPCStars/payments_botCancelStarsSubscription"
+	RPCStars_PaymentsGetConnectedStarRefBots_FullMethodName      = "/mtproto.RPCStars/payments_getConnectedStarRefBots"
+	RPCStars_PaymentsGetConnectedStarRefBot_FullMethodName       = "/mtproto.RPCStars/payments_getConnectedStarRefBot"
+	RPCStars_PaymentsGetSuggestedStarRefBots_FullMethodName      = "/mtproto.RPCStars/payments_getSuggestedStarRefBots"
+	RPCStars_PaymentsConnectStarRefBot_FullMethodName            = "/mtproto.RPCStars/payments_connectStarRefBot"
+	RPCStars_PaymentsEditConnectedStarRefBot_FullMethodName      = "/mtproto.RPCStars/payments_editConnectedStarRefBot"
 )
 
 // RPCStarsClient is the client API for RPCStars service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCStarsClient interface {
+	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram, opts ...grpc.CallOption) (*StarRefProgram, error)
 	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error)
 	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
@@ -24016,6 +24060,11 @@ type RPCStarsClient interface {
 	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots, opts ...grpc.CallOption) (*Payments_SuggestedStarRefBots, error)
+	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
 }
 
 type rPCStarsClient struct {
@@ -24024,6 +24073,15 @@ type rPCStarsClient struct {
 
 func NewRPCStarsClient(cc grpc.ClientConnInterface) RPCStarsClient {
 	return &rPCStarsClient{cc}
+}
+
+func (c *rPCStarsClient) BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram, opts ...grpc.CallOption) (*StarRefProgram, error) {
+	out := new(StarRefProgram)
+	err := c.cc.Invoke(ctx, RPCStars_BotsUpdateStarRefProgram_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *rPCStarsClient) PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error) {
@@ -24197,10 +24255,56 @@ func (c *rPCStarsClient) PaymentsBotCancelStarsSubscription(ctx context.Context,
 	return out, nil
 }
 
+func (c *rPCStarsClient) PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetConnectedStarRefBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetConnectedStarRefBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots, opts ...grpc.CallOption) (*Payments_SuggestedStarRefBots, error) {
+	out := new(Payments_SuggestedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetSuggestedStarRefBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsConnectStarRefBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarsClient) PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsEditConnectedStarRefBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCStarsServer is the server API for RPCStars service.
 // All implementations should embed UnimplementedRPCStarsServer
 // for forward compatibility
 type RPCStarsServer interface {
+	BotsUpdateStarRefProgram(context.Context, *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
 	PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error)
 	PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error)
 	PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error)
@@ -24220,12 +24324,20 @@ type RPCStarsServer interface {
 	PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error)
 	PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error)
 	PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
+	PaymentsGetConnectedStarRefBots(context.Context, *TLPaymentsGetConnectedStarRefBots) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetConnectedStarRefBot(context.Context, *TLPaymentsGetConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetSuggestedStarRefBots(context.Context, *TLPaymentsGetSuggestedStarRefBots) (*Payments_SuggestedStarRefBots, error)
+	PaymentsConnectStarRefBot(context.Context, *TLPaymentsConnectStarRefBot) (*Payments_ConnectedStarRefBots, error)
+	PaymentsEditConnectedStarRefBot(context.Context, *TLPaymentsEditConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error)
 }
 
 // UnimplementedRPCStarsServer should be embedded to have forward compatible implementations.
 type UnimplementedRPCStarsServer struct {
 }
 
+func (UnimplementedRPCStarsServer) BotsUpdateStarRefProgram(context.Context, *TLBotsUpdateStarRefProgram) (*StarRefProgram, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsUpdateStarRefProgram not implemented")
+}
 func (UnimplementedRPCStarsServer) PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTopupOptions not implemented")
 }
@@ -24283,6 +24395,21 @@ func (UnimplementedRPCStarsServer) PaymentsConvertStarGift(context.Context, *TLP
 func (UnimplementedRPCStarsServer) PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsBotCancelStarsSubscription not implemented")
 }
+func (UnimplementedRPCStarsServer) PaymentsGetConnectedStarRefBots(context.Context, *TLPaymentsGetConnectedStarRefBots) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetConnectedStarRefBots not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetConnectedStarRefBot(context.Context, *TLPaymentsGetConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetConnectedStarRefBot not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsGetSuggestedStarRefBots(context.Context, *TLPaymentsGetSuggestedStarRefBots) (*Payments_SuggestedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetSuggestedStarRefBots not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsConnectStarRefBot(context.Context, *TLPaymentsConnectStarRefBot) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsConnectStarRefBot not implemented")
+}
+func (UnimplementedRPCStarsServer) PaymentsEditConnectedStarRefBot(context.Context, *TLPaymentsEditConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsEditConnectedStarRefBot not implemented")
+}
 
 // UnsafeRPCStarsServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to RPCStarsServer will
@@ -24293,6 +24420,24 @@ type UnsafeRPCStarsServer interface {
 
 func RegisterRPCStarsServer(s grpc.ServiceRegistrar, srv RPCStarsServer) {
 	s.RegisterService(&RPCStars_ServiceDesc, srv)
+}
+
+func _RPCStars_BotsUpdateStarRefProgram_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsUpdateStarRefProgram)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).BotsUpdateStarRefProgram(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_BotsUpdateStarRefProgram_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).BotsUpdateStarRefProgram(ctx, req.(*TLBotsUpdateStarRefProgram))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _RPCStars_PaymentsGetStarsTopupOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -24637,6 +24782,96 @@ func _RPCStars_PaymentsBotCancelStarsSubscription_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStars_PaymentsGetConnectedStarRefBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetConnectedStarRefBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetConnectedStarRefBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBots(ctx, req.(*TLPaymentsGetConnectedStarRefBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetConnectedStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetConnectedStarRefBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetConnectedStarRefBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBot(ctx, req.(*TLPaymentsGetConnectedStarRefBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsGetSuggestedStarRefBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetSuggestedStarRefBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsGetSuggestedStarRefBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsGetSuggestedStarRefBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsGetSuggestedStarRefBots(ctx, req.(*TLPaymentsGetSuggestedStarRefBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsConnectStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsConnectStarRefBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsConnectStarRefBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsConnectStarRefBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsConnectStarRefBot(ctx, req.(*TLPaymentsConnectStarRefBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStars_PaymentsEditConnectedStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsEditConnectedStarRefBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarsServer).PaymentsEditConnectedStarRefBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStars_PaymentsEditConnectedStarRefBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarsServer).PaymentsEditConnectedStarRefBot(ctx, req.(*TLPaymentsEditConnectedStarRefBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCStars_ServiceDesc is the grpc.ServiceDesc for RPCStars service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -24644,6 +24879,10 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "mtproto.RPCStars",
 	HandlerType: (*RPCStarsServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "bots_updateStarRefProgram",
+			Handler:    _RPCStars_BotsUpdateStarRefProgram_Handler,
+		},
 		{
 			MethodName: "payments_getStarsTopupOptions",
 			Handler:    _RPCStars_PaymentsGetStarsTopupOptions_Handler,
@@ -24719,6 +24958,26 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_botCancelStarsSubscription",
 			Handler:    _RPCStars_PaymentsBotCancelStarsSubscription_Handler,
+		},
+		{
+			MethodName: "payments_getConnectedStarRefBots",
+			Handler:    _RPCStars_PaymentsGetConnectedStarRefBots_Handler,
+		},
+		{
+			MethodName: "payments_getConnectedStarRefBot",
+			Handler:    _RPCStars_PaymentsGetConnectedStarRefBot_Handler,
+		},
+		{
+			MethodName: "payments_getSuggestedStarRefBots",
+			Handler:    _RPCStars_PaymentsGetSuggestedStarRefBots_Handler,
+		},
+		{
+			MethodName: "payments_connectStarRefBot",
+			Handler:    _RPCStars_PaymentsConnectStarRefBot_Handler,
+		},
+		{
+			MethodName: "payments_editConnectedStarRefBot",
+			Handler:    _RPCStars_PaymentsEditConnectedStarRefBot_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -25094,6 +25353,7 @@ const (
 	RPCStickers_MessagesGetOldFeaturedStickers_FullMethodName = "/mtproto.RPCStickers/messages_getOldFeaturedStickers"
 	RPCStickers_MessagesSearchEmojiStickerSets_FullMethodName = "/mtproto.RPCStickers/messages_searchEmojiStickerSets"
 	RPCStickers_MessagesGetMyStickers_FullMethodName          = "/mtproto.RPCStickers/messages_getMyStickers"
+	RPCStickers_MessagesSearchStickers_FullMethodName         = "/mtproto.RPCStickers/messages_searchStickers"
 	RPCStickers_StickersCreateStickerSet_FullMethodName       = "/mtproto.RPCStickers/stickers_createStickerSet"
 	RPCStickers_StickersRemoveStickerFromSet_FullMethodName   = "/mtproto.RPCStickers/stickers_removeStickerFromSet"
 	RPCStickers_StickersChangeStickerPosition_FullMethodName  = "/mtproto.RPCStickers/stickers_changeStickerPosition"
@@ -25132,6 +25392,7 @@ type RPCStickersClient interface {
 	MessagesGetOldFeaturedStickers(ctx context.Context, in *TLMessagesGetOldFeaturedStickers, opts ...grpc.CallOption) (*Messages_FeaturedStickers, error)
 	MessagesSearchEmojiStickerSets(ctx context.Context, in *TLMessagesSearchEmojiStickerSets, opts ...grpc.CallOption) (*Messages_FoundStickerSets, error)
 	MessagesGetMyStickers(ctx context.Context, in *TLMessagesGetMyStickers, opts ...grpc.CallOption) (*Messages_MyStickers, error)
+	MessagesSearchStickers(ctx context.Context, in *TLMessagesSearchStickers, opts ...grpc.CallOption) (*Messages_FoundStickers, error)
 	StickersCreateStickerSet(ctx context.Context, in *TLStickersCreateStickerSet, opts ...grpc.CallOption) (*Messages_StickerSet, error)
 	StickersRemoveStickerFromSet(ctx context.Context, in *TLStickersRemoveStickerFromSet, opts ...grpc.CallOption) (*Messages_StickerSet, error)
 	StickersChangeStickerPosition(ctx context.Context, in *TLStickersChangeStickerPosition, opts ...grpc.CallOption) (*Messages_StickerSet, error)
@@ -25342,6 +25603,15 @@ func (c *rPCStickersClient) MessagesGetMyStickers(ctx context.Context, in *TLMes
 	return out, nil
 }
 
+func (c *rPCStickersClient) MessagesSearchStickers(ctx context.Context, in *TLMessagesSearchStickers, opts ...grpc.CallOption) (*Messages_FoundStickers, error) {
+	out := new(Messages_FoundStickers)
+	err := c.cc.Invoke(ctx, RPCStickers_MessagesSearchStickers_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCStickersClient) StickersCreateStickerSet(ctx context.Context, in *TLStickersCreateStickerSet, opts ...grpc.CallOption) (*Messages_StickerSet, error) {
 	out := new(Messages_StickerSet)
 	err := c.cc.Invoke(ctx, RPCStickers_StickersCreateStickerSet_FullMethodName, in, out, opts...)
@@ -25466,6 +25736,7 @@ type RPCStickersServer interface {
 	MessagesGetOldFeaturedStickers(context.Context, *TLMessagesGetOldFeaturedStickers) (*Messages_FeaturedStickers, error)
 	MessagesSearchEmojiStickerSets(context.Context, *TLMessagesSearchEmojiStickerSets) (*Messages_FoundStickerSets, error)
 	MessagesGetMyStickers(context.Context, *TLMessagesGetMyStickers) (*Messages_MyStickers, error)
+	MessagesSearchStickers(context.Context, *TLMessagesSearchStickers) (*Messages_FoundStickers, error)
 	StickersCreateStickerSet(context.Context, *TLStickersCreateStickerSet) (*Messages_StickerSet, error)
 	StickersRemoveStickerFromSet(context.Context, *TLStickersRemoveStickerFromSet) (*Messages_StickerSet, error)
 	StickersChangeStickerPosition(context.Context, *TLStickersChangeStickerPosition) (*Messages_StickerSet, error)
@@ -25545,6 +25816,9 @@ func (UnimplementedRPCStickersServer) MessagesSearchEmojiStickerSets(context.Con
 }
 func (UnimplementedRPCStickersServer) MessagesGetMyStickers(context.Context, *TLMessagesGetMyStickers) (*Messages_MyStickers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetMyStickers not implemented")
+}
+func (UnimplementedRPCStickersServer) MessagesSearchStickers(context.Context, *TLMessagesSearchStickers) (*Messages_FoundStickers, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSearchStickers not implemented")
 }
 func (UnimplementedRPCStickersServer) StickersCreateStickerSet(context.Context, *TLStickersCreateStickerSet) (*Messages_StickerSet, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StickersCreateStickerSet not implemented")
@@ -25969,6 +26243,24 @@ func _RPCStickers_MessagesGetMyStickers_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStickers_MessagesSearchStickers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSearchStickers)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStickersServer).MessagesSearchStickers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStickers_MessagesSearchStickers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStickersServer).MessagesSearchStickers(ctx, req.(*TLMessagesSearchStickers))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCStickers_StickersCreateStickerSet_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLStickersCreateStickerSet)
 	if err := dec(in); err != nil {
@@ -26257,6 +26549,10 @@ var RPCStickers_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_getMyStickers",
 			Handler:    _RPCStickers_MessagesGetMyStickers_Handler,
+		},
+		{
+			MethodName: "messages_searchStickers",
+			Handler:    _RPCStickers_MessagesSearchStickers_Handler,
 		},
 		{
 			MethodName: "stickers_createStickerSet",
