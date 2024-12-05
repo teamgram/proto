@@ -3676,8 +3676,9 @@ message TL_payments_botCancelStarsSubscription {
     TLConstructor  constructor = 1;
     bool restore = 3;
     InputUser user_id = 4;
-    google.protobuf.StringValue invoice_slug = 5;
-    google.protobuf.StringValue charge_id = 6;
+    string charge_id_STRING = 5;
+    google.protobuf.StringValue invoice_slug = 6;
+    google.protobuf.StringValue charge_id_FLAGSTRING = 7;
 }
 
 message TL_stickers_createStickerSet {

@@ -254,7 +254,9 @@ enum TLConstructor {
     CRC32_messageActionPinMessage = -1799538451; // 94bd38ed
     CRC32_messageActionHistoryClear = -1615153660; // 9fbab604
     CRC32_messageActionGameScore = -1834538890; // 92a72876
-    CRC32_messageActionPaymentSentMe = -1892568281; // 8f31b327
+    CRC32_messageActionPaymentSentMe_ffa00ccc = -6288180; // ffa00ccc
+    CRC32_messageActionPaymentSentMe_8f31b327 = -1892568281; // 8f31b327
+    CRC32_messageActionPaymentSent_c624b16e = -970673810; // c624b16e
     CRC32_messageActionPaymentSent_96163f56 = -1776926890; // 96163f56
     CRC32_messageActionPaymentSent_40699cd0 = 1080663248; // 40699cd0
     CRC32_messageActionPhoneCall = -2132731265; // 80e11a7f
@@ -546,7 +548,6 @@ enum TLConstructor {
     CRC32_updateStarsRevenueStatus = -1518030823; // a584b019
     CRC32_updateBotPurchasedPaidMedia = 675009298; // 283bd312
     CRC32_updatePaidReactionPrivacy = 1372224236; // 51ca7aec
-    CRC32_updateBotSubscriptionExpire = 756270830; // 2d13c6ee
     CRC32_updates_state = -1519637954; // a56c2a3e
     CRC32_updates_differenceEmpty = 1567990072; // 5d75a138
     CRC32_updates_difference = 16030880; // f49ca0
@@ -1662,6 +1663,7 @@ enum TLConstructor {
     CRC32_messages_botPreparedInlineMessage = -1899035375; // 8ecf0511
     CRC32_messages_preparedInlineMessage = -11046771; // ff57708d
     CRC32_botAppSettings = -912582320; // c99b1950
+    CRC32_updateBotSubscriptionExpire = 756270830; // 2d13c6ee
     CRC32_inputStorePaymentStars = 1326377183; // 4f0ee8df
     CRC32_simpleWebViewResultUrl = -2010155333; // 882f76bb
     CRC32_appWebViewResultUrl = 1008422669; // 3c1b4f0d
@@ -2378,7 +2380,8 @@ enum TLConstructor {
     CRC32_payments_getUserStarGifts = 1584580577; // 5e72c7e1
     CRC32_payments_saveStarGift = -2018709362; // 87acf08e
     CRC32_payments_convertStarGift = 69328935; // 421e027
-    CRC32_payments_botCancelStarsSubscription = 1475996902; // 57f9ece6
+    CRC32_payments_botCancelStarsSubscription_6dfa0622 = 1845102114; // 6dfa0622
+    CRC32_payments_botCancelStarsSubscription_57f9ece6 = 1475996902; // 57f9ece6
     CRC32_stickers_createStickerSet = -1876841625; // 9021ab67
     CRC32_stickers_removeStickerFromSet = -143257775; // f7760f51
     CRC32_stickers_changeStickerPosition = -4795190; // ffb6d4ca
