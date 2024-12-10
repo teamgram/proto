@@ -6,6 +6,7 @@ require (
 	github.com/apache/thrift v0.13.0
 	github.com/bytedance/gopkg v0.1.1
 	github.com/cloudwego/kitex v0.11.3
+	github.com/pkg/errors v0.9.1
 	github.com/stretchr/testify v1.9.0
 	github.com/valyala/bytebufferpool v1.0.1-0.20201104193830-18533face0df
 )

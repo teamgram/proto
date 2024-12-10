@@ -58,7 +58,7 @@ func (jc *ZRpcCodec) Encode(ctx context.Context, message remote.Message, out rem
 	}
 
 	x := bin.NewEncoder()
-	x.End()
+	defer x.End()
 	_ = validData.(iface.TLObject).Encode(x, 0)
 	payload := x.Bytes()
 	//payload, err := json.Marshal(validData)
