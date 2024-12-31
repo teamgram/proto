@@ -4875,6 +4875,15 @@ service RPCAccount {
     rpc account_confirmPhone(TL_account_confirmPhone) returns (Bool) {}
 }
 
+service RPCAffiliatePrograms {
+    rpc bots_updateStarRefProgram(TL_bots_updateStarRefProgram) returns (StarRefProgram) {}
+    rpc payments_getConnectedStarRefBots(TL_payments_getConnectedStarRefBots) returns (payments_ConnectedStarRefBots) {}
+    rpc payments_getConnectedStarRefBot(TL_payments_getConnectedStarRefBot) returns (payments_ConnectedStarRefBots) {}
+    rpc payments_getSuggestedStarRefBots(TL_payments_getSuggestedStarRefBots) returns (payments_SuggestedStarRefBots) {}
+    rpc payments_connectStarRefBot(TL_payments_connectStarRefBot) returns (payments_ConnectedStarRefBots) {}
+    rpc payments_editConnectedStarRefBot(TL_payments_editConnectedStarRefBot) returns (payments_ConnectedStarRefBots) {}
+}
+
 service RPCAntiSpam {
     rpc channels_toggleAntiSpam(TL_channels_toggleAntiSpam) returns (Updates) {}
     rpc channels_reportAntiSpamFalsePositive(TL_channels_reportAntiSpamFalsePositive) returns (Bool) {}
@@ -5191,6 +5200,8 @@ service RPCEmojiStatus {
     rpc account_getChannelDefaultEmojiStatuses(TL_account_getChannelDefaultEmojiStatuses) returns (account_EmojiStatuses) {}
     rpc account_getChannelRestrictedStatusEmojis(TL_account_getChannelRestrictedStatusEmojis) returns (EmojiList) {}
     rpc channels_updateEmojiStatus(TL_channels_updateEmojiStatus) returns (Updates) {}
+    rpc bots_updateUserEmojiStatus(TL_bots_updateUserEmojiStatus) returns (Bool) {}
+    rpc bots_toggleUserEmojiStatusPermission(TL_bots_toggleUserEmojiStatusPermission) returns (Bool) {}
 }
 
 service RPCFactChecks {
@@ -5282,10 +5293,18 @@ service RPCGiftCodes {
     rpc payments_applyGiftCode(TL_payments_applyGiftCode) returns (Updates) {}
 }
 
+service RPCGifts {
+    rpc payments_getStarGifts(TL_payments_getStarGifts) returns (payments_StarGifts) {}
+    rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
+    rpc payments_saveStarGift(TL_payments_saveStarGift) returns (Bool) {}
+    rpc payments_convertStarGift(TL_payments_convertStarGift) returns (Bool) {}
+}
+
 service RPCGiveaways {
     rpc payments_getPremiumGiftCodeOptions(TL_payments_getPremiumGiftCodeOptions) returns (Vector_PremiumGiftCodeOption) {}
     rpc payments_getGiveawayInfo(TL_payments_getGiveawayInfo) returns (payments_GiveawayInfo) {}
     rpc payments_launchPrepaidGiveaway(TL_payments_launchPrepaidGiveaway) returns (Updates) {}
+    rpc payments_getStarsGiveawayOptions(TL_payments_getStarsGiveawayOptions) returns (Vector_StarsGiveawayOption) {}
 }
 
 service RPCGroupCalls {
@@ -5328,8 +5347,6 @@ service RPCInlineBot {
     rpc messages_getBotCallbackAnswer(TL_messages_getBotCallbackAnswer) returns (messages_BotCallbackAnswer) {}
     rpc messages_setBotCallbackAnswer(TL_messages_setBotCallbackAnswer) returns (Bool) {}
     rpc messages_sendBotRequestedPeer(TL_messages_sendBotRequestedPeer) returns (Updates) {}
-    rpc messages_savePreparedInlineMessage(TL_messages_savePreparedInlineMessage) returns (messages_BotPreparedInlineMessage) {}
-    rpc messages_getPreparedInlineMessage(TL_messages_getPreparedInlineMessage) returns (messages_PreparedInlineMessage) {}
 }
 
 service RPCInternalBot {
@@ -5355,9 +5372,6 @@ service RPCMainMiniBotApps {
     rpc bots_reorderPreviewMedias(TL_bots_reorderPreviewMedias) returns (Bool) {}
     rpc bots_getPreviewInfo(TL_bots_getPreviewInfo) returns (bots_PreviewInfo) {}
     rpc bots_getPreviewMedias(TL_bots_getPreviewMedias) returns (Vector_BotPreviewMedia) {}
-    rpc bots_updateUserEmojiStatus(TL_bots_updateUserEmojiStatus) returns (Bool) {}
-    rpc bots_toggleUserEmojiStatusPermission(TL_bots_toggleUserEmojiStatusPermission) returns (Bool) {}
-    rpc bots_checkDownloadFileParams(TL_bots_checkDownloadFileParams) returns (Bool) {}
 }
 
 service RPCMessageEffects {
@@ -5415,6 +5429,7 @@ service RPCMiniBotApps {
     rpc bots_canSendMessage(TL_bots_canSendMessage) returns (Bool) {}
     rpc bots_allowSendMessage(TL_bots_allowSendMessage) returns (Updates) {}
     rpc bots_invokeWebViewCustomMethod(TL_bots_invokeWebViewCustomMethod) returns (DataJSON) {}
+    rpc bots_checkDownloadFileParams(TL_bots_checkDownloadFileParams) returns (Bool) {}
     rpc messages_requestSimpleWebView1A46500A(TL_messages_requestSimpleWebView1A46500A) returns (SimpleWebViewResult) {}
     rpc messages_requestAppWebView8C5A3B3C(TL_messages_requestAppWebView8C5A3B3C) returns (AppWebViewResult) {}
     rpc messages_requestSimpleWebView299BEC8E(TL_messages_requestSimpleWebView299BEC8E) returns (SimpleWebViewResult) {}
@@ -5496,6 +5511,11 @@ service RPCPremium {
     rpc payments_assignAppStoreTransaction(TL_payments_assignAppStoreTransaction) returns (Updates) {}
     rpc payments_assignPlayMarketTransaction(TL_payments_assignPlayMarketTransaction) returns (Updates) {}
     rpc payments_canPurchasePremium(TL_payments_canPurchasePremium) returns (Bool) {}
+}
+
+service RPCPreparedInlineMessages {
+    rpc messages_savePreparedInlineMessage(TL_messages_savePreparedInlineMessage) returns (messages_BotPreparedInlineMessage) {}
+    rpc messages_getPreparedInlineMessage(TL_messages_getPreparedInlineMessage) returns (messages_PreparedInlineMessage) {}
 }
 
 service RPCPrivacySettings {
@@ -5629,8 +5649,14 @@ service RPCSponsoredMessages {
     rpc channels_reportSponsoredMessage(TL_channels_reportSponsoredMessage) returns (channels_SponsoredMessageReportResult) {}
 }
 
+service RPCStarSubscriptions {
+    rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
+    rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
+    rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
+    rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
+}
+
 service RPCStars {
-    rpc bots_updateStarRefProgram(TL_bots_updateStarRefProgram) returns (StarRefProgram) {}
     rpc payments_getStarsTopupOptions(TL_payments_getStarsTopupOptions) returns (Vector_StarsTopupOption) {}
     rpc payments_getStarsStatus(TL_payments_getStarsStatus) returns (payments_StarsStatus) {}
     rpc payments_getStarsTransactions(TL_payments_getStarsTransactions) returns (payments_StarsStatus) {}
@@ -5642,19 +5668,8 @@ service RPCStars {
     rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
     rpc payments_getStarsGiftOptions(TL_payments_getStarsGiftOptions) returns (Vector_StarsGiftOption) {}
     rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
-    rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
     rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
-    rpc payments_getStarsGiveawayOptions(TL_payments_getStarsGiveawayOptions) returns (Vector_StarsGiveawayOption) {}
-    rpc payments_getStarGifts(TL_payments_getStarGifts) returns (payments_StarGifts) {}
-    rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
-    rpc payments_saveStarGift(TL_payments_saveStarGift) returns (Bool) {}
-    rpc payments_convertStarGift(TL_payments_convertStarGift) returns (Bool) {}
-    rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
-    rpc payments_getConnectedStarRefBots(TL_payments_getConnectedStarRefBots) returns (payments_ConnectedStarRefBots) {}
-    rpc payments_getConnectedStarRefBot(TL_payments_getConnectedStarRefBot) returns (payments_ConnectedStarRefBots) {}
-    rpc payments_getSuggestedStarRefBots(TL_payments_getSuggestedStarRefBots) returns (payments_SuggestedStarRefBots) {}
-    rpc payments_connectStarRefBot(TL_payments_connectStarRefBot) returns (payments_ConnectedStarRefBots) {}
-    rpc payments_editConnectedStarRefBot(TL_payments_editConnectedStarRefBot) returns (payments_ConnectedStarRefBots) {}
+    rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
 }
 
 service RPCStatistics {
@@ -5731,6 +5746,8 @@ service RPCStories {
     rpc stories_getStoryReactionsList(TL_stories_getStoryReactionsList) returns (stories_StoryReactionsList) {}
     rpc stories_togglePinnedToTop(TL_stories_togglePinnedToTop) returns (Bool) {}
     rpc stories_searchPosts(TL_stories_searchPosts) returns (stories_FoundStories) {}
+    rpc messages_togglePaidReactionPrivacy(TL_messages_togglePaidReactionPrivacy) returns (Bool) {}
+    rpc messages_sendPaidReaction(TL_messages_sendPaidReaction) returns (Updates) {}
     rpc stories_report1923FA8C(TL_stories_report1923FA8C) returns (Bool) {}
     rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
     rpc contacts_toggleStoriesHidden(TL_contacts_toggleStoriesHidden) returns (Bool) {}

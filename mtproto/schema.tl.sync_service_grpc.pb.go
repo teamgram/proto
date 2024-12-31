@@ -611,6 +611,279 @@ var RPCAccount_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCAffiliatePrograms_BotsUpdateStarRefProgram_FullMethodName        = "/mtproto.RPCAffiliatePrograms/bots_updateStarRefProgram"
+	RPCAffiliatePrograms_PaymentsGetConnectedStarRefBots_FullMethodName = "/mtproto.RPCAffiliatePrograms/payments_getConnectedStarRefBots"
+	RPCAffiliatePrograms_PaymentsGetConnectedStarRefBot_FullMethodName  = "/mtproto.RPCAffiliatePrograms/payments_getConnectedStarRefBot"
+	RPCAffiliatePrograms_PaymentsGetSuggestedStarRefBots_FullMethodName = "/mtproto.RPCAffiliatePrograms/payments_getSuggestedStarRefBots"
+	RPCAffiliatePrograms_PaymentsConnectStarRefBot_FullMethodName       = "/mtproto.RPCAffiliatePrograms/payments_connectStarRefBot"
+	RPCAffiliatePrograms_PaymentsEditConnectedStarRefBot_FullMethodName = "/mtproto.RPCAffiliatePrograms/payments_editConnectedStarRefBot"
+)
+
+// RPCAffiliateProgramsClient is the client API for RPCAffiliatePrograms service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCAffiliateProgramsClient interface {
+	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram, opts ...grpc.CallOption) (*StarRefProgram, error)
+	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots, opts ...grpc.CallOption) (*Payments_SuggestedStarRefBots, error)
+	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+}
+
+type rPCAffiliateProgramsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCAffiliateProgramsClient(cc grpc.ClientConnInterface) RPCAffiliateProgramsClient {
+	return &rPCAffiliateProgramsClient{cc}
+}
+
+func (c *rPCAffiliateProgramsClient) BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram, opts ...grpc.CallOption) (*StarRefProgram, error) {
+	out := new(StarRefProgram)
+	err := c.cc.Invoke(ctx, RPCAffiliatePrograms_BotsUpdateStarRefProgram_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCAffiliateProgramsClient) PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCAffiliatePrograms_PaymentsGetConnectedStarRefBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCAffiliateProgramsClient) PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCAffiliatePrograms_PaymentsGetConnectedStarRefBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCAffiliateProgramsClient) PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots, opts ...grpc.CallOption) (*Payments_SuggestedStarRefBots, error) {
+	out := new(Payments_SuggestedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCAffiliatePrograms_PaymentsGetSuggestedStarRefBots_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCAffiliateProgramsClient) PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCAffiliatePrograms_PaymentsConnectStarRefBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCAffiliateProgramsClient) PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
+	out := new(Payments_ConnectedStarRefBots)
+	err := c.cc.Invoke(ctx, RPCAffiliatePrograms_PaymentsEditConnectedStarRefBot_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCAffiliateProgramsServer is the server API for RPCAffiliatePrograms service.
+// All implementations should embed UnimplementedRPCAffiliateProgramsServer
+// for forward compatibility
+type RPCAffiliateProgramsServer interface {
+	BotsUpdateStarRefProgram(context.Context, *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
+	PaymentsGetConnectedStarRefBots(context.Context, *TLPaymentsGetConnectedStarRefBots) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetConnectedStarRefBot(context.Context, *TLPaymentsGetConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error)
+	PaymentsGetSuggestedStarRefBots(context.Context, *TLPaymentsGetSuggestedStarRefBots) (*Payments_SuggestedStarRefBots, error)
+	PaymentsConnectStarRefBot(context.Context, *TLPaymentsConnectStarRefBot) (*Payments_ConnectedStarRefBots, error)
+	PaymentsEditConnectedStarRefBot(context.Context, *TLPaymentsEditConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error)
+}
+
+// UnimplementedRPCAffiliateProgramsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCAffiliateProgramsServer struct {
+}
+
+func (UnimplementedRPCAffiliateProgramsServer) BotsUpdateStarRefProgram(context.Context, *TLBotsUpdateStarRefProgram) (*StarRefProgram, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsUpdateStarRefProgram not implemented")
+}
+func (UnimplementedRPCAffiliateProgramsServer) PaymentsGetConnectedStarRefBots(context.Context, *TLPaymentsGetConnectedStarRefBots) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetConnectedStarRefBots not implemented")
+}
+func (UnimplementedRPCAffiliateProgramsServer) PaymentsGetConnectedStarRefBot(context.Context, *TLPaymentsGetConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetConnectedStarRefBot not implemented")
+}
+func (UnimplementedRPCAffiliateProgramsServer) PaymentsGetSuggestedStarRefBots(context.Context, *TLPaymentsGetSuggestedStarRefBots) (*Payments_SuggestedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetSuggestedStarRefBots not implemented")
+}
+func (UnimplementedRPCAffiliateProgramsServer) PaymentsConnectStarRefBot(context.Context, *TLPaymentsConnectStarRefBot) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsConnectStarRefBot not implemented")
+}
+func (UnimplementedRPCAffiliateProgramsServer) PaymentsEditConnectedStarRefBot(context.Context, *TLPaymentsEditConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsEditConnectedStarRefBot not implemented")
+}
+
+// UnsafeRPCAffiliateProgramsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCAffiliateProgramsServer will
+// result in compilation errors.
+type UnsafeRPCAffiliateProgramsServer interface {
+	mustEmbedUnimplementedRPCAffiliateProgramsServer()
+}
+
+func RegisterRPCAffiliateProgramsServer(s grpc.ServiceRegistrar, srv RPCAffiliateProgramsServer) {
+	s.RegisterService(&RPCAffiliatePrograms_ServiceDesc, srv)
+}
+
+func _RPCAffiliatePrograms_BotsUpdateStarRefProgram_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsUpdateStarRefProgram)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCAffiliateProgramsServer).BotsUpdateStarRefProgram(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCAffiliatePrograms_BotsUpdateStarRefProgram_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCAffiliateProgramsServer).BotsUpdateStarRefProgram(ctx, req.(*TLBotsUpdateStarRefProgram))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCAffiliatePrograms_PaymentsGetConnectedStarRefBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetConnectedStarRefBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCAffiliateProgramsServer).PaymentsGetConnectedStarRefBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCAffiliatePrograms_PaymentsGetConnectedStarRefBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCAffiliateProgramsServer).PaymentsGetConnectedStarRefBots(ctx, req.(*TLPaymentsGetConnectedStarRefBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCAffiliatePrograms_PaymentsGetConnectedStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetConnectedStarRefBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCAffiliateProgramsServer).PaymentsGetConnectedStarRefBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCAffiliatePrograms_PaymentsGetConnectedStarRefBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCAffiliateProgramsServer).PaymentsGetConnectedStarRefBot(ctx, req.(*TLPaymentsGetConnectedStarRefBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCAffiliatePrograms_PaymentsGetSuggestedStarRefBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetSuggestedStarRefBots)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCAffiliateProgramsServer).PaymentsGetSuggestedStarRefBots(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCAffiliatePrograms_PaymentsGetSuggestedStarRefBots_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCAffiliateProgramsServer).PaymentsGetSuggestedStarRefBots(ctx, req.(*TLPaymentsGetSuggestedStarRefBots))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCAffiliatePrograms_PaymentsConnectStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsConnectStarRefBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCAffiliateProgramsServer).PaymentsConnectStarRefBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCAffiliatePrograms_PaymentsConnectStarRefBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCAffiliateProgramsServer).PaymentsConnectStarRefBot(ctx, req.(*TLPaymentsConnectStarRefBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCAffiliatePrograms_PaymentsEditConnectedStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsEditConnectedStarRefBot)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCAffiliateProgramsServer).PaymentsEditConnectedStarRefBot(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCAffiliatePrograms_PaymentsEditConnectedStarRefBot_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCAffiliateProgramsServer).PaymentsEditConnectedStarRefBot(ctx, req.(*TLPaymentsEditConnectedStarRefBot))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCAffiliatePrograms_ServiceDesc is the grpc.ServiceDesc for RPCAffiliatePrograms service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCAffiliatePrograms_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCAffiliatePrograms",
+	HandlerType: (*RPCAffiliateProgramsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "bots_updateStarRefProgram",
+			Handler:    _RPCAffiliatePrograms_BotsUpdateStarRefProgram_Handler,
+		},
+		{
+			MethodName: "payments_getConnectedStarRefBots",
+			Handler:    _RPCAffiliatePrograms_PaymentsGetConnectedStarRefBots_Handler,
+		},
+		{
+			MethodName: "payments_getConnectedStarRefBot",
+			Handler:    _RPCAffiliatePrograms_PaymentsGetConnectedStarRefBot_Handler,
+		},
+		{
+			MethodName: "payments_getSuggestedStarRefBots",
+			Handler:    _RPCAffiliatePrograms_PaymentsGetSuggestedStarRefBots_Handler,
+		},
+		{
+			MethodName: "payments_connectStarRefBot",
+			Handler:    _RPCAffiliatePrograms_PaymentsConnectStarRefBot_Handler,
+		},
+		{
+			MethodName: "payments_editConnectedStarRefBot",
+			Handler:    _RPCAffiliatePrograms_PaymentsEditConnectedStarRefBot_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCAntiSpam_ChannelsToggleAntiSpam_FullMethodName              = "/mtproto.RPCAntiSpam/channels_toggleAntiSpam"
 	RPCAntiSpam_ChannelsReportAntiSpamFalsePositive_FullMethodName = "/mtproto.RPCAntiSpam/channels_reportAntiSpamFalsePositive"
 )
@@ -10274,6 +10547,8 @@ const (
 	RPCEmojiStatus_AccountGetChannelDefaultEmojiStatuses_FullMethodName   = "/mtproto.RPCEmojiStatus/account_getChannelDefaultEmojiStatuses"
 	RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_FullMethodName = "/mtproto.RPCEmojiStatus/account_getChannelRestrictedStatusEmojis"
 	RPCEmojiStatus_ChannelsUpdateEmojiStatus_FullMethodName               = "/mtproto.RPCEmojiStatus/channels_updateEmojiStatus"
+	RPCEmojiStatus_BotsUpdateUserEmojiStatus_FullMethodName               = "/mtproto.RPCEmojiStatus/bots_updateUserEmojiStatus"
+	RPCEmojiStatus_BotsToggleUserEmojiStatusPermission_FullMethodName     = "/mtproto.RPCEmojiStatus/bots_toggleUserEmojiStatusPermission"
 )
 
 // RPCEmojiStatusClient is the client API for RPCEmojiStatus service.
@@ -10287,6 +10562,8 @@ type RPCEmojiStatusClient interface {
 	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error)
 	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis, opts ...grpc.CallOption) (*EmojiList, error)
 	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus, opts ...grpc.CallOption) (*Updates, error)
+	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus, opts ...grpc.CallOption) (*Bool, error)
+	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCEmojiStatusClient struct {
@@ -10360,6 +10637,24 @@ func (c *rPCEmojiStatusClient) ChannelsUpdateEmojiStatus(ctx context.Context, in
 	return out, nil
 }
 
+func (c *rPCEmojiStatusClient) BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCEmojiStatus_BotsUpdateUserEmojiStatus_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCEmojiStatusClient) BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCEmojiStatus_BotsToggleUserEmojiStatusPermission_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCEmojiStatusServer is the server API for RPCEmojiStatus service.
 // All implementations should embed UnimplementedRPCEmojiStatusServer
 // for forward compatibility
@@ -10371,6 +10666,8 @@ type RPCEmojiStatusServer interface {
 	AccountGetChannelDefaultEmojiStatuses(context.Context, *TLAccountGetChannelDefaultEmojiStatuses) (*Account_EmojiStatuses, error)
 	AccountGetChannelRestrictedStatusEmojis(context.Context, *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
 	ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error)
+	BotsUpdateUserEmojiStatus(context.Context, *TLBotsUpdateUserEmojiStatus) (*Bool, error)
+	BotsToggleUserEmojiStatusPermission(context.Context, *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
 }
 
 // UnimplementedRPCEmojiStatusServer should be embedded to have forward compatible implementations.
@@ -10397,6 +10694,12 @@ func (UnimplementedRPCEmojiStatusServer) AccountGetChannelRestrictedStatusEmojis
 }
 func (UnimplementedRPCEmojiStatusServer) ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsUpdateEmojiStatus not implemented")
+}
+func (UnimplementedRPCEmojiStatusServer) BotsUpdateUserEmojiStatus(context.Context, *TLBotsUpdateUserEmojiStatus) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsUpdateUserEmojiStatus not implemented")
+}
+func (UnimplementedRPCEmojiStatusServer) BotsToggleUserEmojiStatusPermission(context.Context, *TLBotsToggleUserEmojiStatusPermission) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsToggleUserEmojiStatusPermission not implemented")
 }
 
 // UnsafeRPCEmojiStatusServer may be embedded to opt out of forward compatibility for this service.
@@ -10536,6 +10839,42 @@ func _RPCEmojiStatus_ChannelsUpdateEmojiStatus_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCEmojiStatus_BotsUpdateUserEmojiStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsUpdateUserEmojiStatus)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiStatusServer).BotsUpdateUserEmojiStatus(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiStatus_BotsUpdateUserEmojiStatus_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiStatusServer).BotsUpdateUserEmojiStatus(ctx, req.(*TLBotsUpdateUserEmojiStatus))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCEmojiStatus_BotsToggleUserEmojiStatusPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsToggleUserEmojiStatusPermission)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiStatusServer).BotsToggleUserEmojiStatusPermission(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiStatus_BotsToggleUserEmojiStatusPermission_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiStatusServer).BotsToggleUserEmojiStatusPermission(ctx, req.(*TLBotsToggleUserEmojiStatusPermission))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCEmojiStatus_ServiceDesc is the grpc.ServiceDesc for RPCEmojiStatus service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -10570,6 +10909,14 @@ var RPCEmojiStatus_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "channels_updateEmojiStatus",
 			Handler:    _RPCEmojiStatus_ChannelsUpdateEmojiStatus_Handler,
+		},
+		{
+			MethodName: "bots_updateUserEmojiStatus",
+			Handler:    _RPCEmojiStatus_BotsUpdateUserEmojiStatus_Handler,
+		},
+		{
+			MethodName: "bots_toggleUserEmojiStatusPermission",
+			Handler:    _RPCEmojiStatus_BotsToggleUserEmojiStatusPermission_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -13270,9 +13617,209 @@ var RPCGiftCodes_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCGifts_PaymentsGetStarGifts_FullMethodName     = "/mtproto.RPCGifts/payments_getStarGifts"
+	RPCGifts_PaymentsGetUserStarGifts_FullMethodName = "/mtproto.RPCGifts/payments_getUserStarGifts"
+	RPCGifts_PaymentsSaveStarGift_FullMethodName     = "/mtproto.RPCGifts/payments_saveStarGift"
+	RPCGifts_PaymentsConvertStarGift_FullMethodName  = "/mtproto.RPCGifts/payments_convertStarGift"
+)
+
+// RPCGiftsClient is the client API for RPCGifts service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCGiftsClient interface {
+	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts, opts ...grpc.CallOption) (*Payments_StarGifts, error)
+	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
+	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCGiftsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCGiftsClient(cc grpc.ClientConnInterface) RPCGiftsClient {
+	return &rPCGiftsClient{cc}
+}
+
+func (c *rPCGiftsClient) PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts, opts ...grpc.CallOption) (*Payments_StarGifts, error) {
+	out := new(Payments_StarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetStarGifts_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
+	out := new(Payments_UserStarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetUserStarGifts_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsSaveStarGift_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsConvertStarGift_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCGiftsServer is the server API for RPCGifts service.
+// All implementations should embed UnimplementedRPCGiftsServer
+// for forward compatibility
+type RPCGiftsServer interface {
+	PaymentsGetStarGifts(context.Context, *TLPaymentsGetStarGifts) (*Payments_StarGifts, error)
+	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
+	PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error)
+	PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error)
+}
+
+// UnimplementedRPCGiftsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCGiftsServer struct {
+}
+
+func (UnimplementedRPCGiftsServer) PaymentsGetStarGifts(context.Context, *TLPaymentsGetStarGifts) (*Payments_StarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarGifts not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsSaveStarGift not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsConvertStarGift not implemented")
+}
+
+// UnsafeRPCGiftsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCGiftsServer will
+// result in compilation errors.
+type UnsafeRPCGiftsServer interface {
+	mustEmbedUnimplementedRPCGiftsServer()
+}
+
+func RegisterRPCGiftsServer(s grpc.ServiceRegistrar, srv RPCGiftsServer) {
+	s.RegisterService(&RPCGifts_ServiceDesc, srv)
+}
+
+func _RPCGifts_PaymentsGetStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarGifts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetStarGifts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetStarGifts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetStarGifts(ctx, req.(*TLPaymentsGetStarGifts))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetUserStarGifts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetUserStarGifts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetUserStarGifts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetUserStarGifts(ctx, req.(*TLPaymentsGetUserStarGifts))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsSaveStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsSaveStarGift)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsSaveStarGift(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsSaveStarGift_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsSaveStarGift(ctx, req.(*TLPaymentsSaveStarGift))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsConvertStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsConvertStarGift)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsConvertStarGift(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsConvertStarGift_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsConvertStarGift(ctx, req.(*TLPaymentsConvertStarGift))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCGifts_ServiceDesc is the grpc.ServiceDesc for RPCGifts service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCGifts_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCGifts",
+	HandlerType: (*RPCGiftsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "payments_getStarGifts",
+			Handler:    _RPCGifts_PaymentsGetStarGifts_Handler,
+		},
+		{
+			MethodName: "payments_getUserStarGifts",
+			Handler:    _RPCGifts_PaymentsGetUserStarGifts_Handler,
+		},
+		{
+			MethodName: "payments_saveStarGift",
+			Handler:    _RPCGifts_PaymentsSaveStarGift_Handler,
+		},
+		{
+			MethodName: "payments_convertStarGift",
+			Handler:    _RPCGifts_PaymentsConvertStarGift_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCGiveaways_PaymentsGetPremiumGiftCodeOptions_FullMethodName = "/mtproto.RPCGiveaways/payments_getPremiumGiftCodeOptions"
 	RPCGiveaways_PaymentsGetGiveawayInfo_FullMethodName           = "/mtproto.RPCGiveaways/payments_getGiveawayInfo"
 	RPCGiveaways_PaymentsLaunchPrepaidGiveaway_FullMethodName     = "/mtproto.RPCGiveaways/payments_launchPrepaidGiveaway"
+	RPCGiveaways_PaymentsGetStarsGiveawayOptions_FullMethodName   = "/mtproto.RPCGiveaways/payments_getStarsGiveawayOptions"
 )
 
 // RPCGiveawaysClient is the client API for RPCGiveaways service.
@@ -13282,6 +13829,7 @@ type RPCGiveawaysClient interface {
 	PaymentsGetPremiumGiftCodeOptions(ctx context.Context, in *TLPaymentsGetPremiumGiftCodeOptions, opts ...grpc.CallOption) (*Vector_PremiumGiftCodeOption, error)
 	PaymentsGetGiveawayInfo(ctx context.Context, in *TLPaymentsGetGiveawayInfo, opts ...grpc.CallOption) (*Payments_GiveawayInfo, error)
 	PaymentsLaunchPrepaidGiveaway(ctx context.Context, in *TLPaymentsLaunchPrepaidGiveaway, opts ...grpc.CallOption) (*Updates, error)
+	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions, opts ...grpc.CallOption) (*Vector_StarsGiveawayOption, error)
 }
 
 type rPCGiveawaysClient struct {
@@ -13319,6 +13867,15 @@ func (c *rPCGiveawaysClient) PaymentsLaunchPrepaidGiveaway(ctx context.Context, 
 	return out, nil
 }
 
+func (c *rPCGiveawaysClient) PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions, opts ...grpc.CallOption) (*Vector_StarsGiveawayOption, error) {
+	out := new(Vector_StarsGiveawayOption)
+	err := c.cc.Invoke(ctx, RPCGiveaways_PaymentsGetStarsGiveawayOptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCGiveawaysServer is the server API for RPCGiveaways service.
 // All implementations should embed UnimplementedRPCGiveawaysServer
 // for forward compatibility
@@ -13326,6 +13883,7 @@ type RPCGiveawaysServer interface {
 	PaymentsGetPremiumGiftCodeOptions(context.Context, *TLPaymentsGetPremiumGiftCodeOptions) (*Vector_PremiumGiftCodeOption, error)
 	PaymentsGetGiveawayInfo(context.Context, *TLPaymentsGetGiveawayInfo) (*Payments_GiveawayInfo, error)
 	PaymentsLaunchPrepaidGiveaway(context.Context, *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error)
+	PaymentsGetStarsGiveawayOptions(context.Context, *TLPaymentsGetStarsGiveawayOptions) (*Vector_StarsGiveawayOption, error)
 }
 
 // UnimplementedRPCGiveawaysServer should be embedded to have forward compatible implementations.
@@ -13340,6 +13898,9 @@ func (UnimplementedRPCGiveawaysServer) PaymentsGetGiveawayInfo(context.Context, 
 }
 func (UnimplementedRPCGiveawaysServer) PaymentsLaunchPrepaidGiveaway(context.Context, *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsLaunchPrepaidGiveaway not implemented")
+}
+func (UnimplementedRPCGiveawaysServer) PaymentsGetStarsGiveawayOptions(context.Context, *TLPaymentsGetStarsGiveawayOptions) (*Vector_StarsGiveawayOption, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiveawayOptions not implemented")
 }
 
 // UnsafeRPCGiveawaysServer may be embedded to opt out of forward compatibility for this service.
@@ -13407,6 +13968,24 @@ func _RPCGiveaways_PaymentsLaunchPrepaidGiveaway_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGiveaways_PaymentsGetStarsGiveawayOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsGiveawayOptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiveawaysServer).PaymentsGetStarsGiveawayOptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGiveaways_PaymentsGetStarsGiveawayOptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiveawaysServer).PaymentsGetStarsGiveawayOptions(ctx, req.(*TLPaymentsGetStarsGiveawayOptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCGiveaways_ServiceDesc is the grpc.ServiceDesc for RPCGiveaways service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -13425,6 +14004,10 @@ var RPCGiveaways_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_launchPrepaidGiveaway",
 			Handler:    _RPCGiveaways_PaymentsLaunchPrepaidGiveaway_Handler,
+		},
+		{
+			MethodName: "payments_getStarsGiveawayOptions",
+			Handler:    _RPCGiveaways_PaymentsGetStarsGiveawayOptions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -14496,15 +15079,13 @@ var RPCImportedChats_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCInlineBot_MessagesGetInlineBotResults_FullMethodName       = "/mtproto.RPCInlineBot/messages_getInlineBotResults"
-	RPCInlineBot_MessagesSetInlineBotResults_FullMethodName       = "/mtproto.RPCInlineBot/messages_setInlineBotResults"
-	RPCInlineBot_MessagesSendInlineBotResult_FullMethodName       = "/mtproto.RPCInlineBot/messages_sendInlineBotResult"
-	RPCInlineBot_MessagesEditInlineBotMessage_FullMethodName      = "/mtproto.RPCInlineBot/messages_editInlineBotMessage"
-	RPCInlineBot_MessagesGetBotCallbackAnswer_FullMethodName      = "/mtproto.RPCInlineBot/messages_getBotCallbackAnswer"
-	RPCInlineBot_MessagesSetBotCallbackAnswer_FullMethodName      = "/mtproto.RPCInlineBot/messages_setBotCallbackAnswer"
-	RPCInlineBot_MessagesSendBotRequestedPeer_FullMethodName      = "/mtproto.RPCInlineBot/messages_sendBotRequestedPeer"
-	RPCInlineBot_MessagesSavePreparedInlineMessage_FullMethodName = "/mtproto.RPCInlineBot/messages_savePreparedInlineMessage"
-	RPCInlineBot_MessagesGetPreparedInlineMessage_FullMethodName  = "/mtproto.RPCInlineBot/messages_getPreparedInlineMessage"
+	RPCInlineBot_MessagesGetInlineBotResults_FullMethodName  = "/mtproto.RPCInlineBot/messages_getInlineBotResults"
+	RPCInlineBot_MessagesSetInlineBotResults_FullMethodName  = "/mtproto.RPCInlineBot/messages_setInlineBotResults"
+	RPCInlineBot_MessagesSendInlineBotResult_FullMethodName  = "/mtproto.RPCInlineBot/messages_sendInlineBotResult"
+	RPCInlineBot_MessagesEditInlineBotMessage_FullMethodName = "/mtproto.RPCInlineBot/messages_editInlineBotMessage"
+	RPCInlineBot_MessagesGetBotCallbackAnswer_FullMethodName = "/mtproto.RPCInlineBot/messages_getBotCallbackAnswer"
+	RPCInlineBot_MessagesSetBotCallbackAnswer_FullMethodName = "/mtproto.RPCInlineBot/messages_setBotCallbackAnswer"
+	RPCInlineBot_MessagesSendBotRequestedPeer_FullMethodName = "/mtproto.RPCInlineBot/messages_sendBotRequestedPeer"
 )
 
 // RPCInlineBotClient is the client API for RPCInlineBot service.
@@ -14518,8 +15099,6 @@ type RPCInlineBotClient interface {
 	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer, opts ...grpc.CallOption) (*Messages_BotCallbackAnswer, error)
 	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer, opts ...grpc.CallOption) (*Bool, error)
 	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer, opts ...grpc.CallOption) (*Updates, error)
-	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage, opts ...grpc.CallOption) (*Messages_BotPreparedInlineMessage, error)
-	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage, opts ...grpc.CallOption) (*Messages_PreparedInlineMessage, error)
 }
 
 type rPCInlineBotClient struct {
@@ -14593,24 +15172,6 @@ func (c *rPCInlineBotClient) MessagesSendBotRequestedPeer(ctx context.Context, i
 	return out, nil
 }
 
-func (c *rPCInlineBotClient) MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage, opts ...grpc.CallOption) (*Messages_BotPreparedInlineMessage, error) {
-	out := new(Messages_BotPreparedInlineMessage)
-	err := c.cc.Invoke(ctx, RPCInlineBot_MessagesSavePreparedInlineMessage_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCInlineBotClient) MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage, opts ...grpc.CallOption) (*Messages_PreparedInlineMessage, error) {
-	out := new(Messages_PreparedInlineMessage)
-	err := c.cc.Invoke(ctx, RPCInlineBot_MessagesGetPreparedInlineMessage_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCInlineBotServer is the server API for RPCInlineBot service.
 // All implementations should embed UnimplementedRPCInlineBotServer
 // for forward compatibility
@@ -14622,8 +15183,6 @@ type RPCInlineBotServer interface {
 	MessagesGetBotCallbackAnswer(context.Context, *TLMessagesGetBotCallbackAnswer) (*Messages_BotCallbackAnswer, error)
 	MessagesSetBotCallbackAnswer(context.Context, *TLMessagesSetBotCallbackAnswer) (*Bool, error)
 	MessagesSendBotRequestedPeer(context.Context, *TLMessagesSendBotRequestedPeer) (*Updates, error)
-	MessagesSavePreparedInlineMessage(context.Context, *TLMessagesSavePreparedInlineMessage) (*Messages_BotPreparedInlineMessage, error)
-	MessagesGetPreparedInlineMessage(context.Context, *TLMessagesGetPreparedInlineMessage) (*Messages_PreparedInlineMessage, error)
 }
 
 // UnimplementedRPCInlineBotServer should be embedded to have forward compatible implementations.
@@ -14650,12 +15209,6 @@ func (UnimplementedRPCInlineBotServer) MessagesSetBotCallbackAnswer(context.Cont
 }
 func (UnimplementedRPCInlineBotServer) MessagesSendBotRequestedPeer(context.Context, *TLMessagesSendBotRequestedPeer) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendBotRequestedPeer not implemented")
-}
-func (UnimplementedRPCInlineBotServer) MessagesSavePreparedInlineMessage(context.Context, *TLMessagesSavePreparedInlineMessage) (*Messages_BotPreparedInlineMessage, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesSavePreparedInlineMessage not implemented")
-}
-func (UnimplementedRPCInlineBotServer) MessagesGetPreparedInlineMessage(context.Context, *TLMessagesGetPreparedInlineMessage) (*Messages_PreparedInlineMessage, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetPreparedInlineMessage not implemented")
 }
 
 // UnsafeRPCInlineBotServer may be embedded to opt out of forward compatibility for this service.
@@ -14795,42 +15348,6 @@ func _RPCInlineBot_MessagesSendBotRequestedPeer_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCInlineBot_MessagesSavePreparedInlineMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesSavePreparedInlineMessage)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCInlineBotServer).MessagesSavePreparedInlineMessage(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCInlineBot_MessagesSavePreparedInlineMessage_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCInlineBotServer).MessagesSavePreparedInlineMessage(ctx, req.(*TLMessagesSavePreparedInlineMessage))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCInlineBot_MessagesGetPreparedInlineMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLMessagesGetPreparedInlineMessage)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCInlineBotServer).MessagesGetPreparedInlineMessage(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCInlineBot_MessagesGetPreparedInlineMessage_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCInlineBotServer).MessagesGetPreparedInlineMessage(ctx, req.(*TLMessagesGetPreparedInlineMessage))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCInlineBot_ServiceDesc is the grpc.ServiceDesc for RPCInlineBot service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -14865,14 +15382,6 @@ var RPCInlineBot_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_sendBotRequestedPeer",
 			Handler:    _RPCInlineBot_MessagesSendBotRequestedPeer_Handler,
-		},
-		{
-			MethodName: "messages_savePreparedInlineMessage",
-			Handler:    _RPCInlineBot_MessagesSavePreparedInlineMessage_Handler,
-		},
-		{
-			MethodName: "messages_getPreparedInlineMessage",
-			Handler:    _RPCInlineBot_MessagesGetPreparedInlineMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -15278,17 +15787,14 @@ var RPCLangpack_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCMainMiniBotApps_MessagesRequestMainWebView_FullMethodName          = "/mtproto.RPCMainMiniBotApps/messages_requestMainWebView"
-	RPCMainMiniBotApps_BotsGetPopularAppBots_FullMethodName               = "/mtproto.RPCMainMiniBotApps/bots_getPopularAppBots"
-	RPCMainMiniBotApps_BotsAddPreviewMedia_FullMethodName                 = "/mtproto.RPCMainMiniBotApps/bots_addPreviewMedia"
-	RPCMainMiniBotApps_BotsEditPreviewMedia_FullMethodName                = "/mtproto.RPCMainMiniBotApps/bots_editPreviewMedia"
-	RPCMainMiniBotApps_BotsDeletePreviewMedia_FullMethodName              = "/mtproto.RPCMainMiniBotApps/bots_deletePreviewMedia"
-	RPCMainMiniBotApps_BotsReorderPreviewMedias_FullMethodName            = "/mtproto.RPCMainMiniBotApps/bots_reorderPreviewMedias"
-	RPCMainMiniBotApps_BotsGetPreviewInfo_FullMethodName                  = "/mtproto.RPCMainMiniBotApps/bots_getPreviewInfo"
-	RPCMainMiniBotApps_BotsGetPreviewMedias_FullMethodName                = "/mtproto.RPCMainMiniBotApps/bots_getPreviewMedias"
-	RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_FullMethodName           = "/mtproto.RPCMainMiniBotApps/bots_updateUserEmojiStatus"
-	RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_FullMethodName = "/mtproto.RPCMainMiniBotApps/bots_toggleUserEmojiStatusPermission"
-	RPCMainMiniBotApps_BotsCheckDownloadFileParams_FullMethodName         = "/mtproto.RPCMainMiniBotApps/bots_checkDownloadFileParams"
+	RPCMainMiniBotApps_MessagesRequestMainWebView_FullMethodName = "/mtproto.RPCMainMiniBotApps/messages_requestMainWebView"
+	RPCMainMiniBotApps_BotsGetPopularAppBots_FullMethodName      = "/mtproto.RPCMainMiniBotApps/bots_getPopularAppBots"
+	RPCMainMiniBotApps_BotsAddPreviewMedia_FullMethodName        = "/mtproto.RPCMainMiniBotApps/bots_addPreviewMedia"
+	RPCMainMiniBotApps_BotsEditPreviewMedia_FullMethodName       = "/mtproto.RPCMainMiniBotApps/bots_editPreviewMedia"
+	RPCMainMiniBotApps_BotsDeletePreviewMedia_FullMethodName     = "/mtproto.RPCMainMiniBotApps/bots_deletePreviewMedia"
+	RPCMainMiniBotApps_BotsReorderPreviewMedias_FullMethodName   = "/mtproto.RPCMainMiniBotApps/bots_reorderPreviewMedias"
+	RPCMainMiniBotApps_BotsGetPreviewInfo_FullMethodName         = "/mtproto.RPCMainMiniBotApps/bots_getPreviewInfo"
+	RPCMainMiniBotApps_BotsGetPreviewMedias_FullMethodName       = "/mtproto.RPCMainMiniBotApps/bots_getPreviewMedias"
 )
 
 // RPCMainMiniBotAppsClient is the client API for RPCMainMiniBotApps service.
@@ -15303,9 +15809,6 @@ type RPCMainMiniBotAppsClient interface {
 	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias, opts ...grpc.CallOption) (*Bool, error)
 	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo, opts ...grpc.CallOption) (*Bots_PreviewInfo, error)
 	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias, opts ...grpc.CallOption) (*Vector_BotPreviewMedia, error)
-	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus, opts ...grpc.CallOption) (*Bool, error)
-	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission, opts ...grpc.CallOption) (*Bool, error)
-	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCMainMiniBotAppsClient struct {
@@ -15388,33 +15891,6 @@ func (c *rPCMainMiniBotAppsClient) BotsGetPreviewMedias(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *rPCMainMiniBotAppsClient) BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMainMiniBotAppsClient) BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCMainMiniBotAppsClient) BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCMainMiniBotApps_BotsCheckDownloadFileParams_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCMainMiniBotAppsServer is the server API for RPCMainMiniBotApps service.
 // All implementations should embed UnimplementedRPCMainMiniBotAppsServer
 // for forward compatibility
@@ -15427,9 +15903,6 @@ type RPCMainMiniBotAppsServer interface {
 	BotsReorderPreviewMedias(context.Context, *TLBotsReorderPreviewMedias) (*Bool, error)
 	BotsGetPreviewInfo(context.Context, *TLBotsGetPreviewInfo) (*Bots_PreviewInfo, error)
 	BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error)
-	BotsUpdateUserEmojiStatus(context.Context, *TLBotsUpdateUserEmojiStatus) (*Bool, error)
-	BotsToggleUserEmojiStatusPermission(context.Context, *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
-	BotsCheckDownloadFileParams(context.Context, *TLBotsCheckDownloadFileParams) (*Bool, error)
 }
 
 // UnimplementedRPCMainMiniBotAppsServer should be embedded to have forward compatible implementations.
@@ -15459,15 +15932,6 @@ func (UnimplementedRPCMainMiniBotAppsServer) BotsGetPreviewInfo(context.Context,
 }
 func (UnimplementedRPCMainMiniBotAppsServer) BotsGetPreviewMedias(context.Context, *TLBotsGetPreviewMedias) (*Vector_BotPreviewMedia, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsGetPreviewMedias not implemented")
-}
-func (UnimplementedRPCMainMiniBotAppsServer) BotsUpdateUserEmojiStatus(context.Context, *TLBotsUpdateUserEmojiStatus) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsUpdateUserEmojiStatus not implemented")
-}
-func (UnimplementedRPCMainMiniBotAppsServer) BotsToggleUserEmojiStatusPermission(context.Context, *TLBotsToggleUserEmojiStatusPermission) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsToggleUserEmojiStatusPermission not implemented")
-}
-func (UnimplementedRPCMainMiniBotAppsServer) BotsCheckDownloadFileParams(context.Context, *TLBotsCheckDownloadFileParams) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsCheckDownloadFileParams not implemented")
 }
 
 // UnsafeRPCMainMiniBotAppsServer may be embedded to opt out of forward compatibility for this service.
@@ -15625,60 +16089,6 @@ func _RPCMainMiniBotApps_BotsGetPreviewMedias_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsUpdateUserEmojiStatus)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMainMiniBotAppsServer).BotsUpdateUserEmojiStatus(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMainMiniBotAppsServer).BotsUpdateUserEmojiStatus(ctx, req.(*TLBotsUpdateUserEmojiStatus))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsToggleUserEmojiStatusPermission)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMainMiniBotAppsServer).BotsToggleUserEmojiStatusPermission(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMainMiniBotAppsServer).BotsToggleUserEmojiStatusPermission(ctx, req.(*TLBotsToggleUserEmojiStatusPermission))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCMainMiniBotApps_BotsCheckDownloadFileParams_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsCheckDownloadFileParams)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCMainMiniBotAppsServer).BotsCheckDownloadFileParams(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCMainMiniBotApps_BotsCheckDownloadFileParams_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCMainMiniBotAppsServer).BotsCheckDownloadFileParams(ctx, req.(*TLBotsCheckDownloadFileParams))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCMainMiniBotApps_ServiceDesc is the grpc.ServiceDesc for RPCMainMiniBotApps service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -15717,18 +16127,6 @@ var RPCMainMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "bots_getPreviewMedias",
 			Handler:    _RPCMainMiniBotApps_BotsGetPreviewMedias_Handler,
-		},
-		{
-			MethodName: "bots_updateUserEmojiStatus",
-			Handler:    _RPCMainMiniBotApps_BotsUpdateUserEmojiStatus_Handler,
-		},
-		{
-			MethodName: "bots_toggleUserEmojiStatusPermission",
-			Handler:    _RPCMainMiniBotApps_BotsToggleUserEmojiStatusPermission_Handler,
-		},
-		{
-			MethodName: "bots_checkDownloadFileParams",
-			Handler:    _RPCMainMiniBotApps_BotsCheckDownloadFileParams_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -17194,6 +17592,7 @@ const (
 	RPCMiniBotApps_BotsCanSendMessage_FullMethodName                   = "/mtproto.RPCMiniBotApps/bots_canSendMessage"
 	RPCMiniBotApps_BotsAllowSendMessage_FullMethodName                 = "/mtproto.RPCMiniBotApps/bots_allowSendMessage"
 	RPCMiniBotApps_BotsInvokeWebViewCustomMethod_FullMethodName        = "/mtproto.RPCMiniBotApps/bots_invokeWebViewCustomMethod"
+	RPCMiniBotApps_BotsCheckDownloadFileParams_FullMethodName          = "/mtproto.RPCMiniBotApps/bots_checkDownloadFileParams"
 	RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView1A46500A"
 	RPCMiniBotApps_MessagesRequestAppWebView8C5A3B3C_FullMethodName    = "/mtproto.RPCMiniBotApps/messages_requestAppWebView8C5A3B3C"
 	RPCMiniBotApps_MessagesRequestSimpleWebView299BEC8E_FullMethodName = "/mtproto.RPCMiniBotApps/messages_requestSimpleWebView299BEC8E"
@@ -17214,6 +17613,7 @@ type RPCMiniBotAppsClient interface {
 	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage, opts ...grpc.CallOption) (*Bool, error)
 	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage, opts ...grpc.CallOption) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod, opts ...grpc.CallOption) (*DataJSON, error)
+	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams, opts ...grpc.CallOption) (*Bool, error)
 	MessagesRequestSimpleWebView1A46500A(ctx context.Context, in *TLMessagesRequestSimpleWebView1A46500A, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
 	MessagesRequestAppWebView8C5A3B3C(ctx context.Context, in *TLMessagesRequestAppWebView8C5A3B3C, opts ...grpc.CallOption) (*AppWebViewResult, error)
 	MessagesRequestSimpleWebView299BEC8E(ctx context.Context, in *TLMessagesRequestSimpleWebView299BEC8E, opts ...grpc.CallOption) (*SimpleWebViewResult, error)
@@ -17318,6 +17718,15 @@ func (c *rPCMiniBotAppsClient) BotsInvokeWebViewCustomMethod(ctx context.Context
 	return out, nil
 }
 
+func (c *rPCMiniBotAppsClient) BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCMiniBotApps_BotsCheckDownloadFileParams_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCMiniBotAppsClient) MessagesRequestSimpleWebView1A46500A(ctx context.Context, in *TLMessagesRequestSimpleWebView1A46500A, opts ...grpc.CallOption) (*SimpleWebViewResult, error) {
 	out := new(SimpleWebViewResult)
 	err := c.cc.Invoke(ctx, RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_FullMethodName, in, out, opts...)
@@ -17368,6 +17777,7 @@ type RPCMiniBotAppsServer interface {
 	BotsCanSendMessage(context.Context, *TLBotsCanSendMessage) (*Bool, error)
 	BotsAllowSendMessage(context.Context, *TLBotsAllowSendMessage) (*Updates, error)
 	BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
+	BotsCheckDownloadFileParams(context.Context, *TLBotsCheckDownloadFileParams) (*Bool, error)
 	MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error)
 	MessagesRequestAppWebView8C5A3B3C(context.Context, *TLMessagesRequestAppWebView8C5A3B3C) (*AppWebViewResult, error)
 	MessagesRequestSimpleWebView299BEC8E(context.Context, *TLMessagesRequestSimpleWebView299BEC8E) (*SimpleWebViewResult, error)
@@ -17407,6 +17817,9 @@ func (UnimplementedRPCMiniBotAppsServer) BotsAllowSendMessage(context.Context, *
 }
 func (UnimplementedRPCMiniBotAppsServer) BotsInvokeWebViewCustomMethod(context.Context, *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method BotsInvokeWebViewCustomMethod not implemented")
+}
+func (UnimplementedRPCMiniBotAppsServer) BotsCheckDownloadFileParams(context.Context, *TLBotsCheckDownloadFileParams) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BotsCheckDownloadFileParams not implemented")
 }
 func (UnimplementedRPCMiniBotAppsServer) MessagesRequestSimpleWebView1A46500A(context.Context, *TLMessagesRequestSimpleWebView1A46500A) (*SimpleWebViewResult, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesRequestSimpleWebView1A46500A not implemented")
@@ -17612,6 +18025,24 @@ func _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMiniBotApps_BotsCheckDownloadFileParams_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLBotsCheckDownloadFileParams)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMiniBotAppsServer).BotsCheckDownloadFileParams(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMiniBotApps_BotsCheckDownloadFileParams_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMiniBotAppsServer).BotsCheckDownloadFileParams(ctx, req.(*TLBotsCheckDownloadFileParams))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCMiniBotApps_MessagesRequestSimpleWebView1A46500A_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLMessagesRequestSimpleWebView1A46500A)
 	if err := dec(in); err != nil {
@@ -17730,6 +18161,10 @@ var RPCMiniBotApps_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "bots_invokeWebViewCustomMethod",
 			Handler:    _RPCMiniBotApps_BotsInvokeWebViewCustomMethod_Handler,
+		},
+		{
+			MethodName: "bots_checkDownloadFileParams",
+			Handler:    _RPCMiniBotApps_BotsCheckDownloadFileParams_Handler,
 		},
 		{
 			MethodName: "messages_requestSimpleWebView1A46500A",
@@ -20055,6 +20490,131 @@ var RPCPremium_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_canPurchasePremium",
 			Handler:    _RPCPremium_PaymentsCanPurchasePremium_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCPreparedInlineMessages_MessagesSavePreparedInlineMessage_FullMethodName = "/mtproto.RPCPreparedInlineMessages/messages_savePreparedInlineMessage"
+	RPCPreparedInlineMessages_MessagesGetPreparedInlineMessage_FullMethodName  = "/mtproto.RPCPreparedInlineMessages/messages_getPreparedInlineMessage"
+)
+
+// RPCPreparedInlineMessagesClient is the client API for RPCPreparedInlineMessages service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCPreparedInlineMessagesClient interface {
+	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage, opts ...grpc.CallOption) (*Messages_BotPreparedInlineMessage, error)
+	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage, opts ...grpc.CallOption) (*Messages_PreparedInlineMessage, error)
+}
+
+type rPCPreparedInlineMessagesClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCPreparedInlineMessagesClient(cc grpc.ClientConnInterface) RPCPreparedInlineMessagesClient {
+	return &rPCPreparedInlineMessagesClient{cc}
+}
+
+func (c *rPCPreparedInlineMessagesClient) MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage, opts ...grpc.CallOption) (*Messages_BotPreparedInlineMessage, error) {
+	out := new(Messages_BotPreparedInlineMessage)
+	err := c.cc.Invoke(ctx, RPCPreparedInlineMessages_MessagesSavePreparedInlineMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPreparedInlineMessagesClient) MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage, opts ...grpc.CallOption) (*Messages_PreparedInlineMessage, error) {
+	out := new(Messages_PreparedInlineMessage)
+	err := c.cc.Invoke(ctx, RPCPreparedInlineMessages_MessagesGetPreparedInlineMessage_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCPreparedInlineMessagesServer is the server API for RPCPreparedInlineMessages service.
+// All implementations should embed UnimplementedRPCPreparedInlineMessagesServer
+// for forward compatibility
+type RPCPreparedInlineMessagesServer interface {
+	MessagesSavePreparedInlineMessage(context.Context, *TLMessagesSavePreparedInlineMessage) (*Messages_BotPreparedInlineMessage, error)
+	MessagesGetPreparedInlineMessage(context.Context, *TLMessagesGetPreparedInlineMessage) (*Messages_PreparedInlineMessage, error)
+}
+
+// UnimplementedRPCPreparedInlineMessagesServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCPreparedInlineMessagesServer struct {
+}
+
+func (UnimplementedRPCPreparedInlineMessagesServer) MessagesSavePreparedInlineMessage(context.Context, *TLMessagesSavePreparedInlineMessage) (*Messages_BotPreparedInlineMessage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSavePreparedInlineMessage not implemented")
+}
+func (UnimplementedRPCPreparedInlineMessagesServer) MessagesGetPreparedInlineMessage(context.Context, *TLMessagesGetPreparedInlineMessage) (*Messages_PreparedInlineMessage, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetPreparedInlineMessage not implemented")
+}
+
+// UnsafeRPCPreparedInlineMessagesServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCPreparedInlineMessagesServer will
+// result in compilation errors.
+type UnsafeRPCPreparedInlineMessagesServer interface {
+	mustEmbedUnimplementedRPCPreparedInlineMessagesServer()
+}
+
+func RegisterRPCPreparedInlineMessagesServer(s grpc.ServiceRegistrar, srv RPCPreparedInlineMessagesServer) {
+	s.RegisterService(&RPCPreparedInlineMessages_ServiceDesc, srv)
+}
+
+func _RPCPreparedInlineMessages_MessagesSavePreparedInlineMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSavePreparedInlineMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPreparedInlineMessagesServer).MessagesSavePreparedInlineMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPreparedInlineMessages_MessagesSavePreparedInlineMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPreparedInlineMessagesServer).MessagesSavePreparedInlineMessage(ctx, req.(*TLMessagesSavePreparedInlineMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPreparedInlineMessages_MessagesGetPreparedInlineMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetPreparedInlineMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPreparedInlineMessagesServer).MessagesGetPreparedInlineMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPreparedInlineMessages_MessagesGetPreparedInlineMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPreparedInlineMessagesServer).MessagesGetPreparedInlineMessage(ctx, req.(*TLMessagesGetPreparedInlineMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCPreparedInlineMessages_ServiceDesc is the grpc.ServiceDesc for RPCPreparedInlineMessages service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCPreparedInlineMessages_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCPreparedInlineMessages",
+	HandlerType: (*RPCPreparedInlineMessagesServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "messages_savePreparedInlineMessage",
+			Handler:    _RPCPreparedInlineMessages_MessagesSavePreparedInlineMessage_Handler,
+		},
+		{
+			MethodName: "messages_getPreparedInlineMessage",
+			Handler:    _RPCPreparedInlineMessages_MessagesGetPreparedInlineMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -24009,7 +24569,205 @@ var RPCSponsoredMessages_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCStars_BotsUpdateStarRefProgram_FullMethodName             = "/mtproto.RPCStars/bots_updateStarRefProgram"
+	RPCStarSubscriptions_PaymentsChangeStarsSubscription_FullMethodName    = "/mtproto.RPCStarSubscriptions/payments_changeStarsSubscription"
+	RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName = "/mtproto.RPCStarSubscriptions/payments_botCancelStarsSubscription"
+	RPCStarSubscriptions_PaymentsGetStarsSubscriptions_FullMethodName      = "/mtproto.RPCStarSubscriptions/payments_getStarsSubscriptions"
+	RPCStarSubscriptions_PaymentsFulfillStarsSubscription_FullMethodName   = "/mtproto.RPCStarSubscriptions/payments_fulfillStarsSubscription"
+)
+
+// RPCStarSubscriptionsClient is the client API for RPCStarSubscriptions service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCStarSubscriptionsClient interface {
+	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
+	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCStarSubscriptionsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCStarSubscriptionsClient(cc grpc.ClientConnInterface) RPCStarSubscriptionsClient {
+	return &rPCStarSubscriptionsClient{cc}
+}
+
+func (c *rPCStarSubscriptionsClient) PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStarSubscriptions_PaymentsChangeStarsSubscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarSubscriptionsClient) PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarSubscriptionsClient) PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
+	out := new(Payments_StarsStatus)
+	err := c.cc.Invoke(ctx, RPCStarSubscriptions_PaymentsGetStarsSubscriptions_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStarSubscriptionsClient) PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStarSubscriptions_PaymentsFulfillStarsSubscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCStarSubscriptionsServer is the server API for RPCStarSubscriptions service.
+// All implementations should embed UnimplementedRPCStarSubscriptionsServer
+// for forward compatibility
+type RPCStarSubscriptionsServer interface {
+	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
+	PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error)
+	PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error)
+}
+
+// UnimplementedRPCStarSubscriptionsServer should be embedded to have forward compatible implementations.
+type UnimplementedRPCStarSubscriptionsServer struct {
+}
+
+func (UnimplementedRPCStarSubscriptionsServer) PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsChangeStarsSubscription not implemented")
+}
+func (UnimplementedRPCStarSubscriptionsServer) PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsBotCancelStarsSubscription not implemented")
+}
+func (UnimplementedRPCStarSubscriptionsServer) PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsSubscriptions not implemented")
+}
+func (UnimplementedRPCStarSubscriptionsServer) PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsFulfillStarsSubscription not implemented")
+}
+
+// UnsafeRPCStarSubscriptionsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCStarSubscriptionsServer will
+// result in compilation errors.
+type UnsafeRPCStarSubscriptionsServer interface {
+	mustEmbedUnimplementedRPCStarSubscriptionsServer()
+}
+
+func RegisterRPCStarSubscriptionsServer(s grpc.ServiceRegistrar, srv RPCStarSubscriptionsServer) {
+	s.RegisterService(&RPCStarSubscriptions_ServiceDesc, srv)
+}
+
+func _RPCStarSubscriptions_PaymentsChangeStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsChangeStarsSubscription)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarSubscriptionsServer).PaymentsChangeStarsSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStarSubscriptions_PaymentsChangeStarsSubscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarSubscriptionsServer).PaymentsChangeStarsSubscription(ctx, req.(*TLPaymentsChangeStarsSubscription))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsBotCancelStarsSubscription)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarSubscriptionsServer).PaymentsBotCancelStarsSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarSubscriptionsServer).PaymentsBotCancelStarsSubscription(ctx, req.(*TLPaymentsBotCancelStarsSubscription))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStarSubscriptions_PaymentsGetStarsSubscriptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarsSubscriptions)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarSubscriptionsServer).PaymentsGetStarsSubscriptions(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStarSubscriptions_PaymentsGetStarsSubscriptions_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarSubscriptionsServer).PaymentsGetStarsSubscriptions(ctx, req.(*TLPaymentsGetStarsSubscriptions))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStarSubscriptions_PaymentsFulfillStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsFulfillStarsSubscription)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarSubscriptionsServer).PaymentsFulfillStarsSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStarSubscriptions_PaymentsFulfillStarsSubscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarSubscriptionsServer).PaymentsFulfillStarsSubscription(ctx, req.(*TLPaymentsFulfillStarsSubscription))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCStarSubscriptions_ServiceDesc is the grpc.ServiceDesc for RPCStarSubscriptions service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCStarSubscriptions_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCStarSubscriptions",
+	HandlerType: (*RPCStarSubscriptionsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "payments_changeStarsSubscription",
+			Handler:    _RPCStarSubscriptions_PaymentsChangeStarsSubscription_Handler,
+		},
+		{
+			MethodName: "payments_botCancelStarsSubscription",
+			Handler:    _RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_Handler,
+		},
+		{
+			MethodName: "payments_getStarsSubscriptions",
+			Handler:    _RPCStarSubscriptions_PaymentsGetStarsSubscriptions_Handler,
+		},
+		{
+			MethodName: "payments_fulfillStarsSubscription",
+			Handler:    _RPCStarSubscriptions_PaymentsFulfillStarsSubscription_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCStars_PaymentsGetStarsTopupOptions_FullMethodName         = "/mtproto.RPCStars/payments_getStarsTopupOptions"
 	RPCStars_PaymentsGetStarsStatus_FullMethodName               = "/mtproto.RPCStars/payments_getStarsStatus"
 	RPCStars_PaymentsGetStarsTransactions_FullMethodName         = "/mtproto.RPCStars/payments_getStarsTransactions"
@@ -24021,26 +24779,14 @@ const (
 	RPCStars_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCStars/payments_getStarsTransactionsByID"
 	RPCStars_PaymentsGetStarsGiftOptions_FullMethodName          = "/mtproto.RPCStars/payments_getStarsGiftOptions"
 	RPCStars_PaymentsGetStarsSubscriptions_FullMethodName        = "/mtproto.RPCStars/payments_getStarsSubscriptions"
-	RPCStars_PaymentsChangeStarsSubscription_FullMethodName      = "/mtproto.RPCStars/payments_changeStarsSubscription"
 	RPCStars_PaymentsFulfillStarsSubscription_FullMethodName     = "/mtproto.RPCStars/payments_fulfillStarsSubscription"
-	RPCStars_PaymentsGetStarsGiveawayOptions_FullMethodName      = "/mtproto.RPCStars/payments_getStarsGiveawayOptions"
-	RPCStars_PaymentsGetStarGifts_FullMethodName                 = "/mtproto.RPCStars/payments_getStarGifts"
-	RPCStars_PaymentsGetUserStarGifts_FullMethodName             = "/mtproto.RPCStars/payments_getUserStarGifts"
-	RPCStars_PaymentsSaveStarGift_FullMethodName                 = "/mtproto.RPCStars/payments_saveStarGift"
-	RPCStars_PaymentsConvertStarGift_FullMethodName              = "/mtproto.RPCStars/payments_convertStarGift"
-	RPCStars_PaymentsBotCancelStarsSubscription_FullMethodName   = "/mtproto.RPCStars/payments_botCancelStarsSubscription"
-	RPCStars_PaymentsGetConnectedStarRefBots_FullMethodName      = "/mtproto.RPCStars/payments_getConnectedStarRefBots"
-	RPCStars_PaymentsGetConnectedStarRefBot_FullMethodName       = "/mtproto.RPCStars/payments_getConnectedStarRefBot"
-	RPCStars_PaymentsGetSuggestedStarRefBots_FullMethodName      = "/mtproto.RPCStars/payments_getSuggestedStarRefBots"
-	RPCStars_PaymentsConnectStarRefBot_FullMethodName            = "/mtproto.RPCStars/payments_connectStarRefBot"
-	RPCStars_PaymentsEditConnectedStarRefBot_FullMethodName      = "/mtproto.RPCStars/payments_editConnectedStarRefBot"
+	RPCStars_PaymentsChangeStarsSubscription_FullMethodName      = "/mtproto.RPCStars/payments_changeStarsSubscription"
 )
 
 // RPCStarsClient is the client API for RPCStars service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCStarsClient interface {
-	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram, opts ...grpc.CallOption) (*StarRefProgram, error)
 	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error)
 	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
@@ -24052,19 +24798,8 @@ type RPCStarsClient interface {
 	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error)
 	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
-	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
-	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions, opts ...grpc.CallOption) (*Vector_StarsGiveawayOption, error)
-	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts, opts ...grpc.CallOption) (*Payments_StarGifts, error)
-	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
-	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift, opts ...grpc.CallOption) (*Bool, error)
-	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift, opts ...grpc.CallOption) (*Bool, error)
-	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
-	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
-	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
-	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots, opts ...grpc.CallOption) (*Payments_SuggestedStarRefBots, error)
-	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
-	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error)
+	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCStarsClient struct {
@@ -24073,15 +24808,6 @@ type rPCStarsClient struct {
 
 func NewRPCStarsClient(cc grpc.ClientConnInterface) RPCStarsClient {
 	return &rPCStarsClient{cc}
-}
-
-func (c *rPCStarsClient) BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram, opts ...grpc.CallOption) (*StarRefProgram, error) {
-	out := new(StarRefProgram)
-	err := c.cc.Invoke(ctx, RPCStars_BotsUpdateStarRefProgram_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
 }
 
 func (c *rPCStarsClient) PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions, opts ...grpc.CallOption) (*Vector_StarsTopupOption, error) {
@@ -24183,15 +24909,6 @@ func (c *rPCStarsClient) PaymentsGetStarsSubscriptions(ctx context.Context, in *
 	return out, nil
 }
 
-func (c *rPCStarsClient) PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsChangeStarsSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *rPCStarsClient) PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCStars_PaymentsFulfillStarsSubscription_FullMethodName, in, out, opts...)
@@ -24201,99 +24918,9 @@ func (c *rPCStarsClient) PaymentsFulfillStarsSubscription(ctx context.Context, i
 	return out, nil
 }
 
-func (c *rPCStarsClient) PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions, opts ...grpc.CallOption) (*Vector_StarsGiveawayOption, error) {
-	out := new(Vector_StarsGiveawayOption)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsGiveawayOptions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts, opts ...grpc.CallOption) (*Payments_StarGifts, error) {
-	out := new(Payments_StarGifts)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarGifts_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
-	out := new(Payments_UserStarGifts)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetUserStarGifts_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCStarsClient) PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsSaveStarGift_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsConvertStarGift_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsBotCancelStarsSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
-	out := new(Payments_ConnectedStarRefBots)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetConnectedStarRefBots_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
-	out := new(Payments_ConnectedStarRefBots)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetConnectedStarRefBot_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots, opts ...grpc.CallOption) (*Payments_SuggestedStarRefBots, error) {
-	out := new(Payments_SuggestedStarRefBots)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetSuggestedStarRefBots_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
-	out := new(Payments_ConnectedStarRefBots)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsConnectStarRefBot_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot, opts ...grpc.CallOption) (*Payments_ConnectedStarRefBots, error) {
-	out := new(Payments_ConnectedStarRefBots)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsEditConnectedStarRefBot_FullMethodName, in, out, opts...)
+	err := c.cc.Invoke(ctx, RPCStars_PaymentsChangeStarsSubscription_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -24304,7 +24931,6 @@ func (c *rPCStarsClient) PaymentsEditConnectedStarRefBot(ctx context.Context, in
 // All implementations should embed UnimplementedRPCStarsServer
 // for forward compatibility
 type RPCStarsServer interface {
-	BotsUpdateStarRefProgram(context.Context, *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
 	PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error)
 	PaymentsGetStarsStatus(context.Context, *TLPaymentsGetStarsStatus) (*Payments_StarsStatus, error)
 	PaymentsGetStarsTransactions(context.Context, *TLPaymentsGetStarsTransactions) (*Payments_StarsStatus, error)
@@ -24316,28 +24942,14 @@ type RPCStarsServer interface {
 	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error)
 	PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error)
-	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
 	PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error)
-	PaymentsGetStarsGiveawayOptions(context.Context, *TLPaymentsGetStarsGiveawayOptions) (*Vector_StarsGiveawayOption, error)
-	PaymentsGetStarGifts(context.Context, *TLPaymentsGetStarGifts) (*Payments_StarGifts, error)
-	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
-	PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error)
-	PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error)
-	PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
-	PaymentsGetConnectedStarRefBots(context.Context, *TLPaymentsGetConnectedStarRefBots) (*Payments_ConnectedStarRefBots, error)
-	PaymentsGetConnectedStarRefBot(context.Context, *TLPaymentsGetConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error)
-	PaymentsGetSuggestedStarRefBots(context.Context, *TLPaymentsGetSuggestedStarRefBots) (*Payments_SuggestedStarRefBots, error)
-	PaymentsConnectStarRefBot(context.Context, *TLPaymentsConnectStarRefBot) (*Payments_ConnectedStarRefBots, error)
-	PaymentsEditConnectedStarRefBot(context.Context, *TLPaymentsEditConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error)
+	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
 }
 
 // UnimplementedRPCStarsServer should be embedded to have forward compatible implementations.
 type UnimplementedRPCStarsServer struct {
 }
 
-func (UnimplementedRPCStarsServer) BotsUpdateStarRefProgram(context.Context, *TLBotsUpdateStarRefProgram) (*StarRefProgram, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method BotsUpdateStarRefProgram not implemented")
-}
 func (UnimplementedRPCStarsServer) PaymentsGetStarsTopupOptions(context.Context, *TLPaymentsGetStarsTopupOptions) (*Vector_StarsTopupOption, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsTopupOptions not implemented")
 }
@@ -24371,44 +24983,11 @@ func (UnimplementedRPCStarsServer) PaymentsGetStarsGiftOptions(context.Context, 
 func (UnimplementedRPCStarsServer) PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsSubscriptions not implemented")
 }
-func (UnimplementedRPCStarsServer) PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsChangeStarsSubscription not implemented")
-}
 func (UnimplementedRPCStarsServer) PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsFulfillStarsSubscription not implemented")
 }
-func (UnimplementedRPCStarsServer) PaymentsGetStarsGiveawayOptions(context.Context, *TLPaymentsGetStarsGiveawayOptions) (*Vector_StarsGiveawayOption, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiveawayOptions not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsGetStarGifts(context.Context, *TLPaymentsGetStarGifts) (*Payments_StarGifts, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarGifts not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsSaveStarGift not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsConvertStarGift not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsBotCancelStarsSubscription not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsGetConnectedStarRefBots(context.Context, *TLPaymentsGetConnectedStarRefBots) (*Payments_ConnectedStarRefBots, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetConnectedStarRefBots not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsGetConnectedStarRefBot(context.Context, *TLPaymentsGetConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetConnectedStarRefBot not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsGetSuggestedStarRefBots(context.Context, *TLPaymentsGetSuggestedStarRefBots) (*Payments_SuggestedStarRefBots, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetSuggestedStarRefBots not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsConnectStarRefBot(context.Context, *TLPaymentsConnectStarRefBot) (*Payments_ConnectedStarRefBots, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsConnectStarRefBot not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsEditConnectedStarRefBot(context.Context, *TLPaymentsEditConnectedStarRefBot) (*Payments_ConnectedStarRefBots, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsEditConnectedStarRefBot not implemented")
+func (UnimplementedRPCStarsServer) PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsChangeStarsSubscription not implemented")
 }
 
 // UnsafeRPCStarsServer may be embedded to opt out of forward compatibility for this service.
@@ -24420,24 +24999,6 @@ type UnsafeRPCStarsServer interface {
 
 func RegisterRPCStarsServer(s grpc.ServiceRegistrar, srv RPCStarsServer) {
 	s.RegisterService(&RPCStars_ServiceDesc, srv)
-}
-
-func _RPCStars_BotsUpdateStarRefProgram_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLBotsUpdateStarRefProgram)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).BotsUpdateStarRefProgram(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_BotsUpdateStarRefProgram_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).BotsUpdateStarRefProgram(ctx, req.(*TLBotsUpdateStarRefProgram))
-	}
-	return interceptor(ctx, in, info, handler)
 }
 
 func _RPCStars_PaymentsGetStarsTopupOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -24638,24 +25199,6 @@ func _RPCStars_PaymentsGetStarsSubscriptions_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCStars_PaymentsChangeStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsChangeStarsSubscription)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsChangeStarsSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, req.(*TLPaymentsChangeStarsSubscription))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCStars_PaymentsFulfillStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsFulfillStarsSubscription)
 	if err := dec(in); err != nil {
@@ -24674,200 +25217,20 @@ func _RPCStars_PaymentsFulfillStarsSubscription_Handler(srv interface{}, ctx con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCStars_PaymentsGetStarsGiveawayOptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsGiveawayOptions)
+func _RPCStars_PaymentsChangeStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsChangeStarsSubscription)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsGetStarsGiveawayOptions(ctx, in)
+		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCStars_PaymentsGetStarsGiveawayOptions_FullMethodName,
+		FullMethod: RPCStars_PaymentsChangeStarsSubscription_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsGetStarsGiveawayOptions(ctx, req.(*TLPaymentsGetStarsGiveawayOptions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsGetStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarGifts)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsGetStarGifts(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsGetStarGifts_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsGetStarGifts(ctx, req.(*TLPaymentsGetStarGifts))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetUserStarGifts)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsGetUserStarGifts(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsGetUserStarGifts_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsGetUserStarGifts(ctx, req.(*TLPaymentsGetUserStarGifts))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsSaveStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsSaveStarGift)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsSaveStarGift(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsSaveStarGift_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsSaveStarGift(ctx, req.(*TLPaymentsSaveStarGift))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsConvertStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsConvertStarGift)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsConvertStarGift(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsConvertStarGift_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsConvertStarGift(ctx, req.(*TLPaymentsConvertStarGift))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsBotCancelStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsBotCancelStarsSubscription)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsBotCancelStarsSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsBotCancelStarsSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsBotCancelStarsSubscription(ctx, req.(*TLPaymentsBotCancelStarsSubscription))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsGetConnectedStarRefBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetConnectedStarRefBots)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBots(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsGetConnectedStarRefBots_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBots(ctx, req.(*TLPaymentsGetConnectedStarRefBots))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsGetConnectedStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetConnectedStarRefBot)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsGetConnectedStarRefBot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsGetConnectedStarRefBot(ctx, req.(*TLPaymentsGetConnectedStarRefBot))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsGetSuggestedStarRefBots_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetSuggestedStarRefBots)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsGetSuggestedStarRefBots(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsGetSuggestedStarRefBots_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsGetSuggestedStarRefBots(ctx, req.(*TLPaymentsGetSuggestedStarRefBots))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsConnectStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsConnectStarRefBot)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsConnectStarRefBot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsConnectStarRefBot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsConnectStarRefBot(ctx, req.(*TLPaymentsConnectStarRefBot))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsEditConnectedStarRefBot_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsEditConnectedStarRefBot)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsEditConnectedStarRefBot(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsEditConnectedStarRefBot_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsEditConnectedStarRefBot(ctx, req.(*TLPaymentsEditConnectedStarRefBot))
+		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, req.(*TLPaymentsChangeStarsSubscription))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -24879,10 +25242,6 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "mtproto.RPCStars",
 	HandlerType: (*RPCStarsServer)(nil),
 	Methods: []grpc.MethodDesc{
-		{
-			MethodName: "bots_updateStarRefProgram",
-			Handler:    _RPCStars_BotsUpdateStarRefProgram_Handler,
-		},
 		{
 			MethodName: "payments_getStarsTopupOptions",
 			Handler:    _RPCStars_PaymentsGetStarsTopupOptions_Handler,
@@ -24928,56 +25287,12 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCStars_PaymentsGetStarsSubscriptions_Handler,
 		},
 		{
-			MethodName: "payments_changeStarsSubscription",
-			Handler:    _RPCStars_PaymentsChangeStarsSubscription_Handler,
-		},
-		{
 			MethodName: "payments_fulfillStarsSubscription",
 			Handler:    _RPCStars_PaymentsFulfillStarsSubscription_Handler,
 		},
 		{
-			MethodName: "payments_getStarsGiveawayOptions",
-			Handler:    _RPCStars_PaymentsGetStarsGiveawayOptions_Handler,
-		},
-		{
-			MethodName: "payments_getStarGifts",
-			Handler:    _RPCStars_PaymentsGetStarGifts_Handler,
-		},
-		{
-			MethodName: "payments_getUserStarGifts",
-			Handler:    _RPCStars_PaymentsGetUserStarGifts_Handler,
-		},
-		{
-			MethodName: "payments_saveStarGift",
-			Handler:    _RPCStars_PaymentsSaveStarGift_Handler,
-		},
-		{
-			MethodName: "payments_convertStarGift",
-			Handler:    _RPCStars_PaymentsConvertStarGift_Handler,
-		},
-		{
-			MethodName: "payments_botCancelStarsSubscription",
-			Handler:    _RPCStars_PaymentsBotCancelStarsSubscription_Handler,
-		},
-		{
-			MethodName: "payments_getConnectedStarRefBots",
-			Handler:    _RPCStars_PaymentsGetConnectedStarRefBots_Handler,
-		},
-		{
-			MethodName: "payments_getConnectedStarRefBot",
-			Handler:    _RPCStars_PaymentsGetConnectedStarRefBot_Handler,
-		},
-		{
-			MethodName: "payments_getSuggestedStarRefBots",
-			Handler:    _RPCStars_PaymentsGetSuggestedStarRefBots_Handler,
-		},
-		{
-			MethodName: "payments_connectStarRefBot",
-			Handler:    _RPCStars_PaymentsConnectStarRefBot_Handler,
-		},
-		{
-			MethodName: "payments_editConnectedStarRefBot",
-			Handler:    _RPCStars_PaymentsEditConnectedStarRefBot_Handler,
+			MethodName: "payments_changeStarsSubscription",
+			Handler:    _RPCStars_PaymentsChangeStarsSubscription_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -26604,38 +26919,40 @@ var RPCStickers_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCStories_StoriesCanSendStory_FullMethodName            = "/mtproto.RPCStories/stories_canSendStory"
-	RPCStories_StoriesSendStory_FullMethodName               = "/mtproto.RPCStories/stories_sendStory"
-	RPCStories_StoriesEditStory_FullMethodName               = "/mtproto.RPCStories/stories_editStory"
-	RPCStories_StoriesDeleteStories_FullMethodName           = "/mtproto.RPCStories/stories_deleteStories"
-	RPCStories_StoriesTogglePinned_FullMethodName            = "/mtproto.RPCStories/stories_togglePinned"
-	RPCStories_StoriesGetAllStories_FullMethodName           = "/mtproto.RPCStories/stories_getAllStories"
-	RPCStories_StoriesGetPinnedStories_FullMethodName        = "/mtproto.RPCStories/stories_getPinnedStories"
-	RPCStories_StoriesGetStoriesArchive_FullMethodName       = "/mtproto.RPCStories/stories_getStoriesArchive"
-	RPCStories_StoriesGetStoriesByID_FullMethodName          = "/mtproto.RPCStories/stories_getStoriesByID"
-	RPCStories_StoriesToggleAllStoriesHidden_FullMethodName  = "/mtproto.RPCStories/stories_toggleAllStoriesHidden"
-	RPCStories_StoriesReadStories_FullMethodName             = "/mtproto.RPCStories/stories_readStories"
-	RPCStories_StoriesIncrementStoryViews_FullMethodName     = "/mtproto.RPCStories/stories_incrementStoryViews"
-	RPCStories_StoriesGetStoryViewsList_FullMethodName       = "/mtproto.RPCStories/stories_getStoryViewsList"
-	RPCStories_StoriesGetStoriesViews_FullMethodName         = "/mtproto.RPCStories/stories_getStoriesViews"
-	RPCStories_StoriesExportStoryLink_FullMethodName         = "/mtproto.RPCStories/stories_exportStoryLink"
-	RPCStories_StoriesReport19D8EB45_FullMethodName          = "/mtproto.RPCStories/stories_report19D8EB45"
-	RPCStories_StoriesActivateStealthMode_FullMethodName     = "/mtproto.RPCStories/stories_activateStealthMode"
-	RPCStories_StoriesSendReaction_FullMethodName            = "/mtproto.RPCStories/stories_sendReaction"
-	RPCStories_StoriesGetPeerStories_FullMethodName          = "/mtproto.RPCStories/stories_getPeerStories"
-	RPCStories_StoriesGetAllReadPeerStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadPeerStories"
-	RPCStories_StoriesGetPeerMaxIDs_FullMethodName           = "/mtproto.RPCStories/stories_getPeerMaxIDs"
-	RPCStories_StoriesGetChatsToSend_FullMethodName          = "/mtproto.RPCStories/stories_getChatsToSend"
-	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
-	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
-	RPCStories_StoriesTogglePinnedToTop_FullMethodName       = "/mtproto.RPCStories/stories_togglePinnedToTop"
-	RPCStories_StoriesSearchPosts_FullMethodName             = "/mtproto.RPCStories/stories_searchPosts"
-	RPCStories_StoriesReport1923FA8C_FullMethodName          = "/mtproto.RPCStories/stories_report1923FA8C"
-	RPCStories_UsersGetStoriesMaxIDs_FullMethodName          = "/mtproto.RPCStories/users_getStoriesMaxIDs"
-	RPCStories_ContactsToggleStoriesHidden_FullMethodName    = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
-	RPCStories_StoriesGetUserStories_FullMethodName          = "/mtproto.RPCStories/stories_getUserStories"
-	RPCStories_StoriesGetAllReadUserStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadUserStories"
-	RPCStories_StoriesReportC95BE06A_FullMethodName          = "/mtproto.RPCStories/stories_reportC95BE06A"
+	RPCStories_StoriesCanSendStory_FullMethodName               = "/mtproto.RPCStories/stories_canSendStory"
+	RPCStories_StoriesSendStory_FullMethodName                  = "/mtproto.RPCStories/stories_sendStory"
+	RPCStories_StoriesEditStory_FullMethodName                  = "/mtproto.RPCStories/stories_editStory"
+	RPCStories_StoriesDeleteStories_FullMethodName              = "/mtproto.RPCStories/stories_deleteStories"
+	RPCStories_StoriesTogglePinned_FullMethodName               = "/mtproto.RPCStories/stories_togglePinned"
+	RPCStories_StoriesGetAllStories_FullMethodName              = "/mtproto.RPCStories/stories_getAllStories"
+	RPCStories_StoriesGetPinnedStories_FullMethodName           = "/mtproto.RPCStories/stories_getPinnedStories"
+	RPCStories_StoriesGetStoriesArchive_FullMethodName          = "/mtproto.RPCStories/stories_getStoriesArchive"
+	RPCStories_StoriesGetStoriesByID_FullMethodName             = "/mtproto.RPCStories/stories_getStoriesByID"
+	RPCStories_StoriesToggleAllStoriesHidden_FullMethodName     = "/mtproto.RPCStories/stories_toggleAllStoriesHidden"
+	RPCStories_StoriesReadStories_FullMethodName                = "/mtproto.RPCStories/stories_readStories"
+	RPCStories_StoriesIncrementStoryViews_FullMethodName        = "/mtproto.RPCStories/stories_incrementStoryViews"
+	RPCStories_StoriesGetStoryViewsList_FullMethodName          = "/mtproto.RPCStories/stories_getStoryViewsList"
+	RPCStories_StoriesGetStoriesViews_FullMethodName            = "/mtproto.RPCStories/stories_getStoriesViews"
+	RPCStories_StoriesExportStoryLink_FullMethodName            = "/mtproto.RPCStories/stories_exportStoryLink"
+	RPCStories_StoriesReport19D8EB45_FullMethodName             = "/mtproto.RPCStories/stories_report19D8EB45"
+	RPCStories_StoriesActivateStealthMode_FullMethodName        = "/mtproto.RPCStories/stories_activateStealthMode"
+	RPCStories_StoriesSendReaction_FullMethodName               = "/mtproto.RPCStories/stories_sendReaction"
+	RPCStories_StoriesGetPeerStories_FullMethodName             = "/mtproto.RPCStories/stories_getPeerStories"
+	RPCStories_StoriesGetAllReadPeerStories_FullMethodName      = "/mtproto.RPCStories/stories_getAllReadPeerStories"
+	RPCStories_StoriesGetPeerMaxIDs_FullMethodName              = "/mtproto.RPCStories/stories_getPeerMaxIDs"
+	RPCStories_StoriesGetChatsToSend_FullMethodName             = "/mtproto.RPCStories/stories_getChatsToSend"
+	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName    = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
+	RPCStories_StoriesGetStoryReactionsList_FullMethodName      = "/mtproto.RPCStories/stories_getStoryReactionsList"
+	RPCStories_StoriesTogglePinnedToTop_FullMethodName          = "/mtproto.RPCStories/stories_togglePinnedToTop"
+	RPCStories_StoriesSearchPosts_FullMethodName                = "/mtproto.RPCStories/stories_searchPosts"
+	RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName = "/mtproto.RPCStories/messages_togglePaidReactionPrivacy"
+	RPCStories_MessagesSendPaidReaction_FullMethodName          = "/mtproto.RPCStories/messages_sendPaidReaction"
+	RPCStories_StoriesReport1923FA8C_FullMethodName             = "/mtproto.RPCStories/stories_report1923FA8C"
+	RPCStories_UsersGetStoriesMaxIDs_FullMethodName             = "/mtproto.RPCStories/users_getStoriesMaxIDs"
+	RPCStories_ContactsToggleStoriesHidden_FullMethodName       = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
+	RPCStories_StoriesGetUserStories_FullMethodName             = "/mtproto.RPCStories/stories_getUserStories"
+	RPCStories_StoriesGetAllReadUserStories_FullMethodName      = "/mtproto.RPCStories/stories_getAllReadUserStories"
+	RPCStories_StoriesReportC95BE06A_FullMethodName             = "/mtproto.RPCStories/stories_reportC95BE06A"
 )
 
 // RPCStoriesClient is the client API for RPCStories service.
@@ -26668,6 +26985,8 @@ type RPCStoriesClient interface {
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList, opts ...grpc.CallOption) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop, opts ...grpc.CallOption) (*Bool, error)
 	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts, opts ...grpc.CallOption) (*Stories_FoundStories, error)
+	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error)
+	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error)
 	StoriesReport1923FA8C(ctx context.Context, in *TLStoriesReport1923FA8C, opts ...grpc.CallOption) (*Bool, error)
 	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(ctx context.Context, in *TLContactsToggleStoriesHidden, opts ...grpc.CallOption) (*Bool, error)
@@ -26918,6 +27237,24 @@ func (c *rPCStoriesClient) StoriesSearchPosts(ctx context.Context, in *TLStories
 	return out, nil
 }
 
+func (c *rPCStoriesClient) MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction, opts ...grpc.CallOption) (*Updates, error) {
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCStories_MessagesSendPaidReaction_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCStoriesClient) StoriesReport1923FA8C(ctx context.Context, in *TLStoriesReport1923FA8C, opts ...grpc.CallOption) (*Bool, error) {
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCStories_StoriesReport1923FA8C_FullMethodName, in, out, opts...)
@@ -27002,6 +27339,8 @@ type RPCStoriesServer interface {
 	StoriesGetStoryReactionsList(context.Context, *TLStoriesGetStoryReactionsList) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(context.Context, *TLStoriesTogglePinnedToTop) (*Bool, error)
 	StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error)
+	MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
+	MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error)
 	StoriesReport1923FA8C(context.Context, *TLStoriesReport1923FA8C) (*Bool, error)
 	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error)
@@ -27091,6 +27430,12 @@ func (UnimplementedRPCStoriesServer) StoriesTogglePinnedToTop(context.Context, *
 }
 func (UnimplementedRPCStoriesServer) StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesSearchPosts not implemented")
+}
+func (UnimplementedRPCStoriesServer) MessagesTogglePaidReactionPrivacy(context.Context, *TLMessagesTogglePaidReactionPrivacy) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesTogglePaidReactionPrivacy not implemented")
+}
+func (UnimplementedRPCStoriesServer) MessagesSendPaidReaction(context.Context, *TLMessagesSendPaidReaction) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSendPaidReaction not implemented")
 }
 func (UnimplementedRPCStoriesServer) StoriesReport1923FA8C(context.Context, *TLStoriesReport1923FA8C) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesReport1923FA8C not implemented")
@@ -27590,6 +27935,42 @@ func _RPCStories_StoriesSearchPosts_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStories_MessagesTogglePaidReactionPrivacy_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesTogglePaidReactionPrivacy)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).MessagesTogglePaidReactionPrivacy(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_MessagesTogglePaidReactionPrivacy_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).MessagesTogglePaidReactionPrivacy(ctx, req.(*TLMessagesTogglePaidReactionPrivacy))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_MessagesSendPaidReaction_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSendPaidReaction)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).MessagesSendPaidReaction(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_MessagesSendPaidReaction_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).MessagesSendPaidReaction(ctx, req.(*TLMessagesSendPaidReaction))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCStories_StoriesReport1923FA8C_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLStoriesReport1923FA8C)
 	if err := dec(in); err != nil {
@@ -27808,6 +28189,14 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "stories_searchPosts",
 			Handler:    _RPCStories_StoriesSearchPosts_Handler,
+		},
+		{
+			MethodName: "messages_togglePaidReactionPrivacy",
+			Handler:    _RPCStories_MessagesTogglePaidReactionPrivacy_Handler,
+		},
+		{
+			MethodName: "messages_sendPaidReaction",
+			Handler:    _RPCStories_MessagesSendPaidReaction_Handler,
 		},
 		{
 			MethodName: "stories_report1923FA8C",
