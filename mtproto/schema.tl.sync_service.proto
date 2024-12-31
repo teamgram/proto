@@ -5650,9 +5650,9 @@ service RPCSponsoredMessages {
 }
 
 service RPCStarSubscriptions {
-    rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
-    rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
     rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
+    rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
+    rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
     rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
 }
 
@@ -5667,9 +5667,9 @@ service RPCStars {
     rpc payments_getStarsRevenueAdsAccountUrl(TL_payments_getStarsRevenueAdsAccountUrl) returns (payments_StarsRevenueAdsAccountUrl) {}
     rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
     rpc payments_getStarsGiftOptions(TL_payments_getStarsGiftOptions) returns (Vector_StarsGiftOption) {}
-    rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
-    rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
     rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
+    rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
+    rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
 }
 
 service RPCStatistics {
@@ -5746,8 +5746,6 @@ service RPCStories {
     rpc stories_getStoryReactionsList(TL_stories_getStoryReactionsList) returns (stories_StoryReactionsList) {}
     rpc stories_togglePinnedToTop(TL_stories_togglePinnedToTop) returns (Bool) {}
     rpc stories_searchPosts(TL_stories_searchPosts) returns (stories_FoundStories) {}
-    rpc messages_togglePaidReactionPrivacy(TL_messages_togglePaidReactionPrivacy) returns (Bool) {}
-    rpc messages_sendPaidReaction(TL_messages_sendPaidReaction) returns (Updates) {}
     rpc stories_report1923FA8C(TL_stories_report1923FA8C) returns (Bool) {}
     rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
     rpc contacts_toggleStoriesHidden(TL_contacts_toggleStoriesHidden) returns (Bool) {}
