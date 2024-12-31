@@ -24570,9 +24570,9 @@ var RPCSponsoredMessages_ServiceDesc = grpc.ServiceDesc{
 
 const (
 	RPCStarSubscriptions_PaymentsGetStarsSubscriptions_FullMethodName      = "/mtproto.RPCStarSubscriptions/payments_getStarsSubscriptions"
-	RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName = "/mtproto.RPCStarSubscriptions/payments_botCancelStarsSubscription"
 	RPCStarSubscriptions_PaymentsChangeStarsSubscription_FullMethodName    = "/mtproto.RPCStarSubscriptions/payments_changeStarsSubscription"
 	RPCStarSubscriptions_PaymentsFulfillStarsSubscription_FullMethodName   = "/mtproto.RPCStarSubscriptions/payments_fulfillStarsSubscription"
+	RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName = "/mtproto.RPCStarSubscriptions/payments_botCancelStarsSubscription"
 )
 
 // RPCStarSubscriptionsClient is the client API for RPCStarSubscriptions service.
@@ -24580,9 +24580,9 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCStarSubscriptionsClient interface {
 	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
-	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCStarSubscriptionsClient struct {
@@ -24596,15 +24596,6 @@ func NewRPCStarSubscriptionsClient(cc grpc.ClientConnInterface) RPCStarSubscript
 func (c *rPCStarSubscriptionsClient) PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
 	out := new(Payments_StarsStatus)
 	err := c.cc.Invoke(ctx, RPCStarSubscriptions_PaymentsGetStarsSubscriptions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarSubscriptionsClient) PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName, in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -24629,14 +24620,23 @@ func (c *rPCStarSubscriptionsClient) PaymentsFulfillStarsSubscription(ctx contex
 	return out, nil
 }
 
+func (c *rPCStarSubscriptionsClient) PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName, in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCStarSubscriptionsServer is the server API for RPCStarSubscriptions service.
 // All implementations should embed UnimplementedRPCStarSubscriptionsServer
 // for forward compatibility
 type RPCStarSubscriptionsServer interface {
 	PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error)
-	PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
 	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
 	PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
 }
 
 // UnimplementedRPCStarSubscriptionsServer should be embedded to have forward compatible implementations.
@@ -24646,14 +24646,14 @@ type UnimplementedRPCStarSubscriptionsServer struct {
 func (UnimplementedRPCStarSubscriptionsServer) PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsSubscriptions not implemented")
 }
-func (UnimplementedRPCStarSubscriptionsServer) PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsBotCancelStarsSubscription not implemented")
-}
 func (UnimplementedRPCStarSubscriptionsServer) PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsChangeStarsSubscription not implemented")
 }
 func (UnimplementedRPCStarSubscriptionsServer) PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsFulfillStarsSubscription not implemented")
+}
+func (UnimplementedRPCStarSubscriptionsServer) PaymentsBotCancelStarsSubscription(context.Context, *TLPaymentsBotCancelStarsSubscription) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsBotCancelStarsSubscription not implemented")
 }
 
 // UnsafeRPCStarSubscriptionsServer may be embedded to opt out of forward compatibility for this service.
@@ -24681,24 +24681,6 @@ func _RPCStarSubscriptions_PaymentsGetStarsSubscriptions_Handler(srv interface{}
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCStarSubscriptionsServer).PaymentsGetStarsSubscriptions(ctx, req.(*TLPaymentsGetStarsSubscriptions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsBotCancelStarsSubscription)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarSubscriptionsServer).PaymentsBotCancelStarsSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarSubscriptionsServer).PaymentsBotCancelStarsSubscription(ctx, req.(*TLPaymentsBotCancelStarsSubscription))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -24739,6 +24721,24 @@ func _RPCStarSubscriptions_PaymentsFulfillStarsSubscription_Handler(srv interfac
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsBotCancelStarsSubscription)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStarSubscriptionsServer).PaymentsBotCancelStarsSubscription(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStarSubscriptionsServer).PaymentsBotCancelStarsSubscription(ctx, req.(*TLPaymentsBotCancelStarsSubscription))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCStarSubscriptions_ServiceDesc is the grpc.ServiceDesc for RPCStarSubscriptions service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -24751,16 +24751,16 @@ var RPCStarSubscriptions_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCStarSubscriptions_PaymentsGetStarsSubscriptions_Handler,
 		},
 		{
-			MethodName: "payments_botCancelStarsSubscription",
-			Handler:    _RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_Handler,
-		},
-		{
 			MethodName: "payments_changeStarsSubscription",
 			Handler:    _RPCStarSubscriptions_PaymentsChangeStarsSubscription_Handler,
 		},
 		{
 			MethodName: "payments_fulfillStarsSubscription",
 			Handler:    _RPCStarSubscriptions_PaymentsFulfillStarsSubscription_Handler,
+		},
+		{
+			MethodName: "payments_botCancelStarsSubscription",
+			Handler:    _RPCStarSubscriptions_PaymentsBotCancelStarsSubscription_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -24778,9 +24778,6 @@ const (
 	RPCStars_PaymentsGetStarsRevenueAdsAccountUrl_FullMethodName = "/mtproto.RPCStars/payments_getStarsRevenueAdsAccountUrl"
 	RPCStars_PaymentsGetStarsTransactionsByID_FullMethodName     = "/mtproto.RPCStars/payments_getStarsTransactionsByID"
 	RPCStars_PaymentsGetStarsGiftOptions_FullMethodName          = "/mtproto.RPCStars/payments_getStarsGiftOptions"
-	RPCStars_PaymentsChangeStarsSubscription_FullMethodName      = "/mtproto.RPCStars/payments_changeStarsSubscription"
-	RPCStars_PaymentsFulfillStarsSubscription_FullMethodName     = "/mtproto.RPCStars/payments_fulfillStarsSubscription"
-	RPCStars_PaymentsGetStarsSubscriptions_FullMethodName        = "/mtproto.RPCStars/payments_getStarsSubscriptions"
 )
 
 // RPCStarsClient is the client API for RPCStars service.
@@ -24797,9 +24794,6 @@ type RPCStarsClient interface {
 	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl, opts ...grpc.CallOption) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions, opts ...grpc.CallOption) (*Vector_StarsGiftOption, error)
-	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
-	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error)
-	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error)
 }
 
 type rPCStarsClient struct {
@@ -24900,33 +24894,6 @@ func (c *rPCStarsClient) PaymentsGetStarsGiftOptions(ctx context.Context, in *TL
 	return out, nil
 }
 
-func (c *rPCStarsClient) PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsChangeStarsSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription, opts ...grpc.CallOption) (*Bool, error) {
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsFulfillStarsSubscription_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCStarsClient) PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions, opts ...grpc.CallOption) (*Payments_StarsStatus, error) {
-	out := new(Payments_StarsStatus)
-	err := c.cc.Invoke(ctx, RPCStars_PaymentsGetStarsSubscriptions_FullMethodName, in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCStarsServer is the server API for RPCStars service.
 // All implementations should embed UnimplementedRPCStarsServer
 // for forward compatibility
@@ -24941,9 +24908,6 @@ type RPCStarsServer interface {
 	PaymentsGetStarsRevenueAdsAccountUrl(context.Context, *TLPaymentsGetStarsRevenueAdsAccountUrl) (*Payments_StarsRevenueAdsAccountUrl, error)
 	PaymentsGetStarsTransactionsByID(context.Context, *TLPaymentsGetStarsTransactionsByID) (*Payments_StarsStatus, error)
 	PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error)
-	PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error)
-	PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error)
-	PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error)
 }
 
 // UnimplementedRPCStarsServer should be embedded to have forward compatible implementations.
@@ -24979,15 +24943,6 @@ func (UnimplementedRPCStarsServer) PaymentsGetStarsTransactionsByID(context.Cont
 }
 func (UnimplementedRPCStarsServer) PaymentsGetStarsGiftOptions(context.Context, *TLPaymentsGetStarsGiftOptions) (*Vector_StarsGiftOption, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsGiftOptions not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsChangeStarsSubscription(context.Context, *TLPaymentsChangeStarsSubscription) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsChangeStarsSubscription not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsFulfillStarsSubscription(context.Context, *TLPaymentsFulfillStarsSubscription) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsFulfillStarsSubscription not implemented")
-}
-func (UnimplementedRPCStarsServer) PaymentsGetStarsSubscriptions(context.Context, *TLPaymentsGetStarsSubscriptions) (*Payments_StarsStatus, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarsSubscriptions not implemented")
 }
 
 // UnsafeRPCStarsServer may be embedded to opt out of forward compatibility for this service.
@@ -25181,60 +25136,6 @@ func _RPCStars_PaymentsGetStarsGiftOptions_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCStars_PaymentsChangeStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsChangeStarsSubscription)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsChangeStarsSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsChangeStarsSubscription(ctx, req.(*TLPaymentsChangeStarsSubscription))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsFulfillStarsSubscription_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsFulfillStarsSubscription)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsFulfillStarsSubscription(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsFulfillStarsSubscription_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsFulfillStarsSubscription(ctx, req.(*TLPaymentsFulfillStarsSubscription))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCStars_PaymentsGetStarsSubscriptions_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetStarsSubscriptions)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCStarsServer).PaymentsGetStarsSubscriptions(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCStars_PaymentsGetStarsSubscriptions_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStarsServer).PaymentsGetStarsSubscriptions(ctx, req.(*TLPaymentsGetStarsSubscriptions))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCStars_ServiceDesc is the grpc.ServiceDesc for RPCStars service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -25281,18 +25182,6 @@ var RPCStars_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarsGiftOptions",
 			Handler:    _RPCStars_PaymentsGetStarsGiftOptions_Handler,
-		},
-		{
-			MethodName: "payments_changeStarsSubscription",
-			Handler:    _RPCStars_PaymentsChangeStarsSubscription_Handler,
-		},
-		{
-			MethodName: "payments_fulfillStarsSubscription",
-			Handler:    _RPCStars_PaymentsFulfillStarsSubscription_Handler,
-		},
-		{
-			MethodName: "payments_getStarsSubscriptions",
-			Handler:    _RPCStars_PaymentsGetStarsSubscriptions_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

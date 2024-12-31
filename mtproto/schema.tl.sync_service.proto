@@ -5651,9 +5651,9 @@ service RPCSponsoredMessages {
 
 service RPCStarSubscriptions {
     rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
-    rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
     rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
     rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
+    rpc payments_botCancelStarsSubscription(TL_payments_botCancelStarsSubscription) returns (Bool) {}
 }
 
 service RPCStars {
@@ -5667,9 +5667,6 @@ service RPCStars {
     rpc payments_getStarsRevenueAdsAccountUrl(TL_payments_getStarsRevenueAdsAccountUrl) returns (payments_StarsRevenueAdsAccountUrl) {}
     rpc payments_getStarsTransactionsByID(TL_payments_getStarsTransactionsByID) returns (payments_StarsStatus) {}
     rpc payments_getStarsGiftOptions(TL_payments_getStarsGiftOptions) returns (Vector_StarsGiftOption) {}
-    rpc payments_changeStarsSubscription(TL_payments_changeStarsSubscription) returns (Bool) {}
-    rpc payments_fulfillStarsSubscription(TL_payments_fulfillStarsSubscription) returns (Bool) {}
-    rpc payments_getStarsSubscriptions(TL_payments_getStarsSubscriptions) returns (payments_StarsStatus) {}
 }
 
 service RPCStatistics {
