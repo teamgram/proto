@@ -18,36 +18,10 @@ package tg
 
 import (
 	"errors"
+
 	"github.com/teamgram/proto/v2/iface/ecode"
 	"github.com/teamgram/proto/v2/mt"
-	//"google.golang.org/grpc/codes"
-	//"google.golang.org/grpc/status"
 )
-
-//func toMTProtoErrorCod(code codes.Code) codes.Code {
-//	switch code {
-//	case ErrSeeOther:
-//		return code
-//	case ErrBadRequest:
-//		return code
-//	case ErrUnauthorized:
-//		return code
-//	case ErrForbidden:
-//		return code
-//	case ErrNotFound:
-//		return code
-//	case ErrNotAcceptable:
-//		return code
-//	case ErrFlood:
-//		return code
-//	case ErrInternal:
-//		return code
-//	case ErrNotReturnClient:
-//		return code
-//	default:
-//		return ErrInternal
-//	}
-//}
 
 type (
 	TLRpcError = mt.TLRpcError
