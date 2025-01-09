@@ -2,7 +2,7 @@
  * WARNING! All changes made in this file will be lost!
  * Created from 'scheme.tl' by 'mtprotoc'
  *
- * Copyright (c) 2024-present,  Teamgram Authors.
+ * Copyright (c) 2025-present,  Teamgram Authors.
  *  All rights reserved.
  *
  * Author: Benqi (wubenqi@gmail.com)
@@ -12106,6 +12106,7 @@ message UserData {
     int32 stories_max_id = 29;
     string birthday = 30;
     int64 personal_channel_id = 31;
+    google.protobuf.Int64Value premium_expire_date = 32;
 }
 
 // TL_userData

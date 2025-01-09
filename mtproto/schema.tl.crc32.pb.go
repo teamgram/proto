@@ -2,7 +2,7 @@
 // WARNING! All changes made in this file will be lost!
 // Created from 'scheme.tl' by 'mtprotoc'
 //
-// Copyright (c) 2024-present,  Teamgram Authors.
+// Copyright (c) 2025-present,  Teamgram Authors.
 //  All rights reserved.
 //
 // Author: Benqi (wubenqi@gmail.com)
@@ -1738,7 +1738,7 @@ const (
 	TLConstructor_CRC32_privacyKeyRules                                             TLConstructor = -1810715178 // 0x9412add6
 	TLConstructor_CRC32_contactData                                                 TLConstructor = -858039014  // 0xccdb5d1a
 	TLConstructor_CRC32_botData                                                     TLConstructor = -319608864  // 0xecf327e0
-	TLConstructor_CRC32_userData                                                    TLConstructor = 1396316255  // 0x533a185f
+	TLConstructor_CRC32_userData                                                    TLConstructor = 615670548   // 0x24b26314
 	TLConstructor_CRC32_immutableUser                                               TLConstructor = 972235212   // 0x39f321cc
 	TLConstructor_CRC32_mutableUsers                                                TLConstructor = 917538818   // 0x36b08802
 	TLConstructor_CRC32_immutableChatParticipant                                    TLConstructor = -100771298  // 0xf9fe5a1e
@@ -4311,7 +4311,7 @@ var (
 		-1810715178: "CRC32_privacyKeyRules",
 		-858039014:  "CRC32_contactData",
 		-319608864:  "CRC32_botData",
-		1396316255:  "CRC32_userData",
+		615670548:   "CRC32_userData",
 		972235212:   "CRC32_immutableUser",
 		917538818:   "CRC32_mutableUsers",
 		-100771298:  "CRC32_immutableChatParticipant",
@@ -6881,7 +6881,7 @@ var (
 		"CRC32_privacyKeyRules":                                             -1810715178,
 		"CRC32_contactData":                                                 -858039014,
 		"CRC32_botData":                                                     -319608864,
-		"CRC32_userData":                                                    1396316255,
+		"CRC32_userData":                                                    615670548,
 		"CRC32_immutableUser":                                               972235212,
 		"CRC32_mutableUsers":                                                917538818,
 		"CRC32_immutableChatParticipant":                                    -100771298,
@@ -12138,8 +12138,8 @@ var file_schema_tl_crc32_proto_rawDesc = []byte{
 	0x61, 0x74, 0x61, 0x10, 0x9a, 0xba, 0xed, 0xe6, 0xfc, 0xff, 0xff, 0xff, 0xff, 0x01, 0x12, 0x1a,
 	0x0a, 0x0d, 0x43, 0x52, 0x43, 0x33, 0x32, 0x5f, 0x62, 0x6f, 0x74, 0x44, 0x61, 0x74, 0x61, 0x10,
 	0xe0, 0xcf, 0xcc, 0xe7, 0xfe, 0xff, 0xff, 0xff, 0xff, 0x01, 0x12, 0x16, 0x0a, 0x0e, 0x43, 0x52,
-	0x43, 0x33, 0x32, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x10, 0xdf, 0xb0, 0xe8,
-	0x99, 0x05, 0x12, 0x1b, 0x0a, 0x13, 0x43, 0x52, 0x43, 0x33, 0x32, 0x5f, 0x69, 0x6d, 0x6d, 0x75,
+	0x43, 0x33, 0x32, 0x5f, 0x75, 0x73, 0x65, 0x72, 0x44, 0x61, 0x74, 0x61, 0x10, 0x94, 0xc6, 0xc9,
+	0xa5, 0x02, 0x12, 0x1b, 0x0a, 0x13, 0x43, 0x52, 0x43, 0x33, 0x32, 0x5f, 0x69, 0x6d, 0x6d, 0x75,
 	0x74, 0x61, 0x62, 0x6c, 0x65, 0x55, 0x73, 0x65, 0x72, 0x10, 0xcc, 0xc3, 0xcc, 0xcf, 0x03, 0x12,
 	0x1a, 0x0a, 0x12, 0x43, 0x52, 0x43, 0x33, 0x32, 0x5f, 0x6d, 0x75, 0x74, 0x61, 0x62, 0x6c, 0x65,
 	0x55, 0x73, 0x65, 0x72, 0x73, 0x10, 0x82, 0x90, 0xc2, 0xb5, 0x03, 0x12, 0x2b, 0x0a, 0x1e, 0x43,

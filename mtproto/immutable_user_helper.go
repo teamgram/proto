@@ -19,6 +19,8 @@
 package mtproto
 
 import (
+	"time"
+
 	"google.golang.org/protobuf/types/known/wrapperspb"
 )
 
@@ -135,7 +137,15 @@ func (m *ImmutableUser) BotAttachMenu() bool {
 }
 
 func (m *ImmutableUser) Premium() bool {
-	return m.User.Premium
+	if !m.User.Premium {
+		return false
+	} else {
+		if m.User.PremiumExpireDate.GetValue() == 0 {
+			return true
+		} else {
+			return time.Now().Unix() < m.User.PremiumExpireDate.GetValue()
+		}
+	}
 }
 
 func (m *ImmutableUser) AttachMenuEnabled() bool {
