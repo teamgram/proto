@@ -306,6 +306,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 
 	if m.IsBot() {
 		user.Photo = m.ProfilePhoto()
+		user.Status = nil
 		return user
 	}
 
@@ -357,7 +358,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 }
 
 func (m *ImmutableUser) ToSelfUser() *User {
-	return MakeTLUser(&User{
+	user := MakeTLUser(&User{
 		Self:                 true,
 		Contact:              true,
 		MutualContact:        true,
@@ -401,6 +402,12 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		BackgroundEmojiId:    m.Color().GetBackgroundEmojiId(),
 		ProfileColor:         m.ProfileColor(),
 	}).To_User()
+
+	if m.IsBot() {
+		user.Status = nil
+	}
+
+	return user
 }
 
 func (m *ImmutableUser) ToDeletedUser() *User {
@@ -506,6 +513,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 
 	if m.IsBot() {
 		user.Photo = m.ProfilePhoto()
+		user.Status = nil
 		return user
 	}
 
