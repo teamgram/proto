@@ -2495,6 +2495,7 @@ message DialogFilter {
     repeated InputPeer exclude_peers = 18;
     bool has_my_invites = 19;
     string title_STRING = 20;
+    string title = 100;
 }
 
 // TL_dialogFilter
