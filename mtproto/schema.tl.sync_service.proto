@@ -1411,15 +1411,17 @@ message TL_messages_migrateChat {
 message TL_messages_searchGlobal {
     TLConstructor  constructor = 1;
     bool broadcasts_only = 3;
-    google.protobuf.Int32Value folder_id = 4;
-    string q = 5;
-    MessagesFilter filter = 6;
-    int32 min_date = 7;
-    int32 max_date = 8;
-    int32 offset_rate = 9;
-    InputPeer offset_peer = 10;
-    int32 offset_id = 11;
-    int32 limit = 12;
+    bool groups_only = 4;
+    bool users_only = 5;
+    google.protobuf.Int32Value folder_id = 6;
+    string q = 7;
+    MessagesFilter filter = 8;
+    int32 min_date = 9;
+    int32 max_date = 10;
+    int32 offset_rate = 11;
+    InputPeer offset_peer = 12;
+    int32 offset_id = 13;
+    int32 limit = 14;
 }
 
 message TL_messages_reorderStickerSets {
@@ -2662,6 +2664,13 @@ message TL_messages_searchStickers {
     int64 hash = 9;
 }
 
+message TL_messages_reportMessagesDelivery {
+    TLConstructor  constructor = 1;
+    bool push = 3;
+    InputPeer peer = 4;
+    repeated int32 id = 5;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3481,6 +3490,19 @@ message TL_bots_updateStarRefProgram {
     google.protobuf.Int32Value duration_months = 5;
 }
 
+message TL_bots_setCustomVerification {
+    TLConstructor  constructor = 1;
+    bool enabled = 3;
+    InputUser bot = 4;
+    InputPeer peer = 5;
+    google.protobuf.StringValue custom_description = 6;
+}
+
+message TL_bots_getBotRecommendations {
+    TLConstructor  constructor = 1;
+    InputUser bot = 3;
+}
+
 message TL_payments_getPaymentForm {
     TLConstructor  constructor = 1;
     InputInvoice invoice = 3;
@@ -3685,14 +3707,14 @@ message TL_payments_getUserStarGifts {
 message TL_payments_saveStarGift {
     TLConstructor  constructor = 1;
     bool unsave = 3;
-    InputUser user_id = 4;
-    int32 msg_id = 5;
+    int32 msg_id = 4;
+    InputUser user_id = 5;
 }
 
 message TL_payments_convertStarGift {
     TLConstructor  constructor = 1;
-    InputUser user_id = 3;
-    int32 msg_id = 4;
+    int32 msg_id = 3;
+    InputUser user_id = 4;
 }
 
 message TL_payments_botCancelStarsSubscription {
@@ -3738,6 +3760,28 @@ message TL_payments_editConnectedStarRefBot {
     bool revoked = 3;
     InputPeer peer = 4;
     string link = 5;
+}
+
+message TL_payments_getStarGiftUpgradePreview {
+    TLConstructor  constructor = 1;
+    int64 gift_id = 3;
+}
+
+message TL_payments_upgradeStarGift {
+    TLConstructor  constructor = 1;
+    bool keep_original_details = 3;
+    int32 msg_id = 4;
+}
+
+message TL_payments_transferStarGift {
+    TLConstructor  constructor = 1;
+    int32 msg_id = 3;
+    InputUser to_id = 4;
+}
+
+message TL_payments_getUserStarGift {
+    TLConstructor  constructor = 1;
+    repeated int32 msg_id = 3;
 }
 
 message TL_stickers_createStickerSet {
@@ -3822,9 +3866,10 @@ message TL_phone_requestCall {
     TLConstructor  constructor = 1;
     bool video = 3;
     InputUser user_id = 4;
-    int32 random_id = 5;
-    bytes g_a_hash = 6;
-    PhoneCallProtocol protocol = 7;
+    InputGroupCall conference_call = 5;
+    int32 random_id = 6;
+    bytes g_a_hash = 7;
+    PhoneCallProtocol protocol = 8;
 }
 
 message TL_phone_acceptCall {
@@ -3892,7 +3937,8 @@ message TL_phone_joinGroupCall {
     InputGroupCall call = 5;
     InputPeer join_as = 6;
     google.protobuf.StringValue invite_hash = 7;
-    DataJSON params = 8;
+    google.protobuf.Int64Value key_fingerprint = 8;
+    DataJSON params = 9;
 }
 
 message TL_phone_leaveGroupCall {
@@ -4021,6 +4067,12 @@ message TL_phone_saveCallLog {
     TLConstructor  constructor = 1;
     InputPhoneCall peer = 3;
     InputFile file = 4;
+}
+
+message TL_phone_createConferenceCall {
+    TLConstructor  constructor = 1;
+    InputPhoneCall peer = 3;
+    int64 key_fingerprint = 4;
 }
 
 message TL_langpack_getLangPack {
@@ -4967,6 +5019,8 @@ service RPCBots {
     rpc bots_setBotInfo(TL_bots_setBotInfo) returns (Bool) {}
     rpc bots_getBotInfoDCD914FD(TL_bots_getBotInfoDCD914FD) returns (bots_BotInfo) {}
     rpc bots_getAdminedBots(TL_bots_getAdminedBots) returns (Vector_User) {}
+    rpc bots_setCustomVerification(TL_bots_setCustomVerification) returns (Bool) {}
+    rpc bots_getBotRecommendations(TL_bots_getBotRecommendations) returns (users_Users) {}
     rpc bots_getBotInfo75EC12E6(TL_bots_getBotInfo75EC12E6) returns (Vector_String) {}
 }
 
@@ -5298,6 +5352,10 @@ service RPCGifts {
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_saveStarGift(TL_payments_saveStarGift) returns (Bool) {}
     rpc payments_convertStarGift(TL_payments_convertStarGift) returns (Bool) {}
+    rpc payments_getStarGiftUpgradePreview(TL_payments_getStarGiftUpgradePreview) returns (payments_StarGiftUpgradePreview) {}
+    rpc payments_upgradeStarGift(TL_payments_upgradeStarGift) returns (Updates) {}
+    rpc payments_transferStarGift(TL_payments_transferStarGift) returns (Updates) {}
+    rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }
 
 service RPCGiveaways {
@@ -5414,6 +5472,7 @@ service RPCMessages {
     rpc messages_saveDefaultSendAs(TL_messages_saveDefaultSendAs) returns (Bool) {}
     rpc messages_searchSentMedia(TL_messages_searchSentMedia) returns (messages_Messages) {}
     rpc messages_getOutboxReadDate(TL_messages_getOutboxReadDate) returns (OutboxReadDate) {}
+    rpc messages_reportMessagesDelivery(TL_messages_reportMessagesDelivery) returns (Bool) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
     rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
 }
@@ -5851,6 +5910,7 @@ service RPCVoipCalls {
     rpc phone_saveCallDebug(TL_phone_saveCallDebug) returns (Bool) {}
     rpc phone_sendSignalingData(TL_phone_sendSignalingData) returns (Bool) {}
     rpc phone_saveCallLog(TL_phone_saveCallLog) returns (Bool) {}
+    rpc phone_createConferenceCall(TL_phone_createConferenceCall) returns (phone_PhoneCall) {}
 }
 
 service RPCWallpapers {
