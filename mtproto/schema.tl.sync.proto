@@ -626,6 +626,9 @@ message BotData {
     bool bot_attach_menu = 13;
     bool attach_menu_enabled = 14;
     bool bot_can_edit = 15;
+    bool bot_business = 16;
+    bool bot_has_main_app = 17;
+    google.protobuf.Int32Value bot_active_users = 18;
 }
 
 // TL_botData
