@@ -44,21 +44,24 @@ inputPrivacyKeyPhoneNumber#352dafa = InputPrivacyKey;
 inputPrivacyKeyAddedByPhone#d1219bdd = InputPrivacyKey;
 inputPrivacyKeyVoiceMessages#aee69d68 = InputPrivacyKey;
 inputPrivacyKeyAbout#3823cc40 = InputPrivacyKey;
+inputPrivacyKeyBirthday#d65a11cc = InputPrivacyKey;
+inputPrivacyKeyStarGiftsAutoSave#e1732341 = InputPrivacyKey;
 ```
 */
 const (
-	KEY_TYPE_INVALID = 0
-	STATUS_TIMESTAMP = 1 //
-	CHAT_INVITE      = 2
-	PHONE_CALL       = 3
-	PHONE_P2P        = 4
-	FORWARDS         = 5
-	PROFILE_PHOTO    = 6
-	PHONE_NUMBER     = 7
-	ADDED_BY_PHONE   = 8
-	VOICE_MESSAGES   = 9
-	ABOUT            = 10
-	BIRTHDAY         = 11
+	KEY_TYPE_INVALID     = 0
+	STATUS_TIMESTAMP     = 1 //
+	CHAT_INVITE          = 2
+	PHONE_CALL           = 3
+	PHONE_P2P            = 4
+	FORWARDS             = 5
+	PROFILE_PHOTO        = 6
+	PHONE_NUMBER         = 7
+	ADDED_BY_PHONE       = 8
+	VOICE_MESSAGES       = 9
+	ABOUT                = 10
+	BIRTHDAY             = 11
+	STAR_GIFTS_AUTO_SAVE = 12
 )
 
 func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
@@ -85,6 +88,8 @@ func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
 		return ABOUT
 	case Predicate_inputPrivacyKeyBirthday:
 		return BIRTHDAY
+	case Predicate_inputPrivacyKeyStarGiftsAutoSave:
+		return STAR_GIFTS_AUTO_SAVE
 	}
 	return KEY_TYPE_INVALID
 }
@@ -113,6 +118,8 @@ func ToPrivacyKey(keyType int) (key *PrivacyKey) {
 		key = MakeTLPrivacyKeyAbout(nil).To_PrivacyKey()
 	case BIRTHDAY:
 		key = MakeTLPrivacyKeyBirthday(nil).To_PrivacyKey()
+	case STAR_GIFTS_AUTO_SAVE:
+		key = MakeTLPrivacyKeyStarGiftsAutoSave(nil).To_PrivacyKey()
 	default:
 		panic("type is invalid")
 	}
