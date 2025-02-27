@@ -397,7 +397,7 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		BotCanEdit:            m.BotCanEdit(),
 		CloseFriend:           false,
 		StoriesHidden:         false,
-		StoriesUnavailable:    false,
+		StoriesUnavailable:    m.StoriesUnavailable(),
 		ContactRequirePremium: false,
 		BotBusiness:           m.BotBusiness(),
 		BotHasMainApp:         m.BotHasMainApp(),
