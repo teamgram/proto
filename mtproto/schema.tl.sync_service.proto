@@ -89,6 +89,12 @@ message TL_invokeWithApnsSecret {
     bytes query = 5;
 }
 
+message TL_invokeWithReCaptcha {
+    TLConstructor  constructor = 1;
+    string token = 3;
+    bytes query = 4;
+}
+
 message TL_auth_sendCode {
     TLConstructor  constructor = 1;
     string phone_number = 3;
@@ -2605,15 +2611,17 @@ message TL_messages_sendPaidReaction {
     int32 msg_id = 4;
     int32 count = 5;
     int64 random_id = 6;
-    Bool private_FLAGBOOL = 7;
-    bool private_FLAGBOOLEAN = 8;
+    PaidReactionPrivacy private_FLAGPAIDREACTIONPRIVACY = 7;
+    Bool private_FLAGBOOL = 8;
+    bool private_FLAGBOOLEAN = 9;
 }
 
 message TL_messages_togglePaidReactionPrivacy {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     int32 msg_id = 4;
-    Bool private = 5;
+    PaidReactionPrivacy private_PAIDREACTIONPRIVACY = 5;
+    Bool private_BOOL = 6;
 }
 
 message TL_messages_getPaidReactionPrivacy {
@@ -3151,7 +3159,8 @@ message TL_channels_convertToGigagroup {
 
 message TL_channels_getSendAs {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
+    bool for_paid_reactions = 3;
+    InputPeer peer = 4;
 }
 
 message TL_channels_deleteParticipantHistory {

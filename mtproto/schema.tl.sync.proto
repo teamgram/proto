@@ -7903,6 +7903,33 @@ message TL_pageTableRow {
 }
 
 
+// PaidReactionPrivacy <--
+//  + TL_paidReactionPrivacyDefault
+//  + TL_paidReactionPrivacyAnonymous
+//  + TL_paidReactionPrivacyPeer
+//
+message PaidReactionPrivacy {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    InputPeer peer = 3;
+}
+
+// TL_paidReactionPrivacyDefault
+message TL_paidReactionPrivacyDefault {
+    PaidReactionPrivacy data2 = 1;
+}
+
+// TL_paidReactionPrivacyAnonymous
+message TL_paidReactionPrivacyAnonymous {
+    PaidReactionPrivacy data2 = 1;
+}
+
+// TL_paidReactionPrivacyPeer
+message TL_paidReactionPrivacyPeer {
+    PaidReactionPrivacy data2 = 1;
+}
+
+
 // PasswordKdfAlgo <--
 //  + TL_passwordKdfAlgoUnknown
 //  + TL_passwordKdfAlgoModPow
@@ -10116,6 +10143,7 @@ message TL_sponsoredWebPage {
 //  + TL_starGiftUnique
 //  + TL_starGiftUnique
 //  + TL_starGiftUnique
+//  + TL_starGiftUnique
 //  + TL_starGift
 //  + TL_starGift
 //
@@ -10143,8 +10171,9 @@ message StarGift {
     repeated StarGiftAttribute attributes = 21;
     int32 availability_issued = 22;
     int32 availability_total_INT32 = 23;
-    google.protobuf.Int64Value owner_id_FLAGINT64 = 24;
-    int64 owner_id_INT64 = 25;
+    google.protobuf.StringValue gift_address = 24;
+    google.protobuf.Int64Value owner_id_FLAGINT64 = 25;
+    int64 owner_id_INT64 = 26;
 }
 
 // TL_starGift
@@ -11224,6 +11253,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateStarsRevenueStatus
 //  + TL_updateBotPurchasedPaidMedia
 //  + TL_updatePaidReactionPrivacy
+//  + TL_updatePaidReactionPrivacy
 //  + TL_updateGroupCall
 //  + TL_updateStarsBalance
 //  + TL_updateBotSubscriptionExpire
@@ -11404,17 +11434,18 @@ message Update {
     StarsAmount balance_STARSAMOUNT = 156;
     StarsRevenueStatus status_STARSREVENUESTATUS = 157;
     string payload_STRING = 158;
-    Bool private = 159;
-    int64 balance_INT64 = 160;
-    string invoice_slug = 161;
-    int32 until_date = 162;
-    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 163;
-    Bool blocked_BOOL = 164;
-    UserProfilePhoto photo = 165;
-    Bool previous = 166;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 167;
-    string username = 168;
-    BizDataRaw biz_data = 169;
+    PaidReactionPrivacy private_PAIDREACTIONPRIVACY = 159;
+    Bool private_BOOL = 160;
+    int64 balance_INT64 = 161;
+    string invoice_slug = 162;
+    int32 until_date = 163;
+    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 164;
+    Bool blocked_BOOL = 165;
+    UserProfilePhoto photo = 166;
+    Bool previous = 167;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 168;
+    string username = 169;
+    BizDataRaw biz_data = 170;
 }
 
 // TL_updateNewMessage
