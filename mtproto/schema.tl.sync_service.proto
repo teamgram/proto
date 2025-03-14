@@ -864,6 +864,11 @@ message TL_account_setReactionsNotifySettings {
     ReactionsNotifySettings settings = 3;
 }
 
+message TL_account_getCollectibleEmojiStatuses {
+    TLConstructor  constructor = 1;
+    int64 hash = 3;
+}
+
 message TL_users_getUsers {
     TLConstructor  constructor = 1;
     repeated InputUser id = 3;
@@ -1186,6 +1191,7 @@ message TL_messages_forwardMessages {
     google.protobuf.Int32Value schedule_date = 15;
     InputPeer send_as = 16;
     InputQuickReplyShortcut quick_reply_shortcut = 17;
+    google.protobuf.Int32Value video_timestamp = 18;
 }
 
 message TL_messages_reportSpam {
@@ -3697,24 +3703,19 @@ message TL_payments_getStarGifts {
     int32 hash = 3;
 }
 
-message TL_payments_getUserStarGifts {
-    TLConstructor  constructor = 1;
-    InputUser user_id = 3;
-    string offset = 4;
-    int32 limit = 5;
-}
-
 message TL_payments_saveStarGift {
     TLConstructor  constructor = 1;
     bool unsave = 3;
-    int32 msg_id = 4;
-    InputUser user_id = 5;
+    InputSavedStarGift stargift = 4;
+    int32 msg_id = 5;
+    InputUser user_id = 6;
 }
 
 message TL_payments_convertStarGift {
     TLConstructor  constructor = 1;
-    int32 msg_id = 3;
-    InputUser user_id = 4;
+    InputSavedStarGift stargift = 3;
+    int32 msg_id = 4;
+    InputUser user_id = 5;
 }
 
 message TL_payments_botCancelStarsSubscription {
@@ -3770,23 +3771,51 @@ message TL_payments_getStarGiftUpgradePreview {
 message TL_payments_upgradeStarGift {
     TLConstructor  constructor = 1;
     bool keep_original_details = 3;
-    int32 msg_id = 4;
+    InputSavedStarGift stargift = 4;
+    int32 msg_id = 5;
 }
 
 message TL_payments_transferStarGift {
     TLConstructor  constructor = 1;
-    int32 msg_id = 3;
-    InputUser to_id = 4;
-}
-
-message TL_payments_getUserStarGift {
-    TLConstructor  constructor = 1;
-    repeated int32 msg_id = 3;
+    InputSavedStarGift stargift = 3;
+    InputPeer to_id_INPUTPEER = 4;
+    int32 msg_id = 5;
+    InputUser to_id_INPUTUSER = 6;
 }
 
 message TL_payments_getUniqueStarGift {
     TLConstructor  constructor = 1;
     string slug = 3;
+}
+
+message TL_payments_getSavedStarGifts {
+    TLConstructor  constructor = 1;
+    bool exclude_unsaved = 3;
+    bool exclude_saved = 4;
+    bool exclude_unlimited = 5;
+    bool exclude_limited = 6;
+    bool exclude_unique = 7;
+    bool sort_by_value = 8;
+    InputPeer peer = 9;
+    string offset = 10;
+    int32 limit = 11;
+}
+
+message TL_payments_getSavedStarGift {
+    TLConstructor  constructor = 1;
+    repeated InputSavedStarGift stargift = 3;
+}
+
+message TL_payments_getStarGiftWithdrawalUrl {
+    TLConstructor  constructor = 1;
+    InputSavedStarGift stargift = 3;
+    InputCheckPasswordSRP password = 4;
+}
+
+message TL_payments_toggleChatStarGiftNotifications {
+    TLConstructor  constructor = 1;
+    bool enabled = 3;
+    InputPeer peer = 4;
 }
 
 message TL_stickers_createStickerSet {
@@ -4507,6 +4536,18 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
+}
+
+message TL_payments_getUserStarGifts {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
+    string offset = 4;
+    int32 limit = 5;
+}
+
+message TL_payments_getUserStarGift {
+    TLConstructor  constructor = 1;
+    repeated int32 msg_id = 3;
 }
 
 message TL_messages_getWebPagePreview8B68B0CC {
@@ -5264,6 +5305,7 @@ service RPCEmojiStatus {
     rpc account_clearRecentEmojiStatuses(TL_account_clearRecentEmojiStatuses) returns (Bool) {}
     rpc account_getChannelDefaultEmojiStatuses(TL_account_getChannelDefaultEmojiStatuses) returns (account_EmojiStatuses) {}
     rpc account_getChannelRestrictedStatusEmojis(TL_account_getChannelRestrictedStatusEmojis) returns (EmojiList) {}
+    rpc account_getCollectibleEmojiStatuses(TL_account_getCollectibleEmojiStatuses) returns (account_EmojiStatuses) {}
     rpc channels_updateEmojiStatus(TL_channels_updateEmojiStatus) returns (Updates) {}
     rpc bots_updateUserEmojiStatus(TL_bots_updateUserEmojiStatus) returns (Bool) {}
     rpc bots_toggleUserEmojiStatusPermission(TL_bots_toggleUserEmojiStatusPermission) returns (Bool) {}
@@ -5360,14 +5402,18 @@ service RPCGiftCodes {
 
 service RPCGifts {
     rpc payments_getStarGifts(TL_payments_getStarGifts) returns (payments_StarGifts) {}
-    rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_saveStarGift(TL_payments_saveStarGift) returns (Bool) {}
     rpc payments_convertStarGift(TL_payments_convertStarGift) returns (Bool) {}
     rpc payments_getStarGiftUpgradePreview(TL_payments_getStarGiftUpgradePreview) returns (payments_StarGiftUpgradePreview) {}
     rpc payments_upgradeStarGift(TL_payments_upgradeStarGift) returns (Updates) {}
     rpc payments_transferStarGift(TL_payments_transferStarGift) returns (Updates) {}
-    rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
     rpc payments_getUniqueStarGift(TL_payments_getUniqueStarGift) returns (payments_UniqueStarGift) {}
+    rpc payments_getSavedStarGifts(TL_payments_getSavedStarGifts) returns (payments_SavedStarGifts) {}
+    rpc payments_getSavedStarGift(TL_payments_getSavedStarGift) returns (payments_SavedStarGifts) {}
+    rpc payments_getStarGiftWithdrawalUrl(TL_payments_getStarGiftWithdrawalUrl) returns (payments_StarGiftWithdrawalUrl) {}
+    rpc payments_toggleChatStarGiftNotifications(TL_payments_toggleChatStarGiftNotifications) returns (Bool) {}
+    rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
+    rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }
 
 service RPCGiveaways {

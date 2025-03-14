@@ -11214,6 +11214,7 @@ const (
 	RPCEmojiStatus_AccountClearRecentEmojiStatuses_FullMethodName         = "/mtproto.RPCEmojiStatus/account_clearRecentEmojiStatuses"
 	RPCEmojiStatus_AccountGetChannelDefaultEmojiStatuses_FullMethodName   = "/mtproto.RPCEmojiStatus/account_getChannelDefaultEmojiStatuses"
 	RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_FullMethodName = "/mtproto.RPCEmojiStatus/account_getChannelRestrictedStatusEmojis"
+	RPCEmojiStatus_AccountGetCollectibleEmojiStatuses_FullMethodName      = "/mtproto.RPCEmojiStatus/account_getCollectibleEmojiStatuses"
 	RPCEmojiStatus_ChannelsUpdateEmojiStatus_FullMethodName               = "/mtproto.RPCEmojiStatus/channels_updateEmojiStatus"
 	RPCEmojiStatus_BotsUpdateUserEmojiStatus_FullMethodName               = "/mtproto.RPCEmojiStatus/bots_updateUserEmojiStatus"
 	RPCEmojiStatus_BotsToggleUserEmojiStatusPermission_FullMethodName     = "/mtproto.RPCEmojiStatus/bots_toggleUserEmojiStatusPermission"
@@ -11229,6 +11230,7 @@ type RPCEmojiStatusClient interface {
 	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses, opts ...grpc.CallOption) (*Bool, error)
 	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error)
 	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis, opts ...grpc.CallOption) (*EmojiList, error)
+	AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error)
 	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus, opts ...grpc.CallOption) (*Updates, error)
 	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus, opts ...grpc.CallOption) (*Bool, error)
 	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission, opts ...grpc.CallOption) (*Bool, error)
@@ -11302,6 +11304,16 @@ func (c *rPCEmojiStatusClient) AccountGetChannelRestrictedStatusEmojis(ctx conte
 	return out, nil
 }
 
+func (c *rPCEmojiStatusClient) AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses, opts ...grpc.CallOption) (*Account_EmojiStatuses, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Account_EmojiStatuses)
+	err := c.cc.Invoke(ctx, RPCEmojiStatus_AccountGetCollectibleEmojiStatuses_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCEmojiStatusClient) ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus, opts ...grpc.CallOption) (*Updates, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Updates)
@@ -11342,6 +11354,7 @@ type RPCEmojiStatusServer interface {
 	AccountClearRecentEmojiStatuses(context.Context, *TLAccountClearRecentEmojiStatuses) (*Bool, error)
 	AccountGetChannelDefaultEmojiStatuses(context.Context, *TLAccountGetChannelDefaultEmojiStatuses) (*Account_EmojiStatuses, error)
 	AccountGetChannelRestrictedStatusEmojis(context.Context, *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
+	AccountGetCollectibleEmojiStatuses(context.Context, *TLAccountGetCollectibleEmojiStatuses) (*Account_EmojiStatuses, error)
 	ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error)
 	BotsUpdateUserEmojiStatus(context.Context, *TLBotsUpdateUserEmojiStatus) (*Bool, error)
 	BotsToggleUserEmojiStatusPermission(context.Context, *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
@@ -11371,6 +11384,9 @@ func (UnimplementedRPCEmojiStatusServer) AccountGetChannelDefaultEmojiStatuses(c
 }
 func (UnimplementedRPCEmojiStatusServer) AccountGetChannelRestrictedStatusEmojis(context.Context, *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountGetChannelRestrictedStatusEmojis not implemented")
+}
+func (UnimplementedRPCEmojiStatusServer) AccountGetCollectibleEmojiStatuses(context.Context, *TLAccountGetCollectibleEmojiStatuses) (*Account_EmojiStatuses, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetCollectibleEmojiStatuses not implemented")
 }
 func (UnimplementedRPCEmojiStatusServer) ChannelsUpdateEmojiStatus(context.Context, *TLChannelsUpdateEmojiStatus) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsUpdateEmojiStatus not implemented")
@@ -11509,6 +11525,24 @@ func _RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_Handler(srv interfa
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCEmojiStatus_AccountGetCollectibleEmojiStatuses_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetCollectibleEmojiStatuses)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCEmojiStatusServer).AccountGetCollectibleEmojiStatuses(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCEmojiStatus_AccountGetCollectibleEmojiStatuses_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCEmojiStatusServer).AccountGetCollectibleEmojiStatuses(ctx, req.(*TLAccountGetCollectibleEmojiStatuses))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCEmojiStatus_ChannelsUpdateEmojiStatus_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsUpdateEmojiStatus)
 	if err := dec(in); err != nil {
@@ -11593,6 +11627,10 @@ var RPCEmojiStatus_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "account_getChannelRestrictedStatusEmojis",
 			Handler:    _RPCEmojiStatus_AccountGetChannelRestrictedStatusEmojis_Handler,
+		},
+		{
+			MethodName: "account_getCollectibleEmojiStatuses",
+			Handler:    _RPCEmojiStatus_AccountGetCollectibleEmojiStatuses_Handler,
 		},
 		{
 			MethodName: "channels_updateEmojiStatus",
@@ -14474,15 +14512,19 @@ var RPCGiftCodes_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCGifts_PaymentsGetStarGifts_FullMethodName              = "/mtproto.RPCGifts/payments_getStarGifts"
-	RPCGifts_PaymentsGetUserStarGifts_FullMethodName          = "/mtproto.RPCGifts/payments_getUserStarGifts"
-	RPCGifts_PaymentsSaveStarGift_FullMethodName              = "/mtproto.RPCGifts/payments_saveStarGift"
-	RPCGifts_PaymentsConvertStarGift_FullMethodName           = "/mtproto.RPCGifts/payments_convertStarGift"
-	RPCGifts_PaymentsGetStarGiftUpgradePreview_FullMethodName = "/mtproto.RPCGifts/payments_getStarGiftUpgradePreview"
-	RPCGifts_PaymentsUpgradeStarGift_FullMethodName           = "/mtproto.RPCGifts/payments_upgradeStarGift"
-	RPCGifts_PaymentsTransferStarGift_FullMethodName          = "/mtproto.RPCGifts/payments_transferStarGift"
-	RPCGifts_PaymentsGetUserStarGift_FullMethodName           = "/mtproto.RPCGifts/payments_getUserStarGift"
-	RPCGifts_PaymentsGetUniqueStarGift_FullMethodName         = "/mtproto.RPCGifts/payments_getUniqueStarGift"
+	RPCGifts_PaymentsGetStarGifts_FullMethodName                    = "/mtproto.RPCGifts/payments_getStarGifts"
+	RPCGifts_PaymentsSaveStarGift_FullMethodName                    = "/mtproto.RPCGifts/payments_saveStarGift"
+	RPCGifts_PaymentsConvertStarGift_FullMethodName                 = "/mtproto.RPCGifts/payments_convertStarGift"
+	RPCGifts_PaymentsGetStarGiftUpgradePreview_FullMethodName       = "/mtproto.RPCGifts/payments_getStarGiftUpgradePreview"
+	RPCGifts_PaymentsUpgradeStarGift_FullMethodName                 = "/mtproto.RPCGifts/payments_upgradeStarGift"
+	RPCGifts_PaymentsTransferStarGift_FullMethodName                = "/mtproto.RPCGifts/payments_transferStarGift"
+	RPCGifts_PaymentsGetUniqueStarGift_FullMethodName               = "/mtproto.RPCGifts/payments_getUniqueStarGift"
+	RPCGifts_PaymentsGetSavedStarGifts_FullMethodName               = "/mtproto.RPCGifts/payments_getSavedStarGifts"
+	RPCGifts_PaymentsGetSavedStarGift_FullMethodName                = "/mtproto.RPCGifts/payments_getSavedStarGift"
+	RPCGifts_PaymentsGetStarGiftWithdrawalUrl_FullMethodName        = "/mtproto.RPCGifts/payments_getStarGiftWithdrawalUrl"
+	RPCGifts_PaymentsToggleChatStarGiftNotifications_FullMethodName = "/mtproto.RPCGifts/payments_toggleChatStarGiftNotifications"
+	RPCGifts_PaymentsGetUserStarGifts_FullMethodName                = "/mtproto.RPCGifts/payments_getUserStarGifts"
+	RPCGifts_PaymentsGetUserStarGift_FullMethodName                 = "/mtproto.RPCGifts/payments_getUserStarGift"
 )
 
 // RPCGiftsClient is the client API for RPCGifts service.
@@ -14490,14 +14532,18 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCGiftsClient interface {
 	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts, opts ...grpc.CallOption) (*Payments_StarGifts, error)
-	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsGetStarGiftUpgradePreview(ctx context.Context, in *TLPaymentsGetStarGiftUpgradePreview, opts ...grpc.CallOption) (*Payments_StarGiftUpgradePreview, error)
 	PaymentsUpgradeStarGift(ctx context.Context, in *TLPaymentsUpgradeStarGift, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsTransferStarGift(ctx context.Context, in *TLPaymentsTransferStarGift, opts ...grpc.CallOption) (*Updates, error)
-	PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 	PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift, opts ...grpc.CallOption) (*Payments_UniqueStarGift, error)
+	PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts, opts ...grpc.CallOption) (*Payments_SavedStarGifts, error)
+	PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift, opts ...grpc.CallOption) (*Payments_SavedStarGifts, error)
+	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarGiftWithdrawalUrl, error)
+	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
+	PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 }
 
 type rPCGiftsClient struct {
@@ -14512,16 +14558,6 @@ func (c *rPCGiftsClient) PaymentsGetStarGifts(ctx context.Context, in *TLPayment
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Payments_StarGifts)
 	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetStarGifts_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *rPCGiftsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Payments_UserStarGifts)
-	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetUserStarGifts_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -14578,20 +14614,70 @@ func (c *rPCGiftsClient) PaymentsTransferStarGift(ctx context.Context, in *TLPay
 	return out, nil
 }
 
-func (c *rPCGiftsClient) PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
+func (c *rPCGiftsClient) PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift, opts ...grpc.CallOption) (*Payments_UniqueStarGift, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Payments_UserStarGifts)
-	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetUserStarGift_FullMethodName, in, out, cOpts...)
+	out := new(Payments_UniqueStarGift)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetUniqueStarGift_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCGiftsClient) PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift, opts ...grpc.CallOption) (*Payments_UniqueStarGift, error) {
+func (c *rPCGiftsClient) PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts, opts ...grpc.CallOption) (*Payments_SavedStarGifts, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Payments_UniqueStarGift)
-	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetUniqueStarGift_FullMethodName, in, out, cOpts...)
+	out := new(Payments_SavedStarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetSavedStarGifts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift, opts ...grpc.CallOption) (*Payments_SavedStarGifts, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_SavedStarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetSavedStarGift_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarGiftWithdrawalUrl, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_StarGiftWithdrawalUrl)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetStarGiftWithdrawalUrl_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsToggleChatStarGiftNotifications_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_UserStarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetUserStarGifts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_UserStarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetUserStarGift_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -14603,14 +14689,18 @@ func (c *rPCGiftsClient) PaymentsGetUniqueStarGift(ctx context.Context, in *TLPa
 // for forward compatibility.
 type RPCGiftsServer interface {
 	PaymentsGetStarGifts(context.Context, *TLPaymentsGetStarGifts) (*Payments_StarGifts, error)
-	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
 	PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error)
 	PaymentsConvertStarGift(context.Context, *TLPaymentsConvertStarGift) (*Bool, error)
 	PaymentsGetStarGiftUpgradePreview(context.Context, *TLPaymentsGetStarGiftUpgradePreview) (*Payments_StarGiftUpgradePreview, error)
 	PaymentsUpgradeStarGift(context.Context, *TLPaymentsUpgradeStarGift) (*Updates, error)
 	PaymentsTransferStarGift(context.Context, *TLPaymentsTransferStarGift) (*Updates, error)
-	PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error)
 	PaymentsGetUniqueStarGift(context.Context, *TLPaymentsGetUniqueStarGift) (*Payments_UniqueStarGift, error)
+	PaymentsGetSavedStarGifts(context.Context, *TLPaymentsGetSavedStarGifts) (*Payments_SavedStarGifts, error)
+	PaymentsGetSavedStarGift(context.Context, *TLPaymentsGetSavedStarGift) (*Payments_SavedStarGifts, error)
+	PaymentsGetStarGiftWithdrawalUrl(context.Context, *TLPaymentsGetStarGiftWithdrawalUrl) (*Payments_StarGiftWithdrawalUrl, error)
+	PaymentsToggleChatStarGiftNotifications(context.Context, *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
+	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
+	PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error)
 }
 
 // UnimplementedRPCGiftsServer should be embedded to have
@@ -14622,9 +14712,6 @@ type UnimplementedRPCGiftsServer struct{}
 
 func (UnimplementedRPCGiftsServer) PaymentsGetStarGifts(context.Context, *TLPaymentsGetStarGifts) (*Payments_StarGifts, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarGifts not implemented")
-}
-func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
 }
 func (UnimplementedRPCGiftsServer) PaymentsSaveStarGift(context.Context, *TLPaymentsSaveStarGift) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsSaveStarGift not implemented")
@@ -14641,11 +14728,26 @@ func (UnimplementedRPCGiftsServer) PaymentsUpgradeStarGift(context.Context, *TLP
 func (UnimplementedRPCGiftsServer) PaymentsTransferStarGift(context.Context, *TLPaymentsTransferStarGift) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsTransferStarGift not implemented")
 }
-func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGift not implemented")
-}
 func (UnimplementedRPCGiftsServer) PaymentsGetUniqueStarGift(context.Context, *TLPaymentsGetUniqueStarGift) (*Payments_UniqueStarGift, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUniqueStarGift not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetSavedStarGifts(context.Context, *TLPaymentsGetSavedStarGifts) (*Payments_SavedStarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetSavedStarGifts not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetSavedStarGift(context.Context, *TLPaymentsGetSavedStarGift) (*Payments_SavedStarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetSavedStarGift not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetStarGiftWithdrawalUrl(context.Context, *TLPaymentsGetStarGiftWithdrawalUrl) (*Payments_StarGiftWithdrawalUrl, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarGiftWithdrawalUrl not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsToggleChatStarGiftNotifications(context.Context, *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsToggleChatStarGiftNotifications not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGift not implemented")
 }
 func (UnimplementedRPCGiftsServer) testEmbeddedByValue() {}
 
@@ -14681,24 +14783,6 @@ func _RPCGifts_PaymentsGetStarGifts_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCGiftsServer).PaymentsGetStarGifts(ctx, req.(*TLPaymentsGetStarGifts))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _RPCGifts_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetUserStarGifts)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCGiftsServer).PaymentsGetUserStarGifts(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCGifts_PaymentsGetUserStarGifts_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCGiftsServer).PaymentsGetUserStarGifts(ctx, req.(*TLPaymentsGetUserStarGifts))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -14793,24 +14877,6 @@ func _RPCGifts_PaymentsTransferStarGift_Handler(srv interface{}, ctx context.Con
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCGifts_PaymentsGetUserStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPaymentsGetUserStarGift)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCGiftsServer).PaymentsGetUserStarGift(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCGifts_PaymentsGetUserStarGift_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCGiftsServer).PaymentsGetUserStarGift(ctx, req.(*TLPaymentsGetUserStarGift))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCGifts_PaymentsGetUniqueStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsGetUniqueStarGift)
 	if err := dec(in); err != nil {
@@ -14829,6 +14895,114 @@ func _RPCGifts_PaymentsGetUniqueStarGift_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGifts_PaymentsGetSavedStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetSavedStarGifts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetSavedStarGifts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetSavedStarGifts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetSavedStarGifts(ctx, req.(*TLPaymentsGetSavedStarGifts))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsGetSavedStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetSavedStarGift)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetSavedStarGift(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetSavedStarGift_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetSavedStarGift(ctx, req.(*TLPaymentsGetSavedStarGift))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsGetStarGiftWithdrawalUrl_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarGiftWithdrawalUrl)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetStarGiftWithdrawalUrl(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetStarGiftWithdrawalUrl_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetStarGiftWithdrawalUrl(ctx, req.(*TLPaymentsGetStarGiftWithdrawalUrl))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsToggleChatStarGiftNotifications_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsToggleChatStarGiftNotifications)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsToggleChatStarGiftNotifications(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsToggleChatStarGiftNotifications_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsToggleChatStarGiftNotifications(ctx, req.(*TLPaymentsToggleChatStarGiftNotifications))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetUserStarGifts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetUserStarGifts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetUserStarGifts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetUserStarGifts(ctx, req.(*TLPaymentsGetUserStarGifts))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsGetUserStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetUserStarGift)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetUserStarGift(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetUserStarGift_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetUserStarGift(ctx, req.(*TLPaymentsGetUserStarGift))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCGifts_ServiceDesc is the grpc.ServiceDesc for RPCGifts service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -14839,10 +15013,6 @@ var RPCGifts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarGifts",
 			Handler:    _RPCGifts_PaymentsGetStarGifts_Handler,
-		},
-		{
-			MethodName: "payments_getUserStarGifts",
-			Handler:    _RPCGifts_PaymentsGetUserStarGifts_Handler,
 		},
 		{
 			MethodName: "payments_saveStarGift",
@@ -14865,12 +15035,32 @@ var RPCGifts_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCGifts_PaymentsTransferStarGift_Handler,
 		},
 		{
-			MethodName: "payments_getUserStarGift",
-			Handler:    _RPCGifts_PaymentsGetUserStarGift_Handler,
-		},
-		{
 			MethodName: "payments_getUniqueStarGift",
 			Handler:    _RPCGifts_PaymentsGetUniqueStarGift_Handler,
+		},
+		{
+			MethodName: "payments_getSavedStarGifts",
+			Handler:    _RPCGifts_PaymentsGetSavedStarGifts_Handler,
+		},
+		{
+			MethodName: "payments_getSavedStarGift",
+			Handler:    _RPCGifts_PaymentsGetSavedStarGift_Handler,
+		},
+		{
+			MethodName: "payments_getStarGiftWithdrawalUrl",
+			Handler:    _RPCGifts_PaymentsGetStarGiftWithdrawalUrl_Handler,
+		},
+		{
+			MethodName: "payments_toggleChatStarGiftNotifications",
+			Handler:    _RPCGifts_PaymentsToggleChatStarGiftNotifications_Handler,
+		},
+		{
+			MethodName: "payments_getUserStarGifts",
+			Handler:    _RPCGifts_PaymentsGetUserStarGifts_Handler,
+		},
+		{
+			MethodName: "payments_getUserStarGift",
+			Handler:    _RPCGifts_PaymentsGetUserStarGift_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
