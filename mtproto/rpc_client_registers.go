@@ -340,6 +340,7 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLPaymentsUpgradeStarGift":                    RPCContextTuple{"/mtproto.RPCGifts/payments_upgradeStarGift", func() interface{} { return new(Updates) }},
 	"TLPaymentsTransferStarGift":                   RPCContextTuple{"/mtproto.RPCGifts/payments_transferStarGift", func() interface{} { return new(Updates) }},
 	"TLPaymentsGetUserStarGift":                    RPCContextTuple{"/mtproto.RPCGifts/payments_getUserStarGift", func() interface{} { return new(Payments_UserStarGifts) }},
+	"TLPaymentsGetUniqueStarGift":                  RPCContextTuple{"/mtproto.RPCGifts/payments_getUniqueStarGift", func() interface{} { return new(Payments_UniqueStarGift) }},
 	"TLPaymentsGetPremiumGiftCodeOptions":          RPCContextTuple{"/mtproto.RPCGiveaways/payments_getPremiumGiftCodeOptions", func() interface{} { return new(Vector_PremiumGiftCodeOption) }},
 	"TLPaymentsGetGiveawayInfo":                    RPCContextTuple{"/mtproto.RPCGiveaways/payments_getGiveawayInfo", func() interface{} { return new(Payments_GiveawayInfo) }},
 	"TLPaymentsLaunchPrepaidGiveaway":              RPCContextTuple{"/mtproto.RPCGiveaways/payments_launchPrepaidGiveaway", func() interface{} { return new(Updates) }},
@@ -741,8 +742,9 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLAccountResetWallPapers":                     RPCContextTuple{"/mtproto.RPCWallpapers/account_resetWallPapers", func() interface{} { return new(Bool) }},
 	"TLAccountGetMultiWallPapers":                  RPCContextTuple{"/mtproto.RPCWallpapers/account_getMultiWallPapers", func() interface{} { return new(Vector_WallPaper) }},
 	"TLMessagesSetChatWallPaper":                   RPCContextTuple{"/mtproto.RPCWallpapers/messages_setChatWallPaper", func() interface{} { return new(Updates) }},
-	"TLMessagesGetWebPagePreview":                  RPCContextTuple{"/mtproto.RPCWebPage/messages_getWebPagePreview", func() interface{} { return new(MessageMedia) }},
+	"TLMessagesGetWebPagePreview570D6F6F":          RPCContextTuple{"/mtproto.RPCWebPage/messages_getWebPagePreview570D6F6F", func() interface{} { return new(Messages_WebPagePreview) }},
 	"TLMessagesGetWebPage8D9692A3":                 RPCContextTuple{"/mtproto.RPCWebPage/messages_getWebPage8D9692A3", func() interface{} { return new(Messages_WebPage) }},
+	"TLMessagesGetWebPagePreview8B68B0CC":          RPCContextTuple{"/mtproto.RPCWebPage/messages_getWebPagePreview8B68B0CC", func() interface{} { return new(MessageMedia) }},
 	"TLMessagesGetWebPage32CA8F91":                 RPCContextTuple{"/mtproto.RPCWebPage/messages_getWebPage32CA8F91", func() interface{} { return new(WebPage) }},
 	"TLBizInvokeBizDataRaw":                        RPCContextTuple{"/mtproto.RPCBiz/biz_invokeBizDataRaw", func() interface{} { return new(BizDataRaw) }},
 }

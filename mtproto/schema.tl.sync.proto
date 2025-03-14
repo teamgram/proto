@@ -5898,6 +5898,7 @@ message TL_maskCoords {
 //  + TL_inputMediaAreaChannelPost
 //  + TL_mediaAreaUrl
 //  + TL_mediaAreaWeather
+//  + TL_mediaAreaStarGift
 //  + TL_mediaAreaGeoPoint
 //
 message MediaArea {
@@ -5923,6 +5924,7 @@ message MediaArea {
     string emoji = 20;
     double temperature_c = 21;
     int32 color = 22;
+    string slug = 23;
 }
 
 // TL_mediaAreaVenue
@@ -5962,6 +5964,11 @@ message TL_mediaAreaUrl {
 
 // TL_mediaAreaWeather
 message TL_mediaAreaWeather {
+    MediaArea data2 = 1;
+}
+
+// TL_mediaAreaStarGift
+message TL_mediaAreaStarGift {
     MediaArea data2 = 1;
 }
 
@@ -10015,6 +10022,7 @@ message TL_sponsoredWebPage {
 // StarGift <--
 //  + TL_starGift
 //  + TL_starGiftUnique
+//  + TL_starGiftUnique
 //  + TL_starGift
 //  + TL_starGift
 //
@@ -10034,11 +10042,14 @@ message StarGift {
     google.protobuf.Int32Value last_sale_date = 13;
     google.protobuf.Int64Value upgrade_stars = 14;
     string title = 15;
-    int32 num = 16;
-    int64 owner_id = 17;
-    repeated StarGiftAttribute attributes = 18;
-    int32 availability_issued = 19;
-    int32 availability_total_INT32 = 20;
+    string slug = 16;
+    int32 num = 17;
+    google.protobuf.Int64Value owner_id_FLAGINT64 = 18;
+    google.protobuf.StringValue owner_name = 19;
+    repeated StarGiftAttribute attributes = 20;
+    int32 availability_issued = 21;
+    int32 availability_total_INT32 = 22;
+    int64 owner_id_INT64 = 23;
 }
 
 // TL_starGift
@@ -12697,6 +12708,7 @@ message TL_webPageNotModified {
 //  + TL_webPageAttributeTheme
 //  + TL_webPageAttributeStory
 //  + TL_webPageAttributeStickerSet
+//  + TL_webPageAttributeUniqueStarGift
 //  + TL_webPageAttributeStory
 //
 message WebPageAttribute {
@@ -12710,7 +12722,8 @@ message WebPageAttribute {
     bool emojis = 8;
     bool text_color = 9;
     repeated Document stickers = 10;
-    int64 user_id = 11;
+    StarGift gift = 11;
+    int64 user_id = 12;
 }
 
 // TL_webPageAttributeTheme
@@ -12725,6 +12738,11 @@ message TL_webPageAttributeStory {
 
 // TL_webPageAttributeStickerSet
 message TL_webPageAttributeStickerSet {
+    WebPageAttribute data2 = 1;
+}
+
+// TL_webPageAttributeUniqueStarGift
+message TL_webPageAttributeUniqueStarGift {
     WebPageAttribute data2 = 1;
 }
 
@@ -15500,6 +15518,22 @@ message TL_messages_webPage {
 }
 
 
+// messages_WebPagePreview <--
+//  + TL_messages_webPagePreview
+//
+message messages_WebPagePreview {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    MessageMedia media = 3;
+    repeated User users = 4;
+}
+
+// TL_messages_webPagePreview
+message TL_messages_webPagePreview {
+    messages_WebPagePreview data2 = 1;
+}
+
+
 // payments_BankCardData <--
 //  + TL_payments_bankCardData
 //
@@ -15849,6 +15883,22 @@ message payments_SuggestedStarRefBots {
 // TL_payments_suggestedStarRefBots
 message TL_payments_suggestedStarRefBots {
     payments_SuggestedStarRefBots data2 = 1;
+}
+
+
+// payments_UniqueStarGift <--
+//  + TL_payments_uniqueStarGift
+//
+message payments_UniqueStarGift {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    StarGift gift = 3;
+    repeated User users = 4;
+}
+
+// TL_payments_uniqueStarGift
+message TL_payments_uniqueStarGift {
+    payments_UniqueStarGift data2 = 1;
 }
 
 

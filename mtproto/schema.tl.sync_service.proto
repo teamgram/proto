@@ -1337,7 +1337,7 @@ message TL_messages_getAllStickers {
     int64 hash = 3;
 }
 
-message TL_messages_getWebPagePreview {
+message TL_messages_getWebPagePreview570D6F6F {
     TLConstructor  constructor = 1;
     string message = 3;
     repeated MessageEntity entities = 4;
@@ -3784,6 +3784,11 @@ message TL_payments_getUserStarGift {
     repeated int32 msg_id = 3;
 }
 
+message TL_payments_getUniqueStarGift {
+    TLConstructor  constructor = 1;
+    string slug = 3;
+}
+
 message TL_stickers_createStickerSet {
     TLConstructor  constructor = 1;
     bool masks = 3;
@@ -4502,6 +4507,12 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
+}
+
+message TL_messages_getWebPagePreview8B68B0CC {
+    TLConstructor  constructor = 1;
+    string message = 3;
+    repeated MessageEntity entities = 4;
 }
 
 message TL_channels_viewSponsoredMessage {
@@ -5356,6 +5367,7 @@ service RPCGifts {
     rpc payments_upgradeStarGift(TL_payments_upgradeStarGift) returns (Updates) {}
     rpc payments_transferStarGift(TL_payments_transferStarGift) returns (Updates) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
+    rpc payments_getUniqueStarGift(TL_payments_getUniqueStarGift) returns (payments_UniqueStarGift) {}
 }
 
 service RPCGiveaways {
@@ -5925,8 +5937,9 @@ service RPCWallpapers {
 }
 
 service RPCWebPage {
-    rpc messages_getWebPagePreview(TL_messages_getWebPagePreview) returns (MessageMedia) {}
+    rpc messages_getWebPagePreview570D6F6F(TL_messages_getWebPagePreview570D6F6F) returns (messages_WebPagePreview) {}
     rpc messages_getWebPage8D9692A3(TL_messages_getWebPage8D9692A3) returns (messages_WebPage) {}
+    rpc messages_getWebPagePreview8B68B0CC(TL_messages_getWebPagePreview8B68B0CC) returns (MessageMedia) {}
     rpc messages_getWebPage32CA8F91(TL_messages_getWebPage32CA8F91) returns (WebPage) {}
 }
 

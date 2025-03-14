@@ -1244,6 +1244,7 @@ enum TLConstructor {
     CRC32_webPageAttributeStory_2e94c3e7 = 781501415; // 2e94c3e7
     CRC32_webPageAttributeStory_939a4671 = -1818605967; // 939a4671
     CRC32_webPageAttributeStickerSet = 1355547603; // 50cc03d3
+    CRC32_webPageAttributeUniqueStarGift = -814781000; // cf6f6db8
     CRC32_messages_votesList_4899484e = 1218005070; // 4899484e
     CRC32_messages_votesList_823f649 = 136574537; // 823f649
     CRC32_bankCardOpenUrl = -177732982; // f568028a
@@ -1527,6 +1528,7 @@ enum TLConstructor {
     CRC32_inputMediaAreaChannelPost = 577893055; // 2271f2bf
     CRC32_mediaAreaUrl = 926421125; // 37381085
     CRC32_mediaAreaWeather = 1235637404; // 49a6549c
+    CRC32_mediaAreaStarGift = 1468491885; // 5787686d
     CRC32_peerStories = -1707742823; // 9a35e999
     CRC32_stories_peerStories = -890861720; // cae68768
     CRC32_messages_webPage = -44166467; // fd5e12bd
@@ -1681,7 +1683,8 @@ enum TLConstructor {
     CRC32_starGift_2cc73c8 = 46953416; // 2cc73c8
     CRC32_starGift_49c577cd = 1237678029; // 49c577cd
     CRC32_starGift_aea174ee = -1365150482; // aea174ee
-    CRC32_starGiftUnique = 1779697613; // 6a1407cd
+    CRC32_starGiftUnique_3482f322 = 880997154; // 3482f322
+    CRC32_starGiftUnique_6a1407cd = 1779697613; // 6a1407cd
     CRC32_payments_starGiftsNotModified = -1551326360; // a388a368
     CRC32_payments_starGifts = -1877571094; // 901689ea
     CRC32_userStarGift_325835e1 = 844641761; // 325835e1
@@ -1710,6 +1713,8 @@ enum TLConstructor {
     CRC32_payments_starGiftUpgradePreview = 377215243; // 167bd90b
     CRC32_users_users = 1658259128; // 62d706b8
     CRC32_users_usersSlice = 828000628; // 315a4974
+    CRC32_payments_uniqueStarGift = -895289845; // caa2f60b
+    CRC32_messages_webPagePreview = -1254192351; // b53e8b21
     CRC32_updateBotSubscriptionExpire = 756270830; // 2d13c6ee
     CRC32_inputStorePaymentStars = 1326377183; // 4f0ee8df
     CRC32_simpleWebViewResultUrl = -2010155333; // 882f76bb
@@ -2007,7 +2012,7 @@ enum TLConstructor {
     CRC32_messages_readMessageContents = 916930423; // 36a73f77
     CRC32_messages_getStickers = -710552671; // d5a5d3a1
     CRC32_messages_getAllStickers = -1197432408; // b8a0a1a8
-    CRC32_messages_getWebPagePreview = -1956073268; // 8b68b0cc
+    CRC32_messages_getWebPagePreview570D6F6F = 1460498287; // 570d6f6f
     CRC32_messages_exportChatInvite_a455de90 = -1537876336; // a455de90
     CRC32_messages_exportChatInvite_a02ce5d5 = -1607670315; // a02ce5d5
     CRC32_messages_checkChatInvite = 1051570619; // 3eadb1bb
@@ -2389,7 +2394,8 @@ enum TLConstructor {
     CRC32_bots_getAdminedBots = -1334764157; // b0711d83
     CRC32_bots_updateStarRefProgram = 2005621427; // 778b5ab3
     CRC32_bots_setCustomVerification = -1953898563; // 8b89dfbd
-    CRC32_bots_getBotRecommendations = 676707937; // 2855be61
+    CRC32_bots_getBotRecommendations_a1b70815 = -1581840363; // a1b70815
+    CRC32_bots_getBotRecommendations_2855be61 = 676707937; // 2855be61
     CRC32_payments_getPaymentForm_37148dbb = 924093883; // 37148dbb
     CRC32_payments_getPaymentForm_8a333c8d = -1976353651; // 8a333c8d
     CRC32_payments_getPaymentReceipt = 611897804; // 2478d1cc
@@ -2447,6 +2453,7 @@ enum TLConstructor {
     CRC32_payments_upgradeStarGift = -816904319; // cf4f0781
     CRC32_payments_transferStarGift = 859813158; // 333fb526
     CRC32_payments_getUserStarGift = -1258101595; // b502e4a5
+    CRC32_payments_getUniqueStarGift = -1583919758; // a1974d72
     CRC32_stickers_createStickerSet = -1876841625; // 9021ab67
     CRC32_stickers_removeStickerFromSet = -143257775; // f7760f51
     CRC32_stickers_changeStickerPosition = -4795190; // ffb6d4ca
@@ -2584,6 +2591,7 @@ enum TLConstructor {
     CRC32_smsjobs_getSmsJob = 2005766191; // 778d902f
     CRC32_smsjobs_finishJob = 1327415076; // 4f1ebf24
     CRC32_fragment_getCollectibleInfo = -1105295942; // be1e85ba
+    CRC32_messages_getWebPagePreview8B68B0CC = -1956073268; // 8b68b0cc
     CRC32_channels_viewSponsoredMessage = -1095836780; // beaedb94
     CRC32_channels_getSponsoredMessages = -333377601; // ec210fbf
     CRC32_channels_clickSponsoredMessage_1445d75 = 21257589; // 1445d75
