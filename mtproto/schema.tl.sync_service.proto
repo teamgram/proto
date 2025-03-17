@@ -875,6 +875,17 @@ message TL_account_getCollectibleEmojiStatuses {
     int64 hash = 3;
 }
 
+message TL_account_addNoPaidMessagesException {
+    TLConstructor  constructor = 1;
+    bool refund_charged = 3;
+    InputUser user_id = 4;
+}
+
+message TL_account_getPaidMessagesRevenue {
+    TLConstructor  constructor = 1;
+    InputUser user_id = 3;
+}
+
 message TL_users_getUsers {
     TLConstructor  constructor = 1;
     repeated InputUser id = 3;
@@ -891,7 +902,7 @@ message TL_users_setSecureValueErrors {
     repeated SecureValueError errors = 4;
 }
 
-message TL_users_getIsPremiumRequiredToContact {
+message TL_users_getRequirementsToContact {
     TLConstructor  constructor = 1;
     repeated InputUser id = 3;
 }
@@ -1152,8 +1163,9 @@ message TL_messages_sendMessage {
     InputPeer send_as = 18;
     InputQuickReplyShortcut quick_reply_shortcut = 19;
     google.protobuf.Int64Value effect = 20;
-    google.protobuf.Int32Value reply_to_msg_id = 21;
-    google.protobuf.Int32Value top_msg_id = 22;
+    google.protobuf.Int64Value allow_paid_stars = 21;
+    google.protobuf.Int32Value reply_to_msg_id = 22;
+    google.protobuf.Int32Value top_msg_id = 23;
 }
 
 message TL_messages_sendMedia {
@@ -1176,8 +1188,9 @@ message TL_messages_sendMedia {
     InputPeer send_as = 18;
     InputQuickReplyShortcut quick_reply_shortcut = 19;
     google.protobuf.Int64Value effect = 20;
-    google.protobuf.Int32Value reply_to_msg_id = 21;
-    google.protobuf.Int32Value top_msg_id = 22;
+    google.protobuf.Int64Value allow_paid_stars = 21;
+    google.protobuf.Int32Value reply_to_msg_id = 22;
+    google.protobuf.Int32Value top_msg_id = 23;
 }
 
 message TL_messages_forwardMessages {
@@ -1198,6 +1211,7 @@ message TL_messages_forwardMessages {
     InputPeer send_as = 16;
     InputQuickReplyShortcut quick_reply_shortcut = 17;
     google.protobuf.Int32Value video_timestamp = 18;
+    google.protobuf.Int64Value allow_paid_stars = 19;
 }
 
 message TL_messages_reportSpam {
@@ -1497,8 +1511,9 @@ message TL_messages_sendInlineBotResult {
     google.protobuf.Int32Value schedule_date = 12;
     InputPeer send_as = 13;
     InputQuickReplyShortcut quick_reply_shortcut = 14;
-    google.protobuf.Int32Value reply_to_msg_id = 15;
-    google.protobuf.Int32Value top_msg_id = 16;
+    google.protobuf.Int64Value allow_paid_stars = 15;
+    google.protobuf.Int32Value reply_to_msg_id = 16;
+    google.protobuf.Int32Value top_msg_id = 17;
 }
 
 message TL_messages_getMessageEditData {
@@ -1762,8 +1777,9 @@ message TL_messages_sendMultiMedia {
     InputPeer send_as = 14;
     InputQuickReplyShortcut quick_reply_shortcut = 15;
     google.protobuf.Int64Value effect = 16;
-    google.protobuf.Int32Value reply_to_msg_id = 17;
-    google.protobuf.Int32Value top_msg_id = 18;
+    google.protobuf.Int64Value allow_paid_stars = 17;
+    google.protobuf.Int32Value reply_to_msg_id = 18;
+    google.protobuf.Int32Value top_msg_id = 19;
 }
 
 message TL_messages_uploadEncryptedFile {
@@ -3332,6 +3348,12 @@ message TL_channels_searchPosts {
     int32 limit = 7;
 }
 
+message TL_channels_updatePaidMessagesPrice {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    int64 send_paid_messages_stars = 4;
+}
+
 message TL_bots_sendCustomRequest {
     TLConstructor  constructor = 1;
     string custom_method = 3;
@@ -3825,6 +3847,12 @@ message TL_payments_toggleChatStarGiftNotifications {
     TLConstructor  constructor = 1;
     bool enabled = 3;
     InputPeer peer = 4;
+}
+
+message TL_payments_toggleStarGiftsPinnedToTop {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    repeated InputSavedStarGift stargift = 4;
 }
 
 message TL_stickers_createStickerSet {
@@ -4547,6 +4575,11 @@ message TL_fragment_getCollectibleInfo {
     InputCollectible collectible = 3;
 }
 
+message TL_users_getIsPremiumRequiredToContact {
+    TLConstructor  constructor = 1;
+    repeated InputUser id = 3;
+}
+
 message TL_payments_getUserStarGifts {
     TLConstructor  constructor = 1;
     InputUser user_id = 3;
@@ -4880,8 +4913,8 @@ message Vector_WallPaper {
 message Vector_User {
     repeated User datas = 1;
 }
-message Vector_Bool {
-    repeated Bool datas = 1;
+message Vector_RequirementToContact {
+    repeated RequirementToContact datas = 1;
 }
 message Vector_Int {
     repeated int32 datas = 1;
@@ -4954,6 +4987,9 @@ message Vector_LangPackLanguage {
 }
 message Vector_Peer {
     repeated Peer datas = 1;
+}
+message Vector_Bool {
+    repeated Bool datas = 1;
 }
 message Vector_DialogFilter {
     repeated DialogFilter datas = 1;
@@ -5421,6 +5457,7 @@ service RPCGifts {
     rpc payments_getSavedStarGift(TL_payments_getSavedStarGift) returns (payments_SavedStarGifts) {}
     rpc payments_getStarGiftWithdrawalUrl(TL_payments_getStarGiftWithdrawalUrl) returns (payments_StarGiftWithdrawalUrl) {}
     rpc payments_toggleChatStarGiftNotifications(TL_payments_toggleChatStarGiftNotifications) returns (Bool) {}
+    rpc payments_toggleStarGiftsPinnedToTop(TL_payments_toggleStarGiftsPinnedToTop) returns (Bool) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }
@@ -5586,6 +5623,12 @@ service RPCPaidMedia {
     rpc messages_getExtendedMedia(TL_messages_getExtendedMedia) returns (Updates) {}
 }
 
+service RPCPaidMessage {
+    rpc account_addNoPaidMessagesException(TL_account_addNoPaidMessagesException) returns (Bool) {}
+    rpc account_getPaidMessagesRevenue(TL_account_getPaidMessagesRevenue) returns (account_PaidMessagesRevenue) {}
+    rpc channels_updatePaidMessagesPrice(TL_channels_updatePaidMessagesPrice) returns (Updates) {}
+}
+
 service RPCPassport {
     rpc account_getAuthorizations(TL_account_getAuthorizations) returns (account_Authorizations) {}
     rpc account_getAllSecureValues(TL_account_getAllSecureValues) returns (Vector_SecureValue) {}
@@ -5649,9 +5692,10 @@ service RPCPrivacySettings {
     rpc account_setPrivacy(TL_account_setPrivacy) returns (account_PrivacyRules) {}
     rpc account_getGlobalPrivacySettings(TL_account_getGlobalPrivacySettings) returns (GlobalPrivacySettings) {}
     rpc account_setGlobalPrivacySettings(TL_account_setGlobalPrivacySettings) returns (GlobalPrivacySettings) {}
-    rpc users_getIsPremiumRequiredToContact(TL_users_getIsPremiumRequiredToContact) returns (Vector_Bool) {}
+    rpc users_getRequirementsToContact(TL_users_getRequirementsToContact) returns (Vector_RequirementToContact) {}
     rpc messages_setDefaultHistoryTTL(TL_messages_setDefaultHistoryTTL) returns (Bool) {}
     rpc messages_getDefaultHistoryTTL(TL_messages_getDefaultHistoryTTL) returns (DefaultHistoryTTL) {}
+    rpc users_getIsPremiumRequiredToContact(TL_users_getIsPremiumRequiredToContact) returns (Vector_Bool) {}
 }
 
 service RPCProfileLinks {
