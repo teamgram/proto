@@ -55,4 +55,7 @@ message RpcMetadata {
 
     // perm_auth_key_id
     int64 perm_auth_key_id = 22;
+
+    // lang_code
+    string lang_code = 23;
 }
