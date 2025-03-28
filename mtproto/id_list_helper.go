@@ -227,6 +227,14 @@ func (m *IDListHelper) PickByMessage(message *Message) {
 		m.PickByReplies(message.GetReplies())
 	}
 
+	if message.GetViaBotId() != nil {
+		m.UserIdList = appendIdF(m.UserIdList, message.GetViaBotId().GetValue())
+	}
+
+	if message.GetViaBusinessBotId() != nil {
+		m.UserIdList = appendIdF(m.UserIdList, message.GetViaBusinessBotId().GetValue())
+	}
+
 	// messageService#2b085862 flags:#
 	//	out:flags.1?true
 	//	mentioned:flags.4?true
