@@ -789,11 +789,12 @@ message TL_account_updateBusinessAwayMessage {
 
 message TL_account_updateConnectedBot {
     TLConstructor  constructor = 1;
-    bool can_reply = 3;
-    bool deleted = 4;
+    bool deleted = 3;
+    BusinessBotRights rights = 4;
     InputUser bot = 5;
     InputBusinessBotRecipients recipients_INPUTBUSINESSBOTRECIPIENTS = 6;
-    InputBusinessRecipients recipients_INPUTBUSINESSRECIPIENTS = 7;
+    bool can_reply = 7;
+    InputBusinessRecipients recipients_INPUTBUSINESSRECIPIENTS = 8;
 }
 
 message TL_account_getConnectedBots {
@@ -1059,6 +1060,11 @@ message TL_contacts_setBlocked {
 
 message TL_contacts_getBirthdays {
     TLConstructor  constructor = 1;
+}
+
+message TL_contacts_getSponsoredPeers {
+    TLConstructor  constructor = 1;
+    string q = 3;
 }
 
 message TL_messages_getMessages {
@@ -2646,23 +2652,23 @@ message TL_messages_getPaidReactionPrivacy {
 
 message TL_messages_viewSponsoredMessage {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    bytes random_id = 4;
+    bytes random_id = 3;
+    InputPeer peer = 4;
 }
 
 message TL_messages_clickSponsoredMessage {
     TLConstructor  constructor = 1;
     bool media = 3;
     bool fullscreen = 4;
-    InputPeer peer = 5;
-    bytes random_id = 6;
+    bytes random_id = 5;
+    InputPeer peer = 6;
 }
 
 message TL_messages_reportSponsoredMessage {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    bytes random_id = 4;
-    bytes option = 5;
+    bytes random_id = 3;
+    bytes option = 4;
+    InputPeer peer = 5;
 }
 
 message TL_messages_getSponsoredMessages {
@@ -3611,11 +3617,6 @@ message TL_payments_assignPlayMarketTransaction {
     string purchase_token = 5;
 }
 
-message TL_payments_canPurchasePremium {
-    TLConstructor  constructor = 1;
-    InputStorePaymentPurpose purpose = 3;
-}
-
 message TL_payments_getPremiumGiftCodeOptions {
     TLConstructor  constructor = 1;
     InputPeer boost_peer = 3;
@@ -3853,6 +3854,11 @@ message TL_payments_toggleStarGiftsPinnedToTop {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     repeated InputSavedStarGift stargift = 4;
+}
+
+message TL_payments_canPurchaseStore {
+    TLConstructor  constructor = 1;
+    InputStorePaymentPurpose purpose = 3;
 }
 
 message TL_stickers_createStickerSet {
@@ -4573,6 +4579,11 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
+}
+
+message TL_payments_canPurchasePremium {
+    TLConstructor  constructor = 1;
+    InputStorePaymentPurpose purpose = 3;
 }
 
 message TL_users_getIsPremiumRequiredToContact {
@@ -5679,6 +5690,7 @@ service RPCPremium {
     rpc help_getPremiumPromo(TL_help_getPremiumPromo) returns (help_PremiumPromo) {}
     rpc payments_assignAppStoreTransaction(TL_payments_assignAppStoreTransaction) returns (Updates) {}
     rpc payments_assignPlayMarketTransaction(TL_payments_assignPlayMarketTransaction) returns (Updates) {}
+    rpc payments_canPurchaseStore(TL_payments_canPurchaseStore) returns (Bool) {}
     rpc payments_canPurchasePremium(TL_payments_canPurchasePremium) returns (Bool) {}
 }
 
@@ -5808,6 +5820,7 @@ service RPCSmsjobs {
 
 service RPCSponsoredMessages {
     rpc account_toggleSponsoredMessages(TL_account_toggleSponsoredMessages) returns (Bool) {}
+    rpc contacts_getSponsoredPeers(TL_contacts_getSponsoredPeers) returns (contacts_SponsoredPeers) {}
     rpc messages_viewSponsoredMessage(TL_messages_viewSponsoredMessage) returns (Bool) {}
     rpc messages_clickSponsoredMessage(TL_messages_clickSponsoredMessage) returns (Bool) {}
     rpc messages_reportSponsoredMessage(TL_messages_reportSponsoredMessage) returns (channels_SponsoredMessageReportResult) {}

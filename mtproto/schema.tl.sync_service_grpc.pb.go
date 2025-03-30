@@ -22163,6 +22163,7 @@ const (
 	RPCPremium_HelpGetPremiumPromo_FullMethodName                 = "/mtproto.RPCPremium/help_getPremiumPromo"
 	RPCPremium_PaymentsAssignAppStoreTransaction_FullMethodName   = "/mtproto.RPCPremium/payments_assignAppStoreTransaction"
 	RPCPremium_PaymentsAssignPlayMarketTransaction_FullMethodName = "/mtproto.RPCPremium/payments_assignPlayMarketTransaction"
+	RPCPremium_PaymentsCanPurchaseStore_FullMethodName            = "/mtproto.RPCPremium/payments_canPurchaseStore"
 	RPCPremium_PaymentsCanPurchasePremium_FullMethodName          = "/mtproto.RPCPremium/payments_canPurchasePremium"
 )
 
@@ -22173,6 +22174,7 @@ type RPCPremiumClient interface {
 	HelpGetPremiumPromo(ctx context.Context, in *TLHelpGetPremiumPromo, opts ...grpc.CallOption) (*Help_PremiumPromo, error)
 	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction, opts ...grpc.CallOption) (*Updates, error)
+	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium, opts ...grpc.CallOption) (*Bool, error)
 }
 
@@ -22214,6 +22216,16 @@ func (c *rPCPremiumClient) PaymentsAssignPlayMarketTransaction(ctx context.Conte
 	return out, nil
 }
 
+func (c *rPCPremiumClient) PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCPremium_PaymentsCanPurchaseStore_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCPremiumClient) PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium, opts ...grpc.CallOption) (*Bool, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Bool)
@@ -22231,6 +22243,7 @@ type RPCPremiumServer interface {
 	HelpGetPremiumPromo(context.Context, *TLHelpGetPremiumPromo) (*Help_PremiumPromo, error)
 	PaymentsAssignAppStoreTransaction(context.Context, *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
 	PaymentsAssignPlayMarketTransaction(context.Context, *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
+	PaymentsCanPurchaseStore(context.Context, *TLPaymentsCanPurchaseStore) (*Bool, error)
 	PaymentsCanPurchasePremium(context.Context, *TLPaymentsCanPurchasePremium) (*Bool, error)
 }
 
@@ -22249,6 +22262,9 @@ func (UnimplementedRPCPremiumServer) PaymentsAssignAppStoreTransaction(context.C
 }
 func (UnimplementedRPCPremiumServer) PaymentsAssignPlayMarketTransaction(context.Context, *TLPaymentsAssignPlayMarketTransaction) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsAssignPlayMarketTransaction not implemented")
+}
+func (UnimplementedRPCPremiumServer) PaymentsCanPurchaseStore(context.Context, *TLPaymentsCanPurchaseStore) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsCanPurchaseStore not implemented")
 }
 func (UnimplementedRPCPremiumServer) PaymentsCanPurchasePremium(context.Context, *TLPaymentsCanPurchasePremium) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsCanPurchasePremium not implemented")
@@ -22327,6 +22343,24 @@ func _RPCPremium_PaymentsAssignPlayMarketTransaction_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCPremium_PaymentsCanPurchaseStore_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsCanPurchaseStore)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPremiumServer).PaymentsCanPurchaseStore(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPremium_PaymentsCanPurchaseStore_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPremiumServer).PaymentsCanPurchaseStore(ctx, req.(*TLPaymentsCanPurchaseStore))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCPremium_PaymentsCanPurchasePremium_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsCanPurchasePremium)
 	if err := dec(in); err != nil {
@@ -22363,6 +22397,10 @@ var RPCPremium_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_assignPlayMarketTransaction",
 			Handler:    _RPCPremium_PaymentsAssignPlayMarketTransaction_Handler,
+		},
+		{
+			MethodName: "payments_canPurchaseStore",
+			Handler:    _RPCPremium_PaymentsCanPurchaseStore_Handler,
 		},
 		{
 			MethodName: "payments_canPurchasePremium",
@@ -26307,6 +26345,7 @@ var RPCSmsjobs_ServiceDesc = grpc.ServiceDesc{
 
 const (
 	RPCSponsoredMessages_AccountToggleSponsoredMessages_FullMethodName    = "/mtproto.RPCSponsoredMessages/account_toggleSponsoredMessages"
+	RPCSponsoredMessages_ContactsGetSponsoredPeers_FullMethodName         = "/mtproto.RPCSponsoredMessages/contacts_getSponsoredPeers"
 	RPCSponsoredMessages_MessagesViewSponsoredMessage_FullMethodName      = "/mtproto.RPCSponsoredMessages/messages_viewSponsoredMessage"
 	RPCSponsoredMessages_MessagesClickSponsoredMessage_FullMethodName     = "/mtproto.RPCSponsoredMessages/messages_clickSponsoredMessage"
 	RPCSponsoredMessages_MessagesReportSponsoredMessage_FullMethodName    = "/mtproto.RPCSponsoredMessages/messages_reportSponsoredMessage"
@@ -26323,6 +26362,7 @@ const (
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCSponsoredMessagesClient interface {
 	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages, opts ...grpc.CallOption) (*Bool, error)
+	ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers, opts ...grpc.CallOption) (*Contacts_SponsoredPeers, error)
 	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage, opts ...grpc.CallOption) (*Bool, error)
 	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage, opts ...grpc.CallOption) (*Bool, error)
 	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage, opts ...grpc.CallOption) (*Channels_SponsoredMessageReportResult, error)
@@ -26346,6 +26386,16 @@ func (c *rPCSponsoredMessagesClient) AccountToggleSponsoredMessages(ctx context.
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCSponsoredMessages_AccountToggleSponsoredMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSponsoredMessagesClient) ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers, opts ...grpc.CallOption) (*Contacts_SponsoredPeers, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Contacts_SponsoredPeers)
+	err := c.cc.Invoke(ctx, RPCSponsoredMessages_ContactsGetSponsoredPeers_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -26447,6 +26497,7 @@ func (c *rPCSponsoredMessagesClient) ChannelsReportSponsoredMessage(ctx context.
 // for forward compatibility.
 type RPCSponsoredMessagesServer interface {
 	AccountToggleSponsoredMessages(context.Context, *TLAccountToggleSponsoredMessages) (*Bool, error)
+	ContactsGetSponsoredPeers(context.Context, *TLContactsGetSponsoredPeers) (*Contacts_SponsoredPeers, error)
 	MessagesViewSponsoredMessage(context.Context, *TLMessagesViewSponsoredMessage) (*Bool, error)
 	MessagesClickSponsoredMessage(context.Context, *TLMessagesClickSponsoredMessage) (*Bool, error)
 	MessagesReportSponsoredMessage(context.Context, *TLMessagesReportSponsoredMessage) (*Channels_SponsoredMessageReportResult, error)
@@ -26467,6 +26518,9 @@ type UnimplementedRPCSponsoredMessagesServer struct{}
 
 func (UnimplementedRPCSponsoredMessagesServer) AccountToggleSponsoredMessages(context.Context, *TLAccountToggleSponsoredMessages) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountToggleSponsoredMessages not implemented")
+}
+func (UnimplementedRPCSponsoredMessagesServer) ContactsGetSponsoredPeers(context.Context, *TLContactsGetSponsoredPeers) (*Contacts_SponsoredPeers, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ContactsGetSponsoredPeers not implemented")
 }
 func (UnimplementedRPCSponsoredMessagesServer) MessagesViewSponsoredMessage(context.Context, *TLMessagesViewSponsoredMessage) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesViewSponsoredMessage not implemented")
@@ -26529,6 +26583,24 @@ func _RPCSponsoredMessages_AccountToggleSponsoredMessages_Handler(srv interface{
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCSponsoredMessagesServer).AccountToggleSponsoredMessages(ctx, req.(*TLAccountToggleSponsoredMessages))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSponsoredMessages_ContactsGetSponsoredPeers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLContactsGetSponsoredPeers)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSponsoredMessagesServer).ContactsGetSponsoredPeers(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSponsoredMessages_ContactsGetSponsoredPeers_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSponsoredMessagesServer).ContactsGetSponsoredPeers(ctx, req.(*TLContactsGetSponsoredPeers))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -26705,6 +26777,10 @@ var RPCSponsoredMessages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "account_toggleSponsoredMessages",
 			Handler:    _RPCSponsoredMessages_AccountToggleSponsoredMessages_Handler,
+		},
+		{
+			MethodName: "contacts_getSponsoredPeers",
+			Handler:    _RPCSponsoredMessages_ContactsGetSponsoredPeers_Handler,
 		},
 		{
 			MethodName: "messages_viewSponsoredMessage",

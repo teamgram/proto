@@ -521,16 +521,18 @@ message TL_botAppSettings {
 
 // BotBusinessConnection <--
 //  + TL_botBusinessConnection
+//  + TL_botBusinessConnection
 //
 message BotBusinessConnection {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-    bool can_reply = 3;
-    bool disabled = 4;
-    string connection_id = 5;
-    int64 user_id = 6;
-    int32 dc_id = 7;
-    int32 date = 8;
+    bool disabled = 3;
+    string connection_id = 4;
+    int64 user_id = 5;
+    int32 dc_id = 6;
+    int32 date = 7;
+    BusinessBotRights rights = 8;
+    bool can_reply = 9;
 }
 
 // TL_botBusinessConnection
@@ -974,6 +976,34 @@ message BusinessBotRecipients {
 // TL_businessBotRecipients
 message TL_businessBotRecipients {
     BusinessBotRecipients data2 = 1;
+}
+
+
+// BusinessBotRights <--
+//  + TL_businessBotRights
+//
+message BusinessBotRights {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool reply = 3;
+    bool read_messages = 4;
+    bool delete_sent_messages = 5;
+    bool delete_received_messages = 6;
+    bool edit_name = 7;
+    bool edit_bio = 8;
+    bool edit_profile_photo = 9;
+    bool edit_username = 10;
+    bool view_gifts = 11;
+    bool sell_gifts = 12;
+    bool change_gift_settings = 13;
+    bool transfer_and_upgrade_gifts = 14;
+    bool transfer_stars = 15;
+    bool manage_stories = 16;
+}
+
+// TL_businessBotRights
+message TL_businessBotRights {
+    BusinessBotRights data2 = 1;
 }
 
 
@@ -2271,14 +2301,16 @@ message TL_config {
 // ConnectedBot <--
 //  + TL_connectedBot
 //  + TL_connectedBot
+//  + TL_connectedBot
 //
 message ConnectedBot {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-    bool can_reply = 3;
-    int64 bot_id = 4;
-    BusinessBotRecipients recipients_BUSINESSBOTRECIPIENTS = 5;
-    BusinessRecipients recipients_BUSINESSRECIPIENTS = 6;
+    int64 bot_id = 3;
+    BusinessBotRecipients recipients_BUSINESSBOTRECIPIENTS = 4;
+    BusinessBotRights rights = 5;
+    bool can_reply = 6;
+    BusinessRecipients recipients_BUSINESSRECIPIENTS = 7;
 }
 
 // TL_connectedBot
@@ -2558,6 +2590,24 @@ message TL_dialogPeer {
 // TL_dialogPeerFolder
 message TL_dialogPeerFolder {
     DialogPeer data2 = 1;
+}
+
+
+// DisallowedGiftsSettings <--
+//  + TL_disallowedGiftsSettings
+//
+message DisallowedGiftsSettings {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool disallow_unlimited_stargifts = 3;
+    bool disallow_limited_stargifts = 4;
+    bool disallow_unique_stargifts = 5;
+    bool disallow_premium_gifts = 6;
+}
+
+// TL_disallowedGiftsSettings
+message TL_disallowedGiftsSettings {
+    DisallowedGiftsSettings data2 = 1;
 }
 
 
@@ -3328,6 +3378,7 @@ message TL_geoPointAddress {
 //  + TL_globalPrivacySettings
 //  + TL_globalPrivacySettings
 //  + TL_globalPrivacySettings
+//  + TL_globalPrivacySettings
 //
 message GlobalPrivacySettings {
     string predicate_name = 1;
@@ -3337,8 +3388,10 @@ message GlobalPrivacySettings {
     bool keep_archived_folders = 5;
     bool hide_read_marks = 6;
     bool new_noncontact_peers_require_premium = 7;
-    google.protobuf.Int64Value noncontact_peers_paid_stars = 8;
-    Bool archive_and_mute_new_noncontact_peers_FLAGBOOL = 9;
+    bool display_gifts_button = 8;
+    google.protobuf.Int64Value noncontact_peers_paid_stars = 9;
+    DisallowedGiftsSettings disallowed_gifts = 10;
+    Bool archive_and_mute_new_noncontact_peers_FLAGBOOL = 11;
 }
 
 // TL_globalPrivacySettings
@@ -5372,6 +5425,7 @@ message TL_inputStickeredMediaDocument {
 //  + TL_inputStorePaymentStarsTopup
 //  + TL_inputStorePaymentStarsGift
 //  + TL_inputStorePaymentStarsGiveaway
+//  + TL_inputStorePaymentAuthCode
 //  + TL_inputStorePaymentPremiumGiftCode
 //  + TL_inputStorePaymentStars
 //  + TL_inputStorePaymentPremiumGiveaway
@@ -5396,6 +5450,8 @@ message InputStorePaymentPurpose {
     int32 until_date = 17;
     int64 stars = 18;
     int32 users_INT32 = 19;
+    string phone_number = 20;
+    string phone_code_hash = 21;
 }
 
 // TL_inputStorePaymentPremiumSubscription
@@ -5430,6 +5486,11 @@ message TL_inputStorePaymentStarsGift {
 
 // TL_inputStorePaymentStarsGiveaway
 message TL_inputStorePaymentStarsGiveaway {
+    InputStorePaymentPurpose data2 = 1;
+}
+
+// TL_inputStorePaymentAuthCode
+message TL_inputStorePaymentAuthCode {
     InputStorePaymentPurpose data2 = 1;
 }
 
@@ -6197,6 +6258,8 @@ message TL_messageService {
 //  + TL_messageActionPrizeStars
 //  + TL_messageActionStarGift
 //  + TL_messageActionStarGiftUnique
+//  + TL_messageActionPaidMessagesRefunded
+//  + TL_messageActionPaidMessagesPrice
 //  + TL_messageActionStarGift
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGift
@@ -6310,9 +6373,10 @@ message MessageAction {
     bool transferred = 88;
     google.protobuf.Int32Value can_export_at = 89;
     google.protobuf.Int64Value transfer_stars = 90;
-    int64 convert_stars_INT64 = 91;
-    string domain_STRING = 92;
-    BizDataRaw biz_data = 93;
+    int32 count = 91;
+    int64 convert_stars_INT64 = 92;
+    string domain_STRING = 93;
+    BizDataRaw biz_data = 94;
     string title = 100;
 }
 
@@ -6553,6 +6617,16 @@ message TL_messageActionStarGift {
 
 // TL_messageActionStarGiftUnique
 message TL_messageActionStarGiftUnique {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionPaidMessagesRefunded
+message TL_messageActionPaidMessagesRefunded {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionPaidMessagesPrice
+message TL_messageActionPaidMessagesPrice {
     MessageAction data2 = 1;
 }
 
@@ -10181,6 +10255,24 @@ message TL_sponsoredMessageReportOption {
 }
 
 
+// SponsoredPeer <--
+//  + TL_sponsoredPeer
+//
+message SponsoredPeer {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bytes random_id = 3;
+    Peer peer = 4;
+    google.protobuf.StringValue sponsor_info = 5;
+    google.protobuf.StringValue additional_info = 6;
+}
+
+// TL_sponsoredPeer
+message TL_sponsoredPeer {
+    SponsoredPeer data2 = 1;
+}
+
+
 // SponsoredWebPage <--
 //  + TL_sponsoredWebPage
 //
@@ -11316,6 +11408,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateStarsRevenueStatus
 //  + TL_updateBotPurchasedPaidMedia
 //  + TL_updatePaidReactionPrivacy
+//  + TL_updateSentPhoneCode
 //  + TL_updatePaidReactionPrivacy
 //  + TL_updateGroupCall
 //  + TL_updateStarsBalance
@@ -11498,17 +11591,18 @@ message Update {
     StarsRevenueStatus status_STARSREVENUESTATUS = 157;
     string payload_STRING = 158;
     PaidReactionPrivacy private_PAIDREACTIONPRIVACY = 159;
-    Bool private_BOOL = 160;
-    int64 balance_INT64 = 161;
-    string invoice_slug = 162;
-    int32 until_date = 163;
-    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 164;
-    Bool blocked_BOOL = 165;
-    UserProfilePhoto photo = 166;
-    Bool previous = 167;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 168;
-    string username = 169;
-    BizDataRaw biz_data = 170;
+    auth_SentCode sent_code = 160;
+    Bool private_BOOL = 161;
+    int64 balance_INT64 = 162;
+    string invoice_slug = 163;
+    int32 until_date = 164;
+    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 165;
+    Bool blocked_BOOL = 166;
+    UserProfilePhoto photo = 167;
+    Bool previous = 168;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 169;
+    string username = 170;
+    BizDataRaw biz_data = 171;
 }
 
 // TL_updateNewMessage
@@ -12216,6 +12310,11 @@ message TL_updatePaidReactionPrivacy {
     Update data2 = 1;
 }
 
+// TL_updateSentPhoneCode
+message TL_updateSentPhoneCode {
+    Update data2 = 1;
+}
+
 // TL_updateBotSubscriptionExpire
 message TL_updateBotSubscriptionExpire {
     Update data2 = 1;
@@ -12497,6 +12596,7 @@ message TL_userData {
 //  + TL_userFull
 //  + TL_userFull
 //  + TL_userFull
+//  + TL_userFull
 //
 message UserFull {
     string predicate_name = 1;
@@ -12517,38 +12617,40 @@ message UserFull {
     bool sponsored_enabled = 16;
     bool can_view_revenue = 17;
     bool bot_can_manage_emoji_status = 18;
-    int64 id = 19;
-    google.protobuf.StringValue about = 20;
-    PeerSettings settings = 21;
-    Photo personal_photo = 22;
-    Photo profile_photo = 23;
-    Photo fallback_photo = 24;
-    PeerNotifySettings notify_settings = 25;
-    BotInfo bot_info = 26;
-    google.protobuf.Int32Value pinned_msg_id = 27;
-    int32 common_chats_count = 28;
-    google.protobuf.Int32Value folder_id = 29;
-    google.protobuf.Int32Value ttl_period = 30;
-    google.protobuf.StringValue theme_emoticon = 31;
-    google.protobuf.StringValue private_forward_name = 32;
-    ChatAdminRights bot_group_admin_rights = 33;
-    ChatAdminRights bot_broadcast_admin_rights = 34;
-    WallPaper wallpaper = 35;
-    PeerStories stories_FLAGPEERSTORIES = 36;
-    BusinessWorkHours business_work_hours = 37;
-    BusinessLocation business_location = 38;
-    BusinessGreetingMessage business_greeting_message = 39;
-    BusinessAwayMessage business_away_message = 40;
-    BusinessIntro business_intro = 41;
-    Birthday birthday = 42;
-    google.protobuf.Int64Value personal_channel_id = 43;
-    google.protobuf.Int32Value personal_channel_message = 44;
-    google.protobuf.Int32Value stargifts_count = 45;
-    StarRefProgram starref_program = 46;
-    BotVerification bot_verification = 47;
-    google.protobuf.Int64Value send_paid_messages_stars = 48;
-    repeated PremiumGiftOption premium_gifts = 49;
-    UserStories stories_FLAGUSERSTORIES = 50;
+    bool display_gifts_button = 19;
+    int64 id = 20;
+    google.protobuf.StringValue about = 21;
+    PeerSettings settings = 22;
+    Photo personal_photo = 23;
+    Photo profile_photo = 24;
+    Photo fallback_photo = 25;
+    PeerNotifySettings notify_settings = 26;
+    BotInfo bot_info = 27;
+    google.protobuf.Int32Value pinned_msg_id = 28;
+    int32 common_chats_count = 29;
+    google.protobuf.Int32Value folder_id = 30;
+    google.protobuf.Int32Value ttl_period = 31;
+    google.protobuf.StringValue theme_emoticon = 32;
+    google.protobuf.StringValue private_forward_name = 33;
+    ChatAdminRights bot_group_admin_rights = 34;
+    ChatAdminRights bot_broadcast_admin_rights = 35;
+    WallPaper wallpaper = 36;
+    PeerStories stories_FLAGPEERSTORIES = 37;
+    BusinessWorkHours business_work_hours = 38;
+    BusinessLocation business_location = 39;
+    BusinessGreetingMessage business_greeting_message = 40;
+    BusinessAwayMessage business_away_message = 41;
+    BusinessIntro business_intro = 42;
+    Birthday birthday = 43;
+    google.protobuf.Int64Value personal_channel_id = 44;
+    google.protobuf.Int32Value personal_channel_message = 45;
+    google.protobuf.Int32Value stargifts_count = 46;
+    StarRefProgram starref_program = 47;
+    BotVerification bot_verification = 48;
+    google.protobuf.Int64Value send_paid_messages_stars = 49;
+    DisallowedGiftsSettings disallowed_gifts = 50;
+    repeated PremiumGiftOption premium_gifts = 51;
+    UserStories stories_FLAGUSERSTORIES = 52;
 }
 
 // TL_userFull
@@ -13580,6 +13682,7 @@ message TL_auth_passwordRecovery {
 // auth_SentCode <--
 //  + TL_auth_sentCode
 //  + TL_auth_sentCodeSuccess
+//  + TL_auth_sentCodePaymentRequired
 //
 message auth_SentCode {
     string predicate_name = 1;
@@ -13589,6 +13692,7 @@ message auth_SentCode {
     auth_CodeType next_type = 5;
     google.protobuf.Int32Value timeout = 6;
     auth_Authorization authorization = 7;
+    string store_product = 8;
 }
 
 // TL_auth_sentCode
@@ -13598,6 +13702,11 @@ message TL_auth_sentCode {
 
 // TL_auth_sentCodeSuccess
 message TL_auth_sentCodeSuccess {
+    auth_SentCode data2 = 1;
+}
+
+// TL_auth_sentCodePaymentRequired
+message TL_auth_sentCodePaymentRequired {
     auth_SentCode data2 = 1;
 }
 
@@ -14043,6 +14152,29 @@ message contacts_ResolvedPeer {
 // TL_contacts_resolvedPeer
 message TL_contacts_resolvedPeer {
     contacts_ResolvedPeer data2 = 1;
+}
+
+
+// contacts_SponsoredPeers <--
+//  + TL_contacts_sponsoredPeersEmpty
+//  + TL_contacts_sponsoredPeers
+//
+message contacts_SponsoredPeers {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    repeated SponsoredPeer peers = 3;
+    repeated Chat chats = 4;
+    repeated User users = 5;
+}
+
+// TL_contacts_sponsoredPeersEmpty
+message TL_contacts_sponsoredPeersEmpty {
+    contacts_SponsoredPeers data2 = 1;
+}
+
+// TL_contacts_sponsoredPeers
+message TL_contacts_sponsoredPeers {
+    contacts_SponsoredPeers data2 = 1;
 }
 
 
