@@ -18,6 +18,34 @@
 
 package mtproto
 
+/*************************************************************
+	inputPrivacyValueAllowContacts#d09e07b = InputPrivacyRule;
+	inputPrivacyValueAllowAll#184b35ce = InputPrivacyRule;
+	inputPrivacyValueAllowUsers#131cc67f users:Vector<InputUser> = InputPrivacyRule;
+	inputPrivacyValueDisallowContacts#ba52007 = InputPrivacyRule;
+	inputPrivacyValueDisallowAll#d66b66c9 = InputPrivacyRule;
+	inputPrivacyValueDisallowUsers#90110467 users:Vector<InputUser> = InputPrivacyRule;
+	inputPrivacyValueAllowChatParticipants#840649cf chats:Vector<long> = InputPrivacyRule;
+	inputPrivacyValueDisallowChatParticipants#e94f0f86 chats:Vector<long> = InputPrivacyRule;
+	inputPrivacyValueAllowCloseFriends#2f453e49 = InputPrivacyRule;
+	inputPrivacyValueAllowPremium#77cdc9f1 = InputPrivacyRule;
+	inputPrivacyValueAllowBots#5a4fcce5 = InputPrivacyRule;
+	inputPrivacyValueDisallowBots#c4e57915 = InputPrivacyRule;
+
+	privacyValueAllowContacts#fffe1bac = PrivacyRule;
+	privacyValueAllowAll#65427b82 = PrivacyRule;
+	privacyValueAllowUsers#b8905fb2 users:Vector<long> = PrivacyRule;
+	privacyValueDisallowContacts#f888fa1a = PrivacyRule;
+	privacyValueDisallowAll#8b73e763 = PrivacyRule;
+	privacyValueDisallowUsers#e4621141 users:Vector<long> = PrivacyRule;
+	privacyValueAllowChatParticipants#6b134e8e chats:Vector<long> = PrivacyRule;
+	privacyValueDisallowChatParticipants#41c87565 chats:Vector<long> = PrivacyRule;
+	privacyValueAllowCloseFriends#f7e8d89b = PrivacyRule;
+	privacyValueAllowPremium#ece9814b = PrivacyRule;
+	privacyValueAllowBots#21461b5d = PrivacyRule;
+	privacyValueDisallowBots#f6a5f82f = PrivacyRule;
+**/
+
 const (
 	RULE_TYPE_INVALID          = 0
 	ALLOW_CONTACTS             = 1
@@ -30,24 +58,40 @@ const (
 	DISALLOW_CHAT_PARTICIPANTS = 8
 	ALLOW_CLOSE_FRIENDS        = 9
 	ALLOW_PREMIUM              = 10
+	ALOW_BOTS                  = 11
+	DISALLOW_BOTS              = 12
 )
 
-/*
-```
-inputPrivacyKeyStatusTimestamp#4f96cb18 = InputPrivacyKey;
-inputPrivacyKeyChatInvite#bdfb0426 = InputPrivacyKey;
-inputPrivacyKeyPhoneCall#fabadc5f = InputPrivacyKey;
-inputPrivacyKeyPhoneP2P#db9e70d2 = InputPrivacyKey;
-inputPrivacyKeyForwards#a4dd4c08 = InputPrivacyKey;
-inputPrivacyKeyProfilePhoto#5719bacc = InputPrivacyKey;
-inputPrivacyKeyPhoneNumber#352dafa = InputPrivacyKey;
-inputPrivacyKeyAddedByPhone#d1219bdd = InputPrivacyKey;
-inputPrivacyKeyVoiceMessages#aee69d68 = InputPrivacyKey;
-inputPrivacyKeyAbout#3823cc40 = InputPrivacyKey;
-inputPrivacyKeyBirthday#d65a11cc = InputPrivacyKey;
-inputPrivacyKeyStarGiftsAutoSave#e1732341 = InputPrivacyKey;
-```
-*/
+/*************************************************************
+	inputPrivacyKeyStatusTimestamp#4f96cb18 = InputPrivacyKey;
+	inputPrivacyKeyChatInvite#bdfb0426 = InputPrivacyKey;
+	inputPrivacyKeyPhoneCall#fabadc5f = InputPrivacyKey;
+	inputPrivacyKeyPhoneP2P#db9e70d2 = InputPrivacyKey;
+	inputPrivacyKeyForwards#a4dd4c08 = InputPrivacyKey;
+	inputPrivacyKeyProfilePhoto#5719bacc = InputPrivacyKey;
+	inputPrivacyKeyPhoneNumber#352dafa = InputPrivacyKey;
+	inputPrivacyKeyAddedByPhone#d1219bdd = InputPrivacyKey;
+	inputPrivacyKeyVoiceMessages#aee69d68 = InputPrivacyKey;
+	inputPrivacyKeyAbout#3823cc40 = InputPrivacyKey;
+	inputPrivacyKeyBirthday#d65a11cc = InputPrivacyKey;
+	inputPrivacyKeyStarGiftsAutoSave#e1732341 = InputPrivacyKey;
+	inputPrivacyKeyNoPaidMessages#bdc597b4 = InputPrivacyKey;
+
+	privacyKeyStatusTimestamp#bc2eab30 = PrivacyKey;
+	privacyKeyChatInvite#500e6dfa = PrivacyKey;
+	privacyKeyPhoneCall#3d662b7b = PrivacyKey;
+	privacyKeyPhoneP2P#39491cc8 = PrivacyKey;
+	privacyKeyForwards#69ec56a3 = PrivacyKey;
+	privacyKeyProfilePhoto#96151fed = PrivacyKey;
+	privacyKeyPhoneNumber#d19ae46d = PrivacyKey;
+	privacyKeyAddedByPhone#42ffd42b = PrivacyKey;
+	privacyKeyVoiceMessages#697f414 = PrivacyKey;
+	privacyKeyAbout#a486b761 = PrivacyKey;
+	privacyKeyBirthday#2000a518 = PrivacyKey;
+	privacyKeyStarGiftsAutoSave#2ca4fdf8 = PrivacyKey;
+	privacyKeyNoPaidMessages#17d348d2 = PrivacyKey;
+**/
+
 const (
 	KEY_TYPE_INVALID     = 0
 	STATUS_TIMESTAMP     = 1 //
@@ -62,6 +106,7 @@ const (
 	ABOUT                = 10
 	BIRTHDAY             = 11
 	STAR_GIFTS_AUTO_SAVE = 12
+	NO_PAID_MESSAGES     = 13
 )
 
 func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
@@ -90,6 +135,10 @@ func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
 		return BIRTHDAY
 	case Predicate_inputPrivacyKeyStarGiftsAutoSave:
 		return STAR_GIFTS_AUTO_SAVE
+	case Predicate_inputPrivacyKeyNoPaidMessages:
+		return NO_PAID_MESSAGES
+	default:
+		panic("type is invalid")
 	}
 	return KEY_TYPE_INVALID
 }
@@ -120,25 +169,14 @@ func ToPrivacyKey(keyType int) (key *PrivacyKey) {
 		key = MakeTLPrivacyKeyBirthday(nil).To_PrivacyKey()
 	case STAR_GIFTS_AUTO_SAVE:
 		key = MakeTLPrivacyKeyStarGiftsAutoSave(nil).To_PrivacyKey()
+	case NO_PAID_MESSAGES:
+		key = MakeTLPrivacyKeyNoPaidMessages(nil).To_PrivacyKey()
 	default:
 		panic("type is invalid")
 	}
 	return
 }
 
-// ToPrivacyRuleByInput
-/*
-```
-inputPrivacyValueAllowContacts#d09e07b = InputPrivacyRule;
-inputPrivacyValueAllowAll#184b35ce = InputPrivacyRule;
-inputPrivacyValueAllowUsers#131cc67f users:Vector<InputUser> = InputPrivacyRule;
-inputPrivacyValueDisallowContacts#ba52007 = InputPrivacyRule;
-inputPrivacyValueDisallowAll#d66b66c9 = InputPrivacyRule;
-inputPrivacyValueDisallowUsers#90110467 users:Vector<InputUser> = InputPrivacyRule;
-inputPrivacyValueAllowChatParticipants#4c81c1ba chats:Vector<int> = InputPrivacyRule;
-inputPrivacyValueDisallowChatParticipants#d82363af chats:Vector<int> = InputPrivacyRule;
-```
-*/
 func ToPrivacyRuleByInput(userSelfId int64, inputRule *InputPrivacyRule) *PrivacyRule {
 	switch inputRule.PredicateName {
 	case Predicate_inputPrivacyValueAllowAll:
@@ -169,8 +207,12 @@ func ToPrivacyRuleByInput(userSelfId int64, inputRule *InputPrivacyRule) *Privac
 		return MakeTLPrivacyValueAllowCloseFriends(nil).To_PrivacyRule()
 	case Predicate_inputPrivacyValueAllowPremium:
 		return MakeTLPrivacyValueAllowPremium(nil).To_PrivacyRule()
+	case Predicate_inputPrivacyValueAllowBots:
+		return MakeTLPrivacyValueAllowBots(nil).To_PrivacyRule()
+	case Predicate_inputPrivacyValueDisallowBots:
+		return MakeTLPrivacyValueDisallowBots(nil).To_PrivacyRule()
 	default:
-		// log.Errorf("type is invalid")
+		panic("type is invalid")
 	}
 	return nil
 }
