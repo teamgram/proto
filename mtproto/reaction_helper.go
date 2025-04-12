@@ -12,31 +12,44 @@ import (
 
 var (
 	reactionEmpty = MakeTLReactionEmpty(nil).To_Reaction()
+	reactionPaid  = MakeTLReactionPaid(nil).To_Reaction()
 )
 
-func (m *Reaction) ToString() string {
-	v := m.Emoticon
-	if m.DocumentId != 0 {
-		v = strconv.FormatInt(m.DocumentId, 10)
+func (m *Reaction) ToString() (s string) {
+	if m == nil {
+		return
 	}
 
-	return v
+	switch m.GetPredicateName() {
+	case Predicate_reactionEmpty:
+		s = ""
+	case Predicate_reactionEmoji:
+		s = m.Emoticon
+	case Predicate_reactionCustomEmoji:
+		s = strconv.FormatInt(m.DocumentId, 10)
+	case Predicate_reactionPaid:
+		s = "paid"
+	}
+
+	return
 }
 
-func FromReaction(s string) *Reaction {
+func FromReaction(s string) (reaction *Reaction) {
 	if s == "" {
-		return reactionEmpty
-	}
-	id, err := strconv.ParseInt(s, 10, 64)
-	if err != nil {
-		return MakeTLReactionEmoji(&Reaction{
+		reaction = reactionEmpty
+	} else if s == "paid" {
+		reaction = reactionPaid
+	} else if id, err := strconv.ParseInt(s, 10, 64); err == nil {
+		reaction = MakeTLReactionCustomEmoji(&Reaction{
+			DocumentId: id,
+		}).To_Reaction()
+	} else {
+		reaction = MakeTLReactionEmoji(&Reaction{
 			Emoticon: s,
 		}).To_Reaction()
 	}
 
-	return MakeTLReactionCustomEmoji(&Reaction{
-		DocumentId: id,
-	}).To_Reaction()
+	return
 }
 
 // chatReactionsNone#eafc32bc = ChatReactions;
