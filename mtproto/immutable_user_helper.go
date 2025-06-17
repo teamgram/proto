@@ -311,7 +311,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		LangCode:              nil,
 		EmojiStatus:           m.EmojiStatus(),
 		Usernames:             nil,
-		StoriesMaxId:          m.StoriesMaxId(),
+		StoriesMaxId:          nil,
 		Color_FLAGPEERCOLOR:   m.Color(),
 		Color:                 m.Color().GetColor(),
 		Color_FLAGINT32:       m.Color().GetColor(),
@@ -337,6 +337,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		// user.Phone = contact.Phone
 		user.CloseFriend = contact.CloseFriend
 		user.StoriesHidden = contact.StoriesHidden
+		user.StoriesMaxId = m.StoriesMaxId()
 	} else {
 		// reverse contact
 		reverseContact := m.GetReverseContactData(selfUser.Id())
@@ -533,7 +534,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		LangCode:              nil,
 		EmojiStatus:           m.EmojiStatus(),
 		Usernames:             nil,
-		StoriesMaxId:          m.StoriesMaxId(),
+		StoriesMaxId:          nil,
 		Color_FLAGPEERCOLOR:   m.Color(),
 		Color:                 m.Color().GetColor(),
 		Color_FLAGINT32:       m.Color().GetColor(),
@@ -558,6 +559,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		// user.Phone = reverseContact.Phone
 		user.CloseFriend = reverseContact.CloseFriend
 		user.StoriesHidden = reverseContact.StoriesHidden
+		user.StoriesMaxId = m.StoriesMaxId()
 	}
 
 	// phone
