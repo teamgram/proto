@@ -44784,6 +44784,132 @@ func (m *VectorPredefinedUser) Decode(d *bin.Decoder) (err error) {
 //--------------------------------------------------------------------------------------------
 // rpc
 
+type RPCSavedMessageDialogs interface {
+	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs) (*MessagesSavedDialogs, error)
+	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory) (*MessagesMessages, error)
+	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory) (*MessagesAffectedHistory, error)
+	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs) (*MessagesSavedDialogs, error)
+	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin) (*Bool, error)
+	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
+}
+
+type RPCPreparedInlineMessages interface {
+	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage) (*MessagesBotPreparedInlineMessage, error)
+	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage) (*MessagesPreparedInlineMessage, error)
+}
+
+type RPCTwoFa interface {
+	AccountGetPassword(ctx context.Context, in *TLAccountGetPassword) (*AccountPassword, error)
+	AccountGetPasswordSettings(ctx context.Context, in *TLAccountGetPasswordSettings) (*AccountPasswordSettings, error)
+	AccountUpdatePasswordSettings(ctx context.Context, in *TLAccountUpdatePasswordSettings) (*Bool, error)
+	AccountConfirmPasswordEmail(ctx context.Context, in *TLAccountConfirmPasswordEmail) (*Bool, error)
+	AccountResendPasswordEmail(ctx context.Context, in *TLAccountResendPasswordEmail) (*Bool, error)
+	AccountCancelPasswordEmail(ctx context.Context, in *TLAccountCancelPasswordEmail) (*Bool, error)
+	AccountDeclinePasswordReset(ctx context.Context, in *TLAccountDeclinePasswordReset) (*Bool, error)
+}
+
+type RPCFragment interface {
+	AccountReorderUsernames(ctx context.Context, in *TLAccountReorderUsernames) (*Bool, error)
+	AccountToggleUsername(ctx context.Context, in *TLAccountToggleUsername) (*Bool, error)
+	ChannelsReorderUsernames(ctx context.Context, in *TLChannelsReorderUsernames) (*Bool, error)
+	ChannelsToggleUsername(ctx context.Context, in *TLChannelsToggleUsername) (*Bool, error)
+	ChannelsDeactivateAllUsernames(ctx context.Context, in *TLChannelsDeactivateAllUsernames) (*Bool, error)
+	BotsReorderUsernames(ctx context.Context, in *TLBotsReorderUsernames) (*Bool, error)
+	BotsToggleUsername(ctx context.Context, in *TLBotsToggleUsername) (*Bool, error)
+}
+
+type RPCReactionNotification interface {
+	AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error)
+	AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error)
+}
+
+type RPCMessageThreads interface {
+	ContactsBlockFromReplies(ctx context.Context, in *TLContactsBlockFromReplies) (*Updates, error)
+	MessagesGetReplies(ctx context.Context, in *TLMessagesGetReplies) (*MessagesMessages, error)
+	MessagesGetDiscussionMessage(ctx context.Context, in *TLMessagesGetDiscussionMessage) (*MessagesDiscussionMessage, error)
+	MessagesReadDiscussion(ctx context.Context, in *TLMessagesReadDiscussion) (*Bool, error)
+}
+
+type RPCWebPage interface {
+	MessagesGetWebPagePreview(ctx context.Context, in *TLMessagesGetWebPagePreview) (*MessagesWebPagePreview, error)
+	MessagesGetWebPage(ctx context.Context, in *TLMessagesGetWebPage) (*MessagesWebPage, error)
+}
+
+type RPCDeepLinks interface {
+	MessagesStartBot(ctx context.Context, in *TLMessagesStartBot) (*Updates, error)
+	HelpGetRecentMeUrls(ctx context.Context, in *TLHelpGetRecentMeUrls) (*HelpRecentMeUrls, error)
+	HelpGetDeepLinkInfo(ctx context.Context, in *TLHelpGetDeepLinkInfo) (*HelpDeepLinkInfo, error)
+}
+
+type RPCBotMenu interface {
+	MessagesGetAttachMenuBots(ctx context.Context, in *TLMessagesGetAttachMenuBots) (*AttachMenuBots, error)
+	MessagesGetAttachMenuBot(ctx context.Context, in *TLMessagesGetAttachMenuBot) (*AttachMenuBotsBot, error)
+	MessagesToggleBotInAttachMenu(ctx context.Context, in *TLMessagesToggleBotInAttachMenu) (*Bool, error)
+}
+
+type RPCPromoData interface {
+	HelpGetPromoData(ctx context.Context, in *TLHelpGetPromoData) (*HelpPromoData, error)
+	HelpHidePromoData(ctx context.Context, in *TLHelpHidePromoData) (*Bool, error)
+}
+
+type RPCSeamless interface {
+	AccountGetWebAuthorizations(ctx context.Context, in *TLAccountGetWebAuthorizations) (*AccountWebAuthorizations, error)
+	AccountResetWebAuthorization(ctx context.Context, in *TLAccountResetWebAuthorization) (*Bool, error)
+	AccountResetWebAuthorizations(ctx context.Context, in *TLAccountResetWebAuthorizations) (*Bool, error)
+	MessagesRequestUrlAuth(ctx context.Context, in *TLMessagesRequestUrlAuth) (*UrlAuthResult, error)
+	MessagesAcceptUrlAuth(ctx context.Context, in *TLMessagesAcceptUrlAuth) (*UrlAuthResult, error)
+}
+
+type RPCAccentColors interface {
+	AccountUpdateColor(ctx context.Context, in *TLAccountUpdateColor) (*Bool, error)
+	AccountGetDefaultBackgroundEmojis(ctx context.Context, in *TLAccountGetDefaultBackgroundEmojis) (*EmojiList, error)
+	HelpGetPeerColors(ctx context.Context, in *TLHelpGetPeerColors) (*HelpPeerColors, error)
+	HelpGetPeerProfileColors(ctx context.Context, in *TLHelpGetPeerProfileColors) (*HelpPeerColors, error)
+	ChannelsUpdateColor(ctx context.Context, in *TLChannelsUpdateColor) (*Updates, error)
+}
+
+type RPCBusinessConnectedBots interface {
+	AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot) (*Updates, error)
+	AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots) (*AccountConnectedBots, error)
+	AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection) (*Updates, error)
+	AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused) (*Bool, error)
+	AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot) (*Bool, error)
+}
+
+type RPCPaidMessage interface {
+	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException) (*Bool, error)
+	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue) (*AccountPaidMessagesRevenue, error)
+	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
+}
+
+type RPCBoosts interface {
+	ChannelsSetBoostsToUnblockRestrictions(ctx context.Context, in *TLChannelsSetBoostsToUnblockRestrictions) (*Updates, error)
+	PremiumGetBoostsList(ctx context.Context, in *TLPremiumGetBoostsList) (*PremiumBoostsList, error)
+	PremiumGetMyBoosts(ctx context.Context, in *TLPremiumGetMyBoosts) (*PremiumMyBoosts, error)
+	PremiumApplyBoost(ctx context.Context, in *TLPremiumApplyBoost) (*PremiumMyBoosts, error)
+	PremiumGetBoostsStatus(ctx context.Context, in *TLPremiumGetBoostsStatus) (*PremiumBoostsStatus, error)
+	PremiumGetUserBoosts(ctx context.Context, in *TLPremiumGetUserBoosts) (*PremiumBoostsList, error)
+}
+
+type RPCBotMenuButton interface {
+	BotsSetBotMenuButton(ctx context.Context, in *TLBotsSetBotMenuButton) (*Bool, error)
+	BotsGetBotMenuButton(ctx context.Context, in *TLBotsGetBotMenuButton) (*BotMenuButton, error)
+}
+
+type RPCChannelAdRevenue interface {
+	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats) (*StatsBroadcastRevenueStats, error)
+	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl) (*StatsBroadcastRevenueWithdrawalUrl, error)
+	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions) (*StatsBroadcastRevenueTransactions, error)
+}
+
+type RPCPremium interface {
+	HelpGetPremiumPromo(ctx context.Context, in *TLHelpGetPremiumPromo) (*HelpPremiumPromo, error)
+	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
+	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
+	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore) (*Bool, error)
+	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium) (*Bool, error)
+}
+
 type RPCPrivacySettings interface {
 	AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy) (*AccountPrivacyRules, error)
 	AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy) (*AccountPrivacyRules, error)
@@ -44795,6 +44921,123 @@ type RPCPrivacySettings interface {
 	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact) (*VectorBool, error)
 }
 
+type RPCProfileLinks interface {
+	ContactsExportContactToken(ctx context.Context, in *TLContactsExportContactToken) (*ExportedContactToken, error)
+	ContactsImportContactToken(ctx context.Context, in *TLContactsImportContactToken) (*User, error)
+}
+
+type RPCFactChecks interface {
+	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck) (*Updates, error)
+	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck) (*Updates, error)
+	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck) (*VectorFactCheck, error)
+}
+
+type RPCInternalBot interface {
+	HelpSetBotUpdatesStatus(ctx context.Context, in *TLHelpSetBotUpdatesStatus) (*Bool, error)
+	BotsSendCustomRequest(ctx context.Context, in *TLBotsSendCustomRequest) (*DataJSON, error)
+	BotsAnswerWebhookJSONQuery(ctx context.Context, in *TLBotsAnswerWebhookJSONQuery) (*Bool, error)
+}
+
+type RPCBusinessLocation interface {
+	AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation) (*Bool, error)
+}
+
+type RPCAffiliatePrograms interface {
+	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
+	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots) (*PaymentsConnectedStarRefBots, error)
+	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots) (*PaymentsSuggestedStarRefBots, error)
+	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot) (*PaymentsConnectedStarRefBots, error)
+	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+}
+
+type RPCStars interface {
+	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions) (*VectorStarsTopupOption, error)
+	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus) (*PaymentsStarsStatus, error)
+	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions) (*PaymentsStarsStatus, error)
+	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm) (*PaymentsPaymentResult, error)
+	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge) (*Updates, error)
+	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats) (*PaymentsStarsRevenueStats, error)
+	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl) (*PaymentsStarsRevenueWithdrawalUrl, error)
+	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl) (*PaymentsStarsRevenueAdsAccountUrl, error)
+	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID) (*PaymentsStarsStatus, error)
+	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions) (*VectorStarsGiftOption, error)
+}
+
+type RPCBots interface {
+	BotsSetBotCommands(ctx context.Context, in *TLBotsSetBotCommands) (*Bool, error)
+	BotsResetBotCommands(ctx context.Context, in *TLBotsResetBotCommands) (*Bool, error)
+	BotsGetBotCommands(ctx context.Context, in *TLBotsGetBotCommands) (*VectorBotCommand, error)
+	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo) (*Bool, error)
+	BotsGetBotInfo(ctx context.Context, in *TLBotsGetBotInfo) (*BotsBotInfo, error)
+	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots) (*VectorUser, error)
+	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
+	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
+}
+
+type RPCGiveaways interface {
+	PaymentsGetPremiumGiftCodeOptions(ctx context.Context, in *TLPaymentsGetPremiumGiftCodeOptions) (*VectorPremiumGiftCodeOption, error)
+	PaymentsGetGiveawayInfo(ctx context.Context, in *TLPaymentsGetGiveawayInfo) (*PaymentsGiveawayInfo, error)
+	PaymentsLaunchPrepaidGiveaway(ctx context.Context, in *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error)
+	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions) (*VectorStarsGiveawayOption, error)
+}
+
+type RPCGiftCodes interface {
+	PaymentsCheckGiftCode(ctx context.Context, in *TLPaymentsCheckGiftCode) (*PaymentsCheckedGiftCode, error)
+	PaymentsApplyGiftCode(ctx context.Context, in *TLPaymentsApplyGiftCode) (*Updates, error)
+}
+
+type RPCGifts interface {
+	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts) (*PaymentsStarGifts, error)
+	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift) (*Bool, error)
+	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift) (*Bool, error)
+	PaymentsGetStarGiftUpgradePreview(ctx context.Context, in *TLPaymentsGetStarGiftUpgradePreview) (*PaymentsStarGiftUpgradePreview, error)
+	PaymentsUpgradeStarGift(ctx context.Context, in *TLPaymentsUpgradeStarGift) (*Updates, error)
+	PaymentsTransferStarGift(ctx context.Context, in *TLPaymentsTransferStarGift) (*Updates, error)
+	PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift) (*PaymentsUniqueStarGift, error)
+	PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts) (*PaymentsSavedStarGifts, error)
+	PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift) (*PaymentsSavedStarGifts, error)
+	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl) (*PaymentsStarGiftWithdrawalUrl, error)
+	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
+	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
+}
+
+type RPCQrCode interface {
+	AuthExportLoginToken(ctx context.Context, in *TLAuthExportLoginToken) (*AuthLoginToken, error)
+	AuthImportLoginToken(ctx context.Context, in *TLAuthImportLoginToken) (*AuthLoginToken, error)
+	AuthAcceptLoginToken(ctx context.Context, in *TLAuthAcceptLoginToken) (*Authorization, error)
+}
+
+type RPCWallpapers interface {
+	AccountGetWallPapers(ctx context.Context, in *TLAccountGetWallPapers) (*AccountWallPapers, error)
+	AccountGetWallPaper(ctx context.Context, in *TLAccountGetWallPaper) (*WallPaper, error)
+	AccountUploadWallPaper(ctx context.Context, in *TLAccountUploadWallPaper) (*WallPaper, error)
+	AccountSaveWallPaper(ctx context.Context, in *TLAccountSaveWallPaper) (*Bool, error)
+	AccountInstallWallPaper(ctx context.Context, in *TLAccountInstallWallPaper) (*Bool, error)
+	AccountResetWallPapers(ctx context.Context, in *TLAccountResetWallPapers) (*Bool, error)
+	AccountGetMultiWallPapers(ctx context.Context, in *TLAccountGetMultiWallPapers) (*VectorWallPaper, error)
+	MessagesSetChatWallPaper(ctx context.Context, in *TLMessagesSetChatWallPaper) (*Updates, error)
+}
+
+type RPCTranscription interface {
+	MessagesTranscribeAudio(ctx context.Context, in *TLMessagesTranscribeAudio) (*MessagesTranscribedAudio, error)
+	MessagesRateTranscribedAudio(ctx context.Context, in *TLMessagesRateTranscribedAudio) (*Bool, error)
+}
+
+type RPCFolderTags interface {
+	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags) (*Bool, error)
+}
+
+type RPCStatistics interface {
+	StatsGetBroadcastStats(ctx context.Context, in *TLStatsGetBroadcastStats) (*StatsBroadcastStats, error)
+	StatsLoadAsyncGraph(ctx context.Context, in *TLStatsLoadAsyncGraph) (*StatsGraph, error)
+	StatsGetMegagroupStats(ctx context.Context, in *TLStatsGetMegagroupStats) (*StatsMegagroupStats, error)
+	StatsGetMessagePublicForwards(ctx context.Context, in *TLStatsGetMessagePublicForwards) (*StatsPublicForwards, error)
+	StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats) (*StatsMessageStats, error)
+	StatsGetStoryStats(ctx context.Context, in *TLStatsGetStoryStats) (*StatsStoryStats, error)
+	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards) (*StatsPublicForwards, error)
+}
+
 type RPCEmojiCategories interface {
 	MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups) (*MessagesEmojiGroups, error)
 	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups) (*MessagesEmojiGroups, error)
@@ -44802,10 +45045,108 @@ type RPCEmojiCategories interface {
 	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups) (*MessagesEmojiGroups, error)
 }
 
-type RPCInternalBot interface {
-	HelpSetBotUpdatesStatus(ctx context.Context, in *TLHelpSetBotUpdatesStatus) (*Bool, error)
-	BotsSendCustomRequest(ctx context.Context, in *TLBotsSendCustomRequest) (*DataJSON, error)
-	BotsAnswerWebhookJSONQuery(ctx context.Context, in *TLBotsAnswerWebhookJSONQuery) (*Bool, error)
+type RPCChannels interface {
+	ChannelsReadHistory(ctx context.Context, in *TLChannelsReadHistory) (*Bool, error)
+	ChannelsDeleteMessages(ctx context.Context, in *TLChannelsDeleteMessages) (*MessagesAffectedMessages, error)
+	ChannelsGetMessages(ctx context.Context, in *TLChannelsGetMessages) (*MessagesMessages, error)
+	ChannelsGetParticipants(ctx context.Context, in *TLChannelsGetParticipants) (*ChannelsChannelParticipants, error)
+	ChannelsGetParticipant(ctx context.Context, in *TLChannelsGetParticipant) (*ChannelsChannelParticipant, error)
+	ChannelsGetChannels(ctx context.Context, in *TLChannelsGetChannels) (*MessagesChats, error)
+	ChannelsGetFullChannel(ctx context.Context, in *TLChannelsGetFullChannel) (*MessagesChatFull, error)
+	ChannelsCreateChannel(ctx context.Context, in *TLChannelsCreateChannel) (*Updates, error)
+	ChannelsEditAdmin(ctx context.Context, in *TLChannelsEditAdmin) (*Updates, error)
+	ChannelsEditTitle(ctx context.Context, in *TLChannelsEditTitle) (*Updates, error)
+	ChannelsEditPhoto(ctx context.Context, in *TLChannelsEditPhoto) (*Updates, error)
+	ChannelsJoinChannel(ctx context.Context, in *TLChannelsJoinChannel) (*Updates, error)
+	ChannelsLeaveChannel(ctx context.Context, in *TLChannelsLeaveChannel) (*Updates, error)
+	ChannelsInviteToChannel(ctx context.Context, in *TLChannelsInviteToChannel) (*MessagesInvitedUsers, error)
+	ChannelsDeleteChannel(ctx context.Context, in *TLChannelsDeleteChannel) (*Updates, error)
+	ChannelsExportMessageLink(ctx context.Context, in *TLChannelsExportMessageLink) (*ExportedMessageLink, error)
+	ChannelsToggleSignatures(ctx context.Context, in *TLChannelsToggleSignatures) (*Updates, error)
+	ChannelsGetAdminedPublicChannels(ctx context.Context, in *TLChannelsGetAdminedPublicChannels) (*MessagesChats, error)
+	ChannelsEditBanned(ctx context.Context, in *TLChannelsEditBanned) (*Updates, error)
+	ChannelsGetAdminLog(ctx context.Context, in *TLChannelsGetAdminLog) (*ChannelsAdminLogResults, error)
+	ChannelsSetStickers(ctx context.Context, in *TLChannelsSetStickers) (*Bool, error)
+	ChannelsReadMessageContents(ctx context.Context, in *TLChannelsReadMessageContents) (*Bool, error)
+	ChannelsDeleteHistory(ctx context.Context, in *TLChannelsDeleteHistory) (*Updates, error)
+	ChannelsTogglePreHistoryHidden(ctx context.Context, in *TLChannelsTogglePreHistoryHidden) (*Updates, error)
+	ChannelsGetGroupsForDiscussion(ctx context.Context, in *TLChannelsGetGroupsForDiscussion) (*MessagesChats, error)
+	ChannelsSetDiscussionGroup(ctx context.Context, in *TLChannelsSetDiscussionGroup) (*Bool, error)
+	ChannelsEditCreator(ctx context.Context, in *TLChannelsEditCreator) (*Updates, error)
+	ChannelsEditLocation(ctx context.Context, in *TLChannelsEditLocation) (*Bool, error)
+	ChannelsToggleSlowMode(ctx context.Context, in *TLChannelsToggleSlowMode) (*Updates, error)
+	ChannelsGetInactiveChannels(ctx context.Context, in *TLChannelsGetInactiveChannels) (*MessagesInactiveChats, error)
+	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory) (*MessagesAffectedHistory, error)
+	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden) (*Updates, error)
+}
+
+type RPCAntiSpam interface {
+	ChannelsToggleAntiSpam(ctx context.Context, in *TLChannelsToggleAntiSpam) (*Updates, error)
+	ChannelsReportAntiSpamFalsePositive(ctx context.Context, in *TLChannelsReportAntiSpamFalsePositive) (*Bool, error)
+}
+
+type RPCInlineBot interface {
+	MessagesGetInlineBotResults(ctx context.Context, in *TLMessagesGetInlineBotResults) (*MessagesBotResults, error)
+	MessagesSetInlineBotResults(ctx context.Context, in *TLMessagesSetInlineBotResults) (*Bool, error)
+	MessagesSendInlineBotResult(ctx context.Context, in *TLMessagesSendInlineBotResult) (*Updates, error)
+	MessagesEditInlineBotMessage(ctx context.Context, in *TLMessagesEditInlineBotMessage) (*Bool, error)
+	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer) (*MessagesBotCallbackAnswer, error)
+	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer) (*Bool, error)
+	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer) (*Updates, error)
+}
+
+type RPCPolls interface {
+	MessagesSendVote(ctx context.Context, in *TLMessagesSendVote) (*Updates, error)
+	MessagesGetPollResults(ctx context.Context, in *TLMessagesGetPollResults) (*Updates, error)
+	MessagesGetPollVotes(ctx context.Context, in *TLMessagesGetPollVotes) (*MessagesVotesList, error)
+}
+
+type RPCTranslation interface {
+	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText) (*MessagesTranslatedText, error)
+	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations) (*Bool, error)
+}
+
+type RPCSavedMessageTags interface {
+	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags) (*MessagesSavedReactionTags, error)
+	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag) (*Bool, error)
+	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions) (*MessagesReactions, error)
+}
+
+type RPCTakeout interface {
+	AccountInitTakeoutSession(ctx context.Context, in *TLAccountInitTakeoutSession) (*AccountTakeout, error)
+	AccountFinishTakeoutSession(ctx context.Context, in *TLAccountFinishTakeoutSession) (*Bool, error)
+	MessagesGetSplitRanges(ctx context.Context, in *TLMessagesGetSplitRanges) (*VectorMessageRange, error)
+	ChannelsGetLeftChannels(ctx context.Context, in *TLChannelsGetLeftChannels) (*MessagesChats, error)
+}
+
+type RPCAutoDownload interface {
+	AccountGetAutoDownloadSettings(ctx context.Context, in *TLAccountGetAutoDownloadSettings) (*AccountAutoDownloadSettings, error)
+	AccountSaveAutoDownloadSettings(ctx context.Context, in *TLAccountSaveAutoDownloadSettings) (*Bool, error)
+}
+
+type RPCRingtone interface {
+	AccountGetSavedRingtones(ctx context.Context, in *TLAccountGetSavedRingtones) (*AccountSavedRingtones, error)
+	AccountSaveRingtone(ctx context.Context, in *TLAccountSaveRingtone) (*AccountSavedRingtone, error)
+	AccountUploadRingtone(ctx context.Context, in *TLAccountUploadRingtone) (*Document, error)
+}
+
+type RPCBusinessOpeningHours interface {
+	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours) (*Bool, error)
+}
+
+type RPCTimezones interface {
+	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList) (*HelpTimezonesList, error)
+}
+
+type RPCStarSubscriptions interface {
+	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions) (*PaymentsStarsStatus, error)
+	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription) (*Bool, error)
+	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
+}
+
+type RPCbiz interface {
+	BizInvokeBizDataRaw(ctx context.Context, in *TLBizInvokeBizDataRaw) (*BizDataRaw, error)
 }
 
 type RPCAccount interface {
@@ -44819,9 +45160,42 @@ type RPCAccount interface {
 	AccountConfirmPhone(ctx context.Context, in *TLAccountConfirmPhone) (*Bool, error)
 }
 
-type RPCTos interface {
-	HelpGetTermsOfServiceUpdate(ctx context.Context, in *TLHelpGetTermsOfServiceUpdate) (*HelpTermsOfServiceUpdate, error)
-	HelpAcceptTermsOfService(ctx context.Context, in *TLHelpAcceptTermsOfService) (*Bool, error)
+type RPCPassport interface {
+	AccountGetAuthorizations(ctx context.Context, in *TLAccountGetAuthorizations) (*AccountAuthorizations, error)
+	AccountGetAllSecureValues(ctx context.Context, in *TLAccountGetAllSecureValues) (*VectorSecureValue, error)
+	AccountGetSecureValue(ctx context.Context, in *TLAccountGetSecureValue) (*VectorSecureValue, error)
+	AccountSaveSecureValue(ctx context.Context, in *TLAccountSaveSecureValue) (*SecureValue, error)
+	AccountDeleteSecureValue(ctx context.Context, in *TLAccountDeleteSecureValue) (*Bool, error)
+	AccountGetAuthorizationForm(ctx context.Context, in *TLAccountGetAuthorizationForm) (*AccountAuthorizationForm, error)
+	AccountAcceptAuthorization(ctx context.Context, in *TLAccountAcceptAuthorization) (*Bool, error)
+	AccountSendVerifyPhoneCode(ctx context.Context, in *TLAccountSendVerifyPhoneCode) (*AuthSentCode, error)
+	AccountVerifyPhone(ctx context.Context, in *TLAccountVerifyPhone) (*Bool, error)
+	UsersSetSecureValueErrors(ctx context.Context, in *TLUsersSetSecureValueErrors) (*Bool, error)
+	HelpGetPassportConfig(ctx context.Context, in *TLHelpGetPassportConfig) (*HelpPassportConfig, error)
+}
+
+type RPCEmojiStatus interface {
+	AccountUpdateEmojiStatus(ctx context.Context, in *TLAccountUpdateEmojiStatus) (*Bool, error)
+	AccountGetDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountGetRecentEmojiStatuses(ctx context.Context, in *TLAccountGetRecentEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses) (*Bool, error)
+	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
+	AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses) (*AccountEmojiStatuses, error)
+	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus) (*Updates, error)
+	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus) (*Bool, error)
+	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
+}
+
+type RPCMainMiniBotApps interface {
+	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView) (*WebViewResult, error)
+	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots) (*BotsPopularAppBots, error)
+	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
+	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
+	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia) (*Bool, error)
+	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias) (*Bool, error)
+	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo) (*BotsPreviewInfo, error)
+	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias) (*VectorBotPreviewMedia, error)
 }
 
 type RPCNsfw interface {
@@ -44829,52 +45203,164 @@ type RPCNsfw interface {
 	AccountGetContentSettings(ctx context.Context, in *TLAccountGetContentSettings) (*AccountContentSettings, error)
 }
 
-type RPCBusinessChatLinks interface {
-	AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
-	AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
-	AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink) (*Bool, error)
-	AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks) (*AccountBusinessChatLinks, error)
-	AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink) (*AccountResolvedBusinessChatLinks, error)
+type RPCBusinessQuickReply interface {
+	MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies) (*MessagesQuickReplies, error)
+	MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies) (*Bool, error)
+	MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut) (*Bool, error)
+	MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut) (*Bool, error)
+	MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut) (*Bool, error)
+	MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages) (*MessagesMessages, error)
+	MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages) (*Updates, error)
+	MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages) (*Updates, error)
 }
 
-type RPCMiniBotApps interface {
-	MessagesRequestWebView(ctx context.Context, in *TLMessagesRequestWebView) (*WebViewResult, error)
-	MessagesProlongWebView(ctx context.Context, in *TLMessagesProlongWebView) (*Bool, error)
-	MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView) (*WebViewResult, error)
-	MessagesSendWebViewResultMessage(ctx context.Context, in *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error)
-	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData) (*Updates, error)
-	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp) (*MessagesBotApp, error)
-	MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView) (*WebViewResult, error)
-	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage) (*Bool, error)
-	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage) (*Updates, error)
-	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
-	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams) (*Bool, error)
+type RPCLangpack interface {
+	LangpackGetLangPack(ctx context.Context, in *TLLangpackGetLangPack) (*LangPackDifference, error)
+	LangpackGetStrings(ctx context.Context, in *TLLangpackGetStrings) (*VectorLangPackString, error)
+	LangpackGetDifference(ctx context.Context, in *TLLangpackGetDifference) (*LangPackDifference, error)
+	LangpackGetLanguages(ctx context.Context, in *TLLangpackGetLanguages) (*VectorLangPackLanguage, error)
+	LangpackGetLanguage(ctx context.Context, in *TLLangpackGetLanguage) (*LangPackLanguage, error)
 }
 
-type RPCPreparedInlineMessages interface {
-	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage) (*MessagesBotPreparedInlineMessage, error)
-	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage) (*MessagesPreparedInlineMessage, error)
+type RPCSmsjobs interface {
+	SmsjobsIsEligibleToJoin(ctx context.Context, in *TLSmsjobsIsEligibleToJoin) (*SmsjobsEligibilityToJoin, error)
+	SmsjobsJoin(ctx context.Context, in *TLSmsjobsJoin) (*Bool, error)
+	SmsjobsLeave(ctx context.Context, in *TLSmsjobsLeave) (*Bool, error)
+	SmsjobsUpdateSettings(ctx context.Context, in *TLSmsjobsUpdateSettings) (*Bool, error)
+	SmsjobsGetStatus(ctx context.Context, in *TLSmsjobsGetStatus) (*SmsjobsStatus, error)
+	SmsjobsGetSmsJob(ctx context.Context, in *TLSmsjobsGetSmsJob) (*SmsJob, error)
+	SmsjobsFinishJob(ctx context.Context, in *TLSmsjobsFinishJob) (*Bool, error)
 }
 
-type RPCConfiguration interface {
-	HelpGetConfig(ctx context.Context, in *TLHelpGetConfig) (*Config, error)
-	HelpGetNearestDc(ctx context.Context, in *TLHelpGetNearestDc) (*NearestDc, error)
-	HelpGetAppUpdate(ctx context.Context, in *TLHelpGetAppUpdate) (*HelpAppUpdate, error)
-	HelpGetInviteText(ctx context.Context, in *TLHelpGetInviteText) (*HelpInviteText, error)
-	HelpGetSupport(ctx context.Context, in *TLHelpGetSupport) (*HelpSupport, error)
-	HelpGetAppConfig(ctx context.Context, in *TLHelpGetAppConfig) (*HelpAppConfig, error)
-	HelpGetSupportName(ctx context.Context, in *TLHelpGetSupportName) (*HelpSupportName, error)
-	HelpDismissSuggestion(ctx context.Context, in *TLHelpDismissSuggestion) (*Bool, error)
-	HelpGetCountriesList(ctx context.Context, in *TLHelpGetCountriesList) (*HelpCountriesList, error)
+type RPCChatInvites interface {
+	MessagesExportChatInvite(ctx context.Context, in *TLMessagesExportChatInvite) (*ExportedChatInvite, error)
+	MessagesCheckChatInvite(ctx context.Context, in *TLMessagesCheckChatInvite) (*ChatInvite, error)
+	MessagesImportChatInvite(ctx context.Context, in *TLMessagesImportChatInvite) (*Updates, error)
+	MessagesGetExportedChatInvites(ctx context.Context, in *TLMessagesGetExportedChatInvites) (*MessagesExportedChatInvites, error)
+	MessagesGetExportedChatInvite(ctx context.Context, in *TLMessagesGetExportedChatInvite) (*MessagesExportedChatInvite, error)
+	MessagesEditExportedChatInvite(ctx context.Context, in *TLMessagesEditExportedChatInvite) (*MessagesExportedChatInvite, error)
+	MessagesDeleteRevokedExportedChatInvites(ctx context.Context, in *TLMessagesDeleteRevokedExportedChatInvites) (*Bool, error)
+	MessagesDeleteExportedChatInvite(ctx context.Context, in *TLMessagesDeleteExportedChatInvite) (*Bool, error)
+	MessagesGetAdminsWithInvites(ctx context.Context, in *TLMessagesGetAdminsWithInvites) (*MessagesChatAdminsWithInvites, error)
+	MessagesGetChatInviteImporters(ctx context.Context, in *TLMessagesGetChatInviteImporters) (*MessagesChatInviteImporters, error)
+	MessagesHideChatJoinRequest(ctx context.Context, in *TLMessagesHideChatJoinRequest) (*Updates, error)
+	MessagesHideAllChatJoinRequests(ctx context.Context, in *TLMessagesHideAllChatJoinRequests) (*Updates, error)
+	ChannelsToggleJoinToSend(ctx context.Context, in *TLChannelsToggleJoinToSend) (*Updates, error)
+	ChannelsToggleJoinRequest(ctx context.Context, in *TLChannelsToggleJoinRequest) (*Updates, error)
 }
 
-type RPCSponsoredMessages interface {
-	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages) (*Bool, error)
-	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage) (*Bool, error)
-	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage) (*Bool, error)
-	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage) (*ChannelsSponsoredMessageReportResult, error)
-	MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages) (*MessagesSponsoredMessages, error)
-	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages) (*Updates, error)
+type RPCTos interface {
+	HelpGetTermsOfServiceUpdate(ctx context.Context, in *TLHelpGetTermsOfServiceUpdate) (*HelpTermsOfServiceUpdate, error)
+	HelpAcceptTermsOfService(ctx context.Context, in *TLHelpAcceptTermsOfService) (*Bool, error)
+}
+
+type RPCNotification interface {
+	AccountRegisterDevice(ctx context.Context, in *TLAccountRegisterDevice) (*Bool, error)
+	AccountUnregisterDevice(ctx context.Context, in *TLAccountUnregisterDevice) (*Bool, error)
+	AccountUpdateNotifySettings(ctx context.Context, in *TLAccountUpdateNotifySettings) (*Bool, error)
+	AccountGetNotifySettings(ctx context.Context, in *TLAccountGetNotifySettings) (*PeerNotifySettings, error)
+	AccountResetNotifySettings(ctx context.Context, in *TLAccountResetNotifySettings) (*Bool, error)
+	AccountUpdateDeviceLocked(ctx context.Context, in *TLAccountUpdateDeviceLocked) (*Bool, error)
+	AccountGetNotifyExceptions(ctx context.Context, in *TLAccountGetNotifyExceptions) (*Updates, error)
+}
+
+type RPCUserProfile interface {
+	AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile) (*User, error)
+	AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus) (*Bool, error)
+	AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday) (*Bool, error)
+	AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel) (*Bool, error)
+	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays) (*ContactsContactBirthdays, error)
+	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto) (*PhotosPhoto, error)
+	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto) (*PhotosPhoto, error)
+	PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos) (*VectorLong, error)
+	PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos) (*PhotosPhotos, error)
+	PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto) (*PhotosPhoto, error)
+	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified) (*User, error)
+}
+
+type RPCReports interface {
+	AccountReportPeer(ctx context.Context, in *TLAccountReportPeer) (*Bool, error)
+	AccountReportProfilePhoto(ctx context.Context, in *TLAccountReportProfilePhoto) (*Bool, error)
+	MessagesReportSpam(ctx context.Context, in *TLMessagesReportSpam) (*Bool, error)
+	MessagesReport(ctx context.Context, in *TLMessagesReport) (*ReportResult, error)
+	MessagesReportEncryptedSpam(ctx context.Context, in *TLMessagesReportEncryptedSpam) (*Bool, error)
+	ChannelsReportSpam(ctx context.Context, in *TLChannelsReportSpam) (*Bool, error)
+}
+
+type RPCBusinessGreeting interface {
+	AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage) (*Bool, error)
+	AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage) (*Bool, error)
+}
+
+type RPCScheduledMessages interface {
+	MessagesGetScheduledHistory(ctx context.Context, in *TLMessagesGetScheduledHistory) (*MessagesMessages, error)
+	MessagesGetScheduledMessages(ctx context.Context, in *TLMessagesGetScheduledMessages) (*MessagesMessages, error)
+	MessagesSendScheduledMessages(ctx context.Context, in *TLMessagesSendScheduledMessages) (*Updates, error)
+	MessagesDeleteScheduledMessages(ctx context.Context, in *TLMessagesDeleteScheduledMessages) (*Updates, error)
+}
+
+type RPCStories interface {
+	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory) (*Bool, error)
+	StoriesSendStory(ctx context.Context, in *TLStoriesSendStory) (*Updates, error)
+	StoriesEditStory(ctx context.Context, in *TLStoriesEditStory) (*Updates, error)
+	StoriesDeleteStories(ctx context.Context, in *TLStoriesDeleteStories) (*VectorInt, error)
+	StoriesTogglePinned(ctx context.Context, in *TLStoriesTogglePinned) (*VectorInt, error)
+	StoriesGetAllStories(ctx context.Context, in *TLStoriesGetAllStories) (*StoriesAllStories, error)
+	StoriesGetPinnedStories(ctx context.Context, in *TLStoriesGetPinnedStories) (*StoriesStories, error)
+	StoriesGetStoriesArchive(ctx context.Context, in *TLStoriesGetStoriesArchive) (*StoriesStories, error)
+	StoriesGetStoriesByID(ctx context.Context, in *TLStoriesGetStoriesByID) (*StoriesStories, error)
+	StoriesToggleAllStoriesHidden(ctx context.Context, in *TLStoriesToggleAllStoriesHidden) (*Bool, error)
+	StoriesReadStories(ctx context.Context, in *TLStoriesReadStories) (*VectorInt, error)
+	StoriesIncrementStoryViews(ctx context.Context, in *TLStoriesIncrementStoryViews) (*Bool, error)
+	StoriesGetStoryViewsList(ctx context.Context, in *TLStoriesGetStoryViewsList) (*StoriesStoryViewsList, error)
+	StoriesGetStoriesViews(ctx context.Context, in *TLStoriesGetStoriesViews) (*StoriesStoryViews, error)
+	StoriesExportStoryLink(ctx context.Context, in *TLStoriesExportStoryLink) (*ExportedStoryLink, error)
+	StoriesReport(ctx context.Context, in *TLStoriesReport) (*ReportResult, error)
+	StoriesActivateStealthMode(ctx context.Context, in *TLStoriesActivateStealthMode) (*Updates, error)
+	StoriesSendReaction(ctx context.Context, in *TLStoriesSendReaction) (*Updates, error)
+	StoriesGetPeerStories(ctx context.Context, in *TLStoriesGetPeerStories) (*StoriesPeerStories, error)
+	StoriesGetAllReadPeerStories(ctx context.Context, in *TLStoriesGetAllReadPeerStories) (*Updates, error)
+	StoriesGetPeerMaxIDs(ctx context.Context, in *TLStoriesGetPeerMaxIDs) (*VectorInt, error)
+	StoriesGetChatsToSend(ctx context.Context, in *TLStoriesGetChatsToSend) (*MessagesChats, error)
+	StoriesTogglePeerStoriesHidden(ctx context.Context, in *TLStoriesTogglePeerStoriesHidden) (*Bool, error)
+	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList) (*StoriesStoryReactionsList, error)
+	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop) (*Bool, error)
+	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts) (*StoriesFoundStories, error)
+}
+
+type RPCtest interface {
+	TestParseInputAppEvent(ctx context.Context, in *TLTestParseInputAppEvent) (*InputAppEvent, error)
+}
+
+type RPCContacts interface {
+	AccountGetContactSignUpNotification(ctx context.Context, in *TLAccountGetContactSignUpNotification) (*Bool, error)
+	AccountSetContactSignUpNotification(ctx context.Context, in *TLAccountSetContactSignUpNotification) (*Bool, error)
+	ContactsGetContactIDs(ctx context.Context, in *TLContactsGetContactIDs) (*VectorInt, error)
+	ContactsGetStatuses(ctx context.Context, in *TLContactsGetStatuses) (*VectorContactStatus, error)
+	ContactsGetContacts(ctx context.Context, in *TLContactsGetContacts) (*ContactsContacts, error)
+	ContactsImportContacts(ctx context.Context, in *TLContactsImportContacts) (*ContactsImportedContacts, error)
+	ContactsDeleteContacts(ctx context.Context, in *TLContactsDeleteContacts) (*Updates, error)
+	ContactsDeleteByPhones(ctx context.Context, in *TLContactsDeleteByPhones) (*Bool, error)
+	ContactsBlock(ctx context.Context, in *TLContactsBlock) (*Bool, error)
+	ContactsUnblock(ctx context.Context, in *TLContactsUnblock) (*Bool, error)
+	ContactsGetBlocked(ctx context.Context, in *TLContactsGetBlocked) (*ContactsBlocked, error)
+	ContactsSearch(ctx context.Context, in *TLContactsSearch) (*ContactsFound, error)
+	ContactsGetTopPeers(ctx context.Context, in *TLContactsGetTopPeers) (*ContactsTopPeers, error)
+	ContactsResetTopPeerRating(ctx context.Context, in *TLContactsResetTopPeerRating) (*Bool, error)
+	ContactsResetSaved(ctx context.Context, in *TLContactsResetSaved) (*Bool, error)
+	ContactsGetSaved(ctx context.Context, in *TLContactsGetSaved) (*VectorSavedContact, error)
+	ContactsToggleTopPeers(ctx context.Context, in *TLContactsToggleTopPeers) (*Bool, error)
+	ContactsAddContact(ctx context.Context, in *TLContactsAddContact) (*Updates, error)
+	ContactsAcceptContact(ctx context.Context, in *TLContactsAcceptContact) (*Updates, error)
+	ContactsGetLocated(ctx context.Context, in *TLContactsGetLocated) (*Updates, error)
+	ContactsEditCloseFriends(ctx context.Context, in *TLContactsEditCloseFriends) (*Bool, error)
+	ContactsSetBlocked(ctx context.Context, in *TLContactsSetBlocked) (*Bool, error)
+}
+
+type RPCAutosave interface {
+	AccountGetAutoSaveSettings(ctx context.Context, in *TLAccountGetAutoSaveSettings) (*AccountAutoSaveSettings, error)
+	AccountSaveAutoSaveSettings(ctx context.Context, in *TLAccountSaveAutoSaveSettings) (*Bool, error)
+	AccountDeleteAutoSaveExceptions(ctx context.Context, in *TLAccountDeleteAutoSaveExceptions) (*Bool, error)
 }
 
 type RPCChats interface {
@@ -44903,42 +45389,127 @@ type RPCGames interface {
 	MessagesGetInlineGameHighScores(ctx context.Context, in *TLMessagesGetInlineGameHighScores) (*MessagesHighScores, error)
 }
 
-type RPCFolderTags interface {
-	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags) (*Bool, error)
+type RPCUpdates interface {
+	UpdatesGetState(ctx context.Context, in *TLUpdatesGetState) (*UpdatesState, error)
+	UpdatesGetDifference(ctx context.Context, in *TLUpdatesGetDifference) (*UpdatesDifference, error)
+	UpdatesGetChannelDifference(ctx context.Context, in *TLUpdatesGetChannelDifference) (*UpdatesChannelDifference, error)
 }
 
-type RPCContacts interface {
-	AccountGetContactSignUpNotification(ctx context.Context, in *TLAccountGetContactSignUpNotification) (*Bool, error)
-	AccountSetContactSignUpNotification(ctx context.Context, in *TLAccountSetContactSignUpNotification) (*Bool, error)
-	ContactsGetContactIDs(ctx context.Context, in *TLContactsGetContactIDs) (*VectorInt, error)
-	ContactsGetStatuses(ctx context.Context, in *TLContactsGetStatuses) (*VectorContactStatus, error)
-	ContactsGetContacts(ctx context.Context, in *TLContactsGetContacts) (*ContactsContacts, error)
-	ContactsImportContacts(ctx context.Context, in *TLContactsImportContacts) (*ContactsImportedContacts, error)
-	ContactsDeleteContacts(ctx context.Context, in *TLContactsDeleteContacts) (*Updates, error)
-	ContactsDeleteByPhones(ctx context.Context, in *TLContactsDeleteByPhones) (*Bool, error)
-	ContactsBlock(ctx context.Context, in *TLContactsBlock) (*Bool, error)
-	ContactsUnblock(ctx context.Context, in *TLContactsUnblock) (*Bool, error)
-	ContactsGetBlocked(ctx context.Context, in *TLContactsGetBlocked) (*ContactsBlocked, error)
-	ContactsSearch(ctx context.Context, in *TLContactsSearch) (*ContactsFound, error)
-	ContactsGetTopPeers(ctx context.Context, in *TLContactsGetTopPeers) (*ContactsTopPeers, error)
-	ContactsResetTopPeerRating(ctx context.Context, in *TLContactsResetTopPeerRating) (*Bool, error)
-	ContactsResetSaved(ctx context.Context, in *TLContactsResetSaved) (*Bool, error)
-	ContactsGetSaved(ctx context.Context, in *TLContactsGetSaved) (*VectorSavedContact, error)
-	ContactsToggleTopPeers(ctx context.Context, in *TLContactsToggleTopPeers) (*Bool, error)
-	ContactsAddContact(ctx context.Context, in *TLContactsAddContact) (*Updates, error)
-	ContactsAcceptContact(ctx context.Context, in *TLContactsAcceptContact) (*Updates, error)
-	ContactsGetLocated(ctx context.Context, in *TLContactsGetLocated) (*Updates, error)
-	ContactsEditCloseFriends(ctx context.Context, in *TLContactsEditCloseFriends) (*Bool, error)
-	ContactsSetBlocked(ctx context.Context, in *TLContactsSetBlocked) (*Bool, error)
+type RPCConfiguration interface {
+	HelpGetConfig(ctx context.Context, in *TLHelpGetConfig) (*Config, error)
+	HelpGetNearestDc(ctx context.Context, in *TLHelpGetNearestDc) (*NearestDc, error)
+	HelpGetAppUpdate(ctx context.Context, in *TLHelpGetAppUpdate) (*HelpAppUpdate, error)
+	HelpGetInviteText(ctx context.Context, in *TLHelpGetInviteText) (*HelpInviteText, error)
+	HelpGetSupport(ctx context.Context, in *TLHelpGetSupport) (*HelpSupport, error)
+	HelpGetAppConfig(ctx context.Context, in *TLHelpGetAppConfig) (*HelpAppConfig, error)
+	HelpGetSupportName(ctx context.Context, in *TLHelpGetSupportName) (*HelpSupportName, error)
+	HelpDismissSuggestion(ctx context.Context, in *TLHelpDismissSuggestion) (*Bool, error)
+	HelpGetCountriesList(ctx context.Context, in *TLHelpGetCountriesList) (*HelpCountriesList, error)
 }
 
-type RPCBusinessOpeningHours interface {
-	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours) (*Bool, error)
+type RPCUsers interface {
+	UsersGetUsers(ctx context.Context, in *TLUsersGetUsers) (*VectorUser, error)
+	UsersGetFullUser(ctx context.Context, in *TLUsersGetFullUser) (*UsersUserFull, error)
+	ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone) (*ContactsResolvedPeer, error)
+	UsersGetMe(ctx context.Context, in *TLUsersGetMe) (*User, error)
 }
 
-type RPCBusinessGreeting interface {
-	AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage) (*Bool, error)
-	AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage) (*Bool, error)
+type RPCSecretChats interface {
+	MessagesGetDhConfig(ctx context.Context, in *TLMessagesGetDhConfig) (*MessagesDhConfig, error)
+	MessagesRequestEncryption(ctx context.Context, in *TLMessagesRequestEncryption) (*EncryptedChat, error)
+	MessagesAcceptEncryption(ctx context.Context, in *TLMessagesAcceptEncryption) (*EncryptedChat, error)
+	MessagesDiscardEncryption(ctx context.Context, in *TLMessagesDiscardEncryption) (*Bool, error)
+	MessagesSetEncryptedTyping(ctx context.Context, in *TLMessagesSetEncryptedTyping) (*Bool, error)
+	MessagesReadEncryptedHistory(ctx context.Context, in *TLMessagesReadEncryptedHistory) (*Bool, error)
+	MessagesSendEncrypted(ctx context.Context, in *TLMessagesSendEncrypted) (*MessagesSentEncryptedMessage, error)
+	MessagesSendEncryptedFile(ctx context.Context, in *TLMessagesSendEncryptedFile) (*MessagesSentEncryptedMessage, error)
+	MessagesSendEncryptedService(ctx context.Context, in *TLMessagesSendEncryptedService) (*MessagesSentEncryptedMessage, error)
+	MessagesReceivedQueue(ctx context.Context, in *TLMessagesReceivedQueue) (*VectorLong, error)
+}
+
+type RPCGifs interface {
+	MessagesGetSavedGifs(ctx context.Context, in *TLMessagesGetSavedGifs) (*MessagesSavedGifs, error)
+	MessagesSaveGif(ctx context.Context, in *TLMessagesSaveGif) (*Bool, error)
+}
+
+type RPCPaidMedia interface {
+	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia) (*Updates, error)
+}
+
+type RPCVoipCalls interface {
+	MessagesDeletePhoneCallHistory(ctx context.Context, in *TLMessagesDeletePhoneCallHistory) (*MessagesAffectedFoundMessages, error)
+	PhoneGetCallConfig(ctx context.Context, in *TLPhoneGetCallConfig) (*DataJSON, error)
+	PhoneRequestCall(ctx context.Context, in *TLPhoneRequestCall) (*PhonePhoneCall, error)
+	PhoneAcceptCall(ctx context.Context, in *TLPhoneAcceptCall) (*PhonePhoneCall, error)
+	PhoneConfirmCall(ctx context.Context, in *TLPhoneConfirmCall) (*PhonePhoneCall, error)
+	PhoneReceivedCall(ctx context.Context, in *TLPhoneReceivedCall) (*Bool, error)
+	PhoneDiscardCall(ctx context.Context, in *TLPhoneDiscardCall) (*Updates, error)
+	PhoneSetCallRating(ctx context.Context, in *TLPhoneSetCallRating) (*Updates, error)
+	PhoneSaveCallDebug(ctx context.Context, in *TLPhoneSaveCallDebug) (*Bool, error)
+	PhoneSendSignalingData(ctx context.Context, in *TLPhoneSendSignalingData) (*Bool, error)
+	PhoneSaveCallLog(ctx context.Context, in *TLPhoneSaveCallLog) (*Bool, error)
+	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall) (*PhonePhoneCall, error)
+}
+
+type RPCChannelRecommendations interface {
+	ChannelsGetChannelRecommendations(ctx context.Context, in *TLChannelsGetChannelRecommendations) (*MessagesChats, error)
+}
+
+type RPCSponsoredMessages interface {
+	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages) (*Bool, error)
+	ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers) (*ContactsSponsoredPeers, error)
+	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage) (*Bool, error)
+	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage) (*Bool, error)
+	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage) (*ChannelsSponsoredMessageReportResult, error)
+	MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages) (*MessagesSponsoredMessages, error)
+	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages) (*Updates, error)
+}
+
+type RPCMessages interface {
+	MessagesGetMessages(ctx context.Context, in *TLMessagesGetMessages) (*MessagesMessages, error)
+	MessagesGetHistory(ctx context.Context, in *TLMessagesGetHistory) (*MessagesMessages, error)
+	MessagesSearch(ctx context.Context, in *TLMessagesSearch) (*MessagesMessages, error)
+	MessagesReadHistory(ctx context.Context, in *TLMessagesReadHistory) (*MessagesAffectedMessages, error)
+	MessagesDeleteHistory(ctx context.Context, in *TLMessagesDeleteHistory) (*MessagesAffectedHistory, error)
+	MessagesDeleteMessages(ctx context.Context, in *TLMessagesDeleteMessages) (*MessagesAffectedMessages, error)
+	MessagesReceivedMessages(ctx context.Context, in *TLMessagesReceivedMessages) (*VectorReceivedNotifyMessage, error)
+	MessagesSendMessage(ctx context.Context, in *TLMessagesSendMessage) (*Updates, error)
+	MessagesSendMedia(ctx context.Context, in *TLMessagesSendMedia) (*Updates, error)
+	MessagesForwardMessages(ctx context.Context, in *TLMessagesForwardMessages) (*Updates, error)
+	MessagesReadMessageContents(ctx context.Context, in *TLMessagesReadMessageContents) (*MessagesAffectedMessages, error)
+	MessagesGetMessagesViews(ctx context.Context, in *TLMessagesGetMessagesViews) (*MessagesMessageViews, error)
+	MessagesSearchGlobal(ctx context.Context, in *TLMessagesSearchGlobal) (*MessagesMessages, error)
+	MessagesGetMessageEditData(ctx context.Context, in *TLMessagesGetMessageEditData) (*MessagesMessageEditData, error)
+	MessagesEditMessage(ctx context.Context, in *TLMessagesEditMessage) (*Updates, error)
+	MessagesGetUnreadMentions(ctx context.Context, in *TLMessagesGetUnreadMentions) (*MessagesMessages, error)
+	MessagesReadMentions(ctx context.Context, in *TLMessagesReadMentions) (*MessagesAffectedHistory, error)
+	MessagesGetRecentLocations(ctx context.Context, in *TLMessagesGetRecentLocations) (*MessagesMessages, error)
+	MessagesSendMultiMedia(ctx context.Context, in *TLMessagesSendMultiMedia) (*Updates, error)
+	MessagesUpdatePinnedMessage(ctx context.Context, in *TLMessagesUpdatePinnedMessage) (*Updates, error)
+	MessagesGetSearchCounters(ctx context.Context, in *TLMessagesGetSearchCounters) (*VectorMessagesSearchCounter, error)
+	MessagesUnpinAllMessages(ctx context.Context, in *TLMessagesUnpinAllMessages) (*MessagesAffectedHistory, error)
+	MessagesGetSearchResultsCalendar(ctx context.Context, in *TLMessagesGetSearchResultsCalendar) (*MessagesSearchResultsCalendar, error)
+	MessagesGetSearchResultsPositions(ctx context.Context, in *TLMessagesGetSearchResultsPositions) (*MessagesSearchResultsPositions, error)
+	MessagesToggleNoForwards(ctx context.Context, in *TLMessagesToggleNoForwards) (*Updates, error)
+	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs) (*Bool, error)
+	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia) (*MessagesMessages, error)
+	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
+	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery) (*Bool, error)
+	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs) (*ChannelsSendAsPeers, error)
+	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts) (*MessagesMessages, error)
+}
+
+type RPCDrafts interface {
+	MessagesSaveDraft(ctx context.Context, in *TLMessagesSaveDraft) (*Bool, error)
+	MessagesGetAllDrafts(ctx context.Context, in *TLMessagesGetAllDrafts) (*Updates, error)
+	MessagesClearAllDrafts(ctx context.Context, in *TLMessagesClearAllDrafts) (*Bool, error)
+}
+
+type RPCEmoji interface {
+	MessagesGetEmojiKeywords(ctx context.Context, in *TLMessagesGetEmojiKeywords) (*EmojiKeywordsDifference, error)
+	MessagesGetEmojiKeywordsDifference(ctx context.Context, in *TLMessagesGetEmojiKeywordsDifference) (*EmojiKeywordsDifference, error)
+	MessagesGetEmojiKeywordsLanguages(ctx context.Context, in *TLMessagesGetEmojiKeywordsLanguages) (*VectorEmojiLanguage, error)
+	MessagesGetEmojiURL(ctx context.Context, in *TLMessagesGetEmojiURL) (*EmojiURL, error)
 }
 
 type RPCFolders interface {
@@ -44960,127 +45531,51 @@ type RPCFolders interface {
 	ChatlistsLeaveChatlist(ctx context.Context, in *TLChatlistsLeaveChatlist) (*Updates, error)
 }
 
-type RPCAntiSpam interface {
-	ChannelsToggleAntiSpam(ctx context.Context, in *TLChannelsToggleAntiSpam) (*Updates, error)
-	ChannelsReportAntiSpamFalsePositive(ctx context.Context, in *TLChannelsReportAntiSpamFalsePositive) (*Bool, error)
+type RPCMessageEffects interface {
+	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects) (*MessagesAvailableEffects, error)
 }
 
-type RPCGiveaways interface {
-	PaymentsGetPremiumGiftCodeOptions(ctx context.Context, in *TLPaymentsGetPremiumGiftCodeOptions) (*VectorPremiumGiftCodeOption, error)
-	PaymentsGetGiveawayInfo(ctx context.Context, in *TLPaymentsGetGiveawayInfo) (*PaymentsGiveawayInfo, error)
-	PaymentsLaunchPrepaidGiveaway(ctx context.Context, in *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error)
-	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions) (*VectorStarsGiveawayOption, error)
+type RPCTsf interface {
+	HelpGetUserInfo(ctx context.Context, in *TLHelpGetUserInfo) (*HelpUserInfo, error)
+	HelpEditUserInfo(ctx context.Context, in *TLHelpEditUserInfo) (*HelpUserInfo, error)
 }
 
-type RPCcontacts interface {
-	ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers) (*ContactsSponsoredPeers, error)
+type RPCBotAdminRight interface {
+	BotsSetBotBroadcastDefaultAdminRights(ctx context.Context, in *TLBotsSetBotBroadcastDefaultAdminRights) (*Bool, error)
+	BotsSetBotGroupDefaultAdminRights(ctx context.Context, in *TLBotsSetBotGroupDefaultAdminRights) (*Bool, error)
 }
 
-type RPCAffiliatePrograms interface {
-	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
-	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots) (*PaymentsConnectedStarRefBots, error)
-	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
-	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots) (*PaymentsSuggestedStarRefBots, error)
-	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot) (*PaymentsConnectedStarRefBots, error)
-	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+type RPCUsernames interface {
+	AccountCheckUsername(ctx context.Context, in *TLAccountCheckUsername) (*Bool, error)
+	AccountUpdateUsername(ctx context.Context, in *TLAccountUpdateUsername) (*User, error)
+	ContactsResolveUsername(ctx context.Context, in *TLContactsResolveUsername) (*ContactsResolvedPeer, error)
+	ChannelsCheckUsername(ctx context.Context, in *TLChannelsCheckUsername) (*Bool, error)
+	ChannelsUpdateUsername(ctx context.Context, in *TLChannelsUpdateUsername) (*Bool, error)
 }
 
-type RPCRingtone interface {
-	AccountGetSavedRingtones(ctx context.Context, in *TLAccountGetSavedRingtones) (*AccountSavedRingtones, error)
-	AccountSaveRingtone(ctx context.Context, in *TLAccountSaveRingtone) (*AccountSavedRingtone, error)
-	AccountUploadRingtone(ctx context.Context, in *TLAccountUploadRingtone) (*Document, error)
+type RPCCustomEmojis interface {
+	AccountGetDefaultProfilePhotoEmojis(ctx context.Context, in *TLAccountGetDefaultProfilePhotoEmojis) (*EmojiList, error)
+	AccountGetDefaultGroupPhotoEmojis(ctx context.Context, in *TLAccountGetDefaultGroupPhotoEmojis) (*EmojiList, error)
+	MessagesGetCustomEmojiDocuments(ctx context.Context, in *TLMessagesGetCustomEmojiDocuments) (*VectorDocument, error)
+	MessagesGetEmojiStickers(ctx context.Context, in *TLMessagesGetEmojiStickers) (*MessagesAllStickers, error)
+	MessagesGetFeaturedEmojiStickers(ctx context.Context, in *TLMessagesGetFeaturedEmojiStickers) (*MessagesFeaturedStickers, error)
+	MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji) (*EmojiList, error)
 }
 
-type RPCGifts interface {
-	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts) (*PaymentsStarGifts, error)
-	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift) (*Bool, error)
-	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift) (*Bool, error)
-	PaymentsGetStarGiftUpgradePreview(ctx context.Context, in *TLPaymentsGetStarGiftUpgradePreview) (*PaymentsStarGiftUpgradePreview, error)
-	PaymentsUpgradeStarGift(ctx context.Context, in *TLPaymentsUpgradeStarGift) (*Updates, error)
-	PaymentsTransferStarGift(ctx context.Context, in *TLPaymentsTransferStarGift) (*Updates, error)
-	PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift) (*PaymentsUniqueStarGift, error)
-	PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts) (*PaymentsSavedStarGifts, error)
-	PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift) (*PaymentsSavedStarGifts, error)
-	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl) (*PaymentsStarGiftWithdrawalUrl, error)
-	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
-	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
-}
-
-type RPCChannelAdRevenue interface {
-	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats) (*StatsBroadcastRevenueStats, error)
-	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl) (*StatsBroadcastRevenueWithdrawalUrl, error)
-	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions) (*StatsBroadcastRevenueTransactions, error)
-}
-
-type RPCWallpapers interface {
-	AccountGetWallPapers(ctx context.Context, in *TLAccountGetWallPapers) (*AccountWallPapers, error)
-	AccountGetWallPaper(ctx context.Context, in *TLAccountGetWallPaper) (*WallPaper, error)
-	AccountUploadWallPaper(ctx context.Context, in *TLAccountUploadWallPaper) (*WallPaper, error)
-	AccountSaveWallPaper(ctx context.Context, in *TLAccountSaveWallPaper) (*Bool, error)
-	AccountInstallWallPaper(ctx context.Context, in *TLAccountInstallWallPaper) (*Bool, error)
-	AccountResetWallPapers(ctx context.Context, in *TLAccountResetWallPapers) (*Bool, error)
-	AccountGetMultiWallPapers(ctx context.Context, in *TLAccountGetMultiWallPapers) (*VectorWallPaper, error)
-	MessagesSetChatWallPaper(ctx context.Context, in *TLMessagesSetChatWallPaper) (*Updates, error)
-}
-
-type RPCThemes interface {
-	AccountUploadTheme(ctx context.Context, in *TLAccountUploadTheme) (*Document, error)
-	AccountCreateTheme(ctx context.Context, in *TLAccountCreateTheme) (*Theme, error)
-	AccountUpdateTheme(ctx context.Context, in *TLAccountUpdateTheme) (*Theme, error)
-	AccountSaveTheme(ctx context.Context, in *TLAccountSaveTheme) (*Bool, error)
-	AccountInstallTheme(ctx context.Context, in *TLAccountInstallTheme) (*Bool, error)
-	AccountGetTheme(ctx context.Context, in *TLAccountGetTheme) (*Theme, error)
-	AccountGetThemes(ctx context.Context, in *TLAccountGetThemes) (*AccountThemes, error)
-	AccountGetChatThemes(ctx context.Context, in *TLAccountGetChatThemes) (*AccountThemes, error)
-	MessagesSetChatTheme(ctx context.Context, in *TLMessagesSetChatTheme) (*Updates, error)
-}
-
-type RPCEmojiStatus interface {
-	AccountUpdateEmojiStatus(ctx context.Context, in *TLAccountUpdateEmojiStatus) (*Bool, error)
-	AccountGetDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountGetRecentEmojiStatuses(ctx context.Context, in *TLAccountGetRecentEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses) (*Bool, error)
-	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
-	AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses) (*AccountEmojiStatuses, error)
-	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus) (*Updates, error)
-	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus) (*Bool, error)
-	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
-}
-
-type RPCScheduledMessages interface {
-	MessagesGetScheduledHistory(ctx context.Context, in *TLMessagesGetScheduledHistory) (*MessagesMessages, error)
-	MessagesGetScheduledMessages(ctx context.Context, in *TLMessagesGetScheduledMessages) (*MessagesMessages, error)
-	MessagesSendScheduledMessages(ctx context.Context, in *TLMessagesSendScheduledMessages) (*Updates, error)
-	MessagesDeleteScheduledMessages(ctx context.Context, in *TLMessagesDeleteScheduledMessages) (*Updates, error)
-}
-
-type RPCQrCode interface {
-	AuthExportLoginToken(ctx context.Context, in *TLAuthExportLoginToken) (*AuthLoginToken, error)
-	AuthImportLoginToken(ctx context.Context, in *TLAuthImportLoginToken) (*AuthLoginToken, error)
-	AuthAcceptLoginToken(ctx context.Context, in *TLAuthAcceptLoginToken) (*Authorization, error)
-}
-
-type RPCImportedChats interface {
-	MessagesCheckHistoryImport(ctx context.Context, in *TLMessagesCheckHistoryImport) (*MessagesHistoryImportParsed, error)
-	MessagesInitHistoryImport(ctx context.Context, in *TLMessagesInitHistoryImport) (*MessagesHistoryImport, error)
-	MessagesUploadImportedMedia(ctx context.Context, in *TLMessagesUploadImportedMedia) (*MessageMedia, error)
-	MessagesStartHistoryImport(ctx context.Context, in *TLMessagesStartHistoryImport) (*Bool, error)
-	MessagesCheckHistoryImportPeer(ctx context.Context, in *TLMessagesCheckHistoryImportPeer) (*MessagesCheckedHistoryImportPeer, error)
-}
-
-type RPCReports interface {
-	AccountReportPeer(ctx context.Context, in *TLAccountReportPeer) (*Bool, error)
-	AccountReportProfilePhoto(ctx context.Context, in *TLAccountReportProfilePhoto) (*Bool, error)
-	MessagesReportSpam(ctx context.Context, in *TLMessagesReportSpam) (*Bool, error)
-	MessagesReport(ctx context.Context, in *TLMessagesReport) (*ReportResult, error)
-	MessagesReportEncryptedSpam(ctx context.Context, in *TLMessagesReportEncryptedSpam) (*Bool, error)
-	ChannelsReportSpam(ctx context.Context, in *TLChannelsReportSpam) (*Bool, error)
-}
-
-type RPCReactionNotification interface {
-	AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error)
-	AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error)
+type RPCDialogs interface {
+	MessagesGetDialogs(ctx context.Context, in *TLMessagesGetDialogs) (*MessagesDialogs, error)
+	MessagesSetTyping(ctx context.Context, in *TLMessagesSetTyping) (*Bool, error)
+	MessagesGetPeerSettings(ctx context.Context, in *TLMessagesGetPeerSettings) (*MessagesPeerSettings, error)
+	MessagesGetPeerDialogs(ctx context.Context, in *TLMessagesGetPeerDialogs) (*MessagesPeerDialogs, error)
+	MessagesToggleDialogPin(ctx context.Context, in *TLMessagesToggleDialogPin) (*Bool, error)
+	MessagesReorderPinnedDialogs(ctx context.Context, in *TLMessagesReorderPinnedDialogs) (*Bool, error)
+	MessagesGetPinnedDialogs(ctx context.Context, in *TLMessagesGetPinnedDialogs) (*MessagesPeerDialogs, error)
+	MessagesSendScreenshotNotification(ctx context.Context, in *TLMessagesSendScreenshotNotification) (*Updates, error)
+	MessagesMarkDialogUnread(ctx context.Context, in *TLMessagesMarkDialogUnread) (*Bool, error)
+	MessagesGetDialogUnreadMarks(ctx context.Context, in *TLMessagesGetDialogUnreadMarks) (*VectorDialogPeer, error)
+	MessagesGetOnlines(ctx context.Context, in *TLMessagesGetOnlines) (*ChatOnlines, error)
+	MessagesHidePeerSettingsBar(ctx context.Context, in *TLMessagesHidePeerSettingsBar) (*Bool, error)
+	MessagesSetHistoryTTL(ctx context.Context, in *TLMessagesSetHistoryTTL) (*Updates, error)
 }
 
 type RPCStickers interface {
@@ -45119,32 +45614,22 @@ type RPCStickers interface {
 	StickersReplaceSticker(ctx context.Context, in *TLStickersReplaceSticker) (*MessagesStickerSet, error)
 }
 
-type RPCMainMiniBotApps interface {
-	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView) (*WebViewResult, error)
-	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots) (*BotsPopularAppBots, error)
-	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
-	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
-	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia) (*Bool, error)
-	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias) (*Bool, error)
-	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo) (*BotsPreviewInfo, error)
-	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias) (*VectorBotPreviewMedia, error)
+type RPCPredefined interface {
+	PredefinedCreatePredefinedUser(ctx context.Context, in *TLPredefinedCreatePredefinedUser) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedUsername(ctx context.Context, in *TLPredefinedUpdatePredefinedUsername) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedProfile(ctx context.Context, in *TLPredefinedUpdatePredefinedProfile) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedVerified(ctx context.Context, in *TLPredefinedUpdatePredefinedVerified) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedCode(ctx context.Context, in *TLPredefinedUpdatePredefinedCode) (*PredefinedUser, error)
+	PredefinedGetPredefinedUser(ctx context.Context, in *TLPredefinedGetPredefinedUser) (*PredefinedUser, error)
+	PredefinedGetPredefinedUsers(ctx context.Context, in *TLPredefinedGetPredefinedUsers) (*VectorPredefinedUser, error)
 }
 
-type RPCMiscellaneous interface {
-	HelpSaveAppLog(ctx context.Context, in *TLHelpSaveAppLog) (*Bool, error)
-}
-
-type RPCChannelRecommendations interface {
-	ChannelsGetChannelRecommendations(ctx context.Context, in *TLChannelsGetChannelRecommendations) (*MessagesChats, error)
-}
-
-type RPCBusinessIntro interface {
-	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro) (*Bool, error)
-}
-
-type RPCProfileLinks interface {
-	ContactsExportContactToken(ctx context.Context, in *TLContactsExportContactToken) (*ExportedContactToken, error)
-	ContactsImportContactToken(ctx context.Context, in *TLContactsImportContactToken) (*User, error)
+type RPCBusinessChatLinks interface {
+	AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
+	AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
+	AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink) (*Bool, error)
+	AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks) (*AccountBusinessChatLinks, error)
+	AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink) (*AccountResolvedBusinessChatLinks, error)
 }
 
 type RPCFiles interface {
@@ -45162,325 +45647,52 @@ type RPCFiles interface {
 	HelpGetCdnConfig(ctx context.Context, in *TLHelpGetCdnConfig) (*CdnConfig, error)
 }
 
-type RPCVoipCalls interface {
-	MessagesDeletePhoneCallHistory(ctx context.Context, in *TLMessagesDeletePhoneCallHistory) (*MessagesAffectedFoundMessages, error)
-	PhoneGetCallConfig(ctx context.Context, in *TLPhoneGetCallConfig) (*DataJSON, error)
-	PhoneRequestCall(ctx context.Context, in *TLPhoneRequestCall) (*PhonePhoneCall, error)
-	PhoneAcceptCall(ctx context.Context, in *TLPhoneAcceptCall) (*PhonePhoneCall, error)
-	PhoneConfirmCall(ctx context.Context, in *TLPhoneConfirmCall) (*PhonePhoneCall, error)
-	PhoneReceivedCall(ctx context.Context, in *TLPhoneReceivedCall) (*Bool, error)
-	PhoneDiscardCall(ctx context.Context, in *TLPhoneDiscardCall) (*Updates, error)
-	PhoneSetCallRating(ctx context.Context, in *TLPhoneSetCallRating) (*Updates, error)
-	PhoneSaveCallDebug(ctx context.Context, in *TLPhoneSaveCallDebug) (*Bool, error)
-	PhoneSendSignalingData(ctx context.Context, in *TLPhoneSendSignalingData) (*Bool, error)
-	PhoneSaveCallLog(ctx context.Context, in *TLPhoneSaveCallLog) (*Bool, error)
-	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall) (*PhonePhoneCall, error)
+type RPCImportedChats interface {
+	MessagesCheckHistoryImport(ctx context.Context, in *TLMessagesCheckHistoryImport) (*MessagesHistoryImportParsed, error)
+	MessagesInitHistoryImport(ctx context.Context, in *TLMessagesInitHistoryImport) (*MessagesHistoryImport, error)
+	MessagesUploadImportedMedia(ctx context.Context, in *TLMessagesUploadImportedMedia) (*MessageMedia, error)
+	MessagesStartHistoryImport(ctx context.Context, in *TLMessagesStartHistoryImport) (*Bool, error)
+	MessagesCheckHistoryImportPeer(ctx context.Context, in *TLMessagesCheckHistoryImportPeer) (*MessagesCheckedHistoryImportPeer, error)
 }
 
-type RPCPremium interface {
-	HelpGetPremiumPromo(ctx context.Context, in *TLHelpGetPremiumPromo) (*HelpPremiumPromo, error)
-	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
-	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
-	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium) (*Bool, error)
+type RPCFragmentCollectibles interface {
+	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo) (*FragmentCollectibleInfo, error)
 }
 
-type RPCTwoFa interface {
-	AccountGetPassword(ctx context.Context, in *TLAccountGetPassword) (*AccountPassword, error)
-	AccountGetPasswordSettings(ctx context.Context, in *TLAccountGetPasswordSettings) (*AccountPasswordSettings, error)
-	AccountUpdatePasswordSettings(ctx context.Context, in *TLAccountUpdatePasswordSettings) (*Bool, error)
-	AccountConfirmPasswordEmail(ctx context.Context, in *TLAccountConfirmPasswordEmail) (*Bool, error)
-	AccountResendPasswordEmail(ctx context.Context, in *TLAccountResendPasswordEmail) (*Bool, error)
-	AccountCancelPasswordEmail(ctx context.Context, in *TLAccountCancelPasswordEmail) (*Bool, error)
-	AccountDeclinePasswordReset(ctx context.Context, in *TLAccountDeclinePasswordReset) (*Bool, error)
+type RPCReactions interface {
+	MessagesSendReaction(ctx context.Context, in *TLMessagesSendReaction) (*Updates, error)
+	MessagesGetMessagesReactions(ctx context.Context, in *TLMessagesGetMessagesReactions) (*Updates, error)
+	MessagesGetMessageReactionsList(ctx context.Context, in *TLMessagesGetMessageReactionsList) (*MessagesMessageReactionsList, error)
+	MessagesSetChatAvailableReactions(ctx context.Context, in *TLMessagesSetChatAvailableReactions) (*Updates, error)
+	MessagesGetAvailableReactions(ctx context.Context, in *TLMessagesGetAvailableReactions) (*MessagesAvailableReactions, error)
+	MessagesSetDefaultReaction(ctx context.Context, in *TLMessagesSetDefaultReaction) (*Bool, error)
+	MessagesGetUnreadReactions(ctx context.Context, in *TLMessagesGetUnreadReactions) (*MessagesMessages, error)
+	MessagesReadReactions(ctx context.Context, in *TLMessagesReadReactions) (*MessagesAffectedHistory, error)
+	MessagesReportReaction(ctx context.Context, in *TLMessagesReportReaction) (*Bool, error)
+	MessagesGetTopReactions(ctx context.Context, in *TLMessagesGetTopReactions) (*MessagesReactions, error)
+	MessagesGetRecentReactions(ctx context.Context, in *TLMessagesGetRecentReactions) (*MessagesReactions, error)
+	MessagesClearRecentReactions(ctx context.Context, in *TLMessagesClearRecentReactions) (*Bool, error)
+	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction) (*Updates, error)
+	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
+	MessagesGetPaidReactionPrivacy(ctx context.Context, in *TLMessagesGetPaidReactionPrivacy) (*Updates, error)
 }
 
-type RPCPayments interface {
-	AccountGetTmpPassword(ctx context.Context, in *TLAccountGetTmpPassword) (*AccountTmpPassword, error)
-	MessagesSetBotShippingResults(ctx context.Context, in *TLMessagesSetBotShippingResults) (*Bool, error)
-	MessagesSetBotPrecheckoutResults(ctx context.Context, in *TLMessagesSetBotPrecheckoutResults) (*Bool, error)
-	PaymentsGetPaymentForm(ctx context.Context, in *TLPaymentsGetPaymentForm) (*PaymentsPaymentForm, error)
-	PaymentsGetPaymentReceipt(ctx context.Context, in *TLPaymentsGetPaymentReceipt) (*PaymentsPaymentReceipt, error)
-	PaymentsValidateRequestedInfo(ctx context.Context, in *TLPaymentsValidateRequestedInfo) (*PaymentsValidatedRequestedInfo, error)
-	PaymentsSendPaymentForm(ctx context.Context, in *TLPaymentsSendPaymentForm) (*PaymentsPaymentResult, error)
-	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo) (*PaymentsSavedInfo, error)
-	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo) (*Bool, error)
-	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData) (*PaymentsBankCardData, error)
-	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice) (*PaymentsExportedInvoice, error)
+type RPCMiniBotApps interface {
+	MessagesRequestWebView(ctx context.Context, in *TLMessagesRequestWebView) (*WebViewResult, error)
+	MessagesProlongWebView(ctx context.Context, in *TLMessagesProlongWebView) (*Bool, error)
+	MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView) (*WebViewResult, error)
+	MessagesSendWebViewResultMessage(ctx context.Context, in *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error)
+	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData) (*Updates, error)
+	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp) (*MessagesBotApp, error)
+	MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView) (*WebViewResult, error)
+	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage) (*Bool, error)
+	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage) (*Updates, error)
+	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
+	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams) (*Bool, error)
 }
 
-type RPCEmoji interface {
-	MessagesGetEmojiKeywords(ctx context.Context, in *TLMessagesGetEmojiKeywords) (*EmojiKeywordsDifference, error)
-	MessagesGetEmojiKeywordsDifference(ctx context.Context, in *TLMessagesGetEmojiKeywordsDifference) (*EmojiKeywordsDifference, error)
-	MessagesGetEmojiKeywordsLanguages(ctx context.Context, in *TLMessagesGetEmojiKeywordsLanguages) (*VectorEmojiLanguage, error)
-	MessagesGetEmojiURL(ctx context.Context, in *TLMessagesGetEmojiURL) (*EmojiURL, error)
-}
-
-type RPCPromoData interface {
-	HelpGetPromoData(ctx context.Context, in *TLHelpGetPromoData) (*HelpPromoData, error)
-	HelpHidePromoData(ctx context.Context, in *TLHelpHidePromoData) (*Bool, error)
-}
-
-type RPCGiftCodes interface {
-	PaymentsCheckGiftCode(ctx context.Context, in *TLPaymentsCheckGiftCode) (*PaymentsCheckedGiftCode, error)
-	PaymentsApplyGiftCode(ctx context.Context, in *TLPaymentsApplyGiftCode) (*Updates, error)
-}
-
-type RPCLangpack interface {
-	LangpackGetLangPack(ctx context.Context, in *TLLangpackGetLangPack) (*LangPackDifference, error)
-	LangpackGetStrings(ctx context.Context, in *TLLangpackGetStrings) (*VectorLangPackString, error)
-	LangpackGetDifference(ctx context.Context, in *TLLangpackGetDifference) (*LangPackDifference, error)
-	LangpackGetLanguages(ctx context.Context, in *TLLangpackGetLanguages) (*VectorLangPackLanguage, error)
-	LangpackGetLanguage(ctx context.Context, in *TLLangpackGetLanguage) (*LangPackLanguage, error)
-}
-
-type RPCStatistics interface {
-	StatsGetBroadcastStats(ctx context.Context, in *TLStatsGetBroadcastStats) (*StatsBroadcastStats, error)
-	StatsLoadAsyncGraph(ctx context.Context, in *TLStatsLoadAsyncGraph) (*StatsGraph, error)
-	StatsGetMegagroupStats(ctx context.Context, in *TLStatsGetMegagroupStats) (*StatsMegagroupStats, error)
-	StatsGetMessagePublicForwards(ctx context.Context, in *TLStatsGetMessagePublicForwards) (*StatsPublicForwards, error)
-	StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats) (*StatsMessageStats, error)
-	StatsGetStoryStats(ctx context.Context, in *TLStatsGetStoryStats) (*StatsStoryStats, error)
-	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards) (*StatsPublicForwards, error)
-}
-
-type RPCUsernames interface {
-	AccountCheckUsername(ctx context.Context, in *TLAccountCheckUsername) (*Bool, error)
-	AccountUpdateUsername(ctx context.Context, in *TLAccountUpdateUsername) (*User, error)
-	ContactsResolveUsername(ctx context.Context, in *TLContactsResolveUsername) (*ContactsResolvedPeer, error)
-	ChannelsCheckUsername(ctx context.Context, in *TLChannelsCheckUsername) (*Bool, error)
-	ChannelsUpdateUsername(ctx context.Context, in *TLChannelsUpdateUsername) (*Bool, error)
-}
-
-type RPCAccentColors interface {
-	AccountUpdateColor(ctx context.Context, in *TLAccountUpdateColor) (*Bool, error)
-	AccountGetDefaultBackgroundEmojis(ctx context.Context, in *TLAccountGetDefaultBackgroundEmojis) (*EmojiList, error)
-	HelpGetPeerColors(ctx context.Context, in *TLHelpGetPeerColors) (*HelpPeerColors, error)
-	HelpGetPeerProfileColors(ctx context.Context, in *TLHelpGetPeerProfileColors) (*HelpPeerColors, error)
-	ChannelsUpdateColor(ctx context.Context, in *TLChannelsUpdateColor) (*Updates, error)
-}
-
-type RPCUsers interface {
-	UsersGetUsers(ctx context.Context, in *TLUsersGetUsers) (*VectorUser, error)
-	UsersGetFullUser(ctx context.Context, in *TLUsersGetFullUser) (*UsersUserFull, error)
-	ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone) (*ContactsResolvedPeer, error)
-	UsersGetMe(ctx context.Context, in *TLUsersGetMe) (*User, error)
-}
-
-type RPCGifs interface {
-	MessagesGetSavedGifs(ctx context.Context, in *TLMessagesGetSavedGifs) (*MessagesSavedGifs, error)
-	MessagesSaveGif(ctx context.Context, in *TLMessagesSaveGif) (*Bool, error)
-}
-
-type RPCUpdates interface {
-	UpdatesGetState(ctx context.Context, in *TLUpdatesGetState) (*UpdatesState, error)
-	UpdatesGetDifference(ctx context.Context, in *TLUpdatesGetDifference) (*UpdatesDifference, error)
-	UpdatesGetChannelDifference(ctx context.Context, in *TLUpdatesGetChannelDifference) (*UpdatesChannelDifference, error)
-}
-
-type RPCBots interface {
-	BotsSetBotCommands(ctx context.Context, in *TLBotsSetBotCommands) (*Bool, error)
-	BotsResetBotCommands(ctx context.Context, in *TLBotsResetBotCommands) (*Bool, error)
-	BotsGetBotCommands(ctx context.Context, in *TLBotsGetBotCommands) (*VectorBotCommand, error)
-	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo) (*Bool, error)
-	BotsGetBotInfo(ctx context.Context, in *TLBotsGetBotInfo) (*BotsBotInfo, error)
-	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots) (*VectorUser, error)
-	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
-	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
-}
-
-type RPCPassport interface {
-	AccountGetAuthorizations(ctx context.Context, in *TLAccountGetAuthorizations) (*AccountAuthorizations, error)
-	AccountGetAllSecureValues(ctx context.Context, in *TLAccountGetAllSecureValues) (*VectorSecureValue, error)
-	AccountGetSecureValue(ctx context.Context, in *TLAccountGetSecureValue) (*VectorSecureValue, error)
-	AccountSaveSecureValue(ctx context.Context, in *TLAccountSaveSecureValue) (*SecureValue, error)
-	AccountDeleteSecureValue(ctx context.Context, in *TLAccountDeleteSecureValue) (*Bool, error)
-	AccountGetAuthorizationForm(ctx context.Context, in *TLAccountGetAuthorizationForm) (*AccountAuthorizationForm, error)
-	AccountAcceptAuthorization(ctx context.Context, in *TLAccountAcceptAuthorization) (*Bool, error)
-	AccountSendVerifyPhoneCode(ctx context.Context, in *TLAccountSendVerifyPhoneCode) (*AuthSentCode, error)
-	AccountVerifyPhone(ctx context.Context, in *TLAccountVerifyPhone) (*Bool, error)
-	UsersSetSecureValueErrors(ctx context.Context, in *TLUsersSetSecureValueErrors) (*Bool, error)
-	HelpGetPassportConfig(ctx context.Context, in *TLHelpGetPassportConfig) (*HelpPassportConfig, error)
-}
-
-type RPCWebPage interface {
-	MessagesGetWebPagePreview(ctx context.Context, in *TLMessagesGetWebPagePreview) (*MessagesWebPagePreview, error)
-	MessagesGetWebPage(ctx context.Context, in *TLMessagesGetWebPage) (*MessagesWebPage, error)
-}
-
-type RPCBoosts interface {
-	ChannelsSetBoostsToUnblockRestrictions(ctx context.Context, in *TLChannelsSetBoostsToUnblockRestrictions) (*Updates, error)
-	PremiumGetBoostsList(ctx context.Context, in *TLPremiumGetBoostsList) (*PremiumBoostsList, error)
-	PremiumGetMyBoosts(ctx context.Context, in *TLPremiumGetMyBoosts) (*PremiumMyBoosts, error)
-	PremiumApplyBoost(ctx context.Context, in *TLPremiumApplyBoost) (*PremiumMyBoosts, error)
-	PremiumGetBoostsStatus(ctx context.Context, in *TLPremiumGetBoostsStatus) (*PremiumBoostsStatus, error)
-	PremiumGetUserBoosts(ctx context.Context, in *TLPremiumGetUserBoosts) (*PremiumBoostsList, error)
-}
-
-type RPCBotMenuButton interface {
-	BotsSetBotMenuButton(ctx context.Context, in *TLBotsSetBotMenuButton) (*Bool, error)
-	BotsGetBotMenuButton(ctx context.Context, in *TLBotsGetBotMenuButton) (*BotMenuButton, error)
-}
-
-type RPCAutoDownload interface {
-	AccountGetAutoDownloadSettings(ctx context.Context, in *TLAccountGetAutoDownloadSettings) (*AccountAutoDownloadSettings, error)
-	AccountSaveAutoDownloadSettings(ctx context.Context, in *TLAccountSaveAutoDownloadSettings) (*Bool, error)
-}
-
-type RPCBusinessLocation interface {
-	AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation) (*Bool, error)
-}
-
-type RPCBotMenu interface {
-	MessagesGetAttachMenuBots(ctx context.Context, in *TLMessagesGetAttachMenuBots) (*AttachMenuBots, error)
-	MessagesGetAttachMenuBot(ctx context.Context, in *TLMessagesGetAttachMenuBot) (*AttachMenuBotsBot, error)
-	MessagesToggleBotInAttachMenu(ctx context.Context, in *TLMessagesToggleBotInAttachMenu) (*Bool, error)
-}
-
-type RPCChatInvites interface {
-	MessagesExportChatInvite(ctx context.Context, in *TLMessagesExportChatInvite) (*ExportedChatInvite, error)
-	MessagesCheckChatInvite(ctx context.Context, in *TLMessagesCheckChatInvite) (*ChatInvite, error)
-	MessagesImportChatInvite(ctx context.Context, in *TLMessagesImportChatInvite) (*Updates, error)
-	MessagesGetExportedChatInvites(ctx context.Context, in *TLMessagesGetExportedChatInvites) (*MessagesExportedChatInvites, error)
-	MessagesGetExportedChatInvite(ctx context.Context, in *TLMessagesGetExportedChatInvite) (*MessagesExportedChatInvite, error)
-	MessagesEditExportedChatInvite(ctx context.Context, in *TLMessagesEditExportedChatInvite) (*MessagesExportedChatInvite, error)
-	MessagesDeleteRevokedExportedChatInvites(ctx context.Context, in *TLMessagesDeleteRevokedExportedChatInvites) (*Bool, error)
-	MessagesDeleteExportedChatInvite(ctx context.Context, in *TLMessagesDeleteExportedChatInvite) (*Bool, error)
-	MessagesGetAdminsWithInvites(ctx context.Context, in *TLMessagesGetAdminsWithInvites) (*MessagesChatAdminsWithInvites, error)
-	MessagesGetChatInviteImporters(ctx context.Context, in *TLMessagesGetChatInviteImporters) (*MessagesChatInviteImporters, error)
-	MessagesHideChatJoinRequest(ctx context.Context, in *TLMessagesHideChatJoinRequest) (*Updates, error)
-	MessagesHideAllChatJoinRequests(ctx context.Context, in *TLMessagesHideAllChatJoinRequests) (*Updates, error)
-	ChannelsToggleJoinToSend(ctx context.Context, in *TLChannelsToggleJoinToSend) (*Updates, error)
-	ChannelsToggleJoinRequest(ctx context.Context, in *TLChannelsToggleJoinRequest) (*Updates, error)
-}
-
-type RPCTranslation interface {
-	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText) (*MessagesTranslatedText, error)
-	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations) (*Bool, error)
-}
-
-type RPCChannels interface {
-	ChannelsReadHistory(ctx context.Context, in *TLChannelsReadHistory) (*Bool, error)
-	ChannelsDeleteMessages(ctx context.Context, in *TLChannelsDeleteMessages) (*MessagesAffectedMessages, error)
-	ChannelsGetMessages(ctx context.Context, in *TLChannelsGetMessages) (*MessagesMessages, error)
-	ChannelsGetParticipants(ctx context.Context, in *TLChannelsGetParticipants) (*ChannelsChannelParticipants, error)
-	ChannelsGetParticipant(ctx context.Context, in *TLChannelsGetParticipant) (*ChannelsChannelParticipant, error)
-	ChannelsGetChannels(ctx context.Context, in *TLChannelsGetChannels) (*MessagesChats, error)
-	ChannelsGetFullChannel(ctx context.Context, in *TLChannelsGetFullChannel) (*MessagesChatFull, error)
-	ChannelsCreateChannel(ctx context.Context, in *TLChannelsCreateChannel) (*Updates, error)
-	ChannelsEditAdmin(ctx context.Context, in *TLChannelsEditAdmin) (*Updates, error)
-	ChannelsEditTitle(ctx context.Context, in *TLChannelsEditTitle) (*Updates, error)
-	ChannelsEditPhoto(ctx context.Context, in *TLChannelsEditPhoto) (*Updates, error)
-	ChannelsJoinChannel(ctx context.Context, in *TLChannelsJoinChannel) (*Updates, error)
-	ChannelsLeaveChannel(ctx context.Context, in *TLChannelsLeaveChannel) (*Updates, error)
-	ChannelsInviteToChannel(ctx context.Context, in *TLChannelsInviteToChannel) (*MessagesInvitedUsers, error)
-	ChannelsDeleteChannel(ctx context.Context, in *TLChannelsDeleteChannel) (*Updates, error)
-	ChannelsExportMessageLink(ctx context.Context, in *TLChannelsExportMessageLink) (*ExportedMessageLink, error)
-	ChannelsToggleSignatures(ctx context.Context, in *TLChannelsToggleSignatures) (*Updates, error)
-	ChannelsGetAdminedPublicChannels(ctx context.Context, in *TLChannelsGetAdminedPublicChannels) (*MessagesChats, error)
-	ChannelsEditBanned(ctx context.Context, in *TLChannelsEditBanned) (*Updates, error)
-	ChannelsGetAdminLog(ctx context.Context, in *TLChannelsGetAdminLog) (*ChannelsAdminLogResults, error)
-	ChannelsSetStickers(ctx context.Context, in *TLChannelsSetStickers) (*Bool, error)
-	ChannelsReadMessageContents(ctx context.Context, in *TLChannelsReadMessageContents) (*Bool, error)
-	ChannelsDeleteHistory(ctx context.Context, in *TLChannelsDeleteHistory) (*Updates, error)
-	ChannelsTogglePreHistoryHidden(ctx context.Context, in *TLChannelsTogglePreHistoryHidden) (*Updates, error)
-	ChannelsGetGroupsForDiscussion(ctx context.Context, in *TLChannelsGetGroupsForDiscussion) (*MessagesChats, error)
-	ChannelsSetDiscussionGroup(ctx context.Context, in *TLChannelsSetDiscussionGroup) (*Bool, error)
-	ChannelsEditCreator(ctx context.Context, in *TLChannelsEditCreator) (*Updates, error)
-	ChannelsEditLocation(ctx context.Context, in *TLChannelsEditLocation) (*Bool, error)
-	ChannelsToggleSlowMode(ctx context.Context, in *TLChannelsToggleSlowMode) (*Updates, error)
-	ChannelsGetInactiveChannels(ctx context.Context, in *TLChannelsGetInactiveChannels) (*MessagesInactiveChats, error)
-	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory) (*MessagesAffectedHistory, error)
-	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden) (*Updates, error)
-}
-
-type RPCSeamless interface {
-	AccountGetWebAuthorizations(ctx context.Context, in *TLAccountGetWebAuthorizations) (*AccountWebAuthorizations, error)
-	AccountResetWebAuthorization(ctx context.Context, in *TLAccountResetWebAuthorization) (*Bool, error)
-	AccountResetWebAuthorizations(ctx context.Context, in *TLAccountResetWebAuthorizations) (*Bool, error)
-	MessagesRequestUrlAuth(ctx context.Context, in *TLMessagesRequestUrlAuth) (*UrlAuthResult, error)
-	MessagesAcceptUrlAuth(ctx context.Context, in *TLMessagesAcceptUrlAuth) (*UrlAuthResult, error)
-}
-
-type RPCSecretChats interface {
-	MessagesGetDhConfig(ctx context.Context, in *TLMessagesGetDhConfig) (*MessagesDhConfig, error)
-	MessagesRequestEncryption(ctx context.Context, in *TLMessagesRequestEncryption) (*EncryptedChat, error)
-	MessagesAcceptEncryption(ctx context.Context, in *TLMessagesAcceptEncryption) (*EncryptedChat, error)
-	MessagesDiscardEncryption(ctx context.Context, in *TLMessagesDiscardEncryption) (*Bool, error)
-	MessagesSetEncryptedTyping(ctx context.Context, in *TLMessagesSetEncryptedTyping) (*Bool, error)
-	MessagesReadEncryptedHistory(ctx context.Context, in *TLMessagesReadEncryptedHistory) (*Bool, error)
-	MessagesSendEncrypted(ctx context.Context, in *TLMessagesSendEncrypted) (*MessagesSentEncryptedMessage, error)
-	MessagesSendEncryptedFile(ctx context.Context, in *TLMessagesSendEncryptedFile) (*MessagesSentEncryptedMessage, error)
-	MessagesSendEncryptedService(ctx context.Context, in *TLMessagesSendEncryptedService) (*MessagesSentEncryptedMessage, error)
-	MessagesReceivedQueue(ctx context.Context, in *TLMessagesReceivedQueue) (*VectorLong, error)
-}
-
-type RPCtest interface {
-	TestParseInputAppEvent(ctx context.Context, in *TLTestParseInputAppEvent) (*InputAppEvent, error)
-}
-
-type RPCFragment interface {
-	AccountReorderUsernames(ctx context.Context, in *TLAccountReorderUsernames) (*Bool, error)
-	AccountToggleUsername(ctx context.Context, in *TLAccountToggleUsername) (*Bool, error)
-	ChannelsReorderUsernames(ctx context.Context, in *TLChannelsReorderUsernames) (*Bool, error)
-	ChannelsToggleUsername(ctx context.Context, in *TLChannelsToggleUsername) (*Bool, error)
-	ChannelsDeactivateAllUsernames(ctx context.Context, in *TLChannelsDeactivateAllUsernames) (*Bool, error)
-	BotsReorderUsernames(ctx context.Context, in *TLBotsReorderUsernames) (*Bool, error)
-	BotsToggleUsername(ctx context.Context, in *TLBotsToggleUsername) (*Bool, error)
-}
-
-type RPCPaidMedia interface {
-	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia) (*Updates, error)
-}
-
-type RPCStarSubscriptions interface {
-	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions) (*PaymentsStarsStatus, error)
-	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription) (*Bool, error)
-	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription) (*Bool, error)
-	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
-}
-
-type RPCbiz interface {
-	BizInvokeBizDataRaw(ctx context.Context, in *TLBizInvokeBizDataRaw) (*BizDataRaw, error)
-}
-
-type RPCPaidMessage interface {
-	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException) (*Bool, error)
-	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue) (*AccountPaidMessagesRevenue, error)
-	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
-}
-
-type RPCMessages interface {
-	MessagesGetMessages(ctx context.Context, in *TLMessagesGetMessages) (*MessagesMessages, error)
-	MessagesGetHistory(ctx context.Context, in *TLMessagesGetHistory) (*MessagesMessages, error)
-	MessagesSearch(ctx context.Context, in *TLMessagesSearch) (*MessagesMessages, error)
-	MessagesReadHistory(ctx context.Context, in *TLMessagesReadHistory) (*MessagesAffectedMessages, error)
-	MessagesDeleteHistory(ctx context.Context, in *TLMessagesDeleteHistory) (*MessagesAffectedHistory, error)
-	MessagesDeleteMessages(ctx context.Context, in *TLMessagesDeleteMessages) (*MessagesAffectedMessages, error)
-	MessagesReceivedMessages(ctx context.Context, in *TLMessagesReceivedMessages) (*VectorReceivedNotifyMessage, error)
-	MessagesSendMessage(ctx context.Context, in *TLMessagesSendMessage) (*Updates, error)
-	MessagesSendMedia(ctx context.Context, in *TLMessagesSendMedia) (*Updates, error)
-	MessagesForwardMessages(ctx context.Context, in *TLMessagesForwardMessages) (*Updates, error)
-	MessagesReadMessageContents(ctx context.Context, in *TLMessagesReadMessageContents) (*MessagesAffectedMessages, error)
-	MessagesGetMessagesViews(ctx context.Context, in *TLMessagesGetMessagesViews) (*MessagesMessageViews, error)
-	MessagesSearchGlobal(ctx context.Context, in *TLMessagesSearchGlobal) (*MessagesMessages, error)
-	MessagesGetMessageEditData(ctx context.Context, in *TLMessagesGetMessageEditData) (*MessagesMessageEditData, error)
-	MessagesEditMessage(ctx context.Context, in *TLMessagesEditMessage) (*Updates, error)
-	MessagesGetUnreadMentions(ctx context.Context, in *TLMessagesGetUnreadMentions) (*MessagesMessages, error)
-	MessagesReadMentions(ctx context.Context, in *TLMessagesReadMentions) (*MessagesAffectedHistory, error)
-	MessagesGetRecentLocations(ctx context.Context, in *TLMessagesGetRecentLocations) (*MessagesMessages, error)
-	MessagesSendMultiMedia(ctx context.Context, in *TLMessagesSendMultiMedia) (*Updates, error)
-	MessagesUpdatePinnedMessage(ctx context.Context, in *TLMessagesUpdatePinnedMessage) (*Updates, error)
-	MessagesGetSearchCounters(ctx context.Context, in *TLMessagesGetSearchCounters) (*VectorMessagesSearchCounter, error)
-	MessagesUnpinAllMessages(ctx context.Context, in *TLMessagesUnpinAllMessages) (*MessagesAffectedHistory, error)
-	MessagesGetSearchResultsCalendar(ctx context.Context, in *TLMessagesGetSearchResultsCalendar) (*MessagesSearchResultsCalendar, error)
-	MessagesGetSearchResultsPositions(ctx context.Context, in *TLMessagesGetSearchResultsPositions) (*MessagesSearchResultsPositions, error)
-	MessagesToggleNoForwards(ctx context.Context, in *TLMessagesToggleNoForwards) (*Updates, error)
-	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs) (*Bool, error)
-	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia) (*MessagesMessages, error)
-	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
-	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery) (*Bool, error)
-	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs) (*ChannelsSendAsPeers, error)
-	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts) (*MessagesMessages, error)
+type RPCMiscellaneous interface {
+	HelpSaveAppLog(ctx context.Context, in *TLHelpSaveAppLog) (*Bool, error)
 }
 
 type RPCForums interface {
@@ -45493,46 +45705,6 @@ type RPCForums interface {
 	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
 	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
 	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
-}
-
-type RPCDeepLinks interface {
-	MessagesStartBot(ctx context.Context, in *TLMessagesStartBot) (*Updates, error)
-	HelpGetRecentMeUrls(ctx context.Context, in *TLHelpGetRecentMeUrls) (*HelpRecentMeUrls, error)
-	HelpGetDeepLinkInfo(ctx context.Context, in *TLHelpGetDeepLinkInfo) (*HelpDeepLinkInfo, error)
-}
-
-type RPCNotification interface {
-	AccountRegisterDevice(ctx context.Context, in *TLAccountRegisterDevice) (*Bool, error)
-	AccountUnregisterDevice(ctx context.Context, in *TLAccountUnregisterDevice) (*Bool, error)
-	AccountUpdateNotifySettings(ctx context.Context, in *TLAccountUpdateNotifySettings) (*Bool, error)
-	AccountGetNotifySettings(ctx context.Context, in *TLAccountGetNotifySettings) (*PeerNotifySettings, error)
-	AccountResetNotifySettings(ctx context.Context, in *TLAccountResetNotifySettings) (*Bool, error)
-	AccountUpdateDeviceLocked(ctx context.Context, in *TLAccountUpdateDeviceLocked) (*Bool, error)
-	AccountGetNotifyExceptions(ctx context.Context, in *TLAccountGetNotifyExceptions) (*Updates, error)
-}
-
-type RPCMessageThreads interface {
-	ContactsBlockFromReplies(ctx context.Context, in *TLContactsBlockFromReplies) (*Updates, error)
-	MessagesGetReplies(ctx context.Context, in *TLMessagesGetReplies) (*MessagesMessages, error)
-	MessagesGetDiscussionMessage(ctx context.Context, in *TLMessagesGetDiscussionMessage) (*MessagesDiscussionMessage, error)
-	MessagesReadDiscussion(ctx context.Context, in *TLMessagesReadDiscussion) (*Bool, error)
-}
-
-type RPCBusinessQuickReply interface {
-	MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies) (*MessagesQuickReplies, error)
-	MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies) (*Bool, error)
-	MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut) (*Bool, error)
-	MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut) (*Bool, error)
-	MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut) (*Bool, error)
-	MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages) (*MessagesMessages, error)
-	MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages) (*Updates, error)
-	MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages) (*Updates, error)
-}
-
-type RPCFactChecks interface {
-	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck) (*Updates, error)
-	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck) (*Updates, error)
-	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck) (*VectorFactCheck, error)
 }
 
 type RPCAuthorization interface {
@@ -45565,168 +45737,34 @@ type RPCAuthorization interface {
 	AuthToggleBan(ctx context.Context, in *TLAuthToggleBan) (*PredefinedUser, error)
 }
 
-type RPCDrafts interface {
-	MessagesSaveDraft(ctx context.Context, in *TLMessagesSaveDraft) (*Bool, error)
-	MessagesGetAllDrafts(ctx context.Context, in *TLMessagesGetAllDrafts) (*Updates, error)
-	MessagesClearAllDrafts(ctx context.Context, in *TLMessagesClearAllDrafts) (*Bool, error)
+type RPCPayments interface {
+	AccountGetTmpPassword(ctx context.Context, in *TLAccountGetTmpPassword) (*AccountTmpPassword, error)
+	MessagesSetBotShippingResults(ctx context.Context, in *TLMessagesSetBotShippingResults) (*Bool, error)
+	MessagesSetBotPrecheckoutResults(ctx context.Context, in *TLMessagesSetBotPrecheckoutResults) (*Bool, error)
+	PaymentsGetPaymentForm(ctx context.Context, in *TLPaymentsGetPaymentForm) (*PaymentsPaymentForm, error)
+	PaymentsGetPaymentReceipt(ctx context.Context, in *TLPaymentsGetPaymentReceipt) (*PaymentsPaymentReceipt, error)
+	PaymentsValidateRequestedInfo(ctx context.Context, in *TLPaymentsValidateRequestedInfo) (*PaymentsValidatedRequestedInfo, error)
+	PaymentsSendPaymentForm(ctx context.Context, in *TLPaymentsSendPaymentForm) (*PaymentsPaymentResult, error)
+	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo) (*PaymentsSavedInfo, error)
+	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo) (*Bool, error)
+	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData) (*PaymentsBankCardData, error)
+	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice) (*PaymentsExportedInvoice, error)
 }
 
-type RPCReactions interface {
-	MessagesSendReaction(ctx context.Context, in *TLMessagesSendReaction) (*Updates, error)
-	MessagesGetMessagesReactions(ctx context.Context, in *TLMessagesGetMessagesReactions) (*Updates, error)
-	MessagesGetMessageReactionsList(ctx context.Context, in *TLMessagesGetMessageReactionsList) (*MessagesMessageReactionsList, error)
-	MessagesSetChatAvailableReactions(ctx context.Context, in *TLMessagesSetChatAvailableReactions) (*Updates, error)
-	MessagesGetAvailableReactions(ctx context.Context, in *TLMessagesGetAvailableReactions) (*MessagesAvailableReactions, error)
-	MessagesSetDefaultReaction(ctx context.Context, in *TLMessagesSetDefaultReaction) (*Bool, error)
-	MessagesGetUnreadReactions(ctx context.Context, in *TLMessagesGetUnreadReactions) (*MessagesMessages, error)
-	MessagesReadReactions(ctx context.Context, in *TLMessagesReadReactions) (*MessagesAffectedHistory, error)
-	MessagesReportReaction(ctx context.Context, in *TLMessagesReportReaction) (*Bool, error)
-	MessagesGetTopReactions(ctx context.Context, in *TLMessagesGetTopReactions) (*MessagesReactions, error)
-	MessagesGetRecentReactions(ctx context.Context, in *TLMessagesGetRecentReactions) (*MessagesReactions, error)
-	MessagesClearRecentReactions(ctx context.Context, in *TLMessagesClearRecentReactions) (*Bool, error)
-	MessagesSendPaidReaction(ctx context.Context, in *TLMessagesSendPaidReaction) (*Updates, error)
-	MessagesTogglePaidReactionPrivacy(ctx context.Context, in *TLMessagesTogglePaidReactionPrivacy) (*Bool, error)
-	MessagesGetPaidReactionPrivacy(ctx context.Context, in *TLMessagesGetPaidReactionPrivacy) (*Updates, error)
+type RPCThemes interface {
+	AccountUploadTheme(ctx context.Context, in *TLAccountUploadTheme) (*Document, error)
+	AccountCreateTheme(ctx context.Context, in *TLAccountCreateTheme) (*Theme, error)
+	AccountUpdateTheme(ctx context.Context, in *TLAccountUpdateTheme) (*Theme, error)
+	AccountSaveTheme(ctx context.Context, in *TLAccountSaveTheme) (*Bool, error)
+	AccountInstallTheme(ctx context.Context, in *TLAccountInstallTheme) (*Bool, error)
+	AccountGetTheme(ctx context.Context, in *TLAccountGetTheme) (*Theme, error)
+	AccountGetThemes(ctx context.Context, in *TLAccountGetThemes) (*AccountThemes, error)
+	AccountGetChatThemes(ctx context.Context, in *TLAccountGetChatThemes) (*AccountThemes, error)
+	MessagesSetChatTheme(ctx context.Context, in *TLMessagesSetChatTheme) (*Updates, error)
 }
 
-type RPCMessageEffects interface {
-	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects) (*MessagesAvailableEffects, error)
-}
-
-type RPCCustomEmojis interface {
-	AccountGetDefaultProfilePhotoEmojis(ctx context.Context, in *TLAccountGetDefaultProfilePhotoEmojis) (*EmojiList, error)
-	AccountGetDefaultGroupPhotoEmojis(ctx context.Context, in *TLAccountGetDefaultGroupPhotoEmojis) (*EmojiList, error)
-	MessagesGetCustomEmojiDocuments(ctx context.Context, in *TLMessagesGetCustomEmojiDocuments) (*VectorDocument, error)
-	MessagesGetEmojiStickers(ctx context.Context, in *TLMessagesGetEmojiStickers) (*MessagesAllStickers, error)
-	MessagesGetFeaturedEmojiStickers(ctx context.Context, in *TLMessagesGetFeaturedEmojiStickers) (*MessagesFeaturedStickers, error)
-	MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji) (*EmojiList, error)
-}
-
-type RPCTranscription interface {
-	MessagesTranscribeAudio(ctx context.Context, in *TLMessagesTranscribeAudio) (*MessagesTranscribedAudio, error)
-	MessagesRateTranscribedAudio(ctx context.Context, in *TLMessagesRateTranscribedAudio) (*Bool, error)
-}
-
-type RPCStories interface {
-	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory) (*Bool, error)
-	StoriesSendStory(ctx context.Context, in *TLStoriesSendStory) (*Updates, error)
-	StoriesEditStory(ctx context.Context, in *TLStoriesEditStory) (*Updates, error)
-	StoriesDeleteStories(ctx context.Context, in *TLStoriesDeleteStories) (*VectorInt, error)
-	StoriesTogglePinned(ctx context.Context, in *TLStoriesTogglePinned) (*VectorInt, error)
-	StoriesGetAllStories(ctx context.Context, in *TLStoriesGetAllStories) (*StoriesAllStories, error)
-	StoriesGetPinnedStories(ctx context.Context, in *TLStoriesGetPinnedStories) (*StoriesStories, error)
-	StoriesGetStoriesArchive(ctx context.Context, in *TLStoriesGetStoriesArchive) (*StoriesStories, error)
-	StoriesGetStoriesByID(ctx context.Context, in *TLStoriesGetStoriesByID) (*StoriesStories, error)
-	StoriesToggleAllStoriesHidden(ctx context.Context, in *TLStoriesToggleAllStoriesHidden) (*Bool, error)
-	StoriesReadStories(ctx context.Context, in *TLStoriesReadStories) (*VectorInt, error)
-	StoriesIncrementStoryViews(ctx context.Context, in *TLStoriesIncrementStoryViews) (*Bool, error)
-	StoriesGetStoryViewsList(ctx context.Context, in *TLStoriesGetStoryViewsList) (*StoriesStoryViewsList, error)
-	StoriesGetStoriesViews(ctx context.Context, in *TLStoriesGetStoriesViews) (*StoriesStoryViews, error)
-	StoriesExportStoryLink(ctx context.Context, in *TLStoriesExportStoryLink) (*ExportedStoryLink, error)
-	StoriesReport(ctx context.Context, in *TLStoriesReport) (*ReportResult, error)
-	StoriesActivateStealthMode(ctx context.Context, in *TLStoriesActivateStealthMode) (*Updates, error)
-	StoriesSendReaction(ctx context.Context, in *TLStoriesSendReaction) (*Updates, error)
-	StoriesGetPeerStories(ctx context.Context, in *TLStoriesGetPeerStories) (*StoriesPeerStories, error)
-	StoriesGetAllReadPeerStories(ctx context.Context, in *TLStoriesGetAllReadPeerStories) (*Updates, error)
-	StoriesGetPeerMaxIDs(ctx context.Context, in *TLStoriesGetPeerMaxIDs) (*VectorInt, error)
-	StoriesGetChatsToSend(ctx context.Context, in *TLStoriesGetChatsToSend) (*MessagesChats, error)
-	StoriesTogglePeerStoriesHidden(ctx context.Context, in *TLStoriesTogglePeerStoriesHidden) (*Bool, error)
-	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList) (*StoriesStoryReactionsList, error)
-	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop) (*Bool, error)
-	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts) (*StoriesFoundStories, error)
-}
-
-type RPCPredefined interface {
-	PredefinedCreatePredefinedUser(ctx context.Context, in *TLPredefinedCreatePredefinedUser) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedUsername(ctx context.Context, in *TLPredefinedUpdatePredefinedUsername) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedProfile(ctx context.Context, in *TLPredefinedUpdatePredefinedProfile) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedVerified(ctx context.Context, in *TLPredefinedUpdatePredefinedVerified) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedCode(ctx context.Context, in *TLPredefinedUpdatePredefinedCode) (*PredefinedUser, error)
-	PredefinedGetPredefinedUser(ctx context.Context, in *TLPredefinedGetPredefinedUser) (*PredefinedUser, error)
-	PredefinedGetPredefinedUsers(ctx context.Context, in *TLPredefinedGetPredefinedUsers) (*VectorPredefinedUser, error)
-}
-
-type RPCSavedMessageTags interface {
-	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags) (*MessagesSavedReactionTags, error)
-	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag) (*Bool, error)
-	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions) (*MessagesReactions, error)
-}
-
-type RPCTakeout interface {
-	AccountInitTakeoutSession(ctx context.Context, in *TLAccountInitTakeoutSession) (*AccountTakeout, error)
-	AccountFinishTakeoutSession(ctx context.Context, in *TLAccountFinishTakeoutSession) (*Bool, error)
-	MessagesGetSplitRanges(ctx context.Context, in *TLMessagesGetSplitRanges) (*VectorMessageRange, error)
-	ChannelsGetLeftChannels(ctx context.Context, in *TLChannelsGetLeftChannels) (*MessagesChats, error)
-}
-
-type RPCBusinessConnectedBots interface {
-	AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot) (*Updates, error)
-	AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots) (*AccountConnectedBots, error)
-	AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection) (*Updates, error)
-	AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused) (*Bool, error)
-	AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot) (*Bool, error)
-}
-
-type RPCSavedMessageDialogs interface {
-	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs) (*MessagesSavedDialogs, error)
-	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory) (*MessagesMessages, error)
-	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory) (*MessagesAffectedHistory, error)
-	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs) (*MessagesSavedDialogs, error)
-	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin) (*Bool, error)
-	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
-}
-
-type RPCTsf interface {
-	HelpGetUserInfo(ctx context.Context, in *TLHelpGetUserInfo) (*HelpUserInfo, error)
-	HelpEditUserInfo(ctx context.Context, in *TLHelpEditUserInfo) (*HelpUserInfo, error)
-}
-
-type RPCBotAdminRight interface {
-	BotsSetBotBroadcastDefaultAdminRights(ctx context.Context, in *TLBotsSetBotBroadcastDefaultAdminRights) (*Bool, error)
-	BotsSetBotGroupDefaultAdminRights(ctx context.Context, in *TLBotsSetBotGroupDefaultAdminRights) (*Bool, error)
-}
-
-type RPCAutosave interface {
-	AccountGetAutoSaveSettings(ctx context.Context, in *TLAccountGetAutoSaveSettings) (*AccountAutoSaveSettings, error)
-	AccountSaveAutoSaveSettings(ctx context.Context, in *TLAccountSaveAutoSaveSettings) (*Bool, error)
-	AccountDeleteAutoSaveExceptions(ctx context.Context, in *TLAccountDeleteAutoSaveExceptions) (*Bool, error)
-}
-
-type RPCDialogs interface {
-	MessagesGetDialogs(ctx context.Context, in *TLMessagesGetDialogs) (*MessagesDialogs, error)
-	MessagesSetTyping(ctx context.Context, in *TLMessagesSetTyping) (*Bool, error)
-	MessagesGetPeerSettings(ctx context.Context, in *TLMessagesGetPeerSettings) (*MessagesPeerSettings, error)
-	MessagesGetPeerDialogs(ctx context.Context, in *TLMessagesGetPeerDialogs) (*MessagesPeerDialogs, error)
-	MessagesToggleDialogPin(ctx context.Context, in *TLMessagesToggleDialogPin) (*Bool, error)
-	MessagesReorderPinnedDialogs(ctx context.Context, in *TLMessagesReorderPinnedDialogs) (*Bool, error)
-	MessagesGetPinnedDialogs(ctx context.Context, in *TLMessagesGetPinnedDialogs) (*MessagesPeerDialogs, error)
-	MessagesSendScreenshotNotification(ctx context.Context, in *TLMessagesSendScreenshotNotification) (*Updates, error)
-	MessagesMarkDialogUnread(ctx context.Context, in *TLMessagesMarkDialogUnread) (*Bool, error)
-	MessagesGetDialogUnreadMarks(ctx context.Context, in *TLMessagesGetDialogUnreadMarks) (*VectorDialogPeer, error)
-	MessagesGetOnlines(ctx context.Context, in *TLMessagesGetOnlines) (*ChatOnlines, error)
-	MessagesHidePeerSettingsBar(ctx context.Context, in *TLMessagesHidePeerSettingsBar) (*Bool, error)
-	MessagesSetHistoryTTL(ctx context.Context, in *TLMessagesSetHistoryTTL) (*Updates, error)
-}
-
-type RPCTimezones interface {
-	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList) (*HelpTimezonesList, error)
-}
-
-type RPCpayments interface {
-	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore) (*Bool, error)
-}
-
-type RPCStars interface {
-	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions) (*VectorStarsTopupOption, error)
-	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus) (*PaymentsStarsStatus, error)
-	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions) (*PaymentsStarsStatus, error)
-	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm) (*PaymentsPaymentResult, error)
-	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge) (*Updates, error)
-	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats) (*PaymentsStarsRevenueStats, error)
-	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl) (*PaymentsStarsRevenueWithdrawalUrl, error)
-	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl) (*PaymentsStarsRevenueAdsAccountUrl, error)
-	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID) (*PaymentsStarsStatus, error)
-	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions) (*VectorStarsGiftOption, error)
+type RPCBusinessIntro interface {
+	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro) (*Bool, error)
 }
 
 type RPCGroupCalls interface {
@@ -45751,48 +45789,4 @@ type RPCGroupCalls interface {
 	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
 	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels) (*PhoneGroupCallStreamChannels, error)
 	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl) (*PhoneGroupCallStreamRtmpUrl, error)
-}
-
-type RPCFragmentCollectibles interface {
-	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo) (*FragmentCollectibleInfo, error)
-}
-
-type RPCUserProfile interface {
-	AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile) (*User, error)
-	AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus) (*Bool, error)
-	AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday) (*Bool, error)
-	AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel) (*Bool, error)
-	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays) (*ContactsContactBirthdays, error)
-	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto) (*PhotosPhoto, error)
-	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto) (*PhotosPhoto, error)
-	PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos) (*VectorLong, error)
-	PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos) (*PhotosPhotos, error)
-	PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto) (*PhotosPhoto, error)
-	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified) (*User, error)
-}
-
-type RPCInlineBot interface {
-	MessagesGetInlineBotResults(ctx context.Context, in *TLMessagesGetInlineBotResults) (*MessagesBotResults, error)
-	MessagesSetInlineBotResults(ctx context.Context, in *TLMessagesSetInlineBotResults) (*Bool, error)
-	MessagesSendInlineBotResult(ctx context.Context, in *TLMessagesSendInlineBotResult) (*Updates, error)
-	MessagesEditInlineBotMessage(ctx context.Context, in *TLMessagesEditInlineBotMessage) (*Bool, error)
-	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer) (*MessagesBotCallbackAnswer, error)
-	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer) (*Bool, error)
-	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer) (*Updates, error)
-}
-
-type RPCPolls interface {
-	MessagesSendVote(ctx context.Context, in *TLMessagesSendVote) (*Updates, error)
-	MessagesGetPollResults(ctx context.Context, in *TLMessagesGetPollResults) (*Updates, error)
-	MessagesGetPollVotes(ctx context.Context, in *TLMessagesGetPollVotes) (*MessagesVotesList, error)
-}
-
-type RPCSmsjobs interface {
-	SmsjobsIsEligibleToJoin(ctx context.Context, in *TLSmsjobsIsEligibleToJoin) (*SmsjobsEligibilityToJoin, error)
-	SmsjobsJoin(ctx context.Context, in *TLSmsjobsJoin) (*Bool, error)
-	SmsjobsLeave(ctx context.Context, in *TLSmsjobsLeave) (*Bool, error)
-	SmsjobsUpdateSettings(ctx context.Context, in *TLSmsjobsUpdateSettings) (*Bool, error)
-	SmsjobsGetStatus(ctx context.Context, in *TLSmsjobsGetStatus) (*SmsjobsStatus, error)
-	SmsjobsGetSmsJob(ctx context.Context, in *TLSmsjobsGetSmsJob) (*SmsJob, error)
-	SmsjobsFinishJob(ctx context.Context, in *TLSmsjobsFinishJob) (*Bool, error)
 }
