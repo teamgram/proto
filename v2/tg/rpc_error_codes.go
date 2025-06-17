@@ -2941,3 +2941,10 @@ func StatusErrEqual(err1, err2 error) bool {
 	return status1.Code() == status2.Code() && status1.Message() == status2.Message()
 }
 */
+
+// NewErrRedirectToX
+// REDIRECT_TO_SERVER
+// ErrRedirectToServer = status.Error(ErrNotReturnClient, "REDIRECT_TO_SERVER")
+func NewErrRedirectToX(v string) error {
+	return ecode.NewCodeErrorf(ErrNotReturnClient, "REDIRECT_TO_%s", v)
+}
