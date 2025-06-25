@@ -21,9 +21,9 @@ type RPCContextTuple struct {
 	NewReplyFunc newRPCReplyFunc
 }
 
-var rpcContextRegisters = map[string]RPCContextTuple{
-	//
-}
+var (
+	rpcContextRegisters = map[string]RPCContextTuple{}
+)
 
 func FindRPCContextTuple(t interface{}) *RPCContextTuple {
 	rt := reflect.TypeOf(t)
