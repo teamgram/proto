@@ -25,6 +25,18 @@ var (
 	rpcContextRegisters = map[string]RPCContextTuple{}
 )
 
+func RegisterRPCContextTuple(name string, method string, newReplyFunc newRPCReplyFunc) {
+	if _, ok := rpcContextRegisters[name]; ok {
+		// log.Errorf("Already registered name: %s", rt.Name())
+		return
+	}
+
+	rpcContextRegisters[name] = RPCContextTuple{
+		Method:       method,
+		NewReplyFunc: newReplyFunc,
+	}
+}
+
 func FindRPCContextTuple(t interface{}) *RPCContextTuple {
 	rt := reflect.TypeOf(t)
 	if rt.Kind() == reflect.Ptr {

@@ -2,7 +2,7 @@
  * WARNING! All changes made in this file will be lost!
  * Created from 'scheme.tl' by 'mtprotoc'
  *
- * Copyright (c) 2024-present,  Teamgram Authors.
+ * Copyright (c) 2025-present,  Teamgram Authors.
  *  All rights reserved.
  *
  * Author: Benqi (wubenqi@gmail.com)
@@ -63,6 +63,9 @@ func (m *TLInvokeAfterMsg) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -113,6 +116,9 @@ func (m *TLInvokeAfterMsgs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -280,6 +286,9 @@ func (m *TLInitConnection) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -327,6 +336,9 @@ func (m *TLInvokeWithLayer) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -371,6 +383,9 @@ func (m *TLInvokeWithoutUpdates) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -422,6 +437,9 @@ func (m *TLInvokeWithMessagesRange) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -469,6 +487,9 @@ func (m *TLInvokeWithTakeout) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -516,6 +537,9 @@ func (m *TLInvokeWithBusinessConnection) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -566,6 +590,9 @@ func (m *TLInvokeWithGooglePlayIntegrity) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -616,6 +643,9 @@ func (m *TLInvokeWithApnsSecret) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -663,6 +693,9 @@ func (m *TLInvokeWithReCaptcha) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -719,6 +752,9 @@ func (m *TLAuthSendCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -792,6 +828,9 @@ func (m *TLAuthSignUp) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -877,6 +916,9 @@ func (m *TLAuthSignIn) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -917,6 +959,9 @@ func (m *TLAuthLogOut) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -957,6 +1002,9 @@ func (m *TLAuthResetAuthorizations) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1001,6 +1049,9 @@ func (m *TLAuthExportAuthorization) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1048,6 +1099,9 @@ func (m *TLAuthImportAuthorization) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1101,6 +1155,9 @@ func (m *TLAuthBindTempAuthKey) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1154,6 +1211,9 @@ func (m *TLAuthImportBotAuthorization) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1201,6 +1261,9 @@ func (m *TLAuthCheckPassword) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1241,6 +1304,9 @@ func (m *TLAuthRequestPasswordRecovery) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1310,6 +1376,9 @@ func (m *TLAuthRecoverPassword) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1381,6 +1450,9 @@ func (m *TLAuthResendCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1428,6 +1500,9 @@ func (m *TLAuthCancelCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1473,6 +1548,9 @@ func (m *TLAuthDropTempAuthKeys) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1525,6 +1603,9 @@ func (m *TLAuthExportLoginToken) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1569,6 +1650,9 @@ func (m *TLAuthImportLoginToken) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1613,6 +1697,9 @@ func (m *TLAuthAcceptLoginToken) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1657,6 +1744,9 @@ func (m *TLAuthCheckRecoveryPassword) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1707,6 +1797,9 @@ func (m *TLAuthImportWebTokenAuthorization) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1804,6 +1897,9 @@ func (m *TLAuthRequestFirebaseSms) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1851,6 +1947,9 @@ func (m *TLAuthResetLoginEmail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1901,6 +2000,9 @@ func (m *TLAuthReportMissingCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -1997,6 +2099,9 @@ func (m *TLAccountRegisterDevice) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2063,6 +2168,9 @@ func (m *TLAccountUnregisterDevice) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2116,6 +2224,9 @@ func (m *TLAccountUpdateNotifySettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2163,6 +2274,9 @@ func (m *TLAccountGetNotifySettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2203,6 +2317,9 @@ func (m *TLAccountResetNotifySettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2294,6 +2411,9 @@ func (m *TLAccountUpdateProfile) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2341,6 +2461,9 @@ func (m *TLAccountUpdateStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2385,6 +2508,9 @@ func (m *TLAccountGetWallPapers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2442,6 +2568,9 @@ func (m *TLAccountReportPeer) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2486,6 +2615,9 @@ func (m *TLAccountCheckUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2530,6 +2662,9 @@ func (m *TLAccountUpdateUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2577,6 +2712,9 @@ func (m *TLAccountGetPrivacy) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2642,6 +2780,9 @@ func (m *TLAccountSetPrivacy) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2711,6 +2852,9 @@ func (m *TLAccountDeleteAccount) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2751,6 +2895,9 @@ func (m *TLAccountGetAccountTTL) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2798,6 +2945,9 @@ func (m *TLAccountSetAccountTTL) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2848,6 +2998,9 @@ func (m *TLAccountSendChangePhoneCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2898,6 +3051,9 @@ func (m *TLAccountChangePhone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2942,6 +3098,9 @@ func (m *TLAccountUpdateDeviceLocked) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -2982,6 +3141,9 @@ func (m *TLAccountGetAuthorizations) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3026,6 +3188,9 @@ func (m *TLAccountResetAuthorization) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3066,6 +3231,9 @@ func (m *TLAccountGetPassword) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3113,6 +3281,9 @@ func (m *TLAccountGetPasswordSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3166,6 +3337,9 @@ func (m *TLAccountUpdatePasswordSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3216,6 +3390,9 @@ func (m *TLAccountSendConfirmPhoneCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3263,6 +3440,9 @@ func (m *TLAccountConfirmPhone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3314,6 +3494,9 @@ func (m *TLAccountGetTmpPassword) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3354,6 +3537,9 @@ func (m *TLAccountGetWebAuthorizations) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3398,6 +3584,9 @@ func (m *TLAccountResetWebAuthorization) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3438,6 +3627,9 @@ func (m *TLAccountResetWebAuthorizations) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3478,6 +3670,9 @@ func (m *TLAccountGetAllSecureValues) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3535,6 +3730,9 @@ func (m *TLAccountGetSecureValue) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3586,6 +3784,9 @@ func (m *TLAccountSaveSecureValue) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3643,6 +3844,9 @@ func (m *TLAccountDeleteSecureValue) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3693,6 +3897,9 @@ func (m *TLAccountGetAuthorizationForm) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3767,6 +3974,9 @@ func (m *TLAccountAcceptAuthorization) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3817,6 +4027,9 @@ func (m *TLAccountSendVerifyPhoneCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3867,6 +4080,9 @@ func (m *TLAccountVerifyPhone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3918,6 +4134,9 @@ func (m *TLAccountSendVerifyEmailCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -3971,6 +4190,9 @@ func (m *TLAccountVerifyEmail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4078,6 +4300,9 @@ func (m *TLAccountInitTakeoutSession) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4139,6 +4364,9 @@ func (m *TLAccountFinishTakeoutSession) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4183,6 +4411,9 @@ func (m *TLAccountConfirmPasswordEmail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4223,6 +4454,9 @@ func (m *TLAccountResendPasswordEmail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4263,6 +4497,9 @@ func (m *TLAccountCancelPasswordEmail) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4303,6 +4540,9 @@ func (m *TLAccountGetContactSignUpNotification) Decode(d *bin.Decoder) (err erro
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4350,6 +4590,9 @@ func (m *TLAccountSetContactSignUpNotification) Decode(d *bin.Decoder) (err erro
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4430,6 +4673,9 @@ func (m *TLAccountGetNotifyExceptions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4477,6 +4723,9 @@ func (m *TLAccountGetWallPaper) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4554,6 +4803,9 @@ func (m *TLAccountUploadWallPaper) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4613,6 +4865,9 @@ func (m *TLAccountSaveWallPaper) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4666,6 +4921,9 @@ func (m *TLAccountInstallWallPaper) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4706,6 +4964,9 @@ func (m *TLAccountResetWallPapers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4746,6 +5007,9 @@ func (m *TLAccountGetAutoDownloadSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4820,6 +5084,9 @@ func (m *TLAccountSaveAutoDownloadSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4900,6 +5167,9 @@ func (m *TLAccountUploadTheme) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -4996,6 +5266,9 @@ func (m *TLAccountCreateTheme) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5122,6 +5395,9 @@ func (m *TLAccountUpdateTheme) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5175,6 +5451,9 @@ func (m *TLAccountSaveTheme) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5326,6 +5605,9 @@ func (m *TLAccountInstallTheme) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5376,6 +5658,9 @@ func (m *TLAccountGetTheme) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5423,6 +5708,9 @@ func (m *TLAccountGetThemes) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5484,6 +5772,9 @@ func (m *TLAccountSetContentSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5524,6 +5815,9 @@ func (m *TLAccountGetContentSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5581,6 +5875,9 @@ func (m *TLAccountGetMultiWallPapers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5621,6 +5918,9 @@ func (m *TLAccountGetGlobalPrivacySettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5668,6 +5968,9 @@ func (m *TLAccountSetGlobalPrivacySettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5731,6 +6034,9 @@ func (m *TLAccountReportProfilePhoto) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5771,6 +6077,9 @@ func (m *TLAccountResetPassword) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5811,6 +6120,9 @@ func (m *TLAccountDeclinePasswordReset) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5855,6 +6167,9 @@ func (m *TLAccountGetChatThemes) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5899,6 +6214,9 @@ func (m *TLAccountSetAuthorizationTTL) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -5989,6 +6307,9 @@ func (m *TLAccountChangeAuthorizationSettings) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6033,6 +6354,9 @@ func (m *TLAccountGetSavedRingtones) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6086,6 +6410,9 @@ func (m *TLAccountSaveRingtone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6140,6 +6467,9 @@ func (m *TLAccountUploadRingtone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6187,6 +6517,9 @@ func (m *TLAccountUpdateEmojiStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6231,6 +6564,9 @@ func (m *TLAccountGetDefaultEmojiStatuses) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6275,6 +6611,9 @@ func (m *TLAccountGetRecentEmojiStatuses) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6315,6 +6654,9 @@ func (m *TLAccountClearRecentEmojiStatuses) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6360,6 +6702,9 @@ func (m *TLAccountReorderUsernames) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6410,6 +6755,9 @@ func (m *TLAccountToggleUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6454,6 +6802,9 @@ func (m *TLAccountGetDefaultProfilePhotoEmojis) Decode(d *bin.Decoder) (err erro
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6498,6 +6849,9 @@ func (m *TLAccountGetDefaultGroupPhotoEmojis) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6538,6 +6892,9 @@ func (m *TLAccountGetAutoSaveSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6632,6 +6989,9 @@ func (m *TLAccountSaveAutoSaveSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6672,6 +7032,9 @@ func (m *TLAccountDeleteAutoSaveExceptions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6717,6 +7080,9 @@ func (m *TLAccountInvalidateSignInCodes) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6801,6 +7167,9 @@ func (m *TLAccountUpdateColor) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6845,6 +7214,9 @@ func (m *TLAccountGetDefaultBackgroundEmojis) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6889,6 +7261,9 @@ func (m *TLAccountGetChannelDefaultEmojiStatuses) Decode(d *bin.Decoder) (err er
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6933,6 +7308,9 @@ func (m *TLAccountGetChannelRestrictedStatusEmojis) Decode(d *bin.Decoder) (err 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -6999,6 +7377,9 @@ func (m *TLAccountUpdateBusinessWorkHours) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7077,6 +7458,9 @@ func (m *TLAccountUpdateBusinessLocation) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7143,6 +7527,9 @@ func (m *TLAccountUpdateBusinessGreetingMessage) Decode(d *bin.Decoder) (err err
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7209,6 +7596,9 @@ func (m *TLAccountUpdateBusinessAwayMessage) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7341,6 +7731,9 @@ func (m *TLAccountUpdateConnectedBot) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7381,6 +7774,9 @@ func (m *TLAccountGetConnectedBots) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7425,6 +7821,9 @@ func (m *TLAccountGetBotBusinessConnection) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7491,6 +7890,9 @@ func (m *TLAccountUpdateBusinessIntro) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7544,6 +7946,9 @@ func (m *TLAccountToggleConnectedBotPaused) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7591,6 +7996,9 @@ func (m *TLAccountDisablePeerConnectedBot) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7657,6 +8065,9 @@ func (m *TLAccountUpdateBirthday) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7704,6 +8115,9 @@ func (m *TLAccountCreateBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7754,6 +8168,9 @@ func (m *TLAccountEditBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7798,6 +8215,9 @@ func (m *TLAccountDeleteBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7838,6 +8258,9 @@ func (m *TLAccountGetBusinessChatLinks) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7882,6 +8305,9 @@ func (m *TLAccountResolveBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7929,6 +8355,9 @@ func (m *TLAccountUpdatePersonalChannel) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -7976,6 +8405,9 @@ func (m *TLAccountToggleSponsoredMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8016,6 +8448,9 @@ func (m *TLAccountGetReactionsNotifySettings) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8063,6 +8498,9 @@ func (m *TLAccountSetReactionsNotifySettings) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8107,6 +8545,9 @@ func (m *TLAccountGetCollectibleEmojiStatuses) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8174,6 +8615,9 @@ func (m *TLAccountAddNoPaidMessagesException) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8221,6 +8665,9 @@ func (m *TLAccountGetPaidMessagesRevenue) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8278,6 +8725,9 @@ func (m *TLUsersGetUsers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8325,6 +8775,9 @@ func (m *TLUsersGetFullUser) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8390,6 +8843,9 @@ func (m *TLUsersSetSecureValueErrors) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8447,6 +8903,9 @@ func (m *TLUsersGetRequirementsToContact) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8491,6 +8950,9 @@ func (m *TLContactsGetContactIDs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8531,6 +8993,9 @@ func (m *TLContactsGetStatuses) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8575,6 +9040,9 @@ func (m *TLContactsGetContacts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8632,6 +9100,9 @@ func (m *TLContactsImportContacts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8689,6 +9160,9 @@ func (m *TLContactsDeleteContacts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8734,6 +9208,9 @@ func (m *TLContactsDeleteByPhones) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8801,6 +9278,9 @@ func (m *TLContactsBlock) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8868,6 +9348,9 @@ func (m *TLContactsUnblock) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8935,6 +9418,9 @@ func (m *TLContactsGetBlocked) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -8982,6 +9468,9 @@ func (m *TLContactsSearch) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9050,6 +9539,9 @@ func (m *TLContactsResolveUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9176,6 +9668,9 @@ func (m *TLContactsGetTopPeers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9229,6 +9724,9 @@ func (m *TLContactsResetTopPeerRating) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9269,6 +9767,9 @@ func (m *TLContactsResetSaved) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9309,6 +9810,9 @@ func (m *TLContactsGetSaved) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9356,6 +9860,9 @@ func (m *TLContactsToggleTopPeers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9433,6 +9940,9 @@ func (m *TLContactsAddContact) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9480,6 +9990,9 @@ func (m *TLContactsAcceptContact) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9560,6 +10073,9 @@ func (m *TLContactsGetLocated) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9638,6 +10154,9 @@ func (m *TLContactsBlockFromReplies) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9682,6 +10201,9 @@ func (m *TLContactsResolvePhone) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9722,6 +10244,9 @@ func (m *TLContactsExportContactToken) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9766,6 +10291,9 @@ func (m *TLContactsImportContactToken) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9811,6 +10339,9 @@ func (m *TLContactsEditCloseFriends) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9894,6 +10425,9 @@ func (m *TLContactsSetBlocked) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9934,6 +10468,9 @@ func (m *TLContactsGetBirthdays) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -9978,6 +10515,9 @@ func (m *TLContactsGetSponsoredPeers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10049,6 +10589,9 @@ func (m *TLMessagesGetMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10141,6 +10684,9 @@ func (m *TLMessagesGetDialogs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10210,6 +10756,9 @@ func (m *TLMessagesGetHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10366,6 +10915,9 @@ func (m *TLMessagesSearch) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10417,6 +10969,9 @@ func (m *TLMessagesReadHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10519,6 +11074,9 @@ func (m *TLMessagesDeleteHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10585,6 +11143,9 @@ func (m *TLMessagesDeleteMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10629,6 +11190,9 @@ func (m *TLMessagesReceivedMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -10708,6 +11272,9 @@ func (m *TLMessagesSetTyping) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -11118,6 +11685,9 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -11528,6 +12098,9 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -11871,6 +12444,9 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -11918,6 +12494,9 @@ func (m *TLMessagesReportSpam) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -11965,6 +12544,9 @@ func (m *TLMessagesGetPeerSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12025,6 +12607,9 @@ func (m *TLMessagesReport) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12070,6 +12655,9 @@ func (m *TLMessagesGetChats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12114,6 +12702,9 @@ func (m *TLMessagesGetFullChat) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12161,6 +12752,9 @@ func (m *TLMessagesEditChatTitle) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12211,6 +12805,9 @@ func (m *TLMessagesEditChatPhoto) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12265,6 +12862,9 @@ func (m *TLMessagesAddChatUser) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12335,6 +12935,9 @@ func (m *TLMessagesDeleteChatUser) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12422,6 +13025,9 @@ func (m *TLMessagesCreateChat) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12469,6 +13075,9 @@ func (m *TLMessagesGetDhConfig) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12523,6 +13132,9 @@ func (m *TLMessagesRequestEncryption) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12577,6 +13189,9 @@ func (m *TLMessagesAcceptEncryption) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12641,6 +13256,9 @@ func (m *TLMessagesDiscardEncryption) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12694,6 +13312,9 @@ func (m *TLMessagesSetEncryptedTyping) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12745,6 +13366,9 @@ func (m *TLMessagesReadEncryptedHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12819,6 +13443,9 @@ func (m *TLMessagesSendEncrypted) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12899,6 +13526,9 @@ func (m *TLMessagesSendEncryptedFile) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12953,6 +13583,9 @@ func (m *TLMessagesSendEncryptedService) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -12997,6 +13630,9 @@ func (m *TLMessagesReceivedQueue) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13044,6 +13680,9 @@ func (m *TLMessagesReportEncryptedSpam) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13089,6 +13728,9 @@ func (m *TLMessagesReadMessageContents) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13136,6 +13778,9 @@ func (m *TLMessagesGetStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13180,6 +13825,9 @@ func (m *TLMessagesGetAllStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13260,6 +13908,9 @@ func (m *TLMessagesGetWebPagePreview) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13385,6 +14036,9 @@ func (m *TLMessagesExportChatInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13429,6 +14083,9 @@ func (m *TLMessagesCheckChatInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13473,6 +14130,9 @@ func (m *TLMessagesImportChatInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13539,6 +14199,9 @@ func (m *TLMessagesGetStickerSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13592,6 +14255,9 @@ func (m *TLMessagesInstallStickerSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13639,6 +14305,9 @@ func (m *TLMessagesUninstallStickerSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13699,6 +14368,9 @@ func (m *TLMessagesStartBot) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13758,6 +14430,9 @@ func (m *TLMessagesGetMessagesViews) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13814,6 +14489,9 @@ func (m *TLMessagesEditChatAdmin) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13858,6 +14536,9 @@ func (m *TLMessagesMigrateChat) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -13977,6 +14658,9 @@ func (m *TLMessagesSearchGlobal) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14050,6 +14734,9 @@ func (m *TLMessagesReorderStickerSets) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14100,6 +14787,9 @@ func (m *TLMessagesGetDocumentByHash) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14144,6 +14834,9 @@ func (m *TLMessagesGetSavedGifs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14197,6 +14890,9 @@ func (m *TLMessagesSaveGif) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14283,6 +14979,9 @@ func (m *TLMessagesGetInlineBotResults) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14415,6 +15114,9 @@ func (m *TLMessagesSetInlineBotResults) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14684,6 +15386,9 @@ func (m *TLMessagesSendInlineBotResult) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14735,6 +15440,9 @@ func (m *TLMessagesGetMessageEditData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -14899,6 +15607,9 @@ func (m *TLMessagesEditMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15037,6 +15748,9 @@ func (m *TLMessagesEditInlineBotMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15133,6 +15847,9 @@ func (m *TLMessagesGetBotCallbackAnswer) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15227,6 +15944,9 @@ func (m *TLMessagesSetBotCallbackAnswer) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15284,6 +16004,9 @@ func (m *TLMessagesGetPeerDialogs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15423,6 +16146,9 @@ func (m *TLMessagesSaveDraft) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15463,6 +16189,9 @@ func (m *TLMessagesGetAllDrafts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15507,6 +16236,9 @@ func (m *TLMessagesGetFeaturedStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15552,6 +16284,9 @@ func (m *TLMessagesReadFeaturedStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15616,6 +16351,9 @@ func (m *TLMessagesGetRecentStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15689,6 +16427,9 @@ func (m *TLMessagesSaveRecentSticker) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15750,6 +16491,9 @@ func (m *TLMessagesClearRecentStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15824,6 +16568,9 @@ func (m *TLMessagesGetArchivedStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15868,6 +16615,9 @@ func (m *TLMessagesGetMaskStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -15915,6 +16665,9 @@ func (m *TLMessagesGetAttachedStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16003,6 +16756,9 @@ func (m *TLMessagesSetGameScore) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16087,6 +16843,9 @@ func (m *TLMessagesSetInlineGameScore) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16144,6 +16903,9 @@ func (m *TLMessagesGetGameHighScores) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16197,6 +16959,9 @@ func (m *TLMessagesGetInlineGameHighScores) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16251,6 +17016,9 @@ func (m *TLMessagesGetCommonChats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16298,6 +17066,9 @@ func (m *TLMessagesGetWebPage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16365,6 +17136,9 @@ func (m *TLMessagesToggleDialogPin) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16446,6 +17220,9 @@ func (m *TLMessagesReorderPinnedDialogs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16490,6 +17267,9 @@ func (m *TLMessagesGetPinnedDialogs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16583,6 +17363,9 @@ func (m *TLMessagesSetBotShippingResults) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16659,6 +17442,9 @@ func (m *TLMessagesSetBotPrecheckoutResults) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16737,6 +17523,9 @@ func (m *TLMessagesUploadMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16794,6 +17583,9 @@ func (m *TLMessagesSendScreenshotNotification) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16838,6 +17630,9 @@ func (m *TLMessagesGetFavedStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16891,6 +17686,9 @@ func (m *TLMessagesFaveSticker) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -16979,6 +17777,9 @@ func (m *TLMessagesGetUnreadMentions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17051,6 +17852,9 @@ func (m *TLMessagesReadMentions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17105,6 +17909,9 @@ func (m *TLMessagesGetRecentLocations) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17457,6 +18264,9 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17510,6 +18320,9 @@ func (m *TLMessagesUploadEncryptedFile) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17577,6 +18390,9 @@ func (m *TLMessagesSearchStickerSets) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17617,6 +18433,9 @@ func (m *TLMessagesGetSplitRanges) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17684,6 +18503,9 @@ func (m *TLMessagesMarkDialogUnread) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17724,6 +18546,9 @@ func (m *TLMessagesGetDialogUnreadMarks) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17764,6 +18589,9 @@ func (m *TLMessagesClearAllDrafts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17849,6 +18677,9 @@ func (m *TLMessagesUpdatePinnedMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17905,6 +18736,9 @@ func (m *TLMessagesSendVote) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -17956,6 +18790,9 @@ func (m *TLMessagesGetPollResults) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18003,6 +18840,9 @@ func (m *TLMessagesGetOnlines) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18054,6 +18894,9 @@ func (m *TLMessagesEditChatAbout) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18107,6 +18950,9 @@ func (m *TLMessagesEditChatDefaultBannedRights) Decode(d *bin.Decoder) (err erro
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18151,6 +18997,9 @@ func (m *TLMessagesGetEmojiKeywords) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18198,6 +19047,9 @@ func (m *TLMessagesGetEmojiKeywordsDifference) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18243,6 +19095,9 @@ func (m *TLMessagesGetEmojiKeywordsLanguages) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18287,6 +19142,9 @@ func (m *TLMessagesGetEmojiURL) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18389,6 +19247,9 @@ func (m *TLMessagesGetSearchCounters) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18491,6 +19352,9 @@ func (m *TLMessagesRequestUrlAuth) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18600,6 +19464,9 @@ func (m *TLMessagesAcceptUrlAuth) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18647,6 +19514,9 @@ func (m *TLMessagesHidePeerSettingsBar) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18698,6 +19568,9 @@ func (m *TLMessagesGetScheduledHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18750,6 +19623,9 @@ func (m *TLMessagesGetScheduledMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18802,6 +19678,9 @@ func (m *TLMessagesSendScheduledMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18854,6 +19733,9 @@ func (m *TLMessagesDeleteScheduledMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -18946,6 +19828,9 @@ func (m *TLMessagesGetPollVotes) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19038,6 +19923,9 @@ func (m *TLMessagesToggleStickerSets) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19078,6 +19966,9 @@ func (m *TLMessagesGetDialogFilters) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19118,6 +20009,9 @@ func (m *TLMessagesGetSuggestedDialogFilters) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19187,6 +20081,9 @@ func (m *TLMessagesUpdateDialogFilter) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19232,6 +20129,9 @@ func (m *TLMessagesUpdateDialogFiltersOrder) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19282,6 +20182,9 @@ func (m *TLMessagesGetOldFeaturedStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19354,6 +20257,9 @@ func (m *TLMessagesGetReplies) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19405,6 +20311,9 @@ func (m *TLMessagesGetDiscussionMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19459,6 +20368,9 @@ func (m *TLMessagesReadDiscussion) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19531,6 +20443,9 @@ func (m *TLMessagesUnpinAllMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19575,6 +20490,9 @@ func (m *TLMessagesDeleteChat) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19636,6 +20554,9 @@ func (m *TLMessagesDeletePhoneCallHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19680,6 +20601,9 @@ func (m *TLMessagesCheckHistoryImport) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19737,6 +20661,9 @@ func (m *TLMessagesInitHistoryImport) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19797,6 +20724,9 @@ func (m *TLMessagesUploadImportedMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19848,6 +20778,9 @@ func (m *TLMessagesStartHistoryImport) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -19951,6 +20884,9 @@ func (m *TLMessagesGetExportedChatInvites) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20002,6 +20938,9 @@ func (m *TLMessagesGetExportedChatInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20122,6 +21061,9 @@ func (m *TLMessagesEditExportedChatInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20175,6 +21117,9 @@ func (m *TLMessagesDeleteRevokedExportedChatInvites) Decode(d *bin.Decoder) (err
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20226,6 +21171,9 @@ func (m *TLMessagesDeleteExportedChatInvite) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20273,6 +21221,9 @@ func (m *TLMessagesGetAdminsWithInvites) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20388,6 +21339,9 @@ func (m *TLMessagesGetChatInviteImporters) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20439,6 +21393,9 @@ func (m *TLMessagesSetHistoryTTL) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20486,6 +21443,9 @@ func (m *TLMessagesCheckHistoryImportPeer) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20537,6 +21497,9 @@ func (m *TLMessagesSetChatTheme) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20588,6 +21551,9 @@ func (m *TLMessagesGetMessageReadParticipants) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20675,6 +21641,9 @@ func (m *TLMessagesGetSearchResultsCalendar) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20762,6 +21731,9 @@ func (m *TLMessagesGetSearchResultsPositions) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20835,6 +21807,9 @@ func (m *TLMessagesHideChatJoinRequest) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20915,6 +21890,9 @@ func (m *TLMessagesHideAllChatJoinRequests) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -20968,6 +21946,9 @@ func (m *TLMessagesToggleNoForwards) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21021,6 +22002,9 @@ func (m *TLMessagesSaveDefaultSendAs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21123,6 +22107,9 @@ func (m *TLMessagesSendReaction) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21175,6 +22162,9 @@ func (m *TLMessagesGetMessagesReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21268,6 +22258,9 @@ func (m *TLMessagesGetMessageReactionsList) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21359,6 +22352,9 @@ func (m *TLMessagesSetChatAvailableReactions) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21403,6 +22399,9 @@ func (m *TLMessagesGetAvailableReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21450,6 +22449,9 @@ func (m *TLMessagesSetDefaultReaction) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21553,6 +22555,9 @@ func (m *TLMessagesTranslateText) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21641,6 +22646,9 @@ func (m *TLMessagesGetUnreadReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21713,6 +22721,9 @@ func (m *TLMessagesReadReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21767,6 +22778,9 @@ func (m *TLMessagesSearchSentMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21811,6 +22825,9 @@ func (m *TLMessagesGetAttachMenuBots) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21858,6 +22875,9 @@ func (m *TLMessagesGetAttachMenuBot) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -21931,6 +22951,9 @@ func (m *TLMessagesToggleBotInAttachMenu) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22095,6 +23118,9 @@ func (m *TLMessagesRequestWebView) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22198,6 +23224,9 @@ func (m *TLMessagesProlongWebView) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22330,6 +23359,9 @@ func (m *TLMessagesRequestSimpleWebView) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22380,6 +23412,9 @@ func (m *TLMessagesSendWebViewResultMessage) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22437,6 +23472,9 @@ func (m *TLMessagesSendWebViewData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22488,6 +23526,9 @@ func (m *TLMessagesTranscribeAudio) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22548,6 +23589,9 @@ func (m *TLMessagesRateTranscribedAudio) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22593,6 +23637,9 @@ func (m *TLMessagesGetCustomEmojiDocuments) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22637,6 +23684,9 @@ func (m *TLMessagesGetEmojiStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22681,6 +23731,9 @@ func (m *TLMessagesGetFeaturedEmojiStickers) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22738,6 +23791,9 @@ func (m *TLMessagesReportReaction) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22785,6 +23841,9 @@ func (m *TLMessagesGetTopReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22832,6 +23891,9 @@ func (m *TLMessagesGetRecentReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22872,6 +23934,9 @@ func (m *TLMessagesClearRecentReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22924,6 +23989,9 @@ func (m *TLMessagesGetExtendedMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -22968,6 +24036,9 @@ func (m *TLMessagesSetDefaultHistoryTTL) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23008,6 +24079,9 @@ func (m *TLMessagesGetDefaultHistoryTTL) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23079,6 +24153,9 @@ func (m *TLMessagesSendBotRequestedPeer) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23123,6 +24200,9 @@ func (m *TLMessagesGetEmojiGroups) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23167,6 +24247,9 @@ func (m *TLMessagesGetEmojiStatusGroups) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23211,6 +24294,9 @@ func (m *TLMessagesGetEmojiProfilePhotoGroups) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23258,6 +24344,9 @@ func (m *TLMessagesSearchCustomEmoji) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23325,6 +24414,9 @@ func (m *TLMessagesTogglePeerTranslations) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23376,6 +24468,9 @@ func (m *TLMessagesGetBotApp) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23494,6 +24589,9 @@ func (m *TLMessagesRequestAppWebView) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23607,6 +24705,9 @@ func (m *TLMessagesSetChatWallPaper) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23674,6 +24775,9 @@ func (m *TLMessagesSearchEmojiStickerSets) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23754,6 +24858,9 @@ func (m *TLMessagesGetSavedDialogs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23823,6 +24930,9 @@ func (m *TLMessagesGetSavedHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23910,6 +25020,9 @@ func (m *TLMessagesDeleteSavedHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -23950,6 +25063,9 @@ func (m *TLMessagesGetPinnedSavedDialogs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24017,6 +25133,9 @@ func (m *TLMessagesToggleSavedDialogPin) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24095,6 +25214,9 @@ func (m *TLMessagesReorderPinnedSavedDialogs) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24165,6 +25287,9 @@ func (m *TLMessagesGetSavedReactionTags) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24237,6 +25362,9 @@ func (m *TLMessagesUpdateSavedReactionTag) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24281,6 +25409,9 @@ func (m *TLMessagesGetDefaultTagReactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24332,6 +25463,9 @@ func (m *TLMessagesGetOutboxReadDate) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24376,6 +25510,9 @@ func (m *TLMessagesGetQuickReplies) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24421,6 +25558,9 @@ func (m *TLMessagesReorderQuickReplies) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24465,6 +25605,9 @@ func (m *TLMessagesCheckQuickReplyShortcut) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24512,6 +25655,9 @@ func (m *TLMessagesEditQuickReplyShortcut) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24556,6 +25702,9 @@ func (m *TLMessagesDeleteQuickReplyShortcut) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24626,6 +25775,9 @@ func (m *TLMessagesGetQuickReplyMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24687,6 +25839,9 @@ func (m *TLMessagesSendQuickReplyMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24736,6 +25891,9 @@ func (m *TLMessagesDeleteQuickReplyMessages) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24783,6 +25941,9 @@ func (m *TLMessagesToggleDialogFilterTags) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24830,6 +25991,9 @@ func (m *TLMessagesGetMyStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24874,6 +26038,9 @@ func (m *TLMessagesGetEmojiStickerGroups) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24918,6 +26085,9 @@ func (m *TLMessagesGetAvailableEffects) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -24975,6 +26145,9 @@ func (m *TLMessagesEditFactCheck) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25026,6 +26199,9 @@ func (m *TLMessagesDeleteFactCheck) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25078,6 +26254,9 @@ func (m *TLMessagesGetFactCheck) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25189,6 +26368,9 @@ func (m *TLMessagesRequestMainWebView) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25271,6 +26453,9 @@ func (m *TLMessagesSendPaidReaction) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25328,6 +26513,9 @@ func (m *TLMessagesTogglePaidReactionPrivacy) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25368,6 +26556,9 @@ func (m *TLMessagesGetPaidReactionPrivacy) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25431,6 +26622,9 @@ func (m *TLMessagesViewSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25546,6 +26740,9 @@ func (m *TLMessagesClickSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25614,6 +26811,9 @@ func (m *TLMessagesReportSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25661,6 +26861,9 @@ func (m *TLMessagesGetSponsoredMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25751,6 +26954,9 @@ func (m *TLMessagesSavePreparedInlineMessage) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25802,6 +27008,9 @@ func (m *TLMessagesGetPreparedInlineMessage) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25885,6 +27094,9 @@ func (m *TLMessagesSearchStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25957,6 +27169,9 @@ func (m *TLMessagesReportMessagesDelivery) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -25997,6 +27212,9 @@ func (m *TLUpdatesGetState) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26096,6 +27314,9 @@ func (m *TLUpdatesGetDifference) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26176,6 +27397,9 @@ func (m *TLUpdatesGetChannelDifference) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26256,6 +27480,9 @@ func (m *TLPhotosUpdateProfilePhoto) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26381,6 +27608,9 @@ func (m *TLPhotosUploadProfilePhoto) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26438,6 +27668,9 @@ func (m *TLPhotosDeletePhotos) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26495,6 +27728,9 @@ func (m *TLPhotosGetUserPhotos) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26622,6 +27858,9 @@ func (m *TLPhotosUploadContactProfilePhoto) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26672,6 +27911,9 @@ func (m *TLUploadSaveFilePart) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26753,6 +27995,9 @@ func (m *TLUploadGetFile) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26806,6 +28051,9 @@ func (m *TLUploadSaveBigFilePart) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26860,6 +28108,9 @@ func (m *TLUploadGetWebFile) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26910,6 +28161,9 @@ func (m *TLUploadGetCdnFile) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -26957,6 +28211,9 @@ func (m *TLUploadReuploadCdnFile) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27004,6 +28261,9 @@ func (m *TLUploadGetCdnFileHashes) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27055,6 +28315,9 @@ func (m *TLUploadGetFileHashes) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27095,6 +28358,9 @@ func (m *TLHelpGetConfig) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27135,6 +28401,9 @@ func (m *TLHelpGetNearestDc) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27179,6 +28448,9 @@ func (m *TLHelpGetAppUpdate) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27219,6 +28491,9 @@ func (m *TLHelpGetInviteText) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27259,6 +28534,9 @@ func (m *TLHelpGetSupport) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27306,6 +28584,9 @@ func (m *TLHelpSetBotUpdatesStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27346,6 +28627,9 @@ func (m *TLHelpGetCdnConfig) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27390,6 +28674,9 @@ func (m *TLHelpGetRecentMeUrls) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27430,6 +28717,9 @@ func (m *TLHelpGetTermsOfServiceUpdate) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27477,6 +28767,9 @@ func (m *TLHelpAcceptTermsOfService) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27521,6 +28814,9 @@ func (m *TLHelpGetDeepLinkInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27565,6 +28861,9 @@ func (m *TLHelpGetAppConfig) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27622,6 +28921,9 @@ func (m *TLHelpSaveAppLog) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27666,6 +28968,9 @@ func (m *TLHelpGetPassportConfig) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27706,6 +29011,9 @@ func (m *TLHelpGetSupportName) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27753,6 +29061,9 @@ func (m *TLHelpGetUserInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27821,6 +29132,9 @@ func (m *TLHelpEditUserInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27861,6 +29175,9 @@ func (m *TLHelpGetPromoData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27908,6 +29225,9 @@ func (m *TLHelpHidePromoData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -27959,6 +29279,9 @@ func (m *TLHelpDismissSuggestion) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28006,6 +29329,9 @@ func (m *TLHelpGetCountriesList) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28046,6 +29372,9 @@ func (m *TLHelpGetPremiumPromo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28090,6 +29419,9 @@ func (m *TLHelpGetPeerColors) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28134,6 +29466,9 @@ func (m *TLHelpGetPeerProfileColors) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28178,6 +29513,9 @@ func (m *TLHelpGetTimezonesList) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28229,6 +29567,9 @@ func (m *TLChannelsReadHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28281,6 +29622,9 @@ func (m *TLChannelsDeleteMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28339,6 +29683,9 @@ func (m *TLChannelsReportSpam) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28424,6 +29771,9 @@ func (m *TLChannelsGetMessages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28487,6 +29837,9 @@ func (m *TLChannelsGetParticipants) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28540,6 +29893,9 @@ func (m *TLChannelsGetParticipant) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28597,6 +29953,9 @@ func (m *TLChannelsGetChannels) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28644,6 +30003,9 @@ func (m *TLChannelsGetFullChannel) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28770,6 +30132,9 @@ func (m *TLChannelsCreateChannel) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28833,6 +30198,9 @@ func (m *TLChannelsEditAdmin) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28884,6 +30252,9 @@ func (m *TLChannelsEditTitle) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28937,6 +30308,9 @@ func (m *TLChannelsEditPhoto) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -28988,6 +30362,9 @@ func (m *TLChannelsCheckUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29039,6 +30416,9 @@ func (m *TLChannelsUpdateUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29086,6 +30466,9 @@ func (m *TLChannelsJoinChannel) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29133,6 +30516,9 @@ func (m *TLChannelsLeaveChannel) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29198,6 +30584,9 @@ func (m *TLChannelsInviteToChannel) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29245,6 +30634,9 @@ func (m *TLChannelsDeleteChannel) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29323,6 +30715,9 @@ func (m *TLChannelsExportMessageLink) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29397,6 +30792,9 @@ func (m *TLChannelsToggleSignatures) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29472,6 +30870,9 @@ func (m *TLChannelsGetAdminedPublicChannels) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29531,6 +30932,9 @@ func (m *TLChannelsEditBanned) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29640,6 +31044,9 @@ func (m *TLChannelsGetAdminLog) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29693,6 +31100,9 @@ func (m *TLChannelsSetStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29745,6 +31155,9 @@ func (m *TLChannelsReadMessageContents) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29816,6 +31229,9 @@ func (m *TLChannelsDeleteHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29869,6 +31285,9 @@ func (m *TLChannelsTogglePreHistoryHidden) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29913,6 +31332,9 @@ func (m *TLChannelsGetLeftChannels) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -29953,6 +31375,9 @@ func (m *TLChannelsGetGroupsForDiscussion) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30006,6 +31431,9 @@ func (m *TLChannelsSetDiscussionGroup) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30065,6 +31493,9 @@ func (m *TLChannelsEditCreator) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30122,6 +31553,9 @@ func (m *TLChannelsEditLocation) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30173,6 +31607,9 @@ func (m *TLChannelsToggleSlowMode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30213,6 +31650,9 @@ func (m *TLChannelsGetInactiveChannels) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30260,6 +31700,9 @@ func (m *TLChannelsConvertToGigagroup) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30327,6 +31770,9 @@ func (m *TLChannelsGetSendAs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30380,6 +31826,9 @@ func (m *TLChannelsDeleteParticipantHistory) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30433,6 +31882,9 @@ func (m *TLChannelsToggleJoinToSend) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30486,6 +31938,9 @@ func (m *TLChannelsToggleJoinRequest) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30538,6 +31993,9 @@ func (m *TLChannelsReorderUsernames) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30595,6 +32053,9 @@ func (m *TLChannelsToggleUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30642,6 +32103,9 @@ func (m *TLChannelsDeactivateAllUsernames) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30695,6 +32159,9 @@ func (m *TLChannelsToggleForum) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30800,6 +32267,9 @@ func (m *TLChannelsCreateForumTopic) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30886,6 +32356,9 @@ func (m *TLChannelsGetForumTopics) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -30938,6 +32411,9 @@ func (m *TLChannelsGetForumTopicsByID) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31053,6 +32529,9 @@ func (m *TLChannelsEditForumTopic) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31110,6 +32589,9 @@ func (m *TLChannelsUpdatePinnedForumTopic) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31161,6 +32643,9 @@ func (m *TLChannelsDeleteTopicHistory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31233,6 +32718,9 @@ func (m *TLChannelsReorderPinnedForumTopics) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31286,6 +32774,9 @@ func (m *TLChannelsToggleAntiSpam) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31337,6 +32828,9 @@ func (m *TLChannelsReportAntiSpamFalsePositive) Decode(d *bin.Decoder) (err erro
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31390,6 +32884,9 @@ func (m *TLChannelsToggleParticipantsHidden) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31482,6 +32979,9 @@ func (m *TLChannelsUpdateColor) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31535,6 +33035,9 @@ func (m *TLChannelsToggleViewForumAsMessages) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31601,6 +33104,9 @@ func (m *TLChannelsGetChannelRecommendations) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31654,6 +33160,9 @@ func (m *TLChannelsUpdateEmojiStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31705,6 +33214,9 @@ func (m *TLChannelsSetBoostsToUnblockRestrictions) Decode(d *bin.Decoder) (err e
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31758,6 +33270,9 @@ func (m *TLChannelsSetEmojiStickers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31811,6 +33326,9 @@ func (m *TLChannelsRestrictSponsoredMessages) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31871,6 +33389,9 @@ func (m *TLChannelsSearchPosts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31922,6 +33443,9 @@ func (m *TLChannelsUpdatePaidMessagesPrice) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -31972,6 +33496,9 @@ func (m *TLBotsSendCustomRequest) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32022,6 +33549,9 @@ func (m *TLBotsAnswerWebhookJSONQuery) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32090,6 +33620,9 @@ func (m *TLBotsSetBotCommands) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32141,6 +33674,9 @@ func (m *TLBotsResetBotCommands) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32192,6 +33728,9 @@ func (m *TLBotsGetBotCommands) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32245,6 +33784,9 @@ func (m *TLBotsSetBotMenuButton) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32292,6 +33834,9 @@ func (m *TLBotsGetBotMenuButton) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32339,6 +33884,9 @@ func (m *TLBotsSetBotBroadcastDefaultAdminRights) Decode(d *bin.Decoder) (err er
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32386,6 +33934,9 @@ func (m *TLBotsSetBotGroupDefaultAdminRights) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32494,6 +34045,9 @@ func (m *TLBotsSetBotInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32564,6 +34118,9 @@ func (m *TLBotsGetBotInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32616,6 +34173,9 @@ func (m *TLBotsReorderUsernames) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32673,6 +34233,9 @@ func (m *TLBotsToggleUsername) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32720,6 +34283,9 @@ func (m *TLBotsCanSendMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32767,6 +34333,9 @@ func (m *TLBotsAllowSendMessage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32824,6 +34393,9 @@ func (m *TLBotsInvokeWebViewCustomMethod) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32871,6 +34443,9 @@ func (m *TLBotsGetPopularAppBots) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32928,6 +34503,9 @@ func (m *TLBotsAddPreviewMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -32991,6 +34569,9 @@ func (m *TLBotsEditPreviewMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33059,6 +34640,9 @@ func (m *TLBotsDeletePreviewMedia) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33127,6 +34711,9 @@ func (m *TLBotsReorderPreviewMedias) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33178,6 +34765,9 @@ func (m *TLBotsGetPreviewInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33225,6 +34815,9 @@ func (m *TLBotsGetPreviewMedias) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33278,6 +34871,9 @@ func (m *TLBotsUpdateUserEmojiStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33331,6 +34927,9 @@ func (m *TLBotsToggleUserEmojiStatusPermission) Decode(d *bin.Decoder) (err erro
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33385,6 +34984,9 @@ func (m *TLBotsCheckDownloadFileParams) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33425,6 +35027,9 @@ func (m *TLBotsGetAdminedBots) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33500,6 +35105,9 @@ func (m *TLBotsUpdateStarRefProgram) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33593,6 +35201,9 @@ func (m *TLBotsSetCustomVerification) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33640,6 +35251,9 @@ func (m *TLBotsGetBotRecommendations) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33713,6 +35327,9 @@ func (m *TLPaymentsGetPaymentForm) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33764,6 +35381,9 @@ func (m *TLPaymentsGetPaymentReceipt) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33837,6 +35457,9 @@ func (m *TLPaymentsValidateRequestedInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33945,6 +35568,9 @@ func (m *TLPaymentsSendPaymentForm) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -33985,6 +35611,9 @@ func (m *TLPaymentsGetSavedInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34053,6 +35682,9 @@ func (m *TLPaymentsClearSavedInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34097,6 +35729,9 @@ func (m *TLPaymentsGetBankCardData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34144,6 +35779,9 @@ func (m *TLPaymentsExportInvoice) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34194,6 +35832,9 @@ func (m *TLPaymentsAssignAppStoreTransaction) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34247,6 +35888,9 @@ func (m *TLPaymentsAssignPlayMarketTransaction) Decode(d *bin.Decoder) (err erro
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34313,6 +35957,9 @@ func (m *TLPaymentsGetPremiumGiftCodeOptions) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34357,6 +36004,9 @@ func (m *TLPaymentsCheckGiftCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34401,6 +36051,9 @@ func (m *TLPaymentsApplyGiftCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34452,6 +36105,9 @@ func (m *TLPaymentsGetGiveawayInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34509,6 +36165,9 @@ func (m *TLPaymentsLaunchPrepaidGiveaway) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34549,6 +36208,9 @@ func (m *TLPaymentsGetStarsTopupOptions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34596,6 +36258,9 @@ func (m *TLPaymentsGetStarsStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34696,6 +36361,9 @@ func (m *TLPaymentsGetStarsTransactions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34746,6 +36414,9 @@ func (m *TLPaymentsSendStarsForm) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34797,6 +36468,9 @@ func (m *TLPaymentsRefundStarsCharge) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34864,6 +36538,9 @@ func (m *TLPaymentsGetStarsRevenueStats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34921,6 +36598,9 @@ func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err err
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -34968,6 +36648,9 @@ func (m *TLPaymentsGetStarsRevenueAdsAccountUrl) Decode(d *bin.Decoder) (err err
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35033,6 +36716,9 @@ func (m *TLPaymentsGetStarsTransactionsByID) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35099,6 +36785,9 @@ func (m *TLPaymentsGetStarsGiftOptions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35170,6 +36859,9 @@ func (m *TLPaymentsGetStarsSubscriptions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35246,6 +36938,9 @@ func (m *TLPaymentsChangeStarsSubscription) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35297,6 +36992,9 @@ func (m *TLPaymentsFulfillStarsSubscription) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35337,6 +37035,9 @@ func (m *TLPaymentsGetStarsGiveawayOptions) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35381,6 +37082,9 @@ func (m *TLPaymentsGetStarGifts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35448,6 +37152,9 @@ func (m *TLPaymentsSaveStarGift) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35495,6 +37202,9 @@ func (m *TLPaymentsConvertStarGift) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35566,6 +37276,9 @@ func (m *TLPaymentsBotCancelStarsSubscription) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35655,6 +37368,9 @@ func (m *TLPaymentsGetConnectedStarRefBots) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35708,6 +37424,9 @@ func (m *TLPaymentsGetConnectedStarRefBot) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35789,6 +37508,9 @@ func (m *TLPaymentsGetSuggestedStarRefBots) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35842,6 +37564,9 @@ func (m *TLPaymentsConnectStarRefBot) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35913,6 +37638,9 @@ func (m *TLPaymentsEditConnectedStarRefBot) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -35957,6 +37685,9 @@ func (m *TLPaymentsGetStarGiftUpgradePreview) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36024,6 +37755,9 @@ func (m *TLPaymentsUpgradeStarGift) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36077,6 +37811,9 @@ func (m *TLPaymentsTransferStarGift) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36121,6 +37858,9 @@ func (m *TLPaymentsGetUniqueStarGift) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36230,6 +37970,9 @@ func (m *TLPaymentsGetSavedStarGifts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36287,6 +38030,9 @@ func (m *TLPaymentsGetSavedStarGift) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36340,6 +38086,9 @@ func (m *TLPaymentsGetStarGiftWithdrawalUrl) Decode(d *bin.Decoder) (err error) 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36407,6 +38156,9 @@ func (m *TLPaymentsToggleChatStarGiftNotifications) Decode(d *bin.Decoder) (err 
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36472,6 +38224,9 @@ func (m *TLPaymentsToggleStarGiftsPinnedToTop) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36519,6 +38274,9 @@ func (m *TLPaymentsCanPurchaseStore) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36651,6 +38409,9 @@ func (m *TLStickersCreateStickerSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36698,6 +38459,9 @@ func (m *TLStickersRemoveStickerFromSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36749,6 +38513,9 @@ func (m *TLStickersChangeStickerPosition) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36802,6 +38569,9 @@ func (m *TLStickersAddStickerToSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36887,6 +38657,9 @@ func (m *TLStickersSetStickerSetThumb) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36931,6 +38704,9 @@ func (m *TLStickersCheckShortName) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -36975,6 +38751,9 @@ func (m *TLStickersSuggestShortName) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37073,6 +38852,9 @@ func (m *TLStickersChangeSticker) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37124,6 +38906,9 @@ func (m *TLStickersRenameStickerSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37171,6 +38956,9 @@ func (m *TLStickersDeleteStickerSet) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37224,6 +39012,9 @@ func (m *TLStickersReplaceSticker) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37264,6 +39055,9 @@ func (m *TLPhoneGetCallConfig) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37358,6 +39152,9 @@ func (m *TLPhoneRequestCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37415,6 +39212,9 @@ func (m *TLPhoneAcceptCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37475,6 +39275,9 @@ func (m *TLPhoneConfirmCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37522,6 +39325,9 @@ func (m *TLPhoneReceivedCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37603,6 +39409,9 @@ func (m *TLPhoneDiscardCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37677,6 +39486,9 @@ func (m *TLPhoneSetCallRating) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37730,6 +39542,9 @@ func (m *TLPhoneSaveCallDebug) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37781,6 +39596,9 @@ func (m *TLPhoneSendSignalingData) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37877,6 +39695,9 @@ func (m *TLPhoneCreateGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -37990,6 +39811,9 @@ func (m *TLPhoneJoinGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38041,6 +39865,9 @@ func (m *TLPhoneLeaveGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38106,6 +39933,9 @@ func (m *TLPhoneInviteToGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38153,6 +39983,9 @@ func (m *TLPhoneDiscardGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38234,6 +40067,9 @@ func (m *TLPhoneToggleGroupCallSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38285,6 +40121,9 @@ func (m *TLPhoneGetGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38363,6 +40202,9 @@ func (m *TLPhoneGetGroupParticipants) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38415,6 +40257,9 @@ func (m *TLPhoneCheckGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38516,6 +40361,9 @@ func (m *TLPhoneToggleGroupCallRecord) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38659,6 +40507,9 @@ func (m *TLPhoneEditGroupCallParticipant) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38710,6 +40561,9 @@ func (m *TLPhoneEditGroupCallTitle) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38757,6 +40611,9 @@ func (m *TLPhoneGetGroupCallJoinAs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38824,6 +40681,9 @@ func (m *TLPhoneExportGroupCallInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38877,6 +40737,9 @@ func (m *TLPhoneToggleGroupCallStartSubscription) Decode(d *bin.Decoder) (err er
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38924,6 +40787,9 @@ func (m *TLPhoneStartScheduledGroupCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -38977,6 +40843,9 @@ func (m *TLPhoneSaveDefaultGroupCallJoinAs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39030,6 +40899,9 @@ func (m *TLPhoneJoinGroupCallPresentation) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39077,6 +40949,9 @@ func (m *TLPhoneLeaveGroupCallPresentation) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39124,6 +40999,9 @@ func (m *TLPhoneGetGroupCallStreamChannels) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39177,6 +41055,9 @@ func (m *TLPhoneGetGroupCallStreamRtmpUrl) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39230,6 +41111,9 @@ func (m *TLPhoneSaveCallLog) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39281,6 +41165,9 @@ func (m *TLPhoneCreateConferenceCall) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39340,6 +41227,9 @@ func (m *TLLangpackGetLangPack) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39408,6 +41298,9 @@ func (m *TLLangpackGetStrings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39458,6 +41351,9 @@ func (m *TLLangpackGetDifference) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39511,6 +41407,9 @@ func (m *TLLangpackGetLanguages) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39558,6 +41457,9 @@ func (m *TLLangpackGetLanguage) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39615,6 +41517,9 @@ func (m *TLFoldersEditPeerFolders) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39682,6 +41587,9 @@ func (m *TLStatsGetBroadcastStats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39750,6 +41658,9 @@ func (m *TLStatsLoadAsyncGraph) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39817,6 +41728,9 @@ func (m *TLStatsGetMegagroupStats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39874,6 +41788,9 @@ func (m *TLStatsGetMessagePublicForwards) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -39945,6 +41862,9 @@ func (m *TLStatsGetMessageStats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40016,6 +41936,9 @@ func (m *TLStatsGetStoryStats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40073,6 +41996,9 @@ func (m *TLStatsGetStoryPublicForwards) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40140,6 +42066,9 @@ func (m *TLStatsGetBroadcastRevenueStats) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40193,6 +42122,9 @@ func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err er
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40247,6 +42179,9 @@ func (m *TLStatsGetBroadcastRevenueTransactions) Decode(d *bin.Decoder) (err err
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40315,6 +42250,9 @@ func (m *TLChatlistsExportChatlistInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40366,6 +42304,9 @@ func (m *TLChatlistsDeleteExportedInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40466,6 +42407,9 @@ func (m *TLChatlistsEditExportedInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40513,6 +42457,9 @@ func (m *TLChatlistsGetExportedInvites) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40557,6 +42504,9 @@ func (m *TLChatlistsCheckChatlistInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40618,6 +42568,9 @@ func (m *TLChatlistsJoinChatlistInvite) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40665,6 +42618,9 @@ func (m *TLChatlistsGetChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40730,6 +42686,9 @@ func (m *TLChatlistsJoinChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40777,6 +42736,9 @@ func (m *TLChatlistsHideChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40824,6 +42786,9 @@ func (m *TLChatlistsGetLeaveChatlistSuggestions) Decode(d *bin.Decoder) (err err
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40889,6 +42854,9 @@ func (m *TLChatlistsLeaveChatlist) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -40936,6 +42904,9 @@ func (m *TLStoriesCanSendStory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41143,6 +43114,9 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41302,6 +43276,9 @@ func (m *TLStoriesEditStory) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41354,6 +43331,9 @@ func (m *TLStoriesDeleteStories) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41413,6 +43393,9 @@ func (m *TLStoriesTogglePinned) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41492,6 +43475,9 @@ func (m *TLStoriesGetAllStories) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41546,6 +43532,9 @@ func (m *TLStoriesGetPinnedStories) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41600,6 +43589,9 @@ func (m *TLStoriesGetStoriesArchive) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41652,6 +43644,9 @@ func (m *TLStoriesGetStoriesByID) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41699,6 +43694,9 @@ func (m *TLStoriesToggleAllStoriesHidden) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41750,6 +43748,9 @@ func (m *TLStoriesReadStories) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41802,6 +43803,9 @@ func (m *TLStoriesIncrementStoryViews) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41907,6 +43911,9 @@ func (m *TLStoriesGetStoryViewsList) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -41959,6 +43966,9 @@ func (m *TLStoriesGetStoriesViews) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42010,6 +44020,9 @@ func (m *TLStoriesExportStoryLink) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42070,6 +44083,9 @@ func (m *TLStoriesReport) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42138,6 +44154,9 @@ func (m *TLStoriesActivateStealthMode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42215,6 +44234,9 @@ func (m *TLStoriesSendReaction) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42262,6 +44284,9 @@ func (m *TLStoriesGetPeerStories) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42302,6 +44327,9 @@ func (m *TLStoriesGetAllReadPeerStories) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42359,6 +44387,9 @@ func (m *TLStoriesGetPeerMaxIDs) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42399,6 +44430,9 @@ func (m *TLStoriesGetChatsToSend) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42452,6 +44486,9 @@ func (m *TLStoriesTogglePeerStoriesHidden) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42553,6 +44590,9 @@ func (m *TLStoriesGetStoryReactionsList) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42605,6 +44645,9 @@ func (m *TLStoriesTogglePinnedToTop) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42704,6 +44747,9 @@ func (m *TLStoriesSearchPosts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42778,6 +44824,9 @@ func (m *TLPremiumGetBoostsList) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42818,6 +44867,9 @@ func (m *TLPremiumGetMyBoosts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42888,6 +44940,9 @@ func (m *TLPremiumApplyBoost) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42935,6 +44990,9 @@ func (m *TLPremiumGetBoostsStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -42988,6 +45046,9 @@ func (m *TLPremiumGetUserBoosts) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43028,6 +45089,9 @@ func (m *TLSmsjobsIsEligibleToJoin) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43068,6 +45132,9 @@ func (m *TLSmsjobsJoin) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43108,6 +45175,9 @@ func (m *TLSmsjobsLeave) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43169,6 +45239,9 @@ func (m *TLSmsjobsUpdateSettings) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43209,6 +45282,9 @@ func (m *TLSmsjobsGetStatus) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43253,6 +45329,9 @@ func (m *TLSmsjobsGetSmsJob) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43321,6 +45400,9 @@ func (m *TLSmsjobsFinishJob) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43368,6 +45450,9 @@ func (m *TLFragmentGetCollectibleInfo) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43415,6 +45500,9 @@ func (m *TLPaymentsCanPurchasePremium) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43472,6 +45560,9 @@ func (m *TLUsersGetIsPremiumRequiredToContact) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43512,6 +45603,9 @@ func (m *TLTestParseInputAppEvent) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43619,6 +45713,9 @@ func (m *TLPredefinedCreatePredefinedUser) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43666,6 +45763,9 @@ func (m *TLPredefinedUpdatePredefinedUsername) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43760,6 +45860,9 @@ func (m *TLPredefinedUpdatePredefinedProfile) Decode(d *bin.Decoder) (err error)
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43824,6 +45927,9 @@ func (m *TLPredefinedUpdatePredefinedVerified) Decode(d *bin.Decoder) (err error
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43871,6 +45977,9 @@ func (m *TLPredefinedUpdatePredefinedCode) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43915,6 +46024,9 @@ func (m *TLPredefinedGetPredefinedUser) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -43955,6 +46067,9 @@ func (m *TLPredefinedGetPredefinedUsers) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -44002,6 +46117,9 @@ func (m *TLUsersGetMe) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -44066,6 +46184,9 @@ func (m *TLAccountUpdateVerified) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -44153,6 +46274,9 @@ func (m *TLAuthToggleBan) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -44200,6 +46324,9 @@ func (m *TLBizInvokeBizDataRaw) Decode(d *bin.Decoder) (err error) {
 		},
 	}
 
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
 	if f, ok := decodeF[m.ClazzID]; ok {
 		return f()
 	} else {
@@ -44784,102 +46911,15 @@ func (m *VectorPredefinedUser) Decode(d *bin.Decoder) (err error) {
 //--------------------------------------------------------------------------------------------
 // rpc
 
-type RPCSavedMessageDialogs interface {
-	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs) (*MessagesSavedDialogs, error)
-	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory) (*MessagesMessages, error)
-	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory) (*MessagesAffectedHistory, error)
-	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs) (*MessagesSavedDialogs, error)
-	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin) (*Bool, error)
-	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
-}
-
-type RPCPreparedInlineMessages interface {
-	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage) (*MessagesBotPreparedInlineMessage, error)
-	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage) (*MessagesPreparedInlineMessage, error)
-}
-
-type RPCTwoFa interface {
-	AccountGetPassword(ctx context.Context, in *TLAccountGetPassword) (*AccountPassword, error)
-	AccountGetPasswordSettings(ctx context.Context, in *TLAccountGetPasswordSettings) (*AccountPasswordSettings, error)
-	AccountUpdatePasswordSettings(ctx context.Context, in *TLAccountUpdatePasswordSettings) (*Bool, error)
-	AccountConfirmPasswordEmail(ctx context.Context, in *TLAccountConfirmPasswordEmail) (*Bool, error)
-	AccountResendPasswordEmail(ctx context.Context, in *TLAccountResendPasswordEmail) (*Bool, error)
-	AccountCancelPasswordEmail(ctx context.Context, in *TLAccountCancelPasswordEmail) (*Bool, error)
-	AccountDeclinePasswordReset(ctx context.Context, in *TLAccountDeclinePasswordReset) (*Bool, error)
-}
-
-type RPCFragment interface {
-	AccountReorderUsernames(ctx context.Context, in *TLAccountReorderUsernames) (*Bool, error)
-	AccountToggleUsername(ctx context.Context, in *TLAccountToggleUsername) (*Bool, error)
-	ChannelsReorderUsernames(ctx context.Context, in *TLChannelsReorderUsernames) (*Bool, error)
-	ChannelsToggleUsername(ctx context.Context, in *TLChannelsToggleUsername) (*Bool, error)
-	ChannelsDeactivateAllUsernames(ctx context.Context, in *TLChannelsDeactivateAllUsernames) (*Bool, error)
-	BotsReorderUsernames(ctx context.Context, in *TLBotsReorderUsernames) (*Bool, error)
-	BotsToggleUsername(ctx context.Context, in *TLBotsToggleUsername) (*Bool, error)
-}
-
-type RPCReactionNotification interface {
-	AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error)
-	AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error)
-}
-
-type RPCMessageThreads interface {
-	ContactsBlockFromReplies(ctx context.Context, in *TLContactsBlockFromReplies) (*Updates, error)
-	MessagesGetReplies(ctx context.Context, in *TLMessagesGetReplies) (*MessagesMessages, error)
-	MessagesGetDiscussionMessage(ctx context.Context, in *TLMessagesGetDiscussionMessage) (*MessagesDiscussionMessage, error)
-	MessagesReadDiscussion(ctx context.Context, in *TLMessagesReadDiscussion) (*Bool, error)
-}
-
-type RPCWebPage interface {
-	MessagesGetWebPagePreview(ctx context.Context, in *TLMessagesGetWebPagePreview) (*MessagesWebPagePreview, error)
-	MessagesGetWebPage(ctx context.Context, in *TLMessagesGetWebPage) (*MessagesWebPage, error)
-}
-
-type RPCDeepLinks interface {
-	MessagesStartBot(ctx context.Context, in *TLMessagesStartBot) (*Updates, error)
-	HelpGetRecentMeUrls(ctx context.Context, in *TLHelpGetRecentMeUrls) (*HelpRecentMeUrls, error)
-	HelpGetDeepLinkInfo(ctx context.Context, in *TLHelpGetDeepLinkInfo) (*HelpDeepLinkInfo, error)
-}
-
-type RPCBotMenu interface {
-	MessagesGetAttachMenuBots(ctx context.Context, in *TLMessagesGetAttachMenuBots) (*AttachMenuBots, error)
-	MessagesGetAttachMenuBot(ctx context.Context, in *TLMessagesGetAttachMenuBot) (*AttachMenuBotsBot, error)
-	MessagesToggleBotInAttachMenu(ctx context.Context, in *TLMessagesToggleBotInAttachMenu) (*Bool, error)
-}
-
-type RPCPromoData interface {
-	HelpGetPromoData(ctx context.Context, in *TLHelpGetPromoData) (*HelpPromoData, error)
-	HelpHidePromoData(ctx context.Context, in *TLHelpHidePromoData) (*Bool, error)
-}
-
-type RPCSeamless interface {
-	AccountGetWebAuthorizations(ctx context.Context, in *TLAccountGetWebAuthorizations) (*AccountWebAuthorizations, error)
-	AccountResetWebAuthorization(ctx context.Context, in *TLAccountResetWebAuthorization) (*Bool, error)
-	AccountResetWebAuthorizations(ctx context.Context, in *TLAccountResetWebAuthorizations) (*Bool, error)
-	MessagesRequestUrlAuth(ctx context.Context, in *TLMessagesRequestUrlAuth) (*UrlAuthResult, error)
-	MessagesAcceptUrlAuth(ctx context.Context, in *TLMessagesAcceptUrlAuth) (*UrlAuthResult, error)
-}
-
-type RPCAccentColors interface {
-	AccountUpdateColor(ctx context.Context, in *TLAccountUpdateColor) (*Bool, error)
-	AccountGetDefaultBackgroundEmojis(ctx context.Context, in *TLAccountGetDefaultBackgroundEmojis) (*EmojiList, error)
-	HelpGetPeerColors(ctx context.Context, in *TLHelpGetPeerColors) (*HelpPeerColors, error)
-	HelpGetPeerProfileColors(ctx context.Context, in *TLHelpGetPeerProfileColors) (*HelpPeerColors, error)
-	ChannelsUpdateColor(ctx context.Context, in *TLChannelsUpdateColor) (*Updates, error)
-}
-
-type RPCBusinessConnectedBots interface {
-	AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot) (*Updates, error)
-	AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots) (*AccountConnectedBots, error)
-	AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection) (*Updates, error)
-	AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused) (*Bool, error)
-	AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot) (*Bool, error)
-}
-
-type RPCPaidMessage interface {
-	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException) (*Bool, error)
-	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue) (*AccountPaidMessagesRevenue, error)
-	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
+type RPCMainMiniBotApps interface {
+	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView) (*WebViewResult, error)
+	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots) (*BotsPopularAppBots, error)
+	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
+	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
+	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia) (*Bool, error)
+	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias) (*Bool, error)
+	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo) (*BotsPreviewInfo, error)
+	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias) (*VectorBotPreviewMedia, error)
 }
 
 type RPCBoosts interface {
@@ -44891,158 +46931,59 @@ type RPCBoosts interface {
 	PremiumGetUserBoosts(ctx context.Context, in *TLPremiumGetUserBoosts) (*PremiumBoostsList, error)
 }
 
-type RPCBotMenuButton interface {
-	BotsSetBotMenuButton(ctx context.Context, in *TLBotsSetBotMenuButton) (*Bool, error)
-	BotsGetBotMenuButton(ctx context.Context, in *TLBotsGetBotMenuButton) (*BotMenuButton, error)
+type RPCGroupCalls interface {
+	PhoneCreateGroupCall(ctx context.Context, in *TLPhoneCreateGroupCall) (*Updates, error)
+	PhoneJoinGroupCall(ctx context.Context, in *TLPhoneJoinGroupCall) (*Updates, error)
+	PhoneLeaveGroupCall(ctx context.Context, in *TLPhoneLeaveGroupCall) (*Updates, error)
+	PhoneInviteToGroupCall(ctx context.Context, in *TLPhoneInviteToGroupCall) (*Updates, error)
+	PhoneDiscardGroupCall(ctx context.Context, in *TLPhoneDiscardGroupCall) (*Updates, error)
+	PhoneToggleGroupCallSettings(ctx context.Context, in *TLPhoneToggleGroupCallSettings) (*Updates, error)
+	PhoneGetGroupCall(ctx context.Context, in *TLPhoneGetGroupCall) (*PhoneGroupCall, error)
+	PhoneGetGroupParticipants(ctx context.Context, in *TLPhoneGetGroupParticipants) (*PhoneGroupParticipants, error)
+	PhoneCheckGroupCall(ctx context.Context, in *TLPhoneCheckGroupCall) (*VectorInt, error)
+	PhoneToggleGroupCallRecord(ctx context.Context, in *TLPhoneToggleGroupCallRecord) (*Updates, error)
+	PhoneEditGroupCallParticipant(ctx context.Context, in *TLPhoneEditGroupCallParticipant) (*Updates, error)
+	PhoneEditGroupCallTitle(ctx context.Context, in *TLPhoneEditGroupCallTitle) (*Updates, error)
+	PhoneGetGroupCallJoinAs(ctx context.Context, in *TLPhoneGetGroupCallJoinAs) (*PhoneJoinAsPeers, error)
+	PhoneExportGroupCallInvite(ctx context.Context, in *TLPhoneExportGroupCallInvite) (*PhoneExportedGroupCallInvite, error)
+	PhoneToggleGroupCallStartSubscription(ctx context.Context, in *TLPhoneToggleGroupCallStartSubscription) (*Updates, error)
+	PhoneStartScheduledGroupCall(ctx context.Context, in *TLPhoneStartScheduledGroupCall) (*Updates, error)
+	PhoneSaveDefaultGroupCallJoinAs(ctx context.Context, in *TLPhoneSaveDefaultGroupCallJoinAs) (*Bool, error)
+	PhoneJoinGroupCallPresentation(ctx context.Context, in *TLPhoneJoinGroupCallPresentation) (*Updates, error)
+	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
+	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels) (*PhoneGroupCallStreamChannels, error)
+	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl) (*PhoneGroupCallStreamRtmpUrl, error)
 }
 
-type RPCChannelAdRevenue interface {
-	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats) (*StatsBroadcastRevenueStats, error)
-	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl) (*StatsBroadcastRevenueWithdrawalUrl, error)
-	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions) (*StatsBroadcastRevenueTransactions, error)
-}
-
-type RPCPremium interface {
-	HelpGetPremiumPromo(ctx context.Context, in *TLHelpGetPremiumPromo) (*HelpPremiumPromo, error)
-	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
-	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
-	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore) (*Bool, error)
-	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium) (*Bool, error)
-}
-
-type RPCPrivacySettings interface {
-	AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy) (*AccountPrivacyRules, error)
-	AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy) (*AccountPrivacyRules, error)
-	AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
-	AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
-	UsersGetRequirementsToContact(ctx context.Context, in *TLUsersGetRequirementsToContact) (*VectorRequirementToContact, error)
-	MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL) (*Bool, error)
-	MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error)
-	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact) (*VectorBool, error)
-}
-
-type RPCProfileLinks interface {
-	ContactsExportContactToken(ctx context.Context, in *TLContactsExportContactToken) (*ExportedContactToken, error)
-	ContactsImportContactToken(ctx context.Context, in *TLContactsImportContactToken) (*User, error)
-}
-
-type RPCFactChecks interface {
-	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck) (*Updates, error)
-	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck) (*Updates, error)
-	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck) (*VectorFactCheck, error)
-}
-
-type RPCInternalBot interface {
-	HelpSetBotUpdatesStatus(ctx context.Context, in *TLHelpSetBotUpdatesStatus) (*Bool, error)
-	BotsSendCustomRequest(ctx context.Context, in *TLBotsSendCustomRequest) (*DataJSON, error)
-	BotsAnswerWebhookJSONQuery(ctx context.Context, in *TLBotsAnswerWebhookJSONQuery) (*Bool, error)
+type RPCPayments interface {
+	AccountGetTmpPassword(ctx context.Context, in *TLAccountGetTmpPassword) (*AccountTmpPassword, error)
+	MessagesSetBotShippingResults(ctx context.Context, in *TLMessagesSetBotShippingResults) (*Bool, error)
+	MessagesSetBotPrecheckoutResults(ctx context.Context, in *TLMessagesSetBotPrecheckoutResults) (*Bool, error)
+	PaymentsGetPaymentForm(ctx context.Context, in *TLPaymentsGetPaymentForm) (*PaymentsPaymentForm, error)
+	PaymentsGetPaymentReceipt(ctx context.Context, in *TLPaymentsGetPaymentReceipt) (*PaymentsPaymentReceipt, error)
+	PaymentsValidateRequestedInfo(ctx context.Context, in *TLPaymentsValidateRequestedInfo) (*PaymentsValidatedRequestedInfo, error)
+	PaymentsSendPaymentForm(ctx context.Context, in *TLPaymentsSendPaymentForm) (*PaymentsPaymentResult, error)
+	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo) (*PaymentsSavedInfo, error)
+	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo) (*Bool, error)
+	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData) (*PaymentsBankCardData, error)
+	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice) (*PaymentsExportedInvoice, error)
 }
 
 type RPCBusinessLocation interface {
 	AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation) (*Bool, error)
 }
 
-type RPCAffiliatePrograms interface {
-	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
-	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots) (*PaymentsConnectedStarRefBots, error)
-	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
-	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots) (*PaymentsSuggestedStarRefBots, error)
-	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot) (*PaymentsConnectedStarRefBots, error)
-	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+type RPCBusinessIntro interface {
+	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro) (*Bool, error)
 }
 
-type RPCStars interface {
-	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions) (*VectorStarsTopupOption, error)
-	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus) (*PaymentsStarsStatus, error)
-	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions) (*PaymentsStarsStatus, error)
-	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm) (*PaymentsPaymentResult, error)
-	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge) (*Updates, error)
-	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats) (*PaymentsStarsRevenueStats, error)
-	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl) (*PaymentsStarsRevenueWithdrawalUrl, error)
-	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl) (*PaymentsStarsRevenueAdsAccountUrl, error)
-	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID) (*PaymentsStarsStatus, error)
-	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions) (*VectorStarsGiftOption, error)
+type RPCPaidMedia interface {
+	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia) (*Updates, error)
 }
 
-type RPCBots interface {
-	BotsSetBotCommands(ctx context.Context, in *TLBotsSetBotCommands) (*Bool, error)
-	BotsResetBotCommands(ctx context.Context, in *TLBotsResetBotCommands) (*Bool, error)
-	BotsGetBotCommands(ctx context.Context, in *TLBotsGetBotCommands) (*VectorBotCommand, error)
-	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo) (*Bool, error)
-	BotsGetBotInfo(ctx context.Context, in *TLBotsGetBotInfo) (*BotsBotInfo, error)
-	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots) (*VectorUser, error)
-	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
-	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
-}
-
-type RPCGiveaways interface {
-	PaymentsGetPremiumGiftCodeOptions(ctx context.Context, in *TLPaymentsGetPremiumGiftCodeOptions) (*VectorPremiumGiftCodeOption, error)
-	PaymentsGetGiveawayInfo(ctx context.Context, in *TLPaymentsGetGiveawayInfo) (*PaymentsGiveawayInfo, error)
-	PaymentsLaunchPrepaidGiveaway(ctx context.Context, in *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error)
-	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions) (*VectorStarsGiveawayOption, error)
-}
-
-type RPCGiftCodes interface {
-	PaymentsCheckGiftCode(ctx context.Context, in *TLPaymentsCheckGiftCode) (*PaymentsCheckedGiftCode, error)
-	PaymentsApplyGiftCode(ctx context.Context, in *TLPaymentsApplyGiftCode) (*Updates, error)
-}
-
-type RPCGifts interface {
-	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts) (*PaymentsStarGifts, error)
-	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift) (*Bool, error)
-	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift) (*Bool, error)
-	PaymentsGetStarGiftUpgradePreview(ctx context.Context, in *TLPaymentsGetStarGiftUpgradePreview) (*PaymentsStarGiftUpgradePreview, error)
-	PaymentsUpgradeStarGift(ctx context.Context, in *TLPaymentsUpgradeStarGift) (*Updates, error)
-	PaymentsTransferStarGift(ctx context.Context, in *TLPaymentsTransferStarGift) (*Updates, error)
-	PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift) (*PaymentsUniqueStarGift, error)
-	PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts) (*PaymentsSavedStarGifts, error)
-	PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift) (*PaymentsSavedStarGifts, error)
-	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl) (*PaymentsStarGiftWithdrawalUrl, error)
-	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
-	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
-}
-
-type RPCQrCode interface {
-	AuthExportLoginToken(ctx context.Context, in *TLAuthExportLoginToken) (*AuthLoginToken, error)
-	AuthImportLoginToken(ctx context.Context, in *TLAuthImportLoginToken) (*AuthLoginToken, error)
-	AuthAcceptLoginToken(ctx context.Context, in *TLAuthAcceptLoginToken) (*Authorization, error)
-}
-
-type RPCWallpapers interface {
-	AccountGetWallPapers(ctx context.Context, in *TLAccountGetWallPapers) (*AccountWallPapers, error)
-	AccountGetWallPaper(ctx context.Context, in *TLAccountGetWallPaper) (*WallPaper, error)
-	AccountUploadWallPaper(ctx context.Context, in *TLAccountUploadWallPaper) (*WallPaper, error)
-	AccountSaveWallPaper(ctx context.Context, in *TLAccountSaveWallPaper) (*Bool, error)
-	AccountInstallWallPaper(ctx context.Context, in *TLAccountInstallWallPaper) (*Bool, error)
-	AccountResetWallPapers(ctx context.Context, in *TLAccountResetWallPapers) (*Bool, error)
-	AccountGetMultiWallPapers(ctx context.Context, in *TLAccountGetMultiWallPapers) (*VectorWallPaper, error)
-	MessagesSetChatWallPaper(ctx context.Context, in *TLMessagesSetChatWallPaper) (*Updates, error)
-}
-
-type RPCTranscription interface {
-	MessagesTranscribeAudio(ctx context.Context, in *TLMessagesTranscribeAudio) (*MessagesTranscribedAudio, error)
-	MessagesRateTranscribedAudio(ctx context.Context, in *TLMessagesRateTranscribedAudio) (*Bool, error)
-}
-
-type RPCFolderTags interface {
-	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags) (*Bool, error)
-}
-
-type RPCStatistics interface {
-	StatsGetBroadcastStats(ctx context.Context, in *TLStatsGetBroadcastStats) (*StatsBroadcastStats, error)
-	StatsLoadAsyncGraph(ctx context.Context, in *TLStatsLoadAsyncGraph) (*StatsGraph, error)
-	StatsGetMegagroupStats(ctx context.Context, in *TLStatsGetMegagroupStats) (*StatsMegagroupStats, error)
-	StatsGetMessagePublicForwards(ctx context.Context, in *TLStatsGetMessagePublicForwards) (*StatsPublicForwards, error)
-	StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats) (*StatsMessageStats, error)
-	StatsGetStoryStats(ctx context.Context, in *TLStatsGetStoryStats) (*StatsStoryStats, error)
-	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards) (*StatsPublicForwards, error)
-}
-
-type RPCEmojiCategories interface {
-	MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups) (*MessagesEmojiGroups, error)
-	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups) (*MessagesEmojiGroups, error)
-	MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups) (*MessagesEmojiGroups, error)
-	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups) (*MessagesEmojiGroups, error)
+type RPCPromoData interface {
+	HelpGetPromoData(ctx context.Context, in *TLHelpGetPromoData) (*HelpPromoData, error)
+	HelpHidePromoData(ctx context.Context, in *TLHelpHidePromoData) (*Bool, error)
 }
 
 type RPCChannels interface {
@@ -45080,188 +47021,22 @@ type RPCChannels interface {
 	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden) (*Updates, error)
 }
 
-type RPCAntiSpam interface {
-	ChannelsToggleAntiSpam(ctx context.Context, in *TLChannelsToggleAntiSpam) (*Updates, error)
-	ChannelsReportAntiSpamFalsePositive(ctx context.Context, in *TLChannelsReportAntiSpamFalsePositive) (*Bool, error)
+type RPCBots interface {
+	BotsSetBotCommands(ctx context.Context, in *TLBotsSetBotCommands) (*Bool, error)
+	BotsResetBotCommands(ctx context.Context, in *TLBotsResetBotCommands) (*Bool, error)
+	BotsGetBotCommands(ctx context.Context, in *TLBotsGetBotCommands) (*VectorBotCommand, error)
+	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo) (*Bool, error)
+	BotsGetBotInfo(ctx context.Context, in *TLBotsGetBotInfo) (*BotsBotInfo, error)
+	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots) (*VectorUser, error)
+	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
+	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
 }
 
-type RPCInlineBot interface {
-	MessagesGetInlineBotResults(ctx context.Context, in *TLMessagesGetInlineBotResults) (*MessagesBotResults, error)
-	MessagesSetInlineBotResults(ctx context.Context, in *TLMessagesSetInlineBotResults) (*Bool, error)
-	MessagesSendInlineBotResult(ctx context.Context, in *TLMessagesSendInlineBotResult) (*Updates, error)
-	MessagesEditInlineBotMessage(ctx context.Context, in *TLMessagesEditInlineBotMessage) (*Bool, error)
-	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer) (*MessagesBotCallbackAnswer, error)
-	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer) (*Bool, error)
-	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer) (*Updates, error)
-}
-
-type RPCPolls interface {
-	MessagesSendVote(ctx context.Context, in *TLMessagesSendVote) (*Updates, error)
-	MessagesGetPollResults(ctx context.Context, in *TLMessagesGetPollResults) (*Updates, error)
-	MessagesGetPollVotes(ctx context.Context, in *TLMessagesGetPollVotes) (*MessagesVotesList, error)
-}
-
-type RPCTranslation interface {
-	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText) (*MessagesTranslatedText, error)
-	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations) (*Bool, error)
-}
-
-type RPCSavedMessageTags interface {
-	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags) (*MessagesSavedReactionTags, error)
-	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag) (*Bool, error)
-	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions) (*MessagesReactions, error)
-}
-
-type RPCTakeout interface {
-	AccountInitTakeoutSession(ctx context.Context, in *TLAccountInitTakeoutSession) (*AccountTakeout, error)
-	AccountFinishTakeoutSession(ctx context.Context, in *TLAccountFinishTakeoutSession) (*Bool, error)
-	MessagesGetSplitRanges(ctx context.Context, in *TLMessagesGetSplitRanges) (*VectorMessageRange, error)
-	ChannelsGetLeftChannels(ctx context.Context, in *TLChannelsGetLeftChannels) (*MessagesChats, error)
-}
-
-type RPCAutoDownload interface {
-	AccountGetAutoDownloadSettings(ctx context.Context, in *TLAccountGetAutoDownloadSettings) (*AccountAutoDownloadSettings, error)
-	AccountSaveAutoDownloadSettings(ctx context.Context, in *TLAccountSaveAutoDownloadSettings) (*Bool, error)
-}
-
-type RPCRingtone interface {
-	AccountGetSavedRingtones(ctx context.Context, in *TLAccountGetSavedRingtones) (*AccountSavedRingtones, error)
-	AccountSaveRingtone(ctx context.Context, in *TLAccountSaveRingtone) (*AccountSavedRingtone, error)
-	AccountUploadRingtone(ctx context.Context, in *TLAccountUploadRingtone) (*Document, error)
-}
-
-type RPCBusinessOpeningHours interface {
-	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours) (*Bool, error)
-}
-
-type RPCTimezones interface {
-	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList) (*HelpTimezonesList, error)
-}
-
-type RPCStarSubscriptions interface {
-	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions) (*PaymentsStarsStatus, error)
-	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription) (*Bool, error)
-	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription) (*Bool, error)
-	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
-}
-
-type RPCbiz interface {
-	BizInvokeBizDataRaw(ctx context.Context, in *TLBizInvokeBizDataRaw) (*BizDataRaw, error)
-}
-
-type RPCAccount interface {
-	AccountDeleteAccount(ctx context.Context, in *TLAccountDeleteAccount) (*Bool, error)
-	AccountGetAccountTTL(ctx context.Context, in *TLAccountGetAccountTTL) (*AccountDaysTTL, error)
-	AccountSetAccountTTL(ctx context.Context, in *TLAccountSetAccountTTL) (*Bool, error)
-	AccountSendChangePhoneCode(ctx context.Context, in *TLAccountSendChangePhoneCode) (*AuthSentCode, error)
-	AccountChangePhone(ctx context.Context, in *TLAccountChangePhone) (*User, error)
-	AccountResetAuthorization(ctx context.Context, in *TLAccountResetAuthorization) (*Bool, error)
-	AccountSendConfirmPhoneCode(ctx context.Context, in *TLAccountSendConfirmPhoneCode) (*AuthSentCode, error)
-	AccountConfirmPhone(ctx context.Context, in *TLAccountConfirmPhone) (*Bool, error)
-}
-
-type RPCPassport interface {
-	AccountGetAuthorizations(ctx context.Context, in *TLAccountGetAuthorizations) (*AccountAuthorizations, error)
-	AccountGetAllSecureValues(ctx context.Context, in *TLAccountGetAllSecureValues) (*VectorSecureValue, error)
-	AccountGetSecureValue(ctx context.Context, in *TLAccountGetSecureValue) (*VectorSecureValue, error)
-	AccountSaveSecureValue(ctx context.Context, in *TLAccountSaveSecureValue) (*SecureValue, error)
-	AccountDeleteSecureValue(ctx context.Context, in *TLAccountDeleteSecureValue) (*Bool, error)
-	AccountGetAuthorizationForm(ctx context.Context, in *TLAccountGetAuthorizationForm) (*AccountAuthorizationForm, error)
-	AccountAcceptAuthorization(ctx context.Context, in *TLAccountAcceptAuthorization) (*Bool, error)
-	AccountSendVerifyPhoneCode(ctx context.Context, in *TLAccountSendVerifyPhoneCode) (*AuthSentCode, error)
-	AccountVerifyPhone(ctx context.Context, in *TLAccountVerifyPhone) (*Bool, error)
-	UsersSetSecureValueErrors(ctx context.Context, in *TLUsersSetSecureValueErrors) (*Bool, error)
-	HelpGetPassportConfig(ctx context.Context, in *TLHelpGetPassportConfig) (*HelpPassportConfig, error)
-}
-
-type RPCEmojiStatus interface {
-	AccountUpdateEmojiStatus(ctx context.Context, in *TLAccountUpdateEmojiStatus) (*Bool, error)
-	AccountGetDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountGetRecentEmojiStatuses(ctx context.Context, in *TLAccountGetRecentEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses) (*Bool, error)
-	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
-	AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses) (*AccountEmojiStatuses, error)
-	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus) (*Updates, error)
-	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus) (*Bool, error)
-	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
-}
-
-type RPCMainMiniBotApps interface {
-	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView) (*WebViewResult, error)
-	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots) (*BotsPopularAppBots, error)
-	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
-	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
-	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia) (*Bool, error)
-	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias) (*Bool, error)
-	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo) (*BotsPreviewInfo, error)
-	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias) (*VectorBotPreviewMedia, error)
-}
-
-type RPCNsfw interface {
-	AccountSetContentSettings(ctx context.Context, in *TLAccountSetContentSettings) (*Bool, error)
-	AccountGetContentSettings(ctx context.Context, in *TLAccountGetContentSettings) (*AccountContentSettings, error)
-}
-
-type RPCBusinessQuickReply interface {
-	MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies) (*MessagesQuickReplies, error)
-	MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies) (*Bool, error)
-	MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut) (*Bool, error)
-	MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut) (*Bool, error)
-	MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut) (*Bool, error)
-	MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages) (*MessagesMessages, error)
-	MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages) (*Updates, error)
-	MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages) (*Updates, error)
-}
-
-type RPCLangpack interface {
-	LangpackGetLangPack(ctx context.Context, in *TLLangpackGetLangPack) (*LangPackDifference, error)
-	LangpackGetStrings(ctx context.Context, in *TLLangpackGetStrings) (*VectorLangPackString, error)
-	LangpackGetDifference(ctx context.Context, in *TLLangpackGetDifference) (*LangPackDifference, error)
-	LangpackGetLanguages(ctx context.Context, in *TLLangpackGetLanguages) (*VectorLangPackLanguage, error)
-	LangpackGetLanguage(ctx context.Context, in *TLLangpackGetLanguage) (*LangPackLanguage, error)
-}
-
-type RPCSmsjobs interface {
-	SmsjobsIsEligibleToJoin(ctx context.Context, in *TLSmsjobsIsEligibleToJoin) (*SmsjobsEligibilityToJoin, error)
-	SmsjobsJoin(ctx context.Context, in *TLSmsjobsJoin) (*Bool, error)
-	SmsjobsLeave(ctx context.Context, in *TLSmsjobsLeave) (*Bool, error)
-	SmsjobsUpdateSettings(ctx context.Context, in *TLSmsjobsUpdateSettings) (*Bool, error)
-	SmsjobsGetStatus(ctx context.Context, in *TLSmsjobsGetStatus) (*SmsjobsStatus, error)
-	SmsjobsGetSmsJob(ctx context.Context, in *TLSmsjobsGetSmsJob) (*SmsJob, error)
-	SmsjobsFinishJob(ctx context.Context, in *TLSmsjobsFinishJob) (*Bool, error)
-}
-
-type RPCChatInvites interface {
-	MessagesExportChatInvite(ctx context.Context, in *TLMessagesExportChatInvite) (*ExportedChatInvite, error)
-	MessagesCheckChatInvite(ctx context.Context, in *TLMessagesCheckChatInvite) (*ChatInvite, error)
-	MessagesImportChatInvite(ctx context.Context, in *TLMessagesImportChatInvite) (*Updates, error)
-	MessagesGetExportedChatInvites(ctx context.Context, in *TLMessagesGetExportedChatInvites) (*MessagesExportedChatInvites, error)
-	MessagesGetExportedChatInvite(ctx context.Context, in *TLMessagesGetExportedChatInvite) (*MessagesExportedChatInvite, error)
-	MessagesEditExportedChatInvite(ctx context.Context, in *TLMessagesEditExportedChatInvite) (*MessagesExportedChatInvite, error)
-	MessagesDeleteRevokedExportedChatInvites(ctx context.Context, in *TLMessagesDeleteRevokedExportedChatInvites) (*Bool, error)
-	MessagesDeleteExportedChatInvite(ctx context.Context, in *TLMessagesDeleteExportedChatInvite) (*Bool, error)
-	MessagesGetAdminsWithInvites(ctx context.Context, in *TLMessagesGetAdminsWithInvites) (*MessagesChatAdminsWithInvites, error)
-	MessagesGetChatInviteImporters(ctx context.Context, in *TLMessagesGetChatInviteImporters) (*MessagesChatInviteImporters, error)
-	MessagesHideChatJoinRequest(ctx context.Context, in *TLMessagesHideChatJoinRequest) (*Updates, error)
-	MessagesHideAllChatJoinRequests(ctx context.Context, in *TLMessagesHideAllChatJoinRequests) (*Updates, error)
-	ChannelsToggleJoinToSend(ctx context.Context, in *TLChannelsToggleJoinToSend) (*Updates, error)
-	ChannelsToggleJoinRequest(ctx context.Context, in *TLChannelsToggleJoinRequest) (*Updates, error)
-}
-
-type RPCTos interface {
-	HelpGetTermsOfServiceUpdate(ctx context.Context, in *TLHelpGetTermsOfServiceUpdate) (*HelpTermsOfServiceUpdate, error)
-	HelpAcceptTermsOfService(ctx context.Context, in *TLHelpAcceptTermsOfService) (*Bool, error)
-}
-
-type RPCNotification interface {
-	AccountRegisterDevice(ctx context.Context, in *TLAccountRegisterDevice) (*Bool, error)
-	AccountUnregisterDevice(ctx context.Context, in *TLAccountUnregisterDevice) (*Bool, error)
-	AccountUpdateNotifySettings(ctx context.Context, in *TLAccountUpdateNotifySettings) (*Bool, error)
-	AccountGetNotifySettings(ctx context.Context, in *TLAccountGetNotifySettings) (*PeerNotifySettings, error)
-	AccountResetNotifySettings(ctx context.Context, in *TLAccountResetNotifySettings) (*Bool, error)
-	AccountUpdateDeviceLocked(ctx context.Context, in *TLAccountUpdateDeviceLocked) (*Bool, error)
-	AccountGetNotifyExceptions(ctx context.Context, in *TLAccountGetNotifyExceptions) (*Updates, error)
+type RPCGiveaways interface {
+	PaymentsGetPremiumGiftCodeOptions(ctx context.Context, in *TLPaymentsGetPremiumGiftCodeOptions) (*VectorPremiumGiftCodeOption, error)
+	PaymentsGetGiveawayInfo(ctx context.Context, in *TLPaymentsGetGiveawayInfo) (*PaymentsGiveawayInfo, error)
+	PaymentsLaunchPrepaidGiveaway(ctx context.Context, in *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error)
+	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions) (*VectorStarsGiveawayOption, error)
 }
 
 type RPCUserProfile interface {
@@ -45278,13 +47053,128 @@ type RPCUserProfile interface {
 	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified) (*User, error)
 }
 
-type RPCReports interface {
-	AccountReportPeer(ctx context.Context, in *TLAccountReportPeer) (*Bool, error)
-	AccountReportProfilePhoto(ctx context.Context, in *TLAccountReportProfilePhoto) (*Bool, error)
-	MessagesReportSpam(ctx context.Context, in *TLMessagesReportSpam) (*Bool, error)
-	MessagesReport(ctx context.Context, in *TLMessagesReport) (*ReportResult, error)
-	MessagesReportEncryptedSpam(ctx context.Context, in *TLMessagesReportEncryptedSpam) (*Bool, error)
-	ChannelsReportSpam(ctx context.Context, in *TLChannelsReportSpam) (*Bool, error)
+type RPCBusinessOpeningHours interface {
+	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours) (*Bool, error)
+}
+
+type RPCDialogs interface {
+	MessagesGetDialogs(ctx context.Context, in *TLMessagesGetDialogs) (*MessagesDialogs, error)
+	MessagesSetTyping(ctx context.Context, in *TLMessagesSetTyping) (*Bool, error)
+	MessagesGetPeerSettings(ctx context.Context, in *TLMessagesGetPeerSettings) (*MessagesPeerSettings, error)
+	MessagesGetPeerDialogs(ctx context.Context, in *TLMessagesGetPeerDialogs) (*MessagesPeerDialogs, error)
+	MessagesToggleDialogPin(ctx context.Context, in *TLMessagesToggleDialogPin) (*Bool, error)
+	MessagesReorderPinnedDialogs(ctx context.Context, in *TLMessagesReorderPinnedDialogs) (*Bool, error)
+	MessagesGetPinnedDialogs(ctx context.Context, in *TLMessagesGetPinnedDialogs) (*MessagesPeerDialogs, error)
+	MessagesSendScreenshotNotification(ctx context.Context, in *TLMessagesSendScreenshotNotification) (*Updates, error)
+	MessagesMarkDialogUnread(ctx context.Context, in *TLMessagesMarkDialogUnread) (*Bool, error)
+	MessagesGetDialogUnreadMarks(ctx context.Context, in *TLMessagesGetDialogUnreadMarks) (*VectorDialogPeer, error)
+	MessagesGetOnlines(ctx context.Context, in *TLMessagesGetOnlines) (*ChatOnlines, error)
+	MessagesHidePeerSettingsBar(ctx context.Context, in *TLMessagesHidePeerSettingsBar) (*Bool, error)
+	MessagesSetHistoryTTL(ctx context.Context, in *TLMessagesSetHistoryTTL) (*Updates, error)
+}
+
+type RPCGames interface {
+	MessagesSetGameScore(ctx context.Context, in *TLMessagesSetGameScore) (*Updates, error)
+	MessagesSetInlineGameScore(ctx context.Context, in *TLMessagesSetInlineGameScore) (*Bool, error)
+	MessagesGetGameHighScores(ctx context.Context, in *TLMessagesGetGameHighScores) (*MessagesHighScores, error)
+	MessagesGetInlineGameHighScores(ctx context.Context, in *TLMessagesGetInlineGameHighScores) (*MessagesHighScores, error)
+}
+
+type RPCFactChecks interface {
+	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck) (*Updates, error)
+	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck) (*Updates, error)
+	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck) (*VectorFactCheck, error)
+}
+
+type RPCPreparedInlineMessages interface {
+	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage) (*MessagesBotPreparedInlineMessage, error)
+	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage) (*MessagesPreparedInlineMessage, error)
+}
+
+type RPCMiscellaneous interface {
+	HelpSaveAppLog(ctx context.Context, in *TLHelpSaveAppLog) (*Bool, error)
+}
+
+type RPCStarSubscriptions interface {
+	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions) (*PaymentsStarsStatus, error)
+	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription) (*Bool, error)
+	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
+}
+
+type RPCEmojiStatus interface {
+	AccountUpdateEmojiStatus(ctx context.Context, in *TLAccountUpdateEmojiStatus) (*Bool, error)
+	AccountGetDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountGetRecentEmojiStatuses(ctx context.Context, in *TLAccountGetRecentEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses) (*Bool, error)
+	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
+	AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses) (*AccountEmojiStatuses, error)
+	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus) (*Updates, error)
+	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus) (*Bool, error)
+	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
+}
+
+type RPCAutosave interface {
+	AccountGetAutoSaveSettings(ctx context.Context, in *TLAccountGetAutoSaveSettings) (*AccountAutoSaveSettings, error)
+	AccountSaveAutoSaveSettings(ctx context.Context, in *TLAccountSaveAutoSaveSettings) (*Bool, error)
+	AccountDeleteAutoSaveExceptions(ctx context.Context, in *TLAccountDeleteAutoSaveExceptions) (*Bool, error)
+}
+
+type RPCDrafts interface {
+	MessagesSaveDraft(ctx context.Context, in *TLMessagesSaveDraft) (*Bool, error)
+	MessagesGetAllDrafts(ctx context.Context, in *TLMessagesGetAllDrafts) (*Updates, error)
+	MessagesClearAllDrafts(ctx context.Context, in *TLMessagesClearAllDrafts) (*Bool, error)
+}
+
+type RPCSavedMessageDialogs interface {
+	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs) (*MessagesSavedDialogs, error)
+	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory) (*MessagesMessages, error)
+	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory) (*MessagesAffectedHistory, error)
+	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs) (*MessagesSavedDialogs, error)
+	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin) (*Bool, error)
+	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
+}
+
+type RPCGifs interface {
+	MessagesGetSavedGifs(ctx context.Context, in *TLMessagesGetSavedGifs) (*MessagesSavedGifs, error)
+	MessagesSaveGif(ctx context.Context, in *TLMessagesSaveGif) (*Bool, error)
+}
+
+type RPCTranscription interface {
+	MessagesTranscribeAudio(ctx context.Context, in *TLMessagesTranscribeAudio) (*MessagesTranscribedAudio, error)
+	MessagesRateTranscribedAudio(ctx context.Context, in *TLMessagesRateTranscribedAudio) (*Bool, error)
+}
+
+type RPCStatistics interface {
+	StatsGetBroadcastStats(ctx context.Context, in *TLStatsGetBroadcastStats) (*StatsBroadcastStats, error)
+	StatsLoadAsyncGraph(ctx context.Context, in *TLStatsLoadAsyncGraph) (*StatsGraph, error)
+	StatsGetMegagroupStats(ctx context.Context, in *TLStatsGetMegagroupStats) (*StatsMegagroupStats, error)
+	StatsGetMessagePublicForwards(ctx context.Context, in *TLStatsGetMessagePublicForwards) (*StatsPublicForwards, error)
+	StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats) (*StatsMessageStats, error)
+	StatsGetStoryStats(ctx context.Context, in *TLStatsGetStoryStats) (*StatsStoryStats, error)
+	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards) (*StatsPublicForwards, error)
+}
+
+type RPCtest interface {
+	TestParseInputAppEvent(ctx context.Context, in *TLTestParseInputAppEvent) (*InputAppEvent, error)
+}
+
+type RPCQrCode interface {
+	AuthExportLoginToken(ctx context.Context, in *TLAuthExportLoginToken) (*AuthLoginToken, error)
+	AuthImportLoginToken(ctx context.Context, in *TLAuthImportLoginToken) (*AuthLoginToken, error)
+	AuthAcceptLoginToken(ctx context.Context, in *TLAuthAcceptLoginToken) (*Authorization, error)
+}
+
+type RPCWallpapers interface {
+	AccountGetWallPapers(ctx context.Context, in *TLAccountGetWallPapers) (*AccountWallPapers, error)
+	AccountGetWallPaper(ctx context.Context, in *TLAccountGetWallPaper) (*WallPaper, error)
+	AccountUploadWallPaper(ctx context.Context, in *TLAccountUploadWallPaper) (*WallPaper, error)
+	AccountSaveWallPaper(ctx context.Context, in *TLAccountSaveWallPaper) (*Bool, error)
+	AccountInstallWallPaper(ctx context.Context, in *TLAccountInstallWallPaper) (*Bool, error)
+	AccountResetWallPapers(ctx context.Context, in *TLAccountResetWallPapers) (*Bool, error)
+	AccountGetMultiWallPapers(ctx context.Context, in *TLAccountGetMultiWallPapers) (*VectorWallPaper, error)
+	MessagesSetChatWallPaper(ctx context.Context, in *TLMessagesSetChatWallPaper) (*Updates, error)
 }
 
 type RPCBusinessGreeting interface {
@@ -45292,11 +47182,106 @@ type RPCBusinessGreeting interface {
 	AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage) (*Bool, error)
 }
 
+type RPCFiles interface {
+	MessagesGetDocumentByHash(ctx context.Context, in *TLMessagesGetDocumentByHash) (*Document, error)
+	MessagesUploadMedia(ctx context.Context, in *TLMessagesUploadMedia) (*MessageMedia, error)
+	MessagesUploadEncryptedFile(ctx context.Context, in *TLMessagesUploadEncryptedFile) (*EncryptedFile, error)
+	UploadSaveFilePart(ctx context.Context, in *TLUploadSaveFilePart) (*Bool, error)
+	UploadGetFile(ctx context.Context, in *TLUploadGetFile) (*UploadFile, error)
+	UploadSaveBigFilePart(ctx context.Context, in *TLUploadSaveBigFilePart) (*Bool, error)
+	UploadGetWebFile(ctx context.Context, in *TLUploadGetWebFile) (*UploadWebFile, error)
+	UploadGetCdnFile(ctx context.Context, in *TLUploadGetCdnFile) (*UploadCdnFile, error)
+	UploadReuploadCdnFile(ctx context.Context, in *TLUploadReuploadCdnFile) (*VectorFileHash, error)
+	UploadGetCdnFileHashes(ctx context.Context, in *TLUploadGetCdnFileHashes) (*VectorFileHash, error)
+	UploadGetFileHashes(ctx context.Context, in *TLUploadGetFileHashes) (*VectorFileHash, error)
+	HelpGetCdnConfig(ctx context.Context, in *TLHelpGetCdnConfig) (*CdnConfig, error)
+}
+
+type RPCGifts interface {
+	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts) (*PaymentsStarGifts, error)
+	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift) (*Bool, error)
+	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift) (*Bool, error)
+	PaymentsGetStarGiftUpgradePreview(ctx context.Context, in *TLPaymentsGetStarGiftUpgradePreview) (*PaymentsStarGiftUpgradePreview, error)
+	PaymentsUpgradeStarGift(ctx context.Context, in *TLPaymentsUpgradeStarGift) (*Updates, error)
+	PaymentsTransferStarGift(ctx context.Context, in *TLPaymentsTransferStarGift) (*Updates, error)
+	PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift) (*PaymentsUniqueStarGift, error)
+	PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts) (*PaymentsSavedStarGifts, error)
+	PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift) (*PaymentsSavedStarGifts, error)
+	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl) (*PaymentsStarGiftWithdrawalUrl, error)
+	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
+	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
+}
+
+type RPCTakeout interface {
+	AccountInitTakeoutSession(ctx context.Context, in *TLAccountInitTakeoutSession) (*AccountTakeout, error)
+	AccountFinishTakeoutSession(ctx context.Context, in *TLAccountFinishTakeoutSession) (*Bool, error)
+	MessagesGetSplitRanges(ctx context.Context, in *TLMessagesGetSplitRanges) (*VectorMessageRange, error)
+	ChannelsGetLeftChannels(ctx context.Context, in *TLChannelsGetLeftChannels) (*MessagesChats, error)
+}
+
+type RPCPaidMessage interface {
+	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException) (*Bool, error)
+	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue) (*AccountPaidMessagesRevenue, error)
+	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
+}
+
 type RPCScheduledMessages interface {
 	MessagesGetScheduledHistory(ctx context.Context, in *TLMessagesGetScheduledHistory) (*MessagesMessages, error)
 	MessagesGetScheduledMessages(ctx context.Context, in *TLMessagesGetScheduledMessages) (*MessagesMessages, error)
 	MessagesSendScheduledMessages(ctx context.Context, in *TLMessagesSendScheduledMessages) (*Updates, error)
 	MessagesDeleteScheduledMessages(ctx context.Context, in *TLMessagesDeleteScheduledMessages) (*Updates, error)
+}
+
+type RPCTimezones interface {
+	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList) (*HelpTimezonesList, error)
+}
+
+type RPCFragment interface {
+	AccountReorderUsernames(ctx context.Context, in *TLAccountReorderUsernames) (*Bool, error)
+	AccountToggleUsername(ctx context.Context, in *TLAccountToggleUsername) (*Bool, error)
+	ChannelsReorderUsernames(ctx context.Context, in *TLChannelsReorderUsernames) (*Bool, error)
+	ChannelsToggleUsername(ctx context.Context, in *TLChannelsToggleUsername) (*Bool, error)
+	ChannelsDeactivateAllUsernames(ctx context.Context, in *TLChannelsDeactivateAllUsernames) (*Bool, error)
+	BotsReorderUsernames(ctx context.Context, in *TLBotsReorderUsernames) (*Bool, error)
+	BotsToggleUsername(ctx context.Context, in *TLBotsToggleUsername) (*Bool, error)
+}
+
+type RPCChats interface {
+	MessagesGetChats(ctx context.Context, in *TLMessagesGetChats) (*MessagesChats, error)
+	MessagesGetFullChat(ctx context.Context, in *TLMessagesGetFullChat) (*MessagesChatFull, error)
+	MessagesEditChatTitle(ctx context.Context, in *TLMessagesEditChatTitle) (*Updates, error)
+	MessagesEditChatPhoto(ctx context.Context, in *TLMessagesEditChatPhoto) (*Updates, error)
+	MessagesAddChatUser(ctx context.Context, in *TLMessagesAddChatUser) (*MessagesInvitedUsers, error)
+	MessagesDeleteChatUser(ctx context.Context, in *TLMessagesDeleteChatUser) (*Updates, error)
+	MessagesCreateChat(ctx context.Context, in *TLMessagesCreateChat) (*MessagesInvitedUsers, error)
+	MessagesEditChatAdmin(ctx context.Context, in *TLMessagesEditChatAdmin) (*Bool, error)
+	MessagesMigrateChat(ctx context.Context, in *TLMessagesMigrateChat) (*Updates, error)
+	MessagesGetCommonChats(ctx context.Context, in *TLMessagesGetCommonChats) (*MessagesChats, error)
+	MessagesEditChatAbout(ctx context.Context, in *TLMessagesEditChatAbout) (*Bool, error)
+	MessagesEditChatDefaultBannedRights(ctx context.Context, in *TLMessagesEditChatDefaultBannedRights) (*Updates, error)
+	MessagesDeleteChat(ctx context.Context, in *TLMessagesDeleteChat) (*Bool, error)
+	MessagesGetMessageReadParticipants(ctx context.Context, in *TLMessagesGetMessageReadParticipants) (*VectorReadParticipantDate, error)
+	ChannelsConvertToGigagroup(ctx context.Context, in *TLChannelsConvertToGigagroup) (*Updates, error)
+	ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers) (*Bool, error)
+}
+
+type RPCAntiSpam interface {
+	ChannelsToggleAntiSpam(ctx context.Context, in *TLChannelsToggleAntiSpam) (*Updates, error)
+	ChannelsReportAntiSpamFalsePositive(ctx context.Context, in *TLChannelsReportAntiSpamFalsePositive) (*Bool, error)
+}
+
+type RPCAffiliatePrograms interface {
+	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
+	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots) (*PaymentsConnectedStarRefBots, error)
+	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots) (*PaymentsSuggestedStarRefBots, error)
+	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot) (*PaymentsConnectedStarRefBots, error)
+	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+}
+
+type RPCTranslation interface {
+	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText) (*MessagesTranslatedText, error)
+	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations) (*Bool, error)
 }
 
 type RPCStories interface {
@@ -45328,112 +47313,121 @@ type RPCStories interface {
 	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts) (*StoriesFoundStories, error)
 }
 
-type RPCtest interface {
-	TestParseInputAppEvent(ctx context.Context, in *TLTestParseInputAppEvent) (*InputAppEvent, error)
+type RPCAuthorization interface {
+	AuthSendCode(ctx context.Context, in *TLAuthSendCode) (*AuthSentCode, error)
+	AuthSignUp(ctx context.Context, in *TLAuthSignUp) (*AuthAuthorization, error)
+	AuthSignIn(ctx context.Context, in *TLAuthSignIn) (*AuthAuthorization, error)
+	AuthLogOut(ctx context.Context, in *TLAuthLogOut) (*AuthLoggedOut, error)
+	AuthResetAuthorizations(ctx context.Context, in *TLAuthResetAuthorizations) (*Bool, error)
+	AuthExportAuthorization(ctx context.Context, in *TLAuthExportAuthorization) (*AuthExportedAuthorization, error)
+	AuthImportAuthorization(ctx context.Context, in *TLAuthImportAuthorization) (*AuthAuthorization, error)
+	AuthBindTempAuthKey(ctx context.Context, in *TLAuthBindTempAuthKey) (*Bool, error)
+	AuthImportBotAuthorization(ctx context.Context, in *TLAuthImportBotAuthorization) (*AuthAuthorization, error)
+	AuthCheckPassword(ctx context.Context, in *TLAuthCheckPassword) (*AuthAuthorization, error)
+	AuthRequestPasswordRecovery(ctx context.Context, in *TLAuthRequestPasswordRecovery) (*AuthPasswordRecovery, error)
+	AuthRecoverPassword(ctx context.Context, in *TLAuthRecoverPassword) (*AuthAuthorization, error)
+	AuthResendCode(ctx context.Context, in *TLAuthResendCode) (*AuthSentCode, error)
+	AuthCancelCode(ctx context.Context, in *TLAuthCancelCode) (*Bool, error)
+	AuthDropTempAuthKeys(ctx context.Context, in *TLAuthDropTempAuthKeys) (*Bool, error)
+	AuthCheckRecoveryPassword(ctx context.Context, in *TLAuthCheckRecoveryPassword) (*Bool, error)
+	AuthImportWebTokenAuthorization(ctx context.Context, in *TLAuthImportWebTokenAuthorization) (*AuthAuthorization, error)
+	AuthRequestFirebaseSms(ctx context.Context, in *TLAuthRequestFirebaseSms) (*Bool, error)
+	AuthResetLoginEmail(ctx context.Context, in *TLAuthResetLoginEmail) (*AuthSentCode, error)
+	AuthReportMissingCode(ctx context.Context, in *TLAuthReportMissingCode) (*Bool, error)
+	AccountSendVerifyEmailCode(ctx context.Context, in *TLAccountSendVerifyEmailCode) (*AccountSentEmailCode, error)
+	AccountVerifyEmail(ctx context.Context, in *TLAccountVerifyEmail) (*AccountEmailVerified, error)
+	AccountResetPassword(ctx context.Context, in *TLAccountResetPassword) (*AccountResetPasswordResult, error)
+	AccountSetAuthorizationTTL(ctx context.Context, in *TLAccountSetAuthorizationTTL) (*Bool, error)
+	AccountChangeAuthorizationSettings(ctx context.Context, in *TLAccountChangeAuthorizationSettings) (*Bool, error)
+	AccountInvalidateSignInCodes(ctx context.Context, in *TLAccountInvalidateSignInCodes) (*Bool, error)
+	AuthToggleBan(ctx context.Context, in *TLAuthToggleBan) (*PredefinedUser, error)
 }
 
-type RPCContacts interface {
-	AccountGetContactSignUpNotification(ctx context.Context, in *TLAccountGetContactSignUpNotification) (*Bool, error)
-	AccountSetContactSignUpNotification(ctx context.Context, in *TLAccountSetContactSignUpNotification) (*Bool, error)
-	ContactsGetContactIDs(ctx context.Context, in *TLContactsGetContactIDs) (*VectorInt, error)
-	ContactsGetStatuses(ctx context.Context, in *TLContactsGetStatuses) (*VectorContactStatus, error)
-	ContactsGetContacts(ctx context.Context, in *TLContactsGetContacts) (*ContactsContacts, error)
-	ContactsImportContacts(ctx context.Context, in *TLContactsImportContacts) (*ContactsImportedContacts, error)
-	ContactsDeleteContacts(ctx context.Context, in *TLContactsDeleteContacts) (*Updates, error)
-	ContactsDeleteByPhones(ctx context.Context, in *TLContactsDeleteByPhones) (*Bool, error)
-	ContactsBlock(ctx context.Context, in *TLContactsBlock) (*Bool, error)
-	ContactsUnblock(ctx context.Context, in *TLContactsUnblock) (*Bool, error)
-	ContactsGetBlocked(ctx context.Context, in *TLContactsGetBlocked) (*ContactsBlocked, error)
-	ContactsSearch(ctx context.Context, in *TLContactsSearch) (*ContactsFound, error)
-	ContactsGetTopPeers(ctx context.Context, in *TLContactsGetTopPeers) (*ContactsTopPeers, error)
-	ContactsResetTopPeerRating(ctx context.Context, in *TLContactsResetTopPeerRating) (*Bool, error)
-	ContactsResetSaved(ctx context.Context, in *TLContactsResetSaved) (*Bool, error)
-	ContactsGetSaved(ctx context.Context, in *TLContactsGetSaved) (*VectorSavedContact, error)
-	ContactsToggleTopPeers(ctx context.Context, in *TLContactsToggleTopPeers) (*Bool, error)
-	ContactsAddContact(ctx context.Context, in *TLContactsAddContact) (*Updates, error)
-	ContactsAcceptContact(ctx context.Context, in *TLContactsAcceptContact) (*Updates, error)
-	ContactsGetLocated(ctx context.Context, in *TLContactsGetLocated) (*Updates, error)
-	ContactsEditCloseFriends(ctx context.Context, in *TLContactsEditCloseFriends) (*Bool, error)
-	ContactsSetBlocked(ctx context.Context, in *TLContactsSetBlocked) (*Bool, error)
+type RPCThemes interface {
+	AccountUploadTheme(ctx context.Context, in *TLAccountUploadTheme) (*Document, error)
+	AccountCreateTheme(ctx context.Context, in *TLAccountCreateTheme) (*Theme, error)
+	AccountUpdateTheme(ctx context.Context, in *TLAccountUpdateTheme) (*Theme, error)
+	AccountSaveTheme(ctx context.Context, in *TLAccountSaveTheme) (*Bool, error)
+	AccountInstallTheme(ctx context.Context, in *TLAccountInstallTheme) (*Bool, error)
+	AccountGetTheme(ctx context.Context, in *TLAccountGetTheme) (*Theme, error)
+	AccountGetThemes(ctx context.Context, in *TLAccountGetThemes) (*AccountThemes, error)
+	AccountGetChatThemes(ctx context.Context, in *TLAccountGetChatThemes) (*AccountThemes, error)
+	MessagesSetChatTheme(ctx context.Context, in *TLMessagesSetChatTheme) (*Updates, error)
 }
 
-type RPCAutosave interface {
-	AccountGetAutoSaveSettings(ctx context.Context, in *TLAccountGetAutoSaveSettings) (*AccountAutoSaveSettings, error)
-	AccountSaveAutoSaveSettings(ctx context.Context, in *TLAccountSaveAutoSaveSettings) (*Bool, error)
-	AccountDeleteAutoSaveExceptions(ctx context.Context, in *TLAccountDeleteAutoSaveExceptions) (*Bool, error)
+type RPCSponsoredMessages interface {
+	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages) (*Bool, error)
+	ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers) (*ContactsSponsoredPeers, error)
+	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage) (*Bool, error)
+	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage) (*Bool, error)
+	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage) (*ChannelsSponsoredMessageReportResult, error)
+	MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages) (*MessagesSponsoredMessages, error)
+	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages) (*Updates, error)
 }
 
-type RPCChats interface {
-	MessagesGetChats(ctx context.Context, in *TLMessagesGetChats) (*MessagesChats, error)
-	MessagesGetFullChat(ctx context.Context, in *TLMessagesGetFullChat) (*MessagesChatFull, error)
-	MessagesEditChatTitle(ctx context.Context, in *TLMessagesEditChatTitle) (*Updates, error)
-	MessagesEditChatPhoto(ctx context.Context, in *TLMessagesEditChatPhoto) (*Updates, error)
-	MessagesAddChatUser(ctx context.Context, in *TLMessagesAddChatUser) (*MessagesInvitedUsers, error)
-	MessagesDeleteChatUser(ctx context.Context, in *TLMessagesDeleteChatUser) (*Updates, error)
-	MessagesCreateChat(ctx context.Context, in *TLMessagesCreateChat) (*MessagesInvitedUsers, error)
-	MessagesEditChatAdmin(ctx context.Context, in *TLMessagesEditChatAdmin) (*Bool, error)
-	MessagesMigrateChat(ctx context.Context, in *TLMessagesMigrateChat) (*Updates, error)
-	MessagesGetCommonChats(ctx context.Context, in *TLMessagesGetCommonChats) (*MessagesChats, error)
-	MessagesEditChatAbout(ctx context.Context, in *TLMessagesEditChatAbout) (*Bool, error)
-	MessagesEditChatDefaultBannedRights(ctx context.Context, in *TLMessagesEditChatDefaultBannedRights) (*Updates, error)
-	MessagesDeleteChat(ctx context.Context, in *TLMessagesDeleteChat) (*Bool, error)
-	MessagesGetMessageReadParticipants(ctx context.Context, in *TLMessagesGetMessageReadParticipants) (*VectorReadParticipantDate, error)
-	ChannelsConvertToGigagroup(ctx context.Context, in *TLChannelsConvertToGigagroup) (*Updates, error)
-	ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers) (*Bool, error)
+type RPCChatInvites interface {
+	MessagesExportChatInvite(ctx context.Context, in *TLMessagesExportChatInvite) (*ExportedChatInvite, error)
+	MessagesCheckChatInvite(ctx context.Context, in *TLMessagesCheckChatInvite) (*ChatInvite, error)
+	MessagesImportChatInvite(ctx context.Context, in *TLMessagesImportChatInvite) (*Updates, error)
+	MessagesGetExportedChatInvites(ctx context.Context, in *TLMessagesGetExportedChatInvites) (*MessagesExportedChatInvites, error)
+	MessagesGetExportedChatInvite(ctx context.Context, in *TLMessagesGetExportedChatInvite) (*MessagesExportedChatInvite, error)
+	MessagesEditExportedChatInvite(ctx context.Context, in *TLMessagesEditExportedChatInvite) (*MessagesExportedChatInvite, error)
+	MessagesDeleteRevokedExportedChatInvites(ctx context.Context, in *TLMessagesDeleteRevokedExportedChatInvites) (*Bool, error)
+	MessagesDeleteExportedChatInvite(ctx context.Context, in *TLMessagesDeleteExportedChatInvite) (*Bool, error)
+	MessagesGetAdminsWithInvites(ctx context.Context, in *TLMessagesGetAdminsWithInvites) (*MessagesChatAdminsWithInvites, error)
+	MessagesGetChatInviteImporters(ctx context.Context, in *TLMessagesGetChatInviteImporters) (*MessagesChatInviteImporters, error)
+	MessagesHideChatJoinRequest(ctx context.Context, in *TLMessagesHideChatJoinRequest) (*Updates, error)
+	MessagesHideAllChatJoinRequests(ctx context.Context, in *TLMessagesHideAllChatJoinRequests) (*Updates, error)
+	ChannelsToggleJoinToSend(ctx context.Context, in *TLChannelsToggleJoinToSend) (*Updates, error)
+	ChannelsToggleJoinRequest(ctx context.Context, in *TLChannelsToggleJoinRequest) (*Updates, error)
 }
 
-type RPCGames interface {
-	MessagesSetGameScore(ctx context.Context, in *TLMessagesSetGameScore) (*Updates, error)
-	MessagesSetInlineGameScore(ctx context.Context, in *TLMessagesSetInlineGameScore) (*Bool, error)
-	MessagesGetGameHighScores(ctx context.Context, in *TLMessagesGetGameHighScores) (*MessagesHighScores, error)
-	MessagesGetInlineGameHighScores(ctx context.Context, in *TLMessagesGetInlineGameHighScores) (*MessagesHighScores, error)
+type RPCBusinessQuickReply interface {
+	MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies) (*MessagesQuickReplies, error)
+	MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies) (*Bool, error)
+	MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut) (*Bool, error)
+	MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut) (*Bool, error)
+	MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut) (*Bool, error)
+	MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages) (*MessagesMessages, error)
+	MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages) (*Updates, error)
+	MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages) (*Updates, error)
 }
 
-type RPCUpdates interface {
-	UpdatesGetState(ctx context.Context, in *TLUpdatesGetState) (*UpdatesState, error)
-	UpdatesGetDifference(ctx context.Context, in *TLUpdatesGetDifference) (*UpdatesDifference, error)
-	UpdatesGetChannelDifference(ctx context.Context, in *TLUpdatesGetChannelDifference) (*UpdatesChannelDifference, error)
+type RPCTos interface {
+	HelpGetTermsOfServiceUpdate(ctx context.Context, in *TLHelpGetTermsOfServiceUpdate) (*HelpTermsOfServiceUpdate, error)
+	HelpAcceptTermsOfService(ctx context.Context, in *TLHelpAcceptTermsOfService) (*Bool, error)
 }
 
-type RPCConfiguration interface {
-	HelpGetConfig(ctx context.Context, in *TLHelpGetConfig) (*Config, error)
-	HelpGetNearestDc(ctx context.Context, in *TLHelpGetNearestDc) (*NearestDc, error)
-	HelpGetAppUpdate(ctx context.Context, in *TLHelpGetAppUpdate) (*HelpAppUpdate, error)
-	HelpGetInviteText(ctx context.Context, in *TLHelpGetInviteText) (*HelpInviteText, error)
-	HelpGetSupport(ctx context.Context, in *TLHelpGetSupport) (*HelpSupport, error)
-	HelpGetAppConfig(ctx context.Context, in *TLHelpGetAppConfig) (*HelpAppConfig, error)
-	HelpGetSupportName(ctx context.Context, in *TLHelpGetSupportName) (*HelpSupportName, error)
-	HelpDismissSuggestion(ctx context.Context, in *TLHelpDismissSuggestion) (*Bool, error)
-	HelpGetCountriesList(ctx context.Context, in *TLHelpGetCountriesList) (*HelpCountriesList, error)
+type RPCChannelAdRevenue interface {
+	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats) (*StatsBroadcastRevenueStats, error)
+	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl) (*StatsBroadcastRevenueWithdrawalUrl, error)
+	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions) (*StatsBroadcastRevenueTransactions, error)
 }
 
-type RPCUsers interface {
-	UsersGetUsers(ctx context.Context, in *TLUsersGetUsers) (*VectorUser, error)
-	UsersGetFullUser(ctx context.Context, in *TLUsersGetFullUser) (*UsersUserFull, error)
-	ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone) (*ContactsResolvedPeer, error)
-	UsersGetMe(ctx context.Context, in *TLUsersGetMe) (*User, error)
+type RPCSmsjobs interface {
+	SmsjobsIsEligibleToJoin(ctx context.Context, in *TLSmsjobsIsEligibleToJoin) (*SmsjobsEligibilityToJoin, error)
+	SmsjobsJoin(ctx context.Context, in *TLSmsjobsJoin) (*Bool, error)
+	SmsjobsLeave(ctx context.Context, in *TLSmsjobsLeave) (*Bool, error)
+	SmsjobsUpdateSettings(ctx context.Context, in *TLSmsjobsUpdateSettings) (*Bool, error)
+	SmsjobsGetStatus(ctx context.Context, in *TLSmsjobsGetStatus) (*SmsjobsStatus, error)
+	SmsjobsGetSmsJob(ctx context.Context, in *TLSmsjobsGetSmsJob) (*SmsJob, error)
+	SmsjobsFinishJob(ctx context.Context, in *TLSmsjobsFinishJob) (*Bool, error)
 }
 
-type RPCSecretChats interface {
-	MessagesGetDhConfig(ctx context.Context, in *TLMessagesGetDhConfig) (*MessagesDhConfig, error)
-	MessagesRequestEncryption(ctx context.Context, in *TLMessagesRequestEncryption) (*EncryptedChat, error)
-	MessagesAcceptEncryption(ctx context.Context, in *TLMessagesAcceptEncryption) (*EncryptedChat, error)
-	MessagesDiscardEncryption(ctx context.Context, in *TLMessagesDiscardEncryption) (*Bool, error)
-	MessagesSetEncryptedTyping(ctx context.Context, in *TLMessagesSetEncryptedTyping) (*Bool, error)
-	MessagesReadEncryptedHistory(ctx context.Context, in *TLMessagesReadEncryptedHistory) (*Bool, error)
-	MessagesSendEncrypted(ctx context.Context, in *TLMessagesSendEncrypted) (*MessagesSentEncryptedMessage, error)
-	MessagesSendEncryptedFile(ctx context.Context, in *TLMessagesSendEncryptedFile) (*MessagesSentEncryptedMessage, error)
-	MessagesSendEncryptedService(ctx context.Context, in *TLMessagesSendEncryptedService) (*MessagesSentEncryptedMessage, error)
-	MessagesReceivedQueue(ctx context.Context, in *TLMessagesReceivedQueue) (*VectorLong, error)
+type RPCNotification interface {
+	AccountRegisterDevice(ctx context.Context, in *TLAccountRegisterDevice) (*Bool, error)
+	AccountUnregisterDevice(ctx context.Context, in *TLAccountUnregisterDevice) (*Bool, error)
+	AccountUpdateNotifySettings(ctx context.Context, in *TLAccountUpdateNotifySettings) (*Bool, error)
+	AccountGetNotifySettings(ctx context.Context, in *TLAccountGetNotifySettings) (*PeerNotifySettings, error)
+	AccountResetNotifySettings(ctx context.Context, in *TLAccountResetNotifySettings) (*Bool, error)
+	AccountUpdateDeviceLocked(ctx context.Context, in *TLAccountUpdateDeviceLocked) (*Bool, error)
+	AccountGetNotifyExceptions(ctx context.Context, in *TLAccountGetNotifyExceptions) (*Updates, error)
 }
 
-type RPCGifs interface {
-	MessagesGetSavedGifs(ctx context.Context, in *TLMessagesGetSavedGifs) (*MessagesSavedGifs, error)
-	MessagesSaveGif(ctx context.Context, in *TLMessagesSaveGif) (*Bool, error)
-}
-
-type RPCPaidMedia interface {
-	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia) (*Updates, error)
+type RPCPolls interface {
+	MessagesSendVote(ctx context.Context, in *TLMessagesSendVote) (*Updates, error)
+	MessagesGetPollResults(ctx context.Context, in *TLMessagesGetPollResults) (*Updates, error)
+	MessagesGetPollVotes(ctx context.Context, in *TLMessagesGetPollVotes) (*MessagesVotesList, error)
 }
 
 type RPCVoipCalls interface {
@@ -45451,18 +47445,43 @@ type RPCVoipCalls interface {
 	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall) (*PhonePhoneCall, error)
 }
 
-type RPCChannelRecommendations interface {
-	ChannelsGetChannelRecommendations(ctx context.Context, in *TLChannelsGetChannelRecommendations) (*MessagesChats, error)
+type RPCMiniBotApps interface {
+	MessagesRequestWebView(ctx context.Context, in *TLMessagesRequestWebView) (*WebViewResult, error)
+	MessagesProlongWebView(ctx context.Context, in *TLMessagesProlongWebView) (*Bool, error)
+	MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView) (*WebViewResult, error)
+	MessagesSendWebViewResultMessage(ctx context.Context, in *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error)
+	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData) (*Updates, error)
+	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp) (*MessagesBotApp, error)
+	MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView) (*WebViewResult, error)
+	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage) (*Bool, error)
+	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage) (*Updates, error)
+	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
+	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams) (*Bool, error)
 }
 
-type RPCSponsoredMessages interface {
-	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages) (*Bool, error)
-	ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers) (*ContactsSponsoredPeers, error)
-	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage) (*Bool, error)
-	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage) (*Bool, error)
-	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage) (*ChannelsSponsoredMessageReportResult, error)
-	MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages) (*MessagesSponsoredMessages, error)
-	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages) (*Updates, error)
+type RPCbiz interface {
+	BizInvokeBizDataRaw(ctx context.Context, in *TLBizInvokeBizDataRaw) (*BizDataRaw, error)
+}
+
+type RPCPredefined interface {
+	PredefinedCreatePredefinedUser(ctx context.Context, in *TLPredefinedCreatePredefinedUser) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedUsername(ctx context.Context, in *TLPredefinedUpdatePredefinedUsername) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedProfile(ctx context.Context, in *TLPredefinedUpdatePredefinedProfile) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedVerified(ctx context.Context, in *TLPredefinedUpdatePredefinedVerified) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedCode(ctx context.Context, in *TLPredefinedUpdatePredefinedCode) (*PredefinedUser, error)
+	PredefinedGetPredefinedUser(ctx context.Context, in *TLPredefinedGetPredefinedUser) (*PredefinedUser, error)
+	PredefinedGetPredefinedUsers(ctx context.Context, in *TLPredefinedGetPredefinedUsers) (*VectorPredefinedUser, error)
+}
+
+type RPCAccount interface {
+	AccountDeleteAccount(ctx context.Context, in *TLAccountDeleteAccount) (*Bool, error)
+	AccountGetAccountTTL(ctx context.Context, in *TLAccountGetAccountTTL) (*AccountDaysTTL, error)
+	AccountSetAccountTTL(ctx context.Context, in *TLAccountSetAccountTTL) (*Bool, error)
+	AccountSendChangePhoneCode(ctx context.Context, in *TLAccountSendChangePhoneCode) (*AuthSentCode, error)
+	AccountChangePhone(ctx context.Context, in *TLAccountChangePhone) (*User, error)
+	AccountResetAuthorization(ctx context.Context, in *TLAccountResetAuthorization) (*Bool, error)
+	AccountSendConfirmPhoneCode(ctx context.Context, in *TLAccountSendConfirmPhoneCode) (*AuthSentCode, error)
+	AccountConfirmPhone(ctx context.Context, in *TLAccountConfirmPhone) (*Bool, error)
 }
 
 type RPCMessages interface {
@@ -45499,17 +47518,157 @@ type RPCMessages interface {
 	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts) (*MessagesMessages, error)
 }
 
-type RPCDrafts interface {
-	MessagesSaveDraft(ctx context.Context, in *TLMessagesSaveDraft) (*Bool, error)
-	MessagesGetAllDrafts(ctx context.Context, in *TLMessagesGetAllDrafts) (*Updates, error)
-	MessagesClearAllDrafts(ctx context.Context, in *TLMessagesClearAllDrafts) (*Bool, error)
+type RPCImportedChats interface {
+	MessagesCheckHistoryImport(ctx context.Context, in *TLMessagesCheckHistoryImport) (*MessagesHistoryImportParsed, error)
+	MessagesInitHistoryImport(ctx context.Context, in *TLMessagesInitHistoryImport) (*MessagesHistoryImport, error)
+	MessagesUploadImportedMedia(ctx context.Context, in *TLMessagesUploadImportedMedia) (*MessageMedia, error)
+	MessagesStartHistoryImport(ctx context.Context, in *TLMessagesStartHistoryImport) (*Bool, error)
+	MessagesCheckHistoryImportPeer(ctx context.Context, in *TLMessagesCheckHistoryImportPeer) (*MessagesCheckedHistoryImportPeer, error)
 }
 
-type RPCEmoji interface {
-	MessagesGetEmojiKeywords(ctx context.Context, in *TLMessagesGetEmojiKeywords) (*EmojiKeywordsDifference, error)
-	MessagesGetEmojiKeywordsDifference(ctx context.Context, in *TLMessagesGetEmojiKeywordsDifference) (*EmojiKeywordsDifference, error)
-	MessagesGetEmojiKeywordsLanguages(ctx context.Context, in *TLMessagesGetEmojiKeywordsLanguages) (*VectorEmojiLanguage, error)
-	MessagesGetEmojiURL(ctx context.Context, in *TLMessagesGetEmojiURL) (*EmojiURL, error)
+type RPCUpdates interface {
+	UpdatesGetState(ctx context.Context, in *TLUpdatesGetState) (*UpdatesState, error)
+	UpdatesGetDifference(ctx context.Context, in *TLUpdatesGetDifference) (*UpdatesDifference, error)
+	UpdatesGetChannelDifference(ctx context.Context, in *TLUpdatesGetChannelDifference) (*UpdatesChannelDifference, error)
+}
+
+type RPCLangpack interface {
+	LangpackGetLangPack(ctx context.Context, in *TLLangpackGetLangPack) (*LangPackDifference, error)
+	LangpackGetStrings(ctx context.Context, in *TLLangpackGetStrings) (*VectorLangPackString, error)
+	LangpackGetDifference(ctx context.Context, in *TLLangpackGetDifference) (*LangPackDifference, error)
+	LangpackGetLanguages(ctx context.Context, in *TLLangpackGetLanguages) (*VectorLangPackLanguage, error)
+	LangpackGetLanguage(ctx context.Context, in *TLLangpackGetLanguage) (*LangPackLanguage, error)
+}
+
+type RPCUsernames interface {
+	AccountCheckUsername(ctx context.Context, in *TLAccountCheckUsername) (*Bool, error)
+	AccountUpdateUsername(ctx context.Context, in *TLAccountUpdateUsername) (*User, error)
+	ContactsResolveUsername(ctx context.Context, in *TLContactsResolveUsername) (*ContactsResolvedPeer, error)
+	ChannelsCheckUsername(ctx context.Context, in *TLChannelsCheckUsername) (*Bool, error)
+	ChannelsUpdateUsername(ctx context.Context, in *TLChannelsUpdateUsername) (*Bool, error)
+}
+
+type RPCSeamless interface {
+	AccountGetWebAuthorizations(ctx context.Context, in *TLAccountGetWebAuthorizations) (*AccountWebAuthorizations, error)
+	AccountResetWebAuthorization(ctx context.Context, in *TLAccountResetWebAuthorization) (*Bool, error)
+	AccountResetWebAuthorizations(ctx context.Context, in *TLAccountResetWebAuthorizations) (*Bool, error)
+	MessagesRequestUrlAuth(ctx context.Context, in *TLMessagesRequestUrlAuth) (*UrlAuthResult, error)
+	MessagesAcceptUrlAuth(ctx context.Context, in *TLMessagesAcceptUrlAuth) (*UrlAuthResult, error)
+}
+
+type RPCBotMenuButton interface {
+	BotsSetBotMenuButton(ctx context.Context, in *TLBotsSetBotMenuButton) (*Bool, error)
+	BotsGetBotMenuButton(ctx context.Context, in *TLBotsGetBotMenuButton) (*BotMenuButton, error)
+}
+
+type RPCStars interface {
+	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions) (*VectorStarsTopupOption, error)
+	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus) (*PaymentsStarsStatus, error)
+	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions) (*PaymentsStarsStatus, error)
+	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm) (*PaymentsPaymentResult, error)
+	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge) (*Updates, error)
+	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats) (*PaymentsStarsRevenueStats, error)
+	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl) (*PaymentsStarsRevenueWithdrawalUrl, error)
+	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl) (*PaymentsStarsRevenueAdsAccountUrl, error)
+	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID) (*PaymentsStarsStatus, error)
+	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions) (*VectorStarsGiftOption, error)
+}
+
+type RPCReports interface {
+	AccountReportPeer(ctx context.Context, in *TLAccountReportPeer) (*Bool, error)
+	AccountReportProfilePhoto(ctx context.Context, in *TLAccountReportProfilePhoto) (*Bool, error)
+	MessagesReportSpam(ctx context.Context, in *TLMessagesReportSpam) (*Bool, error)
+	MessagesReport(ctx context.Context, in *TLMessagesReport) (*ReportResult, error)
+	MessagesReportEncryptedSpam(ctx context.Context, in *TLMessagesReportEncryptedSpam) (*Bool, error)
+	ChannelsReportSpam(ctx context.Context, in *TLChannelsReportSpam) (*Bool, error)
+}
+
+type RPCPassport interface {
+	AccountGetAuthorizations(ctx context.Context, in *TLAccountGetAuthorizations) (*AccountAuthorizations, error)
+	AccountGetAllSecureValues(ctx context.Context, in *TLAccountGetAllSecureValues) (*VectorSecureValue, error)
+	AccountGetSecureValue(ctx context.Context, in *TLAccountGetSecureValue) (*VectorSecureValue, error)
+	AccountSaveSecureValue(ctx context.Context, in *TLAccountSaveSecureValue) (*SecureValue, error)
+	AccountDeleteSecureValue(ctx context.Context, in *TLAccountDeleteSecureValue) (*Bool, error)
+	AccountGetAuthorizationForm(ctx context.Context, in *TLAccountGetAuthorizationForm) (*AccountAuthorizationForm, error)
+	AccountAcceptAuthorization(ctx context.Context, in *TLAccountAcceptAuthorization) (*Bool, error)
+	AccountSendVerifyPhoneCode(ctx context.Context, in *TLAccountSendVerifyPhoneCode) (*AuthSentCode, error)
+	AccountVerifyPhone(ctx context.Context, in *TLAccountVerifyPhone) (*Bool, error)
+	UsersSetSecureValueErrors(ctx context.Context, in *TLUsersSetSecureValueErrors) (*Bool, error)
+	HelpGetPassportConfig(ctx context.Context, in *TLHelpGetPassportConfig) (*HelpPassportConfig, error)
+}
+
+type RPCAccentColors interface {
+	AccountUpdateColor(ctx context.Context, in *TLAccountUpdateColor) (*Bool, error)
+	AccountGetDefaultBackgroundEmojis(ctx context.Context, in *TLAccountGetDefaultBackgroundEmojis) (*EmojiList, error)
+	HelpGetPeerColors(ctx context.Context, in *TLHelpGetPeerColors) (*HelpPeerColors, error)
+	HelpGetPeerProfileColors(ctx context.Context, in *TLHelpGetPeerProfileColors) (*HelpPeerColors, error)
+	ChannelsUpdateColor(ctx context.Context, in *TLChannelsUpdateColor) (*Updates, error)
+}
+
+type RPCPremium interface {
+	HelpGetPremiumPromo(ctx context.Context, in *TLHelpGetPremiumPromo) (*HelpPremiumPromo, error)
+	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
+	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
+	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore) (*Bool, error)
+	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium) (*Bool, error)
+}
+
+type RPCWebPage interface {
+	MessagesGetWebPagePreview(ctx context.Context, in *TLMessagesGetWebPagePreview) (*MessagesWebPagePreview, error)
+	MessagesGetWebPage(ctx context.Context, in *TLMessagesGetWebPage) (*MessagesWebPage, error)
+}
+
+type RPCForums interface {
+	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum) (*Updates, error)
+	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic) (*Updates, error)
+	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics) (*MessagesForumTopics, error)
+	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID) (*MessagesForumTopics, error)
+	ChannelsEditForumTopic(ctx context.Context, in *TLChannelsEditForumTopic) (*Updates, error)
+	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
+	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
+	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
+	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
+}
+
+type RPCFragmentCollectibles interface {
+	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo) (*FragmentCollectibleInfo, error)
+}
+
+type RPCNsfw interface {
+	AccountSetContentSettings(ctx context.Context, in *TLAccountSetContentSettings) (*Bool, error)
+	AccountGetContentSettings(ctx context.Context, in *TLAccountGetContentSettings) (*AccountContentSettings, error)
+}
+
+type RPCCustomEmojis interface {
+	AccountGetDefaultProfilePhotoEmojis(ctx context.Context, in *TLAccountGetDefaultProfilePhotoEmojis) (*EmojiList, error)
+	AccountGetDefaultGroupPhotoEmojis(ctx context.Context, in *TLAccountGetDefaultGroupPhotoEmojis) (*EmojiList, error)
+	MessagesGetCustomEmojiDocuments(ctx context.Context, in *TLMessagesGetCustomEmojiDocuments) (*VectorDocument, error)
+	MessagesGetEmojiStickers(ctx context.Context, in *TLMessagesGetEmojiStickers) (*MessagesAllStickers, error)
+	MessagesGetFeaturedEmojiStickers(ctx context.Context, in *TLMessagesGetFeaturedEmojiStickers) (*MessagesFeaturedStickers, error)
+	MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji) (*EmojiList, error)
+}
+
+type RPCBusinessChatLinks interface {
+	AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
+	AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
+	AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink) (*Bool, error)
+	AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks) (*AccountBusinessChatLinks, error)
+	AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink) (*AccountResolvedBusinessChatLinks, error)
+}
+
+type RPCProfileLinks interface {
+	ContactsExportContactToken(ctx context.Context, in *TLContactsExportContactToken) (*ExportedContactToken, error)
+	ContactsImportContactToken(ctx context.Context, in *TLContactsImportContactToken) (*User, error)
+}
+
+type RPCTwoFa interface {
+	AccountGetPassword(ctx context.Context, in *TLAccountGetPassword) (*AccountPassword, error)
+	AccountGetPasswordSettings(ctx context.Context, in *TLAccountGetPasswordSettings) (*AccountPasswordSettings, error)
+	AccountUpdatePasswordSettings(ctx context.Context, in *TLAccountUpdatePasswordSettings) (*Bool, error)
+	AccountConfirmPasswordEmail(ctx context.Context, in *TLAccountConfirmPasswordEmail) (*Bool, error)
+	AccountResendPasswordEmail(ctx context.Context, in *TLAccountResendPasswordEmail) (*Bool, error)
+	AccountCancelPasswordEmail(ctx context.Context, in *TLAccountCancelPasswordEmail) (*Bool, error)
+	AccountDeclinePasswordReset(ctx context.Context, in *TLAccountDeclinePasswordReset) (*Bool, error)
 }
 
 type RPCFolders interface {
@@ -45531,51 +47690,90 @@ type RPCFolders interface {
 	ChatlistsLeaveChatlist(ctx context.Context, in *TLChatlistsLeaveChatlist) (*Updates, error)
 }
 
+type RPCGiftCodes interface {
+	PaymentsCheckGiftCode(ctx context.Context, in *TLPaymentsCheckGiftCode) (*PaymentsCheckedGiftCode, error)
+	PaymentsApplyGiftCode(ctx context.Context, in *TLPaymentsApplyGiftCode) (*Updates, error)
+}
+
+type RPCContacts interface {
+	AccountGetContactSignUpNotification(ctx context.Context, in *TLAccountGetContactSignUpNotification) (*Bool, error)
+	AccountSetContactSignUpNotification(ctx context.Context, in *TLAccountSetContactSignUpNotification) (*Bool, error)
+	ContactsGetContactIDs(ctx context.Context, in *TLContactsGetContactIDs) (*VectorInt, error)
+	ContactsGetStatuses(ctx context.Context, in *TLContactsGetStatuses) (*VectorContactStatus, error)
+	ContactsGetContacts(ctx context.Context, in *TLContactsGetContacts) (*ContactsContacts, error)
+	ContactsImportContacts(ctx context.Context, in *TLContactsImportContacts) (*ContactsImportedContacts, error)
+	ContactsDeleteContacts(ctx context.Context, in *TLContactsDeleteContacts) (*Updates, error)
+	ContactsDeleteByPhones(ctx context.Context, in *TLContactsDeleteByPhones) (*Bool, error)
+	ContactsBlock(ctx context.Context, in *TLContactsBlock) (*Bool, error)
+	ContactsUnblock(ctx context.Context, in *TLContactsUnblock) (*Bool, error)
+	ContactsGetBlocked(ctx context.Context, in *TLContactsGetBlocked) (*ContactsBlocked, error)
+	ContactsSearch(ctx context.Context, in *TLContactsSearch) (*ContactsFound, error)
+	ContactsGetTopPeers(ctx context.Context, in *TLContactsGetTopPeers) (*ContactsTopPeers, error)
+	ContactsResetTopPeerRating(ctx context.Context, in *TLContactsResetTopPeerRating) (*Bool, error)
+	ContactsResetSaved(ctx context.Context, in *TLContactsResetSaved) (*Bool, error)
+	ContactsGetSaved(ctx context.Context, in *TLContactsGetSaved) (*VectorSavedContact, error)
+	ContactsToggleTopPeers(ctx context.Context, in *TLContactsToggleTopPeers) (*Bool, error)
+	ContactsAddContact(ctx context.Context, in *TLContactsAddContact) (*Updates, error)
+	ContactsAcceptContact(ctx context.Context, in *TLContactsAcceptContact) (*Updates, error)
+	ContactsGetLocated(ctx context.Context, in *TLContactsGetLocated) (*Updates, error)
+	ContactsEditCloseFriends(ctx context.Context, in *TLContactsEditCloseFriends) (*Bool, error)
+	ContactsSetBlocked(ctx context.Context, in *TLContactsSetBlocked) (*Bool, error)
+}
+
+type RPCReactionNotification interface {
+	AccountGetReactionsNotifySettings(ctx context.Context, in *TLAccountGetReactionsNotifySettings) (*ReactionsNotifySettings, error)
+	AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error)
+}
+
+type RPCEmoji interface {
+	MessagesGetEmojiKeywords(ctx context.Context, in *TLMessagesGetEmojiKeywords) (*EmojiKeywordsDifference, error)
+	MessagesGetEmojiKeywordsDifference(ctx context.Context, in *TLMessagesGetEmojiKeywordsDifference) (*EmojiKeywordsDifference, error)
+	MessagesGetEmojiKeywordsLanguages(ctx context.Context, in *TLMessagesGetEmojiKeywordsLanguages) (*VectorEmojiLanguage, error)
+	MessagesGetEmojiURL(ctx context.Context, in *TLMessagesGetEmojiURL) (*EmojiURL, error)
+}
+
+type RPCChannelRecommendations interface {
+	ChannelsGetChannelRecommendations(ctx context.Context, in *TLChannelsGetChannelRecommendations) (*MessagesChats, error)
+}
+
+type RPCInlineBot interface {
+	MessagesGetInlineBotResults(ctx context.Context, in *TLMessagesGetInlineBotResults) (*MessagesBotResults, error)
+	MessagesSetInlineBotResults(ctx context.Context, in *TLMessagesSetInlineBotResults) (*Bool, error)
+	MessagesSendInlineBotResult(ctx context.Context, in *TLMessagesSendInlineBotResult) (*Updates, error)
+	MessagesEditInlineBotMessage(ctx context.Context, in *TLMessagesEditInlineBotMessage) (*Bool, error)
+	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer) (*MessagesBotCallbackAnswer, error)
+	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer) (*Bool, error)
+	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer) (*Updates, error)
+}
+
+type RPCBotMenu interface {
+	MessagesGetAttachMenuBots(ctx context.Context, in *TLMessagesGetAttachMenuBots) (*AttachMenuBots, error)
+	MessagesGetAttachMenuBot(ctx context.Context, in *TLMessagesGetAttachMenuBot) (*AttachMenuBotsBot, error)
+	MessagesToggleBotInAttachMenu(ctx context.Context, in *TLMessagesToggleBotInAttachMenu) (*Bool, error)
+}
+
+type RPCSavedMessageTags interface {
+	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags) (*MessagesSavedReactionTags, error)
+	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag) (*Bool, error)
+	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions) (*MessagesReactions, error)
+}
+
 type RPCMessageEffects interface {
 	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects) (*MessagesAvailableEffects, error)
 }
 
-type RPCTsf interface {
-	HelpGetUserInfo(ctx context.Context, in *TLHelpGetUserInfo) (*HelpUserInfo, error)
-	HelpEditUserInfo(ctx context.Context, in *TLHelpEditUserInfo) (*HelpUserInfo, error)
+type RPCRingtone interface {
+	AccountGetSavedRingtones(ctx context.Context, in *TLAccountGetSavedRingtones) (*AccountSavedRingtones, error)
+	AccountSaveRingtone(ctx context.Context, in *TLAccountSaveRingtone) (*AccountSavedRingtone, error)
+	AccountUploadRingtone(ctx context.Context, in *TLAccountUploadRingtone) (*Document, error)
 }
 
-type RPCBotAdminRight interface {
-	BotsSetBotBroadcastDefaultAdminRights(ctx context.Context, in *TLBotsSetBotBroadcastDefaultAdminRights) (*Bool, error)
-	BotsSetBotGroupDefaultAdminRights(ctx context.Context, in *TLBotsSetBotGroupDefaultAdminRights) (*Bool, error)
-}
-
-type RPCUsernames interface {
-	AccountCheckUsername(ctx context.Context, in *TLAccountCheckUsername) (*Bool, error)
-	AccountUpdateUsername(ctx context.Context, in *TLAccountUpdateUsername) (*User, error)
-	ContactsResolveUsername(ctx context.Context, in *TLContactsResolveUsername) (*ContactsResolvedPeer, error)
-	ChannelsCheckUsername(ctx context.Context, in *TLChannelsCheckUsername) (*Bool, error)
-	ChannelsUpdateUsername(ctx context.Context, in *TLChannelsUpdateUsername) (*Bool, error)
-}
-
-type RPCCustomEmojis interface {
-	AccountGetDefaultProfilePhotoEmojis(ctx context.Context, in *TLAccountGetDefaultProfilePhotoEmojis) (*EmojiList, error)
-	AccountGetDefaultGroupPhotoEmojis(ctx context.Context, in *TLAccountGetDefaultGroupPhotoEmojis) (*EmojiList, error)
-	MessagesGetCustomEmojiDocuments(ctx context.Context, in *TLMessagesGetCustomEmojiDocuments) (*VectorDocument, error)
-	MessagesGetEmojiStickers(ctx context.Context, in *TLMessagesGetEmojiStickers) (*MessagesAllStickers, error)
-	MessagesGetFeaturedEmojiStickers(ctx context.Context, in *TLMessagesGetFeaturedEmojiStickers) (*MessagesFeaturedStickers, error)
-	MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji) (*EmojiList, error)
-}
-
-type RPCDialogs interface {
-	MessagesGetDialogs(ctx context.Context, in *TLMessagesGetDialogs) (*MessagesDialogs, error)
-	MessagesSetTyping(ctx context.Context, in *TLMessagesSetTyping) (*Bool, error)
-	MessagesGetPeerSettings(ctx context.Context, in *TLMessagesGetPeerSettings) (*MessagesPeerSettings, error)
-	MessagesGetPeerDialogs(ctx context.Context, in *TLMessagesGetPeerDialogs) (*MessagesPeerDialogs, error)
-	MessagesToggleDialogPin(ctx context.Context, in *TLMessagesToggleDialogPin) (*Bool, error)
-	MessagesReorderPinnedDialogs(ctx context.Context, in *TLMessagesReorderPinnedDialogs) (*Bool, error)
-	MessagesGetPinnedDialogs(ctx context.Context, in *TLMessagesGetPinnedDialogs) (*MessagesPeerDialogs, error)
-	MessagesSendScreenshotNotification(ctx context.Context, in *TLMessagesSendScreenshotNotification) (*Updates, error)
-	MessagesMarkDialogUnread(ctx context.Context, in *TLMessagesMarkDialogUnread) (*Bool, error)
-	MessagesGetDialogUnreadMarks(ctx context.Context, in *TLMessagesGetDialogUnreadMarks) (*VectorDialogPeer, error)
-	MessagesGetOnlines(ctx context.Context, in *TLMessagesGetOnlines) (*ChatOnlines, error)
-	MessagesHidePeerSettingsBar(ctx context.Context, in *TLMessagesHidePeerSettingsBar) (*Bool, error)
-	MessagesSetHistoryTTL(ctx context.Context, in *TLMessagesSetHistoryTTL) (*Updates, error)
+type RPCBusinessConnectedBots interface {
+	AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot) (*Updates, error)
+	AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots) (*AccountConnectedBots, error)
+	AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection) (*Updates, error)
+	AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused) (*Bool, error)
+	AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot) (*Bool, error)
 }
 
 type RPCStickers interface {
@@ -45614,49 +47812,29 @@ type RPCStickers interface {
 	StickersReplaceSticker(ctx context.Context, in *TLStickersReplaceSticker) (*MessagesStickerSet, error)
 }
 
-type RPCPredefined interface {
-	PredefinedCreatePredefinedUser(ctx context.Context, in *TLPredefinedCreatePredefinedUser) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedUsername(ctx context.Context, in *TLPredefinedUpdatePredefinedUsername) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedProfile(ctx context.Context, in *TLPredefinedUpdatePredefinedProfile) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedVerified(ctx context.Context, in *TLPredefinedUpdatePredefinedVerified) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedCode(ctx context.Context, in *TLPredefinedUpdatePredefinedCode) (*PredefinedUser, error)
-	PredefinedGetPredefinedUser(ctx context.Context, in *TLPredefinedGetPredefinedUser) (*PredefinedUser, error)
-	PredefinedGetPredefinedUsers(ctx context.Context, in *TLPredefinedGetPredefinedUsers) (*VectorPredefinedUser, error)
+type RPCDeepLinks interface {
+	MessagesStartBot(ctx context.Context, in *TLMessagesStartBot) (*Updates, error)
+	HelpGetRecentMeUrls(ctx context.Context, in *TLHelpGetRecentMeUrls) (*HelpRecentMeUrls, error)
+	HelpGetDeepLinkInfo(ctx context.Context, in *TLHelpGetDeepLinkInfo) (*HelpDeepLinkInfo, error)
 }
 
-type RPCBusinessChatLinks interface {
-	AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
-	AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
-	AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink) (*Bool, error)
-	AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks) (*AccountBusinessChatLinks, error)
-	AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink) (*AccountResolvedBusinessChatLinks, error)
+type RPCInternalBot interface {
+	HelpSetBotUpdatesStatus(ctx context.Context, in *TLHelpSetBotUpdatesStatus) (*Bool, error)
+	BotsSendCustomRequest(ctx context.Context, in *TLBotsSendCustomRequest) (*DataJSON, error)
+	BotsAnswerWebhookJSONQuery(ctx context.Context, in *TLBotsAnswerWebhookJSONQuery) (*Bool, error)
 }
 
-type RPCFiles interface {
-	MessagesGetDocumentByHash(ctx context.Context, in *TLMessagesGetDocumentByHash) (*Document, error)
-	MessagesUploadMedia(ctx context.Context, in *TLMessagesUploadMedia) (*MessageMedia, error)
-	MessagesUploadEncryptedFile(ctx context.Context, in *TLMessagesUploadEncryptedFile) (*EncryptedFile, error)
-	UploadSaveFilePart(ctx context.Context, in *TLUploadSaveFilePart) (*Bool, error)
-	UploadGetFile(ctx context.Context, in *TLUploadGetFile) (*UploadFile, error)
-	UploadSaveBigFilePart(ctx context.Context, in *TLUploadSaveBigFilePart) (*Bool, error)
-	UploadGetWebFile(ctx context.Context, in *TLUploadGetWebFile) (*UploadWebFile, error)
-	UploadGetCdnFile(ctx context.Context, in *TLUploadGetCdnFile) (*UploadCdnFile, error)
-	UploadReuploadCdnFile(ctx context.Context, in *TLUploadReuploadCdnFile) (*VectorFileHash, error)
-	UploadGetCdnFileHashes(ctx context.Context, in *TLUploadGetCdnFileHashes) (*VectorFileHash, error)
-	UploadGetFileHashes(ctx context.Context, in *TLUploadGetFileHashes) (*VectorFileHash, error)
-	HelpGetCdnConfig(ctx context.Context, in *TLHelpGetCdnConfig) (*CdnConfig, error)
-}
-
-type RPCImportedChats interface {
-	MessagesCheckHistoryImport(ctx context.Context, in *TLMessagesCheckHistoryImport) (*MessagesHistoryImportParsed, error)
-	MessagesInitHistoryImport(ctx context.Context, in *TLMessagesInitHistoryImport) (*MessagesHistoryImport, error)
-	MessagesUploadImportedMedia(ctx context.Context, in *TLMessagesUploadImportedMedia) (*MessageMedia, error)
-	MessagesStartHistoryImport(ctx context.Context, in *TLMessagesStartHistoryImport) (*Bool, error)
-	MessagesCheckHistoryImportPeer(ctx context.Context, in *TLMessagesCheckHistoryImportPeer) (*MessagesCheckedHistoryImportPeer, error)
-}
-
-type RPCFragmentCollectibles interface {
-	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo) (*FragmentCollectibleInfo, error)
+type RPCSecretChats interface {
+	MessagesGetDhConfig(ctx context.Context, in *TLMessagesGetDhConfig) (*MessagesDhConfig, error)
+	MessagesRequestEncryption(ctx context.Context, in *TLMessagesRequestEncryption) (*EncryptedChat, error)
+	MessagesAcceptEncryption(ctx context.Context, in *TLMessagesAcceptEncryption) (*EncryptedChat, error)
+	MessagesDiscardEncryption(ctx context.Context, in *TLMessagesDiscardEncryption) (*Bool, error)
+	MessagesSetEncryptedTyping(ctx context.Context, in *TLMessagesSetEncryptedTyping) (*Bool, error)
+	MessagesReadEncryptedHistory(ctx context.Context, in *TLMessagesReadEncryptedHistory) (*Bool, error)
+	MessagesSendEncrypted(ctx context.Context, in *TLMessagesSendEncrypted) (*MessagesSentEncryptedMessage, error)
+	MessagesSendEncryptedFile(ctx context.Context, in *TLMessagesSendEncryptedFile) (*MessagesSentEncryptedMessage, error)
+	MessagesSendEncryptedService(ctx context.Context, in *TLMessagesSendEncryptedService) (*MessagesSentEncryptedMessage, error)
+	MessagesReceivedQueue(ctx context.Context, in *TLMessagesReceivedQueue) (*VectorLong, error)
 }
 
 type RPCReactions interface {
@@ -45677,116 +47855,65 @@ type RPCReactions interface {
 	MessagesGetPaidReactionPrivacy(ctx context.Context, in *TLMessagesGetPaidReactionPrivacy) (*Updates, error)
 }
 
-type RPCMiniBotApps interface {
-	MessagesRequestWebView(ctx context.Context, in *TLMessagesRequestWebView) (*WebViewResult, error)
-	MessagesProlongWebView(ctx context.Context, in *TLMessagesProlongWebView) (*Bool, error)
-	MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView) (*WebViewResult, error)
-	MessagesSendWebViewResultMessage(ctx context.Context, in *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error)
-	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData) (*Updates, error)
-	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp) (*MessagesBotApp, error)
-	MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView) (*WebViewResult, error)
-	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage) (*Bool, error)
-	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage) (*Updates, error)
-	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
-	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams) (*Bool, error)
+type RPCEmojiCategories interface {
+	MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups) (*MessagesEmojiGroups, error)
+	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups) (*MessagesEmojiGroups, error)
+	MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups) (*MessagesEmojiGroups, error)
+	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups) (*MessagesEmojiGroups, error)
 }
 
-type RPCMiscellaneous interface {
-	HelpSaveAppLog(ctx context.Context, in *TLHelpSaveAppLog) (*Bool, error)
+type RPCFolderTags interface {
+	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags) (*Bool, error)
 }
 
-type RPCForums interface {
-	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum) (*Updates, error)
-	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic) (*Updates, error)
-	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics) (*MessagesForumTopics, error)
-	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID) (*MessagesForumTopics, error)
-	ChannelsEditForumTopic(ctx context.Context, in *TLChannelsEditForumTopic) (*Updates, error)
-	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
-	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
-	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
-	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
+type RPCPrivacySettings interface {
+	AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy) (*AccountPrivacyRules, error)
+	AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy) (*AccountPrivacyRules, error)
+	AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
+	AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
+	UsersGetRequirementsToContact(ctx context.Context, in *TLUsersGetRequirementsToContact) (*VectorRequirementToContact, error)
+	MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL) (*Bool, error)
+	MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error)
+	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact) (*VectorBool, error)
 }
 
-type RPCAuthorization interface {
-	AuthSendCode(ctx context.Context, in *TLAuthSendCode) (*AuthSentCode, error)
-	AuthSignUp(ctx context.Context, in *TLAuthSignUp) (*AuthAuthorization, error)
-	AuthSignIn(ctx context.Context, in *TLAuthSignIn) (*AuthAuthorization, error)
-	AuthLogOut(ctx context.Context, in *TLAuthLogOut) (*AuthLoggedOut, error)
-	AuthResetAuthorizations(ctx context.Context, in *TLAuthResetAuthorizations) (*Bool, error)
-	AuthExportAuthorization(ctx context.Context, in *TLAuthExportAuthorization) (*AuthExportedAuthorization, error)
-	AuthImportAuthorization(ctx context.Context, in *TLAuthImportAuthorization) (*AuthAuthorization, error)
-	AuthBindTempAuthKey(ctx context.Context, in *TLAuthBindTempAuthKey) (*Bool, error)
-	AuthImportBotAuthorization(ctx context.Context, in *TLAuthImportBotAuthorization) (*AuthAuthorization, error)
-	AuthCheckPassword(ctx context.Context, in *TLAuthCheckPassword) (*AuthAuthorization, error)
-	AuthRequestPasswordRecovery(ctx context.Context, in *TLAuthRequestPasswordRecovery) (*AuthPasswordRecovery, error)
-	AuthRecoverPassword(ctx context.Context, in *TLAuthRecoverPassword) (*AuthAuthorization, error)
-	AuthResendCode(ctx context.Context, in *TLAuthResendCode) (*AuthSentCode, error)
-	AuthCancelCode(ctx context.Context, in *TLAuthCancelCode) (*Bool, error)
-	AuthDropTempAuthKeys(ctx context.Context, in *TLAuthDropTempAuthKeys) (*Bool, error)
-	AuthCheckRecoveryPassword(ctx context.Context, in *TLAuthCheckRecoveryPassword) (*Bool, error)
-	AuthImportWebTokenAuthorization(ctx context.Context, in *TLAuthImportWebTokenAuthorization) (*AuthAuthorization, error)
-	AuthRequestFirebaseSms(ctx context.Context, in *TLAuthRequestFirebaseSms) (*Bool, error)
-	AuthResetLoginEmail(ctx context.Context, in *TLAuthResetLoginEmail) (*AuthSentCode, error)
-	AuthReportMissingCode(ctx context.Context, in *TLAuthReportMissingCode) (*Bool, error)
-	AccountSendVerifyEmailCode(ctx context.Context, in *TLAccountSendVerifyEmailCode) (*AccountSentEmailCode, error)
-	AccountVerifyEmail(ctx context.Context, in *TLAccountVerifyEmail) (*AccountEmailVerified, error)
-	AccountResetPassword(ctx context.Context, in *TLAccountResetPassword) (*AccountResetPasswordResult, error)
-	AccountSetAuthorizationTTL(ctx context.Context, in *TLAccountSetAuthorizationTTL) (*Bool, error)
-	AccountChangeAuthorizationSettings(ctx context.Context, in *TLAccountChangeAuthorizationSettings) (*Bool, error)
-	AccountInvalidateSignInCodes(ctx context.Context, in *TLAccountInvalidateSignInCodes) (*Bool, error)
-	AuthToggleBan(ctx context.Context, in *TLAuthToggleBan) (*PredefinedUser, error)
+type RPCAutoDownload interface {
+	AccountGetAutoDownloadSettings(ctx context.Context, in *TLAccountGetAutoDownloadSettings) (*AccountAutoDownloadSettings, error)
+	AccountSaveAutoDownloadSettings(ctx context.Context, in *TLAccountSaveAutoDownloadSettings) (*Bool, error)
 }
 
-type RPCPayments interface {
-	AccountGetTmpPassword(ctx context.Context, in *TLAccountGetTmpPassword) (*AccountTmpPassword, error)
-	MessagesSetBotShippingResults(ctx context.Context, in *TLMessagesSetBotShippingResults) (*Bool, error)
-	MessagesSetBotPrecheckoutResults(ctx context.Context, in *TLMessagesSetBotPrecheckoutResults) (*Bool, error)
-	PaymentsGetPaymentForm(ctx context.Context, in *TLPaymentsGetPaymentForm) (*PaymentsPaymentForm, error)
-	PaymentsGetPaymentReceipt(ctx context.Context, in *TLPaymentsGetPaymentReceipt) (*PaymentsPaymentReceipt, error)
-	PaymentsValidateRequestedInfo(ctx context.Context, in *TLPaymentsValidateRequestedInfo) (*PaymentsValidatedRequestedInfo, error)
-	PaymentsSendPaymentForm(ctx context.Context, in *TLPaymentsSendPaymentForm) (*PaymentsPaymentResult, error)
-	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo) (*PaymentsSavedInfo, error)
-	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo) (*Bool, error)
-	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData) (*PaymentsBankCardData, error)
-	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice) (*PaymentsExportedInvoice, error)
+type RPCUsers interface {
+	UsersGetUsers(ctx context.Context, in *TLUsersGetUsers) (*VectorUser, error)
+	UsersGetFullUser(ctx context.Context, in *TLUsersGetFullUser) (*UsersUserFull, error)
+	ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone) (*ContactsResolvedPeer, error)
+	UsersGetMe(ctx context.Context, in *TLUsersGetMe) (*User, error)
 }
 
-type RPCThemes interface {
-	AccountUploadTheme(ctx context.Context, in *TLAccountUploadTheme) (*Document, error)
-	AccountCreateTheme(ctx context.Context, in *TLAccountCreateTheme) (*Theme, error)
-	AccountUpdateTheme(ctx context.Context, in *TLAccountUpdateTheme) (*Theme, error)
-	AccountSaveTheme(ctx context.Context, in *TLAccountSaveTheme) (*Bool, error)
-	AccountInstallTheme(ctx context.Context, in *TLAccountInstallTheme) (*Bool, error)
-	AccountGetTheme(ctx context.Context, in *TLAccountGetTheme) (*Theme, error)
-	AccountGetThemes(ctx context.Context, in *TLAccountGetThemes) (*AccountThemes, error)
-	AccountGetChatThemes(ctx context.Context, in *TLAccountGetChatThemes) (*AccountThemes, error)
-	MessagesSetChatTheme(ctx context.Context, in *TLMessagesSetChatTheme) (*Updates, error)
+type RPCMessageThreads interface {
+	ContactsBlockFromReplies(ctx context.Context, in *TLContactsBlockFromReplies) (*Updates, error)
+	MessagesGetReplies(ctx context.Context, in *TLMessagesGetReplies) (*MessagesMessages, error)
+	MessagesGetDiscussionMessage(ctx context.Context, in *TLMessagesGetDiscussionMessage) (*MessagesDiscussionMessage, error)
+	MessagesReadDiscussion(ctx context.Context, in *TLMessagesReadDiscussion) (*Bool, error)
 }
 
-type RPCBusinessIntro interface {
-	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro) (*Bool, error)
+type RPCConfiguration interface {
+	HelpGetConfig(ctx context.Context, in *TLHelpGetConfig) (*Config, error)
+	HelpGetNearestDc(ctx context.Context, in *TLHelpGetNearestDc) (*NearestDc, error)
+	HelpGetAppUpdate(ctx context.Context, in *TLHelpGetAppUpdate) (*HelpAppUpdate, error)
+	HelpGetInviteText(ctx context.Context, in *TLHelpGetInviteText) (*HelpInviteText, error)
+	HelpGetSupport(ctx context.Context, in *TLHelpGetSupport) (*HelpSupport, error)
+	HelpGetAppConfig(ctx context.Context, in *TLHelpGetAppConfig) (*HelpAppConfig, error)
+	HelpGetSupportName(ctx context.Context, in *TLHelpGetSupportName) (*HelpSupportName, error)
+	HelpDismissSuggestion(ctx context.Context, in *TLHelpDismissSuggestion) (*Bool, error)
+	HelpGetCountriesList(ctx context.Context, in *TLHelpGetCountriesList) (*HelpCountriesList, error)
 }
 
-type RPCGroupCalls interface {
-	PhoneCreateGroupCall(ctx context.Context, in *TLPhoneCreateGroupCall) (*Updates, error)
-	PhoneJoinGroupCall(ctx context.Context, in *TLPhoneJoinGroupCall) (*Updates, error)
-	PhoneLeaveGroupCall(ctx context.Context, in *TLPhoneLeaveGroupCall) (*Updates, error)
-	PhoneInviteToGroupCall(ctx context.Context, in *TLPhoneInviteToGroupCall) (*Updates, error)
-	PhoneDiscardGroupCall(ctx context.Context, in *TLPhoneDiscardGroupCall) (*Updates, error)
-	PhoneToggleGroupCallSettings(ctx context.Context, in *TLPhoneToggleGroupCallSettings) (*Updates, error)
-	PhoneGetGroupCall(ctx context.Context, in *TLPhoneGetGroupCall) (*PhoneGroupCall, error)
-	PhoneGetGroupParticipants(ctx context.Context, in *TLPhoneGetGroupParticipants) (*PhoneGroupParticipants, error)
-	PhoneCheckGroupCall(ctx context.Context, in *TLPhoneCheckGroupCall) (*VectorInt, error)
-	PhoneToggleGroupCallRecord(ctx context.Context, in *TLPhoneToggleGroupCallRecord) (*Updates, error)
-	PhoneEditGroupCallParticipant(ctx context.Context, in *TLPhoneEditGroupCallParticipant) (*Updates, error)
-	PhoneEditGroupCallTitle(ctx context.Context, in *TLPhoneEditGroupCallTitle) (*Updates, error)
-	PhoneGetGroupCallJoinAs(ctx context.Context, in *TLPhoneGetGroupCallJoinAs) (*PhoneJoinAsPeers, error)
-	PhoneExportGroupCallInvite(ctx context.Context, in *TLPhoneExportGroupCallInvite) (*PhoneExportedGroupCallInvite, error)
-	PhoneToggleGroupCallStartSubscription(ctx context.Context, in *TLPhoneToggleGroupCallStartSubscription) (*Updates, error)
-	PhoneStartScheduledGroupCall(ctx context.Context, in *TLPhoneStartScheduledGroupCall) (*Updates, error)
-	PhoneSaveDefaultGroupCallJoinAs(ctx context.Context, in *TLPhoneSaveDefaultGroupCallJoinAs) (*Bool, error)
-	PhoneJoinGroupCallPresentation(ctx context.Context, in *TLPhoneJoinGroupCallPresentation) (*Updates, error)
-	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
-	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels) (*PhoneGroupCallStreamChannels, error)
-	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl) (*PhoneGroupCallStreamRtmpUrl, error)
+type RPCTsf interface {
+	HelpGetUserInfo(ctx context.Context, in *TLHelpGetUserInfo) (*HelpUserInfo, error)
+	HelpEditUserInfo(ctx context.Context, in *TLHelpEditUserInfo) (*HelpUserInfo, error)
+}
+
+type RPCBotAdminRight interface {
+	BotsSetBotBroadcastDefaultAdminRights(ctx context.Context, in *TLBotsSetBotBroadcastDefaultAdminRights) (*Bool, error)
+	BotsSetBotGroupDefaultAdminRights(ctx context.Context, in *TLBotsSetBotGroupDefaultAdminRights) (*Bool, error)
 }
