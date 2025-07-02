@@ -27,6 +27,11 @@ type TLReqPq struct {
 	Nonce   bin.Int128 `json:"Nonce"`
 }
 
+func (m *TLReqPq) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 func (m *TLReqPq) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0x60469778: func() error {
@@ -70,6 +75,11 @@ func (m *TLReqPq) Decode(d *bin.Decoder) (err error) {
 type TLReqPqMulti struct {
 	ClazzID uint32     `json:"_id"`
 	Nonce   bin.Int128 `json:"Nonce"`
+}
+
+func (m *TLReqPqMulti) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 func (m *TLReqPqMulti) Encode(x *bin.Encoder, layer int32) error {
@@ -120,6 +130,11 @@ type TLReqDHParams struct {
 	Q                    string     `json:"Q"`
 	PublicKeyFingerprint int64      `json:"PublicKeyFingerprint"`
 	EncryptedData        string     `json:"EncryptedData"`
+}
+
+func (m *TLReqDHParams) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 func (m *TLReqDHParams) Encode(x *bin.Encoder, layer int32) error {
@@ -179,6 +194,11 @@ type TLSetClientDHParams struct {
 	EncryptedData string     `json:"EncryptedData"`
 }
 
+func (m *TLSetClientDHParams) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 func (m *TLSetClientDHParams) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0xf5045f1f: func() error {
@@ -227,6 +247,11 @@ type TLDestroyAuthKey struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLDestroyAuthKey) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 func (m *TLDestroyAuthKey) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0xd1435160: func() error {
@@ -266,6 +291,11 @@ func (m *TLDestroyAuthKey) Decode(d *bin.Decoder) (err error) {
 // TLHelpTest <--
 type TLHelpTest struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLHelpTest) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 func (m *TLHelpTest) Encode(x *bin.Encoder, layer int32) error {
@@ -309,6 +339,11 @@ type TLTestUseError struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLTestUseError) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 func (m *TLTestUseError) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0xee75af01: func() error {
@@ -348,6 +383,11 @@ func (m *TLTestUseError) Decode(d *bin.Decoder) (err error) {
 // TLTestUseConfigSimple <--
 type TLTestUseConfigSimple struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLTestUseConfigSimple) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 func (m *TLTestUseConfigSimple) Encode(x *bin.Encoder, layer int32) error {
@@ -390,6 +430,11 @@ func (m *TLTestUseConfigSimple) Decode(d *bin.Decoder) (err error) {
 type TLRpcDropAnswer struct {
 	ClazzID  uint32 `json:"_id"`
 	ReqMsgId int64  `json:"ReqMsgId"`
+}
+
+func (m *TLRpcDropAnswer) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 func (m *TLRpcDropAnswer) Encode(x *bin.Encoder, layer int32) error {
@@ -437,6 +482,11 @@ type TLGetFutureSalts struct {
 	Num     int32  `json:"Num"`
 }
 
+func (m *TLGetFutureSalts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 func (m *TLGetFutureSalts) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0xb921bd04: func() error {
@@ -480,6 +530,11 @@ func (m *TLGetFutureSalts) Decode(d *bin.Decoder) (err error) {
 type TLPing struct {
 	ClazzID uint32 `json:"_id"`
 	PingId  int64  `json:"PingId"`
+}
+
+func (m *TLPing) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 func (m *TLPing) Encode(x *bin.Encoder, layer int32) error {
@@ -528,6 +583,11 @@ type TLPingDelayDisconnect struct {
 	DisconnectDelay int32  `json:"DisconnectDelay"`
 }
 
+func (m *TLPingDelayDisconnect) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 func (m *TLPingDelayDisconnect) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0xf3427b8c: func() error {
@@ -573,6 +633,11 @@ func (m *TLPingDelayDisconnect) Decode(d *bin.Decoder) (err error) {
 type TLDestroySession struct {
 	ClazzID   uint32 `json:"_id"`
 	SessionId int64  `json:"SessionId"`
+}
+
+func (m *TLDestroySession) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 func (m *TLDestroySession) Encode(x *bin.Encoder, layer int32) error {

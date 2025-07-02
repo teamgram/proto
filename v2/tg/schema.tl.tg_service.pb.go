@@ -12,6 +12,7 @@ package tg
 
 import (
 	"context"
+	"encoding/json"
 	"fmt"
 
 	"github.com/teamgram/proto/v2/bin"
@@ -28,6 +29,11 @@ type TLInvokeAfterMsg struct {
 	ClazzID uint32 `json:"_id"`
 	MsgId   int64  `json:"msg_id"`
 	Query   []byte `json:"query"`
+}
+
+func (m *TLInvokeAfterMsg) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -78,6 +84,11 @@ type TLInvokeAfterMsgs struct {
 	ClazzID uint32  `json:"_id"`
 	MsgIds  []int64 `json:"msg_ids"`
 	Query   []byte  `json:"query"`
+}
+
+func (m *TLInvokeAfterMsgs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -139,6 +150,11 @@ type TLInitConnection struct {
 	Proxy          *InputClientProxy `json:"proxy"`
 	Params         *JSONValue        `json:"params"`
 	Query          []byte            `json:"query"`
+}
+
+func (m *TLInitConnection) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -303,6 +319,11 @@ type TLInvokeWithLayer struct {
 	Query   []byte `json:"query"`
 }
 
+func (m *TLInvokeWithLayer) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLInvokeWithLayer) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -352,6 +373,11 @@ type TLInvokeWithoutUpdates struct {
 	Query   []byte `json:"query"`
 }
 
+func (m *TLInvokeWithoutUpdates) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLInvokeWithoutUpdates) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -398,6 +424,11 @@ type TLInvokeWithMessagesRange struct {
 	ClazzID uint32        `json:"_id"`
 	Range   *MessageRange `json:"range"`
 	Query   []byte        `json:"query"`
+}
+
+func (m *TLInvokeWithMessagesRange) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -454,6 +485,11 @@ type TLInvokeWithTakeout struct {
 	Query     []byte `json:"query"`
 }
 
+func (m *TLInvokeWithTakeout) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLInvokeWithTakeout) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -502,6 +538,11 @@ type TLInvokeWithBusinessConnection struct {
 	ClazzID      uint32 `json:"_id"`
 	ConnectionId string `json:"connection_id"`
 	Query        []byte `json:"query"`
+}
+
+func (m *TLInvokeWithBusinessConnection) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -553,6 +594,11 @@ type TLInvokeWithGooglePlayIntegrity struct {
 	Nonce   string `json:"nonce"`
 	Token   string `json:"token"`
 	Query   []byte `json:"query"`
+}
+
+func (m *TLInvokeWithGooglePlayIntegrity) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -608,6 +654,11 @@ type TLInvokeWithApnsSecret struct {
 	Query   []byte `json:"query"`
 }
 
+func (m *TLInvokeWithApnsSecret) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLInvokeWithApnsSecret) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -660,6 +711,11 @@ type TLInvokeWithReCaptcha struct {
 	Query   []byte `json:"query"`
 }
 
+func (m *TLInvokeWithReCaptcha) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLInvokeWithReCaptcha) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -710,6 +766,11 @@ type TLAuthSendCode struct {
 	ApiId       int32         `json:"api_id"`
 	ApiHash     string        `json:"api_hash"`
 	Settings    *CodeSettings `json:"settings"`
+}
+
+func (m *TLAuthSendCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -770,6 +831,11 @@ type TLAuthSignUp struct {
 	PhoneCodeHash         string `json:"phone_code_hash"`
 	FirstName             string `json:"first_name"`
 	LastName              string `json:"last_name"`
+}
+
+func (m *TLAuthSignUp) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -845,6 +911,11 @@ type TLAuthSignIn struct {
 	PhoneCodeHash     string             `json:"phone_code_hash"`
 	PhoneCode         *string            `json:"phone_code"`
 	EmailVerification *EmailVerification `json:"email_verification"`
+}
+
+func (m *TLAuthSignIn) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -931,6 +1002,11 @@ type TLAuthLogOut struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAuthLogOut) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthLogOut) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -972,6 +1048,11 @@ func (m *TLAuthLogOut) Decode(d *bin.Decoder) (err error) {
 // TLAuthResetAuthorizations <--
 type TLAuthResetAuthorizations struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLAuthResetAuthorizations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1016,6 +1097,11 @@ func (m *TLAuthResetAuthorizations) Decode(d *bin.Decoder) (err error) {
 type TLAuthExportAuthorization struct {
 	ClazzID uint32 `json:"_id"`
 	DcId    int32  `json:"dc_id"`
+}
+
+func (m *TLAuthExportAuthorization) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1064,6 +1150,11 @@ type TLAuthImportAuthorization struct {
 	ClazzID uint32 `json:"_id"`
 	Id      int64  `json:"id"`
 	Bytes   []byte `json:"bytes"`
+}
+
+func (m *TLAuthImportAuthorization) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1116,6 +1207,11 @@ type TLAuthBindTempAuthKey struct {
 	Nonce            int64  `json:"nonce"`
 	ExpiresAt        int32  `json:"expires_at"`
 	EncryptedMessage []byte `json:"encrypted_message"`
+}
+
+func (m *TLAuthBindTempAuthKey) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1174,6 +1270,11 @@ type TLAuthImportBotAuthorization struct {
 	BotAuthToken string `json:"bot_auth_token"`
 }
 
+func (m *TLAuthImportBotAuthorization) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthImportBotAuthorization) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1227,6 +1328,11 @@ type TLAuthCheckPassword struct {
 	Password *InputCheckPasswordSRP `json:"password"`
 }
 
+func (m *TLAuthCheckPassword) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthCheckPassword) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1276,6 +1382,11 @@ type TLAuthRequestPasswordRecovery struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAuthRequestPasswordRecovery) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthRequestPasswordRecovery) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1319,6 +1430,11 @@ type TLAuthRecoverPassword struct {
 	ClazzID     uint32                        `json:"_id"`
 	Code        string                        `json:"code"`
 	NewSettings *AccountPasswordInputSettings `json:"new_settings"`
+}
+
+func (m *TLAuthRecoverPassword) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1394,6 +1510,11 @@ type TLAuthResendCode struct {
 	Reason        *string `json:"reason"`
 }
 
+func (m *TLAuthResendCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthResendCode) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1467,6 +1588,11 @@ type TLAuthCancelCode struct {
 	PhoneCodeHash string `json:"phone_code_hash"`
 }
 
+func (m *TLAuthCancelCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthCancelCode) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1514,6 +1640,11 @@ func (m *TLAuthCancelCode) Decode(d *bin.Decoder) (err error) {
 type TLAuthDropTempAuthKeys struct {
 	ClazzID        uint32  `json:"_id"`
 	ExceptAuthKeys []int64 `json:"except_auth_keys"`
+}
+
+func (m *TLAuthDropTempAuthKeys) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1564,6 +1695,11 @@ type TLAuthExportLoginToken struct {
 	ApiId     int32   `json:"api_id"`
 	ApiHash   string  `json:"api_hash"`
 	ExceptIds []int64 `json:"except_ids"`
+}
+
+func (m *TLAuthExportLoginToken) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1619,6 +1755,11 @@ type TLAuthImportLoginToken struct {
 	Token   []byte `json:"token"`
 }
 
+func (m *TLAuthImportLoginToken) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthImportLoginToken) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1664,6 +1805,11 @@ func (m *TLAuthImportLoginToken) Decode(d *bin.Decoder) (err error) {
 type TLAuthAcceptLoginToken struct {
 	ClazzID uint32 `json:"_id"`
 	Token   []byte `json:"token"`
+}
+
+func (m *TLAuthAcceptLoginToken) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1713,6 +1859,11 @@ type TLAuthCheckRecoveryPassword struct {
 	Code    string `json:"code"`
 }
 
+func (m *TLAuthCheckRecoveryPassword) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthCheckRecoveryPassword) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1760,6 +1911,11 @@ type TLAuthImportWebTokenAuthorization struct {
 	ApiId        int32  `json:"api_id"`
 	ApiHash      string `json:"api_hash"`
 	WebAuthToken string `json:"web_auth_token"`
+}
+
+func (m *TLAuthImportWebTokenAuthorization) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1815,6 +1971,11 @@ type TLAuthRequestFirebaseSms struct {
 	SafetyNetToken     *string `json:"safety_net_token"`
 	PlayIntegrityToken *string `json:"play_integrity_token"`
 	IosPushSecret      *string `json:"ios_push_secret"`
+}
+
+func (m *TLAuthRequestFirebaseSms) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -1914,6 +2075,11 @@ type TLAuthResetLoginEmail struct {
 	PhoneCodeHash string `json:"phone_code_hash"`
 }
 
+func (m *TLAuthResetLoginEmail) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAuthResetLoginEmail) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -1963,6 +2129,11 @@ type TLAuthReportMissingCode struct {
 	PhoneNumber   string `json:"phone_number"`
 	PhoneCodeHash string `json:"phone_code_hash"`
 	Mnc           string `json:"mnc"`
+}
+
+func (m *TLAuthReportMissingCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2019,6 +2190,11 @@ type TLAccountRegisterDevice struct {
 	AppSandbox *Bool   `json:"app_sandbox"`
 	Secret     []byte  `json:"secret"`
 	OtherUids  []int64 `json:"other_uids"`
+}
+
+func (m *TLAccountRegisterDevice) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2117,6 +2293,11 @@ type TLAccountUnregisterDevice struct {
 	OtherUids []int64 `json:"other_uids"`
 }
 
+func (m *TLAccountUnregisterDevice) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUnregisterDevice) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2185,6 +2366,11 @@ type TLAccountUpdateNotifySettings struct {
 	Settings *InputPeerNotifySettings `json:"settings"`
 }
 
+func (m *TLAccountUpdateNotifySettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUpdateNotifySettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2240,6 +2426,11 @@ type TLAccountGetNotifySettings struct {
 	Peer    *InputNotifyPeer `json:"peer"`
 }
 
+func (m *TLAccountGetNotifySettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetNotifySettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2289,6 +2480,11 @@ type TLAccountResetNotifySettings struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountResetNotifySettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountResetNotifySettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2333,6 +2529,11 @@ type TLAccountUpdateProfile struct {
 	FirstName *string `json:"first_name"`
 	LastName  *string `json:"last_name"`
 	About     *string `json:"about"`
+}
+
+func (m *TLAccountUpdateProfile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2427,6 +2628,11 @@ type TLAccountUpdateStatus struct {
 	Offline *Bool  `json:"offline"`
 }
 
+func (m *TLAccountUpdateStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUpdateStatus) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2477,6 +2683,11 @@ type TLAccountGetWallPapers struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetWallPapers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetWallPapers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2524,6 +2735,11 @@ type TLAccountReportPeer struct {
 	Peer    *InputPeer    `json:"peer"`
 	Reason  *ReportReason `json:"reason"`
 	Message string        `json:"message"`
+}
+
+func (m *TLAccountReportPeer) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2584,6 +2800,11 @@ type TLAccountCheckUsername struct {
 	Username string `json:"username"`
 }
 
+func (m *TLAccountCheckUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountCheckUsername) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2631,6 +2852,11 @@ type TLAccountUpdateUsername struct {
 	Username string `json:"username"`
 }
 
+func (m *TLAccountUpdateUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUpdateUsername) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2676,6 +2902,11 @@ func (m *TLAccountUpdateUsername) Decode(d *bin.Decoder) (err error) {
 type TLAccountGetPrivacy struct {
 	ClazzID uint32           `json:"_id"`
 	Key     *InputPrivacyKey `json:"key"`
+}
+
+func (m *TLAccountGetPrivacy) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2727,6 +2958,11 @@ type TLAccountSetPrivacy struct {
 	ClazzID uint32              `json:"_id"`
 	Key     *InputPrivacyKey    `json:"key"`
 	Rules   []*InputPrivacyRule `json:"rules"`
+}
+
+func (m *TLAccountSetPrivacy) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2795,6 +3031,11 @@ type TLAccountDeleteAccount struct {
 	ClazzID  uint32                 `json:"_id"`
 	Reason   string                 `json:"reason"`
 	Password *InputCheckPasswordSRP `json:"password"`
+}
+
+func (m *TLAccountDeleteAccount) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2867,6 +3108,11 @@ type TLAccountGetAccountTTL struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetAccountTTL) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetAccountTTL) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -2909,6 +3155,11 @@ func (m *TLAccountGetAccountTTL) Decode(d *bin.Decoder) (err error) {
 type TLAccountSetAccountTTL struct {
 	ClazzID uint32          `json:"_id"`
 	Ttl     *AccountDaysTTL `json:"ttl"`
+}
+
+func (m *TLAccountSetAccountTTL) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -2960,6 +3211,11 @@ type TLAccountSendChangePhoneCode struct {
 	ClazzID     uint32        `json:"_id"`
 	PhoneNumber string        `json:"phone_number"`
 	Settings    *CodeSettings `json:"settings"`
+}
+
+func (m *TLAccountSendChangePhoneCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3016,6 +3272,11 @@ type TLAccountChangePhone struct {
 	PhoneCode     string `json:"phone_code"`
 }
 
+func (m *TLAccountChangePhone) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountChangePhone) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3067,6 +3328,11 @@ type TLAccountUpdateDeviceLocked struct {
 	Period  int32  `json:"period"`
 }
 
+func (m *TLAccountUpdateDeviceLocked) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUpdateDeviceLocked) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3113,6 +3379,11 @@ type TLAccountGetAuthorizations struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetAuthorizations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetAuthorizations) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3155,6 +3426,11 @@ func (m *TLAccountGetAuthorizations) Decode(d *bin.Decoder) (err error) {
 type TLAccountResetAuthorization struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLAccountResetAuthorization) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3203,6 +3479,11 @@ type TLAccountGetPassword struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetPassword) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetPassword) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3245,6 +3526,11 @@ func (m *TLAccountGetPassword) Decode(d *bin.Decoder) (err error) {
 type TLAccountGetPasswordSettings struct {
 	ClazzID  uint32                 `json:"_id"`
 	Password *InputCheckPasswordSRP `json:"password"`
+}
+
+func (m *TLAccountGetPasswordSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3296,6 +3582,11 @@ type TLAccountUpdatePasswordSettings struct {
 	ClazzID     uint32                        `json:"_id"`
 	Password    *InputCheckPasswordSRP        `json:"password"`
 	NewSettings *AccountPasswordInputSettings `json:"new_settings"`
+}
+
+func (m *TLAccountUpdatePasswordSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3354,6 +3645,11 @@ type TLAccountSendConfirmPhoneCode struct {
 	Settings *CodeSettings `json:"settings"`
 }
 
+func (m *TLAccountSendConfirmPhoneCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountSendConfirmPhoneCode) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3407,6 +3703,11 @@ type TLAccountConfirmPhone struct {
 	PhoneCode     string `json:"phone_code"`
 }
 
+func (m *TLAccountConfirmPhone) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountConfirmPhone) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3455,6 +3756,11 @@ type TLAccountGetTmpPassword struct {
 	ClazzID  uint32                 `json:"_id"`
 	Password *InputCheckPasswordSRP `json:"password"`
 	Period   int32                  `json:"period"`
+}
+
+func (m *TLAccountGetTmpPassword) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3509,6 +3815,11 @@ type TLAccountGetWebAuthorizations struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetWebAuthorizations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetWebAuthorizations) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3551,6 +3862,11 @@ func (m *TLAccountGetWebAuthorizations) Decode(d *bin.Decoder) (err error) {
 type TLAccountResetWebAuthorization struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLAccountResetWebAuthorization) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3599,6 +3915,11 @@ type TLAccountResetWebAuthorizations struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountResetWebAuthorizations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountResetWebAuthorizations) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3640,6 +3961,11 @@ func (m *TLAccountResetWebAuthorizations) Decode(d *bin.Decoder) (err error) {
 // TLAccountGetAllSecureValues <--
 type TLAccountGetAllSecureValues struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLAccountGetAllSecureValues) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3684,6 +4010,11 @@ func (m *TLAccountGetAllSecureValues) Decode(d *bin.Decoder) (err error) {
 type TLAccountGetSecureValue struct {
 	ClazzID uint32             `json:"_id"`
 	Types   []*SecureValueType `json:"types"`
+}
+
+func (m *TLAccountGetSecureValue) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3747,6 +4078,11 @@ type TLAccountSaveSecureValue struct {
 	SecureSecretId int64             `json:"secure_secret_id"`
 }
 
+func (m *TLAccountSaveSecureValue) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountSaveSecureValue) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3798,6 +4134,11 @@ func (m *TLAccountSaveSecureValue) Decode(d *bin.Decoder) (err error) {
 type TLAccountDeleteSecureValue struct {
 	ClazzID uint32             `json:"_id"`
 	Types   []*SecureValueType `json:"types"`
+}
+
+func (m *TLAccountDeleteSecureValue) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3862,6 +4203,11 @@ type TLAccountGetAuthorizationForm struct {
 	PublicKey string `json:"public_key"`
 }
 
+func (m *TLAccountGetAuthorizationForm) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetAuthorizationForm) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -3915,6 +4261,11 @@ type TLAccountAcceptAuthorization struct {
 	PublicKey   string                      `json:"public_key"`
 	ValueHashes []*SecureValueHash          `json:"value_hashes"`
 	Credentials *SecureCredentialsEncrypted `json:"credentials"`
+}
+
+func (m *TLAccountAcceptAuthorization) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -3991,6 +4342,11 @@ type TLAccountSendVerifyPhoneCode struct {
 	Settings    *CodeSettings `json:"settings"`
 }
 
+func (m *TLAccountSendVerifyPhoneCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountSendVerifyPhoneCode) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4045,6 +4401,11 @@ type TLAccountVerifyPhone struct {
 	PhoneCode     string `json:"phone_code"`
 }
 
+func (m *TLAccountVerifyPhone) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountVerifyPhone) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4095,6 +4456,11 @@ type TLAccountSendVerifyEmailCode struct {
 	ClazzID uint32              `json:"_id"`
 	Purpose *EmailVerifyPurpose `json:"purpose"`
 	Email   string              `json:"email"`
+}
+
+func (m *TLAccountSendVerifyEmailCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -4149,6 +4515,11 @@ type TLAccountVerifyEmail struct {
 	ClazzID      uint32              `json:"_id"`
 	Purpose      *EmailVerifyPurpose `json:"purpose"`
 	Verification *EmailVerification  `json:"verification"`
+}
+
+func (m *TLAccountVerifyEmail) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -4210,6 +4581,11 @@ type TLAccountInitTakeoutSession struct {
 	MessageChannels   bool   `json:"message_channels"`
 	Files             bool   `json:"files"`
 	FileMaxSize       *int64 `json:"file_max_size"`
+}
+
+func (m *TLAccountInitTakeoutSession) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -4316,6 +4692,11 @@ type TLAccountFinishTakeoutSession struct {
 	Success bool   `json:"success"`
 }
 
+func (m *TLAccountFinishTakeoutSession) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountFinishTakeoutSession) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4380,6 +4761,11 @@ type TLAccountConfirmPasswordEmail struct {
 	Code    string `json:"code"`
 }
 
+func (m *TLAccountConfirmPasswordEmail) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountConfirmPasswordEmail) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4426,6 +4812,11 @@ type TLAccountResendPasswordEmail struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountResendPasswordEmail) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountResendPasswordEmail) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4467,6 +4858,11 @@ func (m *TLAccountResendPasswordEmail) Decode(d *bin.Decoder) (err error) {
 // TLAccountCancelPasswordEmail <--
 type TLAccountCancelPasswordEmail struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLAccountCancelPasswordEmail) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -4512,6 +4908,11 @@ type TLAccountGetContactSignUpNotification struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetContactSignUpNotification) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetContactSignUpNotification) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4554,6 +4955,11 @@ func (m *TLAccountGetContactSignUpNotification) Decode(d *bin.Decoder) (err erro
 type TLAccountSetContactSignUpNotification struct {
 	ClazzID uint32 `json:"_id"`
 	Silent  *Bool  `json:"silent"`
+}
+
+func (m *TLAccountSetContactSignUpNotification) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -4606,6 +5012,11 @@ type TLAccountGetNotifyExceptions struct {
 	CompareSound   bool             `json:"compare_sound"`
 	CompareStories bool             `json:"compare_stories"`
 	Peer           *InputNotifyPeer `json:"peer"`
+}
+
+func (m *TLAccountGetNotifyExceptions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -4689,6 +5100,11 @@ type TLAccountGetWallPaper struct {
 	Wallpaper *InputWallPaper `json:"wallpaper"`
 }
 
+func (m *TLAccountGetWallPaper) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetWallPaper) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4740,6 +5156,11 @@ type TLAccountUploadWallPaper struct {
 	File     *InputFile         `json:"file"`
 	MimeType string             `json:"mime_type"`
 	Settings *WallPaperSettings `json:"settings"`
+}
+
+func (m *TLAccountUploadWallPaper) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -4821,6 +5242,11 @@ type TLAccountSaveWallPaper struct {
 	Settings  *WallPaperSettings `json:"settings"`
 }
 
+func (m *TLAccountSaveWallPaper) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountSaveWallPaper) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4882,6 +5308,11 @@ type TLAccountInstallWallPaper struct {
 	Settings  *WallPaperSettings `json:"settings"`
 }
 
+func (m *TLAccountInstallWallPaper) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountInstallWallPaper) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4936,6 +5367,11 @@ type TLAccountResetWallPapers struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountResetWallPapers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountResetWallPapers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -4977,6 +5413,11 @@ func (m *TLAccountResetWallPapers) Decode(d *bin.Decoder) (err error) {
 // TLAccountGetAutoDownloadSettings <--
 type TLAccountGetAutoDownloadSettings struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLAccountGetAutoDownloadSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5023,6 +5464,11 @@ type TLAccountSaveAutoDownloadSettings struct {
 	Low      bool                  `json:"low"`
 	High     bool                  `json:"high"`
 	Settings *AutoDownloadSettings `json:"settings"`
+}
+
+func (m *TLAccountSaveAutoDownloadSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5101,6 +5547,11 @@ type TLAccountUploadTheme struct {
 	Thumb    *InputFile `json:"thumb"`
 	FileName string     `json:"file_name"`
 	MimeType string     `json:"mime_type"`
+}
+
+func (m *TLAccountUploadTheme) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5184,6 +5635,11 @@ type TLAccountCreateTheme struct {
 	Title    string                `json:"title"`
 	Document *InputDocument        `json:"document"`
 	Settings []*InputThemeSettings `json:"settings"`
+}
+
+func (m *TLAccountCreateTheme) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5285,6 +5741,11 @@ type TLAccountUpdateTheme struct {
 	Title    *string               `json:"title"`
 	Document *InputDocument        `json:"document"`
 	Settings []*InputThemeSettings `json:"settings"`
+}
+
+func (m *TLAccountUpdateTheme) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5412,6 +5873,11 @@ type TLAccountSaveTheme struct {
 	Unsave  *Bool       `json:"unsave"`
 }
 
+func (m *TLAccountSaveTheme) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountSaveTheme) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -5468,6 +5934,11 @@ type TLAccountInstallTheme struct {
 	Theme     *InputTheme `json:"theme"`
 	Format    *string     `json:"format"`
 	BaseTheme *BaseTheme  `json:"base_theme"`
+}
+
+func (m *TLAccountInstallTheme) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5622,6 +6093,11 @@ type TLAccountGetTheme struct {
 	Theme   *InputTheme `json:"theme"`
 }
 
+func (m *TLAccountGetTheme) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetTheme) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -5675,6 +6151,11 @@ type TLAccountGetThemes struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetThemes) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetThemes) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -5722,6 +6203,11 @@ func (m *TLAccountGetThemes) Decode(d *bin.Decoder) (err error) {
 type TLAccountSetContentSettings struct {
 	ClazzID          uint32 `json:"_id"`
 	SensitiveEnabled bool   `json:"sensitive_enabled"`
+}
+
+func (m *TLAccountSetContentSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5787,6 +6273,11 @@ type TLAccountGetContentSettings struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetContentSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetContentSettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -5829,6 +6320,11 @@ func (m *TLAccountGetContentSettings) Decode(d *bin.Decoder) (err error) {
 type TLAccountGetMultiWallPapers struct {
 	ClazzID    uint32            `json:"_id"`
 	Wallpapers []*InputWallPaper `json:"wallpapers"`
+}
+
+func (m *TLAccountGetMultiWallPapers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5890,6 +6386,11 @@ type TLAccountGetGlobalPrivacySettings struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetGlobalPrivacySettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetGlobalPrivacySettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -5932,6 +6433,11 @@ func (m *TLAccountGetGlobalPrivacySettings) Decode(d *bin.Decoder) (err error) {
 type TLAccountSetGlobalPrivacySettings struct {
 	ClazzID  uint32                 `json:"_id"`
 	Settings *GlobalPrivacySettings `json:"settings"`
+}
+
+func (m *TLAccountSetGlobalPrivacySettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -5985,6 +6491,11 @@ type TLAccountReportProfilePhoto struct {
 	PhotoId *InputPhoto   `json:"photo_id"`
 	Reason  *ReportReason `json:"reason"`
 	Message string        `json:"message"`
+}
+
+func (m *TLAccountReportProfilePhoto) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6049,6 +6560,11 @@ type TLAccountResetPassword struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountResetPassword) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountResetPassword) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6090,6 +6606,11 @@ func (m *TLAccountResetPassword) Decode(d *bin.Decoder) (err error) {
 // TLAccountDeclinePasswordReset <--
 type TLAccountDeclinePasswordReset struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLAccountDeclinePasswordReset) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6134,6 +6655,11 @@ func (m *TLAccountDeclinePasswordReset) Decode(d *bin.Decoder) (err error) {
 type TLAccountGetChatThemes struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLAccountGetChatThemes) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6181,6 +6707,11 @@ func (m *TLAccountGetChatThemes) Decode(d *bin.Decoder) (err error) {
 type TLAccountSetAuthorizationTTL struct {
 	ClazzID              uint32 `json:"_id"`
 	AuthorizationTtlDays int32  `json:"authorization_ttl_days"`
+}
+
+func (m *TLAccountSetAuthorizationTTL) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6231,6 +6762,11 @@ type TLAccountChangeAuthorizationSettings struct {
 	Hash                      int64  `json:"hash"`
 	EncryptedRequestsDisabled *Bool  `json:"encrypted_requests_disabled"`
 	CallRequestsDisabled      *Bool  `json:"call_requests_disabled"`
+}
+
+func (m *TLAccountChangeAuthorizationSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6323,6 +6859,11 @@ type TLAccountGetSavedRingtones struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetSavedRingtones) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetSavedRingtones) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6369,6 +6910,11 @@ type TLAccountSaveRingtone struct {
 	ClazzID uint32         `json:"_id"`
 	Id      *InputDocument `json:"id"`
 	Unsave  *Bool          `json:"unsave"`
+}
+
+func (m *TLAccountSaveRingtone) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6428,6 +6974,11 @@ type TLAccountUploadRingtone struct {
 	MimeType string     `json:"mime_type"`
 }
 
+func (m *TLAccountUploadRingtone) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUploadRingtone) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6483,6 +7034,11 @@ type TLAccountUpdateEmojiStatus struct {
 	EmojiStatus *EmojiStatus `json:"emoji_status"`
 }
 
+func (m *TLAccountUpdateEmojiStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUpdateEmojiStatus) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6533,6 +7089,11 @@ type TLAccountGetDefaultEmojiStatuses struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetDefaultEmojiStatuses) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetDefaultEmojiStatuses) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6578,6 +7139,11 @@ func (m *TLAccountGetDefaultEmojiStatuses) Decode(d *bin.Decoder) (err error) {
 type TLAccountGetRecentEmojiStatuses struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLAccountGetRecentEmojiStatuses) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6626,6 +7192,11 @@ type TLAccountClearRecentEmojiStatuses struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountClearRecentEmojiStatuses) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountClearRecentEmojiStatuses) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6668,6 +7239,11 @@ func (m *TLAccountClearRecentEmojiStatuses) Decode(d *bin.Decoder) (err error) {
 type TLAccountReorderUsernames struct {
 	ClazzID uint32   `json:"_id"`
 	Order   []string `json:"order"`
+}
+
+func (m *TLAccountReorderUsernames) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6717,6 +7293,11 @@ type TLAccountToggleUsername struct {
 	ClazzID  uint32 `json:"_id"`
 	Username string `json:"username"`
 	Active   *Bool  `json:"active"`
+}
+
+func (m *TLAccountToggleUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6771,6 +7352,11 @@ type TLAccountGetDefaultProfilePhotoEmojis struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetDefaultProfilePhotoEmojis) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetDefaultProfilePhotoEmojis) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6816,6 +7402,11 @@ func (m *TLAccountGetDefaultProfilePhotoEmojis) Decode(d *bin.Decoder) (err erro
 type TLAccountGetDefaultGroupPhotoEmojis struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLAccountGetDefaultGroupPhotoEmojis) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -6864,6 +7455,11 @@ type TLAccountGetAutoSaveSettings struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetAutoSaveSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetAutoSaveSettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -6910,6 +7506,11 @@ type TLAccountSaveAutoSaveSettings struct {
 	Broadcasts bool              `json:"broadcasts"`
 	Peer       *InputPeer        `json:"peer"`
 	Settings   *AutoSaveSettings `json:"settings"`
+}
+
+func (m *TLAccountSaveAutoSaveSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7004,6 +7605,11 @@ type TLAccountDeleteAutoSaveExceptions struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountDeleteAutoSaveExceptions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountDeleteAutoSaveExceptions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -7046,6 +7652,11 @@ func (m *TLAccountDeleteAutoSaveExceptions) Decode(d *bin.Decoder) (err error) {
 type TLAccountInvalidateSignInCodes struct {
 	ClazzID uint32   `json:"_id"`
 	Codes   []string `json:"codes"`
+}
+
+func (m *TLAccountInvalidateSignInCodes) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7096,6 +7707,11 @@ type TLAccountUpdateColor struct {
 	ForProfile        bool   `json:"for_profile"`
 	Color             *int32 `json:"color"`
 	BackgroundEmojiId *int64 `json:"background_emoji_id"`
+}
+
+func (m *TLAccountUpdateColor) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7183,6 +7799,11 @@ type TLAccountGetDefaultBackgroundEmojis struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetDefaultBackgroundEmojis) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetDefaultBackgroundEmojis) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -7228,6 +7849,11 @@ func (m *TLAccountGetDefaultBackgroundEmojis) Decode(d *bin.Decoder) (err error)
 type TLAccountGetChannelDefaultEmojiStatuses struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLAccountGetChannelDefaultEmojiStatuses) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7277,6 +7903,11 @@ type TLAccountGetChannelRestrictedStatusEmojis struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetChannelRestrictedStatusEmojis) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetChannelRestrictedStatusEmojis) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -7322,6 +7953,11 @@ func (m *TLAccountGetChannelRestrictedStatusEmojis) Decode(d *bin.Decoder) (err 
 type TLAccountUpdateBusinessWorkHours struct {
 	ClazzID           uint32             `json:"_id"`
 	BusinessWorkHours *BusinessWorkHours `json:"business_work_hours"`
+}
+
+func (m *TLAccountUpdateBusinessWorkHours) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7392,6 +8028,11 @@ type TLAccountUpdateBusinessLocation struct {
 	ClazzID  uint32         `json:"_id"`
 	GeoPoint *InputGeoPoint `json:"geo_point"`
 	Address  *string        `json:"address"`
+}
+
+func (m *TLAccountUpdateBusinessLocation) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7474,6 +8115,11 @@ type TLAccountUpdateBusinessGreetingMessage struct {
 	Message *InputBusinessGreetingMessage `json:"message"`
 }
 
+func (m *TLAccountUpdateBusinessGreetingMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountUpdateBusinessGreetingMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -7541,6 +8187,11 @@ func (m *TLAccountUpdateBusinessGreetingMessage) Decode(d *bin.Decoder) (err err
 type TLAccountUpdateBusinessAwayMessage struct {
 	ClazzID uint32                    `json:"_id"`
 	Message *InputBusinessAwayMessage `json:"message"`
+}
+
+func (m *TLAccountUpdateBusinessAwayMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7614,6 +8265,11 @@ type TLAccountUpdateConnectedBot struct {
 	Bot        *InputUser                  `json:"bot"`
 	Recipients *InputBusinessBotRecipients `json:"recipients"`
 	CanReply   bool                        `json:"can_reply"`
+}
+
+func (m *TLAccountUpdateConnectedBot) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7746,6 +8402,11 @@ type TLAccountGetConnectedBots struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetConnectedBots) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetConnectedBots) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -7788,6 +8449,11 @@ func (m *TLAccountGetConnectedBots) Decode(d *bin.Decoder) (err error) {
 type TLAccountGetBotBusinessConnection struct {
 	ClazzID      uint32 `json:"_id"`
 	ConnectionId string `json:"connection_id"`
+}
+
+func (m *TLAccountGetBotBusinessConnection) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7835,6 +8501,11 @@ func (m *TLAccountGetBotBusinessConnection) Decode(d *bin.Decoder) (err error) {
 type TLAccountUpdateBusinessIntro struct {
 	ClazzID uint32              `json:"_id"`
 	Intro   *InputBusinessIntro `json:"intro"`
+}
+
+func (m *TLAccountUpdateBusinessIntro) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -7907,6 +8578,11 @@ type TLAccountToggleConnectedBotPaused struct {
 	Paused  *Bool      `json:"paused"`
 }
 
+func (m *TLAccountToggleConnectedBotPaused) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountToggleConnectedBotPaused) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -7962,6 +8638,11 @@ type TLAccountDisablePeerConnectedBot struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLAccountDisablePeerConnectedBot) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountDisablePeerConnectedBot) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8010,6 +8691,11 @@ func (m *TLAccountDisablePeerConnectedBot) Decode(d *bin.Decoder) (err error) {
 type TLAccountUpdateBirthday struct {
 	ClazzID  uint32    `json:"_id"`
 	Birthday *Birthday `json:"birthday"`
+}
+
+func (m *TLAccountUpdateBirthday) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8081,6 +8767,11 @@ type TLAccountCreateBusinessChatLink struct {
 	Link    *InputBusinessChatLink `json:"link"`
 }
 
+func (m *TLAccountCreateBusinessChatLink) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountCreateBusinessChatLink) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8130,6 +8821,11 @@ type TLAccountEditBusinessChatLink struct {
 	ClazzID uint32                 `json:"_id"`
 	Slug    string                 `json:"slug"`
 	Link    *InputBusinessChatLink `json:"link"`
+}
+
+func (m *TLAccountEditBusinessChatLink) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8184,6 +8880,11 @@ type TLAccountDeleteBusinessChatLink struct {
 	Slug    string `json:"slug"`
 }
 
+func (m *TLAccountDeleteBusinessChatLink) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountDeleteBusinessChatLink) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8230,6 +8931,11 @@ type TLAccountGetBusinessChatLinks struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetBusinessChatLinks) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetBusinessChatLinks) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8272,6 +8978,11 @@ func (m *TLAccountGetBusinessChatLinks) Decode(d *bin.Decoder) (err error) {
 type TLAccountResolveBusinessChatLink struct {
 	ClazzID uint32 `json:"_id"`
 	Slug    string `json:"slug"`
+}
+
+func (m *TLAccountResolveBusinessChatLink) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8319,6 +9030,11 @@ func (m *TLAccountResolveBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 type TLAccountUpdatePersonalChannel struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
+}
+
+func (m *TLAccountUpdatePersonalChannel) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8371,6 +9087,11 @@ type TLAccountToggleSponsoredMessages struct {
 	Enabled *Bool  `json:"enabled"`
 }
 
+func (m *TLAccountToggleSponsoredMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountToggleSponsoredMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8420,6 +9141,11 @@ type TLAccountGetReactionsNotifySettings struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLAccountGetReactionsNotifySettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetReactionsNotifySettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8462,6 +9188,11 @@ func (m *TLAccountGetReactionsNotifySettings) Decode(d *bin.Decoder) (err error)
 type TLAccountSetReactionsNotifySettings struct {
 	ClazzID  uint32                   `json:"_id"`
 	Settings *ReactionsNotifySettings `json:"settings"`
+}
+
+func (m *TLAccountSetReactionsNotifySettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8514,6 +9245,11 @@ type TLAccountGetCollectibleEmojiStatuses struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLAccountGetCollectibleEmojiStatuses) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetCollectibleEmojiStatuses) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8560,6 +9296,11 @@ type TLAccountAddNoPaidMessagesException struct {
 	ClazzID       uint32     `json:"_id"`
 	RefundCharged bool       `json:"refund_charged"`
 	UserId        *InputUser `json:"user_id"`
+}
+
+func (m *TLAccountAddNoPaidMessagesException) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8631,6 +9372,11 @@ type TLAccountGetPaidMessagesRevenue struct {
 	UserId  *InputUser `json:"user_id"`
 }
 
+func (m *TLAccountGetPaidMessagesRevenue) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLAccountGetPaidMessagesRevenue) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8679,6 +9425,11 @@ func (m *TLAccountGetPaidMessagesRevenue) Decode(d *bin.Decoder) (err error) {
 type TLUsersGetUsers struct {
 	ClazzID uint32       `json:"_id"`
 	Id      []*InputUser `json:"id"`
+}
+
+func (m *TLUsersGetUsers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8741,6 +9492,11 @@ type TLUsersGetFullUser struct {
 	Id      *InputUser `json:"id"`
 }
 
+func (m *TLUsersGetFullUser) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUsersGetFullUser) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8790,6 +9546,11 @@ type TLUsersSetSecureValueErrors struct {
 	ClazzID uint32              `json:"_id"`
 	Id      *InputUser          `json:"id"`
 	Errors  []*SecureValueError `json:"errors"`
+}
+
+func (m *TLUsersSetSecureValueErrors) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -8859,6 +9620,11 @@ type TLUsersGetRequirementsToContact struct {
 	Id      []*InputUser `json:"id"`
 }
 
+func (m *TLUsersGetRequirementsToContact) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUsersGetRequirementsToContact) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8919,6 +9685,11 @@ type TLContactsGetContactIDs struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLContactsGetContactIDs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsGetContactIDs) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -8965,6 +9736,11 @@ type TLContactsGetStatuses struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLContactsGetStatuses) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsGetStatuses) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -9007,6 +9783,11 @@ func (m *TLContactsGetStatuses) Decode(d *bin.Decoder) (err error) {
 type TLContactsGetContacts struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLContactsGetContacts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9054,6 +9835,11 @@ func (m *TLContactsGetContacts) Decode(d *bin.Decoder) (err error) {
 type TLContactsImportContacts struct {
 	ClazzID  uint32          `json:"_id"`
 	Contacts []*InputContact `json:"contacts"`
+}
+
+func (m *TLContactsImportContacts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9116,6 +9902,11 @@ type TLContactsDeleteContacts struct {
 	Id      []*InputUser `json:"id"`
 }
 
+func (m *TLContactsDeleteContacts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsDeleteContacts) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -9176,6 +9967,11 @@ type TLContactsDeleteByPhones struct {
 	Phones  []string `json:"phones"`
 }
 
+func (m *TLContactsDeleteByPhones) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsDeleteByPhones) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -9223,6 +10019,11 @@ type TLContactsBlock struct {
 	ClazzID       uint32     `json:"_id"`
 	MyStoriesFrom bool       `json:"my_stories_from"`
 	Id            *InputPeer `json:"id"`
+}
+
+func (m *TLContactsBlock) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9293,6 +10094,11 @@ type TLContactsUnblock struct {
 	ClazzID       uint32     `json:"_id"`
 	MyStoriesFrom bool       `json:"my_stories_from"`
 	Id            *InputPeer `json:"id"`
+}
+
+func (m *TLContactsUnblock) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9366,6 +10172,11 @@ type TLContactsGetBlocked struct {
 	Limit         int32  `json:"limit"`
 }
 
+func (m *TLContactsGetBlocked) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsGetBlocked) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -9435,6 +10246,11 @@ type TLContactsSearch struct {
 	Limit   int32  `json:"limit"`
 }
 
+func (m *TLContactsSearch) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsSearch) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -9483,6 +10299,11 @@ type TLContactsResolveUsername struct {
 	ClazzID  uint32  `json:"_id"`
 	Username string  `json:"username"`
 	Referer  *string `json:"referer"`
+}
+
+func (m *TLContactsResolveUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9564,6 +10385,11 @@ type TLContactsGetTopPeers struct {
 	Offset         int32  `json:"offset"`
 	Limit          int32  `json:"limit"`
 	Hash           int64  `json:"hash"`
+}
+
+func (m *TLContactsGetTopPeers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9685,6 +10511,11 @@ type TLContactsResetTopPeerRating struct {
 	Peer     *InputPeer       `json:"peer"`
 }
 
+func (m *TLContactsResetTopPeerRating) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsResetTopPeerRating) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -9739,6 +10570,11 @@ type TLContactsResetSaved struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLContactsResetSaved) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsResetSaved) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -9780,6 +10616,11 @@ func (m *TLContactsResetSaved) Decode(d *bin.Decoder) (err error) {
 // TLContactsGetSaved <--
 type TLContactsGetSaved struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLContactsGetSaved) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9824,6 +10665,11 @@ func (m *TLContactsGetSaved) Decode(d *bin.Decoder) (err error) {
 type TLContactsToggleTopPeers struct {
 	ClazzID uint32 `json:"_id"`
 	Enabled *Bool  `json:"enabled"`
+}
+
+func (m *TLContactsToggleTopPeers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9878,6 +10724,11 @@ type TLContactsAddContact struct {
 	FirstName                string     `json:"first_name"`
 	LastName                 string     `json:"last_name"`
 	Phone                    string     `json:"phone"`
+}
+
+func (m *TLContactsAddContact) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -9956,6 +10807,11 @@ type TLContactsAcceptContact struct {
 	Id      *InputUser `json:"id"`
 }
 
+func (m *TLContactsAcceptContact) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsAcceptContact) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -10006,6 +10862,11 @@ type TLContactsGetLocated struct {
 	Background  bool           `json:"background"`
 	GeoPoint    *InputGeoPoint `json:"geo_point"`
 	SelfExpires *int32         `json:"self_expires"`
+}
+
+func (m *TLContactsGetLocated) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10092,6 +10953,11 @@ type TLContactsBlockFromReplies struct {
 	MsgId         int32  `json:"msg_id"`
 }
 
+func (m *TLContactsBlockFromReplies) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsBlockFromReplies) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -10170,6 +11036,11 @@ type TLContactsResolvePhone struct {
 	Phone   string `json:"phone"`
 }
 
+func (m *TLContactsResolvePhone) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsResolvePhone) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -10216,6 +11087,11 @@ type TLContactsExportContactToken struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLContactsExportContactToken) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsExportContactToken) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -10258,6 +11134,11 @@ func (m *TLContactsExportContactToken) Decode(d *bin.Decoder) (err error) {
 type TLContactsImportContactToken struct {
 	ClazzID uint32 `json:"_id"`
 	Token   string `json:"token"`
+}
+
+func (m *TLContactsImportContactToken) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10305,6 +11186,11 @@ func (m *TLContactsImportContactToken) Decode(d *bin.Decoder) (err error) {
 type TLContactsEditCloseFriends struct {
 	ClazzID uint32  `json:"_id"`
 	Id      []int64 `json:"id"`
+}
+
+func (m *TLContactsEditCloseFriends) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10355,6 +11241,11 @@ type TLContactsSetBlocked struct {
 	MyStoriesFrom bool         `json:"my_stories_from"`
 	Id            []*InputPeer `json:"id"`
 	Limit         int32        `json:"limit"`
+}
+
+func (m *TLContactsSetBlocked) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10440,6 +11331,11 @@ type TLContactsGetBirthdays struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLContactsGetBirthdays) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLContactsGetBirthdays) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -10482,6 +11378,11 @@ func (m *TLContactsGetBirthdays) Decode(d *bin.Decoder) (err error) {
 type TLContactsGetSponsoredPeers struct {
 	ClazzID uint32 `json:"_id"`
 	Q       string `json:"q"`
+}
+
+func (m *TLContactsGetSponsoredPeers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10530,6 +11431,11 @@ type TLMessagesGetMessages struct {
 	ClazzID               uint32          `json:"_id"`
 	Id_VECTORINPUTMESSAGE []*InputMessage `json:"id_VECTORINPUTMESSAGE"`
 	Id_VECTORINT32        []int32         `json:"id_VECTORINT32"`
+}
+
+func (m *TLMessagesGetMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10609,6 +11515,11 @@ type TLMessagesGetDialogs struct {
 	OffsetPeer    *InputPeer `json:"offset_peer"`
 	Limit         int32      `json:"limit"`
 	Hash          int64      `json:"hash"`
+}
+
+func (m *TLMessagesGetDialogs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10707,6 +11618,11 @@ type TLMessagesGetHistory struct {
 	Hash       int64      `json:"hash"`
 }
 
+func (m *TLMessagesGetHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -10784,6 +11700,11 @@ type TLMessagesSearch struct {
 	MaxId         int32           `json:"max_id"`
 	MinId         int32           `json:"min_id"`
 	Hash          int64           `json:"hash"`
+}
+
+func (m *TLMessagesSearch) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -10932,6 +11853,11 @@ type TLMessagesReadHistory struct {
 	MaxId   int32      `json:"max_id"`
 }
 
+func (m *TLMessagesReadHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReadHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -10988,6 +11914,11 @@ type TLMessagesDeleteHistory struct {
 	MaxId     int32      `json:"max_id"`
 	MinDate   *int32     `json:"min_date"`
 	MaxDate   *int32     `json:"max_date"`
+}
+
+func (m *TLMessagesDeleteHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -11091,6 +12022,11 @@ type TLMessagesDeleteMessages struct {
 	Id      []int32 `json:"id"`
 }
 
+func (m *TLMessagesDeleteMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesDeleteMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -11159,6 +12095,11 @@ type TLMessagesReceivedMessages struct {
 	MaxId   int32  `json:"max_id"`
 }
 
+func (m *TLMessagesReceivedMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReceivedMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -11206,6 +12147,11 @@ type TLMessagesSetTyping struct {
 	Peer     *InputPeer         `json:"peer"`
 	TopMsgId *int32             `json:"top_msg_id"`
 	Action   *SendMessageAction `json:"action"`
+}
+
+func (m *TLMessagesSetTyping) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -11304,6 +12250,11 @@ type TLMessagesSendMessage struct {
 	QuickReplyShortcut     *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
 	Effect                 *int64                   `json:"effect"`
 	AllowPaidStars         *int64                   `json:"allow_paid_stars"`
+}
+
+func (m *TLMessagesSendMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -11719,6 +12670,11 @@ type TLMessagesSendMedia struct {
 	AllowPaidStars         *int64                   `json:"allow_paid_stars"`
 }
 
+func (m *TLMessagesSendMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendMedia) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -12130,6 +13086,11 @@ type TLMessagesForwardMessages struct {
 	AllowPaidStars     *int64                   `json:"allow_paid_stars"`
 }
 
+func (m *TLMessagesForwardMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesForwardMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -12460,6 +13421,11 @@ type TLMessagesReportSpam struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLMessagesReportSpam) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReportSpam) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -12508,6 +13474,11 @@ func (m *TLMessagesReportSpam) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetPeerSettings struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLMessagesGetPeerSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -12561,6 +13532,11 @@ type TLMessagesReport struct {
 	Id      []int32    `json:"id"`
 	Option  []byte     `json:"option"`
 	Message string     `json:"message"`
+}
+
+func (m *TLMessagesReport) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -12623,6 +13599,11 @@ type TLMessagesGetChats struct {
 	Id      []int64 `json:"id"`
 }
 
+func (m *TLMessagesGetChats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetChats) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -12669,6 +13650,11 @@ func (m *TLMessagesGetChats) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetFullChat struct {
 	ClazzID uint32 `json:"_id"`
 	ChatId  int64  `json:"chat_id"`
+}
+
+func (m *TLMessagesGetFullChat) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -12719,6 +13705,11 @@ type TLMessagesEditChatTitle struct {
 	Title   string `json:"title"`
 }
 
+func (m *TLMessagesEditChatTitle) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesEditChatTitle) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -12767,6 +13758,11 @@ type TLMessagesEditChatPhoto struct {
 	ClazzID uint32          `json:"_id"`
 	ChatId  int64           `json:"chat_id"`
 	Photo   *InputChatPhoto `json:"photo"`
+}
+
+func (m *TLMessagesEditChatPhoto) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -12821,6 +13817,11 @@ type TLMessagesAddChatUser struct {
 	ChatId   int64      `json:"chat_id"`
 	UserId   *InputUser `json:"user_id"`
 	FwdLimit int32      `json:"fwd_limit"`
+}
+
+func (m *TLMessagesAddChatUser) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -12878,6 +13879,11 @@ type TLMessagesDeleteChatUser struct {
 	RevokeHistory bool       `json:"revoke_history"`
 	ChatId        int64      `json:"chat_id"`
 	UserId        *InputUser `json:"user_id"`
+}
+
+func (m *TLMessagesDeleteChatUser) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -12951,6 +13957,11 @@ type TLMessagesCreateChat struct {
 	Users     []*InputUser `json:"users"`
 	Title     string       `json:"title"`
 	TtlPeriod *int32       `json:"ttl_period"`
+}
+
+func (m *TLMessagesCreateChat) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13042,6 +14053,11 @@ type TLMessagesGetDhConfig struct {
 	RandomLength int32  `json:"random_length"`
 }
 
+func (m *TLMessagesGetDhConfig) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetDhConfig) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13091,6 +14107,11 @@ type TLMessagesRequestEncryption struct {
 	UserId   *InputUser `json:"user_id"`
 	RandomId int32      `json:"random_id"`
 	GA       []byte     `json:"g_a"`
+}
+
+func (m *TLMessagesRequestEncryption) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13150,6 +14171,11 @@ type TLMessagesAcceptEncryption struct {
 	KeyFingerprint int64               `json:"key_fingerprint"`
 }
 
+func (m *TLMessagesAcceptEncryption) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesAcceptEncryption) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13204,6 +14230,11 @@ type TLMessagesDiscardEncryption struct {
 	ClazzID       uint32 `json:"_id"`
 	DeleteHistory bool   `json:"delete_history"`
 	ChatId        int32  `json:"chat_id"`
+}
+
+func (m *TLMessagesDiscardEncryption) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13273,6 +14304,11 @@ type TLMessagesSetEncryptedTyping struct {
 	Typing  *Bool               `json:"typing"`
 }
 
+func (m *TLMessagesSetEncryptedTyping) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetEncryptedTyping) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13329,6 +14365,11 @@ type TLMessagesReadEncryptedHistory struct {
 	MaxDate int32               `json:"max_date"`
 }
 
+func (m *TLMessagesReadEncryptedHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReadEncryptedHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13383,6 +14424,11 @@ type TLMessagesSendEncrypted struct {
 	Peer     *InputEncryptedChat `json:"peer"`
 	RandomId int64               `json:"random_id"`
 	Data     []byte              `json:"data"`
+}
+
+func (m *TLMessagesSendEncrypted) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13461,6 +14507,11 @@ type TLMessagesSendEncryptedFile struct {
 	RandomId int64               `json:"random_id"`
 	Data     []byte              `json:"data"`
 	File     *InputEncryptedFile `json:"file"`
+}
+
+func (m *TLMessagesSendEncryptedFile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13544,6 +14595,11 @@ type TLMessagesSendEncryptedService struct {
 	Data     []byte              `json:"data"`
 }
 
+func (m *TLMessagesSendEncryptedService) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendEncryptedService) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13599,6 +14655,11 @@ type TLMessagesReceivedQueue struct {
 	MaxQts  int32  `json:"max_qts"`
 }
 
+func (m *TLMessagesReceivedQueue) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReceivedQueue) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13644,6 +14705,11 @@ func (m *TLMessagesReceivedQueue) Decode(d *bin.Decoder) (err error) {
 type TLMessagesReportEncryptedSpam struct {
 	ClazzID uint32              `json:"_id"`
 	Peer    *InputEncryptedChat `json:"peer"`
+}
+
+func (m *TLMessagesReportEncryptedSpam) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13696,6 +14762,11 @@ type TLMessagesReadMessageContents struct {
 	Id      []int32 `json:"id"`
 }
 
+func (m *TLMessagesReadMessageContents) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReadMessageContents) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13743,6 +14814,11 @@ type TLMessagesGetStickers struct {
 	ClazzID  uint32 `json:"_id"`
 	Emoticon string `json:"emoticon"`
 	Hash     int64  `json:"hash"`
+}
+
+func (m *TLMessagesGetStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13794,6 +14870,11 @@ type TLMessagesGetAllStickers struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetAllStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetAllStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -13840,6 +14921,11 @@ type TLMessagesGetWebPagePreview struct {
 	ClazzID  uint32           `json:"_id"`
 	Message  string           `json:"message"`
 	Entities []*MessageEntity `json:"entities"`
+}
+
+func (m *TLMessagesGetWebPagePreview) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -13928,6 +15014,11 @@ type TLMessagesExportChatInvite struct {
 	UsageLimit            *int32                    `json:"usage_limit"`
 	Title                 *string                   `json:"title"`
 	SubscriptionPricing   *StarsSubscriptionPricing `json:"subscription_pricing"`
+}
+
+func (m *TLMessagesExportChatInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -14052,6 +15143,11 @@ type TLMessagesCheckChatInvite struct {
 	Hash    string `json:"hash"`
 }
 
+func (m *TLMessagesCheckChatInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesCheckChatInvite) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14097,6 +15193,11 @@ func (m *TLMessagesCheckChatInvite) Decode(d *bin.Decoder) (err error) {
 type TLMessagesImportChatInvite struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    string `json:"hash"`
+}
+
+func (m *TLMessagesImportChatInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -14145,6 +15246,11 @@ type TLMessagesGetStickerSet struct {
 	ClazzID    uint32           `json:"_id"`
 	Stickerset *InputStickerSet `json:"stickerset"`
 	Hash       int32            `json:"hash"`
+}
+
+func (m *TLMessagesGetStickerSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -14216,6 +15322,11 @@ type TLMessagesInstallStickerSet struct {
 	Archived   *Bool            `json:"archived"`
 }
 
+func (m *TLMessagesInstallStickerSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesInstallStickerSet) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14271,6 +15382,11 @@ type TLMessagesUninstallStickerSet struct {
 	Stickerset *InputStickerSet `json:"stickerset"`
 }
 
+func (m *TLMessagesUninstallStickerSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesUninstallStickerSet) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14322,6 +15438,11 @@ type TLMessagesStartBot struct {
 	Peer       *InputPeer `json:"peer"`
 	RandomId   int64      `json:"random_id"`
 	StartParam string     `json:"start_param"`
+}
+
+func (m *TLMessagesStartBot) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -14386,6 +15507,11 @@ type TLMessagesGetMessagesViews struct {
 	Increment *Bool      `json:"increment"`
 }
 
+func (m *TLMessagesGetMessagesViews) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetMessagesViews) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14448,6 +15574,11 @@ type TLMessagesEditChatAdmin struct {
 	IsAdmin *Bool      `json:"is_admin"`
 }
 
+func (m *TLMessagesEditChatAdmin) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesEditChatAdmin) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14503,6 +15634,11 @@ func (m *TLMessagesEditChatAdmin) Decode(d *bin.Decoder) (err error) {
 type TLMessagesMigrateChat struct {
 	ClazzID uint32 `json:"_id"`
 	ChatId  int64  `json:"chat_id"`
+}
+
+func (m *TLMessagesMigrateChat) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -14561,6 +15697,11 @@ type TLMessagesSearchGlobal struct {
 	OffsetPeer     *InputPeer      `json:"offset_peer"`
 	OffsetId       int32           `json:"offset_id"`
 	Limit          int32           `json:"limit"`
+}
+
+func (m *TLMessagesSearchGlobal) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -14676,6 +15817,11 @@ type TLMessagesReorderStickerSets struct {
 	Order   []int64 `json:"order"`
 }
 
+func (m *TLMessagesReorderStickerSets) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReorderStickerSets) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14752,6 +15898,11 @@ type TLMessagesGetDocumentByHash struct {
 	MimeType string `json:"mime_type"`
 }
 
+func (m *TLMessagesGetDocumentByHash) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetDocumentByHash) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14803,6 +15954,11 @@ type TLMessagesGetSavedGifs struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetSavedGifs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetSavedGifs) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -14849,6 +16005,11 @@ type TLMessagesSaveGif struct {
 	ClazzID uint32         `json:"_id"`
 	Id      *InputDocument `json:"id"`
 	Unsave  *Bool          `json:"unsave"`
+}
+
+func (m *TLMessagesSaveGif) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -14908,6 +16069,11 @@ type TLMessagesGetInlineBotResults struct {
 	GeoPoint *InputGeoPoint `json:"geo_point"`
 	Query    string         `json:"query"`
 	Offset   string         `json:"offset"`
+}
+
+func (m *TLMessagesGetInlineBotResults) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -15000,6 +16166,11 @@ type TLMessagesSetInlineBotResults struct {
 	NextOffset    *string                 `json:"next_offset"`
 	SwitchPm      *InlineBotSwitchPM      `json:"switch_pm"`
 	SwitchWebview *InlineBotWebView       `json:"switch_webview"`
+}
+
+func (m *TLMessagesSetInlineBotResults) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -15140,6 +16311,11 @@ type TLMessagesSendInlineBotResult struct {
 	SendAs             *InputPeer               `json:"send_as"`
 	QuickReplyShortcut *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
 	AllowPaidStars     *int64                   `json:"allow_paid_stars"`
+}
+
+func (m *TLMessagesSendInlineBotResult) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -15403,6 +16579,11 @@ type TLMessagesGetMessageEditData struct {
 	Id      int32      `json:"id"`
 }
 
+func (m *TLMessagesGetMessageEditData) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetMessageEditData) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -15463,6 +16644,11 @@ type TLMessagesEditMessage struct {
 	Entities             []*MessageEntity `json:"entities"`
 	ScheduleDate         *int32           `json:"schedule_date"`
 	QuickReplyShortcutId *int32           `json:"quick_reply_shortcut_id"`
+}
+
+func (m *TLMessagesEditMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -15629,6 +16815,11 @@ type TLMessagesEditInlineBotMessage struct {
 	Entities    []*MessageEntity         `json:"entities"`
 }
 
+func (m *TLMessagesEditInlineBotMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesEditInlineBotMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -15768,6 +16959,11 @@ type TLMessagesGetBotCallbackAnswer struct {
 	Password *InputCheckPasswordSRP `json:"password"`
 }
 
+func (m *TLMessagesGetBotCallbackAnswer) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetBotCallbackAnswer) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -15867,6 +17063,11 @@ type TLMessagesSetBotCallbackAnswer struct {
 	CacheTime int32   `json:"cache_time"`
 }
 
+func (m *TLMessagesSetBotCallbackAnswer) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetBotCallbackAnswer) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -15960,6 +17161,11 @@ type TLMessagesGetPeerDialogs struct {
 	Peers   []*InputDialogPeer `json:"peers"`
 }
 
+func (m *TLMessagesGetPeerDialogs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetPeerDialogs) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16025,6 +17231,11 @@ type TLMessagesSaveDraft struct {
 	Entities    []*MessageEntity `json:"entities"`
 	Media       *InputMedia      `json:"media"`
 	Effect      *int64           `json:"effect"`
+}
+
+func (m *TLMessagesSaveDraft) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -16161,6 +17372,11 @@ type TLMessagesGetAllDrafts struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLMessagesGetAllDrafts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetAllDrafts) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16203,6 +17419,11 @@ func (m *TLMessagesGetAllDrafts) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetFeaturedStickers struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLMessagesGetFeaturedStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -16252,6 +17473,11 @@ type TLMessagesReadFeaturedStickers struct {
 	Id      []int64 `json:"id"`
 }
 
+func (m *TLMessagesReadFeaturedStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReadFeaturedStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16299,6 +17525,11 @@ type TLMessagesGetRecentStickers struct {
 	ClazzID  uint32 `json:"_id"`
 	Attached bool   `json:"attached"`
 	Hash     int64  `json:"hash"`
+}
+
+func (m *TLMessagesGetRecentStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -16367,6 +17598,11 @@ type TLMessagesSaveRecentSticker struct {
 	Attached bool           `json:"attached"`
 	Id       *InputDocument `json:"id"`
 	Unsave   *Bool          `json:"unsave"`
+}
+
+func (m *TLMessagesSaveRecentSticker) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -16443,6 +17679,11 @@ type TLMessagesClearRecentStickers struct {
 	Attached bool   `json:"attached"`
 }
 
+func (m *TLMessagesClearRecentStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesClearRecentStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16508,6 +17749,11 @@ type TLMessagesGetArchivedStickers struct {
 	Emojis   bool   `json:"emojis"`
 	OffsetId int64  `json:"offset_id"`
 	Limit    int32  `json:"limit"`
+}
+
+func (m *TLMessagesGetArchivedStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -16584,6 +17830,11 @@ type TLMessagesGetMaskStickers struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetMaskStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetMaskStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16629,6 +17880,11 @@ func (m *TLMessagesGetMaskStickers) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetAttachedStickers struct {
 	ClazzID uint32               `json:"_id"`
 	Media   *InputStickeredMedia `json:"media"`
+}
+
+func (m *TLMessagesGetAttachedStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -16684,6 +17940,11 @@ type TLMessagesSetGameScore struct {
 	Id          int32      `json:"id"`
 	UserId      *InputUser `json:"user_id"`
 	Score       int32      `json:"score"`
+}
+
+func (m *TLMessagesSetGameScore) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -16776,6 +18037,11 @@ type TLMessagesSetInlineGameScore struct {
 	Score       int32                    `json:"score"`
 }
 
+func (m *TLMessagesSetInlineGameScore) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetInlineGameScore) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16861,6 +18127,11 @@ type TLMessagesGetGameHighScores struct {
 	UserId  *InputUser `json:"user_id"`
 }
 
+func (m *TLMessagesGetGameHighScores) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetGameHighScores) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16920,6 +18191,11 @@ type TLMessagesGetInlineGameHighScores struct {
 	UserId  *InputUser               `json:"user_id"`
 }
 
+func (m *TLMessagesGetInlineGameHighScores) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetInlineGameHighScores) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -16975,6 +18251,11 @@ type TLMessagesGetCommonChats struct {
 	UserId  *InputUser `json:"user_id"`
 	MaxId   int64      `json:"max_id"`
 	Limit   int32      `json:"limit"`
+}
+
+func (m *TLMessagesGetCommonChats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -17033,6 +18314,11 @@ type TLMessagesGetWebPage struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLMessagesGetWebPage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetWebPage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -17081,6 +18367,11 @@ type TLMessagesToggleDialogPin struct {
 	ClazzID uint32           `json:"_id"`
 	Pinned  bool             `json:"pinned"`
 	Peer    *InputDialogPeer `json:"peer"`
+}
+
+func (m *TLMessagesToggleDialogPin) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -17152,6 +18443,11 @@ type TLMessagesReorderPinnedDialogs struct {
 	Force    bool               `json:"force"`
 	FolderId int32              `json:"folder_id"`
 	Order    []*InputDialogPeer `json:"order"`
+}
+
+func (m *TLMessagesReorderPinnedDialogs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -17236,6 +18532,11 @@ type TLMessagesGetPinnedDialogs struct {
 	FolderId int32  `json:"folder_id"`
 }
 
+func (m *TLMessagesGetPinnedDialogs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetPinnedDialogs) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -17283,6 +18584,11 @@ type TLMessagesSetBotShippingResults struct {
 	QueryId         int64             `json:"query_id"`
 	Error           *string           `json:"error"`
 	ShippingOptions []*ShippingOption `json:"shipping_options"`
+}
+
+func (m *TLMessagesSetBotShippingResults) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -17381,6 +18687,11 @@ type TLMessagesSetBotPrecheckoutResults struct {
 	Error   *string `json:"error"`
 }
 
+func (m *TLMessagesSetBotPrecheckoutResults) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetBotPrecheckoutResults) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -17458,6 +18769,11 @@ type TLMessagesUploadMedia struct {
 	BusinessConnectionId *string     `json:"business_connection_id"`
 	Peer                 *InputPeer  `json:"peer"`
 	Media                *InputMedia `json:"media"`
+}
+
+func (m *TLMessagesUploadMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -17541,6 +18857,11 @@ type TLMessagesSendScreenshotNotification struct {
 	RandomId int64         `json:"random_id"`
 }
 
+func (m *TLMessagesSendScreenshotNotification) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendScreenshotNotification) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -17599,6 +18920,11 @@ type TLMessagesGetFavedStickers struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetFavedStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetFavedStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -17645,6 +18971,11 @@ type TLMessagesFaveSticker struct {
 	ClazzID uint32         `json:"_id"`
 	Id      *InputDocument `json:"id"`
 	Unfave  *Bool          `json:"unfave"`
+}
+
+func (m *TLMessagesFaveSticker) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -17706,6 +19037,11 @@ type TLMessagesGetUnreadMentions struct {
 	Limit     int32      `json:"limit"`
 	MaxId     int32      `json:"max_id"`
 	MinId     int32      `json:"min_id"`
+}
+
+func (m *TLMessagesGetUnreadMentions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -17794,6 +19130,11 @@ type TLMessagesReadMentions struct {
 	TopMsgId *int32     `json:"top_msg_id"`
 }
 
+func (m *TLMessagesReadMentions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReadMentions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -17870,6 +19211,11 @@ type TLMessagesGetRecentLocations struct {
 	Hash    int64      `json:"hash"`
 }
 
+func (m *TLMessagesGetRecentLocations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetRecentLocations) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -17937,6 +19283,11 @@ type TLMessagesSendMultiMedia struct {
 	QuickReplyShortcut     *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
 	Effect                 *int64                   `json:"effect"`
 	AllowPaidStars         *int64                   `json:"allow_paid_stars"`
+}
+
+func (m *TLMessagesSendMultiMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -18281,6 +19632,11 @@ type TLMessagesUploadEncryptedFile struct {
 	File    *InputEncryptedFile `json:"file"`
 }
 
+func (m *TLMessagesUploadEncryptedFile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesUploadEncryptedFile) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -18336,6 +19692,11 @@ type TLMessagesSearchStickerSets struct {
 	ExcludeFeatured bool   `json:"exclude_featured"`
 	Q               string `json:"q"`
 	Hash            int64  `json:"hash"`
+}
+
+func (m *TLMessagesSearchStickerSets) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -18405,6 +19766,11 @@ type TLMessagesGetSplitRanges struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLMessagesGetSplitRanges) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetSplitRanges) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -18448,6 +19814,11 @@ type TLMessagesMarkDialogUnread struct {
 	ClazzID uint32           `json:"_id"`
 	Unread  bool             `json:"unread"`
 	Peer    *InputDialogPeer `json:"peer"`
+}
+
+func (m *TLMessagesMarkDialogUnread) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -18518,6 +19889,11 @@ type TLMessagesGetDialogUnreadMarks struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLMessagesGetDialogUnreadMarks) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetDialogUnreadMarks) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -18559,6 +19935,11 @@ func (m *TLMessagesGetDialogUnreadMarks) Decode(d *bin.Decoder) (err error) {
 // TLMessagesClearAllDrafts <--
 type TLMessagesClearAllDrafts struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLMessagesClearAllDrafts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -18607,6 +19988,11 @@ type TLMessagesUpdatePinnedMessage struct {
 	PmOneside bool       `json:"pm_oneside"`
 	Peer      *InputPeer `json:"peer"`
 	Id        int32      `json:"id"`
+}
+
+func (m *TLMessagesUpdatePinnedMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -18695,6 +20081,11 @@ type TLMessagesSendVote struct {
 	Options [][]byte   `json:"options"`
 }
 
+func (m *TLMessagesSendVote) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendVote) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -18753,6 +20144,11 @@ type TLMessagesGetPollResults struct {
 	MsgId   int32      `json:"msg_id"`
 }
 
+func (m *TLMessagesGetPollResults) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetPollResults) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -18806,6 +20202,11 @@ type TLMessagesGetOnlines struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLMessagesGetOnlines) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetOnlines) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -18855,6 +20256,11 @@ type TLMessagesEditChatAbout struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	About   string     `json:"about"`
+}
+
+func (m *TLMessagesEditChatAbout) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -18909,6 +20315,11 @@ type TLMessagesEditChatDefaultBannedRights struct {
 	ClazzID      uint32            `json:"_id"`
 	Peer         *InputPeer        `json:"peer"`
 	BannedRights *ChatBannedRights `json:"banned_rights"`
+}
+
+func (m *TLMessagesEditChatDefaultBannedRights) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -18966,6 +20377,11 @@ type TLMessagesGetEmojiKeywords struct {
 	LangCode string `json:"lang_code"`
 }
 
+func (m *TLMessagesGetEmojiKeywords) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetEmojiKeywords) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -19012,6 +20428,11 @@ type TLMessagesGetEmojiKeywordsDifference struct {
 	ClazzID     uint32 `json:"_id"`
 	LangCode    string `json:"lang_code"`
 	FromVersion int32  `json:"from_version"`
+}
+
+func (m *TLMessagesGetEmojiKeywordsDifference) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19063,6 +20484,11 @@ type TLMessagesGetEmojiKeywordsLanguages struct {
 	LangCodes []string `json:"lang_codes"`
 }
 
+func (m *TLMessagesGetEmojiKeywordsLanguages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetEmojiKeywordsLanguages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -19109,6 +20535,11 @@ func (m *TLMessagesGetEmojiKeywordsLanguages) Decode(d *bin.Decoder) (err error)
 type TLMessagesGetEmojiURL struct {
 	ClazzID  uint32 `json:"_id"`
 	LangCode string `json:"lang_code"`
+}
+
+func (m *TLMessagesGetEmojiURL) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19159,6 +20590,11 @@ type TLMessagesGetSearchCounters struct {
 	SavedPeerId *InputPeer        `json:"saved_peer_id"`
 	TopMsgId    *int32            `json:"top_msg_id"`
 	Filters     []*MessagesFilter `json:"filters"`
+}
+
+func (m *TLMessagesGetSearchCounters) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19266,6 +20702,11 @@ type TLMessagesRequestUrlAuth struct {
 	Url      *string    `json:"url"`
 }
 
+func (m *TLMessagesRequestUrlAuth) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesRequestUrlAuth) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -19370,6 +20811,11 @@ type TLMessagesAcceptUrlAuth struct {
 	MsgId        *int32     `json:"msg_id"`
 	ButtonId     *int32     `json:"button_id"`
 	Url          *string    `json:"url"`
+}
+
+func (m *TLMessagesAcceptUrlAuth) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19480,6 +20926,11 @@ type TLMessagesHidePeerSettingsBar struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLMessagesHidePeerSettingsBar) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesHidePeerSettingsBar) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -19529,6 +20980,11 @@ type TLMessagesGetScheduledHistory struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Hash    int64      `json:"hash"`
+}
+
+func (m *TLMessagesGetScheduledHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19583,6 +21039,11 @@ type TLMessagesGetScheduledMessages struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Id      []int32    `json:"id"`
+}
+
+func (m *TLMessagesGetScheduledMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19640,6 +21101,11 @@ type TLMessagesSendScheduledMessages struct {
 	Id      []int32    `json:"id"`
 }
 
+func (m *TLMessagesSendScheduledMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendScheduledMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -19693,6 +21159,11 @@ type TLMessagesDeleteScheduledMessages struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Id      []int32    `json:"id"`
+}
+
+func (m *TLMessagesDeleteScheduledMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19751,6 +21222,11 @@ type TLMessagesGetPollVotes struct {
 	Option  []byte     `json:"option"`
 	Offset  *string    `json:"offset"`
 	Limit   int32      `json:"limit"`
+}
+
+func (m *TLMessagesGetPollVotes) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -19847,6 +21323,11 @@ type TLMessagesToggleStickerSets struct {
 	Stickersets []*InputStickerSet `json:"stickersets"`
 }
 
+func (m *TLMessagesToggleStickerSets) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesToggleStickerSets) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -19938,6 +21419,11 @@ type TLMessagesGetDialogFilters struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLMessagesGetDialogFilters) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetDialogFilters) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -19979,6 +21465,11 @@ func (m *TLMessagesGetDialogFilters) Decode(d *bin.Decoder) (err error) {
 // TLMessagesGetSuggestedDialogFilters <--
 type TLMessagesGetSuggestedDialogFilters struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLMessagesGetSuggestedDialogFilters) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20024,6 +21515,11 @@ type TLMessagesUpdateDialogFilter struct {
 	ClazzID uint32        `json:"_id"`
 	Id      int32         `json:"id"`
 	Filter  *DialogFilter `json:"filter"`
+}
+
+func (m *TLMessagesUpdateDialogFilter) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20097,6 +21593,11 @@ type TLMessagesUpdateDialogFiltersOrder struct {
 	Order   []int32 `json:"order"`
 }
 
+func (m *TLMessagesUpdateDialogFiltersOrder) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesUpdateDialogFiltersOrder) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -20145,6 +21646,11 @@ type TLMessagesGetOldFeaturedStickers struct {
 	Offset  int32  `json:"offset"`
 	Limit   int32  `json:"limit"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLMessagesGetOldFeaturedStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20204,6 +21710,11 @@ type TLMessagesGetReplies struct {
 	MaxId      int32      `json:"max_id"`
 	MinId      int32      `json:"min_id"`
 	Hash       int64      `json:"hash"`
+}
+
+func (m *TLMessagesGetReplies) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20274,6 +21785,11 @@ type TLMessagesGetDiscussionMessage struct {
 	MsgId   int32      `json:"msg_id"`
 }
 
+func (m *TLMessagesGetDiscussionMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetDiscussionMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -20327,6 +21843,11 @@ type TLMessagesReadDiscussion struct {
 	Peer      *InputPeer `json:"peer"`
 	MsgId     int32      `json:"msg_id"`
 	ReadMaxId int32      `json:"read_max_id"`
+}
+
+func (m *TLMessagesReadDiscussion) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20383,6 +21904,11 @@ type TLMessagesUnpinAllMessages struct {
 	ClazzID  uint32     `json:"_id"`
 	Peer     *InputPeer `json:"peer"`
 	TopMsgId *int32     `json:"top_msg_id"`
+}
+
+func (m *TLMessagesUnpinAllMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20459,6 +21985,11 @@ type TLMessagesDeleteChat struct {
 	ChatId  int64  `json:"chat_id"`
 }
 
+func (m *TLMessagesDeleteChat) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesDeleteChat) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -20504,6 +22035,11 @@ func (m *TLMessagesDeleteChat) Decode(d *bin.Decoder) (err error) {
 type TLMessagesDeletePhoneCallHistory struct {
 	ClazzID uint32 `json:"_id"`
 	Revoke  bool   `json:"revoke"`
+}
+
+func (m *TLMessagesDeletePhoneCallHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20570,6 +22106,11 @@ type TLMessagesCheckHistoryImport struct {
 	ImportHead string `json:"import_head"`
 }
 
+func (m *TLMessagesCheckHistoryImport) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesCheckHistoryImport) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -20617,6 +22158,11 @@ type TLMessagesInitHistoryImport struct {
 	Peer       *InputPeer `json:"peer"`
 	File       *InputFile `json:"file"`
 	MediaCount int32      `json:"media_count"`
+}
+
+func (m *TLMessagesInitHistoryImport) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20680,6 +22226,11 @@ type TLMessagesUploadImportedMedia struct {
 	Media    *InputMedia `json:"media"`
 }
 
+func (m *TLMessagesUploadImportedMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesUploadImportedMedia) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -20741,6 +22292,11 @@ type TLMessagesStartHistoryImport struct {
 	ImportId int64      `json:"import_id"`
 }
 
+func (m *TLMessagesStartHistoryImport) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesStartHistoryImport) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -20797,6 +22353,11 @@ type TLMessagesGetExportedChatInvites struct {
 	OffsetDate *int32     `json:"offset_date"`
 	OffsetLink *string    `json:"offset_link"`
 	Limit      int32      `json:"limit"`
+}
+
+func (m *TLMessagesGetExportedChatInvites) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -20901,6 +22462,11 @@ type TLMessagesGetExportedChatInvite struct {
 	Link    string     `json:"link"`
 }
 
+func (m *TLMessagesGetExportedChatInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetExportedChatInvite) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -20958,6 +22524,11 @@ type TLMessagesEditExportedChatInvite struct {
 	UsageLimit    *int32     `json:"usage_limit"`
 	RequestNeeded *Bool      `json:"request_needed"`
 	Title         *string    `json:"title"`
+}
+
+func (m *TLMessagesEditExportedChatInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -21078,6 +22649,11 @@ type TLMessagesDeleteRevokedExportedChatInvites struct {
 	AdminId *InputUser `json:"admin_id"`
 }
 
+func (m *TLMessagesDeleteRevokedExportedChatInvites) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesDeleteRevokedExportedChatInvites) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -21134,6 +22710,11 @@ type TLMessagesDeleteExportedChatInvite struct {
 	Link    string     `json:"link"`
 }
 
+func (m *TLMessagesDeleteExportedChatInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesDeleteExportedChatInvite) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -21185,6 +22766,11 @@ func (m *TLMessagesDeleteExportedChatInvite) Decode(d *bin.Decoder) (err error) 
 type TLMessagesGetAdminsWithInvites struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLMessagesGetAdminsWithInvites) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -21242,6 +22828,11 @@ type TLMessagesGetChatInviteImporters struct {
 	OffsetDate          int32      `json:"offset_date"`
 	OffsetUser          *InputUser `json:"offset_user"`
 	Limit               int32      `json:"limit"`
+}
+
+func (m *TLMessagesGetChatInviteImporters) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -21356,6 +22947,11 @@ type TLMessagesSetHistoryTTL struct {
 	Period  int32      `json:"period"`
 }
 
+func (m *TLMessagesSetHistoryTTL) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetHistoryTTL) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -21409,6 +23005,11 @@ type TLMessagesCheckHistoryImportPeer struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLMessagesCheckHistoryImportPeer) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesCheckHistoryImportPeer) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -21458,6 +23059,11 @@ type TLMessagesSetChatTheme struct {
 	ClazzID  uint32     `json:"_id"`
 	Peer     *InputPeer `json:"peer"`
 	Emoticon string     `json:"emoticon"`
+}
+
+func (m *TLMessagesSetChatTheme) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -21512,6 +23118,11 @@ type TLMessagesGetMessageReadParticipants struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	MsgId   int32      `json:"msg_id"`
+}
+
+func (m *TLMessagesGetMessageReadParticipants) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -21569,6 +23180,11 @@ type TLMessagesGetSearchResultsCalendar struct {
 	Filter      *MessagesFilter `json:"filter"`
 	OffsetId    int32           `json:"offset_id"`
 	OffsetDate  int32           `json:"offset_date"`
+}
+
+func (m *TLMessagesGetSearchResultsCalendar) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -21661,6 +23277,11 @@ type TLMessagesGetSearchResultsPositions struct {
 	Limit       int32           `json:"limit"`
 }
 
+func (m *TLMessagesGetSearchResultsPositions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetSearchResultsPositions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -21749,6 +23370,11 @@ type TLMessagesHideChatJoinRequest struct {
 	UserId   *InputUser `json:"user_id"`
 }
 
+func (m *TLMessagesHideChatJoinRequest) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesHideChatJoinRequest) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -21823,6 +23449,11 @@ type TLMessagesHideAllChatJoinRequests struct {
 	Approved bool       `json:"approved"`
 	Peer     *InputPeer `json:"peer"`
 	Link     *string    `json:"link"`
+}
+
+func (m *TLMessagesHideAllChatJoinRequests) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -21907,6 +23538,11 @@ type TLMessagesToggleNoForwards struct {
 	Enabled *Bool      `json:"enabled"`
 }
 
+func (m *TLMessagesToggleNoForwards) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesToggleNoForwards) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -21961,6 +23597,11 @@ type TLMessagesSaveDefaultSendAs struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	SendAs  *InputPeer `json:"send_as"`
+}
+
+func (m *TLMessagesSaveDefaultSendAs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -22020,6 +23661,11 @@ type TLMessagesSendReaction struct {
 	Peer        *InputPeer  `json:"peer"`
 	MsgId       int32       `json:"msg_id"`
 	Reaction    []*Reaction `json:"reaction"`
+}
+
+func (m *TLMessagesSendReaction) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -22124,6 +23770,11 @@ type TLMessagesGetMessagesReactions struct {
 	Id      []int32    `json:"id"`
 }
 
+func (m *TLMessagesGetMessagesReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetMessagesReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -22180,6 +23831,11 @@ type TLMessagesGetMessageReactionsList struct {
 	Reaction *Reaction  `json:"reaction"`
 	Offset   *string    `json:"offset"`
 	Limit    int32      `json:"limit"`
+}
+
+func (m *TLMessagesGetMessageReactionsList) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -22277,6 +23933,11 @@ type TLMessagesSetChatAvailableReactions struct {
 	PaidEnabled        *Bool          `json:"paid_enabled"`
 }
 
+func (m *TLMessagesSetChatAvailableReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetChatAvailableReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -22368,6 +24029,11 @@ type TLMessagesGetAvailableReactions struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLMessagesGetAvailableReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetAvailableReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -22413,6 +24079,11 @@ func (m *TLMessagesGetAvailableReactions) Decode(d *bin.Decoder) (err error) {
 type TLMessagesSetDefaultReaction struct {
 	ClazzID  uint32    `json:"_id"`
 	Reaction *Reaction `json:"reaction"`
+}
+
+func (m *TLMessagesSetDefaultReaction) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -22466,6 +24137,11 @@ type TLMessagesTranslateText struct {
 	Id      []int32             `json:"id"`
 	Text    []*TextWithEntities `json:"text"`
 	ToLang  string              `json:"to_lang"`
+}
+
+func (m *TLMessagesTranslateText) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -22577,6 +24253,11 @@ type TLMessagesGetUnreadReactions struct {
 	MinId     int32      `json:"min_id"`
 }
 
+func (m *TLMessagesGetUnreadReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetUnreadReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -22663,6 +24344,11 @@ type TLMessagesReadReactions struct {
 	TopMsgId *int32     `json:"top_msg_id"`
 }
 
+func (m *TLMessagesReadReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReadReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -22739,6 +24425,11 @@ type TLMessagesSearchSentMedia struct {
 	Limit   int32           `json:"limit"`
 }
 
+func (m *TLMessagesSearchSentMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSearchSentMedia) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -22794,6 +24485,11 @@ type TLMessagesGetAttachMenuBots struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetAttachMenuBots) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetAttachMenuBots) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -22839,6 +24535,11 @@ func (m *TLMessagesGetAttachMenuBots) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetAttachMenuBot struct {
 	ClazzID uint32     `json:"_id"`
 	Bot     *InputUser `json:"bot"`
+}
+
+func (m *TLMessagesGetAttachMenuBot) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -22891,6 +24592,11 @@ type TLMessagesToggleBotInAttachMenu struct {
 	WriteAllowed bool       `json:"write_allowed"`
 	Bot          *InputUser `json:"bot"`
 	Enabled      *Bool      `json:"enabled"`
+}
+
+func (m *TLMessagesToggleBotInAttachMenu) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -22976,6 +24682,11 @@ type TLMessagesRequestWebView struct {
 	Platform    string        `json:"platform"`
 	ReplyTo     *InputReplyTo `json:"reply_to"`
 	SendAs      *InputPeer    `json:"send_as"`
+}
+
+func (m *TLMessagesRequestWebView) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -23139,6 +24850,11 @@ type TLMessagesProlongWebView struct {
 	SendAs  *InputPeer    `json:"send_as"`
 }
 
+func (m *TLMessagesProlongWebView) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesProlongWebView) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23246,6 +24962,11 @@ type TLMessagesRequestSimpleWebView struct {
 	StartParam        *string    `json:"start_param"`
 	ThemeParams       *DataJSON  `json:"theme_params"`
 	Platform          string     `json:"platform"`
+}
+
+func (m *TLMessagesRequestSimpleWebView) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -23376,6 +25097,11 @@ type TLMessagesSendWebViewResultMessage struct {
 	Result     *InputBotInlineResult `json:"result"`
 }
 
+func (m *TLMessagesSendWebViewResultMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendWebViewResultMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23429,6 +25155,11 @@ type TLMessagesSendWebViewData struct {
 	RandomId   int64      `json:"random_id"`
 	ButtonText string     `json:"button_text"`
 	Data       string     `json:"data"`
+}
+
+func (m *TLMessagesSendWebViewData) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -23489,6 +25220,11 @@ type TLMessagesTranscribeAudio struct {
 	MsgId   int32      `json:"msg_id"`
 }
 
+func (m *TLMessagesTranscribeAudio) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesTranscribeAudio) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23543,6 +25279,11 @@ type TLMessagesRateTranscribedAudio struct {
 	MsgId           int32      `json:"msg_id"`
 	TranscriptionId int64      `json:"transcription_id"`
 	Good            *Bool      `json:"good"`
+}
+
+func (m *TLMessagesRateTranscribedAudio) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -23605,6 +25346,11 @@ type TLMessagesGetCustomEmojiDocuments struct {
 	DocumentId []int64 `json:"document_id"`
 }
 
+func (m *TLMessagesGetCustomEmojiDocuments) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetCustomEmojiDocuments) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23651,6 +25397,11 @@ func (m *TLMessagesGetCustomEmojiDocuments) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetEmojiStickers struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int64  `json:"hash"`
+}
+
+func (m *TLMessagesGetEmojiStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -23700,6 +25451,11 @@ type TLMessagesGetFeaturedEmojiStickers struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetFeaturedEmojiStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetFeaturedEmojiStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23747,6 +25503,11 @@ type TLMessagesReportReaction struct {
 	Peer         *InputPeer `json:"peer"`
 	Id           int32      `json:"id"`
 	ReactionPeer *InputPeer `json:"reaction_peer"`
+}
+
+func (m *TLMessagesReportReaction) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -23808,6 +25569,11 @@ type TLMessagesGetTopReactions struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetTopReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetTopReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23858,6 +25624,11 @@ type TLMessagesGetRecentReactions struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetRecentReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetRecentReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23906,6 +25677,11 @@ type TLMessagesClearRecentReactions struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLMessagesClearRecentReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesClearRecentReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -23949,6 +25725,11 @@ type TLMessagesGetExtendedMedia struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Id      []int32    `json:"id"`
+}
+
+func (m *TLMessagesGetExtendedMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -24005,6 +25786,11 @@ type TLMessagesSetDefaultHistoryTTL struct {
 	Period  int32  `json:"period"`
 }
 
+func (m *TLMessagesSetDefaultHistoryTTL) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetDefaultHistoryTTL) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24049,6 +25835,11 @@ func (m *TLMessagesSetDefaultHistoryTTL) Decode(d *bin.Decoder) (err error) {
 // TLMessagesGetDefaultHistoryTTL <--
 type TLMessagesGetDefaultHistoryTTL struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLMessagesGetDefaultHistoryTTL) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -24096,6 +25887,11 @@ type TLMessagesSendBotRequestedPeer struct {
 	MsgId          int32        `json:"msg_id"`
 	ButtonId       int32        `json:"button_id"`
 	RequestedPeers []*InputPeer `json:"requested_peers"`
+}
+
+func (m *TLMessagesSendBotRequestedPeer) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -24169,6 +25965,11 @@ type TLMessagesGetEmojiGroups struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLMessagesGetEmojiGroups) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetEmojiGroups) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24216,6 +26017,11 @@ type TLMessagesGetEmojiStatusGroups struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLMessagesGetEmojiStatusGroups) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetEmojiStatusGroups) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24261,6 +26067,11 @@ func (m *TLMessagesGetEmojiStatusGroups) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetEmojiProfilePhotoGroups struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int32  `json:"hash"`
+}
+
+func (m *TLMessagesGetEmojiProfilePhotoGroups) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -24311,6 +26122,11 @@ type TLMessagesSearchCustomEmoji struct {
 	Hash     int64  `json:"hash"`
 }
 
+func (m *TLMessagesSearchCustomEmoji) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSearchCustomEmoji) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24359,6 +26175,11 @@ type TLMessagesTogglePeerTranslations struct {
 	ClazzID  uint32     `json:"_id"`
 	Disabled bool       `json:"disabled"`
 	Peer     *InputPeer `json:"peer"`
+}
+
+func (m *TLMessagesTogglePeerTranslations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -24431,6 +26252,11 @@ type TLMessagesGetBotApp struct {
 	Hash    int64        `json:"hash"`
 }
 
+func (m *TLMessagesGetBotApp) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetBotApp) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24489,6 +26315,11 @@ type TLMessagesRequestAppWebView struct {
 	StartParam   *string      `json:"start_param"`
 	ThemeParams  *DataJSON    `json:"theme_params"`
 	Platform     string       `json:"platform"`
+}
+
+func (m *TLMessagesRequestAppWebView) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -24610,6 +26441,11 @@ type TLMessagesSetChatWallPaper struct {
 	Id        *int32             `json:"id"`
 }
 
+func (m *TLMessagesSetChatWallPaper) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSetChatWallPaper) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24723,6 +26559,11 @@ type TLMessagesSearchEmojiStickerSets struct {
 	Hash            int64  `json:"hash"`
 }
 
+func (m *TLMessagesSearchEmojiStickerSets) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSearchEmojiStickerSets) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24794,6 +26635,11 @@ type TLMessagesGetSavedDialogs struct {
 	OffsetPeer    *InputPeer `json:"offset_peer"`
 	Limit         int32      `json:"limit"`
 	Hash          int64      `json:"hash"`
+}
+
+func (m *TLMessagesGetSavedDialogs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -24881,6 +26727,11 @@ type TLMessagesGetSavedHistory struct {
 	Hash       int64      `json:"hash"`
 }
 
+func (m *TLMessagesGetSavedHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetSavedHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -24947,6 +26798,11 @@ type TLMessagesDeleteSavedHistory struct {
 	MaxId   int32      `json:"max_id"`
 	MinDate *int32     `json:"min_date"`
 	MaxDate *int32     `json:"max_date"`
+}
+
+func (m *TLMessagesDeleteSavedHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25035,6 +26891,11 @@ type TLMessagesGetPinnedSavedDialogs struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLMessagesGetPinnedSavedDialogs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetPinnedSavedDialogs) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25078,6 +26939,11 @@ type TLMessagesToggleSavedDialogPin struct {
 	ClazzID uint32           `json:"_id"`
 	Pinned  bool             `json:"pinned"`
 	Peer    *InputDialogPeer `json:"peer"`
+}
+
+func (m *TLMessagesToggleSavedDialogPin) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25148,6 +27014,11 @@ type TLMessagesReorderPinnedSavedDialogs struct {
 	ClazzID uint32             `json:"_id"`
 	Force   bool               `json:"force"`
 	Order   []*InputDialogPeer `json:"order"`
+}
+
+func (m *TLMessagesReorderPinnedSavedDialogs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25231,6 +27102,11 @@ type TLMessagesGetSavedReactionTags struct {
 	Hash    int64      `json:"hash"`
 }
 
+func (m *TLMessagesGetSavedReactionTags) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetSavedReactionTags) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25302,6 +27178,11 @@ type TLMessagesUpdateSavedReactionTag struct {
 	ClazzID  uint32    `json:"_id"`
 	Reaction *Reaction `json:"reaction"`
 	Title    *string   `json:"title"`
+}
+
+func (m *TLMessagesUpdateSavedReactionTag) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25378,6 +27259,11 @@ type TLMessagesGetDefaultTagReactions struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetDefaultTagReactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetDefaultTagReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25424,6 +27310,11 @@ type TLMessagesGetOutboxReadDate struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	MsgId   int32      `json:"msg_id"`
+}
+
+func (m *TLMessagesGetOutboxReadDate) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25479,6 +27370,11 @@ type TLMessagesGetQuickReplies struct {
 	Hash    int64  `json:"hash"`
 }
 
+func (m *TLMessagesGetQuickReplies) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetQuickReplies) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25524,6 +27420,11 @@ func (m *TLMessagesGetQuickReplies) Decode(d *bin.Decoder) (err error) {
 type TLMessagesReorderQuickReplies struct {
 	ClazzID uint32  `json:"_id"`
 	Order   []int32 `json:"order"`
+}
+
+func (m *TLMessagesReorderQuickReplies) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25574,6 +27475,11 @@ type TLMessagesCheckQuickReplyShortcut struct {
 	Shortcut string `json:"shortcut"`
 }
 
+func (m *TLMessagesCheckQuickReplyShortcut) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesCheckQuickReplyShortcut) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25620,6 +27526,11 @@ type TLMessagesEditQuickReplyShortcut struct {
 	ClazzID    uint32 `json:"_id"`
 	ShortcutId int32  `json:"shortcut_id"`
 	Shortcut   string `json:"shortcut"`
+}
+
+func (m *TLMessagesEditQuickReplyShortcut) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25671,6 +27582,11 @@ type TLMessagesDeleteQuickReplyShortcut struct {
 	ShortcutId int32  `json:"shortcut_id"`
 }
 
+func (m *TLMessagesDeleteQuickReplyShortcut) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesDeleteQuickReplyShortcut) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25718,6 +27634,11 @@ type TLMessagesGetQuickReplyMessages struct {
 	ShortcutId int32   `json:"shortcut_id"`
 	Id         []int32 `json:"id"`
 	Hash       int64   `json:"hash"`
+}
+
+func (m *TLMessagesGetQuickReplyMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25794,6 +27715,11 @@ type TLMessagesSendQuickReplyMessages struct {
 	RandomId   []int64    `json:"random_id"`
 }
 
+func (m *TLMessagesSendQuickReplyMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendQuickReplyMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25856,6 +27782,11 @@ type TLMessagesDeleteQuickReplyMessages struct {
 	Id         []int32 `json:"id"`
 }
 
+func (m *TLMessagesDeleteQuickReplyMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesDeleteQuickReplyMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -25905,6 +27836,11 @@ func (m *TLMessagesDeleteQuickReplyMessages) Decode(d *bin.Decoder) (err error) 
 type TLMessagesToggleDialogFilterTags struct {
 	ClazzID uint32 `json:"_id"`
 	Enabled *Bool  `json:"enabled"`
+}
+
+func (m *TLMessagesToggleDialogFilterTags) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -25958,6 +27894,11 @@ type TLMessagesGetMyStickers struct {
 	Limit    int32  `json:"limit"`
 }
 
+func (m *TLMessagesGetMyStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetMyStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26007,6 +27948,11 @@ type TLMessagesGetEmojiStickerGroups struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLMessagesGetEmojiStickerGroups) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetEmojiStickerGroups) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26052,6 +27998,11 @@ func (m *TLMessagesGetEmojiStickerGroups) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetAvailableEffects struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int32  `json:"hash"`
+}
+
+func (m *TLMessagesGetAvailableEffects) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -26101,6 +28052,11 @@ type TLMessagesEditFactCheck struct {
 	Peer    *InputPeer        `json:"peer"`
 	MsgId   int32             `json:"msg_id"`
 	Text    *TextWithEntities `json:"text"`
+}
+
+func (m *TLMessagesEditFactCheck) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -26162,6 +28118,11 @@ type TLMessagesDeleteFactCheck struct {
 	MsgId   int32      `json:"msg_id"`
 }
 
+func (m *TLMessagesDeleteFactCheck) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesDeleteFactCheck) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26214,6 +28175,11 @@ type TLMessagesGetFactCheck struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	MsgId   []int32    `json:"msg_id"`
+}
+
+func (m *TLMessagesGetFactCheck) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -26274,6 +28240,11 @@ type TLMessagesRequestMainWebView struct {
 	StartParam  *string    `json:"start_param"`
 	ThemeParams *DataJSON  `json:"theme_params"`
 	Platform    string     `json:"platform"`
+}
+
+func (m *TLMessagesRequestMainWebView) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -26388,6 +28359,11 @@ type TLMessagesSendPaidReaction struct {
 	Private  *PaidReactionPrivacy `json:"private"`
 }
 
+func (m *TLMessagesSendPaidReaction) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesSendPaidReaction) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26471,6 +28447,11 @@ type TLMessagesTogglePaidReactionPrivacy struct {
 	Private *PaidReactionPrivacy `json:"private"`
 }
 
+func (m *TLMessagesTogglePaidReactionPrivacy) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesTogglePaidReactionPrivacy) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26528,6 +28509,11 @@ type TLMessagesGetPaidReactionPrivacy struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLMessagesGetPaidReactionPrivacy) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetPaidReactionPrivacy) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26571,6 +28557,11 @@ type TLMessagesViewSponsoredMessage struct {
 	ClazzID  uint32     `json:"_id"`
 	RandomId []byte     `json:"random_id"`
 	Peer     *InputPeer `json:"peer"`
+}
+
+func (m *TLMessagesViewSponsoredMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -26639,6 +28630,11 @@ type TLMessagesClickSponsoredMessage struct {
 	Fullscreen bool       `json:"fullscreen"`
 	RandomId   []byte     `json:"random_id"`
 	Peer       *InputPeer `json:"peer"`
+}
+
+func (m *TLMessagesClickSponsoredMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -26758,6 +28754,11 @@ type TLMessagesReportSponsoredMessage struct {
 	Peer     *InputPeer `json:"peer"`
 }
 
+func (m *TLMessagesReportSponsoredMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReportSponsoredMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26827,6 +28828,11 @@ type TLMessagesGetSponsoredMessages struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLMessagesGetSponsoredMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetSponsoredMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -26877,6 +28883,11 @@ type TLMessagesSavePreparedInlineMessage struct {
 	Result    *InputBotInlineResult  `json:"result"`
 	UserId    *InputUser             `json:"user_id"`
 	PeerTypes []*InlineQueryPeerType `json:"peer_types"`
+}
+
+func (m *TLMessagesSavePreparedInlineMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -26971,6 +28982,11 @@ type TLMessagesGetPreparedInlineMessage struct {
 	Id      string     `json:"id"`
 }
 
+func (m *TLMessagesGetPreparedInlineMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesGetPreparedInlineMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -27028,6 +29044,11 @@ type TLMessagesSearchStickers struct {
 	Offset   int32    `json:"offset"`
 	Limit    int32    `json:"limit"`
 	Hash     int64    `json:"hash"`
+}
+
+func (m *TLMessagesSearchStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -27112,6 +29133,11 @@ type TLMessagesReportMessagesDelivery struct {
 	Id      []int32    `json:"id"`
 }
 
+func (m *TLMessagesReportMessagesDelivery) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLMessagesReportMessagesDelivery) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -27184,6 +29210,11 @@ type TLUpdatesGetState struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLUpdatesGetState) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUpdatesGetState) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -27231,6 +29262,11 @@ type TLUpdatesGetDifference struct {
 	Date          int32  `json:"date"`
 	Qts           int32  `json:"qts"`
 	QtsLimit      *int32 `json:"qts_limit"`
+}
+
+func (m *TLUpdatesGetDifference) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -27334,6 +29370,11 @@ type TLUpdatesGetChannelDifference struct {
 	Limit   int32                  `json:"limit"`
 }
 
+func (m *TLUpdatesGetChannelDifference) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUpdatesGetChannelDifference) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -27413,6 +29454,11 @@ type TLPhotosUpdateProfilePhoto struct {
 	Fallback bool        `json:"fallback"`
 	Bot      *InputUser  `json:"bot"`
 	Id       *InputPhoto `json:"id"`
+}
+
+func (m *TLPhotosUpdateProfilePhoto) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -27499,6 +29545,11 @@ type TLPhotosUploadProfilePhoto struct {
 	Video            *InputFile `json:"video"`
 	VideoStartTs     *float64   `json:"video_start_ts"`
 	VideoEmojiMarkup *VideoSize `json:"video_emoji_markup"`
+}
+
+func (m *TLPhotosUploadProfilePhoto) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -27624,6 +29675,11 @@ type TLPhotosDeletePhotos struct {
 	Id      []*InputPhoto `json:"id"`
 }
 
+func (m *TLPhotosDeletePhotos) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhotosDeletePhotos) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -27687,6 +29743,11 @@ type TLPhotosGetUserPhotos struct {
 	Limit   int32      `json:"limit"`
 }
 
+func (m *TLPhotosGetUserPhotos) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhotosGetUserPhotos) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -27748,6 +29809,11 @@ type TLPhotosUploadContactProfilePhoto struct {
 	Video            *InputFile `json:"video"`
 	VideoStartTs     *float64   `json:"video_start_ts"`
 	VideoEmojiMarkup *VideoSize `json:"video_emoji_markup"`
+}
+
+func (m *TLPhotosUploadContactProfilePhoto) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -27876,6 +29942,11 @@ type TLUploadSaveFilePart struct {
 	Bytes    []byte `json:"bytes"`
 }
 
+func (m *TLUploadSaveFilePart) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUploadSaveFilePart) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -27929,6 +30000,11 @@ type TLUploadGetFile struct {
 	Location     *InputFileLocation `json:"location"`
 	Offset       int64              `json:"offset"`
 	Limit        int32              `json:"limit"`
+}
+
+func (m *TLUploadGetFile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28014,6 +30090,11 @@ type TLUploadSaveBigFilePart struct {
 	Bytes          []byte `json:"bytes"`
 }
 
+func (m *TLUploadSaveBigFilePart) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUploadSaveBigFilePart) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28067,6 +30148,11 @@ type TLUploadGetWebFile struct {
 	Location *InputWebFileLocation `json:"location"`
 	Offset   int32                 `json:"offset"`
 	Limit    int32                 `json:"limit"`
+}
+
+func (m *TLUploadGetWebFile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28126,6 +30212,11 @@ type TLUploadGetCdnFile struct {
 	Limit     int32  `json:"limit"`
 }
 
+func (m *TLUploadGetCdnFile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUploadGetCdnFile) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28178,6 +30269,11 @@ type TLUploadReuploadCdnFile struct {
 	RequestToken []byte `json:"request_token"`
 }
 
+func (m *TLUploadReuploadCdnFile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUploadReuploadCdnFile) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28228,6 +30324,11 @@ type TLUploadGetCdnFileHashes struct {
 	Offset    int64  `json:"offset"`
 }
 
+func (m *TLUploadGetCdnFileHashes) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLUploadGetCdnFileHashes) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28276,6 +30377,11 @@ type TLUploadGetFileHashes struct {
 	ClazzID  uint32             `json:"_id"`
 	Location *InputFileLocation `json:"location"`
 	Offset   int64              `json:"offset"`
+}
+
+func (m *TLUploadGetFileHashes) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28330,6 +30436,11 @@ type TLHelpGetConfig struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLHelpGetConfig) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetConfig) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28371,6 +30482,11 @@ func (m *TLHelpGetConfig) Decode(d *bin.Decoder) (err error) {
 // TLHelpGetNearestDc <--
 type TLHelpGetNearestDc struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLHelpGetNearestDc) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28415,6 +30531,11 @@ func (m *TLHelpGetNearestDc) Decode(d *bin.Decoder) (err error) {
 type TLHelpGetAppUpdate struct {
 	ClazzID uint32 `json:"_id"`
 	Source  string `json:"source"`
+}
+
+func (m *TLHelpGetAppUpdate) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28463,6 +30584,11 @@ type TLHelpGetInviteText struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLHelpGetInviteText) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetInviteText) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28504,6 +30630,11 @@ func (m *TLHelpGetInviteText) Decode(d *bin.Decoder) (err error) {
 // TLHelpGetSupport <--
 type TLHelpGetSupport struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLHelpGetSupport) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28549,6 +30680,11 @@ type TLHelpSetBotUpdatesStatus struct {
 	ClazzID             uint32 `json:"_id"`
 	PendingUpdatesCount int32  `json:"pending_updates_count"`
 	Message             string `json:"message"`
+}
+
+func (m *TLHelpSetBotUpdatesStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28599,6 +30735,11 @@ type TLHelpGetCdnConfig struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLHelpGetCdnConfig) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetCdnConfig) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28641,6 +30782,11 @@ func (m *TLHelpGetCdnConfig) Decode(d *bin.Decoder) (err error) {
 type TLHelpGetRecentMeUrls struct {
 	ClazzID uint32 `json:"_id"`
 	Referer string `json:"referer"`
+}
+
+func (m *TLHelpGetRecentMeUrls) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28689,6 +30835,11 @@ type TLHelpGetTermsOfServiceUpdate struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLHelpGetTermsOfServiceUpdate) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetTermsOfServiceUpdate) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28731,6 +30882,11 @@ func (m *TLHelpGetTermsOfServiceUpdate) Decode(d *bin.Decoder) (err error) {
 type TLHelpAcceptTermsOfService struct {
 	ClazzID uint32    `json:"_id"`
 	Id      *DataJSON `json:"id"`
+}
+
+func (m *TLHelpAcceptTermsOfService) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28783,6 +30939,11 @@ type TLHelpGetDeepLinkInfo struct {
 	Path    string `json:"path"`
 }
 
+func (m *TLHelpGetDeepLinkInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetDeepLinkInfo) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28830,6 +30991,11 @@ type TLHelpGetAppConfig struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLHelpGetAppConfig) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetAppConfig) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28875,6 +31041,11 @@ func (m *TLHelpGetAppConfig) Decode(d *bin.Decoder) (err error) {
 type TLHelpSaveAppLog struct {
 	ClazzID uint32           `json:"_id"`
 	Events  []*InputAppEvent `json:"events"`
+}
+
+func (m *TLHelpSaveAppLog) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -28937,6 +31108,11 @@ type TLHelpGetPassportConfig struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLHelpGetPassportConfig) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetPassportConfig) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -28983,6 +31159,11 @@ type TLHelpGetSupportName struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLHelpGetSupportName) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetSupportName) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29025,6 +31206,11 @@ func (m *TLHelpGetSupportName) Decode(d *bin.Decoder) (err error) {
 type TLHelpGetUserInfo struct {
 	ClazzID uint32     `json:"_id"`
 	UserId  *InputUser `json:"user_id"`
+}
+
+func (m *TLHelpGetUserInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29077,6 +31263,11 @@ type TLHelpEditUserInfo struct {
 	UserId   *InputUser       `json:"user_id"`
 	Message  string           `json:"message"`
 	Entities []*MessageEntity `json:"entities"`
+}
+
+func (m *TLHelpEditUserInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29147,6 +31338,11 @@ type TLHelpGetPromoData struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLHelpGetPromoData) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetPromoData) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29189,6 +31385,11 @@ func (m *TLHelpGetPromoData) Decode(d *bin.Decoder) (err error) {
 type TLHelpHidePromoData struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLHelpHidePromoData) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29240,6 +31441,11 @@ type TLHelpDismissSuggestion struct {
 	ClazzID    uint32     `json:"_id"`
 	Peer       *InputPeer `json:"peer"`
 	Suggestion string     `json:"suggestion"`
+}
+
+func (m *TLHelpDismissSuggestion) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29296,6 +31502,11 @@ type TLHelpGetCountriesList struct {
 	Hash     int32  `json:"hash"`
 }
 
+func (m *TLHelpGetCountriesList) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetCountriesList) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29344,6 +31555,11 @@ type TLHelpGetPremiumPromo struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLHelpGetPremiumPromo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetPremiumPromo) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29386,6 +31602,11 @@ func (m *TLHelpGetPremiumPromo) Decode(d *bin.Decoder) (err error) {
 type TLHelpGetPeerColors struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int32  `json:"hash"`
+}
+
+func (m *TLHelpGetPeerColors) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29435,6 +31656,11 @@ type TLHelpGetPeerProfileColors struct {
 	Hash    int32  `json:"hash"`
 }
 
+func (m *TLHelpGetPeerProfileColors) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLHelpGetPeerProfileColors) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29480,6 +31706,11 @@ func (m *TLHelpGetPeerProfileColors) Decode(d *bin.Decoder) (err error) {
 type TLHelpGetTimezonesList struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int32  `json:"hash"`
+}
+
+func (m *TLHelpGetTimezonesList) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29528,6 +31759,11 @@ type TLChannelsReadHistory struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
 	MaxId   int32         `json:"max_id"`
+}
+
+func (m *TLChannelsReadHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29584,6 +31820,11 @@ type TLChannelsDeleteMessages struct {
 	Id      []int32       `json:"id"`
 }
 
+func (m *TLChannelsDeleteMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsDeleteMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29638,6 +31879,11 @@ type TLChannelsReportSpam struct {
 	Channel     *InputChannel `json:"channel"`
 	Participant *InputPeer    `json:"participant"`
 	Id          []int32       `json:"id"`
+}
+
+func (m *TLChannelsReportSpam) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29699,6 +31945,11 @@ type TLChannelsGetMessages struct {
 	Channel               *InputChannel   `json:"channel"`
 	Id_VECTORINPUTMESSAGE []*InputMessage `json:"id_VECTORINPUTMESSAGE"`
 	Id_VECTORINT32        []int32         `json:"id_VECTORINT32"`
+}
+
+func (m *TLChannelsGetMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29791,6 +32042,11 @@ type TLChannelsGetParticipants struct {
 	Hash    int64                      `json:"hash"`
 }
 
+func (m *TLChannelsGetParticipants) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetParticipants) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29854,6 +32110,11 @@ type TLChannelsGetParticipant struct {
 	Participant *InputPeer    `json:"participant"`
 }
 
+func (m *TLChannelsGetParticipant) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetParticipant) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -29907,6 +32168,11 @@ func (m *TLChannelsGetParticipant) Decode(d *bin.Decoder) (err error) {
 type TLChannelsGetChannels struct {
 	ClazzID uint32          `json:"_id"`
 	Id      []*InputChannel `json:"id"`
+}
+
+func (m *TLChannelsGetChannels) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -29969,6 +32235,11 @@ type TLChannelsGetFullChannel struct {
 	Channel *InputChannel `json:"channel"`
 }
 
+func (m *TLChannelsGetFullChannel) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetFullChannel) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30025,6 +32296,11 @@ type TLChannelsCreateChannel struct {
 	GeoPoint  *InputGeoPoint `json:"geo_point"`
 	Address   *string        `json:"address"`
 	TtlPeriod *int32         `json:"ttl_period"`
+}
+
+func (m *TLChannelsCreateChannel) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -30151,6 +32427,11 @@ type TLChannelsEditAdmin struct {
 	Rank        string           `json:"rank"`
 }
 
+func (m *TLChannelsEditAdmin) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsEditAdmin) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30215,6 +32496,11 @@ type TLChannelsEditTitle struct {
 	Title   string        `json:"title"`
 }
 
+func (m *TLChannelsEditTitle) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsEditTitle) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30267,6 +32553,11 @@ type TLChannelsEditPhoto struct {
 	ClazzID uint32          `json:"_id"`
 	Channel *InputChannel   `json:"channel"`
 	Photo   *InputChatPhoto `json:"photo"`
+}
+
+func (m *TLChannelsEditPhoto) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -30325,6 +32616,11 @@ type TLChannelsCheckUsername struct {
 	Username string        `json:"username"`
 }
 
+func (m *TLChannelsCheckUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsCheckUsername) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30377,6 +32673,11 @@ type TLChannelsUpdateUsername struct {
 	ClazzID  uint32        `json:"_id"`
 	Channel  *InputChannel `json:"channel"`
 	Username string        `json:"username"`
+}
+
+func (m *TLChannelsUpdateUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -30432,6 +32733,11 @@ type TLChannelsJoinChannel struct {
 	Channel *InputChannel `json:"channel"`
 }
 
+func (m *TLChannelsJoinChannel) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsJoinChannel) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30480,6 +32786,11 @@ func (m *TLChannelsJoinChannel) Decode(d *bin.Decoder) (err error) {
 type TLChannelsLeaveChannel struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
+}
+
+func (m *TLChannelsLeaveChannel) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -30531,6 +32842,11 @@ type TLChannelsInviteToChannel struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
 	Users   []*InputUser  `json:"users"`
+}
+
+func (m *TLChannelsInviteToChannel) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -30600,6 +32916,11 @@ type TLChannelsDeleteChannel struct {
 	Channel *InputChannel `json:"channel"`
 }
 
+func (m *TLChannelsDeleteChannel) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsDeleteChannel) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30651,6 +32972,11 @@ type TLChannelsExportMessageLink struct {
 	Thread  bool          `json:"thread"`
 	Channel *InputChannel `json:"channel"`
 	Id      int32         `json:"id"`
+}
+
+func (m *TLChannelsExportMessageLink) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -30733,6 +33059,11 @@ type TLChannelsToggleSignatures struct {
 	Channel           *InputChannel `json:"channel"`
 }
 
+func (m *TLChannelsToggleSignatures) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsToggleSignatures) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30808,6 +33139,11 @@ type TLChannelsGetAdminedPublicChannels struct {
 	ByLocation  bool   `json:"by_location"`
 	CheckLimit  bool   `json:"check_limit"`
 	ForPersonal bool   `json:"for_personal"`
+}
+
+func (m *TLChannelsGetAdminedPublicChannels) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -30888,6 +33224,11 @@ type TLChannelsEditBanned struct {
 	BannedRights *ChatBannedRights `json:"banned_rights"`
 }
 
+func (m *TLChannelsEditBanned) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsEditBanned) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -30952,6 +33293,11 @@ type TLChannelsGetAdminLog struct {
 	MaxId        int64                        `json:"max_id"`
 	MinId        int64                        `json:"min_id"`
 	Limit        int32                        `json:"limit"`
+}
+
+func (m *TLChannelsGetAdminLog) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -31061,6 +33407,11 @@ type TLChannelsSetStickers struct {
 	Stickerset *InputStickerSet `json:"stickerset"`
 }
 
+func (m *TLChannelsSetStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsSetStickers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31117,6 +33468,11 @@ type TLChannelsReadMessageContents struct {
 	Id      []int32       `json:"id"`
 }
 
+func (m *TLChannelsReadMessageContents) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsReadMessageContents) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31171,6 +33527,11 @@ type TLChannelsDeleteHistory struct {
 	ForEveryone bool          `json:"for_everyone"`
 	Channel     *InputChannel `json:"channel"`
 	MaxId       int32         `json:"max_id"`
+}
+
+func (m *TLChannelsDeleteHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -31246,6 +33607,11 @@ type TLChannelsTogglePreHistoryHidden struct {
 	Enabled *Bool         `json:"enabled"`
 }
 
+func (m *TLChannelsTogglePreHistoryHidden) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsTogglePreHistoryHidden) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31301,6 +33667,11 @@ type TLChannelsGetLeftChannels struct {
 	Offset  int32  `json:"offset"`
 }
 
+func (m *TLChannelsGetLeftChannels) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetLeftChannels) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31347,6 +33718,11 @@ type TLChannelsGetGroupsForDiscussion struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLChannelsGetGroupsForDiscussion) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetGroupsForDiscussion) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31390,6 +33766,11 @@ type TLChannelsSetDiscussionGroup struct {
 	ClazzID   uint32        `json:"_id"`
 	Broadcast *InputChannel `json:"broadcast"`
 	Group     *InputChannel `json:"group"`
+}
+
+func (m *TLChannelsSetDiscussionGroup) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -31447,6 +33828,11 @@ type TLChannelsEditCreator struct {
 	Channel  *InputChannel          `json:"channel"`
 	UserId   *InputUser             `json:"user_id"`
 	Password *InputCheckPasswordSRP `json:"password"`
+}
+
+func (m *TLChannelsEditCreator) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -31511,6 +33897,11 @@ type TLChannelsEditLocation struct {
 	Address  string         `json:"address"`
 }
 
+func (m *TLChannelsEditLocation) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsEditLocation) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31570,6 +33961,11 @@ type TLChannelsToggleSlowMode struct {
 	Seconds int32         `json:"seconds"`
 }
 
+func (m *TLChannelsToggleSlowMode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsToggleSlowMode) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31622,6 +34018,11 @@ type TLChannelsGetInactiveChannels struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLChannelsGetInactiveChannels) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetInactiveChannels) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31664,6 +34065,11 @@ func (m *TLChannelsGetInactiveChannels) Decode(d *bin.Decoder) (err error) {
 type TLChannelsConvertToGigagroup struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
+}
+
+func (m *TLChannelsConvertToGigagroup) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -31715,6 +34121,11 @@ type TLChannelsGetSendAs struct {
 	ClazzID          uint32     `json:"_id"`
 	ForPaidReactions bool       `json:"for_paid_reactions"`
 	Peer             *InputPeer `json:"peer"`
+}
+
+func (m *TLChannelsGetSendAs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -31787,6 +34198,11 @@ type TLChannelsDeleteParticipantHistory struct {
 	Participant *InputPeer    `json:"participant"`
 }
 
+func (m *TLChannelsDeleteParticipantHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsDeleteParticipantHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31841,6 +34257,11 @@ type TLChannelsToggleJoinToSend struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
 	Enabled *Bool         `json:"enabled"`
+}
+
+func (m *TLChannelsToggleJoinToSend) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -31899,6 +34320,11 @@ type TLChannelsToggleJoinRequest struct {
 	Enabled *Bool         `json:"enabled"`
 }
 
+func (m *TLChannelsToggleJoinRequest) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsToggleJoinRequest) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -31955,6 +34381,11 @@ type TLChannelsReorderUsernames struct {
 	Order   []string      `json:"order"`
 }
 
+func (m *TLChannelsReorderUsernames) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsReorderUsernames) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32009,6 +34440,11 @@ type TLChannelsToggleUsername struct {
 	Channel  *InputChannel `json:"channel"`
 	Username string        `json:"username"`
 	Active   *Bool         `json:"active"`
+}
+
+func (m *TLChannelsToggleUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -32069,6 +34505,11 @@ type TLChannelsDeactivateAllUsernames struct {
 	Channel *InputChannel `json:"channel"`
 }
 
+func (m *TLChannelsDeactivateAllUsernames) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsDeactivateAllUsernames) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32118,6 +34559,11 @@ type TLChannelsToggleForum struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
 	Enabled *Bool         `json:"enabled"`
+}
+
+func (m *TLChannelsToggleForum) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -32178,6 +34624,11 @@ type TLChannelsCreateForumTopic struct {
 	IconEmojiId *int64        `json:"icon_emoji_id"`
 	RandomId    int64         `json:"random_id"`
 	SendAs      *InputPeer    `json:"send_as"`
+}
+
+func (m *TLChannelsCreateForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -32288,6 +34739,11 @@ type TLChannelsGetForumTopics struct {
 	Limit       int32         `json:"limit"`
 }
 
+func (m *TLChannelsGetForumTopics) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetForumTopics) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32373,6 +34829,11 @@ type TLChannelsGetForumTopicsByID struct {
 	Topics  []int32       `json:"topics"`
 }
 
+func (m *TLChannelsGetForumTopicsByID) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsGetForumTopicsByID) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32430,6 +34891,11 @@ type TLChannelsEditForumTopic struct {
 	IconEmojiId *int64        `json:"icon_emoji_id"`
 	Closed      *Bool         `json:"closed"`
 	Hidden      *Bool         `json:"hidden"`
+}
+
+func (m *TLChannelsEditForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -32547,6 +35013,11 @@ type TLChannelsUpdatePinnedForumTopic struct {
 	Pinned  *Bool         `json:"pinned"`
 }
 
+func (m *TLChannelsUpdatePinnedForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsUpdatePinnedForumTopic) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32606,6 +35077,11 @@ type TLChannelsDeleteTopicHistory struct {
 	TopMsgId int32         `json:"top_msg_id"`
 }
 
+func (m *TLChannelsDeleteTopicHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsDeleteTopicHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32659,6 +35135,11 @@ type TLChannelsReorderPinnedForumTopics struct {
 	Force   bool          `json:"force"`
 	Channel *InputChannel `json:"channel"`
 	Order   []int32       `json:"order"`
+}
+
+func (m *TLChannelsReorderPinnedForumTopics) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -32735,6 +35216,11 @@ type TLChannelsToggleAntiSpam struct {
 	Enabled *Bool         `json:"enabled"`
 }
 
+func (m *TLChannelsToggleAntiSpam) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsToggleAntiSpam) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32791,6 +35277,11 @@ type TLChannelsReportAntiSpamFalsePositive struct {
 	MsgId   int32         `json:"msg_id"`
 }
 
+func (m *TLChannelsReportAntiSpamFalsePositive) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsReportAntiSpamFalsePositive) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -32843,6 +35334,11 @@ type TLChannelsToggleParticipantsHidden struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
 	Enabled *Bool         `json:"enabled"`
+}
+
+func (m *TLChannelsToggleParticipantsHidden) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -32901,6 +35397,11 @@ type TLChannelsUpdateColor struct {
 	Channel           *InputChannel `json:"channel"`
 	Color             *int32        `json:"color"`
 	BackgroundEmojiId *int64        `json:"background_emoji_id"`
+}
+
+func (m *TLChannelsUpdateColor) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -32996,6 +35497,11 @@ type TLChannelsToggleViewForumAsMessages struct {
 	Enabled *Bool         `json:"enabled"`
 }
 
+func (m *TLChannelsToggleViewForumAsMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsToggleViewForumAsMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33049,6 +35555,11 @@ func (m *TLChannelsToggleViewForumAsMessages) Decode(d *bin.Decoder) (err error)
 type TLChannelsGetChannelRecommendations struct {
 	ClazzID uint32        `json:"_id"`
 	Channel *InputChannel `json:"channel"`
+}
+
+func (m *TLChannelsGetChannelRecommendations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33121,6 +35632,11 @@ type TLChannelsUpdateEmojiStatus struct {
 	EmojiStatus *EmojiStatus  `json:"emoji_status"`
 }
 
+func (m *TLChannelsUpdateEmojiStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsUpdateEmojiStatus) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33177,6 +35693,11 @@ type TLChannelsSetBoostsToUnblockRestrictions struct {
 	Boosts  int32         `json:"boosts"`
 }
 
+func (m *TLChannelsSetBoostsToUnblockRestrictions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsSetBoostsToUnblockRestrictions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33229,6 +35750,11 @@ type TLChannelsSetEmojiStickers struct {
 	ClazzID    uint32           `json:"_id"`
 	Channel    *InputChannel    `json:"channel"`
 	Stickerset *InputStickerSet `json:"stickerset"`
+}
+
+func (m *TLChannelsSetEmojiStickers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33285,6 +35811,11 @@ type TLChannelsRestrictSponsoredMessages struct {
 	ClazzID    uint32        `json:"_id"`
 	Channel    *InputChannel `json:"channel"`
 	Restricted *Bool         `json:"restricted"`
+}
+
+func (m *TLChannelsRestrictSponsoredMessages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33344,6 +35875,11 @@ type TLChannelsSearchPosts struct {
 	OffsetPeer *InputPeer `json:"offset_peer"`
 	OffsetId   int32      `json:"offset_id"`
 	Limit      int32      `json:"limit"`
+}
+
+func (m *TLChannelsSearchPosts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33406,6 +35942,11 @@ type TLChannelsUpdatePaidMessagesPrice struct {
 	SendPaidMessagesStars int64         `json:"send_paid_messages_stars"`
 }
 
+func (m *TLChannelsUpdatePaidMessagesPrice) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChannelsUpdatePaidMessagesPrice) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33458,6 +35999,11 @@ type TLBotsSendCustomRequest struct {
 	ClazzID      uint32    `json:"_id"`
 	CustomMethod string    `json:"custom_method"`
 	Params       *DataJSON `json:"params"`
+}
+
+func (m *TLBotsSendCustomRequest) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33513,6 +36059,11 @@ type TLBotsAnswerWebhookJSONQuery struct {
 	Data    *DataJSON `json:"data"`
 }
 
+func (m *TLBotsAnswerWebhookJSONQuery) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsAnswerWebhookJSONQuery) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33565,6 +36116,11 @@ type TLBotsSetBotCommands struct {
 	Scope    *BotCommandScope `json:"scope"`
 	LangCode string           `json:"lang_code"`
 	Commands []*BotCommand    `json:"commands"`
+}
+
+func (m *TLBotsSetBotCommands) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33637,6 +36193,11 @@ type TLBotsResetBotCommands struct {
 	LangCode string           `json:"lang_code"`
 }
 
+func (m *TLBotsResetBotCommands) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsResetBotCommands) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33691,6 +36252,11 @@ type TLBotsGetBotCommands struct {
 	LangCode string           `json:"lang_code"`
 }
 
+func (m *TLBotsGetBotCommands) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetBotCommands) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33743,6 +36309,11 @@ type TLBotsSetBotMenuButton struct {
 	ClazzID uint32         `json:"_id"`
 	UserId  *InputUser     `json:"user_id"`
 	Button  *BotMenuButton `json:"button"`
+}
+
+func (m *TLBotsSetBotMenuButton) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33800,6 +36371,11 @@ type TLBotsGetBotMenuButton struct {
 	UserId  *InputUser `json:"user_id"`
 }
 
+func (m *TLBotsGetBotMenuButton) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetBotMenuButton) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33850,6 +36426,11 @@ type TLBotsSetBotBroadcastDefaultAdminRights struct {
 	AdminRights *ChatAdminRights `json:"admin_rights"`
 }
 
+func (m *TLBotsSetBotBroadcastDefaultAdminRights) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsSetBotBroadcastDefaultAdminRights) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -33898,6 +36479,11 @@ func (m *TLBotsSetBotBroadcastDefaultAdminRights) Decode(d *bin.Decoder) (err er
 type TLBotsSetBotGroupDefaultAdminRights struct {
 	ClazzID     uint32           `json:"_id"`
 	AdminRights *ChatAdminRights `json:"admin_rights"`
+}
+
+func (m *TLBotsSetBotGroupDefaultAdminRights) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -33952,6 +36538,11 @@ type TLBotsSetBotInfo struct {
 	Name        *string    `json:"name"`
 	About       *string    `json:"about"`
 	Description *string    `json:"description"`
+}
+
+func (m *TLBotsSetBotInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34062,6 +36653,11 @@ type TLBotsGetBotInfo struct {
 	LangCode string     `json:"lang_code"`
 }
 
+func (m *TLBotsGetBotInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetBotInfo) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34135,6 +36731,11 @@ type TLBotsReorderUsernames struct {
 	Order   []string   `json:"order"`
 }
 
+func (m *TLBotsReorderUsernames) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsReorderUsernames) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34189,6 +36790,11 @@ type TLBotsToggleUsername struct {
 	Bot      *InputUser `json:"bot"`
 	Username string     `json:"username"`
 	Active   *Bool      `json:"active"`
+}
+
+func (m *TLBotsToggleUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34249,6 +36855,11 @@ type TLBotsCanSendMessage struct {
 	Bot     *InputUser `json:"bot"`
 }
 
+func (m *TLBotsCanSendMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsCanSendMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34297,6 +36908,11 @@ func (m *TLBotsCanSendMessage) Decode(d *bin.Decoder) (err error) {
 type TLBotsAllowSendMessage struct {
 	ClazzID uint32     `json:"_id"`
 	Bot     *InputUser `json:"bot"`
+}
+
+func (m *TLBotsAllowSendMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34349,6 +36965,11 @@ type TLBotsInvokeWebViewCustomMethod struct {
 	Bot          *InputUser `json:"bot"`
 	CustomMethod string     `json:"custom_method"`
 	Params       *DataJSON  `json:"params"`
+}
+
+func (m *TLBotsInvokeWebViewCustomMethod) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34410,6 +37031,11 @@ type TLBotsGetPopularAppBots struct {
 	Limit   int32  `json:"limit"`
 }
 
+func (m *TLBotsGetPopularAppBots) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetPopularAppBots) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34459,6 +37085,11 @@ type TLBotsAddPreviewMedia struct {
 	Bot      *InputUser  `json:"bot"`
 	LangCode string      `json:"lang_code"`
 	Media    *InputMedia `json:"media"`
+}
+
+func (m *TLBotsAddPreviewMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34520,6 +37151,11 @@ type TLBotsEditPreviewMedia struct {
 	LangCode string      `json:"lang_code"`
 	Media    *InputMedia `json:"media"`
 	NewMedia *InputMedia `json:"new_media"`
+}
+
+func (m *TLBotsEditPreviewMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34585,6 +37221,11 @@ type TLBotsDeletePreviewMedia struct {
 	Bot      *InputUser    `json:"bot"`
 	LangCode string        `json:"lang_code"`
 	Media    []*InputMedia `json:"media"`
+}
+
+func (m *TLBotsDeletePreviewMedia) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34658,6 +37299,11 @@ type TLBotsReorderPreviewMedias struct {
 	Order    []*InputMedia `json:"order"`
 }
 
+func (m *TLBotsReorderPreviewMedias) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsReorderPreviewMedias) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34728,6 +37374,11 @@ type TLBotsGetPreviewInfo struct {
 	LangCode string     `json:"lang_code"`
 }
 
+func (m *TLBotsGetPreviewInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetPreviewInfo) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34781,6 +37432,11 @@ type TLBotsGetPreviewMedias struct {
 	Bot     *InputUser `json:"bot"`
 }
 
+func (m *TLBotsGetPreviewMedias) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetPreviewMedias) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34830,6 +37486,11 @@ type TLBotsUpdateUserEmojiStatus struct {
 	ClazzID     uint32       `json:"_id"`
 	UserId      *InputUser   `json:"user_id"`
 	EmojiStatus *EmojiStatus `json:"emoji_status"`
+}
+
+func (m *TLBotsUpdateUserEmojiStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34886,6 +37547,11 @@ type TLBotsToggleUserEmojiStatusPermission struct {
 	ClazzID uint32     `json:"_id"`
 	Bot     *InputUser `json:"bot"`
 	Enabled *Bool      `json:"enabled"`
+}
+
+func (m *TLBotsToggleUserEmojiStatusPermission) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -34945,6 +37611,11 @@ type TLBotsCheckDownloadFileParams struct {
 	Url      string     `json:"url"`
 }
 
+func (m *TLBotsCheckDownloadFileParams) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsCheckDownloadFileParams) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -34999,6 +37670,11 @@ type TLBotsGetAdminedBots struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLBotsGetAdminedBots) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetAdminedBots) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -35043,6 +37719,11 @@ type TLBotsUpdateStarRefProgram struct {
 	Bot                *InputUser `json:"bot"`
 	CommissionPermille int32      `json:"commission_permille"`
 	DurationMonths     *int32     `json:"duration_months"`
+}
+
+func (m *TLBotsUpdateStarRefProgram) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35122,6 +37803,11 @@ type TLBotsSetCustomVerification struct {
 	Bot               *InputUser `json:"bot"`
 	Peer              *InputPeer `json:"peer"`
 	CustomDescription *string    `json:"custom_description"`
+}
+
+func (m *TLBotsSetCustomVerification) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35217,6 +37903,11 @@ type TLBotsGetBotRecommendations struct {
 	Bot     *InputUser `json:"bot"`
 }
 
+func (m *TLBotsGetBotRecommendations) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBotsGetBotRecommendations) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -35266,6 +37957,11 @@ type TLPaymentsGetPaymentForm struct {
 	ClazzID     uint32        `json:"_id"`
 	Invoice     *InputInvoice `json:"invoice"`
 	ThemeParams *DataJSON     `json:"theme_params"`
+}
+
+func (m *TLPaymentsGetPaymentForm) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35344,6 +38040,11 @@ type TLPaymentsGetPaymentReceipt struct {
 	MsgId   int32      `json:"msg_id"`
 }
 
+func (m *TLPaymentsGetPaymentReceipt) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetPaymentReceipt) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -35397,6 +38098,11 @@ type TLPaymentsValidateRequestedInfo struct {
 	Save    bool                  `json:"save"`
 	Invoice *InputInvoice         `json:"invoice"`
 	Info    *PaymentRequestedInfo `json:"info"`
+}
+
+func (m *TLPaymentsValidateRequestedInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35476,6 +38182,11 @@ type TLPaymentsSendPaymentForm struct {
 	ShippingOptionId *string                  `json:"shipping_option_id"`
 	Credentials      *InputPaymentCredentials `json:"credentials"`
 	TipAmount        *int64                   `json:"tip_amount"`
+}
+
+func (m *TLPaymentsSendPaymentForm) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35583,6 +38294,11 @@ type TLPaymentsGetSavedInfo struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLPaymentsGetSavedInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetSavedInfo) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -35626,6 +38342,11 @@ type TLPaymentsClearSavedInfo struct {
 	ClazzID     uint32 `json:"_id"`
 	Credentials bool   `json:"credentials"`
 	Info        bool   `json:"info"`
+}
+
+func (m *TLPaymentsClearSavedInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35698,6 +38419,11 @@ type TLPaymentsGetBankCardData struct {
 	Number  string `json:"number"`
 }
 
+func (m *TLPaymentsGetBankCardData) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetBankCardData) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -35743,6 +38469,11 @@ func (m *TLPaymentsGetBankCardData) Decode(d *bin.Decoder) (err error) {
 type TLPaymentsExportInvoice struct {
 	ClazzID      uint32      `json:"_id"`
 	InvoiceMedia *InputMedia `json:"invoice_media"`
+}
+
+func (m *TLPaymentsExportInvoice) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35794,6 +38525,11 @@ type TLPaymentsAssignAppStoreTransaction struct {
 	ClazzID uint32                    `json:"_id"`
 	Receipt []byte                    `json:"receipt"`
 	Purpose *InputStorePaymentPurpose `json:"purpose"`
+}
+
+func (m *TLPaymentsAssignAppStoreTransaction) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35849,6 +38585,11 @@ type TLPaymentsAssignPlayMarketTransaction struct {
 	Purpose *InputStorePaymentPurpose `json:"purpose"`
 }
 
+func (m *TLPaymentsAssignPlayMarketTransaction) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsAssignPlayMarketTransaction) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -35902,6 +38643,11 @@ func (m *TLPaymentsAssignPlayMarketTransaction) Decode(d *bin.Decoder) (err erro
 type TLPaymentsGetPremiumGiftCodeOptions struct {
 	ClazzID   uint32     `json:"_id"`
 	BoostPeer *InputPeer `json:"boost_peer"`
+}
+
+func (m *TLPaymentsGetPremiumGiftCodeOptions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -35973,6 +38719,11 @@ type TLPaymentsCheckGiftCode struct {
 	Slug    string `json:"slug"`
 }
 
+func (m *TLPaymentsCheckGiftCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsCheckGiftCode) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -36018,6 +38769,11 @@ func (m *TLPaymentsCheckGiftCode) Decode(d *bin.Decoder) (err error) {
 type TLPaymentsApplyGiftCode struct {
 	ClazzID uint32 `json:"_id"`
 	Slug    string `json:"slug"`
+}
+
+func (m *TLPaymentsApplyGiftCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36066,6 +38822,11 @@ type TLPaymentsGetGiveawayInfo struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	MsgId   int32      `json:"msg_id"`
+}
+
+func (m *TLPaymentsGetGiveawayInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36121,6 +38882,11 @@ type TLPaymentsLaunchPrepaidGiveaway struct {
 	Peer       *InputPeer                `json:"peer"`
 	GiveawayId int64                     `json:"giveaway_id"`
 	Purpose    *InputStorePaymentPurpose `json:"purpose"`
+}
+
+func (m *TLPaymentsLaunchPrepaidGiveaway) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36180,6 +38946,11 @@ type TLPaymentsGetStarsTopupOptions struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLPaymentsGetStarsTopupOptions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetStarsTopupOptions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -36222,6 +38993,11 @@ func (m *TLPaymentsGetStarsTopupOptions) Decode(d *bin.Decoder) (err error) {
 type TLPaymentsGetStarsStatus struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLPaymentsGetStarsStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36278,6 +39054,11 @@ type TLPaymentsGetStarsTransactions struct {
 	Peer           *InputPeer `json:"peer"`
 	Offset         string     `json:"offset"`
 	Limit          int32      `json:"limit"`
+}
+
+func (m *TLPaymentsGetStarsTransactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36378,6 +39159,11 @@ type TLPaymentsSendStarsForm struct {
 	Invoice *InputInvoice `json:"invoice"`
 }
 
+func (m *TLPaymentsSendStarsForm) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsSendStarsForm) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -36429,6 +39215,11 @@ type TLPaymentsRefundStarsCharge struct {
 	ClazzID  uint32     `json:"_id"`
 	UserId   *InputUser `json:"user_id"`
 	ChargeId string     `json:"charge_id"`
+}
+
+func (m *TLPaymentsRefundStarsCharge) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36483,6 +39274,11 @@ type TLPaymentsGetStarsRevenueStats struct {
 	ClazzID uint32     `json:"_id"`
 	Dark    bool       `json:"dark"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLPaymentsGetStarsRevenueStats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36556,6 +39352,11 @@ type TLPaymentsGetStarsRevenueWithdrawalUrl struct {
 	Password *InputCheckPasswordSRP `json:"password"`
 }
 
+func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -36614,6 +39415,11 @@ type TLPaymentsGetStarsRevenueAdsAccountUrl struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLPaymentsGetStarsRevenueAdsAccountUrl) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetStarsRevenueAdsAccountUrl) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -36663,6 +39469,11 @@ type TLPaymentsGetStarsTransactionsByID struct {
 	ClazzID uint32                   `json:"_id"`
 	Peer    *InputPeer               `json:"peer"`
 	Id      []*InputStarsTransaction `json:"id"`
+}
+
+func (m *TLPaymentsGetStarsTransactionsByID) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36730,6 +39541,11 @@ func (m *TLPaymentsGetStarsTransactionsByID) Decode(d *bin.Decoder) (err error) 
 type TLPaymentsGetStarsGiftOptions struct {
 	ClazzID uint32     `json:"_id"`
 	UserId  *InputUser `json:"user_id"`
+}
+
+func (m *TLPaymentsGetStarsGiftOptions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36801,6 +39617,11 @@ type TLPaymentsGetStarsSubscriptions struct {
 	MissingBalance bool       `json:"missing_balance"`
 	Peer           *InputPeer `json:"peer"`
 	Offset         string     `json:"offset"`
+}
+
+func (m *TLPaymentsGetStarsSubscriptions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36875,6 +39696,11 @@ type TLPaymentsChangeStarsSubscription struct {
 	Peer           *InputPeer `json:"peer"`
 	SubscriptionId string     `json:"subscription_id"`
 	Canceled       *Bool      `json:"canceled"`
+}
+
+func (m *TLPaymentsChangeStarsSubscription) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -36955,6 +39781,11 @@ type TLPaymentsFulfillStarsSubscription struct {
 	SubscriptionId string     `json:"subscription_id"`
 }
 
+func (m *TLPaymentsFulfillStarsSubscription) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsFulfillStarsSubscription) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37007,6 +39838,11 @@ type TLPaymentsGetStarsGiveawayOptions struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLPaymentsGetStarsGiveawayOptions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetStarsGiveawayOptions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37049,6 +39885,11 @@ func (m *TLPaymentsGetStarsGiveawayOptions) Decode(d *bin.Decoder) (err error) {
 type TLPaymentsGetStarGifts struct {
 	ClazzID uint32 `json:"_id"`
 	Hash    int32  `json:"hash"`
+}
+
+func (m *TLPaymentsGetStarGifts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37097,6 +39938,11 @@ type TLPaymentsSaveStarGift struct {
 	ClazzID  uint32              `json:"_id"`
 	Unsave   bool                `json:"unsave"`
 	Stargift *InputSavedStarGift `json:"stargift"`
+}
+
+func (m *TLPaymentsSaveStarGift) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37168,6 +40014,11 @@ type TLPaymentsConvertStarGift struct {
 	Stargift *InputSavedStarGift `json:"stargift"`
 }
 
+func (m *TLPaymentsConvertStarGift) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsConvertStarGift) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37218,6 +40069,11 @@ type TLPaymentsBotCancelStarsSubscription struct {
 	Restore  bool       `json:"restore"`
 	UserId   *InputUser `json:"user_id"`
 	ChargeId string     `json:"charge_id"`
+}
+
+func (m *TLPaymentsBotCancelStarsSubscription) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37293,6 +40149,11 @@ type TLPaymentsGetConnectedStarRefBots struct {
 	OffsetDate *int32     `json:"offset_date"`
 	OffsetLink *string    `json:"offset_link"`
 	Limit      int32      `json:"limit"`
+}
+
+func (m *TLPaymentsGetConnectedStarRefBots) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37385,6 +40246,11 @@ type TLPaymentsGetConnectedStarRefBot struct {
 	Bot     *InputUser `json:"bot"`
 }
 
+func (m *TLPaymentsGetConnectedStarRefBot) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetConnectedStarRefBot) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37442,6 +40308,11 @@ type TLPaymentsGetSuggestedStarRefBots struct {
 	Peer           *InputPeer `json:"peer"`
 	Offset         string     `json:"offset"`
 	Limit          int32      `json:"limit"`
+}
+
+func (m *TLPaymentsGetSuggestedStarRefBots) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37525,6 +40396,11 @@ type TLPaymentsConnectStarRefBot struct {
 	Bot     *InputUser `json:"bot"`
 }
 
+func (m *TLPaymentsConnectStarRefBot) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsConnectStarRefBot) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37580,6 +40456,11 @@ type TLPaymentsEditConnectedStarRefBot struct {
 	Revoked bool       `json:"revoked"`
 	Peer    *InputPeer `json:"peer"`
 	Link    string     `json:"link"`
+}
+
+func (m *TLPaymentsEditConnectedStarRefBot) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37654,6 +40535,11 @@ type TLPaymentsGetStarGiftUpgradePreview struct {
 	GiftId  int64  `json:"gift_id"`
 }
 
+func (m *TLPaymentsGetStarGiftUpgradePreview) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetStarGiftUpgradePreview) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37700,6 +40586,11 @@ type TLPaymentsUpgradeStarGift struct {
 	ClazzID             uint32              `json:"_id"`
 	KeepOriginalDetails bool                `json:"keep_original_details"`
 	Stargift            *InputSavedStarGift `json:"stargift"`
+}
+
+func (m *TLPaymentsUpgradeStarGift) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37772,6 +40663,11 @@ type TLPaymentsTransferStarGift struct {
 	ToId     *InputPeer          `json:"to_id"`
 }
 
+func (m *TLPaymentsTransferStarGift) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsTransferStarGift) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37827,6 +40723,11 @@ type TLPaymentsGetUniqueStarGift struct {
 	Slug    string `json:"slug"`
 }
 
+func (m *TLPaymentsGetUniqueStarGift) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetUniqueStarGift) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -37880,6 +40781,11 @@ type TLPaymentsGetSavedStarGifts struct {
 	Peer             *InputPeer `json:"peer"`
 	Offset           string     `json:"offset"`
 	Limit            int32      `json:"limit"`
+}
+
+func (m *TLPaymentsGetSavedStarGifts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -37986,6 +40892,11 @@ type TLPaymentsGetSavedStarGift struct {
 	Stargift []*InputSavedStarGift `json:"stargift"`
 }
 
+func (m *TLPaymentsGetSavedStarGift) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetSavedStarGift) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38047,6 +40958,11 @@ type TLPaymentsGetStarGiftWithdrawalUrl struct {
 	Password *InputCheckPasswordSRP `json:"password"`
 }
 
+func (m *TLPaymentsGetStarGiftWithdrawalUrl) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsGetStarGiftWithdrawalUrl) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38101,6 +41017,11 @@ type TLPaymentsToggleChatStarGiftNotifications struct {
 	ClazzID uint32     `json:"_id"`
 	Enabled bool       `json:"enabled"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLPaymentsToggleChatStarGiftNotifications) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -38173,6 +41094,11 @@ type TLPaymentsToggleStarGiftsPinnedToTop struct {
 	Stargift []*InputSavedStarGift `json:"stargift"`
 }
 
+func (m *TLPaymentsToggleStarGiftsPinnedToTop) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsToggleStarGiftsPinnedToTop) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38240,6 +41166,11 @@ type TLPaymentsCanPurchaseStore struct {
 	Purpose *InputStorePaymentPurpose `json:"purpose"`
 }
 
+func (m *TLPaymentsCanPurchaseStore) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsCanPurchaseStore) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38296,6 +41227,11 @@ type TLStickersCreateStickerSet struct {
 	Thumb     *InputDocument         `json:"thumb"`
 	Stickers  []*InputStickerSetItem `json:"stickers"`
 	Software  *string                `json:"software"`
+}
+
+func (m *TLStickersCreateStickerSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -38425,6 +41361,11 @@ type TLStickersRemoveStickerFromSet struct {
 	Sticker *InputDocument `json:"sticker"`
 }
 
+func (m *TLStickersRemoveStickerFromSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStickersRemoveStickerFromSet) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38474,6 +41415,11 @@ type TLStickersChangeStickerPosition struct {
 	ClazzID  uint32         `json:"_id"`
 	Sticker  *InputDocument `json:"sticker"`
 	Position int32          `json:"position"`
+}
+
+func (m *TLStickersChangeStickerPosition) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -38528,6 +41474,11 @@ type TLStickersAddStickerToSet struct {
 	ClazzID    uint32               `json:"_id"`
 	Stickerset *InputStickerSet     `json:"stickerset"`
 	Sticker    *InputStickerSetItem `json:"sticker"`
+}
+
+func (m *TLStickersAddStickerToSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -38585,6 +41536,11 @@ type TLStickersSetStickerSetThumb struct {
 	Stickerset      *InputStickerSet `json:"stickerset"`
 	Thumb           *InputDocument   `json:"thumb"`
 	ThumbDocumentId *int64           `json:"thumb_document_id"`
+}
+
+func (m *TLStickersSetStickerSetThumb) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -38673,6 +41629,11 @@ type TLStickersCheckShortName struct {
 	ShortName string `json:"short_name"`
 }
 
+func (m *TLStickersCheckShortName) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStickersCheckShortName) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38718,6 +41679,11 @@ func (m *TLStickersCheckShortName) Decode(d *bin.Decoder) (err error) {
 type TLStickersSuggestShortName struct {
 	ClazzID uint32 `json:"_id"`
 	Title   string `json:"title"`
+}
+
+func (m *TLStickersSuggestShortName) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -38768,6 +41734,11 @@ type TLStickersChangeSticker struct {
 	Emoji      *string        `json:"emoji"`
 	MaskCoords *MaskCoords    `json:"mask_coords"`
 	Keywords   *string        `json:"keywords"`
+}
+
+func (m *TLStickersChangeSticker) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -38869,6 +41840,11 @@ type TLStickersRenameStickerSet struct {
 	Title      string           `json:"title"`
 }
 
+func (m *TLStickersRenameStickerSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStickersRenameStickerSet) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38922,6 +41898,11 @@ type TLStickersDeleteStickerSet struct {
 	Stickerset *InputStickerSet `json:"stickerset"`
 }
 
+func (m *TLStickersDeleteStickerSet) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStickersDeleteStickerSet) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -38971,6 +41952,11 @@ type TLStickersReplaceSticker struct {
 	ClazzID    uint32               `json:"_id"`
 	Sticker    *InputDocument       `json:"sticker"`
 	NewSticker *InputStickerSetItem `json:"new_sticker"`
+}
+
+func (m *TLStickersReplaceSticker) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39027,6 +42013,11 @@ type TLPhoneGetCallConfig struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLPhoneGetCallConfig) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneGetCallConfig) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -39074,6 +42065,11 @@ type TLPhoneRequestCall struct {
 	RandomId       int32              `json:"random_id"`
 	GAHash         []byte             `json:"g_a_hash"`
 	Protocol       *PhoneCallProtocol `json:"protocol"`
+}
+
+func (m *TLPhoneRequestCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39170,6 +42166,11 @@ type TLPhoneAcceptCall struct {
 	Protocol *PhoneCallProtocol `json:"protocol"`
 }
 
+func (m *TLPhoneAcceptCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneAcceptCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -39229,6 +42230,11 @@ type TLPhoneConfirmCall struct {
 	GA             []byte             `json:"g_a"`
 	KeyFingerprint int64              `json:"key_fingerprint"`
 	Protocol       *PhoneCallProtocol `json:"protocol"`
+}
+
+func (m *TLPhoneConfirmCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39291,6 +42297,11 @@ type TLPhoneReceivedCall struct {
 	Peer    *InputPhoneCall `json:"peer"`
 }
 
+func (m *TLPhoneReceivedCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneReceivedCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -39343,6 +42354,11 @@ type TLPhoneDiscardCall struct {
 	Duration     int32                   `json:"duration"`
 	Reason       *PhoneCallDiscardReason `json:"reason"`
 	ConnectionId int64                   `json:"connection_id"`
+}
+
+func (m *TLPhoneDiscardCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39428,6 +42444,11 @@ type TLPhoneSetCallRating struct {
 	Comment        string          `json:"comment"`
 }
 
+func (m *TLPhoneSetCallRating) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneSetCallRating) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -39503,6 +42524,11 @@ type TLPhoneSaveCallDebug struct {
 	Debug   *DataJSON       `json:"debug"`
 }
 
+func (m *TLPhoneSaveCallDebug) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneSaveCallDebug) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -39557,6 +42583,11 @@ type TLPhoneSendSignalingData struct {
 	ClazzID uint32          `json:"_id"`
 	Peer    *InputPhoneCall `json:"peer"`
 	Data    []byte          `json:"data"`
+}
+
+func (m *TLPhoneSendSignalingData) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39614,6 +42645,11 @@ type TLPhoneCreateGroupCall struct {
 	RandomId     int32      `json:"random_id"`
 	Title        *string    `json:"title"`
 	ScheduleDate *int32     `json:"schedule_date"`
+}
+
+func (m *TLPhoneCreateGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39715,6 +42751,11 @@ type TLPhoneJoinGroupCall struct {
 	InviteHash     *string         `json:"invite_hash"`
 	KeyFingerprint *int64          `json:"key_fingerprint"`
 	Params         *DataJSON       `json:"params"`
+}
+
+func (m *TLPhoneJoinGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39828,6 +42869,11 @@ type TLPhoneLeaveGroupCall struct {
 	Source  int32           `json:"source"`
 }
 
+func (m *TLPhoneLeaveGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneLeaveGroupCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -39880,6 +42926,11 @@ type TLPhoneInviteToGroupCall struct {
 	ClazzID uint32          `json:"_id"`
 	Call    *InputGroupCall `json:"call"`
 	Users   []*InputUser    `json:"users"`
+}
+
+func (m *TLPhoneInviteToGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -39949,6 +43000,11 @@ type TLPhoneDiscardGroupCall struct {
 	Call    *InputGroupCall `json:"call"`
 }
 
+func (m *TLPhoneDiscardGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneDiscardGroupCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -39999,6 +43055,11 @@ type TLPhoneToggleGroupCallSettings struct {
 	ResetInviteHash bool            `json:"reset_invite_hash"`
 	Call            *InputGroupCall `json:"call"`
 	JoinMuted       *Bool           `json:"join_muted"`
+}
+
+func (m *TLPhoneToggleGroupCallSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -40084,6 +43145,11 @@ type TLPhoneGetGroupCall struct {
 	Limit   int32           `json:"limit"`
 }
 
+func (m *TLPhoneGetGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneGetGroupCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40139,6 +43205,11 @@ type TLPhoneGetGroupParticipants struct {
 	Sources []int32         `json:"sources"`
 	Offset  string          `json:"offset"`
 	Limit   int32           `json:"limit"`
+}
+
+func (m *TLPhoneGetGroupParticipants) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -40219,6 +43290,11 @@ type TLPhoneCheckGroupCall struct {
 	Sources []int32         `json:"sources"`
 }
 
+func (m *TLPhoneCheckGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneCheckGroupCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40275,6 +43351,11 @@ type TLPhoneToggleGroupCallRecord struct {
 	Call          *InputGroupCall `json:"call"`
 	Title         *string         `json:"title"`
 	VideoPortrait *Bool           `json:"video_portrait"`
+}
+
+func (m *TLPhoneToggleGroupCallRecord) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -40382,6 +43463,11 @@ type TLPhoneEditGroupCallParticipant struct {
 	VideoStopped       *Bool           `json:"video_stopped"`
 	VideoPaused        *Bool           `json:"video_paused"`
 	PresentationPaused *Bool           `json:"presentation_paused"`
+}
+
+func (m *TLPhoneEditGroupCallParticipant) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -40524,6 +43610,11 @@ type TLPhoneEditGroupCallTitle struct {
 	Title   string          `json:"title"`
 }
 
+func (m *TLPhoneEditGroupCallTitle) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneEditGroupCallTitle) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40577,6 +43668,11 @@ type TLPhoneGetGroupCallJoinAs struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLPhoneGetGroupCallJoinAs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneGetGroupCallJoinAs) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40626,6 +43722,11 @@ type TLPhoneExportGroupCallInvite struct {
 	ClazzID       uint32          `json:"_id"`
 	CanSelfUnmute bool            `json:"can_self_unmute"`
 	Call          *InputGroupCall `json:"call"`
+}
+
+func (m *TLPhoneExportGroupCallInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -40698,6 +43799,11 @@ type TLPhoneToggleGroupCallStartSubscription struct {
 	Subscribed *Bool           `json:"subscribed"`
 }
 
+func (m *TLPhoneToggleGroupCallStartSubscription) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneToggleGroupCallStartSubscription) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40753,6 +43859,11 @@ type TLPhoneStartScheduledGroupCall struct {
 	Call    *InputGroupCall `json:"call"`
 }
 
+func (m *TLPhoneStartScheduledGroupCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneStartScheduledGroupCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40802,6 +43913,11 @@ type TLPhoneSaveDefaultGroupCallJoinAs struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	JoinAs  *InputPeer `json:"join_as"`
+}
+
+func (m *TLPhoneSaveDefaultGroupCallJoinAs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -40860,6 +43976,11 @@ type TLPhoneJoinGroupCallPresentation struct {
 	Params  *DataJSON       `json:"params"`
 }
 
+func (m *TLPhoneJoinGroupCallPresentation) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneJoinGroupCallPresentation) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40915,6 +44036,11 @@ type TLPhoneLeaveGroupCallPresentation struct {
 	Call    *InputGroupCall `json:"call"`
 }
 
+func (m *TLPhoneLeaveGroupCallPresentation) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneLeaveGroupCallPresentation) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -40963,6 +44089,11 @@ func (m *TLPhoneLeaveGroupCallPresentation) Decode(d *bin.Decoder) (err error) {
 type TLPhoneGetGroupCallStreamChannels struct {
 	ClazzID uint32          `json:"_id"`
 	Call    *InputGroupCall `json:"call"`
+}
+
+func (m *TLPhoneGetGroupCallStreamChannels) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41014,6 +44145,11 @@ type TLPhoneGetGroupCallStreamRtmpUrl struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Revoke  *Bool      `json:"revoke"`
+}
+
+func (m *TLPhoneGetGroupCallStreamRtmpUrl) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41072,6 +44208,11 @@ type TLPhoneSaveCallLog struct {
 	File    *InputFile      `json:"file"`
 }
 
+func (m *TLPhoneSaveCallLog) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneSaveCallLog) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -41128,6 +44269,11 @@ type TLPhoneCreateConferenceCall struct {
 	KeyFingerprint int64           `json:"key_fingerprint"`
 }
 
+func (m *TLPhoneCreateConferenceCall) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPhoneCreateConferenceCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -41180,6 +44326,11 @@ type TLLangpackGetLangPack struct {
 	ClazzID  uint32 `json:"_id"`
 	LangPack string `json:"lang_pack"`
 	LangCode string `json:"lang_code"`
+}
+
+func (m *TLLangpackGetLangPack) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41243,6 +44394,11 @@ type TLLangpackGetStrings struct {
 	LangPack string   `json:"lang_pack"`
 	LangCode string   `json:"lang_code"`
 	Keys     []string `json:"keys"`
+}
+
+func (m *TLLangpackGetStrings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41316,6 +44472,11 @@ type TLLangpackGetDifference struct {
 	FromVersion int32  `json:"from_version"`
 }
 
+func (m *TLLangpackGetDifference) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLLangpackGetDifference) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -41365,6 +44526,11 @@ func (m *TLLangpackGetDifference) Decode(d *bin.Decoder) (err error) {
 type TLLangpackGetLanguages struct {
 	ClazzID  uint32 `json:"_id"`
 	LangPack string `json:"lang_pack"`
+}
+
+func (m *TLLangpackGetLanguages) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41424,6 +44590,11 @@ type TLLangpackGetLanguage struct {
 	LangCode string `json:"lang_code"`
 }
 
+func (m *TLLangpackGetLanguage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLLangpackGetLanguage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -41471,6 +44642,11 @@ func (m *TLLangpackGetLanguage) Decode(d *bin.Decoder) (err error) {
 type TLFoldersEditPeerFolders struct {
 	ClazzID     uint32             `json:"_id"`
 	FolderPeers []*InputFolderPeer `json:"folder_peers"`
+}
+
+func (m *TLFoldersEditPeerFolders) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41532,6 +44708,11 @@ type TLStatsGetBroadcastStats struct {
 	ClazzID uint32        `json:"_id"`
 	Dark    bool          `json:"dark"`
 	Channel *InputChannel `json:"channel"`
+}
+
+func (m *TLStatsGetBroadcastStats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41604,6 +44785,11 @@ type TLStatsLoadAsyncGraph struct {
 	X       *int64 `json:"x"`
 }
 
+func (m *TLStatsLoadAsyncGraph) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStatsLoadAsyncGraph) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -41673,6 +44859,11 @@ type TLStatsGetMegagroupStats struct {
 	ClazzID uint32        `json:"_id"`
 	Dark    bool          `json:"dark"`
 	Channel *InputChannel `json:"channel"`
+}
+
+func (m *TLStatsGetMegagroupStats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41747,6 +44938,11 @@ type TLStatsGetMessagePublicForwards struct {
 	Limit   int32         `json:"limit"`
 }
 
+func (m *TLStatsGetMessagePublicForwards) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStatsGetMessagePublicForwards) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -41804,6 +45000,11 @@ type TLStatsGetMessageStats struct {
 	Dark    bool          `json:"dark"`
 	Channel *InputChannel `json:"channel"`
 	MsgId   int32         `json:"msg_id"`
+}
+
+func (m *TLStatsGetMessageStats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41878,6 +45079,11 @@ type TLStatsGetStoryStats struct {
 	Dark    bool       `json:"dark"`
 	Peer    *InputPeer `json:"peer"`
 	Id      int32      `json:"id"`
+}
+
+func (m *TLStatsGetStoryStats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -41955,6 +45161,11 @@ type TLStatsGetStoryPublicForwards struct {
 	Limit   int32      `json:"limit"`
 }
 
+func (m *TLStatsGetStoryPublicForwards) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStatsGetStoryPublicForwards) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42011,6 +45222,11 @@ type TLStatsGetBroadcastRevenueStats struct {
 	ClazzID uint32     `json:"_id"`
 	Dark    bool       `json:"dark"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLStatsGetBroadcastRevenueStats) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -42083,6 +45299,11 @@ type TLStatsGetBroadcastRevenueWithdrawalUrl struct {
 	Password *InputCheckPasswordSRP `json:"password"`
 }
 
+func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42140,6 +45361,11 @@ type TLStatsGetBroadcastRevenueTransactions struct {
 	Limit   int32      `json:"limit"`
 }
 
+func (m *TLStatsGetBroadcastRevenueTransactions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStatsGetBroadcastRevenueTransactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42195,6 +45421,11 @@ type TLChatlistsExportChatlistInvite struct {
 	Chatlist *InputChatlist `json:"chatlist"`
 	Title    string         `json:"title"`
 	Peers    []*InputPeer   `json:"peers"`
+}
+
+func (m *TLChatlistsExportChatlistInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -42267,6 +45498,11 @@ type TLChatlistsDeleteExportedInvite struct {
 	Slug     string         `json:"slug"`
 }
 
+func (m *TLChatlistsDeleteExportedInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChatlistsDeleteExportedInvite) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42321,6 +45557,11 @@ type TLChatlistsEditExportedInvite struct {
 	Slug     string         `json:"slug"`
 	Title    *string        `json:"title"`
 	Peers    []*InputPeer   `json:"peers"`
+}
+
+func (m *TLChatlistsEditExportedInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -42423,6 +45664,11 @@ type TLChatlistsGetExportedInvites struct {
 	Chatlist *InputChatlist `json:"chatlist"`
 }
 
+func (m *TLChatlistsGetExportedInvites) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChatlistsGetExportedInvites) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42473,6 +45719,11 @@ type TLChatlistsCheckChatlistInvite struct {
 	Slug    string `json:"slug"`
 }
 
+func (m *TLChatlistsCheckChatlistInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChatlistsCheckChatlistInvite) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42519,6 +45770,11 @@ type TLChatlistsJoinChatlistInvite struct {
 	ClazzID uint32       `json:"_id"`
 	Slug    string       `json:"slug"`
 	Peers   []*InputPeer `json:"peers"`
+}
+
+func (m *TLChatlistsJoinChatlistInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -42584,6 +45840,11 @@ type TLChatlistsGetChatlistUpdates struct {
 	Chatlist *InputChatlist `json:"chatlist"`
 }
 
+func (m *TLChatlistsGetChatlistUpdates) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChatlistsGetChatlistUpdates) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42633,6 +45894,11 @@ type TLChatlistsJoinChatlistUpdates struct {
 	ClazzID  uint32         `json:"_id"`
 	Chatlist *InputChatlist `json:"chatlist"`
 	Peers    []*InputPeer   `json:"peers"`
+}
+
+func (m *TLChatlistsJoinChatlistUpdates) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -42702,6 +45968,11 @@ type TLChatlistsHideChatlistUpdates struct {
 	Chatlist *InputChatlist `json:"chatlist"`
 }
 
+func (m *TLChatlistsHideChatlistUpdates) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLChatlistsHideChatlistUpdates) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42750,6 +46021,11 @@ func (m *TLChatlistsHideChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 type TLChatlistsGetLeaveChatlistSuggestions struct {
 	ClazzID  uint32         `json:"_id"`
 	Chatlist *InputChatlist `json:"chatlist"`
+}
+
+func (m *TLChatlistsGetLeaveChatlistSuggestions) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -42801,6 +46077,11 @@ type TLChatlistsLeaveChatlist struct {
 	ClazzID  uint32         `json:"_id"`
 	Chatlist *InputChatlist `json:"chatlist"`
 	Peers    []*InputPeer   `json:"peers"`
+}
+
+func (m *TLChatlistsLeaveChatlist) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -42870,6 +46151,11 @@ type TLStoriesCanSendStory struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLStoriesCanSendStory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesCanSendStory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -42930,6 +46216,11 @@ type TLStoriesSendStory struct {
 	Period       *int32              `json:"period"`
 	FwdFromId    *InputPeer          `json:"fwd_from_id"`
 	FwdFromStory *int32              `json:"fwd_from_story"`
+}
+
+func (m *TLStoriesSendStory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -43136,6 +46427,11 @@ type TLStoriesEditStory struct {
 	PrivacyRules []*InputPrivacyRule `json:"privacy_rules"`
 }
 
+func (m *TLStoriesEditStory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesEditStory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -43293,6 +46589,11 @@ type TLStoriesDeleteStories struct {
 	Id      []int32    `json:"id"`
 }
 
+func (m *TLStoriesDeleteStories) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesDeleteStories) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -43347,6 +46648,11 @@ type TLStoriesTogglePinned struct {
 	Peer    *InputPeer `json:"peer"`
 	Id      []int32    `json:"id"`
 	Pinned  *Bool      `json:"pinned"`
+}
+
+func (m *TLStoriesTogglePinned) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -43409,6 +46715,11 @@ type TLStoriesGetAllStories struct {
 	Next    bool    `json:"next"`
 	Hidden  bool    `json:"hidden"`
 	State   *string `json:"state"`
+}
+
+func (m *TLStoriesGetAllStories) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -43493,6 +46804,11 @@ type TLStoriesGetPinnedStories struct {
 	Limit    int32      `json:"limit"`
 }
 
+func (m *TLStoriesGetPinnedStories) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesGetPinnedStories) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -43548,6 +46864,11 @@ type TLStoriesGetStoriesArchive struct {
 	Peer     *InputPeer `json:"peer"`
 	OffsetId int32      `json:"offset_id"`
 	Limit    int32      `json:"limit"`
+}
+
+func (m *TLStoriesGetStoriesArchive) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -43606,6 +46927,11 @@ type TLStoriesGetStoriesByID struct {
 	Id      []int32    `json:"id"`
 }
 
+func (m *TLStoriesGetStoriesByID) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesGetStoriesByID) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -43660,6 +46986,11 @@ type TLStoriesToggleAllStoriesHidden struct {
 	Hidden  *Bool  `json:"hidden"`
 }
 
+func (m *TLStoriesToggleAllStoriesHidden) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesToggleAllStoriesHidden) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -43709,6 +47040,11 @@ type TLStoriesReadStories struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	MaxId   int32      `json:"max_id"`
+}
+
+func (m *TLStoriesReadStories) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -43763,6 +47099,11 @@ type TLStoriesIncrementStoryViews struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Id      []int32    `json:"id"`
+}
+
+func (m *TLStoriesIncrementStoryViews) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -43824,6 +47165,11 @@ type TLStoriesGetStoryViewsList struct {
 	Id             int32      `json:"id"`
 	Offset         string     `json:"offset"`
 	Limit          int32      `json:"limit"`
+}
+
+func (m *TLStoriesGetStoryViewsList) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -43928,6 +47274,11 @@ type TLStoriesGetStoriesViews struct {
 	Id      []int32    `json:"id"`
 }
 
+func (m *TLStoriesGetStoriesViews) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesGetStoriesViews) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -43981,6 +47332,11 @@ type TLStoriesExportStoryLink struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Id      int32      `json:"id"`
+}
+
+func (m *TLStoriesExportStoryLink) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44037,6 +47393,11 @@ type TLStoriesReport struct {
 	Id      []int32    `json:"id"`
 	Option  []byte     `json:"option"`
 	Message string     `json:"message"`
+}
+
+func (m *TLStoriesReport) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44098,6 +47459,11 @@ type TLStoriesActivateStealthMode struct {
 	ClazzID uint32 `json:"_id"`
 	Past    bool   `json:"past"`
 	Future  bool   `json:"future"`
+}
+
+func (m *TLStoriesActivateStealthMode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44171,6 +47537,11 @@ type TLStoriesSendReaction struct {
 	Peer        *InputPeer `json:"peer"`
 	StoryId     int32      `json:"story_id"`
 	Reaction    *Reaction  `json:"reaction"`
+}
+
+func (m *TLStoriesSendReaction) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44250,6 +47621,11 @@ type TLStoriesGetPeerStories struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLStoriesGetPeerStories) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesGetPeerStories) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -44299,6 +47675,11 @@ type TLStoriesGetAllReadPeerStories struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLStoriesGetAllReadPeerStories) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesGetAllReadPeerStories) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -44341,6 +47722,11 @@ func (m *TLStoriesGetAllReadPeerStories) Decode(d *bin.Decoder) (err error) {
 type TLStoriesGetPeerMaxIDs struct {
 	ClazzID uint32       `json:"_id"`
 	Id      []*InputPeer `json:"id"`
+}
+
+func (m *TLStoriesGetPeerMaxIDs) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44402,6 +47788,11 @@ type TLStoriesGetChatsToSend struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLStoriesGetChatsToSend) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesGetChatsToSend) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -44445,6 +47836,11 @@ type TLStoriesTogglePeerStoriesHidden struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	Hidden  *Bool      `json:"hidden"`
+}
+
+func (m *TLStoriesTogglePeerStoriesHidden) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44505,6 +47901,11 @@ type TLStoriesGetStoryReactionsList struct {
 	Reaction      *Reaction  `json:"reaction"`
 	Offset        *string    `json:"offset"`
 	Limit         int32      `json:"limit"`
+}
+
+func (m *TLStoriesGetStoryReactionsList) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44607,6 +48008,11 @@ type TLStoriesTogglePinnedToTop struct {
 	Id      []int32    `json:"id"`
 }
 
+func (m *TLStoriesTogglePinnedToTop) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLStoriesTogglePinnedToTop) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -44663,6 +48069,11 @@ type TLStoriesSearchPosts struct {
 	Peer    *InputPeer `json:"peer"`
 	Offset  string     `json:"offset"`
 	Limit   int32      `json:"limit"`
+}
+
+func (m *TLStoriesSearchPosts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44766,6 +48177,11 @@ type TLPremiumGetBoostsList struct {
 	Limit   int32      `json:"limit"`
 }
 
+func (m *TLPremiumGetBoostsList) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPremiumGetBoostsList) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -44839,6 +48255,11 @@ type TLPremiumGetMyBoosts struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLPremiumGetMyBoosts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPremiumGetMyBoosts) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -44882,6 +48303,11 @@ type TLPremiumApplyBoost struct {
 	ClazzID uint32     `json:"_id"`
 	Slots   []int32    `json:"slots"`
 	Peer    *InputPeer `json:"peer"`
+}
+
+func (m *TLPremiumApplyBoost) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -44956,6 +48382,11 @@ type TLPremiumGetBoostsStatus struct {
 	Peer    *InputPeer `json:"peer"`
 }
 
+func (m *TLPremiumGetBoostsStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPremiumGetBoostsStatus) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45005,6 +48436,11 @@ type TLPremiumGetUserBoosts struct {
 	ClazzID uint32     `json:"_id"`
 	Peer    *InputPeer `json:"peer"`
 	UserId  *InputUser `json:"user_id"`
+}
+
+func (m *TLPremiumGetUserBoosts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45061,6 +48497,11 @@ type TLSmsjobsIsEligibleToJoin struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLSmsjobsIsEligibleToJoin) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLSmsjobsIsEligibleToJoin) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45102,6 +48543,11 @@ func (m *TLSmsjobsIsEligibleToJoin) Decode(d *bin.Decoder) (err error) {
 // TLSmsjobsJoin <--
 type TLSmsjobsJoin struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLSmsjobsJoin) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45147,6 +48593,11 @@ type TLSmsjobsLeave struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLSmsjobsLeave) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLSmsjobsLeave) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45189,6 +48640,11 @@ func (m *TLSmsjobsLeave) Decode(d *bin.Decoder) (err error) {
 type TLSmsjobsUpdateSettings struct {
 	ClazzID            uint32 `json:"_id"`
 	AllowInternational bool   `json:"allow_international"`
+}
+
+func (m *TLSmsjobsUpdateSettings) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45254,6 +48710,11 @@ type TLSmsjobsGetStatus struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLSmsjobsGetStatus) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLSmsjobsGetStatus) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45296,6 +48757,11 @@ func (m *TLSmsjobsGetStatus) Decode(d *bin.Decoder) (err error) {
 type TLSmsjobsGetSmsJob struct {
 	ClazzID uint32 `json:"_id"`
 	JobId   string `json:"job_id"`
+}
+
+func (m *TLSmsjobsGetSmsJob) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45344,6 +48810,11 @@ type TLSmsjobsFinishJob struct {
 	ClazzID uint32  `json:"_id"`
 	JobId   string  `json:"job_id"`
 	Error   *string `json:"error"`
+}
+
+func (m *TLSmsjobsFinishJob) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45416,6 +48887,11 @@ type TLFragmentGetCollectibleInfo struct {
 	Collectible *InputCollectible `json:"collectible"`
 }
 
+func (m *TLFragmentGetCollectibleInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLFragmentGetCollectibleInfo) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45466,6 +48942,11 @@ type TLPaymentsCanPurchasePremium struct {
 	Purpose *InputStorePaymentPurpose `json:"purpose"`
 }
 
+func (m *TLPaymentsCanPurchasePremium) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPaymentsCanPurchasePremium) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45514,6 +48995,11 @@ func (m *TLPaymentsCanPurchasePremium) Decode(d *bin.Decoder) (err error) {
 type TLUsersGetIsPremiumRequiredToContact struct {
 	ClazzID uint32       `json:"_id"`
 	Id      []*InputUser `json:"id"`
+}
+
+func (m *TLUsersGetIsPremiumRequiredToContact) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45575,6 +49061,11 @@ type TLTestParseInputAppEvent struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLTestParseInputAppEvent) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLTestParseInputAppEvent) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45622,6 +49113,11 @@ type TLPredefinedCreatePredefinedUser struct {
 	Username  *string `json:"username"`
 	Code      string  `json:"code"`
 	Verified  bool    `json:"verified"`
+}
+
+func (m *TLPredefinedCreatePredefinedUser) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45730,6 +49226,11 @@ type TLPredefinedUpdatePredefinedUsername struct {
 	Username string `json:"username"`
 }
 
+func (m *TLPredefinedUpdatePredefinedUsername) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPredefinedUpdatePredefinedUsername) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45780,6 +49281,11 @@ type TLPredefinedUpdatePredefinedProfile struct {
 	FirstName *string `json:"first_name"`
 	LastName  *string `json:"last_name"`
 	About     *string `json:"about"`
+}
+
+func (m *TLPredefinedUpdatePredefinedProfile) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -45877,6 +49383,11 @@ type TLPredefinedUpdatePredefinedVerified struct {
 	Verified bool   `json:"verified"`
 }
 
+func (m *TLPredefinedUpdatePredefinedVerified) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPredefinedUpdatePredefinedVerified) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45944,6 +49455,11 @@ type TLPredefinedUpdatePredefinedCode struct {
 	Code    string `json:"code"`
 }
 
+func (m *TLPredefinedUpdatePredefinedCode) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPredefinedUpdatePredefinedCode) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -45993,6 +49509,11 @@ type TLPredefinedGetPredefinedUser struct {
 	Phone   string `json:"phone"`
 }
 
+func (m *TLPredefinedGetPredefinedUser) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPredefinedGetPredefinedUser) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -46039,6 +49560,11 @@ type TLPredefinedGetPredefinedUsers struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLPredefinedGetPredefinedUsers) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLPredefinedGetPredefinedUsers) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -46082,6 +49608,11 @@ type TLUsersGetMe struct {
 	ClazzID uint32 `json:"_id"`
 	Id      int64  `json:"id"`
 	Token   string `json:"token"`
+}
+
+func (m *TLUsersGetMe) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -46132,6 +49663,11 @@ type TLAccountUpdateVerified struct {
 	ClazzID  uint32 `json:"_id"`
 	Id       int64  `json:"id"`
 	Verified bool   `json:"verified"`
+}
+
+func (m *TLAccountUpdateVerified) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -46201,6 +49737,11 @@ type TLAuthToggleBan struct {
 	Predefined bool    `json:"predefined"`
 	Expires    *int32  `json:"expires"`
 	Reason     *string `json:"reason"`
+}
+
+func (m *TLAuthToggleBan) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
 }
 
 // Encode <--
@@ -46290,6 +49831,11 @@ type TLBizInvokeBizDataRaw struct {
 	BizData *BizDataRaw `json:"biz_data"`
 }
 
+func (m *TLBizInvokeBizDataRaw) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
 // Encode <--
 func (m *TLBizInvokeBizDataRaw) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
@@ -46343,6 +49889,11 @@ type VectorSecureValue struct {
 	Datas []*SecureValue `json:"datas"`
 }
 
+func (m *VectorSecureValue) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorSecureValue) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46360,6 +49911,11 @@ func (m *VectorSecureValue) Decode(d *bin.Decoder) (err error) {
 // VectorWallPaper <--
 type VectorWallPaper struct {
 	Datas []*WallPaper `json:"datas"`
+}
+
+func (m *VectorWallPaper) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46381,6 +49937,11 @@ type VectorUser struct {
 	Datas []*User `json:"datas"`
 }
 
+func (m *VectorUser) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorUser) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46398,6 +49959,11 @@ func (m *VectorUser) Decode(d *bin.Decoder) (err error) {
 // VectorRequirementToContact <--
 type VectorRequirementToContact struct {
 	Datas []*RequirementToContact `json:"datas"`
+}
+
+func (m *VectorRequirementToContact) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46419,6 +49985,11 @@ type VectorInt struct {
 	Datas []int32 `json:"datas"`
 }
 
+func (m *VectorInt) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorInt) Encode(x *bin.Encoder, layer int32) error {
 	iface.EncodeInt32List(x, m.Datas)
@@ -46436,6 +50007,11 @@ func (m *VectorInt) Decode(d *bin.Decoder) (err error) {
 // VectorContactStatus <--
 type VectorContactStatus struct {
 	Datas []*ContactStatus `json:"datas"`
+}
+
+func (m *VectorContactStatus) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46457,6 +50033,11 @@ type VectorSavedContact struct {
 	Datas []*SavedContact `json:"datas"`
 }
 
+func (m *VectorSavedContact) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorSavedContact) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46474,6 +50055,11 @@ func (m *VectorSavedContact) Decode(d *bin.Decoder) (err error) {
 // VectorReceivedNotifyMessage <--
 type VectorReceivedNotifyMessage struct {
 	Datas []*ReceivedNotifyMessage `json:"datas"`
+}
+
+func (m *VectorReceivedNotifyMessage) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46495,6 +50081,11 @@ type VectorLong struct {
 	Datas []int64 `json:"datas"`
 }
 
+func (m *VectorLong) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorLong) Encode(x *bin.Encoder, layer int32) error {
 	iface.EncodeInt64List(x, m.Datas)
@@ -46512,6 +50103,11 @@ func (m *VectorLong) Decode(d *bin.Decoder) (err error) {
 // VectorStickerSetCovered <--
 type VectorStickerSetCovered struct {
 	Datas []*StickerSetCovered `json:"datas"`
+}
+
+func (m *VectorStickerSetCovered) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46533,6 +50129,11 @@ type VectorMessageRange struct {
 	Datas []*MessageRange `json:"datas"`
 }
 
+func (m *VectorMessageRange) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorMessageRange) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46550,6 +50151,11 @@ func (m *VectorMessageRange) Decode(d *bin.Decoder) (err error) {
 // VectorDialogPeer <--
 type VectorDialogPeer struct {
 	Datas []*DialogPeer `json:"datas"`
+}
+
+func (m *VectorDialogPeer) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46571,6 +50177,11 @@ type VectorEmojiLanguage struct {
 	Datas []*EmojiLanguage `json:"datas"`
 }
 
+func (m *VectorEmojiLanguage) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorEmojiLanguage) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46588,6 +50199,11 @@ func (m *VectorEmojiLanguage) Decode(d *bin.Decoder) (err error) {
 // VectorMessagesSearchCounter <--
 type VectorMessagesSearchCounter struct {
 	Datas []*MessagesSearchCounter `json:"datas"`
+}
+
+func (m *VectorMessagesSearchCounter) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46609,6 +50225,11 @@ type VectorDialogFilterSuggested struct {
 	Datas []*DialogFilterSuggested `json:"datas"`
 }
 
+func (m *VectorDialogFilterSuggested) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorDialogFilterSuggested) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46626,6 +50247,11 @@ func (m *VectorDialogFilterSuggested) Decode(d *bin.Decoder) (err error) {
 // VectorReadParticipantDate <--
 type VectorReadParticipantDate struct {
 	Datas []*ReadParticipantDate `json:"datas"`
+}
+
+func (m *VectorReadParticipantDate) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46647,6 +50273,11 @@ type VectorDocument struct {
 	Datas []*Document `json:"datas"`
 }
 
+func (m *VectorDocument) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorDocument) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46664,6 +50295,11 @@ func (m *VectorDocument) Decode(d *bin.Decoder) (err error) {
 // VectorFactCheck <--
 type VectorFactCheck struct {
 	Datas []*FactCheck `json:"datas"`
+}
+
+func (m *VectorFactCheck) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46685,6 +50321,11 @@ type VectorFileHash struct {
 	Datas []*FileHash `json:"datas"`
 }
 
+func (m *VectorFileHash) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorFileHash) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46702,6 +50343,11 @@ func (m *VectorFileHash) Decode(d *bin.Decoder) (err error) {
 // VectorBotCommand <--
 type VectorBotCommand struct {
 	Datas []*BotCommand `json:"datas"`
+}
+
+func (m *VectorBotCommand) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46723,6 +50369,11 @@ type VectorBotPreviewMedia struct {
 	Datas []*BotPreviewMedia `json:"datas"`
 }
 
+func (m *VectorBotPreviewMedia) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorBotPreviewMedia) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46740,6 +50391,11 @@ func (m *VectorBotPreviewMedia) Decode(d *bin.Decoder) (err error) {
 // VectorPremiumGiftCodeOption <--
 type VectorPremiumGiftCodeOption struct {
 	Datas []*PremiumGiftCodeOption `json:"datas"`
+}
+
+func (m *VectorPremiumGiftCodeOption) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46761,6 +50417,11 @@ type VectorStarsTopupOption struct {
 	Datas []*StarsTopupOption `json:"datas"`
 }
 
+func (m *VectorStarsTopupOption) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorStarsTopupOption) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46778,6 +50439,11 @@ func (m *VectorStarsTopupOption) Decode(d *bin.Decoder) (err error) {
 // VectorStarsGiftOption <--
 type VectorStarsGiftOption struct {
 	Datas []*StarsGiftOption `json:"datas"`
+}
+
+func (m *VectorStarsGiftOption) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46799,6 +50465,11 @@ type VectorStarsGiveawayOption struct {
 	Datas []*StarsGiveawayOption `json:"datas"`
 }
 
+func (m *VectorStarsGiveawayOption) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorStarsGiveawayOption) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46816,6 +50487,11 @@ func (m *VectorStarsGiveawayOption) Decode(d *bin.Decoder) (err error) {
 // VectorLangPackString <--
 type VectorLangPackString struct {
 	Datas []*LangPackString `json:"datas"`
+}
+
+func (m *VectorLangPackString) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46837,6 +50513,11 @@ type VectorLangPackLanguage struct {
 	Datas []*LangPackLanguage `json:"datas"`
 }
 
+func (m *VectorLangPackLanguage) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorLangPackLanguage) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46854,6 +50535,11 @@ func (m *VectorLangPackLanguage) Decode(d *bin.Decoder) (err error) {
 // VectorPeer <--
 type VectorPeer struct {
 	Datas []*Peer `json:"datas"`
+}
+
+func (m *VectorPeer) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 // Encode <--
@@ -46875,6 +50561,11 @@ type VectorBool struct {
 	Datas []*Bool `json:"datas"`
 }
 
+func (m *VectorBool) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorBool) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46894,6 +50585,11 @@ type VectorPredefinedUser struct {
 	Datas []*PredefinedUser `json:"datas"`
 }
 
+func (m *VectorPredefinedUser) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
+}
+
 // Encode <--
 func (m *VectorPredefinedUser) Encode(x *bin.Encoder, layer int32) error {
 	_ = iface.EncodeObjectList(x, m.Datas, layer)
@@ -46910,379 +50606,6 @@ func (m *VectorPredefinedUser) Decode(d *bin.Decoder) (err error) {
 
 //--------------------------------------------------------------------------------------------
 // rpc
-
-type RPCMainMiniBotApps interface {
-	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView) (*WebViewResult, error)
-	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots) (*BotsPopularAppBots, error)
-	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
-	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
-	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia) (*Bool, error)
-	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias) (*Bool, error)
-	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo) (*BotsPreviewInfo, error)
-	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias) (*VectorBotPreviewMedia, error)
-}
-
-type RPCBoosts interface {
-	ChannelsSetBoostsToUnblockRestrictions(ctx context.Context, in *TLChannelsSetBoostsToUnblockRestrictions) (*Updates, error)
-	PremiumGetBoostsList(ctx context.Context, in *TLPremiumGetBoostsList) (*PremiumBoostsList, error)
-	PremiumGetMyBoosts(ctx context.Context, in *TLPremiumGetMyBoosts) (*PremiumMyBoosts, error)
-	PremiumApplyBoost(ctx context.Context, in *TLPremiumApplyBoost) (*PremiumMyBoosts, error)
-	PremiumGetBoostsStatus(ctx context.Context, in *TLPremiumGetBoostsStatus) (*PremiumBoostsStatus, error)
-	PremiumGetUserBoosts(ctx context.Context, in *TLPremiumGetUserBoosts) (*PremiumBoostsList, error)
-}
-
-type RPCGroupCalls interface {
-	PhoneCreateGroupCall(ctx context.Context, in *TLPhoneCreateGroupCall) (*Updates, error)
-	PhoneJoinGroupCall(ctx context.Context, in *TLPhoneJoinGroupCall) (*Updates, error)
-	PhoneLeaveGroupCall(ctx context.Context, in *TLPhoneLeaveGroupCall) (*Updates, error)
-	PhoneInviteToGroupCall(ctx context.Context, in *TLPhoneInviteToGroupCall) (*Updates, error)
-	PhoneDiscardGroupCall(ctx context.Context, in *TLPhoneDiscardGroupCall) (*Updates, error)
-	PhoneToggleGroupCallSettings(ctx context.Context, in *TLPhoneToggleGroupCallSettings) (*Updates, error)
-	PhoneGetGroupCall(ctx context.Context, in *TLPhoneGetGroupCall) (*PhoneGroupCall, error)
-	PhoneGetGroupParticipants(ctx context.Context, in *TLPhoneGetGroupParticipants) (*PhoneGroupParticipants, error)
-	PhoneCheckGroupCall(ctx context.Context, in *TLPhoneCheckGroupCall) (*VectorInt, error)
-	PhoneToggleGroupCallRecord(ctx context.Context, in *TLPhoneToggleGroupCallRecord) (*Updates, error)
-	PhoneEditGroupCallParticipant(ctx context.Context, in *TLPhoneEditGroupCallParticipant) (*Updates, error)
-	PhoneEditGroupCallTitle(ctx context.Context, in *TLPhoneEditGroupCallTitle) (*Updates, error)
-	PhoneGetGroupCallJoinAs(ctx context.Context, in *TLPhoneGetGroupCallJoinAs) (*PhoneJoinAsPeers, error)
-	PhoneExportGroupCallInvite(ctx context.Context, in *TLPhoneExportGroupCallInvite) (*PhoneExportedGroupCallInvite, error)
-	PhoneToggleGroupCallStartSubscription(ctx context.Context, in *TLPhoneToggleGroupCallStartSubscription) (*Updates, error)
-	PhoneStartScheduledGroupCall(ctx context.Context, in *TLPhoneStartScheduledGroupCall) (*Updates, error)
-	PhoneSaveDefaultGroupCallJoinAs(ctx context.Context, in *TLPhoneSaveDefaultGroupCallJoinAs) (*Bool, error)
-	PhoneJoinGroupCallPresentation(ctx context.Context, in *TLPhoneJoinGroupCallPresentation) (*Updates, error)
-	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
-	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels) (*PhoneGroupCallStreamChannels, error)
-	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl) (*PhoneGroupCallStreamRtmpUrl, error)
-}
-
-type RPCPayments interface {
-	AccountGetTmpPassword(ctx context.Context, in *TLAccountGetTmpPassword) (*AccountTmpPassword, error)
-	MessagesSetBotShippingResults(ctx context.Context, in *TLMessagesSetBotShippingResults) (*Bool, error)
-	MessagesSetBotPrecheckoutResults(ctx context.Context, in *TLMessagesSetBotPrecheckoutResults) (*Bool, error)
-	PaymentsGetPaymentForm(ctx context.Context, in *TLPaymentsGetPaymentForm) (*PaymentsPaymentForm, error)
-	PaymentsGetPaymentReceipt(ctx context.Context, in *TLPaymentsGetPaymentReceipt) (*PaymentsPaymentReceipt, error)
-	PaymentsValidateRequestedInfo(ctx context.Context, in *TLPaymentsValidateRequestedInfo) (*PaymentsValidatedRequestedInfo, error)
-	PaymentsSendPaymentForm(ctx context.Context, in *TLPaymentsSendPaymentForm) (*PaymentsPaymentResult, error)
-	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo) (*PaymentsSavedInfo, error)
-	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo) (*Bool, error)
-	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData) (*PaymentsBankCardData, error)
-	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice) (*PaymentsExportedInvoice, error)
-}
-
-type RPCBusinessLocation interface {
-	AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation) (*Bool, error)
-}
-
-type RPCBusinessIntro interface {
-	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro) (*Bool, error)
-}
-
-type RPCPaidMedia interface {
-	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia) (*Updates, error)
-}
-
-type RPCPromoData interface {
-	HelpGetPromoData(ctx context.Context, in *TLHelpGetPromoData) (*HelpPromoData, error)
-	HelpHidePromoData(ctx context.Context, in *TLHelpHidePromoData) (*Bool, error)
-}
-
-type RPCChannels interface {
-	ChannelsReadHistory(ctx context.Context, in *TLChannelsReadHistory) (*Bool, error)
-	ChannelsDeleteMessages(ctx context.Context, in *TLChannelsDeleteMessages) (*MessagesAffectedMessages, error)
-	ChannelsGetMessages(ctx context.Context, in *TLChannelsGetMessages) (*MessagesMessages, error)
-	ChannelsGetParticipants(ctx context.Context, in *TLChannelsGetParticipants) (*ChannelsChannelParticipants, error)
-	ChannelsGetParticipant(ctx context.Context, in *TLChannelsGetParticipant) (*ChannelsChannelParticipant, error)
-	ChannelsGetChannels(ctx context.Context, in *TLChannelsGetChannels) (*MessagesChats, error)
-	ChannelsGetFullChannel(ctx context.Context, in *TLChannelsGetFullChannel) (*MessagesChatFull, error)
-	ChannelsCreateChannel(ctx context.Context, in *TLChannelsCreateChannel) (*Updates, error)
-	ChannelsEditAdmin(ctx context.Context, in *TLChannelsEditAdmin) (*Updates, error)
-	ChannelsEditTitle(ctx context.Context, in *TLChannelsEditTitle) (*Updates, error)
-	ChannelsEditPhoto(ctx context.Context, in *TLChannelsEditPhoto) (*Updates, error)
-	ChannelsJoinChannel(ctx context.Context, in *TLChannelsJoinChannel) (*Updates, error)
-	ChannelsLeaveChannel(ctx context.Context, in *TLChannelsLeaveChannel) (*Updates, error)
-	ChannelsInviteToChannel(ctx context.Context, in *TLChannelsInviteToChannel) (*MessagesInvitedUsers, error)
-	ChannelsDeleteChannel(ctx context.Context, in *TLChannelsDeleteChannel) (*Updates, error)
-	ChannelsExportMessageLink(ctx context.Context, in *TLChannelsExportMessageLink) (*ExportedMessageLink, error)
-	ChannelsToggleSignatures(ctx context.Context, in *TLChannelsToggleSignatures) (*Updates, error)
-	ChannelsGetAdminedPublicChannels(ctx context.Context, in *TLChannelsGetAdminedPublicChannels) (*MessagesChats, error)
-	ChannelsEditBanned(ctx context.Context, in *TLChannelsEditBanned) (*Updates, error)
-	ChannelsGetAdminLog(ctx context.Context, in *TLChannelsGetAdminLog) (*ChannelsAdminLogResults, error)
-	ChannelsSetStickers(ctx context.Context, in *TLChannelsSetStickers) (*Bool, error)
-	ChannelsReadMessageContents(ctx context.Context, in *TLChannelsReadMessageContents) (*Bool, error)
-	ChannelsDeleteHistory(ctx context.Context, in *TLChannelsDeleteHistory) (*Updates, error)
-	ChannelsTogglePreHistoryHidden(ctx context.Context, in *TLChannelsTogglePreHistoryHidden) (*Updates, error)
-	ChannelsGetGroupsForDiscussion(ctx context.Context, in *TLChannelsGetGroupsForDiscussion) (*MessagesChats, error)
-	ChannelsSetDiscussionGroup(ctx context.Context, in *TLChannelsSetDiscussionGroup) (*Bool, error)
-	ChannelsEditCreator(ctx context.Context, in *TLChannelsEditCreator) (*Updates, error)
-	ChannelsEditLocation(ctx context.Context, in *TLChannelsEditLocation) (*Bool, error)
-	ChannelsToggleSlowMode(ctx context.Context, in *TLChannelsToggleSlowMode) (*Updates, error)
-	ChannelsGetInactiveChannels(ctx context.Context, in *TLChannelsGetInactiveChannels) (*MessagesInactiveChats, error)
-	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory) (*MessagesAffectedHistory, error)
-	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden) (*Updates, error)
-}
-
-type RPCBots interface {
-	BotsSetBotCommands(ctx context.Context, in *TLBotsSetBotCommands) (*Bool, error)
-	BotsResetBotCommands(ctx context.Context, in *TLBotsResetBotCommands) (*Bool, error)
-	BotsGetBotCommands(ctx context.Context, in *TLBotsGetBotCommands) (*VectorBotCommand, error)
-	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo) (*Bool, error)
-	BotsGetBotInfo(ctx context.Context, in *TLBotsGetBotInfo) (*BotsBotInfo, error)
-	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots) (*VectorUser, error)
-	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
-	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
-}
-
-type RPCGiveaways interface {
-	PaymentsGetPremiumGiftCodeOptions(ctx context.Context, in *TLPaymentsGetPremiumGiftCodeOptions) (*VectorPremiumGiftCodeOption, error)
-	PaymentsGetGiveawayInfo(ctx context.Context, in *TLPaymentsGetGiveawayInfo) (*PaymentsGiveawayInfo, error)
-	PaymentsLaunchPrepaidGiveaway(ctx context.Context, in *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error)
-	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions) (*VectorStarsGiveawayOption, error)
-}
-
-type RPCUserProfile interface {
-	AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile) (*User, error)
-	AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus) (*Bool, error)
-	AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday) (*Bool, error)
-	AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel) (*Bool, error)
-	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays) (*ContactsContactBirthdays, error)
-	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto) (*PhotosPhoto, error)
-	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto) (*PhotosPhoto, error)
-	PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos) (*VectorLong, error)
-	PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos) (*PhotosPhotos, error)
-	PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto) (*PhotosPhoto, error)
-	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified) (*User, error)
-}
-
-type RPCBusinessOpeningHours interface {
-	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours) (*Bool, error)
-}
-
-type RPCDialogs interface {
-	MessagesGetDialogs(ctx context.Context, in *TLMessagesGetDialogs) (*MessagesDialogs, error)
-	MessagesSetTyping(ctx context.Context, in *TLMessagesSetTyping) (*Bool, error)
-	MessagesGetPeerSettings(ctx context.Context, in *TLMessagesGetPeerSettings) (*MessagesPeerSettings, error)
-	MessagesGetPeerDialogs(ctx context.Context, in *TLMessagesGetPeerDialogs) (*MessagesPeerDialogs, error)
-	MessagesToggleDialogPin(ctx context.Context, in *TLMessagesToggleDialogPin) (*Bool, error)
-	MessagesReorderPinnedDialogs(ctx context.Context, in *TLMessagesReorderPinnedDialogs) (*Bool, error)
-	MessagesGetPinnedDialogs(ctx context.Context, in *TLMessagesGetPinnedDialogs) (*MessagesPeerDialogs, error)
-	MessagesSendScreenshotNotification(ctx context.Context, in *TLMessagesSendScreenshotNotification) (*Updates, error)
-	MessagesMarkDialogUnread(ctx context.Context, in *TLMessagesMarkDialogUnread) (*Bool, error)
-	MessagesGetDialogUnreadMarks(ctx context.Context, in *TLMessagesGetDialogUnreadMarks) (*VectorDialogPeer, error)
-	MessagesGetOnlines(ctx context.Context, in *TLMessagesGetOnlines) (*ChatOnlines, error)
-	MessagesHidePeerSettingsBar(ctx context.Context, in *TLMessagesHidePeerSettingsBar) (*Bool, error)
-	MessagesSetHistoryTTL(ctx context.Context, in *TLMessagesSetHistoryTTL) (*Updates, error)
-}
-
-type RPCGames interface {
-	MessagesSetGameScore(ctx context.Context, in *TLMessagesSetGameScore) (*Updates, error)
-	MessagesSetInlineGameScore(ctx context.Context, in *TLMessagesSetInlineGameScore) (*Bool, error)
-	MessagesGetGameHighScores(ctx context.Context, in *TLMessagesGetGameHighScores) (*MessagesHighScores, error)
-	MessagesGetInlineGameHighScores(ctx context.Context, in *TLMessagesGetInlineGameHighScores) (*MessagesHighScores, error)
-}
-
-type RPCFactChecks interface {
-	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck) (*Updates, error)
-	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck) (*Updates, error)
-	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck) (*VectorFactCheck, error)
-}
-
-type RPCPreparedInlineMessages interface {
-	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage) (*MessagesBotPreparedInlineMessage, error)
-	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage) (*MessagesPreparedInlineMessage, error)
-}
-
-type RPCMiscellaneous interface {
-	HelpSaveAppLog(ctx context.Context, in *TLHelpSaveAppLog) (*Bool, error)
-}
-
-type RPCStarSubscriptions interface {
-	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions) (*PaymentsStarsStatus, error)
-	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription) (*Bool, error)
-	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription) (*Bool, error)
-	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
-}
-
-type RPCEmojiStatus interface {
-	AccountUpdateEmojiStatus(ctx context.Context, in *TLAccountUpdateEmojiStatus) (*Bool, error)
-	AccountGetDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountGetRecentEmojiStatuses(ctx context.Context, in *TLAccountGetRecentEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses) (*Bool, error)
-	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
-	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
-	AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses) (*AccountEmojiStatuses, error)
-	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus) (*Updates, error)
-	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus) (*Bool, error)
-	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
-}
-
-type RPCAutosave interface {
-	AccountGetAutoSaveSettings(ctx context.Context, in *TLAccountGetAutoSaveSettings) (*AccountAutoSaveSettings, error)
-	AccountSaveAutoSaveSettings(ctx context.Context, in *TLAccountSaveAutoSaveSettings) (*Bool, error)
-	AccountDeleteAutoSaveExceptions(ctx context.Context, in *TLAccountDeleteAutoSaveExceptions) (*Bool, error)
-}
-
-type RPCDrafts interface {
-	MessagesSaveDraft(ctx context.Context, in *TLMessagesSaveDraft) (*Bool, error)
-	MessagesGetAllDrafts(ctx context.Context, in *TLMessagesGetAllDrafts) (*Updates, error)
-	MessagesClearAllDrafts(ctx context.Context, in *TLMessagesClearAllDrafts) (*Bool, error)
-}
-
-type RPCSavedMessageDialogs interface {
-	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs) (*MessagesSavedDialogs, error)
-	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory) (*MessagesMessages, error)
-	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory) (*MessagesAffectedHistory, error)
-	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs) (*MessagesSavedDialogs, error)
-	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin) (*Bool, error)
-	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
-}
-
-type RPCGifs interface {
-	MessagesGetSavedGifs(ctx context.Context, in *TLMessagesGetSavedGifs) (*MessagesSavedGifs, error)
-	MessagesSaveGif(ctx context.Context, in *TLMessagesSaveGif) (*Bool, error)
-}
-
-type RPCTranscription interface {
-	MessagesTranscribeAudio(ctx context.Context, in *TLMessagesTranscribeAudio) (*MessagesTranscribedAudio, error)
-	MessagesRateTranscribedAudio(ctx context.Context, in *TLMessagesRateTranscribedAudio) (*Bool, error)
-}
-
-type RPCStatistics interface {
-	StatsGetBroadcastStats(ctx context.Context, in *TLStatsGetBroadcastStats) (*StatsBroadcastStats, error)
-	StatsLoadAsyncGraph(ctx context.Context, in *TLStatsLoadAsyncGraph) (*StatsGraph, error)
-	StatsGetMegagroupStats(ctx context.Context, in *TLStatsGetMegagroupStats) (*StatsMegagroupStats, error)
-	StatsGetMessagePublicForwards(ctx context.Context, in *TLStatsGetMessagePublicForwards) (*StatsPublicForwards, error)
-	StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats) (*StatsMessageStats, error)
-	StatsGetStoryStats(ctx context.Context, in *TLStatsGetStoryStats) (*StatsStoryStats, error)
-	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards) (*StatsPublicForwards, error)
-}
-
-type RPCtest interface {
-	TestParseInputAppEvent(ctx context.Context, in *TLTestParseInputAppEvent) (*InputAppEvent, error)
-}
-
-type RPCQrCode interface {
-	AuthExportLoginToken(ctx context.Context, in *TLAuthExportLoginToken) (*AuthLoginToken, error)
-	AuthImportLoginToken(ctx context.Context, in *TLAuthImportLoginToken) (*AuthLoginToken, error)
-	AuthAcceptLoginToken(ctx context.Context, in *TLAuthAcceptLoginToken) (*Authorization, error)
-}
-
-type RPCWallpapers interface {
-	AccountGetWallPapers(ctx context.Context, in *TLAccountGetWallPapers) (*AccountWallPapers, error)
-	AccountGetWallPaper(ctx context.Context, in *TLAccountGetWallPaper) (*WallPaper, error)
-	AccountUploadWallPaper(ctx context.Context, in *TLAccountUploadWallPaper) (*WallPaper, error)
-	AccountSaveWallPaper(ctx context.Context, in *TLAccountSaveWallPaper) (*Bool, error)
-	AccountInstallWallPaper(ctx context.Context, in *TLAccountInstallWallPaper) (*Bool, error)
-	AccountResetWallPapers(ctx context.Context, in *TLAccountResetWallPapers) (*Bool, error)
-	AccountGetMultiWallPapers(ctx context.Context, in *TLAccountGetMultiWallPapers) (*VectorWallPaper, error)
-	MessagesSetChatWallPaper(ctx context.Context, in *TLMessagesSetChatWallPaper) (*Updates, error)
-}
-
-type RPCBusinessGreeting interface {
-	AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage) (*Bool, error)
-	AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage) (*Bool, error)
-}
-
-type RPCFiles interface {
-	MessagesGetDocumentByHash(ctx context.Context, in *TLMessagesGetDocumentByHash) (*Document, error)
-	MessagesUploadMedia(ctx context.Context, in *TLMessagesUploadMedia) (*MessageMedia, error)
-	MessagesUploadEncryptedFile(ctx context.Context, in *TLMessagesUploadEncryptedFile) (*EncryptedFile, error)
-	UploadSaveFilePart(ctx context.Context, in *TLUploadSaveFilePart) (*Bool, error)
-	UploadGetFile(ctx context.Context, in *TLUploadGetFile) (*UploadFile, error)
-	UploadSaveBigFilePart(ctx context.Context, in *TLUploadSaveBigFilePart) (*Bool, error)
-	UploadGetWebFile(ctx context.Context, in *TLUploadGetWebFile) (*UploadWebFile, error)
-	UploadGetCdnFile(ctx context.Context, in *TLUploadGetCdnFile) (*UploadCdnFile, error)
-	UploadReuploadCdnFile(ctx context.Context, in *TLUploadReuploadCdnFile) (*VectorFileHash, error)
-	UploadGetCdnFileHashes(ctx context.Context, in *TLUploadGetCdnFileHashes) (*VectorFileHash, error)
-	UploadGetFileHashes(ctx context.Context, in *TLUploadGetFileHashes) (*VectorFileHash, error)
-	HelpGetCdnConfig(ctx context.Context, in *TLHelpGetCdnConfig) (*CdnConfig, error)
-}
-
-type RPCGifts interface {
-	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts) (*PaymentsStarGifts, error)
-	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift) (*Bool, error)
-	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift) (*Bool, error)
-	PaymentsGetStarGiftUpgradePreview(ctx context.Context, in *TLPaymentsGetStarGiftUpgradePreview) (*PaymentsStarGiftUpgradePreview, error)
-	PaymentsUpgradeStarGift(ctx context.Context, in *TLPaymentsUpgradeStarGift) (*Updates, error)
-	PaymentsTransferStarGift(ctx context.Context, in *TLPaymentsTransferStarGift) (*Updates, error)
-	PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift) (*PaymentsUniqueStarGift, error)
-	PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts) (*PaymentsSavedStarGifts, error)
-	PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift) (*PaymentsSavedStarGifts, error)
-	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl) (*PaymentsStarGiftWithdrawalUrl, error)
-	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
-	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
-}
-
-type RPCTakeout interface {
-	AccountInitTakeoutSession(ctx context.Context, in *TLAccountInitTakeoutSession) (*AccountTakeout, error)
-	AccountFinishTakeoutSession(ctx context.Context, in *TLAccountFinishTakeoutSession) (*Bool, error)
-	MessagesGetSplitRanges(ctx context.Context, in *TLMessagesGetSplitRanges) (*VectorMessageRange, error)
-	ChannelsGetLeftChannels(ctx context.Context, in *TLChannelsGetLeftChannels) (*MessagesChats, error)
-}
-
-type RPCPaidMessage interface {
-	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException) (*Bool, error)
-	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue) (*AccountPaidMessagesRevenue, error)
-	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
-}
-
-type RPCScheduledMessages interface {
-	MessagesGetScheduledHistory(ctx context.Context, in *TLMessagesGetScheduledHistory) (*MessagesMessages, error)
-	MessagesGetScheduledMessages(ctx context.Context, in *TLMessagesGetScheduledMessages) (*MessagesMessages, error)
-	MessagesSendScheduledMessages(ctx context.Context, in *TLMessagesSendScheduledMessages) (*Updates, error)
-	MessagesDeleteScheduledMessages(ctx context.Context, in *TLMessagesDeleteScheduledMessages) (*Updates, error)
-}
-
-type RPCTimezones interface {
-	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList) (*HelpTimezonesList, error)
-}
-
-type RPCFragment interface {
-	AccountReorderUsernames(ctx context.Context, in *TLAccountReorderUsernames) (*Bool, error)
-	AccountToggleUsername(ctx context.Context, in *TLAccountToggleUsername) (*Bool, error)
-	ChannelsReorderUsernames(ctx context.Context, in *TLChannelsReorderUsernames) (*Bool, error)
-	ChannelsToggleUsername(ctx context.Context, in *TLChannelsToggleUsername) (*Bool, error)
-	ChannelsDeactivateAllUsernames(ctx context.Context, in *TLChannelsDeactivateAllUsernames) (*Bool, error)
-	BotsReorderUsernames(ctx context.Context, in *TLBotsReorderUsernames) (*Bool, error)
-	BotsToggleUsername(ctx context.Context, in *TLBotsToggleUsername) (*Bool, error)
-}
-
-type RPCChats interface {
-	MessagesGetChats(ctx context.Context, in *TLMessagesGetChats) (*MessagesChats, error)
-	MessagesGetFullChat(ctx context.Context, in *TLMessagesGetFullChat) (*MessagesChatFull, error)
-	MessagesEditChatTitle(ctx context.Context, in *TLMessagesEditChatTitle) (*Updates, error)
-	MessagesEditChatPhoto(ctx context.Context, in *TLMessagesEditChatPhoto) (*Updates, error)
-	MessagesAddChatUser(ctx context.Context, in *TLMessagesAddChatUser) (*MessagesInvitedUsers, error)
-	MessagesDeleteChatUser(ctx context.Context, in *TLMessagesDeleteChatUser) (*Updates, error)
-	MessagesCreateChat(ctx context.Context, in *TLMessagesCreateChat) (*MessagesInvitedUsers, error)
-	MessagesEditChatAdmin(ctx context.Context, in *TLMessagesEditChatAdmin) (*Bool, error)
-	MessagesMigrateChat(ctx context.Context, in *TLMessagesMigrateChat) (*Updates, error)
-	MessagesGetCommonChats(ctx context.Context, in *TLMessagesGetCommonChats) (*MessagesChats, error)
-	MessagesEditChatAbout(ctx context.Context, in *TLMessagesEditChatAbout) (*Bool, error)
-	MessagesEditChatDefaultBannedRights(ctx context.Context, in *TLMessagesEditChatDefaultBannedRights) (*Updates, error)
-	MessagesDeleteChat(ctx context.Context, in *TLMessagesDeleteChat) (*Bool, error)
-	MessagesGetMessageReadParticipants(ctx context.Context, in *TLMessagesGetMessageReadParticipants) (*VectorReadParticipantDate, error)
-	ChannelsConvertToGigagroup(ctx context.Context, in *TLChannelsConvertToGigagroup) (*Updates, error)
-	ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers) (*Bool, error)
-}
-
-type RPCAntiSpam interface {
-	ChannelsToggleAntiSpam(ctx context.Context, in *TLChannelsToggleAntiSpam) (*Updates, error)
-	ChannelsReportAntiSpamFalsePositive(ctx context.Context, in *TLChannelsReportAntiSpamFalsePositive) (*Bool, error)
-}
-
-type RPCAffiliatePrograms interface {
-	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
-	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots) (*PaymentsConnectedStarRefBots, error)
-	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
-	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots) (*PaymentsSuggestedStarRefBots, error)
-	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot) (*PaymentsConnectedStarRefBots, error)
-	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
-}
-
-type RPCTranslation interface {
-	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText) (*MessagesTranslatedText, error)
-	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations) (*Bool, error)
-}
 
 type RPCStories interface {
 	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory) (*Bool, error)
@@ -47343,26 +50666,143 @@ type RPCAuthorization interface {
 	AuthToggleBan(ctx context.Context, in *TLAuthToggleBan) (*PredefinedUser, error)
 }
 
-type RPCThemes interface {
-	AccountUploadTheme(ctx context.Context, in *TLAccountUploadTheme) (*Document, error)
-	AccountCreateTheme(ctx context.Context, in *TLAccountCreateTheme) (*Theme, error)
-	AccountUpdateTheme(ctx context.Context, in *TLAccountUpdateTheme) (*Theme, error)
-	AccountSaveTheme(ctx context.Context, in *TLAccountSaveTheme) (*Bool, error)
-	AccountInstallTheme(ctx context.Context, in *TLAccountInstallTheme) (*Bool, error)
-	AccountGetTheme(ctx context.Context, in *TLAccountGetTheme) (*Theme, error)
-	AccountGetThemes(ctx context.Context, in *TLAccountGetThemes) (*AccountThemes, error)
-	AccountGetChatThemes(ctx context.Context, in *TLAccountGetChatThemes) (*AccountThemes, error)
-	MessagesSetChatTheme(ctx context.Context, in *TLMessagesSetChatTheme) (*Updates, error)
+type RPCPayments interface {
+	AccountGetTmpPassword(ctx context.Context, in *TLAccountGetTmpPassword) (*AccountTmpPassword, error)
+	MessagesSetBotShippingResults(ctx context.Context, in *TLMessagesSetBotShippingResults) (*Bool, error)
+	MessagesSetBotPrecheckoutResults(ctx context.Context, in *TLMessagesSetBotPrecheckoutResults) (*Bool, error)
+	PaymentsGetPaymentForm(ctx context.Context, in *TLPaymentsGetPaymentForm) (*PaymentsPaymentForm, error)
+	PaymentsGetPaymentReceipt(ctx context.Context, in *TLPaymentsGetPaymentReceipt) (*PaymentsPaymentReceipt, error)
+	PaymentsValidateRequestedInfo(ctx context.Context, in *TLPaymentsValidateRequestedInfo) (*PaymentsValidatedRequestedInfo, error)
+	PaymentsSendPaymentForm(ctx context.Context, in *TLPaymentsSendPaymentForm) (*PaymentsPaymentResult, error)
+	PaymentsGetSavedInfo(ctx context.Context, in *TLPaymentsGetSavedInfo) (*PaymentsSavedInfo, error)
+	PaymentsClearSavedInfo(ctx context.Context, in *TLPaymentsClearSavedInfo) (*Bool, error)
+	PaymentsGetBankCardData(ctx context.Context, in *TLPaymentsGetBankCardData) (*PaymentsBankCardData, error)
+	PaymentsExportInvoice(ctx context.Context, in *TLPaymentsExportInvoice) (*PaymentsExportedInvoice, error)
 }
 
-type RPCSponsoredMessages interface {
-	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages) (*Bool, error)
-	ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers) (*ContactsSponsoredPeers, error)
-	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage) (*Bool, error)
-	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage) (*Bool, error)
-	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage) (*ChannelsSponsoredMessageReportResult, error)
-	MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages) (*MessagesSponsoredMessages, error)
-	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages) (*Updates, error)
+type RPCAutosave interface {
+	AccountGetAutoSaveSettings(ctx context.Context, in *TLAccountGetAutoSaveSettings) (*AccountAutoSaveSettings, error)
+	AccountSaveAutoSaveSettings(ctx context.Context, in *TLAccountSaveAutoSaveSettings) (*Bool, error)
+	AccountDeleteAutoSaveExceptions(ctx context.Context, in *TLAccountDeleteAutoSaveExceptions) (*Bool, error)
+}
+
+type RPCSecretChats interface {
+	MessagesGetDhConfig(ctx context.Context, in *TLMessagesGetDhConfig) (*MessagesDhConfig, error)
+	MessagesRequestEncryption(ctx context.Context, in *TLMessagesRequestEncryption) (*EncryptedChat, error)
+	MessagesAcceptEncryption(ctx context.Context, in *TLMessagesAcceptEncryption) (*EncryptedChat, error)
+	MessagesDiscardEncryption(ctx context.Context, in *TLMessagesDiscardEncryption) (*Bool, error)
+	MessagesSetEncryptedTyping(ctx context.Context, in *TLMessagesSetEncryptedTyping) (*Bool, error)
+	MessagesReadEncryptedHistory(ctx context.Context, in *TLMessagesReadEncryptedHistory) (*Bool, error)
+	MessagesSendEncrypted(ctx context.Context, in *TLMessagesSendEncrypted) (*MessagesSentEncryptedMessage, error)
+	MessagesSendEncryptedFile(ctx context.Context, in *TLMessagesSendEncryptedFile) (*MessagesSentEncryptedMessage, error)
+	MessagesSendEncryptedService(ctx context.Context, in *TLMessagesSendEncryptedService) (*MessagesSentEncryptedMessage, error)
+	MessagesReceivedQueue(ctx context.Context, in *TLMessagesReceivedQueue) (*VectorLong, error)
+}
+
+type RPCGroupCalls interface {
+	PhoneCreateGroupCall(ctx context.Context, in *TLPhoneCreateGroupCall) (*Updates, error)
+	PhoneJoinGroupCall(ctx context.Context, in *TLPhoneJoinGroupCall) (*Updates, error)
+	PhoneLeaveGroupCall(ctx context.Context, in *TLPhoneLeaveGroupCall) (*Updates, error)
+	PhoneInviteToGroupCall(ctx context.Context, in *TLPhoneInviteToGroupCall) (*Updates, error)
+	PhoneDiscardGroupCall(ctx context.Context, in *TLPhoneDiscardGroupCall) (*Updates, error)
+	PhoneToggleGroupCallSettings(ctx context.Context, in *TLPhoneToggleGroupCallSettings) (*Updates, error)
+	PhoneGetGroupCall(ctx context.Context, in *TLPhoneGetGroupCall) (*PhoneGroupCall, error)
+	PhoneGetGroupParticipants(ctx context.Context, in *TLPhoneGetGroupParticipants) (*PhoneGroupParticipants, error)
+	PhoneCheckGroupCall(ctx context.Context, in *TLPhoneCheckGroupCall) (*VectorInt, error)
+	PhoneToggleGroupCallRecord(ctx context.Context, in *TLPhoneToggleGroupCallRecord) (*Updates, error)
+	PhoneEditGroupCallParticipant(ctx context.Context, in *TLPhoneEditGroupCallParticipant) (*Updates, error)
+	PhoneEditGroupCallTitle(ctx context.Context, in *TLPhoneEditGroupCallTitle) (*Updates, error)
+	PhoneGetGroupCallJoinAs(ctx context.Context, in *TLPhoneGetGroupCallJoinAs) (*PhoneJoinAsPeers, error)
+	PhoneExportGroupCallInvite(ctx context.Context, in *TLPhoneExportGroupCallInvite) (*PhoneExportedGroupCallInvite, error)
+	PhoneToggleGroupCallStartSubscription(ctx context.Context, in *TLPhoneToggleGroupCallStartSubscription) (*Updates, error)
+	PhoneStartScheduledGroupCall(ctx context.Context, in *TLPhoneStartScheduledGroupCall) (*Updates, error)
+	PhoneSaveDefaultGroupCallJoinAs(ctx context.Context, in *TLPhoneSaveDefaultGroupCallJoinAs) (*Bool, error)
+	PhoneJoinGroupCallPresentation(ctx context.Context, in *TLPhoneJoinGroupCallPresentation) (*Updates, error)
+	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
+	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels) (*PhoneGroupCallStreamChannels, error)
+	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl) (*PhoneGroupCallStreamRtmpUrl, error)
+}
+
+type RPCChannelAdRevenue interface {
+	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats) (*StatsBroadcastRevenueStats, error)
+	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl) (*StatsBroadcastRevenueWithdrawalUrl, error)
+	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions) (*StatsBroadcastRevenueTransactions, error)
+}
+
+type RPCGiftCodes interface {
+	PaymentsCheckGiftCode(ctx context.Context, in *TLPaymentsCheckGiftCode) (*PaymentsCheckedGiftCode, error)
+	PaymentsApplyGiftCode(ctx context.Context, in *TLPaymentsApplyGiftCode) (*Updates, error)
+}
+
+type RPCUsernames interface {
+	AccountCheckUsername(ctx context.Context, in *TLAccountCheckUsername) (*Bool, error)
+	AccountUpdateUsername(ctx context.Context, in *TLAccountUpdateUsername) (*User, error)
+	ContactsResolveUsername(ctx context.Context, in *TLContactsResolveUsername) (*ContactsResolvedPeer, error)
+	ChannelsCheckUsername(ctx context.Context, in *TLChannelsCheckUsername) (*Bool, error)
+	ChannelsUpdateUsername(ctx context.Context, in *TLChannelsUpdateUsername) (*Bool, error)
+}
+
+type RPCPrivacySettings interface {
+	AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy) (*AccountPrivacyRules, error)
+	AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy) (*AccountPrivacyRules, error)
+	AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
+	AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
+	UsersGetRequirementsToContact(ctx context.Context, in *TLUsersGetRequirementsToContact) (*VectorRequirementToContact, error)
+	MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL) (*Bool, error)
+	MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error)
+	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact) (*VectorBool, error)
+}
+
+type RPCTakeout interface {
+	AccountInitTakeoutSession(ctx context.Context, in *TLAccountInitTakeoutSession) (*AccountTakeout, error)
+	AccountFinishTakeoutSession(ctx context.Context, in *TLAccountFinishTakeoutSession) (*Bool, error)
+	MessagesGetSplitRanges(ctx context.Context, in *TLMessagesGetSplitRanges) (*VectorMessageRange, error)
+	ChannelsGetLeftChannels(ctx context.Context, in *TLChannelsGetLeftChannels) (*MessagesChats, error)
+}
+
+type RPCAccentColors interface {
+	AccountUpdateColor(ctx context.Context, in *TLAccountUpdateColor) (*Bool, error)
+	AccountGetDefaultBackgroundEmojis(ctx context.Context, in *TLAccountGetDefaultBackgroundEmojis) (*EmojiList, error)
+	HelpGetPeerColors(ctx context.Context, in *TLHelpGetPeerColors) (*HelpPeerColors, error)
+	HelpGetPeerProfileColors(ctx context.Context, in *TLHelpGetPeerProfileColors) (*HelpPeerColors, error)
+	ChannelsUpdateColor(ctx context.Context, in *TLChannelsUpdateColor) (*Updates, error)
+}
+
+type RPCTranslation interface {
+	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText) (*MessagesTranslatedText, error)
+	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations) (*Bool, error)
+}
+
+type RPCSavedMessageTags interface {
+	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags) (*MessagesSavedReactionTags, error)
+	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag) (*Bool, error)
+	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions) (*MessagesReactions, error)
+}
+
+type RPCForums interface {
+	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum) (*Updates, error)
+	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic) (*Updates, error)
+	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics) (*MessagesForumTopics, error)
+	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID) (*MessagesForumTopics, error)
+	ChannelsEditForumTopic(ctx context.Context, in *TLChannelsEditForumTopic) (*Updates, error)
+	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
+	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
+	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
+	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
+}
+
+type RPCUserProfile interface {
+	AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile) (*User, error)
+	AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus) (*Bool, error)
+	AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday) (*Bool, error)
+	AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel) (*Bool, error)
+	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays) (*ContactsContactBirthdays, error)
+	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto) (*PhotosPhoto, error)
+	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto) (*PhotosPhoto, error)
+	PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos) (*VectorLong, error)
+	PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos) (*PhotosPhotos, error)
+	PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto) (*PhotosPhoto, error)
+	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified) (*User, error)
 }
 
 type RPCChatInvites interface {
@@ -47382,140 +50822,42 @@ type RPCChatInvites interface {
 	ChannelsToggleJoinRequest(ctx context.Context, in *TLChannelsToggleJoinRequest) (*Updates, error)
 }
 
-type RPCBusinessQuickReply interface {
-	MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies) (*MessagesQuickReplies, error)
-	MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies) (*Bool, error)
-	MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut) (*Bool, error)
-	MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut) (*Bool, error)
-	MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut) (*Bool, error)
-	MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages) (*MessagesMessages, error)
-	MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages) (*Updates, error)
-	MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages) (*Updates, error)
+type RPCInlineBot interface {
+	MessagesGetInlineBotResults(ctx context.Context, in *TLMessagesGetInlineBotResults) (*MessagesBotResults, error)
+	MessagesSetInlineBotResults(ctx context.Context, in *TLMessagesSetInlineBotResults) (*Bool, error)
+	MessagesSendInlineBotResult(ctx context.Context, in *TLMessagesSendInlineBotResult) (*Updates, error)
+	MessagesEditInlineBotMessage(ctx context.Context, in *TLMessagesEditInlineBotMessage) (*Bool, error)
+	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer) (*MessagesBotCallbackAnswer, error)
+	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer) (*Bool, error)
+	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer) (*Updates, error)
 }
 
-type RPCTos interface {
-	HelpGetTermsOfServiceUpdate(ctx context.Context, in *TLHelpGetTermsOfServiceUpdate) (*HelpTermsOfServiceUpdate, error)
-	HelpAcceptTermsOfService(ctx context.Context, in *TLHelpAcceptTermsOfService) (*Bool, error)
+type RPCScheduledMessages interface {
+	MessagesGetScheduledHistory(ctx context.Context, in *TLMessagesGetScheduledHistory) (*MessagesMessages, error)
+	MessagesGetScheduledMessages(ctx context.Context, in *TLMessagesGetScheduledMessages) (*MessagesMessages, error)
+	MessagesSendScheduledMessages(ctx context.Context, in *TLMessagesSendScheduledMessages) (*Updates, error)
+	MessagesDeleteScheduledMessages(ctx context.Context, in *TLMessagesDeleteScheduledMessages) (*Updates, error)
 }
 
-type RPCChannelAdRevenue interface {
-	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats) (*StatsBroadcastRevenueStats, error)
-	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl) (*StatsBroadcastRevenueWithdrawalUrl, error)
-	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions) (*StatsBroadcastRevenueTransactions, error)
+type RPCConfiguration interface {
+	HelpGetConfig(ctx context.Context, in *TLHelpGetConfig) (*Config, error)
+	HelpGetNearestDc(ctx context.Context, in *TLHelpGetNearestDc) (*NearestDc, error)
+	HelpGetAppUpdate(ctx context.Context, in *TLHelpGetAppUpdate) (*HelpAppUpdate, error)
+	HelpGetInviteText(ctx context.Context, in *TLHelpGetInviteText) (*HelpInviteText, error)
+	HelpGetSupport(ctx context.Context, in *TLHelpGetSupport) (*HelpSupport, error)
+	HelpGetAppConfig(ctx context.Context, in *TLHelpGetAppConfig) (*HelpAppConfig, error)
+	HelpGetSupportName(ctx context.Context, in *TLHelpGetSupportName) (*HelpSupportName, error)
+	HelpDismissSuggestion(ctx context.Context, in *TLHelpDismissSuggestion) (*Bool, error)
+	HelpGetCountriesList(ctx context.Context, in *TLHelpGetCountriesList) (*HelpCountriesList, error)
 }
 
-type RPCSmsjobs interface {
-	SmsjobsIsEligibleToJoin(ctx context.Context, in *TLSmsjobsIsEligibleToJoin) (*SmsjobsEligibilityToJoin, error)
-	SmsjobsJoin(ctx context.Context, in *TLSmsjobsJoin) (*Bool, error)
-	SmsjobsLeave(ctx context.Context, in *TLSmsjobsLeave) (*Bool, error)
-	SmsjobsUpdateSettings(ctx context.Context, in *TLSmsjobsUpdateSettings) (*Bool, error)
-	SmsjobsGetStatus(ctx context.Context, in *TLSmsjobsGetStatus) (*SmsjobsStatus, error)
-	SmsjobsGetSmsJob(ctx context.Context, in *TLSmsjobsGetSmsJob) (*SmsJob, error)
-	SmsjobsFinishJob(ctx context.Context, in *TLSmsjobsFinishJob) (*Bool, error)
+type RPCMiscellaneous interface {
+	HelpSaveAppLog(ctx context.Context, in *TLHelpSaveAppLog) (*Bool, error)
 }
 
-type RPCNotification interface {
-	AccountRegisterDevice(ctx context.Context, in *TLAccountRegisterDevice) (*Bool, error)
-	AccountUnregisterDevice(ctx context.Context, in *TLAccountUnregisterDevice) (*Bool, error)
-	AccountUpdateNotifySettings(ctx context.Context, in *TLAccountUpdateNotifySettings) (*Bool, error)
-	AccountGetNotifySettings(ctx context.Context, in *TLAccountGetNotifySettings) (*PeerNotifySettings, error)
-	AccountResetNotifySettings(ctx context.Context, in *TLAccountResetNotifySettings) (*Bool, error)
-	AccountUpdateDeviceLocked(ctx context.Context, in *TLAccountUpdateDeviceLocked) (*Bool, error)
-	AccountGetNotifyExceptions(ctx context.Context, in *TLAccountGetNotifyExceptions) (*Updates, error)
-}
-
-type RPCPolls interface {
-	MessagesSendVote(ctx context.Context, in *TLMessagesSendVote) (*Updates, error)
-	MessagesGetPollResults(ctx context.Context, in *TLMessagesGetPollResults) (*Updates, error)
-	MessagesGetPollVotes(ctx context.Context, in *TLMessagesGetPollVotes) (*MessagesVotesList, error)
-}
-
-type RPCVoipCalls interface {
-	MessagesDeletePhoneCallHistory(ctx context.Context, in *TLMessagesDeletePhoneCallHistory) (*MessagesAffectedFoundMessages, error)
-	PhoneGetCallConfig(ctx context.Context, in *TLPhoneGetCallConfig) (*DataJSON, error)
-	PhoneRequestCall(ctx context.Context, in *TLPhoneRequestCall) (*PhonePhoneCall, error)
-	PhoneAcceptCall(ctx context.Context, in *TLPhoneAcceptCall) (*PhonePhoneCall, error)
-	PhoneConfirmCall(ctx context.Context, in *TLPhoneConfirmCall) (*PhonePhoneCall, error)
-	PhoneReceivedCall(ctx context.Context, in *TLPhoneReceivedCall) (*Bool, error)
-	PhoneDiscardCall(ctx context.Context, in *TLPhoneDiscardCall) (*Updates, error)
-	PhoneSetCallRating(ctx context.Context, in *TLPhoneSetCallRating) (*Updates, error)
-	PhoneSaveCallDebug(ctx context.Context, in *TLPhoneSaveCallDebug) (*Bool, error)
-	PhoneSendSignalingData(ctx context.Context, in *TLPhoneSendSignalingData) (*Bool, error)
-	PhoneSaveCallLog(ctx context.Context, in *TLPhoneSaveCallLog) (*Bool, error)
-	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall) (*PhonePhoneCall, error)
-}
-
-type RPCMiniBotApps interface {
-	MessagesRequestWebView(ctx context.Context, in *TLMessagesRequestWebView) (*WebViewResult, error)
-	MessagesProlongWebView(ctx context.Context, in *TLMessagesProlongWebView) (*Bool, error)
-	MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView) (*WebViewResult, error)
-	MessagesSendWebViewResultMessage(ctx context.Context, in *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error)
-	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData) (*Updates, error)
-	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp) (*MessagesBotApp, error)
-	MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView) (*WebViewResult, error)
-	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage) (*Bool, error)
-	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage) (*Updates, error)
-	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
-	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams) (*Bool, error)
-}
-
-type RPCbiz interface {
-	BizInvokeBizDataRaw(ctx context.Context, in *TLBizInvokeBizDataRaw) (*BizDataRaw, error)
-}
-
-type RPCPredefined interface {
-	PredefinedCreatePredefinedUser(ctx context.Context, in *TLPredefinedCreatePredefinedUser) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedUsername(ctx context.Context, in *TLPredefinedUpdatePredefinedUsername) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedProfile(ctx context.Context, in *TLPredefinedUpdatePredefinedProfile) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedVerified(ctx context.Context, in *TLPredefinedUpdatePredefinedVerified) (*PredefinedUser, error)
-	PredefinedUpdatePredefinedCode(ctx context.Context, in *TLPredefinedUpdatePredefinedCode) (*PredefinedUser, error)
-	PredefinedGetPredefinedUser(ctx context.Context, in *TLPredefinedGetPredefinedUser) (*PredefinedUser, error)
-	PredefinedGetPredefinedUsers(ctx context.Context, in *TLPredefinedGetPredefinedUsers) (*VectorPredefinedUser, error)
-}
-
-type RPCAccount interface {
-	AccountDeleteAccount(ctx context.Context, in *TLAccountDeleteAccount) (*Bool, error)
-	AccountGetAccountTTL(ctx context.Context, in *TLAccountGetAccountTTL) (*AccountDaysTTL, error)
-	AccountSetAccountTTL(ctx context.Context, in *TLAccountSetAccountTTL) (*Bool, error)
-	AccountSendChangePhoneCode(ctx context.Context, in *TLAccountSendChangePhoneCode) (*AuthSentCode, error)
-	AccountChangePhone(ctx context.Context, in *TLAccountChangePhone) (*User, error)
-	AccountResetAuthorization(ctx context.Context, in *TLAccountResetAuthorization) (*Bool, error)
-	AccountSendConfirmPhoneCode(ctx context.Context, in *TLAccountSendConfirmPhoneCode) (*AuthSentCode, error)
-	AccountConfirmPhone(ctx context.Context, in *TLAccountConfirmPhone) (*Bool, error)
-}
-
-type RPCMessages interface {
-	MessagesGetMessages(ctx context.Context, in *TLMessagesGetMessages) (*MessagesMessages, error)
-	MessagesGetHistory(ctx context.Context, in *TLMessagesGetHistory) (*MessagesMessages, error)
-	MessagesSearch(ctx context.Context, in *TLMessagesSearch) (*MessagesMessages, error)
-	MessagesReadHistory(ctx context.Context, in *TLMessagesReadHistory) (*MessagesAffectedMessages, error)
-	MessagesDeleteHistory(ctx context.Context, in *TLMessagesDeleteHistory) (*MessagesAffectedHistory, error)
-	MessagesDeleteMessages(ctx context.Context, in *TLMessagesDeleteMessages) (*MessagesAffectedMessages, error)
-	MessagesReceivedMessages(ctx context.Context, in *TLMessagesReceivedMessages) (*VectorReceivedNotifyMessage, error)
-	MessagesSendMessage(ctx context.Context, in *TLMessagesSendMessage) (*Updates, error)
-	MessagesSendMedia(ctx context.Context, in *TLMessagesSendMedia) (*Updates, error)
-	MessagesForwardMessages(ctx context.Context, in *TLMessagesForwardMessages) (*Updates, error)
-	MessagesReadMessageContents(ctx context.Context, in *TLMessagesReadMessageContents) (*MessagesAffectedMessages, error)
-	MessagesGetMessagesViews(ctx context.Context, in *TLMessagesGetMessagesViews) (*MessagesMessageViews, error)
-	MessagesSearchGlobal(ctx context.Context, in *TLMessagesSearchGlobal) (*MessagesMessages, error)
-	MessagesGetMessageEditData(ctx context.Context, in *TLMessagesGetMessageEditData) (*MessagesMessageEditData, error)
-	MessagesEditMessage(ctx context.Context, in *TLMessagesEditMessage) (*Updates, error)
-	MessagesGetUnreadMentions(ctx context.Context, in *TLMessagesGetUnreadMentions) (*MessagesMessages, error)
-	MessagesReadMentions(ctx context.Context, in *TLMessagesReadMentions) (*MessagesAffectedHistory, error)
-	MessagesGetRecentLocations(ctx context.Context, in *TLMessagesGetRecentLocations) (*MessagesMessages, error)
-	MessagesSendMultiMedia(ctx context.Context, in *TLMessagesSendMultiMedia) (*Updates, error)
-	MessagesUpdatePinnedMessage(ctx context.Context, in *TLMessagesUpdatePinnedMessage) (*Updates, error)
-	MessagesGetSearchCounters(ctx context.Context, in *TLMessagesGetSearchCounters) (*VectorMessagesSearchCounter, error)
-	MessagesUnpinAllMessages(ctx context.Context, in *TLMessagesUnpinAllMessages) (*MessagesAffectedHistory, error)
-	MessagesGetSearchResultsCalendar(ctx context.Context, in *TLMessagesGetSearchResultsCalendar) (*MessagesSearchResultsCalendar, error)
-	MessagesGetSearchResultsPositions(ctx context.Context, in *TLMessagesGetSearchResultsPositions) (*MessagesSearchResultsPositions, error)
-	MessagesToggleNoForwards(ctx context.Context, in *TLMessagesToggleNoForwards) (*Updates, error)
-	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs) (*Bool, error)
-	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia) (*MessagesMessages, error)
-	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
-	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery) (*Bool, error)
-	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs) (*ChannelsSendAsPeers, error)
-	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts) (*MessagesMessages, error)
+type RPCProfileLinks interface {
+	ContactsExportContactToken(ctx context.Context, in *TLContactsExportContactToken) (*ExportedContactToken, error)
+	ContactsImportContactToken(ctx context.Context, in *TLContactsImportContactToken) (*User, error)
 }
 
 type RPCImportedChats interface {
@@ -47526,26 +50868,15 @@ type RPCImportedChats interface {
 	MessagesCheckHistoryImportPeer(ctx context.Context, in *TLMessagesCheckHistoryImportPeer) (*MessagesCheckedHistoryImportPeer, error)
 }
 
-type RPCUpdates interface {
-	UpdatesGetState(ctx context.Context, in *TLUpdatesGetState) (*UpdatesState, error)
-	UpdatesGetDifference(ctx context.Context, in *TLUpdatesGetDifference) (*UpdatesDifference, error)
-	UpdatesGetChannelDifference(ctx context.Context, in *TLUpdatesGetChannelDifference) (*UpdatesChannelDifference, error)
+type RPCStarSubscriptions interface {
+	PaymentsGetStarsSubscriptions(ctx context.Context, in *TLPaymentsGetStarsSubscriptions) (*PaymentsStarsStatus, error)
+	PaymentsChangeStarsSubscription(ctx context.Context, in *TLPaymentsChangeStarsSubscription) (*Bool, error)
+	PaymentsFulfillStarsSubscription(ctx context.Context, in *TLPaymentsFulfillStarsSubscription) (*Bool, error)
+	PaymentsBotCancelStarsSubscription(ctx context.Context, in *TLPaymentsBotCancelStarsSubscription) (*Bool, error)
 }
 
-type RPCLangpack interface {
-	LangpackGetLangPack(ctx context.Context, in *TLLangpackGetLangPack) (*LangPackDifference, error)
-	LangpackGetStrings(ctx context.Context, in *TLLangpackGetStrings) (*VectorLangPackString, error)
-	LangpackGetDifference(ctx context.Context, in *TLLangpackGetDifference) (*LangPackDifference, error)
-	LangpackGetLanguages(ctx context.Context, in *TLLangpackGetLanguages) (*VectorLangPackLanguage, error)
-	LangpackGetLanguage(ctx context.Context, in *TLLangpackGetLanguage) (*LangPackLanguage, error)
-}
-
-type RPCUsernames interface {
-	AccountCheckUsername(ctx context.Context, in *TLAccountCheckUsername) (*Bool, error)
-	AccountUpdateUsername(ctx context.Context, in *TLAccountUpdateUsername) (*User, error)
-	ContactsResolveUsername(ctx context.Context, in *TLContactsResolveUsername) (*ContactsResolvedPeer, error)
-	ChannelsCheckUsername(ctx context.Context, in *TLChannelsCheckUsername) (*Bool, error)
-	ChannelsUpdateUsername(ctx context.Context, in *TLChannelsUpdateUsername) (*Bool, error)
+type RPCtest interface {
+	TestParseInputAppEvent(ctx context.Context, in *TLTestParseInputAppEvent) (*InputAppEvent, error)
 }
 
 type RPCSeamless interface {
@@ -47556,31 +50887,32 @@ type RPCSeamless interface {
 	MessagesAcceptUrlAuth(ctx context.Context, in *TLMessagesAcceptUrlAuth) (*UrlAuthResult, error)
 }
 
-type RPCBotMenuButton interface {
-	BotsSetBotMenuButton(ctx context.Context, in *TLBotsSetBotMenuButton) (*Bool, error)
-	BotsGetBotMenuButton(ctx context.Context, in *TLBotsGetBotMenuButton) (*BotMenuButton, error)
+type RPCDeepLinks interface {
+	MessagesStartBot(ctx context.Context, in *TLMessagesStartBot) (*Updates, error)
+	HelpGetRecentMeUrls(ctx context.Context, in *TLHelpGetRecentMeUrls) (*HelpRecentMeUrls, error)
+	HelpGetDeepLinkInfo(ctx context.Context, in *TLHelpGetDeepLinkInfo) (*HelpDeepLinkInfo, error)
 }
 
-type RPCStars interface {
-	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions) (*VectorStarsTopupOption, error)
-	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus) (*PaymentsStarsStatus, error)
-	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions) (*PaymentsStarsStatus, error)
-	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm) (*PaymentsPaymentResult, error)
-	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge) (*Updates, error)
-	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats) (*PaymentsStarsRevenueStats, error)
-	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl) (*PaymentsStarsRevenueWithdrawalUrl, error)
-	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl) (*PaymentsStarsRevenueAdsAccountUrl, error)
-	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID) (*PaymentsStarsStatus, error)
-	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions) (*VectorStarsGiftOption, error)
+type RPCGames interface {
+	MessagesSetGameScore(ctx context.Context, in *TLMessagesSetGameScore) (*Updates, error)
+	MessagesSetInlineGameScore(ctx context.Context, in *TLMessagesSetInlineGameScore) (*Bool, error)
+	MessagesGetGameHighScores(ctx context.Context, in *TLMessagesGetGameHighScores) (*MessagesHighScores, error)
+	MessagesGetInlineGameHighScores(ctx context.Context, in *TLMessagesGetInlineGameHighScores) (*MessagesHighScores, error)
 }
 
-type RPCReports interface {
-	AccountReportPeer(ctx context.Context, in *TLAccountReportPeer) (*Bool, error)
-	AccountReportProfilePhoto(ctx context.Context, in *TLAccountReportProfilePhoto) (*Bool, error)
-	MessagesReportSpam(ctx context.Context, in *TLMessagesReportSpam) (*Bool, error)
-	MessagesReport(ctx context.Context, in *TLMessagesReport) (*ReportResult, error)
-	MessagesReportEncryptedSpam(ctx context.Context, in *TLMessagesReportEncryptedSpam) (*Bool, error)
-	ChannelsReportSpam(ctx context.Context, in *TLChannelsReportSpam) (*Bool, error)
+type RPCFactChecks interface {
+	MessagesEditFactCheck(ctx context.Context, in *TLMessagesEditFactCheck) (*Updates, error)
+	MessagesDeleteFactCheck(ctx context.Context, in *TLMessagesDeleteFactCheck) (*Updates, error)
+	MessagesGetFactCheck(ctx context.Context, in *TLMessagesGetFactCheck) (*VectorFactCheck, error)
+}
+
+type RPCTos interface {
+	HelpGetTermsOfServiceUpdate(ctx context.Context, in *TLHelpGetTermsOfServiceUpdate) (*HelpTermsOfServiceUpdate, error)
+	HelpAcceptTermsOfService(ctx context.Context, in *TLHelpAcceptTermsOfService) (*Bool, error)
+}
+
+type RPCChannelRecommendations interface {
+	ChannelsGetChannelRecommendations(ctx context.Context, in *TLChannelsGetChannelRecommendations) (*MessagesChats, error)
 }
 
 type RPCPassport interface {
@@ -47597,46 +50929,16 @@ type RPCPassport interface {
 	HelpGetPassportConfig(ctx context.Context, in *TLHelpGetPassportConfig) (*HelpPassportConfig, error)
 }
 
-type RPCAccentColors interface {
-	AccountUpdateColor(ctx context.Context, in *TLAccountUpdateColor) (*Bool, error)
-	AccountGetDefaultBackgroundEmojis(ctx context.Context, in *TLAccountGetDefaultBackgroundEmojis) (*EmojiList, error)
-	HelpGetPeerColors(ctx context.Context, in *TLHelpGetPeerColors) (*HelpPeerColors, error)
-	HelpGetPeerProfileColors(ctx context.Context, in *TLHelpGetPeerProfileColors) (*HelpPeerColors, error)
-	ChannelsUpdateColor(ctx context.Context, in *TLChannelsUpdateColor) (*Updates, error)
-}
-
-type RPCPremium interface {
-	HelpGetPremiumPromo(ctx context.Context, in *TLHelpGetPremiumPromo) (*HelpPremiumPromo, error)
-	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
-	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
-	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore) (*Bool, error)
-	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium) (*Bool, error)
-}
-
-type RPCWebPage interface {
-	MessagesGetWebPagePreview(ctx context.Context, in *TLMessagesGetWebPagePreview) (*MessagesWebPagePreview, error)
-	MessagesGetWebPage(ctx context.Context, in *TLMessagesGetWebPage) (*MessagesWebPage, error)
-}
-
-type RPCForums interface {
-	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum) (*Updates, error)
-	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic) (*Updates, error)
-	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics) (*MessagesForumTopics, error)
-	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID) (*MessagesForumTopics, error)
-	ChannelsEditForumTopic(ctx context.Context, in *TLChannelsEditForumTopic) (*Updates, error)
-	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
-	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
-	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
-	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
-}
-
-type RPCFragmentCollectibles interface {
-	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo) (*FragmentCollectibleInfo, error)
-}
-
-type RPCNsfw interface {
-	AccountSetContentSettings(ctx context.Context, in *TLAccountSetContentSettings) (*Bool, error)
-	AccountGetContentSettings(ctx context.Context, in *TLAccountGetContentSettings) (*AccountContentSettings, error)
+type RPCThemes interface {
+	AccountUploadTheme(ctx context.Context, in *TLAccountUploadTheme) (*Document, error)
+	AccountCreateTheme(ctx context.Context, in *TLAccountCreateTheme) (*Theme, error)
+	AccountUpdateTheme(ctx context.Context, in *TLAccountUpdateTheme) (*Theme, error)
+	AccountSaveTheme(ctx context.Context, in *TLAccountSaveTheme) (*Bool, error)
+	AccountInstallTheme(ctx context.Context, in *TLAccountInstallTheme) (*Bool, error)
+	AccountGetTheme(ctx context.Context, in *TLAccountGetTheme) (*Theme, error)
+	AccountGetThemes(ctx context.Context, in *TLAccountGetThemes) (*AccountThemes, error)
+	AccountGetChatThemes(ctx context.Context, in *TLAccountGetChatThemes) (*AccountThemes, error)
+	MessagesSetChatTheme(ctx context.Context, in *TLMessagesSetChatTheme) (*Updates, error)
 }
 
 type RPCCustomEmojis interface {
@@ -47648,51 +50950,50 @@ type RPCCustomEmojis interface {
 	MessagesSearchCustomEmoji(ctx context.Context, in *TLMessagesSearchCustomEmoji) (*EmojiList, error)
 }
 
-type RPCBusinessChatLinks interface {
-	AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
-	AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
-	AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink) (*Bool, error)
-	AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks) (*AccountBusinessChatLinks, error)
-	AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink) (*AccountResolvedBusinessChatLinks, error)
+type RPCBotMenuButton interface {
+	BotsSetBotMenuButton(ctx context.Context, in *TLBotsSetBotMenuButton) (*Bool, error)
+	BotsGetBotMenuButton(ctx context.Context, in *TLBotsGetBotMenuButton) (*BotMenuButton, error)
 }
 
-type RPCProfileLinks interface {
-	ContactsExportContactToken(ctx context.Context, in *TLContactsExportContactToken) (*ExportedContactToken, error)
-	ContactsImportContactToken(ctx context.Context, in *TLContactsImportContactToken) (*User, error)
+type RPCAffiliatePrograms interface {
+	BotsUpdateStarRefProgram(ctx context.Context, in *TLBotsUpdateStarRefProgram) (*StarRefProgram, error)
+	PaymentsGetConnectedStarRefBots(ctx context.Context, in *TLPaymentsGetConnectedStarRefBots) (*PaymentsConnectedStarRefBots, error)
+	PaymentsGetConnectedStarRefBot(ctx context.Context, in *TLPaymentsGetConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots) (*PaymentsSuggestedStarRefBots, error)
+	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot) (*PaymentsConnectedStarRefBots, error)
+	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
 }
 
-type RPCTwoFa interface {
-	AccountGetPassword(ctx context.Context, in *TLAccountGetPassword) (*AccountPassword, error)
-	AccountGetPasswordSettings(ctx context.Context, in *TLAccountGetPasswordSettings) (*AccountPasswordSettings, error)
-	AccountUpdatePasswordSettings(ctx context.Context, in *TLAccountUpdatePasswordSettings) (*Bool, error)
-	AccountConfirmPasswordEmail(ctx context.Context, in *TLAccountConfirmPasswordEmail) (*Bool, error)
-	AccountResendPasswordEmail(ctx context.Context, in *TLAccountResendPasswordEmail) (*Bool, error)
-	AccountCancelPasswordEmail(ctx context.Context, in *TLAccountCancelPasswordEmail) (*Bool, error)
-	AccountDeclinePasswordReset(ctx context.Context, in *TLAccountDeclinePasswordReset) (*Bool, error)
+type RPCLangpack interface {
+	LangpackGetLangPack(ctx context.Context, in *TLLangpackGetLangPack) (*LangPackDifference, error)
+	LangpackGetStrings(ctx context.Context, in *TLLangpackGetStrings) (*VectorLangPackString, error)
+	LangpackGetDifference(ctx context.Context, in *TLLangpackGetDifference) (*LangPackDifference, error)
+	LangpackGetLanguages(ctx context.Context, in *TLLangpackGetLanguages) (*VectorLangPackLanguage, error)
+	LangpackGetLanguage(ctx context.Context, in *TLLangpackGetLanguage) (*LangPackLanguage, error)
 }
 
-type RPCFolders interface {
-	MessagesGetDialogFilters(ctx context.Context, in *TLMessagesGetDialogFilters) (*MessagesDialogFilters, error)
-	MessagesGetSuggestedDialogFilters(ctx context.Context, in *TLMessagesGetSuggestedDialogFilters) (*VectorDialogFilterSuggested, error)
-	MessagesUpdateDialogFilter(ctx context.Context, in *TLMessagesUpdateDialogFilter) (*Bool, error)
-	MessagesUpdateDialogFiltersOrder(ctx context.Context, in *TLMessagesUpdateDialogFiltersOrder) (*Bool, error)
-	FoldersEditPeerFolders(ctx context.Context, in *TLFoldersEditPeerFolders) (*Updates, error)
-	ChatlistsExportChatlistInvite(ctx context.Context, in *TLChatlistsExportChatlistInvite) (*ChatlistsExportedChatlistInvite, error)
-	ChatlistsDeleteExportedInvite(ctx context.Context, in *TLChatlistsDeleteExportedInvite) (*Bool, error)
-	ChatlistsEditExportedInvite(ctx context.Context, in *TLChatlistsEditExportedInvite) (*ExportedChatlistInvite, error)
-	ChatlistsGetExportedInvites(ctx context.Context, in *TLChatlistsGetExportedInvites) (*ChatlistsExportedInvites, error)
-	ChatlistsCheckChatlistInvite(ctx context.Context, in *TLChatlistsCheckChatlistInvite) (*ChatlistsChatlistInvite, error)
-	ChatlistsJoinChatlistInvite(ctx context.Context, in *TLChatlistsJoinChatlistInvite) (*Updates, error)
-	ChatlistsGetChatlistUpdates(ctx context.Context, in *TLChatlistsGetChatlistUpdates) (*ChatlistsChatlistUpdates, error)
-	ChatlistsJoinChatlistUpdates(ctx context.Context, in *TLChatlistsJoinChatlistUpdates) (*Updates, error)
-	ChatlistsHideChatlistUpdates(ctx context.Context, in *TLChatlistsHideChatlistUpdates) (*Bool, error)
-	ChatlistsGetLeaveChatlistSuggestions(ctx context.Context, in *TLChatlistsGetLeaveChatlistSuggestions) (*VectorPeer, error)
-	ChatlistsLeaveChatlist(ctx context.Context, in *TLChatlistsLeaveChatlist) (*Updates, error)
+type RPCSponsoredMessages interface {
+	AccountToggleSponsoredMessages(ctx context.Context, in *TLAccountToggleSponsoredMessages) (*Bool, error)
+	ContactsGetSponsoredPeers(ctx context.Context, in *TLContactsGetSponsoredPeers) (*ContactsSponsoredPeers, error)
+	MessagesViewSponsoredMessage(ctx context.Context, in *TLMessagesViewSponsoredMessage) (*Bool, error)
+	MessagesClickSponsoredMessage(ctx context.Context, in *TLMessagesClickSponsoredMessage) (*Bool, error)
+	MessagesReportSponsoredMessage(ctx context.Context, in *TLMessagesReportSponsoredMessage) (*ChannelsSponsoredMessageReportResult, error)
+	MessagesGetSponsoredMessages(ctx context.Context, in *TLMessagesGetSponsoredMessages) (*MessagesSponsoredMessages, error)
+	ChannelsRestrictSponsoredMessages(ctx context.Context, in *TLChannelsRestrictSponsoredMessages) (*Updates, error)
 }
 
-type RPCGiftCodes interface {
-	PaymentsCheckGiftCode(ctx context.Context, in *TLPaymentsCheckGiftCode) (*PaymentsCheckedGiftCode, error)
-	PaymentsApplyGiftCode(ctx context.Context, in *TLPaymentsApplyGiftCode) (*Updates, error)
+type RPCPaidMedia interface {
+	MessagesGetExtendedMedia(ctx context.Context, in *TLMessagesGetExtendedMedia) (*Updates, error)
+}
+
+type RPCPreparedInlineMessages interface {
+	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage) (*MessagesBotPreparedInlineMessage, error)
+	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage) (*MessagesPreparedInlineMessage, error)
+}
+
+type RPCPromoData interface {
+	HelpGetPromoData(ctx context.Context, in *TLHelpGetPromoData) (*HelpPromoData, error)
+	HelpHidePromoData(ctx context.Context, in *TLHelpHidePromoData) (*Bool, error)
 }
 
 type RPCContacts interface {
@@ -47725,41 +51026,49 @@ type RPCReactionNotification interface {
 	AccountSetReactionsNotifySettings(ctx context.Context, in *TLAccountSetReactionsNotifySettings) (*ReactionsNotifySettings, error)
 }
 
-type RPCEmoji interface {
-	MessagesGetEmojiKeywords(ctx context.Context, in *TLMessagesGetEmojiKeywords) (*EmojiKeywordsDifference, error)
-	MessagesGetEmojiKeywordsDifference(ctx context.Context, in *TLMessagesGetEmojiKeywordsDifference) (*EmojiKeywordsDifference, error)
-	MessagesGetEmojiKeywordsLanguages(ctx context.Context, in *TLMessagesGetEmojiKeywordsLanguages) (*VectorEmojiLanguage, error)
-	MessagesGetEmojiURL(ctx context.Context, in *TLMessagesGetEmojiURL) (*EmojiURL, error)
+type RPCFolderTags interface {
+	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags) (*Bool, error)
 }
 
-type RPCChannelRecommendations interface {
-	ChannelsGetChannelRecommendations(ctx context.Context, in *TLChannelsGetChannelRecommendations) (*MessagesChats, error)
+type RPCStars interface {
+	PaymentsGetStarsTopupOptions(ctx context.Context, in *TLPaymentsGetStarsTopupOptions) (*VectorStarsTopupOption, error)
+	PaymentsGetStarsStatus(ctx context.Context, in *TLPaymentsGetStarsStatus) (*PaymentsStarsStatus, error)
+	PaymentsGetStarsTransactions(ctx context.Context, in *TLPaymentsGetStarsTransactions) (*PaymentsStarsStatus, error)
+	PaymentsSendStarsForm(ctx context.Context, in *TLPaymentsSendStarsForm) (*PaymentsPaymentResult, error)
+	PaymentsRefundStarsCharge(ctx context.Context, in *TLPaymentsRefundStarsCharge) (*Updates, error)
+	PaymentsGetStarsRevenueStats(ctx context.Context, in *TLPaymentsGetStarsRevenueStats) (*PaymentsStarsRevenueStats, error)
+	PaymentsGetStarsRevenueWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueWithdrawalUrl) (*PaymentsStarsRevenueWithdrawalUrl, error)
+	PaymentsGetStarsRevenueAdsAccountUrl(ctx context.Context, in *TLPaymentsGetStarsRevenueAdsAccountUrl) (*PaymentsStarsRevenueAdsAccountUrl, error)
+	PaymentsGetStarsTransactionsByID(ctx context.Context, in *TLPaymentsGetStarsTransactionsByID) (*PaymentsStarsStatus, error)
+	PaymentsGetStarsGiftOptions(ctx context.Context, in *TLPaymentsGetStarsGiftOptions) (*VectorStarsGiftOption, error)
 }
 
-type RPCInlineBot interface {
-	MessagesGetInlineBotResults(ctx context.Context, in *TLMessagesGetInlineBotResults) (*MessagesBotResults, error)
-	MessagesSetInlineBotResults(ctx context.Context, in *TLMessagesSetInlineBotResults) (*Bool, error)
-	MessagesSendInlineBotResult(ctx context.Context, in *TLMessagesSendInlineBotResult) (*Updates, error)
-	MessagesEditInlineBotMessage(ctx context.Context, in *TLMessagesEditInlineBotMessage) (*Bool, error)
-	MessagesGetBotCallbackAnswer(ctx context.Context, in *TLMessagesGetBotCallbackAnswer) (*MessagesBotCallbackAnswer, error)
-	MessagesSetBotCallbackAnswer(ctx context.Context, in *TLMessagesSetBotCallbackAnswer) (*Bool, error)
-	MessagesSendBotRequestedPeer(ctx context.Context, in *TLMessagesSendBotRequestedPeer) (*Updates, error)
+type RPCUpdates interface {
+	UpdatesGetState(ctx context.Context, in *TLUpdatesGetState) (*UpdatesState, error)
+	UpdatesGetDifference(ctx context.Context, in *TLUpdatesGetDifference) (*UpdatesDifference, error)
+	UpdatesGetChannelDifference(ctx context.Context, in *TLUpdatesGetChannelDifference) (*UpdatesChannelDifference, error)
 }
 
-type RPCBotMenu interface {
-	MessagesGetAttachMenuBots(ctx context.Context, in *TLMessagesGetAttachMenuBots) (*AttachMenuBots, error)
-	MessagesGetAttachMenuBot(ctx context.Context, in *TLMessagesGetAttachMenuBot) (*AttachMenuBotsBot, error)
-	MessagesToggleBotInAttachMenu(ctx context.Context, in *TLMessagesToggleBotInAttachMenu) (*Bool, error)
+type RPCTsf interface {
+	HelpGetUserInfo(ctx context.Context, in *TLHelpGetUserInfo) (*HelpUserInfo, error)
+	HelpEditUserInfo(ctx context.Context, in *TLHelpEditUserInfo) (*HelpUserInfo, error)
 }
 
-type RPCSavedMessageTags interface {
-	MessagesGetSavedReactionTags(ctx context.Context, in *TLMessagesGetSavedReactionTags) (*MessagesSavedReactionTags, error)
-	MessagesUpdateSavedReactionTag(ctx context.Context, in *TLMessagesUpdateSavedReactionTag) (*Bool, error)
-	MessagesGetDefaultTagReactions(ctx context.Context, in *TLMessagesGetDefaultTagReactions) (*MessagesReactions, error)
+type RPCQrCode interface {
+	AuthExportLoginToken(ctx context.Context, in *TLAuthExportLoginToken) (*AuthLoginToken, error)
+	AuthImportLoginToken(ctx context.Context, in *TLAuthImportLoginToken) (*AuthLoginToken, error)
+	AuthAcceptLoginToken(ctx context.Context, in *TLAuthAcceptLoginToken) (*Authorization, error)
 }
 
-type RPCMessageEffects interface {
-	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects) (*MessagesAvailableEffects, error)
+type RPCWallpapers interface {
+	AccountGetWallPapers(ctx context.Context, in *TLAccountGetWallPapers) (*AccountWallPapers, error)
+	AccountGetWallPaper(ctx context.Context, in *TLAccountGetWallPaper) (*WallPaper, error)
+	AccountUploadWallPaper(ctx context.Context, in *TLAccountUploadWallPaper) (*WallPaper, error)
+	AccountSaveWallPaper(ctx context.Context, in *TLAccountSaveWallPaper) (*Bool, error)
+	AccountInstallWallPaper(ctx context.Context, in *TLAccountInstallWallPaper) (*Bool, error)
+	AccountResetWallPapers(ctx context.Context, in *TLAccountResetWallPapers) (*Bool, error)
+	AccountGetMultiWallPapers(ctx context.Context, in *TLAccountGetMultiWallPapers) (*VectorWallPaper, error)
+	MessagesSetChatWallPaper(ctx context.Context, in *TLMessagesSetChatWallPaper) (*Updates, error)
 }
 
 type RPCRingtone interface {
@@ -47768,12 +51077,319 @@ type RPCRingtone interface {
 	AccountUploadRingtone(ctx context.Context, in *TLAccountUploadRingtone) (*Document, error)
 }
 
+type RPCDialogs interface {
+	MessagesGetDialogs(ctx context.Context, in *TLMessagesGetDialogs) (*MessagesDialogs, error)
+	MessagesSetTyping(ctx context.Context, in *TLMessagesSetTyping) (*Bool, error)
+	MessagesGetPeerSettings(ctx context.Context, in *TLMessagesGetPeerSettings) (*MessagesPeerSettings, error)
+	MessagesGetPeerDialogs(ctx context.Context, in *TLMessagesGetPeerDialogs) (*MessagesPeerDialogs, error)
+	MessagesToggleDialogPin(ctx context.Context, in *TLMessagesToggleDialogPin) (*Bool, error)
+	MessagesReorderPinnedDialogs(ctx context.Context, in *TLMessagesReorderPinnedDialogs) (*Bool, error)
+	MessagesGetPinnedDialogs(ctx context.Context, in *TLMessagesGetPinnedDialogs) (*MessagesPeerDialogs, error)
+	MessagesSendScreenshotNotification(ctx context.Context, in *TLMessagesSendScreenshotNotification) (*Updates, error)
+	MessagesMarkDialogUnread(ctx context.Context, in *TLMessagesMarkDialogUnread) (*Bool, error)
+	MessagesGetDialogUnreadMarks(ctx context.Context, in *TLMessagesGetDialogUnreadMarks) (*VectorDialogPeer, error)
+	MessagesGetOnlines(ctx context.Context, in *TLMessagesGetOnlines) (*ChatOnlines, error)
+	MessagesHidePeerSettingsBar(ctx context.Context, in *TLMessagesHidePeerSettingsBar) (*Bool, error)
+	MessagesSetHistoryTTL(ctx context.Context, in *TLMessagesSetHistoryTTL) (*Updates, error)
+}
+
+type RPCPolls interface {
+	MessagesSendVote(ctx context.Context, in *TLMessagesSendVote) (*Updates, error)
+	MessagesGetPollResults(ctx context.Context, in *TLMessagesGetPollResults) (*Updates, error)
+	MessagesGetPollVotes(ctx context.Context, in *TLMessagesGetPollVotes) (*MessagesVotesList, error)
+}
+
+type RPCEmoji interface {
+	MessagesGetEmojiKeywords(ctx context.Context, in *TLMessagesGetEmojiKeywords) (*EmojiKeywordsDifference, error)
+	MessagesGetEmojiKeywordsDifference(ctx context.Context, in *TLMessagesGetEmojiKeywordsDifference) (*EmojiKeywordsDifference, error)
+	MessagesGetEmojiKeywordsLanguages(ctx context.Context, in *TLMessagesGetEmojiKeywordsLanguages) (*VectorEmojiLanguage, error)
+	MessagesGetEmojiURL(ctx context.Context, in *TLMessagesGetEmojiURL) (*EmojiURL, error)
+}
+
+type RPCTimezones interface {
+	HelpGetTimezonesList(ctx context.Context, in *TLHelpGetTimezonesList) (*HelpTimezonesList, error)
+}
+
+type RPCPredefined interface {
+	PredefinedCreatePredefinedUser(ctx context.Context, in *TLPredefinedCreatePredefinedUser) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedUsername(ctx context.Context, in *TLPredefinedUpdatePredefinedUsername) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedProfile(ctx context.Context, in *TLPredefinedUpdatePredefinedProfile) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedVerified(ctx context.Context, in *TLPredefinedUpdatePredefinedVerified) (*PredefinedUser, error)
+	PredefinedUpdatePredefinedCode(ctx context.Context, in *TLPredefinedUpdatePredefinedCode) (*PredefinedUser, error)
+	PredefinedGetPredefinedUser(ctx context.Context, in *TLPredefinedGetPredefinedUser) (*PredefinedUser, error)
+	PredefinedGetPredefinedUsers(ctx context.Context, in *TLPredefinedGetPredefinedUsers) (*VectorPredefinedUser, error)
+}
+
+type RPCBotMenu interface {
+	MessagesGetAttachMenuBots(ctx context.Context, in *TLMessagesGetAttachMenuBots) (*AttachMenuBots, error)
+	MessagesGetAttachMenuBot(ctx context.Context, in *TLMessagesGetAttachMenuBot) (*AttachMenuBotsBot, error)
+	MessagesToggleBotInAttachMenu(ctx context.Context, in *TLMessagesToggleBotInAttachMenu) (*Bool, error)
+}
+
+type RPCEmojiCategories interface {
+	MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups) (*MessagesEmojiGroups, error)
+	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups) (*MessagesEmojiGroups, error)
+	MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups) (*MessagesEmojiGroups, error)
+	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups) (*MessagesEmojiGroups, error)
+}
+
+type RPCReports interface {
+	AccountReportPeer(ctx context.Context, in *TLAccountReportPeer) (*Bool, error)
+	AccountReportProfilePhoto(ctx context.Context, in *TLAccountReportProfilePhoto) (*Bool, error)
+	MessagesReportSpam(ctx context.Context, in *TLMessagesReportSpam) (*Bool, error)
+	MessagesReport(ctx context.Context, in *TLMessagesReport) (*ReportResult, error)
+	MessagesReportEncryptedSpam(ctx context.Context, in *TLMessagesReportEncryptedSpam) (*Bool, error)
+	ChannelsReportSpam(ctx context.Context, in *TLChannelsReportSpam) (*Bool, error)
+}
+
+type RPCEmojiStatus interface {
+	AccountUpdateEmojiStatus(ctx context.Context, in *TLAccountUpdateEmojiStatus) (*Bool, error)
+	AccountGetDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountGetRecentEmojiStatuses(ctx context.Context, in *TLAccountGetRecentEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountClearRecentEmojiStatuses(ctx context.Context, in *TLAccountClearRecentEmojiStatuses) (*Bool, error)
+	AccountGetChannelDefaultEmojiStatuses(ctx context.Context, in *TLAccountGetChannelDefaultEmojiStatuses) (*AccountEmojiStatuses, error)
+	AccountGetChannelRestrictedStatusEmojis(ctx context.Context, in *TLAccountGetChannelRestrictedStatusEmojis) (*EmojiList, error)
+	AccountGetCollectibleEmojiStatuses(ctx context.Context, in *TLAccountGetCollectibleEmojiStatuses) (*AccountEmojiStatuses, error)
+	ChannelsUpdateEmojiStatus(ctx context.Context, in *TLChannelsUpdateEmojiStatus) (*Updates, error)
+	BotsUpdateUserEmojiStatus(ctx context.Context, in *TLBotsUpdateUserEmojiStatus) (*Bool, error)
+	BotsToggleUserEmojiStatusPermission(ctx context.Context, in *TLBotsToggleUserEmojiStatusPermission) (*Bool, error)
+}
+
 type RPCBusinessConnectedBots interface {
 	AccountUpdateConnectedBot(ctx context.Context, in *TLAccountUpdateConnectedBot) (*Updates, error)
 	AccountGetConnectedBots(ctx context.Context, in *TLAccountGetConnectedBots) (*AccountConnectedBots, error)
 	AccountGetBotBusinessConnection(ctx context.Context, in *TLAccountGetBotBusinessConnection) (*Updates, error)
 	AccountToggleConnectedBotPaused(ctx context.Context, in *TLAccountToggleConnectedBotPaused) (*Bool, error)
 	AccountDisablePeerConnectedBot(ctx context.Context, in *TLAccountDisablePeerConnectedBot) (*Bool, error)
+}
+
+type RPCUsers interface {
+	UsersGetUsers(ctx context.Context, in *TLUsersGetUsers) (*VectorUser, error)
+	UsersGetFullUser(ctx context.Context, in *TLUsersGetFullUser) (*UsersUserFull, error)
+	ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone) (*ContactsResolvedPeer, error)
+	UsersGetMe(ctx context.Context, in *TLUsersGetMe) (*User, error)
+}
+
+type RPCFiles interface {
+	MessagesGetDocumentByHash(ctx context.Context, in *TLMessagesGetDocumentByHash) (*Document, error)
+	MessagesUploadMedia(ctx context.Context, in *TLMessagesUploadMedia) (*MessageMedia, error)
+	MessagesUploadEncryptedFile(ctx context.Context, in *TLMessagesUploadEncryptedFile) (*EncryptedFile, error)
+	UploadSaveFilePart(ctx context.Context, in *TLUploadSaveFilePart) (*Bool, error)
+	UploadGetFile(ctx context.Context, in *TLUploadGetFile) (*UploadFile, error)
+	UploadSaveBigFilePart(ctx context.Context, in *TLUploadSaveBigFilePart) (*Bool, error)
+	UploadGetWebFile(ctx context.Context, in *TLUploadGetWebFile) (*UploadWebFile, error)
+	UploadGetCdnFile(ctx context.Context, in *TLUploadGetCdnFile) (*UploadCdnFile, error)
+	UploadReuploadCdnFile(ctx context.Context, in *TLUploadReuploadCdnFile) (*VectorFileHash, error)
+	UploadGetCdnFileHashes(ctx context.Context, in *TLUploadGetCdnFileHashes) (*VectorFileHash, error)
+	UploadGetFileHashes(ctx context.Context, in *TLUploadGetFileHashes) (*VectorFileHash, error)
+	HelpGetCdnConfig(ctx context.Context, in *TLHelpGetCdnConfig) (*CdnConfig, error)
+}
+
+type RPCGifs interface {
+	MessagesGetSavedGifs(ctx context.Context, in *TLMessagesGetSavedGifs) (*MessagesSavedGifs, error)
+	MessagesSaveGif(ctx context.Context, in *TLMessagesSaveGif) (*Bool, error)
+}
+
+type RPCBots interface {
+	BotsSetBotCommands(ctx context.Context, in *TLBotsSetBotCommands) (*Bool, error)
+	BotsResetBotCommands(ctx context.Context, in *TLBotsResetBotCommands) (*Bool, error)
+	BotsGetBotCommands(ctx context.Context, in *TLBotsGetBotCommands) (*VectorBotCommand, error)
+	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo) (*Bool, error)
+	BotsGetBotInfo(ctx context.Context, in *TLBotsGetBotInfo) (*BotsBotInfo, error)
+	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots) (*VectorUser, error)
+	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
+	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
+}
+
+type RPCAccount interface {
+	AccountDeleteAccount(ctx context.Context, in *TLAccountDeleteAccount) (*Bool, error)
+	AccountGetAccountTTL(ctx context.Context, in *TLAccountGetAccountTTL) (*AccountDaysTTL, error)
+	AccountSetAccountTTL(ctx context.Context, in *TLAccountSetAccountTTL) (*Bool, error)
+	AccountSendChangePhoneCode(ctx context.Context, in *TLAccountSendChangePhoneCode) (*AuthSentCode, error)
+	AccountChangePhone(ctx context.Context, in *TLAccountChangePhone) (*User, error)
+	AccountResetAuthorization(ctx context.Context, in *TLAccountResetAuthorization) (*Bool, error)
+	AccountSendConfirmPhoneCode(ctx context.Context, in *TLAccountSendConfirmPhoneCode) (*AuthSentCode, error)
+	AccountConfirmPhone(ctx context.Context, in *TLAccountConfirmPhone) (*Bool, error)
+}
+
+type RPCFragment interface {
+	AccountReorderUsernames(ctx context.Context, in *TLAccountReorderUsernames) (*Bool, error)
+	AccountToggleUsername(ctx context.Context, in *TLAccountToggleUsername) (*Bool, error)
+	ChannelsReorderUsernames(ctx context.Context, in *TLChannelsReorderUsernames) (*Bool, error)
+	ChannelsToggleUsername(ctx context.Context, in *TLChannelsToggleUsername) (*Bool, error)
+	ChannelsDeactivateAllUsernames(ctx context.Context, in *TLChannelsDeactivateAllUsernames) (*Bool, error)
+	BotsReorderUsernames(ctx context.Context, in *TLBotsReorderUsernames) (*Bool, error)
+	BotsToggleUsername(ctx context.Context, in *TLBotsToggleUsername) (*Bool, error)
+}
+
+type RPCBusinessLocation interface {
+	AccountUpdateBusinessLocation(ctx context.Context, in *TLAccountUpdateBusinessLocation) (*Bool, error)
+}
+
+type RPCMessageThreads interface {
+	ContactsBlockFromReplies(ctx context.Context, in *TLContactsBlockFromReplies) (*Updates, error)
+	MessagesGetReplies(ctx context.Context, in *TLMessagesGetReplies) (*MessagesMessages, error)
+	MessagesGetDiscussionMessage(ctx context.Context, in *TLMessagesGetDiscussionMessage) (*MessagesDiscussionMessage, error)
+	MessagesReadDiscussion(ctx context.Context, in *TLMessagesReadDiscussion) (*Bool, error)
+}
+
+type RPCFolders interface {
+	MessagesGetDialogFilters(ctx context.Context, in *TLMessagesGetDialogFilters) (*MessagesDialogFilters, error)
+	MessagesGetSuggestedDialogFilters(ctx context.Context, in *TLMessagesGetSuggestedDialogFilters) (*VectorDialogFilterSuggested, error)
+	MessagesUpdateDialogFilter(ctx context.Context, in *TLMessagesUpdateDialogFilter) (*Bool, error)
+	MessagesUpdateDialogFiltersOrder(ctx context.Context, in *TLMessagesUpdateDialogFiltersOrder) (*Bool, error)
+	FoldersEditPeerFolders(ctx context.Context, in *TLFoldersEditPeerFolders) (*Updates, error)
+	ChatlistsExportChatlistInvite(ctx context.Context, in *TLChatlistsExportChatlistInvite) (*ChatlistsExportedChatlistInvite, error)
+	ChatlistsDeleteExportedInvite(ctx context.Context, in *TLChatlistsDeleteExportedInvite) (*Bool, error)
+	ChatlistsEditExportedInvite(ctx context.Context, in *TLChatlistsEditExportedInvite) (*ExportedChatlistInvite, error)
+	ChatlistsGetExportedInvites(ctx context.Context, in *TLChatlistsGetExportedInvites) (*ChatlistsExportedInvites, error)
+	ChatlistsCheckChatlistInvite(ctx context.Context, in *TLChatlistsCheckChatlistInvite) (*ChatlistsChatlistInvite, error)
+	ChatlistsJoinChatlistInvite(ctx context.Context, in *TLChatlistsJoinChatlistInvite) (*Updates, error)
+	ChatlistsGetChatlistUpdates(ctx context.Context, in *TLChatlistsGetChatlistUpdates) (*ChatlistsChatlistUpdates, error)
+	ChatlistsJoinChatlistUpdates(ctx context.Context, in *TLChatlistsJoinChatlistUpdates) (*Updates, error)
+	ChatlistsHideChatlistUpdates(ctx context.Context, in *TLChatlistsHideChatlistUpdates) (*Bool, error)
+	ChatlistsGetLeaveChatlistSuggestions(ctx context.Context, in *TLChatlistsGetLeaveChatlistSuggestions) (*VectorPeer, error)
+	ChatlistsLeaveChatlist(ctx context.Context, in *TLChatlistsLeaveChatlist) (*Updates, error)
+}
+
+type RPCInternalBot interface {
+	HelpSetBotUpdatesStatus(ctx context.Context, in *TLHelpSetBotUpdatesStatus) (*Bool, error)
+	BotsSendCustomRequest(ctx context.Context, in *TLBotsSendCustomRequest) (*DataJSON, error)
+	BotsAnswerWebhookJSONQuery(ctx context.Context, in *TLBotsAnswerWebhookJSONQuery) (*Bool, error)
+}
+
+type RPCBusinessGreeting interface {
+	AccountUpdateBusinessGreetingMessage(ctx context.Context, in *TLAccountUpdateBusinessGreetingMessage) (*Bool, error)
+	AccountUpdateBusinessAwayMessage(ctx context.Context, in *TLAccountUpdateBusinessAwayMessage) (*Bool, error)
+}
+
+type RPCBusinessIntro interface {
+	AccountUpdateBusinessIntro(ctx context.Context, in *TLAccountUpdateBusinessIntro) (*Bool, error)
+}
+
+type RPCMainMiniBotApps interface {
+	MessagesRequestMainWebView(ctx context.Context, in *TLMessagesRequestMainWebView) (*WebViewResult, error)
+	BotsGetPopularAppBots(ctx context.Context, in *TLBotsGetPopularAppBots) (*BotsPopularAppBots, error)
+	BotsAddPreviewMedia(ctx context.Context, in *TLBotsAddPreviewMedia) (*BotPreviewMedia, error)
+	BotsEditPreviewMedia(ctx context.Context, in *TLBotsEditPreviewMedia) (*BotPreviewMedia, error)
+	BotsDeletePreviewMedia(ctx context.Context, in *TLBotsDeletePreviewMedia) (*Bool, error)
+	BotsReorderPreviewMedias(ctx context.Context, in *TLBotsReorderPreviewMedias) (*Bool, error)
+	BotsGetPreviewInfo(ctx context.Context, in *TLBotsGetPreviewInfo) (*BotsPreviewInfo, error)
+	BotsGetPreviewMedias(ctx context.Context, in *TLBotsGetPreviewMedias) (*VectorBotPreviewMedia, error)
+}
+
+type RPCBotAdminRight interface {
+	BotsSetBotBroadcastDefaultAdminRights(ctx context.Context, in *TLBotsSetBotBroadcastDefaultAdminRights) (*Bool, error)
+	BotsSetBotGroupDefaultAdminRights(ctx context.Context, in *TLBotsSetBotGroupDefaultAdminRights) (*Bool, error)
+}
+
+type RPCFragmentCollectibles interface {
+	FragmentGetCollectibleInfo(ctx context.Context, in *TLFragmentGetCollectibleInfo) (*FragmentCollectibleInfo, error)
+}
+
+type RPCTwoFa interface {
+	AccountGetPassword(ctx context.Context, in *TLAccountGetPassword) (*AccountPassword, error)
+	AccountGetPasswordSettings(ctx context.Context, in *TLAccountGetPasswordSettings) (*AccountPasswordSettings, error)
+	AccountUpdatePasswordSettings(ctx context.Context, in *TLAccountUpdatePasswordSettings) (*Bool, error)
+	AccountConfirmPasswordEmail(ctx context.Context, in *TLAccountConfirmPasswordEmail) (*Bool, error)
+	AccountResendPasswordEmail(ctx context.Context, in *TLAccountResendPasswordEmail) (*Bool, error)
+	AccountCancelPasswordEmail(ctx context.Context, in *TLAccountCancelPasswordEmail) (*Bool, error)
+	AccountDeclinePasswordReset(ctx context.Context, in *TLAccountDeclinePasswordReset) (*Bool, error)
+}
+
+type RPCBusinessChatLinks interface {
+	AccountCreateBusinessChatLink(ctx context.Context, in *TLAccountCreateBusinessChatLink) (*BusinessChatLink, error)
+	AccountEditBusinessChatLink(ctx context.Context, in *TLAccountEditBusinessChatLink) (*BusinessChatLink, error)
+	AccountDeleteBusinessChatLink(ctx context.Context, in *TLAccountDeleteBusinessChatLink) (*Bool, error)
+	AccountGetBusinessChatLinks(ctx context.Context, in *TLAccountGetBusinessChatLinks) (*AccountBusinessChatLinks, error)
+	AccountResolveBusinessChatLink(ctx context.Context, in *TLAccountResolveBusinessChatLink) (*AccountResolvedBusinessChatLinks, error)
+}
+
+type RPCPaidMessage interface {
+	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException) (*Bool, error)
+	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue) (*AccountPaidMessagesRevenue, error)
+	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
+}
+
+type RPCBusinessQuickReply interface {
+	MessagesGetQuickReplies(ctx context.Context, in *TLMessagesGetQuickReplies) (*MessagesQuickReplies, error)
+	MessagesReorderQuickReplies(ctx context.Context, in *TLMessagesReorderQuickReplies) (*Bool, error)
+	MessagesCheckQuickReplyShortcut(ctx context.Context, in *TLMessagesCheckQuickReplyShortcut) (*Bool, error)
+	MessagesEditQuickReplyShortcut(ctx context.Context, in *TLMessagesEditQuickReplyShortcut) (*Bool, error)
+	MessagesDeleteQuickReplyShortcut(ctx context.Context, in *TLMessagesDeleteQuickReplyShortcut) (*Bool, error)
+	MessagesGetQuickReplyMessages(ctx context.Context, in *TLMessagesGetQuickReplyMessages) (*MessagesMessages, error)
+	MessagesSendQuickReplyMessages(ctx context.Context, in *TLMessagesSendQuickReplyMessages) (*Updates, error)
+	MessagesDeleteQuickReplyMessages(ctx context.Context, in *TLMessagesDeleteQuickReplyMessages) (*Updates, error)
+}
+
+type RPCChannels interface {
+	ChannelsReadHistory(ctx context.Context, in *TLChannelsReadHistory) (*Bool, error)
+	ChannelsDeleteMessages(ctx context.Context, in *TLChannelsDeleteMessages) (*MessagesAffectedMessages, error)
+	ChannelsGetMessages(ctx context.Context, in *TLChannelsGetMessages) (*MessagesMessages, error)
+	ChannelsGetParticipants(ctx context.Context, in *TLChannelsGetParticipants) (*ChannelsChannelParticipants, error)
+	ChannelsGetParticipant(ctx context.Context, in *TLChannelsGetParticipant) (*ChannelsChannelParticipant, error)
+	ChannelsGetChannels(ctx context.Context, in *TLChannelsGetChannels) (*MessagesChats, error)
+	ChannelsGetFullChannel(ctx context.Context, in *TLChannelsGetFullChannel) (*MessagesChatFull, error)
+	ChannelsCreateChannel(ctx context.Context, in *TLChannelsCreateChannel) (*Updates, error)
+	ChannelsEditAdmin(ctx context.Context, in *TLChannelsEditAdmin) (*Updates, error)
+	ChannelsEditTitle(ctx context.Context, in *TLChannelsEditTitle) (*Updates, error)
+	ChannelsEditPhoto(ctx context.Context, in *TLChannelsEditPhoto) (*Updates, error)
+	ChannelsJoinChannel(ctx context.Context, in *TLChannelsJoinChannel) (*Updates, error)
+	ChannelsLeaveChannel(ctx context.Context, in *TLChannelsLeaveChannel) (*Updates, error)
+	ChannelsInviteToChannel(ctx context.Context, in *TLChannelsInviteToChannel) (*MessagesInvitedUsers, error)
+	ChannelsDeleteChannel(ctx context.Context, in *TLChannelsDeleteChannel) (*Updates, error)
+	ChannelsExportMessageLink(ctx context.Context, in *TLChannelsExportMessageLink) (*ExportedMessageLink, error)
+	ChannelsToggleSignatures(ctx context.Context, in *TLChannelsToggleSignatures) (*Updates, error)
+	ChannelsGetAdminedPublicChannels(ctx context.Context, in *TLChannelsGetAdminedPublicChannels) (*MessagesChats, error)
+	ChannelsEditBanned(ctx context.Context, in *TLChannelsEditBanned) (*Updates, error)
+	ChannelsGetAdminLog(ctx context.Context, in *TLChannelsGetAdminLog) (*ChannelsAdminLogResults, error)
+	ChannelsSetStickers(ctx context.Context, in *TLChannelsSetStickers) (*Bool, error)
+	ChannelsReadMessageContents(ctx context.Context, in *TLChannelsReadMessageContents) (*Bool, error)
+	ChannelsDeleteHistory(ctx context.Context, in *TLChannelsDeleteHistory) (*Updates, error)
+	ChannelsTogglePreHistoryHidden(ctx context.Context, in *TLChannelsTogglePreHistoryHidden) (*Updates, error)
+	ChannelsGetGroupsForDiscussion(ctx context.Context, in *TLChannelsGetGroupsForDiscussion) (*MessagesChats, error)
+	ChannelsSetDiscussionGroup(ctx context.Context, in *TLChannelsSetDiscussionGroup) (*Bool, error)
+	ChannelsEditCreator(ctx context.Context, in *TLChannelsEditCreator) (*Updates, error)
+	ChannelsEditLocation(ctx context.Context, in *TLChannelsEditLocation) (*Bool, error)
+	ChannelsToggleSlowMode(ctx context.Context, in *TLChannelsToggleSlowMode) (*Updates, error)
+	ChannelsGetInactiveChannels(ctx context.Context, in *TLChannelsGetInactiveChannels) (*MessagesInactiveChats, error)
+	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory) (*MessagesAffectedHistory, error)
+	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden) (*Updates, error)
+}
+
+type RPCPremium interface {
+	HelpGetPremiumPromo(ctx context.Context, in *TLHelpGetPremiumPromo) (*HelpPremiumPromo, error)
+	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
+	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
+	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore) (*Bool, error)
+	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium) (*Bool, error)
+}
+
+type RPCbiz interface {
+	BizInvokeBizDataRaw(ctx context.Context, in *TLBizInvokeBizDataRaw) (*BizDataRaw, error)
+}
+
+type RPCBusinessOpeningHours interface {
+	AccountUpdateBusinessWorkHours(ctx context.Context, in *TLAccountUpdateBusinessWorkHours) (*Bool, error)
+}
+
+type RPCChats interface {
+	MessagesGetChats(ctx context.Context, in *TLMessagesGetChats) (*MessagesChats, error)
+	MessagesGetFullChat(ctx context.Context, in *TLMessagesGetFullChat) (*MessagesChatFull, error)
+	MessagesEditChatTitle(ctx context.Context, in *TLMessagesEditChatTitle) (*Updates, error)
+	MessagesEditChatPhoto(ctx context.Context, in *TLMessagesEditChatPhoto) (*Updates, error)
+	MessagesAddChatUser(ctx context.Context, in *TLMessagesAddChatUser) (*MessagesInvitedUsers, error)
+	MessagesDeleteChatUser(ctx context.Context, in *TLMessagesDeleteChatUser) (*Updates, error)
+	MessagesCreateChat(ctx context.Context, in *TLMessagesCreateChat) (*MessagesInvitedUsers, error)
+	MessagesEditChatAdmin(ctx context.Context, in *TLMessagesEditChatAdmin) (*Bool, error)
+	MessagesMigrateChat(ctx context.Context, in *TLMessagesMigrateChat) (*Updates, error)
+	MessagesGetCommonChats(ctx context.Context, in *TLMessagesGetCommonChats) (*MessagesChats, error)
+	MessagesEditChatAbout(ctx context.Context, in *TLMessagesEditChatAbout) (*Bool, error)
+	MessagesEditChatDefaultBannedRights(ctx context.Context, in *TLMessagesEditChatDefaultBannedRights) (*Updates, error)
+	MessagesDeleteChat(ctx context.Context, in *TLMessagesDeleteChat) (*Bool, error)
+	MessagesGetMessageReadParticipants(ctx context.Context, in *TLMessagesGetMessageReadParticipants) (*VectorReadParticipantDate, error)
+	ChannelsConvertToGigagroup(ctx context.Context, in *TLChannelsConvertToGigagroup) (*Updates, error)
+	ChannelsSetEmojiStickers(ctx context.Context, in *TLChannelsSetEmojiStickers) (*Bool, error)
 }
 
 type RPCStickers interface {
@@ -47812,31 +51428,6 @@ type RPCStickers interface {
 	StickersReplaceSticker(ctx context.Context, in *TLStickersReplaceSticker) (*MessagesStickerSet, error)
 }
 
-type RPCDeepLinks interface {
-	MessagesStartBot(ctx context.Context, in *TLMessagesStartBot) (*Updates, error)
-	HelpGetRecentMeUrls(ctx context.Context, in *TLHelpGetRecentMeUrls) (*HelpRecentMeUrls, error)
-	HelpGetDeepLinkInfo(ctx context.Context, in *TLHelpGetDeepLinkInfo) (*HelpDeepLinkInfo, error)
-}
-
-type RPCInternalBot interface {
-	HelpSetBotUpdatesStatus(ctx context.Context, in *TLHelpSetBotUpdatesStatus) (*Bool, error)
-	BotsSendCustomRequest(ctx context.Context, in *TLBotsSendCustomRequest) (*DataJSON, error)
-	BotsAnswerWebhookJSONQuery(ctx context.Context, in *TLBotsAnswerWebhookJSONQuery) (*Bool, error)
-}
-
-type RPCSecretChats interface {
-	MessagesGetDhConfig(ctx context.Context, in *TLMessagesGetDhConfig) (*MessagesDhConfig, error)
-	MessagesRequestEncryption(ctx context.Context, in *TLMessagesRequestEncryption) (*EncryptedChat, error)
-	MessagesAcceptEncryption(ctx context.Context, in *TLMessagesAcceptEncryption) (*EncryptedChat, error)
-	MessagesDiscardEncryption(ctx context.Context, in *TLMessagesDiscardEncryption) (*Bool, error)
-	MessagesSetEncryptedTyping(ctx context.Context, in *TLMessagesSetEncryptedTyping) (*Bool, error)
-	MessagesReadEncryptedHistory(ctx context.Context, in *TLMessagesReadEncryptedHistory) (*Bool, error)
-	MessagesSendEncrypted(ctx context.Context, in *TLMessagesSendEncrypted) (*MessagesSentEncryptedMessage, error)
-	MessagesSendEncryptedFile(ctx context.Context, in *TLMessagesSendEncryptedFile) (*MessagesSentEncryptedMessage, error)
-	MessagesSendEncryptedService(ctx context.Context, in *TLMessagesSendEncryptedService) (*MessagesSentEncryptedMessage, error)
-	MessagesReceivedQueue(ctx context.Context, in *TLMessagesReceivedQueue) (*VectorLong, error)
-}
-
 type RPCReactions interface {
 	MessagesSendReaction(ctx context.Context, in *TLMessagesSendReaction) (*Updates, error)
 	MessagesGetMessagesReactions(ctx context.Context, in *TLMessagesGetMessagesReactions) (*Updates, error)
@@ -47855,26 +51446,23 @@ type RPCReactions interface {
 	MessagesGetPaidReactionPrivacy(ctx context.Context, in *TLMessagesGetPaidReactionPrivacy) (*Updates, error)
 }
 
-type RPCEmojiCategories interface {
-	MessagesGetEmojiGroups(ctx context.Context, in *TLMessagesGetEmojiGroups) (*MessagesEmojiGroups, error)
-	MessagesGetEmojiStatusGroups(ctx context.Context, in *TLMessagesGetEmojiStatusGroups) (*MessagesEmojiGroups, error)
-	MessagesGetEmojiProfilePhotoGroups(ctx context.Context, in *TLMessagesGetEmojiProfilePhotoGroups) (*MessagesEmojiGroups, error)
-	MessagesGetEmojiStickerGroups(ctx context.Context, in *TLMessagesGetEmojiStickerGroups) (*MessagesEmojiGroups, error)
+type RPCMiniBotApps interface {
+	MessagesRequestWebView(ctx context.Context, in *TLMessagesRequestWebView) (*WebViewResult, error)
+	MessagesProlongWebView(ctx context.Context, in *TLMessagesProlongWebView) (*Bool, error)
+	MessagesRequestSimpleWebView(ctx context.Context, in *TLMessagesRequestSimpleWebView) (*WebViewResult, error)
+	MessagesSendWebViewResultMessage(ctx context.Context, in *TLMessagesSendWebViewResultMessage) (*WebViewMessageSent, error)
+	MessagesSendWebViewData(ctx context.Context, in *TLMessagesSendWebViewData) (*Updates, error)
+	MessagesGetBotApp(ctx context.Context, in *TLMessagesGetBotApp) (*MessagesBotApp, error)
+	MessagesRequestAppWebView(ctx context.Context, in *TLMessagesRequestAppWebView) (*WebViewResult, error)
+	BotsCanSendMessage(ctx context.Context, in *TLBotsCanSendMessage) (*Bool, error)
+	BotsAllowSendMessage(ctx context.Context, in *TLBotsAllowSendMessage) (*Updates, error)
+	BotsInvokeWebViewCustomMethod(ctx context.Context, in *TLBotsInvokeWebViewCustomMethod) (*DataJSON, error)
+	BotsCheckDownloadFileParams(ctx context.Context, in *TLBotsCheckDownloadFileParams) (*Bool, error)
 }
 
-type RPCFolderTags interface {
-	MessagesToggleDialogFilterTags(ctx context.Context, in *TLMessagesToggleDialogFilterTags) (*Bool, error)
-}
-
-type RPCPrivacySettings interface {
-	AccountGetPrivacy(ctx context.Context, in *TLAccountGetPrivacy) (*AccountPrivacyRules, error)
-	AccountSetPrivacy(ctx context.Context, in *TLAccountSetPrivacy) (*AccountPrivacyRules, error)
-	AccountGetGlobalPrivacySettings(ctx context.Context, in *TLAccountGetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
-	AccountSetGlobalPrivacySettings(ctx context.Context, in *TLAccountSetGlobalPrivacySettings) (*GlobalPrivacySettings, error)
-	UsersGetRequirementsToContact(ctx context.Context, in *TLUsersGetRequirementsToContact) (*VectorRequirementToContact, error)
-	MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL) (*Bool, error)
-	MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error)
-	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact) (*VectorBool, error)
+type RPCTranscription interface {
+	MessagesTranscribeAudio(ctx context.Context, in *TLMessagesTranscribeAudio) (*MessagesTranscribedAudio, error)
+	MessagesRateTranscribedAudio(ctx context.Context, in *TLMessagesRateTranscribedAudio) (*Bool, error)
 }
 
 type RPCAutoDownload interface {
@@ -47882,38 +51470,146 @@ type RPCAutoDownload interface {
 	AccountSaveAutoDownloadSettings(ctx context.Context, in *TLAccountSaveAutoDownloadSettings) (*Bool, error)
 }
 
-type RPCUsers interface {
-	UsersGetUsers(ctx context.Context, in *TLUsersGetUsers) (*VectorUser, error)
-	UsersGetFullUser(ctx context.Context, in *TLUsersGetFullUser) (*UsersUserFull, error)
-	ContactsResolvePhone(ctx context.Context, in *TLContactsResolvePhone) (*ContactsResolvedPeer, error)
-	UsersGetMe(ctx context.Context, in *TLUsersGetMe) (*User, error)
+type RPCMessages interface {
+	MessagesGetMessages(ctx context.Context, in *TLMessagesGetMessages) (*MessagesMessages, error)
+	MessagesGetHistory(ctx context.Context, in *TLMessagesGetHistory) (*MessagesMessages, error)
+	MessagesSearch(ctx context.Context, in *TLMessagesSearch) (*MessagesMessages, error)
+	MessagesReadHistory(ctx context.Context, in *TLMessagesReadHistory) (*MessagesAffectedMessages, error)
+	MessagesDeleteHistory(ctx context.Context, in *TLMessagesDeleteHistory) (*MessagesAffectedHistory, error)
+	MessagesDeleteMessages(ctx context.Context, in *TLMessagesDeleteMessages) (*MessagesAffectedMessages, error)
+	MessagesReceivedMessages(ctx context.Context, in *TLMessagesReceivedMessages) (*VectorReceivedNotifyMessage, error)
+	MessagesSendMessage(ctx context.Context, in *TLMessagesSendMessage) (*Updates, error)
+	MessagesSendMedia(ctx context.Context, in *TLMessagesSendMedia) (*Updates, error)
+	MessagesForwardMessages(ctx context.Context, in *TLMessagesForwardMessages) (*Updates, error)
+	MessagesReadMessageContents(ctx context.Context, in *TLMessagesReadMessageContents) (*MessagesAffectedMessages, error)
+	MessagesGetMessagesViews(ctx context.Context, in *TLMessagesGetMessagesViews) (*MessagesMessageViews, error)
+	MessagesSearchGlobal(ctx context.Context, in *TLMessagesSearchGlobal) (*MessagesMessages, error)
+	MessagesGetMessageEditData(ctx context.Context, in *TLMessagesGetMessageEditData) (*MessagesMessageEditData, error)
+	MessagesEditMessage(ctx context.Context, in *TLMessagesEditMessage) (*Updates, error)
+	MessagesGetUnreadMentions(ctx context.Context, in *TLMessagesGetUnreadMentions) (*MessagesMessages, error)
+	MessagesReadMentions(ctx context.Context, in *TLMessagesReadMentions) (*MessagesAffectedHistory, error)
+	MessagesGetRecentLocations(ctx context.Context, in *TLMessagesGetRecentLocations) (*MessagesMessages, error)
+	MessagesSendMultiMedia(ctx context.Context, in *TLMessagesSendMultiMedia) (*Updates, error)
+	MessagesUpdatePinnedMessage(ctx context.Context, in *TLMessagesUpdatePinnedMessage) (*Updates, error)
+	MessagesGetSearchCounters(ctx context.Context, in *TLMessagesGetSearchCounters) (*VectorMessagesSearchCounter, error)
+	MessagesUnpinAllMessages(ctx context.Context, in *TLMessagesUnpinAllMessages) (*MessagesAffectedHistory, error)
+	MessagesGetSearchResultsCalendar(ctx context.Context, in *TLMessagesGetSearchResultsCalendar) (*MessagesSearchResultsCalendar, error)
+	MessagesGetSearchResultsPositions(ctx context.Context, in *TLMessagesGetSearchResultsPositions) (*MessagesSearchResultsPositions, error)
+	MessagesToggleNoForwards(ctx context.Context, in *TLMessagesToggleNoForwards) (*Updates, error)
+	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs) (*Bool, error)
+	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia) (*MessagesMessages, error)
+	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
+	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery) (*Bool, error)
+	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs) (*ChannelsSendAsPeers, error)
+	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts) (*MessagesMessages, error)
 }
 
-type RPCMessageThreads interface {
-	ContactsBlockFromReplies(ctx context.Context, in *TLContactsBlockFromReplies) (*Updates, error)
-	MessagesGetReplies(ctx context.Context, in *TLMessagesGetReplies) (*MessagesMessages, error)
-	MessagesGetDiscussionMessage(ctx context.Context, in *TLMessagesGetDiscussionMessage) (*MessagesDiscussionMessage, error)
-	MessagesReadDiscussion(ctx context.Context, in *TLMessagesReadDiscussion) (*Bool, error)
+type RPCDrafts interface {
+	MessagesSaveDraft(ctx context.Context, in *TLMessagesSaveDraft) (*Bool, error)
+	MessagesGetAllDrafts(ctx context.Context, in *TLMessagesGetAllDrafts) (*Updates, error)
+	MessagesClearAllDrafts(ctx context.Context, in *TLMessagesClearAllDrafts) (*Bool, error)
 }
 
-type RPCConfiguration interface {
-	HelpGetConfig(ctx context.Context, in *TLHelpGetConfig) (*Config, error)
-	HelpGetNearestDc(ctx context.Context, in *TLHelpGetNearestDc) (*NearestDc, error)
-	HelpGetAppUpdate(ctx context.Context, in *TLHelpGetAppUpdate) (*HelpAppUpdate, error)
-	HelpGetInviteText(ctx context.Context, in *TLHelpGetInviteText) (*HelpInviteText, error)
-	HelpGetSupport(ctx context.Context, in *TLHelpGetSupport) (*HelpSupport, error)
-	HelpGetAppConfig(ctx context.Context, in *TLHelpGetAppConfig) (*HelpAppConfig, error)
-	HelpGetSupportName(ctx context.Context, in *TLHelpGetSupportName) (*HelpSupportName, error)
-	HelpDismissSuggestion(ctx context.Context, in *TLHelpDismissSuggestion) (*Bool, error)
-	HelpGetCountriesList(ctx context.Context, in *TLHelpGetCountriesList) (*HelpCountriesList, error)
+type RPCSavedMessageDialogs interface {
+	MessagesGetSavedDialogs(ctx context.Context, in *TLMessagesGetSavedDialogs) (*MessagesSavedDialogs, error)
+	MessagesGetSavedHistory(ctx context.Context, in *TLMessagesGetSavedHistory) (*MessagesMessages, error)
+	MessagesDeleteSavedHistory(ctx context.Context, in *TLMessagesDeleteSavedHistory) (*MessagesAffectedHistory, error)
+	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs) (*MessagesSavedDialogs, error)
+	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin) (*Bool, error)
+	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
 }
 
-type RPCTsf interface {
-	HelpGetUserInfo(ctx context.Context, in *TLHelpGetUserInfo) (*HelpUserInfo, error)
-	HelpEditUserInfo(ctx context.Context, in *TLHelpEditUserInfo) (*HelpUserInfo, error)
+type RPCSmsjobs interface {
+	SmsjobsIsEligibleToJoin(ctx context.Context, in *TLSmsjobsIsEligibleToJoin) (*SmsjobsEligibilityToJoin, error)
+	SmsjobsJoin(ctx context.Context, in *TLSmsjobsJoin) (*Bool, error)
+	SmsjobsLeave(ctx context.Context, in *TLSmsjobsLeave) (*Bool, error)
+	SmsjobsUpdateSettings(ctx context.Context, in *TLSmsjobsUpdateSettings) (*Bool, error)
+	SmsjobsGetStatus(ctx context.Context, in *TLSmsjobsGetStatus) (*SmsjobsStatus, error)
+	SmsjobsGetSmsJob(ctx context.Context, in *TLSmsjobsGetSmsJob) (*SmsJob, error)
+	SmsjobsFinishJob(ctx context.Context, in *TLSmsjobsFinishJob) (*Bool, error)
 }
 
-type RPCBotAdminRight interface {
-	BotsSetBotBroadcastDefaultAdminRights(ctx context.Context, in *TLBotsSetBotBroadcastDefaultAdminRights) (*Bool, error)
-	BotsSetBotGroupDefaultAdminRights(ctx context.Context, in *TLBotsSetBotGroupDefaultAdminRights) (*Bool, error)
+type RPCBoosts interface {
+	ChannelsSetBoostsToUnblockRestrictions(ctx context.Context, in *TLChannelsSetBoostsToUnblockRestrictions) (*Updates, error)
+	PremiumGetBoostsList(ctx context.Context, in *TLPremiumGetBoostsList) (*PremiumBoostsList, error)
+	PremiumGetMyBoosts(ctx context.Context, in *TLPremiumGetMyBoosts) (*PremiumMyBoosts, error)
+	PremiumApplyBoost(ctx context.Context, in *TLPremiumApplyBoost) (*PremiumMyBoosts, error)
+	PremiumGetBoostsStatus(ctx context.Context, in *TLPremiumGetBoostsStatus) (*PremiumBoostsStatus, error)
+	PremiumGetUserBoosts(ctx context.Context, in *TLPremiumGetUserBoosts) (*PremiumBoostsList, error)
+}
+
+type RPCGiveaways interface {
+	PaymentsGetPremiumGiftCodeOptions(ctx context.Context, in *TLPaymentsGetPremiumGiftCodeOptions) (*VectorPremiumGiftCodeOption, error)
+	PaymentsGetGiveawayInfo(ctx context.Context, in *TLPaymentsGetGiveawayInfo) (*PaymentsGiveawayInfo, error)
+	PaymentsLaunchPrepaidGiveaway(ctx context.Context, in *TLPaymentsLaunchPrepaidGiveaway) (*Updates, error)
+	PaymentsGetStarsGiveawayOptions(ctx context.Context, in *TLPaymentsGetStarsGiveawayOptions) (*VectorStarsGiveawayOption, error)
+}
+
+type RPCNotification interface {
+	AccountRegisterDevice(ctx context.Context, in *TLAccountRegisterDevice) (*Bool, error)
+	AccountUnregisterDevice(ctx context.Context, in *TLAccountUnregisterDevice) (*Bool, error)
+	AccountUpdateNotifySettings(ctx context.Context, in *TLAccountUpdateNotifySettings) (*Bool, error)
+	AccountGetNotifySettings(ctx context.Context, in *TLAccountGetNotifySettings) (*PeerNotifySettings, error)
+	AccountResetNotifySettings(ctx context.Context, in *TLAccountResetNotifySettings) (*Bool, error)
+	AccountUpdateDeviceLocked(ctx context.Context, in *TLAccountUpdateDeviceLocked) (*Bool, error)
+	AccountGetNotifyExceptions(ctx context.Context, in *TLAccountGetNotifyExceptions) (*Updates, error)
+}
+
+type RPCNsfw interface {
+	AccountSetContentSettings(ctx context.Context, in *TLAccountSetContentSettings) (*Bool, error)
+	AccountGetContentSettings(ctx context.Context, in *TLAccountGetContentSettings) (*AccountContentSettings, error)
+}
+
+type RPCWebPage interface {
+	MessagesGetWebPagePreview(ctx context.Context, in *TLMessagesGetWebPagePreview) (*MessagesWebPagePreview, error)
+	MessagesGetWebPage(ctx context.Context, in *TLMessagesGetWebPage) (*MessagesWebPage, error)
+}
+
+type RPCVoipCalls interface {
+	MessagesDeletePhoneCallHistory(ctx context.Context, in *TLMessagesDeletePhoneCallHistory) (*MessagesAffectedFoundMessages, error)
+	PhoneGetCallConfig(ctx context.Context, in *TLPhoneGetCallConfig) (*DataJSON, error)
+	PhoneRequestCall(ctx context.Context, in *TLPhoneRequestCall) (*PhonePhoneCall, error)
+	PhoneAcceptCall(ctx context.Context, in *TLPhoneAcceptCall) (*PhonePhoneCall, error)
+	PhoneConfirmCall(ctx context.Context, in *TLPhoneConfirmCall) (*PhonePhoneCall, error)
+	PhoneReceivedCall(ctx context.Context, in *TLPhoneReceivedCall) (*Bool, error)
+	PhoneDiscardCall(ctx context.Context, in *TLPhoneDiscardCall) (*Updates, error)
+	PhoneSetCallRating(ctx context.Context, in *TLPhoneSetCallRating) (*Updates, error)
+	PhoneSaveCallDebug(ctx context.Context, in *TLPhoneSaveCallDebug) (*Bool, error)
+	PhoneSendSignalingData(ctx context.Context, in *TLPhoneSendSignalingData) (*Bool, error)
+	PhoneSaveCallLog(ctx context.Context, in *TLPhoneSaveCallLog) (*Bool, error)
+	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall) (*PhonePhoneCall, error)
+}
+
+type RPCMessageEffects interface {
+	MessagesGetAvailableEffects(ctx context.Context, in *TLMessagesGetAvailableEffects) (*MessagesAvailableEffects, error)
+}
+
+type RPCAntiSpam interface {
+	ChannelsToggleAntiSpam(ctx context.Context, in *TLChannelsToggleAntiSpam) (*Updates, error)
+	ChannelsReportAntiSpamFalsePositive(ctx context.Context, in *TLChannelsReportAntiSpamFalsePositive) (*Bool, error)
+}
+
+type RPCGifts interface {
+	PaymentsGetStarGifts(ctx context.Context, in *TLPaymentsGetStarGifts) (*PaymentsStarGifts, error)
+	PaymentsSaveStarGift(ctx context.Context, in *TLPaymentsSaveStarGift) (*Bool, error)
+	PaymentsConvertStarGift(ctx context.Context, in *TLPaymentsConvertStarGift) (*Bool, error)
+	PaymentsGetStarGiftUpgradePreview(ctx context.Context, in *TLPaymentsGetStarGiftUpgradePreview) (*PaymentsStarGiftUpgradePreview, error)
+	PaymentsUpgradeStarGift(ctx context.Context, in *TLPaymentsUpgradeStarGift) (*Updates, error)
+	PaymentsTransferStarGift(ctx context.Context, in *TLPaymentsTransferStarGift) (*Updates, error)
+	PaymentsGetUniqueStarGift(ctx context.Context, in *TLPaymentsGetUniqueStarGift) (*PaymentsUniqueStarGift, error)
+	PaymentsGetSavedStarGifts(ctx context.Context, in *TLPaymentsGetSavedStarGifts) (*PaymentsSavedStarGifts, error)
+	PaymentsGetSavedStarGift(ctx context.Context, in *TLPaymentsGetSavedStarGift) (*PaymentsSavedStarGifts, error)
+	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl) (*PaymentsStarGiftWithdrawalUrl, error)
+	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
+	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
+}
+
+type RPCStatistics interface {
+	StatsGetBroadcastStats(ctx context.Context, in *TLStatsGetBroadcastStats) (*StatsBroadcastStats, error)
+	StatsLoadAsyncGraph(ctx context.Context, in *TLStatsLoadAsyncGraph) (*StatsGraph, error)
+	StatsGetMegagroupStats(ctx context.Context, in *TLStatsGetMegagroupStats) (*StatsMegagroupStats, error)
+	StatsGetMessagePublicForwards(ctx context.Context, in *TLStatsGetMessagePublicForwards) (*StatsPublicForwards, error)
+	StatsGetMessageStats(ctx context.Context, in *TLStatsGetMessageStats) (*StatsMessageStats, error)
+	StatsGetStoryStats(ctx context.Context, in *TLStatsGetStoryStats) (*StatsStoryStats, error)
+	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards) (*StatsPublicForwards, error)
 }

@@ -56,6 +56,11 @@ type TLBindAuthKeyInner struct {
 	ExpiresAt     int32  `json:"expires_at"`
 }
 
+func (m *TLBindAuthKeyInner) String() string {
+	wrapper := iface.WithNameWrapper{"bind_auth_key_inner", m}
+	return wrapper.String()
+}
+
 // BindAuthKeyInnerClazzName <--
 func (m *TLBindAuthKeyInner) BindAuthKeyInnerClazzName() string {
 	return ClazzName_bind_auth_key_inner
@@ -121,7 +126,12 @@ func (m *TLBindAuthKeyInner) Decode(d *bin.Decoder) (err error) {
 type BindAuthKeyInner struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	BindAuthKeyInnerClazz
+	BindAuthKeyInnerClazz `json:"_clazz"`
+}
+
+func (m *BindAuthKeyInner) String() string {
+	wrapper := iface.WithNameWrapper{m.BindAuthKeyInnerClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeBindAuthKeyInner <--
@@ -209,6 +219,11 @@ type TLClientDHInnerData struct {
 	GB          string     `json:"g_b"`
 }
 
+func (m *TLClientDHInnerData) String() string {
+	wrapper := iface.WithNameWrapper{"client_DH_inner_data", m}
+	return wrapper.String()
+}
+
 // ClientDHInnerDataClazzName <--
 func (m *TLClientDHInnerData) ClientDHInnerDataClazzName() string {
 	return ClazzName_client_DH_inner_data
@@ -272,7 +287,12 @@ func (m *TLClientDHInnerData) Decode(d *bin.Decoder) (err error) {
 type ClientDHInnerData struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	ClientDHInnerDataClazz
+	ClientDHInnerDataClazz `json:"_clazz"`
+}
+
+func (m *ClientDHInnerData) String() string {
+	wrapper := iface.WithNameWrapper{m.ClientDHInnerDataClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeClientDHInnerData <--
@@ -366,6 +386,11 @@ type TLDestroyAuthKeyOk struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLDestroyAuthKeyOk) String() string {
+	wrapper := iface.WithNameWrapper{"destroy_auth_key_ok", m}
+	return wrapper.String()
+}
+
 // DestroyAuthKeyResClazzName <--
 func (m *TLDestroyAuthKeyOk) DestroyAuthKeyResClazzName() string {
 	return ClazzName_destroy_auth_key_ok
@@ -419,6 +444,11 @@ func (m *TLDestroyAuthKeyOk) Decode(d *bin.Decoder) (err error) {
 // TLDestroyAuthKeyNone <--
 type TLDestroyAuthKeyNone struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLDestroyAuthKeyNone) String() string {
+	wrapper := iface.WithNameWrapper{"destroy_auth_key_none", m}
+	return wrapper.String()
 }
 
 // DestroyAuthKeyResClazzName <--
@@ -476,6 +506,11 @@ type TLDestroyAuthKeyFail struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLDestroyAuthKeyFail) String() string {
+	wrapper := iface.WithNameWrapper{"destroy_auth_key_fail", m}
+	return wrapper.String()
+}
+
 // DestroyAuthKeyResClazzName <--
 func (m *TLDestroyAuthKeyFail) DestroyAuthKeyResClazzName() string {
 	return ClazzName_destroy_auth_key_fail
@@ -530,7 +565,12 @@ func (m *TLDestroyAuthKeyFail) Decode(d *bin.Decoder) (err error) {
 type DestroyAuthKeyRes struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	DestroyAuthKeyResClazz
+	DestroyAuthKeyResClazz `json:"_clazz"`
+}
+
+func (m *DestroyAuthKeyRes) String() string {
+	wrapper := iface.WithNameWrapper{m.DestroyAuthKeyResClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeDestroyAuthKeyRes <--
@@ -673,6 +713,11 @@ type TLPQInnerData struct {
 	NewNonce    bin.Int256 `json:"new_nonce"`
 }
 
+func (m *TLPQInnerData) String() string {
+	wrapper := iface.WithNameWrapper{"p_q_inner_data", m}
+	return wrapper.String()
+}
+
 // PQInnerDataClazzName <--
 func (m *TLPQInnerData) PQInnerDataClazzName() string {
 	return ClazzName_p_q_inner_data
@@ -746,6 +791,11 @@ type TLPQInnerDataDc struct {
 	ServerNonce bin.Int128 `json:"server_nonce"`
 	NewNonce    bin.Int256 `json:"new_nonce"`
 	Dc          int32      `json:"dc"`
+}
+
+func (m *TLPQInnerDataDc) String() string {
+	wrapper := iface.WithNameWrapper{"p_q_inner_data_dc", m}
+	return wrapper.String()
 }
 
 // PQInnerDataClazzName <--
@@ -823,6 +873,11 @@ type TLPQInnerDataTemp struct {
 	ServerNonce bin.Int128 `json:"server_nonce"`
 	NewNonce    bin.Int256 `json:"new_nonce"`
 	ExpiresIn   int32      `json:"expires_in"`
+}
+
+func (m *TLPQInnerDataTemp) String() string {
+	wrapper := iface.WithNameWrapper{"p_q_inner_data_temp", m}
+	return wrapper.String()
 }
 
 // PQInnerDataClazzName <--
@@ -903,6 +958,11 @@ type TLPQInnerDataTempDc struct {
 	ExpiresIn   int32      `json:"expires_in"`
 }
 
+func (m *TLPQInnerDataTempDc) String() string {
+	wrapper := iface.WithNameWrapper{"p_q_inner_data_temp_dc", m}
+	return wrapper.String()
+}
+
 // PQInnerDataClazzName <--
 func (m *TLPQInnerDataTempDc) PQInnerDataClazzName() string {
 	return ClazzName_p_q_inner_data_temp_dc
@@ -974,7 +1034,12 @@ func (m *TLPQInnerDataTempDc) Decode(d *bin.Decoder) (err error) {
 type PQInnerData struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	PQInnerDataClazz
+	PQInnerDataClazz `json:"_clazz"`
+}
+
+func (m *PQInnerData) String() string {
+	wrapper := iface.WithNameWrapper{m.PQInnerDataClazzName(), m}
+	return wrapper.String()
 }
 
 // MakePQInnerData <--
@@ -1119,6 +1184,11 @@ type TLResPQ struct {
 	ServerPublicKeyFingerprints []int64    `json:"server_public_key_fingerprints"`
 }
 
+func (m *TLResPQ) String() string {
+	wrapper := iface.WithNameWrapper{"resPQ", m}
+	return wrapper.String()
+}
+
 // ResPQClazzName <--
 func (m *TLResPQ) ResPQClazzName() string {
 	return ClazzName_resPQ
@@ -1184,7 +1254,12 @@ func (m *TLResPQ) Decode(d *bin.Decoder) (err error) {
 type ResPQ struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	ResPQClazz
+	ResPQClazz `json:"_clazz"`
+}
+
+func (m *ResPQ) String() string {
+	wrapper := iface.WithNameWrapper{m.ResPQClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeResPQ <--
@@ -1274,6 +1349,11 @@ type TLServerDHInnerData struct {
 	ServerTime  int32      `json:"server_time"`
 }
 
+func (m *TLServerDHInnerData) String() string {
+	wrapper := iface.WithNameWrapper{"server_DH_inner_data", m}
+	return wrapper.String()
+}
+
 // ServerDHInnerDataClazzName <--
 func (m *TLServerDHInnerData) ServerDHInnerDataClazzName() string {
 	return ClazzName_server_DH_inner_data
@@ -1341,7 +1421,12 @@ func (m *TLServerDHInnerData) Decode(d *bin.Decoder) (err error) {
 type ServerDHInnerData struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	ServerDHInnerDataClazz
+	ServerDHInnerDataClazz `json:"_clazz"`
+}
+
+func (m *ServerDHInnerData) String() string {
+	wrapper := iface.WithNameWrapper{m.ServerDHInnerDataClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeServerDHInnerData <--
@@ -1433,6 +1518,11 @@ type TLServerDHParamsFail struct {
 	NewNonceHash bin.Int128 `json:"new_nonce_hash"`
 }
 
+func (m *TLServerDHParamsFail) String() string {
+	wrapper := iface.WithNameWrapper{"server_DH_params_fail", m}
+	return wrapper.String()
+}
+
 // ServerDHParamsClazzName <--
 func (m *TLServerDHParamsFail) ServerDHParamsClazzName() string {
 	return ClazzName_server_DH_params_fail
@@ -1498,6 +1588,11 @@ type TLServerDHParamsOk struct {
 	EncryptedAnswer string     `json:"encrypted_answer"`
 }
 
+func (m *TLServerDHParamsOk) String() string {
+	wrapper := iface.WithNameWrapper{"server_DH_params_ok", m}
+	return wrapper.String()
+}
+
 // ServerDHParamsClazzName <--
 func (m *TLServerDHParamsOk) ServerDHParamsClazzName() string {
 	return ClazzName_server_DH_params_ok
@@ -1559,7 +1654,12 @@ func (m *TLServerDHParamsOk) Decode(d *bin.Decoder) (err error) {
 type ServerDHParams struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	ServerDHParamsClazz
+	ServerDHParamsClazz `json:"_clazz"`
+}
+
+func (m *ServerDHParams) String() string {
+	wrapper := iface.WithNameWrapper{m.ServerDHParamsClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeServerDHParams <--
@@ -1675,6 +1775,11 @@ type TLDhGenOk struct {
 	NewNonceHash1 bin.Int128 `json:"new_nonce_hash1"`
 }
 
+func (m *TLDhGenOk) String() string {
+	wrapper := iface.WithNameWrapper{"dh_gen_ok", m}
+	return wrapper.String()
+}
+
 // SetClientDHParamsAnswerClazzName <--
 func (m *TLDhGenOk) SetClientDHParamsAnswerClazzName() string {
 	return ClazzName_dh_gen_ok
@@ -1738,6 +1843,11 @@ type TLDhGenRetry struct {
 	Nonce         bin.Int128 `json:"nonce"`
 	ServerNonce   bin.Int128 `json:"server_nonce"`
 	NewNonceHash2 bin.Int128 `json:"new_nonce_hash2"`
+}
+
+func (m *TLDhGenRetry) String() string {
+	wrapper := iface.WithNameWrapper{"dh_gen_retry", m}
+	return wrapper.String()
 }
 
 // SetClientDHParamsAnswerClazzName <--
@@ -1805,6 +1915,11 @@ type TLDhGenFail struct {
 	NewNonceHash3 bin.Int128 `json:"new_nonce_hash3"`
 }
 
+func (m *TLDhGenFail) String() string {
+	wrapper := iface.WithNameWrapper{"dh_gen_fail", m}
+	return wrapper.String()
+}
+
 // SetClientDHParamsAnswerClazzName <--
 func (m *TLDhGenFail) SetClientDHParamsAnswerClazzName() string {
 	return ClazzName_dh_gen_fail
@@ -1866,7 +1981,12 @@ func (m *TLDhGenFail) Decode(d *bin.Decoder) (err error) {
 type SetClientDHParamsAnswer struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	SetClientDHParamsAnswerClazz
+	SetClientDHParamsAnswerClazz `json:"_clazz"`
+}
+
+func (m *SetClientDHParamsAnswer) String() string {
+	wrapper := iface.WithNameWrapper{m.SetClientDHParamsAnswerClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeSetClientDHParamsAnswer <--
@@ -1991,6 +2111,11 @@ type TLAccessPointRule struct {
 	Ips              []*IpPort `json:"ips"`
 }
 
+func (m *TLAccessPointRule) String() string {
+	wrapper := iface.WithNameWrapper{"accessPointRule", m}
+	return wrapper.String()
+}
+
 // AccessPointRuleClazzName <--
 func (m *TLAccessPointRule) AccessPointRuleClazzName() string {
 	return ClazzName_accessPointRule
@@ -2070,7 +2195,12 @@ func (m *TLAccessPointRule) Decode(d *bin.Decoder) (err error) {
 type AccessPointRule struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	AccessPointRuleClazz
+	AccessPointRuleClazz `json:"_clazz"`
+}
+
+func (m *AccessPointRule) String() string {
+	wrapper := iface.WithNameWrapper{m.AccessPointRuleClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeAccessPointRule <--
@@ -2162,6 +2292,11 @@ type TLBadMsgNotification struct {
 	ErrorCode   int32  `json:"error_code"`
 }
 
+func (m *TLBadMsgNotification) String() string {
+	wrapper := iface.WithNameWrapper{"bad_msg_notification", m}
+	return wrapper.String()
+}
+
 // BadMsgNotificationClazzName <--
 func (m *TLBadMsgNotification) BadMsgNotificationClazzName() string {
 	return ClazzName_bad_msg_notification
@@ -2228,6 +2363,11 @@ type TLBadServerSalt struct {
 	NewServerSalt int64  `json:"new_server_salt"`
 }
 
+func (m *TLBadServerSalt) String() string {
+	wrapper := iface.WithNameWrapper{"bad_server_salt", m}
+	return wrapper.String()
+}
+
 // BadMsgNotificationClazzName <--
 func (m *TLBadServerSalt) BadMsgNotificationClazzName() string {
 	return ClazzName_bad_server_salt
@@ -2291,7 +2431,12 @@ func (m *TLBadServerSalt) Decode(d *bin.Decoder) (err error) {
 type BadMsgNotification struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	BadMsgNotificationClazz
+	BadMsgNotificationClazz `json:"_clazz"`
+}
+
+func (m *BadMsgNotification) String() string {
+	wrapper := iface.WithNameWrapper{m.BadMsgNotificationClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeBadMsgNotification <--
@@ -2400,6 +2545,11 @@ type TLDestroySessionOk struct {
 	SessionId int64  `json:"session_id"`
 }
 
+func (m *TLDestroySessionOk) String() string {
+	wrapper := iface.WithNameWrapper{"destroy_session_ok", m}
+	return wrapper.String()
+}
+
 // DestroySessionResClazzName <--
 func (m *TLDestroySessionOk) DestroySessionResClazzName() string {
 	return ClazzName_destroy_session_ok
@@ -2459,6 +2609,11 @@ type TLDestroySessionNone struct {
 	SessionId int64  `json:"session_id"`
 }
 
+func (m *TLDestroySessionNone) String() string {
+	wrapper := iface.WithNameWrapper{"destroy_session_none", m}
+	return wrapper.String()
+}
+
 // DestroySessionResClazzName <--
 func (m *TLDestroySessionNone) DestroySessionResClazzName() string {
 	return ClazzName_destroy_session_none
@@ -2516,7 +2671,12 @@ func (m *TLDestroySessionNone) Decode(d *bin.Decoder) (err error) {
 type DestroySessionRes struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	DestroySessionResClazz
+	DestroySessionResClazz `json:"_clazz"`
+}
+
+func (m *DestroySessionRes) String() string {
+	wrapper := iface.WithNameWrapper{m.DestroySessionResClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeDestroySessionRes <--
@@ -2622,6 +2782,11 @@ type TLFutureSalt struct {
 	Salt       int64  `json:"salt"`
 }
 
+func (m *TLFutureSalt) String() string {
+	wrapper := iface.WithNameWrapper{"future_salt", m}
+	return wrapper.String()
+}
+
 // FutureSaltClazzName <--
 func (m *TLFutureSalt) FutureSaltClazzName() string {
 	return ClazzName_future_salt
@@ -2683,7 +2848,12 @@ func (m *TLFutureSalt) Decode(d *bin.Decoder) (err error) {
 type FutureSalt struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	FutureSaltClazz
+	FutureSaltClazz `json:"_clazz"`
+}
+
+func (m *FutureSalt) String() string {
+	wrapper := iface.WithNameWrapper{m.FutureSaltClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeFutureSalt <--
@@ -2770,6 +2940,11 @@ type TLFutureSalts struct {
 	Salts    []*TLFutureSalt `json:"salts"`
 }
 
+func (m *TLFutureSalts) String() string {
+	wrapper := iface.WithNameWrapper{"future_salts", m}
+	return wrapper.String()
+}
+
 // FutureSaltsClazzName <--
 func (m *TLFutureSalts) FutureSaltsClazzName() string {
 	return ClazzName_future_salts
@@ -2848,7 +3023,12 @@ func (m *TLFutureSalts) Decode(d *bin.Decoder) (err error) {
 type FutureSalts struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	FutureSaltsClazz
+	FutureSaltsClazz `json:"_clazz"`
+}
+
+func (m *FutureSalts) String() string {
+	wrapper := iface.WithNameWrapper{m.FutureSaltsClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeFutureSalts <--
@@ -2935,6 +3115,11 @@ type TLHelpConfigSimple struct {
 	Rules   []*AccessPointRule `json:"rules"`
 }
 
+func (m *TLHelpConfigSimple) String() string {
+	wrapper := iface.WithNameWrapper{"help_configSimple", m}
+	return wrapper.String()
+}
+
 // HelpConfigSimpleClazzName <--
 func (m *TLHelpConfigSimple) HelpConfigSimpleClazzName() string {
 	return ClazzName_help_configSimple
@@ -3014,7 +3199,12 @@ func (m *TLHelpConfigSimple) Decode(d *bin.Decoder) (err error) {
 type HelpConfigSimple struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	HelpConfigSimpleClazz
+	HelpConfigSimpleClazz `json:"_clazz"`
+}
+
+func (m *HelpConfigSimple) String() string {
+	wrapper := iface.WithNameWrapper{m.HelpConfigSimpleClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeHelpConfigSimple <--
@@ -3101,6 +3291,11 @@ type TLHttpWait struct {
 	MaxWait   int32  `json:"max_wait"`
 }
 
+func (m *TLHttpWait) String() string {
+	wrapper := iface.WithNameWrapper{"http_wait", m}
+	return wrapper.String()
+}
+
 // HttpWaitClazzName <--
 func (m *TLHttpWait) HttpWaitClazzName() string {
 	return ClazzName_http_wait
@@ -3162,7 +3357,12 @@ func (m *TLHttpWait) Decode(d *bin.Decoder) (err error) {
 type HttpWait struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	HttpWaitClazz
+	HttpWaitClazz `json:"_clazz"`
+}
+
+func (m *HttpWait) String() string {
+	wrapper := iface.WithNameWrapper{m.HttpWaitClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeHttpWait <--
@@ -3253,6 +3453,11 @@ type TLIpPort struct {
 	Port    int32  `json:"port"`
 }
 
+func (m *TLIpPort) String() string {
+	wrapper := iface.WithNameWrapper{"ipPort", m}
+	return wrapper.String()
+}
+
 // IpPortClazzName <--
 func (m *TLIpPort) IpPortClazzName() string {
 	return ClazzName_ipPort
@@ -3316,6 +3521,11 @@ type TLIpPortSecret struct {
 	Secret  []byte `json:"secret"`
 }
 
+func (m *TLIpPortSecret) String() string {
+	wrapper := iface.WithNameWrapper{"ipPortSecret", m}
+	return wrapper.String()
+}
+
 // IpPortClazzName <--
 func (m *TLIpPortSecret) IpPortClazzName() string {
 	return ClazzName_ipPortSecret
@@ -3377,7 +3587,12 @@ func (m *TLIpPortSecret) Decode(d *bin.Decoder) (err error) {
 type IpPort struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	IpPortClazz
+	IpPortClazz `json:"_clazz"`
+}
+
+func (m *IpPort) String() string {
+	wrapper := iface.WithNameWrapper{m.IpPortClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeIpPort <--
@@ -3489,6 +3704,11 @@ type TLMsgDetailedInfo struct {
 	Status      int32  `json:"status"`
 }
 
+func (m *TLMsgDetailedInfo) String() string {
+	wrapper := iface.WithNameWrapper{"msg_detailed_info", m}
+	return wrapper.String()
+}
+
 // MsgDetailedInfoClazzName <--
 func (m *TLMsgDetailedInfo) MsgDetailedInfoClazzName() string {
 	return ClazzName_msg_detailed_info
@@ -3556,6 +3776,11 @@ type TLMsgNewDetailedInfo struct {
 	Status      int32  `json:"status"`
 }
 
+func (m *TLMsgNewDetailedInfo) String() string {
+	wrapper := iface.WithNameWrapper{"msg_new_detailed_info", m}
+	return wrapper.String()
+}
+
 // MsgDetailedInfoClazzName <--
 func (m *TLMsgNewDetailedInfo) MsgDetailedInfoClazzName() string {
 	return ClazzName_msg_new_detailed_info
@@ -3617,7 +3842,12 @@ func (m *TLMsgNewDetailedInfo) Decode(d *bin.Decoder) (err error) {
 type MsgDetailedInfo struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	MsgDetailedInfoClazz
+	MsgDetailedInfoClazz `json:"_clazz"`
+}
+
+func (m *MsgDetailedInfo) String() string {
+	wrapper := iface.WithNameWrapper{m.MsgDetailedInfoClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeMsgDetailedInfo <--
@@ -3721,6 +3951,11 @@ type TLMsgResendReq struct {
 	MsgIds  []int64 `json:"msg_ids"`
 }
 
+func (m *TLMsgResendReq) String() string {
+	wrapper := iface.WithNameWrapper{"msg_resend_req", m}
+	return wrapper.String()
+}
+
 // MsgResendReqClazzName <--
 func (m *TLMsgResendReq) MsgResendReqClazzName() string {
 	return ClazzName_msg_resend_req
@@ -3779,7 +4014,12 @@ func (m *TLMsgResendReq) Decode(d *bin.Decoder) (err error) {
 type MsgResendReq struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	MsgResendReqClazz
+	MsgResendReqClazz `json:"_clazz"`
+}
+
+func (m *MsgResendReq) String() string {
+	wrapper := iface.WithNameWrapper{m.MsgResendReqClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeMsgResendReq <--
@@ -3864,6 +4104,11 @@ type TLMsgsAck struct {
 	MsgIds  []int64 `json:"msg_ids"`
 }
 
+func (m *TLMsgsAck) String() string {
+	wrapper := iface.WithNameWrapper{"msgs_ack", m}
+	return wrapper.String()
+}
+
 // MsgsAckClazzName <--
 func (m *TLMsgsAck) MsgsAckClazzName() string {
 	return ClazzName_msgs_ack
@@ -3922,7 +4167,12 @@ func (m *TLMsgsAck) Decode(d *bin.Decoder) (err error) {
 type MsgsAck struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	MsgsAckClazz
+	MsgsAckClazz `json:"_clazz"`
+}
+
+func (m *MsgsAck) String() string {
+	wrapper := iface.WithNameWrapper{m.MsgsAckClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeMsgsAck <--
@@ -4008,6 +4258,11 @@ type TLMsgsAllInfo struct {
 	Info    string  `json:"info"`
 }
 
+func (m *TLMsgsAllInfo) String() string {
+	wrapper := iface.WithNameWrapper{"msgs_all_info", m}
+	return wrapper.String()
+}
+
 // MsgsAllInfoClazzName <--
 func (m *TLMsgsAllInfo) MsgsAllInfoClazzName() string {
 	return ClazzName_msgs_all_info
@@ -4070,7 +4325,12 @@ func (m *TLMsgsAllInfo) Decode(d *bin.Decoder) (err error) {
 type MsgsAllInfo struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	MsgsAllInfoClazz
+	MsgsAllInfoClazz `json:"_clazz"`
+}
+
+func (m *MsgsAllInfo) String() string {
+	wrapper := iface.WithNameWrapper{m.MsgsAllInfoClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeMsgsAllInfo <--
@@ -4156,6 +4416,11 @@ type TLMsgsStateInfo struct {
 	Info     string `json:"info"`
 }
 
+func (m *TLMsgsStateInfo) String() string {
+	wrapper := iface.WithNameWrapper{"msgs_state_info", m}
+	return wrapper.String()
+}
+
 // MsgsStateInfoClazzName <--
 func (m *TLMsgsStateInfo) MsgsStateInfoClazzName() string {
 	return ClazzName_msgs_state_info
@@ -4215,7 +4480,12 @@ func (m *TLMsgsStateInfo) Decode(d *bin.Decoder) (err error) {
 type MsgsStateInfo struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	MsgsStateInfoClazz
+	MsgsStateInfoClazz `json:"_clazz"`
+}
+
+func (m *MsgsStateInfo) String() string {
+	wrapper := iface.WithNameWrapper{m.MsgsStateInfoClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeMsgsStateInfo <--
@@ -4300,6 +4570,11 @@ type TLMsgsStateReq struct {
 	MsgIds  []int64 `json:"msg_ids"`
 }
 
+func (m *TLMsgsStateReq) String() string {
+	wrapper := iface.WithNameWrapper{"msgs_state_req", m}
+	return wrapper.String()
+}
+
 // MsgsStateReqClazzName <--
 func (m *TLMsgsStateReq) MsgsStateReqClazzName() string {
 	return ClazzName_msgs_state_req
@@ -4358,7 +4633,12 @@ func (m *TLMsgsStateReq) Decode(d *bin.Decoder) (err error) {
 type MsgsStateReq struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	MsgsStateReqClazz
+	MsgsStateReqClazz `json:"_clazz"`
+}
+
+func (m *MsgsStateReq) String() string {
+	wrapper := iface.WithNameWrapper{m.MsgsStateReqClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeMsgsStateReq <--
@@ -4445,6 +4725,11 @@ type TLNewSessionCreated struct {
 	ServerSalt int64  `json:"server_salt"`
 }
 
+func (m *TLNewSessionCreated) String() string {
+	wrapper := iface.WithNameWrapper{"new_session_created", m}
+	return wrapper.String()
+}
+
 // NewSessionClazzName <--
 func (m *TLNewSessionCreated) NewSessionClazzName() string {
 	return ClazzName_new_session_created
@@ -4506,7 +4791,12 @@ func (m *TLNewSessionCreated) Decode(d *bin.Decoder) (err error) {
 type NewSession struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	NewSessionClazz
+	NewSessionClazz `json:"_clazz"`
+}
+
+func (m *NewSession) String() string {
+	wrapper := iface.WithNameWrapper{m.NewSessionClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeNewSession <--
@@ -4592,6 +4882,11 @@ type TLPong struct {
 	PingId  int64  `json:"ping_id"`
 }
 
+func (m *TLPong) String() string {
+	wrapper := iface.WithNameWrapper{"pong", m}
+	return wrapper.String()
+}
+
 // PongClazzName <--
 func (m *TLPong) PongClazzName() string {
 	return ClazzName_pong
@@ -4651,7 +4946,12 @@ func (m *TLPong) Decode(d *bin.Decoder) (err error) {
 type Pong struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	PongClazz
+	PongClazz `json:"_clazz"`
+}
+
+func (m *Pong) String() string {
+	wrapper := iface.WithNameWrapper{m.PongClazzName(), m}
+	return wrapper.String()
 }
 
 // MakePong <--
@@ -4745,6 +5045,11 @@ type TLRpcAnswerUnknown struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLRpcAnswerUnknown) String() string {
+	wrapper := iface.WithNameWrapper{"rpc_answer_unknown", m}
+	return wrapper.String()
+}
+
 // RpcDropAnswerClazzName <--
 func (m *TLRpcAnswerUnknown) RpcDropAnswerClazzName() string {
 	return ClazzName_rpc_answer_unknown
@@ -4798,6 +5103,11 @@ func (m *TLRpcAnswerUnknown) Decode(d *bin.Decoder) (err error) {
 // TLRpcAnswerDroppedRunning <--
 type TLRpcAnswerDroppedRunning struct {
 	ClazzID uint32 `json:"_id"`
+}
+
+func (m *TLRpcAnswerDroppedRunning) String() string {
+	wrapper := iface.WithNameWrapper{"rpc_answer_dropped_running", m}
+	return wrapper.String()
 }
 
 // RpcDropAnswerClazzName <--
@@ -4856,6 +5166,11 @@ type TLRpcAnswerDropped struct {
 	MsgId   int64  `json:"msg_id"`
 	SeqNo   int32  `json:"seq_no"`
 	Bytes   int32  `json:"bytes"`
+}
+
+func (m *TLRpcAnswerDropped) String() string {
+	wrapper := iface.WithNameWrapper{"rpc_answer_dropped", m}
+	return wrapper.String()
 }
 
 // RpcDropAnswerClazzName <--
@@ -4919,7 +5234,12 @@ func (m *TLRpcAnswerDropped) Decode(d *bin.Decoder) (err error) {
 type RpcDropAnswer struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	RpcDropAnswerClazz
+	RpcDropAnswerClazz `json:"_clazz"`
+}
+
+func (m *RpcDropAnswer) String() string {
+	wrapper := iface.WithNameWrapper{m.RpcDropAnswerClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeRpcDropAnswer <--
@@ -5043,6 +5363,11 @@ type TLRpcError struct {
 	ErrorMessage string `json:"error_message"`
 }
 
+func (m *TLRpcError) String() string {
+	wrapper := iface.WithNameWrapper{"rpc_error", m}
+	return wrapper.String()
+}
+
 // RpcErrorClazzName <--
 func (m *TLRpcError) RpcErrorClazzName() string {
 	return ClazzName_rpc_error
@@ -5102,7 +5427,12 @@ func (m *TLRpcError) Decode(d *bin.Decoder) (err error) {
 type RpcError struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	RpcErrorClazz
+	RpcErrorClazz `json:"_clazz"`
+}
+
+func (m *RpcError) String() string {
+	wrapper := iface.WithNameWrapper{m.RpcErrorClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeRpcError <--
@@ -5217,6 +5547,11 @@ type TLTlsBlockString struct {
 	Data    string `json:"data"`
 }
 
+func (m *TLTlsBlockString) String() string {
+	wrapper := iface.WithNameWrapper{"tlsBlockString", m}
+	return wrapper.String()
+}
+
 // TlsBlockClazzName <--
 func (m *TLTlsBlockString) TlsBlockClazzName() string {
 	return ClazzName_tlsBlockString
@@ -5274,6 +5609,11 @@ func (m *TLTlsBlockString) Decode(d *bin.Decoder) (err error) {
 type TLTlsBlockRandom struct {
 	ClazzID uint32 `json:"_id"`
 	Length  int32  `json:"length"`
+}
+
+func (m *TLTlsBlockRandom) String() string {
+	wrapper := iface.WithNameWrapper{"tlsBlockRandom", m}
+	return wrapper.String()
 }
 
 // TlsBlockClazzName <--
@@ -5335,6 +5675,11 @@ type TLTlsBlockZero struct {
 	Length  int32  `json:"length"`
 }
 
+func (m *TLTlsBlockZero) String() string {
+	wrapper := iface.WithNameWrapper{"tlsBlockZero", m}
+	return wrapper.String()
+}
+
 // TlsBlockClazzName <--
 func (m *TLTlsBlockZero) TlsBlockClazzName() string {
 	return ClazzName_tlsBlockZero
@@ -5393,6 +5738,11 @@ type TLTlsBlockDomain struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLTlsBlockDomain) String() string {
+	wrapper := iface.WithNameWrapper{"tlsBlockDomain", m}
+	return wrapper.String()
+}
+
 // TlsBlockClazzName <--
 func (m *TLTlsBlockDomain) TlsBlockClazzName() string {
 	return ClazzName_tlsBlockDomain
@@ -5447,6 +5797,11 @@ func (m *TLTlsBlockDomain) Decode(d *bin.Decoder) (err error) {
 type TLTlsBlockGrease struct {
 	ClazzID uint32 `json:"_id"`
 	Seed    int32  `json:"seed"`
+}
+
+func (m *TLTlsBlockGrease) String() string {
+	wrapper := iface.WithNameWrapper{"tlsBlockGrease", m}
+	return wrapper.String()
 }
 
 // TlsBlockClazzName <--
@@ -5507,6 +5862,11 @@ type TLTlsBlockPublicKey struct {
 	ClazzID uint32 `json:"_id"`
 }
 
+func (m *TLTlsBlockPublicKey) String() string {
+	wrapper := iface.WithNameWrapper{"tlsBlockPublicKey", m}
+	return wrapper.String()
+}
+
 // TlsBlockClazzName <--
 func (m *TLTlsBlockPublicKey) TlsBlockClazzName() string {
 	return ClazzName_tlsBlockPublicKey
@@ -5561,6 +5921,11 @@ func (m *TLTlsBlockPublicKey) Decode(d *bin.Decoder) (err error) {
 type TLTlsBlockScope struct {
 	ClazzID uint32      `json:"_id"`
 	Entries []*TlsBlock `json:"entries"`
+}
+
+func (m *TLTlsBlockScope) String() string {
+	wrapper := iface.WithNameWrapper{"tlsBlockScope", m}
+	return wrapper.String()
 }
 
 // TlsBlockClazzName <--
@@ -5633,7 +5998,12 @@ func (m *TLTlsBlockScope) Decode(d *bin.Decoder) (err error) {
 type TlsBlock struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	TlsBlockClazz
+	TlsBlockClazz `json:"_clazz"`
+}
+
+func (m *TlsBlock) String() string {
+	wrapper := iface.WithNameWrapper{m.TlsBlockClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeTlsBlock <--
@@ -5832,6 +6202,11 @@ type TLTlsClientHello struct {
 	Blocks  []*TlsBlock `json:"blocks"`
 }
 
+func (m *TLTlsClientHello) String() string {
+	wrapper := iface.WithNameWrapper{"tlsClientHello", m}
+	return wrapper.String()
+}
+
 // TlsClientHelloClazzName <--
 func (m *TLTlsClientHello) TlsClientHelloClazzName() string {
 	return ClazzName_tlsClientHello
@@ -5907,7 +6282,12 @@ func (m *TLTlsClientHello) Decode(d *bin.Decoder) (err error) {
 type TlsClientHello struct {
 	// ClazzID   uint32 `json:"_id"`
 	// ClazzName string `json:"_name"`
-	TlsClientHelloClazz
+	TlsClientHelloClazz `json:"_clazz"`
+}
+
+func (m *TlsClientHello) String() string {
+	wrapper := iface.WithNameWrapper{m.TlsClientHelloClazzName(), m}
+	return wrapper.String()
 }
 
 // MakeTlsClientHello <--

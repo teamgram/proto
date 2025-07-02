@@ -7,6 +7,7 @@
 package iface
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/teamgram/proto/v2/bin"
@@ -42,6 +43,16 @@ type TLObject interface {
 	// ClazzID() uint32
 	// ClazzName() string
 	// String() string
+}
+
+type WithNameWrapper struct {
+	ClazzName string `json:"_name,omitempty"`
+	TLObject  `json:"_object"`
+}
+
+func (m WithNameWrapper) String() string {
+	data, _ := json.Marshal(m)
+	return string(data)
 }
 
 func DecodeObject(d *bin.Decoder) (TLObject, error) {
