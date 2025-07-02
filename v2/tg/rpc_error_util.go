@@ -25,6 +25,11 @@ import (
 
 type (
 	TLRpcError = mt.TLRpcError
+	RpcError   = mt.RpcError
+)
+
+var (
+	DecodeRpcErrorClazz = mt.DecodeRpcErrorClazz
 )
 
 func NewRpcError(e error) *TLRpcError {
@@ -40,7 +45,7 @@ func NewRpcError(e error) *TLRpcError {
 	} else {
 		return &TLRpcError{
 			ErrorCode:    ErrInternal,
-			ErrorMessage: err.Error(),
+			ErrorMessage: e.Error(),
 		}
 	}
 }

@@ -73,6 +73,10 @@ func (m *TLBindAuthKeyInner) ClazzName() string {
 
 // ToBindAuthKeyInner <--
 func (m *TLBindAuthKeyInner) ToBindAuthKeyInner() *BindAuthKeyInner {
+	if m == nil {
+		return nil
+	}
+
 	return MakeBindAuthKeyInner(m)
 }
 
@@ -174,6 +178,10 @@ func (m *BindAuthKeyInner) Match(f ...interface{}) {
 
 // ToBindAuthKeyInner <--
 func (m *BindAuthKeyInner) ToBindAuthKeyInner() (*TLBindAuthKeyInner, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.BindAuthKeyInnerClazz == nil {
 		return nil, false
 	}
@@ -236,6 +244,10 @@ func (m *TLClientDHInnerData) ClazzName() string {
 
 // ToClientDHInnerData <--
 func (m *TLClientDHInnerData) ToClientDHInnerData() *ClientDHInnerData {
+	if m == nil {
+		return nil
+	}
+
 	return MakeClientDHInnerData(m)
 }
 
@@ -335,6 +347,10 @@ func (m *ClientDHInnerData) Match(f ...interface{}) {
 
 // ToClientDHInnerData <--
 func (m *ClientDHInnerData) ToClientDHInnerData() (*TLClientDHInnerData, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.ClientDHInnerDataClazz == nil {
 		return nil, false
 	}
@@ -403,6 +419,10 @@ func (m *TLDestroyAuthKeyOk) ClazzName() string {
 
 // ToDestroyAuthKeyRes <--
 func (m *TLDestroyAuthKeyOk) ToDestroyAuthKeyRes() *DestroyAuthKeyRes {
+	if m == nil {
+		return nil
+	}
+
 	return MakeDestroyAuthKeyRes(m)
 }
 
@@ -463,6 +483,10 @@ func (m *TLDestroyAuthKeyNone) ClazzName() string {
 
 // ToDestroyAuthKeyRes <--
 func (m *TLDestroyAuthKeyNone) ToDestroyAuthKeyRes() *DestroyAuthKeyRes {
+	if m == nil {
+		return nil
+	}
+
 	return MakeDestroyAuthKeyRes(m)
 }
 
@@ -523,6 +547,10 @@ func (m *TLDestroyAuthKeyFail) ClazzName() string {
 
 // ToDestroyAuthKeyRes <--
 func (m *TLDestroyAuthKeyFail) ToDestroyAuthKeyRes() *DestroyAuthKeyRes {
+	if m == nil {
+		return nil
+	}
+
 	return MakeDestroyAuthKeyRes(m)
 }
 
@@ -625,6 +653,10 @@ func (m *DestroyAuthKeyRes) Match(f ...interface{}) {
 
 // ToDestroyAuthKeyOk <--
 func (m *DestroyAuthKeyRes) ToDestroyAuthKeyOk() (*TLDestroyAuthKeyOk, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.DestroyAuthKeyResClazz == nil {
 		return nil, false
 	}
@@ -638,6 +670,10 @@ func (m *DestroyAuthKeyRes) ToDestroyAuthKeyOk() (*TLDestroyAuthKeyOk, bool) {
 
 // ToDestroyAuthKeyNone <--
 func (m *DestroyAuthKeyRes) ToDestroyAuthKeyNone() (*TLDestroyAuthKeyNone, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.DestroyAuthKeyResClazz == nil {
 		return nil, false
 	}
@@ -651,6 +687,10 @@ func (m *DestroyAuthKeyRes) ToDestroyAuthKeyNone() (*TLDestroyAuthKeyNone, bool)
 
 // ToDestroyAuthKeyFail <--
 func (m *DestroyAuthKeyRes) ToDestroyAuthKeyFail() (*TLDestroyAuthKeyFail, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.DestroyAuthKeyResClazz == nil {
 		return nil, false
 	}
@@ -730,6 +770,10 @@ func (m *TLPQInnerData) ClazzName() string {
 
 // ToPQInnerData <--
 func (m *TLPQInnerData) ToPQInnerData() *PQInnerData {
+	if m == nil {
+		return nil
+	}
+
 	return MakePQInnerData(m)
 }
 
@@ -810,6 +854,10 @@ func (m *TLPQInnerDataDc) ClazzName() string {
 
 // ToPQInnerData <--
 func (m *TLPQInnerDataDc) ToPQInnerData() *PQInnerData {
+	if m == nil {
+		return nil
+	}
+
 	return MakePQInnerData(m)
 }
 
@@ -892,6 +940,10 @@ func (m *TLPQInnerDataTemp) ClazzName() string {
 
 // ToPQInnerData <--
 func (m *TLPQInnerDataTemp) ToPQInnerData() *PQInnerData {
+	if m == nil {
+		return nil
+	}
+
 	return MakePQInnerData(m)
 }
 
@@ -975,6 +1027,10 @@ func (m *TLPQInnerDataTempDc) ClazzName() string {
 
 // ToPQInnerData <--
 func (m *TLPQInnerDataTempDc) ToPQInnerData() *PQInnerData {
+	if m == nil {
+		return nil
+	}
+
 	return MakePQInnerData(m)
 }
 
@@ -1100,6 +1156,10 @@ func (m *PQInnerData) Match(f ...interface{}) {
 
 // ToPQInnerData <--
 func (m *PQInnerData) ToPQInnerData() (*TLPQInnerData, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.PQInnerDataClazz == nil {
 		return nil, false
 	}
@@ -1113,6 +1173,10 @@ func (m *PQInnerData) ToPQInnerData() (*TLPQInnerData, bool) {
 
 // ToPQInnerDataDc <--
 func (m *PQInnerData) ToPQInnerDataDc() (*TLPQInnerDataDc, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.PQInnerDataClazz == nil {
 		return nil, false
 	}
@@ -1126,6 +1190,10 @@ func (m *PQInnerData) ToPQInnerDataDc() (*TLPQInnerDataDc, bool) {
 
 // ToPQInnerDataTemp <--
 func (m *PQInnerData) ToPQInnerDataTemp() (*TLPQInnerDataTemp, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.PQInnerDataClazz == nil {
 		return nil, false
 	}
@@ -1139,6 +1207,10 @@ func (m *PQInnerData) ToPQInnerDataTemp() (*TLPQInnerDataTemp, bool) {
 
 // ToPQInnerDataTempDc <--
 func (m *PQInnerData) ToPQInnerDataTempDc() (*TLPQInnerDataTempDc, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.PQInnerDataClazz == nil {
 		return nil, false
 	}
@@ -1201,6 +1273,10 @@ func (m *TLResPQ) ClazzName() string {
 
 // ToResPQ <--
 func (m *TLResPQ) ToResPQ() *ResPQ {
+	if m == nil {
+		return nil
+	}
+
 	return MakeResPQ(m)
 }
 
@@ -1302,6 +1378,10 @@ func (m *ResPQ) Match(f ...interface{}) {
 
 // ToResPQ <--
 func (m *ResPQ) ToResPQ() (*TLResPQ, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.ResPQClazz == nil {
 		return nil, false
 	}
@@ -1366,6 +1446,10 @@ func (m *TLServerDHInnerData) ClazzName() string {
 
 // ToServerDHInnerData <--
 func (m *TLServerDHInnerData) ToServerDHInnerData() *ServerDHInnerData {
+	if m == nil {
+		return nil
+	}
+
 	return MakeServerDHInnerData(m)
 }
 
@@ -1469,6 +1553,10 @@ func (m *ServerDHInnerData) Match(f ...interface{}) {
 
 // ToServerDHInnerData <--
 func (m *ServerDHInnerData) ToServerDHInnerData() (*TLServerDHInnerData, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.ServerDHInnerDataClazz == nil {
 		return nil, false
 	}
@@ -1535,6 +1623,10 @@ func (m *TLServerDHParamsFail) ClazzName() string {
 
 // ToServerDHParams <--
 func (m *TLServerDHParamsFail) ToServerDHParams() *ServerDHParams {
+	if m == nil {
+		return nil
+	}
+
 	return MakeServerDHParams(m)
 }
 
@@ -1605,6 +1697,10 @@ func (m *TLServerDHParamsOk) ClazzName() string {
 
 // ToServerDHParams <--
 func (m *TLServerDHParamsOk) ToServerDHParams() *ServerDHParams {
+	if m == nil {
+		return nil
+	}
+
 	return MakeServerDHParams(m)
 }
 
@@ -1708,6 +1804,10 @@ func (m *ServerDHParams) Match(f ...interface{}) {
 
 // ToServerDHParamsFail <--
 func (m *ServerDHParams) ToServerDHParamsFail() (*TLServerDHParamsFail, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.ServerDHParamsClazz == nil {
 		return nil, false
 	}
@@ -1721,6 +1821,10 @@ func (m *ServerDHParams) ToServerDHParamsFail() (*TLServerDHParamsFail, bool) {
 
 // ToServerDHParamsOk <--
 func (m *ServerDHParams) ToServerDHParamsOk() (*TLServerDHParamsOk, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.ServerDHParamsClazz == nil {
 		return nil, false
 	}
@@ -1792,6 +1896,10 @@ func (m *TLDhGenOk) ClazzName() string {
 
 // ToSetClientDHParamsAnswer <--
 func (m *TLDhGenOk) ToSetClientDHParamsAnswer() *SetClientDHParamsAnswer {
+	if m == nil {
+		return nil
+	}
+
 	return MakeSetClientDHParamsAnswer(m)
 }
 
@@ -1862,6 +1970,10 @@ func (m *TLDhGenRetry) ClazzName() string {
 
 // ToSetClientDHParamsAnswer <--
 func (m *TLDhGenRetry) ToSetClientDHParamsAnswer() *SetClientDHParamsAnswer {
+	if m == nil {
+		return nil
+	}
+
 	return MakeSetClientDHParamsAnswer(m)
 }
 
@@ -1932,6 +2044,10 @@ func (m *TLDhGenFail) ClazzName() string {
 
 // ToSetClientDHParamsAnswer <--
 func (m *TLDhGenFail) ToSetClientDHParamsAnswer() *SetClientDHParamsAnswer {
+	if m == nil {
+		return nil
+	}
+
 	return MakeSetClientDHParamsAnswer(m)
 }
 
@@ -2041,6 +2157,10 @@ func (m *SetClientDHParamsAnswer) Match(f ...interface{}) {
 
 // ToDhGenOk <--
 func (m *SetClientDHParamsAnswer) ToDhGenOk() (*TLDhGenOk, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.SetClientDHParamsAnswerClazz == nil {
 		return nil, false
 	}
@@ -2054,6 +2174,10 @@ func (m *SetClientDHParamsAnswer) ToDhGenOk() (*TLDhGenOk, bool) {
 
 // ToDhGenRetry <--
 func (m *SetClientDHParamsAnswer) ToDhGenRetry() (*TLDhGenRetry, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.SetClientDHParamsAnswerClazz == nil {
 		return nil, false
 	}
@@ -2067,6 +2191,10 @@ func (m *SetClientDHParamsAnswer) ToDhGenRetry() (*TLDhGenRetry, bool) {
 
 // ToDhGenFail <--
 func (m *SetClientDHParamsAnswer) ToDhGenFail() (*TLDhGenFail, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.SetClientDHParamsAnswerClazz == nil {
 		return nil, false
 	}
@@ -2128,6 +2256,10 @@ func (m *TLAccessPointRule) ClazzName() string {
 
 // ToAccessPointRule <--
 func (m *TLAccessPointRule) ToAccessPointRule() *AccessPointRule {
+	if m == nil {
+		return nil
+	}
+
 	return MakeAccessPointRule(m)
 }
 
@@ -2243,6 +2375,10 @@ func (m *AccessPointRule) Match(f ...interface{}) {
 
 // ToAccessPointRule <--
 func (m *AccessPointRule) ToAccessPointRule() (*TLAccessPointRule, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.AccessPointRuleClazz == nil {
 		return nil, false
 	}
@@ -2309,6 +2445,10 @@ func (m *TLBadMsgNotification) ClazzName() string {
 
 // ToBadMsgNotification <--
 func (m *TLBadMsgNotification) ToBadMsgNotification() *BadMsgNotification {
+	if m == nil {
+		return nil
+	}
+
 	return MakeBadMsgNotification(m)
 }
 
@@ -2380,6 +2520,10 @@ func (m *TLBadServerSalt) ClazzName() string {
 
 // ToBadMsgNotification <--
 func (m *TLBadServerSalt) ToBadMsgNotification() *BadMsgNotification {
+	if m == nil {
+		return nil
+	}
+
 	return MakeBadMsgNotification(m)
 }
 
@@ -2485,6 +2629,10 @@ func (m *BadMsgNotification) Match(f ...interface{}) {
 
 // ToBadMsgNotification <--
 func (m *BadMsgNotification) ToBadMsgNotification() (*TLBadMsgNotification, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.BadMsgNotificationClazz == nil {
 		return nil, false
 	}
@@ -2498,6 +2646,10 @@ func (m *BadMsgNotification) ToBadMsgNotification() (*TLBadMsgNotification, bool
 
 // ToBadServerSalt <--
 func (m *BadMsgNotification) ToBadServerSalt() (*TLBadServerSalt, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.BadMsgNotificationClazz == nil {
 		return nil, false
 	}
@@ -2562,6 +2714,10 @@ func (m *TLDestroySessionOk) ClazzName() string {
 
 // ToDestroySessionRes <--
 func (m *TLDestroySessionOk) ToDestroySessionRes() *DestroySessionRes {
+	if m == nil {
+		return nil
+	}
+
 	return MakeDestroySessionRes(m)
 }
 
@@ -2626,6 +2782,10 @@ func (m *TLDestroySessionNone) ClazzName() string {
 
 // ToDestroySessionRes <--
 func (m *TLDestroySessionNone) ToDestroySessionRes() *DestroySessionRes {
+	if m == nil {
+		return nil
+	}
+
 	return MakeDestroySessionRes(m)
 }
 
@@ -2725,6 +2885,10 @@ func (m *DestroySessionRes) Match(f ...interface{}) {
 
 // ToDestroySessionOk <--
 func (m *DestroySessionRes) ToDestroySessionOk() (*TLDestroySessionOk, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.DestroySessionResClazz == nil {
 		return nil, false
 	}
@@ -2738,6 +2902,10 @@ func (m *DestroySessionRes) ToDestroySessionOk() (*TLDestroySessionOk, bool) {
 
 // ToDestroySessionNone <--
 func (m *DestroySessionRes) ToDestroySessionNone() (*TLDestroySessionNone, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.DestroySessionResClazz == nil {
 		return nil, false
 	}
@@ -2799,6 +2967,10 @@ func (m *TLFutureSalt) ClazzName() string {
 
 // ToFutureSalt <--
 func (m *TLFutureSalt) ToFutureSalt() *FutureSalt {
+	if m == nil {
+		return nil
+	}
+
 	return MakeFutureSalt(m)
 }
 
@@ -2896,6 +3068,10 @@ func (m *FutureSalt) Match(f ...interface{}) {
 
 // ToFutureSalt <--
 func (m *FutureSalt) ToFutureSalt() (*TLFutureSalt, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.FutureSaltClazz == nil {
 		return nil, false
 	}
@@ -2957,6 +3133,10 @@ func (m *TLFutureSalts) ClazzName() string {
 
 // ToFutureSalts <--
 func (m *TLFutureSalts) ToFutureSalts() *FutureSalts {
+	if m == nil {
+		return nil
+	}
+
 	return MakeFutureSalts(m)
 }
 
@@ -3071,6 +3251,10 @@ func (m *FutureSalts) Match(f ...interface{}) {
 
 // ToFutureSalts <--
 func (m *FutureSalts) ToFutureSalts() (*TLFutureSalts, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.FutureSaltsClazz == nil {
 		return nil, false
 	}
@@ -3132,6 +3316,10 @@ func (m *TLHelpConfigSimple) ClazzName() string {
 
 // ToHelpConfigSimple <--
 func (m *TLHelpConfigSimple) ToHelpConfigSimple() *HelpConfigSimple {
+	if m == nil {
+		return nil
+	}
+
 	return MakeHelpConfigSimple(m)
 }
 
@@ -3247,6 +3435,10 @@ func (m *HelpConfigSimple) Match(f ...interface{}) {
 
 // ToHelpConfigSimple <--
 func (m *HelpConfigSimple) ToHelpConfigSimple() (*TLHelpConfigSimple, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.HelpConfigSimpleClazz == nil {
 		return nil, false
 	}
@@ -3308,6 +3500,10 @@ func (m *TLHttpWait) ClazzName() string {
 
 // ToHttpWait <--
 func (m *TLHttpWait) ToHttpWait() *HttpWait {
+	if m == nil {
+		return nil
+	}
+
 	return MakeHttpWait(m)
 }
 
@@ -3405,6 +3601,10 @@ func (m *HttpWait) Match(f ...interface{}) {
 
 // ToHttpWait <--
 func (m *HttpWait) ToHttpWait() (*TLHttpWait, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.HttpWaitClazz == nil {
 		return nil, false
 	}
@@ -3470,6 +3670,10 @@ func (m *TLIpPort) ClazzName() string {
 
 // ToIpPort <--
 func (m *TLIpPort) ToIpPort() *IpPort {
+	if m == nil {
+		return nil
+	}
+
 	return MakeIpPort(m)
 }
 
@@ -3538,6 +3742,10 @@ func (m *TLIpPortSecret) ClazzName() string {
 
 // ToIpPort <--
 func (m *TLIpPortSecret) ToIpPort() *IpPort {
+	if m == nil {
+		return nil
+	}
+
 	return MakeIpPort(m)
 }
 
@@ -3641,6 +3849,10 @@ func (m *IpPort) Match(f ...interface{}) {
 
 // ToIpPort <--
 func (m *IpPort) ToIpPort() (*TLIpPort, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.IpPortClazz == nil {
 		return nil, false
 	}
@@ -3654,6 +3866,10 @@ func (m *IpPort) ToIpPort() (*TLIpPort, bool) {
 
 // ToIpPortSecret <--
 func (m *IpPort) ToIpPortSecret() (*TLIpPortSecret, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.IpPortClazz == nil {
 		return nil, false
 	}
@@ -3721,6 +3937,10 @@ func (m *TLMsgDetailedInfo) ClazzName() string {
 
 // ToMsgDetailedInfo <--
 func (m *TLMsgDetailedInfo) ToMsgDetailedInfo() *MsgDetailedInfo {
+	if m == nil {
+		return nil
+	}
+
 	return MakeMsgDetailedInfo(m)
 }
 
@@ -3793,6 +4013,10 @@ func (m *TLMsgNewDetailedInfo) ClazzName() string {
 
 // ToMsgDetailedInfo <--
 func (m *TLMsgNewDetailedInfo) ToMsgDetailedInfo() *MsgDetailedInfo {
+	if m == nil {
+		return nil
+	}
+
 	return MakeMsgDetailedInfo(m)
 }
 
@@ -3896,6 +4120,10 @@ func (m *MsgDetailedInfo) Match(f ...interface{}) {
 
 // ToMsgDetailedInfo <--
 func (m *MsgDetailedInfo) ToMsgDetailedInfo() (*TLMsgDetailedInfo, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.MsgDetailedInfoClazz == nil {
 		return nil, false
 	}
@@ -3909,6 +4137,10 @@ func (m *MsgDetailedInfo) ToMsgDetailedInfo() (*TLMsgDetailedInfo, bool) {
 
 // ToMsgNewDetailedInfo <--
 func (m *MsgDetailedInfo) ToMsgNewDetailedInfo() (*TLMsgNewDetailedInfo, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.MsgDetailedInfoClazz == nil {
 		return nil, false
 	}
@@ -3968,6 +4200,10 @@ func (m *TLMsgResendReq) ClazzName() string {
 
 // ToMsgResendReq <--
 func (m *TLMsgResendReq) ToMsgResendReq() *MsgResendReq {
+	if m == nil {
+		return nil
+	}
+
 	return MakeMsgResendReq(m)
 }
 
@@ -4062,6 +4298,10 @@ func (m *MsgResendReq) Match(f ...interface{}) {
 
 // ToMsgResendReq <--
 func (m *MsgResendReq) ToMsgResendReq() (*TLMsgResendReq, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.MsgResendReqClazz == nil {
 		return nil, false
 	}
@@ -4121,6 +4361,10 @@ func (m *TLMsgsAck) ClazzName() string {
 
 // ToMsgsAck <--
 func (m *TLMsgsAck) ToMsgsAck() *MsgsAck {
+	if m == nil {
+		return nil
+	}
+
 	return MakeMsgsAck(m)
 }
 
@@ -4215,6 +4459,10 @@ func (m *MsgsAck) Match(f ...interface{}) {
 
 // ToMsgsAck <--
 func (m *MsgsAck) ToMsgsAck() (*TLMsgsAck, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.MsgsAckClazz == nil {
 		return nil, false
 	}
@@ -4275,6 +4523,10 @@ func (m *TLMsgsAllInfo) ClazzName() string {
 
 // ToMsgsAllInfo <--
 func (m *TLMsgsAllInfo) ToMsgsAllInfo() *MsgsAllInfo {
+	if m == nil {
+		return nil
+	}
+
 	return MakeMsgsAllInfo(m)
 }
 
@@ -4373,6 +4625,10 @@ func (m *MsgsAllInfo) Match(f ...interface{}) {
 
 // ToMsgsAllInfo <--
 func (m *MsgsAllInfo) ToMsgsAllInfo() (*TLMsgsAllInfo, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.MsgsAllInfoClazz == nil {
 		return nil, false
 	}
@@ -4433,6 +4689,10 @@ func (m *TLMsgsStateInfo) ClazzName() string {
 
 // ToMsgsStateInfo <--
 func (m *TLMsgsStateInfo) ToMsgsStateInfo() *MsgsStateInfo {
+	if m == nil {
+		return nil
+	}
+
 	return MakeMsgsStateInfo(m)
 }
 
@@ -4528,6 +4788,10 @@ func (m *MsgsStateInfo) Match(f ...interface{}) {
 
 // ToMsgsStateInfo <--
 func (m *MsgsStateInfo) ToMsgsStateInfo() (*TLMsgsStateInfo, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.MsgsStateInfoClazz == nil {
 		return nil, false
 	}
@@ -4587,6 +4851,10 @@ func (m *TLMsgsStateReq) ClazzName() string {
 
 // ToMsgsStateReq <--
 func (m *TLMsgsStateReq) ToMsgsStateReq() *MsgsStateReq {
+	if m == nil {
+		return nil
+	}
+
 	return MakeMsgsStateReq(m)
 }
 
@@ -4681,6 +4949,10 @@ func (m *MsgsStateReq) Match(f ...interface{}) {
 
 // ToMsgsStateReq <--
 func (m *MsgsStateReq) ToMsgsStateReq() (*TLMsgsStateReq, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.MsgsStateReqClazz == nil {
 		return nil, false
 	}
@@ -4742,6 +5014,10 @@ func (m *TLNewSessionCreated) ClazzName() string {
 
 // ToNewSession <--
 func (m *TLNewSessionCreated) ToNewSession() *NewSession {
+	if m == nil {
+		return nil
+	}
+
 	return MakeNewSession(m)
 }
 
@@ -4839,6 +5115,10 @@ func (m *NewSession) Match(f ...interface{}) {
 
 // ToNewSessionCreated <--
 func (m *NewSession) ToNewSessionCreated() (*TLNewSessionCreated, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.NewSessionClazz == nil {
 		return nil, false
 	}
@@ -4899,6 +5179,10 @@ func (m *TLPong) ClazzName() string {
 
 // ToPong <--
 func (m *TLPong) ToPong() *Pong {
+	if m == nil {
+		return nil
+	}
+
 	return MakePong(m)
 }
 
@@ -4994,6 +5278,10 @@ func (m *Pong) Match(f ...interface{}) {
 
 // ToPong <--
 func (m *Pong) ToPong() (*TLPong, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.PongClazz == nil {
 		return nil, false
 	}
@@ -5062,6 +5350,10 @@ func (m *TLRpcAnswerUnknown) ClazzName() string {
 
 // ToRpcDropAnswer <--
 func (m *TLRpcAnswerUnknown) ToRpcDropAnswer() *RpcDropAnswer {
+	if m == nil {
+		return nil
+	}
+
 	return MakeRpcDropAnswer(m)
 }
 
@@ -5122,6 +5414,10 @@ func (m *TLRpcAnswerDroppedRunning) ClazzName() string {
 
 // ToRpcDropAnswer <--
 func (m *TLRpcAnswerDroppedRunning) ToRpcDropAnswer() *RpcDropAnswer {
+	if m == nil {
+		return nil
+	}
+
 	return MakeRpcDropAnswer(m)
 }
 
@@ -5185,6 +5481,10 @@ func (m *TLRpcAnswerDropped) ClazzName() string {
 
 // ToRpcDropAnswer <--
 func (m *TLRpcAnswerDropped) ToRpcDropAnswer() *RpcDropAnswer {
+	if m == nil {
+		return nil
+	}
+
 	return MakeRpcDropAnswer(m)
 }
 
@@ -5294,6 +5594,10 @@ func (m *RpcDropAnswer) Match(f ...interface{}) {
 
 // ToRpcAnswerUnknown <--
 func (m *RpcDropAnswer) ToRpcAnswerUnknown() (*TLRpcAnswerUnknown, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.RpcDropAnswerClazz == nil {
 		return nil, false
 	}
@@ -5307,6 +5611,10 @@ func (m *RpcDropAnswer) ToRpcAnswerUnknown() (*TLRpcAnswerUnknown, bool) {
 
 // ToRpcAnswerDroppedRunning <--
 func (m *RpcDropAnswer) ToRpcAnswerDroppedRunning() (*TLRpcAnswerDroppedRunning, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.RpcDropAnswerClazz == nil {
 		return nil, false
 	}
@@ -5320,6 +5628,10 @@ func (m *RpcDropAnswer) ToRpcAnswerDroppedRunning() (*TLRpcAnswerDroppedRunning,
 
 // ToRpcAnswerDropped <--
 func (m *RpcDropAnswer) ToRpcAnswerDropped() (*TLRpcAnswerDropped, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.RpcDropAnswerClazz == nil {
 		return nil, false
 	}
@@ -5380,6 +5692,10 @@ func (m *TLRpcError) ClazzName() string {
 
 // ToRpcError <--
 func (m *TLRpcError) ToRpcError() *RpcError {
+	if m == nil {
+		return nil
+	}
+
 	return MakeRpcError(m)
 }
 
@@ -5475,6 +5791,10 @@ func (m *RpcError) Match(f ...interface{}) {
 
 // ToRpcError <--
 func (m *RpcError) ToRpcError() (*TLRpcError, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.RpcErrorClazz == nil {
 		return nil, false
 	}
@@ -5564,6 +5884,10 @@ func (m *TLTlsBlockString) ClazzName() string {
 
 // ToTlsBlock <--
 func (m *TLTlsBlockString) ToTlsBlock() *TlsBlock {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsBlock(m)
 }
 
@@ -5628,6 +5952,10 @@ func (m *TLTlsBlockRandom) ClazzName() string {
 
 // ToTlsBlock <--
 func (m *TLTlsBlockRandom) ToTlsBlock() *TlsBlock {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsBlock(m)
 }
 
@@ -5692,6 +6020,10 @@ func (m *TLTlsBlockZero) ClazzName() string {
 
 // ToTlsBlock <--
 func (m *TLTlsBlockZero) ToTlsBlock() *TlsBlock {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsBlock(m)
 }
 
@@ -5755,6 +6087,10 @@ func (m *TLTlsBlockDomain) ClazzName() string {
 
 // ToTlsBlock <--
 func (m *TLTlsBlockDomain) ToTlsBlock() *TlsBlock {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsBlock(m)
 }
 
@@ -5816,6 +6152,10 @@ func (m *TLTlsBlockGrease) ClazzName() string {
 
 // ToTlsBlock <--
 func (m *TLTlsBlockGrease) ToTlsBlock() *TlsBlock {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsBlock(m)
 }
 
@@ -5879,6 +6219,10 @@ func (m *TLTlsBlockPublicKey) ClazzName() string {
 
 // ToTlsBlock <--
 func (m *TLTlsBlockPublicKey) ToTlsBlock() *TlsBlock {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsBlock(m)
 }
 
@@ -5940,6 +6284,10 @@ func (m *TLTlsBlockScope) ClazzName() string {
 
 // ToTlsBlock <--
 func (m *TLTlsBlockScope) ToTlsBlock() *TlsBlock {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsBlock(m)
 }
 
@@ -6082,6 +6430,10 @@ func (m *TlsBlock) Match(f ...interface{}) {
 
 // ToTlsBlockString <--
 func (m *TlsBlock) ToTlsBlockString() (*TLTlsBlockString, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsBlockClazz == nil {
 		return nil, false
 	}
@@ -6095,6 +6447,10 @@ func (m *TlsBlock) ToTlsBlockString() (*TLTlsBlockString, bool) {
 
 // ToTlsBlockRandom <--
 func (m *TlsBlock) ToTlsBlockRandom() (*TLTlsBlockRandom, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsBlockClazz == nil {
 		return nil, false
 	}
@@ -6108,6 +6464,10 @@ func (m *TlsBlock) ToTlsBlockRandom() (*TLTlsBlockRandom, bool) {
 
 // ToTlsBlockZero <--
 func (m *TlsBlock) ToTlsBlockZero() (*TLTlsBlockZero, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsBlockClazz == nil {
 		return nil, false
 	}
@@ -6121,6 +6481,10 @@ func (m *TlsBlock) ToTlsBlockZero() (*TLTlsBlockZero, bool) {
 
 // ToTlsBlockDomain <--
 func (m *TlsBlock) ToTlsBlockDomain() (*TLTlsBlockDomain, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsBlockClazz == nil {
 		return nil, false
 	}
@@ -6134,6 +6498,10 @@ func (m *TlsBlock) ToTlsBlockDomain() (*TLTlsBlockDomain, bool) {
 
 // ToTlsBlockGrease <--
 func (m *TlsBlock) ToTlsBlockGrease() (*TLTlsBlockGrease, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsBlockClazz == nil {
 		return nil, false
 	}
@@ -6147,6 +6515,10 @@ func (m *TlsBlock) ToTlsBlockGrease() (*TLTlsBlockGrease, bool) {
 
 // ToTlsBlockPublicKey <--
 func (m *TlsBlock) ToTlsBlockPublicKey() (*TLTlsBlockPublicKey, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsBlockClazz == nil {
 		return nil, false
 	}
@@ -6160,6 +6532,10 @@ func (m *TlsBlock) ToTlsBlockPublicKey() (*TLTlsBlockPublicKey, bool) {
 
 // ToTlsBlockScope <--
 func (m *TlsBlock) ToTlsBlockScope() (*TLTlsBlockScope, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsBlockClazz == nil {
 		return nil, false
 	}
@@ -6219,6 +6595,10 @@ func (m *TLTlsClientHello) ClazzName() string {
 
 // ToTlsClientHello <--
 func (m *TLTlsClientHello) ToTlsClientHello() *TlsClientHello {
+	if m == nil {
+		return nil
+	}
+
 	return MakeTlsClientHello(m)
 }
 
@@ -6330,6 +6710,10 @@ func (m *TlsClientHello) Match(f ...interface{}) {
 
 // ToTlsClientHello <--
 func (m *TlsClientHello) ToTlsClientHello() (*TLTlsClientHello, bool) {
+	if m == nil {
+		return nil, false
+	}
+
 	if m.TlsClientHelloClazz == nil {
 		return nil, false
 	}

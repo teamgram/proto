@@ -30,7 +30,7 @@ const (
 func init() {
 	// iface.RegisterClazzID(ClazzID_message2, func() iface.TLObject { return &TLMessage2{} })
 
-	iface.RegisterClazzID(ClazzID_msg_container, func() iface.TLObject { return &TLMsgRawDataContainer{} })
+	iface.RegisterClazzID(ClazzID_msg_container, func() iface.TLObject { return &TLMsgContainer{} })
 	iface.RegisterClazzID(ClazzID_msg_copy, func() iface.TLObject { return &TLMsgCopy{} })
 	iface.RegisterClazzID(ClazzID_gzip_packed, func() iface.TLObject { return &TLGzipPacked{} })
 	iface.RegisterClazzID(ClazzID_rpc_result, func() iface.TLObject { return &TLRpcResult{} })
@@ -170,10 +170,10 @@ func (m *TLMessage2) Decode(d *bin.Decoder) (err error) {
 		return
 	}
 
-	if int(m.Bytes) < d.Len() {
-		err = io.ErrUnexpectedEOF
-		return
-	}
+	//if int(m.Bytes) < d.Len() {
+	//	err = io.ErrUnexpectedEOF
+	//	return
+	//}
 
 	m.Object, err = iface.DecodeObject(d)
 	if err != nil {
@@ -216,7 +216,7 @@ func (m *TLMsgContainer) Decode(d *bin.Decoder) error {
 		message2 := new(TLMessage2)
 		err = message2.Decode(d)
 		if err != nil {
-			// log.Errorf("Decode message2 error: %v", err)
+			fmt.Printf("Decode message2 error: %v\n", err)
 			return err
 		}
 		m.Messages = append(m.Messages, message2)

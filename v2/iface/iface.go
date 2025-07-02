@@ -67,7 +67,7 @@ func DecodeObject(d *bin.Decoder) (TLObject, error) {
 		return nil, err
 	}
 
-	// log.Infof("newTLObjectByClassID, classID: %x", uint32(classID))
+	fmt.Printf("newTLObjectByClassID, classID: %x\n", uint32(clazzID))
 	err = r.Decode(d)
 	if err != nil {
 		err = fmt.Errorf("object(%x) decode error: %v", uint32(clazzID), err)
