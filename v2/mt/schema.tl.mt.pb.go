@@ -2978,7 +2978,7 @@ func (m *TLFutureSalt) ToFutureSalt() *FutureSalt {
 func (m *TLFutureSalt) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0x949d9dc: func() error {
-			x.PutClazzID(0x949d9dc)
+			// x.PutClazzID(0x949d9dc)
 
 			x.PutInt32(m.ValidSince)
 			x.PutInt32(m.ValidUntil)
@@ -3182,7 +3182,7 @@ func (m *TLFutureSalts) Decode(d *bin.Decoder) (err error) {
 			_ = err2
 			v2 := make([]*TLFutureSalt, l2)
 			for i := 0; i < l2; i++ {
-				v2[i] = &TLFutureSalt{ClazzID: ClazzID_future_salts}
+				v2[i] = &TLFutureSalt{ClazzID: ClazzID_future_salt}
 				err2 = v2[i].Decode(d)
 				_ = err2
 			}
