@@ -64,6 +64,7 @@ func (m *TLInvokeAfterMsg) Decode(d *bin.Decoder) (err error) {
 		0xcb9f372d: func() (err error) {
 			m.MsgId, err = d.Int64()
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -122,6 +123,7 @@ func (m *TLInvokeAfterMsgs) Decode(d *bin.Decoder) (err error) {
 			m.MsgIds, err = iface.DecodeInt64List(d)
 
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -273,6 +275,7 @@ func (m *TLInitConnection) Decode(d *bin.Decoder) (err error) {
 				m.Params = m10
 			}
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -297,6 +300,7 @@ func (m *TLInitConnection) Decode(d *bin.Decoder) (err error) {
 				m.Params = m10
 			}
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -352,6 +356,7 @@ func (m *TLInvokeWithLayer) Decode(d *bin.Decoder) (err error) {
 		0xda9b0d0d: func() (err error) {
 			m.Layer, err = d.Int32()
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -404,6 +409,7 @@ func (m *TLInvokeWithoutUpdates) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xbf9459b7: func() (err error) {
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -463,6 +469,7 @@ func (m *TLInvokeWithMessagesRange) Decode(d *bin.Decoder) (err error) {
 			m.Range = m1
 
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -518,6 +525,7 @@ func (m *TLInvokeWithTakeout) Decode(d *bin.Decoder) (err error) {
 		0xaca9fd2e: func() (err error) {
 			m.TakeoutId, err = d.Int64()
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -573,6 +581,7 @@ func (m *TLInvokeWithBusinessConnection) Decode(d *bin.Decoder) (err error) {
 		0xdd289f8e: func() (err error) {
 			m.ConnectionId, err = d.String()
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -631,6 +640,7 @@ func (m *TLInvokeWithGooglePlayIntegrity) Decode(d *bin.Decoder) (err error) {
 			m.Nonce, err = d.String()
 			m.Token, err = d.String()
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -689,6 +699,7 @@ func (m *TLInvokeWithApnsSecret) Decode(d *bin.Decoder) (err error) {
 			m.Nonce, err = d.String()
 			m.Secret, err = d.String()
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},
@@ -744,6 +755,7 @@ func (m *TLInvokeWithReCaptcha) Decode(d *bin.Decoder) (err error) {
 		0xadbb0f94: func() (err error) {
 			m.Token, err = d.String()
 			// template Debug by @benqi
+			m.Query = d.Raw()
 
 			return nil
 		},

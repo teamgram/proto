@@ -170,12 +170,13 @@ func (m *TLMessage2) Decode(d *bin.Decoder) (err error) {
 		return
 	}
 
-	//if int(m.Bytes) < d.Len() {
-	//	err = io.ErrUnexpectedEOF
-	//	return
-	//}
+	b := make([]byte, m.Bytes)
+	err = d.ConsumeN(b, int(m.Bytes))
+	if err != nil {
+		return
+	}
 
-	m.Object, err = iface.DecodeObject(d)
+	m.Object, err = iface.DecodeObject(bin.NewDecoder(b))
 	if err != nil {
 		return
 	}
@@ -216,7 +217,7 @@ func (m *TLMsgContainer) Decode(d *bin.Decoder) error {
 		message2 := new(TLMessage2)
 		err = message2.Decode(d)
 		if err != nil {
-			fmt.Printf("Decode message2 error: %v\n", err)
+			fmt.Printf("decode message2 error: %v\n", err)
 			return err
 		}
 		m.Messages = append(m.Messages, message2)
