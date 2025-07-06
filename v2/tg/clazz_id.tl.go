@@ -1465,8 +1465,8 @@ const (
 	ClazzID_updateList                                         = 0x9014a0a2 // 9014a0a2
 	ClazzID_privacyKeyRules                                    = 0x9412add6 // 9412add6
 	ClazzID_contactData                                        = 0xccdb5d1a // ccdb5d1a
-	ClazzID_botData                                            = 0xecf327e0 // ecf327e0
-	ClazzID_userData                                           = 0x533a185f // 533a185f
+	ClazzID_botData                                            = 0x71360caa // 71360caa
+	ClazzID_userData                                           = 0x24b26314 // 24b26314
 	ClazzID_immutableUser                                      = 0x39f321cc // 39f321cc
 	ClazzID_mutableUsers                                       = 0x36b08802 // 36b08802
 	ClazzID_immutableChatParticipant                           = 0xf9fe5a1e // f9fe5a1e
@@ -2189,6 +2189,7 @@ const (
 	ClazzID_payments_canPurchasePremium                        = 0x9fc19eb6 // 9fc19eb6
 	ClazzID_users_getIsPremiumRequiredToContact                = 0xa622aa10 // a622aa10
 	ClazzID_test_parseInputAppEvent                            = 0xbb0d87f1 // bb0d87f1
+	ClazzID_help_test                                          = 0xc0e202f7 // c0e202f7
 	ClazzID_predefined_createPredefinedUser                    = 0x23e2e31e // 23e2e31e
 	ClazzID_predefined_updatePredefinedUsername                = 0x12dc0d3a // 12dc0d3a
 	ClazzID_predefined_updatePredefinedProfile                 = 0x2cdcf945 // 2cdcf945

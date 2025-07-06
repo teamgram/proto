@@ -2163,6 +2163,7 @@ const (
 	ClazzName_immutableChat                                      = "immutableChat"
 	ClazzName_mutableChat                                        = "mutableChat"
 	ClazzName_test_parseInputAppEvent                            = "test_parseInputAppEvent"
+	ClazzName_help_test                                          = "help_test"
 	ClazzName_predefined_createPredefinedUser                    = "predefined_createPredefinedUser"
 	ClazzName_predefined_updatePredefinedUsername                = "predefined_updatePredefinedUsername"
 	ClazzName_predefined_updatePredefinedProfile                 = "predefined_updatePredefinedProfile"
@@ -8528,14 +8529,15 @@ func init() {
 	iface.RegisterClazzName(ClazzName_updateList, 0, 0x9014a0a2)                                           // 9014a0a2
 	iface.RegisterClazzName(ClazzName_privacyKeyRules, 0, 0x9412add6)                                      // 9412add6
 	iface.RegisterClazzName(ClazzName_contactData, 0, 0xccdb5d1a)                                          // ccdb5d1a
-	iface.RegisterClazzName(ClazzName_botData, 0, 0xecf327e0)                                              // ecf327e0
-	iface.RegisterClazzName(ClazzName_userData, 0, 0x533a185f)                                             // 533a185f
+	iface.RegisterClazzName(ClazzName_botData, 0, 0x71360caa)                                              // 71360caa
+	iface.RegisterClazzName(ClazzName_userData, 0, 0x24b26314)                                             // 24b26314
 	iface.RegisterClazzName(ClazzName_immutableUser, 0, 0x39f321cc)                                        // 39f321cc
 	iface.RegisterClazzName(ClazzName_mutableUsers, 0, 0x36b08802)                                         // 36b08802
 	iface.RegisterClazzName(ClazzName_immutableChatParticipant, 0, 0xf9fe5a1e)                             // f9fe5a1e
 	iface.RegisterClazzName(ClazzName_immutableChat, 0, 0xa32cf568)                                        // a32cf568
 	iface.RegisterClazzName(ClazzName_mutableChat, 0, 0xfdefe86e)                                          // fdefe86e
 	iface.RegisterClazzName(ClazzName_test_parseInputAppEvent, 0, 0xbb0d87f1)                              // bb0d87f1
+	iface.RegisterClazzName(ClazzName_help_test, 0, 0xc0e202f7)                                            // c0e202f7
 	iface.RegisterClazzName(ClazzName_predefined_createPredefinedUser, 0, 0x23e2e31e)                      // 23e2e31e
 	iface.RegisterClazzName(ClazzName_predefined_updatePredefinedUsername, 0, 0x12dc0d3a)                  // 12dc0d3a
 	iface.RegisterClazzName(ClazzName_predefined_updatePredefinedProfile, 0, 0x2cdcf945)                   // 2cdcf945
@@ -10718,8 +10720,8 @@ func init() {
 	iface.RegisterClazzIDName(ClazzName_updateList, 0x9014a0a2)                                         // 9014a0a2
 	iface.RegisterClazzIDName(ClazzName_privacyKeyRules, 0x9412add6)                                    // 9412add6
 	iface.RegisterClazzIDName(ClazzName_contactData, 0xccdb5d1a)                                        // ccdb5d1a
-	iface.RegisterClazzIDName(ClazzName_botData, 0xecf327e0)                                            // ecf327e0
-	iface.RegisterClazzIDName(ClazzName_userData, 0x533a185f)                                           // 533a185f
+	iface.RegisterClazzIDName(ClazzName_botData, 0x71360caa)                                            // 71360caa
+	iface.RegisterClazzIDName(ClazzName_userData, 0x24b26314)                                           // 24b26314
 	iface.RegisterClazzIDName(ClazzName_immutableUser, 0x39f321cc)                                      // 39f321cc
 	iface.RegisterClazzIDName(ClazzName_mutableUsers, 0x36b08802)                                       // 36b08802
 	iface.RegisterClazzIDName(ClazzName_immutableChatParticipant, 0xf9fe5a1e)                           // f9fe5a1e
@@ -10727,6 +10729,7 @@ func init() {
 	iface.RegisterClazzIDName(ClazzName_mutableChat, 0xfdefe86e)                                        // fdefe86e
 	iface.RegisterClazzIDName(ClazzName_initConnection, 0x785188b8)                                     // 785188b8
 	iface.RegisterClazzIDName(ClazzName_test_parseInputAppEvent, 0xbb0d87f1)                            // bb0d87f1
+	iface.RegisterClazzIDName(ClazzName_help_test, 0xc0e202f7)                                          // c0e202f7
 	iface.RegisterClazzIDName(ClazzName_predefined_createPredefinedUser, 0x23e2e31e)                    // 23e2e31e
 	iface.RegisterClazzIDName(ClazzName_predefined_updatePredefinedUsername, 0x12dc0d3a)                // 12dc0d3a
 	iface.RegisterClazzIDName(ClazzName_predefined_updatePredefinedProfile, 0x2cdcf945)                 // 2cdcf945
