@@ -2233,10 +2233,10 @@ func DecodeAccessPointRuleClazz(d *bin.Decoder) (AccessPointRuleClazz, error) {
 
 // TLAccessPointRule <--
 type TLAccessPointRule struct {
-	ClazzID          uint32    `json:"_id"`
-	PhonePrefixRules string    `json:"phone_prefix_rules"`
-	DcId             int32     `json:"dc_id"`
-	Ips              []*IpPort `json:"ips"`
+	ClazzID          uint32        `json:"_id"`
+	PhonePrefixRules string        `json:"phone_prefix_rules"`
+	DcId             int32         `json:"dc_id"`
+	Ips              []IpPortClazz `json:"ips"`
 }
 
 func (m *TLAccessPointRule) String() string {
@@ -2303,12 +2303,13 @@ func (m *TLAccessPointRule) Decode(d *bin.Decoder) (err error) {
 			// }
 			l2, err2 := d.Int()
 			_ = err2
-			v2 := make([]*IpPort, l2)
+			v2 := make([]IpPortClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(IpPort)
-				err2 = vv.Decode(d)
+				// vv := new(IpPort)
+				// err2 = vv.Decode(d)
+				// _ = err2
+				v2[i], err2 = DecodeIpPortClazz(d)
 				_ = err2
-				v2[i] = vv
 			}
 			m.Ips = v2
 
@@ -2978,7 +2979,7 @@ func (m *TLFutureSalt) ToFutureSalt() *FutureSalt {
 func (m *TLFutureSalt) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
 		0x949d9dc: func() error {
-			// x.PutClazzID(0x949d9dc)
+			x.PutClazzID(0x949d9dc)
 
 			x.PutInt32(m.ValidSince)
 			x.PutInt32(m.ValidUntil)
@@ -3182,7 +3183,7 @@ func (m *TLFutureSalts) Decode(d *bin.Decoder) (err error) {
 			_ = err2
 			v2 := make([]*TLFutureSalt, l2)
 			for i := 0; i < l2; i++ {
-				v2[i] = &TLFutureSalt{ClazzID: ClazzID_future_salt}
+				v2[i] = &TLFutureSalt{ClazzID: ClazzID_future_salts}
 				err2 = v2[i].Decode(d)
 				_ = err2
 			}
@@ -3293,10 +3294,10 @@ func DecodeHelpConfigSimpleClazz(d *bin.Decoder) (HelpConfigSimpleClazz, error) 
 
 // TLHelpConfigSimple <--
 type TLHelpConfigSimple struct {
-	ClazzID uint32             `json:"_id"`
-	Date    int32              `json:"date"`
-	Expires int32              `json:"expires"`
-	Rules   []*AccessPointRule `json:"rules"`
+	ClazzID uint32                 `json:"_id"`
+	Date    int32                  `json:"date"`
+	Expires int32                  `json:"expires"`
+	Rules   []AccessPointRuleClazz `json:"rules"`
 }
 
 func (m *TLHelpConfigSimple) String() string {
@@ -3363,12 +3364,13 @@ func (m *TLHelpConfigSimple) Decode(d *bin.Decoder) (err error) {
 			// }
 			l2, err2 := d.Int()
 			_ = err2
-			v2 := make([]*AccessPointRule, l2)
+			v2 := make([]AccessPointRuleClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(AccessPointRule)
-				err2 = vv.Decode(d)
+				// vv := new(AccessPointRule)
+				// err2 = vv.Decode(d)
+				// _ = err2
+				v2[i], err2 = DecodeAccessPointRuleClazz(d)
 				_ = err2
-				v2[i] = vv
 			}
 			m.Rules = v2
 
@@ -6263,8 +6265,8 @@ func (m *TLTlsBlockPublicKey) Decode(d *bin.Decoder) (err error) {
 
 // TLTlsBlockScope <--
 type TLTlsBlockScope struct {
-	ClazzID uint32      `json:"_id"`
-	Entries []*TlsBlock `json:"entries"`
+	ClazzID uint32          `json:"_id"`
+	Entries []TlsBlockClazz `json:"entries"`
 }
 
 func (m *TLTlsBlockScope) String() string {
@@ -6322,12 +6324,14 @@ func (m *TLTlsBlockScope) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*TlsBlock, l3)
+			v3 := make([]TlsBlockClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(TlsBlock)
-				err3 = vv.Decode(d)
+				// vv := new(TlsBlock)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], err3 = DecodeTlsBlockClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Entries = v3
 
@@ -6574,8 +6578,8 @@ func DecodeTlsClientHelloClazz(d *bin.Decoder) (TlsClientHelloClazz, error) {
 
 // TLTlsClientHello <--
 type TLTlsClientHello struct {
-	ClazzID uint32      `json:"_id"`
-	Blocks  []*TlsBlock `json:"blocks"`
+	ClazzID uint32          `json:"_id"`
+	Blocks  []TlsBlockClazz `json:"blocks"`
 }
 
 func (m *TLTlsClientHello) String() string {
@@ -6638,12 +6642,13 @@ func (m *TLTlsClientHello) Decode(d *bin.Decoder) (err error) {
 			// }
 			l0, err2 := d.Int()
 			_ = err2
-			v0 := make([]*TlsBlock, l0)
+			v0 := make([]TlsBlockClazz, l0)
 			for i := 0; i < l0; i++ {
-				vv := new(TlsBlock)
-				err2 = vv.Decode(d)
+				// vv := new(TlsBlock)
+				// err2 = vv.Decode(d)
+				// _ = err2
+				v0[i], err2 = DecodeTlsBlockClazz(d)
 				_ = err2
-				v0[i] = vv
 			}
 			m.Blocks = v0
 

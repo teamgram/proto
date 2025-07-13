@@ -139,17 +139,17 @@ func (m *TLInvokeAfterMsgs) Decode(d *bin.Decoder) (err error) {
 
 // TLInitConnection <--
 type TLInitConnection struct {
-	ClazzID        uint32            `json:"_id"`
-	ApiId          int32             `json:"api_id"`
-	DeviceModel    string            `json:"device_model"`
-	SystemVersion  string            `json:"system_version"`
-	AppVersion     string            `json:"app_version"`
-	SystemLangCode string            `json:"system_lang_code"`
-	LangPack       string            `json:"lang_pack"`
-	LangCode       string            `json:"lang_code"`
-	Proxy          *InputClientProxy `json:"proxy"`
-	Params         *JSONValue        `json:"params"`
-	Query          []byte            `json:"query"`
+	ClazzID        uint32                `json:"_id"`
+	ApiId          int32                 `json:"api_id"`
+	DeviceModel    string                `json:"device_model"`
+	SystemVersion  string                `json:"system_version"`
+	AppVersion     string                `json:"app_version"`
+	SystemLangCode string                `json:"system_lang_code"`
+	LangPack       string                `json:"lang_pack"`
+	LangCode       string                `json:"lang_code"`
+	Proxy          InputClientProxyClazz `json:"proxy"`
+	Params         JSONValueClazz        `json:"params"`
+	Query          []byte                `json:"query"`
 }
 
 func (m *TLInitConnection) String() string {
@@ -263,14 +263,16 @@ func (m *TLInitConnection) Decode(d *bin.Decoder) (err error) {
 			m.LangPack, err = d.String()
 			m.LangCode, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m9 := &InputClientProxy{}
-				_ = m9.Decode(d)
-				m.Proxy = m9
+				// m9 := &InputClientProxy{}
+				// _ = m9.Decode(d)
+				// m.Proxy = m9
+				m.Proxy, _ = DecodeInputClientProxyClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
-				m10 := &JSONValue{}
-				_ = m10.Decode(d)
-				m.Params = m10
+				// m10 := &JSONValue{}
+				// _ = m10.Decode(d)
+				// m.Params = m10
+				m.Params, _ = DecodeJSONValueClazz(d)
 			}
 			m.Query = d.Raw()
 
@@ -287,14 +289,16 @@ func (m *TLInitConnection) Decode(d *bin.Decoder) (err error) {
 			m.LangPack, err = d.String()
 			m.LangCode, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m9 := &InputClientProxy{}
-				_ = m9.Decode(d)
-				m.Proxy = m9
+				// m9 := &InputClientProxy{}
+				// _ = m9.Decode(d)
+				// m.Proxy = m9
+				m.Proxy, _ = DecodeInputClientProxyClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
-				m10 := &JSONValue{}
-				_ = m10.Decode(d)
-				m.Params = m10
+				// m10 := &JSONValue{}
+				// _ = m10.Decode(d)
+				// m.Params = m10
+				m.Params, _ = DecodeJSONValueClazz(d)
 			}
 			m.Query = d.Raw()
 
@@ -421,9 +425,9 @@ func (m *TLInvokeWithoutUpdates) Decode(d *bin.Decoder) (err error) {
 
 // TLInvokeWithMessagesRange <--
 type TLInvokeWithMessagesRange struct {
-	ClazzID uint32        `json:"_id"`
-	Range   *MessageRange `json:"range"`
-	Query   []byte        `json:"query"`
+	ClazzID uint32            `json:"_id"`
+	Range   MessageRangeClazz `json:"range"`
+	Query   []byte            `json:"query"`
 }
 
 func (m *TLInvokeWithMessagesRange) String() string {
@@ -458,9 +462,10 @@ func (m *TLInvokeWithMessagesRange) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x365275f2: func() (err error) {
 
-			m1 := &MessageRange{}
-			_ = m1.Decode(d)
-			m.Range = m1
+			// m1 := &MessageRange{}
+			// _ = m1.Decode(d)
+			// m.Range = m1
+			m.Range, _ = DecodeMessageRangeClazz(d)
 
 			m.Query = d.Raw()
 
@@ -761,11 +766,11 @@ func (m *TLInvokeWithReCaptcha) Decode(d *bin.Decoder) (err error) {
 
 // TLAuthSendCode <--
 type TLAuthSendCode struct {
-	ClazzID     uint32        `json:"_id"`
-	PhoneNumber string        `json:"phone_number"`
-	ApiId       int32         `json:"api_id"`
-	ApiHash     string        `json:"api_hash"`
-	Settings    *CodeSettings `json:"settings"`
+	ClazzID     uint32            `json:"_id"`
+	PhoneNumber string            `json:"phone_number"`
+	ApiId       int32             `json:"api_id"`
+	ApiHash     string            `json:"api_hash"`
+	Settings    CodeSettingsClazz `json:"settings"`
 }
 
 func (m *TLAuthSendCode) String() string {
@@ -805,9 +810,10 @@ func (m *TLAuthSendCode) Decode(d *bin.Decoder) (err error) {
 			m.ApiId, err = d.Int32()
 			m.ApiHash, err = d.String()
 
-			m4 := &CodeSettings{}
-			_ = m4.Decode(d)
-			m.Settings = m4
+			// m4 := &CodeSettings{}
+			// _ = m4.Decode(d)
+			// m.Settings = m4
+			m.Settings, _ = DecodeCodeSettingsClazz(d)
 
 			return nil
 		},
@@ -906,11 +912,11 @@ func (m *TLAuthSignUp) Decode(d *bin.Decoder) (err error) {
 
 // TLAuthSignIn <--
 type TLAuthSignIn struct {
-	ClazzID           uint32             `json:"_id"`
-	PhoneNumber       string             `json:"phone_number"`
-	PhoneCodeHash     string             `json:"phone_code_hash"`
-	PhoneCode         *string            `json:"phone_code"`
-	EmailVerification *EmailVerification `json:"email_verification"`
+	ClazzID           uint32                 `json:"_id"`
+	PhoneNumber       string                 `json:"phone_number"`
+	PhoneCodeHash     string                 `json:"phone_code_hash"`
+	PhoneCode         *string                `json:"phone_code"`
+	EmailVerification EmailVerificationClazz `json:"email_verification"`
 }
 
 func (m *TLAuthSignIn) String() string {
@@ -978,9 +984,10 @@ func (m *TLAuthSignIn) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 1)) != 0 {
-				m5 := &EmailVerification{}
-				_ = m5.Decode(d)
-				m.EmailVerification = m5
+				// m5 := &EmailVerification{}
+				// _ = m5.Decode(d)
+				// m.EmailVerification = m5
+				m.EmailVerification, _ = DecodeEmailVerificationClazz(d)
 			}
 
 			return nil
@@ -1324,8 +1331,8 @@ func (m *TLAuthImportBotAuthorization) Decode(d *bin.Decoder) (err error) {
 
 // TLAuthCheckPassword <--
 type TLAuthCheckPassword struct {
-	ClazzID  uint32                 `json:"_id"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLAuthCheckPassword) String() string {
@@ -1359,9 +1366,10 @@ func (m *TLAuthCheckPassword) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xd18b4d16: func() (err error) {
 
-			m1 := &InputCheckPasswordSRP{}
-			_ = m1.Decode(d)
-			m.Password = m1
+			// m1 := &InputCheckPasswordSRP{}
+			// _ = m1.Decode(d)
+			// m.Password = m1
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			return nil
 		},
@@ -1427,9 +1435,9 @@ func (m *TLAuthRequestPasswordRecovery) Decode(d *bin.Decoder) (err error) {
 
 // TLAuthRecoverPassword <--
 type TLAuthRecoverPassword struct {
-	ClazzID     uint32                        `json:"_id"`
-	Code        string                        `json:"code"`
-	NewSettings *AccountPasswordInputSettings `json:"new_settings"`
+	ClazzID     uint32                            `json:"_id"`
+	Code        string                            `json:"code"`
+	NewSettings AccountPasswordInputSettingsClazz `json:"new_settings"`
 }
 
 func (m *TLAuthRecoverPassword) String() string {
@@ -1483,9 +1491,10 @@ func (m *TLAuthRecoverPassword) Decode(d *bin.Decoder) (err error) {
 			_ = flags
 			m.Code, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m3 := &AccountPasswordInputSettings{}
-				_ = m3.Decode(d)
-				m.NewSettings = m3
+				// m3 := &AccountPasswordInputSettings{}
+				// _ = m3.Decode(d)
+				// m.NewSettings = m3
+				m.NewSettings, _ = DecodeAccountPasswordInputSettingsClazz(d)
 			}
 
 			return nil
@@ -2183,13 +2192,13 @@ func (m *TLAuthReportMissingCode) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountRegisterDevice <--
 type TLAccountRegisterDevice struct {
-	ClazzID    uint32  `json:"_id"`
-	NoMuted    bool    `json:"no_muted"`
-	TokenType  int32   `json:"token_type"`
-	Token      string  `json:"token"`
-	AppSandbox *Bool   `json:"app_sandbox"`
-	Secret     []byte  `json:"secret"`
-	OtherUids  []int64 `json:"other_uids"`
+	ClazzID    uint32    `json:"_id"`
+	NoMuted    bool      `json:"no_muted"`
+	TokenType  int32     `json:"token_type"`
+	Token      string    `json:"token"`
+	AppSandbox BoolClazz `json:"app_sandbox"`
+	Secret     []byte    `json:"secret"`
+	OtherUids  []int64   `json:"other_uids"`
 }
 
 func (m *TLAccountRegisterDevice) String() string {
@@ -2257,9 +2266,10 @@ func (m *TLAccountRegisterDevice) Decode(d *bin.Decoder) (err error) {
 			m.TokenType, err = d.Int32()
 			m.Token, err = d.String()
 
-			m5 := &Bool{}
-			_ = m5.Decode(d)
-			m.AppSandbox = m5
+			// m5 := &Bool{}
+			// _ = m5.Decode(d)
+			// m.AppSandbox = m5
+			m.AppSandbox, _ = DecodeBoolClazz(d)
 
 			m.Secret, err = d.Bytes()
 
@@ -2361,9 +2371,9 @@ func (m *TLAccountUnregisterDevice) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateNotifySettings <--
 type TLAccountUpdateNotifySettings struct {
-	ClazzID  uint32                   `json:"_id"`
-	Peer     *InputNotifyPeer         `json:"peer"`
-	Settings *InputPeerNotifySettings `json:"settings"`
+	ClazzID  uint32                       `json:"_id"`
+	Peer     InputNotifyPeerClazz         `json:"peer"`
+	Settings InputPeerNotifySettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountUpdateNotifySettings) String() string {
@@ -2398,13 +2408,15 @@ func (m *TLAccountUpdateNotifySettings) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x84be5b93: func() (err error) {
 
-			m1 := &InputNotifyPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputNotifyPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputNotifyPeerClazz(d)
 
-			m2 := &InputPeerNotifySettings{}
-			_ = m2.Decode(d)
-			m.Settings = m2
+			// m2 := &InputPeerNotifySettings{}
+			// _ = m2.Decode(d)
+			// m.Settings = m2
+			m.Settings, _ = DecodeInputPeerNotifySettingsClazz(d)
 
 			return nil
 		},
@@ -2422,8 +2434,8 @@ func (m *TLAccountUpdateNotifySettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetNotifySettings <--
 type TLAccountGetNotifySettings struct {
-	ClazzID uint32           `json:"_id"`
-	Peer    *InputNotifyPeer `json:"peer"`
+	ClazzID uint32               `json:"_id"`
+	Peer    InputNotifyPeerClazz `json:"peer"`
 }
 
 func (m *TLAccountGetNotifySettings) String() string {
@@ -2457,9 +2469,10 @@ func (m *TLAccountGetNotifySettings) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x12b3ad31: func() (err error) {
 
-			m1 := &InputNotifyPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputNotifyPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputNotifyPeerClazz(d)
 
 			return nil
 		},
@@ -2624,8 +2637,8 @@ func (m *TLAccountUpdateProfile) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateStatus <--
 type TLAccountUpdateStatus struct {
-	ClazzID uint32 `json:"_id"`
-	Offline *Bool  `json:"offline"`
+	ClazzID uint32    `json:"_id"`
+	Offline BoolClazz `json:"offline"`
 }
 
 func (m *TLAccountUpdateStatus) String() string {
@@ -2659,9 +2672,10 @@ func (m *TLAccountUpdateStatus) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x6628562c: func() (err error) {
 
-			m1 := &Bool{}
-			_ = m1.Decode(d)
-			m.Offline = m1
+			// m1 := &Bool{}
+			// _ = m1.Decode(d)
+			// m.Offline = m1
+			m.Offline, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -2731,10 +2745,10 @@ func (m *TLAccountGetWallPapers) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountReportPeer <--
 type TLAccountReportPeer struct {
-	ClazzID uint32        `json:"_id"`
-	Peer    *InputPeer    `json:"peer"`
-	Reason  *ReportReason `json:"reason"`
-	Message string        `json:"message"`
+	ClazzID uint32            `json:"_id"`
+	Peer    InputPeerClazz    `json:"peer"`
+	Reason  ReportReasonClazz `json:"reason"`
+	Message string            `json:"message"`
 }
 
 func (m *TLAccountReportPeer) String() string {
@@ -2770,13 +2784,15 @@ func (m *TLAccountReportPeer) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc5ba3d86: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &ReportReason{}
-			_ = m2.Decode(d)
-			m.Reason = m2
+			// m2 := &ReportReason{}
+			// _ = m2.Decode(d)
+			// m.Reason = m2
+			m.Reason, _ = DecodeReportReasonClazz(d)
 
 			m.Message, err = d.String()
 
@@ -2900,8 +2916,8 @@ func (m *TLAccountUpdateUsername) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetPrivacy <--
 type TLAccountGetPrivacy struct {
-	ClazzID uint32           `json:"_id"`
-	Key     *InputPrivacyKey `json:"key"`
+	ClazzID uint32               `json:"_id"`
+	Key     InputPrivacyKeyClazz `json:"key"`
 }
 
 func (m *TLAccountGetPrivacy) String() string {
@@ -2935,9 +2951,10 @@ func (m *TLAccountGetPrivacy) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xdadbc950: func() (err error) {
 
-			m1 := &InputPrivacyKey{}
-			_ = m1.Decode(d)
-			m.Key = m1
+			// m1 := &InputPrivacyKey{}
+			// _ = m1.Decode(d)
+			// m.Key = m1
+			m.Key, _ = DecodeInputPrivacyKeyClazz(d)
 
 			return nil
 		},
@@ -2955,9 +2972,9 @@ func (m *TLAccountGetPrivacy) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSetPrivacy <--
 type TLAccountSetPrivacy struct {
-	ClazzID uint32              `json:"_id"`
-	Key     *InputPrivacyKey    `json:"key"`
-	Rules   []*InputPrivacyRule `json:"rules"`
+	ClazzID uint32                  `json:"_id"`
+	Key     InputPrivacyKeyClazz    `json:"key"`
+	Rules   []InputPrivacyRuleClazz `json:"rules"`
 }
 
 func (m *TLAccountSetPrivacy) String() string {
@@ -2993,9 +3010,10 @@ func (m *TLAccountSetPrivacy) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc9f81ce8: func() (err error) {
 
-			m1 := &InputPrivacyKey{}
-			_ = m1.Decode(d)
-			m.Key = m1
+			// m1 := &InputPrivacyKey{}
+			// _ = m1.Decode(d)
+			// m.Key = m1
+			m.Key, _ = DecodeInputPrivacyKeyClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -3003,12 +3021,15 @@ func (m *TLAccountSetPrivacy) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputPrivacyRule, l2)
+			// v2 := make([]*InputPrivacyRule, l2)
+			v2 := make([]InputPrivacyRuleClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputPrivacyRule)
-				err3 = vv.Decode(d)
+				// vv := new(InputPrivacyRule)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputPrivacyRuleClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Rules = v2
 
@@ -3028,9 +3049,9 @@ func (m *TLAccountSetPrivacy) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountDeleteAccount <--
 type TLAccountDeleteAccount struct {
-	ClazzID  uint32                 `json:"_id"`
-	Reason   string                 `json:"reason"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Reason   string                     `json:"reason"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLAccountDeleteAccount) String() string {
@@ -3084,9 +3105,10 @@ func (m *TLAccountDeleteAccount) Decode(d *bin.Decoder) (err error) {
 			_ = flags
 			m.Reason, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m3 := &InputCheckPasswordSRP{}
-				_ = m3.Decode(d)
-				m.Password = m3
+				// m3 := &InputCheckPasswordSRP{}
+				// _ = m3.Decode(d)
+				// m.Password = m3
+				m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 			}
 
 			return nil
@@ -3153,8 +3175,8 @@ func (m *TLAccountGetAccountTTL) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSetAccountTTL <--
 type TLAccountSetAccountTTL struct {
-	ClazzID uint32          `json:"_id"`
-	Ttl     *AccountDaysTTL `json:"ttl"`
+	ClazzID uint32              `json:"_id"`
+	Ttl     AccountDaysTTLClazz `json:"ttl"`
 }
 
 func (m *TLAccountSetAccountTTL) String() string {
@@ -3188,9 +3210,10 @@ func (m *TLAccountSetAccountTTL) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x2442485e: func() (err error) {
 
-			m1 := &AccountDaysTTL{}
-			_ = m1.Decode(d)
-			m.Ttl = m1
+			// m1 := &AccountDaysTTL{}
+			// _ = m1.Decode(d)
+			// m.Ttl = m1
+			m.Ttl, _ = DecodeAccountDaysTTLClazz(d)
 
 			return nil
 		},
@@ -3208,9 +3231,9 @@ func (m *TLAccountSetAccountTTL) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSendChangePhoneCode <--
 type TLAccountSendChangePhoneCode struct {
-	ClazzID     uint32        `json:"_id"`
-	PhoneNumber string        `json:"phone_number"`
-	Settings    *CodeSettings `json:"settings"`
+	ClazzID     uint32            `json:"_id"`
+	PhoneNumber string            `json:"phone_number"`
+	Settings    CodeSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSendChangePhoneCode) String() string {
@@ -3246,9 +3269,10 @@ func (m *TLAccountSendChangePhoneCode) Decode(d *bin.Decoder) (err error) {
 		0x82574ae5: func() (err error) {
 			m.PhoneNumber, err = d.String()
 
-			m2 := &CodeSettings{}
-			_ = m2.Decode(d)
-			m.Settings = m2
+			// m2 := &CodeSettings{}
+			// _ = m2.Decode(d)
+			// m.Settings = m2
+			m.Settings, _ = DecodeCodeSettingsClazz(d)
 
 			return nil
 		},
@@ -3524,8 +3548,8 @@ func (m *TLAccountGetPassword) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetPasswordSettings <--
 type TLAccountGetPasswordSettings struct {
-	ClazzID  uint32                 `json:"_id"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLAccountGetPasswordSettings) String() string {
@@ -3559,9 +3583,10 @@ func (m *TLAccountGetPasswordSettings) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x9cd4eaf9: func() (err error) {
 
-			m1 := &InputCheckPasswordSRP{}
-			_ = m1.Decode(d)
-			m.Password = m1
+			// m1 := &InputCheckPasswordSRP{}
+			// _ = m1.Decode(d)
+			// m.Password = m1
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			return nil
 		},
@@ -3579,9 +3604,9 @@ func (m *TLAccountGetPasswordSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdatePasswordSettings <--
 type TLAccountUpdatePasswordSettings struct {
-	ClazzID     uint32                        `json:"_id"`
-	Password    *InputCheckPasswordSRP        `json:"password"`
-	NewSettings *AccountPasswordInputSettings `json:"new_settings"`
+	ClazzID     uint32                            `json:"_id"`
+	Password    InputCheckPasswordSRPClazz        `json:"password"`
+	NewSettings AccountPasswordInputSettingsClazz `json:"new_settings"`
 }
 
 func (m *TLAccountUpdatePasswordSettings) String() string {
@@ -3616,13 +3641,15 @@ func (m *TLAccountUpdatePasswordSettings) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa59b102f: func() (err error) {
 
-			m1 := &InputCheckPasswordSRP{}
-			_ = m1.Decode(d)
-			m.Password = m1
+			// m1 := &InputCheckPasswordSRP{}
+			// _ = m1.Decode(d)
+			// m.Password = m1
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
-			m2 := &AccountPasswordInputSettings{}
-			_ = m2.Decode(d)
-			m.NewSettings = m2
+			// m2 := &AccountPasswordInputSettings{}
+			// _ = m2.Decode(d)
+			// m.NewSettings = m2
+			m.NewSettings, _ = DecodeAccountPasswordInputSettingsClazz(d)
 
 			return nil
 		},
@@ -3640,9 +3667,9 @@ func (m *TLAccountUpdatePasswordSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSendConfirmPhoneCode <--
 type TLAccountSendConfirmPhoneCode struct {
-	ClazzID  uint32        `json:"_id"`
-	Hash     string        `json:"hash"`
-	Settings *CodeSettings `json:"settings"`
+	ClazzID  uint32            `json:"_id"`
+	Hash     string            `json:"hash"`
+	Settings CodeSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSendConfirmPhoneCode) String() string {
@@ -3678,9 +3705,10 @@ func (m *TLAccountSendConfirmPhoneCode) Decode(d *bin.Decoder) (err error) {
 		0x1b3faa88: func() (err error) {
 			m.Hash, err = d.String()
 
-			m2 := &CodeSettings{}
-			_ = m2.Decode(d)
-			m.Settings = m2
+			// m2 := &CodeSettings{}
+			// _ = m2.Decode(d)
+			// m.Settings = m2
+			m.Settings, _ = DecodeCodeSettingsClazz(d)
 
 			return nil
 		},
@@ -3753,9 +3781,9 @@ func (m *TLAccountConfirmPhone) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetTmpPassword <--
 type TLAccountGetTmpPassword struct {
-	ClazzID  uint32                 `json:"_id"`
-	Password *InputCheckPasswordSRP `json:"password"`
-	Period   int32                  `json:"period"`
+	ClazzID  uint32                     `json:"_id"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
+	Period   int32                      `json:"period"`
 }
 
 func (m *TLAccountGetTmpPassword) String() string {
@@ -3790,9 +3818,10 @@ func (m *TLAccountGetTmpPassword) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x449e0b51: func() (err error) {
 
-			m1 := &InputCheckPasswordSRP{}
-			_ = m1.Decode(d)
-			m.Password = m1
+			// m1 := &InputCheckPasswordSRP{}
+			// _ = m1.Decode(d)
+			// m.Password = m1
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			m.Period, err = d.Int32()
 
@@ -4008,8 +4037,8 @@ func (m *TLAccountGetAllSecureValues) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetSecureValue <--
 type TLAccountGetSecureValue struct {
-	ClazzID uint32             `json:"_id"`
-	Types   []*SecureValueType `json:"types"`
+	ClazzID uint32                 `json:"_id"`
+	Types   []SecureValueTypeClazz `json:"types"`
 }
 
 func (m *TLAccountGetSecureValue) String() string {
@@ -4048,12 +4077,15 @@ func (m *TLAccountGetSecureValue) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*SecureValueType, l1)
+			// v1 := make([]*SecureValueType, l1)
+			v1 := make([]SecureValueTypeClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(SecureValueType)
-				err3 = vv.Decode(d)
+				// vv := new(SecureValueType)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeSecureValueTypeClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Types = v1
 
@@ -4073,9 +4105,9 @@ func (m *TLAccountGetSecureValue) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSaveSecureValue <--
 type TLAccountSaveSecureValue struct {
-	ClazzID        uint32            `json:"_id"`
-	Value          *InputSecureValue `json:"value"`
-	SecureSecretId int64             `json:"secure_secret_id"`
+	ClazzID        uint32                `json:"_id"`
+	Value          InputSecureValueClazz `json:"value"`
+	SecureSecretId int64                 `json:"secure_secret_id"`
 }
 
 func (m *TLAccountSaveSecureValue) String() string {
@@ -4110,9 +4142,10 @@ func (m *TLAccountSaveSecureValue) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x899fe31d: func() (err error) {
 
-			m1 := &InputSecureValue{}
-			_ = m1.Decode(d)
-			m.Value = m1
+			// m1 := &InputSecureValue{}
+			// _ = m1.Decode(d)
+			// m.Value = m1
+			m.Value, _ = DecodeInputSecureValueClazz(d)
 
 			m.SecureSecretId, err = d.Int64()
 
@@ -4132,8 +4165,8 @@ func (m *TLAccountSaveSecureValue) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountDeleteSecureValue <--
 type TLAccountDeleteSecureValue struct {
-	ClazzID uint32             `json:"_id"`
-	Types   []*SecureValueType `json:"types"`
+	ClazzID uint32                 `json:"_id"`
+	Types   []SecureValueTypeClazz `json:"types"`
 }
 
 func (m *TLAccountDeleteSecureValue) String() string {
@@ -4172,12 +4205,15 @@ func (m *TLAccountDeleteSecureValue) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*SecureValueType, l1)
+			// v1 := make([]*SecureValueType, l1)
+			v1 := make([]SecureValueTypeClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(SecureValueType)
-				err3 = vv.Decode(d)
+				// vv := new(SecureValueType)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeSecureValueTypeClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Types = v1
 
@@ -4255,12 +4291,12 @@ func (m *TLAccountGetAuthorizationForm) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountAcceptAuthorization <--
 type TLAccountAcceptAuthorization struct {
-	ClazzID     uint32                      `json:"_id"`
-	BotId       int64                       `json:"bot_id"`
-	Scope       string                      `json:"scope"`
-	PublicKey   string                      `json:"public_key"`
-	ValueHashes []*SecureValueHash          `json:"value_hashes"`
-	Credentials *SecureCredentialsEncrypted `json:"credentials"`
+	ClazzID     uint32                          `json:"_id"`
+	BotId       int64                           `json:"bot_id"`
+	Scope       string                          `json:"scope"`
+	PublicKey   string                          `json:"public_key"`
+	ValueHashes []SecureValueHashClazz          `json:"value_hashes"`
+	Credentials SecureCredentialsEncryptedClazz `json:"credentials"`
 }
 
 func (m *TLAccountAcceptAuthorization) String() string {
@@ -4308,18 +4344,22 @@ func (m *TLAccountAcceptAuthorization) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l4, err3 := d.Int()
-			v4 := make([]*SecureValueHash, l4)
+			// v4 := make([]*SecureValueHash, l4)
+			v4 := make([]SecureValueHashClazz, l4)
 			for i := 0; i < l4; i++ {
-				vv := new(SecureValueHash)
-				err3 = vv.Decode(d)
+				// vv := new(SecureValueHash)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v4[i] = vv
+				v4[i], _ = DecodeSecureValueHashClazz(d)
 				_ = err3
-				v4[i] = vv
 			}
 			m.ValueHashes = v4
 
-			m5 := &SecureCredentialsEncrypted{}
-			_ = m5.Decode(d)
-			m.Credentials = m5
+			// m5 := &SecureCredentialsEncrypted{}
+			// _ = m5.Decode(d)
+			// m.Credentials = m5
+			m.Credentials, _ = DecodeSecureCredentialsEncryptedClazz(d)
 
 			return nil
 		},
@@ -4337,9 +4377,9 @@ func (m *TLAccountAcceptAuthorization) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSendVerifyPhoneCode <--
 type TLAccountSendVerifyPhoneCode struct {
-	ClazzID     uint32        `json:"_id"`
-	PhoneNumber string        `json:"phone_number"`
-	Settings    *CodeSettings `json:"settings"`
+	ClazzID     uint32            `json:"_id"`
+	PhoneNumber string            `json:"phone_number"`
+	Settings    CodeSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSendVerifyPhoneCode) String() string {
@@ -4375,9 +4415,10 @@ func (m *TLAccountSendVerifyPhoneCode) Decode(d *bin.Decoder) (err error) {
 		0xa5a356f9: func() (err error) {
 			m.PhoneNumber, err = d.String()
 
-			m2 := &CodeSettings{}
-			_ = m2.Decode(d)
-			m.Settings = m2
+			// m2 := &CodeSettings{}
+			// _ = m2.Decode(d)
+			// m.Settings = m2
+			m.Settings, _ = DecodeCodeSettingsClazz(d)
 
 			return nil
 		},
@@ -4453,9 +4494,9 @@ func (m *TLAccountVerifyPhone) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSendVerifyEmailCode <--
 type TLAccountSendVerifyEmailCode struct {
-	ClazzID uint32              `json:"_id"`
-	Purpose *EmailVerifyPurpose `json:"purpose"`
-	Email   string              `json:"email"`
+	ClazzID uint32                  `json:"_id"`
+	Purpose EmailVerifyPurposeClazz `json:"purpose"`
+	Email   string                  `json:"email"`
 }
 
 func (m *TLAccountSendVerifyEmailCode) String() string {
@@ -4490,9 +4531,10 @@ func (m *TLAccountSendVerifyEmailCode) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x98e037bb: func() (err error) {
 
-			m1 := &EmailVerifyPurpose{}
-			_ = m1.Decode(d)
-			m.Purpose = m1
+			// m1 := &EmailVerifyPurpose{}
+			// _ = m1.Decode(d)
+			// m.Purpose = m1
+			m.Purpose, _ = DecodeEmailVerifyPurposeClazz(d)
 
 			m.Email, err = d.String()
 
@@ -4512,9 +4554,9 @@ func (m *TLAccountSendVerifyEmailCode) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountVerifyEmail <--
 type TLAccountVerifyEmail struct {
-	ClazzID      uint32              `json:"_id"`
-	Purpose      *EmailVerifyPurpose `json:"purpose"`
-	Verification *EmailVerification  `json:"verification"`
+	ClazzID      uint32                  `json:"_id"`
+	Purpose      EmailVerifyPurposeClazz `json:"purpose"`
+	Verification EmailVerificationClazz  `json:"verification"`
 }
 
 func (m *TLAccountVerifyEmail) String() string {
@@ -4549,13 +4591,15 @@ func (m *TLAccountVerifyEmail) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x32da4cf: func() (err error) {
 
-			m1 := &EmailVerifyPurpose{}
-			_ = m1.Decode(d)
-			m.Purpose = m1
+			// m1 := &EmailVerifyPurpose{}
+			// _ = m1.Decode(d)
+			// m.Purpose = m1
+			m.Purpose, _ = DecodeEmailVerifyPurposeClazz(d)
 
-			m2 := &EmailVerification{}
-			_ = m2.Decode(d)
-			m.Verification = m2
+			// m2 := &EmailVerification{}
+			// _ = m2.Decode(d)
+			// m.Verification = m2
+			m.Verification, _ = DecodeEmailVerificationClazz(d)
 
 			return nil
 		},
@@ -4953,8 +4997,8 @@ func (m *TLAccountGetContactSignUpNotification) Decode(d *bin.Decoder) (err erro
 
 // TLAccountSetContactSignUpNotification <--
 type TLAccountSetContactSignUpNotification struct {
-	ClazzID uint32 `json:"_id"`
-	Silent  *Bool  `json:"silent"`
+	ClazzID uint32    `json:"_id"`
+	Silent  BoolClazz `json:"silent"`
 }
 
 func (m *TLAccountSetContactSignUpNotification) String() string {
@@ -4988,9 +5032,10 @@ func (m *TLAccountSetContactSignUpNotification) Decode(d *bin.Decoder) (err erro
 	var decodeF = map[uint32]func() error{
 		0xcff43f61: func() (err error) {
 
-			m1 := &Bool{}
-			_ = m1.Decode(d)
-			m.Silent = m1
+			// m1 := &Bool{}
+			// _ = m1.Decode(d)
+			// m.Silent = m1
+			m.Silent, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -5008,10 +5053,10 @@ func (m *TLAccountSetContactSignUpNotification) Decode(d *bin.Decoder) (err erro
 
 // TLAccountGetNotifyExceptions <--
 type TLAccountGetNotifyExceptions struct {
-	ClazzID        uint32           `json:"_id"`
-	CompareSound   bool             `json:"compare_sound"`
-	CompareStories bool             `json:"compare_stories"`
-	Peer           *InputNotifyPeer `json:"peer"`
+	ClazzID        uint32               `json:"_id"`
+	CompareSound   bool                 `json:"compare_sound"`
+	CompareStories bool                 `json:"compare_stories"`
+	Peer           InputNotifyPeerClazz `json:"peer"`
 }
 
 func (m *TLAccountGetNotifyExceptions) String() string {
@@ -5075,9 +5120,10 @@ func (m *TLAccountGetNotifyExceptions) Decode(d *bin.Decoder) (err error) {
 				m.CompareStories = true
 			}
 			if (flags & (1 << 0)) != 0 {
-				m4 := &InputNotifyPeer{}
-				_ = m4.Decode(d)
-				m.Peer = m4
+				// m4 := &InputNotifyPeer{}
+				// _ = m4.Decode(d)
+				// m.Peer = m4
+				m.Peer, _ = DecodeInputNotifyPeerClazz(d)
 			}
 
 			return nil
@@ -5096,8 +5142,8 @@ func (m *TLAccountGetNotifyExceptions) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetWallPaper <--
 type TLAccountGetWallPaper struct {
-	ClazzID   uint32          `json:"_id"`
-	Wallpaper *InputWallPaper `json:"wallpaper"`
+	ClazzID   uint32              `json:"_id"`
+	Wallpaper InputWallPaperClazz `json:"wallpaper"`
 }
 
 func (m *TLAccountGetWallPaper) String() string {
@@ -5131,9 +5177,10 @@ func (m *TLAccountGetWallPaper) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfc8ddbea: func() (err error) {
 
-			m1 := &InputWallPaper{}
-			_ = m1.Decode(d)
-			m.Wallpaper = m1
+			// m1 := &InputWallPaper{}
+			// _ = m1.Decode(d)
+			// m.Wallpaper = m1
+			m.Wallpaper, _ = DecodeInputWallPaperClazz(d)
 
 			return nil
 		},
@@ -5151,11 +5198,11 @@ func (m *TLAccountGetWallPaper) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUploadWallPaper <--
 type TLAccountUploadWallPaper struct {
-	ClazzID  uint32             `json:"_id"`
-	ForChat  bool               `json:"for_chat"`
-	File     *InputFile         `json:"file"`
-	MimeType string             `json:"mime_type"`
-	Settings *WallPaperSettings `json:"settings"`
+	ClazzID  uint32                 `json:"_id"`
+	ForChat  bool                   `json:"for_chat"`
+	File     InputFileClazz         `json:"file"`
+	MimeType string                 `json:"mime_type"`
+	Settings WallPaperSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountUploadWallPaper) String() string {
@@ -5210,15 +5257,17 @@ func (m *TLAccountUploadWallPaper) Decode(d *bin.Decoder) (err error) {
 				m.ForChat = true
 			}
 
-			m3 := &InputFile{}
-			_ = m3.Decode(d)
-			m.File = m3
+			// m3 := &InputFile{}
+			// _ = m3.Decode(d)
+			// m.File = m3
+			m.File, _ = DecodeInputFileClazz(d)
 
 			m.MimeType, err = d.String()
 
-			m5 := &WallPaperSettings{}
-			_ = m5.Decode(d)
-			m.Settings = m5
+			// m5 := &WallPaperSettings{}
+			// _ = m5.Decode(d)
+			// m.Settings = m5
+			m.Settings, _ = DecodeWallPaperSettingsClazz(d)
 
 			return nil
 		},
@@ -5236,10 +5285,10 @@ func (m *TLAccountUploadWallPaper) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSaveWallPaper <--
 type TLAccountSaveWallPaper struct {
-	ClazzID   uint32             `json:"_id"`
-	Wallpaper *InputWallPaper    `json:"wallpaper"`
-	Unsave    *Bool              `json:"unsave"`
-	Settings  *WallPaperSettings `json:"settings"`
+	ClazzID   uint32                 `json:"_id"`
+	Wallpaper InputWallPaperClazz    `json:"wallpaper"`
+	Unsave    BoolClazz              `json:"unsave"`
+	Settings  WallPaperSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSaveWallPaper) String() string {
@@ -5275,17 +5324,20 @@ func (m *TLAccountSaveWallPaper) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x6c5a5b37: func() (err error) {
 
-			m1 := &InputWallPaper{}
-			_ = m1.Decode(d)
-			m.Wallpaper = m1
+			// m1 := &InputWallPaper{}
+			// _ = m1.Decode(d)
+			// m.Wallpaper = m1
+			m.Wallpaper, _ = DecodeInputWallPaperClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Unsave = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Unsave = m2
+			m.Unsave, _ = DecodeBoolClazz(d)
 
-			m3 := &WallPaperSettings{}
-			_ = m3.Decode(d)
-			m.Settings = m3
+			// m3 := &WallPaperSettings{}
+			// _ = m3.Decode(d)
+			// m.Settings = m3
+			m.Settings, _ = DecodeWallPaperSettingsClazz(d)
 
 			return nil
 		},
@@ -5303,9 +5355,9 @@ func (m *TLAccountSaveWallPaper) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountInstallWallPaper <--
 type TLAccountInstallWallPaper struct {
-	ClazzID   uint32             `json:"_id"`
-	Wallpaper *InputWallPaper    `json:"wallpaper"`
-	Settings  *WallPaperSettings `json:"settings"`
+	ClazzID   uint32                 `json:"_id"`
+	Wallpaper InputWallPaperClazz    `json:"wallpaper"`
+	Settings  WallPaperSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountInstallWallPaper) String() string {
@@ -5340,13 +5392,15 @@ func (m *TLAccountInstallWallPaper) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfeed5769: func() (err error) {
 
-			m1 := &InputWallPaper{}
-			_ = m1.Decode(d)
-			m.Wallpaper = m1
+			// m1 := &InputWallPaper{}
+			// _ = m1.Decode(d)
+			// m.Wallpaper = m1
+			m.Wallpaper, _ = DecodeInputWallPaperClazz(d)
 
-			m2 := &WallPaperSettings{}
-			_ = m2.Decode(d)
-			m.Settings = m2
+			// m2 := &WallPaperSettings{}
+			// _ = m2.Decode(d)
+			// m.Settings = m2
+			m.Settings, _ = DecodeWallPaperSettingsClazz(d)
 
 			return nil
 		},
@@ -5460,10 +5514,10 @@ func (m *TLAccountGetAutoDownloadSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSaveAutoDownloadSettings <--
 type TLAccountSaveAutoDownloadSettings struct {
-	ClazzID  uint32                `json:"_id"`
-	Low      bool                  `json:"low"`
-	High     bool                  `json:"high"`
-	Settings *AutoDownloadSettings `json:"settings"`
+	ClazzID  uint32                    `json:"_id"`
+	Low      bool                      `json:"low"`
+	High     bool                      `json:"high"`
+	Settings AutoDownloadSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSaveAutoDownloadSettings) String() string {
@@ -5522,9 +5576,10 @@ func (m *TLAccountSaveAutoDownloadSettings) Decode(d *bin.Decoder) (err error) {
 				m.High = true
 			}
 
-			m4 := &AutoDownloadSettings{}
-			_ = m4.Decode(d)
-			m.Settings = m4
+			// m4 := &AutoDownloadSettings{}
+			// _ = m4.Decode(d)
+			// m.Settings = m4
+			m.Settings, _ = DecodeAutoDownloadSettingsClazz(d)
 
 			return nil
 		},
@@ -5542,11 +5597,11 @@ func (m *TLAccountSaveAutoDownloadSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUploadTheme <--
 type TLAccountUploadTheme struct {
-	ClazzID  uint32     `json:"_id"`
-	File     *InputFile `json:"file"`
-	Thumb    *InputFile `json:"thumb"`
-	FileName string     `json:"file_name"`
-	MimeType string     `json:"mime_type"`
+	ClazzID  uint32         `json:"_id"`
+	File     InputFileClazz `json:"file"`
+	Thumb    InputFileClazz `json:"thumb"`
+	FileName string         `json:"file_name"`
+	MimeType string         `json:"mime_type"`
 }
 
 func (m *TLAccountUploadTheme) String() string {
@@ -5602,14 +5657,16 @@ func (m *TLAccountUploadTheme) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputFile{}
-			_ = m2.Decode(d)
-			m.File = m2
+			// m2 := &InputFile{}
+			// _ = m2.Decode(d)
+			// m.File = m2
+			m.File, _ = DecodeInputFileClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m3 := &InputFile{}
-				_ = m3.Decode(d)
-				m.Thumb = m3
+				// m3 := &InputFile{}
+				// _ = m3.Decode(d)
+				// m.Thumb = m3
+				m.Thumb, _ = DecodeInputFileClazz(d)
 			}
 			m.FileName, err = d.String()
 			m.MimeType, err = d.String()
@@ -5630,11 +5687,11 @@ func (m *TLAccountUploadTheme) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountCreateTheme <--
 type TLAccountCreateTheme struct {
-	ClazzID  uint32                `json:"_id"`
-	Slug     string                `json:"slug"`
-	Title    string                `json:"title"`
-	Document *InputDocument        `json:"document"`
-	Settings []*InputThemeSettings `json:"settings"`
+	ClazzID  uint32                    `json:"_id"`
+	Slug     string                    `json:"slug"`
+	Title    string                    `json:"title"`
+	Document InputDocumentClazz        `json:"document"`
+	Settings []InputThemeSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountCreateTheme) String() string {
@@ -5697,9 +5754,10 @@ func (m *TLAccountCreateTheme) Decode(d *bin.Decoder) (err error) {
 			m.Slug, err = d.String()
 			m.Title, err = d.String()
 			if (flags & (1 << 2)) != 0 {
-				m4 := &InputDocument{}
-				_ = m4.Decode(d)
-				m.Document = m4
+				// m4 := &InputDocument{}
+				// _ = m4.Decode(d)
+				// m.Document = m4
+				m.Document, _ = DecodeInputDocumentClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c5, err2 := d.ClazzID()
@@ -5708,12 +5766,15 @@ func (m *TLAccountCreateTheme) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l5, err3 := d.Int()
-				v5 := make([]*InputThemeSettings, l5)
+				// v5 := make([]*InputThemeSettings, l5)
+				v5 := make([]InputThemeSettingsClazz, l5)
 				for i := 0; i < l5; i++ {
-					vv := new(InputThemeSettings)
-					err3 = vv.Decode(d)
+					// vv := new(InputThemeSettings)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v5[i] = vv
+					v5[i], _ = DecodeInputThemeSettingsClazz(d)
 					_ = err3
-					v5[i] = vv
 				}
 				m.Settings = v5
 			}
@@ -5734,13 +5795,13 @@ func (m *TLAccountCreateTheme) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateTheme <--
 type TLAccountUpdateTheme struct {
-	ClazzID  uint32                `json:"_id"`
-	Format   string                `json:"format"`
-	Theme    *InputTheme           `json:"theme"`
-	Slug     *string               `json:"slug"`
-	Title    *string               `json:"title"`
-	Document *InputDocument        `json:"document"`
-	Settings []*InputThemeSettings `json:"settings"`
+	ClazzID  uint32                    `json:"_id"`
+	Format   string                    `json:"format"`
+	Theme    InputThemeClazz           `json:"theme"`
+	Slug     *string                   `json:"slug"`
+	Title    *string                   `json:"title"`
+	Document InputDocumentClazz        `json:"document"`
+	Settings []InputThemeSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountUpdateTheme) String() string {
@@ -5816,9 +5877,10 @@ func (m *TLAccountUpdateTheme) Decode(d *bin.Decoder) (err error) {
 			_ = flags
 			m.Format, err = d.String()
 
-			m3 := &InputTheme{}
-			_ = m3.Decode(d)
-			m.Theme = m3
+			// m3 := &InputTheme{}
+			// _ = m3.Decode(d)
+			// m.Theme = m3
+			m.Theme, _ = DecodeInputThemeClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.Slug = new(string)
@@ -5831,9 +5893,10 @@ func (m *TLAccountUpdateTheme) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 2)) != 0 {
-				m6 := &InputDocument{}
-				_ = m6.Decode(d)
-				m.Document = m6
+				// m6 := &InputDocument{}
+				// _ = m6.Decode(d)
+				// m.Document = m6
+				m.Document, _ = DecodeInputDocumentClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c7, err2 := d.ClazzID()
@@ -5842,12 +5905,15 @@ func (m *TLAccountUpdateTheme) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l7, err3 := d.Int()
-				v7 := make([]*InputThemeSettings, l7)
+				// v7 := make([]*InputThemeSettings, l7)
+				v7 := make([]InputThemeSettingsClazz, l7)
 				for i := 0; i < l7; i++ {
-					vv := new(InputThemeSettings)
-					err3 = vv.Decode(d)
+					// vv := new(InputThemeSettings)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v7[i] = vv
+					v7[i], _ = DecodeInputThemeSettingsClazz(d)
 					_ = err3
-					v7[i] = vv
 				}
 				m.Settings = v7
 			}
@@ -5868,9 +5934,9 @@ func (m *TLAccountUpdateTheme) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSaveTheme <--
 type TLAccountSaveTheme struct {
-	ClazzID uint32      `json:"_id"`
-	Theme   *InputTheme `json:"theme"`
-	Unsave  *Bool       `json:"unsave"`
+	ClazzID uint32          `json:"_id"`
+	Theme   InputThemeClazz `json:"theme"`
+	Unsave  BoolClazz       `json:"unsave"`
 }
 
 func (m *TLAccountSaveTheme) String() string {
@@ -5905,13 +5971,15 @@ func (m *TLAccountSaveTheme) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf257106c: func() (err error) {
 
-			m1 := &InputTheme{}
-			_ = m1.Decode(d)
-			m.Theme = m1
+			// m1 := &InputTheme{}
+			// _ = m1.Decode(d)
+			// m.Theme = m1
+			m.Theme, _ = DecodeInputThemeClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Unsave = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Unsave = m2
+			m.Unsave, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -5929,11 +5997,11 @@ func (m *TLAccountSaveTheme) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountInstallTheme <--
 type TLAccountInstallTheme struct {
-	ClazzID   uint32      `json:"_id"`
-	Dark      bool        `json:"dark"`
-	Theme     *InputTheme `json:"theme"`
-	Format    *string     `json:"format"`
-	BaseTheme *BaseTheme  `json:"base_theme"`
+	ClazzID   uint32          `json:"_id"`
+	Dark      bool            `json:"dark"`
+	Theme     InputThemeClazz `json:"theme"`
+	Format    *string         `json:"format"`
+	BaseTheme BaseThemeClazz  `json:"base_theme"`
 }
 
 func (m *TLAccountInstallTheme) String() string {
@@ -6038,9 +6106,10 @@ func (m *TLAccountInstallTheme) Decode(d *bin.Decoder) (err error) {
 				m.Dark = true
 			}
 			if (flags & (1 << 1)) != 0 {
-				m3 := &InputTheme{}
-				_ = m3.Decode(d)
-				m.Theme = m3
+				// m3 := &InputTheme{}
+				// _ = m3.Decode(d)
+				// m.Theme = m3
+				m.Theme, _ = DecodeInputThemeClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
 				m.Format = new(string)
@@ -6048,9 +6117,10 @@ func (m *TLAccountInstallTheme) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 3)) != 0 {
-				m5 := &BaseTheme{}
-				_ = m5.Decode(d)
-				m.BaseTheme = m5
+				// m5 := &BaseTheme{}
+				// _ = m5.Decode(d)
+				// m.BaseTheme = m5
+				m.BaseTheme, _ = DecodeBaseThemeClazz(d)
 			}
 
 			return nil
@@ -6067,9 +6137,10 @@ func (m *TLAccountInstallTheme) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 1)) != 0 {
-				m4 := &InputTheme{}
-				_ = m4.Decode(d)
-				m.Theme = m4
+				// m4 := &InputTheme{}
+				// _ = m4.Decode(d)
+				// m.Theme = m4
+				m.Theme, _ = DecodeInputThemeClazz(d)
 			}
 
 			return nil
@@ -6088,9 +6159,9 @@ func (m *TLAccountInstallTheme) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetTheme <--
 type TLAccountGetTheme struct {
-	ClazzID uint32      `json:"_id"`
-	Format  string      `json:"format"`
-	Theme   *InputTheme `json:"theme"`
+	ClazzID uint32          `json:"_id"`
+	Format  string          `json:"format"`
+	Theme   InputThemeClazz `json:"theme"`
 }
 
 func (m *TLAccountGetTheme) String() string {
@@ -6126,9 +6197,10 @@ func (m *TLAccountGetTheme) Decode(d *bin.Decoder) (err error) {
 		0x3a5869ec: func() (err error) {
 			m.Format, err = d.String()
 
-			m2 := &InputTheme{}
-			_ = m2.Decode(d)
-			m.Theme = m2
+			// m2 := &InputTheme{}
+			// _ = m2.Decode(d)
+			// m.Theme = m2
+			m.Theme, _ = DecodeInputThemeClazz(d)
 
 			return nil
 		},
@@ -6318,8 +6390,8 @@ func (m *TLAccountGetContentSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetMultiWallPapers <--
 type TLAccountGetMultiWallPapers struct {
-	ClazzID    uint32            `json:"_id"`
-	Wallpapers []*InputWallPaper `json:"wallpapers"`
+	ClazzID    uint32                `json:"_id"`
+	Wallpapers []InputWallPaperClazz `json:"wallpapers"`
 }
 
 func (m *TLAccountGetMultiWallPapers) String() string {
@@ -6358,12 +6430,15 @@ func (m *TLAccountGetMultiWallPapers) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputWallPaper, l1)
+			// v1 := make([]*InputWallPaper, l1)
+			v1 := make([]InputWallPaperClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputWallPaper)
-				err3 = vv.Decode(d)
+				// vv := new(InputWallPaper)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputWallPaperClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Wallpapers = v1
 
@@ -6431,8 +6506,8 @@ func (m *TLAccountGetGlobalPrivacySettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSetGlobalPrivacySettings <--
 type TLAccountSetGlobalPrivacySettings struct {
-	ClazzID  uint32                 `json:"_id"`
-	Settings *GlobalPrivacySettings `json:"settings"`
+	ClazzID  uint32                     `json:"_id"`
+	Settings GlobalPrivacySettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSetGlobalPrivacySettings) String() string {
@@ -6466,9 +6541,10 @@ func (m *TLAccountSetGlobalPrivacySettings) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x1edaaac2: func() (err error) {
 
-			m1 := &GlobalPrivacySettings{}
-			_ = m1.Decode(d)
-			m.Settings = m1
+			// m1 := &GlobalPrivacySettings{}
+			// _ = m1.Decode(d)
+			// m.Settings = m1
+			m.Settings, _ = DecodeGlobalPrivacySettingsClazz(d)
 
 			return nil
 		},
@@ -6486,11 +6562,11 @@ func (m *TLAccountSetGlobalPrivacySettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountReportProfilePhoto <--
 type TLAccountReportProfilePhoto struct {
-	ClazzID uint32        `json:"_id"`
-	Peer    *InputPeer    `json:"peer"`
-	PhotoId *InputPhoto   `json:"photo_id"`
-	Reason  *ReportReason `json:"reason"`
-	Message string        `json:"message"`
+	ClazzID uint32            `json:"_id"`
+	Peer    InputPeerClazz    `json:"peer"`
+	PhotoId InputPhotoClazz   `json:"photo_id"`
+	Reason  ReportReasonClazz `json:"reason"`
+	Message string            `json:"message"`
 }
 
 func (m *TLAccountReportProfilePhoto) String() string {
@@ -6527,17 +6603,20 @@ func (m *TLAccountReportProfilePhoto) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfa8cc6f5: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputPhoto{}
-			_ = m2.Decode(d)
-			m.PhotoId = m2
+			// m2 := &InputPhoto{}
+			// _ = m2.Decode(d)
+			// m.PhotoId = m2
+			m.PhotoId, _ = DecodeInputPhotoClazz(d)
 
-			m3 := &ReportReason{}
-			_ = m3.Decode(d)
-			m.Reason = m3
+			// m3 := &ReportReason{}
+			// _ = m3.Decode(d)
+			// m.Reason = m3
+			m.Reason, _ = DecodeReportReasonClazz(d)
 
 			m.Message, err = d.String()
 
@@ -6757,11 +6836,11 @@ func (m *TLAccountSetAuthorizationTTL) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountChangeAuthorizationSettings <--
 type TLAccountChangeAuthorizationSettings struct {
-	ClazzID                   uint32 `json:"_id"`
-	Confirmed                 bool   `json:"confirmed"`
-	Hash                      int64  `json:"hash"`
-	EncryptedRequestsDisabled *Bool  `json:"encrypted_requests_disabled"`
-	CallRequestsDisabled      *Bool  `json:"call_requests_disabled"`
+	ClazzID                   uint32    `json:"_id"`
+	Confirmed                 bool      `json:"confirmed"`
+	Hash                      int64     `json:"hash"`
+	EncryptedRequestsDisabled BoolClazz `json:"encrypted_requests_disabled"`
+	CallRequestsDisabled      BoolClazz `json:"call_requests_disabled"`
 }
 
 func (m *TLAccountChangeAuthorizationSettings) String() string {
@@ -6829,14 +6908,16 @@ func (m *TLAccountChangeAuthorizationSettings) Decode(d *bin.Decoder) (err error
 			}
 			m.Hash, err = d.Int64()
 			if (flags & (1 << 0)) != 0 {
-				m4 := &Bool{}
-				_ = m4.Decode(d)
-				m.EncryptedRequestsDisabled = m4
+				// m4 := &Bool{}
+				// _ = m4.Decode(d)
+				// m.EncryptedRequestsDisabled = m4
+				m.EncryptedRequestsDisabled, _ = DecodeBoolClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
-				m5 := &Bool{}
-				_ = m5.Decode(d)
-				m.CallRequestsDisabled = m5
+				// m5 := &Bool{}
+				// _ = m5.Decode(d)
+				// m.CallRequestsDisabled = m5
+				m.CallRequestsDisabled, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -6907,9 +6988,9 @@ func (m *TLAccountGetSavedRingtones) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSaveRingtone <--
 type TLAccountSaveRingtone struct {
-	ClazzID uint32         `json:"_id"`
-	Id      *InputDocument `json:"id"`
-	Unsave  *Bool          `json:"unsave"`
+	ClazzID uint32             `json:"_id"`
+	Id      InputDocumentClazz `json:"id"`
+	Unsave  BoolClazz          `json:"unsave"`
 }
 
 func (m *TLAccountSaveRingtone) String() string {
@@ -6944,13 +7025,15 @@ func (m *TLAccountSaveRingtone) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3dea5b03: func() (err error) {
 
-			m1 := &InputDocument{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &InputDocument{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputDocumentClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Unsave = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Unsave = m2
+			m.Unsave, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -6968,10 +7051,10 @@ func (m *TLAccountSaveRingtone) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUploadRingtone <--
 type TLAccountUploadRingtone struct {
-	ClazzID  uint32     `json:"_id"`
-	File     *InputFile `json:"file"`
-	FileName string     `json:"file_name"`
-	MimeType string     `json:"mime_type"`
+	ClazzID  uint32         `json:"_id"`
+	File     InputFileClazz `json:"file"`
+	FileName string         `json:"file_name"`
+	MimeType string         `json:"mime_type"`
 }
 
 func (m *TLAccountUploadRingtone) String() string {
@@ -7007,9 +7090,10 @@ func (m *TLAccountUploadRingtone) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x831a83a2: func() (err error) {
 
-			m1 := &InputFile{}
-			_ = m1.Decode(d)
-			m.File = m1
+			// m1 := &InputFile{}
+			// _ = m1.Decode(d)
+			// m.File = m1
+			m.File, _ = DecodeInputFileClazz(d)
 
 			m.FileName, err = d.String()
 			m.MimeType, err = d.String()
@@ -7030,8 +7114,8 @@ func (m *TLAccountUploadRingtone) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateEmojiStatus <--
 type TLAccountUpdateEmojiStatus struct {
-	ClazzID     uint32       `json:"_id"`
-	EmojiStatus *EmojiStatus `json:"emoji_status"`
+	ClazzID     uint32           `json:"_id"`
+	EmojiStatus EmojiStatusClazz `json:"emoji_status"`
 }
 
 func (m *TLAccountUpdateEmojiStatus) String() string {
@@ -7065,9 +7149,10 @@ func (m *TLAccountUpdateEmojiStatus) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfbd3de6b: func() (err error) {
 
-			m1 := &EmojiStatus{}
-			_ = m1.Decode(d)
-			m.EmojiStatus = m1
+			// m1 := &EmojiStatus{}
+			// _ = m1.Decode(d)
+			// m.EmojiStatus = m1
+			m.EmojiStatus, _ = DecodeEmojiStatusClazz(d)
 
 			return nil
 		},
@@ -7290,9 +7375,9 @@ func (m *TLAccountReorderUsernames) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountToggleUsername <--
 type TLAccountToggleUsername struct {
-	ClazzID  uint32 `json:"_id"`
-	Username string `json:"username"`
-	Active   *Bool  `json:"active"`
+	ClazzID  uint32    `json:"_id"`
+	Username string    `json:"username"`
+	Active   BoolClazz `json:"active"`
 }
 
 func (m *TLAccountToggleUsername) String() string {
@@ -7328,9 +7413,10 @@ func (m *TLAccountToggleUsername) Decode(d *bin.Decoder) (err error) {
 		0x58d6b376: func() (err error) {
 			m.Username, err = d.String()
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Active = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Active = m2
+			m.Active, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -7500,12 +7586,12 @@ func (m *TLAccountGetAutoSaveSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountSaveAutoSaveSettings <--
 type TLAccountSaveAutoSaveSettings struct {
-	ClazzID    uint32            `json:"_id"`
-	Users      bool              `json:"users"`
-	Chats      bool              `json:"chats"`
-	Broadcasts bool              `json:"broadcasts"`
-	Peer       *InputPeer        `json:"peer"`
-	Settings   *AutoSaveSettings `json:"settings"`
+	ClazzID    uint32                `json:"_id"`
+	Users      bool                  `json:"users"`
+	Chats      bool                  `json:"chats"`
+	Broadcasts bool                  `json:"broadcasts"`
+	Peer       InputPeerClazz        `json:"peer"`
+	Settings   AutoSaveSettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSaveAutoSaveSettings) String() string {
@@ -7577,14 +7663,16 @@ func (m *TLAccountSaveAutoSaveSettings) Decode(d *bin.Decoder) (err error) {
 				m.Broadcasts = true
 			}
 			if (flags & (1 << 3)) != 0 {
-				m5 := &InputPeer{}
-				_ = m5.Decode(d)
-				m.Peer = m5
+				// m5 := &InputPeer{}
+				// _ = m5.Decode(d)
+				// m.Peer = m5
+				m.Peer, _ = DecodeInputPeerClazz(d)
 			}
 
-			m6 := &AutoSaveSettings{}
-			_ = m6.Decode(d)
-			m.Settings = m6
+			// m6 := &AutoSaveSettings{}
+			// _ = m6.Decode(d)
+			// m.Settings = m6
+			m.Settings, _ = DecodeAutoSaveSettingsClazz(d)
 
 			return nil
 		},
@@ -7951,8 +8039,8 @@ func (m *TLAccountGetChannelRestrictedStatusEmojis) Decode(d *bin.Decoder) (err 
 
 // TLAccountUpdateBusinessWorkHours <--
 type TLAccountUpdateBusinessWorkHours struct {
-	ClazzID           uint32             `json:"_id"`
-	BusinessWorkHours *BusinessWorkHours `json:"business_work_hours"`
+	ClazzID           uint32                 `json:"_id"`
+	BusinessWorkHours BusinessWorkHoursClazz `json:"business_work_hours"`
 }
 
 func (m *TLAccountUpdateBusinessWorkHours) String() string {
@@ -8004,9 +8092,10 @@ func (m *TLAccountUpdateBusinessWorkHours) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &BusinessWorkHours{}
-				_ = m2.Decode(d)
-				m.BusinessWorkHours = m2
+				// m2 := &BusinessWorkHours{}
+				// _ = m2.Decode(d)
+				// m.BusinessWorkHours = m2
+				m.BusinessWorkHours, _ = DecodeBusinessWorkHoursClazz(d)
 			}
 
 			return nil
@@ -8025,9 +8114,9 @@ func (m *TLAccountUpdateBusinessWorkHours) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateBusinessLocation <--
 type TLAccountUpdateBusinessLocation struct {
-	ClazzID  uint32         `json:"_id"`
-	GeoPoint *InputGeoPoint `json:"geo_point"`
-	Address  *string        `json:"address"`
+	ClazzID  uint32             `json:"_id"`
+	GeoPoint InputGeoPointClazz `json:"geo_point"`
+	Address  *string            `json:"address"`
 }
 
 func (m *TLAccountUpdateBusinessLocation) String() string {
@@ -8086,9 +8175,10 @@ func (m *TLAccountUpdateBusinessLocation) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 1)) != 0 {
-				m2 := &InputGeoPoint{}
-				_ = m2.Decode(d)
-				m.GeoPoint = m2
+				// m2 := &InputGeoPoint{}
+				// _ = m2.Decode(d)
+				// m.GeoPoint = m2
+				m.GeoPoint, _ = DecodeInputGeoPointClazz(d)
 			}
 			if (flags & (1 << 0)) != 0 {
 				m.Address = new(string)
@@ -8111,8 +8201,8 @@ func (m *TLAccountUpdateBusinessLocation) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateBusinessGreetingMessage <--
 type TLAccountUpdateBusinessGreetingMessage struct {
-	ClazzID uint32                        `json:"_id"`
-	Message *InputBusinessGreetingMessage `json:"message"`
+	ClazzID uint32                            `json:"_id"`
+	Message InputBusinessGreetingMessageClazz `json:"message"`
 }
 
 func (m *TLAccountUpdateBusinessGreetingMessage) String() string {
@@ -8164,9 +8254,10 @@ func (m *TLAccountUpdateBusinessGreetingMessage) Decode(d *bin.Decoder) (err err
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputBusinessGreetingMessage{}
-				_ = m2.Decode(d)
-				m.Message = m2
+				// m2 := &InputBusinessGreetingMessage{}
+				// _ = m2.Decode(d)
+				// m.Message = m2
+				m.Message, _ = DecodeInputBusinessGreetingMessageClazz(d)
 			}
 
 			return nil
@@ -8185,8 +8276,8 @@ func (m *TLAccountUpdateBusinessGreetingMessage) Decode(d *bin.Decoder) (err err
 
 // TLAccountUpdateBusinessAwayMessage <--
 type TLAccountUpdateBusinessAwayMessage struct {
-	ClazzID uint32                    `json:"_id"`
-	Message *InputBusinessAwayMessage `json:"message"`
+	ClazzID uint32                        `json:"_id"`
+	Message InputBusinessAwayMessageClazz `json:"message"`
 }
 
 func (m *TLAccountUpdateBusinessAwayMessage) String() string {
@@ -8238,9 +8329,10 @@ func (m *TLAccountUpdateBusinessAwayMessage) Decode(d *bin.Decoder) (err error) 
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputBusinessAwayMessage{}
-				_ = m2.Decode(d)
-				m.Message = m2
+				// m2 := &InputBusinessAwayMessage{}
+				// _ = m2.Decode(d)
+				// m.Message = m2
+				m.Message, _ = DecodeInputBusinessAwayMessageClazz(d)
 			}
 
 			return nil
@@ -8259,12 +8351,12 @@ func (m *TLAccountUpdateBusinessAwayMessage) Decode(d *bin.Decoder) (err error) 
 
 // TLAccountUpdateConnectedBot <--
 type TLAccountUpdateConnectedBot struct {
-	ClazzID    uint32                      `json:"_id"`
-	Deleted    bool                        `json:"deleted"`
-	Rights     *BusinessBotRights          `json:"rights"`
-	Bot        *InputUser                  `json:"bot"`
-	Recipients *InputBusinessBotRecipients `json:"recipients"`
-	CanReply   bool                        `json:"can_reply"`
+	ClazzID    uint32                          `json:"_id"`
+	Deleted    bool                            `json:"deleted"`
+	Rights     BusinessBotRightsClazz          `json:"rights"`
+	Bot        InputUserClazz                  `json:"bot"`
+	Recipients InputBusinessBotRecipientsClazz `json:"recipients"`
+	CanReply   bool                            `json:"can_reply"`
 }
 
 func (m *TLAccountUpdateConnectedBot) String() string {
@@ -8350,18 +8442,21 @@ func (m *TLAccountUpdateConnectedBot) Decode(d *bin.Decoder) (err error) {
 				m.Deleted = true
 			}
 			if (flags & (1 << 0)) != 0 {
-				m3 := &BusinessBotRights{}
-				_ = m3.Decode(d)
-				m.Rights = m3
+				// m3 := &BusinessBotRights{}
+				// _ = m3.Decode(d)
+				// m.Rights = m3
+				m.Rights, _ = DecodeBusinessBotRightsClazz(d)
 			}
 
-			m4 := &InputUser{}
-			_ = m4.Decode(d)
-			m.Bot = m4
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.Bot = m4
+			m.Bot, _ = DecodeInputUserClazz(d)
 
-			m5 := &InputBusinessBotRecipients{}
-			_ = m5.Decode(d)
-			m.Recipients = m5
+			// m5 := &InputBusinessBotRecipients{}
+			// _ = m5.Decode(d)
+			// m.Recipients = m5
+			m.Recipients, _ = DecodeInputBusinessBotRecipientsClazz(d)
 
 			return nil
 		},
@@ -8375,13 +8470,15 @@ func (m *TLAccountUpdateConnectedBot) Decode(d *bin.Decoder) (err error) {
 				m.Deleted = true
 			}
 
-			m4 := &InputUser{}
-			_ = m4.Decode(d)
-			m.Bot = m4
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.Bot = m4
+			m.Bot, _ = DecodeInputUserClazz(d)
 
-			m5 := &InputBusinessBotRecipients{}
-			_ = m5.Decode(d)
-			m.Recipients = m5
+			// m5 := &InputBusinessBotRecipients{}
+			// _ = m5.Decode(d)
+			// m.Recipients = m5
+			m.Recipients, _ = DecodeInputBusinessBotRecipientsClazz(d)
 
 			return nil
 		},
@@ -8499,8 +8596,8 @@ func (m *TLAccountGetBotBusinessConnection) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateBusinessIntro <--
 type TLAccountUpdateBusinessIntro struct {
-	ClazzID uint32              `json:"_id"`
-	Intro   *InputBusinessIntro `json:"intro"`
+	ClazzID uint32                  `json:"_id"`
+	Intro   InputBusinessIntroClazz `json:"intro"`
 }
 
 func (m *TLAccountUpdateBusinessIntro) String() string {
@@ -8552,9 +8649,10 @@ func (m *TLAccountUpdateBusinessIntro) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputBusinessIntro{}
-				_ = m2.Decode(d)
-				m.Intro = m2
+				// m2 := &InputBusinessIntro{}
+				// _ = m2.Decode(d)
+				// m.Intro = m2
+				m.Intro, _ = DecodeInputBusinessIntroClazz(d)
 			}
 
 			return nil
@@ -8573,9 +8671,9 @@ func (m *TLAccountUpdateBusinessIntro) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountToggleConnectedBotPaused <--
 type TLAccountToggleConnectedBotPaused struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Paused  *Bool      `json:"paused"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Paused  BoolClazz      `json:"paused"`
 }
 
 func (m *TLAccountToggleConnectedBotPaused) String() string {
@@ -8610,13 +8708,15 @@ func (m *TLAccountToggleConnectedBotPaused) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x646e1097: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Paused = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Paused = m2
+			m.Paused, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -8634,8 +8734,8 @@ func (m *TLAccountToggleConnectedBotPaused) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountDisablePeerConnectedBot <--
 type TLAccountDisablePeerConnectedBot struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLAccountDisablePeerConnectedBot) String() string {
@@ -8669,9 +8769,10 @@ func (m *TLAccountDisablePeerConnectedBot) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5e437ed9: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -8689,8 +8790,8 @@ func (m *TLAccountDisablePeerConnectedBot) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateBirthday <--
 type TLAccountUpdateBirthday struct {
-	ClazzID  uint32    `json:"_id"`
-	Birthday *Birthday `json:"birthday"`
+	ClazzID  uint32        `json:"_id"`
+	Birthday BirthdayClazz `json:"birthday"`
 }
 
 func (m *TLAccountUpdateBirthday) String() string {
@@ -8742,9 +8843,10 @@ func (m *TLAccountUpdateBirthday) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &Birthday{}
-				_ = m2.Decode(d)
-				m.Birthday = m2
+				// m2 := &Birthday{}
+				// _ = m2.Decode(d)
+				// m.Birthday = m2
+				m.Birthday, _ = DecodeBirthdayClazz(d)
 			}
 
 			return nil
@@ -8763,8 +8865,8 @@ func (m *TLAccountUpdateBirthday) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountCreateBusinessChatLink <--
 type TLAccountCreateBusinessChatLink struct {
-	ClazzID uint32                 `json:"_id"`
-	Link    *InputBusinessChatLink `json:"link"`
+	ClazzID uint32                     `json:"_id"`
+	Link    InputBusinessChatLinkClazz `json:"link"`
 }
 
 func (m *TLAccountCreateBusinessChatLink) String() string {
@@ -8798,9 +8900,10 @@ func (m *TLAccountCreateBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8851e68e: func() (err error) {
 
-			m1 := &InputBusinessChatLink{}
-			_ = m1.Decode(d)
-			m.Link = m1
+			// m1 := &InputBusinessChatLink{}
+			// _ = m1.Decode(d)
+			// m.Link = m1
+			m.Link, _ = DecodeInputBusinessChatLinkClazz(d)
 
 			return nil
 		},
@@ -8818,9 +8921,9 @@ func (m *TLAccountCreateBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountEditBusinessChatLink <--
 type TLAccountEditBusinessChatLink struct {
-	ClazzID uint32                 `json:"_id"`
-	Slug    string                 `json:"slug"`
-	Link    *InputBusinessChatLink `json:"link"`
+	ClazzID uint32                     `json:"_id"`
+	Slug    string                     `json:"slug"`
+	Link    InputBusinessChatLinkClazz `json:"link"`
 }
 
 func (m *TLAccountEditBusinessChatLink) String() string {
@@ -8856,9 +8959,10 @@ func (m *TLAccountEditBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 		0x8c3410af: func() (err error) {
 			m.Slug, err = d.String()
 
-			m2 := &InputBusinessChatLink{}
-			_ = m2.Decode(d)
-			m.Link = m2
+			// m2 := &InputBusinessChatLink{}
+			// _ = m2.Decode(d)
+			// m.Link = m2
+			m.Link, _ = DecodeInputBusinessChatLinkClazz(d)
 
 			return nil
 		},
@@ -9028,8 +9132,8 @@ func (m *TLAccountResolveBusinessChatLink) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdatePersonalChannel <--
 type TLAccountUpdatePersonalChannel struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLAccountUpdatePersonalChannel) String() string {
@@ -9063,9 +9167,10 @@ func (m *TLAccountUpdatePersonalChannel) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xd94305e0: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -9083,8 +9188,8 @@ func (m *TLAccountUpdatePersonalChannel) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountToggleSponsoredMessages <--
 type TLAccountToggleSponsoredMessages struct {
-	ClazzID uint32 `json:"_id"`
-	Enabled *Bool  `json:"enabled"`
+	ClazzID uint32    `json:"_id"`
+	Enabled BoolClazz `json:"enabled"`
 }
 
 func (m *TLAccountToggleSponsoredMessages) String() string {
@@ -9118,9 +9223,10 @@ func (m *TLAccountToggleSponsoredMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb9d9a38d: func() (err error) {
 
-			m1 := &Bool{}
-			_ = m1.Decode(d)
-			m.Enabled = m1
+			// m1 := &Bool{}
+			// _ = m1.Decode(d)
+			// m.Enabled = m1
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -9186,8 +9292,8 @@ func (m *TLAccountGetReactionsNotifySettings) Decode(d *bin.Decoder) (err error)
 
 // TLAccountSetReactionsNotifySettings <--
 type TLAccountSetReactionsNotifySettings struct {
-	ClazzID  uint32                   `json:"_id"`
-	Settings *ReactionsNotifySettings `json:"settings"`
+	ClazzID  uint32                       `json:"_id"`
+	Settings ReactionsNotifySettingsClazz `json:"settings"`
 }
 
 func (m *TLAccountSetReactionsNotifySettings) String() string {
@@ -9221,9 +9327,10 @@ func (m *TLAccountSetReactionsNotifySettings) Decode(d *bin.Decoder) (err error)
 	var decodeF = map[uint32]func() error{
 		0x316ce548: func() (err error) {
 
-			m1 := &ReactionsNotifySettings{}
-			_ = m1.Decode(d)
-			m.Settings = m1
+			// m1 := &ReactionsNotifySettings{}
+			// _ = m1.Decode(d)
+			// m.Settings = m1
+			m.Settings, _ = DecodeReactionsNotifySettingsClazz(d)
 
 			return nil
 		},
@@ -9293,9 +9400,9 @@ func (m *TLAccountGetCollectibleEmojiStatuses) Decode(d *bin.Decoder) (err error
 
 // TLAccountAddNoPaidMessagesException <--
 type TLAccountAddNoPaidMessagesException struct {
-	ClazzID       uint32     `json:"_id"`
-	RefundCharged bool       `json:"refund_charged"`
-	UserId        *InputUser `json:"user_id"`
+	ClazzID       uint32         `json:"_id"`
+	RefundCharged bool           `json:"refund_charged"`
+	UserId        InputUserClazz `json:"user_id"`
 }
 
 func (m *TLAccountAddNoPaidMessagesException) String() string {
@@ -9348,9 +9455,10 @@ func (m *TLAccountAddNoPaidMessagesException) Decode(d *bin.Decoder) (err error)
 				m.RefundCharged = true
 			}
 
-			m3 := &InputUser{}
-			_ = m3.Decode(d)
-			m.UserId = m3
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.UserId = m3
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -9368,8 +9476,8 @@ func (m *TLAccountAddNoPaidMessagesException) Decode(d *bin.Decoder) (err error)
 
 // TLAccountGetPaidMessagesRevenue <--
 type TLAccountGetPaidMessagesRevenue struct {
-	ClazzID uint32     `json:"_id"`
-	UserId  *InputUser `json:"user_id"`
+	ClazzID uint32         `json:"_id"`
+	UserId  InputUserClazz `json:"user_id"`
 }
 
 func (m *TLAccountGetPaidMessagesRevenue) String() string {
@@ -9403,9 +9511,10 @@ func (m *TLAccountGetPaidMessagesRevenue) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf1266f38: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -9423,8 +9532,8 @@ func (m *TLAccountGetPaidMessagesRevenue) Decode(d *bin.Decoder) (err error) {
 
 // TLUsersGetUsers <--
 type TLUsersGetUsers struct {
-	ClazzID uint32       `json:"_id"`
-	Id      []*InputUser `json:"id"`
+	ClazzID uint32           `json:"_id"`
+	Id      []InputUserClazz `json:"id"`
 }
 
 func (m *TLUsersGetUsers) String() string {
@@ -9463,12 +9572,15 @@ func (m *TLUsersGetUsers) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputUser, l1)
+			// v1 := make([]*InputUser, l1)
+			v1 := make([]InputUserClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputUser)
-				err3 = vv.Decode(d)
+				// vv := new(InputUser)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputUserClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id = v1
 
@@ -9488,8 +9600,8 @@ func (m *TLUsersGetUsers) Decode(d *bin.Decoder) (err error) {
 
 // TLUsersGetFullUser <--
 type TLUsersGetFullUser struct {
-	ClazzID uint32     `json:"_id"`
-	Id      *InputUser `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Id      InputUserClazz `json:"id"`
 }
 
 func (m *TLUsersGetFullUser) String() string {
@@ -9523,9 +9635,10 @@ func (m *TLUsersGetFullUser) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb60f5918: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -9543,9 +9656,9 @@ func (m *TLUsersGetFullUser) Decode(d *bin.Decoder) (err error) {
 
 // TLUsersSetSecureValueErrors <--
 type TLUsersSetSecureValueErrors struct {
-	ClazzID uint32              `json:"_id"`
-	Id      *InputUser          `json:"id"`
-	Errors  []*SecureValueError `json:"errors"`
+	ClazzID uint32                  `json:"_id"`
+	Id      InputUserClazz          `json:"id"`
+	Errors  []SecureValueErrorClazz `json:"errors"`
 }
 
 func (m *TLUsersSetSecureValueErrors) String() string {
@@ -9581,9 +9694,10 @@ func (m *TLUsersSetSecureValueErrors) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x90c894b5: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputUserClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -9591,12 +9705,15 @@ func (m *TLUsersSetSecureValueErrors) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*SecureValueError, l2)
+			// v2 := make([]*SecureValueError, l2)
+			v2 := make([]SecureValueErrorClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(SecureValueError)
-				err3 = vv.Decode(d)
+				// vv := new(SecureValueError)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeSecureValueErrorClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Errors = v2
 
@@ -9616,8 +9733,8 @@ func (m *TLUsersSetSecureValueErrors) Decode(d *bin.Decoder) (err error) {
 
 // TLUsersGetRequirementsToContact <--
 type TLUsersGetRequirementsToContact struct {
-	ClazzID uint32       `json:"_id"`
-	Id      []*InputUser `json:"id"`
+	ClazzID uint32           `json:"_id"`
+	Id      []InputUserClazz `json:"id"`
 }
 
 func (m *TLUsersGetRequirementsToContact) String() string {
@@ -9656,12 +9773,15 @@ func (m *TLUsersGetRequirementsToContact) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputUser, l1)
+			// v1 := make([]*InputUser, l1)
+			v1 := make([]InputUserClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputUser)
-				err3 = vv.Decode(d)
+				// vv := new(InputUser)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputUserClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id = v1
 
@@ -9833,8 +9953,8 @@ func (m *TLContactsGetContacts) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsImportContacts <--
 type TLContactsImportContacts struct {
-	ClazzID  uint32          `json:"_id"`
-	Contacts []*InputContact `json:"contacts"`
+	ClazzID  uint32              `json:"_id"`
+	Contacts []InputContactClazz `json:"contacts"`
 }
 
 func (m *TLContactsImportContacts) String() string {
@@ -9873,12 +9993,15 @@ func (m *TLContactsImportContacts) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputContact, l1)
+			// v1 := make([]*InputContact, l1)
+			v1 := make([]InputContactClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputContact)
-				err3 = vv.Decode(d)
+				// vv := new(InputContact)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputContactClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Contacts = v1
 
@@ -9898,8 +10021,8 @@ func (m *TLContactsImportContacts) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsDeleteContacts <--
 type TLContactsDeleteContacts struct {
-	ClazzID uint32       `json:"_id"`
-	Id      []*InputUser `json:"id"`
+	ClazzID uint32           `json:"_id"`
+	Id      []InputUserClazz `json:"id"`
 }
 
 func (m *TLContactsDeleteContacts) String() string {
@@ -9938,12 +10061,15 @@ func (m *TLContactsDeleteContacts) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputUser, l1)
+			// v1 := make([]*InputUser, l1)
+			v1 := make([]InputUserClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputUser)
-				err3 = vv.Decode(d)
+				// vv := new(InputUser)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputUserClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id = v1
 
@@ -10016,9 +10142,9 @@ func (m *TLContactsDeleteByPhones) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsBlock <--
 type TLContactsBlock struct {
-	ClazzID       uint32     `json:"_id"`
-	MyStoriesFrom bool       `json:"my_stories_from"`
-	Id            *InputPeer `json:"id"`
+	ClazzID       uint32         `json:"_id"`
+	MyStoriesFrom bool           `json:"my_stories_from"`
+	Id            InputPeerClazz `json:"id"`
 }
 
 func (m *TLContactsBlock) String() string {
@@ -10071,9 +10197,10 @@ func (m *TLContactsBlock) Decode(d *bin.Decoder) (err error) {
 				m.MyStoriesFrom = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Id = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Id = m3
+			m.Id, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -10091,9 +10218,9 @@ func (m *TLContactsBlock) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsUnblock <--
 type TLContactsUnblock struct {
-	ClazzID       uint32     `json:"_id"`
-	MyStoriesFrom bool       `json:"my_stories_from"`
-	Id            *InputPeer `json:"id"`
+	ClazzID       uint32         `json:"_id"`
+	MyStoriesFrom bool           `json:"my_stories_from"`
+	Id            InputPeerClazz `json:"id"`
 }
 
 func (m *TLContactsUnblock) String() string {
@@ -10146,9 +10273,10 @@ func (m *TLContactsUnblock) Decode(d *bin.Decoder) (err error) {
 				m.MyStoriesFrom = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Id = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Id = m3
+			m.Id, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -10506,9 +10634,9 @@ func (m *TLContactsGetTopPeers) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsResetTopPeerRating <--
 type TLContactsResetTopPeerRating struct {
-	ClazzID  uint32           `json:"_id"`
-	Category *TopPeerCategory `json:"category"`
-	Peer     *InputPeer       `json:"peer"`
+	ClazzID  uint32               `json:"_id"`
+	Category TopPeerCategoryClazz `json:"category"`
+	Peer     InputPeerClazz       `json:"peer"`
 }
 
 func (m *TLContactsResetTopPeerRating) String() string {
@@ -10543,13 +10671,15 @@ func (m *TLContactsResetTopPeerRating) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x1ae373ac: func() (err error) {
 
-			m1 := &TopPeerCategory{}
-			_ = m1.Decode(d)
-			m.Category = m1
+			// m1 := &TopPeerCategory{}
+			// _ = m1.Decode(d)
+			// m.Category = m1
+			m.Category, _ = DecodeTopPeerCategoryClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -10663,8 +10793,8 @@ func (m *TLContactsGetSaved) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsToggleTopPeers <--
 type TLContactsToggleTopPeers struct {
-	ClazzID uint32 `json:"_id"`
-	Enabled *Bool  `json:"enabled"`
+	ClazzID uint32    `json:"_id"`
+	Enabled BoolClazz `json:"enabled"`
 }
 
 func (m *TLContactsToggleTopPeers) String() string {
@@ -10698,9 +10828,10 @@ func (m *TLContactsToggleTopPeers) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8514bdda: func() (err error) {
 
-			m1 := &Bool{}
-			_ = m1.Decode(d)
-			m.Enabled = m1
+			// m1 := &Bool{}
+			// _ = m1.Decode(d)
+			// m.Enabled = m1
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -10718,12 +10849,12 @@ func (m *TLContactsToggleTopPeers) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsAddContact <--
 type TLContactsAddContact struct {
-	ClazzID                  uint32     `json:"_id"`
-	AddPhonePrivacyException bool       `json:"add_phone_privacy_exception"`
-	Id                       *InputUser `json:"id"`
-	FirstName                string     `json:"first_name"`
-	LastName                 string     `json:"last_name"`
-	Phone                    string     `json:"phone"`
+	ClazzID                  uint32         `json:"_id"`
+	AddPhonePrivacyException bool           `json:"add_phone_privacy_exception"`
+	Id                       InputUserClazz `json:"id"`
+	FirstName                string         `json:"first_name"`
+	LastName                 string         `json:"last_name"`
+	Phone                    string         `json:"phone"`
 }
 
 func (m *TLContactsAddContact) String() string {
@@ -10779,9 +10910,10 @@ func (m *TLContactsAddContact) Decode(d *bin.Decoder) (err error) {
 				m.AddPhonePrivacyException = true
 			}
 
-			m3 := &InputUser{}
-			_ = m3.Decode(d)
-			m.Id = m3
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.Id = m3
+			m.Id, _ = DecodeInputUserClazz(d)
 
 			m.FirstName, err = d.String()
 			m.LastName, err = d.String()
@@ -10803,8 +10935,8 @@ func (m *TLContactsAddContact) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsAcceptContact <--
 type TLContactsAcceptContact struct {
-	ClazzID uint32     `json:"_id"`
-	Id      *InputUser `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Id      InputUserClazz `json:"id"`
 }
 
 func (m *TLContactsAcceptContact) String() string {
@@ -10838,9 +10970,10 @@ func (m *TLContactsAcceptContact) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf831a20f: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -10858,10 +10991,10 @@ func (m *TLContactsAcceptContact) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsGetLocated <--
 type TLContactsGetLocated struct {
-	ClazzID     uint32         `json:"_id"`
-	Background  bool           `json:"background"`
-	GeoPoint    *InputGeoPoint `json:"geo_point"`
-	SelfExpires *int32         `json:"self_expires"`
+	ClazzID     uint32             `json:"_id"`
+	Background  bool               `json:"background"`
+	GeoPoint    InputGeoPointClazz `json:"geo_point"`
+	SelfExpires *int32             `json:"self_expires"`
 }
 
 func (m *TLContactsGetLocated) String() string {
@@ -10921,9 +11054,10 @@ func (m *TLContactsGetLocated) Decode(d *bin.Decoder) (err error) {
 				m.Background = true
 			}
 
-			m3 := &InputGeoPoint{}
-			_ = m3.Decode(d)
-			m.GeoPoint = m3
+			// m3 := &InputGeoPoint{}
+			// _ = m3.Decode(d)
+			// m.GeoPoint = m3
+			m.GeoPoint, _ = DecodeInputGeoPointClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.SelfExpires = new(int32)
@@ -11237,10 +11371,10 @@ func (m *TLContactsEditCloseFriends) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsSetBlocked <--
 type TLContactsSetBlocked struct {
-	ClazzID       uint32       `json:"_id"`
-	MyStoriesFrom bool         `json:"my_stories_from"`
-	Id            []*InputPeer `json:"id"`
-	Limit         int32        `json:"limit"`
+	ClazzID       uint32           `json:"_id"`
+	MyStoriesFrom bool             `json:"my_stories_from"`
+	Id            []InputPeerClazz `json:"id"`
+	Limit         int32            `json:"limit"`
 }
 
 func (m *TLContactsSetBlocked) String() string {
@@ -11301,12 +11435,15 @@ func (m *TLContactsSetBlocked) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*InputPeer, l3)
+			// v3 := make([]*InputPeer, l3)
+			v3 := make([]InputPeerClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Id = v3
 
@@ -11428,9 +11565,9 @@ func (m *TLContactsGetSponsoredPeers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetMessages <--
 type TLMessagesGetMessages struct {
-	ClazzID               uint32          `json:"_id"`
-	Id_VECTORINPUTMESSAGE []*InputMessage `json:"id_VECTORINPUTMESSAGE"`
-	Id_VECTORINT32        []int32         `json:"id_VECTORINT32"`
+	ClazzID               uint32              `json:"_id"`
+	Id_VECTORINPUTMESSAGE []InputMessageClazz `json:"id_VECTORINPUTMESSAGE"`
+	Id_VECTORINT32        []int32             `json:"id_VECTORINT32"`
 }
 
 func (m *TLMessagesGetMessages) String() string {
@@ -11476,12 +11613,15 @@ func (m *TLMessagesGetMessages) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputMessage, l1)
+			// v1 := make([]*InputMessage, l1)
+			v1 := make([]InputMessageClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputMessage)
-				err3 = vv.Decode(d)
+				// vv := new(InputMessage)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputMessageClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id_VECTORINPUTMESSAGE = v1
 
@@ -11507,14 +11647,14 @@ func (m *TLMessagesGetMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetDialogs <--
 type TLMessagesGetDialogs struct {
-	ClazzID       uint32     `json:"_id"`
-	ExcludePinned bool       `json:"exclude_pinned"`
-	FolderId      *int32     `json:"folder_id"`
-	OffsetDate    int32      `json:"offset_date"`
-	OffsetId      int32      `json:"offset_id"`
-	OffsetPeer    *InputPeer `json:"offset_peer"`
-	Limit         int32      `json:"limit"`
-	Hash          int64      `json:"hash"`
+	ClazzID       uint32         `json:"_id"`
+	ExcludePinned bool           `json:"exclude_pinned"`
+	FolderId      *int32         `json:"folder_id"`
+	OffsetDate    int32          `json:"offset_date"`
+	OffsetId      int32          `json:"offset_id"`
+	OffsetPeer    InputPeerClazz `json:"offset_peer"`
+	Limit         int32          `json:"limit"`
+	Hash          int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetDialogs) String() string {
@@ -11584,9 +11724,10 @@ func (m *TLMessagesGetDialogs) Decode(d *bin.Decoder) (err error) {
 			m.OffsetDate, err = d.Int32()
 			m.OffsetId, err = d.Int32()
 
-			m6 := &InputPeer{}
-			_ = m6.Decode(d)
-			m.OffsetPeer = m6
+			// m6 := &InputPeer{}
+			// _ = m6.Decode(d)
+			// m.OffsetPeer = m6
+			m.OffsetPeer, _ = DecodeInputPeerClazz(d)
 
 			m.Limit, err = d.Int32()
 			m.Hash, err = d.Int64()
@@ -11607,15 +11748,15 @@ func (m *TLMessagesGetDialogs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetHistory <--
 type TLMessagesGetHistory struct {
-	ClazzID    uint32     `json:"_id"`
-	Peer       *InputPeer `json:"peer"`
-	OffsetId   int32      `json:"offset_id"`
-	OffsetDate int32      `json:"offset_date"`
-	AddOffset  int32      `json:"add_offset"`
-	Limit      int32      `json:"limit"`
-	MaxId      int32      `json:"max_id"`
-	MinId      int32      `json:"min_id"`
-	Hash       int64      `json:"hash"`
+	ClazzID    uint32         `json:"_id"`
+	Peer       InputPeerClazz `json:"peer"`
+	OffsetId   int32          `json:"offset_id"`
+	OffsetDate int32          `json:"offset_date"`
+	AddOffset  int32          `json:"add_offset"`
+	Limit      int32          `json:"limit"`
+	MaxId      int32          `json:"max_id"`
+	MinId      int32          `json:"min_id"`
+	Hash       int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetHistory) String() string {
@@ -11656,9 +11797,10 @@ func (m *TLMessagesGetHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4423e6c5: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.OffsetDate, err = d.Int32()
@@ -11684,22 +11826,22 @@ func (m *TLMessagesGetHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSearch <--
 type TLMessagesSearch struct {
-	ClazzID       uint32          `json:"_id"`
-	Peer          *InputPeer      `json:"peer"`
-	Q             string          `json:"q"`
-	FromId        *InputPeer      `json:"from_id"`
-	SavedPeerId   *InputPeer      `json:"saved_peer_id"`
-	SavedReaction []*Reaction     `json:"saved_reaction"`
-	TopMsgId      *int32          `json:"top_msg_id"`
-	Filter        *MessagesFilter `json:"filter"`
-	MinDate       int32           `json:"min_date"`
-	MaxDate       int32           `json:"max_date"`
-	OffsetId      int32           `json:"offset_id"`
-	AddOffset     int32           `json:"add_offset"`
-	Limit         int32           `json:"limit"`
-	MaxId         int32           `json:"max_id"`
-	MinId         int32           `json:"min_id"`
-	Hash          int64           `json:"hash"`
+	ClazzID       uint32              `json:"_id"`
+	Peer          InputPeerClazz      `json:"peer"`
+	Q             string              `json:"q"`
+	FromId        InputPeerClazz      `json:"from_id"`
+	SavedPeerId   InputPeerClazz      `json:"saved_peer_id"`
+	SavedReaction []ReactionClazz     `json:"saved_reaction"`
+	TopMsgId      *int32              `json:"top_msg_id"`
+	Filter        MessagesFilterClazz `json:"filter"`
+	MinDate       int32               `json:"min_date"`
+	MaxDate       int32               `json:"max_date"`
+	OffsetId      int32               `json:"offset_id"`
+	AddOffset     int32               `json:"add_offset"`
+	Limit         int32               `json:"limit"`
+	MaxId         int32               `json:"max_id"`
+	MinId         int32               `json:"min_id"`
+	Hash          int64               `json:"hash"`
 }
 
 func (m *TLMessagesSearch) String() string {
@@ -11783,20 +11925,23 @@ func (m *TLMessagesSearch) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Q, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m4 := &InputPeer{}
-				_ = m4.Decode(d)
-				m.FromId = m4
+				// m4 := &InputPeer{}
+				// _ = m4.Decode(d)
+				// m.FromId = m4
+				m.FromId, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
-				m5 := &InputPeer{}
-				_ = m5.Decode(d)
-				m.SavedPeerId = m5
+				// m5 := &InputPeer{}
+				// _ = m5.Decode(d)
+				// m.SavedPeerId = m5
+				m.SavedPeerId, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c6, err2 := d.ClazzID()
@@ -11805,12 +11950,15 @@ func (m *TLMessagesSearch) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l6, err3 := d.Int()
-				v6 := make([]*Reaction, l6)
+				// v6 := make([]*Reaction, l6)
+				v6 := make([]ReactionClazz, l6)
 				for i := 0; i < l6; i++ {
-					vv := new(Reaction)
-					err3 = vv.Decode(d)
+					// vv := new(Reaction)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v6[i] = vv
+					v6[i], _ = DecodeReactionClazz(d)
 					_ = err3
-					v6[i] = vv
 				}
 				m.SavedReaction = v6
 			}
@@ -11819,9 +11967,10 @@ func (m *TLMessagesSearch) Decode(d *bin.Decoder) (err error) {
 				*m.TopMsgId, err = d.Int32()
 			}
 
-			m8 := &MessagesFilter{}
-			_ = m8.Decode(d)
-			m.Filter = m8
+			// m8 := &MessagesFilter{}
+			// _ = m8.Decode(d)
+			// m.Filter = m8
+			m.Filter, _ = DecodeMessagesFilterClazz(d)
 
 			m.MinDate, err = d.Int32()
 			m.MaxDate, err = d.Int32()
@@ -11848,9 +11997,9 @@ func (m *TLMessagesSearch) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReadHistory <--
 type TLMessagesReadHistory struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MaxId   int32      `json:"max_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MaxId   int32          `json:"max_id"`
 }
 
 func (m *TLMessagesReadHistory) String() string {
@@ -11885,9 +12034,10 @@ func (m *TLMessagesReadHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe306d3a: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MaxId, err = d.Int32()
 
@@ -11907,13 +12057,13 @@ func (m *TLMessagesReadHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesDeleteHistory <--
 type TLMessagesDeleteHistory struct {
-	ClazzID   uint32     `json:"_id"`
-	JustClear bool       `json:"just_clear"`
-	Revoke    bool       `json:"revoke"`
-	Peer      *InputPeer `json:"peer"`
-	MaxId     int32      `json:"max_id"`
-	MinDate   *int32     `json:"min_date"`
-	MaxDate   *int32     `json:"max_date"`
+	ClazzID   uint32         `json:"_id"`
+	JustClear bool           `json:"just_clear"`
+	Revoke    bool           `json:"revoke"`
+	Peer      InputPeerClazz `json:"peer"`
+	MaxId     int32          `json:"max_id"`
+	MinDate   *int32         `json:"min_date"`
+	MaxDate   *int32         `json:"max_date"`
 }
 
 func (m *TLMessagesDeleteHistory) String() string {
@@ -11987,9 +12137,10 @@ func (m *TLMessagesDeleteHistory) Decode(d *bin.Decoder) (err error) {
 				m.Revoke = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MaxId, err = d.Int32()
 			if (flags & (1 << 2)) != 0 {
@@ -12143,10 +12294,10 @@ func (m *TLMessagesReceivedMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetTyping <--
 type TLMessagesSetTyping struct {
-	ClazzID  uint32             `json:"_id"`
-	Peer     *InputPeer         `json:"peer"`
-	TopMsgId *int32             `json:"top_msg_id"`
-	Action   *SendMessageAction `json:"action"`
+	ClazzID  uint32                 `json:"_id"`
+	Peer     InputPeerClazz         `json:"peer"`
+	TopMsgId *int32                 `json:"top_msg_id"`
+	Action   SendMessageActionClazz `json:"action"`
 }
 
 func (m *TLMessagesSetTyping) String() string {
@@ -12201,18 +12352,20 @@ func (m *TLMessagesSetTyping) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
 				*m.TopMsgId, err = d.Int32()
 			}
 
-			m4 := &SendMessageAction{}
-			_ = m4.Decode(d)
-			m.Action = m4
+			// m4 := &SendMessageAction{}
+			// _ = m4.Decode(d)
+			// m.Action = m4
+			m.Action, _ = DecodeSendMessageActionClazz(d)
 
 			return nil
 		},
@@ -12230,26 +12383,26 @@ func (m *TLMessagesSetTyping) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendMessage <--
 type TLMessagesSendMessage struct {
-	ClazzID                uint32                   `json:"_id"`
-	NoWebpage              bool                     `json:"no_webpage"`
-	Silent                 bool                     `json:"silent"`
-	Background             bool                     `json:"background"`
-	ClearDraft             bool                     `json:"clear_draft"`
-	Noforwards             bool                     `json:"noforwards"`
-	UpdateStickersetsOrder bool                     `json:"update_stickersets_order"`
-	InvertMedia            bool                     `json:"invert_media"`
-	AllowPaidFloodskip     bool                     `json:"allow_paid_floodskip"`
-	Peer                   *InputPeer               `json:"peer"`
-	ReplyTo                *InputReplyTo            `json:"reply_to"`
-	Message                string                   `json:"message"`
-	RandomId               int64                    `json:"random_id"`
-	ReplyMarkup            *ReplyMarkup             `json:"reply_markup"`
-	Entities               []*MessageEntity         `json:"entities"`
-	ScheduleDate           *int32                   `json:"schedule_date"`
-	SendAs                 *InputPeer               `json:"send_as"`
-	QuickReplyShortcut     *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
-	Effect                 *int64                   `json:"effect"`
-	AllowPaidStars         *int64                   `json:"allow_paid_stars"`
+	ClazzID                uint32                       `json:"_id"`
+	NoWebpage              bool                         `json:"no_webpage"`
+	Silent                 bool                         `json:"silent"`
+	Background             bool                         `json:"background"`
+	ClearDraft             bool                         `json:"clear_draft"`
+	Noforwards             bool                         `json:"noforwards"`
+	UpdateStickersetsOrder bool                         `json:"update_stickersets_order"`
+	InvertMedia            bool                         `json:"invert_media"`
+	AllowPaidFloodskip     bool                         `json:"allow_paid_floodskip"`
+	Peer                   InputPeerClazz               `json:"peer"`
+	ReplyTo                InputReplyToClazz            `json:"reply_to"`
+	Message                string                       `json:"message"`
+	RandomId               int64                        `json:"random_id"`
+	ReplyMarkup            ReplyMarkupClazz             `json:"reply_markup"`
+	Entities               []MessageEntityClazz         `json:"entities"`
+	ScheduleDate           *int32                       `json:"schedule_date"`
+	SendAs                 InputPeerClazz               `json:"send_as"`
+	QuickReplyShortcut     InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
+	Effect                 *int64                       `json:"effect"`
+	AllowPaidStars         *int64                       `json:"allow_paid_stars"`
 }
 
 func (m *TLMessagesSendMessage) String() string {
@@ -12495,21 +12648,24 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m10 := &InputPeer{}
-			_ = m10.Decode(d)
-			m.Peer = m10
+			// m10 := &InputPeer{}
+			// _ = m10.Decode(d)
+			// m.Peer = m10
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m11 := &InputReplyTo{}
-				_ = m11.Decode(d)
-				m.ReplyTo = m11
+				// m11 := &InputReplyTo{}
+				// _ = m11.Decode(d)
+				// m.ReplyTo = m11
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			m.Message, err = d.String()
 			m.RandomId, err = d.Int64()
 			if (flags & (1 << 2)) != 0 {
-				m14 := &ReplyMarkup{}
-				_ = m14.Decode(d)
-				m.ReplyMarkup = m14
+				// m14 := &ReplyMarkup{}
+				// _ = m14.Decode(d)
+				// m.ReplyMarkup = m14
+				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c15, err2 := d.ClazzID()
@@ -12518,12 +12674,15 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l15, err3 := d.Int()
-				v15 := make([]*MessageEntity, l15)
+				// v15 := make([]*MessageEntity, l15)
+				v15 := make([]MessageEntityClazz, l15)
 				for i := 0; i < l15; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v15[i] = vv
+					v15[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v15[i] = vv
 				}
 				m.Entities = v15
 			}
@@ -12532,14 +12691,16 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m17 := &InputPeer{}
-				_ = m17.Decode(d)
-				m.SendAs = m17
+				// m17 := &InputPeer{}
+				// _ = m17.Decode(d)
+				// m.SendAs = m17
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m18 := &InputQuickReplyShortcut{}
-				_ = m18.Decode(d)
-				m.QuickReplyShortcut = m18
+				// m18 := &InputQuickReplyShortcut{}
+				// _ = m18.Decode(d)
+				// m.QuickReplyShortcut = m18
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 18)) != 0 {
 				m.Effect = new(int64)
@@ -12581,21 +12742,24 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m10 := &InputPeer{}
-			_ = m10.Decode(d)
-			m.Peer = m10
+			// m10 := &InputPeer{}
+			// _ = m10.Decode(d)
+			// m.Peer = m10
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m11 := &InputReplyTo{}
-				_ = m11.Decode(d)
-				m.ReplyTo = m11
+				// m11 := &InputReplyTo{}
+				// _ = m11.Decode(d)
+				// m.ReplyTo = m11
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			m.Message, err = d.String()
 			m.RandomId, err = d.Int64()
 			if (flags & (1 << 2)) != 0 {
-				m14 := &ReplyMarkup{}
-				_ = m14.Decode(d)
-				m.ReplyMarkup = m14
+				// m14 := &ReplyMarkup{}
+				// _ = m14.Decode(d)
+				// m.ReplyMarkup = m14
+				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c15, err2 := d.ClazzID()
@@ -12604,12 +12768,15 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l15, err3 := d.Int()
-				v15 := make([]*MessageEntity, l15)
+				// v15 := make([]*MessageEntity, l15)
+				v15 := make([]MessageEntityClazz, l15)
 				for i := 0; i < l15; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v15[i] = vv
+					v15[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v15[i] = vv
 				}
 				m.Entities = v15
 			}
@@ -12618,14 +12785,16 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m17 := &InputPeer{}
-				_ = m17.Decode(d)
-				m.SendAs = m17
+				// m17 := &InputPeer{}
+				// _ = m17.Decode(d)
+				// m.SendAs = m17
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m18 := &InputQuickReplyShortcut{}
-				_ = m18.Decode(d)
-				m.QuickReplyShortcut = m18
+				// m18 := &InputQuickReplyShortcut{}
+				// _ = m18.Decode(d)
+				// m.QuickReplyShortcut = m18
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 18)) != 0 {
 				m.Effect = new(int64)
@@ -12648,26 +12817,26 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendMedia <--
 type TLMessagesSendMedia struct {
-	ClazzID                uint32                   `json:"_id"`
-	Silent                 bool                     `json:"silent"`
-	Background             bool                     `json:"background"`
-	ClearDraft             bool                     `json:"clear_draft"`
-	Noforwards             bool                     `json:"noforwards"`
-	UpdateStickersetsOrder bool                     `json:"update_stickersets_order"`
-	InvertMedia            bool                     `json:"invert_media"`
-	AllowPaidFloodskip     bool                     `json:"allow_paid_floodskip"`
-	Peer                   *InputPeer               `json:"peer"`
-	ReplyTo                *InputReplyTo            `json:"reply_to"`
-	Media                  *InputMedia              `json:"media"`
-	Message                string                   `json:"message"`
-	RandomId               int64                    `json:"random_id"`
-	ReplyMarkup            *ReplyMarkup             `json:"reply_markup"`
-	Entities               []*MessageEntity         `json:"entities"`
-	ScheduleDate           *int32                   `json:"schedule_date"`
-	SendAs                 *InputPeer               `json:"send_as"`
-	QuickReplyShortcut     *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
-	Effect                 *int64                   `json:"effect"`
-	AllowPaidStars         *int64                   `json:"allow_paid_stars"`
+	ClazzID                uint32                       `json:"_id"`
+	Silent                 bool                         `json:"silent"`
+	Background             bool                         `json:"background"`
+	ClearDraft             bool                         `json:"clear_draft"`
+	Noforwards             bool                         `json:"noforwards"`
+	UpdateStickersetsOrder bool                         `json:"update_stickersets_order"`
+	InvertMedia            bool                         `json:"invert_media"`
+	AllowPaidFloodskip     bool                         `json:"allow_paid_floodskip"`
+	Peer                   InputPeerClazz               `json:"peer"`
+	ReplyTo                InputReplyToClazz            `json:"reply_to"`
+	Media                  InputMediaClazz              `json:"media"`
+	Message                string                       `json:"message"`
+	RandomId               int64                        `json:"random_id"`
+	ReplyMarkup            ReplyMarkupClazz             `json:"reply_markup"`
+	Entities               []MessageEntityClazz         `json:"entities"`
+	ScheduleDate           *int32                       `json:"schedule_date"`
+	SendAs                 InputPeerClazz               `json:"send_as"`
+	QuickReplyShortcut     InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
+	Effect                 *int64                       `json:"effect"`
+	AllowPaidStars         *int64                       `json:"allow_paid_stars"`
 }
 
 func (m *TLMessagesSendMedia) String() string {
@@ -12906,26 +13075,30 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m9 := &InputPeer{}
-			_ = m9.Decode(d)
-			m.Peer = m9
+			// m9 := &InputPeer{}
+			// _ = m9.Decode(d)
+			// m.Peer = m9
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m10 := &InputReplyTo{}
-				_ = m10.Decode(d)
-				m.ReplyTo = m10
+				// m10 := &InputReplyTo{}
+				// _ = m10.Decode(d)
+				// m.ReplyTo = m10
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 
-			m11 := &InputMedia{}
-			_ = m11.Decode(d)
-			m.Media = m11
+			// m11 := &InputMedia{}
+			// _ = m11.Decode(d)
+			// m.Media = m11
+			m.Media, _ = DecodeInputMediaClazz(d)
 
 			m.Message, err = d.String()
 			m.RandomId, err = d.Int64()
 			if (flags & (1 << 2)) != 0 {
-				m14 := &ReplyMarkup{}
-				_ = m14.Decode(d)
-				m.ReplyMarkup = m14
+				// m14 := &ReplyMarkup{}
+				// _ = m14.Decode(d)
+				// m.ReplyMarkup = m14
+				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c15, err2 := d.ClazzID()
@@ -12934,12 +13107,15 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l15, err3 := d.Int()
-				v15 := make([]*MessageEntity, l15)
+				// v15 := make([]*MessageEntity, l15)
+				v15 := make([]MessageEntityClazz, l15)
 				for i := 0; i < l15; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v15[i] = vv
+					v15[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v15[i] = vv
 				}
 				m.Entities = v15
 			}
@@ -12948,14 +13124,16 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m17 := &InputPeer{}
-				_ = m17.Decode(d)
-				m.SendAs = m17
+				// m17 := &InputPeer{}
+				// _ = m17.Decode(d)
+				// m.SendAs = m17
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m18 := &InputQuickReplyShortcut{}
-				_ = m18.Decode(d)
-				m.QuickReplyShortcut = m18
+				// m18 := &InputQuickReplyShortcut{}
+				// _ = m18.Decode(d)
+				// m.QuickReplyShortcut = m18
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 18)) != 0 {
 				m.Effect = new(int64)
@@ -12994,26 +13172,30 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m9 := &InputPeer{}
-			_ = m9.Decode(d)
-			m.Peer = m9
+			// m9 := &InputPeer{}
+			// _ = m9.Decode(d)
+			// m.Peer = m9
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m10 := &InputReplyTo{}
-				_ = m10.Decode(d)
-				m.ReplyTo = m10
+				// m10 := &InputReplyTo{}
+				// _ = m10.Decode(d)
+				// m.ReplyTo = m10
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 
-			m11 := &InputMedia{}
-			_ = m11.Decode(d)
-			m.Media = m11
+			// m11 := &InputMedia{}
+			// _ = m11.Decode(d)
+			// m.Media = m11
+			m.Media, _ = DecodeInputMediaClazz(d)
 
 			m.Message, err = d.String()
 			m.RandomId, err = d.Int64()
 			if (flags & (1 << 2)) != 0 {
-				m14 := &ReplyMarkup{}
-				_ = m14.Decode(d)
-				m.ReplyMarkup = m14
+				// m14 := &ReplyMarkup{}
+				// _ = m14.Decode(d)
+				// m.ReplyMarkup = m14
+				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c15, err2 := d.ClazzID()
@@ -13022,12 +13204,15 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l15, err3 := d.Int()
-				v15 := make([]*MessageEntity, l15)
+				// v15 := make([]*MessageEntity, l15)
+				v15 := make([]MessageEntityClazz, l15)
 				for i := 0; i < l15; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v15[i] = vv
+					v15[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v15[i] = vv
 				}
 				m.Entities = v15
 			}
@@ -13036,14 +13221,16 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m17 := &InputPeer{}
-				_ = m17.Decode(d)
-				m.SendAs = m17
+				// m17 := &InputPeer{}
+				// _ = m17.Decode(d)
+				// m.SendAs = m17
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m18 := &InputQuickReplyShortcut{}
-				_ = m18.Decode(d)
-				m.QuickReplyShortcut = m18
+				// m18 := &InputQuickReplyShortcut{}
+				// _ = m18.Decode(d)
+				// m.QuickReplyShortcut = m18
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 18)) != 0 {
 				m.Effect = new(int64)
@@ -13066,24 +13253,24 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesForwardMessages <--
 type TLMessagesForwardMessages struct {
-	ClazzID            uint32                   `json:"_id"`
-	Silent             bool                     `json:"silent"`
-	Background         bool                     `json:"background"`
-	WithMyScore        bool                     `json:"with_my_score"`
-	DropAuthor         bool                     `json:"drop_author"`
-	DropMediaCaptions  bool                     `json:"drop_media_captions"`
-	Noforwards         bool                     `json:"noforwards"`
-	AllowPaidFloodskip bool                     `json:"allow_paid_floodskip"`
-	FromPeer           *InputPeer               `json:"from_peer"`
-	Id                 []int32                  `json:"id"`
-	RandomId           []int64                  `json:"random_id"`
-	ToPeer             *InputPeer               `json:"to_peer"`
-	TopMsgId           *int32                   `json:"top_msg_id"`
-	ScheduleDate       *int32                   `json:"schedule_date"`
-	SendAs             *InputPeer               `json:"send_as"`
-	QuickReplyShortcut *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
-	VideoTimestamp     *int32                   `json:"video_timestamp"`
-	AllowPaidStars     *int64                   `json:"allow_paid_stars"`
+	ClazzID            uint32                       `json:"_id"`
+	Silent             bool                         `json:"silent"`
+	Background         bool                         `json:"background"`
+	WithMyScore        bool                         `json:"with_my_score"`
+	DropAuthor         bool                         `json:"drop_author"`
+	DropMediaCaptions  bool                         `json:"drop_media_captions"`
+	Noforwards         bool                         `json:"noforwards"`
+	AllowPaidFloodskip bool                         `json:"allow_paid_floodskip"`
+	FromPeer           InputPeerClazz               `json:"from_peer"`
+	Id                 []int32                      `json:"id"`
+	RandomId           []int64                      `json:"random_id"`
+	ToPeer             InputPeerClazz               `json:"to_peer"`
+	TopMsgId           *int32                       `json:"top_msg_id"`
+	ScheduleDate       *int32                       `json:"schedule_date"`
+	SendAs             InputPeerClazz               `json:"send_as"`
+	QuickReplyShortcut InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
+	VideoTimestamp     *int32                       `json:"video_timestamp"`
+	AllowPaidStars     *int64                       `json:"allow_paid_stars"`
 }
 
 func (m *TLMessagesForwardMessages) String() string {
@@ -13300,17 +13487,19 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m9 := &InputPeer{}
-			_ = m9.Decode(d)
-			m.FromPeer = m9
+			// m9 := &InputPeer{}
+			// _ = m9.Decode(d)
+			// m.FromPeer = m9
+			m.FromPeer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
 			m.RandomId, err = iface.DecodeInt64List(d)
 
-			m12 := &InputPeer{}
-			_ = m12.Decode(d)
-			m.ToPeer = m12
+			// m12 := &InputPeer{}
+			// _ = m12.Decode(d)
+			// m.ToPeer = m12
+			m.ToPeer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 9)) != 0 {
 				m.TopMsgId = new(int32)
@@ -13321,14 +13510,16 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m15 := &InputPeer{}
-				_ = m15.Decode(d)
-				m.SendAs = m15
+				// m15 := &InputPeer{}
+				// _ = m15.Decode(d)
+				// m.SendAs = m15
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m16 := &InputQuickReplyShortcut{}
-				_ = m16.Decode(d)
-				m.QuickReplyShortcut = m16
+				// m16 := &InputQuickReplyShortcut{}
+				// _ = m16.Decode(d)
+				// m.QuickReplyShortcut = m16
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 20)) != 0 {
 				m.VideoTimestamp = new(int32)
@@ -13366,17 +13557,19 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m9 := &InputPeer{}
-			_ = m9.Decode(d)
-			m.FromPeer = m9
+			// m9 := &InputPeer{}
+			// _ = m9.Decode(d)
+			// m.FromPeer = m9
+			m.FromPeer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
 			m.RandomId, err = iface.DecodeInt64List(d)
 
-			m12 := &InputPeer{}
-			_ = m12.Decode(d)
-			m.ToPeer = m12
+			// m12 := &InputPeer{}
+			// _ = m12.Decode(d)
+			// m.ToPeer = m12
+			m.ToPeer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 9)) != 0 {
 				m.TopMsgId = new(int32)
@@ -13387,14 +13580,16 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m15 := &InputPeer{}
-				_ = m15.Decode(d)
-				m.SendAs = m15
+				// m15 := &InputPeer{}
+				// _ = m15.Decode(d)
+				// m.SendAs = m15
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m16 := &InputQuickReplyShortcut{}
-				_ = m16.Decode(d)
-				m.QuickReplyShortcut = m16
+				// m16 := &InputQuickReplyShortcut{}
+				// _ = m16.Decode(d)
+				// m.QuickReplyShortcut = m16
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 20)) != 0 {
 				m.VideoTimestamp = new(int32)
@@ -13417,8 +13612,8 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReportSpam <--
 type TLMessagesReportSpam struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesReportSpam) String() string {
@@ -13452,9 +13647,10 @@ func (m *TLMessagesReportSpam) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xcf1592db: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -13472,8 +13668,8 @@ func (m *TLMessagesReportSpam) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetPeerSettings <--
 type TLMessagesGetPeerSettings struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesGetPeerSettings) String() string {
@@ -13507,9 +13703,10 @@ func (m *TLMessagesGetPeerSettings) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xefd9a6a2: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -13527,11 +13724,11 @@ func (m *TLMessagesGetPeerSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReport <--
 type TLMessagesReport struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
-	Option  []byte     `json:"option"`
-	Message string     `json:"message"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
+	Option  []byte         `json:"option"`
+	Message string         `json:"message"`
 }
 
 func (m *TLMessagesReport) String() string {
@@ -13570,9 +13767,10 @@ func (m *TLMessagesReport) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfc78af9b: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -13755,9 +13953,9 @@ func (m *TLMessagesEditChatTitle) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditChatPhoto <--
 type TLMessagesEditChatPhoto struct {
-	ClazzID uint32          `json:"_id"`
-	ChatId  int64           `json:"chat_id"`
-	Photo   *InputChatPhoto `json:"photo"`
+	ClazzID uint32              `json:"_id"`
+	ChatId  int64               `json:"chat_id"`
+	Photo   InputChatPhotoClazz `json:"photo"`
 }
 
 func (m *TLMessagesEditChatPhoto) String() string {
@@ -13793,9 +13991,10 @@ func (m *TLMessagesEditChatPhoto) Decode(d *bin.Decoder) (err error) {
 		0x35ddd674: func() (err error) {
 			m.ChatId, err = d.Int64()
 
-			m2 := &InputChatPhoto{}
-			_ = m2.Decode(d)
-			m.Photo = m2
+			// m2 := &InputChatPhoto{}
+			// _ = m2.Decode(d)
+			// m.Photo = m2
+			m.Photo, _ = DecodeInputChatPhotoClazz(d)
 
 			return nil
 		},
@@ -13813,10 +14012,10 @@ func (m *TLMessagesEditChatPhoto) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesAddChatUser <--
 type TLMessagesAddChatUser struct {
-	ClazzID  uint32     `json:"_id"`
-	ChatId   int64      `json:"chat_id"`
-	UserId   *InputUser `json:"user_id"`
-	FwdLimit int32      `json:"fwd_limit"`
+	ClazzID  uint32         `json:"_id"`
+	ChatId   int64          `json:"chat_id"`
+	UserId   InputUserClazz `json:"user_id"`
+	FwdLimit int32          `json:"fwd_limit"`
 }
 
 func (m *TLMessagesAddChatUser) String() string {
@@ -13853,9 +14052,10 @@ func (m *TLMessagesAddChatUser) Decode(d *bin.Decoder) (err error) {
 		0xcbc6d107: func() (err error) {
 			m.ChatId, err = d.Int64()
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.UserId = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.UserId = m2
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.FwdLimit, err = d.Int32()
 
@@ -13875,10 +14075,10 @@ func (m *TLMessagesAddChatUser) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesDeleteChatUser <--
 type TLMessagesDeleteChatUser struct {
-	ClazzID       uint32     `json:"_id"`
-	RevokeHistory bool       `json:"revoke_history"`
-	ChatId        int64      `json:"chat_id"`
-	UserId        *InputUser `json:"user_id"`
+	ClazzID       uint32         `json:"_id"`
+	RevokeHistory bool           `json:"revoke_history"`
+	ChatId        int64          `json:"chat_id"`
+	UserId        InputUserClazz `json:"user_id"`
 }
 
 func (m *TLMessagesDeleteChatUser) String() string {
@@ -13933,9 +14133,10 @@ func (m *TLMessagesDeleteChatUser) Decode(d *bin.Decoder) (err error) {
 			}
 			m.ChatId, err = d.Int64()
 
-			m4 := &InputUser{}
-			_ = m4.Decode(d)
-			m.UserId = m4
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.UserId = m4
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -13953,10 +14154,10 @@ func (m *TLMessagesDeleteChatUser) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesCreateChat <--
 type TLMessagesCreateChat struct {
-	ClazzID   uint32       `json:"_id"`
-	Users     []*InputUser `json:"users"`
-	Title     string       `json:"title"`
-	TtlPeriod *int32       `json:"ttl_period"`
+	ClazzID   uint32           `json:"_id"`
+	Users     []InputUserClazz `json:"users"`
+	Title     string           `json:"title"`
+	TtlPeriod *int32           `json:"ttl_period"`
 }
 
 func (m *TLMessagesCreateChat) String() string {
@@ -14017,12 +14218,15 @@ func (m *TLMessagesCreateChat) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputUser, l2)
+			// v2 := make([]*InputUser, l2)
+			v2 := make([]InputUserClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputUser)
-				err3 = vv.Decode(d)
+				// vv := new(InputUser)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputUserClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Users = v2
 
@@ -14103,10 +14307,10 @@ func (m *TLMessagesGetDhConfig) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesRequestEncryption <--
 type TLMessagesRequestEncryption struct {
-	ClazzID  uint32     `json:"_id"`
-	UserId   *InputUser `json:"user_id"`
-	RandomId int32      `json:"random_id"`
-	GA       []byte     `json:"g_a"`
+	ClazzID  uint32         `json:"_id"`
+	UserId   InputUserClazz `json:"user_id"`
+	RandomId int32          `json:"random_id"`
+	GA       []byte         `json:"g_a"`
 }
 
 func (m *TLMessagesRequestEncryption) String() string {
@@ -14142,9 +14346,10 @@ func (m *TLMessagesRequestEncryption) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf64daf43: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.RandomId, err = d.Int32()
 			m.GA, err = d.Bytes()
@@ -14165,10 +14370,10 @@ func (m *TLMessagesRequestEncryption) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesAcceptEncryption <--
 type TLMessagesAcceptEncryption struct {
-	ClazzID        uint32              `json:"_id"`
-	Peer           *InputEncryptedChat `json:"peer"`
-	GB             []byte              `json:"g_b"`
-	KeyFingerprint int64               `json:"key_fingerprint"`
+	ClazzID        uint32                  `json:"_id"`
+	Peer           InputEncryptedChatClazz `json:"peer"`
+	GB             []byte                  `json:"g_b"`
+	KeyFingerprint int64                   `json:"key_fingerprint"`
 }
 
 func (m *TLMessagesAcceptEncryption) String() string {
@@ -14204,9 +14409,10 @@ func (m *TLMessagesAcceptEncryption) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3dbc0415: func() (err error) {
 
-			m1 := &InputEncryptedChat{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputEncryptedChat{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
 			m.GB, err = d.Bytes()
 			m.KeyFingerprint, err = d.Int64()
@@ -14299,9 +14505,9 @@ func (m *TLMessagesDiscardEncryption) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetEncryptedTyping <--
 type TLMessagesSetEncryptedTyping struct {
-	ClazzID uint32              `json:"_id"`
-	Peer    *InputEncryptedChat `json:"peer"`
-	Typing  *Bool               `json:"typing"`
+	ClazzID uint32                  `json:"_id"`
+	Peer    InputEncryptedChatClazz `json:"peer"`
+	Typing  BoolClazz               `json:"typing"`
 }
 
 func (m *TLMessagesSetEncryptedTyping) String() string {
@@ -14336,13 +14542,15 @@ func (m *TLMessagesSetEncryptedTyping) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x791451ed: func() (err error) {
 
-			m1 := &InputEncryptedChat{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputEncryptedChat{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Typing = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Typing = m2
+			m.Typing, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -14360,9 +14568,9 @@ func (m *TLMessagesSetEncryptedTyping) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReadEncryptedHistory <--
 type TLMessagesReadEncryptedHistory struct {
-	ClazzID uint32              `json:"_id"`
-	Peer    *InputEncryptedChat `json:"peer"`
-	MaxDate int32               `json:"max_date"`
+	ClazzID uint32                  `json:"_id"`
+	Peer    InputEncryptedChatClazz `json:"peer"`
+	MaxDate int32                   `json:"max_date"`
 }
 
 func (m *TLMessagesReadEncryptedHistory) String() string {
@@ -14397,9 +14605,10 @@ func (m *TLMessagesReadEncryptedHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7f4b690a: func() (err error) {
 
-			m1 := &InputEncryptedChat{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputEncryptedChat{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
 			m.MaxDate, err = d.Int32()
 
@@ -14419,11 +14628,11 @@ func (m *TLMessagesReadEncryptedHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendEncrypted <--
 type TLMessagesSendEncrypted struct {
-	ClazzID  uint32              `json:"_id"`
-	Silent   bool                `json:"silent"`
-	Peer     *InputEncryptedChat `json:"peer"`
-	RandomId int64               `json:"random_id"`
-	Data     []byte              `json:"data"`
+	ClazzID  uint32                  `json:"_id"`
+	Silent   bool                    `json:"silent"`
+	Peer     InputEncryptedChatClazz `json:"peer"`
+	RandomId int64                   `json:"random_id"`
+	Data     []byte                  `json:"data"`
 }
 
 func (m *TLMessagesSendEncrypted) String() string {
@@ -14478,9 +14687,10 @@ func (m *TLMessagesSendEncrypted) Decode(d *bin.Decoder) (err error) {
 				m.Silent = true
 			}
 
-			m3 := &InputEncryptedChat{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputEncryptedChat{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
 			m.RandomId, err = d.Int64()
 			m.Data, err = d.Bytes()
@@ -14501,12 +14711,12 @@ func (m *TLMessagesSendEncrypted) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendEncryptedFile <--
 type TLMessagesSendEncryptedFile struct {
-	ClazzID  uint32              `json:"_id"`
-	Silent   bool                `json:"silent"`
-	Peer     *InputEncryptedChat `json:"peer"`
-	RandomId int64               `json:"random_id"`
-	Data     []byte              `json:"data"`
-	File     *InputEncryptedFile `json:"file"`
+	ClazzID  uint32                  `json:"_id"`
+	Silent   bool                    `json:"silent"`
+	Peer     InputEncryptedChatClazz `json:"peer"`
+	RandomId int64                   `json:"random_id"`
+	Data     []byte                  `json:"data"`
+	File     InputEncryptedFileClazz `json:"file"`
 }
 
 func (m *TLMessagesSendEncryptedFile) String() string {
@@ -14562,16 +14772,18 @@ func (m *TLMessagesSendEncryptedFile) Decode(d *bin.Decoder) (err error) {
 				m.Silent = true
 			}
 
-			m3 := &InputEncryptedChat{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputEncryptedChat{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
 			m.RandomId, err = d.Int64()
 			m.Data, err = d.Bytes()
 
-			m6 := &InputEncryptedFile{}
-			_ = m6.Decode(d)
-			m.File = m6
+			// m6 := &InputEncryptedFile{}
+			// _ = m6.Decode(d)
+			// m.File = m6
+			m.File, _ = DecodeInputEncryptedFileClazz(d)
 
 			return nil
 		},
@@ -14589,10 +14801,10 @@ func (m *TLMessagesSendEncryptedFile) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendEncryptedService <--
 type TLMessagesSendEncryptedService struct {
-	ClazzID  uint32              `json:"_id"`
-	Peer     *InputEncryptedChat `json:"peer"`
-	RandomId int64               `json:"random_id"`
-	Data     []byte              `json:"data"`
+	ClazzID  uint32                  `json:"_id"`
+	Peer     InputEncryptedChatClazz `json:"peer"`
+	RandomId int64                   `json:"random_id"`
+	Data     []byte                  `json:"data"`
 }
 
 func (m *TLMessagesSendEncryptedService) String() string {
@@ -14628,9 +14840,10 @@ func (m *TLMessagesSendEncryptedService) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x32d439a4: func() (err error) {
 
-			m1 := &InputEncryptedChat{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputEncryptedChat{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
 			m.RandomId, err = d.Int64()
 			m.Data, err = d.Bytes()
@@ -14703,8 +14916,8 @@ func (m *TLMessagesReceivedQueue) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReportEncryptedSpam <--
 type TLMessagesReportEncryptedSpam struct {
-	ClazzID uint32              `json:"_id"`
-	Peer    *InputEncryptedChat `json:"peer"`
+	ClazzID uint32                  `json:"_id"`
+	Peer    InputEncryptedChatClazz `json:"peer"`
 }
 
 func (m *TLMessagesReportEncryptedSpam) String() string {
@@ -14738,9 +14951,10 @@ func (m *TLMessagesReportEncryptedSpam) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4b0c8c0f: func() (err error) {
 
-			m1 := &InputEncryptedChat{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputEncryptedChat{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
 			return nil
 		},
@@ -14918,9 +15132,9 @@ func (m *TLMessagesGetAllStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetWebPagePreview <--
 type TLMessagesGetWebPagePreview struct {
-	ClazzID  uint32           `json:"_id"`
-	Message  string           `json:"message"`
-	Entities []*MessageEntity `json:"entities"`
+	ClazzID  uint32               `json:"_id"`
+	Message  string               `json:"message"`
+	Entities []MessageEntityClazz `json:"entities"`
 }
 
 func (m *TLMessagesGetWebPagePreview) String() string {
@@ -14980,12 +15194,15 @@ func (m *TLMessagesGetWebPagePreview) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l3, err3 := d.Int()
-				v3 := make([]*MessageEntity, l3)
+				// v3 := make([]*MessageEntity, l3)
+				v3 := make([]MessageEntityClazz, l3)
 				for i := 0; i < l3; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v3[i] = vv
+					v3[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v3[i] = vv
 				}
 				m.Entities = v3
 			}
@@ -15006,14 +15223,14 @@ func (m *TLMessagesGetWebPagePreview) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesExportChatInvite <--
 type TLMessagesExportChatInvite struct {
-	ClazzID               uint32                    `json:"_id"`
-	LegacyRevokePermanent bool                      `json:"legacy_revoke_permanent"`
-	RequestNeeded         bool                      `json:"request_needed"`
-	Peer                  *InputPeer                `json:"peer"`
-	ExpireDate            *int32                    `json:"expire_date"`
-	UsageLimit            *int32                    `json:"usage_limit"`
-	Title                 *string                   `json:"title"`
-	SubscriptionPricing   *StarsSubscriptionPricing `json:"subscription_pricing"`
+	ClazzID               uint32                        `json:"_id"`
+	LegacyRevokePermanent bool                          `json:"legacy_revoke_permanent"`
+	RequestNeeded         bool                          `json:"request_needed"`
+	Peer                  InputPeerClazz                `json:"peer"`
+	ExpireDate            *int32                        `json:"expire_date"`
+	UsageLimit            *int32                        `json:"usage_limit"`
+	Title                 *string                       `json:"title"`
+	SubscriptionPricing   StarsSubscriptionPricingClazz `json:"subscription_pricing"`
 }
 
 func (m *TLMessagesExportChatInvite) String() string {
@@ -15100,9 +15317,10 @@ func (m *TLMessagesExportChatInvite) Decode(d *bin.Decoder) (err error) {
 				m.RequestNeeded = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.ExpireDate = new(int32)
@@ -15118,9 +15336,10 @@ func (m *TLMessagesExportChatInvite) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 5)) != 0 {
-				m8 := &StarsSubscriptionPricing{}
-				_ = m8.Decode(d)
-				m.SubscriptionPricing = m8
+				// m8 := &StarsSubscriptionPricing{}
+				// _ = m8.Decode(d)
+				// m.SubscriptionPricing = m8
+				m.SubscriptionPricing, _ = DecodeStarsSubscriptionPricingClazz(d)
 			}
 
 			return nil
@@ -15243,9 +15462,9 @@ func (m *TLMessagesImportChatInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetStickerSet <--
 type TLMessagesGetStickerSet struct {
-	ClazzID    uint32           `json:"_id"`
-	Stickerset *InputStickerSet `json:"stickerset"`
-	Hash       int32            `json:"hash"`
+	ClazzID    uint32               `json:"_id"`
+	Stickerset InputStickerSetClazz `json:"stickerset"`
+	Hash       int32                `json:"hash"`
 }
 
 func (m *TLMessagesGetStickerSet) String() string {
@@ -15287,9 +15506,10 @@ func (m *TLMessagesGetStickerSet) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc8a0ec74: func() (err error) {
 
-			m1 := &InputStickerSet{}
-			_ = m1.Decode(d)
-			m.Stickerset = m1
+			// m1 := &InputStickerSet{}
+			// _ = m1.Decode(d)
+			// m.Stickerset = m1
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			m.Hash, err = d.Int32()
 
@@ -15297,9 +15517,10 @@ func (m *TLMessagesGetStickerSet) Decode(d *bin.Decoder) (err error) {
 		},
 		0x2619a90e: func() (err error) {
 
-			m1 := &InputStickerSet{}
-			_ = m1.Decode(d)
-			m.Stickerset = m1
+			// m1 := &InputStickerSet{}
+			// _ = m1.Decode(d)
+			// m.Stickerset = m1
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			return nil
 		},
@@ -15317,9 +15538,9 @@ func (m *TLMessagesGetStickerSet) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesInstallStickerSet <--
 type TLMessagesInstallStickerSet struct {
-	ClazzID    uint32           `json:"_id"`
-	Stickerset *InputStickerSet `json:"stickerset"`
-	Archived   *Bool            `json:"archived"`
+	ClazzID    uint32               `json:"_id"`
+	Stickerset InputStickerSetClazz `json:"stickerset"`
+	Archived   BoolClazz            `json:"archived"`
 }
 
 func (m *TLMessagesInstallStickerSet) String() string {
@@ -15354,13 +15575,15 @@ func (m *TLMessagesInstallStickerSet) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc78fe460: func() (err error) {
 
-			m1 := &InputStickerSet{}
-			_ = m1.Decode(d)
-			m.Stickerset = m1
+			// m1 := &InputStickerSet{}
+			// _ = m1.Decode(d)
+			// m.Stickerset = m1
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Archived = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Archived = m2
+			m.Archived, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -15378,8 +15601,8 @@ func (m *TLMessagesInstallStickerSet) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesUninstallStickerSet <--
 type TLMessagesUninstallStickerSet struct {
-	ClazzID    uint32           `json:"_id"`
-	Stickerset *InputStickerSet `json:"stickerset"`
+	ClazzID    uint32               `json:"_id"`
+	Stickerset InputStickerSetClazz `json:"stickerset"`
 }
 
 func (m *TLMessagesUninstallStickerSet) String() string {
@@ -15413,9 +15636,10 @@ func (m *TLMessagesUninstallStickerSet) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf96e55de: func() (err error) {
 
-			m1 := &InputStickerSet{}
-			_ = m1.Decode(d)
-			m.Stickerset = m1
+			// m1 := &InputStickerSet{}
+			// _ = m1.Decode(d)
+			// m.Stickerset = m1
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			return nil
 		},
@@ -15433,11 +15657,11 @@ func (m *TLMessagesUninstallStickerSet) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesStartBot <--
 type TLMessagesStartBot struct {
-	ClazzID    uint32     `json:"_id"`
-	Bot        *InputUser `json:"bot"`
-	Peer       *InputPeer `json:"peer"`
-	RandomId   int64      `json:"random_id"`
-	StartParam string     `json:"start_param"`
+	ClazzID    uint32         `json:"_id"`
+	Bot        InputUserClazz `json:"bot"`
+	Peer       InputPeerClazz `json:"peer"`
+	RandomId   int64          `json:"random_id"`
+	StartParam string         `json:"start_param"`
 }
 
 func (m *TLMessagesStartBot) String() string {
@@ -15474,13 +15698,15 @@ func (m *TLMessagesStartBot) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe6df7378: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.RandomId, err = d.Int64()
 			m.StartParam, err = d.String()
@@ -15501,10 +15727,10 @@ func (m *TLMessagesStartBot) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetMessagesViews <--
 type TLMessagesGetMessagesViews struct {
-	ClazzID   uint32     `json:"_id"`
-	Peer      *InputPeer `json:"peer"`
-	Id        []int32    `json:"id"`
-	Increment *Bool      `json:"increment"`
+	ClazzID   uint32         `json:"_id"`
+	Peer      InputPeerClazz `json:"peer"`
+	Id        []int32        `json:"id"`
+	Increment BoolClazz      `json:"increment"`
 }
 
 func (m *TLMessagesGetMessagesViews) String() string {
@@ -15542,15 +15768,17 @@ func (m *TLMessagesGetMessagesViews) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5784d3e1: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
-			m3 := &Bool{}
-			_ = m3.Decode(d)
-			m.Increment = m3
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.Increment = m3
+			m.Increment, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -15568,10 +15796,10 @@ func (m *TLMessagesGetMessagesViews) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditChatAdmin <--
 type TLMessagesEditChatAdmin struct {
-	ClazzID uint32     `json:"_id"`
-	ChatId  int64      `json:"chat_id"`
-	UserId  *InputUser `json:"user_id"`
-	IsAdmin *Bool      `json:"is_admin"`
+	ClazzID uint32         `json:"_id"`
+	ChatId  int64          `json:"chat_id"`
+	UserId  InputUserClazz `json:"user_id"`
+	IsAdmin BoolClazz      `json:"is_admin"`
 }
 
 func (m *TLMessagesEditChatAdmin) String() string {
@@ -15608,13 +15836,15 @@ func (m *TLMessagesEditChatAdmin) Decode(d *bin.Decoder) (err error) {
 		0xa85bd1c2: func() (err error) {
 			m.ChatId, err = d.Int64()
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.UserId = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.UserId = m2
+			m.UserId, _ = DecodeInputUserClazz(d)
 
-			m3 := &Bool{}
-			_ = m3.Decode(d)
-			m.IsAdmin = m3
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.IsAdmin = m3
+			m.IsAdmin, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -15684,19 +15914,19 @@ func (m *TLMessagesMigrateChat) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSearchGlobal <--
 type TLMessagesSearchGlobal struct {
-	ClazzID        uint32          `json:"_id"`
-	BroadcastsOnly bool            `json:"broadcasts_only"`
-	GroupsOnly     bool            `json:"groups_only"`
-	UsersOnly      bool            `json:"users_only"`
-	FolderId       *int32          `json:"folder_id"`
-	Q              string          `json:"q"`
-	Filter         *MessagesFilter `json:"filter"`
-	MinDate        int32           `json:"min_date"`
-	MaxDate        int32           `json:"max_date"`
-	OffsetRate     int32           `json:"offset_rate"`
-	OffsetPeer     *InputPeer      `json:"offset_peer"`
-	OffsetId       int32           `json:"offset_id"`
-	Limit          int32           `json:"limit"`
+	ClazzID        uint32              `json:"_id"`
+	BroadcastsOnly bool                `json:"broadcasts_only"`
+	GroupsOnly     bool                `json:"groups_only"`
+	UsersOnly      bool                `json:"users_only"`
+	FolderId       *int32              `json:"folder_id"`
+	Q              string              `json:"q"`
+	Filter         MessagesFilterClazz `json:"filter"`
+	MinDate        int32               `json:"min_date"`
+	MaxDate        int32               `json:"max_date"`
+	OffsetRate     int32               `json:"offset_rate"`
+	OffsetPeer     InputPeerClazz      `json:"offset_peer"`
+	OffsetId       int32               `json:"offset_id"`
+	Limit          int32               `json:"limit"`
 }
 
 func (m *TLMessagesSearchGlobal) String() string {
@@ -15780,17 +16010,19 @@ func (m *TLMessagesSearchGlobal) Decode(d *bin.Decoder) (err error) {
 			}
 			m.Q, err = d.String()
 
-			m7 := &MessagesFilter{}
-			_ = m7.Decode(d)
-			m.Filter = m7
+			// m7 := &MessagesFilter{}
+			// _ = m7.Decode(d)
+			// m.Filter = m7
+			m.Filter, _ = DecodeMessagesFilterClazz(d)
 
 			m.MinDate, err = d.Int32()
 			m.MaxDate, err = d.Int32()
 			m.OffsetRate, err = d.Int32()
 
-			m11 := &InputPeer{}
-			_ = m11.Decode(d)
-			m.OffsetPeer = m11
+			// m11 := &InputPeer{}
+			// _ = m11.Decode(d)
+			// m.OffsetPeer = m11
+			m.OffsetPeer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -16002,9 +16234,9 @@ func (m *TLMessagesGetSavedGifs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSaveGif <--
 type TLMessagesSaveGif struct {
-	ClazzID uint32         `json:"_id"`
-	Id      *InputDocument `json:"id"`
-	Unsave  *Bool          `json:"unsave"`
+	ClazzID uint32             `json:"_id"`
+	Id      InputDocumentClazz `json:"id"`
+	Unsave  BoolClazz          `json:"unsave"`
 }
 
 func (m *TLMessagesSaveGif) String() string {
@@ -16039,13 +16271,15 @@ func (m *TLMessagesSaveGif) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x327a30cb: func() (err error) {
 
-			m1 := &InputDocument{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &InputDocument{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputDocumentClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Unsave = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Unsave = m2
+			m.Unsave, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -16063,12 +16297,12 @@ func (m *TLMessagesSaveGif) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetInlineBotResults <--
 type TLMessagesGetInlineBotResults struct {
-	ClazzID  uint32         `json:"_id"`
-	Bot      *InputUser     `json:"bot"`
-	Peer     *InputPeer     `json:"peer"`
-	GeoPoint *InputGeoPoint `json:"geo_point"`
-	Query    string         `json:"query"`
-	Offset   string         `json:"offset"`
+	ClazzID  uint32             `json:"_id"`
+	Bot      InputUserClazz     `json:"bot"`
+	Peer     InputPeerClazz     `json:"peer"`
+	GeoPoint InputGeoPointClazz `json:"geo_point"`
+	Query    string             `json:"query"`
+	Offset   string             `json:"offset"`
 }
 
 func (m *TLMessagesGetInlineBotResults) String() string {
@@ -16125,18 +16359,21 @@ func (m *TLMessagesGetInlineBotResults) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.Bot = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.Bot = m2
+			m.Bot, _ = DecodeInputUserClazz(d)
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m4 := &InputGeoPoint{}
-				_ = m4.Decode(d)
-				m.GeoPoint = m4
+				// m4 := &InputGeoPoint{}
+				// _ = m4.Decode(d)
+				// m.GeoPoint = m4
+				m.GeoPoint, _ = DecodeInputGeoPointClazz(d)
 			}
 			m.Query, err = d.String()
 			m.Offset, err = d.String()
@@ -16157,15 +16394,15 @@ func (m *TLMessagesGetInlineBotResults) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetInlineBotResults <--
 type TLMessagesSetInlineBotResults struct {
-	ClazzID       uint32                  `json:"_id"`
-	Gallery       bool                    `json:"gallery"`
-	Private       bool                    `json:"private"`
-	QueryId       int64                   `json:"query_id"`
-	Results       []*InputBotInlineResult `json:"results"`
-	CacheTime     int32                   `json:"cache_time"`
-	NextOffset    *string                 `json:"next_offset"`
-	SwitchPm      *InlineBotSwitchPM      `json:"switch_pm"`
-	SwitchWebview *InlineBotWebView       `json:"switch_webview"`
+	ClazzID       uint32                      `json:"_id"`
+	Gallery       bool                        `json:"gallery"`
+	Private       bool                        `json:"private"`
+	QueryId       int64                       `json:"query_id"`
+	Results       []InputBotInlineResultClazz `json:"results"`
+	CacheTime     int32                       `json:"cache_time"`
+	NextOffset    *string                     `json:"next_offset"`
+	SwitchPm      InlineBotSwitchPMClazz      `json:"switch_pm"`
+	SwitchWebview InlineBotWebViewClazz       `json:"switch_webview"`
 }
 
 func (m *TLMessagesSetInlineBotResults) String() string {
@@ -16255,12 +16492,15 @@ func (m *TLMessagesSetInlineBotResults) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l5, err3 := d.Int()
-			v5 := make([]*InputBotInlineResult, l5)
+			// v5 := make([]*InputBotInlineResult, l5)
+			v5 := make([]InputBotInlineResultClazz, l5)
 			for i := 0; i < l5; i++ {
-				vv := new(InputBotInlineResult)
-				err3 = vv.Decode(d)
+				// vv := new(InputBotInlineResult)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v5[i] = vv
+				v5[i], _ = DecodeInputBotInlineResultClazz(d)
 				_ = err3
-				v5[i] = vv
 			}
 			m.Results = v5
 
@@ -16271,14 +16511,16 @@ func (m *TLMessagesSetInlineBotResults) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 3)) != 0 {
-				m8 := &InlineBotSwitchPM{}
-				_ = m8.Decode(d)
-				m.SwitchPm = m8
+				// m8 := &InlineBotSwitchPM{}
+				// _ = m8.Decode(d)
+				// m.SwitchPm = m8
+				m.SwitchPm, _ = DecodeInlineBotSwitchPMClazz(d)
 			}
 			if (flags & (1 << 4)) != 0 {
-				m9 := &InlineBotWebView{}
-				_ = m9.Decode(d)
-				m.SwitchWebview = m9
+				// m9 := &InlineBotWebView{}
+				// _ = m9.Decode(d)
+				// m.SwitchWebview = m9
+				m.SwitchWebview, _ = DecodeInlineBotWebViewClazz(d)
 			}
 
 			return nil
@@ -16297,20 +16539,20 @@ func (m *TLMessagesSetInlineBotResults) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendInlineBotResult <--
 type TLMessagesSendInlineBotResult struct {
-	ClazzID            uint32                   `json:"_id"`
-	Silent             bool                     `json:"silent"`
-	Background         bool                     `json:"background"`
-	ClearDraft         bool                     `json:"clear_draft"`
-	HideVia            bool                     `json:"hide_via"`
-	Peer               *InputPeer               `json:"peer"`
-	ReplyTo            *InputReplyTo            `json:"reply_to"`
-	RandomId           int64                    `json:"random_id"`
-	QueryId            int64                    `json:"query_id"`
-	Id                 string                   `json:"id"`
-	ScheduleDate       *int32                   `json:"schedule_date"`
-	SendAs             *InputPeer               `json:"send_as"`
-	QuickReplyShortcut *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
-	AllowPaidStars     *int64                   `json:"allow_paid_stars"`
+	ClazzID            uint32                       `json:"_id"`
+	Silent             bool                         `json:"silent"`
+	Background         bool                         `json:"background"`
+	ClearDraft         bool                         `json:"clear_draft"`
+	HideVia            bool                         `json:"hide_via"`
+	Peer               InputPeerClazz               `json:"peer"`
+	ReplyTo            InputReplyToClazz            `json:"reply_to"`
+	RandomId           int64                        `json:"random_id"`
+	QueryId            int64                        `json:"query_id"`
+	Id                 string                       `json:"id"`
+	ScheduleDate       *int32                       `json:"schedule_date"`
+	SendAs             InputPeerClazz               `json:"send_as"`
+	QuickReplyShortcut InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
+	AllowPaidStars     *int64                       `json:"allow_paid_stars"`
 }
 
 func (m *TLMessagesSendInlineBotResult) String() string {
@@ -16482,14 +16724,16 @@ func (m *TLMessagesSendInlineBotResult) Decode(d *bin.Decoder) (err error) {
 				m.HideVia = true
 			}
 
-			m6 := &InputPeer{}
-			_ = m6.Decode(d)
-			m.Peer = m6
+			// m6 := &InputPeer{}
+			// _ = m6.Decode(d)
+			// m.Peer = m6
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m7 := &InputReplyTo{}
-				_ = m7.Decode(d)
-				m.ReplyTo = m7
+				// m7 := &InputReplyTo{}
+				// _ = m7.Decode(d)
+				// m.ReplyTo = m7
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			m.RandomId, err = d.Int64()
 			m.QueryId, err = d.Int64()
@@ -16499,14 +16743,16 @@ func (m *TLMessagesSendInlineBotResult) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m12 := &InputPeer{}
-				_ = m12.Decode(d)
-				m.SendAs = m12
+				// m12 := &InputPeer{}
+				// _ = m12.Decode(d)
+				// m.SendAs = m12
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m13 := &InputQuickReplyShortcut{}
-				_ = m13.Decode(d)
-				m.QuickReplyShortcut = m13
+				// m13 := &InputQuickReplyShortcut{}
+				// _ = m13.Decode(d)
+				// m.QuickReplyShortcut = m13
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 21)) != 0 {
 				m.AllowPaidStars = new(int64)
@@ -16531,14 +16777,16 @@ func (m *TLMessagesSendInlineBotResult) Decode(d *bin.Decoder) (err error) {
 				m.HideVia = true
 			}
 
-			m6 := &InputPeer{}
-			_ = m6.Decode(d)
-			m.Peer = m6
+			// m6 := &InputPeer{}
+			// _ = m6.Decode(d)
+			// m.Peer = m6
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m7 := &InputReplyTo{}
-				_ = m7.Decode(d)
-				m.ReplyTo = m7
+				// m7 := &InputReplyTo{}
+				// _ = m7.Decode(d)
+				// m.ReplyTo = m7
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			m.RandomId, err = d.Int64()
 			m.QueryId, err = d.Int64()
@@ -16548,14 +16796,16 @@ func (m *TLMessagesSendInlineBotResult) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m12 := &InputPeer{}
-				_ = m12.Decode(d)
-				m.SendAs = m12
+				// m12 := &InputPeer{}
+				// _ = m12.Decode(d)
+				// m.SendAs = m12
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m13 := &InputQuickReplyShortcut{}
-				_ = m13.Decode(d)
-				m.QuickReplyShortcut = m13
+				// m13 := &InputQuickReplyShortcut{}
+				// _ = m13.Decode(d)
+				// m.QuickReplyShortcut = m13
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 
 			return nil
@@ -16574,9 +16824,9 @@ func (m *TLMessagesSendInlineBotResult) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetMessageEditData <--
 type TLMessagesGetMessageEditData struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      int32      `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      int32          `json:"id"`
 }
 
 func (m *TLMessagesGetMessageEditData) String() string {
@@ -16611,9 +16861,10 @@ func (m *TLMessagesGetMessageEditData) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfda68d36: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 
@@ -16633,17 +16884,17 @@ func (m *TLMessagesGetMessageEditData) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditMessage <--
 type TLMessagesEditMessage struct {
-	ClazzID              uint32           `json:"_id"`
-	NoWebpage            bool             `json:"no_webpage"`
-	InvertMedia          bool             `json:"invert_media"`
-	Peer                 *InputPeer       `json:"peer"`
-	Id                   int32            `json:"id"`
-	Message              *string          `json:"message"`
-	Media                *InputMedia      `json:"media"`
-	ReplyMarkup          *ReplyMarkup     `json:"reply_markup"`
-	Entities             []*MessageEntity `json:"entities"`
-	ScheduleDate         *int32           `json:"schedule_date"`
-	QuickReplyShortcutId *int32           `json:"quick_reply_shortcut_id"`
+	ClazzID              uint32               `json:"_id"`
+	NoWebpage            bool                 `json:"no_webpage"`
+	InvertMedia          bool                 `json:"invert_media"`
+	Peer                 InputPeerClazz       `json:"peer"`
+	Id                   int32                `json:"id"`
+	Message              *string              `json:"message"`
+	Media                InputMediaClazz      `json:"media"`
+	ReplyMarkup          ReplyMarkupClazz     `json:"reply_markup"`
+	Entities             []MessageEntityClazz `json:"entities"`
+	ScheduleDate         *int32               `json:"schedule_date"`
+	QuickReplyShortcutId *int32               `json:"quick_reply_shortcut_id"`
 }
 
 func (m *TLMessagesEditMessage) String() string {
@@ -16744,9 +16995,10 @@ func (m *TLMessagesEditMessage) Decode(d *bin.Decoder) (err error) {
 				m.InvertMedia = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 			if (flags & (1 << 11)) != 0 {
@@ -16755,14 +17007,16 @@ func (m *TLMessagesEditMessage) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 14)) != 0 {
-				m7 := &InputMedia{}
-				_ = m7.Decode(d)
-				m.Media = m7
+				// m7 := &InputMedia{}
+				// _ = m7.Decode(d)
+				// m.Media = m7
+				m.Media, _ = DecodeInputMediaClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
-				m8 := &ReplyMarkup{}
-				_ = m8.Decode(d)
-				m.ReplyMarkup = m8
+				// m8 := &ReplyMarkup{}
+				// _ = m8.Decode(d)
+				// m.ReplyMarkup = m8
+				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c9, err2 := d.ClazzID()
@@ -16771,12 +17025,15 @@ func (m *TLMessagesEditMessage) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l9, err3 := d.Int()
-				v9 := make([]*MessageEntity, l9)
+				// v9 := make([]*MessageEntity, l9)
+				v9 := make([]MessageEntityClazz, l9)
 				for i := 0; i < l9; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v9[i] = vv
+					v9[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v9[i] = vv
 				}
 				m.Entities = v9
 			}
@@ -16805,14 +17062,14 @@ func (m *TLMessagesEditMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditInlineBotMessage <--
 type TLMessagesEditInlineBotMessage struct {
-	ClazzID     uint32                   `json:"_id"`
-	NoWebpage   bool                     `json:"no_webpage"`
-	InvertMedia bool                     `json:"invert_media"`
-	Id          *InputBotInlineMessageID `json:"id"`
-	Message     *string                  `json:"message"`
-	Media       *InputMedia              `json:"media"`
-	ReplyMarkup *ReplyMarkup             `json:"reply_markup"`
-	Entities    []*MessageEntity         `json:"entities"`
+	ClazzID     uint32                       `json:"_id"`
+	NoWebpage   bool                         `json:"no_webpage"`
+	InvertMedia bool                         `json:"invert_media"`
+	Id          InputBotInlineMessageIDClazz `json:"id"`
+	Message     *string                      `json:"message"`
+	Media       InputMediaClazz              `json:"media"`
+	ReplyMarkup ReplyMarkupClazz             `json:"reply_markup"`
+	Entities    []MessageEntityClazz         `json:"entities"`
 }
 
 func (m *TLMessagesEditInlineBotMessage) String() string {
@@ -16899,9 +17156,10 @@ func (m *TLMessagesEditInlineBotMessage) Decode(d *bin.Decoder) (err error) {
 				m.InvertMedia = true
 			}
 
-			m4 := &InputBotInlineMessageID{}
-			_ = m4.Decode(d)
-			m.Id = m4
+			// m4 := &InputBotInlineMessageID{}
+			// _ = m4.Decode(d)
+			// m.Id = m4
+			m.Id, _ = DecodeInputBotInlineMessageIDClazz(d)
 
 			if (flags & (1 << 11)) != 0 {
 				m.Message = new(string)
@@ -16909,14 +17167,16 @@ func (m *TLMessagesEditInlineBotMessage) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 14)) != 0 {
-				m6 := &InputMedia{}
-				_ = m6.Decode(d)
-				m.Media = m6
+				// m6 := &InputMedia{}
+				// _ = m6.Decode(d)
+				// m.Media = m6
+				m.Media, _ = DecodeInputMediaClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
-				m7 := &ReplyMarkup{}
-				_ = m7.Decode(d)
-				m.ReplyMarkup = m7
+				// m7 := &ReplyMarkup{}
+				// _ = m7.Decode(d)
+				// m.ReplyMarkup = m7
+				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c8, err2 := d.ClazzID()
@@ -16925,12 +17185,15 @@ func (m *TLMessagesEditInlineBotMessage) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l8, err3 := d.Int()
-				v8 := make([]*MessageEntity, l8)
+				// v8 := make([]*MessageEntity, l8)
+				v8 := make([]MessageEntityClazz, l8)
 				for i := 0; i < l8; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v8[i] = vv
+					v8[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v8[i] = vv
 				}
 				m.Entities = v8
 			}
@@ -16951,12 +17214,12 @@ func (m *TLMessagesEditInlineBotMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetBotCallbackAnswer <--
 type TLMessagesGetBotCallbackAnswer struct {
-	ClazzID  uint32                 `json:"_id"`
-	Game     bool                   `json:"game"`
-	Peer     *InputPeer             `json:"peer"`
-	MsgId    int32                  `json:"msg_id"`
-	Data     []byte                 `json:"data"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Game     bool                       `json:"game"`
+	Peer     InputPeerClazz             `json:"peer"`
+	MsgId    int32                      `json:"msg_id"`
+	Data     []byte                     `json:"data"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLMessagesGetBotCallbackAnswer) String() string {
@@ -17024,9 +17287,10 @@ func (m *TLMessagesGetBotCallbackAnswer) Decode(d *bin.Decoder) (err error) {
 				m.Game = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
@@ -17034,9 +17298,10 @@ func (m *TLMessagesGetBotCallbackAnswer) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 2)) != 0 {
-				m6 := &InputCheckPasswordSRP{}
-				_ = m6.Decode(d)
-				m.Password = m6
+				// m6 := &InputCheckPasswordSRP{}
+				// _ = m6.Decode(d)
+				// m.Password = m6
+				m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 			}
 
 			return nil
@@ -17157,8 +17422,8 @@ func (m *TLMessagesSetBotCallbackAnswer) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetPeerDialogs <--
 type TLMessagesGetPeerDialogs struct {
-	ClazzID uint32             `json:"_id"`
-	Peers   []*InputDialogPeer `json:"peers"`
+	ClazzID uint32                 `json:"_id"`
+	Peers   []InputDialogPeerClazz `json:"peers"`
 }
 
 func (m *TLMessagesGetPeerDialogs) String() string {
@@ -17197,12 +17462,15 @@ func (m *TLMessagesGetPeerDialogs) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputDialogPeer, l1)
+			// v1 := make([]*InputDialogPeer, l1)
+			v1 := make([]InputDialogPeerClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputDialogPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputDialogPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputDialogPeerClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Peers = v1
 
@@ -17222,15 +17490,15 @@ func (m *TLMessagesGetPeerDialogs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSaveDraft <--
 type TLMessagesSaveDraft struct {
-	ClazzID     uint32           `json:"_id"`
-	NoWebpage   bool             `json:"no_webpage"`
-	InvertMedia bool             `json:"invert_media"`
-	ReplyTo     *InputReplyTo    `json:"reply_to"`
-	Peer        *InputPeer       `json:"peer"`
-	Message     string           `json:"message"`
-	Entities    []*MessageEntity `json:"entities"`
-	Media       *InputMedia      `json:"media"`
-	Effect      *int64           `json:"effect"`
+	ClazzID     uint32               `json:"_id"`
+	NoWebpage   bool                 `json:"no_webpage"`
+	InvertMedia bool                 `json:"invert_media"`
+	ReplyTo     InputReplyToClazz    `json:"reply_to"`
+	Peer        InputPeerClazz       `json:"peer"`
+	Message     string               `json:"message"`
+	Entities    []MessageEntityClazz `json:"entities"`
+	Media       InputMediaClazz      `json:"media"`
+	Effect      *int64               `json:"effect"`
 }
 
 func (m *TLMessagesSaveDraft) String() string {
@@ -17317,14 +17585,16 @@ func (m *TLMessagesSaveDraft) Decode(d *bin.Decoder) (err error) {
 				m.InvertMedia = true
 			}
 			if (flags & (1 << 4)) != 0 {
-				m4 := &InputReplyTo{}
-				_ = m4.Decode(d)
-				m.ReplyTo = m4
+				// m4 := &InputReplyTo{}
+				// _ = m4.Decode(d)
+				// m.ReplyTo = m4
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 
-			m5 := &InputPeer{}
-			_ = m5.Decode(d)
-			m.Peer = m5
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.Peer = m5
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Message, err = d.String()
 			if (flags & (1 << 3)) != 0 {
@@ -17334,19 +17604,23 @@ func (m *TLMessagesSaveDraft) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l7, err3 := d.Int()
-				v7 := make([]*MessageEntity, l7)
+				// v7 := make([]*MessageEntity, l7)
+				v7 := make([]MessageEntityClazz, l7)
 				for i := 0; i < l7; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v7[i] = vv
+					v7[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v7[i] = vv
 				}
 				m.Entities = v7
 			}
 			if (flags & (1 << 5)) != 0 {
-				m8 := &InputMedia{}
-				_ = m8.Decode(d)
-				m.Media = m8
+				// m8 := &InputMedia{}
+				// _ = m8.Decode(d)
+				// m.Media = m8
+				m.Media, _ = DecodeInputMediaClazz(d)
 			}
 			if (flags & (1 << 7)) != 0 {
 				m.Effect = new(int64)
@@ -17594,10 +17868,10 @@ func (m *TLMessagesGetRecentStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSaveRecentSticker <--
 type TLMessagesSaveRecentSticker struct {
-	ClazzID  uint32         `json:"_id"`
-	Attached bool           `json:"attached"`
-	Id       *InputDocument `json:"id"`
-	Unsave   *Bool          `json:"unsave"`
+	ClazzID  uint32             `json:"_id"`
+	Attached bool               `json:"attached"`
+	Id       InputDocumentClazz `json:"id"`
+	Unsave   BoolClazz          `json:"unsave"`
 }
 
 func (m *TLMessagesSaveRecentSticker) String() string {
@@ -17651,13 +17925,15 @@ func (m *TLMessagesSaveRecentSticker) Decode(d *bin.Decoder) (err error) {
 				m.Attached = true
 			}
 
-			m3 := &InputDocument{}
-			_ = m3.Decode(d)
-			m.Id = m3
+			// m3 := &InputDocument{}
+			// _ = m3.Decode(d)
+			// m.Id = m3
+			m.Id, _ = DecodeInputDocumentClazz(d)
 
-			m4 := &Bool{}
-			_ = m4.Decode(d)
-			m.Unsave = m4
+			// m4 := &Bool{}
+			// _ = m4.Decode(d)
+			// m.Unsave = m4
+			m.Unsave, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -17878,8 +18154,8 @@ func (m *TLMessagesGetMaskStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetAttachedStickers <--
 type TLMessagesGetAttachedStickers struct {
-	ClazzID uint32               `json:"_id"`
-	Media   *InputStickeredMedia `json:"media"`
+	ClazzID uint32                   `json:"_id"`
+	Media   InputStickeredMediaClazz `json:"media"`
 }
 
 func (m *TLMessagesGetAttachedStickers) String() string {
@@ -17913,9 +18189,10 @@ func (m *TLMessagesGetAttachedStickers) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xcc5b67cc: func() (err error) {
 
-			m1 := &InputStickeredMedia{}
-			_ = m1.Decode(d)
-			m.Media = m1
+			// m1 := &InputStickeredMedia{}
+			// _ = m1.Decode(d)
+			// m.Media = m1
+			m.Media, _ = DecodeInputStickeredMediaClazz(d)
 
 			return nil
 		},
@@ -17933,13 +18210,13 @@ func (m *TLMessagesGetAttachedStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetGameScore <--
 type TLMessagesSetGameScore struct {
-	ClazzID     uint32     `json:"_id"`
-	EditMessage bool       `json:"edit_message"`
-	Force       bool       `json:"force"`
-	Peer        *InputPeer `json:"peer"`
-	Id          int32      `json:"id"`
-	UserId      *InputUser `json:"user_id"`
-	Score       int32      `json:"score"`
+	ClazzID     uint32         `json:"_id"`
+	EditMessage bool           `json:"edit_message"`
+	Force       bool           `json:"force"`
+	Peer        InputPeerClazz `json:"peer"`
+	Id          int32          `json:"id"`
+	UserId      InputUserClazz `json:"user_id"`
+	Score       int32          `json:"score"`
 }
 
 func (m *TLMessagesSetGameScore) String() string {
@@ -18001,15 +18278,17 @@ func (m *TLMessagesSetGameScore) Decode(d *bin.Decoder) (err error) {
 				m.Force = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 
-			m6 := &InputUser{}
-			_ = m6.Decode(d)
-			m.UserId = m6
+			// m6 := &InputUser{}
+			// _ = m6.Decode(d)
+			// m.UserId = m6
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.Score, err = d.Int32()
 
@@ -18029,12 +18308,12 @@ func (m *TLMessagesSetGameScore) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetInlineGameScore <--
 type TLMessagesSetInlineGameScore struct {
-	ClazzID     uint32                   `json:"_id"`
-	EditMessage bool                     `json:"edit_message"`
-	Force       bool                     `json:"force"`
-	Id          *InputBotInlineMessageID `json:"id"`
-	UserId      *InputUser               `json:"user_id"`
-	Score       int32                    `json:"score"`
+	ClazzID     uint32                       `json:"_id"`
+	EditMessage bool                         `json:"edit_message"`
+	Force       bool                         `json:"force"`
+	Id          InputBotInlineMessageIDClazz `json:"id"`
+	UserId      InputUserClazz               `json:"user_id"`
+	Score       int32                        `json:"score"`
 }
 
 func (m *TLMessagesSetInlineGameScore) String() string {
@@ -18095,13 +18374,15 @@ func (m *TLMessagesSetInlineGameScore) Decode(d *bin.Decoder) (err error) {
 				m.Force = true
 			}
 
-			m4 := &InputBotInlineMessageID{}
-			_ = m4.Decode(d)
-			m.Id = m4
+			// m4 := &InputBotInlineMessageID{}
+			// _ = m4.Decode(d)
+			// m.Id = m4
+			m.Id, _ = DecodeInputBotInlineMessageIDClazz(d)
 
-			m5 := &InputUser{}
-			_ = m5.Decode(d)
-			m.UserId = m5
+			// m5 := &InputUser{}
+			// _ = m5.Decode(d)
+			// m.UserId = m5
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.Score, err = d.Int32()
 
@@ -18121,10 +18402,10 @@ func (m *TLMessagesSetInlineGameScore) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetGameHighScores <--
 type TLMessagesGetGameHighScores struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      int32      `json:"id"`
-	UserId  *InputUser `json:"user_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      int32          `json:"id"`
+	UserId  InputUserClazz `json:"user_id"`
 }
 
 func (m *TLMessagesGetGameHighScores) String() string {
@@ -18160,15 +18441,17 @@ func (m *TLMessagesGetGameHighScores) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe822649d: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 
-			m3 := &InputUser{}
-			_ = m3.Decode(d)
-			m.UserId = m3
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.UserId = m3
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -18186,9 +18469,9 @@ func (m *TLMessagesGetGameHighScores) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetInlineGameHighScores <--
 type TLMessagesGetInlineGameHighScores struct {
-	ClazzID uint32                   `json:"_id"`
-	Id      *InputBotInlineMessageID `json:"id"`
-	UserId  *InputUser               `json:"user_id"`
+	ClazzID uint32                       `json:"_id"`
+	Id      InputBotInlineMessageIDClazz `json:"id"`
+	UserId  InputUserClazz               `json:"user_id"`
 }
 
 func (m *TLMessagesGetInlineGameHighScores) String() string {
@@ -18223,13 +18506,15 @@ func (m *TLMessagesGetInlineGameHighScores) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf635e1b: func() (err error) {
 
-			m1 := &InputBotInlineMessageID{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &InputBotInlineMessageID{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputBotInlineMessageIDClazz(d)
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.UserId = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.UserId = m2
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -18247,10 +18532,10 @@ func (m *TLMessagesGetInlineGameHighScores) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetCommonChats <--
 type TLMessagesGetCommonChats struct {
-	ClazzID uint32     `json:"_id"`
-	UserId  *InputUser `json:"user_id"`
-	MaxId   int64      `json:"max_id"`
-	Limit   int32      `json:"limit"`
+	ClazzID uint32         `json:"_id"`
+	UserId  InputUserClazz `json:"user_id"`
+	MaxId   int64          `json:"max_id"`
+	Limit   int32          `json:"limit"`
 }
 
 func (m *TLMessagesGetCommonChats) String() string {
@@ -18286,9 +18571,10 @@ func (m *TLMessagesGetCommonChats) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe40ca104: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.MaxId, err = d.Int64()
 			m.Limit, err = d.Int32()
@@ -18364,9 +18650,9 @@ func (m *TLMessagesGetWebPage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesToggleDialogPin <--
 type TLMessagesToggleDialogPin struct {
-	ClazzID uint32           `json:"_id"`
-	Pinned  bool             `json:"pinned"`
-	Peer    *InputDialogPeer `json:"peer"`
+	ClazzID uint32               `json:"_id"`
+	Pinned  bool                 `json:"pinned"`
+	Peer    InputDialogPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesToggleDialogPin) String() string {
@@ -18419,9 +18705,10 @@ func (m *TLMessagesToggleDialogPin) Decode(d *bin.Decoder) (err error) {
 				m.Pinned = true
 			}
 
-			m3 := &InputDialogPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputDialogPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputDialogPeerClazz(d)
 
 			return nil
 		},
@@ -18439,10 +18726,10 @@ func (m *TLMessagesToggleDialogPin) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReorderPinnedDialogs <--
 type TLMessagesReorderPinnedDialogs struct {
-	ClazzID  uint32             `json:"_id"`
-	Force    bool               `json:"force"`
-	FolderId int32              `json:"folder_id"`
-	Order    []*InputDialogPeer `json:"order"`
+	ClazzID  uint32                 `json:"_id"`
+	Force    bool                   `json:"force"`
+	FolderId int32                  `json:"folder_id"`
+	Order    []InputDialogPeerClazz `json:"order"`
 }
 
 func (m *TLMessagesReorderPinnedDialogs) String() string {
@@ -18503,12 +18790,15 @@ func (m *TLMessagesReorderPinnedDialogs) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l4, err3 := d.Int()
-			v4 := make([]*InputDialogPeer, l4)
+			// v4 := make([]*InputDialogPeer, l4)
+			v4 := make([]InputDialogPeerClazz, l4)
 			for i := 0; i < l4; i++ {
-				vv := new(InputDialogPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputDialogPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v4[i] = vv
+				v4[i], _ = DecodeInputDialogPeerClazz(d)
 				_ = err3
-				v4[i] = vv
 			}
 			m.Order = v4
 
@@ -18580,10 +18870,10 @@ func (m *TLMessagesGetPinnedDialogs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetBotShippingResults <--
 type TLMessagesSetBotShippingResults struct {
-	ClazzID         uint32            `json:"_id"`
-	QueryId         int64             `json:"query_id"`
-	Error           *string           `json:"error"`
-	ShippingOptions []*ShippingOption `json:"shipping_options"`
+	ClazzID         uint32                `json:"_id"`
+	QueryId         int64                 `json:"query_id"`
+	Error           *string               `json:"error"`
+	ShippingOptions []ShippingOptionClazz `json:"shipping_options"`
 }
 
 func (m *TLMessagesSetBotShippingResults) String() string {
@@ -18655,12 +18945,15 @@ func (m *TLMessagesSetBotShippingResults) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l4, err3 := d.Int()
-				v4 := make([]*ShippingOption, l4)
+				// v4 := make([]*ShippingOption, l4)
+				v4 := make([]ShippingOptionClazz, l4)
 				for i := 0; i < l4; i++ {
-					vv := new(ShippingOption)
-					err3 = vv.Decode(d)
+					// vv := new(ShippingOption)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v4[i] = vv
+					v4[i], _ = DecodeShippingOptionClazz(d)
 					_ = err3
-					v4[i] = vv
 				}
 				m.ShippingOptions = v4
 			}
@@ -18765,10 +19058,10 @@ func (m *TLMessagesSetBotPrecheckoutResults) Decode(d *bin.Decoder) (err error) 
 
 // TLMessagesUploadMedia <--
 type TLMessagesUploadMedia struct {
-	ClazzID              uint32      `json:"_id"`
-	BusinessConnectionId *string     `json:"business_connection_id"`
-	Peer                 *InputPeer  `json:"peer"`
-	Media                *InputMedia `json:"media"`
+	ClazzID              uint32          `json:"_id"`
+	BusinessConnectionId *string         `json:"business_connection_id"`
+	Peer                 InputPeerClazz  `json:"peer"`
+	Media                InputMediaClazz `json:"media"`
 }
 
 func (m *TLMessagesUploadMedia) String() string {
@@ -18827,13 +19120,15 @@ func (m *TLMessagesUploadMedia) Decode(d *bin.Decoder) (err error) {
 				*m.BusinessConnectionId, err = d.String()
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m4 := &InputMedia{}
-			_ = m4.Decode(d)
-			m.Media = m4
+			// m4 := &InputMedia{}
+			// _ = m4.Decode(d)
+			// m.Media = m4
+			m.Media, _ = DecodeInputMediaClazz(d)
 
 			return nil
 		},
@@ -18851,10 +19146,10 @@ func (m *TLMessagesUploadMedia) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendScreenshotNotification <--
 type TLMessagesSendScreenshotNotification struct {
-	ClazzID  uint32        `json:"_id"`
-	Peer     *InputPeer    `json:"peer"`
-	ReplyTo  *InputReplyTo `json:"reply_to"`
-	RandomId int64         `json:"random_id"`
+	ClazzID  uint32            `json:"_id"`
+	Peer     InputPeerClazz    `json:"peer"`
+	ReplyTo  InputReplyToClazz `json:"reply_to"`
+	RandomId int64             `json:"random_id"`
 }
 
 func (m *TLMessagesSendScreenshotNotification) String() string {
@@ -18890,13 +19185,15 @@ func (m *TLMessagesSendScreenshotNotification) Decode(d *bin.Decoder) (err error
 	var decodeF = map[uint32]func() error{
 		0xa1405817: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputReplyTo{}
-			_ = m2.Decode(d)
-			m.ReplyTo = m2
+			// m2 := &InputReplyTo{}
+			// _ = m2.Decode(d)
+			// m.ReplyTo = m2
+			m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 
 			m.RandomId, err = d.Int64()
 
@@ -18968,9 +19265,9 @@ func (m *TLMessagesGetFavedStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesFaveSticker <--
 type TLMessagesFaveSticker struct {
-	ClazzID uint32         `json:"_id"`
-	Id      *InputDocument `json:"id"`
-	Unfave  *Bool          `json:"unfave"`
+	ClazzID uint32             `json:"_id"`
+	Id      InputDocumentClazz `json:"id"`
+	Unfave  BoolClazz          `json:"unfave"`
 }
 
 func (m *TLMessagesFaveSticker) String() string {
@@ -19005,13 +19302,15 @@ func (m *TLMessagesFaveSticker) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb9ffc55b: func() (err error) {
 
-			m1 := &InputDocument{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &InputDocument{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputDocumentClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Unfave = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Unfave = m2
+			m.Unfave, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -19029,14 +19328,14 @@ func (m *TLMessagesFaveSticker) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetUnreadMentions <--
 type TLMessagesGetUnreadMentions struct {
-	ClazzID   uint32     `json:"_id"`
-	Peer      *InputPeer `json:"peer"`
-	TopMsgId  *int32     `json:"top_msg_id"`
-	OffsetId  int32      `json:"offset_id"`
-	AddOffset int32      `json:"add_offset"`
-	Limit     int32      `json:"limit"`
-	MaxId     int32      `json:"max_id"`
-	MinId     int32      `json:"min_id"`
+	ClazzID   uint32         `json:"_id"`
+	Peer      InputPeerClazz `json:"peer"`
+	TopMsgId  *int32         `json:"top_msg_id"`
+	OffsetId  int32          `json:"offset_id"`
+	AddOffset int32          `json:"add_offset"`
+	Limit     int32          `json:"limit"`
+	MaxId     int32          `json:"max_id"`
+	MinId     int32          `json:"min_id"`
 }
 
 func (m *TLMessagesGetUnreadMentions) String() string {
@@ -19095,9 +19394,10 @@ func (m *TLMessagesGetUnreadMentions) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
@@ -19125,9 +19425,9 @@ func (m *TLMessagesGetUnreadMentions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReadMentions <--
 type TLMessagesReadMentions struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	TopMsgId *int32     `json:"top_msg_id"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	TopMsgId *int32         `json:"top_msg_id"`
 }
 
 func (m *TLMessagesReadMentions) String() string {
@@ -19180,9 +19480,10 @@ func (m *TLMessagesReadMentions) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
@@ -19205,10 +19506,10 @@ func (m *TLMessagesReadMentions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetRecentLocations <--
 type TLMessagesGetRecentLocations struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Limit   int32      `json:"limit"`
-	Hash    int64      `json:"hash"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Limit   int32          `json:"limit"`
+	Hash    int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetRecentLocations) String() string {
@@ -19244,9 +19545,10 @@ func (m *TLMessagesGetRecentLocations) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x702a40e0: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Limit, err = d.Int32()
 			m.Hash, err = d.Int64()
@@ -19267,22 +19569,22 @@ func (m *TLMessagesGetRecentLocations) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendMultiMedia <--
 type TLMessagesSendMultiMedia struct {
-	ClazzID                uint32                   `json:"_id"`
-	Silent                 bool                     `json:"silent"`
-	Background             bool                     `json:"background"`
-	ClearDraft             bool                     `json:"clear_draft"`
-	Noforwards             bool                     `json:"noforwards"`
-	UpdateStickersetsOrder bool                     `json:"update_stickersets_order"`
-	InvertMedia            bool                     `json:"invert_media"`
-	AllowPaidFloodskip     bool                     `json:"allow_paid_floodskip"`
-	Peer                   *InputPeer               `json:"peer"`
-	ReplyTo                *InputReplyTo            `json:"reply_to"`
-	MultiMedia             []*InputSingleMedia      `json:"multi_media"`
-	ScheduleDate           *int32                   `json:"schedule_date"`
-	SendAs                 *InputPeer               `json:"send_as"`
-	QuickReplyShortcut     *InputQuickReplyShortcut `json:"quick_reply_shortcut"`
-	Effect                 *int64                   `json:"effect"`
-	AllowPaidStars         *int64                   `json:"allow_paid_stars"`
+	ClazzID                uint32                       `json:"_id"`
+	Silent                 bool                         `json:"silent"`
+	Background             bool                         `json:"background"`
+	ClearDraft             bool                         `json:"clear_draft"`
+	Noforwards             bool                         `json:"noforwards"`
+	UpdateStickersetsOrder bool                         `json:"update_stickersets_order"`
+	InvertMedia            bool                         `json:"invert_media"`
+	AllowPaidFloodskip     bool                         `json:"allow_paid_floodskip"`
+	Peer                   InputPeerClazz               `json:"peer"`
+	ReplyTo                InputReplyToClazz            `json:"reply_to"`
+	MultiMedia             []InputSingleMediaClazz      `json:"multi_media"`
+	ScheduleDate           *int32                       `json:"schedule_date"`
+	SendAs                 InputPeerClazz               `json:"send_as"`
+	QuickReplyShortcut     InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
+	Effect                 *int64                       `json:"effect"`
+	AllowPaidStars         *int64                       `json:"allow_paid_stars"`
 }
 
 func (m *TLMessagesSendMultiMedia) String() string {
@@ -19493,14 +19795,16 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m9 := &InputPeer{}
-			_ = m9.Decode(d)
-			m.Peer = m9
+			// m9 := &InputPeer{}
+			// _ = m9.Decode(d)
+			// m.Peer = m9
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m10 := &InputReplyTo{}
-				_ = m10.Decode(d)
-				m.ReplyTo = m10
+				// m10 := &InputReplyTo{}
+				// _ = m10.Decode(d)
+				// m.ReplyTo = m10
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			c11, err2 := d.ClazzID()
 			if c11 != iface.ClazzID_vector {
@@ -19508,12 +19812,15 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l11, err3 := d.Int()
-			v11 := make([]*InputSingleMedia, l11)
+			// v11 := make([]*InputSingleMedia, l11)
+			v11 := make([]InputSingleMediaClazz, l11)
 			for i := 0; i < l11; i++ {
-				vv := new(InputSingleMedia)
-				err3 = vv.Decode(d)
+				// vv := new(InputSingleMedia)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v11[i] = vv
+				v11[i], _ = DecodeInputSingleMediaClazz(d)
 				_ = err3
-				v11[i] = vv
 			}
 			m.MultiMedia = v11
 
@@ -19522,14 +19829,16 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m13 := &InputPeer{}
-				_ = m13.Decode(d)
-				m.SendAs = m13
+				// m13 := &InputPeer{}
+				// _ = m13.Decode(d)
+				// m.SendAs = m13
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m14 := &InputQuickReplyShortcut{}
-				_ = m14.Decode(d)
-				m.QuickReplyShortcut = m14
+				// m14 := &InputQuickReplyShortcut{}
+				// _ = m14.Decode(d)
+				// m.QuickReplyShortcut = m14
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 18)) != 0 {
 				m.Effect = new(int64)
@@ -19568,14 +19877,16 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 				m.AllowPaidFloodskip = true
 			}
 
-			m9 := &InputPeer{}
-			_ = m9.Decode(d)
-			m.Peer = m9
+			// m9 := &InputPeer{}
+			// _ = m9.Decode(d)
+			// m.Peer = m9
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m10 := &InputReplyTo{}
-				_ = m10.Decode(d)
-				m.ReplyTo = m10
+				// m10 := &InputReplyTo{}
+				// _ = m10.Decode(d)
+				// m.ReplyTo = m10
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			c11, err2 := d.ClazzID()
 			if c11 != iface.ClazzID_vector {
@@ -19583,12 +19894,15 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l11, err3 := d.Int()
-			v11 := make([]*InputSingleMedia, l11)
+			// v11 := make([]*InputSingleMedia, l11)
+			v11 := make([]InputSingleMediaClazz, l11)
 			for i := 0; i < l11; i++ {
-				vv := new(InputSingleMedia)
-				err3 = vv.Decode(d)
+				// vv := new(InputSingleMedia)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v11[i] = vv
+				v11[i], _ = DecodeInputSingleMediaClazz(d)
 				_ = err3
-				v11[i] = vv
 			}
 			m.MultiMedia = v11
 
@@ -19597,14 +19911,16 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				m13 := &InputPeer{}
-				_ = m13.Decode(d)
-				m.SendAs = m13
+				// m13 := &InputPeer{}
+				// _ = m13.Decode(d)
+				// m.SendAs = m13
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				m14 := &InputQuickReplyShortcut{}
-				_ = m14.Decode(d)
-				m.QuickReplyShortcut = m14
+				// m14 := &InputQuickReplyShortcut{}
+				// _ = m14.Decode(d)
+				// m.QuickReplyShortcut = m14
+				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 18)) != 0 {
 				m.Effect = new(int64)
@@ -19627,9 +19943,9 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesUploadEncryptedFile <--
 type TLMessagesUploadEncryptedFile struct {
-	ClazzID uint32              `json:"_id"`
-	Peer    *InputEncryptedChat `json:"peer"`
-	File    *InputEncryptedFile `json:"file"`
+	ClazzID uint32                  `json:"_id"`
+	Peer    InputEncryptedChatClazz `json:"peer"`
+	File    InputEncryptedFileClazz `json:"file"`
 }
 
 func (m *TLMessagesUploadEncryptedFile) String() string {
@@ -19664,13 +19980,15 @@ func (m *TLMessagesUploadEncryptedFile) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5057c497: func() (err error) {
 
-			m1 := &InputEncryptedChat{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputEncryptedChat{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputEncryptedChatClazz(d)
 
-			m2 := &InputEncryptedFile{}
-			_ = m2.Decode(d)
-			m.File = m2
+			// m2 := &InputEncryptedFile{}
+			// _ = m2.Decode(d)
+			// m.File = m2
+			m.File, _ = DecodeInputEncryptedFileClazz(d)
 
 			return nil
 		},
@@ -19811,9 +20129,9 @@ func (m *TLMessagesGetSplitRanges) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesMarkDialogUnread <--
 type TLMessagesMarkDialogUnread struct {
-	ClazzID uint32           `json:"_id"`
-	Unread  bool             `json:"unread"`
-	Peer    *InputDialogPeer `json:"peer"`
+	ClazzID uint32               `json:"_id"`
+	Unread  bool                 `json:"unread"`
+	Peer    InputDialogPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesMarkDialogUnread) String() string {
@@ -19866,9 +20184,10 @@ func (m *TLMessagesMarkDialogUnread) Decode(d *bin.Decoder) (err error) {
 				m.Unread = true
 			}
 
-			m3 := &InputDialogPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputDialogPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputDialogPeerClazz(d)
 
 			return nil
 		},
@@ -19982,12 +20301,12 @@ func (m *TLMessagesClearAllDrafts) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesUpdatePinnedMessage <--
 type TLMessagesUpdatePinnedMessage struct {
-	ClazzID   uint32     `json:"_id"`
-	Silent    bool       `json:"silent"`
-	Unpin     bool       `json:"unpin"`
-	PmOneside bool       `json:"pm_oneside"`
-	Peer      *InputPeer `json:"peer"`
-	Id        int32      `json:"id"`
+	ClazzID   uint32         `json:"_id"`
+	Silent    bool           `json:"silent"`
+	Unpin     bool           `json:"unpin"`
+	PmOneside bool           `json:"pm_oneside"`
+	Peer      InputPeerClazz `json:"peer"`
+	Id        int32          `json:"id"`
 }
 
 func (m *TLMessagesUpdatePinnedMessage) String() string {
@@ -20053,9 +20372,10 @@ func (m *TLMessagesUpdatePinnedMessage) Decode(d *bin.Decoder) (err error) {
 				m.PmOneside = true
 			}
 
-			m5 := &InputPeer{}
-			_ = m5.Decode(d)
-			m.Peer = m5
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.Peer = m5
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 
@@ -20075,10 +20395,10 @@ func (m *TLMessagesUpdatePinnedMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendVote <--
 type TLMessagesSendVote struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
-	Options [][]byte   `json:"options"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
+	Options [][]byte       `json:"options"`
 }
 
 func (m *TLMessagesSendVote) String() string {
@@ -20115,9 +20435,10 @@ func (m *TLMessagesSendVote) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x10ea6184: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -20139,9 +20460,9 @@ func (m *TLMessagesSendVote) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetPollResults <--
 type TLMessagesGetPollResults struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLMessagesGetPollResults) String() string {
@@ -20176,9 +20497,10 @@ func (m *TLMessagesGetPollResults) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x73bb643b: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -20198,8 +20520,8 @@ func (m *TLMessagesGetPollResults) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetOnlines <--
 type TLMessagesGetOnlines struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesGetOnlines) String() string {
@@ -20233,9 +20555,10 @@ func (m *TLMessagesGetOnlines) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x6e2be050: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -20253,9 +20576,9 @@ func (m *TLMessagesGetOnlines) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditChatAbout <--
 type TLMessagesEditChatAbout struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	About   string     `json:"about"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	About   string         `json:"about"`
 }
 
 func (m *TLMessagesEditChatAbout) String() string {
@@ -20290,9 +20613,10 @@ func (m *TLMessagesEditChatAbout) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xdef60797: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.About, err = d.String()
 
@@ -20312,9 +20636,9 @@ func (m *TLMessagesEditChatAbout) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditChatDefaultBannedRights <--
 type TLMessagesEditChatDefaultBannedRights struct {
-	ClazzID      uint32            `json:"_id"`
-	Peer         *InputPeer        `json:"peer"`
-	BannedRights *ChatBannedRights `json:"banned_rights"`
+	ClazzID      uint32                `json:"_id"`
+	Peer         InputPeerClazz        `json:"peer"`
+	BannedRights ChatBannedRightsClazz `json:"banned_rights"`
 }
 
 func (m *TLMessagesEditChatDefaultBannedRights) String() string {
@@ -20349,13 +20673,15 @@ func (m *TLMessagesEditChatDefaultBannedRights) Decode(d *bin.Decoder) (err erro
 	var decodeF = map[uint32]func() error{
 		0xa5866b41: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &ChatBannedRights{}
-			_ = m2.Decode(d)
-			m.BannedRights = m2
+			// m2 := &ChatBannedRights{}
+			// _ = m2.Decode(d)
+			// m.BannedRights = m2
+			m.BannedRights, _ = DecodeChatBannedRightsClazz(d)
 
 			return nil
 		},
@@ -20585,11 +20911,11 @@ func (m *TLMessagesGetEmojiURL) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetSearchCounters <--
 type TLMessagesGetSearchCounters struct {
-	ClazzID     uint32            `json:"_id"`
-	Peer        *InputPeer        `json:"peer"`
-	SavedPeerId *InputPeer        `json:"saved_peer_id"`
-	TopMsgId    *int32            `json:"top_msg_id"`
-	Filters     []*MessagesFilter `json:"filters"`
+	ClazzID     uint32                `json:"_id"`
+	Peer        InputPeerClazz        `json:"peer"`
+	SavedPeerId InputPeerClazz        `json:"saved_peer_id"`
+	TopMsgId    *int32                `json:"top_msg_id"`
+	Filters     []MessagesFilterClazz `json:"filters"`
 }
 
 func (m *TLMessagesGetSearchCounters) String() string {
@@ -20651,14 +20977,16 @@ func (m *TLMessagesGetSearchCounters) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
-				m3 := &InputPeer{}
-				_ = m3.Decode(d)
-				m.SavedPeerId = m3
+				// m3 := &InputPeer{}
+				// _ = m3.Decode(d)
+				// m.SavedPeerId = m3
+				m.SavedPeerId, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
@@ -20670,12 +20998,15 @@ func (m *TLMessagesGetSearchCounters) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l5, err3 := d.Int()
-			v5 := make([]*MessagesFilter, l5)
+			// v5 := make([]*MessagesFilter, l5)
+			v5 := make([]MessagesFilterClazz, l5)
 			for i := 0; i < l5; i++ {
-				vv := new(MessagesFilter)
-				err3 = vv.Decode(d)
+				// vv := new(MessagesFilter)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v5[i] = vv
+				v5[i], _ = DecodeMessagesFilterClazz(d)
 				_ = err3
-				v5[i] = vv
 			}
 			m.Filters = v5
 
@@ -20695,11 +21026,11 @@ func (m *TLMessagesGetSearchCounters) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesRequestUrlAuth <--
 type TLMessagesRequestUrlAuth struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	MsgId    *int32     `json:"msg_id"`
-	ButtonId *int32     `json:"button_id"`
-	Url      *string    `json:"url"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	MsgId    *int32         `json:"msg_id"`
+	ButtonId *int32         `json:"button_id"`
+	Url      *string        `json:"url"`
 }
 
 func (m *TLMessagesRequestUrlAuth) String() string {
@@ -20772,9 +21103,10 @@ func (m *TLMessagesRequestUrlAuth) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 1)) != 0 {
-				m2 := &InputPeer{}
-				_ = m2.Decode(d)
-				m.Peer = m2
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.Peer = m2
+				m.Peer, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				m.MsgId = new(int32)
@@ -20805,12 +21137,12 @@ func (m *TLMessagesRequestUrlAuth) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesAcceptUrlAuth <--
 type TLMessagesAcceptUrlAuth struct {
-	ClazzID      uint32     `json:"_id"`
-	WriteAllowed bool       `json:"write_allowed"`
-	Peer         *InputPeer `json:"peer"`
-	MsgId        *int32     `json:"msg_id"`
-	ButtonId     *int32     `json:"button_id"`
-	Url          *string    `json:"url"`
+	ClazzID      uint32         `json:"_id"`
+	WriteAllowed bool           `json:"write_allowed"`
+	Peer         InputPeerClazz `json:"peer"`
+	MsgId        *int32         `json:"msg_id"`
+	ButtonId     *int32         `json:"button_id"`
+	Url          *string        `json:"url"`
 }
 
 func (m *TLMessagesAcceptUrlAuth) String() string {
@@ -20889,9 +21221,10 @@ func (m *TLMessagesAcceptUrlAuth) Decode(d *bin.Decoder) (err error) {
 				m.WriteAllowed = true
 			}
 			if (flags & (1 << 1)) != 0 {
-				m3 := &InputPeer{}
-				_ = m3.Decode(d)
-				m.Peer = m3
+				// m3 := &InputPeer{}
+				// _ = m3.Decode(d)
+				// m.Peer = m3
+				m.Peer, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				m.MsgId = new(int32)
@@ -20922,8 +21255,8 @@ func (m *TLMessagesAcceptUrlAuth) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesHidePeerSettingsBar <--
 type TLMessagesHidePeerSettingsBar struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesHidePeerSettingsBar) String() string {
@@ -20957,9 +21290,10 @@ func (m *TLMessagesHidePeerSettingsBar) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4facb138: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -20977,9 +21311,9 @@ func (m *TLMessagesHidePeerSettingsBar) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetScheduledHistory <--
 type TLMessagesGetScheduledHistory struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Hash    int64      `json:"hash"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Hash    int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetScheduledHistory) String() string {
@@ -21014,9 +21348,10 @@ func (m *TLMessagesGetScheduledHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf516760b: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Hash, err = d.Int64()
 
@@ -21036,9 +21371,9 @@ func (m *TLMessagesGetScheduledHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetScheduledMessages <--
 type TLMessagesGetScheduledMessages struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLMessagesGetScheduledMessages) String() string {
@@ -21074,9 +21409,10 @@ func (m *TLMessagesGetScheduledMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xbdbb0464: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -21096,9 +21432,9 @@ func (m *TLMessagesGetScheduledMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendScheduledMessages <--
 type TLMessagesSendScheduledMessages struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLMessagesSendScheduledMessages) String() string {
@@ -21134,9 +21470,10 @@ func (m *TLMessagesSendScheduledMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xbd38850a: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -21156,9 +21493,9 @@ func (m *TLMessagesSendScheduledMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesDeleteScheduledMessages <--
 type TLMessagesDeleteScheduledMessages struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLMessagesDeleteScheduledMessages) String() string {
@@ -21194,9 +21531,10 @@ func (m *TLMessagesDeleteScheduledMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x59ae2b16: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -21216,12 +21554,12 @@ func (m *TLMessagesDeleteScheduledMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetPollVotes <--
 type TLMessagesGetPollVotes struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      int32      `json:"id"`
-	Option  []byte     `json:"option"`
-	Offset  *string    `json:"offset"`
-	Limit   int32      `json:"limit"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      int32          `json:"id"`
+	Option  []byte         `json:"option"`
+	Offset  *string        `json:"offset"`
+	Limit   int32          `json:"limit"`
 }
 
 func (m *TLMessagesGetPollVotes) String() string {
@@ -21284,9 +21622,10 @@ func (m *TLMessagesGetPollVotes) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
@@ -21316,11 +21655,11 @@ func (m *TLMessagesGetPollVotes) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesToggleStickerSets <--
 type TLMessagesToggleStickerSets struct {
-	ClazzID     uint32             `json:"_id"`
-	Uninstall   bool               `json:"uninstall"`
-	Archive     bool               `json:"archive"`
-	Unarchive   bool               `json:"unarchive"`
-	Stickersets []*InputStickerSet `json:"stickersets"`
+	ClazzID     uint32                 `json:"_id"`
+	Uninstall   bool                   `json:"uninstall"`
+	Archive     bool                   `json:"archive"`
+	Unarchive   bool                   `json:"unarchive"`
+	Stickersets []InputStickerSetClazz `json:"stickersets"`
 }
 
 func (m *TLMessagesToggleStickerSets) String() string {
@@ -21391,12 +21730,15 @@ func (m *TLMessagesToggleStickerSets) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l5, err3 := d.Int()
-			v5 := make([]*InputStickerSet, l5)
+			// v5 := make([]*InputStickerSet, l5)
+			v5 := make([]InputStickerSetClazz, l5)
 			for i := 0; i < l5; i++ {
-				vv := new(InputStickerSet)
-				err3 = vv.Decode(d)
+				// vv := new(InputStickerSet)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v5[i] = vv
+				v5[i], _ = DecodeInputStickerSetClazz(d)
 				_ = err3
-				v5[i] = vv
 			}
 			m.Stickersets = v5
 
@@ -21512,9 +21854,9 @@ func (m *TLMessagesGetSuggestedDialogFilters) Decode(d *bin.Decoder) (err error)
 
 // TLMessagesUpdateDialogFilter <--
 type TLMessagesUpdateDialogFilter struct {
-	ClazzID uint32        `json:"_id"`
-	Id      int32         `json:"id"`
-	Filter  *DialogFilter `json:"filter"`
+	ClazzID uint32            `json:"_id"`
+	Id      int32             `json:"id"`
+	Filter  DialogFilterClazz `json:"filter"`
 }
 
 func (m *TLMessagesUpdateDialogFilter) String() string {
@@ -21568,9 +21910,10 @@ func (m *TLMessagesUpdateDialogFilter) Decode(d *bin.Decoder) (err error) {
 			_ = flags
 			m.Id, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
-				m3 := &DialogFilter{}
-				_ = m3.Decode(d)
-				m.Filter = m3
+				// m3 := &DialogFilter{}
+				// _ = m3.Decode(d)
+				// m.Filter = m3
+				m.Filter, _ = DecodeDialogFilterClazz(d)
 			}
 
 			return nil
@@ -21700,16 +22043,16 @@ func (m *TLMessagesGetOldFeaturedStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetReplies <--
 type TLMessagesGetReplies struct {
-	ClazzID    uint32     `json:"_id"`
-	Peer       *InputPeer `json:"peer"`
-	MsgId      int32      `json:"msg_id"`
-	OffsetId   int32      `json:"offset_id"`
-	OffsetDate int32      `json:"offset_date"`
-	AddOffset  int32      `json:"add_offset"`
-	Limit      int32      `json:"limit"`
-	MaxId      int32      `json:"max_id"`
-	MinId      int32      `json:"min_id"`
-	Hash       int64      `json:"hash"`
+	ClazzID    uint32         `json:"_id"`
+	Peer       InputPeerClazz `json:"peer"`
+	MsgId      int32          `json:"msg_id"`
+	OffsetId   int32          `json:"offset_id"`
+	OffsetDate int32          `json:"offset_date"`
+	AddOffset  int32          `json:"add_offset"`
+	Limit      int32          `json:"limit"`
+	MaxId      int32          `json:"max_id"`
+	MinId      int32          `json:"min_id"`
+	Hash       int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetReplies) String() string {
@@ -21751,9 +22094,10 @@ func (m *TLMessagesGetReplies) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x22ddd30c: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 			m.OffsetId, err = d.Int32()
@@ -21780,9 +22124,9 @@ func (m *TLMessagesGetReplies) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetDiscussionMessage <--
 type TLMessagesGetDiscussionMessage struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLMessagesGetDiscussionMessage) String() string {
@@ -21817,9 +22161,10 @@ func (m *TLMessagesGetDiscussionMessage) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x446972fd: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -21839,10 +22184,10 @@ func (m *TLMessagesGetDiscussionMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReadDiscussion <--
 type TLMessagesReadDiscussion struct {
-	ClazzID   uint32     `json:"_id"`
-	Peer      *InputPeer `json:"peer"`
-	MsgId     int32      `json:"msg_id"`
-	ReadMaxId int32      `json:"read_max_id"`
+	ClazzID   uint32         `json:"_id"`
+	Peer      InputPeerClazz `json:"peer"`
+	MsgId     int32          `json:"msg_id"`
+	ReadMaxId int32          `json:"read_max_id"`
 }
 
 func (m *TLMessagesReadDiscussion) String() string {
@@ -21878,9 +22223,10 @@ func (m *TLMessagesReadDiscussion) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf731a9f4: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 			m.ReadMaxId, err = d.Int32()
@@ -21901,9 +22247,9 @@ func (m *TLMessagesReadDiscussion) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesUnpinAllMessages <--
 type TLMessagesUnpinAllMessages struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	TopMsgId *int32     `json:"top_msg_id"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	TopMsgId *int32         `json:"top_msg_id"`
 }
 
 func (m *TLMessagesUnpinAllMessages) String() string {
@@ -21956,9 +22302,10 @@ func (m *TLMessagesUnpinAllMessages) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
@@ -22154,10 +22501,10 @@ func (m *TLMessagesCheckHistoryImport) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesInitHistoryImport <--
 type TLMessagesInitHistoryImport struct {
-	ClazzID    uint32     `json:"_id"`
-	Peer       *InputPeer `json:"peer"`
-	File       *InputFile `json:"file"`
-	MediaCount int32      `json:"media_count"`
+	ClazzID    uint32         `json:"_id"`
+	Peer       InputPeerClazz `json:"peer"`
+	File       InputFileClazz `json:"file"`
+	MediaCount int32          `json:"media_count"`
 }
 
 func (m *TLMessagesInitHistoryImport) String() string {
@@ -22193,13 +22540,15 @@ func (m *TLMessagesInitHistoryImport) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x34090c3b: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputFile{}
-			_ = m2.Decode(d)
-			m.File = m2
+			// m2 := &InputFile{}
+			// _ = m2.Decode(d)
+			// m.File = m2
+			m.File, _ = DecodeInputFileClazz(d)
 
 			m.MediaCount, err = d.Int32()
 
@@ -22219,11 +22568,11 @@ func (m *TLMessagesInitHistoryImport) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesUploadImportedMedia <--
 type TLMessagesUploadImportedMedia struct {
-	ClazzID  uint32      `json:"_id"`
-	Peer     *InputPeer  `json:"peer"`
-	ImportId int64       `json:"import_id"`
-	FileName string      `json:"file_name"`
-	Media    *InputMedia `json:"media"`
+	ClazzID  uint32          `json:"_id"`
+	Peer     InputPeerClazz  `json:"peer"`
+	ImportId int64           `json:"import_id"`
+	FileName string          `json:"file_name"`
+	Media    InputMediaClazz `json:"media"`
 }
 
 func (m *TLMessagesUploadImportedMedia) String() string {
@@ -22260,16 +22609,18 @@ func (m *TLMessagesUploadImportedMedia) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x2a862092: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.ImportId, err = d.Int64()
 			m.FileName, err = d.String()
 
-			m4 := &InputMedia{}
-			_ = m4.Decode(d)
-			m.Media = m4
+			// m4 := &InputMedia{}
+			// _ = m4.Decode(d)
+			// m.Media = m4
+			m.Media, _ = DecodeInputMediaClazz(d)
 
 			return nil
 		},
@@ -22287,9 +22638,9 @@ func (m *TLMessagesUploadImportedMedia) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesStartHistoryImport <--
 type TLMessagesStartHistoryImport struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	ImportId int64      `json:"import_id"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	ImportId int64          `json:"import_id"`
 }
 
 func (m *TLMessagesStartHistoryImport) String() string {
@@ -22324,9 +22675,10 @@ func (m *TLMessagesStartHistoryImport) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb43df344: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.ImportId, err = d.Int64()
 
@@ -22346,13 +22698,13 @@ func (m *TLMessagesStartHistoryImport) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetExportedChatInvites <--
 type TLMessagesGetExportedChatInvites struct {
-	ClazzID    uint32     `json:"_id"`
-	Revoked    bool       `json:"revoked"`
-	Peer       *InputPeer `json:"peer"`
-	AdminId    *InputUser `json:"admin_id"`
-	OffsetDate *int32     `json:"offset_date"`
-	OffsetLink *string    `json:"offset_link"`
-	Limit      int32      `json:"limit"`
+	ClazzID    uint32         `json:"_id"`
+	Revoked    bool           `json:"revoked"`
+	Peer       InputPeerClazz `json:"peer"`
+	AdminId    InputUserClazz `json:"admin_id"`
+	OffsetDate *int32         `json:"offset_date"`
+	OffsetLink *string        `json:"offset_link"`
+	Limit      int32          `json:"limit"`
 }
 
 func (m *TLMessagesGetExportedChatInvites) String() string {
@@ -22422,13 +22774,15 @@ func (m *TLMessagesGetExportedChatInvites) Decode(d *bin.Decoder) (err error) {
 				m.Revoked = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m4 := &InputUser{}
-			_ = m4.Decode(d)
-			m.AdminId = m4
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.AdminId = m4
+			m.AdminId, _ = DecodeInputUserClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
 				m.OffsetDate = new(int32)
@@ -22457,9 +22811,9 @@ func (m *TLMessagesGetExportedChatInvites) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetExportedChatInvite <--
 type TLMessagesGetExportedChatInvite struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Link    string     `json:"link"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Link    string         `json:"link"`
 }
 
 func (m *TLMessagesGetExportedChatInvite) String() string {
@@ -22494,9 +22848,10 @@ func (m *TLMessagesGetExportedChatInvite) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x73746f5c: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Link, err = d.String()
 
@@ -22516,14 +22871,14 @@ func (m *TLMessagesGetExportedChatInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditExportedChatInvite <--
 type TLMessagesEditExportedChatInvite struct {
-	ClazzID       uint32     `json:"_id"`
-	Revoked       bool       `json:"revoked"`
-	Peer          *InputPeer `json:"peer"`
-	Link          string     `json:"link"`
-	ExpireDate    *int32     `json:"expire_date"`
-	UsageLimit    *int32     `json:"usage_limit"`
-	RequestNeeded *Bool      `json:"request_needed"`
-	Title         *string    `json:"title"`
+	ClazzID       uint32         `json:"_id"`
+	Revoked       bool           `json:"revoked"`
+	Peer          InputPeerClazz `json:"peer"`
+	Link          string         `json:"link"`
+	ExpireDate    *int32         `json:"expire_date"`
+	UsageLimit    *int32         `json:"usage_limit"`
+	RequestNeeded BoolClazz      `json:"request_needed"`
+	Title         *string        `json:"title"`
 }
 
 func (m *TLMessagesEditExportedChatInvite) String() string {
@@ -22605,9 +22960,10 @@ func (m *TLMessagesEditExportedChatInvite) Decode(d *bin.Decoder) (err error) {
 				m.Revoked = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Link, err = d.String()
 			if (flags & (1 << 0)) != 0 {
@@ -22619,9 +22975,10 @@ func (m *TLMessagesEditExportedChatInvite) Decode(d *bin.Decoder) (err error) {
 				*m.UsageLimit, err = d.Int32()
 			}
 			if (flags & (1 << 3)) != 0 {
-				m7 := &Bool{}
-				_ = m7.Decode(d)
-				m.RequestNeeded = m7
+				// m7 := &Bool{}
+				// _ = m7.Decode(d)
+				// m.RequestNeeded = m7
+				m.RequestNeeded, _ = DecodeBoolClazz(d)
 			}
 			if (flags & (1 << 4)) != 0 {
 				m.Title = new(string)
@@ -22644,9 +23001,9 @@ func (m *TLMessagesEditExportedChatInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesDeleteRevokedExportedChatInvites <--
 type TLMessagesDeleteRevokedExportedChatInvites struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	AdminId *InputUser `json:"admin_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	AdminId InputUserClazz `json:"admin_id"`
 }
 
 func (m *TLMessagesDeleteRevokedExportedChatInvites) String() string {
@@ -22681,13 +23038,15 @@ func (m *TLMessagesDeleteRevokedExportedChatInvites) Decode(d *bin.Decoder) (err
 	var decodeF = map[uint32]func() error{
 		0x56987bd5: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.AdminId = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.AdminId = m2
+			m.AdminId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -22705,9 +23064,9 @@ func (m *TLMessagesDeleteRevokedExportedChatInvites) Decode(d *bin.Decoder) (err
 
 // TLMessagesDeleteExportedChatInvite <--
 type TLMessagesDeleteExportedChatInvite struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Link    string     `json:"link"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Link    string         `json:"link"`
 }
 
 func (m *TLMessagesDeleteExportedChatInvite) String() string {
@@ -22742,9 +23101,10 @@ func (m *TLMessagesDeleteExportedChatInvite) Decode(d *bin.Decoder) (err error) 
 	var decodeF = map[uint32]func() error{
 		0xd464a42b: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Link, err = d.String()
 
@@ -22764,8 +23124,8 @@ func (m *TLMessagesDeleteExportedChatInvite) Decode(d *bin.Decoder) (err error) 
 
 // TLMessagesGetAdminsWithInvites <--
 type TLMessagesGetAdminsWithInvites struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesGetAdminsWithInvites) String() string {
@@ -22799,9 +23159,10 @@ func (m *TLMessagesGetAdminsWithInvites) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3920e6ef: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -22819,15 +23180,15 @@ func (m *TLMessagesGetAdminsWithInvites) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetChatInviteImporters <--
 type TLMessagesGetChatInviteImporters struct {
-	ClazzID             uint32     `json:"_id"`
-	Requested           bool       `json:"requested"`
-	SubscriptionExpired bool       `json:"subscription_expired"`
-	Peer                *InputPeer `json:"peer"`
-	Link                *string    `json:"link"`
-	Q                   *string    `json:"q"`
-	OffsetDate          int32      `json:"offset_date"`
-	OffsetUser          *InputUser `json:"offset_user"`
-	Limit               int32      `json:"limit"`
+	ClazzID             uint32         `json:"_id"`
+	Requested           bool           `json:"requested"`
+	SubscriptionExpired bool           `json:"subscription_expired"`
+	Peer                InputPeerClazz `json:"peer"`
+	Link                *string        `json:"link"`
+	Q                   *string        `json:"q"`
+	OffsetDate          int32          `json:"offset_date"`
+	OffsetUser          InputUserClazz `json:"offset_user"`
+	Limit               int32          `json:"limit"`
 }
 
 func (m *TLMessagesGetChatInviteImporters) String() string {
@@ -22904,9 +23265,10 @@ func (m *TLMessagesGetChatInviteImporters) Decode(d *bin.Decoder) (err error) {
 				m.SubscriptionExpired = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.Link = new(string)
@@ -22920,9 +23282,10 @@ func (m *TLMessagesGetChatInviteImporters) Decode(d *bin.Decoder) (err error) {
 
 			m.OffsetDate, err = d.Int32()
 
-			m8 := &InputUser{}
-			_ = m8.Decode(d)
-			m.OffsetUser = m8
+			// m8 := &InputUser{}
+			// _ = m8.Decode(d)
+			// m.OffsetUser = m8
+			m.OffsetUser, _ = DecodeInputUserClazz(d)
 
 			m.Limit, err = d.Int32()
 
@@ -22942,9 +23305,9 @@ func (m *TLMessagesGetChatInviteImporters) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetHistoryTTL <--
 type TLMessagesSetHistoryTTL struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Period  int32      `json:"period"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Period  int32          `json:"period"`
 }
 
 func (m *TLMessagesSetHistoryTTL) String() string {
@@ -22979,9 +23342,10 @@ func (m *TLMessagesSetHistoryTTL) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb80e5fe4: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Period, err = d.Int32()
 
@@ -23001,8 +23365,8 @@ func (m *TLMessagesSetHistoryTTL) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesCheckHistoryImportPeer <--
 type TLMessagesCheckHistoryImportPeer struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesCheckHistoryImportPeer) String() string {
@@ -23036,9 +23400,10 @@ func (m *TLMessagesCheckHistoryImportPeer) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5dc60f03: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -23056,9 +23421,9 @@ func (m *TLMessagesCheckHistoryImportPeer) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetChatTheme <--
 type TLMessagesSetChatTheme struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	Emoticon string     `json:"emoticon"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	Emoticon string         `json:"emoticon"`
 }
 
 func (m *TLMessagesSetChatTheme) String() string {
@@ -23093,9 +23458,10 @@ func (m *TLMessagesSetChatTheme) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe63be13f: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Emoticon, err = d.String()
 
@@ -23115,9 +23481,9 @@ func (m *TLMessagesSetChatTheme) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetMessageReadParticipants <--
 type TLMessagesGetMessageReadParticipants struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLMessagesGetMessageReadParticipants) String() string {
@@ -23152,9 +23518,10 @@ func (m *TLMessagesGetMessageReadParticipants) Decode(d *bin.Decoder) (err error
 	var decodeF = map[uint32]func() error{
 		0x31c1c44f: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -23174,12 +23541,12 @@ func (m *TLMessagesGetMessageReadParticipants) Decode(d *bin.Decoder) (err error
 
 // TLMessagesGetSearchResultsCalendar <--
 type TLMessagesGetSearchResultsCalendar struct {
-	ClazzID     uint32          `json:"_id"`
-	Peer        *InputPeer      `json:"peer"`
-	SavedPeerId *InputPeer      `json:"saved_peer_id"`
-	Filter      *MessagesFilter `json:"filter"`
-	OffsetId    int32           `json:"offset_id"`
-	OffsetDate  int32           `json:"offset_date"`
+	ClazzID     uint32              `json:"_id"`
+	Peer        InputPeerClazz      `json:"peer"`
+	SavedPeerId InputPeerClazz      `json:"saved_peer_id"`
+	Filter      MessagesFilterClazz `json:"filter"`
+	OffsetId    int32               `json:"offset_id"`
+	OffsetDate  int32               `json:"offset_date"`
 }
 
 func (m *TLMessagesGetSearchResultsCalendar) String() string {
@@ -23236,19 +23603,22 @@ func (m *TLMessagesGetSearchResultsCalendar) Decode(d *bin.Decoder) (err error) 
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
-				m3 := &InputPeer{}
-				_ = m3.Decode(d)
-				m.SavedPeerId = m3
+				// m3 := &InputPeer{}
+				// _ = m3.Decode(d)
+				// m.SavedPeerId = m3
+				m.SavedPeerId, _ = DecodeInputPeerClazz(d)
 			}
 
-			m4 := &MessagesFilter{}
-			_ = m4.Decode(d)
-			m.Filter = m4
+			// m4 := &MessagesFilter{}
+			// _ = m4.Decode(d)
+			// m.Filter = m4
+			m.Filter, _ = DecodeMessagesFilterClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.OffsetDate, err = d.Int32()
@@ -23269,12 +23639,12 @@ func (m *TLMessagesGetSearchResultsCalendar) Decode(d *bin.Decoder) (err error) 
 
 // TLMessagesGetSearchResultsPositions <--
 type TLMessagesGetSearchResultsPositions struct {
-	ClazzID     uint32          `json:"_id"`
-	Peer        *InputPeer      `json:"peer"`
-	SavedPeerId *InputPeer      `json:"saved_peer_id"`
-	Filter      *MessagesFilter `json:"filter"`
-	OffsetId    int32           `json:"offset_id"`
-	Limit       int32           `json:"limit"`
+	ClazzID     uint32              `json:"_id"`
+	Peer        InputPeerClazz      `json:"peer"`
+	SavedPeerId InputPeerClazz      `json:"saved_peer_id"`
+	Filter      MessagesFilterClazz `json:"filter"`
+	OffsetId    int32               `json:"offset_id"`
+	Limit       int32               `json:"limit"`
 }
 
 func (m *TLMessagesGetSearchResultsPositions) String() string {
@@ -23331,19 +23701,22 @@ func (m *TLMessagesGetSearchResultsPositions) Decode(d *bin.Decoder) (err error)
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
-				m3 := &InputPeer{}
-				_ = m3.Decode(d)
-				m.SavedPeerId = m3
+				// m3 := &InputPeer{}
+				// _ = m3.Decode(d)
+				// m.SavedPeerId = m3
+				m.SavedPeerId, _ = DecodeInputPeerClazz(d)
 			}
 
-			m4 := &MessagesFilter{}
-			_ = m4.Decode(d)
-			m.Filter = m4
+			// m4 := &MessagesFilter{}
+			// _ = m4.Decode(d)
+			// m.Filter = m4
+			m.Filter, _ = DecodeMessagesFilterClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -23364,10 +23737,10 @@ func (m *TLMessagesGetSearchResultsPositions) Decode(d *bin.Decoder) (err error)
 
 // TLMessagesHideChatJoinRequest <--
 type TLMessagesHideChatJoinRequest struct {
-	ClazzID  uint32     `json:"_id"`
-	Approved bool       `json:"approved"`
-	Peer     *InputPeer `json:"peer"`
-	UserId   *InputUser `json:"user_id"`
+	ClazzID  uint32         `json:"_id"`
+	Approved bool           `json:"approved"`
+	Peer     InputPeerClazz `json:"peer"`
+	UserId   InputUserClazz `json:"user_id"`
 }
 
 func (m *TLMessagesHideChatJoinRequest) String() string {
@@ -23421,13 +23794,15 @@ func (m *TLMessagesHideChatJoinRequest) Decode(d *bin.Decoder) (err error) {
 				m.Approved = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m4 := &InputUser{}
-			_ = m4.Decode(d)
-			m.UserId = m4
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.UserId = m4
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -23445,10 +23820,10 @@ func (m *TLMessagesHideChatJoinRequest) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesHideAllChatJoinRequests <--
 type TLMessagesHideAllChatJoinRequests struct {
-	ClazzID  uint32     `json:"_id"`
-	Approved bool       `json:"approved"`
-	Peer     *InputPeer `json:"peer"`
-	Link     *string    `json:"link"`
+	ClazzID  uint32         `json:"_id"`
+	Approved bool           `json:"approved"`
+	Peer     InputPeerClazz `json:"peer"`
+	Link     *string        `json:"link"`
 }
 
 func (m *TLMessagesHideAllChatJoinRequests) String() string {
@@ -23508,9 +23883,10 @@ func (m *TLMessagesHideAllChatJoinRequests) Decode(d *bin.Decoder) (err error) {
 				m.Approved = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.Link = new(string)
@@ -23533,9 +23909,9 @@ func (m *TLMessagesHideAllChatJoinRequests) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesToggleNoForwards <--
 type TLMessagesToggleNoForwards struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Enabled *Bool      `json:"enabled"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Enabled BoolClazz      `json:"enabled"`
 }
 
 func (m *TLMessagesToggleNoForwards) String() string {
@@ -23570,13 +23946,15 @@ func (m *TLMessagesToggleNoForwards) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb11eafa2: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -23594,9 +23972,9 @@ func (m *TLMessagesToggleNoForwards) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSaveDefaultSendAs <--
 type TLMessagesSaveDefaultSendAs struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	SendAs  *InputPeer `json:"send_as"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	SendAs  InputPeerClazz `json:"send_as"`
 }
 
 func (m *TLMessagesSaveDefaultSendAs) String() string {
@@ -23631,13 +24009,15 @@ func (m *TLMessagesSaveDefaultSendAs) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xccfddf96: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.SendAs = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.SendAs = m2
+			m.SendAs, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -23655,12 +24035,12 @@ func (m *TLMessagesSaveDefaultSendAs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendReaction <--
 type TLMessagesSendReaction struct {
-	ClazzID     uint32      `json:"_id"`
-	Big         bool        `json:"big"`
-	AddToRecent bool        `json:"add_to_recent"`
-	Peer        *InputPeer  `json:"peer"`
-	MsgId       int32       `json:"msg_id"`
-	Reaction    []*Reaction `json:"reaction"`
+	ClazzID     uint32          `json:"_id"`
+	Big         bool            `json:"big"`
+	AddToRecent bool            `json:"add_to_recent"`
+	Peer        InputPeerClazz  `json:"peer"`
+	MsgId       int32           `json:"msg_id"`
+	Reaction    []ReactionClazz `json:"reaction"`
 }
 
 func (m *TLMessagesSendReaction) String() string {
@@ -23727,9 +24107,10 @@ func (m *TLMessagesSendReaction) Decode(d *bin.Decoder) (err error) {
 				m.AddToRecent = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
@@ -23739,12 +24120,15 @@ func (m *TLMessagesSendReaction) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l6, err3 := d.Int()
-				v6 := make([]*Reaction, l6)
+				// v6 := make([]*Reaction, l6)
+				v6 := make([]ReactionClazz, l6)
 				for i := 0; i < l6; i++ {
-					vv := new(Reaction)
-					err3 = vv.Decode(d)
+					// vv := new(Reaction)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v6[i] = vv
+					v6[i], _ = DecodeReactionClazz(d)
 					_ = err3
-					v6[i] = vv
 				}
 				m.Reaction = v6
 			}
@@ -23765,9 +24149,9 @@ func (m *TLMessagesSendReaction) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetMessagesReactions <--
 type TLMessagesGetMessagesReactions struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLMessagesGetMessagesReactions) String() string {
@@ -23803,9 +24187,10 @@ func (m *TLMessagesGetMessagesReactions) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8bba90e6: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -23825,12 +24210,12 @@ func (m *TLMessagesGetMessagesReactions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetMessageReactionsList <--
 type TLMessagesGetMessageReactionsList struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	Id       int32      `json:"id"`
-	Reaction *Reaction  `json:"reaction"`
-	Offset   *string    `json:"offset"`
-	Limit    int32      `json:"limit"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	Id       int32          `json:"id"`
+	Reaction ReactionClazz  `json:"reaction"`
+	Offset   *string        `json:"offset"`
+	Limit    int32          `json:"limit"`
 }
 
 func (m *TLMessagesGetMessageReactionsList) String() string {
@@ -23893,15 +24278,17 @@ func (m *TLMessagesGetMessageReactionsList) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
-				m4 := &Reaction{}
-				_ = m4.Decode(d)
-				m.Reaction = m4
+				// m4 := &Reaction{}
+				// _ = m4.Decode(d)
+				// m.Reaction = m4
+				m.Reaction, _ = DecodeReactionClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				m.Offset = new(string)
@@ -23926,11 +24313,11 @@ func (m *TLMessagesGetMessageReactionsList) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetChatAvailableReactions <--
 type TLMessagesSetChatAvailableReactions struct {
-	ClazzID            uint32         `json:"_id"`
-	Peer               *InputPeer     `json:"peer"`
-	AvailableReactions *ChatReactions `json:"available_reactions"`
-	ReactionsLimit     *int32         `json:"reactions_limit"`
-	PaidEnabled        *Bool          `json:"paid_enabled"`
+	ClazzID            uint32             `json:"_id"`
+	Peer               InputPeerClazz     `json:"peer"`
+	AvailableReactions ChatReactionsClazz `json:"available_reactions"`
+	ReactionsLimit     *int32             `json:"reactions_limit"`
+	PaidEnabled        BoolClazz          `json:"paid_enabled"`
 }
 
 func (m *TLMessagesSetChatAvailableReactions) String() string {
@@ -23991,22 +24378,25 @@ func (m *TLMessagesSetChatAvailableReactions) Decode(d *bin.Decoder) (err error)
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m3 := &ChatReactions{}
-			_ = m3.Decode(d)
-			m.AvailableReactions = m3
+			// m3 := &ChatReactions{}
+			// _ = m3.Decode(d)
+			// m.AvailableReactions = m3
+			m.AvailableReactions, _ = DecodeChatReactionsClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.ReactionsLimit = new(int32)
 				*m.ReactionsLimit, err = d.Int32()
 			}
 			if (flags & (1 << 1)) != 0 {
-				m5 := &Bool{}
-				_ = m5.Decode(d)
-				m.PaidEnabled = m5
+				// m5 := &Bool{}
+				// _ = m5.Decode(d)
+				// m.PaidEnabled = m5
+				m.PaidEnabled, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -24077,8 +24467,8 @@ func (m *TLMessagesGetAvailableReactions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetDefaultReaction <--
 type TLMessagesSetDefaultReaction struct {
-	ClazzID  uint32    `json:"_id"`
-	Reaction *Reaction `json:"reaction"`
+	ClazzID  uint32        `json:"_id"`
+	Reaction ReactionClazz `json:"reaction"`
 }
 
 func (m *TLMessagesSetDefaultReaction) String() string {
@@ -24112,9 +24502,10 @@ func (m *TLMessagesSetDefaultReaction) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4f47a016: func() (err error) {
 
-			m1 := &Reaction{}
-			_ = m1.Decode(d)
-			m.Reaction = m1
+			// m1 := &Reaction{}
+			// _ = m1.Decode(d)
+			// m.Reaction = m1
+			m.Reaction, _ = DecodeReactionClazz(d)
 
 			return nil
 		},
@@ -24132,11 +24523,11 @@ func (m *TLMessagesSetDefaultReaction) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesTranslateText <--
 type TLMessagesTranslateText struct {
-	ClazzID uint32              `json:"_id"`
-	Peer    *InputPeer          `json:"peer"`
-	Id      []int32             `json:"id"`
-	Text    []*TextWithEntities `json:"text"`
-	ToLang  string              `json:"to_lang"`
+	ClazzID uint32                  `json:"_id"`
+	Peer    InputPeerClazz          `json:"peer"`
+	Id      []int32                 `json:"id"`
+	Text    []TextWithEntitiesClazz `json:"text"`
+	ToLang  string                  `json:"to_lang"`
 }
 
 func (m *TLMessagesTranslateText) String() string {
@@ -24202,9 +24593,10 @@ func (m *TLMessagesTranslateText) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputPeer{}
-				_ = m2.Decode(d)
-				m.Peer = m2
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.Peer = m2
+				m.Peer, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 0)) != 0 {
 				m.Id, err = iface.DecodeInt32List(d)
@@ -24216,12 +24608,15 @@ func (m *TLMessagesTranslateText) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l4, err3 := d.Int()
-				v4 := make([]*TextWithEntities, l4)
+				// v4 := make([]*TextWithEntities, l4)
+				v4 := make([]TextWithEntitiesClazz, l4)
 				for i := 0; i < l4; i++ {
-					vv := new(TextWithEntities)
-					err3 = vv.Decode(d)
+					// vv := new(TextWithEntities)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v4[i] = vv
+					v4[i], _ = DecodeTextWithEntitiesClazz(d)
 					_ = err3
-					v4[i] = vv
 				}
 				m.Text = v4
 			}
@@ -24243,14 +24638,14 @@ func (m *TLMessagesTranslateText) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetUnreadReactions <--
 type TLMessagesGetUnreadReactions struct {
-	ClazzID   uint32     `json:"_id"`
-	Peer      *InputPeer `json:"peer"`
-	TopMsgId  *int32     `json:"top_msg_id"`
-	OffsetId  int32      `json:"offset_id"`
-	AddOffset int32      `json:"add_offset"`
-	Limit     int32      `json:"limit"`
-	MaxId     int32      `json:"max_id"`
-	MinId     int32      `json:"min_id"`
+	ClazzID   uint32         `json:"_id"`
+	Peer      InputPeerClazz `json:"peer"`
+	TopMsgId  *int32         `json:"top_msg_id"`
+	OffsetId  int32          `json:"offset_id"`
+	AddOffset int32          `json:"add_offset"`
+	Limit     int32          `json:"limit"`
+	MaxId     int32          `json:"max_id"`
+	MinId     int32          `json:"min_id"`
 }
 
 func (m *TLMessagesGetUnreadReactions) String() string {
@@ -24309,9 +24704,10 @@ func (m *TLMessagesGetUnreadReactions) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
@@ -24339,9 +24735,9 @@ func (m *TLMessagesGetUnreadReactions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReadReactions <--
 type TLMessagesReadReactions struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	TopMsgId *int32     `json:"top_msg_id"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	TopMsgId *int32         `json:"top_msg_id"`
 }
 
 func (m *TLMessagesReadReactions) String() string {
@@ -24394,9 +24790,10 @@ func (m *TLMessagesReadReactions) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
@@ -24419,10 +24816,10 @@ func (m *TLMessagesReadReactions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSearchSentMedia <--
 type TLMessagesSearchSentMedia struct {
-	ClazzID uint32          `json:"_id"`
-	Q       string          `json:"q"`
-	Filter  *MessagesFilter `json:"filter"`
-	Limit   int32           `json:"limit"`
+	ClazzID uint32              `json:"_id"`
+	Q       string              `json:"q"`
+	Filter  MessagesFilterClazz `json:"filter"`
+	Limit   int32               `json:"limit"`
 }
 
 func (m *TLMessagesSearchSentMedia) String() string {
@@ -24459,9 +24856,10 @@ func (m *TLMessagesSearchSentMedia) Decode(d *bin.Decoder) (err error) {
 		0x107e31a0: func() (err error) {
 			m.Q, err = d.String()
 
-			m2 := &MessagesFilter{}
-			_ = m2.Decode(d)
-			m.Filter = m2
+			// m2 := &MessagesFilter{}
+			// _ = m2.Decode(d)
+			// m.Filter = m2
+			m.Filter, _ = DecodeMessagesFilterClazz(d)
 
 			m.Limit, err = d.Int32()
 
@@ -24533,8 +24931,8 @@ func (m *TLMessagesGetAttachMenuBots) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetAttachMenuBot <--
 type TLMessagesGetAttachMenuBot struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
 }
 
 func (m *TLMessagesGetAttachMenuBot) String() string {
@@ -24568,9 +24966,10 @@ func (m *TLMessagesGetAttachMenuBot) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x77216192: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -24588,10 +24987,10 @@ func (m *TLMessagesGetAttachMenuBot) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesToggleBotInAttachMenu <--
 type TLMessagesToggleBotInAttachMenu struct {
-	ClazzID      uint32     `json:"_id"`
-	WriteAllowed bool       `json:"write_allowed"`
-	Bot          *InputUser `json:"bot"`
-	Enabled      *Bool      `json:"enabled"`
+	ClazzID      uint32         `json:"_id"`
+	WriteAllowed bool           `json:"write_allowed"`
+	Bot          InputUserClazz `json:"bot"`
+	Enabled      BoolClazz      `json:"enabled"`
 }
 
 func (m *TLMessagesToggleBotInAttachMenu) String() string {
@@ -24645,13 +25044,15 @@ func (m *TLMessagesToggleBotInAttachMenu) Decode(d *bin.Decoder) (err error) {
 				m.WriteAllowed = true
 			}
 
-			m3 := &InputUser{}
-			_ = m3.Decode(d)
-			m.Bot = m3
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.Bot = m3
+			m.Bot, _ = DecodeInputUserClazz(d)
 
-			m4 := &Bool{}
-			_ = m4.Decode(d)
-			m.Enabled = m4
+			// m4 := &Bool{}
+			// _ = m4.Decode(d)
+			// m.Enabled = m4
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -24669,19 +25070,19 @@ func (m *TLMessagesToggleBotInAttachMenu) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesRequestWebView <--
 type TLMessagesRequestWebView struct {
-	ClazzID     uint32        `json:"_id"`
-	FromBotMenu bool          `json:"from_bot_menu"`
-	Silent      bool          `json:"silent"`
-	Compact     bool          `json:"compact"`
-	Fullscreen  bool          `json:"fullscreen"`
-	Peer        *InputPeer    `json:"peer"`
-	Bot         *InputUser    `json:"bot"`
-	Url         *string       `json:"url"`
-	StartParam  *string       `json:"start_param"`
-	ThemeParams *DataJSON     `json:"theme_params"`
-	Platform    string        `json:"platform"`
-	ReplyTo     *InputReplyTo `json:"reply_to"`
-	SendAs      *InputPeer    `json:"send_as"`
+	ClazzID     uint32            `json:"_id"`
+	FromBotMenu bool              `json:"from_bot_menu"`
+	Silent      bool              `json:"silent"`
+	Compact     bool              `json:"compact"`
+	Fullscreen  bool              `json:"fullscreen"`
+	Peer        InputPeerClazz    `json:"peer"`
+	Bot         InputUserClazz    `json:"bot"`
+	Url         *string           `json:"url"`
+	StartParam  *string           `json:"start_param"`
+	ThemeParams DataJSONClazz     `json:"theme_params"`
+	Platform    string            `json:"platform"`
+	ReplyTo     InputReplyToClazz `json:"reply_to"`
+	SendAs      InputPeerClazz    `json:"send_as"`
 }
 
 func (m *TLMessagesRequestWebView) String() string {
@@ -24790,13 +25191,15 @@ func (m *TLMessagesRequestWebView) Decode(d *bin.Decoder) (err error) {
 				m.Fullscreen = true
 			}
 
-			m6 := &InputPeer{}
-			_ = m6.Decode(d)
-			m.Peer = m6
+			// m6 := &InputPeer{}
+			// _ = m6.Decode(d)
+			// m.Peer = m6
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m7 := &InputUser{}
-			_ = m7.Decode(d)
-			m.Bot = m7
+			// m7 := &InputUser{}
+			// _ = m7.Decode(d)
+			// m.Bot = m7
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.Url = new(string)
@@ -24809,20 +25212,23 @@ func (m *TLMessagesRequestWebView) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 2)) != 0 {
-				m10 := &DataJSON{}
-				_ = m10.Decode(d)
-				m.ThemeParams = m10
+				// m10 := &DataJSON{}
+				// _ = m10.Decode(d)
+				// m.ThemeParams = m10
+				m.ThemeParams, _ = DecodeDataJSONClazz(d)
 			}
 			m.Platform, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m12 := &InputReplyTo{}
-				_ = m12.Decode(d)
-				m.ReplyTo = m12
+				// m12 := &InputReplyTo{}
+				// _ = m12.Decode(d)
+				// m.ReplyTo = m12
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			if (flags & (1 << 13)) != 0 {
-				m13 := &InputPeer{}
-				_ = m13.Decode(d)
-				m.SendAs = m13
+				// m13 := &InputPeer{}
+				// _ = m13.Decode(d)
+				// m.SendAs = m13
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 
 			return nil
@@ -24841,13 +25247,13 @@ func (m *TLMessagesRequestWebView) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesProlongWebView <--
 type TLMessagesProlongWebView struct {
-	ClazzID uint32        `json:"_id"`
-	Silent  bool          `json:"silent"`
-	Peer    *InputPeer    `json:"peer"`
-	Bot     *InputUser    `json:"bot"`
-	QueryId int64         `json:"query_id"`
-	ReplyTo *InputReplyTo `json:"reply_to"`
-	SendAs  *InputPeer    `json:"send_as"`
+	ClazzID uint32            `json:"_id"`
+	Silent  bool              `json:"silent"`
+	Peer    InputPeerClazz    `json:"peer"`
+	Bot     InputUserClazz    `json:"bot"`
+	QueryId int64             `json:"query_id"`
+	ReplyTo InputReplyToClazz `json:"reply_to"`
+	SendAs  InputPeerClazz    `json:"send_as"`
 }
 
 func (m *TLMessagesProlongWebView) String() string {
@@ -24916,24 +25322,28 @@ func (m *TLMessagesProlongWebView) Decode(d *bin.Decoder) (err error) {
 				m.Silent = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m4 := &InputUser{}
-			_ = m4.Decode(d)
-			m.Bot = m4
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.Bot = m4
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.QueryId, err = d.Int64()
 			if (flags & (1 << 0)) != 0 {
-				m6 := &InputReplyTo{}
-				_ = m6.Decode(d)
-				m.ReplyTo = m6
+				// m6 := &InputReplyTo{}
+				// _ = m6.Decode(d)
+				// m.ReplyTo = m6
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
 			}
 			if (flags & (1 << 13)) != 0 {
-				m7 := &InputPeer{}
-				_ = m7.Decode(d)
-				m.SendAs = m7
+				// m7 := &InputPeer{}
+				// _ = m7.Decode(d)
+				// m.SendAs = m7
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 
 			return nil
@@ -24952,16 +25362,16 @@ func (m *TLMessagesProlongWebView) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesRequestSimpleWebView <--
 type TLMessagesRequestSimpleWebView struct {
-	ClazzID           uint32     `json:"_id"`
-	FromSwitchWebview bool       `json:"from_switch_webview"`
-	FromSideMenu      bool       `json:"from_side_menu"`
-	Compact           bool       `json:"compact"`
-	Fullscreen        bool       `json:"fullscreen"`
-	Bot               *InputUser `json:"bot"`
-	Url               *string    `json:"url"`
-	StartParam        *string    `json:"start_param"`
-	ThemeParams       *DataJSON  `json:"theme_params"`
-	Platform          string     `json:"platform"`
+	ClazzID           uint32         `json:"_id"`
+	FromSwitchWebview bool           `json:"from_switch_webview"`
+	FromSideMenu      bool           `json:"from_side_menu"`
+	Compact           bool           `json:"compact"`
+	Fullscreen        bool           `json:"fullscreen"`
+	Bot               InputUserClazz `json:"bot"`
+	Url               *string        `json:"url"`
+	StartParam        *string        `json:"start_param"`
+	ThemeParams       DataJSONClazz  `json:"theme_params"`
+	Platform          string         `json:"platform"`
 }
 
 func (m *TLMessagesRequestSimpleWebView) String() string {
@@ -25055,9 +25465,10 @@ func (m *TLMessagesRequestSimpleWebView) Decode(d *bin.Decoder) (err error) {
 				m.Fullscreen = true
 			}
 
-			m6 := &InputUser{}
-			_ = m6.Decode(d)
-			m.Bot = m6
+			// m6 := &InputUser{}
+			// _ = m6.Decode(d)
+			// m.Bot = m6
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			if (flags & (1 << 3)) != 0 {
 				m.Url = new(string)
@@ -25070,9 +25481,10 @@ func (m *TLMessagesRequestSimpleWebView) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 0)) != 0 {
-				m9 := &DataJSON{}
-				_ = m9.Decode(d)
-				m.ThemeParams = m9
+				// m9 := &DataJSON{}
+				// _ = m9.Decode(d)
+				// m.ThemeParams = m9
+				m.ThemeParams, _ = DecodeDataJSONClazz(d)
 			}
 			m.Platform, err = d.String()
 
@@ -25092,9 +25504,9 @@ func (m *TLMessagesRequestSimpleWebView) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendWebViewResultMessage <--
 type TLMessagesSendWebViewResultMessage struct {
-	ClazzID    uint32                `json:"_id"`
-	BotQueryId string                `json:"bot_query_id"`
-	Result     *InputBotInlineResult `json:"result"`
+	ClazzID    uint32                    `json:"_id"`
+	BotQueryId string                    `json:"bot_query_id"`
+	Result     InputBotInlineResultClazz `json:"result"`
 }
 
 func (m *TLMessagesSendWebViewResultMessage) String() string {
@@ -25130,9 +25542,10 @@ func (m *TLMessagesSendWebViewResultMessage) Decode(d *bin.Decoder) (err error) 
 		0xa4314f5: func() (err error) {
 			m.BotQueryId, err = d.String()
 
-			m2 := &InputBotInlineResult{}
-			_ = m2.Decode(d)
-			m.Result = m2
+			// m2 := &InputBotInlineResult{}
+			// _ = m2.Decode(d)
+			// m.Result = m2
+			m.Result, _ = DecodeInputBotInlineResultClazz(d)
 
 			return nil
 		},
@@ -25150,11 +25563,11 @@ func (m *TLMessagesSendWebViewResultMessage) Decode(d *bin.Decoder) (err error) 
 
 // TLMessagesSendWebViewData <--
 type TLMessagesSendWebViewData struct {
-	ClazzID    uint32     `json:"_id"`
-	Bot        *InputUser `json:"bot"`
-	RandomId   int64      `json:"random_id"`
-	ButtonText string     `json:"button_text"`
-	Data       string     `json:"data"`
+	ClazzID    uint32         `json:"_id"`
+	Bot        InputUserClazz `json:"bot"`
+	RandomId   int64          `json:"random_id"`
+	ButtonText string         `json:"button_text"`
+	Data       string         `json:"data"`
 }
 
 func (m *TLMessagesSendWebViewData) String() string {
@@ -25191,9 +25604,10 @@ func (m *TLMessagesSendWebViewData) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xdc0242c8: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.RandomId, err = d.Int64()
 			m.ButtonText, err = d.String()
@@ -25215,9 +25629,9 @@ func (m *TLMessagesSendWebViewData) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesTranscribeAudio <--
 type TLMessagesTranscribeAudio struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLMessagesTranscribeAudio) String() string {
@@ -25252,9 +25666,10 @@ func (m *TLMessagesTranscribeAudio) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x269e9a49: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -25274,11 +25689,11 @@ func (m *TLMessagesTranscribeAudio) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesRateTranscribedAudio <--
 type TLMessagesRateTranscribedAudio struct {
-	ClazzID         uint32     `json:"_id"`
-	Peer            *InputPeer `json:"peer"`
-	MsgId           int32      `json:"msg_id"`
-	TranscriptionId int64      `json:"transcription_id"`
-	Good            *Bool      `json:"good"`
+	ClazzID         uint32         `json:"_id"`
+	Peer            InputPeerClazz `json:"peer"`
+	MsgId           int32          `json:"msg_id"`
+	TranscriptionId int64          `json:"transcription_id"`
+	Good            BoolClazz      `json:"good"`
 }
 
 func (m *TLMessagesRateTranscribedAudio) String() string {
@@ -25315,16 +25730,18 @@ func (m *TLMessagesRateTranscribedAudio) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7f1d072f: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 			m.TranscriptionId, err = d.Int64()
 
-			m4 := &Bool{}
-			_ = m4.Decode(d)
-			m.Good = m4
+			// m4 := &Bool{}
+			// _ = m4.Decode(d)
+			// m.Good = m4
+			m.Good, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -25499,10 +25916,10 @@ func (m *TLMessagesGetFeaturedEmojiStickers) Decode(d *bin.Decoder) (err error) 
 
 // TLMessagesReportReaction <--
 type TLMessagesReportReaction struct {
-	ClazzID      uint32     `json:"_id"`
-	Peer         *InputPeer `json:"peer"`
-	Id           int32      `json:"id"`
-	ReactionPeer *InputPeer `json:"reaction_peer"`
+	ClazzID      uint32         `json:"_id"`
+	Peer         InputPeerClazz `json:"peer"`
+	Id           int32          `json:"id"`
+	ReactionPeer InputPeerClazz `json:"reaction_peer"`
 }
 
 func (m *TLMessagesReportReaction) String() string {
@@ -25538,15 +25955,17 @@ func (m *TLMessagesReportReaction) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3f64c076: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.ReactionPeer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.ReactionPeer = m3
+			m.ReactionPeer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -25722,9 +26141,9 @@ func (m *TLMessagesClearRecentReactions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetExtendedMedia <--
 type TLMessagesGetExtendedMedia struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLMessagesGetExtendedMedia) String() string {
@@ -25760,9 +26179,10 @@ func (m *TLMessagesGetExtendedMedia) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x84f80814: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -25882,11 +26302,11 @@ func (m *TLMessagesGetDefaultHistoryTTL) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendBotRequestedPeer <--
 type TLMessagesSendBotRequestedPeer struct {
-	ClazzID        uint32       `json:"_id"`
-	Peer           *InputPeer   `json:"peer"`
-	MsgId          int32        `json:"msg_id"`
-	ButtonId       int32        `json:"button_id"`
-	RequestedPeers []*InputPeer `json:"requested_peers"`
+	ClazzID        uint32           `json:"_id"`
+	Peer           InputPeerClazz   `json:"peer"`
+	MsgId          int32            `json:"msg_id"`
+	ButtonId       int32            `json:"button_id"`
+	RequestedPeers []InputPeerClazz `json:"requested_peers"`
 }
 
 func (m *TLMessagesSendBotRequestedPeer) String() string {
@@ -25924,9 +26344,10 @@ func (m *TLMessagesSendBotRequestedPeer) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x91b2d060: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 			m.ButtonId, err = d.Int32()
@@ -25936,12 +26357,15 @@ func (m *TLMessagesSendBotRequestedPeer) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l4, err3 := d.Int()
-			v4 := make([]*InputPeer, l4)
+			// v4 := make([]*InputPeer, l4)
+			v4 := make([]InputPeerClazz, l4)
 			for i := 0; i < l4; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v4[i] = vv
+				v4[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v4[i] = vv
 			}
 			m.RequestedPeers = v4
 
@@ -26172,9 +26596,9 @@ func (m *TLMessagesSearchCustomEmoji) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesTogglePeerTranslations <--
 type TLMessagesTogglePeerTranslations struct {
-	ClazzID  uint32     `json:"_id"`
-	Disabled bool       `json:"disabled"`
-	Peer     *InputPeer `json:"peer"`
+	ClazzID  uint32         `json:"_id"`
+	Disabled bool           `json:"disabled"`
+	Peer     InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesTogglePeerTranslations) String() string {
@@ -26227,9 +26651,10 @@ func (m *TLMessagesTogglePeerTranslations) Decode(d *bin.Decoder) (err error) {
 				m.Disabled = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -26247,9 +26672,9 @@ func (m *TLMessagesTogglePeerTranslations) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetBotApp <--
 type TLMessagesGetBotApp struct {
-	ClazzID uint32       `json:"_id"`
-	App     *InputBotApp `json:"app"`
-	Hash    int64        `json:"hash"`
+	ClazzID uint32           `json:"_id"`
+	App     InputBotAppClazz `json:"app"`
+	Hash    int64            `json:"hash"`
 }
 
 func (m *TLMessagesGetBotApp) String() string {
@@ -26284,9 +26709,10 @@ func (m *TLMessagesGetBotApp) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x34fdc5c3: func() (err error) {
 
-			m1 := &InputBotApp{}
-			_ = m1.Decode(d)
-			m.App = m1
+			// m1 := &InputBotApp{}
+			// _ = m1.Decode(d)
+			// m.App = m1
+			m.App, _ = DecodeInputBotAppClazz(d)
 
 			m.Hash, err = d.Int64()
 
@@ -26306,15 +26732,15 @@ func (m *TLMessagesGetBotApp) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesRequestAppWebView <--
 type TLMessagesRequestAppWebView struct {
-	ClazzID      uint32       `json:"_id"`
-	WriteAllowed bool         `json:"write_allowed"`
-	Compact      bool         `json:"compact"`
-	Fullscreen   bool         `json:"fullscreen"`
-	Peer         *InputPeer   `json:"peer"`
-	App          *InputBotApp `json:"app"`
-	StartParam   *string      `json:"start_param"`
-	ThemeParams  *DataJSON    `json:"theme_params"`
-	Platform     string       `json:"platform"`
+	ClazzID      uint32           `json:"_id"`
+	WriteAllowed bool             `json:"write_allowed"`
+	Compact      bool             `json:"compact"`
+	Fullscreen   bool             `json:"fullscreen"`
+	Peer         InputPeerClazz   `json:"peer"`
+	App          InputBotAppClazz `json:"app"`
+	StartParam   *string          `json:"start_param"`
+	ThemeParams  DataJSONClazz    `json:"theme_params"`
+	Platform     string           `json:"platform"`
 }
 
 func (m *TLMessagesRequestAppWebView) String() string {
@@ -26396,13 +26822,15 @@ func (m *TLMessagesRequestAppWebView) Decode(d *bin.Decoder) (err error) {
 				m.Fullscreen = true
 			}
 
-			m5 := &InputPeer{}
-			_ = m5.Decode(d)
-			m.Peer = m5
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.Peer = m5
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m6 := &InputBotApp{}
-			_ = m6.Decode(d)
-			m.App = m6
+			// m6 := &InputBotApp{}
+			// _ = m6.Decode(d)
+			// m.App = m6
+			m.App, _ = DecodeInputBotAppClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.StartParam = new(string)
@@ -26410,9 +26838,10 @@ func (m *TLMessagesRequestAppWebView) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 2)) != 0 {
-				m8 := &DataJSON{}
-				_ = m8.Decode(d)
-				m.ThemeParams = m8
+				// m8 := &DataJSON{}
+				// _ = m8.Decode(d)
+				// m.ThemeParams = m8
+				m.ThemeParams, _ = DecodeDataJSONClazz(d)
 			}
 			m.Platform, err = d.String()
 
@@ -26432,13 +26861,13 @@ func (m *TLMessagesRequestAppWebView) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetChatWallPaper <--
 type TLMessagesSetChatWallPaper struct {
-	ClazzID   uint32             `json:"_id"`
-	ForBoth   bool               `json:"for_both"`
-	Revert    bool               `json:"revert"`
-	Peer      *InputPeer         `json:"peer"`
-	Wallpaper *InputWallPaper    `json:"wallpaper"`
-	Settings  *WallPaperSettings `json:"settings"`
-	Id        *int32             `json:"id"`
+	ClazzID   uint32                 `json:"_id"`
+	ForBoth   bool                   `json:"for_both"`
+	Revert    bool                   `json:"revert"`
+	Peer      InputPeerClazz         `json:"peer"`
+	Wallpaper InputWallPaperClazz    `json:"wallpaper"`
+	Settings  WallPaperSettingsClazz `json:"settings"`
+	Id        *int32                 `json:"id"`
 }
 
 func (m *TLMessagesSetChatWallPaper) String() string {
@@ -26518,19 +26947,22 @@ func (m *TLMessagesSetChatWallPaper) Decode(d *bin.Decoder) (err error) {
 				m.Revert = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m5 := &InputWallPaper{}
-				_ = m5.Decode(d)
-				m.Wallpaper = m5
+				// m5 := &InputWallPaper{}
+				// _ = m5.Decode(d)
+				// m.Wallpaper = m5
+				m.Wallpaper, _ = DecodeInputWallPaperClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
-				m6 := &WallPaperSettings{}
-				_ = m6.Decode(d)
-				m.Settings = m6
+				// m6 := &WallPaperSettings{}
+				// _ = m6.Decode(d)
+				// m.Settings = m6
+				m.Settings, _ = DecodeWallPaperSettingsClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				m.Id = new(int32)
@@ -26628,13 +27060,13 @@ func (m *TLMessagesSearchEmojiStickerSets) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetSavedDialogs <--
 type TLMessagesGetSavedDialogs struct {
-	ClazzID       uint32     `json:"_id"`
-	ExcludePinned bool       `json:"exclude_pinned"`
-	OffsetDate    int32      `json:"offset_date"`
-	OffsetId      int32      `json:"offset_id"`
-	OffsetPeer    *InputPeer `json:"offset_peer"`
-	Limit         int32      `json:"limit"`
-	Hash          int64      `json:"hash"`
+	ClazzID       uint32         `json:"_id"`
+	ExcludePinned bool           `json:"exclude_pinned"`
+	OffsetDate    int32          `json:"offset_date"`
+	OffsetId      int32          `json:"offset_id"`
+	OffsetPeer    InputPeerClazz `json:"offset_peer"`
+	Limit         int32          `json:"limit"`
+	Hash          int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetSavedDialogs) String() string {
@@ -26693,9 +27125,10 @@ func (m *TLMessagesGetSavedDialogs) Decode(d *bin.Decoder) (err error) {
 			m.OffsetDate, err = d.Int32()
 			m.OffsetId, err = d.Int32()
 
-			m5 := &InputPeer{}
-			_ = m5.Decode(d)
-			m.OffsetPeer = m5
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.OffsetPeer = m5
+			m.OffsetPeer, _ = DecodeInputPeerClazz(d)
 
 			m.Limit, err = d.Int32()
 			m.Hash, err = d.Int64()
@@ -26716,15 +27149,15 @@ func (m *TLMessagesGetSavedDialogs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetSavedHistory <--
 type TLMessagesGetSavedHistory struct {
-	ClazzID    uint32     `json:"_id"`
-	Peer       *InputPeer `json:"peer"`
-	OffsetId   int32      `json:"offset_id"`
-	OffsetDate int32      `json:"offset_date"`
-	AddOffset  int32      `json:"add_offset"`
-	Limit      int32      `json:"limit"`
-	MaxId      int32      `json:"max_id"`
-	MinId      int32      `json:"min_id"`
-	Hash       int64      `json:"hash"`
+	ClazzID    uint32         `json:"_id"`
+	Peer       InputPeerClazz `json:"peer"`
+	OffsetId   int32          `json:"offset_id"`
+	OffsetDate int32          `json:"offset_date"`
+	AddOffset  int32          `json:"add_offset"`
+	Limit      int32          `json:"limit"`
+	MaxId      int32          `json:"max_id"`
+	MinId      int32          `json:"min_id"`
+	Hash       int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetSavedHistory) String() string {
@@ -26765,9 +27198,10 @@ func (m *TLMessagesGetSavedHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3d9a414d: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.OffsetDate, err = d.Int32()
@@ -26793,11 +27227,11 @@ func (m *TLMessagesGetSavedHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesDeleteSavedHistory <--
 type TLMessagesDeleteSavedHistory struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MaxId   int32      `json:"max_id"`
-	MinDate *int32     `json:"min_date"`
-	MaxDate *int32     `json:"max_date"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MaxId   int32          `json:"max_id"`
+	MinDate *int32         `json:"min_date"`
+	MaxDate *int32         `json:"max_date"`
 }
 
 func (m *TLMessagesDeleteSavedHistory) String() string {
@@ -26858,9 +27292,10 @@ func (m *TLMessagesDeleteSavedHistory) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MaxId, err = d.Int32()
 			if (flags & (1 << 2)) != 0 {
@@ -26936,9 +27371,9 @@ func (m *TLMessagesGetPinnedSavedDialogs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesToggleSavedDialogPin <--
 type TLMessagesToggleSavedDialogPin struct {
-	ClazzID uint32           `json:"_id"`
-	Pinned  bool             `json:"pinned"`
-	Peer    *InputDialogPeer `json:"peer"`
+	ClazzID uint32               `json:"_id"`
+	Pinned  bool                 `json:"pinned"`
+	Peer    InputDialogPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesToggleSavedDialogPin) String() string {
@@ -26991,9 +27426,10 @@ func (m *TLMessagesToggleSavedDialogPin) Decode(d *bin.Decoder) (err error) {
 				m.Pinned = true
 			}
 
-			m3 := &InputDialogPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputDialogPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputDialogPeerClazz(d)
 
 			return nil
 		},
@@ -27011,9 +27447,9 @@ func (m *TLMessagesToggleSavedDialogPin) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReorderPinnedSavedDialogs <--
 type TLMessagesReorderPinnedSavedDialogs struct {
-	ClazzID uint32             `json:"_id"`
-	Force   bool               `json:"force"`
-	Order   []*InputDialogPeer `json:"order"`
+	ClazzID uint32                 `json:"_id"`
+	Force   bool                   `json:"force"`
+	Order   []InputDialogPeerClazz `json:"order"`
 }
 
 func (m *TLMessagesReorderPinnedSavedDialogs) String() string {
@@ -27072,12 +27508,15 @@ func (m *TLMessagesReorderPinnedSavedDialogs) Decode(d *bin.Decoder) (err error)
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*InputDialogPeer, l3)
+			// v3 := make([]*InputDialogPeer, l3)
+			v3 := make([]InputDialogPeerClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(InputDialogPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputDialogPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeInputDialogPeerClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Order = v3
 
@@ -27097,9 +27536,9 @@ func (m *TLMessagesReorderPinnedSavedDialogs) Decode(d *bin.Decoder) (err error)
 
 // TLMessagesGetSavedReactionTags <--
 type TLMessagesGetSavedReactionTags struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Hash    int64      `json:"hash"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Hash    int64          `json:"hash"`
 }
 
 func (m *TLMessagesGetSavedReactionTags) String() string {
@@ -27153,9 +27592,10 @@ func (m *TLMessagesGetSavedReactionTags) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputPeer{}
-				_ = m2.Decode(d)
-				m.Peer = m2
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.Peer = m2
+				m.Peer, _ = DecodeInputPeerClazz(d)
 			}
 			m.Hash, err = d.Int64()
 
@@ -27175,9 +27615,9 @@ func (m *TLMessagesGetSavedReactionTags) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesUpdateSavedReactionTag <--
 type TLMessagesUpdateSavedReactionTag struct {
-	ClazzID  uint32    `json:"_id"`
-	Reaction *Reaction `json:"reaction"`
-	Title    *string   `json:"title"`
+	ClazzID  uint32        `json:"_id"`
+	Reaction ReactionClazz `json:"reaction"`
+	Title    *string       `json:"title"`
 }
 
 func (m *TLMessagesUpdateSavedReactionTag) String() string {
@@ -27230,9 +27670,10 @@ func (m *TLMessagesUpdateSavedReactionTag) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &Reaction{}
-			_ = m2.Decode(d)
-			m.Reaction = m2
+			// m2 := &Reaction{}
+			// _ = m2.Decode(d)
+			// m.Reaction = m2
+			m.Reaction, _ = DecodeReactionClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.Title = new(string)
@@ -27307,9 +27748,9 @@ func (m *TLMessagesGetDefaultTagReactions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetOutboxReadDate <--
 type TLMessagesGetOutboxReadDate struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLMessagesGetOutboxReadDate) String() string {
@@ -27344,9 +27785,10 @@ func (m *TLMessagesGetOutboxReadDate) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8c4bfe5d: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -27708,11 +28150,11 @@ func (m *TLMessagesGetQuickReplyMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendQuickReplyMessages <--
 type TLMessagesSendQuickReplyMessages struct {
-	ClazzID    uint32     `json:"_id"`
-	Peer       *InputPeer `json:"peer"`
-	ShortcutId int32      `json:"shortcut_id"`
-	Id         []int32    `json:"id"`
-	RandomId   []int64    `json:"random_id"`
+	ClazzID    uint32         `json:"_id"`
+	Peer       InputPeerClazz `json:"peer"`
+	ShortcutId int32          `json:"shortcut_id"`
+	Id         []int32        `json:"id"`
+	RandomId   []int64        `json:"random_id"`
 }
 
 func (m *TLMessagesSendQuickReplyMessages) String() string {
@@ -27751,9 +28193,10 @@ func (m *TLMessagesSendQuickReplyMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x6c750de1: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.ShortcutId, err = d.Int32()
 
@@ -27834,8 +28277,8 @@ func (m *TLMessagesDeleteQuickReplyMessages) Decode(d *bin.Decoder) (err error) 
 
 // TLMessagesToggleDialogFilterTags <--
 type TLMessagesToggleDialogFilterTags struct {
-	ClazzID uint32 `json:"_id"`
-	Enabled *Bool  `json:"enabled"`
+	ClazzID uint32    `json:"_id"`
+	Enabled BoolClazz `json:"enabled"`
 }
 
 func (m *TLMessagesToggleDialogFilterTags) String() string {
@@ -27869,9 +28312,10 @@ func (m *TLMessagesToggleDialogFilterTags) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfd2dda49: func() (err error) {
 
-			m1 := &Bool{}
-			_ = m1.Decode(d)
-			m.Enabled = m1
+			// m1 := &Bool{}
+			// _ = m1.Decode(d)
+			// m.Enabled = m1
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -28048,10 +28492,10 @@ func (m *TLMessagesGetAvailableEffects) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesEditFactCheck <--
 type TLMessagesEditFactCheck struct {
-	ClazzID uint32            `json:"_id"`
-	Peer    *InputPeer        `json:"peer"`
-	MsgId   int32             `json:"msg_id"`
-	Text    *TextWithEntities `json:"text"`
+	ClazzID uint32                `json:"_id"`
+	Peer    InputPeerClazz        `json:"peer"`
+	MsgId   int32                 `json:"msg_id"`
+	Text    TextWithEntitiesClazz `json:"text"`
 }
 
 func (m *TLMessagesEditFactCheck) String() string {
@@ -28087,15 +28531,17 @@ func (m *TLMessagesEditFactCheck) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x589ee75: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
-			m3 := &TextWithEntities{}
-			_ = m3.Decode(d)
-			m.Text = m3
+			// m3 := &TextWithEntities{}
+			// _ = m3.Decode(d)
+			// m.Text = m3
+			m.Text, _ = DecodeTextWithEntitiesClazz(d)
 
 			return nil
 		},
@@ -28113,9 +28559,9 @@ func (m *TLMessagesEditFactCheck) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesDeleteFactCheck <--
 type TLMessagesDeleteFactCheck struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLMessagesDeleteFactCheck) String() string {
@@ -28150,9 +28596,10 @@ func (m *TLMessagesDeleteFactCheck) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xd1da940c: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -28172,9 +28619,9 @@ func (m *TLMessagesDeleteFactCheck) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetFactCheck <--
 type TLMessagesGetFactCheck struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   []int32    `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   []int32        `json:"msg_id"`
 }
 
 func (m *TLMessagesGetFactCheck) String() string {
@@ -28210,9 +28657,10 @@ func (m *TLMessagesGetFactCheck) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb9cdc5ee: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = iface.DecodeInt32List(d)
 
@@ -28232,14 +28680,14 @@ func (m *TLMessagesGetFactCheck) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesRequestMainWebView <--
 type TLMessagesRequestMainWebView struct {
-	ClazzID     uint32     `json:"_id"`
-	Compact     bool       `json:"compact"`
-	Fullscreen  bool       `json:"fullscreen"`
-	Peer        *InputPeer `json:"peer"`
-	Bot         *InputUser `json:"bot"`
-	StartParam  *string    `json:"start_param"`
-	ThemeParams *DataJSON  `json:"theme_params"`
-	Platform    string     `json:"platform"`
+	ClazzID     uint32         `json:"_id"`
+	Compact     bool           `json:"compact"`
+	Fullscreen  bool           `json:"fullscreen"`
+	Peer        InputPeerClazz `json:"peer"`
+	Bot         InputUserClazz `json:"bot"`
+	StartParam  *string        `json:"start_param"`
+	ThemeParams DataJSONClazz  `json:"theme_params"`
+	Platform    string         `json:"platform"`
 }
 
 func (m *TLMessagesRequestMainWebView) String() string {
@@ -28315,13 +28763,15 @@ func (m *TLMessagesRequestMainWebView) Decode(d *bin.Decoder) (err error) {
 				m.Fullscreen = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m5 := &InputUser{}
-			_ = m5.Decode(d)
-			m.Bot = m5
+			// m5 := &InputUser{}
+			// _ = m5.Decode(d)
+			// m.Bot = m5
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.StartParam = new(string)
@@ -28329,9 +28779,10 @@ func (m *TLMessagesRequestMainWebView) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 0)) != 0 {
-				m7 := &DataJSON{}
-				_ = m7.Decode(d)
-				m.ThemeParams = m7
+				// m7 := &DataJSON{}
+				// _ = m7.Decode(d)
+				// m.ThemeParams = m7
+				m.ThemeParams, _ = DecodeDataJSONClazz(d)
 			}
 			m.Platform, err = d.String()
 
@@ -28351,12 +28802,12 @@ func (m *TLMessagesRequestMainWebView) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSendPaidReaction <--
 type TLMessagesSendPaidReaction struct {
-	ClazzID  uint32               `json:"_id"`
-	Peer     *InputPeer           `json:"peer"`
-	MsgId    int32                `json:"msg_id"`
-	Count    int32                `json:"count"`
-	RandomId int64                `json:"random_id"`
-	Private  *PaidReactionPrivacy `json:"private"`
+	ClazzID  uint32                   `json:"_id"`
+	Peer     InputPeerClazz           `json:"peer"`
+	MsgId    int32                    `json:"msg_id"`
+	Count    int32                    `json:"count"`
+	RandomId int64                    `json:"random_id"`
+	Private  PaidReactionPrivacyClazz `json:"private"`
 }
 
 func (m *TLMessagesSendPaidReaction) String() string {
@@ -28412,17 +28863,19 @@ func (m *TLMessagesSendPaidReaction) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 			m.Count, err = d.Int32()
 			m.RandomId, err = d.Int64()
 			if (flags & (1 << 0)) != 0 {
-				m6 := &PaidReactionPrivacy{}
-				_ = m6.Decode(d)
-				m.Private = m6
+				// m6 := &PaidReactionPrivacy{}
+				// _ = m6.Decode(d)
+				// m.Private = m6
+				m.Private, _ = DecodePaidReactionPrivacyClazz(d)
 			}
 
 			return nil
@@ -28441,10 +28894,10 @@ func (m *TLMessagesSendPaidReaction) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesTogglePaidReactionPrivacy <--
 type TLMessagesTogglePaidReactionPrivacy struct {
-	ClazzID uint32               `json:"_id"`
-	Peer    *InputPeer           `json:"peer"`
-	MsgId   int32                `json:"msg_id"`
-	Private *PaidReactionPrivacy `json:"private"`
+	ClazzID uint32                   `json:"_id"`
+	Peer    InputPeerClazz           `json:"peer"`
+	MsgId   int32                    `json:"msg_id"`
+	Private PaidReactionPrivacyClazz `json:"private"`
 }
 
 func (m *TLMessagesTogglePaidReactionPrivacy) String() string {
@@ -28480,15 +28933,17 @@ func (m *TLMessagesTogglePaidReactionPrivacy) Decode(d *bin.Decoder) (err error)
 	var decodeF = map[uint32]func() error{
 		0x435885b5: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
-			m3 := &PaidReactionPrivacy{}
-			_ = m3.Decode(d)
-			m.Private = m3
+			// m3 := &PaidReactionPrivacy{}
+			// _ = m3.Decode(d)
+			// m.Private = m3
+			m.Private, _ = DecodePaidReactionPrivacyClazz(d)
 
 			return nil
 		},
@@ -28554,9 +29009,9 @@ func (m *TLMessagesGetPaidReactionPrivacy) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesViewSponsoredMessage <--
 type TLMessagesViewSponsoredMessage struct {
-	ClazzID  uint32     `json:"_id"`
-	RandomId []byte     `json:"random_id"`
-	Peer     *InputPeer `json:"peer"`
+	ClazzID  uint32         `json:"_id"`
+	RandomId []byte         `json:"random_id"`
+	Peer     InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesViewSponsoredMessage) String() string {
@@ -28603,9 +29058,10 @@ func (m *TLMessagesViewSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 		},
 		0x673ad8f1: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.RandomId, err = d.Bytes()
 
@@ -28625,11 +29081,11 @@ func (m *TLMessagesViewSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesClickSponsoredMessage <--
 type TLMessagesClickSponsoredMessage struct {
-	ClazzID    uint32     `json:"_id"`
-	Media      bool       `json:"media"`
-	Fullscreen bool       `json:"fullscreen"`
-	RandomId   []byte     `json:"random_id"`
-	Peer       *InputPeer `json:"peer"`
+	ClazzID    uint32         `json:"_id"`
+	Media      bool           `json:"media"`
+	Fullscreen bool           `json:"fullscreen"`
+	RandomId   []byte         `json:"random_id"`
+	Peer       InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesClickSponsoredMessage) String() string {
@@ -28726,9 +29182,10 @@ func (m *TLMessagesClickSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 				m.Fullscreen = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.RandomId, err = d.Bytes()
 
@@ -28748,10 +29205,10 @@ func (m *TLMessagesClickSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReportSponsoredMessage <--
 type TLMessagesReportSponsoredMessage struct {
-	ClazzID  uint32     `json:"_id"`
-	RandomId []byte     `json:"random_id"`
-	Option   []byte     `json:"option"`
-	Peer     *InputPeer `json:"peer"`
+	ClazzID  uint32         `json:"_id"`
+	RandomId []byte         `json:"random_id"`
+	Option   []byte         `json:"option"`
+	Peer     InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesReportSponsoredMessage) String() string {
@@ -28801,9 +29258,10 @@ func (m *TLMessagesReportSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 		},
 		0x1af3dbb8: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.RandomId, err = d.Bytes()
 			m.Option, err = d.Bytes()
@@ -28824,8 +29282,8 @@ func (m *TLMessagesReportSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetSponsoredMessages <--
 type TLMessagesGetSponsoredMessages struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesGetSponsoredMessages) String() string {
@@ -28859,9 +29317,10 @@ func (m *TLMessagesGetSponsoredMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x9bd2f439: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -28879,10 +29338,10 @@ func (m *TLMessagesGetSponsoredMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSavePreparedInlineMessage <--
 type TLMessagesSavePreparedInlineMessage struct {
-	ClazzID   uint32                 `json:"_id"`
-	Result    *InputBotInlineResult  `json:"result"`
-	UserId    *InputUser             `json:"user_id"`
-	PeerTypes []*InlineQueryPeerType `json:"peer_types"`
+	ClazzID   uint32                     `json:"_id"`
+	Result    InputBotInlineResultClazz  `json:"result"`
+	UserId    InputUserClazz             `json:"user_id"`
+	PeerTypes []InlineQueryPeerTypeClazz `json:"peer_types"`
 }
 
 func (m *TLMessagesSavePreparedInlineMessage) String() string {
@@ -28936,13 +29395,15 @@ func (m *TLMessagesSavePreparedInlineMessage) Decode(d *bin.Decoder) (err error)
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputBotInlineResult{}
-			_ = m2.Decode(d)
-			m.Result = m2
+			// m2 := &InputBotInlineResult{}
+			// _ = m2.Decode(d)
+			// m.Result = m2
+			m.Result, _ = DecodeInputBotInlineResultClazz(d)
 
-			m3 := &InputUser{}
-			_ = m3.Decode(d)
-			m.UserId = m3
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.UserId = m3
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				c4, err2 := d.ClazzID()
@@ -28951,12 +29412,15 @@ func (m *TLMessagesSavePreparedInlineMessage) Decode(d *bin.Decoder) (err error)
 					return err2
 				}
 				l4, err3 := d.Int()
-				v4 := make([]*InlineQueryPeerType, l4)
+				// v4 := make([]*InlineQueryPeerType, l4)
+				v4 := make([]InlineQueryPeerTypeClazz, l4)
 				for i := 0; i < l4; i++ {
-					vv := new(InlineQueryPeerType)
-					err3 = vv.Decode(d)
+					// vv := new(InlineQueryPeerType)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v4[i] = vv
+					v4[i], _ = DecodeInlineQueryPeerTypeClazz(d)
 					_ = err3
-					v4[i] = vv
 				}
 				m.PeerTypes = v4
 			}
@@ -28977,9 +29441,9 @@ func (m *TLMessagesSavePreparedInlineMessage) Decode(d *bin.Decoder) (err error)
 
 // TLMessagesGetPreparedInlineMessage <--
 type TLMessagesGetPreparedInlineMessage struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
-	Id      string     `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
+	Id      string         `json:"id"`
 }
 
 func (m *TLMessagesGetPreparedInlineMessage) String() string {
@@ -29014,9 +29478,10 @@ func (m *TLMessagesGetPreparedInlineMessage) Decode(d *bin.Decoder) (err error) 
 	var decodeF = map[uint32]func() error{
 		0x857ebdb8: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.Id, err = d.String()
 
@@ -29127,10 +29592,10 @@ func (m *TLMessagesSearchStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReportMessagesDelivery <--
 type TLMessagesReportMessagesDelivery struct {
-	ClazzID uint32     `json:"_id"`
-	Push    bool       `json:"push"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Push    bool           `json:"push"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLMessagesReportMessagesDelivery) String() string {
@@ -29185,9 +29650,10 @@ func (m *TLMessagesReportMessagesDelivery) Decode(d *bin.Decoder) (err error) {
 				m.Push = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -29362,12 +29828,12 @@ func (m *TLUpdatesGetDifference) Decode(d *bin.Decoder) (err error) {
 
 // TLUpdatesGetChannelDifference <--
 type TLUpdatesGetChannelDifference struct {
-	ClazzID uint32                 `json:"_id"`
-	Force   bool                   `json:"force"`
-	Channel *InputChannel          `json:"channel"`
-	Filter  *ChannelMessagesFilter `json:"filter"`
-	Pts     int32                  `json:"pts"`
-	Limit   int32                  `json:"limit"`
+	ClazzID uint32                     `json:"_id"`
+	Force   bool                       `json:"force"`
+	Channel InputChannelClazz          `json:"channel"`
+	Filter  ChannelMessagesFilterClazz `json:"filter"`
+	Pts     int32                      `json:"pts"`
+	Limit   int32                      `json:"limit"`
 }
 
 func (m *TLUpdatesGetChannelDifference) String() string {
@@ -29423,13 +29889,15 @@ func (m *TLUpdatesGetChannelDifference) Decode(d *bin.Decoder) (err error) {
 				m.Force = true
 			}
 
-			m3 := &InputChannel{}
-			_ = m3.Decode(d)
-			m.Channel = m3
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m4 := &ChannelMessagesFilter{}
-			_ = m4.Decode(d)
-			m.Filter = m4
+			// m4 := &ChannelMessagesFilter{}
+			// _ = m4.Decode(d)
+			// m.Filter = m4
+			m.Filter, _ = DecodeChannelMessagesFilterClazz(d)
 
 			m.Pts, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -29450,10 +29918,10 @@ func (m *TLUpdatesGetChannelDifference) Decode(d *bin.Decoder) (err error) {
 
 // TLPhotosUpdateProfilePhoto <--
 type TLPhotosUpdateProfilePhoto struct {
-	ClazzID  uint32      `json:"_id"`
-	Fallback bool        `json:"fallback"`
-	Bot      *InputUser  `json:"bot"`
-	Id       *InputPhoto `json:"id"`
+	ClazzID  uint32          `json:"_id"`
+	Fallback bool            `json:"fallback"`
+	Bot      InputUserClazz  `json:"bot"`
+	Id       InputPhotoClazz `json:"id"`
 }
 
 func (m *TLPhotosUpdateProfilePhoto) String() string {
@@ -29513,14 +29981,16 @@ func (m *TLPhotosUpdateProfilePhoto) Decode(d *bin.Decoder) (err error) {
 				m.Fallback = true
 			}
 			if (flags & (1 << 1)) != 0 {
-				m3 := &InputUser{}
-				_ = m3.Decode(d)
-				m.Bot = m3
+				// m3 := &InputUser{}
+				// _ = m3.Decode(d)
+				// m.Bot = m3
+				m.Bot, _ = DecodeInputUserClazz(d)
 			}
 
-			m4 := &InputPhoto{}
-			_ = m4.Decode(d)
-			m.Id = m4
+			// m4 := &InputPhoto{}
+			// _ = m4.Decode(d)
+			// m.Id = m4
+			m.Id, _ = DecodeInputPhotoClazz(d)
 
 			return nil
 		},
@@ -29538,13 +30008,13 @@ func (m *TLPhotosUpdateProfilePhoto) Decode(d *bin.Decoder) (err error) {
 
 // TLPhotosUploadProfilePhoto <--
 type TLPhotosUploadProfilePhoto struct {
-	ClazzID          uint32     `json:"_id"`
-	Fallback         bool       `json:"fallback"`
-	Bot              *InputUser `json:"bot"`
-	File             *InputFile `json:"file"`
-	Video            *InputFile `json:"video"`
-	VideoStartTs     *float64   `json:"video_start_ts"`
-	VideoEmojiMarkup *VideoSize `json:"video_emoji_markup"`
+	ClazzID          uint32         `json:"_id"`
+	Fallback         bool           `json:"fallback"`
+	Bot              InputUserClazz `json:"bot"`
+	File             InputFileClazz `json:"file"`
+	Video            InputFileClazz `json:"video"`
+	VideoStartTs     *float64       `json:"video_start_ts"`
+	VideoEmojiMarkup VideoSizeClazz `json:"video_emoji_markup"`
 }
 
 func (m *TLPhotosUploadProfilePhoto) String() string {
@@ -29630,19 +30100,22 @@ func (m *TLPhotosUploadProfilePhoto) Decode(d *bin.Decoder) (err error) {
 				m.Fallback = true
 			}
 			if (flags & (1 << 5)) != 0 {
-				m3 := &InputUser{}
-				_ = m3.Decode(d)
-				m.Bot = m3
+				// m3 := &InputUser{}
+				// _ = m3.Decode(d)
+				// m.Bot = m3
+				m.Bot, _ = DecodeInputUserClazz(d)
 			}
 			if (flags & (1 << 0)) != 0 {
-				m4 := &InputFile{}
-				_ = m4.Decode(d)
-				m.File = m4
+				// m4 := &InputFile{}
+				// _ = m4.Decode(d)
+				// m.File = m4
+				m.File, _ = DecodeInputFileClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
-				m5 := &InputFile{}
-				_ = m5.Decode(d)
-				m.Video = m5
+				// m5 := &InputFile{}
+				// _ = m5.Decode(d)
+				// m.Video = m5
+				m.Video, _ = DecodeInputFileClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
 				m.VideoStartTs = new(float64)
@@ -29650,9 +30123,10 @@ func (m *TLPhotosUploadProfilePhoto) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 4)) != 0 {
-				m7 := &VideoSize{}
-				_ = m7.Decode(d)
-				m.VideoEmojiMarkup = m7
+				// m7 := &VideoSize{}
+				// _ = m7.Decode(d)
+				// m.VideoEmojiMarkup = m7
+				m.VideoEmojiMarkup, _ = DecodeVideoSizeClazz(d)
 			}
 
 			return nil
@@ -29671,8 +30145,8 @@ func (m *TLPhotosUploadProfilePhoto) Decode(d *bin.Decoder) (err error) {
 
 // TLPhotosDeletePhotos <--
 type TLPhotosDeletePhotos struct {
-	ClazzID uint32        `json:"_id"`
-	Id      []*InputPhoto `json:"id"`
+	ClazzID uint32            `json:"_id"`
+	Id      []InputPhotoClazz `json:"id"`
 }
 
 func (m *TLPhotosDeletePhotos) String() string {
@@ -29711,12 +30185,15 @@ func (m *TLPhotosDeletePhotos) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputPhoto, l1)
+			// v1 := make([]*InputPhoto, l1)
+			v1 := make([]InputPhotoClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputPhoto)
-				err3 = vv.Decode(d)
+				// vv := new(InputPhoto)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputPhotoClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id = v1
 
@@ -29736,11 +30213,11 @@ func (m *TLPhotosDeletePhotos) Decode(d *bin.Decoder) (err error) {
 
 // TLPhotosGetUserPhotos <--
 type TLPhotosGetUserPhotos struct {
-	ClazzID uint32     `json:"_id"`
-	UserId  *InputUser `json:"user_id"`
-	Offset  int32      `json:"offset"`
-	MaxId   int64      `json:"max_id"`
-	Limit   int32      `json:"limit"`
+	ClazzID uint32         `json:"_id"`
+	UserId  InputUserClazz `json:"user_id"`
+	Offset  int32          `json:"offset"`
+	MaxId   int64          `json:"max_id"`
+	Limit   int32          `json:"limit"`
 }
 
 func (m *TLPhotosGetUserPhotos) String() string {
@@ -29777,9 +30254,10 @@ func (m *TLPhotosGetUserPhotos) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x91cd32a8: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.Offset, err = d.Int32()
 			m.MaxId, err = d.Int64()
@@ -29801,14 +30279,14 @@ func (m *TLPhotosGetUserPhotos) Decode(d *bin.Decoder) (err error) {
 
 // TLPhotosUploadContactProfilePhoto <--
 type TLPhotosUploadContactProfilePhoto struct {
-	ClazzID          uint32     `json:"_id"`
-	Suggest          bool       `json:"suggest"`
-	Save             bool       `json:"save"`
-	UserId           *InputUser `json:"user_id"`
-	File             *InputFile `json:"file"`
-	Video            *InputFile `json:"video"`
-	VideoStartTs     *float64   `json:"video_start_ts"`
-	VideoEmojiMarkup *VideoSize `json:"video_emoji_markup"`
+	ClazzID          uint32         `json:"_id"`
+	Suggest          bool           `json:"suggest"`
+	Save             bool           `json:"save"`
+	UserId           InputUserClazz `json:"user_id"`
+	File             InputFileClazz `json:"file"`
+	Video            InputFileClazz `json:"video"`
+	VideoStartTs     *float64       `json:"video_start_ts"`
+	VideoEmojiMarkup VideoSizeClazz `json:"video_emoji_markup"`
 }
 
 func (m *TLPhotosUploadContactProfilePhoto) String() string {
@@ -29895,19 +30373,22 @@ func (m *TLPhotosUploadContactProfilePhoto) Decode(d *bin.Decoder) (err error) {
 				m.Save = true
 			}
 
-			m4 := &InputUser{}
-			_ = m4.Decode(d)
-			m.UserId = m4
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.UserId = m4
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m5 := &InputFile{}
-				_ = m5.Decode(d)
-				m.File = m5
+				// m5 := &InputFile{}
+				// _ = m5.Decode(d)
+				// m.File = m5
+				m.File, _ = DecodeInputFileClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
-				m6 := &InputFile{}
-				_ = m6.Decode(d)
-				m.Video = m6
+				// m6 := &InputFile{}
+				// _ = m6.Decode(d)
+				// m.Video = m6
+				m.Video, _ = DecodeInputFileClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
 				m.VideoStartTs = new(float64)
@@ -29915,9 +30396,10 @@ func (m *TLPhotosUploadContactProfilePhoto) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 5)) != 0 {
-				m8 := &VideoSize{}
-				_ = m8.Decode(d)
-				m.VideoEmojiMarkup = m8
+				// m8 := &VideoSize{}
+				// _ = m8.Decode(d)
+				// m.VideoEmojiMarkup = m8
+				m.VideoEmojiMarkup, _ = DecodeVideoSizeClazz(d)
 			}
 
 			return nil
@@ -29994,12 +30476,12 @@ func (m *TLUploadSaveFilePart) Decode(d *bin.Decoder) (err error) {
 
 // TLUploadGetFile <--
 type TLUploadGetFile struct {
-	ClazzID      uint32             `json:"_id"`
-	Precise      bool               `json:"precise"`
-	CdnSupported bool               `json:"cdn_supported"`
-	Location     *InputFileLocation `json:"location"`
-	Offset       int64              `json:"offset"`
-	Limit        int32              `json:"limit"`
+	ClazzID      uint32                 `json:"_id"`
+	Precise      bool                   `json:"precise"`
+	CdnSupported bool                   `json:"cdn_supported"`
+	Location     InputFileLocationClazz `json:"location"`
+	Offset       int64                  `json:"offset"`
+	Limit        int32                  `json:"limit"`
 }
 
 func (m *TLUploadGetFile) String() string {
@@ -30060,9 +30542,10 @@ func (m *TLUploadGetFile) Decode(d *bin.Decoder) (err error) {
 				m.CdnSupported = true
 			}
 
-			m4 := &InputFileLocation{}
-			_ = m4.Decode(d)
-			m.Location = m4
+			// m4 := &InputFileLocation{}
+			// _ = m4.Decode(d)
+			// m.Location = m4
+			m.Location, _ = DecodeInputFileLocationClazz(d)
 
 			m.Offset, err = d.Int64()
 			m.Limit, err = d.Int32()
@@ -30144,10 +30627,10 @@ func (m *TLUploadSaveBigFilePart) Decode(d *bin.Decoder) (err error) {
 
 // TLUploadGetWebFile <--
 type TLUploadGetWebFile struct {
-	ClazzID  uint32                `json:"_id"`
-	Location *InputWebFileLocation `json:"location"`
-	Offset   int32                 `json:"offset"`
-	Limit    int32                 `json:"limit"`
+	ClazzID  uint32                    `json:"_id"`
+	Location InputWebFileLocationClazz `json:"location"`
+	Offset   int32                     `json:"offset"`
+	Limit    int32                     `json:"limit"`
 }
 
 func (m *TLUploadGetWebFile) String() string {
@@ -30183,9 +30666,10 @@ func (m *TLUploadGetWebFile) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x24e6818d: func() (err error) {
 
-			m1 := &InputWebFileLocation{}
-			_ = m1.Decode(d)
-			m.Location = m1
+			// m1 := &InputWebFileLocation{}
+			// _ = m1.Decode(d)
+			// m.Location = m1
+			m.Location, _ = DecodeInputWebFileLocationClazz(d)
 
 			m.Offset, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -30374,9 +30858,9 @@ func (m *TLUploadGetCdnFileHashes) Decode(d *bin.Decoder) (err error) {
 
 // TLUploadGetFileHashes <--
 type TLUploadGetFileHashes struct {
-	ClazzID  uint32             `json:"_id"`
-	Location *InputFileLocation `json:"location"`
-	Offset   int64              `json:"offset"`
+	ClazzID  uint32                 `json:"_id"`
+	Location InputFileLocationClazz `json:"location"`
+	Offset   int64                  `json:"offset"`
 }
 
 func (m *TLUploadGetFileHashes) String() string {
@@ -30411,9 +30895,10 @@ func (m *TLUploadGetFileHashes) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x9156982a: func() (err error) {
 
-			m1 := &InputFileLocation{}
-			_ = m1.Decode(d)
-			m.Location = m1
+			// m1 := &InputFileLocation{}
+			// _ = m1.Decode(d)
+			// m.Location = m1
+			m.Location, _ = DecodeInputFileLocationClazz(d)
 
 			m.Offset, err = d.Int64()
 
@@ -30880,8 +31365,8 @@ func (m *TLHelpGetTermsOfServiceUpdate) Decode(d *bin.Decoder) (err error) {
 
 // TLHelpAcceptTermsOfService <--
 type TLHelpAcceptTermsOfService struct {
-	ClazzID uint32    `json:"_id"`
-	Id      *DataJSON `json:"id"`
+	ClazzID uint32        `json:"_id"`
+	Id      DataJSONClazz `json:"id"`
 }
 
 func (m *TLHelpAcceptTermsOfService) String() string {
@@ -30915,9 +31400,10 @@ func (m *TLHelpAcceptTermsOfService) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xee72f79a: func() (err error) {
 
-			m1 := &DataJSON{}
-			_ = m1.Decode(d)
-			m.Id = m1
+			// m1 := &DataJSON{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeDataJSONClazz(d)
 
 			return nil
 		},
@@ -31039,8 +31525,8 @@ func (m *TLHelpGetAppConfig) Decode(d *bin.Decoder) (err error) {
 
 // TLHelpSaveAppLog <--
 type TLHelpSaveAppLog struct {
-	ClazzID uint32           `json:"_id"`
-	Events  []*InputAppEvent `json:"events"`
+	ClazzID uint32               `json:"_id"`
+	Events  []InputAppEventClazz `json:"events"`
 }
 
 func (m *TLHelpSaveAppLog) String() string {
@@ -31079,12 +31565,15 @@ func (m *TLHelpSaveAppLog) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputAppEvent, l1)
+			// v1 := make([]*InputAppEvent, l1)
+			v1 := make([]InputAppEventClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputAppEvent)
-				err3 = vv.Decode(d)
+				// vv := new(InputAppEvent)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputAppEventClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Events = v1
 
@@ -31204,8 +31693,8 @@ func (m *TLHelpGetSupportName) Decode(d *bin.Decoder) (err error) {
 
 // TLHelpGetUserInfo <--
 type TLHelpGetUserInfo struct {
-	ClazzID uint32     `json:"_id"`
-	UserId  *InputUser `json:"user_id"`
+	ClazzID uint32         `json:"_id"`
+	UserId  InputUserClazz `json:"user_id"`
 }
 
 func (m *TLHelpGetUserInfo) String() string {
@@ -31239,9 +31728,10 @@ func (m *TLHelpGetUserInfo) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x38a08d3: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -31259,10 +31749,10 @@ func (m *TLHelpGetUserInfo) Decode(d *bin.Decoder) (err error) {
 
 // TLHelpEditUserInfo <--
 type TLHelpEditUserInfo struct {
-	ClazzID  uint32           `json:"_id"`
-	UserId   *InputUser       `json:"user_id"`
-	Message  string           `json:"message"`
-	Entities []*MessageEntity `json:"entities"`
+	ClazzID  uint32               `json:"_id"`
+	UserId   InputUserClazz       `json:"user_id"`
+	Message  string               `json:"message"`
+	Entities []MessageEntityClazz `json:"entities"`
 }
 
 func (m *TLHelpEditUserInfo) String() string {
@@ -31299,9 +31789,10 @@ func (m *TLHelpEditUserInfo) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x66b91b70: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.Message, err = d.String()
 			c3, err2 := d.ClazzID()
@@ -31310,12 +31801,15 @@ func (m *TLHelpEditUserInfo) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*MessageEntity, l3)
+			// v3 := make([]*MessageEntity, l3)
+			v3 := make([]MessageEntityClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(MessageEntity)
-				err3 = vv.Decode(d)
+				// vv := new(MessageEntity)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeMessageEntityClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Entities = v3
 
@@ -31383,8 +31877,8 @@ func (m *TLHelpGetPromoData) Decode(d *bin.Decoder) (err error) {
 
 // TLHelpHidePromoData <--
 type TLHelpHidePromoData struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLHelpHidePromoData) String() string {
@@ -31418,9 +31912,10 @@ func (m *TLHelpHidePromoData) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x1e251c95: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -31438,9 +31933,9 @@ func (m *TLHelpHidePromoData) Decode(d *bin.Decoder) (err error) {
 
 // TLHelpDismissSuggestion <--
 type TLHelpDismissSuggestion struct {
-	ClazzID    uint32     `json:"_id"`
-	Peer       *InputPeer `json:"peer"`
-	Suggestion string     `json:"suggestion"`
+	ClazzID    uint32         `json:"_id"`
+	Peer       InputPeerClazz `json:"peer"`
+	Suggestion string         `json:"suggestion"`
 }
 
 func (m *TLHelpDismissSuggestion) String() string {
@@ -31475,9 +31970,10 @@ func (m *TLHelpDismissSuggestion) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf50dbaa1: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Suggestion, err = d.String()
 
@@ -31756,9 +32252,9 @@ func (m *TLHelpGetTimezonesList) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsReadHistory <--
 type TLChannelsReadHistory struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	MaxId   int32         `json:"max_id"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	MaxId   int32             `json:"max_id"`
 }
 
 func (m *TLChannelsReadHistory) String() string {
@@ -31793,9 +32289,10 @@ func (m *TLChannelsReadHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xcc104937: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.MaxId, err = d.Int32()
 
@@ -31815,9 +32312,9 @@ func (m *TLChannelsReadHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsDeleteMessages <--
 type TLChannelsDeleteMessages struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Id      []int32       `json:"id"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Id      []int32           `json:"id"`
 }
 
 func (m *TLChannelsDeleteMessages) String() string {
@@ -31853,9 +32350,10 @@ func (m *TLChannelsDeleteMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x84c1fd4e: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -31875,10 +32373,10 @@ func (m *TLChannelsDeleteMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsReportSpam <--
 type TLChannelsReportSpam struct {
-	ClazzID     uint32        `json:"_id"`
-	Channel     *InputChannel `json:"channel"`
-	Participant *InputPeer    `json:"participant"`
-	Id          []int32       `json:"id"`
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	Participant InputPeerClazz    `json:"participant"`
+	Id          []int32           `json:"id"`
 }
 
 func (m *TLChannelsReportSpam) String() string {
@@ -31915,13 +32413,15 @@ func (m *TLChannelsReportSpam) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf44a8315: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Participant = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Participant = m2
+			m.Participant, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -31941,10 +32441,10 @@ func (m *TLChannelsReportSpam) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetMessages <--
 type TLChannelsGetMessages struct {
-	ClazzID               uint32          `json:"_id"`
-	Channel               *InputChannel   `json:"channel"`
-	Id_VECTORINPUTMESSAGE []*InputMessage `json:"id_VECTORINPUTMESSAGE"`
-	Id_VECTORINT32        []int32         `json:"id_VECTORINT32"`
+	ClazzID               uint32              `json:"_id"`
+	Channel               InputChannelClazz   `json:"channel"`
+	Id_VECTORINPUTMESSAGE []InputMessageClazz `json:"id_VECTORINPUTMESSAGE"`
+	Id_VECTORINT32        []int32             `json:"id_VECTORINT32"`
 }
 
 func (m *TLChannelsGetMessages) String() string {
@@ -31989,9 +32489,10 @@ func (m *TLChannelsGetMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xad8c9a23: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -31999,12 +32500,15 @@ func (m *TLChannelsGetMessages) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputMessage, l2)
+			// v2 := make([]*InputMessage, l2)
+			v2 := make([]InputMessageClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputMessage)
-				err3 = vv.Decode(d)
+				// vv := new(InputMessage)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputMessageClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Id_VECTORINPUTMESSAGE = v2
 
@@ -32012,9 +32516,10 @@ func (m *TLChannelsGetMessages) Decode(d *bin.Decoder) (err error) {
 		},
 		0x93d7b347: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Id_VECTORINT32, err = iface.DecodeInt32List(d)
 
@@ -32034,12 +32539,12 @@ func (m *TLChannelsGetMessages) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetParticipants <--
 type TLChannelsGetParticipants struct {
-	ClazzID uint32                     `json:"_id"`
-	Channel *InputChannel              `json:"channel"`
-	Filter  *ChannelParticipantsFilter `json:"filter"`
-	Offset  int32                      `json:"offset"`
-	Limit   int32                      `json:"limit"`
-	Hash    int64                      `json:"hash"`
+	ClazzID uint32                         `json:"_id"`
+	Channel InputChannelClazz              `json:"channel"`
+	Filter  ChannelParticipantsFilterClazz `json:"filter"`
+	Offset  int32                          `json:"offset"`
+	Limit   int32                          `json:"limit"`
+	Hash    int64                          `json:"hash"`
 }
 
 func (m *TLChannelsGetParticipants) String() string {
@@ -32077,13 +32582,15 @@ func (m *TLChannelsGetParticipants) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x77ced9d0: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &ChannelParticipantsFilter{}
-			_ = m2.Decode(d)
-			m.Filter = m2
+			// m2 := &ChannelParticipantsFilter{}
+			// _ = m2.Decode(d)
+			// m.Filter = m2
+			m.Filter, _ = DecodeChannelParticipantsFilterClazz(d)
 
 			m.Offset, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -32105,9 +32612,9 @@ func (m *TLChannelsGetParticipants) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetParticipant <--
 type TLChannelsGetParticipant struct {
-	ClazzID     uint32        `json:"_id"`
-	Channel     *InputChannel `json:"channel"`
-	Participant *InputPeer    `json:"participant"`
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	Participant InputPeerClazz    `json:"participant"`
 }
 
 func (m *TLChannelsGetParticipant) String() string {
@@ -32142,13 +32649,15 @@ func (m *TLChannelsGetParticipant) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa0ab6cc6: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Participant = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Participant = m2
+			m.Participant, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -32166,8 +32675,8 @@ func (m *TLChannelsGetParticipant) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetChannels <--
 type TLChannelsGetChannels struct {
-	ClazzID uint32          `json:"_id"`
-	Id      []*InputChannel `json:"id"`
+	ClazzID uint32              `json:"_id"`
+	Id      []InputChannelClazz `json:"id"`
 }
 
 func (m *TLChannelsGetChannels) String() string {
@@ -32206,12 +32715,15 @@ func (m *TLChannelsGetChannels) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputChannel, l1)
+			// v1 := make([]*InputChannel, l1)
+			v1 := make([]InputChannelClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputChannel)
-				err3 = vv.Decode(d)
+				// vv := new(InputChannel)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputChannelClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id = v1
 
@@ -32231,8 +32743,8 @@ func (m *TLChannelsGetChannels) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetFullChannel <--
 type TLChannelsGetFullChannel struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsGetFullChannel) String() string {
@@ -32266,9 +32778,10 @@ func (m *TLChannelsGetFullChannel) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8736a09: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -32286,16 +32799,16 @@ func (m *TLChannelsGetFullChannel) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsCreateChannel <--
 type TLChannelsCreateChannel struct {
-	ClazzID   uint32         `json:"_id"`
-	Broadcast bool           `json:"broadcast"`
-	Megagroup bool           `json:"megagroup"`
-	ForImport bool           `json:"for_import"`
-	Forum     bool           `json:"forum"`
-	Title     string         `json:"title"`
-	About     string         `json:"about"`
-	GeoPoint  *InputGeoPoint `json:"geo_point"`
-	Address   *string        `json:"address"`
-	TtlPeriod *int32         `json:"ttl_period"`
+	ClazzID   uint32             `json:"_id"`
+	Broadcast bool               `json:"broadcast"`
+	Megagroup bool               `json:"megagroup"`
+	ForImport bool               `json:"for_import"`
+	Forum     bool               `json:"forum"`
+	Title     string             `json:"title"`
+	About     string             `json:"about"`
+	GeoPoint  InputGeoPointClazz `json:"geo_point"`
+	Address   *string            `json:"address"`
+	TtlPeriod *int32             `json:"ttl_period"`
 }
 
 func (m *TLChannelsCreateChannel) String() string {
@@ -32390,9 +32903,10 @@ func (m *TLChannelsCreateChannel) Decode(d *bin.Decoder) (err error) {
 			m.Title, err = d.String()
 			m.About, err = d.String()
 			if (flags & (1 << 2)) != 0 {
-				m8 := &InputGeoPoint{}
-				_ = m8.Decode(d)
-				m.GeoPoint = m8
+				// m8 := &InputGeoPoint{}
+				// _ = m8.Decode(d)
+				// m.GeoPoint = m8
+				m.GeoPoint, _ = DecodeInputGeoPointClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
 				m.Address = new(string)
@@ -32420,11 +32934,11 @@ func (m *TLChannelsCreateChannel) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsEditAdmin <--
 type TLChannelsEditAdmin struct {
-	ClazzID     uint32           `json:"_id"`
-	Channel     *InputChannel    `json:"channel"`
-	UserId      *InputUser       `json:"user_id"`
-	AdminRights *ChatAdminRights `json:"admin_rights"`
-	Rank        string           `json:"rank"`
+	ClazzID     uint32               `json:"_id"`
+	Channel     InputChannelClazz    `json:"channel"`
+	UserId      InputUserClazz       `json:"user_id"`
+	AdminRights ChatAdminRightsClazz `json:"admin_rights"`
+	Rank        string               `json:"rank"`
 }
 
 func (m *TLChannelsEditAdmin) String() string {
@@ -32461,17 +32975,20 @@ func (m *TLChannelsEditAdmin) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xd33c8902: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.UserId = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.UserId = m2
+			m.UserId, _ = DecodeInputUserClazz(d)
 
-			m3 := &ChatAdminRights{}
-			_ = m3.Decode(d)
-			m.AdminRights = m3
+			// m3 := &ChatAdminRights{}
+			// _ = m3.Decode(d)
+			// m.AdminRights = m3
+			m.AdminRights, _ = DecodeChatAdminRightsClazz(d)
 
 			m.Rank, err = d.String()
 
@@ -32491,9 +33008,9 @@ func (m *TLChannelsEditAdmin) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsEditTitle <--
 type TLChannelsEditTitle struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Title   string        `json:"title"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Title   string            `json:"title"`
 }
 
 func (m *TLChannelsEditTitle) String() string {
@@ -32528,9 +33045,10 @@ func (m *TLChannelsEditTitle) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x566decd0: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Title, err = d.String()
 
@@ -32550,9 +33068,9 @@ func (m *TLChannelsEditTitle) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsEditPhoto <--
 type TLChannelsEditPhoto struct {
-	ClazzID uint32          `json:"_id"`
-	Channel *InputChannel   `json:"channel"`
-	Photo   *InputChatPhoto `json:"photo"`
+	ClazzID uint32              `json:"_id"`
+	Channel InputChannelClazz   `json:"channel"`
+	Photo   InputChatPhotoClazz `json:"photo"`
 }
 
 func (m *TLChannelsEditPhoto) String() string {
@@ -32587,13 +33105,15 @@ func (m *TLChannelsEditPhoto) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf12e57c9: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputChatPhoto{}
-			_ = m2.Decode(d)
-			m.Photo = m2
+			// m2 := &InputChatPhoto{}
+			// _ = m2.Decode(d)
+			// m.Photo = m2
+			m.Photo, _ = DecodeInputChatPhotoClazz(d)
 
 			return nil
 		},
@@ -32611,9 +33131,9 @@ func (m *TLChannelsEditPhoto) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsCheckUsername <--
 type TLChannelsCheckUsername struct {
-	ClazzID  uint32        `json:"_id"`
-	Channel  *InputChannel `json:"channel"`
-	Username string        `json:"username"`
+	ClazzID  uint32            `json:"_id"`
+	Channel  InputChannelClazz `json:"channel"`
+	Username string            `json:"username"`
 }
 
 func (m *TLChannelsCheckUsername) String() string {
@@ -32648,9 +33168,10 @@ func (m *TLChannelsCheckUsername) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x10e6bd2c: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Username, err = d.String()
 
@@ -32670,9 +33191,9 @@ func (m *TLChannelsCheckUsername) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsUpdateUsername <--
 type TLChannelsUpdateUsername struct {
-	ClazzID  uint32        `json:"_id"`
-	Channel  *InputChannel `json:"channel"`
-	Username string        `json:"username"`
+	ClazzID  uint32            `json:"_id"`
+	Channel  InputChannelClazz `json:"channel"`
+	Username string            `json:"username"`
 }
 
 func (m *TLChannelsUpdateUsername) String() string {
@@ -32707,9 +33228,10 @@ func (m *TLChannelsUpdateUsername) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3514b3de: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Username, err = d.String()
 
@@ -32729,8 +33251,8 @@ func (m *TLChannelsUpdateUsername) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsJoinChannel <--
 type TLChannelsJoinChannel struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsJoinChannel) String() string {
@@ -32764,9 +33286,10 @@ func (m *TLChannelsJoinChannel) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x24b524c5: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -32784,8 +33307,8 @@ func (m *TLChannelsJoinChannel) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsLeaveChannel <--
 type TLChannelsLeaveChannel struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsLeaveChannel) String() string {
@@ -32819,9 +33342,10 @@ func (m *TLChannelsLeaveChannel) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf836aa95: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -32839,9 +33363,9 @@ func (m *TLChannelsLeaveChannel) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsInviteToChannel <--
 type TLChannelsInviteToChannel struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Users   []*InputUser  `json:"users"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Users   []InputUserClazz  `json:"users"`
 }
 
 func (m *TLChannelsInviteToChannel) String() string {
@@ -32877,9 +33401,10 @@ func (m *TLChannelsInviteToChannel) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc9e33d54: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -32887,12 +33412,15 @@ func (m *TLChannelsInviteToChannel) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputUser, l2)
+			// v2 := make([]*InputUser, l2)
+			v2 := make([]InputUserClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputUser)
-				err3 = vv.Decode(d)
+				// vv := new(InputUser)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputUserClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Users = v2
 
@@ -32912,8 +33440,8 @@ func (m *TLChannelsInviteToChannel) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsDeleteChannel <--
 type TLChannelsDeleteChannel struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsDeleteChannel) String() string {
@@ -32947,9 +33475,10 @@ func (m *TLChannelsDeleteChannel) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc0111fe3: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -32967,11 +33496,11 @@ func (m *TLChannelsDeleteChannel) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsExportMessageLink <--
 type TLChannelsExportMessageLink struct {
-	ClazzID uint32        `json:"_id"`
-	Grouped bool          `json:"grouped"`
-	Thread  bool          `json:"thread"`
-	Channel *InputChannel `json:"channel"`
-	Id      int32         `json:"id"`
+	ClazzID uint32            `json:"_id"`
+	Grouped bool              `json:"grouped"`
+	Thread  bool              `json:"thread"`
+	Channel InputChannelClazz `json:"channel"`
+	Id      int32             `json:"id"`
 }
 
 func (m *TLChannelsExportMessageLink) String() string {
@@ -33031,9 +33560,10 @@ func (m *TLChannelsExportMessageLink) Decode(d *bin.Decoder) (err error) {
 				m.Thread = true
 			}
 
-			m4 := &InputChannel{}
-			_ = m4.Decode(d)
-			m.Channel = m4
+			// m4 := &InputChannel{}
+			// _ = m4.Decode(d)
+			// m.Channel = m4
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Id, err = d.Int32()
 
@@ -33053,10 +33583,10 @@ func (m *TLChannelsExportMessageLink) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsToggleSignatures <--
 type TLChannelsToggleSignatures struct {
-	ClazzID           uint32        `json:"_id"`
-	SignaturesEnabled bool          `json:"signatures_enabled"`
-	ProfilesEnabled   bool          `json:"profiles_enabled"`
-	Channel           *InputChannel `json:"channel"`
+	ClazzID           uint32            `json:"_id"`
+	SignaturesEnabled bool              `json:"signatures_enabled"`
+	ProfilesEnabled   bool              `json:"profiles_enabled"`
+	Channel           InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsToggleSignatures) String() string {
@@ -33115,9 +33645,10 @@ func (m *TLChannelsToggleSignatures) Decode(d *bin.Decoder) (err error) {
 				m.ProfilesEnabled = true
 			}
 
-			m4 := &InputChannel{}
-			_ = m4.Decode(d)
-			m.Channel = m4
+			// m4 := &InputChannel{}
+			// _ = m4.Decode(d)
+			// m.Channel = m4
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -33218,10 +33749,10 @@ func (m *TLChannelsGetAdminedPublicChannels) Decode(d *bin.Decoder) (err error) 
 
 // TLChannelsEditBanned <--
 type TLChannelsEditBanned struct {
-	ClazzID      uint32            `json:"_id"`
-	Channel      *InputChannel     `json:"channel"`
-	Participant  *InputPeer        `json:"participant"`
-	BannedRights *ChatBannedRights `json:"banned_rights"`
+	ClazzID      uint32                `json:"_id"`
+	Channel      InputChannelClazz     `json:"channel"`
+	Participant  InputPeerClazz        `json:"participant"`
+	BannedRights ChatBannedRightsClazz `json:"banned_rights"`
 }
 
 func (m *TLChannelsEditBanned) String() string {
@@ -33257,17 +33788,20 @@ func (m *TLChannelsEditBanned) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x96e6cd81: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Participant = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Participant = m2
+			m.Participant, _ = DecodeInputPeerClazz(d)
 
-			m3 := &ChatBannedRights{}
-			_ = m3.Decode(d)
-			m.BannedRights = m3
+			// m3 := &ChatBannedRights{}
+			// _ = m3.Decode(d)
+			// m.BannedRights = m3
+			m.BannedRights, _ = DecodeChatBannedRightsClazz(d)
 
 			return nil
 		},
@@ -33285,14 +33819,14 @@ func (m *TLChannelsEditBanned) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetAdminLog <--
 type TLChannelsGetAdminLog struct {
-	ClazzID      uint32                       `json:"_id"`
-	Channel      *InputChannel                `json:"channel"`
-	Q            string                       `json:"q"`
-	EventsFilter *ChannelAdminLogEventsFilter `json:"events_filter"`
-	Admins       []*InputUser                 `json:"admins"`
-	MaxId        int64                        `json:"max_id"`
-	MinId        int64                        `json:"min_id"`
-	Limit        int32                        `json:"limit"`
+	ClazzID      uint32                           `json:"_id"`
+	Channel      InputChannelClazz                `json:"channel"`
+	Q            string                           `json:"q"`
+	EventsFilter ChannelAdminLogEventsFilterClazz `json:"events_filter"`
+	Admins       []InputUserClazz                 `json:"admins"`
+	MaxId        int64                            `json:"max_id"`
+	MinId        int64                            `json:"min_id"`
+	Limit        int32                            `json:"limit"`
 }
 
 func (m *TLChannelsGetAdminLog) String() string {
@@ -33356,15 +33890,17 @@ func (m *TLChannelsGetAdminLog) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputChannel{}
-			_ = m2.Decode(d)
-			m.Channel = m2
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Channel = m2
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Q, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m4 := &ChannelAdminLogEventsFilter{}
-				_ = m4.Decode(d)
-				m.EventsFilter = m4
+				// m4 := &ChannelAdminLogEventsFilter{}
+				// _ = m4.Decode(d)
+				// m.EventsFilter = m4
+				m.EventsFilter, _ = DecodeChannelAdminLogEventsFilterClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				c5, err2 := d.ClazzID()
@@ -33373,12 +33909,15 @@ func (m *TLChannelsGetAdminLog) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l5, err3 := d.Int()
-				v5 := make([]*InputUser, l5)
+				// v5 := make([]*InputUser, l5)
+				v5 := make([]InputUserClazz, l5)
 				for i := 0; i < l5; i++ {
-					vv := new(InputUser)
-					err3 = vv.Decode(d)
+					// vv := new(InputUser)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v5[i] = vv
+					v5[i], _ = DecodeInputUserClazz(d)
 					_ = err3
-					v5[i] = vv
 				}
 				m.Admins = v5
 			}
@@ -33402,9 +33941,9 @@ func (m *TLChannelsGetAdminLog) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsSetStickers <--
 type TLChannelsSetStickers struct {
-	ClazzID    uint32           `json:"_id"`
-	Channel    *InputChannel    `json:"channel"`
-	Stickerset *InputStickerSet `json:"stickerset"`
+	ClazzID    uint32               `json:"_id"`
+	Channel    InputChannelClazz    `json:"channel"`
+	Stickerset InputStickerSetClazz `json:"stickerset"`
 }
 
 func (m *TLChannelsSetStickers) String() string {
@@ -33439,13 +33978,15 @@ func (m *TLChannelsSetStickers) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xea8ca4f9: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputStickerSet{}
-			_ = m2.Decode(d)
-			m.Stickerset = m2
+			// m2 := &InputStickerSet{}
+			// _ = m2.Decode(d)
+			// m.Stickerset = m2
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			return nil
 		},
@@ -33463,9 +34004,9 @@ func (m *TLChannelsSetStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsReadMessageContents <--
 type TLChannelsReadMessageContents struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Id      []int32       `json:"id"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Id      []int32           `json:"id"`
 }
 
 func (m *TLChannelsReadMessageContents) String() string {
@@ -33501,9 +34042,10 @@ func (m *TLChannelsReadMessageContents) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xeab5dc38: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -33523,10 +34065,10 @@ func (m *TLChannelsReadMessageContents) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsDeleteHistory <--
 type TLChannelsDeleteHistory struct {
-	ClazzID     uint32        `json:"_id"`
-	ForEveryone bool          `json:"for_everyone"`
-	Channel     *InputChannel `json:"channel"`
-	MaxId       int32         `json:"max_id"`
+	ClazzID     uint32            `json:"_id"`
+	ForEveryone bool              `json:"for_everyone"`
+	Channel     InputChannelClazz `json:"channel"`
+	MaxId       int32             `json:"max_id"`
 }
 
 func (m *TLChannelsDeleteHistory) String() string {
@@ -33580,9 +34122,10 @@ func (m *TLChannelsDeleteHistory) Decode(d *bin.Decoder) (err error) {
 				m.ForEveryone = true
 			}
 
-			m3 := &InputChannel{}
-			_ = m3.Decode(d)
-			m.Channel = m3
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.MaxId, err = d.Int32()
 
@@ -33602,9 +34145,9 @@ func (m *TLChannelsDeleteHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsTogglePreHistoryHidden <--
 type TLChannelsTogglePreHistoryHidden struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Enabled *Bool         `json:"enabled"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
 }
 
 func (m *TLChannelsTogglePreHistoryHidden) String() string {
@@ -33639,13 +34182,15 @@ func (m *TLChannelsTogglePreHistoryHidden) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xeabbb94c: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -33763,9 +34308,9 @@ func (m *TLChannelsGetGroupsForDiscussion) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsSetDiscussionGroup <--
 type TLChannelsSetDiscussionGroup struct {
-	ClazzID   uint32        `json:"_id"`
-	Broadcast *InputChannel `json:"broadcast"`
-	Group     *InputChannel `json:"group"`
+	ClazzID   uint32            `json:"_id"`
+	Broadcast InputChannelClazz `json:"broadcast"`
+	Group     InputChannelClazz `json:"group"`
 }
 
 func (m *TLChannelsSetDiscussionGroup) String() string {
@@ -33800,13 +34345,15 @@ func (m *TLChannelsSetDiscussionGroup) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x40582bb2: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Broadcast = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Broadcast = m1
+			m.Broadcast, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputChannel{}
-			_ = m2.Decode(d)
-			m.Group = m2
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Group = m2
+			m.Group, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -33824,10 +34371,10 @@ func (m *TLChannelsSetDiscussionGroup) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsEditCreator <--
 type TLChannelsEditCreator struct {
-	ClazzID  uint32                 `json:"_id"`
-	Channel  *InputChannel          `json:"channel"`
-	UserId   *InputUser             `json:"user_id"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Channel  InputChannelClazz          `json:"channel"`
+	UserId   InputUserClazz             `json:"user_id"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLChannelsEditCreator) String() string {
@@ -33863,17 +34410,20 @@ func (m *TLChannelsEditCreator) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8f38cd1f: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.UserId = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.UserId = m2
+			m.UserId, _ = DecodeInputUserClazz(d)
 
-			m3 := &InputCheckPasswordSRP{}
-			_ = m3.Decode(d)
-			m.Password = m3
+			// m3 := &InputCheckPasswordSRP{}
+			// _ = m3.Decode(d)
+			// m.Password = m3
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			return nil
 		},
@@ -33891,10 +34441,10 @@ func (m *TLChannelsEditCreator) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsEditLocation <--
 type TLChannelsEditLocation struct {
-	ClazzID  uint32         `json:"_id"`
-	Channel  *InputChannel  `json:"channel"`
-	GeoPoint *InputGeoPoint `json:"geo_point"`
-	Address  string         `json:"address"`
+	ClazzID  uint32             `json:"_id"`
+	Channel  InputChannelClazz  `json:"channel"`
+	GeoPoint InputGeoPointClazz `json:"geo_point"`
+	Address  string             `json:"address"`
 }
 
 func (m *TLChannelsEditLocation) String() string {
@@ -33930,13 +34480,15 @@ func (m *TLChannelsEditLocation) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x58e63f6d: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputGeoPoint{}
-			_ = m2.Decode(d)
-			m.GeoPoint = m2
+			// m2 := &InputGeoPoint{}
+			// _ = m2.Decode(d)
+			// m.GeoPoint = m2
+			m.GeoPoint, _ = DecodeInputGeoPointClazz(d)
 
 			m.Address, err = d.String()
 
@@ -33956,9 +34508,9 @@ func (m *TLChannelsEditLocation) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsToggleSlowMode <--
 type TLChannelsToggleSlowMode struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Seconds int32         `json:"seconds"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Seconds int32             `json:"seconds"`
 }
 
 func (m *TLChannelsToggleSlowMode) String() string {
@@ -33993,9 +34545,10 @@ func (m *TLChannelsToggleSlowMode) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xedd49ef0: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Seconds, err = d.Int32()
 
@@ -34063,8 +34616,8 @@ func (m *TLChannelsGetInactiveChannels) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsConvertToGigagroup <--
 type TLChannelsConvertToGigagroup struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsConvertToGigagroup) String() string {
@@ -34098,9 +34651,10 @@ func (m *TLChannelsConvertToGigagroup) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb290c69: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -34118,9 +34672,9 @@ func (m *TLChannelsConvertToGigagroup) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetSendAs <--
 type TLChannelsGetSendAs struct {
-	ClazzID          uint32     `json:"_id"`
-	ForPaidReactions bool       `json:"for_paid_reactions"`
-	Peer             *InputPeer `json:"peer"`
+	ClazzID          uint32         `json:"_id"`
+	ForPaidReactions bool           `json:"for_paid_reactions"`
+	Peer             InputPeerClazz `json:"peer"`
 }
 
 func (m *TLChannelsGetSendAs) String() string {
@@ -34173,9 +34727,10 @@ func (m *TLChannelsGetSendAs) Decode(d *bin.Decoder) (err error) {
 				m.ForPaidReactions = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -34193,9 +34748,9 @@ func (m *TLChannelsGetSendAs) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsDeleteParticipantHistory <--
 type TLChannelsDeleteParticipantHistory struct {
-	ClazzID     uint32        `json:"_id"`
-	Channel     *InputChannel `json:"channel"`
-	Participant *InputPeer    `json:"participant"`
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	Participant InputPeerClazz    `json:"participant"`
 }
 
 func (m *TLChannelsDeleteParticipantHistory) String() string {
@@ -34230,13 +34785,15 @@ func (m *TLChannelsDeleteParticipantHistory) Decode(d *bin.Decoder) (err error) 
 	var decodeF = map[uint32]func() error{
 		0x367544db: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Participant = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Participant = m2
+			m.Participant, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -34254,9 +34811,9 @@ func (m *TLChannelsDeleteParticipantHistory) Decode(d *bin.Decoder) (err error) 
 
 // TLChannelsToggleJoinToSend <--
 type TLChannelsToggleJoinToSend struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Enabled *Bool         `json:"enabled"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
 }
 
 func (m *TLChannelsToggleJoinToSend) String() string {
@@ -34291,13 +34848,15 @@ func (m *TLChannelsToggleJoinToSend) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe4cb9580: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -34315,9 +34874,9 @@ func (m *TLChannelsToggleJoinToSend) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsToggleJoinRequest <--
 type TLChannelsToggleJoinRequest struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Enabled *Bool         `json:"enabled"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
 }
 
 func (m *TLChannelsToggleJoinRequest) String() string {
@@ -34352,13 +34911,15 @@ func (m *TLChannelsToggleJoinRequest) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4c2985b6: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -34376,9 +34937,9 @@ func (m *TLChannelsToggleJoinRequest) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsReorderUsernames <--
 type TLChannelsReorderUsernames struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Order   []string      `json:"order"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Order   []string          `json:"order"`
 }
 
 func (m *TLChannelsReorderUsernames) String() string {
@@ -34414,9 +34975,10 @@ func (m *TLChannelsReorderUsernames) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb45ced1d: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Order, err = iface.DecodeStringList(d)
 
@@ -34436,10 +34998,10 @@ func (m *TLChannelsReorderUsernames) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsToggleUsername <--
 type TLChannelsToggleUsername struct {
-	ClazzID  uint32        `json:"_id"`
-	Channel  *InputChannel `json:"channel"`
-	Username string        `json:"username"`
-	Active   *Bool         `json:"active"`
+	ClazzID  uint32            `json:"_id"`
+	Channel  InputChannelClazz `json:"channel"`
+	Username string            `json:"username"`
+	Active   BoolClazz         `json:"active"`
 }
 
 func (m *TLChannelsToggleUsername) String() string {
@@ -34475,15 +35037,17 @@ func (m *TLChannelsToggleUsername) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x50f24105: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Username, err = d.String()
 
-			m3 := &Bool{}
-			_ = m3.Decode(d)
-			m.Active = m3
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.Active = m3
+			m.Active, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -34501,8 +35065,8 @@ func (m *TLChannelsToggleUsername) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsDeactivateAllUsernames <--
 type TLChannelsDeactivateAllUsernames struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsDeactivateAllUsernames) String() string {
@@ -34536,9 +35100,10 @@ func (m *TLChannelsDeactivateAllUsernames) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa245dd3: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -34556,9 +35121,9 @@ func (m *TLChannelsDeactivateAllUsernames) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsToggleForum <--
 type TLChannelsToggleForum struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Enabled *Bool         `json:"enabled"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
 }
 
 func (m *TLChannelsToggleForum) String() string {
@@ -34593,13 +35158,15 @@ func (m *TLChannelsToggleForum) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa4298b29: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -34617,13 +35184,13 @@ func (m *TLChannelsToggleForum) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsCreateForumTopic <--
 type TLChannelsCreateForumTopic struct {
-	ClazzID     uint32        `json:"_id"`
-	Channel     *InputChannel `json:"channel"`
-	Title       string        `json:"title"`
-	IconColor   *int32        `json:"icon_color"`
-	IconEmojiId *int64        `json:"icon_emoji_id"`
-	RandomId    int64         `json:"random_id"`
-	SendAs      *InputPeer    `json:"send_as"`
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	Title       string            `json:"title"`
+	IconColor   *int32            `json:"icon_color"`
+	IconEmojiId *int64            `json:"icon_emoji_id"`
+	RandomId    int64             `json:"random_id"`
+	SendAs      InputPeerClazz    `json:"send_as"`
 }
 
 func (m *TLChannelsCreateForumTopic) String() string {
@@ -34693,9 +35260,10 @@ func (m *TLChannelsCreateForumTopic) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputChannel{}
-			_ = m2.Decode(d)
-			m.Channel = m2
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Channel = m2
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Title, err = d.String()
 			if (flags & (1 << 0)) != 0 {
@@ -34709,9 +35277,10 @@ func (m *TLChannelsCreateForumTopic) Decode(d *bin.Decoder) (err error) {
 
 			m.RandomId, err = d.Int64()
 			if (flags & (1 << 2)) != 0 {
-				m7 := &InputPeer{}
-				_ = m7.Decode(d)
-				m.SendAs = m7
+				// m7 := &InputPeer{}
+				// _ = m7.Decode(d)
+				// m.SendAs = m7
+				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 
 			return nil
@@ -34730,13 +35299,13 @@ func (m *TLChannelsCreateForumTopic) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetForumTopics <--
 type TLChannelsGetForumTopics struct {
-	ClazzID     uint32        `json:"_id"`
-	Channel     *InputChannel `json:"channel"`
-	Q           *string       `json:"q"`
-	OffsetDate  int32         `json:"offset_date"`
-	OffsetId    int32         `json:"offset_id"`
-	OffsetTopic int32         `json:"offset_topic"`
-	Limit       int32         `json:"limit"`
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	Q           *string           `json:"q"`
+	OffsetDate  int32             `json:"offset_date"`
+	OffsetId    int32             `json:"offset_id"`
+	OffsetTopic int32             `json:"offset_topic"`
+	Limit       int32             `json:"limit"`
 }
 
 func (m *TLChannelsGetForumTopics) String() string {
@@ -34794,9 +35363,10 @@ func (m *TLChannelsGetForumTopics) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputChannel{}
-			_ = m2.Decode(d)
-			m.Channel = m2
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Channel = m2
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.Q = new(string)
@@ -34824,9 +35394,9 @@ func (m *TLChannelsGetForumTopics) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsGetForumTopicsByID <--
 type TLChannelsGetForumTopicsByID struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Topics  []int32       `json:"topics"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Topics  []int32           `json:"topics"`
 }
 
 func (m *TLChannelsGetForumTopicsByID) String() string {
@@ -34862,9 +35432,10 @@ func (m *TLChannelsGetForumTopicsByID) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb0831eb9: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Topics, err = iface.DecodeInt32List(d)
 
@@ -34884,13 +35455,13 @@ func (m *TLChannelsGetForumTopicsByID) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsEditForumTopic <--
 type TLChannelsEditForumTopic struct {
-	ClazzID     uint32        `json:"_id"`
-	Channel     *InputChannel `json:"channel"`
-	TopicId     int32         `json:"topic_id"`
-	Title       *string       `json:"title"`
-	IconEmojiId *int64        `json:"icon_emoji_id"`
-	Closed      *Bool         `json:"closed"`
-	Hidden      *Bool         `json:"hidden"`
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	TopicId     int32             `json:"topic_id"`
+	Title       *string           `json:"title"`
+	IconEmojiId *int64            `json:"icon_emoji_id"`
+	Closed      BoolClazz         `json:"closed"`
+	Hidden      BoolClazz         `json:"hidden"`
 }
 
 func (m *TLChannelsEditForumTopic) String() string {
@@ -34965,9 +35536,10 @@ func (m *TLChannelsEditForumTopic) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputChannel{}
-			_ = m2.Decode(d)
-			m.Channel = m2
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Channel = m2
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.TopicId, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
@@ -34981,14 +35553,16 @@ func (m *TLChannelsEditForumTopic) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 2)) != 0 {
-				m6 := &Bool{}
-				_ = m6.Decode(d)
-				m.Closed = m6
+				// m6 := &Bool{}
+				// _ = m6.Decode(d)
+				// m.Closed = m6
+				m.Closed, _ = DecodeBoolClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
-				m7 := &Bool{}
-				_ = m7.Decode(d)
-				m.Hidden = m7
+				// m7 := &Bool{}
+				// _ = m7.Decode(d)
+				// m.Hidden = m7
+				m.Hidden, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -35007,10 +35581,10 @@ func (m *TLChannelsEditForumTopic) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsUpdatePinnedForumTopic <--
 type TLChannelsUpdatePinnedForumTopic struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	TopicId int32         `json:"topic_id"`
-	Pinned  *Bool         `json:"pinned"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	TopicId int32             `json:"topic_id"`
+	Pinned  BoolClazz         `json:"pinned"`
 }
 
 func (m *TLChannelsUpdatePinnedForumTopic) String() string {
@@ -35046,15 +35620,17 @@ func (m *TLChannelsUpdatePinnedForumTopic) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x6c2d9026: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.TopicId, err = d.Int32()
 
-			m3 := &Bool{}
-			_ = m3.Decode(d)
-			m.Pinned = m3
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.Pinned = m3
+			m.Pinned, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -35072,9 +35648,9 @@ func (m *TLChannelsUpdatePinnedForumTopic) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsDeleteTopicHistory <--
 type TLChannelsDeleteTopicHistory struct {
-	ClazzID  uint32        `json:"_id"`
-	Channel  *InputChannel `json:"channel"`
-	TopMsgId int32         `json:"top_msg_id"`
+	ClazzID  uint32            `json:"_id"`
+	Channel  InputChannelClazz `json:"channel"`
+	TopMsgId int32             `json:"top_msg_id"`
 }
 
 func (m *TLChannelsDeleteTopicHistory) String() string {
@@ -35109,9 +35685,10 @@ func (m *TLChannelsDeleteTopicHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x34435f2d: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.TopMsgId, err = d.Int32()
 
@@ -35131,10 +35708,10 @@ func (m *TLChannelsDeleteTopicHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsReorderPinnedForumTopics <--
 type TLChannelsReorderPinnedForumTopics struct {
-	ClazzID uint32        `json:"_id"`
-	Force   bool          `json:"force"`
-	Channel *InputChannel `json:"channel"`
-	Order   []int32       `json:"order"`
+	ClazzID uint32            `json:"_id"`
+	Force   bool              `json:"force"`
+	Channel InputChannelClazz `json:"channel"`
+	Order   []int32           `json:"order"`
 }
 
 func (m *TLChannelsReorderPinnedForumTopics) String() string {
@@ -35189,9 +35766,10 @@ func (m *TLChannelsReorderPinnedForumTopics) Decode(d *bin.Decoder) (err error) 
 				m.Force = true
 			}
 
-			m3 := &InputChannel{}
-			_ = m3.Decode(d)
-			m.Channel = m3
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Order, err = iface.DecodeInt32List(d)
 
@@ -35211,9 +35789,9 @@ func (m *TLChannelsReorderPinnedForumTopics) Decode(d *bin.Decoder) (err error) 
 
 // TLChannelsToggleAntiSpam <--
 type TLChannelsToggleAntiSpam struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Enabled *Bool         `json:"enabled"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
 }
 
 func (m *TLChannelsToggleAntiSpam) String() string {
@@ -35248,13 +35826,15 @@ func (m *TLChannelsToggleAntiSpam) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x68f3e4eb: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -35272,9 +35852,9 @@ func (m *TLChannelsToggleAntiSpam) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsReportAntiSpamFalsePositive <--
 type TLChannelsReportAntiSpamFalsePositive struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	MsgId   int32         `json:"msg_id"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	MsgId   int32             `json:"msg_id"`
 }
 
 func (m *TLChannelsReportAntiSpamFalsePositive) String() string {
@@ -35309,9 +35889,10 @@ func (m *TLChannelsReportAntiSpamFalsePositive) Decode(d *bin.Decoder) (err erro
 	var decodeF = map[uint32]func() error{
 		0xa850a693: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -35331,9 +35912,9 @@ func (m *TLChannelsReportAntiSpamFalsePositive) Decode(d *bin.Decoder) (err erro
 
 // TLChannelsToggleParticipantsHidden <--
 type TLChannelsToggleParticipantsHidden struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Enabled *Bool         `json:"enabled"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
 }
 
 func (m *TLChannelsToggleParticipantsHidden) String() string {
@@ -35368,13 +35949,15 @@ func (m *TLChannelsToggleParticipantsHidden) Decode(d *bin.Decoder) (err error) 
 	var decodeF = map[uint32]func() error{
 		0x6a6e7854: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -35392,11 +35975,11 @@ func (m *TLChannelsToggleParticipantsHidden) Decode(d *bin.Decoder) (err error) 
 
 // TLChannelsUpdateColor <--
 type TLChannelsUpdateColor struct {
-	ClazzID           uint32        `json:"_id"`
-	ForProfile        bool          `json:"for_profile"`
-	Channel           *InputChannel `json:"channel"`
-	Color             *int32        `json:"color"`
-	BackgroundEmojiId *int64        `json:"background_emoji_id"`
+	ClazzID           uint32            `json:"_id"`
+	ForProfile        bool              `json:"for_profile"`
+	Channel           InputChannelClazz `json:"channel"`
+	Color             *int32            `json:"color"`
+	BackgroundEmojiId *int64            `json:"background_emoji_id"`
 }
 
 func (m *TLChannelsUpdateColor) String() string {
@@ -35463,9 +36046,10 @@ func (m *TLChannelsUpdateColor) Decode(d *bin.Decoder) (err error) {
 				m.ForProfile = true
 			}
 
-			m3 := &InputChannel{}
-			_ = m3.Decode(d)
-			m.Channel = m3
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
 				m.Color = new(int32)
@@ -35492,9 +36076,9 @@ func (m *TLChannelsUpdateColor) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsToggleViewForumAsMessages <--
 type TLChannelsToggleViewForumAsMessages struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Enabled *Bool         `json:"enabled"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
 }
 
 func (m *TLChannelsToggleViewForumAsMessages) String() string {
@@ -35529,13 +36113,15 @@ func (m *TLChannelsToggleViewForumAsMessages) Decode(d *bin.Decoder) (err error)
 	var decodeF = map[uint32]func() error{
 		0x9738bb15: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -35553,8 +36139,8 @@ func (m *TLChannelsToggleViewForumAsMessages) Decode(d *bin.Decoder) (err error)
 
 // TLChannelsGetChannelRecommendations <--
 type TLChannelsGetChannelRecommendations struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLChannelsGetChannelRecommendations) String() string {
@@ -35606,9 +36192,10 @@ func (m *TLChannelsGetChannelRecommendations) Decode(d *bin.Decoder) (err error)
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputChannel{}
-				_ = m2.Decode(d)
-				m.Channel = m2
+				// m2 := &InputChannel{}
+				// _ = m2.Decode(d)
+				// m.Channel = m2
+				m.Channel, _ = DecodeInputChannelClazz(d)
 			}
 
 			return nil
@@ -35627,9 +36214,9 @@ func (m *TLChannelsGetChannelRecommendations) Decode(d *bin.Decoder) (err error)
 
 // TLChannelsUpdateEmojiStatus <--
 type TLChannelsUpdateEmojiStatus struct {
-	ClazzID     uint32        `json:"_id"`
-	Channel     *InputChannel `json:"channel"`
-	EmojiStatus *EmojiStatus  `json:"emoji_status"`
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	EmojiStatus EmojiStatusClazz  `json:"emoji_status"`
 }
 
 func (m *TLChannelsUpdateEmojiStatus) String() string {
@@ -35664,13 +36251,15 @@ func (m *TLChannelsUpdateEmojiStatus) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf0d3e6a8: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &EmojiStatus{}
-			_ = m2.Decode(d)
-			m.EmojiStatus = m2
+			// m2 := &EmojiStatus{}
+			// _ = m2.Decode(d)
+			// m.EmojiStatus = m2
+			m.EmojiStatus, _ = DecodeEmojiStatusClazz(d)
 
 			return nil
 		},
@@ -35688,9 +36277,9 @@ func (m *TLChannelsUpdateEmojiStatus) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsSetBoostsToUnblockRestrictions <--
 type TLChannelsSetBoostsToUnblockRestrictions struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	Boosts  int32         `json:"boosts"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Boosts  int32             `json:"boosts"`
 }
 
 func (m *TLChannelsSetBoostsToUnblockRestrictions) String() string {
@@ -35725,9 +36314,10 @@ func (m *TLChannelsSetBoostsToUnblockRestrictions) Decode(d *bin.Decoder) (err e
 	var decodeF = map[uint32]func() error{
 		0xad399cee: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.Boosts, err = d.Int32()
 
@@ -35747,9 +36337,9 @@ func (m *TLChannelsSetBoostsToUnblockRestrictions) Decode(d *bin.Decoder) (err e
 
 // TLChannelsSetEmojiStickers <--
 type TLChannelsSetEmojiStickers struct {
-	ClazzID    uint32           `json:"_id"`
-	Channel    *InputChannel    `json:"channel"`
-	Stickerset *InputStickerSet `json:"stickerset"`
+	ClazzID    uint32               `json:"_id"`
+	Channel    InputChannelClazz    `json:"channel"`
+	Stickerset InputStickerSetClazz `json:"stickerset"`
 }
 
 func (m *TLChannelsSetEmojiStickers) String() string {
@@ -35784,13 +36374,15 @@ func (m *TLChannelsSetEmojiStickers) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3cd930b7: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &InputStickerSet{}
-			_ = m2.Decode(d)
-			m.Stickerset = m2
+			// m2 := &InputStickerSet{}
+			// _ = m2.Decode(d)
+			// m.Stickerset = m2
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			return nil
 		},
@@ -35808,9 +36400,9 @@ func (m *TLChannelsSetEmojiStickers) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsRestrictSponsoredMessages <--
 type TLChannelsRestrictSponsoredMessages struct {
-	ClazzID    uint32        `json:"_id"`
-	Channel    *InputChannel `json:"channel"`
-	Restricted *Bool         `json:"restricted"`
+	ClazzID    uint32            `json:"_id"`
+	Channel    InputChannelClazz `json:"channel"`
+	Restricted BoolClazz         `json:"restricted"`
 }
 
 func (m *TLChannelsRestrictSponsoredMessages) String() string {
@@ -35845,13 +36437,15 @@ func (m *TLChannelsRestrictSponsoredMessages) Decode(d *bin.Decoder) (err error)
 	var decodeF = map[uint32]func() error{
 		0x9ae91519: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Restricted = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Restricted = m2
+			m.Restricted, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -35869,12 +36463,12 @@ func (m *TLChannelsRestrictSponsoredMessages) Decode(d *bin.Decoder) (err error)
 
 // TLChannelsSearchPosts <--
 type TLChannelsSearchPosts struct {
-	ClazzID    uint32     `json:"_id"`
-	Hashtag    string     `json:"hashtag"`
-	OffsetRate int32      `json:"offset_rate"`
-	OffsetPeer *InputPeer `json:"offset_peer"`
-	OffsetId   int32      `json:"offset_id"`
-	Limit      int32      `json:"limit"`
+	ClazzID    uint32         `json:"_id"`
+	Hashtag    string         `json:"hashtag"`
+	OffsetRate int32          `json:"offset_rate"`
+	OffsetPeer InputPeerClazz `json:"offset_peer"`
+	OffsetId   int32          `json:"offset_id"`
+	Limit      int32          `json:"limit"`
 }
 
 func (m *TLChannelsSearchPosts) String() string {
@@ -35914,9 +36508,10 @@ func (m *TLChannelsSearchPosts) Decode(d *bin.Decoder) (err error) {
 			m.Hashtag, err = d.String()
 			m.OffsetRate, err = d.Int32()
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.OffsetPeer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.OffsetPeer = m3
+			m.OffsetPeer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -35937,9 +36532,9 @@ func (m *TLChannelsSearchPosts) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsUpdatePaidMessagesPrice <--
 type TLChannelsUpdatePaidMessagesPrice struct {
-	ClazzID               uint32        `json:"_id"`
-	Channel               *InputChannel `json:"channel"`
-	SendPaidMessagesStars int64         `json:"send_paid_messages_stars"`
+	ClazzID               uint32            `json:"_id"`
+	Channel               InputChannelClazz `json:"channel"`
+	SendPaidMessagesStars int64             `json:"send_paid_messages_stars"`
 }
 
 func (m *TLChannelsUpdatePaidMessagesPrice) String() string {
@@ -35974,9 +36569,10 @@ func (m *TLChannelsUpdatePaidMessagesPrice) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xfc84653f: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.SendPaidMessagesStars, err = d.Int64()
 
@@ -35996,9 +36592,9 @@ func (m *TLChannelsUpdatePaidMessagesPrice) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsSendCustomRequest <--
 type TLBotsSendCustomRequest struct {
-	ClazzID      uint32    `json:"_id"`
-	CustomMethod string    `json:"custom_method"`
-	Params       *DataJSON `json:"params"`
+	ClazzID      uint32        `json:"_id"`
+	CustomMethod string        `json:"custom_method"`
+	Params       DataJSONClazz `json:"params"`
 }
 
 func (m *TLBotsSendCustomRequest) String() string {
@@ -36034,9 +36630,10 @@ func (m *TLBotsSendCustomRequest) Decode(d *bin.Decoder) (err error) {
 		0xaa2769ed: func() (err error) {
 			m.CustomMethod, err = d.String()
 
-			m2 := &DataJSON{}
-			_ = m2.Decode(d)
-			m.Params = m2
+			// m2 := &DataJSON{}
+			// _ = m2.Decode(d)
+			// m.Params = m2
+			m.Params, _ = DecodeDataJSONClazz(d)
 
 			return nil
 		},
@@ -36054,9 +36651,9 @@ func (m *TLBotsSendCustomRequest) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsAnswerWebhookJSONQuery <--
 type TLBotsAnswerWebhookJSONQuery struct {
-	ClazzID uint32    `json:"_id"`
-	QueryId int64     `json:"query_id"`
-	Data    *DataJSON `json:"data"`
+	ClazzID uint32        `json:"_id"`
+	QueryId int64         `json:"query_id"`
+	Data    DataJSONClazz `json:"data"`
 }
 
 func (m *TLBotsAnswerWebhookJSONQuery) String() string {
@@ -36092,9 +36689,10 @@ func (m *TLBotsAnswerWebhookJSONQuery) Decode(d *bin.Decoder) (err error) {
 		0xe6213f4d: func() (err error) {
 			m.QueryId, err = d.Int64()
 
-			m2 := &DataJSON{}
-			_ = m2.Decode(d)
-			m.Data = m2
+			// m2 := &DataJSON{}
+			// _ = m2.Decode(d)
+			// m.Data = m2
+			m.Data, _ = DecodeDataJSONClazz(d)
 
 			return nil
 		},
@@ -36112,10 +36710,10 @@ func (m *TLBotsAnswerWebhookJSONQuery) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsSetBotCommands <--
 type TLBotsSetBotCommands struct {
-	ClazzID  uint32           `json:"_id"`
-	Scope    *BotCommandScope `json:"scope"`
-	LangCode string           `json:"lang_code"`
-	Commands []*BotCommand    `json:"commands"`
+	ClazzID  uint32               `json:"_id"`
+	Scope    BotCommandScopeClazz `json:"scope"`
+	LangCode string               `json:"lang_code"`
+	Commands []BotCommandClazz    `json:"commands"`
 }
 
 func (m *TLBotsSetBotCommands) String() string {
@@ -36152,9 +36750,10 @@ func (m *TLBotsSetBotCommands) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x517165a: func() (err error) {
 
-			m1 := &BotCommandScope{}
-			_ = m1.Decode(d)
-			m.Scope = m1
+			// m1 := &BotCommandScope{}
+			// _ = m1.Decode(d)
+			// m.Scope = m1
+			m.Scope, _ = DecodeBotCommandScopeClazz(d)
 
 			m.LangCode, err = d.String()
 			c3, err2 := d.ClazzID()
@@ -36163,12 +36762,15 @@ func (m *TLBotsSetBotCommands) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*BotCommand, l3)
+			// v3 := make([]*BotCommand, l3)
+			v3 := make([]BotCommandClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(BotCommand)
-				err3 = vv.Decode(d)
+				// vv := new(BotCommand)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeBotCommandClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Commands = v3
 
@@ -36188,9 +36790,9 @@ func (m *TLBotsSetBotCommands) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsResetBotCommands <--
 type TLBotsResetBotCommands struct {
-	ClazzID  uint32           `json:"_id"`
-	Scope    *BotCommandScope `json:"scope"`
-	LangCode string           `json:"lang_code"`
+	ClazzID  uint32               `json:"_id"`
+	Scope    BotCommandScopeClazz `json:"scope"`
+	LangCode string               `json:"lang_code"`
 }
 
 func (m *TLBotsResetBotCommands) String() string {
@@ -36225,9 +36827,10 @@ func (m *TLBotsResetBotCommands) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3d8de0f9: func() (err error) {
 
-			m1 := &BotCommandScope{}
-			_ = m1.Decode(d)
-			m.Scope = m1
+			// m1 := &BotCommandScope{}
+			// _ = m1.Decode(d)
+			// m.Scope = m1
+			m.Scope, _ = DecodeBotCommandScopeClazz(d)
 
 			m.LangCode, err = d.String()
 
@@ -36247,9 +36850,9 @@ func (m *TLBotsResetBotCommands) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsGetBotCommands <--
 type TLBotsGetBotCommands struct {
-	ClazzID  uint32           `json:"_id"`
-	Scope    *BotCommandScope `json:"scope"`
-	LangCode string           `json:"lang_code"`
+	ClazzID  uint32               `json:"_id"`
+	Scope    BotCommandScopeClazz `json:"scope"`
+	LangCode string               `json:"lang_code"`
 }
 
 func (m *TLBotsGetBotCommands) String() string {
@@ -36284,9 +36887,10 @@ func (m *TLBotsGetBotCommands) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe34c0dd6: func() (err error) {
 
-			m1 := &BotCommandScope{}
-			_ = m1.Decode(d)
-			m.Scope = m1
+			// m1 := &BotCommandScope{}
+			// _ = m1.Decode(d)
+			// m.Scope = m1
+			m.Scope, _ = DecodeBotCommandScopeClazz(d)
 
 			m.LangCode, err = d.String()
 
@@ -36306,9 +36910,9 @@ func (m *TLBotsGetBotCommands) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsSetBotMenuButton <--
 type TLBotsSetBotMenuButton struct {
-	ClazzID uint32         `json:"_id"`
-	UserId  *InputUser     `json:"user_id"`
-	Button  *BotMenuButton `json:"button"`
+	ClazzID uint32             `json:"_id"`
+	UserId  InputUserClazz     `json:"user_id"`
+	Button  BotMenuButtonClazz `json:"button"`
 }
 
 func (m *TLBotsSetBotMenuButton) String() string {
@@ -36343,13 +36947,15 @@ func (m *TLBotsSetBotMenuButton) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4504d54f: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
-			m2 := &BotMenuButton{}
-			_ = m2.Decode(d)
-			m.Button = m2
+			// m2 := &BotMenuButton{}
+			// _ = m2.Decode(d)
+			// m.Button = m2
+			m.Button, _ = DecodeBotMenuButtonClazz(d)
 
 			return nil
 		},
@@ -36367,8 +36973,8 @@ func (m *TLBotsSetBotMenuButton) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsGetBotMenuButton <--
 type TLBotsGetBotMenuButton struct {
-	ClazzID uint32     `json:"_id"`
-	UserId  *InputUser `json:"user_id"`
+	ClazzID uint32         `json:"_id"`
+	UserId  InputUserClazz `json:"user_id"`
 }
 
 func (m *TLBotsGetBotMenuButton) String() string {
@@ -36402,9 +37008,10 @@ func (m *TLBotsGetBotMenuButton) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x9c60eb28: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -36422,8 +37029,8 @@ func (m *TLBotsGetBotMenuButton) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsSetBotBroadcastDefaultAdminRights <--
 type TLBotsSetBotBroadcastDefaultAdminRights struct {
-	ClazzID     uint32           `json:"_id"`
-	AdminRights *ChatAdminRights `json:"admin_rights"`
+	ClazzID     uint32               `json:"_id"`
+	AdminRights ChatAdminRightsClazz `json:"admin_rights"`
 }
 
 func (m *TLBotsSetBotBroadcastDefaultAdminRights) String() string {
@@ -36457,9 +37064,10 @@ func (m *TLBotsSetBotBroadcastDefaultAdminRights) Decode(d *bin.Decoder) (err er
 	var decodeF = map[uint32]func() error{
 		0x788464e1: func() (err error) {
 
-			m1 := &ChatAdminRights{}
-			_ = m1.Decode(d)
-			m.AdminRights = m1
+			// m1 := &ChatAdminRights{}
+			// _ = m1.Decode(d)
+			// m.AdminRights = m1
+			m.AdminRights, _ = DecodeChatAdminRightsClazz(d)
 
 			return nil
 		},
@@ -36477,8 +37085,8 @@ func (m *TLBotsSetBotBroadcastDefaultAdminRights) Decode(d *bin.Decoder) (err er
 
 // TLBotsSetBotGroupDefaultAdminRights <--
 type TLBotsSetBotGroupDefaultAdminRights struct {
-	ClazzID     uint32           `json:"_id"`
-	AdminRights *ChatAdminRights `json:"admin_rights"`
+	ClazzID     uint32               `json:"_id"`
+	AdminRights ChatAdminRightsClazz `json:"admin_rights"`
 }
 
 func (m *TLBotsSetBotGroupDefaultAdminRights) String() string {
@@ -36512,9 +37120,10 @@ func (m *TLBotsSetBotGroupDefaultAdminRights) Decode(d *bin.Decoder) (err error)
 	var decodeF = map[uint32]func() error{
 		0x925ec9ea: func() (err error) {
 
-			m1 := &ChatAdminRights{}
-			_ = m1.Decode(d)
-			m.AdminRights = m1
+			// m1 := &ChatAdminRights{}
+			// _ = m1.Decode(d)
+			// m.AdminRights = m1
+			m.AdminRights, _ = DecodeChatAdminRightsClazz(d)
 
 			return nil
 		},
@@ -36532,12 +37141,12 @@ func (m *TLBotsSetBotGroupDefaultAdminRights) Decode(d *bin.Decoder) (err error)
 
 // TLBotsSetBotInfo <--
 type TLBotsSetBotInfo struct {
-	ClazzID     uint32     `json:"_id"`
-	Bot         *InputUser `json:"bot"`
-	LangCode    string     `json:"lang_code"`
-	Name        *string    `json:"name"`
-	About       *string    `json:"about"`
-	Description *string    `json:"description"`
+	ClazzID     uint32         `json:"_id"`
+	Bot         InputUserClazz `json:"bot"`
+	LangCode    string         `json:"lang_code"`
+	Name        *string        `json:"name"`
+	About       *string        `json:"about"`
+	Description *string        `json:"description"`
 }
 
 func (m *TLBotsSetBotInfo) String() string {
@@ -36612,9 +37221,10 @@ func (m *TLBotsSetBotInfo) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 2)) != 0 {
-				m2 := &InputUser{}
-				_ = m2.Decode(d)
-				m.Bot = m2
+				// m2 := &InputUser{}
+				// _ = m2.Decode(d)
+				// m.Bot = m2
+				m.Bot, _ = DecodeInputUserClazz(d)
 			}
 			m.LangCode, err = d.String()
 			if (flags & (1 << 3)) != 0 {
@@ -36648,9 +37258,9 @@ func (m *TLBotsSetBotInfo) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsGetBotInfo <--
 type TLBotsGetBotInfo struct {
-	ClazzID  uint32     `json:"_id"`
-	Bot      *InputUser `json:"bot"`
-	LangCode string     `json:"lang_code"`
+	ClazzID  uint32         `json:"_id"`
+	Bot      InputUserClazz `json:"bot"`
+	LangCode string         `json:"lang_code"`
 }
 
 func (m *TLBotsGetBotInfo) String() string {
@@ -36704,9 +37314,10 @@ func (m *TLBotsGetBotInfo) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputUser{}
-				_ = m2.Decode(d)
-				m.Bot = m2
+				// m2 := &InputUser{}
+				// _ = m2.Decode(d)
+				// m.Bot = m2
+				m.Bot, _ = DecodeInputUserClazz(d)
 			}
 			m.LangCode, err = d.String()
 
@@ -36726,9 +37337,9 @@ func (m *TLBotsGetBotInfo) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsReorderUsernames <--
 type TLBotsReorderUsernames struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
-	Order   []string   `json:"order"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
+	Order   []string       `json:"order"`
 }
 
 func (m *TLBotsReorderUsernames) String() string {
@@ -36764,9 +37375,10 @@ func (m *TLBotsReorderUsernames) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x9709b1c2: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.Order, err = iface.DecodeStringList(d)
 
@@ -36786,10 +37398,10 @@ func (m *TLBotsReorderUsernames) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsToggleUsername <--
 type TLBotsToggleUsername struct {
-	ClazzID  uint32     `json:"_id"`
-	Bot      *InputUser `json:"bot"`
-	Username string     `json:"username"`
-	Active   *Bool      `json:"active"`
+	ClazzID  uint32         `json:"_id"`
+	Bot      InputUserClazz `json:"bot"`
+	Username string         `json:"username"`
+	Active   BoolClazz      `json:"active"`
 }
 
 func (m *TLBotsToggleUsername) String() string {
@@ -36825,15 +37437,17 @@ func (m *TLBotsToggleUsername) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x53ca973: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.Username, err = d.String()
 
-			m3 := &Bool{}
-			_ = m3.Decode(d)
-			m.Active = m3
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.Active = m3
+			m.Active, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -36851,8 +37465,8 @@ func (m *TLBotsToggleUsername) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsCanSendMessage <--
 type TLBotsCanSendMessage struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
 }
 
 func (m *TLBotsCanSendMessage) String() string {
@@ -36886,9 +37500,10 @@ func (m *TLBotsCanSendMessage) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x1359f4e6: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -36906,8 +37521,8 @@ func (m *TLBotsCanSendMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsAllowSendMessage <--
 type TLBotsAllowSendMessage struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
 }
 
 func (m *TLBotsAllowSendMessage) String() string {
@@ -36941,9 +37556,10 @@ func (m *TLBotsAllowSendMessage) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf132e3ef: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -36961,10 +37577,10 @@ func (m *TLBotsAllowSendMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsInvokeWebViewCustomMethod <--
 type TLBotsInvokeWebViewCustomMethod struct {
-	ClazzID      uint32     `json:"_id"`
-	Bot          *InputUser `json:"bot"`
-	CustomMethod string     `json:"custom_method"`
-	Params       *DataJSON  `json:"params"`
+	ClazzID      uint32         `json:"_id"`
+	Bot          InputUserClazz `json:"bot"`
+	CustomMethod string         `json:"custom_method"`
+	Params       DataJSONClazz  `json:"params"`
 }
 
 func (m *TLBotsInvokeWebViewCustomMethod) String() string {
@@ -37000,15 +37616,17 @@ func (m *TLBotsInvokeWebViewCustomMethod) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x87fc5e7: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.CustomMethod, err = d.String()
 
-			m3 := &DataJSON{}
-			_ = m3.Decode(d)
-			m.Params = m3
+			// m3 := &DataJSON{}
+			// _ = m3.Decode(d)
+			// m.Params = m3
+			m.Params, _ = DecodeDataJSONClazz(d)
 
 			return nil
 		},
@@ -37081,10 +37699,10 @@ func (m *TLBotsGetPopularAppBots) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsAddPreviewMedia <--
 type TLBotsAddPreviewMedia struct {
-	ClazzID  uint32      `json:"_id"`
-	Bot      *InputUser  `json:"bot"`
-	LangCode string      `json:"lang_code"`
-	Media    *InputMedia `json:"media"`
+	ClazzID  uint32          `json:"_id"`
+	Bot      InputUserClazz  `json:"bot"`
+	LangCode string          `json:"lang_code"`
+	Media    InputMediaClazz `json:"media"`
 }
 
 func (m *TLBotsAddPreviewMedia) String() string {
@@ -37120,15 +37738,17 @@ func (m *TLBotsAddPreviewMedia) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x17aeb75a: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.LangCode, err = d.String()
 
-			m3 := &InputMedia{}
-			_ = m3.Decode(d)
-			m.Media = m3
+			// m3 := &InputMedia{}
+			// _ = m3.Decode(d)
+			// m.Media = m3
+			m.Media, _ = DecodeInputMediaClazz(d)
 
 			return nil
 		},
@@ -37146,11 +37766,11 @@ func (m *TLBotsAddPreviewMedia) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsEditPreviewMedia <--
 type TLBotsEditPreviewMedia struct {
-	ClazzID  uint32      `json:"_id"`
-	Bot      *InputUser  `json:"bot"`
-	LangCode string      `json:"lang_code"`
-	Media    *InputMedia `json:"media"`
-	NewMedia *InputMedia `json:"new_media"`
+	ClazzID  uint32          `json:"_id"`
+	Bot      InputUserClazz  `json:"bot"`
+	LangCode string          `json:"lang_code"`
+	Media    InputMediaClazz `json:"media"`
+	NewMedia InputMediaClazz `json:"new_media"`
 }
 
 func (m *TLBotsEditPreviewMedia) String() string {
@@ -37187,19 +37807,22 @@ func (m *TLBotsEditPreviewMedia) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8525606f: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.LangCode, err = d.String()
 
-			m3 := &InputMedia{}
-			_ = m3.Decode(d)
-			m.Media = m3
+			// m3 := &InputMedia{}
+			// _ = m3.Decode(d)
+			// m.Media = m3
+			m.Media, _ = DecodeInputMediaClazz(d)
 
-			m4 := &InputMedia{}
-			_ = m4.Decode(d)
-			m.NewMedia = m4
+			// m4 := &InputMedia{}
+			// _ = m4.Decode(d)
+			// m.NewMedia = m4
+			m.NewMedia, _ = DecodeInputMediaClazz(d)
 
 			return nil
 		},
@@ -37217,10 +37840,10 @@ func (m *TLBotsEditPreviewMedia) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsDeletePreviewMedia <--
 type TLBotsDeletePreviewMedia struct {
-	ClazzID  uint32        `json:"_id"`
-	Bot      *InputUser    `json:"bot"`
-	LangCode string        `json:"lang_code"`
-	Media    []*InputMedia `json:"media"`
+	ClazzID  uint32            `json:"_id"`
+	Bot      InputUserClazz    `json:"bot"`
+	LangCode string            `json:"lang_code"`
+	Media    []InputMediaClazz `json:"media"`
 }
 
 func (m *TLBotsDeletePreviewMedia) String() string {
@@ -37257,9 +37880,10 @@ func (m *TLBotsDeletePreviewMedia) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x2d0135b3: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.LangCode, err = d.String()
 			c3, err2 := d.ClazzID()
@@ -37268,12 +37892,15 @@ func (m *TLBotsDeletePreviewMedia) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*InputMedia, l3)
+			// v3 := make([]*InputMedia, l3)
+			v3 := make([]InputMediaClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(InputMedia)
-				err3 = vv.Decode(d)
+				// vv := new(InputMedia)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeInputMediaClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Media = v3
 
@@ -37293,10 +37920,10 @@ func (m *TLBotsDeletePreviewMedia) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsReorderPreviewMedias <--
 type TLBotsReorderPreviewMedias struct {
-	ClazzID  uint32        `json:"_id"`
-	Bot      *InputUser    `json:"bot"`
-	LangCode string        `json:"lang_code"`
-	Order    []*InputMedia `json:"order"`
+	ClazzID  uint32            `json:"_id"`
+	Bot      InputUserClazz    `json:"bot"`
+	LangCode string            `json:"lang_code"`
+	Order    []InputMediaClazz `json:"order"`
 }
 
 func (m *TLBotsReorderPreviewMedias) String() string {
@@ -37333,9 +37960,10 @@ func (m *TLBotsReorderPreviewMedias) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb627f3aa: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.LangCode, err = d.String()
 			c3, err2 := d.ClazzID()
@@ -37344,12 +37972,15 @@ func (m *TLBotsReorderPreviewMedias) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*InputMedia, l3)
+			// v3 := make([]*InputMedia, l3)
+			v3 := make([]InputMediaClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(InputMedia)
-				err3 = vv.Decode(d)
+				// vv := new(InputMedia)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeInputMediaClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Order = v3
 
@@ -37369,9 +38000,9 @@ func (m *TLBotsReorderPreviewMedias) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsGetPreviewInfo <--
 type TLBotsGetPreviewInfo struct {
-	ClazzID  uint32     `json:"_id"`
-	Bot      *InputUser `json:"bot"`
-	LangCode string     `json:"lang_code"`
+	ClazzID  uint32         `json:"_id"`
+	Bot      InputUserClazz `json:"bot"`
+	LangCode string         `json:"lang_code"`
 }
 
 func (m *TLBotsGetPreviewInfo) String() string {
@@ -37406,9 +38037,10 @@ func (m *TLBotsGetPreviewInfo) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x423ab3ad: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.LangCode, err = d.String()
 
@@ -37428,8 +38060,8 @@ func (m *TLBotsGetPreviewInfo) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsGetPreviewMedias <--
 type TLBotsGetPreviewMedias struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
 }
 
 func (m *TLBotsGetPreviewMedias) String() string {
@@ -37463,9 +38095,10 @@ func (m *TLBotsGetPreviewMedias) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa2a5594d: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -37483,9 +38116,9 @@ func (m *TLBotsGetPreviewMedias) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsUpdateUserEmojiStatus <--
 type TLBotsUpdateUserEmojiStatus struct {
-	ClazzID     uint32       `json:"_id"`
-	UserId      *InputUser   `json:"user_id"`
-	EmojiStatus *EmojiStatus `json:"emoji_status"`
+	ClazzID     uint32           `json:"_id"`
+	UserId      InputUserClazz   `json:"user_id"`
+	EmojiStatus EmojiStatusClazz `json:"emoji_status"`
 }
 
 func (m *TLBotsUpdateUserEmojiStatus) String() string {
@@ -37520,13 +38153,15 @@ func (m *TLBotsUpdateUserEmojiStatus) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xed9f30c5: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
-			m2 := &EmojiStatus{}
-			_ = m2.Decode(d)
-			m.EmojiStatus = m2
+			// m2 := &EmojiStatus{}
+			// _ = m2.Decode(d)
+			// m.EmojiStatus = m2
+			m.EmojiStatus, _ = DecodeEmojiStatusClazz(d)
 
 			return nil
 		},
@@ -37544,9 +38179,9 @@ func (m *TLBotsUpdateUserEmojiStatus) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsToggleUserEmojiStatusPermission <--
 type TLBotsToggleUserEmojiStatusPermission struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
-	Enabled *Bool      `json:"enabled"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
+	Enabled BoolClazz      `json:"enabled"`
 }
 
 func (m *TLBotsToggleUserEmojiStatusPermission) String() string {
@@ -37581,13 +38216,15 @@ func (m *TLBotsToggleUserEmojiStatusPermission) Decode(d *bin.Decoder) (err erro
 	var decodeF = map[uint32]func() error{
 		0x6de6392: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Enabled = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -37605,10 +38242,10 @@ func (m *TLBotsToggleUserEmojiStatusPermission) Decode(d *bin.Decoder) (err erro
 
 // TLBotsCheckDownloadFileParams <--
 type TLBotsCheckDownloadFileParams struct {
-	ClazzID  uint32     `json:"_id"`
-	Bot      *InputUser `json:"bot"`
-	FileName string     `json:"file_name"`
-	Url      string     `json:"url"`
+	ClazzID  uint32         `json:"_id"`
+	Bot      InputUserClazz `json:"bot"`
+	FileName string         `json:"file_name"`
+	Url      string         `json:"url"`
 }
 
 func (m *TLBotsCheckDownloadFileParams) String() string {
@@ -37644,9 +38281,10 @@ func (m *TLBotsCheckDownloadFileParams) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x50077589: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.FileName, err = d.String()
 			m.Url, err = d.String()
@@ -37715,10 +38353,10 @@ func (m *TLBotsGetAdminedBots) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsUpdateStarRefProgram <--
 type TLBotsUpdateStarRefProgram struct {
-	ClazzID            uint32     `json:"_id"`
-	Bot                *InputUser `json:"bot"`
-	CommissionPermille int32      `json:"commission_permille"`
-	DurationMonths     *int32     `json:"duration_months"`
+	ClazzID            uint32         `json:"_id"`
+	Bot                InputUserClazz `json:"bot"`
+	CommissionPermille int32          `json:"commission_permille"`
+	DurationMonths     *int32         `json:"duration_months"`
 }
 
 func (m *TLBotsUpdateStarRefProgram) String() string {
@@ -37772,9 +38410,10 @@ func (m *TLBotsUpdateStarRefProgram) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.Bot = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.Bot = m2
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			m.CommissionPermille, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
@@ -37798,11 +38437,11 @@ func (m *TLBotsUpdateStarRefProgram) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsSetCustomVerification <--
 type TLBotsSetCustomVerification struct {
-	ClazzID           uint32     `json:"_id"`
-	Enabled           bool       `json:"enabled"`
-	Bot               *InputUser `json:"bot"`
-	Peer              *InputPeer `json:"peer"`
-	CustomDescription *string    `json:"custom_description"`
+	ClazzID           uint32         `json:"_id"`
+	Enabled           bool           `json:"enabled"`
+	Bot               InputUserClazz `json:"bot"`
+	Peer              InputPeerClazz `json:"peer"`
+	CustomDescription *string        `json:"custom_description"`
 }
 
 func (m *TLBotsSetCustomVerification) String() string {
@@ -37869,14 +38508,16 @@ func (m *TLBotsSetCustomVerification) Decode(d *bin.Decoder) (err error) {
 				m.Enabled = true
 			}
 			if (flags & (1 << 0)) != 0 {
-				m3 := &InputUser{}
-				_ = m3.Decode(d)
-				m.Bot = m3
+				// m3 := &InputUser{}
+				// _ = m3.Decode(d)
+				// m.Bot = m3
+				m.Bot, _ = DecodeInputUserClazz(d)
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
 				m.CustomDescription = new(string)
@@ -37899,8 +38540,8 @@ func (m *TLBotsSetCustomVerification) Decode(d *bin.Decoder) (err error) {
 
 // TLBotsGetBotRecommendations <--
 type TLBotsGetBotRecommendations struct {
-	ClazzID uint32     `json:"_id"`
-	Bot     *InputUser `json:"bot"`
+	ClazzID uint32         `json:"_id"`
+	Bot     InputUserClazz `json:"bot"`
 }
 
 func (m *TLBotsGetBotRecommendations) String() string {
@@ -37934,9 +38575,10 @@ func (m *TLBotsGetBotRecommendations) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa1b70815: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.Bot = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Bot = m1
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -37954,9 +38596,9 @@ func (m *TLBotsGetBotRecommendations) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetPaymentForm <--
 type TLPaymentsGetPaymentForm struct {
-	ClazzID     uint32        `json:"_id"`
-	Invoice     *InputInvoice `json:"invoice"`
-	ThemeParams *DataJSON     `json:"theme_params"`
+	ClazzID     uint32            `json:"_id"`
+	Invoice     InputInvoiceClazz `json:"invoice"`
+	ThemeParams DataJSONClazz     `json:"theme_params"`
 }
 
 func (m *TLPaymentsGetPaymentForm) String() string {
@@ -38009,14 +38651,16 @@ func (m *TLPaymentsGetPaymentForm) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputInvoice{}
-			_ = m2.Decode(d)
-			m.Invoice = m2
+			// m2 := &InputInvoice{}
+			// _ = m2.Decode(d)
+			// m.Invoice = m2
+			m.Invoice, _ = DecodeInputInvoiceClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m3 := &DataJSON{}
-				_ = m3.Decode(d)
-				m.ThemeParams = m3
+				// m3 := &DataJSON{}
+				// _ = m3.Decode(d)
+				// m.ThemeParams = m3
+				m.ThemeParams, _ = DecodeDataJSONClazz(d)
 			}
 
 			return nil
@@ -38035,9 +38679,9 @@ func (m *TLPaymentsGetPaymentForm) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetPaymentReceipt <--
 type TLPaymentsGetPaymentReceipt struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLPaymentsGetPaymentReceipt) String() string {
@@ -38072,9 +38716,10 @@ func (m *TLPaymentsGetPaymentReceipt) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x2478d1cc: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -38094,10 +38739,10 @@ func (m *TLPaymentsGetPaymentReceipt) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsValidateRequestedInfo <--
 type TLPaymentsValidateRequestedInfo struct {
-	ClazzID uint32                `json:"_id"`
-	Save    bool                  `json:"save"`
-	Invoice *InputInvoice         `json:"invoice"`
-	Info    *PaymentRequestedInfo `json:"info"`
+	ClazzID uint32                    `json:"_id"`
+	Save    bool                      `json:"save"`
+	Invoice InputInvoiceClazz         `json:"invoice"`
+	Info    PaymentRequestedInfoClazz `json:"info"`
 }
 
 func (m *TLPaymentsValidateRequestedInfo) String() string {
@@ -38151,13 +38796,15 @@ func (m *TLPaymentsValidateRequestedInfo) Decode(d *bin.Decoder) (err error) {
 				m.Save = true
 			}
 
-			m3 := &InputInvoice{}
-			_ = m3.Decode(d)
-			m.Invoice = m3
+			// m3 := &InputInvoice{}
+			// _ = m3.Decode(d)
+			// m.Invoice = m3
+			m.Invoice, _ = DecodeInputInvoiceClazz(d)
 
-			m4 := &PaymentRequestedInfo{}
-			_ = m4.Decode(d)
-			m.Info = m4
+			// m4 := &PaymentRequestedInfo{}
+			// _ = m4.Decode(d)
+			// m.Info = m4
+			m.Info, _ = DecodePaymentRequestedInfoClazz(d)
 
 			return nil
 		},
@@ -38175,13 +38822,13 @@ func (m *TLPaymentsValidateRequestedInfo) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsSendPaymentForm <--
 type TLPaymentsSendPaymentForm struct {
-	ClazzID          uint32                   `json:"_id"`
-	FormId           int64                    `json:"form_id"`
-	Invoice          *InputInvoice            `json:"invoice"`
-	RequestedInfoId  *string                  `json:"requested_info_id"`
-	ShippingOptionId *string                  `json:"shipping_option_id"`
-	Credentials      *InputPaymentCredentials `json:"credentials"`
-	TipAmount        *int64                   `json:"tip_amount"`
+	ClazzID          uint32                       `json:"_id"`
+	FormId           int64                        `json:"form_id"`
+	Invoice          InputInvoiceClazz            `json:"invoice"`
+	RequestedInfoId  *string                      `json:"requested_info_id"`
+	ShippingOptionId *string                      `json:"shipping_option_id"`
+	Credentials      InputPaymentCredentialsClazz `json:"credentials"`
+	TipAmount        *int64                       `json:"tip_amount"`
 }
 
 func (m *TLPaymentsSendPaymentForm) String() string {
@@ -38252,9 +38899,10 @@ func (m *TLPaymentsSendPaymentForm) Decode(d *bin.Decoder) (err error) {
 			_ = flags
 			m.FormId, err = d.Int64()
 
-			m3 := &InputInvoice{}
-			_ = m3.Decode(d)
-			m.Invoice = m3
+			// m3 := &InputInvoice{}
+			// _ = m3.Decode(d)
+			// m.Invoice = m3
+			m.Invoice, _ = DecodeInputInvoiceClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.RequestedInfoId = new(string)
@@ -38266,9 +38914,10 @@ func (m *TLPaymentsSendPaymentForm) Decode(d *bin.Decoder) (err error) {
 				*m.ShippingOptionId, err = d.String()
 			}
 
-			m6 := &InputPaymentCredentials{}
-			_ = m6.Decode(d)
-			m.Credentials = m6
+			// m6 := &InputPaymentCredentials{}
+			// _ = m6.Decode(d)
+			// m.Credentials = m6
+			m.Credentials, _ = DecodeInputPaymentCredentialsClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
 				m.TipAmount = new(int64)
@@ -38467,8 +39116,8 @@ func (m *TLPaymentsGetBankCardData) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsExportInvoice <--
 type TLPaymentsExportInvoice struct {
-	ClazzID      uint32      `json:"_id"`
-	InvoiceMedia *InputMedia `json:"invoice_media"`
+	ClazzID      uint32          `json:"_id"`
+	InvoiceMedia InputMediaClazz `json:"invoice_media"`
 }
 
 func (m *TLPaymentsExportInvoice) String() string {
@@ -38502,9 +39151,10 @@ func (m *TLPaymentsExportInvoice) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf91b065: func() (err error) {
 
-			m1 := &InputMedia{}
-			_ = m1.Decode(d)
-			m.InvoiceMedia = m1
+			// m1 := &InputMedia{}
+			// _ = m1.Decode(d)
+			// m.InvoiceMedia = m1
+			m.InvoiceMedia, _ = DecodeInputMediaClazz(d)
 
 			return nil
 		},
@@ -38522,9 +39172,9 @@ func (m *TLPaymentsExportInvoice) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsAssignAppStoreTransaction <--
 type TLPaymentsAssignAppStoreTransaction struct {
-	ClazzID uint32                    `json:"_id"`
-	Receipt []byte                    `json:"receipt"`
-	Purpose *InputStorePaymentPurpose `json:"purpose"`
+	ClazzID uint32                        `json:"_id"`
+	Receipt []byte                        `json:"receipt"`
+	Purpose InputStorePaymentPurposeClazz `json:"purpose"`
 }
 
 func (m *TLPaymentsAssignAppStoreTransaction) String() string {
@@ -38560,9 +39210,10 @@ func (m *TLPaymentsAssignAppStoreTransaction) Decode(d *bin.Decoder) (err error)
 		0x80ed747d: func() (err error) {
 			m.Receipt, err = d.Bytes()
 
-			m2 := &InputStorePaymentPurpose{}
-			_ = m2.Decode(d)
-			m.Purpose = m2
+			// m2 := &InputStorePaymentPurpose{}
+			// _ = m2.Decode(d)
+			// m.Purpose = m2
+			m.Purpose, _ = DecodeInputStorePaymentPurposeClazz(d)
 
 			return nil
 		},
@@ -38580,9 +39231,9 @@ func (m *TLPaymentsAssignAppStoreTransaction) Decode(d *bin.Decoder) (err error)
 
 // TLPaymentsAssignPlayMarketTransaction <--
 type TLPaymentsAssignPlayMarketTransaction struct {
-	ClazzID uint32                    `json:"_id"`
-	Receipt *DataJSON                 `json:"receipt"`
-	Purpose *InputStorePaymentPurpose `json:"purpose"`
+	ClazzID uint32                        `json:"_id"`
+	Receipt DataJSONClazz                 `json:"receipt"`
+	Purpose InputStorePaymentPurposeClazz `json:"purpose"`
 }
 
 func (m *TLPaymentsAssignPlayMarketTransaction) String() string {
@@ -38617,13 +39268,15 @@ func (m *TLPaymentsAssignPlayMarketTransaction) Decode(d *bin.Decoder) (err erro
 	var decodeF = map[uint32]func() error{
 		0xdffd50d3: func() (err error) {
 
-			m1 := &DataJSON{}
-			_ = m1.Decode(d)
-			m.Receipt = m1
+			// m1 := &DataJSON{}
+			// _ = m1.Decode(d)
+			// m.Receipt = m1
+			m.Receipt, _ = DecodeDataJSONClazz(d)
 
-			m2 := &InputStorePaymentPurpose{}
-			_ = m2.Decode(d)
-			m.Purpose = m2
+			// m2 := &InputStorePaymentPurpose{}
+			// _ = m2.Decode(d)
+			// m.Purpose = m2
+			m.Purpose, _ = DecodeInputStorePaymentPurposeClazz(d)
 
 			return nil
 		},
@@ -38641,8 +39294,8 @@ func (m *TLPaymentsAssignPlayMarketTransaction) Decode(d *bin.Decoder) (err erro
 
 // TLPaymentsGetPremiumGiftCodeOptions <--
 type TLPaymentsGetPremiumGiftCodeOptions struct {
-	ClazzID   uint32     `json:"_id"`
-	BoostPeer *InputPeer `json:"boost_peer"`
+	ClazzID   uint32         `json:"_id"`
+	BoostPeer InputPeerClazz `json:"boost_peer"`
 }
 
 func (m *TLPaymentsGetPremiumGiftCodeOptions) String() string {
@@ -38694,9 +39347,10 @@ func (m *TLPaymentsGetPremiumGiftCodeOptions) Decode(d *bin.Decoder) (err error)
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputPeer{}
-				_ = m2.Decode(d)
-				m.BoostPeer = m2
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.BoostPeer = m2
+				m.BoostPeer, _ = DecodeInputPeerClazz(d)
 			}
 
 			return nil
@@ -38819,9 +39473,9 @@ func (m *TLPaymentsApplyGiftCode) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetGiveawayInfo <--
 type TLPaymentsGetGiveawayInfo struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MsgId   int32      `json:"msg_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MsgId   int32          `json:"msg_id"`
 }
 
 func (m *TLPaymentsGetGiveawayInfo) String() string {
@@ -38856,9 +39510,10 @@ func (m *TLPaymentsGetGiveawayInfo) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf4239425: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -38878,10 +39533,10 @@ func (m *TLPaymentsGetGiveawayInfo) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsLaunchPrepaidGiveaway <--
 type TLPaymentsLaunchPrepaidGiveaway struct {
-	ClazzID    uint32                    `json:"_id"`
-	Peer       *InputPeer                `json:"peer"`
-	GiveawayId int64                     `json:"giveaway_id"`
-	Purpose    *InputStorePaymentPurpose `json:"purpose"`
+	ClazzID    uint32                        `json:"_id"`
+	Peer       InputPeerClazz                `json:"peer"`
+	GiveawayId int64                         `json:"giveaway_id"`
+	Purpose    InputStorePaymentPurposeClazz `json:"purpose"`
 }
 
 func (m *TLPaymentsLaunchPrepaidGiveaway) String() string {
@@ -38917,15 +39572,17 @@ func (m *TLPaymentsLaunchPrepaidGiveaway) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5ff58f20: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.GiveawayId, err = d.Int64()
 
-			m3 := &InputStorePaymentPurpose{}
-			_ = m3.Decode(d)
-			m.Purpose = m3
+			// m3 := &InputStorePaymentPurpose{}
+			// _ = m3.Decode(d)
+			// m.Purpose = m3
+			m.Purpose, _ = DecodeInputStorePaymentPurposeClazz(d)
 
 			return nil
 		},
@@ -38991,8 +39648,8 @@ func (m *TLPaymentsGetStarsTopupOptions) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetStarsStatus <--
 type TLPaymentsGetStarsStatus struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLPaymentsGetStarsStatus) String() string {
@@ -39026,9 +39683,10 @@ func (m *TLPaymentsGetStarsStatus) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x104fcfa7: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -39046,14 +39704,14 @@ func (m *TLPaymentsGetStarsStatus) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetStarsTransactions <--
 type TLPaymentsGetStarsTransactions struct {
-	ClazzID        uint32     `json:"_id"`
-	Inbound        bool       `json:"inbound"`
-	Outbound       bool       `json:"outbound"`
-	Ascending      bool       `json:"ascending"`
-	SubscriptionId *string    `json:"subscription_id"`
-	Peer           *InputPeer `json:"peer"`
-	Offset         string     `json:"offset"`
-	Limit          int32      `json:"limit"`
+	ClazzID        uint32         `json:"_id"`
+	Inbound        bool           `json:"inbound"`
+	Outbound       bool           `json:"outbound"`
+	Ascending      bool           `json:"ascending"`
+	SubscriptionId *string        `json:"subscription_id"`
+	Peer           InputPeerClazz `json:"peer"`
+	Offset         string         `json:"offset"`
+	Limit          int32          `json:"limit"`
 }
 
 func (m *TLPaymentsGetStarsTransactions) String() string {
@@ -39131,9 +39789,10 @@ func (m *TLPaymentsGetStarsTransactions) Decode(d *bin.Decoder) (err error) {
 				*m.SubscriptionId, err = d.String()
 			}
 
-			m6 := &InputPeer{}
-			_ = m6.Decode(d)
-			m.Peer = m6
+			// m6 := &InputPeer{}
+			// _ = m6.Decode(d)
+			// m.Peer = m6
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Offset, err = d.String()
 			m.Limit, err = d.Int32()
@@ -39154,9 +39813,9 @@ func (m *TLPaymentsGetStarsTransactions) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsSendStarsForm <--
 type TLPaymentsSendStarsForm struct {
-	ClazzID uint32        `json:"_id"`
-	FormId  int64         `json:"form_id"`
-	Invoice *InputInvoice `json:"invoice"`
+	ClazzID uint32            `json:"_id"`
+	FormId  int64             `json:"form_id"`
+	Invoice InputInvoiceClazz `json:"invoice"`
 }
 
 func (m *TLPaymentsSendStarsForm) String() string {
@@ -39192,9 +39851,10 @@ func (m *TLPaymentsSendStarsForm) Decode(d *bin.Decoder) (err error) {
 		0x7998c914: func() (err error) {
 			m.FormId, err = d.Int64()
 
-			m2 := &InputInvoice{}
-			_ = m2.Decode(d)
-			m.Invoice = m2
+			// m2 := &InputInvoice{}
+			// _ = m2.Decode(d)
+			// m.Invoice = m2
+			m.Invoice, _ = DecodeInputInvoiceClazz(d)
 
 			return nil
 		},
@@ -39212,9 +39872,9 @@ func (m *TLPaymentsSendStarsForm) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsRefundStarsCharge <--
 type TLPaymentsRefundStarsCharge struct {
-	ClazzID  uint32     `json:"_id"`
-	UserId   *InputUser `json:"user_id"`
-	ChargeId string     `json:"charge_id"`
+	ClazzID  uint32         `json:"_id"`
+	UserId   InputUserClazz `json:"user_id"`
+	ChargeId string         `json:"charge_id"`
 }
 
 func (m *TLPaymentsRefundStarsCharge) String() string {
@@ -39249,9 +39909,10 @@ func (m *TLPaymentsRefundStarsCharge) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x25ae8f4a: func() (err error) {
 
-			m1 := &InputUser{}
-			_ = m1.Decode(d)
-			m.UserId = m1
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.UserId = m1
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.ChargeId, err = d.String()
 
@@ -39271,9 +39932,9 @@ func (m *TLPaymentsRefundStarsCharge) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetStarsRevenueStats <--
 type TLPaymentsGetStarsRevenueStats struct {
-	ClazzID uint32     `json:"_id"`
-	Dark    bool       `json:"dark"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Dark    bool           `json:"dark"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLPaymentsGetStarsRevenueStats) String() string {
@@ -39326,9 +39987,10 @@ func (m *TLPaymentsGetStarsRevenueStats) Decode(d *bin.Decoder) (err error) {
 				m.Dark = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -39346,10 +40008,10 @@ func (m *TLPaymentsGetStarsRevenueStats) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetStarsRevenueWithdrawalUrl <--
 type TLPaymentsGetStarsRevenueWithdrawalUrl struct {
-	ClazzID  uint32                 `json:"_id"`
-	Peer     *InputPeer             `json:"peer"`
-	Stars    int64                  `json:"stars"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Peer     InputPeerClazz             `json:"peer"`
+	Stars    int64                      `json:"stars"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) String() string {
@@ -39385,15 +40047,17 @@ func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err err
 	var decodeF = map[uint32]func() error{
 		0x13bbe8b3: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Stars, err = d.Int64()
 
-			m3 := &InputCheckPasswordSRP{}
-			_ = m3.Decode(d)
-			m.Password = m3
+			// m3 := &InputCheckPasswordSRP{}
+			// _ = m3.Decode(d)
+			// m.Password = m3
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			return nil
 		},
@@ -39411,8 +40075,8 @@ func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err err
 
 // TLPaymentsGetStarsRevenueAdsAccountUrl <--
 type TLPaymentsGetStarsRevenueAdsAccountUrl struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLPaymentsGetStarsRevenueAdsAccountUrl) String() string {
@@ -39446,9 +40110,10 @@ func (m *TLPaymentsGetStarsRevenueAdsAccountUrl) Decode(d *bin.Decoder) (err err
 	var decodeF = map[uint32]func() error{
 		0xd1d7efc5: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -39466,9 +40131,9 @@ func (m *TLPaymentsGetStarsRevenueAdsAccountUrl) Decode(d *bin.Decoder) (err err
 
 // TLPaymentsGetStarsTransactionsByID <--
 type TLPaymentsGetStarsTransactionsByID struct {
-	ClazzID uint32                   `json:"_id"`
-	Peer    *InputPeer               `json:"peer"`
-	Id      []*InputStarsTransaction `json:"id"`
+	ClazzID uint32                       `json:"_id"`
+	Peer    InputPeerClazz               `json:"peer"`
+	Id      []InputStarsTransactionClazz `json:"id"`
 }
 
 func (m *TLPaymentsGetStarsTransactionsByID) String() string {
@@ -39504,9 +40169,10 @@ func (m *TLPaymentsGetStarsTransactionsByID) Decode(d *bin.Decoder) (err error) 
 	var decodeF = map[uint32]func() error{
 		0x27842d2e: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -39514,12 +40180,15 @@ func (m *TLPaymentsGetStarsTransactionsByID) Decode(d *bin.Decoder) (err error) 
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputStarsTransaction, l2)
+			// v2 := make([]*InputStarsTransaction, l2)
+			v2 := make([]InputStarsTransactionClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputStarsTransaction)
-				err3 = vv.Decode(d)
+				// vv := new(InputStarsTransaction)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputStarsTransactionClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Id = v2
 
@@ -39539,8 +40208,8 @@ func (m *TLPaymentsGetStarsTransactionsByID) Decode(d *bin.Decoder) (err error) 
 
 // TLPaymentsGetStarsGiftOptions <--
 type TLPaymentsGetStarsGiftOptions struct {
-	ClazzID uint32     `json:"_id"`
-	UserId  *InputUser `json:"user_id"`
+	ClazzID uint32         `json:"_id"`
+	UserId  InputUserClazz `json:"user_id"`
 }
 
 func (m *TLPaymentsGetStarsGiftOptions) String() string {
@@ -39592,9 +40261,10 @@ func (m *TLPaymentsGetStarsGiftOptions) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m2 := &InputUser{}
-				_ = m2.Decode(d)
-				m.UserId = m2
+				// m2 := &InputUser{}
+				// _ = m2.Decode(d)
+				// m.UserId = m2
+				m.UserId, _ = DecodeInputUserClazz(d)
 			}
 
 			return nil
@@ -39613,10 +40283,10 @@ func (m *TLPaymentsGetStarsGiftOptions) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetStarsSubscriptions <--
 type TLPaymentsGetStarsSubscriptions struct {
-	ClazzID        uint32     `json:"_id"`
-	MissingBalance bool       `json:"missing_balance"`
-	Peer           *InputPeer `json:"peer"`
-	Offset         string     `json:"offset"`
+	ClazzID        uint32         `json:"_id"`
+	MissingBalance bool           `json:"missing_balance"`
+	Peer           InputPeerClazz `json:"peer"`
+	Offset         string         `json:"offset"`
 }
 
 func (m *TLPaymentsGetStarsSubscriptions) String() string {
@@ -39670,9 +40340,10 @@ func (m *TLPaymentsGetStarsSubscriptions) Decode(d *bin.Decoder) (err error) {
 				m.MissingBalance = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Offset, err = d.String()
 
@@ -39692,10 +40363,10 @@ func (m *TLPaymentsGetStarsSubscriptions) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsChangeStarsSubscription <--
 type TLPaymentsChangeStarsSubscription struct {
-	ClazzID        uint32     `json:"_id"`
-	Peer           *InputPeer `json:"peer"`
-	SubscriptionId string     `json:"subscription_id"`
-	Canceled       *Bool      `json:"canceled"`
+	ClazzID        uint32         `json:"_id"`
+	Peer           InputPeerClazz `json:"peer"`
+	SubscriptionId string         `json:"subscription_id"`
+	Canceled       BoolClazz      `json:"canceled"`
 }
 
 func (m *TLPaymentsChangeStarsSubscription) String() string {
@@ -39749,15 +40420,17 @@ func (m *TLPaymentsChangeStarsSubscription) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.SubscriptionId, err = d.String()
 			if (flags & (1 << 0)) != 0 {
-				m4 := &Bool{}
-				_ = m4.Decode(d)
-				m.Canceled = m4
+				// m4 := &Bool{}
+				// _ = m4.Decode(d)
+				// m.Canceled = m4
+				m.Canceled, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -39776,9 +40449,9 @@ func (m *TLPaymentsChangeStarsSubscription) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsFulfillStarsSubscription <--
 type TLPaymentsFulfillStarsSubscription struct {
-	ClazzID        uint32     `json:"_id"`
-	Peer           *InputPeer `json:"peer"`
-	SubscriptionId string     `json:"subscription_id"`
+	ClazzID        uint32         `json:"_id"`
+	Peer           InputPeerClazz `json:"peer"`
+	SubscriptionId string         `json:"subscription_id"`
 }
 
 func (m *TLPaymentsFulfillStarsSubscription) String() string {
@@ -39813,9 +40486,10 @@ func (m *TLPaymentsFulfillStarsSubscription) Decode(d *bin.Decoder) (err error) 
 	var decodeF = map[uint32]func() error{
 		0xcc5bebb3: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.SubscriptionId, err = d.String()
 
@@ -39935,9 +40609,9 @@ func (m *TLPaymentsGetStarGifts) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsSaveStarGift <--
 type TLPaymentsSaveStarGift struct {
-	ClazzID  uint32              `json:"_id"`
-	Unsave   bool                `json:"unsave"`
-	Stargift *InputSavedStarGift `json:"stargift"`
+	ClazzID  uint32                  `json:"_id"`
+	Unsave   bool                    `json:"unsave"`
+	Stargift InputSavedStarGiftClazz `json:"stargift"`
 }
 
 func (m *TLPaymentsSaveStarGift) String() string {
@@ -39990,9 +40664,10 @@ func (m *TLPaymentsSaveStarGift) Decode(d *bin.Decoder) (err error) {
 				m.Unsave = true
 			}
 
-			m3 := &InputSavedStarGift{}
-			_ = m3.Decode(d)
-			m.Stargift = m3
+			// m3 := &InputSavedStarGift{}
+			// _ = m3.Decode(d)
+			// m.Stargift = m3
+			m.Stargift, _ = DecodeInputSavedStarGiftClazz(d)
 
 			return nil
 		},
@@ -40010,8 +40685,8 @@ func (m *TLPaymentsSaveStarGift) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsConvertStarGift <--
 type TLPaymentsConvertStarGift struct {
-	ClazzID  uint32              `json:"_id"`
-	Stargift *InputSavedStarGift `json:"stargift"`
+	ClazzID  uint32                  `json:"_id"`
+	Stargift InputSavedStarGiftClazz `json:"stargift"`
 }
 
 func (m *TLPaymentsConvertStarGift) String() string {
@@ -40045,9 +40720,10 @@ func (m *TLPaymentsConvertStarGift) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x74bf076b: func() (err error) {
 
-			m1 := &InputSavedStarGift{}
-			_ = m1.Decode(d)
-			m.Stargift = m1
+			// m1 := &InputSavedStarGift{}
+			// _ = m1.Decode(d)
+			// m.Stargift = m1
+			m.Stargift, _ = DecodeInputSavedStarGiftClazz(d)
 
 			return nil
 		},
@@ -40065,10 +40741,10 @@ func (m *TLPaymentsConvertStarGift) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsBotCancelStarsSubscription <--
 type TLPaymentsBotCancelStarsSubscription struct {
-	ClazzID  uint32     `json:"_id"`
-	Restore  bool       `json:"restore"`
-	UserId   *InputUser `json:"user_id"`
-	ChargeId string     `json:"charge_id"`
+	ClazzID  uint32         `json:"_id"`
+	Restore  bool           `json:"restore"`
+	UserId   InputUserClazz `json:"user_id"`
+	ChargeId string         `json:"charge_id"`
 }
 
 func (m *TLPaymentsBotCancelStarsSubscription) String() string {
@@ -40122,9 +40798,10 @@ func (m *TLPaymentsBotCancelStarsSubscription) Decode(d *bin.Decoder) (err error
 				m.Restore = true
 			}
 
-			m3 := &InputUser{}
-			_ = m3.Decode(d)
-			m.UserId = m3
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.UserId = m3
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.ChargeId, err = d.String()
 
@@ -40144,11 +40821,11 @@ func (m *TLPaymentsBotCancelStarsSubscription) Decode(d *bin.Decoder) (err error
 
 // TLPaymentsGetConnectedStarRefBots <--
 type TLPaymentsGetConnectedStarRefBots struct {
-	ClazzID    uint32     `json:"_id"`
-	Peer       *InputPeer `json:"peer"`
-	OffsetDate *int32     `json:"offset_date"`
-	OffsetLink *string    `json:"offset_link"`
-	Limit      int32      `json:"limit"`
+	ClazzID    uint32         `json:"_id"`
+	Peer       InputPeerClazz `json:"peer"`
+	OffsetDate *int32         `json:"offset_date"`
+	OffsetLink *string        `json:"offset_link"`
+	Limit      int32          `json:"limit"`
 }
 
 func (m *TLPaymentsGetConnectedStarRefBots) String() string {
@@ -40210,9 +40887,10 @@ func (m *TLPaymentsGetConnectedStarRefBots) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 2)) != 0 {
 				m.OffsetDate = new(int32)
@@ -40241,9 +40919,9 @@ func (m *TLPaymentsGetConnectedStarRefBots) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetConnectedStarRefBot <--
 type TLPaymentsGetConnectedStarRefBot struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Bot     *InputUser `json:"bot"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Bot     InputUserClazz `json:"bot"`
 }
 
 func (m *TLPaymentsGetConnectedStarRefBot) String() string {
@@ -40278,13 +40956,15 @@ func (m *TLPaymentsGetConnectedStarRefBot) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb7d998f0: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.Bot = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.Bot = m2
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -40302,12 +40982,12 @@ func (m *TLPaymentsGetConnectedStarRefBot) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetSuggestedStarRefBots <--
 type TLPaymentsGetSuggestedStarRefBots struct {
-	ClazzID        uint32     `json:"_id"`
-	OrderByRevenue bool       `json:"order_by_revenue"`
-	OrderByDate    bool       `json:"order_by_date"`
-	Peer           *InputPeer `json:"peer"`
-	Offset         string     `json:"offset"`
-	Limit          int32      `json:"limit"`
+	ClazzID        uint32         `json:"_id"`
+	OrderByRevenue bool           `json:"order_by_revenue"`
+	OrderByDate    bool           `json:"order_by_date"`
+	Peer           InputPeerClazz `json:"peer"`
+	Offset         string         `json:"offset"`
+	Limit          int32          `json:"limit"`
 }
 
 func (m *TLPaymentsGetSuggestedStarRefBots) String() string {
@@ -40368,9 +41048,10 @@ func (m *TLPaymentsGetSuggestedStarRefBots) Decode(d *bin.Decoder) (err error) {
 				m.OrderByDate = true
 			}
 
-			m4 := &InputPeer{}
-			_ = m4.Decode(d)
-			m.Peer = m4
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Offset, err = d.String()
 			m.Limit, err = d.Int32()
@@ -40391,9 +41072,9 @@ func (m *TLPaymentsGetSuggestedStarRefBots) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsConnectStarRefBot <--
 type TLPaymentsConnectStarRefBot struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Bot     *InputUser `json:"bot"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Bot     InputUserClazz `json:"bot"`
 }
 
 func (m *TLPaymentsConnectStarRefBot) String() string {
@@ -40428,13 +41109,15 @@ func (m *TLPaymentsConnectStarRefBot) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7ed5348a: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.Bot = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.Bot = m2
+			m.Bot, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -40452,10 +41135,10 @@ func (m *TLPaymentsConnectStarRefBot) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsEditConnectedStarRefBot <--
 type TLPaymentsEditConnectedStarRefBot struct {
-	ClazzID uint32     `json:"_id"`
-	Revoked bool       `json:"revoked"`
-	Peer    *InputPeer `json:"peer"`
-	Link    string     `json:"link"`
+	ClazzID uint32         `json:"_id"`
+	Revoked bool           `json:"revoked"`
+	Peer    InputPeerClazz `json:"peer"`
+	Link    string         `json:"link"`
 }
 
 func (m *TLPaymentsEditConnectedStarRefBot) String() string {
@@ -40509,9 +41192,10 @@ func (m *TLPaymentsEditConnectedStarRefBot) Decode(d *bin.Decoder) (err error) {
 				m.Revoked = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Link, err = d.String()
 
@@ -40583,9 +41267,9 @@ func (m *TLPaymentsGetStarGiftUpgradePreview) Decode(d *bin.Decoder) (err error)
 
 // TLPaymentsUpgradeStarGift <--
 type TLPaymentsUpgradeStarGift struct {
-	ClazzID             uint32              `json:"_id"`
-	KeepOriginalDetails bool                `json:"keep_original_details"`
-	Stargift            *InputSavedStarGift `json:"stargift"`
+	ClazzID             uint32                  `json:"_id"`
+	KeepOriginalDetails bool                    `json:"keep_original_details"`
+	Stargift            InputSavedStarGiftClazz `json:"stargift"`
 }
 
 func (m *TLPaymentsUpgradeStarGift) String() string {
@@ -40638,9 +41322,10 @@ func (m *TLPaymentsUpgradeStarGift) Decode(d *bin.Decoder) (err error) {
 				m.KeepOriginalDetails = true
 			}
 
-			m3 := &InputSavedStarGift{}
-			_ = m3.Decode(d)
-			m.Stargift = m3
+			// m3 := &InputSavedStarGift{}
+			// _ = m3.Decode(d)
+			// m.Stargift = m3
+			m.Stargift, _ = DecodeInputSavedStarGiftClazz(d)
 
 			return nil
 		},
@@ -40658,9 +41343,9 @@ func (m *TLPaymentsUpgradeStarGift) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsTransferStarGift <--
 type TLPaymentsTransferStarGift struct {
-	ClazzID  uint32              `json:"_id"`
-	Stargift *InputSavedStarGift `json:"stargift"`
-	ToId     *InputPeer          `json:"to_id"`
+	ClazzID  uint32                  `json:"_id"`
+	Stargift InputSavedStarGiftClazz `json:"stargift"`
+	ToId     InputPeerClazz          `json:"to_id"`
 }
 
 func (m *TLPaymentsTransferStarGift) String() string {
@@ -40695,13 +41380,15 @@ func (m *TLPaymentsTransferStarGift) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7f18176a: func() (err error) {
 
-			m1 := &InputSavedStarGift{}
-			_ = m1.Decode(d)
-			m.Stargift = m1
+			// m1 := &InputSavedStarGift{}
+			// _ = m1.Decode(d)
+			// m.Stargift = m1
+			m.Stargift, _ = DecodeInputSavedStarGiftClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.ToId = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.ToId = m2
+			m.ToId, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -40771,16 +41458,16 @@ func (m *TLPaymentsGetUniqueStarGift) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetSavedStarGifts <--
 type TLPaymentsGetSavedStarGifts struct {
-	ClazzID          uint32     `json:"_id"`
-	ExcludeUnsaved   bool       `json:"exclude_unsaved"`
-	ExcludeSaved     bool       `json:"exclude_saved"`
-	ExcludeUnlimited bool       `json:"exclude_unlimited"`
-	ExcludeLimited   bool       `json:"exclude_limited"`
-	ExcludeUnique    bool       `json:"exclude_unique"`
-	SortByValue      bool       `json:"sort_by_value"`
-	Peer             *InputPeer `json:"peer"`
-	Offset           string     `json:"offset"`
-	Limit            int32      `json:"limit"`
+	ClazzID          uint32         `json:"_id"`
+	ExcludeUnsaved   bool           `json:"exclude_unsaved"`
+	ExcludeSaved     bool           `json:"exclude_saved"`
+	ExcludeUnlimited bool           `json:"exclude_unlimited"`
+	ExcludeLimited   bool           `json:"exclude_limited"`
+	ExcludeUnique    bool           `json:"exclude_unique"`
+	SortByValue      bool           `json:"sort_by_value"`
+	Peer             InputPeerClazz `json:"peer"`
+	Offset           string         `json:"offset"`
+	Limit            int32          `json:"limit"`
 }
 
 func (m *TLPaymentsGetSavedStarGifts) String() string {
@@ -40865,9 +41552,10 @@ func (m *TLPaymentsGetSavedStarGifts) Decode(d *bin.Decoder) (err error) {
 				m.SortByValue = true
 			}
 
-			m8 := &InputPeer{}
-			_ = m8.Decode(d)
-			m.Peer = m8
+			// m8 := &InputPeer{}
+			// _ = m8.Decode(d)
+			// m.Peer = m8
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Offset, err = d.String()
 			m.Limit, err = d.Int32()
@@ -40888,8 +41576,8 @@ func (m *TLPaymentsGetSavedStarGifts) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetSavedStarGift <--
 type TLPaymentsGetSavedStarGift struct {
-	ClazzID  uint32                `json:"_id"`
-	Stargift []*InputSavedStarGift `json:"stargift"`
+	ClazzID  uint32                    `json:"_id"`
+	Stargift []InputSavedStarGiftClazz `json:"stargift"`
 }
 
 func (m *TLPaymentsGetSavedStarGift) String() string {
@@ -40928,12 +41616,15 @@ func (m *TLPaymentsGetSavedStarGift) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputSavedStarGift, l1)
+			// v1 := make([]*InputSavedStarGift, l1)
+			v1 := make([]InputSavedStarGiftClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputSavedStarGift)
-				err3 = vv.Decode(d)
+				// vv := new(InputSavedStarGift)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputSavedStarGiftClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Stargift = v1
 
@@ -40953,9 +41644,9 @@ func (m *TLPaymentsGetSavedStarGift) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetStarGiftWithdrawalUrl <--
 type TLPaymentsGetStarGiftWithdrawalUrl struct {
-	ClazzID  uint32                 `json:"_id"`
-	Stargift *InputSavedStarGift    `json:"stargift"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Stargift InputSavedStarGiftClazz    `json:"stargift"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLPaymentsGetStarGiftWithdrawalUrl) String() string {
@@ -40990,13 +41681,15 @@ func (m *TLPaymentsGetStarGiftWithdrawalUrl) Decode(d *bin.Decoder) (err error) 
 	var decodeF = map[uint32]func() error{
 		0xd06e93a8: func() (err error) {
 
-			m1 := &InputSavedStarGift{}
-			_ = m1.Decode(d)
-			m.Stargift = m1
+			// m1 := &InputSavedStarGift{}
+			// _ = m1.Decode(d)
+			// m.Stargift = m1
+			m.Stargift, _ = DecodeInputSavedStarGiftClazz(d)
 
-			m2 := &InputCheckPasswordSRP{}
-			_ = m2.Decode(d)
-			m.Password = m2
+			// m2 := &InputCheckPasswordSRP{}
+			// _ = m2.Decode(d)
+			// m.Password = m2
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			return nil
 		},
@@ -41014,9 +41707,9 @@ func (m *TLPaymentsGetStarGiftWithdrawalUrl) Decode(d *bin.Decoder) (err error) 
 
 // TLPaymentsToggleChatStarGiftNotifications <--
 type TLPaymentsToggleChatStarGiftNotifications struct {
-	ClazzID uint32     `json:"_id"`
-	Enabled bool       `json:"enabled"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Enabled bool           `json:"enabled"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLPaymentsToggleChatStarGiftNotifications) String() string {
@@ -41069,9 +41762,10 @@ func (m *TLPaymentsToggleChatStarGiftNotifications) Decode(d *bin.Decoder) (err 
 				m.Enabled = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -41089,9 +41783,9 @@ func (m *TLPaymentsToggleChatStarGiftNotifications) Decode(d *bin.Decoder) (err 
 
 // TLPaymentsToggleStarGiftsPinnedToTop <--
 type TLPaymentsToggleStarGiftsPinnedToTop struct {
-	ClazzID  uint32                `json:"_id"`
-	Peer     *InputPeer            `json:"peer"`
-	Stargift []*InputSavedStarGift `json:"stargift"`
+	ClazzID  uint32                    `json:"_id"`
+	Peer     InputPeerClazz            `json:"peer"`
+	Stargift []InputSavedStarGiftClazz `json:"stargift"`
 }
 
 func (m *TLPaymentsToggleStarGiftsPinnedToTop) String() string {
@@ -41127,9 +41821,10 @@ func (m *TLPaymentsToggleStarGiftsPinnedToTop) Decode(d *bin.Decoder) (err error
 	var decodeF = map[uint32]func() error{
 		0x1513e7b0: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -41137,12 +41832,15 @@ func (m *TLPaymentsToggleStarGiftsPinnedToTop) Decode(d *bin.Decoder) (err error
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputSavedStarGift, l2)
+			// v2 := make([]*InputSavedStarGift, l2)
+			v2 := make([]InputSavedStarGiftClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputSavedStarGift)
-				err3 = vv.Decode(d)
+				// vv := new(InputSavedStarGift)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputSavedStarGiftClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Stargift = v2
 
@@ -41162,8 +41860,8 @@ func (m *TLPaymentsToggleStarGiftsPinnedToTop) Decode(d *bin.Decoder) (err error
 
 // TLPaymentsCanPurchaseStore <--
 type TLPaymentsCanPurchaseStore struct {
-	ClazzID uint32                    `json:"_id"`
-	Purpose *InputStorePaymentPurpose `json:"purpose"`
+	ClazzID uint32                        `json:"_id"`
+	Purpose InputStorePaymentPurposeClazz `json:"purpose"`
 }
 
 func (m *TLPaymentsCanPurchaseStore) String() string {
@@ -41197,9 +41895,10 @@ func (m *TLPaymentsCanPurchaseStore) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4fdc5ea7: func() (err error) {
 
-			m1 := &InputStorePaymentPurpose{}
-			_ = m1.Decode(d)
-			m.Purpose = m1
+			// m1 := &InputStorePaymentPurpose{}
+			// _ = m1.Decode(d)
+			// m.Purpose = m1
+			m.Purpose, _ = DecodeInputStorePaymentPurposeClazz(d)
 
 			return nil
 		},
@@ -41217,16 +41916,16 @@ func (m *TLPaymentsCanPurchaseStore) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersCreateStickerSet <--
 type TLStickersCreateStickerSet struct {
-	ClazzID   uint32                 `json:"_id"`
-	Masks     bool                   `json:"masks"`
-	Emojis    bool                   `json:"emojis"`
-	TextColor bool                   `json:"text_color"`
-	UserId    *InputUser             `json:"user_id"`
-	Title     string                 `json:"title"`
-	ShortName string                 `json:"short_name"`
-	Thumb     *InputDocument         `json:"thumb"`
-	Stickers  []*InputStickerSetItem `json:"stickers"`
-	Software  *string                `json:"software"`
+	ClazzID   uint32                     `json:"_id"`
+	Masks     bool                       `json:"masks"`
+	Emojis    bool                       `json:"emojis"`
+	TextColor bool                       `json:"text_color"`
+	UserId    InputUserClazz             `json:"user_id"`
+	Title     string                     `json:"title"`
+	ShortName string                     `json:"short_name"`
+	Thumb     InputDocumentClazz         `json:"thumb"`
+	Stickers  []InputStickerSetItemClazz `json:"stickers"`
+	Software  *string                    `json:"software"`
 }
 
 func (m *TLStickersCreateStickerSet) String() string {
@@ -41310,16 +42009,18 @@ func (m *TLStickersCreateStickerSet) Decode(d *bin.Decoder) (err error) {
 				m.TextColor = true
 			}
 
-			m5 := &InputUser{}
-			_ = m5.Decode(d)
-			m.UserId = m5
+			// m5 := &InputUser{}
+			// _ = m5.Decode(d)
+			// m.UserId = m5
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			m.Title, err = d.String()
 			m.ShortName, err = d.String()
 			if (flags & (1 << 2)) != 0 {
-				m8 := &InputDocument{}
-				_ = m8.Decode(d)
-				m.Thumb = m8
+				// m8 := &InputDocument{}
+				// _ = m8.Decode(d)
+				// m.Thumb = m8
+				m.Thumb, _ = DecodeInputDocumentClazz(d)
 			}
 			c9, err2 := d.ClazzID()
 			if c9 != iface.ClazzID_vector {
@@ -41327,12 +42028,15 @@ func (m *TLStickersCreateStickerSet) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l9, err3 := d.Int()
-			v9 := make([]*InputStickerSetItem, l9)
+			// v9 := make([]*InputStickerSetItem, l9)
+			v9 := make([]InputStickerSetItemClazz, l9)
 			for i := 0; i < l9; i++ {
-				vv := new(InputStickerSetItem)
-				err3 = vv.Decode(d)
+				// vv := new(InputStickerSetItem)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v9[i] = vv
+				v9[i], _ = DecodeInputStickerSetItemClazz(d)
 				_ = err3
-				v9[i] = vv
 			}
 			m.Stickers = v9
 
@@ -41357,8 +42061,8 @@ func (m *TLStickersCreateStickerSet) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersRemoveStickerFromSet <--
 type TLStickersRemoveStickerFromSet struct {
-	ClazzID uint32         `json:"_id"`
-	Sticker *InputDocument `json:"sticker"`
+	ClazzID uint32             `json:"_id"`
+	Sticker InputDocumentClazz `json:"sticker"`
 }
 
 func (m *TLStickersRemoveStickerFromSet) String() string {
@@ -41392,9 +42096,10 @@ func (m *TLStickersRemoveStickerFromSet) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xf7760f51: func() (err error) {
 
-			m1 := &InputDocument{}
-			_ = m1.Decode(d)
-			m.Sticker = m1
+			// m1 := &InputDocument{}
+			// _ = m1.Decode(d)
+			// m.Sticker = m1
+			m.Sticker, _ = DecodeInputDocumentClazz(d)
 
 			return nil
 		},
@@ -41412,9 +42117,9 @@ func (m *TLStickersRemoveStickerFromSet) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersChangeStickerPosition <--
 type TLStickersChangeStickerPosition struct {
-	ClazzID  uint32         `json:"_id"`
-	Sticker  *InputDocument `json:"sticker"`
-	Position int32          `json:"position"`
+	ClazzID  uint32             `json:"_id"`
+	Sticker  InputDocumentClazz `json:"sticker"`
+	Position int32              `json:"position"`
 }
 
 func (m *TLStickersChangeStickerPosition) String() string {
@@ -41449,9 +42154,10 @@ func (m *TLStickersChangeStickerPosition) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xffb6d4ca: func() (err error) {
 
-			m1 := &InputDocument{}
-			_ = m1.Decode(d)
-			m.Sticker = m1
+			// m1 := &InputDocument{}
+			// _ = m1.Decode(d)
+			// m.Sticker = m1
+			m.Sticker, _ = DecodeInputDocumentClazz(d)
 
 			m.Position, err = d.Int32()
 
@@ -41471,9 +42177,9 @@ func (m *TLStickersChangeStickerPosition) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersAddStickerToSet <--
 type TLStickersAddStickerToSet struct {
-	ClazzID    uint32               `json:"_id"`
-	Stickerset *InputStickerSet     `json:"stickerset"`
-	Sticker    *InputStickerSetItem `json:"sticker"`
+	ClazzID    uint32                   `json:"_id"`
+	Stickerset InputStickerSetClazz     `json:"stickerset"`
+	Sticker    InputStickerSetItemClazz `json:"sticker"`
 }
 
 func (m *TLStickersAddStickerToSet) String() string {
@@ -41508,13 +42214,15 @@ func (m *TLStickersAddStickerToSet) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8653febe: func() (err error) {
 
-			m1 := &InputStickerSet{}
-			_ = m1.Decode(d)
-			m.Stickerset = m1
+			// m1 := &InputStickerSet{}
+			// _ = m1.Decode(d)
+			// m.Stickerset = m1
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
-			m2 := &InputStickerSetItem{}
-			_ = m2.Decode(d)
-			m.Sticker = m2
+			// m2 := &InputStickerSetItem{}
+			// _ = m2.Decode(d)
+			// m.Sticker = m2
+			m.Sticker, _ = DecodeInputStickerSetItemClazz(d)
 
 			return nil
 		},
@@ -41532,10 +42240,10 @@ func (m *TLStickersAddStickerToSet) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersSetStickerSetThumb <--
 type TLStickersSetStickerSetThumb struct {
-	ClazzID         uint32           `json:"_id"`
-	Stickerset      *InputStickerSet `json:"stickerset"`
-	Thumb           *InputDocument   `json:"thumb"`
-	ThumbDocumentId *int64           `json:"thumb_document_id"`
+	ClazzID         uint32               `json:"_id"`
+	Stickerset      InputStickerSetClazz `json:"stickerset"`
+	Thumb           InputDocumentClazz   `json:"thumb"`
+	ThumbDocumentId *int64               `json:"thumb_document_id"`
 }
 
 func (m *TLStickersSetStickerSetThumb) String() string {
@@ -41595,14 +42303,16 @@ func (m *TLStickersSetStickerSetThumb) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputStickerSet{}
-			_ = m2.Decode(d)
-			m.Stickerset = m2
+			// m2 := &InputStickerSet{}
+			// _ = m2.Decode(d)
+			// m.Stickerset = m2
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m3 := &InputDocument{}
-				_ = m3.Decode(d)
-				m.Thumb = m3
+				// m3 := &InputDocument{}
+				// _ = m3.Decode(d)
+				// m.Thumb = m3
+				m.Thumb, _ = DecodeInputDocumentClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				m.ThumbDocumentId = new(int64)
@@ -41729,11 +42439,11 @@ func (m *TLStickersSuggestShortName) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersChangeSticker <--
 type TLStickersChangeSticker struct {
-	ClazzID    uint32         `json:"_id"`
-	Sticker    *InputDocument `json:"sticker"`
-	Emoji      *string        `json:"emoji"`
-	MaskCoords *MaskCoords    `json:"mask_coords"`
-	Keywords   *string        `json:"keywords"`
+	ClazzID    uint32             `json:"_id"`
+	Sticker    InputDocumentClazz `json:"sticker"`
+	Emoji      *string            `json:"emoji"`
+	MaskCoords MaskCoordsClazz    `json:"mask_coords"`
+	Keywords   *string            `json:"keywords"`
 }
 
 func (m *TLStickersChangeSticker) String() string {
@@ -41800,9 +42510,10 @@ func (m *TLStickersChangeSticker) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputDocument{}
-			_ = m2.Decode(d)
-			m.Sticker = m2
+			// m2 := &InputDocument{}
+			// _ = m2.Decode(d)
+			// m.Sticker = m2
+			m.Sticker, _ = DecodeInputDocumentClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
 				m.Emoji = new(string)
@@ -41810,9 +42521,10 @@ func (m *TLStickersChangeSticker) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 1)) != 0 {
-				m4 := &MaskCoords{}
-				_ = m4.Decode(d)
-				m.MaskCoords = m4
+				// m4 := &MaskCoords{}
+				// _ = m4.Decode(d)
+				// m.MaskCoords = m4
+				m.MaskCoords, _ = DecodeMaskCoordsClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
 				m.Keywords = new(string)
@@ -41835,9 +42547,9 @@ func (m *TLStickersChangeSticker) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersRenameStickerSet <--
 type TLStickersRenameStickerSet struct {
-	ClazzID    uint32           `json:"_id"`
-	Stickerset *InputStickerSet `json:"stickerset"`
-	Title      string           `json:"title"`
+	ClazzID    uint32               `json:"_id"`
+	Stickerset InputStickerSetClazz `json:"stickerset"`
+	Title      string               `json:"title"`
 }
 
 func (m *TLStickersRenameStickerSet) String() string {
@@ -41872,9 +42584,10 @@ func (m *TLStickersRenameStickerSet) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x124b1c00: func() (err error) {
 
-			m1 := &InputStickerSet{}
-			_ = m1.Decode(d)
-			m.Stickerset = m1
+			// m1 := &InputStickerSet{}
+			// _ = m1.Decode(d)
+			// m.Stickerset = m1
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			m.Title, err = d.String()
 
@@ -41894,8 +42607,8 @@ func (m *TLStickersRenameStickerSet) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersDeleteStickerSet <--
 type TLStickersDeleteStickerSet struct {
-	ClazzID    uint32           `json:"_id"`
-	Stickerset *InputStickerSet `json:"stickerset"`
+	ClazzID    uint32               `json:"_id"`
+	Stickerset InputStickerSetClazz `json:"stickerset"`
 }
 
 func (m *TLStickersDeleteStickerSet) String() string {
@@ -41929,9 +42642,10 @@ func (m *TLStickersDeleteStickerSet) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x87704394: func() (err error) {
 
-			m1 := &InputStickerSet{}
-			_ = m1.Decode(d)
-			m.Stickerset = m1
+			// m1 := &InputStickerSet{}
+			// _ = m1.Decode(d)
+			// m.Stickerset = m1
+			m.Stickerset, _ = DecodeInputStickerSetClazz(d)
 
 			return nil
 		},
@@ -41949,9 +42663,9 @@ func (m *TLStickersDeleteStickerSet) Decode(d *bin.Decoder) (err error) {
 
 // TLStickersReplaceSticker <--
 type TLStickersReplaceSticker struct {
-	ClazzID    uint32               `json:"_id"`
-	Sticker    *InputDocument       `json:"sticker"`
-	NewSticker *InputStickerSetItem `json:"new_sticker"`
+	ClazzID    uint32                   `json:"_id"`
+	Sticker    InputDocumentClazz       `json:"sticker"`
+	NewSticker InputStickerSetItemClazz `json:"new_sticker"`
 }
 
 func (m *TLStickersReplaceSticker) String() string {
@@ -41986,13 +42700,15 @@ func (m *TLStickersReplaceSticker) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x4696459a: func() (err error) {
 
-			m1 := &InputDocument{}
-			_ = m1.Decode(d)
-			m.Sticker = m1
+			// m1 := &InputDocument{}
+			// _ = m1.Decode(d)
+			// m.Sticker = m1
+			m.Sticker, _ = DecodeInputDocumentClazz(d)
 
-			m2 := &InputStickerSetItem{}
-			_ = m2.Decode(d)
-			m.NewSticker = m2
+			// m2 := &InputStickerSetItem{}
+			// _ = m2.Decode(d)
+			// m.NewSticker = m2
+			m.NewSticker, _ = DecodeInputStickerSetItemClazz(d)
 
 			return nil
 		},
@@ -42058,13 +42774,13 @@ func (m *TLPhoneGetCallConfig) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneRequestCall <--
 type TLPhoneRequestCall struct {
-	ClazzID        uint32             `json:"_id"`
-	Video          bool               `json:"video"`
-	UserId         *InputUser         `json:"user_id"`
-	ConferenceCall *InputGroupCall    `json:"conference_call"`
-	RandomId       int32              `json:"random_id"`
-	GAHash         []byte             `json:"g_a_hash"`
-	Protocol       *PhoneCallProtocol `json:"protocol"`
+	ClazzID        uint32                 `json:"_id"`
+	Video          bool                   `json:"video"`
+	UserId         InputUserClazz         `json:"user_id"`
+	ConferenceCall InputGroupCallClazz    `json:"conference_call"`
+	RandomId       int32                  `json:"random_id"`
+	GAHash         []byte                 `json:"g_a_hash"`
+	Protocol       PhoneCallProtocolClazz `json:"protocol"`
 }
 
 func (m *TLPhoneRequestCall) String() string {
@@ -42128,21 +42844,24 @@ func (m *TLPhoneRequestCall) Decode(d *bin.Decoder) (err error) {
 				m.Video = true
 			}
 
-			m3 := &InputUser{}
-			_ = m3.Decode(d)
-			m.UserId = m3
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.UserId = m3
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
-				m4 := &InputGroupCall{}
-				_ = m4.Decode(d)
-				m.ConferenceCall = m4
+				// m4 := &InputGroupCall{}
+				// _ = m4.Decode(d)
+				// m.ConferenceCall = m4
+				m.ConferenceCall, _ = DecodeInputGroupCallClazz(d)
 			}
 			m.RandomId, err = d.Int32()
 			m.GAHash, err = d.Bytes()
 
-			m7 := &PhoneCallProtocol{}
-			_ = m7.Decode(d)
-			m.Protocol = m7
+			// m7 := &PhoneCallProtocol{}
+			// _ = m7.Decode(d)
+			// m.Protocol = m7
+			m.Protocol, _ = DecodePhoneCallProtocolClazz(d)
 
 			return nil
 		},
@@ -42160,10 +42879,10 @@ func (m *TLPhoneRequestCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneAcceptCall <--
 type TLPhoneAcceptCall struct {
-	ClazzID  uint32             `json:"_id"`
-	Peer     *InputPhoneCall    `json:"peer"`
-	GB       []byte             `json:"g_b"`
-	Protocol *PhoneCallProtocol `json:"protocol"`
+	ClazzID  uint32                 `json:"_id"`
+	Peer     InputPhoneCallClazz    `json:"peer"`
+	GB       []byte                 `json:"g_b"`
+	Protocol PhoneCallProtocolClazz `json:"protocol"`
 }
 
 func (m *TLPhoneAcceptCall) String() string {
@@ -42199,15 +42918,17 @@ func (m *TLPhoneAcceptCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x3bd2b4a0: func() (err error) {
 
-			m1 := &InputPhoneCall{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPhoneCall{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
 			m.GB, err = d.Bytes()
 
-			m3 := &PhoneCallProtocol{}
-			_ = m3.Decode(d)
-			m.Protocol = m3
+			// m3 := &PhoneCallProtocol{}
+			// _ = m3.Decode(d)
+			// m.Protocol = m3
+			m.Protocol, _ = DecodePhoneCallProtocolClazz(d)
 
 			return nil
 		},
@@ -42225,11 +42946,11 @@ func (m *TLPhoneAcceptCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneConfirmCall <--
 type TLPhoneConfirmCall struct {
-	ClazzID        uint32             `json:"_id"`
-	Peer           *InputPhoneCall    `json:"peer"`
-	GA             []byte             `json:"g_a"`
-	KeyFingerprint int64              `json:"key_fingerprint"`
-	Protocol       *PhoneCallProtocol `json:"protocol"`
+	ClazzID        uint32                 `json:"_id"`
+	Peer           InputPhoneCallClazz    `json:"peer"`
+	GA             []byte                 `json:"g_a"`
+	KeyFingerprint int64                  `json:"key_fingerprint"`
+	Protocol       PhoneCallProtocolClazz `json:"protocol"`
 }
 
 func (m *TLPhoneConfirmCall) String() string {
@@ -42266,16 +42987,18 @@ func (m *TLPhoneConfirmCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x2efe1722: func() (err error) {
 
-			m1 := &InputPhoneCall{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPhoneCall{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
 			m.GA, err = d.Bytes()
 			m.KeyFingerprint, err = d.Int64()
 
-			m4 := &PhoneCallProtocol{}
-			_ = m4.Decode(d)
-			m.Protocol = m4
+			// m4 := &PhoneCallProtocol{}
+			// _ = m4.Decode(d)
+			// m.Protocol = m4
+			m.Protocol, _ = DecodePhoneCallProtocolClazz(d)
 
 			return nil
 		},
@@ -42293,8 +43016,8 @@ func (m *TLPhoneConfirmCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneReceivedCall <--
 type TLPhoneReceivedCall struct {
-	ClazzID uint32          `json:"_id"`
-	Peer    *InputPhoneCall `json:"peer"`
+	ClazzID uint32              `json:"_id"`
+	Peer    InputPhoneCallClazz `json:"peer"`
 }
 
 func (m *TLPhoneReceivedCall) String() string {
@@ -42328,9 +43051,10 @@ func (m *TLPhoneReceivedCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x17d54f61: func() (err error) {
 
-			m1 := &InputPhoneCall{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPhoneCall{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
 			return nil
 		},
@@ -42348,12 +43072,12 @@ func (m *TLPhoneReceivedCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneDiscardCall <--
 type TLPhoneDiscardCall struct {
-	ClazzID      uint32                  `json:"_id"`
-	Video        bool                    `json:"video"`
-	Peer         *InputPhoneCall         `json:"peer"`
-	Duration     int32                   `json:"duration"`
-	Reason       *PhoneCallDiscardReason `json:"reason"`
-	ConnectionId int64                   `json:"connection_id"`
+	ClazzID      uint32                      `json:"_id"`
+	Video        bool                        `json:"video"`
+	Peer         InputPhoneCallClazz         `json:"peer"`
+	Duration     int32                       `json:"duration"`
+	Reason       PhoneCallDiscardReasonClazz `json:"reason"`
+	ConnectionId int64                       `json:"connection_id"`
 }
 
 func (m *TLPhoneDiscardCall) String() string {
@@ -42409,15 +43133,17 @@ func (m *TLPhoneDiscardCall) Decode(d *bin.Decoder) (err error) {
 				m.Video = true
 			}
 
-			m3 := &InputPhoneCall{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPhoneCall{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
 			m.Duration, err = d.Int32()
 
-			m5 := &PhoneCallDiscardReason{}
-			_ = m5.Decode(d)
-			m.Reason = m5
+			// m5 := &PhoneCallDiscardReason{}
+			// _ = m5.Decode(d)
+			// m.Reason = m5
+			m.Reason, _ = DecodePhoneCallDiscardReasonClazz(d)
 
 			m.ConnectionId, err = d.Int64()
 
@@ -42437,11 +43163,11 @@ func (m *TLPhoneDiscardCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneSetCallRating <--
 type TLPhoneSetCallRating struct {
-	ClazzID        uint32          `json:"_id"`
-	UserInitiative bool            `json:"user_initiative"`
-	Peer           *InputPhoneCall `json:"peer"`
-	Rating         int32           `json:"rating"`
-	Comment        string          `json:"comment"`
+	ClazzID        uint32              `json:"_id"`
+	UserInitiative bool                `json:"user_initiative"`
+	Peer           InputPhoneCallClazz `json:"peer"`
+	Rating         int32               `json:"rating"`
+	Comment        string              `json:"comment"`
 }
 
 func (m *TLPhoneSetCallRating) String() string {
@@ -42496,9 +43222,10 @@ func (m *TLPhoneSetCallRating) Decode(d *bin.Decoder) (err error) {
 				m.UserInitiative = true
 			}
 
-			m3 := &InputPhoneCall{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPhoneCall{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
 			m.Rating, err = d.Int32()
 			m.Comment, err = d.String()
@@ -42519,9 +43246,9 @@ func (m *TLPhoneSetCallRating) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneSaveCallDebug <--
 type TLPhoneSaveCallDebug struct {
-	ClazzID uint32          `json:"_id"`
-	Peer    *InputPhoneCall `json:"peer"`
-	Debug   *DataJSON       `json:"debug"`
+	ClazzID uint32              `json:"_id"`
+	Peer    InputPhoneCallClazz `json:"peer"`
+	Debug   DataJSONClazz       `json:"debug"`
 }
 
 func (m *TLPhoneSaveCallDebug) String() string {
@@ -42556,13 +43283,15 @@ func (m *TLPhoneSaveCallDebug) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x277add7e: func() (err error) {
 
-			m1 := &InputPhoneCall{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPhoneCall{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
-			m2 := &DataJSON{}
-			_ = m2.Decode(d)
-			m.Debug = m2
+			// m2 := &DataJSON{}
+			// _ = m2.Decode(d)
+			// m.Debug = m2
+			m.Debug, _ = DecodeDataJSONClazz(d)
 
 			return nil
 		},
@@ -42580,9 +43309,9 @@ func (m *TLPhoneSaveCallDebug) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneSendSignalingData <--
 type TLPhoneSendSignalingData struct {
-	ClazzID uint32          `json:"_id"`
-	Peer    *InputPhoneCall `json:"peer"`
-	Data    []byte          `json:"data"`
+	ClazzID uint32              `json:"_id"`
+	Peer    InputPhoneCallClazz `json:"peer"`
+	Data    []byte              `json:"data"`
 }
 
 func (m *TLPhoneSendSignalingData) String() string {
@@ -42617,9 +43346,10 @@ func (m *TLPhoneSendSignalingData) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xff7a9383: func() (err error) {
 
-			m1 := &InputPhoneCall{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPhoneCall{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
 			m.Data, err = d.Bytes()
 
@@ -42639,12 +43369,12 @@ func (m *TLPhoneSendSignalingData) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneCreateGroupCall <--
 type TLPhoneCreateGroupCall struct {
-	ClazzID      uint32     `json:"_id"`
-	RtmpStream   bool       `json:"rtmp_stream"`
-	Peer         *InputPeer `json:"peer"`
-	RandomId     int32      `json:"random_id"`
-	Title        *string    `json:"title"`
-	ScheduleDate *int32     `json:"schedule_date"`
+	ClazzID      uint32         `json:"_id"`
+	RtmpStream   bool           `json:"rtmp_stream"`
+	Peer         InputPeerClazz `json:"peer"`
+	RandomId     int32          `json:"random_id"`
+	Title        *string        `json:"title"`
+	ScheduleDate *int32         `json:"schedule_date"`
 }
 
 func (m *TLPhoneCreateGroupCall) String() string {
@@ -42712,9 +43442,10 @@ func (m *TLPhoneCreateGroupCall) Decode(d *bin.Decoder) (err error) {
 				m.RtmpStream = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.RandomId, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
@@ -42743,14 +43474,14 @@ func (m *TLPhoneCreateGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneJoinGroupCall <--
 type TLPhoneJoinGroupCall struct {
-	ClazzID        uint32          `json:"_id"`
-	Muted          bool            `json:"muted"`
-	VideoStopped   bool            `json:"video_stopped"`
-	Call           *InputGroupCall `json:"call"`
-	JoinAs         *InputPeer      `json:"join_as"`
-	InviteHash     *string         `json:"invite_hash"`
-	KeyFingerprint *int64          `json:"key_fingerprint"`
-	Params         *DataJSON       `json:"params"`
+	ClazzID        uint32              `json:"_id"`
+	Muted          bool                `json:"muted"`
+	VideoStopped   bool                `json:"video_stopped"`
+	Call           InputGroupCallClazz `json:"call"`
+	JoinAs         InputPeerClazz      `json:"join_as"`
+	InviteHash     *string             `json:"invite_hash"`
+	KeyFingerprint *int64              `json:"key_fingerprint"`
+	Params         DataJSONClazz       `json:"params"`
 }
 
 func (m *TLPhoneJoinGroupCall) String() string {
@@ -42826,13 +43557,15 @@ func (m *TLPhoneJoinGroupCall) Decode(d *bin.Decoder) (err error) {
 				m.VideoStopped = true
 			}
 
-			m4 := &InputGroupCall{}
-			_ = m4.Decode(d)
-			m.Call = m4
+			// m4 := &InputGroupCall{}
+			// _ = m4.Decode(d)
+			// m.Call = m4
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
-			m5 := &InputPeer{}
-			_ = m5.Decode(d)
-			m.JoinAs = m5
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.JoinAs = m5
+			m.JoinAs, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.InviteHash = new(string)
@@ -42844,9 +43577,10 @@ func (m *TLPhoneJoinGroupCall) Decode(d *bin.Decoder) (err error) {
 				*m.KeyFingerprint, err = d.Int64()
 			}
 
-			m8 := &DataJSON{}
-			_ = m8.Decode(d)
-			m.Params = m8
+			// m8 := &DataJSON{}
+			// _ = m8.Decode(d)
+			// m.Params = m8
+			m.Params, _ = DecodeDataJSONClazz(d)
 
 			return nil
 		},
@@ -42864,9 +43598,9 @@ func (m *TLPhoneJoinGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneLeaveGroupCall <--
 type TLPhoneLeaveGroupCall struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
-	Source  int32           `json:"source"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Source  int32               `json:"source"`
 }
 
 func (m *TLPhoneLeaveGroupCall) String() string {
@@ -42901,9 +43635,10 @@ func (m *TLPhoneLeaveGroupCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x500377f9: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			m.Source, err = d.Int32()
 
@@ -42923,9 +43658,9 @@ func (m *TLPhoneLeaveGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneInviteToGroupCall <--
 type TLPhoneInviteToGroupCall struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
-	Users   []*InputUser    `json:"users"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Users   []InputUserClazz    `json:"users"`
 }
 
 func (m *TLPhoneInviteToGroupCall) String() string {
@@ -42961,9 +43696,10 @@ func (m *TLPhoneInviteToGroupCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7b393160: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -42971,12 +43707,15 @@ func (m *TLPhoneInviteToGroupCall) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputUser, l2)
+			// v2 := make([]*InputUser, l2)
+			v2 := make([]InputUserClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputUser)
-				err3 = vv.Decode(d)
+				// vv := new(InputUser)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputUserClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Users = v2
 
@@ -42996,8 +43735,8 @@ func (m *TLPhoneInviteToGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneDiscardGroupCall <--
 type TLPhoneDiscardGroupCall struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
 }
 
 func (m *TLPhoneDiscardGroupCall) String() string {
@@ -43031,9 +43770,10 @@ func (m *TLPhoneDiscardGroupCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7a777135: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			return nil
 		},
@@ -43051,10 +43791,10 @@ func (m *TLPhoneDiscardGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneToggleGroupCallSettings <--
 type TLPhoneToggleGroupCallSettings struct {
-	ClazzID         uint32          `json:"_id"`
-	ResetInviteHash bool            `json:"reset_invite_hash"`
-	Call            *InputGroupCall `json:"call"`
-	JoinMuted       *Bool           `json:"join_muted"`
+	ClazzID         uint32              `json:"_id"`
+	ResetInviteHash bool                `json:"reset_invite_hash"`
+	Call            InputGroupCallClazz `json:"call"`
+	JoinMuted       BoolClazz           `json:"join_muted"`
 }
 
 func (m *TLPhoneToggleGroupCallSettings) String() string {
@@ -43114,14 +43854,16 @@ func (m *TLPhoneToggleGroupCallSettings) Decode(d *bin.Decoder) (err error) {
 				m.ResetInviteHash = true
 			}
 
-			m3 := &InputGroupCall{}
-			_ = m3.Decode(d)
-			m.Call = m3
+			// m3 := &InputGroupCall{}
+			// _ = m3.Decode(d)
+			// m.Call = m3
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m4 := &Bool{}
-				_ = m4.Decode(d)
-				m.JoinMuted = m4
+				// m4 := &Bool{}
+				// _ = m4.Decode(d)
+				// m.JoinMuted = m4
+				m.JoinMuted, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -43140,9 +43882,9 @@ func (m *TLPhoneToggleGroupCallSettings) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneGetGroupCall <--
 type TLPhoneGetGroupCall struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
-	Limit   int32           `json:"limit"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Limit   int32               `json:"limit"`
 }
 
 func (m *TLPhoneGetGroupCall) String() string {
@@ -43177,9 +43919,10 @@ func (m *TLPhoneGetGroupCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x41845db: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			m.Limit, err = d.Int32()
 
@@ -43199,12 +43942,12 @@ func (m *TLPhoneGetGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneGetGroupParticipants <--
 type TLPhoneGetGroupParticipants struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
-	Ids     []*InputPeer    `json:"ids"`
-	Sources []int32         `json:"sources"`
-	Offset  string          `json:"offset"`
-	Limit   int32           `json:"limit"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Ids     []InputPeerClazz    `json:"ids"`
+	Sources []int32             `json:"sources"`
+	Offset  string              `json:"offset"`
+	Limit   int32               `json:"limit"`
 }
 
 func (m *TLPhoneGetGroupParticipants) String() string {
@@ -43245,9 +43988,10 @@ func (m *TLPhoneGetGroupParticipants) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc558d8ab: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -43255,12 +43999,15 @@ func (m *TLPhoneGetGroupParticipants) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputPeer, l2)
+			// v2 := make([]*InputPeer, l2)
+			v2 := make([]InputPeerClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Ids = v2
 
@@ -43285,9 +44032,9 @@ func (m *TLPhoneGetGroupParticipants) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneCheckGroupCall <--
 type TLPhoneCheckGroupCall struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
-	Sources []int32         `json:"sources"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Sources []int32             `json:"sources"`
 }
 
 func (m *TLPhoneCheckGroupCall) String() string {
@@ -43323,9 +44070,10 @@ func (m *TLPhoneCheckGroupCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb59cf977: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			m.Sources, err = iface.DecodeInt32List(d)
 
@@ -43345,12 +44093,12 @@ func (m *TLPhoneCheckGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneToggleGroupCallRecord <--
 type TLPhoneToggleGroupCallRecord struct {
-	ClazzID       uint32          `json:"_id"`
-	Start         bool            `json:"start"`
-	Video         bool            `json:"video"`
-	Call          *InputGroupCall `json:"call"`
-	Title         *string         `json:"title"`
-	VideoPortrait *Bool           `json:"video_portrait"`
+	ClazzID       uint32              `json:"_id"`
+	Start         bool                `json:"start"`
+	Video         bool                `json:"video"`
+	Call          InputGroupCallClazz `json:"call"`
+	Title         *string             `json:"title"`
+	VideoPortrait BoolClazz           `json:"video_portrait"`
 }
 
 func (m *TLPhoneToggleGroupCallRecord) String() string {
@@ -43423,9 +44171,10 @@ func (m *TLPhoneToggleGroupCallRecord) Decode(d *bin.Decoder) (err error) {
 				m.Video = true
 			}
 
-			m4 := &InputGroupCall{}
-			_ = m4.Decode(d)
-			m.Call = m4
+			// m4 := &InputGroupCall{}
+			// _ = m4.Decode(d)
+			// m.Call = m4
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.Title = new(string)
@@ -43433,9 +44182,10 @@ func (m *TLPhoneToggleGroupCallRecord) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 2)) != 0 {
-				m6 := &Bool{}
-				_ = m6.Decode(d)
-				m.VideoPortrait = m6
+				// m6 := &Bool{}
+				// _ = m6.Decode(d)
+				// m.VideoPortrait = m6
+				m.VideoPortrait, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -43454,15 +44204,15 @@ func (m *TLPhoneToggleGroupCallRecord) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneEditGroupCallParticipant <--
 type TLPhoneEditGroupCallParticipant struct {
-	ClazzID            uint32          `json:"_id"`
-	Call               *InputGroupCall `json:"call"`
-	Participant        *InputPeer      `json:"participant"`
-	Muted              *Bool           `json:"muted"`
-	Volume             *int32          `json:"volume"`
-	RaiseHand          *Bool           `json:"raise_hand"`
-	VideoStopped       *Bool           `json:"video_stopped"`
-	VideoPaused        *Bool           `json:"video_paused"`
-	PresentationPaused *Bool           `json:"presentation_paused"`
+	ClazzID            uint32              `json:"_id"`
+	Call               InputGroupCallClazz `json:"call"`
+	Participant        InputPeerClazz      `json:"participant"`
+	Muted              BoolClazz           `json:"muted"`
+	Volume             *int32              `json:"volume"`
+	RaiseHand          BoolClazz           `json:"raise_hand"`
+	VideoStopped       BoolClazz           `json:"video_stopped"`
+	VideoPaused        BoolClazz           `json:"video_paused"`
+	PresentationPaused BoolClazz           `json:"presentation_paused"`
 }
 
 func (m *TLPhoneEditGroupCallParticipant) String() string {
@@ -43551,42 +44301,49 @@ func (m *TLPhoneEditGroupCallParticipant) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputGroupCall{}
-			_ = m2.Decode(d)
-			m.Call = m2
+			// m2 := &InputGroupCall{}
+			// _ = m2.Decode(d)
+			// m.Call = m2
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Participant = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Participant = m3
+			m.Participant, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 0)) != 0 {
-				m4 := &Bool{}
-				_ = m4.Decode(d)
-				m.Muted = m4
+				// m4 := &Bool{}
+				// _ = m4.Decode(d)
+				// m.Muted = m4
+				m.Muted, _ = DecodeBoolClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				m.Volume = new(int32)
 				*m.Volume, err = d.Int32()
 			}
 			if (flags & (1 << 2)) != 0 {
-				m6 := &Bool{}
-				_ = m6.Decode(d)
-				m.RaiseHand = m6
+				// m6 := &Bool{}
+				// _ = m6.Decode(d)
+				// m.RaiseHand = m6
+				m.RaiseHand, _ = DecodeBoolClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
-				m7 := &Bool{}
-				_ = m7.Decode(d)
-				m.VideoStopped = m7
+				// m7 := &Bool{}
+				// _ = m7.Decode(d)
+				// m.VideoStopped = m7
+				m.VideoStopped, _ = DecodeBoolClazz(d)
 			}
 			if (flags & (1 << 4)) != 0 {
-				m8 := &Bool{}
-				_ = m8.Decode(d)
-				m.VideoPaused = m8
+				// m8 := &Bool{}
+				// _ = m8.Decode(d)
+				// m.VideoPaused = m8
+				m.VideoPaused, _ = DecodeBoolClazz(d)
 			}
 			if (flags & (1 << 5)) != 0 {
-				m9 := &Bool{}
-				_ = m9.Decode(d)
-				m.PresentationPaused = m9
+				// m9 := &Bool{}
+				// _ = m9.Decode(d)
+				// m.PresentationPaused = m9
+				m.PresentationPaused, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -43605,9 +44362,9 @@ func (m *TLPhoneEditGroupCallParticipant) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneEditGroupCallTitle <--
 type TLPhoneEditGroupCallTitle struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
-	Title   string          `json:"title"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Title   string              `json:"title"`
 }
 
 func (m *TLPhoneEditGroupCallTitle) String() string {
@@ -43642,9 +44399,10 @@ func (m *TLPhoneEditGroupCallTitle) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x1ca6ac0a: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			m.Title, err = d.String()
 
@@ -43664,8 +44422,8 @@ func (m *TLPhoneEditGroupCallTitle) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneGetGroupCallJoinAs <--
 type TLPhoneGetGroupCallJoinAs struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLPhoneGetGroupCallJoinAs) String() string {
@@ -43699,9 +44457,10 @@ func (m *TLPhoneGetGroupCallJoinAs) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xef7c213a: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -43719,9 +44478,9 @@ func (m *TLPhoneGetGroupCallJoinAs) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneExportGroupCallInvite <--
 type TLPhoneExportGroupCallInvite struct {
-	ClazzID       uint32          `json:"_id"`
-	CanSelfUnmute bool            `json:"can_self_unmute"`
-	Call          *InputGroupCall `json:"call"`
+	ClazzID       uint32              `json:"_id"`
+	CanSelfUnmute bool                `json:"can_self_unmute"`
+	Call          InputGroupCallClazz `json:"call"`
 }
 
 func (m *TLPhoneExportGroupCallInvite) String() string {
@@ -43774,9 +44533,10 @@ func (m *TLPhoneExportGroupCallInvite) Decode(d *bin.Decoder) (err error) {
 				m.CanSelfUnmute = true
 			}
 
-			m3 := &InputGroupCall{}
-			_ = m3.Decode(d)
-			m.Call = m3
+			// m3 := &InputGroupCall{}
+			// _ = m3.Decode(d)
+			// m.Call = m3
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			return nil
 		},
@@ -43794,9 +44554,9 @@ func (m *TLPhoneExportGroupCallInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneToggleGroupCallStartSubscription <--
 type TLPhoneToggleGroupCallStartSubscription struct {
-	ClazzID    uint32          `json:"_id"`
-	Call       *InputGroupCall `json:"call"`
-	Subscribed *Bool           `json:"subscribed"`
+	ClazzID    uint32              `json:"_id"`
+	Call       InputGroupCallClazz `json:"call"`
+	Subscribed BoolClazz           `json:"subscribed"`
 }
 
 func (m *TLPhoneToggleGroupCallStartSubscription) String() string {
@@ -43831,13 +44591,15 @@ func (m *TLPhoneToggleGroupCallStartSubscription) Decode(d *bin.Decoder) (err er
 	var decodeF = map[uint32]func() error{
 		0x219c34e6: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Subscribed = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Subscribed = m2
+			m.Subscribed, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -43855,8 +44617,8 @@ func (m *TLPhoneToggleGroupCallStartSubscription) Decode(d *bin.Decoder) (err er
 
 // TLPhoneStartScheduledGroupCall <--
 type TLPhoneStartScheduledGroupCall struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
 }
 
 func (m *TLPhoneStartScheduledGroupCall) String() string {
@@ -43890,9 +44652,10 @@ func (m *TLPhoneStartScheduledGroupCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5680e342: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			return nil
 		},
@@ -43910,9 +44673,9 @@ func (m *TLPhoneStartScheduledGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneSaveDefaultGroupCallJoinAs <--
 type TLPhoneSaveDefaultGroupCallJoinAs struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	JoinAs  *InputPeer `json:"join_as"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	JoinAs  InputPeerClazz `json:"join_as"`
 }
 
 func (m *TLPhoneSaveDefaultGroupCallJoinAs) String() string {
@@ -43947,13 +44710,15 @@ func (m *TLPhoneSaveDefaultGroupCallJoinAs) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x575e1f8c: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.JoinAs = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.JoinAs = m2
+			m.JoinAs, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -43971,9 +44736,9 @@ func (m *TLPhoneSaveDefaultGroupCallJoinAs) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneJoinGroupCallPresentation <--
 type TLPhoneJoinGroupCallPresentation struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
-	Params  *DataJSON       `json:"params"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Params  DataJSONClazz       `json:"params"`
 }
 
 func (m *TLPhoneJoinGroupCallPresentation) String() string {
@@ -44008,13 +44773,15 @@ func (m *TLPhoneJoinGroupCallPresentation) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xcbea6bc4: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
-			m2 := &DataJSON{}
-			_ = m2.Decode(d)
-			m.Params = m2
+			// m2 := &DataJSON{}
+			// _ = m2.Decode(d)
+			// m.Params = m2
+			m.Params, _ = DecodeDataJSONClazz(d)
 
 			return nil
 		},
@@ -44032,8 +44799,8 @@ func (m *TLPhoneJoinGroupCallPresentation) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneLeaveGroupCallPresentation <--
 type TLPhoneLeaveGroupCallPresentation struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
 }
 
 func (m *TLPhoneLeaveGroupCallPresentation) String() string {
@@ -44067,9 +44834,10 @@ func (m *TLPhoneLeaveGroupCallPresentation) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x1c50d144: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			return nil
 		},
@@ -44087,8 +44855,8 @@ func (m *TLPhoneLeaveGroupCallPresentation) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneGetGroupCallStreamChannels <--
 type TLPhoneGetGroupCallStreamChannels struct {
-	ClazzID uint32          `json:"_id"`
-	Call    *InputGroupCall `json:"call"`
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
 }
 
 func (m *TLPhoneGetGroupCallStreamChannels) String() string {
@@ -44122,9 +44890,10 @@ func (m *TLPhoneGetGroupCallStreamChannels) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x1ab21940: func() (err error) {
 
-			m1 := &InputGroupCall{}
-			_ = m1.Decode(d)
-			m.Call = m1
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
 			return nil
 		},
@@ -44142,9 +44911,9 @@ func (m *TLPhoneGetGroupCallStreamChannels) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneGetGroupCallStreamRtmpUrl <--
 type TLPhoneGetGroupCallStreamRtmpUrl struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Revoke  *Bool      `json:"revoke"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Revoke  BoolClazz      `json:"revoke"`
 }
 
 func (m *TLPhoneGetGroupCallStreamRtmpUrl) String() string {
@@ -44179,13 +44948,15 @@ func (m *TLPhoneGetGroupCallStreamRtmpUrl) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xdeb3abbf: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Revoke = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Revoke = m2
+			m.Revoke, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -44203,9 +44974,9 @@ func (m *TLPhoneGetGroupCallStreamRtmpUrl) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneSaveCallLog <--
 type TLPhoneSaveCallLog struct {
-	ClazzID uint32          `json:"_id"`
-	Peer    *InputPhoneCall `json:"peer"`
-	File    *InputFile      `json:"file"`
+	ClazzID uint32              `json:"_id"`
+	Peer    InputPhoneCallClazz `json:"peer"`
+	File    InputFileClazz      `json:"file"`
 }
 
 func (m *TLPhoneSaveCallLog) String() string {
@@ -44240,13 +45011,15 @@ func (m *TLPhoneSaveCallLog) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x41248786: func() (err error) {
 
-			m1 := &InputPhoneCall{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPhoneCall{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
-			m2 := &InputFile{}
-			_ = m2.Decode(d)
-			m.File = m2
+			// m2 := &InputFile{}
+			// _ = m2.Decode(d)
+			// m.File = m2
+			m.File, _ = DecodeInputFileClazz(d)
 
 			return nil
 		},
@@ -44264,9 +45037,9 @@ func (m *TLPhoneSaveCallLog) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneCreateConferenceCall <--
 type TLPhoneCreateConferenceCall struct {
-	ClazzID        uint32          `json:"_id"`
-	Peer           *InputPhoneCall `json:"peer"`
-	KeyFingerprint int64           `json:"key_fingerprint"`
+	ClazzID        uint32              `json:"_id"`
+	Peer           InputPhoneCallClazz `json:"peer"`
+	KeyFingerprint int64               `json:"key_fingerprint"`
 }
 
 func (m *TLPhoneCreateConferenceCall) String() string {
@@ -44301,9 +45074,10 @@ func (m *TLPhoneCreateConferenceCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xdfc909ab: func() (err error) {
 
-			m1 := &InputPhoneCall{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPhoneCall{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPhoneCallClazz(d)
 
 			m.KeyFingerprint, err = d.Int64()
 
@@ -44640,8 +45414,8 @@ func (m *TLLangpackGetLanguage) Decode(d *bin.Decoder) (err error) {
 
 // TLFoldersEditPeerFolders <--
 type TLFoldersEditPeerFolders struct {
-	ClazzID     uint32             `json:"_id"`
-	FolderPeers []*InputFolderPeer `json:"folder_peers"`
+	ClazzID     uint32                 `json:"_id"`
+	FolderPeers []InputFolderPeerClazz `json:"folder_peers"`
 }
 
 func (m *TLFoldersEditPeerFolders) String() string {
@@ -44680,12 +45454,15 @@ func (m *TLFoldersEditPeerFolders) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputFolderPeer, l1)
+			// v1 := make([]*InputFolderPeer, l1)
+			v1 := make([]InputFolderPeerClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputFolderPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputFolderPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputFolderPeerClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.FolderPeers = v1
 
@@ -44705,9 +45482,9 @@ func (m *TLFoldersEditPeerFolders) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetBroadcastStats <--
 type TLStatsGetBroadcastStats struct {
-	ClazzID uint32        `json:"_id"`
-	Dark    bool          `json:"dark"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Dark    bool              `json:"dark"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLStatsGetBroadcastStats) String() string {
@@ -44760,9 +45537,10 @@ func (m *TLStatsGetBroadcastStats) Decode(d *bin.Decoder) (err error) {
 				m.Dark = true
 			}
 
-			m3 := &InputChannel{}
-			_ = m3.Decode(d)
-			m.Channel = m3
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -44856,9 +45634,9 @@ func (m *TLStatsLoadAsyncGraph) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetMegagroupStats <--
 type TLStatsGetMegagroupStats struct {
-	ClazzID uint32        `json:"_id"`
-	Dark    bool          `json:"dark"`
-	Channel *InputChannel `json:"channel"`
+	ClazzID uint32            `json:"_id"`
+	Dark    bool              `json:"dark"`
+	Channel InputChannelClazz `json:"channel"`
 }
 
 func (m *TLStatsGetMegagroupStats) String() string {
@@ -44911,9 +45689,10 @@ func (m *TLStatsGetMegagroupStats) Decode(d *bin.Decoder) (err error) {
 				m.Dark = true
 			}
 
-			m3 := &InputChannel{}
-			_ = m3.Decode(d)
-			m.Channel = m3
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			return nil
 		},
@@ -44931,11 +45710,11 @@ func (m *TLStatsGetMegagroupStats) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetMessagePublicForwards <--
 type TLStatsGetMessagePublicForwards struct {
-	ClazzID uint32        `json:"_id"`
-	Channel *InputChannel `json:"channel"`
-	MsgId   int32         `json:"msg_id"`
-	Offset  string        `json:"offset"`
-	Limit   int32         `json:"limit"`
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	MsgId   int32             `json:"msg_id"`
+	Offset  string            `json:"offset"`
+	Limit   int32             `json:"limit"`
 }
 
 func (m *TLStatsGetMessagePublicForwards) String() string {
@@ -44972,9 +45751,10 @@ func (m *TLStatsGetMessagePublicForwards) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5f150144: func() (err error) {
 
-			m1 := &InputChannel{}
-			_ = m1.Decode(d)
-			m.Channel = m1
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.MsgId, err = d.Int32()
 			m.Offset, err = d.String()
@@ -44996,10 +45776,10 @@ func (m *TLStatsGetMessagePublicForwards) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetMessageStats <--
 type TLStatsGetMessageStats struct {
-	ClazzID uint32        `json:"_id"`
-	Dark    bool          `json:"dark"`
-	Channel *InputChannel `json:"channel"`
-	MsgId   int32         `json:"msg_id"`
+	ClazzID uint32            `json:"_id"`
+	Dark    bool              `json:"dark"`
+	Channel InputChannelClazz `json:"channel"`
+	MsgId   int32             `json:"msg_id"`
 }
 
 func (m *TLStatsGetMessageStats) String() string {
@@ -45053,9 +45833,10 @@ func (m *TLStatsGetMessageStats) Decode(d *bin.Decoder) (err error) {
 				m.Dark = true
 			}
 
-			m3 := &InputChannel{}
-			_ = m3.Decode(d)
-			m.Channel = m3
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
 
 			m.MsgId, err = d.Int32()
 
@@ -45075,10 +45856,10 @@ func (m *TLStatsGetMessageStats) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetStoryStats <--
 type TLStatsGetStoryStats struct {
-	ClazzID uint32     `json:"_id"`
-	Dark    bool       `json:"dark"`
-	Peer    *InputPeer `json:"peer"`
-	Id      int32      `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Dark    bool           `json:"dark"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      int32          `json:"id"`
 }
 
 func (m *TLStatsGetStoryStats) String() string {
@@ -45132,9 +45913,10 @@ func (m *TLStatsGetStoryStats) Decode(d *bin.Decoder) (err error) {
 				m.Dark = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 
@@ -45154,11 +45936,11 @@ func (m *TLStatsGetStoryStats) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetStoryPublicForwards <--
 type TLStatsGetStoryPublicForwards struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      int32      `json:"id"`
-	Offset  string     `json:"offset"`
-	Limit   int32      `json:"limit"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      int32          `json:"id"`
+	Offset  string         `json:"offset"`
+	Limit   int32          `json:"limit"`
 }
 
 func (m *TLStatsGetStoryPublicForwards) String() string {
@@ -45195,9 +45977,10 @@ func (m *TLStatsGetStoryPublicForwards) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa6437ef6: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 			m.Offset, err = d.String()
@@ -45219,9 +46002,9 @@ func (m *TLStatsGetStoryPublicForwards) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetBroadcastRevenueStats <--
 type TLStatsGetBroadcastRevenueStats struct {
-	ClazzID uint32     `json:"_id"`
-	Dark    bool       `json:"dark"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Dark    bool           `json:"dark"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLStatsGetBroadcastRevenueStats) String() string {
@@ -45274,9 +46057,10 @@ func (m *TLStatsGetBroadcastRevenueStats) Decode(d *bin.Decoder) (err error) {
 				m.Dark = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -45294,9 +46078,9 @@ func (m *TLStatsGetBroadcastRevenueStats) Decode(d *bin.Decoder) (err error) {
 
 // TLStatsGetBroadcastRevenueWithdrawalUrl <--
 type TLStatsGetBroadcastRevenueWithdrawalUrl struct {
-	ClazzID  uint32                 `json:"_id"`
-	Peer     *InputPeer             `json:"peer"`
-	Password *InputCheckPasswordSRP `json:"password"`
+	ClazzID  uint32                     `json:"_id"`
+	Peer     InputPeerClazz             `json:"peer"`
+	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
 func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) String() string {
@@ -45331,13 +46115,15 @@ func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err er
 	var decodeF = map[uint32]func() error{
 		0x9df4faad: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputCheckPasswordSRP{}
-			_ = m2.Decode(d)
-			m.Password = m2
+			// m2 := &InputCheckPasswordSRP{}
+			// _ = m2.Decode(d)
+			// m.Password = m2
+			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			return nil
 		},
@@ -45355,10 +46141,10 @@ func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err er
 
 // TLStatsGetBroadcastRevenueTransactions <--
 type TLStatsGetBroadcastRevenueTransactions struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Offset  int32      `json:"offset"`
-	Limit   int32      `json:"limit"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Offset  int32          `json:"offset"`
+	Limit   int32          `json:"limit"`
 }
 
 func (m *TLStatsGetBroadcastRevenueTransactions) String() string {
@@ -45394,9 +46180,10 @@ func (m *TLStatsGetBroadcastRevenueTransactions) Decode(d *bin.Decoder) (err err
 	var decodeF = map[uint32]func() error{
 		0x70990b6d: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Offset, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -45417,10 +46204,10 @@ func (m *TLStatsGetBroadcastRevenueTransactions) Decode(d *bin.Decoder) (err err
 
 // TLChatlistsExportChatlistInvite <--
 type TLChatlistsExportChatlistInvite struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
-	Title    string         `json:"title"`
-	Peers    []*InputPeer   `json:"peers"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
+	Title    string             `json:"title"`
+	Peers    []InputPeerClazz   `json:"peers"`
 }
 
 func (m *TLChatlistsExportChatlistInvite) String() string {
@@ -45457,9 +46244,10 @@ func (m *TLChatlistsExportChatlistInvite) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x8472478e: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			m.Title, err = d.String()
 			c3, err2 := d.ClazzID()
@@ -45468,12 +46256,15 @@ func (m *TLChatlistsExportChatlistInvite) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l3, err3 := d.Int()
-			v3 := make([]*InputPeer, l3)
+			// v3 := make([]*InputPeer, l3)
+			v3 := make([]InputPeerClazz, l3)
 			for i := 0; i < l3; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v3[i] = vv
 			}
 			m.Peers = v3
 
@@ -45493,9 +46284,9 @@ func (m *TLChatlistsExportChatlistInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsDeleteExportedInvite <--
 type TLChatlistsDeleteExportedInvite struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
-	Slug     string         `json:"slug"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
+	Slug     string             `json:"slug"`
 }
 
 func (m *TLChatlistsDeleteExportedInvite) String() string {
@@ -45530,9 +46321,10 @@ func (m *TLChatlistsDeleteExportedInvite) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x719c5c5e: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			m.Slug, err = d.String()
 
@@ -45552,11 +46344,11 @@ func (m *TLChatlistsDeleteExportedInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsEditExportedInvite <--
 type TLChatlistsEditExportedInvite struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
-	Slug     string         `json:"slug"`
-	Title    *string        `json:"title"`
-	Peers    []*InputPeer   `json:"peers"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
+	Slug     string             `json:"slug"`
+	Title    *string            `json:"title"`
+	Peers    []InputPeerClazz   `json:"peers"`
 }
 
 func (m *TLChatlistsEditExportedInvite) String() string {
@@ -45617,9 +46409,10 @@ func (m *TLChatlistsEditExportedInvite) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputChatlist{}
-			_ = m2.Decode(d)
-			m.Chatlist = m2
+			// m2 := &InputChatlist{}
+			// _ = m2.Decode(d)
+			// m.Chatlist = m2
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			m.Slug, err = d.String()
 			if (flags & (1 << 1)) != 0 {
@@ -45634,12 +46427,15 @@ func (m *TLChatlistsEditExportedInvite) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l5, err3 := d.Int()
-				v5 := make([]*InputPeer, l5)
+				// v5 := make([]*InputPeer, l5)
+				v5 := make([]InputPeerClazz, l5)
 				for i := 0; i < l5; i++ {
-					vv := new(InputPeer)
-					err3 = vv.Decode(d)
+					// vv := new(InputPeer)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v5[i] = vv
+					v5[i], _ = DecodeInputPeerClazz(d)
 					_ = err3
-					v5[i] = vv
 				}
 				m.Peers = v5
 			}
@@ -45660,8 +46456,8 @@ func (m *TLChatlistsEditExportedInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsGetExportedInvites <--
 type TLChatlistsGetExportedInvites struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
 }
 
 func (m *TLChatlistsGetExportedInvites) String() string {
@@ -45695,9 +46491,10 @@ func (m *TLChatlistsGetExportedInvites) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xce03da83: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			return nil
 		},
@@ -45767,9 +46564,9 @@ func (m *TLChatlistsCheckChatlistInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsJoinChatlistInvite <--
 type TLChatlistsJoinChatlistInvite struct {
-	ClazzID uint32       `json:"_id"`
-	Slug    string       `json:"slug"`
-	Peers   []*InputPeer `json:"peers"`
+	ClazzID uint32           `json:"_id"`
+	Slug    string           `json:"slug"`
+	Peers   []InputPeerClazz `json:"peers"`
 }
 
 func (m *TLChatlistsJoinChatlistInvite) String() string {
@@ -45811,12 +46608,15 @@ func (m *TLChatlistsJoinChatlistInvite) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputPeer, l2)
+			// v2 := make([]*InputPeer, l2)
+			v2 := make([]InputPeerClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Peers = v2
 
@@ -45836,8 +46636,8 @@ func (m *TLChatlistsJoinChatlistInvite) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsGetChatlistUpdates <--
 type TLChatlistsGetChatlistUpdates struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
 }
 
 func (m *TLChatlistsGetChatlistUpdates) String() string {
@@ -45871,9 +46671,10 @@ func (m *TLChatlistsGetChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x89419521: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			return nil
 		},
@@ -45891,9 +46692,9 @@ func (m *TLChatlistsGetChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsJoinChatlistUpdates <--
 type TLChatlistsJoinChatlistUpdates struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
-	Peers    []*InputPeer   `json:"peers"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
+	Peers    []InputPeerClazz   `json:"peers"`
 }
 
 func (m *TLChatlistsJoinChatlistUpdates) String() string {
@@ -45929,9 +46730,10 @@ func (m *TLChatlistsJoinChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe089f8f5: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -45939,12 +46741,15 @@ func (m *TLChatlistsJoinChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputPeer, l2)
+			// v2 := make([]*InputPeer, l2)
+			v2 := make([]InputPeerClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Peers = v2
 
@@ -45964,8 +46769,8 @@ func (m *TLChatlistsJoinChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsHideChatlistUpdates <--
 type TLChatlistsHideChatlistUpdates struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
 }
 
 func (m *TLChatlistsHideChatlistUpdates) String() string {
@@ -45999,9 +46804,10 @@ func (m *TLChatlistsHideChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x66e486fb: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			return nil
 		},
@@ -46019,8 +46825,8 @@ func (m *TLChatlistsHideChatlistUpdates) Decode(d *bin.Decoder) (err error) {
 
 // TLChatlistsGetLeaveChatlistSuggestions <--
 type TLChatlistsGetLeaveChatlistSuggestions struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
 }
 
 func (m *TLChatlistsGetLeaveChatlistSuggestions) String() string {
@@ -46054,9 +46860,10 @@ func (m *TLChatlistsGetLeaveChatlistSuggestions) Decode(d *bin.Decoder) (err err
 	var decodeF = map[uint32]func() error{
 		0xfdbcd714: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			return nil
 		},
@@ -46074,9 +46881,9 @@ func (m *TLChatlistsGetLeaveChatlistSuggestions) Decode(d *bin.Decoder) (err err
 
 // TLChatlistsLeaveChatlist <--
 type TLChatlistsLeaveChatlist struct {
-	ClazzID  uint32         `json:"_id"`
-	Chatlist *InputChatlist `json:"chatlist"`
-	Peers    []*InputPeer   `json:"peers"`
+	ClazzID  uint32             `json:"_id"`
+	Chatlist InputChatlistClazz `json:"chatlist"`
+	Peers    []InputPeerClazz   `json:"peers"`
 }
 
 func (m *TLChatlistsLeaveChatlist) String() string {
@@ -46112,9 +46919,10 @@ func (m *TLChatlistsLeaveChatlist) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x74fae13a: func() (err error) {
 
-			m1 := &InputChatlist{}
-			_ = m1.Decode(d)
-			m.Chatlist = m1
+			// m1 := &InputChatlist{}
+			// _ = m1.Decode(d)
+			// m.Chatlist = m1
+			m.Chatlist, _ = DecodeInputChatlistClazz(d)
 
 			c2, err2 := d.ClazzID()
 			if c2 != iface.ClazzID_vector {
@@ -46122,12 +46930,15 @@ func (m *TLChatlistsLeaveChatlist) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l2, err3 := d.Int()
-			v2 := make([]*InputPeer, l2)
+			// v2 := make([]*InputPeer, l2)
+			v2 := make([]InputPeerClazz, l2)
 			for i := 0; i < l2; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v2[i] = vv
 			}
 			m.Peers = v2
 
@@ -46147,8 +46958,8 @@ func (m *TLChatlistsLeaveChatlist) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesCanSendStory <--
 type TLStoriesCanSendStory struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLStoriesCanSendStory) String() string {
@@ -46182,9 +46993,10 @@ func (m *TLStoriesCanSendStory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xc7dfdfdd: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -46202,20 +47014,20 @@ func (m *TLStoriesCanSendStory) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesSendStory <--
 type TLStoriesSendStory struct {
-	ClazzID      uint32              `json:"_id"`
-	Pinned       bool                `json:"pinned"`
-	Noforwards   bool                `json:"noforwards"`
-	FwdModified  bool                `json:"fwd_modified"`
-	Peer         *InputPeer          `json:"peer"`
-	Media        *InputMedia         `json:"media"`
-	MediaAreas   []*MediaArea        `json:"media_areas"`
-	Caption      *string             `json:"caption"`
-	Entities     []*MessageEntity    `json:"entities"`
-	PrivacyRules []*InputPrivacyRule `json:"privacy_rules"`
-	RandomId     int64               `json:"random_id"`
-	Period       *int32              `json:"period"`
-	FwdFromId    *InputPeer          `json:"fwd_from_id"`
-	FwdFromStory *int32              `json:"fwd_from_story"`
+	ClazzID      uint32                  `json:"_id"`
+	Pinned       bool                    `json:"pinned"`
+	Noforwards   bool                    `json:"noforwards"`
+	FwdModified  bool                    `json:"fwd_modified"`
+	Peer         InputPeerClazz          `json:"peer"`
+	Media        InputMediaClazz         `json:"media"`
+	MediaAreas   []MediaAreaClazz        `json:"media_areas"`
+	Caption      *string                 `json:"caption"`
+	Entities     []MessageEntityClazz    `json:"entities"`
+	PrivacyRules []InputPrivacyRuleClazz `json:"privacy_rules"`
+	RandomId     int64                   `json:"random_id"`
+	Period       *int32                  `json:"period"`
+	FwdFromId    InputPeerClazz          `json:"fwd_from_id"`
+	FwdFromStory *int32                  `json:"fwd_from_story"`
 }
 
 func (m *TLStoriesSendStory) String() string {
@@ -46326,13 +47138,15 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 				m.FwdModified = true
 			}
 
-			m5 := &InputPeer{}
-			_ = m5.Decode(d)
-			m.Peer = m5
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.Peer = m5
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m6 := &InputMedia{}
-			_ = m6.Decode(d)
-			m.Media = m6
+			// m6 := &InputMedia{}
+			// _ = m6.Decode(d)
+			// m.Media = m6
+			m.Media, _ = DecodeInputMediaClazz(d)
 
 			if (flags & (1 << 5)) != 0 {
 				c7, err2 := d.ClazzID()
@@ -46341,12 +47155,15 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l7, err3 := d.Int()
-				v7 := make([]*MediaArea, l7)
+				// v7 := make([]*MediaArea, l7)
+				v7 := make([]MediaAreaClazz, l7)
 				for i := 0; i < l7; i++ {
-					vv := new(MediaArea)
-					err3 = vv.Decode(d)
+					// vv := new(MediaArea)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v7[i] = vv
+					v7[i], _ = DecodeMediaAreaClazz(d)
 					_ = err3
-					v7[i] = vv
 				}
 				m.MediaAreas = v7
 			}
@@ -46362,12 +47179,15 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l9, err3 := d.Int()
-				v9 := make([]*MessageEntity, l9)
+				// v9 := make([]*MessageEntity, l9)
+				v9 := make([]MessageEntityClazz, l9)
 				for i := 0; i < l9; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v9[i] = vv
+					v9[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v9[i] = vv
 				}
 				m.Entities = v9
 			}
@@ -46377,12 +47197,15 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l10, err3 := d.Int()
-			v10 := make([]*InputPrivacyRule, l10)
+			// v10 := make([]*InputPrivacyRule, l10)
+			v10 := make([]InputPrivacyRuleClazz, l10)
 			for i := 0; i < l10; i++ {
-				vv := new(InputPrivacyRule)
-				err3 = vv.Decode(d)
+				// vv := new(InputPrivacyRule)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v10[i] = vv
+				v10[i], _ = DecodeInputPrivacyRuleClazz(d)
 				_ = err3
-				v10[i] = vv
 			}
 			m.PrivacyRules = v10
 
@@ -46392,9 +47215,10 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 				*m.Period, err = d.Int32()
 			}
 			if (flags & (1 << 6)) != 0 {
-				m13 := &InputPeer{}
-				_ = m13.Decode(d)
-				m.FwdFromId = m13
+				// m13 := &InputPeer{}
+				// _ = m13.Decode(d)
+				// m.FwdFromId = m13
+				m.FwdFromId, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 6)) != 0 {
 				m.FwdFromStory = new(int32)
@@ -46417,14 +47241,14 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesEditStory <--
 type TLStoriesEditStory struct {
-	ClazzID      uint32              `json:"_id"`
-	Peer         *InputPeer          `json:"peer"`
-	Id           int32               `json:"id"`
-	Media        *InputMedia         `json:"media"`
-	MediaAreas   []*MediaArea        `json:"media_areas"`
-	Caption      *string             `json:"caption"`
-	Entities     []*MessageEntity    `json:"entities"`
-	PrivacyRules []*InputPrivacyRule `json:"privacy_rules"`
+	ClazzID      uint32                  `json:"_id"`
+	Peer         InputPeerClazz          `json:"peer"`
+	Id           int32                   `json:"id"`
+	Media        InputMediaClazz         `json:"media"`
+	MediaAreas   []MediaAreaClazz        `json:"media_areas"`
+	Caption      *string                 `json:"caption"`
+	Entities     []MessageEntityClazz    `json:"entities"`
+	PrivacyRules []InputPrivacyRuleClazz `json:"privacy_rules"`
 }
 
 func (m *TLStoriesEditStory) String() string {
@@ -46504,15 +47328,17 @@ func (m *TLStoriesEditStory) Decode(d *bin.Decoder) (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
-			m2 := &InputPeer{}
-			_ = m2.Decode(d)
-			m.Peer = m2
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
-				m4 := &InputMedia{}
-				_ = m4.Decode(d)
-				m.Media = m4
+				// m4 := &InputMedia{}
+				// _ = m4.Decode(d)
+				// m.Media = m4
+				m.Media, _ = DecodeInputMediaClazz(d)
 			}
 			if (flags & (1 << 3)) != 0 {
 				c5, err2 := d.ClazzID()
@@ -46521,12 +47347,15 @@ func (m *TLStoriesEditStory) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l5, err3 := d.Int()
-				v5 := make([]*MediaArea, l5)
+				// v5 := make([]*MediaArea, l5)
+				v5 := make([]MediaAreaClazz, l5)
 				for i := 0; i < l5; i++ {
-					vv := new(MediaArea)
-					err3 = vv.Decode(d)
+					// vv := new(MediaArea)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v5[i] = vv
+					v5[i], _ = DecodeMediaAreaClazz(d)
 					_ = err3
-					v5[i] = vv
 				}
 				m.MediaAreas = v5
 			}
@@ -46542,12 +47371,15 @@ func (m *TLStoriesEditStory) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l7, err3 := d.Int()
-				v7 := make([]*MessageEntity, l7)
+				// v7 := make([]*MessageEntity, l7)
+				v7 := make([]MessageEntityClazz, l7)
 				for i := 0; i < l7; i++ {
-					vv := new(MessageEntity)
-					err3 = vv.Decode(d)
+					// vv := new(MessageEntity)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v7[i] = vv
+					v7[i], _ = DecodeMessageEntityClazz(d)
 					_ = err3
-					v7[i] = vv
 				}
 				m.Entities = v7
 			}
@@ -46558,12 +47390,15 @@ func (m *TLStoriesEditStory) Decode(d *bin.Decoder) (err error) {
 					return err2
 				}
 				l8, err3 := d.Int()
-				v8 := make([]*InputPrivacyRule, l8)
+				// v8 := make([]*InputPrivacyRule, l8)
+				v8 := make([]InputPrivacyRuleClazz, l8)
 				for i := 0; i < l8; i++ {
-					vv := new(InputPrivacyRule)
-					err3 = vv.Decode(d)
+					// vv := new(InputPrivacyRule)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v8[i] = vv
+					v8[i], _ = DecodeInputPrivacyRuleClazz(d)
 					_ = err3
-					v8[i] = vv
 				}
 				m.PrivacyRules = v8
 			}
@@ -46584,9 +47419,9 @@ func (m *TLStoriesEditStory) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesDeleteStories <--
 type TLStoriesDeleteStories struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLStoriesDeleteStories) String() string {
@@ -46622,9 +47457,10 @@ func (m *TLStoriesDeleteStories) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xae59db5f: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -46644,10 +47480,10 @@ func (m *TLStoriesDeleteStories) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesTogglePinned <--
 type TLStoriesTogglePinned struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
-	Pinned  *Bool      `json:"pinned"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
+	Pinned  BoolClazz      `json:"pinned"`
 }
 
 func (m *TLStoriesTogglePinned) String() string {
@@ -46685,15 +47521,17 @@ func (m *TLStoriesTogglePinned) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x9a75a1ef: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
-			m3 := &Bool{}
-			_ = m3.Decode(d)
-			m.Pinned = m3
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.Pinned = m3
+			m.Pinned, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -46798,10 +47636,10 @@ func (m *TLStoriesGetAllStories) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetPinnedStories <--
 type TLStoriesGetPinnedStories struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	OffsetId int32      `json:"offset_id"`
-	Limit    int32      `json:"limit"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	OffsetId int32          `json:"offset_id"`
+	Limit    int32          `json:"limit"`
 }
 
 func (m *TLStoriesGetPinnedStories) String() string {
@@ -46837,9 +47675,10 @@ func (m *TLStoriesGetPinnedStories) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5821a5dc: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -46860,10 +47699,10 @@ func (m *TLStoriesGetPinnedStories) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetStoriesArchive <--
 type TLStoriesGetStoriesArchive struct {
-	ClazzID  uint32     `json:"_id"`
-	Peer     *InputPeer `json:"peer"`
-	OffsetId int32      `json:"offset_id"`
-	Limit    int32      `json:"limit"`
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	OffsetId int32          `json:"offset_id"`
+	Limit    int32          `json:"limit"`
 }
 
 func (m *TLStoriesGetStoriesArchive) String() string {
@@ -46899,9 +47738,10 @@ func (m *TLStoriesGetStoriesArchive) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb4352016: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.Limit, err = d.Int32()
@@ -46922,9 +47762,9 @@ func (m *TLStoriesGetStoriesArchive) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetStoriesByID <--
 type TLStoriesGetStoriesByID struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLStoriesGetStoriesByID) String() string {
@@ -46960,9 +47800,10 @@ func (m *TLStoriesGetStoriesByID) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5774ca74: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -46982,8 +47823,8 @@ func (m *TLStoriesGetStoriesByID) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesToggleAllStoriesHidden <--
 type TLStoriesToggleAllStoriesHidden struct {
-	ClazzID uint32 `json:"_id"`
-	Hidden  *Bool  `json:"hidden"`
+	ClazzID uint32    `json:"_id"`
+	Hidden  BoolClazz `json:"hidden"`
 }
 
 func (m *TLStoriesToggleAllStoriesHidden) String() string {
@@ -47017,9 +47858,10 @@ func (m *TLStoriesToggleAllStoriesHidden) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7c2557c4: func() (err error) {
 
-			m1 := &Bool{}
-			_ = m1.Decode(d)
-			m.Hidden = m1
+			// m1 := &Bool{}
+			// _ = m1.Decode(d)
+			// m.Hidden = m1
+			m.Hidden, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -47037,9 +47879,9 @@ func (m *TLStoriesToggleAllStoriesHidden) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesReadStories <--
 type TLStoriesReadStories struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	MaxId   int32      `json:"max_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	MaxId   int32          `json:"max_id"`
 }
 
 func (m *TLStoriesReadStories) String() string {
@@ -47074,9 +47916,10 @@ func (m *TLStoriesReadStories) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xa556dac8: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MaxId, err = d.Int32()
 
@@ -47096,9 +47939,9 @@ func (m *TLStoriesReadStories) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesIncrementStoryViews <--
 type TLStoriesIncrementStoryViews struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLStoriesIncrementStoryViews) String() string {
@@ -47134,9 +47977,10 @@ func (m *TLStoriesIncrementStoryViews) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb2028afb: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -47156,15 +48000,15 @@ func (m *TLStoriesIncrementStoryViews) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetStoryViewsList <--
 type TLStoriesGetStoryViewsList struct {
-	ClazzID        uint32     `json:"_id"`
-	JustContacts   bool       `json:"just_contacts"`
-	ReactionsFirst bool       `json:"reactions_first"`
-	ForwardsFirst  bool       `json:"forwards_first"`
-	Peer           *InputPeer `json:"peer"`
-	Q              *string    `json:"q"`
-	Id             int32      `json:"id"`
-	Offset         string     `json:"offset"`
-	Limit          int32      `json:"limit"`
+	ClazzID        uint32         `json:"_id"`
+	JustContacts   bool           `json:"just_contacts"`
+	ReactionsFirst bool           `json:"reactions_first"`
+	ForwardsFirst  bool           `json:"forwards_first"`
+	Peer           InputPeerClazz `json:"peer"`
+	Q              *string        `json:"q"`
+	Id             int32          `json:"id"`
+	Offset         string         `json:"offset"`
+	Limit          int32          `json:"limit"`
 }
 
 func (m *TLStoriesGetStoryViewsList) String() string {
@@ -47240,9 +48084,10 @@ func (m *TLStoriesGetStoryViewsList) Decode(d *bin.Decoder) (err error) {
 				m.ForwardsFirst = true
 			}
 
-			m5 := &InputPeer{}
-			_ = m5.Decode(d)
-			m.Peer = m5
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.Peer = m5
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			if (flags & (1 << 1)) != 0 {
 				m.Q = new(string)
@@ -47269,9 +48114,9 @@ func (m *TLStoriesGetStoryViewsList) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetStoriesViews <--
 type TLStoriesGetStoriesViews struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLStoriesGetStoriesViews) String() string {
@@ -47307,9 +48152,10 @@ func (m *TLStoriesGetStoriesViews) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x28e16cc8: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -47329,9 +48175,9 @@ func (m *TLStoriesGetStoriesViews) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesExportStoryLink <--
 type TLStoriesExportStoryLink struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      int32      `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      int32          `json:"id"`
 }
 
 func (m *TLStoriesExportStoryLink) String() string {
@@ -47366,9 +48212,10 @@ func (m *TLStoriesExportStoryLink) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x7b8def20: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 
@@ -47388,11 +48235,11 @@ func (m *TLStoriesExportStoryLink) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesReport <--
 type TLStoriesReport struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
-	Option  []byte     `json:"option"`
-	Message string     `json:"message"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
+	Option  []byte         `json:"option"`
+	Message string         `json:"message"`
 }
 
 func (m *TLStoriesReport) String() string {
@@ -47431,9 +48278,10 @@ func (m *TLStoriesReport) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x19d8eb45: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -47532,11 +48380,11 @@ func (m *TLStoriesActivateStealthMode) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesSendReaction <--
 type TLStoriesSendReaction struct {
-	ClazzID     uint32     `json:"_id"`
-	AddToRecent bool       `json:"add_to_recent"`
-	Peer        *InputPeer `json:"peer"`
-	StoryId     int32      `json:"story_id"`
-	Reaction    *Reaction  `json:"reaction"`
+	ClazzID     uint32         `json:"_id"`
+	AddToRecent bool           `json:"add_to_recent"`
+	Peer        InputPeerClazz `json:"peer"`
+	StoryId     int32          `json:"story_id"`
+	Reaction    ReactionClazz  `json:"reaction"`
 }
 
 func (m *TLStoriesSendReaction) String() string {
@@ -47591,15 +48439,17 @@ func (m *TLStoriesSendReaction) Decode(d *bin.Decoder) (err error) {
 				m.AddToRecent = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.StoryId, err = d.Int32()
 
-			m5 := &Reaction{}
-			_ = m5.Decode(d)
-			m.Reaction = m5
+			// m5 := &Reaction{}
+			// _ = m5.Decode(d)
+			// m.Reaction = m5
+			m.Reaction, _ = DecodeReactionClazz(d)
 
 			return nil
 		},
@@ -47617,8 +48467,8 @@ func (m *TLStoriesSendReaction) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetPeerStories <--
 type TLStoriesGetPeerStories struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLStoriesGetPeerStories) String() string {
@@ -47652,9 +48502,10 @@ func (m *TLStoriesGetPeerStories) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x2c4ada50: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -47720,8 +48571,8 @@ func (m *TLStoriesGetAllReadPeerStories) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetPeerMaxIDs <--
 type TLStoriesGetPeerMaxIDs struct {
-	ClazzID uint32       `json:"_id"`
-	Id      []*InputPeer `json:"id"`
+	ClazzID uint32           `json:"_id"`
+	Id      []InputPeerClazz `json:"id"`
 }
 
 func (m *TLStoriesGetPeerMaxIDs) String() string {
@@ -47760,12 +48611,15 @@ func (m *TLStoriesGetPeerMaxIDs) Decode(d *bin.Decoder) (err error) {
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputPeer, l1)
+			// v1 := make([]*InputPeer, l1)
+			v1 := make([]InputPeerClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputPeer)
-				err3 = vv.Decode(d)
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputPeerClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id = v1
 
@@ -47833,9 +48687,9 @@ func (m *TLStoriesGetChatsToSend) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesTogglePeerStoriesHidden <--
 type TLStoriesTogglePeerStoriesHidden struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Hidden  *Bool      `json:"hidden"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Hidden  BoolClazz      `json:"hidden"`
 }
 
 func (m *TLStoriesTogglePeerStoriesHidden) String() string {
@@ -47870,13 +48724,15 @@ func (m *TLStoriesTogglePeerStoriesHidden) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xbd0415c4: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &Bool{}
-			_ = m2.Decode(d)
-			m.Hidden = m2
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Hidden = m2
+			m.Hidden, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -47894,13 +48750,13 @@ func (m *TLStoriesTogglePeerStoriesHidden) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesGetStoryReactionsList <--
 type TLStoriesGetStoryReactionsList struct {
-	ClazzID       uint32     `json:"_id"`
-	ForwardsFirst bool       `json:"forwards_first"`
-	Peer          *InputPeer `json:"peer"`
-	Id            int32      `json:"id"`
-	Reaction      *Reaction  `json:"reaction"`
-	Offset        *string    `json:"offset"`
-	Limit         int32      `json:"limit"`
+	ClazzID       uint32         `json:"_id"`
+	ForwardsFirst bool           `json:"forwards_first"`
+	Peer          InputPeerClazz `json:"peer"`
+	Id            int32          `json:"id"`
+	Reaction      ReactionClazz  `json:"reaction"`
+	Offset        *string        `json:"offset"`
+	Limit         int32          `json:"limit"`
 }
 
 func (m *TLStoriesGetStoryReactionsList) String() string {
@@ -47970,15 +48826,17 @@ func (m *TLStoriesGetStoryReactionsList) Decode(d *bin.Decoder) (err error) {
 				m.ForwardsFirst = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = d.Int32()
 			if (flags & (1 << 0)) != 0 {
-				m5 := &Reaction{}
-				_ = m5.Decode(d)
-				m.Reaction = m5
+				// m5 := &Reaction{}
+				// _ = m5.Decode(d)
+				// m.Reaction = m5
+				m.Reaction, _ = DecodeReactionClazz(d)
 			}
 			if (flags & (1 << 1)) != 0 {
 				m.Offset = new(string)
@@ -48003,9 +48861,9 @@ func (m *TLStoriesGetStoryReactionsList) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesTogglePinnedToTop <--
 type TLStoriesTogglePinnedToTop struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	Id      []int32    `json:"id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Id      []int32        `json:"id"`
 }
 
 func (m *TLStoriesTogglePinnedToTop) String() string {
@@ -48041,9 +48899,10 @@ func (m *TLStoriesTogglePinnedToTop) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb297e9b: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
 
@@ -48063,12 +48922,12 @@ func (m *TLStoriesTogglePinnedToTop) Decode(d *bin.Decoder) (err error) {
 
 // TLStoriesSearchPosts <--
 type TLStoriesSearchPosts struct {
-	ClazzID uint32     `json:"_id"`
-	Hashtag *string    `json:"hashtag"`
-	Area    *MediaArea `json:"area"`
-	Peer    *InputPeer `json:"peer"`
-	Offset  string     `json:"offset"`
-	Limit   int32      `json:"limit"`
+	ClazzID uint32         `json:"_id"`
+	Hashtag *string        `json:"hashtag"`
+	Area    MediaAreaClazz `json:"area"`
+	Peer    InputPeerClazz `json:"peer"`
+	Offset  string         `json:"offset"`
+	Limit   int32          `json:"limit"`
 }
 
 func (m *TLStoriesSearchPosts) String() string {
@@ -48142,14 +49001,16 @@ func (m *TLStoriesSearchPosts) Decode(d *bin.Decoder) (err error) {
 			}
 
 			if (flags & (1 << 1)) != 0 {
-				m3 := &MediaArea{}
-				_ = m3.Decode(d)
-				m.Area = m3
+				// m3 := &MediaArea{}
+				// _ = m3.Decode(d)
+				// m.Area = m3
+				m.Area, _ = DecodeMediaAreaClazz(d)
 			}
 			if (flags & (1 << 2)) != 0 {
-				m4 := &InputPeer{}
-				_ = m4.Decode(d)
-				m.Peer = m4
+				// m4 := &InputPeer{}
+				// _ = m4.Decode(d)
+				// m.Peer = m4
+				m.Peer, _ = DecodeInputPeerClazz(d)
 			}
 			m.Offset, err = d.String()
 			m.Limit, err = d.Int32()
@@ -48170,11 +49031,11 @@ func (m *TLStoriesSearchPosts) Decode(d *bin.Decoder) (err error) {
 
 // TLPremiumGetBoostsList <--
 type TLPremiumGetBoostsList struct {
-	ClazzID uint32     `json:"_id"`
-	Gifts   bool       `json:"gifts"`
-	Peer    *InputPeer `json:"peer"`
-	Offset  string     `json:"offset"`
-	Limit   int32      `json:"limit"`
+	ClazzID uint32         `json:"_id"`
+	Gifts   bool           `json:"gifts"`
+	Peer    InputPeerClazz `json:"peer"`
+	Offset  string         `json:"offset"`
+	Limit   int32          `json:"limit"`
 }
 
 func (m *TLPremiumGetBoostsList) String() string {
@@ -48229,9 +49090,10 @@ func (m *TLPremiumGetBoostsList) Decode(d *bin.Decoder) (err error) {
 				m.Gifts = true
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Offset, err = d.String()
 			m.Limit, err = d.Int32()
@@ -48300,9 +49162,9 @@ func (m *TLPremiumGetMyBoosts) Decode(d *bin.Decoder) (err error) {
 
 // TLPremiumApplyBoost <--
 type TLPremiumApplyBoost struct {
-	ClazzID uint32     `json:"_id"`
-	Slots   []int32    `json:"slots"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Slots   []int32        `json:"slots"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLPremiumApplyBoost) String() string {
@@ -48358,9 +49220,10 @@ func (m *TLPremiumApplyBoost) Decode(d *bin.Decoder) (err error) {
 				m.Slots, err = iface.DecodeInt32List(d)
 			}
 
-			m3 := &InputPeer{}
-			_ = m3.Decode(d)
-			m.Peer = m3
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -48378,8 +49241,8 @@ func (m *TLPremiumApplyBoost) Decode(d *bin.Decoder) (err error) {
 
 // TLPremiumGetBoostsStatus <--
 type TLPremiumGetBoostsStatus struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
 }
 
 func (m *TLPremiumGetBoostsStatus) String() string {
@@ -48413,9 +49276,10 @@ func (m *TLPremiumGetBoostsStatus) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x42f1f61: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
 		},
@@ -48433,9 +49297,9 @@ func (m *TLPremiumGetBoostsStatus) Decode(d *bin.Decoder) (err error) {
 
 // TLPremiumGetUserBoosts <--
 type TLPremiumGetUserBoosts struct {
-	ClazzID uint32     `json:"_id"`
-	Peer    *InputPeer `json:"peer"`
-	UserId  *InputUser `json:"user_id"`
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	UserId  InputUserClazz `json:"user_id"`
 }
 
 func (m *TLPremiumGetUserBoosts) String() string {
@@ -48470,13 +49334,15 @@ func (m *TLPremiumGetUserBoosts) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x39854d1f: func() (err error) {
 
-			m1 := &InputPeer{}
-			_ = m1.Decode(d)
-			m.Peer = m1
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m2 := &InputUser{}
-			_ = m2.Decode(d)
-			m.UserId = m2
+			// m2 := &InputUser{}
+			// _ = m2.Decode(d)
+			// m.UserId = m2
+			m.UserId, _ = DecodeInputUserClazz(d)
 
 			return nil
 		},
@@ -48883,8 +49749,8 @@ func (m *TLSmsjobsFinishJob) Decode(d *bin.Decoder) (err error) {
 
 // TLFragmentGetCollectibleInfo <--
 type TLFragmentGetCollectibleInfo struct {
-	ClazzID     uint32            `json:"_id"`
-	Collectible *InputCollectible `json:"collectible"`
+	ClazzID     uint32                `json:"_id"`
+	Collectible InputCollectibleClazz `json:"collectible"`
 }
 
 func (m *TLFragmentGetCollectibleInfo) String() string {
@@ -48918,9 +49784,10 @@ func (m *TLFragmentGetCollectibleInfo) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xbe1e85ba: func() (err error) {
 
-			m1 := &InputCollectible{}
-			_ = m1.Decode(d)
-			m.Collectible = m1
+			// m1 := &InputCollectible{}
+			// _ = m1.Decode(d)
+			// m.Collectible = m1
+			m.Collectible, _ = DecodeInputCollectibleClazz(d)
 
 			return nil
 		},
@@ -48938,8 +49805,8 @@ func (m *TLFragmentGetCollectibleInfo) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsCanPurchasePremium <--
 type TLPaymentsCanPurchasePremium struct {
-	ClazzID uint32                    `json:"_id"`
-	Purpose *InputStorePaymentPurpose `json:"purpose"`
+	ClazzID uint32                        `json:"_id"`
+	Purpose InputStorePaymentPurposeClazz `json:"purpose"`
 }
 
 func (m *TLPaymentsCanPurchasePremium) String() string {
@@ -48973,9 +49840,10 @@ func (m *TLPaymentsCanPurchasePremium) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x9fc19eb6: func() (err error) {
 
-			m1 := &InputStorePaymentPurpose{}
-			_ = m1.Decode(d)
-			m.Purpose = m1
+			// m1 := &InputStorePaymentPurpose{}
+			// _ = m1.Decode(d)
+			// m.Purpose = m1
+			m.Purpose, _ = DecodeInputStorePaymentPurposeClazz(d)
 
 			return nil
 		},
@@ -48993,8 +49861,8 @@ func (m *TLPaymentsCanPurchasePremium) Decode(d *bin.Decoder) (err error) {
 
 // TLUsersGetIsPremiumRequiredToContact <--
 type TLUsersGetIsPremiumRequiredToContact struct {
-	ClazzID uint32       `json:"_id"`
-	Id      []*InputUser `json:"id"`
+	ClazzID uint32           `json:"_id"`
+	Id      []InputUserClazz `json:"id"`
 }
 
 func (m *TLUsersGetIsPremiumRequiredToContact) String() string {
@@ -49033,12 +49901,15 @@ func (m *TLUsersGetIsPremiumRequiredToContact) Decode(d *bin.Decoder) (err error
 				return err2
 			}
 			l1, err3 := d.Int()
-			v1 := make([]*InputUser, l1)
+			// v1 := make([]*InputUser, l1)
+			v1 := make([]InputUserClazz, l1)
 			for i := 0; i < l1; i++ {
-				vv := new(InputUser)
-				err3 = vv.Decode(d)
+				// vv := new(InputUser)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v1[i] = vv
+				v1[i], _ = DecodeInputUserClazz(d)
 				_ = err3
-				v1[i] = vv
 			}
 			m.Id = v1
 
@@ -49875,8 +50746,8 @@ func (m *TLAuthToggleBan) Decode(d *bin.Decoder) (err error) {
 
 // TLBizInvokeBizDataRaw <--
 type TLBizInvokeBizDataRaw struct {
-	ClazzID uint32      `json:"_id"`
-	BizData *BizDataRaw `json:"biz_data"`
+	ClazzID uint32          `json:"_id"`
+	BizData BizDataRawClazz `json:"biz_data"`
 }
 
 func (m *TLBizInvokeBizDataRaw) String() string {
@@ -49910,9 +50781,10 @@ func (m *TLBizInvokeBizDataRaw) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0x5a191146: func() (err error) {
 
-			m1 := &BizDataRaw{}
-			_ = m1.Decode(d)
-			m.BizData = m1
+			// m1 := &BizDataRaw{}
+			// _ = m1.Decode(d)
+			// m.BizData = m1
+			m.BizData, _ = DecodeBizDataRawClazz(d)
 
 			return nil
 		},

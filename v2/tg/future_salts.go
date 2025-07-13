@@ -11,13 +11,16 @@ import (
 )
 
 type (
-	FutureSalt    = mt.FutureSalt
-	TLFutureSalt  = mt.TLFutureSalt
-	FutureSalts   = mt.FutureSalts
-	TLFutureSalts = mt.TLFutureSalts
+	FutureSalt       = mt.FutureSalt
+	FutureSaltClazz  = mt.FutureSaltClazz
+	TLFutureSalt     = mt.TLFutureSalt
+	FutureSalts      = mt.FutureSalts
+	FutureSaltsClazz = mt.FutureSaltsClazz
+	TLFutureSalts    = mt.TLFutureSalts
 )
 
 var (
-	MakeFutureSalts = mt.MakeFutureSalts
-	MakeFutureSalt  = mt.MakeFutureSalt
+	MakeFutureSalts       = mt.MakeFutureSalts
+	MakeFutureSalt        = mt.MakeFutureSalt
+	DecodeFutureSaltClazz = mt.DecodeFutureSaltClazz
 )
