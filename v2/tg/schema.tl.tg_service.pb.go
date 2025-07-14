@@ -50806,7 +50806,7 @@ func (m *TLBizInvokeBizDataRaw) Decode(d *bin.Decoder) (err error) {
 
 // VectorSecureValue <--
 type VectorSecureValue struct {
-	Datas []*SecureValue `json:"datas"`
+	Datas []SecureValueClazz `json:"_datas"`
 }
 
 func (m *VectorSecureValue) String() string {
@@ -50823,14 +50823,14 @@ func (m *VectorSecureValue) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorSecureValue) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*SecureValue](d)
+	m.Datas, err = iface.DecodeObjectList[SecureValueClazz](d)
 
 	return err
 }
 
 // VectorWallPaper <--
 type VectorWallPaper struct {
-	Datas []*WallPaper `json:"datas"`
+	Datas []WallPaperClazz `json:"_datas"`
 }
 
 func (m *VectorWallPaper) String() string {
@@ -50847,14 +50847,14 @@ func (m *VectorWallPaper) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorWallPaper) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*WallPaper](d)
+	m.Datas, err = iface.DecodeObjectList[WallPaperClazz](d)
 
 	return err
 }
 
 // VectorUser <--
 type VectorUser struct {
-	Datas []*User `json:"datas"`
+	Datas []UserClazz `json:"_datas"`
 }
 
 func (m *VectorUser) String() string {
@@ -50871,14 +50871,14 @@ func (m *VectorUser) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorUser) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*User](d)
+	m.Datas, err = iface.DecodeObjectList[UserClazz](d)
 
 	return err
 }
 
 // VectorRequirementToContact <--
 type VectorRequirementToContact struct {
-	Datas []*RequirementToContact `json:"datas"`
+	Datas []RequirementToContactClazz `json:"_datas"`
 }
 
 func (m *VectorRequirementToContact) String() string {
@@ -50895,14 +50895,14 @@ func (m *VectorRequirementToContact) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorRequirementToContact) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*RequirementToContact](d)
+	m.Datas, err = iface.DecodeObjectList[RequirementToContactClazz](d)
 
 	return err
 }
 
 // VectorInt <--
 type VectorInt struct {
-	Datas []int32 `json:"datas"`
+	Datas []int32 `json:"_datas"`
 }
 
 func (m *VectorInt) String() string {
@@ -50926,7 +50926,7 @@ func (m *VectorInt) Decode(d *bin.Decoder) (err error) {
 
 // VectorContactStatus <--
 type VectorContactStatus struct {
-	Datas []*ContactStatus `json:"datas"`
+	Datas []ContactStatusClazz `json:"_datas"`
 }
 
 func (m *VectorContactStatus) String() string {
@@ -50943,14 +50943,14 @@ func (m *VectorContactStatus) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorContactStatus) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*ContactStatus](d)
+	m.Datas, err = iface.DecodeObjectList[ContactStatusClazz](d)
 
 	return err
 }
 
 // VectorSavedContact <--
 type VectorSavedContact struct {
-	Datas []*SavedContact `json:"datas"`
+	Datas []SavedContactClazz `json:"_datas"`
 }
 
 func (m *VectorSavedContact) String() string {
@@ -50967,14 +50967,14 @@ func (m *VectorSavedContact) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorSavedContact) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*SavedContact](d)
+	m.Datas, err = iface.DecodeObjectList[SavedContactClazz](d)
 
 	return err
 }
 
 // VectorReceivedNotifyMessage <--
 type VectorReceivedNotifyMessage struct {
-	Datas []*ReceivedNotifyMessage `json:"datas"`
+	Datas []ReceivedNotifyMessageClazz `json:"_datas"`
 }
 
 func (m *VectorReceivedNotifyMessage) String() string {
@@ -50991,14 +50991,14 @@ func (m *VectorReceivedNotifyMessage) Encode(x *bin.Encoder, layer int32) error 
 
 // Decode <--
 func (m *VectorReceivedNotifyMessage) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*ReceivedNotifyMessage](d)
+	m.Datas, err = iface.DecodeObjectList[ReceivedNotifyMessageClazz](d)
 
 	return err
 }
 
 // VectorLong <--
 type VectorLong struct {
-	Datas []int64 `json:"datas"`
+	Datas []int64 `json:"_datas"`
 }
 
 func (m *VectorLong) String() string {
@@ -51022,7 +51022,7 @@ func (m *VectorLong) Decode(d *bin.Decoder) (err error) {
 
 // VectorStickerSetCovered <--
 type VectorStickerSetCovered struct {
-	Datas []*StickerSetCovered `json:"datas"`
+	Datas []StickerSetCoveredClazz `json:"_datas"`
 }
 
 func (m *VectorStickerSetCovered) String() string {
@@ -51039,14 +51039,14 @@ func (m *VectorStickerSetCovered) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorStickerSetCovered) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*StickerSetCovered](d)
+	m.Datas, err = iface.DecodeObjectList[StickerSetCoveredClazz](d)
 
 	return err
 }
 
 // VectorMessageRange <--
 type VectorMessageRange struct {
-	Datas []*MessageRange `json:"datas"`
+	Datas []MessageRangeClazz `json:"_datas"`
 }
 
 func (m *VectorMessageRange) String() string {
@@ -51063,14 +51063,14 @@ func (m *VectorMessageRange) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorMessageRange) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*MessageRange](d)
+	m.Datas, err = iface.DecodeObjectList[MessageRangeClazz](d)
 
 	return err
 }
 
 // VectorDialogPeer <--
 type VectorDialogPeer struct {
-	Datas []*DialogPeer `json:"datas"`
+	Datas []DialogPeerClazz `json:"_datas"`
 }
 
 func (m *VectorDialogPeer) String() string {
@@ -51087,14 +51087,14 @@ func (m *VectorDialogPeer) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorDialogPeer) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*DialogPeer](d)
+	m.Datas, err = iface.DecodeObjectList[DialogPeerClazz](d)
 
 	return err
 }
 
 // VectorEmojiLanguage <--
 type VectorEmojiLanguage struct {
-	Datas []*EmojiLanguage `json:"datas"`
+	Datas []EmojiLanguageClazz `json:"_datas"`
 }
 
 func (m *VectorEmojiLanguage) String() string {
@@ -51111,14 +51111,14 @@ func (m *VectorEmojiLanguage) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorEmojiLanguage) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*EmojiLanguage](d)
+	m.Datas, err = iface.DecodeObjectList[EmojiLanguageClazz](d)
 
 	return err
 }
 
 // VectorMessagesSearchCounter <--
 type VectorMessagesSearchCounter struct {
-	Datas []*MessagesSearchCounter `json:"datas"`
+	Datas []MessagesSearchCounterClazz `json:"_datas"`
 }
 
 func (m *VectorMessagesSearchCounter) String() string {
@@ -51135,14 +51135,14 @@ func (m *VectorMessagesSearchCounter) Encode(x *bin.Encoder, layer int32) error 
 
 // Decode <--
 func (m *VectorMessagesSearchCounter) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*MessagesSearchCounter](d)
+	m.Datas, err = iface.DecodeObjectList[MessagesSearchCounterClazz](d)
 
 	return err
 }
 
 // VectorDialogFilterSuggested <--
 type VectorDialogFilterSuggested struct {
-	Datas []*DialogFilterSuggested `json:"datas"`
+	Datas []DialogFilterSuggestedClazz `json:"_datas"`
 }
 
 func (m *VectorDialogFilterSuggested) String() string {
@@ -51159,14 +51159,14 @@ func (m *VectorDialogFilterSuggested) Encode(x *bin.Encoder, layer int32) error 
 
 // Decode <--
 func (m *VectorDialogFilterSuggested) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*DialogFilterSuggested](d)
+	m.Datas, err = iface.DecodeObjectList[DialogFilterSuggestedClazz](d)
 
 	return err
 }
 
 // VectorReadParticipantDate <--
 type VectorReadParticipantDate struct {
-	Datas []*ReadParticipantDate `json:"datas"`
+	Datas []ReadParticipantDateClazz `json:"_datas"`
 }
 
 func (m *VectorReadParticipantDate) String() string {
@@ -51183,14 +51183,14 @@ func (m *VectorReadParticipantDate) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorReadParticipantDate) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*ReadParticipantDate](d)
+	m.Datas, err = iface.DecodeObjectList[ReadParticipantDateClazz](d)
 
 	return err
 }
 
 // VectorDocument <--
 type VectorDocument struct {
-	Datas []*Document `json:"datas"`
+	Datas []DocumentClazz `json:"_datas"`
 }
 
 func (m *VectorDocument) String() string {
@@ -51207,14 +51207,14 @@ func (m *VectorDocument) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorDocument) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*Document](d)
+	m.Datas, err = iface.DecodeObjectList[DocumentClazz](d)
 
 	return err
 }
 
 // VectorFactCheck <--
 type VectorFactCheck struct {
-	Datas []*FactCheck `json:"datas"`
+	Datas []FactCheckClazz `json:"_datas"`
 }
 
 func (m *VectorFactCheck) String() string {
@@ -51231,14 +51231,14 @@ func (m *VectorFactCheck) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorFactCheck) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*FactCheck](d)
+	m.Datas, err = iface.DecodeObjectList[FactCheckClazz](d)
 
 	return err
 }
 
 // VectorFileHash <--
 type VectorFileHash struct {
-	Datas []*FileHash `json:"datas"`
+	Datas []FileHashClazz `json:"_datas"`
 }
 
 func (m *VectorFileHash) String() string {
@@ -51255,14 +51255,14 @@ func (m *VectorFileHash) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorFileHash) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*FileHash](d)
+	m.Datas, err = iface.DecodeObjectList[FileHashClazz](d)
 
 	return err
 }
 
 // VectorBotCommand <--
 type VectorBotCommand struct {
-	Datas []*BotCommand `json:"datas"`
+	Datas []BotCommandClazz `json:"_datas"`
 }
 
 func (m *VectorBotCommand) String() string {
@@ -51279,14 +51279,14 @@ func (m *VectorBotCommand) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorBotCommand) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*BotCommand](d)
+	m.Datas, err = iface.DecodeObjectList[BotCommandClazz](d)
 
 	return err
 }
 
 // VectorBotPreviewMedia <--
 type VectorBotPreviewMedia struct {
-	Datas []*BotPreviewMedia `json:"datas"`
+	Datas []BotPreviewMediaClazz `json:"_datas"`
 }
 
 func (m *VectorBotPreviewMedia) String() string {
@@ -51303,14 +51303,14 @@ func (m *VectorBotPreviewMedia) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorBotPreviewMedia) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*BotPreviewMedia](d)
+	m.Datas, err = iface.DecodeObjectList[BotPreviewMediaClazz](d)
 
 	return err
 }
 
 // VectorPremiumGiftCodeOption <--
 type VectorPremiumGiftCodeOption struct {
-	Datas []*PremiumGiftCodeOption `json:"datas"`
+	Datas []PremiumGiftCodeOptionClazz `json:"_datas"`
 }
 
 func (m *VectorPremiumGiftCodeOption) String() string {
@@ -51327,14 +51327,14 @@ func (m *VectorPremiumGiftCodeOption) Encode(x *bin.Encoder, layer int32) error 
 
 // Decode <--
 func (m *VectorPremiumGiftCodeOption) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*PremiumGiftCodeOption](d)
+	m.Datas, err = iface.DecodeObjectList[PremiumGiftCodeOptionClazz](d)
 
 	return err
 }
 
 // VectorStarsTopupOption <--
 type VectorStarsTopupOption struct {
-	Datas []*StarsTopupOption `json:"datas"`
+	Datas []StarsTopupOptionClazz `json:"_datas"`
 }
 
 func (m *VectorStarsTopupOption) String() string {
@@ -51351,14 +51351,14 @@ func (m *VectorStarsTopupOption) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorStarsTopupOption) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*StarsTopupOption](d)
+	m.Datas, err = iface.DecodeObjectList[StarsTopupOptionClazz](d)
 
 	return err
 }
 
 // VectorStarsGiftOption <--
 type VectorStarsGiftOption struct {
-	Datas []*StarsGiftOption `json:"datas"`
+	Datas []StarsGiftOptionClazz `json:"_datas"`
 }
 
 func (m *VectorStarsGiftOption) String() string {
@@ -51375,14 +51375,14 @@ func (m *VectorStarsGiftOption) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorStarsGiftOption) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*StarsGiftOption](d)
+	m.Datas, err = iface.DecodeObjectList[StarsGiftOptionClazz](d)
 
 	return err
 }
 
 // VectorStarsGiveawayOption <--
 type VectorStarsGiveawayOption struct {
-	Datas []*StarsGiveawayOption `json:"datas"`
+	Datas []StarsGiveawayOptionClazz `json:"_datas"`
 }
 
 func (m *VectorStarsGiveawayOption) String() string {
@@ -51399,14 +51399,14 @@ func (m *VectorStarsGiveawayOption) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorStarsGiveawayOption) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*StarsGiveawayOption](d)
+	m.Datas, err = iface.DecodeObjectList[StarsGiveawayOptionClazz](d)
 
 	return err
 }
 
 // VectorLangPackString <--
 type VectorLangPackString struct {
-	Datas []*LangPackString `json:"datas"`
+	Datas []LangPackStringClazz `json:"_datas"`
 }
 
 func (m *VectorLangPackString) String() string {
@@ -51423,14 +51423,14 @@ func (m *VectorLangPackString) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorLangPackString) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*LangPackString](d)
+	m.Datas, err = iface.DecodeObjectList[LangPackStringClazz](d)
 
 	return err
 }
 
 // VectorLangPackLanguage <--
 type VectorLangPackLanguage struct {
-	Datas []*LangPackLanguage `json:"datas"`
+	Datas []LangPackLanguageClazz `json:"_datas"`
 }
 
 func (m *VectorLangPackLanguage) String() string {
@@ -51447,14 +51447,14 @@ func (m *VectorLangPackLanguage) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorLangPackLanguage) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*LangPackLanguage](d)
+	m.Datas, err = iface.DecodeObjectList[LangPackLanguageClazz](d)
 
 	return err
 }
 
 // VectorPeer <--
 type VectorPeer struct {
-	Datas []*Peer `json:"datas"`
+	Datas []PeerClazz `json:"_datas"`
 }
 
 func (m *VectorPeer) String() string {
@@ -51471,14 +51471,14 @@ func (m *VectorPeer) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorPeer) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*Peer](d)
+	m.Datas, err = iface.DecodeObjectList[PeerClazz](d)
 
 	return err
 }
 
 // VectorBool <--
 type VectorBool struct {
-	Datas []*Bool `json:"datas"`
+	Datas []BoolClazz `json:"_datas"`
 }
 
 func (m *VectorBool) String() string {
@@ -51495,14 +51495,14 @@ func (m *VectorBool) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorBool) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*Bool](d)
+	m.Datas, err = iface.DecodeObjectList[BoolClazz](d)
 
 	return err
 }
 
 // VectorPredefinedUser <--
 type VectorPredefinedUser struct {
-	Datas []*PredefinedUser `json:"datas"`
+	Datas []PredefinedUserClazz `json:"_datas"`
 }
 
 func (m *VectorPredefinedUser) String() string {
@@ -51519,7 +51519,7 @@ func (m *VectorPredefinedUser) Encode(x *bin.Encoder, layer int32) error {
 
 // Decode <--
 func (m *VectorPredefinedUser) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[*PredefinedUser](d)
+	m.Datas, err = iface.DecodeObjectList[PredefinedUserClazz](d)
 
 	return err
 }

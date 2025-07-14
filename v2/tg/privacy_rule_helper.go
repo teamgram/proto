@@ -110,7 +110,7 @@ const (
 )
 
 func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
-	switch k.InputPrivacyKeyClazzName() {
+	switch k.Clazz.InputPrivacyKeyClazzName() {
 	case ClazzName_inputPrivacyKeyStatusTimestamp:
 		return STATUS_TIMESTAMP
 	case ClazzName_inputPrivacyKeyChatInvite:
@@ -144,22 +144,22 @@ func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
 }
 
 var (
-	cachePrivacyKeyStatusTimestamp   = MakePrivacyKey(&TLPrivacyKeyStatusTimestamp{})
-	cachePrivacyKeyChatInvite        = MakePrivacyKey(&TLPrivacyKeyChatInvite{})
-	cachePrivacyKeyPhoneCall         = MakePrivacyKey(&TLPrivacyKeyPhoneCall{})
-	cachePrivacyKeyPhoneP2P          = MakePrivacyKey(&TLPrivacyKeyPhoneP2P{})
-	cachePrivacyKeyForwards          = MakePrivacyKey(&TLPrivacyKeyForwards{})
-	cachePrivacyKeyProfilePhoto      = MakePrivacyKey(&TLPrivacyKeyProfilePhoto{})
-	cachePrivacyKeyPhoneNumber       = MakePrivacyKey(&TLPrivacyKeyPhoneNumber{})
-	cachePrivacyKeyAddedByPhone      = MakePrivacyKey(&TLPrivacyKeyAddedByPhone{})
-	cachePrivacyKeyVoiceMessages     = MakePrivacyKey(&TLPrivacyKeyVoiceMessages{})
-	cachePrivacyKeyAbout             = MakePrivacyKey(&TLPrivacyKeyAbout{})
-	cachePrivacyKeyBirthday          = MakePrivacyKey(&TLPrivacyKeyBirthday{})
-	cachePrivacyKeyStarGiftsAutoSave = MakePrivacyKey(&TLPrivacyKeyStarGiftsAutoSave{})
-	cachePrivacyKeyNoPaidMessages    = MakePrivacyKey(&TLPrivacyKeyNoPaidMessages{})
+	cachePrivacyKeyStatusTimestamp   = MakeTLPrivacyKeyStatusTimestamp(&TLPrivacyKeyStatusTimestamp{})
+	cachePrivacyKeyChatInvite        = MakeTLPrivacyKeyChatInvite(&TLPrivacyKeyChatInvite{})
+	cachePrivacyKeyPhoneCall         = MakeTLPrivacyKeyPhoneCall(&TLPrivacyKeyPhoneCall{})
+	cachePrivacyKeyPhoneP2P          = MakeTLPrivacyKeyPhoneP2P(&TLPrivacyKeyPhoneP2P{})
+	cachePrivacyKeyForwards          = MakeTLPrivacyKeyForwards(&TLPrivacyKeyForwards{})
+	cachePrivacyKeyProfilePhoto      = MakeTLPrivacyKeyProfilePhoto(&TLPrivacyKeyProfilePhoto{})
+	cachePrivacyKeyPhoneNumber       = MakeTLPrivacyKeyPhoneNumber(&TLPrivacyKeyPhoneNumber{})
+	cachePrivacyKeyAddedByPhone      = MakeTLPrivacyKeyAddedByPhone(&TLPrivacyKeyAddedByPhone{})
+	cachePrivacyKeyVoiceMessages     = MakeTLPrivacyKeyVoiceMessages(&TLPrivacyKeyVoiceMessages{})
+	cachePrivacyKeyAbout             = MakeTLPrivacyKeyAbout(&TLPrivacyKeyAbout{})
+	cachePrivacyKeyBirthday          = MakeTLPrivacyKeyBirthday(&TLPrivacyKeyBirthday{})
+	cachePrivacyKeyStarGiftsAutoSave = MakeTLPrivacyKeyStarGiftsAutoSave(&TLPrivacyKeyStarGiftsAutoSave{})
+	cachePrivacyKeyNoPaidMessages    = MakeTLPrivacyKeyNoPaidMessages(&TLPrivacyKeyNoPaidMessages{})
 )
 
-func ToPrivacyKey(keyType int) (key *PrivacyKey) {
+func ToPrivacyKey(keyType int) (key PrivacyKeyClazz) {
 	switch keyType {
 	case STATUS_TIMESTAMP:
 		key = cachePrivacyKeyStatusTimestamp

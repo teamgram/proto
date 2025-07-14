@@ -52,7 +52,7 @@ TODO(@benqi):
 	messageEntityBlockquote#20df5d0 offset:int length:int = MessageEntity;
 */
 
-func MakeTextAndMessageEntities(m MessageBuildHelper) (text string, entities []*MessageEntity) {
+func MakeTextAndMessageEntities(m MessageBuildHelper) (text string, entities []MessageEntityClazz) {
 	if len(m) == 0 {
 		return
 	}
@@ -68,90 +68,90 @@ func MakeTextAndMessageEntities(m MessageBuildHelper) (text string, entities []*
 		if length > 0 {
 			switch m[i].EntityType {
 			case ClazzName_messageEntityUnknown:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityUnknown{
+				entities = append(entities, MakeTLMessageEntityUnknown(&TLMessageEntityUnknown{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityMention:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityMention{
+				entities = append(entities, MakeTLMessageEntityMention(&TLMessageEntityMention{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityHashtag:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityHashtag{
+				entities = append(entities, MakeTLMessageEntityHashtag(&TLMessageEntityHashtag{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityBotCommand:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityBotCommand{
+				entities = append(entities, MakeTLMessageEntityBotCommand(&TLMessageEntityBotCommand{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityUrl:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityUrl{
+				entities = append(entities, MakeTLMessageEntityUrl(&TLMessageEntityUrl{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityEmail:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityEmail{
+				entities = append(entities, MakeTLMessageEntityEmail(&TLMessageEntityEmail{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityBold:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityBold{
+				entities = append(entities, MakeTLMessageEntityBold(&TLMessageEntityBold{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityItalic:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityItalic{
+				entities = append(entities, MakeTLMessageEntityItalic(&TLMessageEntityItalic{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityCode:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityCode{
+				entities = append(entities, MakeTLMessageEntityCode(&TLMessageEntityCode{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityPre:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityPre{
+				entities = append(entities, MakeTLMessageEntityPre(&TLMessageEntityPre{
 					Offset:   int32(offset),
 					Length:   int32(length),
 					Language: m[i].EntityLanguage,
 				}))
 			case ClazzName_messageEntityTextUrl:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityTextUrl{
+				entities = append(entities, MakeTLMessageEntityTextUrl(&TLMessageEntityTextUrl{
 					Offset: int32(offset),
 					Length: int32(length),
 					Url:    m[i].EntityUrl,
 				}))
 			case ClazzName_messageEntityMentionName:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityMentionName{
+				entities = append(entities, MakeTLMessageEntityMentionName(&TLMessageEntityMentionName{
 					Offset:       int32(offset),
 					Length:       int32(length),
 					UserId_INT64: m[i].EntityUserId,
 				}))
 			case ClazzName_messageEntityPhone:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityPhone{
+				entities = append(entities, MakeTLMessageEntityPhone(&TLMessageEntityPhone{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityCashtag:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityCashtag{
+				entities = append(entities, MakeTLMessageEntityCashtag(&TLMessageEntityCashtag{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityUnderline:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityUnderline{
+				entities = append(entities, MakeTLMessageEntityUnderline(&TLMessageEntityUnderline{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityStrike:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityStrike{
+				entities = append(entities, MakeTLMessageEntityStrike(&TLMessageEntityStrike{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))
 			case ClazzName_messageEntityBlockquote:
-				entities = append(entities, MakeMessageEntity(&TLMessageEntityBlockquote{
+				entities = append(entities, MakeTLMessageEntityBlockquote(&TLMessageEntityBlockquote{
 					Offset: int32(offset),
 					Length: int32(length),
 				}))

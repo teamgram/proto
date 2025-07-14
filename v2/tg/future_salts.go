@@ -20,7 +20,7 @@ type (
 )
 
 var (
-	MakeFutureSalts       = mt.MakeFutureSalts
-	MakeFutureSalt        = mt.MakeFutureSalt
+	MakeTLFutureSalts     = mt.MakeTLFutureSalts
+	MakeTLFutureSalt      = mt.MakeTLFutureSalt
 	DecodeFutureSaltClazz = mt.DecodeFutureSaltClazz
 )

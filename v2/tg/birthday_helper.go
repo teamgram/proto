@@ -10,7 +10,7 @@ import (
 	"fmt"
 )
 
-func FromBirthdayString(birthday string) (v *Birthday) {
+func FromBirthdayString(birthday string) (v BirthdayClazz) {
 	if len(birthday) == 0 {
 		return
 	}
@@ -27,7 +27,7 @@ func FromBirthdayString(birthday string) (v *Birthday) {
 		day = 0
 	}
 
-	v = MakeBirthday(&TLBirthday{
+	v = MakeTLBirthday(&TLBirthday{
 		Year:  MakeFlagsInt32(year),
 		Month: month,
 		Day:   day,

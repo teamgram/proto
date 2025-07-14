@@ -47,20 +47,30 @@ func ChatIdIsChannel(id int64) bool {
 }
 
 var (
-	BoolTrue  = MakeBool(&TLBoolTrue{})
-	BoolFalse = MakeBool(&TLBoolTrue{})
+	BoolTrueClazz  = MakeTLBoolTrue(&TLBoolTrue{})
+	BoolTrue       = BoolTrueClazz.ToBool()
+	BoolFalseClazz = MakeTLBoolFalse(&TLBoolFalse{})
+	BoolFalse      = BoolFalseClazz.ToBool()
 )
 
 func MakeInt32Helper(v int32) *Int32 {
-	return MakeInt32(&TLInt32{V: v})
+	return &Int32{Clazz: &TLInt32{ClazzName2: ClazzName_int32, V: v}}
 }
 
 func MakeInt64Helper(v int64) *Int64 {
-	return MakeInt64(&TLInt64{V: v})
+	return &Int64{Clazz: &TLInt64{ClazzName2: ClazzName_int64, V: v}}
 }
 
 func MakeStringHelper(v string) *String {
-	return MakeString(&TLString{V: v})
+	return &String{Clazz: &TLString{ClazzName2: ClazzName_string, V: v}}
+}
+
+func ToBoolClazz(b bool) BoolClazz {
+	if b {
+		return BoolTrueClazz
+	} else {
+		return BoolFalseClazz
+	}
 }
 
 func ToBool(b bool) *Bool {
@@ -71,8 +81,34 @@ func ToBool(b bool) *Bool {
 	}
 }
 
+func FromBoolClazz(b BoolClazz) bool {
+	if b == nil {
+		return false
+	} else {
+		switch b.(type) {
+		case *TLBoolTrue:
+			return true
+		case *TLBoolFalse:
+			return false
+		default:
+			return false
+		}
+	}
+}
+
 func FromBool(b *Bool) bool {
-	return ClazzName_boolTrue == b.BoolClazzName()
+	if b == nil || b.Clazz == nil {
+		return false
+	} else {
+		switch b.Clazz.(type) {
+		case *TLBoolTrue:
+			return true
+		case *TLBoolFalse:
+			return false
+		default:
+			return false
+		}
+	}
 }
 
 func MakeFlagsString(i string) (v *string) {
