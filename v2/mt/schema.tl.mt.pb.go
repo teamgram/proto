@@ -38,7 +38,7 @@ func DecodeBindAuthKeyInnerClazz(d *bin.Decoder) (BindAuthKeyInnerClazz, error) 
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_bind_auth_key_inner:
-		x := &TLBindAuthKeyInner{ClazzID: id}
+		x := &TLBindAuthKeyInner{ClazzID: id, ClazzName2: ClazzName_bind_auth_key_inner}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -223,7 +223,7 @@ func DecodeClientDHInnerDataClazz(d *bin.Decoder) (ClientDHInnerDataClazz, error
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_client_DH_inner_data:
-		x := &TLClientDHInnerData{ClazzID: id}
+		x := &TLClientDHInnerData{ClazzID: id, ClazzName2: ClazzName_client_DH_inner_data}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -407,15 +407,15 @@ func DecodeDestroyAuthKeyResClazz(d *bin.Decoder) (DestroyAuthKeyResClazz, error
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_destroy_auth_key_ok:
-		x := &TLDestroyAuthKeyOk{ClazzID: id}
+		x := &TLDestroyAuthKeyOk{ClazzID: id, ClazzName2: ClazzName_destroy_auth_key_ok}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_destroy_auth_key_none:
-		x := &TLDestroyAuthKeyNone{ClazzID: id}
+		x := &TLDestroyAuthKeyNone{ClazzID: id, ClazzName2: ClazzName_destroy_auth_key_none}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_destroy_auth_key_fail:
-		x := &TLDestroyAuthKeyFail{ClazzID: id}
+		x := &TLDestroyAuthKeyFail{ClazzID: id, ClazzName2: ClazzName_destroy_auth_key_fail}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -781,19 +781,19 @@ func DecodePQInnerDataClazz(d *bin.Decoder) (PQInnerDataClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_p_q_inner_data:
-		x := &TLPQInnerData{ClazzID: id}
+		x := &TLPQInnerData{ClazzID: id, ClazzName2: ClazzName_p_q_inner_data}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_p_q_inner_data_dc:
-		x := &TLPQInnerDataDc{ClazzID: id}
+		x := &TLPQInnerDataDc{ClazzID: id, ClazzName2: ClazzName_p_q_inner_data_dc}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_p_q_inner_data_temp:
-		x := &TLPQInnerDataTemp{ClazzID: id}
+		x := &TLPQInnerDataTemp{ClazzID: id, ClazzName2: ClazzName_p_q_inner_data_temp}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_p_q_inner_data_temp_dc:
-		x := &TLPQInnerDataTempDc{ClazzID: id}
+		x := &TLPQInnerDataTempDc{ClazzID: id, ClazzName2: ClazzName_p_q_inner_data_temp_dc}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -1341,7 +1341,7 @@ func DecodeResPQClazz(d *bin.Decoder) (ResPQClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_resPQ:
-		x := &TLResPQ{ClazzID: id}
+		x := &TLResPQ{ClazzID: id, ClazzName2: ClazzName_resPQ}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -1525,7 +1525,7 @@ func DecodeServerDHInnerDataClazz(d *bin.Decoder) (ServerDHInnerDataClazz, error
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_server_DH_inner_data:
-		x := &TLServerDHInnerData{ClazzID: id}
+		x := &TLServerDHInnerData{ClazzID: id, ClazzName2: ClazzName_server_DH_inner_data}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -1714,11 +1714,11 @@ func DecodeServerDHParamsClazz(d *bin.Decoder) (ServerDHParamsClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_server_DH_params_fail:
-		x := &TLServerDHParamsFail{ClazzID: id}
+		x := &TLServerDHParamsFail{ClazzID: id, ClazzName2: ClazzName_server_DH_params_fail}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_server_DH_params_ok:
-		x := &TLServerDHParamsOk{ClazzID: id}
+		x := &TLServerDHParamsOk{ClazzID: id, ClazzName2: ClazzName_server_DH_params_ok}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -2006,15 +2006,15 @@ func DecodeSetClientDHParamsAnswerClazz(d *bin.Decoder) (SetClientDHParamsAnswer
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_dh_gen_ok:
-		x := &TLDhGenOk{ClazzID: id}
+		x := &TLDhGenOk{ClazzID: id, ClazzName2: ClazzName_dh_gen_ok}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_dh_gen_retry:
-		x := &TLDhGenRetry{ClazzID: id}
+		x := &TLDhGenRetry{ClazzID: id, ClazzName2: ClazzName_dh_gen_retry}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_dh_gen_fail:
-		x := &TLDhGenFail{ClazzID: id}
+		x := &TLDhGenFail{ClazzID: id, ClazzName2: ClazzName_dh_gen_fail}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -2407,7 +2407,7 @@ func DecodeAccessPointRuleClazz(d *bin.Decoder) (AccessPointRuleClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_accessPointRule:
-		x := &TLAccessPointRule{ClazzID: id}
+		x := &TLAccessPointRule{ClazzID: id, ClazzName2: ClazzName_accessPointRule}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -2606,11 +2606,11 @@ func DecodeBadMsgNotificationClazz(d *bin.Decoder) (BadMsgNotificationClazz, err
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_bad_msg_notification:
-		x := &TLBadMsgNotification{ClazzID: id}
+		x := &TLBadMsgNotification{ClazzID: id, ClazzName2: ClazzName_bad_msg_notification}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_bad_server_salt:
-		x := &TLBadServerSalt{ClazzID: id}
+		x := &TLBadServerSalt{ClazzID: id, ClazzName2: ClazzName_bad_server_salt}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -2900,11 +2900,11 @@ func DecodeDestroySessionResClazz(d *bin.Decoder) (DestroySessionResClazz, error
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_destroy_session_ok:
-		x := &TLDestroySessionOk{ClazzID: id}
+		x := &TLDestroySessionOk{ClazzID: id, ClazzName2: ClazzName_destroy_session_ok}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_destroy_session_none:
-		x := &TLDestroySessionNone{ClazzID: id}
+		x := &TLDestroySessionNone{ClazzID: id, ClazzName2: ClazzName_destroy_session_none}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -3178,7 +3178,7 @@ func DecodeFutureSaltClazz(d *bin.Decoder) (FutureSaltClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_future_salt:
-		x := &TLFutureSalt{ClazzID: id}
+		x := &TLFutureSalt{ClazzID: id, ClazzName2: ClazzName_future_salt}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -3357,7 +3357,7 @@ func DecodeFutureSaltsClazz(d *bin.Decoder) (FutureSaltsClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_future_salts:
-		x := &TLFutureSalts{ClazzID: id}
+		x := &TLFutureSalts{ClazzID: id, ClazzName2: ClazzName_future_salts}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -3553,7 +3553,7 @@ func DecodeHelpConfigSimpleClazz(d *bin.Decoder) (HelpConfigSimpleClazz, error) 
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_help_configSimple:
-		x := &TLHelpConfigSimple{ClazzID: id}
+		x := &TLHelpConfigSimple{ClazzID: id, ClazzName2: ClazzName_help_configSimple}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -3751,7 +3751,7 @@ func DecodeHttpWaitClazz(d *bin.Decoder) (HttpWaitClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_http_wait:
-		x := &TLHttpWait{ClazzID: id}
+		x := &TLHttpWait{ClazzID: id, ClazzName2: ClazzName_http_wait}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -3931,11 +3931,11 @@ func DecodeIpPortClazz(d *bin.Decoder) (IpPortClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_ipPort:
-		x := &TLIpPort{ClazzID: id}
+		x := &TLIpPort{ClazzID: id, ClazzName2: ClazzName_ipPort}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_ipPortSecret:
-		x := &TLIpPortSecret{ClazzID: id}
+		x := &TLIpPortSecret{ClazzID: id, ClazzName2: ClazzName_ipPortSecret}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -4219,11 +4219,11 @@ func DecodeMsgDetailedInfoClazz(d *bin.Decoder) (MsgDetailedInfoClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msg_detailed_info:
-		x := &TLMsgDetailedInfo{ClazzID: id}
+		x := &TLMsgDetailedInfo{ClazzID: id, ClazzName2: ClazzName_msg_detailed_info}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_msg_new_detailed_info:
-		x := &TLMsgNewDetailedInfo{ClazzID: id}
+		x := &TLMsgNewDetailedInfo{ClazzID: id, ClazzName2: ClazzName_msg_new_detailed_info}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -4512,7 +4512,7 @@ func DecodeMsgResendReqClazz(d *bin.Decoder) (MsgResendReqClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msg_resend_req:
-		x := &TLMsgResendReq{ClazzID: id}
+		x := &TLMsgResendReq{ClazzID: id, ClazzName2: ClazzName_msg_resend_req}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -4686,7 +4686,7 @@ func DecodeMsgsAckClazz(d *bin.Decoder) (MsgsAckClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_ack:
-		x := &TLMsgsAck{ClazzID: id}
+		x := &TLMsgsAck{ClazzID: id, ClazzName2: ClazzName_msgs_ack}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -4860,7 +4860,7 @@ func DecodeMsgsAllInfoClazz(d *bin.Decoder) (MsgsAllInfoClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_all_info:
-		x := &TLMsgsAllInfo{ClazzID: id}
+		x := &TLMsgsAllInfo{ClazzID: id, ClazzName2: ClazzName_msgs_all_info}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -5039,7 +5039,7 @@ func DecodeMsgsStateInfoClazz(d *bin.Decoder) (MsgsStateInfoClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_state_info:
-		x := &TLMsgsStateInfo{ClazzID: id}
+		x := &TLMsgsStateInfo{ClazzID: id, ClazzName2: ClazzName_msgs_state_info}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -5215,7 +5215,7 @@ func DecodeMsgsStateReqClazz(d *bin.Decoder) (MsgsStateReqClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_msgs_state_req:
-		x := &TLMsgsStateReq{ClazzID: id}
+		x := &TLMsgsStateReq{ClazzID: id, ClazzName2: ClazzName_msgs_state_req}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -5389,7 +5389,7 @@ func DecodeNewSessionClazz(d *bin.Decoder) (NewSessionClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_new_session_created:
-		x := &TLNewSessionCreated{ClazzID: id}
+		x := &TLNewSessionCreated{ClazzID: id, ClazzName2: ClazzName_new_session_created}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -5568,7 +5568,7 @@ func DecodePongClazz(d *bin.Decoder) (PongClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_pong:
-		x := &TLPong{ClazzID: id}
+		x := &TLPong{ClazzID: id, ClazzName2: ClazzName_pong}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -5746,15 +5746,15 @@ func DecodeRpcDropAnswerClazz(d *bin.Decoder) (RpcDropAnswerClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_rpc_answer_unknown:
-		x := &TLRpcAnswerUnknown{ClazzID: id}
+		x := &TLRpcAnswerUnknown{ClazzID: id, ClazzName2: ClazzName_rpc_answer_unknown}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_rpc_answer_dropped_running:
-		x := &TLRpcAnswerDroppedRunning{ClazzID: id}
+		x := &TLRpcAnswerDroppedRunning{ClazzID: id, ClazzName2: ClazzName_rpc_answer_dropped_running}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_rpc_answer_dropped:
-		x := &TLRpcAnswerDropped{ClazzID: id}
+		x := &TLRpcAnswerDropped{ClazzID: id, ClazzName2: ClazzName_rpc_answer_dropped}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -6127,7 +6127,7 @@ func DecodeRpcErrorClazz(d *bin.Decoder) (RpcErrorClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_rpc_error:
-		x := &TLRpcError{ClazzID: id}
+		x := &TLRpcError{ClazzID: id, ClazzName2: ClazzName_rpc_error}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -6309,31 +6309,31 @@ func DecodeTlsBlockClazz(d *bin.Decoder) (TlsBlockClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_tlsBlockString:
-		x := &TLTlsBlockString{ClazzID: id}
+		x := &TLTlsBlockString{ClazzID: id, ClazzName2: ClazzName_tlsBlockString}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_tlsBlockRandom:
-		x := &TLTlsBlockRandom{ClazzID: id}
+		x := &TLTlsBlockRandom{ClazzID: id, ClazzName2: ClazzName_tlsBlockRandom}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_tlsBlockZero:
-		x := &TLTlsBlockZero{ClazzID: id}
+		x := &TLTlsBlockZero{ClazzID: id, ClazzName2: ClazzName_tlsBlockZero}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_tlsBlockDomain:
-		x := &TLTlsBlockDomain{ClazzID: id}
+		x := &TLTlsBlockDomain{ClazzID: id, ClazzName2: ClazzName_tlsBlockDomain}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_tlsBlockGrease:
-		x := &TLTlsBlockGrease{ClazzID: id}
+		x := &TLTlsBlockGrease{ClazzID: id, ClazzName2: ClazzName_tlsBlockGrease}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_tlsBlockPublicKey:
-		x := &TLTlsBlockPublicKey{ClazzID: id}
+		x := &TLTlsBlockPublicKey{ClazzID: id, ClazzName2: ClazzName_tlsBlockPublicKey}
 		_ = x.Decode(d)
 		return x, nil
 	case ClazzName_tlsBlockScope:
-		x := &TLTlsBlockScope{ClazzID: id}
+		x := &TLTlsBlockScope{ClazzID: id, ClazzName2: ClazzName_tlsBlockScope}
 		_ = x.Decode(d)
 		return x, nil
 	default:
@@ -7119,7 +7119,7 @@ func DecodeTlsClientHelloClazz(d *bin.Decoder) (TlsClientHelloClazz, error) {
 	clazzName := iface.GetClazzNameByID(id)
 	switch clazzName {
 	case ClazzName_tlsClientHello:
-		x := &TLTlsClientHello{ClazzID: id}
+		x := &TLTlsClientHello{ClazzID: id, ClazzName2: ClazzName_tlsClientHello}
 		_ = x.Decode(d)
 		return x, nil
 	default:
