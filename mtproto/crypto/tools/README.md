@@ -10,14 +10,13 @@
 ## Genkey
 
 ```
-    openssl genrsa -out server.key 2048
+# pcks8
+    openssl genrsa -out server_pkcs8.key 2048
+    openssl rsa -in server_pkcs8.key -pubout > public_pkcs8.pub
 
-    convert pcks8:
-    openssl pkcs8 -topk8 -inform PEM -in server.key -outform pem -nocrypt -out server8.key
-    openssl rsa -in server.key -pubout > public_pkcs8.pub
-
-    convert pcks1:
-    openssl rsa -in server.key -outform PEM -RSAPublicKey_out -out public_pkcs1.key
+# convert pcks1:
+    openssl rsa -in server_pkcs8.key -traditional -out server_pkcs1.key
+    openssl rsa -in server_pkcs1.key -outform PEM -RSAPublicKey_out -out public_pkcs1.key
 ```
 
 
@@ -25,11 +24,10 @@
 > fingerprint.go
 
 ```
-./fingerprint test.key 
+./fingerprint server_pkcs1.key 
 
 N:  bca2c43964f3b7d1e7dfff4a769fd174770487399df315de2d2a47208cda5d32c90f0f01849cb58d1fe2a9e1bc25ee72aed55a6ea312900ea5b48a60ca51fffff1688ccb17d411eee043d8397420074a8e8ba92bd3c8976481fdfe238f40e583b0bf8bb7c8031b4c41cbeb0f7bfd991ddcca3235fa3bd078b0eb318c5ae4e6a0e8583ae2a09a2b009ede1407cfa4e05fdb0ef7a215ee752ac913495b43ca4258da4c63c701f62f2bf96062b5cbe8b8b0c0be6b674d7eda921a03ce62a0a49058962018e2a03bdefeeee5421ea44f10815d2308e8712423ee6cff1d83efcf94b2d52b2c54e4276242d663d84332e2cf7194d2b35fc5decc4d0c1c46ba6d0a6717
 E:  010001
 fingerprint, decimal: 12240908862933197005, hexadecimal： a9e071c1771060cd
 
 ```
-
