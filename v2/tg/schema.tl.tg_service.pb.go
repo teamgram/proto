@@ -2190,6 +2190,64 @@ func (m *TLAuthReportMissingCode) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
+// TLAuthCheckPaidAuth <--
+type TLAuthCheckPaidAuth struct {
+	ClazzID       uint32 `json:"_id"`
+	PhoneNumber   string `json:"phone_number"`
+	PhoneCodeHash string `json:"phone_code_hash"`
+	FormId        int64  `json:"form_id"`
+}
+
+func (m *TLAuthCheckPaidAuth) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLAuthCheckPaidAuth) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x56e59f9c: func() error {
+			x.PutClazzID(0x56e59f9c)
+
+			x.PutString(m.PhoneNumber)
+			x.PutString(m.PhoneCodeHash)
+			x.PutInt64(m.FormId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_auth_checkPaidAuth, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_auth_checkPaidAuth, layer)
+	}
+}
+
+// Decode <--
+func (m *TLAuthCheckPaidAuth) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x56e59f9c: func() (err error) {
+			m.PhoneNumber, err = d.String()
+			m.PhoneCodeHash, err = d.String()
+			m.FormId, err = d.Int64()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
 // TLAccountRegisterDevice <--
 type TLAccountRegisterDevice struct {
 	ClazzID    uint32    `json:"_id"`
@@ -7791,10 +7849,11 @@ func (m *TLAccountInvalidateSignInCodes) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateColor <--
 type TLAccountUpdateColor struct {
-	ClazzID           uint32 `json:"_id"`
-	ForProfile        bool   `json:"for_profile"`
-	Color             *int32 `json:"color"`
-	BackgroundEmojiId *int64 `json:"background_emoji_id"`
+	ClazzID             uint32         `json:"_id"`
+	ForProfile          bool           `json:"for_profile"`
+	Color_FLAGPEERCOLOR PeerColorClazz `json:"color_FLAGPEERCOLOR"`
+	Color_FLAGINT32     *int32         `json:"color_FLAGINT32"`
+	BackgroundEmojiId   *int64         `json:"background_emoji_id"`
 }
 
 func (m *TLAccountUpdateColor) String() string {
@@ -7805,6 +7864,32 @@ func (m *TLAccountUpdateColor) String() string {
 // Encode <--
 func (m *TLAccountUpdateColor) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
+		0x684d214e: func() error {
+			x.PutClazzID(0x684d214e)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.ForProfile == true {
+					flags |= 1 << 1
+				}
+				if m.Color_FLAGPEERCOLOR != nil {
+					flags |= 1 << 2
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.Color_FLAGPEERCOLOR != nil {
+				_ = m.Color_FLAGPEERCOLOR.Encode(x, layer)
+			}
+
+			return nil
+		},
 		0x7cefa15d: func() error {
 			x.PutClazzID(0x7cefa15d)
 
@@ -7815,7 +7900,7 @@ func (m *TLAccountUpdateColor) Encode(x *bin.Encoder, layer int32) error {
 				if m.ForProfile == true {
 					flags |= 1 << 1
 				}
-				if m.Color != nil {
+				if m.Color_FLAGINT32 != nil {
 					flags |= 1 << 2
 				}
 				if m.BackgroundEmojiId != nil {
@@ -7828,8 +7913,8 @@ func (m *TLAccountUpdateColor) Encode(x *bin.Encoder, layer int32) error {
 			// set flags
 			var flags = getFlags()
 			x.PutUint32(flags)
-			if m.Color != nil {
-				x.PutInt32(*m.Color)
+			if m.Color_FLAGINT32 != nil {
+				x.PutInt32(*m.Color_FLAGINT32)
 			}
 
 			if m.BackgroundEmojiId != nil {
@@ -7852,6 +7937,21 @@ func (m *TLAccountUpdateColor) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLAccountUpdateColor) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
+		0x684d214e: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 1)) != 0 {
+				m.ForProfile = true
+			}
+			if (flags & (1 << 2)) != 0 {
+				// m3 := &PeerColor{}
+				// _ = m3.Decode(d)
+				// m.Color_FLAGPEERCOLOR = m3
+				m.Color_FLAGPEERCOLOR, _ = DecodePeerColorClazz(d)
+			}
+
+			return nil
+		},
 		0x7cefa15d: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
@@ -7859,8 +7959,8 @@ func (m *TLAccountUpdateColor) Decode(d *bin.Decoder) (err error) {
 				m.ForProfile = true
 			}
 			if (flags & (1 << 2)) != 0 {
-				m.Color = new(int32)
-				*m.Color, err = d.Int32()
+				m.Color_FLAGINT32 = new(int32)
+				*m.Color_FLAGINT32, err = d.Int32()
 			}
 			if (flags & (1 << 0)) != 0 {
 				m.BackgroundEmojiId = new(int64)
@@ -8356,7 +8456,6 @@ type TLAccountUpdateConnectedBot struct {
 	Rights     BusinessBotRightsClazz          `json:"rights"`
 	Bot        InputUserClazz                  `json:"bot"`
 	Recipients InputBusinessBotRecipientsClazz `json:"recipients"`
-	CanReply   bool                            `json:"can_reply"`
 }
 
 func (m *TLAccountUpdateConnectedBot) String() string {
@@ -8396,31 +8495,6 @@ func (m *TLAccountUpdateConnectedBot) Encode(x *bin.Encoder, layer int32) error 
 
 			return nil
 		},
-		0x43d8521d: func() error {
-			x.PutClazzID(0x43d8521d)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.CanReply == true {
-					flags |= 1 << 0
-				}
-				if m.Deleted == true {
-					flags |= 1 << 1
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Bot.Encode(x, layer)
-			_ = m.Recipients.Encode(x, layer)
-
-			return nil
-		},
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_account_updateConnectedBot, int(layer))
@@ -8446,28 +8520,6 @@ func (m *TLAccountUpdateConnectedBot) Decode(d *bin.Decoder) (err error) {
 				// _ = m3.Decode(d)
 				// m.Rights = m3
 				m.Rights, _ = DecodeBusinessBotRightsClazz(d)
-			}
-
-			// m4 := &InputUser{}
-			// _ = m4.Decode(d)
-			// m.Bot = m4
-			m.Bot, _ = DecodeInputUserClazz(d)
-
-			// m5 := &InputBusinessBotRecipients{}
-			// _ = m5.Decode(d)
-			// m.Recipients = m5
-			m.Recipients, _ = DecodeInputBusinessBotRecipientsClazz(d)
-
-			return nil
-		},
-		0x43d8521d: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 0)) != 0 {
-				m.CanReply = true
-			}
-			if (flags & (1 << 1)) != 0 {
-				m.Deleted = true
 			}
 
 			// m4 := &InputUser{}
@@ -9398,29 +9450,29 @@ func (m *TLAccountGetCollectibleEmojiStatuses) Decode(d *bin.Decoder) (err error
 	}
 }
 
-// TLAccountAddNoPaidMessagesException <--
-type TLAccountAddNoPaidMessagesException struct {
-	ClazzID       uint32         `json:"_id"`
-	RefundCharged bool           `json:"refund_charged"`
-	UserId        InputUserClazz `json:"user_id"`
+// TLAccountGetPaidMessagesRevenue <--
+type TLAccountGetPaidMessagesRevenue struct {
+	ClazzID    uint32         `json:"_id"`
+	ParentPeer InputPeerClazz `json:"parent_peer"`
+	UserId     InputUserClazz `json:"user_id"`
 }
 
-func (m *TLAccountAddNoPaidMessagesException) String() string {
+func (m *TLAccountGetPaidMessagesRevenue) String() string {
 	wrapper := iface.WithNameWrapper{"", m}
 	return wrapper.String()
 }
 
 // Encode <--
-func (m *TLAccountAddNoPaidMessagesException) Encode(x *bin.Encoder, layer int32) error {
+func (m *TLAccountGetPaidMessagesRevenue) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x6f688aa7: func() error {
-			x.PutClazzID(0x6f688aa7)
+		0x19ba4a67: func() error {
+			x.PutClazzID(0x19ba4a67)
 
 			// set flags
 			var getFlags = func() uint32 {
 				var flags uint32 = 0
 
-				if m.RefundCharged == true {
+				if m.ParentPeer != nil {
 					flags |= 1 << 0
 				}
 
@@ -9430,29 +9482,36 @@ func (m *TLAccountAddNoPaidMessagesException) Encode(x *bin.Encoder, layer int32
 			// set flags
 			var flags = getFlags()
 			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
+
 			_ = m.UserId.Encode(x, layer)
 
 			return nil
 		},
 	}
 
-	clazzId := iface.GetClazzIDByName(ClazzName_account_addNoPaidMessagesException, int(layer))
+	clazzId := iface.GetClazzIDByName(ClazzName_account_getPaidMessagesRevenue, int(layer))
 	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_addNoPaidMessagesException, layer)
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_getPaidMessagesRevenue, layer)
 	}
 }
 
 // Decode <--
-func (m *TLAccountAddNoPaidMessagesException) Decode(d *bin.Decoder) (err error) {
+func (m *TLAccountGetPaidMessagesRevenue) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x6f688aa7: func() (err error) {
+		0x19ba4a67: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
-				m.RefundCharged = true
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.ParentPeer = m2
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
 			}
 
 			// m3 := &InputUser{}
@@ -9474,22 +9533,49 @@ func (m *TLAccountAddNoPaidMessagesException) Decode(d *bin.Decoder) (err error)
 	}
 }
 
-// TLAccountGetPaidMessagesRevenue <--
-type TLAccountGetPaidMessagesRevenue struct {
-	ClazzID uint32         `json:"_id"`
-	UserId  InputUserClazz `json:"user_id"`
+// TLAccountToggleNoPaidMessagesException <--
+type TLAccountToggleNoPaidMessagesException struct {
+	ClazzID        uint32         `json:"_id"`
+	RefundCharged  bool           `json:"refund_charged"`
+	RequirePayment bool           `json:"require_payment"`
+	ParentPeer     InputPeerClazz `json:"parent_peer"`
+	UserId         InputUserClazz `json:"user_id"`
 }
 
-func (m *TLAccountGetPaidMessagesRevenue) String() string {
+func (m *TLAccountToggleNoPaidMessagesException) String() string {
 	wrapper := iface.WithNameWrapper{"", m}
 	return wrapper.String()
 }
 
 // Encode <--
-func (m *TLAccountGetPaidMessagesRevenue) Encode(x *bin.Encoder, layer int32) error {
+func (m *TLAccountToggleNoPaidMessagesException) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xf1266f38: func() error {
-			x.PutClazzID(0xf1266f38)
+		0xfe2eda76: func() error {
+			x.PutClazzID(0xfe2eda76)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.RefundCharged == true {
+					flags |= 1 << 0
+				}
+				if m.RequirePayment == true {
+					flags |= 1 << 2
+				}
+				if m.ParentPeer != nil {
+					flags |= 1 << 1
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
 
 			_ = m.UserId.Encode(x, layer)
 
@@ -9497,24 +9583,312 @@ func (m *TLAccountGetPaidMessagesRevenue) Encode(x *bin.Encoder, layer int32) er
 		},
 	}
 
-	clazzId := iface.GetClazzIDByName(ClazzName_account_getPaidMessagesRevenue, int(layer))
+	clazzId := iface.GetClazzIDByName(ClazzName_account_toggleNoPaidMessagesException, int(layer))
 	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_getPaidMessagesRevenue, layer)
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_toggleNoPaidMessagesException, layer)
 	}
 }
 
 // Decode <--
-func (m *TLAccountGetPaidMessagesRevenue) Decode(d *bin.Decoder) (err error) {
+func (m *TLAccountToggleNoPaidMessagesException) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xf1266f38: func() (err error) {
+		0xfe2eda76: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.RefundCharged = true
+			}
+			if (flags & (1 << 2)) != 0 {
+				m.RequirePayment = true
+			}
+			if (flags & (1 << 1)) != 0 {
+				// m4 := &InputPeer{}
+				// _ = m4.Decode(d)
+				// m.ParentPeer = m4
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
+			}
 
-			// m1 := &InputUser{}
-			// _ = m1.Decode(d)
-			// m.UserId = m1
+			// m5 := &InputUser{}
+			// _ = m5.Decode(d)
+			// m.UserId = m5
 			m.UserId, _ = DecodeInputUserClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLAccountSetMainProfileTab <--
+type TLAccountSetMainProfileTab struct {
+	ClazzID uint32          `json:"_id"`
+	Tab     ProfileTabClazz `json:"tab"`
+}
+
+func (m *TLAccountSetMainProfileTab) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLAccountSetMainProfileTab) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x5dee78b0: func() error {
+			x.PutClazzID(0x5dee78b0)
+
+			_ = m.Tab.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_account_setMainProfileTab, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_setMainProfileTab, layer)
+	}
+}
+
+// Decode <--
+func (m *TLAccountSetMainProfileTab) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x5dee78b0: func() (err error) {
+
+			// m1 := &ProfileTab{}
+			// _ = m1.Decode(d)
+			// m.Tab = m1
+			m.Tab, _ = DecodeProfileTabClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLAccountSaveMusic <--
+type TLAccountSaveMusic struct {
+	ClazzID uint32             `json:"_id"`
+	Unsave  bool               `json:"unsave"`
+	Id      InputDocumentClazz `json:"id"`
+	AfterId InputDocumentClazz `json:"after_id"`
+}
+
+func (m *TLAccountSaveMusic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLAccountSaveMusic) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xb26732a9: func() error {
+			x.PutClazzID(0xb26732a9)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Unsave == true {
+					flags |= 1 << 0
+				}
+
+				if m.AfterId != nil {
+					flags |= 1 << 1
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Id.Encode(x, layer)
+			if m.AfterId != nil {
+				_ = m.AfterId.Encode(x, layer)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_account_saveMusic, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_saveMusic, layer)
+	}
+}
+
+// Decode <--
+func (m *TLAccountSaveMusic) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xb26732a9: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Unsave = true
+			}
+
+			// m3 := &InputDocument{}
+			// _ = m3.Decode(d)
+			// m.Id = m3
+			m.Id, _ = DecodeInputDocumentClazz(d)
+
+			if (flags & (1 << 1)) != 0 {
+				// m4 := &InputDocument{}
+				// _ = m4.Decode(d)
+				// m.AfterId = m4
+				m.AfterId, _ = DecodeInputDocumentClazz(d)
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLAccountGetSavedMusicIds <--
+type TLAccountGetSavedMusicIds struct {
+	ClazzID uint32 `json:"_id"`
+	Hash    int64  `json:"hash"`
+}
+
+func (m *TLAccountGetSavedMusicIds) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLAccountGetSavedMusicIds) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xe09d5faf: func() error {
+			x.PutClazzID(0xe09d5faf)
+
+			x.PutInt64(m.Hash)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_account_getSavedMusicIds, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_getSavedMusicIds, layer)
+	}
+}
+
+// Decode <--
+func (m *TLAccountGetSavedMusicIds) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xe09d5faf: func() (err error) {
+			m.Hash, err = d.Int64()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLAccountGetUniqueGiftChatThemes <--
+type TLAccountGetUniqueGiftChatThemes struct {
+	ClazzID       uint32 `json:"_id"`
+	Offset_STRING string `json:"offset_STRING_STRING"`
+	Limit         int32  `json:"limit"`
+	Hash          int64  `json:"hash"`
+	Offset_INT32  int32  `json:"offset_INT32"`
+}
+
+func (m *TLAccountGetUniqueGiftChatThemes) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLAccountGetUniqueGiftChatThemes) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xe42ce9c9: func() error {
+			x.PutClazzID(0xe42ce9c9)
+
+			x.PutString(m.Offset_STRING)
+			x.PutInt32(m.Limit)
+			x.PutInt64(m.Hash)
+
+			return nil
+		},
+		0xfe74ef9f: func() error {
+			x.PutClazzID(0xfe74ef9f)
+
+			x.PutInt32(m.Offset_INT32)
+			x.PutInt32(m.Limit)
+			x.PutInt64(m.Hash)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_account_getUniqueGiftChatThemes, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_account_getUniqueGiftChatThemes, layer)
+	}
+}
+
+// Decode <--
+func (m *TLAccountGetUniqueGiftChatThemes) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xe42ce9c9: func() (err error) {
+			m.Offset_STRING, err = d.String()
+			m.Limit, err = d.Int32()
+			m.Hash, err = d.Int64()
+
+			return nil
+		},
+		0xfe74ef9f: func() (err error) {
+			m.Offset_INT32, err = d.Int32()
+			m.Limit, err = d.Int32()
+			m.Hash, err = d.Int64()
 
 			return nil
 		},
@@ -9784,6 +10158,212 @@ func (m *TLUsersGetRequirementsToContact) Decode(d *bin.Decoder) (err error) {
 				_ = err3
 			}
 			m.Id = v1
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLUsersGetSavedMusic <--
+type TLUsersGetSavedMusic struct {
+	ClazzID uint32         `json:"_id"`
+	Id      InputUserClazz `json:"id"`
+	Offset  int32          `json:"offset"`
+	Limit   int32          `json:"limit"`
+	Hash    int64          `json:"hash"`
+}
+
+func (m *TLUsersGetSavedMusic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLUsersGetSavedMusic) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x788d7fe3: func() error {
+			x.PutClazzID(0x788d7fe3)
+
+			_ = m.Id.Encode(x, layer)
+			x.PutInt32(m.Offset)
+			x.PutInt32(m.Limit)
+			x.PutInt64(m.Hash)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_users_getSavedMusic, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_users_getSavedMusic, layer)
+	}
+}
+
+// Decode <--
+func (m *TLUsersGetSavedMusic) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x788d7fe3: func() (err error) {
+
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputUserClazz(d)
+
+			m.Offset, err = d.Int32()
+			m.Limit, err = d.Int32()
+			m.Hash, err = d.Int64()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLUsersGetSavedMusicByID <--
+type TLUsersGetSavedMusicByID struct {
+	ClazzID   uint32               `json:"_id"`
+	Id        InputUserClazz       `json:"id"`
+	Documents []InputDocumentClazz `json:"documents"`
+}
+
+func (m *TLUsersGetSavedMusicByID) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLUsersGetSavedMusicByID) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x7573a4e9: func() error {
+			x.PutClazzID(0x7573a4e9)
+
+			_ = m.Id.Encode(x, layer)
+
+			_ = iface.EncodeObjectList(x, m.Documents, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_users_getSavedMusicByID, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_users_getSavedMusicByID, layer)
+	}
+}
+
+// Decode <--
+func (m *TLUsersGetSavedMusicByID) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x7573a4e9: func() (err error) {
+
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputUserClazz(d)
+
+			c2, err2 := d.ClazzID()
+			if c2 != iface.ClazzID_vector {
+				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 2, c2)
+				return err2
+			}
+			l2, err3 := d.Int()
+			// v2 := make([]*InputDocument, l2)
+			v2 := make([]InputDocumentClazz, l2)
+			for i := 0; i < l2; i++ {
+				// vv := new(InputDocument)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v2[i] = vv
+				v2[i], _ = DecodeInputDocumentClazz(d)
+				_ = err3
+			}
+			m.Documents = v2
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLUsersSuggestBirthday <--
+type TLUsersSuggestBirthday struct {
+	ClazzID  uint32         `json:"_id"`
+	Id       InputUserClazz `json:"id"`
+	Birthday BirthdayClazz  `json:"birthday"`
+}
+
+func (m *TLUsersSuggestBirthday) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLUsersSuggestBirthday) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xfc533372: func() error {
+			x.PutClazzID(0xfc533372)
+
+			_ = m.Id.Encode(x, layer)
+			_ = m.Birthday.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_users_suggestBirthday, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_users_suggestBirthday, layer)
+	}
+}
+
+// Decode <--
+func (m *TLUsersSuggestBirthday) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xfc533372: func() (err error) {
+
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputUserClazz(d)
+
+			// m2 := &Birthday{}
+			// _ = m2.Decode(d)
+			// m.Birthday = m2
+			m.Birthday, _ = DecodeBirthdayClazz(d)
 
 			return nil
 		},
@@ -10849,12 +11429,13 @@ func (m *TLContactsToggleTopPeers) Decode(d *bin.Decoder) (err error) {
 
 // TLContactsAddContact <--
 type TLContactsAddContact struct {
-	ClazzID                  uint32         `json:"_id"`
-	AddPhonePrivacyException bool           `json:"add_phone_privacy_exception"`
-	Id                       InputUserClazz `json:"id"`
-	FirstName                string         `json:"first_name"`
-	LastName                 string         `json:"last_name"`
-	Phone                    string         `json:"phone"`
+	ClazzID                  uint32                `json:"_id"`
+	AddPhonePrivacyException bool                  `json:"add_phone_privacy_exception"`
+	Id                       InputUserClazz        `json:"id"`
+	FirstName                string                `json:"first_name"`
+	LastName                 string                `json:"last_name"`
+	Phone                    string                `json:"phone"`
+	Note                     TextWithEntitiesClazz `json:"note"`
 }
 
 func (m *TLContactsAddContact) String() string {
@@ -10865,6 +11446,37 @@ func (m *TLContactsAddContact) String() string {
 // Encode <--
 func (m *TLContactsAddContact) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
+		0xd9ba2e54: func() error {
+			x.PutClazzID(0xd9ba2e54)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.AddPhonePrivacyException == true {
+					flags |= 1 << 0
+				}
+
+				if m.Note != nil {
+					flags |= 1 << 1
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Id.Encode(x, layer)
+			x.PutString(m.FirstName)
+			x.PutString(m.LastName)
+			x.PutString(m.Phone)
+			if m.Note != nil {
+				_ = m.Note.Encode(x, layer)
+			}
+
+			return nil
+		},
 		0xe8f463d0: func() error {
 			x.PutClazzID(0xe8f463d0)
 
@@ -10903,6 +11515,30 @@ func (m *TLContactsAddContact) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLContactsAddContact) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
+		0xd9ba2e54: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.AddPhonePrivacyException = true
+			}
+
+			// m3 := &InputUser{}
+			// _ = m3.Decode(d)
+			// m.Id = m3
+			m.Id, _ = DecodeInputUserClazz(d)
+
+			m.FirstName, err = d.String()
+			m.LastName, err = d.String()
+			m.Phone, err = d.String()
+			if (flags & (1 << 1)) != 0 {
+				// m7 := &TextWithEntities{}
+				// _ = m7.Decode(d)
+				// m.Note = m7
+				m.Note, _ = DecodeTextWithEntitiesClazz(d)
+			}
+
+			return nil
+		},
 		0xe8f463d0: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
@@ -11548,6 +12184,69 @@ func (m *TLContactsGetSponsoredPeers) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xb6c8c393: func() (err error) {
 			m.Q, err = d.String()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLContactsUpdateContactNote <--
+type TLContactsUpdateContactNote struct {
+	ClazzID uint32                `json:"_id"`
+	Id      InputUserClazz        `json:"id"`
+	Note    TextWithEntitiesClazz `json:"note"`
+}
+
+func (m *TLContactsUpdateContactNote) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLContactsUpdateContactNote) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x139f63fb: func() error {
+			x.PutClazzID(0x139f63fb)
+
+			_ = m.Id.Encode(x, layer)
+			_ = m.Note.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_contacts_updateContactNote, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_contacts_updateContactNote, layer)
+	}
+}
+
+// Decode <--
+func (m *TLContactsUpdateContactNote) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x139f63fb: func() (err error) {
+
+			// m1 := &InputUser{}
+			// _ = m1.Decode(d)
+			// m.Id = m1
+			m.Id, _ = DecodeInputUserClazz(d)
+
+			// m2 := &TextWithEntities{}
+			// _ = m2.Decode(d)
+			// m.Note = m2
+			m.Note, _ = DecodeTextWithEntitiesClazz(d)
 
 			return nil
 		},
@@ -12403,6 +13102,7 @@ type TLMessagesSendMessage struct {
 	QuickReplyShortcut     InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
 	Effect                 *int64                       `json:"effect"`
 	AllowPaidStars         *int64                       `json:"allow_paid_stars"`
+	SuggestedPost          SuggestedPostClazz           `json:"suggested_post"`
 }
 
 func (m *TLMessagesSendMessage) String() string {
@@ -12413,8 +13113,8 @@ func (m *TLMessagesSendMessage) String() string {
 // Encode <--
 func (m *TLMessagesSendMessage) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xfbf2340a: func() error {
-			x.PutClazzID(0xfbf2340a)
+		0xfe05dc9a: func() error {
+			x.PutClazzID(0xfe05dc9a)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -12470,6 +13170,9 @@ func (m *TLMessagesSendMessage) Encode(x *bin.Encoder, layer int32) error {
 				if m.AllowPaidStars != nil {
 					flags |= 1 << 21
 				}
+				if m.SuggestedPost != nil {
+					flags |= 1 << 22
+				}
 
 				return flags
 			}
@@ -12511,97 +13214,8 @@ func (m *TLMessagesSendMessage) Encode(x *bin.Encoder, layer int32) error {
 				x.PutInt64(*m.AllowPaidStars)
 			}
 
-			return nil
-		},
-		0x983f9745: func() error {
-			x.PutClazzID(0x983f9745)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.NoWebpage == true {
-					flags |= 1 << 1
-				}
-				if m.Silent == true {
-					flags |= 1 << 5
-				}
-				if m.Background == true {
-					flags |= 1 << 6
-				}
-				if m.ClearDraft == true {
-					flags |= 1 << 7
-				}
-				if m.Noforwards == true {
-					flags |= 1 << 14
-				}
-				if m.UpdateStickersetsOrder == true {
-					flags |= 1 << 15
-				}
-				if m.InvertMedia == true {
-					flags |= 1 << 16
-				}
-				if m.AllowPaidFloodskip == true {
-					flags |= 1 << 19
-				}
-
-				if m.ReplyTo != nil {
-					flags |= 1 << 0
-				}
-
-				if m.ReplyMarkup != nil {
-					flags |= 1 << 2
-				}
-				if m.Entities != nil {
-					flags |= 1 << 3
-				}
-				if m.ScheduleDate != nil {
-					flags |= 1 << 10
-				}
-				if m.SendAs != nil {
-					flags |= 1 << 13
-				}
-				if m.QuickReplyShortcut != nil {
-					flags |= 1 << 17
-				}
-				if m.Effect != nil {
-					flags |= 1 << 18
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Peer.Encode(x, layer)
-			if m.ReplyTo != nil {
-				_ = m.ReplyTo.Encode(x, layer)
-			}
-
-			x.PutString(m.Message)
-			x.PutInt64(m.RandomId)
-			if m.ReplyMarkup != nil {
-				_ = m.ReplyMarkup.Encode(x, layer)
-			}
-
-			if m.Entities != nil {
-				_ = iface.EncodeObjectList(x, m.Entities, layer)
-			}
-			if m.ScheduleDate != nil {
-				x.PutInt32(*m.ScheduleDate)
-			}
-
-			if m.SendAs != nil {
-				_ = m.SendAs.Encode(x, layer)
-			}
-
-			if m.QuickReplyShortcut != nil {
-				_ = m.QuickReplyShortcut.Encode(x, layer)
-			}
-
-			if m.Effect != nil {
-				x.PutInt64(*m.Effect)
+			if m.SuggestedPost != nil {
+				_ = m.SuggestedPost.Encode(x, layer)
 			}
 
 			return nil
@@ -12620,7 +13234,7 @@ func (m *TLMessagesSendMessage) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xfbf2340a: func() (err error) {
+		0xfe05dc9a: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 1)) != 0 {
@@ -12712,93 +13326,11 @@ func (m *TLMessagesSendMessage) Decode(d *bin.Decoder) (err error) {
 				*m.AllowPaidStars, err = d.Int64()
 			}
 
-			return nil
-		},
-		0x983f9745: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 1)) != 0 {
-				m.NoWebpage = true
-			}
-			if (flags & (1 << 5)) != 0 {
-				m.Silent = true
-			}
-			if (flags & (1 << 6)) != 0 {
-				m.Background = true
-			}
-			if (flags & (1 << 7)) != 0 {
-				m.ClearDraft = true
-			}
-			if (flags & (1 << 14)) != 0 {
-				m.Noforwards = true
-			}
-			if (flags & (1 << 15)) != 0 {
-				m.UpdateStickersetsOrder = true
-			}
-			if (flags & (1 << 16)) != 0 {
-				m.InvertMedia = true
-			}
-			if (flags & (1 << 19)) != 0 {
-				m.AllowPaidFloodskip = true
-			}
-
-			// m10 := &InputPeer{}
-			// _ = m10.Decode(d)
-			// m.Peer = m10
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			if (flags & (1 << 0)) != 0 {
-				// m11 := &InputReplyTo{}
-				// _ = m11.Decode(d)
-				// m.ReplyTo = m11
-				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
-			}
-			m.Message, err = d.String()
-			m.RandomId, err = d.Int64()
-			if (flags & (1 << 2)) != 0 {
-				// m14 := &ReplyMarkup{}
-				// _ = m14.Decode(d)
-				// m.ReplyMarkup = m14
-				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
-			}
-			if (flags & (1 << 3)) != 0 {
-				c15, err2 := d.ClazzID()
-				if c15 != iface.ClazzID_vector {
-					// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 15, c15)
-					return err2
-				}
-				l15, err3 := d.Int()
-				// v15 := make([]*MessageEntity, l15)
-				v15 := make([]MessageEntityClazz, l15)
-				for i := 0; i < l15; i++ {
-					// vv := new(MessageEntity)
-					// err3 = vv.Decode(d)
-					// _ = err3
-					// v15[i] = vv
-					v15[i], _ = DecodeMessageEntityClazz(d)
-					_ = err3
-				}
-				m.Entities = v15
-			}
-			if (flags & (1 << 10)) != 0 {
-				m.ScheduleDate = new(int32)
-				*m.ScheduleDate, err = d.Int32()
-			}
-			if (flags & (1 << 13)) != 0 {
-				// m17 := &InputPeer{}
-				// _ = m17.Decode(d)
-				// m.SendAs = m17
-				m.SendAs, _ = DecodeInputPeerClazz(d)
-			}
-			if (flags & (1 << 17)) != 0 {
-				// m18 := &InputQuickReplyShortcut{}
-				// _ = m18.Decode(d)
-				// m.QuickReplyShortcut = m18
-				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
-			}
-			if (flags & (1 << 18)) != 0 {
-				m.Effect = new(int64)
-				*m.Effect, err = d.Int64()
+			if (flags & (1 << 22)) != 0 {
+				// m21 := &SuggestedPost{}
+				// _ = m21.Decode(d)
+				// m.SuggestedPost = m21
+				m.SuggestedPost, _ = DecodeSuggestedPostClazz(d)
 			}
 
 			return nil
@@ -12837,6 +13369,7 @@ type TLMessagesSendMedia struct {
 	QuickReplyShortcut     InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
 	Effect                 *int64                       `json:"effect"`
 	AllowPaidStars         *int64                       `json:"allow_paid_stars"`
+	SuggestedPost          SuggestedPostClazz           `json:"suggested_post"`
 }
 
 func (m *TLMessagesSendMedia) String() string {
@@ -12847,8 +13380,8 @@ func (m *TLMessagesSendMedia) String() string {
 // Encode <--
 func (m *TLMessagesSendMedia) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xa550cd78: func() error {
-			x.PutClazzID(0xa550cd78)
+		0xac55d9c1: func() error {
+			x.PutClazzID(0xac55d9c1)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -12901,6 +13434,9 @@ func (m *TLMessagesSendMedia) Encode(x *bin.Encoder, layer int32) error {
 				if m.AllowPaidStars != nil {
 					flags |= 1 << 21
 				}
+				if m.SuggestedPost != nil {
+					flags |= 1 << 22
+				}
 
 				return flags
 			}
@@ -12943,95 +13479,8 @@ func (m *TLMessagesSendMedia) Encode(x *bin.Encoder, layer int32) error {
 				x.PutInt64(*m.AllowPaidStars)
 			}
 
-			return nil
-		},
-		0x7852834e: func() error {
-			x.PutClazzID(0x7852834e)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Silent == true {
-					flags |= 1 << 5
-				}
-				if m.Background == true {
-					flags |= 1 << 6
-				}
-				if m.ClearDraft == true {
-					flags |= 1 << 7
-				}
-				if m.Noforwards == true {
-					flags |= 1 << 14
-				}
-				if m.UpdateStickersetsOrder == true {
-					flags |= 1 << 15
-				}
-				if m.InvertMedia == true {
-					flags |= 1 << 16
-				}
-				if m.AllowPaidFloodskip == true {
-					flags |= 1 << 19
-				}
-
-				if m.ReplyTo != nil {
-					flags |= 1 << 0
-				}
-
-				if m.ReplyMarkup != nil {
-					flags |= 1 << 2
-				}
-				if m.Entities != nil {
-					flags |= 1 << 3
-				}
-				if m.ScheduleDate != nil {
-					flags |= 1 << 10
-				}
-				if m.SendAs != nil {
-					flags |= 1 << 13
-				}
-				if m.QuickReplyShortcut != nil {
-					flags |= 1 << 17
-				}
-				if m.Effect != nil {
-					flags |= 1 << 18
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Peer.Encode(x, layer)
-			if m.ReplyTo != nil {
-				_ = m.ReplyTo.Encode(x, layer)
-			}
-
-			_ = m.Media.Encode(x, layer)
-			x.PutString(m.Message)
-			x.PutInt64(m.RandomId)
-			if m.ReplyMarkup != nil {
-				_ = m.ReplyMarkup.Encode(x, layer)
-			}
-
-			if m.Entities != nil {
-				_ = iface.EncodeObjectList(x, m.Entities, layer)
-			}
-			if m.ScheduleDate != nil {
-				x.PutInt32(*m.ScheduleDate)
-			}
-
-			if m.SendAs != nil {
-				_ = m.SendAs.Encode(x, layer)
-			}
-
-			if m.QuickReplyShortcut != nil {
-				_ = m.QuickReplyShortcut.Encode(x, layer)
-			}
-
-			if m.Effect != nil {
-				x.PutInt64(*m.Effect)
+			if m.SuggestedPost != nil {
+				_ = m.SuggestedPost.Encode(x, layer)
 			}
 
 			return nil
@@ -13050,7 +13499,7 @@ func (m *TLMessagesSendMedia) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xa550cd78: func() (err error) {
+		0xac55d9c1: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 5)) != 0 {
@@ -13145,96 +13594,11 @@ func (m *TLMessagesSendMedia) Decode(d *bin.Decoder) (err error) {
 				*m.AllowPaidStars, err = d.Int64()
 			}
 
-			return nil
-		},
-		0x7852834e: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 5)) != 0 {
-				m.Silent = true
-			}
-			if (flags & (1 << 6)) != 0 {
-				m.Background = true
-			}
-			if (flags & (1 << 7)) != 0 {
-				m.ClearDraft = true
-			}
-			if (flags & (1 << 14)) != 0 {
-				m.Noforwards = true
-			}
-			if (flags & (1 << 15)) != 0 {
-				m.UpdateStickersetsOrder = true
-			}
-			if (flags & (1 << 16)) != 0 {
-				m.InvertMedia = true
-			}
-			if (flags & (1 << 19)) != 0 {
-				m.AllowPaidFloodskip = true
-			}
-
-			// m9 := &InputPeer{}
-			// _ = m9.Decode(d)
-			// m.Peer = m9
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			if (flags & (1 << 0)) != 0 {
-				// m10 := &InputReplyTo{}
-				// _ = m10.Decode(d)
-				// m.ReplyTo = m10
-				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
-			}
-
-			// m11 := &InputMedia{}
-			// _ = m11.Decode(d)
-			// m.Media = m11
-			m.Media, _ = DecodeInputMediaClazz(d)
-
-			m.Message, err = d.String()
-			m.RandomId, err = d.Int64()
-			if (flags & (1 << 2)) != 0 {
-				// m14 := &ReplyMarkup{}
-				// _ = m14.Decode(d)
-				// m.ReplyMarkup = m14
-				m.ReplyMarkup, _ = DecodeReplyMarkupClazz(d)
-			}
-			if (flags & (1 << 3)) != 0 {
-				c15, err2 := d.ClazzID()
-				if c15 != iface.ClazzID_vector {
-					// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 15, c15)
-					return err2
-				}
-				l15, err3 := d.Int()
-				// v15 := make([]*MessageEntity, l15)
-				v15 := make([]MessageEntityClazz, l15)
-				for i := 0; i < l15; i++ {
-					// vv := new(MessageEntity)
-					// err3 = vv.Decode(d)
-					// _ = err3
-					// v15[i] = vv
-					v15[i], _ = DecodeMessageEntityClazz(d)
-					_ = err3
-				}
-				m.Entities = v15
-			}
-			if (flags & (1 << 10)) != 0 {
-				m.ScheduleDate = new(int32)
-				*m.ScheduleDate, err = d.Int32()
-			}
-			if (flags & (1 << 13)) != 0 {
-				// m17 := &InputPeer{}
-				// _ = m17.Decode(d)
-				// m.SendAs = m17
-				m.SendAs, _ = DecodeInputPeerClazz(d)
-			}
-			if (flags & (1 << 17)) != 0 {
-				// m18 := &InputQuickReplyShortcut{}
-				// _ = m18.Decode(d)
-				// m.QuickReplyShortcut = m18
-				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
-			}
-			if (flags & (1 << 18)) != 0 {
-				m.Effect = new(int64)
-				*m.Effect, err = d.Int64()
+			if (flags & (1 << 22)) != 0 {
+				// m21 := &SuggestedPost{}
+				// _ = m21.Decode(d)
+				// m.SuggestedPost = m21
+				m.SuggestedPost, _ = DecodeSuggestedPostClazz(d)
 			}
 
 			return nil
@@ -13266,11 +13630,13 @@ type TLMessagesForwardMessages struct {
 	RandomId           []int64                      `json:"random_id"`
 	ToPeer             InputPeerClazz               `json:"to_peer"`
 	TopMsgId           *int32                       `json:"top_msg_id"`
+	ReplyTo            InputReplyToClazz            `json:"reply_to"`
 	ScheduleDate       *int32                       `json:"schedule_date"`
 	SendAs             InputPeerClazz               `json:"send_as"`
 	QuickReplyShortcut InputQuickReplyShortcutClazz `json:"quick_reply_shortcut"`
 	VideoTimestamp     *int32                       `json:"video_timestamp"`
 	AllowPaidStars     *int64                       `json:"allow_paid_stars"`
+	SuggestedPost      SuggestedPostClazz           `json:"suggested_post"`
 }
 
 func (m *TLMessagesForwardMessages) String() string {
@@ -13281,8 +13647,8 @@ func (m *TLMessagesForwardMessages) String() string {
 // Encode <--
 func (m *TLMessagesForwardMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xbb9fa475: func() error {
-			x.PutClazzID(0xbb9fa475)
+		0x978928ca: func() error {
+			x.PutClazzID(0x978928ca)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -13313,6 +13679,9 @@ func (m *TLMessagesForwardMessages) Encode(x *bin.Encoder, layer int32) error {
 				if m.TopMsgId != nil {
 					flags |= 1 << 9
 				}
+				if m.ReplyTo != nil {
+					flags |= 1 << 22
+				}
 				if m.ScheduleDate != nil {
 					flags |= 1 << 10
 				}
@@ -13327,6 +13696,9 @@ func (m *TLMessagesForwardMessages) Encode(x *bin.Encoder, layer int32) error {
 				}
 				if m.AllowPaidStars != nil {
 					flags |= 1 << 21
+				}
+				if m.SuggestedPost != nil {
+					flags |= 1 << 23
 				}
 
 				return flags
@@ -13344,6 +13716,10 @@ func (m *TLMessagesForwardMessages) Encode(x *bin.Encoder, layer int32) error {
 			_ = m.ToPeer.Encode(x, layer)
 			if m.TopMsgId != nil {
 				x.PutInt32(*m.TopMsgId)
+			}
+
+			if m.ReplyTo != nil {
+				_ = m.ReplyTo.Encode(x, layer)
 			}
 
 			if m.ScheduleDate != nil {
@@ -13366,84 +13742,8 @@ func (m *TLMessagesForwardMessages) Encode(x *bin.Encoder, layer int32) error {
 				x.PutInt64(*m.AllowPaidStars)
 			}
 
-			return nil
-		},
-		0x6d74da08: func() error {
-			x.PutClazzID(0x6d74da08)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Silent == true {
-					flags |= 1 << 5
-				}
-				if m.Background == true {
-					flags |= 1 << 6
-				}
-				if m.WithMyScore == true {
-					flags |= 1 << 8
-				}
-				if m.DropAuthor == true {
-					flags |= 1 << 11
-				}
-				if m.DropMediaCaptions == true {
-					flags |= 1 << 12
-				}
-				if m.Noforwards == true {
-					flags |= 1 << 14
-				}
-				if m.AllowPaidFloodskip == true {
-					flags |= 1 << 19
-				}
-
-				if m.TopMsgId != nil {
-					flags |= 1 << 9
-				}
-				if m.ScheduleDate != nil {
-					flags |= 1 << 10
-				}
-				if m.SendAs != nil {
-					flags |= 1 << 13
-				}
-				if m.QuickReplyShortcut != nil {
-					flags |= 1 << 17
-				}
-				if m.VideoTimestamp != nil {
-					flags |= 1 << 20
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.FromPeer.Encode(x, layer)
-
-			iface.EncodeInt32List(x, m.Id)
-
-			iface.EncodeInt64List(x, m.RandomId)
-
-			_ = m.ToPeer.Encode(x, layer)
-			if m.TopMsgId != nil {
-				x.PutInt32(*m.TopMsgId)
-			}
-
-			if m.ScheduleDate != nil {
-				x.PutInt32(*m.ScheduleDate)
-			}
-
-			if m.SendAs != nil {
-				_ = m.SendAs.Encode(x, layer)
-			}
-
-			if m.QuickReplyShortcut != nil {
-				_ = m.QuickReplyShortcut.Encode(x, layer)
-			}
-
-			if m.VideoTimestamp != nil {
-				x.PutInt32(*m.VideoTimestamp)
+			if m.SuggestedPost != nil {
+				_ = m.SuggestedPost.Encode(x, layer)
 			}
 
 			return nil
@@ -13462,7 +13762,7 @@ func (m *TLMessagesForwardMessages) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xbb9fa475: func() (err error) {
+		0x978928ca: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 5)) != 0 {
@@ -13505,20 +13805,26 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 				m.TopMsgId = new(int32)
 				*m.TopMsgId, err = d.Int32()
 			}
+			if (flags & (1 << 22)) != 0 {
+				// m14 := &InputReplyTo{}
+				// _ = m14.Decode(d)
+				// m.ReplyTo = m14
+				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
+			}
 			if (flags & (1 << 10)) != 0 {
 				m.ScheduleDate = new(int32)
 				*m.ScheduleDate, err = d.Int32()
 			}
 			if (flags & (1 << 13)) != 0 {
-				// m15 := &InputPeer{}
-				// _ = m15.Decode(d)
-				// m.SendAs = m15
+				// m16 := &InputPeer{}
+				// _ = m16.Decode(d)
+				// m.SendAs = m16
 				m.SendAs, _ = DecodeInputPeerClazz(d)
 			}
 			if (flags & (1 << 17)) != 0 {
-				// m16 := &InputQuickReplyShortcut{}
-				// _ = m16.Decode(d)
-				// m.QuickReplyShortcut = m16
+				// m17 := &InputQuickReplyShortcut{}
+				// _ = m17.Decode(d)
+				// m.QuickReplyShortcut = m17
 				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 			if (flags & (1 << 20)) != 0 {
@@ -13530,70 +13836,11 @@ func (m *TLMessagesForwardMessages) Decode(d *bin.Decoder) (err error) {
 				*m.AllowPaidStars, err = d.Int64()
 			}
 
-			return nil
-		},
-		0x6d74da08: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 5)) != 0 {
-				m.Silent = true
-			}
-			if (flags & (1 << 6)) != 0 {
-				m.Background = true
-			}
-			if (flags & (1 << 8)) != 0 {
-				m.WithMyScore = true
-			}
-			if (flags & (1 << 11)) != 0 {
-				m.DropAuthor = true
-			}
-			if (flags & (1 << 12)) != 0 {
-				m.DropMediaCaptions = true
-			}
-			if (flags & (1 << 14)) != 0 {
-				m.Noforwards = true
-			}
-			if (flags & (1 << 19)) != 0 {
-				m.AllowPaidFloodskip = true
-			}
-
-			// m9 := &InputPeer{}
-			// _ = m9.Decode(d)
-			// m.FromPeer = m9
-			m.FromPeer, _ = DecodeInputPeerClazz(d)
-
-			m.Id, err = iface.DecodeInt32List(d)
-
-			m.RandomId, err = iface.DecodeInt64List(d)
-
-			// m12 := &InputPeer{}
-			// _ = m12.Decode(d)
-			// m.ToPeer = m12
-			m.ToPeer, _ = DecodeInputPeerClazz(d)
-
-			if (flags & (1 << 9)) != 0 {
-				m.TopMsgId = new(int32)
-				*m.TopMsgId, err = d.Int32()
-			}
-			if (flags & (1 << 10)) != 0 {
-				m.ScheduleDate = new(int32)
-				*m.ScheduleDate, err = d.Int32()
-			}
-			if (flags & (1 << 13)) != 0 {
-				// m15 := &InputPeer{}
-				// _ = m15.Decode(d)
-				// m.SendAs = m15
-				m.SendAs, _ = DecodeInputPeerClazz(d)
-			}
-			if (flags & (1 << 17)) != 0 {
-				// m16 := &InputQuickReplyShortcut{}
-				// _ = m16.Decode(d)
-				// m.QuickReplyShortcut = m16
-				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
-			}
-			if (flags & (1 << 20)) != 0 {
-				m.VideoTimestamp = new(int32)
-				*m.VideoTimestamp, err = d.Int32()
+			if (flags & (1 << 23)) != 0 {
+				// m20 := &SuggestedPost{}
+				// _ = m20.Decode(d)
+				// m.SuggestedPost = m20
+				m.SuggestedPost, _ = DecodeSuggestedPostClazz(d)
 			}
 
 			return nil
@@ -16632,68 +16879,6 @@ func (m *TLMessagesSendInlineBotResult) Encode(x *bin.Encoder, layer int32) erro
 
 			return nil
 		},
-		0x3ebee86a: func() error {
-			x.PutClazzID(0x3ebee86a)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Silent == true {
-					flags |= 1 << 5
-				}
-				if m.Background == true {
-					flags |= 1 << 6
-				}
-				if m.ClearDraft == true {
-					flags |= 1 << 7
-				}
-				if m.HideVia == true {
-					flags |= 1 << 11
-				}
-
-				if m.ReplyTo != nil {
-					flags |= 1 << 0
-				}
-
-				if m.ScheduleDate != nil {
-					flags |= 1 << 10
-				}
-				if m.SendAs != nil {
-					flags |= 1 << 13
-				}
-				if m.QuickReplyShortcut != nil {
-					flags |= 1 << 17
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Peer.Encode(x, layer)
-			if m.ReplyTo != nil {
-				_ = m.ReplyTo.Encode(x, layer)
-			}
-
-			x.PutInt64(m.RandomId)
-			x.PutInt64(m.QueryId)
-			x.PutString(m.Id)
-			if m.ScheduleDate != nil {
-				x.PutInt32(*m.ScheduleDate)
-			}
-
-			if m.SendAs != nil {
-				_ = m.SendAs.Encode(x, layer)
-			}
-
-			if m.QuickReplyShortcut != nil {
-				_ = m.QuickReplyShortcut.Encode(x, layer)
-			}
-
-			return nil
-		},
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_messages_sendInlineBotResult, int(layer))
@@ -16757,55 +16942,6 @@ func (m *TLMessagesSendInlineBotResult) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 21)) != 0 {
 				m.AllowPaidStars = new(int64)
 				*m.AllowPaidStars, err = d.Int64()
-			}
-
-			return nil
-		},
-		0x3ebee86a: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 5)) != 0 {
-				m.Silent = true
-			}
-			if (flags & (1 << 6)) != 0 {
-				m.Background = true
-			}
-			if (flags & (1 << 7)) != 0 {
-				m.ClearDraft = true
-			}
-			if (flags & (1 << 11)) != 0 {
-				m.HideVia = true
-			}
-
-			// m6 := &InputPeer{}
-			// _ = m6.Decode(d)
-			// m.Peer = m6
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			if (flags & (1 << 0)) != 0 {
-				// m7 := &InputReplyTo{}
-				// _ = m7.Decode(d)
-				// m.ReplyTo = m7
-				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
-			}
-			m.RandomId, err = d.Int64()
-			m.QueryId, err = d.Int64()
-			m.Id, err = d.String()
-			if (flags & (1 << 10)) != 0 {
-				m.ScheduleDate = new(int32)
-				*m.ScheduleDate, err = d.Int32()
-			}
-			if (flags & (1 << 13)) != 0 {
-				// m12 := &InputPeer{}
-				// _ = m12.Decode(d)
-				// m.SendAs = m12
-				m.SendAs, _ = DecodeInputPeerClazz(d)
-			}
-			if (flags & (1 << 17)) != 0 {
-				// m13 := &InputQuickReplyShortcut{}
-				// _ = m13.Decode(d)
-				// m.QuickReplyShortcut = m13
-				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
 			}
 
 			return nil
@@ -17490,15 +17626,16 @@ func (m *TLMessagesGetPeerDialogs) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSaveDraft <--
 type TLMessagesSaveDraft struct {
-	ClazzID     uint32               `json:"_id"`
-	NoWebpage   bool                 `json:"no_webpage"`
-	InvertMedia bool                 `json:"invert_media"`
-	ReplyTo     InputReplyToClazz    `json:"reply_to"`
-	Peer        InputPeerClazz       `json:"peer"`
-	Message     string               `json:"message"`
-	Entities    []MessageEntityClazz `json:"entities"`
-	Media       InputMediaClazz      `json:"media"`
-	Effect      *int64               `json:"effect"`
+	ClazzID       uint32               `json:"_id"`
+	NoWebpage     bool                 `json:"no_webpage"`
+	InvertMedia   bool                 `json:"invert_media"`
+	ReplyTo       InputReplyToClazz    `json:"reply_to"`
+	Peer          InputPeerClazz       `json:"peer"`
+	Message       string               `json:"message"`
+	Entities      []MessageEntityClazz `json:"entities"`
+	Media         InputMediaClazz      `json:"media"`
+	Effect        *int64               `json:"effect"`
+	SuggestedPost SuggestedPostClazz   `json:"suggested_post"`
 }
 
 func (m *TLMessagesSaveDraft) String() string {
@@ -17509,8 +17646,8 @@ func (m *TLMessagesSaveDraft) String() string {
 // Encode <--
 func (m *TLMessagesSaveDraft) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xd372c5ce: func() error {
-			x.PutClazzID(0xd372c5ce)
+		0x54ae308e: func() error {
+			x.PutClazzID(0x54ae308e)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -17534,6 +17671,9 @@ func (m *TLMessagesSaveDraft) Encode(x *bin.Encoder, layer int32) error {
 				}
 				if m.Effect != nil {
 					flags |= 1 << 7
+				}
+				if m.SuggestedPost != nil {
+					flags |= 1 << 8
 				}
 
 				return flags
@@ -17559,6 +17699,10 @@ func (m *TLMessagesSaveDraft) Encode(x *bin.Encoder, layer int32) error {
 				x.PutInt64(*m.Effect)
 			}
 
+			if m.SuggestedPost != nil {
+				_ = m.SuggestedPost.Encode(x, layer)
+			}
+
 			return nil
 		},
 	}
@@ -17575,7 +17719,7 @@ func (m *TLMessagesSaveDraft) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesSaveDraft) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xd372c5ce: func() (err error) {
+		0x54ae308e: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 1)) != 0 {
@@ -17625,6 +17769,13 @@ func (m *TLMessagesSaveDraft) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 7)) != 0 {
 				m.Effect = new(int64)
 				*m.Effect, err = d.Int64()
+			}
+
+			if (flags & (1 << 8)) != 0 {
+				// m10 := &SuggestedPost{}
+				// _ = m10.Decode(d)
+				// m.SuggestedPost = m10
+				m.SuggestedPost, _ = DecodeSuggestedPostClazz(d)
 			}
 
 			return nil
@@ -19679,83 +19830,6 @@ func (m *TLMessagesSendMultiMedia) Encode(x *bin.Encoder, layer int32) error {
 
 			return nil
 		},
-		0x37b74355: func() error {
-			x.PutClazzID(0x37b74355)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Silent == true {
-					flags |= 1 << 5
-				}
-				if m.Background == true {
-					flags |= 1 << 6
-				}
-				if m.ClearDraft == true {
-					flags |= 1 << 7
-				}
-				if m.Noforwards == true {
-					flags |= 1 << 14
-				}
-				if m.UpdateStickersetsOrder == true {
-					flags |= 1 << 15
-				}
-				if m.InvertMedia == true {
-					flags |= 1 << 16
-				}
-				if m.AllowPaidFloodskip == true {
-					flags |= 1 << 19
-				}
-
-				if m.ReplyTo != nil {
-					flags |= 1 << 0
-				}
-
-				if m.ScheduleDate != nil {
-					flags |= 1 << 10
-				}
-				if m.SendAs != nil {
-					flags |= 1 << 13
-				}
-				if m.QuickReplyShortcut != nil {
-					flags |= 1 << 17
-				}
-				if m.Effect != nil {
-					flags |= 1 << 18
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Peer.Encode(x, layer)
-			if m.ReplyTo != nil {
-				_ = m.ReplyTo.Encode(x, layer)
-			}
-
-			_ = iface.EncodeObjectList(x, m.MultiMedia, layer)
-
-			if m.ScheduleDate != nil {
-				x.PutInt32(*m.ScheduleDate)
-			}
-
-			if m.SendAs != nil {
-				_ = m.SendAs.Encode(x, layer)
-			}
-
-			if m.QuickReplyShortcut != nil {
-				_ = m.QuickReplyShortcut.Encode(x, layer)
-			}
-
-			if m.Effect != nil {
-				x.PutInt64(*m.Effect)
-			}
-
-			return nil
-		},
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_messages_sendMultiMedia, int(layer))
@@ -19848,83 +19922,6 @@ func (m *TLMessagesSendMultiMedia) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 21)) != 0 {
 				m.AllowPaidStars = new(int64)
 				*m.AllowPaidStars, err = d.Int64()
-			}
-
-			return nil
-		},
-		0x37b74355: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 5)) != 0 {
-				m.Silent = true
-			}
-			if (flags & (1 << 6)) != 0 {
-				m.Background = true
-			}
-			if (flags & (1 << 7)) != 0 {
-				m.ClearDraft = true
-			}
-			if (flags & (1 << 14)) != 0 {
-				m.Noforwards = true
-			}
-			if (flags & (1 << 15)) != 0 {
-				m.UpdateStickersetsOrder = true
-			}
-			if (flags & (1 << 16)) != 0 {
-				m.InvertMedia = true
-			}
-			if (flags & (1 << 19)) != 0 {
-				m.AllowPaidFloodskip = true
-			}
-
-			// m9 := &InputPeer{}
-			// _ = m9.Decode(d)
-			// m.Peer = m9
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			if (flags & (1 << 0)) != 0 {
-				// m10 := &InputReplyTo{}
-				// _ = m10.Decode(d)
-				// m.ReplyTo = m10
-				m.ReplyTo, _ = DecodeInputReplyToClazz(d)
-			}
-			c11, err2 := d.ClazzID()
-			if c11 != iface.ClazzID_vector {
-				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 11, c11)
-				return err2
-			}
-			l11, err3 := d.Int()
-			// v11 := make([]*InputSingleMedia, l11)
-			v11 := make([]InputSingleMediaClazz, l11)
-			for i := 0; i < l11; i++ {
-				// vv := new(InputSingleMedia)
-				// err3 = vv.Decode(d)
-				// _ = err3
-				// v11[i] = vv
-				v11[i], _ = DecodeInputSingleMediaClazz(d)
-				_ = err3
-			}
-			m.MultiMedia = v11
-
-			if (flags & (1 << 10)) != 0 {
-				m.ScheduleDate = new(int32)
-				*m.ScheduleDate, err = d.Int32()
-			}
-			if (flags & (1 << 13)) != 0 {
-				// m13 := &InputPeer{}
-				// _ = m13.Decode(d)
-				// m.SendAs = m13
-				m.SendAs, _ = DecodeInputPeerClazz(d)
-			}
-			if (flags & (1 << 17)) != 0 {
-				// m14 := &InputQuickReplyShortcut{}
-				// _ = m14.Decode(d)
-				// m.QuickReplyShortcut = m14
-				m.QuickReplyShortcut, _ = DecodeInputQuickReplyShortcutClazz(d)
-			}
-			if (flags & (1 << 18)) != 0 {
-				m.Effect = new(int64)
-				*m.Effect, err = d.Int64()
 			}
 
 			return nil
@@ -20129,9 +20126,10 @@ func (m *TLMessagesGetSplitRanges) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesMarkDialogUnread <--
 type TLMessagesMarkDialogUnread struct {
-	ClazzID uint32               `json:"_id"`
-	Unread  bool                 `json:"unread"`
-	Peer    InputDialogPeerClazz `json:"peer"`
+	ClazzID    uint32               `json:"_id"`
+	Unread     bool                 `json:"unread"`
+	ParentPeer InputPeerClazz       `json:"parent_peer"`
+	Peer       InputDialogPeerClazz `json:"peer"`
 }
 
 func (m *TLMessagesMarkDialogUnread) String() string {
@@ -20142,8 +20140,8 @@ func (m *TLMessagesMarkDialogUnread) String() string {
 // Encode <--
 func (m *TLMessagesMarkDialogUnread) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xc286d98f: func() error {
-			x.PutClazzID(0xc286d98f)
+		0x8c5006f8: func() error {
+			x.PutClazzID(0x8c5006f8)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -20152,6 +20150,9 @@ func (m *TLMessagesMarkDialogUnread) Encode(x *bin.Encoder, layer int32) error {
 				if m.Unread == true {
 					flags |= 1 << 0
 				}
+				if m.ParentPeer != nil {
+					flags |= 1 << 1
+				}
 
 				return flags
 			}
@@ -20159,6 +20160,10 @@ func (m *TLMessagesMarkDialogUnread) Encode(x *bin.Encoder, layer int32) error {
 			// set flags
 			var flags = getFlags()
 			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
+
 			_ = m.Peer.Encode(x, layer)
 
 			return nil
@@ -20177,16 +20182,22 @@ func (m *TLMessagesMarkDialogUnread) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesMarkDialogUnread) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xc286d98f: func() (err error) {
+		0x8c5006f8: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
 				m.Unread = true
 			}
+			if (flags & (1 << 1)) != 0 {
+				// m3 := &InputPeer{}
+				// _ = m3.Decode(d)
+				// m.ParentPeer = m3
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
+			}
 
-			// m3 := &InputDialogPeer{}
-			// _ = m3.Decode(d)
-			// m.Peer = m3
+			// m4 := &InputDialogPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
 			m.Peer, _ = DecodeInputDialogPeerClazz(d)
 
 			return nil
@@ -20205,7 +20216,8 @@ func (m *TLMessagesMarkDialogUnread) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetDialogUnreadMarks <--
 type TLMessagesGetDialogUnreadMarks struct {
-	ClazzID uint32 `json:"_id"`
+	ClazzID    uint32         `json:"_id"`
+	ParentPeer InputPeerClazz `json:"parent_peer"`
 }
 
 func (m *TLMessagesGetDialogUnreadMarks) String() string {
@@ -20216,8 +20228,26 @@ func (m *TLMessagesGetDialogUnreadMarks) String() string {
 // Encode <--
 func (m *TLMessagesGetDialogUnreadMarks) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x22e24e22: func() error {
-			x.PutClazzID(0x22e24e22)
+		0x21202222: func() error {
+			x.PutClazzID(0x21202222)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.ParentPeer != nil {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
 
 			return nil
 		},
@@ -20235,7 +20265,15 @@ func (m *TLMessagesGetDialogUnreadMarks) Encode(x *bin.Encoder, layer int32) err
 // Decode <--
 func (m *TLMessagesGetDialogUnreadMarks) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x22e24e22: func() (err error) {
+		0x21202222: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.ParentPeer = m2
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
+			}
 
 			return nil
 		},
@@ -22247,9 +22285,10 @@ func (m *TLMessagesReadDiscussion) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesUnpinAllMessages <--
 type TLMessagesUnpinAllMessages struct {
-	ClazzID  uint32         `json:"_id"`
-	Peer     InputPeerClazz `json:"peer"`
-	TopMsgId *int32         `json:"top_msg_id"`
+	ClazzID     uint32         `json:"_id"`
+	Peer        InputPeerClazz `json:"peer"`
+	TopMsgId    *int32         `json:"top_msg_id"`
+	SavedPeerId InputPeerClazz `json:"saved_peer_id"`
 }
 
 func (m *TLMessagesUnpinAllMessages) String() string {
@@ -22260,8 +22299,8 @@ func (m *TLMessagesUnpinAllMessages) String() string {
 // Encode <--
 func (m *TLMessagesUnpinAllMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xee22b9a8: func() error {
-			x.PutClazzID(0xee22b9a8)
+		0x62dd747: func() error {
+			x.PutClazzID(0x62dd747)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -22269,6 +22308,9 @@ func (m *TLMessagesUnpinAllMessages) Encode(x *bin.Encoder, layer int32) error {
 
 				if m.TopMsgId != nil {
 					flags |= 1 << 0
+				}
+				if m.SavedPeerId != nil {
+					flags |= 1 << 1
 				}
 
 				return flags
@@ -22280,6 +22322,10 @@ func (m *TLMessagesUnpinAllMessages) Encode(x *bin.Encoder, layer int32) error {
 			_ = m.Peer.Encode(x, layer)
 			if m.TopMsgId != nil {
 				x.PutInt32(*m.TopMsgId)
+			}
+
+			if m.SavedPeerId != nil {
+				_ = m.SavedPeerId.Encode(x, layer)
 			}
 
 			return nil
@@ -22298,7 +22344,7 @@ func (m *TLMessagesUnpinAllMessages) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesUnpinAllMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xee22b9a8: func() (err error) {
+		0x62dd747: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
@@ -22310,6 +22356,12 @@ func (m *TLMessagesUnpinAllMessages) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
 				*m.TopMsgId, err = d.Int32()
+			}
+			if (flags & (1 << 1)) != 0 {
+				// m4 := &InputPeer{}
+				// _ = m4.Decode(d)
+				// m.SavedPeerId = m4
+				m.SavedPeerId, _ = DecodeInputPeerClazz(d)
 			}
 
 			return nil
@@ -23421,9 +23473,9 @@ func (m *TLMessagesCheckHistoryImportPeer) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesSetChatTheme <--
 type TLMessagesSetChatTheme struct {
-	ClazzID  uint32         `json:"_id"`
-	Peer     InputPeerClazz `json:"peer"`
-	Emoticon string         `json:"emoticon"`
+	ClazzID uint32              `json:"_id"`
+	Peer    InputPeerClazz      `json:"peer"`
+	Theme   InputChatThemeClazz `json:"theme"`
 }
 
 func (m *TLMessagesSetChatTheme) String() string {
@@ -23434,11 +23486,11 @@ func (m *TLMessagesSetChatTheme) String() string {
 // Encode <--
 func (m *TLMessagesSetChatTheme) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xe63be13f: func() error {
-			x.PutClazzID(0xe63be13f)
+		0x81202c9: func() error {
+			x.PutClazzID(0x81202c9)
 
 			_ = m.Peer.Encode(x, layer)
-			x.PutString(m.Emoticon)
+			_ = m.Theme.Encode(x, layer)
 
 			return nil
 		},
@@ -23456,14 +23508,17 @@ func (m *TLMessagesSetChatTheme) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesSetChatTheme) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xe63be13f: func() (err error) {
+		0x81202c9: func() (err error) {
 
 			// m1 := &InputPeer{}
 			// _ = m1.Decode(d)
 			// m.Peer = m1
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m.Emoticon, err = d.String()
+			// m2 := &InputChatTheme{}
+			// _ = m2.Decode(d)
+			// m.Theme = m2
+			m.Theme, _ = DecodeInputChatThemeClazz(d)
 
 			return nil
 		},
@@ -24638,14 +24693,15 @@ func (m *TLMessagesTranslateText) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesGetUnreadReactions <--
 type TLMessagesGetUnreadReactions struct {
-	ClazzID   uint32         `json:"_id"`
-	Peer      InputPeerClazz `json:"peer"`
-	TopMsgId  *int32         `json:"top_msg_id"`
-	OffsetId  int32          `json:"offset_id"`
-	AddOffset int32          `json:"add_offset"`
-	Limit     int32          `json:"limit"`
-	MaxId     int32          `json:"max_id"`
-	MinId     int32          `json:"min_id"`
+	ClazzID     uint32         `json:"_id"`
+	Peer        InputPeerClazz `json:"peer"`
+	TopMsgId    *int32         `json:"top_msg_id"`
+	SavedPeerId InputPeerClazz `json:"saved_peer_id"`
+	OffsetId    int32          `json:"offset_id"`
+	AddOffset   int32          `json:"add_offset"`
+	Limit       int32          `json:"limit"`
+	MaxId       int32          `json:"max_id"`
+	MinId       int32          `json:"min_id"`
 }
 
 func (m *TLMessagesGetUnreadReactions) String() string {
@@ -24656,8 +24712,8 @@ func (m *TLMessagesGetUnreadReactions) String() string {
 // Encode <--
 func (m *TLMessagesGetUnreadReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x3223495b: func() error {
-			x.PutClazzID(0x3223495b)
+		0xbd7f90ac: func() error {
+			x.PutClazzID(0xbd7f90ac)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -24665,6 +24721,9 @@ func (m *TLMessagesGetUnreadReactions) Encode(x *bin.Encoder, layer int32) error
 
 				if m.TopMsgId != nil {
 					flags |= 1 << 0
+				}
+				if m.SavedPeerId != nil {
+					flags |= 1 << 1
 				}
 
 				return flags
@@ -24676,6 +24735,10 @@ func (m *TLMessagesGetUnreadReactions) Encode(x *bin.Encoder, layer int32) error
 			_ = m.Peer.Encode(x, layer)
 			if m.TopMsgId != nil {
 				x.PutInt32(*m.TopMsgId)
+			}
+
+			if m.SavedPeerId != nil {
+				_ = m.SavedPeerId.Encode(x, layer)
 			}
 
 			x.PutInt32(m.OffsetId)
@@ -24700,7 +24763,7 @@ func (m *TLMessagesGetUnreadReactions) Encode(x *bin.Encoder, layer int32) error
 // Decode <--
 func (m *TLMessagesGetUnreadReactions) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x3223495b: func() (err error) {
+		0xbd7f90ac: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
@@ -24712,6 +24775,12 @@ func (m *TLMessagesGetUnreadReactions) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
 				*m.TopMsgId, err = d.Int32()
+			}
+			if (flags & (1 << 1)) != 0 {
+				// m4 := &InputPeer{}
+				// _ = m4.Decode(d)
+				// m.SavedPeerId = m4
+				m.SavedPeerId, _ = DecodeInputPeerClazz(d)
 			}
 			m.OffsetId, err = d.Int32()
 			m.AddOffset, err = d.Int32()
@@ -24735,9 +24804,10 @@ func (m *TLMessagesGetUnreadReactions) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReadReactions <--
 type TLMessagesReadReactions struct {
-	ClazzID  uint32         `json:"_id"`
-	Peer     InputPeerClazz `json:"peer"`
-	TopMsgId *int32         `json:"top_msg_id"`
+	ClazzID     uint32         `json:"_id"`
+	Peer        InputPeerClazz `json:"peer"`
+	TopMsgId    *int32         `json:"top_msg_id"`
+	SavedPeerId InputPeerClazz `json:"saved_peer_id"`
 }
 
 func (m *TLMessagesReadReactions) String() string {
@@ -24748,8 +24818,8 @@ func (m *TLMessagesReadReactions) String() string {
 // Encode <--
 func (m *TLMessagesReadReactions) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x54aa7f8e: func() error {
-			x.PutClazzID(0x54aa7f8e)
+		0x9ec44f93: func() error {
+			x.PutClazzID(0x9ec44f93)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -24757,6 +24827,9 @@ func (m *TLMessagesReadReactions) Encode(x *bin.Encoder, layer int32) error {
 
 				if m.TopMsgId != nil {
 					flags |= 1 << 0
+				}
+				if m.SavedPeerId != nil {
+					flags |= 1 << 1
 				}
 
 				return flags
@@ -24768,6 +24841,10 @@ func (m *TLMessagesReadReactions) Encode(x *bin.Encoder, layer int32) error {
 			_ = m.Peer.Encode(x, layer)
 			if m.TopMsgId != nil {
 				x.PutInt32(*m.TopMsgId)
+			}
+
+			if m.SavedPeerId != nil {
+				_ = m.SavedPeerId.Encode(x, layer)
 			}
 
 			return nil
@@ -24786,7 +24863,7 @@ func (m *TLMessagesReadReactions) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesReadReactions) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x54aa7f8e: func() (err error) {
+		0x9ec44f93: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 
@@ -24798,6 +24875,12 @@ func (m *TLMessagesReadReactions) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 0)) != 0 {
 				m.TopMsgId = new(int32)
 				*m.TopMsgId, err = d.Int32()
+			}
+			if (flags & (1 << 1)) != 0 {
+				// m4 := &InputPeer{}
+				// _ = m4.Decode(d)
+				// m.SavedPeerId = m4
+				m.SavedPeerId, _ = DecodeInputPeerClazz(d)
 			}
 
 			return nil
@@ -27062,6 +27145,7 @@ func (m *TLMessagesSearchEmojiStickerSets) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetSavedDialogs struct {
 	ClazzID       uint32         `json:"_id"`
 	ExcludePinned bool           `json:"exclude_pinned"`
+	ParentPeer    InputPeerClazz `json:"parent_peer"`
 	OffsetDate    int32          `json:"offset_date"`
 	OffsetId      int32          `json:"offset_id"`
 	OffsetPeer    InputPeerClazz `json:"offset_peer"`
@@ -27077,8 +27161,8 @@ func (m *TLMessagesGetSavedDialogs) String() string {
 // Encode <--
 func (m *TLMessagesGetSavedDialogs) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x5381d21a: func() error {
-			x.PutClazzID(0x5381d21a)
+		0x1e91fc99: func() error {
+			x.PutClazzID(0x1e91fc99)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -27087,6 +27171,9 @@ func (m *TLMessagesGetSavedDialogs) Encode(x *bin.Encoder, layer int32) error {
 				if m.ExcludePinned == true {
 					flags |= 1 << 0
 				}
+				if m.ParentPeer != nil {
+					flags |= 1 << 1
+				}
 
 				return flags
 			}
@@ -27094,6 +27181,10 @@ func (m *TLMessagesGetSavedDialogs) Encode(x *bin.Encoder, layer int32) error {
 			// set flags
 			var flags = getFlags()
 			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
+
 			x.PutInt32(m.OffsetDate)
 			x.PutInt32(m.OffsetId)
 			_ = m.OffsetPeer.Encode(x, layer)
@@ -27116,18 +27207,24 @@ func (m *TLMessagesGetSavedDialogs) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesGetSavedDialogs) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x5381d21a: func() (err error) {
+		0x1e91fc99: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
 				m.ExcludePinned = true
 			}
+			if (flags & (1 << 1)) != 0 {
+				// m3 := &InputPeer{}
+				// _ = m3.Decode(d)
+				// m.ParentPeer = m3
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
+			}
 			m.OffsetDate, err = d.Int32()
 			m.OffsetId, err = d.Int32()
 
-			// m5 := &InputPeer{}
-			// _ = m5.Decode(d)
-			// m.OffsetPeer = m5
+			// m6 := &InputPeer{}
+			// _ = m6.Decode(d)
+			// m.OffsetPeer = m6
 			m.OffsetPeer, _ = DecodeInputPeerClazz(d)
 
 			m.Limit, err = d.Int32()
@@ -27150,6 +27247,7 @@ func (m *TLMessagesGetSavedDialogs) Decode(d *bin.Decoder) (err error) {
 // TLMessagesGetSavedHistory <--
 type TLMessagesGetSavedHistory struct {
 	ClazzID    uint32         `json:"_id"`
+	ParentPeer InputPeerClazz `json:"parent_peer"`
 	Peer       InputPeerClazz `json:"peer"`
 	OffsetId   int32          `json:"offset_id"`
 	OffsetDate int32          `json:"offset_date"`
@@ -27168,8 +27266,26 @@ func (m *TLMessagesGetSavedHistory) String() string {
 // Encode <--
 func (m *TLMessagesGetSavedHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x3d9a414d: func() error {
-			x.PutClazzID(0x3d9a414d)
+		0x998ab009: func() error {
+			x.PutClazzID(0x998ab009)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.ParentPeer != nil {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
 
 			_ = m.Peer.Encode(x, layer)
 			x.PutInt32(m.OffsetId)
@@ -27196,11 +27312,19 @@ func (m *TLMessagesGetSavedHistory) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLMessagesGetSavedHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x3d9a414d: func() (err error) {
+		0x998ab009: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.ParentPeer = m2
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
+			}
 
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
@@ -27227,11 +27351,12 @@ func (m *TLMessagesGetSavedHistory) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesDeleteSavedHistory <--
 type TLMessagesDeleteSavedHistory struct {
-	ClazzID uint32         `json:"_id"`
-	Peer    InputPeerClazz `json:"peer"`
-	MaxId   int32          `json:"max_id"`
-	MinDate *int32         `json:"min_date"`
-	MaxDate *int32         `json:"max_date"`
+	ClazzID    uint32         `json:"_id"`
+	ParentPeer InputPeerClazz `json:"parent_peer"`
+	Peer       InputPeerClazz `json:"peer"`
+	MaxId      int32          `json:"max_id"`
+	MinDate    *int32         `json:"min_date"`
+	MaxDate    *int32         `json:"max_date"`
 }
 
 func (m *TLMessagesDeleteSavedHistory) String() string {
@@ -27242,12 +27367,16 @@ func (m *TLMessagesDeleteSavedHistory) String() string {
 // Encode <--
 func (m *TLMessagesDeleteSavedHistory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x6e98102b: func() error {
-			x.PutClazzID(0x6e98102b)
+		0x4dc5085f: func() error {
+			x.PutClazzID(0x4dc5085f)
 
 			// set flags
 			var getFlags = func() uint32 {
 				var flags uint32 = 0
+
+				if m.ParentPeer != nil {
+					flags |= 1 << 0
+				}
 
 				if m.MinDate != nil {
 					flags |= 1 << 2
@@ -27262,6 +27391,10 @@ func (m *TLMessagesDeleteSavedHistory) Encode(x *bin.Encoder, layer int32) error
 			// set flags
 			var flags = getFlags()
 			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
+
 			_ = m.Peer.Encode(x, layer)
 			x.PutInt32(m.MaxId)
 			if m.MinDate != nil {
@@ -27288,13 +27421,19 @@ func (m *TLMessagesDeleteSavedHistory) Encode(x *bin.Encoder, layer int32) error
 // Decode <--
 func (m *TLMessagesDeleteSavedHistory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x6e98102b: func() (err error) {
+		0x4dc5085f: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.ParentPeer = m2
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
+			}
 
-			// m2 := &InputPeer{}
-			// _ = m2.Decode(d)
-			// m.Peer = m2
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.MaxId, err = d.Int32()
@@ -29009,9 +29148,8 @@ func (m *TLMessagesGetPaidReactionPrivacy) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesViewSponsoredMessage <--
 type TLMessagesViewSponsoredMessage struct {
-	ClazzID  uint32         `json:"_id"`
-	RandomId []byte         `json:"random_id"`
-	Peer     InputPeerClazz `json:"peer"`
+	ClazzID  uint32 `json:"_id"`
+	RandomId []byte `json:"random_id"`
 }
 
 func (m *TLMessagesViewSponsoredMessage) String() string {
@@ -29025,14 +29163,6 @@ func (m *TLMessagesViewSponsoredMessage) Encode(x *bin.Encoder, layer int32) err
 		0x269e3643: func() error {
 			x.PutClazzID(0x269e3643)
 
-			x.PutBytes(m.RandomId)
-
-			return nil
-		},
-		0x673ad8f1: func() error {
-			x.PutClazzID(0x673ad8f1)
-
-			_ = m.Peer.Encode(x, layer)
 			x.PutBytes(m.RandomId)
 
 			return nil
@@ -29056,17 +29186,6 @@ func (m *TLMessagesViewSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 			return nil
 		},
-		0x673ad8f1: func() (err error) {
-
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			m.RandomId, err = d.Bytes()
-
-			return nil
-		},
 	}
 
 	if m.ClazzID == 0 {
@@ -29081,11 +29200,10 @@ func (m *TLMessagesViewSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesClickSponsoredMessage <--
 type TLMessagesClickSponsoredMessage struct {
-	ClazzID    uint32         `json:"_id"`
-	Media      bool           `json:"media"`
-	Fullscreen bool           `json:"fullscreen"`
-	RandomId   []byte         `json:"random_id"`
-	Peer       InputPeerClazz `json:"peer"`
+	ClazzID    uint32 `json:"_id"`
+	Media      bool   `json:"media"`
+	Fullscreen bool   `json:"fullscreen"`
+	RandomId   []byte `json:"random_id"`
 }
 
 func (m *TLMessagesClickSponsoredMessage) String() string {
@@ -29120,31 +29238,6 @@ func (m *TLMessagesClickSponsoredMessage) Encode(x *bin.Encoder, layer int32) er
 
 			return nil
 		},
-		0xf093465: func() error {
-			x.PutClazzID(0xf093465)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Media == true {
-					flags |= 1 << 0
-				}
-				if m.Fullscreen == true {
-					flags |= 1 << 1
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Peer.Encode(x, layer)
-			x.PutBytes(m.RandomId)
-
-			return nil
-		},
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_messages_clickSponsoredMessage, int(layer))
@@ -29172,25 +29265,6 @@ func (m *TLMessagesClickSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 			return nil
 		},
-		0xf093465: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 0)) != 0 {
-				m.Media = true
-			}
-			if (flags & (1 << 1)) != 0 {
-				m.Fullscreen = true
-			}
-
-			// m4 := &InputPeer{}
-			// _ = m4.Decode(d)
-			// m.Peer = m4
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			m.RandomId, err = d.Bytes()
-
-			return nil
-		},
 	}
 
 	if m.ClazzID == 0 {
@@ -29205,10 +29279,9 @@ func (m *TLMessagesClickSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 // TLMessagesReportSponsoredMessage <--
 type TLMessagesReportSponsoredMessage struct {
-	ClazzID  uint32         `json:"_id"`
-	RandomId []byte         `json:"random_id"`
-	Option   []byte         `json:"option"`
-	Peer     InputPeerClazz `json:"peer"`
+	ClazzID  uint32 `json:"_id"`
+	RandomId []byte `json:"random_id"`
+	Option   []byte `json:"option"`
 }
 
 func (m *TLMessagesReportSponsoredMessage) String() string {
@@ -29222,15 +29295,6 @@ func (m *TLMessagesReportSponsoredMessage) Encode(x *bin.Encoder, layer int32) e
 		0x12cbf0c4: func() error {
 			x.PutClazzID(0x12cbf0c4)
 
-			x.PutBytes(m.RandomId)
-			x.PutBytes(m.Option)
-
-			return nil
-		},
-		0x1af3dbb8: func() error {
-			x.PutClazzID(0x1af3dbb8)
-
-			_ = m.Peer.Encode(x, layer)
 			x.PutBytes(m.RandomId)
 			x.PutBytes(m.Option)
 
@@ -29256,18 +29320,6 @@ func (m *TLMessagesReportSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 
 			return nil
 		},
-		0x1af3dbb8: func() (err error) {
-
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			m.RandomId, err = d.Bytes()
-			m.Option, err = d.Bytes()
-
-			return nil
-		},
 	}
 
 	if m.ClazzID == 0 {
@@ -29284,6 +29336,7 @@ func (m *TLMessagesReportSponsoredMessage) Decode(d *bin.Decoder) (err error) {
 type TLMessagesGetSponsoredMessages struct {
 	ClazzID uint32         `json:"_id"`
 	Peer    InputPeerClazz `json:"peer"`
+	MsgId   *int32         `json:"msg_id"`
 }
 
 func (m *TLMessagesGetSponsoredMessages) String() string {
@@ -29294,10 +29347,27 @@ func (m *TLMessagesGetSponsoredMessages) String() string {
 // Encode <--
 func (m *TLMessagesGetSponsoredMessages) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x9bd2f439: func() error {
-			x.PutClazzID(0x9bd2f439)
+		0x3d6ce850: func() error {
+			x.PutClazzID(0x3d6ce850)
 
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.MsgId != nil {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
 			_ = m.Peer.Encode(x, layer)
+			if m.MsgId != nil {
+				x.PutInt32(*m.MsgId)
+			}
 
 			return nil
 		},
@@ -29315,12 +29385,19 @@ func (m *TLMessagesGetSponsoredMessages) Encode(x *bin.Encoder, layer int32) err
 // Decode <--
 func (m *TLMessagesGetSponsoredMessages) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x9bd2f439: func() (err error) {
+		0x3d6ce850: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
 
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
 			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			if (flags & (1 << 0)) != 0 {
+				m.MsgId = new(int32)
+				*m.MsgId, err = d.Int32()
+			}
 
 			return nil
 		},
@@ -29656,6 +29733,1035 @@ func (m *TLMessagesReportMessagesDelivery) Decode(d *bin.Decoder) (err error) {
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Id, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesGetSavedDialogsByID <--
+type TLMessagesGetSavedDialogsByID struct {
+	ClazzID    uint32           `json:"_id"`
+	ParentPeer InputPeerClazz   `json:"parent_peer"`
+	Ids        []InputPeerClazz `json:"ids"`
+}
+
+func (m *TLMessagesGetSavedDialogsByID) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesGetSavedDialogsByID) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x6f6f9c96: func() error {
+			x.PutClazzID(0x6f6f9c96)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.ParentPeer != nil {
+					flags |= 1 << 1
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.ParentPeer != nil {
+				_ = m.ParentPeer.Encode(x, layer)
+			}
+
+			_ = iface.EncodeObjectList(x, m.Ids, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_getSavedDialogsByID, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_getSavedDialogsByID, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesGetSavedDialogsByID) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x6f6f9c96: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 1)) != 0 {
+				// m2 := &InputPeer{}
+				// _ = m2.Decode(d)
+				// m.ParentPeer = m2
+				m.ParentPeer, _ = DecodeInputPeerClazz(d)
+			}
+			c3, err2 := d.ClazzID()
+			if c3 != iface.ClazzID_vector {
+				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 3, c3)
+				return err2
+			}
+			l3, err3 := d.Int()
+			// v3 := make([]*InputPeer, l3)
+			v3 := make([]InputPeerClazz, l3)
+			for i := 0; i < l3; i++ {
+				// vv := new(InputPeer)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeInputPeerClazz(d)
+				_ = err3
+			}
+			m.Ids = v3
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesReadSavedHistory <--
+type TLMessagesReadSavedHistory struct {
+	ClazzID    uint32         `json:"_id"`
+	ParentPeer InputPeerClazz `json:"parent_peer"`
+	Peer       InputPeerClazz `json:"peer"`
+	MaxId      int32          `json:"max_id"`
+}
+
+func (m *TLMessagesReadSavedHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesReadSavedHistory) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xba4a3b5b: func() error {
+			x.PutClazzID(0xba4a3b5b)
+
+			_ = m.ParentPeer.Encode(x, layer)
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.MaxId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_readSavedHistory, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_readSavedHistory, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesReadSavedHistory) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xba4a3b5b: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.ParentPeer = m1
+			m.ParentPeer, _ = DecodeInputPeerClazz(d)
+
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.MaxId, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesToggleTodoCompleted <--
+type TLMessagesToggleTodoCompleted struct {
+	ClazzID     uint32         `json:"_id"`
+	Peer        InputPeerClazz `json:"peer"`
+	MsgId       int32          `json:"msg_id"`
+	Completed   []int32        `json:"completed"`
+	Incompleted []int32        `json:"incompleted"`
+}
+
+func (m *TLMessagesToggleTodoCompleted) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesToggleTodoCompleted) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xd3e03124: func() error {
+			x.PutClazzID(0xd3e03124)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.MsgId)
+
+			iface.EncodeInt32List(x, m.Completed)
+
+			iface.EncodeInt32List(x, m.Incompleted)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_toggleTodoCompleted, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_toggleTodoCompleted, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesToggleTodoCompleted) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xd3e03124: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.MsgId, err = d.Int32()
+
+			m.Completed, err = iface.DecodeInt32List(d)
+
+			m.Incompleted, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesAppendTodoList <--
+type TLMessagesAppendTodoList struct {
+	ClazzID uint32          `json:"_id"`
+	Peer    InputPeerClazz  `json:"peer"`
+	MsgId   int32           `json:"msg_id"`
+	List    []TodoItemClazz `json:"list"`
+}
+
+func (m *TLMessagesAppendTodoList) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesAppendTodoList) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x21a61057: func() error {
+			x.PutClazzID(0x21a61057)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.MsgId)
+
+			_ = iface.EncodeObjectList(x, m.List, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_appendTodoList, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_appendTodoList, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesAppendTodoList) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x21a61057: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.MsgId, err = d.Int32()
+			c3, err2 := d.ClazzID()
+			if c3 != iface.ClazzID_vector {
+				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 3, c3)
+				return err2
+			}
+			l3, err3 := d.Int()
+			// v3 := make([]*TodoItem, l3)
+			v3 := make([]TodoItemClazz, l3)
+			for i := 0; i < l3; i++ {
+				// vv := new(TodoItem)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeTodoItemClazz(d)
+				_ = err3
+			}
+			m.List = v3
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesToggleSuggestedPostApproval <--
+type TLMessagesToggleSuggestedPostApproval struct {
+	ClazzID       uint32         `json:"_id"`
+	Reject        bool           `json:"reject"`
+	Peer          InputPeerClazz `json:"peer"`
+	MsgId         int32          `json:"msg_id"`
+	ScheduleDate  *int32         `json:"schedule_date"`
+	RejectComment *string        `json:"reject_comment"`
+}
+
+func (m *TLMessagesToggleSuggestedPostApproval) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesToggleSuggestedPostApproval) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x8107455c: func() error {
+			x.PutClazzID(0x8107455c)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Reject == true {
+					flags |= 1 << 1
+				}
+
+				if m.ScheduleDate != nil {
+					flags |= 1 << 0
+				}
+				if m.RejectComment != nil {
+					flags |= 1 << 2
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.MsgId)
+			if m.ScheduleDate != nil {
+				x.PutInt32(*m.ScheduleDate)
+			}
+
+			if m.RejectComment != nil {
+				x.PutString(*m.RejectComment)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_toggleSuggestedPostApproval, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_toggleSuggestedPostApproval, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesToggleSuggestedPostApproval) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x8107455c: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 1)) != 0 {
+				m.Reject = true
+			}
+
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.MsgId, err = d.Int32()
+			if (flags & (1 << 0)) != 0 {
+				m.ScheduleDate = new(int32)
+				*m.ScheduleDate, err = d.Int32()
+			}
+			if (flags & (1 << 2)) != 0 {
+				m.RejectComment = new(string)
+				*m.RejectComment, err = d.String()
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesGetForumTopics <--
+type TLMessagesGetForumTopics struct {
+	ClazzID     uint32         `json:"_id"`
+	Peer        InputPeerClazz `json:"peer"`
+	Q           *string        `json:"q"`
+	OffsetDate  int32          `json:"offset_date"`
+	OffsetId    int32          `json:"offset_id"`
+	OffsetTopic int32          `json:"offset_topic"`
+	Limit       int32          `json:"limit"`
+}
+
+func (m *TLMessagesGetForumTopics) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesGetForumTopics) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x3ba47bff: func() error {
+			x.PutClazzID(0x3ba47bff)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Q != nil {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Peer.Encode(x, layer)
+			if m.Q != nil {
+				x.PutString(*m.Q)
+			}
+
+			x.PutInt32(m.OffsetDate)
+			x.PutInt32(m.OffsetId)
+			x.PutInt32(m.OffsetTopic)
+			x.PutInt32(m.Limit)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_getForumTopics, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_getForumTopics, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesGetForumTopics) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x3ba47bff: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			if (flags & (1 << 0)) != 0 {
+				m.Q = new(string)
+				*m.Q, err = d.String()
+			}
+
+			m.OffsetDate, err = d.Int32()
+			m.OffsetId, err = d.Int32()
+			m.OffsetTopic, err = d.Int32()
+			m.Limit, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesGetForumTopicsByID <--
+type TLMessagesGetForumTopicsByID struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Topics  []int32        `json:"topics"`
+}
+
+func (m *TLMessagesGetForumTopicsByID) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesGetForumTopicsByID) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xaf0a4a08: func() error {
+			x.PutClazzID(0xaf0a4a08)
+
+			_ = m.Peer.Encode(x, layer)
+
+			iface.EncodeInt32List(x, m.Topics)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_getForumTopicsByID, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_getForumTopicsByID, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesGetForumTopicsByID) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xaf0a4a08: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Topics, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesEditForumTopic <--
+type TLMessagesEditForumTopic struct {
+	ClazzID     uint32         `json:"_id"`
+	Peer        InputPeerClazz `json:"peer"`
+	TopicId     int32          `json:"topic_id"`
+	Title       *string        `json:"title"`
+	IconEmojiId *int64         `json:"icon_emoji_id"`
+	Closed      BoolClazz      `json:"closed"`
+	Hidden      BoolClazz      `json:"hidden"`
+}
+
+func (m *TLMessagesEditForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesEditForumTopic) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xcecc1134: func() error {
+			x.PutClazzID(0xcecc1134)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Title != nil {
+					flags |= 1 << 0
+				}
+				if m.IconEmojiId != nil {
+					flags |= 1 << 1
+				}
+				if m.Closed != nil {
+					flags |= 1 << 2
+				}
+				if m.Hidden != nil {
+					flags |= 1 << 3
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.TopicId)
+			if m.Title != nil {
+				x.PutString(*m.Title)
+			}
+
+			if m.IconEmojiId != nil {
+				x.PutInt64(*m.IconEmojiId)
+			}
+
+			if m.Closed != nil {
+				_ = m.Closed.Encode(x, layer)
+			}
+
+			if m.Hidden != nil {
+				_ = m.Hidden.Encode(x, layer)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_editForumTopic, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_editForumTopic, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesEditForumTopic) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xcecc1134: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.TopicId, err = d.Int32()
+			if (flags & (1 << 0)) != 0 {
+				m.Title = new(string)
+				*m.Title, err = d.String()
+			}
+
+			if (flags & (1 << 1)) != 0 {
+				m.IconEmojiId = new(int64)
+				*m.IconEmojiId, err = d.Int64()
+			}
+
+			if (flags & (1 << 2)) != 0 {
+				// m6 := &Bool{}
+				// _ = m6.Decode(d)
+				// m.Closed = m6
+				m.Closed, _ = DecodeBoolClazz(d)
+			}
+			if (flags & (1 << 3)) != 0 {
+				// m7 := &Bool{}
+				// _ = m7.Decode(d)
+				// m.Hidden = m7
+				m.Hidden, _ = DecodeBoolClazz(d)
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesUpdatePinnedForumTopic <--
+type TLMessagesUpdatePinnedForumTopic struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	TopicId int32          `json:"topic_id"`
+	Pinned  BoolClazz      `json:"pinned"`
+}
+
+func (m *TLMessagesUpdatePinnedForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesUpdatePinnedForumTopic) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x175df251: func() error {
+			x.PutClazzID(0x175df251)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.TopicId)
+			_ = m.Pinned.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_updatePinnedForumTopic, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_updatePinnedForumTopic, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesUpdatePinnedForumTopic) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x175df251: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.TopicId, err = d.Int32()
+
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.Pinned = m3
+			m.Pinned, _ = DecodeBoolClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesReorderPinnedForumTopics <--
+type TLMessagesReorderPinnedForumTopics struct {
+	ClazzID uint32         `json:"_id"`
+	Force   bool           `json:"force"`
+	Peer    InputPeerClazz `json:"peer"`
+	Order   []int32        `json:"order"`
+}
+
+func (m *TLMessagesReorderPinnedForumTopics) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesReorderPinnedForumTopics) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xe7841f0: func() error {
+			x.PutClazzID(0xe7841f0)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Force == true {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Peer.Encode(x, layer)
+
+			iface.EncodeInt32List(x, m.Order)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_reorderPinnedForumTopics, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_reorderPinnedForumTopics, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesReorderPinnedForumTopics) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xe7841f0: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Force = true
+			}
+
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Order, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesCreateForumTopic <--
+type TLMessagesCreateForumTopic struct {
+	ClazzID      uint32         `json:"_id"`
+	TitleMissing bool           `json:"title_missing"`
+	Peer         InputPeerClazz `json:"peer"`
+	Title        string         `json:"title"`
+	IconColor    *int32         `json:"icon_color"`
+	IconEmojiId  *int64         `json:"icon_emoji_id"`
+	RandomId     int64          `json:"random_id"`
+	SendAs       InputPeerClazz `json:"send_as"`
+}
+
+func (m *TLMessagesCreateForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesCreateForumTopic) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x2f98c3d5: func() error {
+			x.PutClazzID(0x2f98c3d5)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.TitleMissing == true {
+					flags |= 1 << 4
+				}
+
+				if m.IconColor != nil {
+					flags |= 1 << 0
+				}
+				if m.IconEmojiId != nil {
+					flags |= 1 << 3
+				}
+
+				if m.SendAs != nil {
+					flags |= 1 << 2
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Peer.Encode(x, layer)
+			x.PutString(m.Title)
+			if m.IconColor != nil {
+				x.PutInt32(*m.IconColor)
+			}
+
+			if m.IconEmojiId != nil {
+				x.PutInt64(*m.IconEmojiId)
+			}
+
+			x.PutInt64(m.RandomId)
+			if m.SendAs != nil {
+				_ = m.SendAs.Encode(x, layer)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_createForumTopic, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_createForumTopic, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesCreateForumTopic) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x2f98c3d5: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 4)) != 0 {
+				m.TitleMissing = true
+			}
+
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Title, err = d.String()
+			if (flags & (1 << 0)) != 0 {
+				m.IconColor = new(int32)
+				*m.IconColor, err = d.Int32()
+			}
+			if (flags & (1 << 3)) != 0 {
+				m.IconEmojiId = new(int64)
+				*m.IconEmojiId, err = d.Int64()
+			}
+
+			m.RandomId, err = d.Int64()
+			if (flags & (1 << 2)) != 0 {
+				// m8 := &InputPeer{}
+				// _ = m8.Decode(d)
+				// m.SendAs = m8
+				m.SendAs, _ = DecodeInputPeerClazz(d)
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLMessagesDeleteTopicHistory <--
+type TLMessagesDeleteTopicHistory struct {
+	ClazzID  uint32         `json:"_id"`
+	Peer     InputPeerClazz `json:"peer"`
+	TopMsgId int32          `json:"top_msg_id"`
+}
+
+func (m *TLMessagesDeleteTopicHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLMessagesDeleteTopicHistory) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xd2816f10: func() error {
+			x.PutClazzID(0xd2816f10)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.TopMsgId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_messages_deleteTopicHistory, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_messages_deleteTopicHistory, layer)
+	}
+}
+
+// Decode <--
+func (m *TLMessagesDeleteTopicHistory) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xd2816f10: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.TopMsgId, err = d.Int32()
 
 			return nil
 		},
@@ -35124,6 +36230,7 @@ type TLChannelsToggleForum struct {
 	ClazzID uint32            `json:"_id"`
 	Channel InputChannelClazz `json:"channel"`
 	Enabled BoolClazz         `json:"enabled"`
+	Tabs    BoolClazz         `json:"tabs"`
 }
 
 func (m *TLChannelsToggleForum) String() string {
@@ -35134,11 +36241,12 @@ func (m *TLChannelsToggleForum) String() string {
 // Encode <--
 func (m *TLChannelsToggleForum) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xa4298b29: func() error {
-			x.PutClazzID(0xa4298b29)
+		0x3ff75734: func() error {
+			x.PutClazzID(0x3ff75734)
 
 			_ = m.Channel.Encode(x, layer)
 			_ = m.Enabled.Encode(x, layer)
+			_ = m.Tabs.Encode(x, layer)
 
 			return nil
 		},
@@ -35156,7 +36264,7 @@ func (m *TLChannelsToggleForum) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLChannelsToggleForum) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xa4298b29: func() (err error) {
+		0x3ff75734: func() (err error) {
 
 			// m1 := &InputChannel{}
 			// _ = m1.Decode(d)
@@ -35168,610 +36276,10 @@ func (m *TLChannelsToggleForum) Decode(d *bin.Decoder) (err error) {
 			// m.Enabled = m2
 			m.Enabled, _ = DecodeBoolClazz(d)
 
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsCreateForumTopic <--
-type TLChannelsCreateForumTopic struct {
-	ClazzID     uint32            `json:"_id"`
-	Channel     InputChannelClazz `json:"channel"`
-	Title       string            `json:"title"`
-	IconColor   *int32            `json:"icon_color"`
-	IconEmojiId *int64            `json:"icon_emoji_id"`
-	RandomId    int64             `json:"random_id"`
-	SendAs      InputPeerClazz    `json:"send_as"`
-}
-
-func (m *TLChannelsCreateForumTopic) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsCreateForumTopic) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xf40c0224: func() error {
-			x.PutClazzID(0xf40c0224)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.IconColor != nil {
-					flags |= 1 << 0
-				}
-				if m.IconEmojiId != nil {
-					flags |= 1 << 3
-				}
-
-				if m.SendAs != nil {
-					flags |= 1 << 2
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-			x.PutString(m.Title)
-			if m.IconColor != nil {
-				x.PutInt32(*m.IconColor)
-			}
-
-			if m.IconEmojiId != nil {
-				x.PutInt64(*m.IconEmojiId)
-			}
-
-			x.PutInt64(m.RandomId)
-			if m.SendAs != nil {
-				_ = m.SendAs.Encode(x, layer)
-			}
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_createForumTopic, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_createForumTopic, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsCreateForumTopic) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xf40c0224: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-
-			// m2 := &InputChannel{}
-			// _ = m2.Decode(d)
-			// m.Channel = m2
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.Title, err = d.String()
-			if (flags & (1 << 0)) != 0 {
-				m.IconColor = new(int32)
-				*m.IconColor, err = d.Int32()
-			}
-			if (flags & (1 << 3)) != 0 {
-				m.IconEmojiId = new(int64)
-				*m.IconEmojiId, err = d.Int64()
-			}
-
-			m.RandomId, err = d.Int64()
-			if (flags & (1 << 2)) != 0 {
-				// m7 := &InputPeer{}
-				// _ = m7.Decode(d)
-				// m.SendAs = m7
-				m.SendAs, _ = DecodeInputPeerClazz(d)
-			}
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsGetForumTopics <--
-type TLChannelsGetForumTopics struct {
-	ClazzID     uint32            `json:"_id"`
-	Channel     InputChannelClazz `json:"channel"`
-	Q           *string           `json:"q"`
-	OffsetDate  int32             `json:"offset_date"`
-	OffsetId    int32             `json:"offset_id"`
-	OffsetTopic int32             `json:"offset_topic"`
-	Limit       int32             `json:"limit"`
-}
-
-func (m *TLChannelsGetForumTopics) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsGetForumTopics) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xde560d1: func() error {
-			x.PutClazzID(0xde560d1)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Q != nil {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-			if m.Q != nil {
-				x.PutString(*m.Q)
-			}
-
-			x.PutInt32(m.OffsetDate)
-			x.PutInt32(m.OffsetId)
-			x.PutInt32(m.OffsetTopic)
-			x.PutInt32(m.Limit)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_getForumTopics, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_getForumTopics, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsGetForumTopics) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xde560d1: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-
-			// m2 := &InputChannel{}
-			// _ = m2.Decode(d)
-			// m.Channel = m2
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			if (flags & (1 << 0)) != 0 {
-				m.Q = new(string)
-				*m.Q, err = d.String()
-			}
-
-			m.OffsetDate, err = d.Int32()
-			m.OffsetId, err = d.Int32()
-			m.OffsetTopic, err = d.Int32()
-			m.Limit, err = d.Int32()
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsGetForumTopicsByID <--
-type TLChannelsGetForumTopicsByID struct {
-	ClazzID uint32            `json:"_id"`
-	Channel InputChannelClazz `json:"channel"`
-	Topics  []int32           `json:"topics"`
-}
-
-func (m *TLChannelsGetForumTopicsByID) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsGetForumTopicsByID) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xb0831eb9: func() error {
-			x.PutClazzID(0xb0831eb9)
-
-			_ = m.Channel.Encode(x, layer)
-
-			iface.EncodeInt32List(x, m.Topics)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_getForumTopicsByID, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_getForumTopicsByID, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsGetForumTopicsByID) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xb0831eb9: func() (err error) {
-
-			// m1 := &InputChannel{}
-			// _ = m1.Decode(d)
-			// m.Channel = m1
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.Topics, err = iface.DecodeInt32List(d)
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsEditForumTopic <--
-type TLChannelsEditForumTopic struct {
-	ClazzID     uint32            `json:"_id"`
-	Channel     InputChannelClazz `json:"channel"`
-	TopicId     int32             `json:"topic_id"`
-	Title       *string           `json:"title"`
-	IconEmojiId *int64            `json:"icon_emoji_id"`
-	Closed      BoolClazz         `json:"closed"`
-	Hidden      BoolClazz         `json:"hidden"`
-}
-
-func (m *TLChannelsEditForumTopic) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsEditForumTopic) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xf4dfa185: func() error {
-			x.PutClazzID(0xf4dfa185)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Title != nil {
-					flags |= 1 << 0
-				}
-				if m.IconEmojiId != nil {
-					flags |= 1 << 1
-				}
-				if m.Closed != nil {
-					flags |= 1 << 2
-				}
-				if m.Hidden != nil {
-					flags |= 1 << 3
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-			x.PutInt32(m.TopicId)
-			if m.Title != nil {
-				x.PutString(*m.Title)
-			}
-
-			if m.IconEmojiId != nil {
-				x.PutInt64(*m.IconEmojiId)
-			}
-
-			if m.Closed != nil {
-				_ = m.Closed.Encode(x, layer)
-			}
-
-			if m.Hidden != nil {
-				_ = m.Hidden.Encode(x, layer)
-			}
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_editForumTopic, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_editForumTopic, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsEditForumTopic) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xf4dfa185: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-
-			// m2 := &InputChannel{}
-			// _ = m2.Decode(d)
-			// m.Channel = m2
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.TopicId, err = d.Int32()
-			if (flags & (1 << 0)) != 0 {
-				m.Title = new(string)
-				*m.Title, err = d.String()
-			}
-
-			if (flags & (1 << 1)) != 0 {
-				m.IconEmojiId = new(int64)
-				*m.IconEmojiId, err = d.Int64()
-			}
-
-			if (flags & (1 << 2)) != 0 {
-				// m6 := &Bool{}
-				// _ = m6.Decode(d)
-				// m.Closed = m6
-				m.Closed, _ = DecodeBoolClazz(d)
-			}
-			if (flags & (1 << 3)) != 0 {
-				// m7 := &Bool{}
-				// _ = m7.Decode(d)
-				// m.Hidden = m7
-				m.Hidden, _ = DecodeBoolClazz(d)
-			}
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsUpdatePinnedForumTopic <--
-type TLChannelsUpdatePinnedForumTopic struct {
-	ClazzID uint32            `json:"_id"`
-	Channel InputChannelClazz `json:"channel"`
-	TopicId int32             `json:"topic_id"`
-	Pinned  BoolClazz         `json:"pinned"`
-}
-
-func (m *TLChannelsUpdatePinnedForumTopic) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsUpdatePinnedForumTopic) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x6c2d9026: func() error {
-			x.PutClazzID(0x6c2d9026)
-
-			_ = m.Channel.Encode(x, layer)
-			x.PutInt32(m.TopicId)
-			_ = m.Pinned.Encode(x, layer)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_updatePinnedForumTopic, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_updatePinnedForumTopic, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsUpdatePinnedForumTopic) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x6c2d9026: func() (err error) {
-
-			// m1 := &InputChannel{}
-			// _ = m1.Decode(d)
-			// m.Channel = m1
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.TopicId, err = d.Int32()
-
 			// m3 := &Bool{}
 			// _ = m3.Decode(d)
-			// m.Pinned = m3
-			m.Pinned, _ = DecodeBoolClazz(d)
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsDeleteTopicHistory <--
-type TLChannelsDeleteTopicHistory struct {
-	ClazzID  uint32            `json:"_id"`
-	Channel  InputChannelClazz `json:"channel"`
-	TopMsgId int32             `json:"top_msg_id"`
-}
-
-func (m *TLChannelsDeleteTopicHistory) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsDeleteTopicHistory) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x34435f2d: func() error {
-			x.PutClazzID(0x34435f2d)
-
-			_ = m.Channel.Encode(x, layer)
-			x.PutInt32(m.TopMsgId)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_deleteTopicHistory, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_deleteTopicHistory, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsDeleteTopicHistory) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x34435f2d: func() (err error) {
-
-			// m1 := &InputChannel{}
-			// _ = m1.Decode(d)
-			// m.Channel = m1
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.TopMsgId, err = d.Int32()
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsReorderPinnedForumTopics <--
-type TLChannelsReorderPinnedForumTopics struct {
-	ClazzID uint32            `json:"_id"`
-	Force   bool              `json:"force"`
-	Channel InputChannelClazz `json:"channel"`
-	Order   []int32           `json:"order"`
-}
-
-func (m *TLChannelsReorderPinnedForumTopics) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsReorderPinnedForumTopics) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x2950a18f: func() error {
-			x.PutClazzID(0x2950a18f)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Force == true {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-
-			iface.EncodeInt32List(x, m.Order)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_reorderPinnedForumTopics, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_reorderPinnedForumTopics, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsReorderPinnedForumTopics) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x2950a18f: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 0)) != 0 {
-				m.Force = true
-			}
-
-			// m3 := &InputChannel{}
-			// _ = m3.Decode(d)
-			// m.Channel = m3
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.Order, err = iface.DecodeInt32List(d)
+			// m.Tabs = m3
+			m.Tabs, _ = DecodeBoolClazz(d)
 
 			return nil
 		},
@@ -36463,12 +36971,14 @@ func (m *TLChannelsRestrictSponsoredMessages) Decode(d *bin.Decoder) (err error)
 
 // TLChannelsSearchPosts <--
 type TLChannelsSearchPosts struct {
-	ClazzID    uint32         `json:"_id"`
-	Hashtag    string         `json:"hashtag"`
-	OffsetRate int32          `json:"offset_rate"`
-	OffsetPeer InputPeerClazz `json:"offset_peer"`
-	OffsetId   int32          `json:"offset_id"`
-	Limit      int32          `json:"limit"`
+	ClazzID        uint32         `json:"_id"`
+	Hashtag        *string        `json:"hashtag"`
+	Query          *string        `json:"query"`
+	OffsetRate     int32          `json:"offset_rate"`
+	OffsetPeer     InputPeerClazz `json:"offset_peer"`
+	OffsetId       int32          `json:"offset_id"`
+	Limit          int32          `json:"limit"`
+	AllowPaidStars *int64         `json:"allow_paid_stars"`
 }
 
 func (m *TLChannelsSearchPosts) String() string {
@@ -36479,14 +36989,45 @@ func (m *TLChannelsSearchPosts) String() string {
 // Encode <--
 func (m *TLChannelsSearchPosts) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xd19f987b: func() error {
-			x.PutClazzID(0xd19f987b)
+		0xf2c4f24d: func() error {
+			x.PutClazzID(0xf2c4f24d)
 
-			x.PutString(m.Hashtag)
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Hashtag != nil {
+					flags |= 1 << 0
+				}
+				if m.Query != nil {
+					flags |= 1 << 1
+				}
+
+				if m.AllowPaidStars != nil {
+					flags |= 1 << 2
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.Hashtag != nil {
+				x.PutString(*m.Hashtag)
+			}
+
+			if m.Query != nil {
+				x.PutString(*m.Query)
+			}
+
 			x.PutInt32(m.OffsetRate)
 			_ = m.OffsetPeer.Encode(x, layer)
 			x.PutInt32(m.OffsetId)
 			x.PutInt32(m.Limit)
+			if m.AllowPaidStars != nil {
+				x.PutInt64(*m.AllowPaidStars)
+			}
 
 			return nil
 		},
@@ -36504,17 +37045,32 @@ func (m *TLChannelsSearchPosts) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLChannelsSearchPosts) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xd19f987b: func() (err error) {
-			m.Hashtag, err = d.String()
+		0xf2c4f24d: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Hashtag = new(string)
+				*m.Hashtag, err = d.String()
+			}
+
+			if (flags & (1 << 1)) != 0 {
+				m.Query = new(string)
+				*m.Query, err = d.String()
+			}
+
 			m.OffsetRate, err = d.Int32()
 
-			// m3 := &InputPeer{}
-			// _ = m3.Decode(d)
-			// m.OffsetPeer = m3
+			// m5 := &InputPeer{}
+			// _ = m5.Decode(d)
+			// m.OffsetPeer = m5
 			m.OffsetPeer, _ = DecodeInputPeerClazz(d)
 
 			m.OffsetId, err = d.Int32()
 			m.Limit, err = d.Int32()
+			if (flags & (1 << 2)) != 0 {
+				m.AllowPaidStars = new(int64)
+				*m.AllowPaidStars, err = d.Int64()
+			}
 
 			return nil
 		},
@@ -36532,9 +37088,10 @@ func (m *TLChannelsSearchPosts) Decode(d *bin.Decoder) (err error) {
 
 // TLChannelsUpdatePaidMessagesPrice <--
 type TLChannelsUpdatePaidMessagesPrice struct {
-	ClazzID               uint32            `json:"_id"`
-	Channel               InputChannelClazz `json:"channel"`
-	SendPaidMessagesStars int64             `json:"send_paid_messages_stars"`
+	ClazzID                  uint32            `json:"_id"`
+	BroadcastMessagesAllowed bool              `json:"broadcast_messages_allowed"`
+	Channel                  InputChannelClazz `json:"channel"`
+	SendPaidMessagesStars    int64             `json:"send_paid_messages_stars"`
 }
 
 func (m *TLChannelsUpdatePaidMessagesPrice) String() string {
@@ -36545,9 +37102,23 @@ func (m *TLChannelsUpdatePaidMessagesPrice) String() string {
 // Encode <--
 func (m *TLChannelsUpdatePaidMessagesPrice) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xfc84653f: func() error {
-			x.PutClazzID(0xfc84653f)
+		0x4b12327b: func() error {
+			x.PutClazzID(0x4b12327b)
 
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.BroadcastMessagesAllowed == true {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
 			_ = m.Channel.Encode(x, layer)
 			x.PutInt64(m.SendPaidMessagesStars)
 
@@ -36567,14 +37138,278 @@ func (m *TLChannelsUpdatePaidMessagesPrice) Encode(x *bin.Encoder, layer int32) 
 // Decode <--
 func (m *TLChannelsUpdatePaidMessagesPrice) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xfc84653f: func() (err error) {
+		0x4b12327b: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.BroadcastMessagesAllowed = true
+			}
+
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.SendPaidMessagesStars, err = d.Int64()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsToggleAutotranslation <--
+type TLChannelsToggleAutotranslation struct {
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Enabled BoolClazz         `json:"enabled"`
+}
+
+func (m *TLChannelsToggleAutotranslation) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsToggleAutotranslation) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x167fc0a1: func() error {
+			x.PutClazzID(0x167fc0a1)
+
+			_ = m.Channel.Encode(x, layer)
+			_ = m.Enabled.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_toggleAutotranslation, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_toggleAutotranslation, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsToggleAutotranslation) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x167fc0a1: func() (err error) {
 
 			// m1 := &InputChannel{}
 			// _ = m1.Decode(d)
 			// m.Channel = m1
 			m.Channel, _ = DecodeInputChannelClazz(d)
 
-			m.SendPaidMessagesStars, err = d.Int64()
+			// m2 := &Bool{}
+			// _ = m2.Decode(d)
+			// m.Enabled = m2
+			m.Enabled, _ = DecodeBoolClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsGetMessageAuthor <--
+type TLChannelsGetMessageAuthor struct {
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Id      int32             `json:"id"`
+}
+
+func (m *TLChannelsGetMessageAuthor) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsGetMessageAuthor) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xece2a0e6: func() error {
+			x.PutClazzID(0xece2a0e6)
+
+			_ = m.Channel.Encode(x, layer)
+			x.PutInt32(m.Id)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_getMessageAuthor, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_getMessageAuthor, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsGetMessageAuthor) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xece2a0e6: func() (err error) {
+
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.Id, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsCheckSearchPostsFlood <--
+type TLChannelsCheckSearchPostsFlood struct {
+	ClazzID uint32  `json:"_id"`
+	Query   *string `json:"query"`
+}
+
+func (m *TLChannelsCheckSearchPostsFlood) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsCheckSearchPostsFlood) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x22567115: func() error {
+			x.PutClazzID(0x22567115)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Query != nil {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.Query != nil {
+				x.PutString(*m.Query)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_checkSearchPostsFlood, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_checkSearchPostsFlood, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsCheckSearchPostsFlood) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x22567115: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Query = new(string)
+				*m.Query, err = d.String()
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsSetMainProfileTab <--
+type TLChannelsSetMainProfileTab struct {
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Tab     ProfileTabClazz   `json:"tab"`
+}
+
+func (m *TLChannelsSetMainProfileTab) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsSetMainProfileTab) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x3583fcb1: func() error {
+			x.PutClazzID(0x3583fcb1)
+
+			_ = m.Channel.Encode(x, layer)
+			_ = m.Tab.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_setMainProfileTab, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_setMainProfileTab, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsSetMainProfileTab) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x3583fcb1: func() (err error) {
+
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			// m2 := &ProfileTab{}
+			// _ = m2.Decode(d)
+			// m.Tab = m2
+			m.Tab, _ = DecodeProfileTabClazz(d)
 
 			return nil
 		},
@@ -39649,6 +40484,7 @@ func (m *TLPaymentsGetStarsTopupOptions) Decode(d *bin.Decoder) (err error) {
 // TLPaymentsGetStarsStatus <--
 type TLPaymentsGetStarsStatus struct {
 	ClazzID uint32         `json:"_id"`
+	Ton     bool           `json:"ton"`
 	Peer    InputPeerClazz `json:"peer"`
 }
 
@@ -39660,9 +40496,23 @@ func (m *TLPaymentsGetStarsStatus) String() string {
 // Encode <--
 func (m *TLPaymentsGetStarsStatus) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x104fcfa7: func() error {
-			x.PutClazzID(0x104fcfa7)
+		0x4ea9b3bf: func() error {
+			x.PutClazzID(0x4ea9b3bf)
 
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Ton == true {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
 			_ = m.Peer.Encode(x, layer)
 
 			return nil
@@ -39681,11 +40531,16 @@ func (m *TLPaymentsGetStarsStatus) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLPaymentsGetStarsStatus) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x104fcfa7: func() (err error) {
+		0x4ea9b3bf: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Ton = true
+			}
 
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
@@ -39708,6 +40563,7 @@ type TLPaymentsGetStarsTransactions struct {
 	Inbound        bool           `json:"inbound"`
 	Outbound       bool           `json:"outbound"`
 	Ascending      bool           `json:"ascending"`
+	Ton            bool           `json:"ton"`
 	SubscriptionId *string        `json:"subscription_id"`
 	Peer           InputPeerClazz `json:"peer"`
 	Offset         string         `json:"offset"`
@@ -39737,6 +40593,9 @@ func (m *TLPaymentsGetStarsTransactions) Encode(x *bin.Encoder, layer int32) err
 				}
 				if m.Ascending == true {
 					flags |= 1 << 2
+				}
+				if m.Ton == true {
+					flags |= 1 << 4
 				}
 				if m.SubscriptionId != nil {
 					flags |= 1 << 3
@@ -39784,14 +40643,17 @@ func (m *TLPaymentsGetStarsTransactions) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 2)) != 0 {
 				m.Ascending = true
 			}
+			if (flags & (1 << 4)) != 0 {
+				m.Ton = true
+			}
 			if (flags & (1 << 3)) != 0 {
 				m.SubscriptionId = new(string)
 				*m.SubscriptionId, err = d.String()
 			}
 
-			// m6 := &InputPeer{}
-			// _ = m6.Decode(d)
-			// m.Peer = m6
+			// m7 := &InputPeer{}
+			// _ = m7.Decode(d)
+			// m.Peer = m7
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			m.Offset, err = d.String()
@@ -39934,6 +40796,7 @@ func (m *TLPaymentsRefundStarsCharge) Decode(d *bin.Decoder) (err error) {
 type TLPaymentsGetStarsRevenueStats struct {
 	ClazzID uint32         `json:"_id"`
 	Dark    bool           `json:"dark"`
+	Ton     bool           `json:"ton"`
 	Peer    InputPeerClazz `json:"peer"`
 }
 
@@ -39954,6 +40817,9 @@ func (m *TLPaymentsGetStarsRevenueStats) Encode(x *bin.Encoder, layer int32) err
 
 				if m.Dark == true {
 					flags |= 1 << 0
+				}
+				if m.Ton == true {
+					flags |= 1 << 1
 				}
 
 				return flags
@@ -39986,10 +40852,13 @@ func (m *TLPaymentsGetStarsRevenueStats) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 0)) != 0 {
 				m.Dark = true
 			}
+			if (flags & (1 << 1)) != 0 {
+				m.Ton = true
+			}
 
-			// m3 := &InputPeer{}
-			// _ = m3.Decode(d)
-			// m.Peer = m3
+			// m4 := &InputPeer{}
+			// _ = m4.Decode(d)
+			// m.Peer = m4
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
 			return nil
@@ -40009,8 +40878,9 @@ func (m *TLPaymentsGetStarsRevenueStats) Decode(d *bin.Decoder) (err error) {
 // TLPaymentsGetStarsRevenueWithdrawalUrl <--
 type TLPaymentsGetStarsRevenueWithdrawalUrl struct {
 	ClazzID  uint32                     `json:"_id"`
+	Ton      bool                       `json:"ton"`
 	Peer     InputPeerClazz             `json:"peer"`
-	Stars    int64                      `json:"stars"`
+	Amount   *int64                     `json:"amount"`
 	Password InputCheckPasswordSRPClazz `json:"password"`
 }
 
@@ -40022,11 +40892,32 @@ func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) String() string {
 // Encode <--
 func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x13bbe8b3: func() error {
-			x.PutClazzID(0x13bbe8b3)
+		0x2433dc92: func() error {
+			x.PutClazzID(0x2433dc92)
 
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Ton == true {
+					flags |= 1 << 0
+				}
+
+				if m.Amount != nil {
+					flags |= 1 << 1
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
 			_ = m.Peer.Encode(x, layer)
-			x.PutInt64(m.Stars)
+			if m.Amount != nil {
+				x.PutInt64(*m.Amount)
+			}
+
 			_ = m.Password.Encode(x, layer)
 
 			return nil
@@ -40045,18 +40936,26 @@ func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) Encode(x *bin.Encoder, layer in
 // Decode <--
 func (m *TLPaymentsGetStarsRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x13bbe8b3: func() (err error) {
+		0x2433dc92: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Ton = true
+			}
 
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			m.Stars, err = d.Int64()
+			if (flags & (1 << 1)) != 0 {
+				m.Amount = new(int64)
+				*m.Amount, err = d.Int64()
+			}
 
-			// m3 := &InputCheckPasswordSRP{}
-			// _ = m3.Decode(d)
-			// m.Password = m3
+			// m5 := &InputCheckPasswordSRP{}
+			// _ = m5.Decode(d)
+			// m.Password = m5
 			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
 
 			return nil
@@ -40132,6 +41031,7 @@ func (m *TLPaymentsGetStarsRevenueAdsAccountUrl) Decode(d *bin.Decoder) (err err
 // TLPaymentsGetStarsTransactionsByID <--
 type TLPaymentsGetStarsTransactionsByID struct {
 	ClazzID uint32                       `json:"_id"`
+	Ton     bool                         `json:"ton"`
 	Peer    InputPeerClazz               `json:"peer"`
 	Id      []InputStarsTransactionClazz `json:"id"`
 }
@@ -40144,9 +41044,23 @@ func (m *TLPaymentsGetStarsTransactionsByID) String() string {
 // Encode <--
 func (m *TLPaymentsGetStarsTransactionsByID) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x27842d2e: func() error {
-			x.PutClazzID(0x27842d2e)
+		0x2dca16b8: func() error {
+			x.PutClazzID(0x2dca16b8)
 
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Ton == true {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
 			_ = m.Peer.Encode(x, layer)
 
 			_ = iface.EncodeObjectList(x, m.Id, layer)
@@ -40167,30 +41081,35 @@ func (m *TLPaymentsGetStarsTransactionsByID) Encode(x *bin.Encoder, layer int32)
 // Decode <--
 func (m *TLPaymentsGetStarsTransactionsByID) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x27842d2e: func() (err error) {
+		0x2dca16b8: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Ton = true
+			}
 
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
+			// m3 := &InputPeer{}
+			// _ = m3.Decode(d)
+			// m.Peer = m3
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
-			c2, err2 := d.ClazzID()
-			if c2 != iface.ClazzID_vector {
-				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 2, c2)
+			c4, err2 := d.ClazzID()
+			if c4 != iface.ClazzID_vector {
+				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 4, c4)
 				return err2
 			}
-			l2, err3 := d.Int()
-			// v2 := make([]*InputStarsTransaction, l2)
-			v2 := make([]InputStarsTransactionClazz, l2)
-			for i := 0; i < l2; i++ {
+			l4, err3 := d.Int()
+			// v4 := make([]*InputStarsTransaction, l4)
+			v4 := make([]InputStarsTransactionClazz, l4)
+			for i := 0; i < l4; i++ {
 				// vv := new(InputStarsTransaction)
 				// err3 = vv.Decode(d)
 				// _ = err3
-				// v2[i] = vv
-				v2[i], _ = DecodeInputStarsTransactionClazz(d)
+				// v4[i] = vv
+				v4[i], _ = DecodeInputStarsTransactionClazz(d)
 				_ = err3
 			}
-			m.Id = v2
+			m.Id = v4
 
 			return nil
 		},
@@ -41458,16 +42377,20 @@ func (m *TLPaymentsGetUniqueStarGift) Decode(d *bin.Decoder) (err error) {
 
 // TLPaymentsGetSavedStarGifts <--
 type TLPaymentsGetSavedStarGifts struct {
-	ClazzID          uint32         `json:"_id"`
-	ExcludeUnsaved   bool           `json:"exclude_unsaved"`
-	ExcludeSaved     bool           `json:"exclude_saved"`
-	ExcludeUnlimited bool           `json:"exclude_unlimited"`
-	ExcludeLimited   bool           `json:"exclude_limited"`
-	ExcludeUnique    bool           `json:"exclude_unique"`
-	SortByValue      bool           `json:"sort_by_value"`
-	Peer             InputPeerClazz `json:"peer"`
-	Offset           string         `json:"offset"`
-	Limit            int32          `json:"limit"`
+	ClazzID             uint32         `json:"_id"`
+	ExcludeUnsaved      bool           `json:"exclude_unsaved"`
+	ExcludeSaved        bool           `json:"exclude_saved"`
+	ExcludeUnlimited    bool           `json:"exclude_unlimited"`
+	ExcludeUnique       bool           `json:"exclude_unique"`
+	SortByValue         bool           `json:"sort_by_value"`
+	ExcludeUpgradable   bool           `json:"exclude_upgradable"`
+	ExcludeUnupgradable bool           `json:"exclude_unupgradable"`
+	PeerColorAvailable  bool           `json:"peer_color_available"`
+	ExcludeHosted       bool           `json:"exclude_hosted"`
+	Peer                InputPeerClazz `json:"peer"`
+	CollectionId        *int32         `json:"collection_id"`
+	Offset              string         `json:"offset"`
+	Limit               int32          `json:"limit"`
 }
 
 func (m *TLPaymentsGetSavedStarGifts) String() string {
@@ -41478,8 +42401,8 @@ func (m *TLPaymentsGetSavedStarGifts) String() string {
 // Encode <--
 func (m *TLPaymentsGetSavedStarGifts) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x23830de9: func() error {
-			x.PutClazzID(0x23830de9)
+		0xa319e569: func() error {
+			x.PutClazzID(0xa319e569)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -41494,14 +42417,27 @@ func (m *TLPaymentsGetSavedStarGifts) Encode(x *bin.Encoder, layer int32) error 
 				if m.ExcludeUnlimited == true {
 					flags |= 1 << 2
 				}
-				if m.ExcludeLimited == true {
-					flags |= 1 << 3
-				}
 				if m.ExcludeUnique == true {
 					flags |= 1 << 4
 				}
 				if m.SortByValue == true {
 					flags |= 1 << 5
+				}
+				if m.ExcludeUpgradable == true {
+					flags |= 1 << 7
+				}
+				if m.ExcludeUnupgradable == true {
+					flags |= 1 << 8
+				}
+				if m.PeerColorAvailable == true {
+					flags |= 1 << 9
+				}
+				if m.ExcludeHosted == true {
+					flags |= 1 << 10
+				}
+
+				if m.CollectionId != nil {
+					flags |= 1 << 6
 				}
 
 				return flags
@@ -41511,6 +42447,10 @@ func (m *TLPaymentsGetSavedStarGifts) Encode(x *bin.Encoder, layer int32) error 
 			var flags = getFlags()
 			x.PutUint32(flags)
 			_ = m.Peer.Encode(x, layer)
+			if m.CollectionId != nil {
+				x.PutInt32(*m.CollectionId)
+			}
+
 			x.PutString(m.Offset)
 			x.PutInt32(m.Limit)
 
@@ -41530,7 +42470,7 @@ func (m *TLPaymentsGetSavedStarGifts) Encode(x *bin.Encoder, layer int32) error 
 // Decode <--
 func (m *TLPaymentsGetSavedStarGifts) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x23830de9: func() (err error) {
+		0xa319e569: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
@@ -41542,21 +42482,34 @@ func (m *TLPaymentsGetSavedStarGifts) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 2)) != 0 {
 				m.ExcludeUnlimited = true
 			}
-			if (flags & (1 << 3)) != 0 {
-				m.ExcludeLimited = true
-			}
 			if (flags & (1 << 4)) != 0 {
 				m.ExcludeUnique = true
 			}
 			if (flags & (1 << 5)) != 0 {
 				m.SortByValue = true
 			}
+			if (flags & (1 << 7)) != 0 {
+				m.ExcludeUpgradable = true
+			}
+			if (flags & (1 << 8)) != 0 {
+				m.ExcludeUnupgradable = true
+			}
+			if (flags & (1 << 9)) != 0 {
+				m.PeerColorAvailable = true
+			}
+			if (flags & (1 << 10)) != 0 {
+				m.ExcludeHosted = true
+			}
 
-			// m8 := &InputPeer{}
-			// _ = m8.Decode(d)
-			// m.Peer = m8
+			// m11 := &InputPeer{}
+			// _ = m11.Decode(d)
+			// m.Peer = m11
 			m.Peer, _ = DecodeInputPeerClazz(d)
 
+			if (flags & (1 << 6)) != 0 {
+				m.CollectionId = new(int32)
+				*m.CollectionId, err = d.Int32()
+			}
 			m.Offset, err = d.String()
 			m.Limit, err = d.Int32()
 
@@ -41899,6 +42852,723 @@ func (m *TLPaymentsCanPurchaseStore) Decode(d *bin.Decoder) (err error) {
 			// _ = m1.Decode(d)
 			// m.Purpose = m1
 			m.Purpose, _ = DecodeInputStorePaymentPurposeClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsGetResaleStarGifts <--
+type TLPaymentsGetResaleStarGifts struct {
+	ClazzID        uint32                     `json:"_id"`
+	SortByPrice    bool                       `json:"sort_by_price"`
+	SortByNum      bool                       `json:"sort_by_num"`
+	AttributesHash *int64                     `json:"attributes_hash"`
+	GiftId         int64                      `json:"gift_id"`
+	Attributes     []StarGiftAttributeIdClazz `json:"attributes"`
+	Offset         string                     `json:"offset"`
+	Limit          int32                      `json:"limit"`
+}
+
+func (m *TLPaymentsGetResaleStarGifts) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsGetResaleStarGifts) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x7a5fa236: func() error {
+			x.PutClazzID(0x7a5fa236)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.SortByPrice == true {
+					flags |= 1 << 1
+				}
+				if m.SortByNum == true {
+					flags |= 1 << 2
+				}
+				if m.AttributesHash != nil {
+					flags |= 1 << 0
+				}
+
+				if m.Attributes != nil {
+					flags |= 1 << 3
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			if m.AttributesHash != nil {
+				x.PutInt64(*m.AttributesHash)
+			}
+
+			x.PutInt64(m.GiftId)
+			if m.Attributes != nil {
+				_ = iface.EncodeObjectList(x, m.Attributes, layer)
+			}
+			x.PutString(m.Offset)
+			x.PutInt32(m.Limit)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_getResaleStarGifts, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_getResaleStarGifts, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsGetResaleStarGifts) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x7a5fa236: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 1)) != 0 {
+				m.SortByPrice = true
+			}
+			if (flags & (1 << 2)) != 0 {
+				m.SortByNum = true
+			}
+			if (flags & (1 << 0)) != 0 {
+				m.AttributesHash = new(int64)
+				*m.AttributesHash, err = d.Int64()
+			}
+
+			m.GiftId, err = d.Int64()
+			if (flags & (1 << 3)) != 0 {
+				c6, err2 := d.ClazzID()
+				if c6 != iface.ClazzID_vector {
+					// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 6, c6)
+					return err2
+				}
+				l6, err3 := d.Int()
+				// v6 := make([]*StarGiftAttributeId, l6)
+				v6 := make([]StarGiftAttributeIdClazz, l6)
+				for i := 0; i < l6; i++ {
+					// vv := new(StarGiftAttributeId)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v6[i] = vv
+					v6[i], _ = DecodeStarGiftAttributeIdClazz(d)
+					_ = err3
+				}
+				m.Attributes = v6
+			}
+			m.Offset, err = d.String()
+			m.Limit, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsUpdateStarGiftPrice <--
+type TLPaymentsUpdateStarGiftPrice struct {
+	ClazzID      uint32                  `json:"_id"`
+	Stargift     InputSavedStarGiftClazz `json:"stargift"`
+	ResellAmount StarsAmountClazz        `json:"resell_amount"`
+}
+
+func (m *TLPaymentsUpdateStarGiftPrice) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsUpdateStarGiftPrice) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xedbe6ccb: func() error {
+			x.PutClazzID(0xedbe6ccb)
+
+			_ = m.Stargift.Encode(x, layer)
+			_ = m.ResellAmount.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_updateStarGiftPrice, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_updateStarGiftPrice, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsUpdateStarGiftPrice) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xedbe6ccb: func() (err error) {
+
+			// m1 := &InputSavedStarGift{}
+			// _ = m1.Decode(d)
+			// m.Stargift = m1
+			m.Stargift, _ = DecodeInputSavedStarGiftClazz(d)
+
+			// m2 := &StarsAmount{}
+			// _ = m2.Decode(d)
+			// m.ResellAmount = m2
+			m.ResellAmount, _ = DecodeStarsAmountClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsCreateStarGiftCollection <--
+type TLPaymentsCreateStarGiftCollection struct {
+	ClazzID  uint32                    `json:"_id"`
+	Peer     InputPeerClazz            `json:"peer"`
+	Title    string                    `json:"title"`
+	Stargift []InputSavedStarGiftClazz `json:"stargift"`
+}
+
+func (m *TLPaymentsCreateStarGiftCollection) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsCreateStarGiftCollection) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x1f4a0e87: func() error {
+			x.PutClazzID(0x1f4a0e87)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutString(m.Title)
+
+			_ = iface.EncodeObjectList(x, m.Stargift, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_createStarGiftCollection, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_createStarGiftCollection, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsCreateStarGiftCollection) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x1f4a0e87: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Title, err = d.String()
+			c3, err2 := d.ClazzID()
+			if c3 != iface.ClazzID_vector {
+				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 3, c3)
+				return err2
+			}
+			l3, err3 := d.Int()
+			// v3 := make([]*InputSavedStarGift, l3)
+			v3 := make([]InputSavedStarGiftClazz, l3)
+			for i := 0; i < l3; i++ {
+				// vv := new(InputSavedStarGift)
+				// err3 = vv.Decode(d)
+				// _ = err3
+				// v3[i] = vv
+				v3[i], _ = DecodeInputSavedStarGiftClazz(d)
+				_ = err3
+			}
+			m.Stargift = v3
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsUpdateStarGiftCollection <--
+type TLPaymentsUpdateStarGiftCollection struct {
+	ClazzID        uint32                    `json:"_id"`
+	Peer           InputPeerClazz            `json:"peer"`
+	CollectionId   int32                     `json:"collection_id"`
+	Title          *string                   `json:"title"`
+	DeleteStargift []InputSavedStarGiftClazz `json:"delete_stargift"`
+	AddStargift    []InputSavedStarGiftClazz `json:"add_stargift"`
+	Order          []InputSavedStarGiftClazz `json:"order"`
+}
+
+func (m *TLPaymentsUpdateStarGiftCollection) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsUpdateStarGiftCollection) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x4fddbee7: func() error {
+			x.PutClazzID(0x4fddbee7)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Title != nil {
+					flags |= 1 << 0
+				}
+				if m.DeleteStargift != nil {
+					flags |= 1 << 1
+				}
+				if m.AddStargift != nil {
+					flags |= 1 << 2
+				}
+				if m.Order != nil {
+					flags |= 1 << 3
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.CollectionId)
+			if m.Title != nil {
+				x.PutString(*m.Title)
+			}
+
+			if m.DeleteStargift != nil {
+				_ = iface.EncodeObjectList(x, m.DeleteStargift, layer)
+			}
+			if m.AddStargift != nil {
+				_ = iface.EncodeObjectList(x, m.AddStargift, layer)
+			}
+			if m.Order != nil {
+				_ = iface.EncodeObjectList(x, m.Order, layer)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_updateStarGiftCollection, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_updateStarGiftCollection, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsUpdateStarGiftCollection) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x4fddbee7: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.CollectionId, err = d.Int32()
+			if (flags & (1 << 0)) != 0 {
+				m.Title = new(string)
+				*m.Title, err = d.String()
+			}
+
+			if (flags & (1 << 1)) != 0 {
+				c5, err2 := d.ClazzID()
+				if c5 != iface.ClazzID_vector {
+					// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 5, c5)
+					return err2
+				}
+				l5, err3 := d.Int()
+				// v5 := make([]*InputSavedStarGift, l5)
+				v5 := make([]InputSavedStarGiftClazz, l5)
+				for i := 0; i < l5; i++ {
+					// vv := new(InputSavedStarGift)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v5[i] = vv
+					v5[i], _ = DecodeInputSavedStarGiftClazz(d)
+					_ = err3
+				}
+				m.DeleteStargift = v5
+			}
+			if (flags & (1 << 2)) != 0 {
+				c6, err2 := d.ClazzID()
+				if c6 != iface.ClazzID_vector {
+					// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 6, c6)
+					return err2
+				}
+				l6, err3 := d.Int()
+				// v6 := make([]*InputSavedStarGift, l6)
+				v6 := make([]InputSavedStarGiftClazz, l6)
+				for i := 0; i < l6; i++ {
+					// vv := new(InputSavedStarGift)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v6[i] = vv
+					v6[i], _ = DecodeInputSavedStarGiftClazz(d)
+					_ = err3
+				}
+				m.AddStargift = v6
+			}
+			if (flags & (1 << 3)) != 0 {
+				c7, err2 := d.ClazzID()
+				if c7 != iface.ClazzID_vector {
+					// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 7, c7)
+					return err2
+				}
+				l7, err3 := d.Int()
+				// v7 := make([]*InputSavedStarGift, l7)
+				v7 := make([]InputSavedStarGiftClazz, l7)
+				for i := 0; i < l7; i++ {
+					// vv := new(InputSavedStarGift)
+					// err3 = vv.Decode(d)
+					// _ = err3
+					// v7[i] = vv
+					v7[i], _ = DecodeInputSavedStarGiftClazz(d)
+					_ = err3
+				}
+				m.Order = v7
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsReorderStarGiftCollections <--
+type TLPaymentsReorderStarGiftCollections struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Order   []int32        `json:"order"`
+}
+
+func (m *TLPaymentsReorderStarGiftCollections) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsReorderStarGiftCollections) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xc32af4cc: func() error {
+			x.PutClazzID(0xc32af4cc)
+
+			_ = m.Peer.Encode(x, layer)
+
+			iface.EncodeInt32List(x, m.Order)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_reorderStarGiftCollections, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_reorderStarGiftCollections, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsReorderStarGiftCollections) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xc32af4cc: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Order, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsDeleteStarGiftCollection <--
+type TLPaymentsDeleteStarGiftCollection struct {
+	ClazzID      uint32         `json:"_id"`
+	Peer         InputPeerClazz `json:"peer"`
+	CollectionId int32          `json:"collection_id"`
+}
+
+func (m *TLPaymentsDeleteStarGiftCollection) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsDeleteStarGiftCollection) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xad5648e8: func() error {
+			x.PutClazzID(0xad5648e8)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.CollectionId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_deleteStarGiftCollection, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_deleteStarGiftCollection, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsDeleteStarGiftCollection) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xad5648e8: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.CollectionId, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsGetStarGiftCollections <--
+type TLPaymentsGetStarGiftCollections struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Hash    int64          `json:"hash"`
+}
+
+func (m *TLPaymentsGetStarGiftCollections) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsGetStarGiftCollections) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x981b91dd: func() error {
+			x.PutClazzID(0x981b91dd)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt64(m.Hash)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_getStarGiftCollections, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_getStarGiftCollections, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsGetStarGiftCollections) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x981b91dd: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Hash, err = d.Int64()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsGetUniqueStarGiftValueInfo <--
+type TLPaymentsGetUniqueStarGiftValueInfo struct {
+	ClazzID uint32 `json:"_id"`
+	Slug    string `json:"slug"`
+}
+
+func (m *TLPaymentsGetUniqueStarGiftValueInfo) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsGetUniqueStarGiftValueInfo) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x4365af6b: func() error {
+			x.PutClazzID(0x4365af6b)
+
+			x.PutString(m.Slug)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_getUniqueStarGiftValueInfo, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_getUniqueStarGiftValueInfo, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsGetUniqueStarGiftValueInfo) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x4365af6b: func() (err error) {
+			m.Slug, err = d.String()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPaymentsCheckCanSendGift <--
+type TLPaymentsCheckCanSendGift struct {
+	ClazzID uint32 `json:"_id"`
+	GiftId  int64  `json:"gift_id"`
+}
+
+func (m *TLPaymentsCheckCanSendGift) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPaymentsCheckCanSendGift) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xc0c4edc9: func() error {
+			x.PutClazzID(0xc0c4edc9)
+
+			x.PutInt64(m.GiftId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_payments_checkCanSendGift, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_checkCanSendGift, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPaymentsCheckCanSendGift) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xc0c4edc9: func() (err error) {
+			m.GiftId, err = d.Int64()
 
 			return nil
 		},
@@ -42774,13 +44444,12 @@ func (m *TLPhoneGetCallConfig) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneRequestCall <--
 type TLPhoneRequestCall struct {
-	ClazzID        uint32                 `json:"_id"`
-	Video          bool                   `json:"video"`
-	UserId         InputUserClazz         `json:"user_id"`
-	ConferenceCall InputGroupCallClazz    `json:"conference_call"`
-	RandomId       int32                  `json:"random_id"`
-	GAHash         []byte                 `json:"g_a_hash"`
-	Protocol       PhoneCallProtocolClazz `json:"protocol"`
+	ClazzID  uint32                 `json:"_id"`
+	Video    bool                   `json:"video"`
+	UserId   InputUserClazz         `json:"user_id"`
+	RandomId int32                  `json:"random_id"`
+	GAHash   []byte                 `json:"g_a_hash"`
+	Protocol PhoneCallProtocolClazz `json:"protocol"`
 }
 
 func (m *TLPhoneRequestCall) String() string {
@@ -42791,8 +44460,8 @@ func (m *TLPhoneRequestCall) String() string {
 // Encode <--
 func (m *TLPhoneRequestCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xa6c4600c: func() error {
-			x.PutClazzID(0xa6c4600c)
+		0x42ff96ed: func() error {
+			x.PutClazzID(0x42ff96ed)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -42802,10 +44471,6 @@ func (m *TLPhoneRequestCall) Encode(x *bin.Encoder, layer int32) error {
 					flags |= 1 << 0
 				}
 
-				if m.ConferenceCall != nil {
-					flags |= 1 << 1
-				}
-
 				return flags
 			}
 
@@ -42813,10 +44478,6 @@ func (m *TLPhoneRequestCall) Encode(x *bin.Encoder, layer int32) error {
 			var flags = getFlags()
 			x.PutUint32(flags)
 			_ = m.UserId.Encode(x, layer)
-			if m.ConferenceCall != nil {
-				_ = m.ConferenceCall.Encode(x, layer)
-			}
-
 			x.PutInt32(m.RandomId)
 			x.PutBytes(m.GAHash)
 			_ = m.Protocol.Encode(x, layer)
@@ -42837,7 +44498,7 @@ func (m *TLPhoneRequestCall) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLPhoneRequestCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xa6c4600c: func() (err error) {
+		0x42ff96ed: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
@@ -42849,18 +44510,12 @@ func (m *TLPhoneRequestCall) Decode(d *bin.Decoder) (err error) {
 			// m.UserId = m3
 			m.UserId, _ = DecodeInputUserClazz(d)
 
-			if (flags & (1 << 1)) != 0 {
-				// m4 := &InputGroupCall{}
-				// _ = m4.Decode(d)
-				// m.ConferenceCall = m4
-				m.ConferenceCall, _ = DecodeInputGroupCallClazz(d)
-			}
 			m.RandomId, err = d.Int32()
 			m.GAHash, err = d.Bytes()
 
-			// m7 := &PhoneCallProtocol{}
-			// _ = m7.Decode(d)
-			// m.Protocol = m7
+			// m6 := &PhoneCallProtocol{}
+			// _ = m6.Decode(d)
+			// m.Protocol = m6
 			m.Protocol, _ = DecodePhoneCallProtocolClazz(d)
 
 			return nil
@@ -43474,14 +45129,15 @@ func (m *TLPhoneCreateGroupCall) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneJoinGroupCall <--
 type TLPhoneJoinGroupCall struct {
-	ClazzID        uint32              `json:"_id"`
-	Muted          bool                `json:"muted"`
-	VideoStopped   bool                `json:"video_stopped"`
-	Call           InputGroupCallClazz `json:"call"`
-	JoinAs         InputPeerClazz      `json:"join_as"`
-	InviteHash     *string             `json:"invite_hash"`
-	KeyFingerprint *int64              `json:"key_fingerprint"`
-	Params         DataJSONClazz       `json:"params"`
+	ClazzID      uint32              `json:"_id"`
+	Muted        bool                `json:"muted"`
+	VideoStopped bool                `json:"video_stopped"`
+	Call         InputGroupCallClazz `json:"call"`
+	JoinAs       InputPeerClazz      `json:"join_as"`
+	InviteHash   *string             `json:"invite_hash"`
+	PublicKey    bin.Int256          `json:"public_key"`
+	Block        []byte              `json:"block"`
+	Params       DataJSONClazz       `json:"params"`
 }
 
 func (m *TLPhoneJoinGroupCall) String() string {
@@ -43492,8 +45148,8 @@ func (m *TLPhoneJoinGroupCall) String() string {
 // Encode <--
 func (m *TLPhoneJoinGroupCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xd61e1df3: func() error {
-			x.PutClazzID(0xd61e1df3)
+		0x8fb53057: func() error {
+			x.PutClazzID(0x8fb53057)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -43509,7 +45165,10 @@ func (m *TLPhoneJoinGroupCall) Encode(x *bin.Encoder, layer int32) error {
 				if m.InviteHash != nil {
 					flags |= 1 << 1
 				}
-				if m.KeyFingerprint != nil {
+				if m.PublicKey != nil {
+					flags |= 1 << 3
+				}
+				if m.Block != nil {
 					flags |= 1 << 3
 				}
 
@@ -43525,8 +45184,9 @@ func (m *TLPhoneJoinGroupCall) Encode(x *bin.Encoder, layer int32) error {
 				x.PutString(*m.InviteHash)
 			}
 
-			if m.KeyFingerprint != nil {
-				x.PutInt64(*m.KeyFingerprint)
+			x.PutInt256(m.PublicKey)
+			if m.Block != nil {
+				x.PutBytes(m.Block)
 			}
 
 			_ = m.Params.Encode(x, layer)
@@ -43547,7 +45207,7 @@ func (m *TLPhoneJoinGroupCall) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLPhoneJoinGroupCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xd61e1df3: func() (err error) {
+		0x8fb53057: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 0)) != 0 {
@@ -43572,14 +45232,14 @@ func (m *TLPhoneJoinGroupCall) Decode(d *bin.Decoder) (err error) {
 				*m.InviteHash, err = d.String()
 			}
 
+			err = m.PublicKey.Decode(d)
 			if (flags & (1 << 3)) != 0 {
-				m.KeyFingerprint = new(int64)
-				*m.KeyFingerprint, err = d.Int64()
+				m.Block, err = d.Bytes()
 			}
 
-			// m8 := &DataJSON{}
-			// _ = m8.Decode(d)
-			// m.Params = m8
+			// m9 := &DataJSON{}
+			// _ = m9.Decode(d)
+			// m.Params = m9
 			m.Params, _ = DecodeDataJSONClazz(d)
 
 			return nil
@@ -43795,6 +45455,7 @@ type TLPhoneToggleGroupCallSettings struct {
 	ResetInviteHash bool                `json:"reset_invite_hash"`
 	Call            InputGroupCallClazz `json:"call"`
 	JoinMuted       BoolClazz           `json:"join_muted"`
+	MessagesEnabled BoolClazz           `json:"messages_enabled"`
 }
 
 func (m *TLPhoneToggleGroupCallSettings) String() string {
@@ -43805,6 +45466,41 @@ func (m *TLPhoneToggleGroupCallSettings) String() string {
 // Encode <--
 func (m *TLPhoneToggleGroupCallSettings) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
+		0xe9723804: func() error {
+			x.PutClazzID(0xe9723804)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.ResetInviteHash == true {
+					flags |= 1 << 1
+				}
+
+				if m.JoinMuted != nil {
+					flags |= 1 << 0
+				}
+				if m.MessagesEnabled != nil {
+					flags |= 1 << 2
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Call.Encode(x, layer)
+			if m.JoinMuted != nil {
+				_ = m.JoinMuted.Encode(x, layer)
+			}
+
+			if m.MessagesEnabled != nil {
+				_ = m.MessagesEnabled.Encode(x, layer)
+			}
+
+			return nil
+		},
 		0x74bbb43d: func() error {
 			x.PutClazzID(0x74bbb43d)
 
@@ -43847,6 +45543,33 @@ func (m *TLPhoneToggleGroupCallSettings) Encode(x *bin.Encoder, layer int32) err
 // Decode <--
 func (m *TLPhoneToggleGroupCallSettings) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
+		0xe9723804: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 1)) != 0 {
+				m.ResetInviteHash = true
+			}
+
+			// m3 := &InputGroupCall{}
+			// _ = m3.Decode(d)
+			// m.Call = m3
+			m.Call, _ = DecodeInputGroupCallClazz(d)
+
+			if (flags & (1 << 0)) != 0 {
+				// m4 := &Bool{}
+				// _ = m4.Decode(d)
+				// m.JoinMuted = m4
+				m.JoinMuted, _ = DecodeBoolClazz(d)
+			}
+			if (flags & (1 << 2)) != 0 {
+				// m5 := &Bool{}
+				// _ = m5.Decode(d)
+				// m.MessagesEnabled = m5
+				m.MessagesEnabled, _ = DecodeBoolClazz(d)
+			}
+
+			return nil
+		},
 		0x74bbb43d: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
@@ -45037,9 +46760,14 @@ func (m *TLPhoneSaveCallLog) Decode(d *bin.Decoder) (err error) {
 
 // TLPhoneCreateConferenceCall <--
 type TLPhoneCreateConferenceCall struct {
-	ClazzID        uint32              `json:"_id"`
-	Peer           InputPhoneCallClazz `json:"peer"`
-	KeyFingerprint int64               `json:"key_fingerprint"`
+	ClazzID      uint32        `json:"_id"`
+	Muted        bool          `json:"muted"`
+	VideoStopped bool          `json:"video_stopped"`
+	Join         bool          `json:"join"`
+	RandomId     int32         `json:"random_id"`
+	PublicKey    bin.Int256    `json:"public_key"`
+	Block        []byte        `json:"block"`
+	Params       DataJSONClazz `json:"params"`
 }
 
 func (m *TLPhoneCreateConferenceCall) String() string {
@@ -45050,11 +46778,48 @@ func (m *TLPhoneCreateConferenceCall) String() string {
 // Encode <--
 func (m *TLPhoneCreateConferenceCall) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xdfc909ab: func() error {
-			x.PutClazzID(0xdfc909ab)
+		0x7d0444bb: func() error {
+			x.PutClazzID(0x7d0444bb)
 
-			_ = m.Peer.Encode(x, layer)
-			x.PutInt64(m.KeyFingerprint)
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Muted == true {
+					flags |= 1 << 0
+				}
+				if m.VideoStopped == true {
+					flags |= 1 << 2
+				}
+				if m.Join == true {
+					flags |= 1 << 3
+				}
+
+				if m.PublicKey != nil {
+					flags |= 1 << 3
+				}
+				if m.Block != nil {
+					flags |= 1 << 3
+				}
+				if m.Params != nil {
+					flags |= 1 << 3
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			x.PutInt32(m.RandomId)
+			x.PutInt256(m.PublicKey)
+			if m.Block != nil {
+				x.PutBytes(m.Block)
+			}
+
+			if m.Params != nil {
+				_ = m.Params.Encode(x, layer)
+			}
 
 			return nil
 		},
@@ -45072,14 +46837,511 @@ func (m *TLPhoneCreateConferenceCall) Encode(x *bin.Encoder, layer int32) error 
 // Decode <--
 func (m *TLPhoneCreateConferenceCall) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xdfc909ab: func() (err error) {
+		0x7d0444bb: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Muted = true
+			}
+			if (flags & (1 << 2)) != 0 {
+				m.VideoStopped = true
+			}
+			if (flags & (1 << 3)) != 0 {
+				m.Join = true
+			}
+			m.RandomId, err = d.Int32()
+			err = m.PublicKey.Decode(d)
+			if (flags & (1 << 3)) != 0 {
+				m.Block, err = d.Bytes()
+			}
 
-			// m1 := &InputPhoneCall{}
+			if (flags & (1 << 3)) != 0 {
+				// m8 := &DataJSON{}
+				// _ = m8.Decode(d)
+				// m.Params = m8
+				m.Params, _ = DecodeDataJSONClazz(d)
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPhoneDeleteConferenceCallParticipants <--
+type TLPhoneDeleteConferenceCallParticipants struct {
+	ClazzID  uint32              `json:"_id"`
+	OnlyLeft bool                `json:"only_left"`
+	Kick     bool                `json:"kick"`
+	Call     InputGroupCallClazz `json:"call"`
+	Ids      []int64             `json:"ids"`
+	Block    []byte              `json:"block"`
+}
+
+func (m *TLPhoneDeleteConferenceCallParticipants) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPhoneDeleteConferenceCallParticipants) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x8ca60525: func() error {
+			x.PutClazzID(0x8ca60525)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.OnlyLeft == true {
+					flags |= 1 << 0
+				}
+				if m.Kick == true {
+					flags |= 1 << 1
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Call.Encode(x, layer)
+
+			iface.EncodeInt64List(x, m.Ids)
+
+			x.PutBytes(m.Block)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_phone_deleteConferenceCallParticipants, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_phone_deleteConferenceCallParticipants, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPhoneDeleteConferenceCallParticipants) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x8ca60525: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.OnlyLeft = true
+			}
+			if (flags & (1 << 1)) != 0 {
+				m.Kick = true
+			}
+
+			// m4 := &InputGroupCall{}
+			// _ = m4.Decode(d)
+			// m.Call = m4
+			m.Call, _ = DecodeInputGroupCallClazz(d)
+
+			m.Ids, err = iface.DecodeInt64List(d)
+
+			m.Block, err = d.Bytes()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPhoneSendConferenceCallBroadcast <--
+type TLPhoneSendConferenceCallBroadcast struct {
+	ClazzID uint32              `json:"_id"`
+	Call    InputGroupCallClazz `json:"call"`
+	Block   []byte              `json:"block"`
+}
+
+func (m *TLPhoneSendConferenceCallBroadcast) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPhoneSendConferenceCallBroadcast) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xc6701900: func() error {
+			x.PutClazzID(0xc6701900)
+
+			_ = m.Call.Encode(x, layer)
+			x.PutBytes(m.Block)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_phone_sendConferenceCallBroadcast, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_phone_sendConferenceCallBroadcast, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPhoneSendConferenceCallBroadcast) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xc6701900: func() (err error) {
+
+			// m1 := &InputGroupCall{}
 			// _ = m1.Decode(d)
-			// m.Peer = m1
-			m.Peer, _ = DecodeInputPhoneCallClazz(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
 
-			m.KeyFingerprint, err = d.Int64()
+			m.Block, err = d.Bytes()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPhoneInviteConferenceCallParticipant <--
+type TLPhoneInviteConferenceCallParticipant struct {
+	ClazzID uint32              `json:"_id"`
+	Video   bool                `json:"video"`
+	Call    InputGroupCallClazz `json:"call"`
+	UserId  InputUserClazz      `json:"user_id"`
+}
+
+func (m *TLPhoneInviteConferenceCallParticipant) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPhoneInviteConferenceCallParticipant) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xbcf22685: func() error {
+			x.PutClazzID(0xbcf22685)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Video == true {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Call.Encode(x, layer)
+			_ = m.UserId.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_phone_inviteConferenceCallParticipant, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_phone_inviteConferenceCallParticipant, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPhoneInviteConferenceCallParticipant) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xbcf22685: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Video = true
+			}
+
+			// m3 := &InputGroupCall{}
+			// _ = m3.Decode(d)
+			// m.Call = m3
+			m.Call, _ = DecodeInputGroupCallClazz(d)
+
+			// m4 := &InputUser{}
+			// _ = m4.Decode(d)
+			// m.UserId = m4
+			m.UserId, _ = DecodeInputUserClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPhoneDeclineConferenceCallInvite <--
+type TLPhoneDeclineConferenceCallInvite struct {
+	ClazzID uint32 `json:"_id"`
+	MsgId   int32  `json:"msg_id"`
+}
+
+func (m *TLPhoneDeclineConferenceCallInvite) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPhoneDeclineConferenceCallInvite) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x3c479971: func() error {
+			x.PutClazzID(0x3c479971)
+
+			x.PutInt32(m.MsgId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_phone_declineConferenceCallInvite, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_phone_declineConferenceCallInvite, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPhoneDeclineConferenceCallInvite) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x3c479971: func() (err error) {
+			m.MsgId, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPhoneGetGroupCallChainBlocks <--
+type TLPhoneGetGroupCallChainBlocks struct {
+	ClazzID    uint32              `json:"_id"`
+	Call       InputGroupCallClazz `json:"call"`
+	SubChainId int32               `json:"sub_chain_id"`
+	Offset     int32               `json:"offset"`
+	Limit      int32               `json:"limit"`
+}
+
+func (m *TLPhoneGetGroupCallChainBlocks) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPhoneGetGroupCallChainBlocks) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xee9f88a6: func() error {
+			x.PutClazzID(0xee9f88a6)
+
+			_ = m.Call.Encode(x, layer)
+			x.PutInt32(m.SubChainId)
+			x.PutInt32(m.Offset)
+			x.PutInt32(m.Limit)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_phone_getGroupCallChainBlocks, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_phone_getGroupCallChainBlocks, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPhoneGetGroupCallChainBlocks) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xee9f88a6: func() (err error) {
+
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
+
+			m.SubChainId, err = d.Int32()
+			m.Offset, err = d.Int32()
+			m.Limit, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPhoneSendGroupCallMessage <--
+type TLPhoneSendGroupCallMessage struct {
+	ClazzID  uint32                `json:"_id"`
+	Call     InputGroupCallClazz   `json:"call"`
+	RandomId int64                 `json:"random_id"`
+	Message  TextWithEntitiesClazz `json:"message"`
+}
+
+func (m *TLPhoneSendGroupCallMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPhoneSendGroupCallMessage) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x87893014: func() error {
+			x.PutClazzID(0x87893014)
+
+			_ = m.Call.Encode(x, layer)
+			x.PutInt64(m.RandomId)
+			_ = m.Message.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_phone_sendGroupCallMessage, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_phone_sendGroupCallMessage, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPhoneSendGroupCallMessage) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x87893014: func() (err error) {
+
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
+
+			m.RandomId, err = d.Int64()
+
+			// m3 := &TextWithEntities{}
+			// _ = m3.Decode(d)
+			// m.Message = m3
+			m.Message, _ = DecodeTextWithEntitiesClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLPhoneSendGroupCallEncryptedMessage <--
+type TLPhoneSendGroupCallEncryptedMessage struct {
+	ClazzID          uint32              `json:"_id"`
+	Call             InputGroupCallClazz `json:"call"`
+	EncryptedMessage []byte              `json:"encrypted_message"`
+}
+
+func (m *TLPhoneSendGroupCallEncryptedMessage) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLPhoneSendGroupCallEncryptedMessage) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xe5afa56d: func() error {
+			x.PutClazzID(0xe5afa56d)
+
+			_ = m.Call.Encode(x, layer)
+			x.PutBytes(m.EncryptedMessage)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_phone_sendGroupCallEncryptedMessage, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_phone_sendGroupCallEncryptedMessage, layer)
+	}
+}
+
+// Decode <--
+func (m *TLPhoneSendGroupCallEncryptedMessage) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xe5afa56d: func() (err error) {
+
+			// m1 := &InputGroupCall{}
+			// _ = m1.Decode(d)
+			// m.Call = m1
+			m.Call, _ = DecodeInputGroupCallClazz(d)
+
+			m.EncryptedMessage, err = d.Bytes()
 
 			return nil
 		},
@@ -46000,208 +48262,6 @@ func (m *TLStatsGetStoryPublicForwards) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// TLStatsGetBroadcastRevenueStats <--
-type TLStatsGetBroadcastRevenueStats struct {
-	ClazzID uint32         `json:"_id"`
-	Dark    bool           `json:"dark"`
-	Peer    InputPeerClazz `json:"peer"`
-}
-
-func (m *TLStatsGetBroadcastRevenueStats) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLStatsGetBroadcastRevenueStats) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xf788ee19: func() error {
-			x.PutClazzID(0xf788ee19)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Dark == true {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Peer.Encode(x, layer)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_stats_getBroadcastRevenueStats, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stats_getBroadcastRevenueStats, layer)
-	}
-}
-
-// Decode <--
-func (m *TLStatsGetBroadcastRevenueStats) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xf788ee19: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 0)) != 0 {
-				m.Dark = true
-			}
-
-			// m3 := &InputPeer{}
-			// _ = m3.Decode(d)
-			// m.Peer = m3
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLStatsGetBroadcastRevenueWithdrawalUrl <--
-type TLStatsGetBroadcastRevenueWithdrawalUrl struct {
-	ClazzID  uint32                     `json:"_id"`
-	Peer     InputPeerClazz             `json:"peer"`
-	Password InputCheckPasswordSRPClazz `json:"password"`
-}
-
-func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x9df4faad: func() error {
-			x.PutClazzID(0x9df4faad)
-
-			_ = m.Peer.Encode(x, layer)
-			_ = m.Password.Encode(x, layer)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_stats_getBroadcastRevenueWithdrawalUrl, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stats_getBroadcastRevenueWithdrawalUrl, layer)
-	}
-}
-
-// Decode <--
-func (m *TLStatsGetBroadcastRevenueWithdrawalUrl) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x9df4faad: func() (err error) {
-
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			// m2 := &InputCheckPasswordSRP{}
-			// _ = m2.Decode(d)
-			// m.Password = m2
-			m.Password, _ = DecodeInputCheckPasswordSRPClazz(d)
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLStatsGetBroadcastRevenueTransactions <--
-type TLStatsGetBroadcastRevenueTransactions struct {
-	ClazzID uint32         `json:"_id"`
-	Peer    InputPeerClazz `json:"peer"`
-	Offset  int32          `json:"offset"`
-	Limit   int32          `json:"limit"`
-}
-
-func (m *TLStatsGetBroadcastRevenueTransactions) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLStatsGetBroadcastRevenueTransactions) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x70990b6d: func() error {
-			x.PutClazzID(0x70990b6d)
-
-			_ = m.Peer.Encode(x, layer)
-			x.PutInt32(m.Offset)
-			x.PutInt32(m.Limit)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_stats_getBroadcastRevenueTransactions, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stats_getBroadcastRevenueTransactions, layer)
-	}
-}
-
-// Decode <--
-func (m *TLStatsGetBroadcastRevenueTransactions) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x70990b6d: func() (err error) {
-
-			// m1 := &InputPeer{}
-			// _ = m1.Decode(d)
-			// m.Peer = m1
-			m.Peer, _ = DecodeInputPeerClazz(d)
-
-			m.Offset, err = d.Int32()
-			m.Limit, err = d.Int32()
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
 // TLChatlistsExportChatlistInvite <--
 type TLChatlistsExportChatlistInvite struct {
 	ClazzID  uint32             `json:"_id"`
@@ -46970,8 +49030,8 @@ func (m *TLStoriesCanSendStory) String() string {
 // Encode <--
 func (m *TLStoriesCanSendStory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xc7dfdfdd: func() error {
-			x.PutClazzID(0xc7dfdfdd)
+		0x30eb63f0: func() error {
+			x.PutClazzID(0x30eb63f0)
 
 			_ = m.Peer.Encode(x, layer)
 
@@ -46991,7 +49051,7 @@ func (m *TLStoriesCanSendStory) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLStoriesCanSendStory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xc7dfdfdd: func() (err error) {
+		0x30eb63f0: func() (err error) {
 
 			// m1 := &InputPeer{}
 			// _ = m1.Decode(d)
@@ -47028,6 +49088,7 @@ type TLStoriesSendStory struct {
 	Period       *int32                  `json:"period"`
 	FwdFromId    InputPeerClazz          `json:"fwd_from_id"`
 	FwdFromStory *int32                  `json:"fwd_from_story"`
+	Albums       []int32                 `json:"albums"`
 }
 
 func (m *TLStoriesSendStory) String() string {
@@ -47038,8 +49099,8 @@ func (m *TLStoriesSendStory) String() string {
 // Encode <--
 func (m *TLStoriesSendStory) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xe4e6694b: func() error {
-			x.PutClazzID(0xe4e6694b)
+		0x737fc2ec: func() error {
+			x.PutClazzID(0x737fc2ec)
 
 			// set flags
 			var getFlags = func() uint32 {
@@ -47073,6 +49134,9 @@ func (m *TLStoriesSendStory) Encode(x *bin.Encoder, layer int32) error {
 				}
 				if m.FwdFromStory != nil {
 					flags |= 1 << 6
+				}
+				if m.Albums != nil {
+					flags |= 1 << 8
 				}
 
 				return flags
@@ -47109,6 +49173,10 @@ func (m *TLStoriesSendStory) Encode(x *bin.Encoder, layer int32) error {
 				x.PutInt32(*m.FwdFromStory)
 			}
 
+			if m.Albums != nil {
+				iface.EncodeInt32List(x, m.Albums)
+			}
+
 			return nil
 		},
 	}
@@ -47125,7 +49193,7 @@ func (m *TLStoriesSendStory) Encode(x *bin.Encoder, layer int32) error {
 // Decode <--
 func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xe4e6694b: func() (err error) {
+		0x737fc2ec: func() (err error) {
 			flags, _ := d.Uint32()
 			_ = flags
 			if (flags & (1 << 2)) != 0 {
@@ -47223,6 +49291,9 @@ func (m *TLStoriesSendStory) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 6)) != 0 {
 				m.FwdFromStory = new(int32)
 				*m.FwdFromStory, err = d.Int32()
+			}
+			if (flags & (1 << 8)) != 0 {
+				m.Albums, err = iface.DecodeInt32List(d)
 			}
 
 			return nil
@@ -49029,6 +51100,434 @@ func (m *TLStoriesSearchPosts) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
+// TLStoriesCreateAlbum <--
+type TLStoriesCreateAlbum struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Title   string         `json:"title"`
+	Stories []int32        `json:"stories"`
+}
+
+func (m *TLStoriesCreateAlbum) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLStoriesCreateAlbum) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xa36396e5: func() error {
+			x.PutClazzID(0xa36396e5)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutString(m.Title)
+
+			iface.EncodeInt32List(x, m.Stories)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_stories_createAlbum, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stories_createAlbum, layer)
+	}
+}
+
+// Decode <--
+func (m *TLStoriesCreateAlbum) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xa36396e5: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Title, err = d.String()
+
+			m.Stories, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLStoriesUpdateAlbum <--
+type TLStoriesUpdateAlbum struct {
+	ClazzID       uint32         `json:"_id"`
+	Peer          InputPeerClazz `json:"peer"`
+	AlbumId       int32          `json:"album_id"`
+	Title         *string        `json:"title"`
+	DeleteStories []int32        `json:"delete_stories"`
+	AddStories    []int32        `json:"add_stories"`
+	Order         []int32        `json:"order"`
+}
+
+func (m *TLStoriesUpdateAlbum) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLStoriesUpdateAlbum) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x5e5259b6: func() error {
+			x.PutClazzID(0x5e5259b6)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Title != nil {
+					flags |= 1 << 0
+				}
+				if m.DeleteStories != nil {
+					flags |= 1 << 1
+				}
+				if m.AddStories != nil {
+					flags |= 1 << 2
+				}
+				if m.Order != nil {
+					flags |= 1 << 3
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.AlbumId)
+			if m.Title != nil {
+				x.PutString(*m.Title)
+			}
+
+			if m.DeleteStories != nil {
+				iface.EncodeInt32List(x, m.DeleteStories)
+			}
+			if m.AddStories != nil {
+				iface.EncodeInt32List(x, m.AddStories)
+			}
+			if m.Order != nil {
+				iface.EncodeInt32List(x, m.Order)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_stories_updateAlbum, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stories_updateAlbum, layer)
+	}
+}
+
+// Decode <--
+func (m *TLStoriesUpdateAlbum) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x5e5259b6: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+
+			// m2 := &InputPeer{}
+			// _ = m2.Decode(d)
+			// m.Peer = m2
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.AlbumId, err = d.Int32()
+			if (flags & (1 << 0)) != 0 {
+				m.Title = new(string)
+				*m.Title, err = d.String()
+			}
+
+			if (flags & (1 << 1)) != 0 {
+				m.DeleteStories, err = iface.DecodeInt32List(d)
+			}
+			if (flags & (1 << 2)) != 0 {
+				m.AddStories, err = iface.DecodeInt32List(d)
+			}
+			if (flags & (1 << 3)) != 0 {
+				m.Order, err = iface.DecodeInt32List(d)
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLStoriesReorderAlbums <--
+type TLStoriesReorderAlbums struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Order   []int32        `json:"order"`
+}
+
+func (m *TLStoriesReorderAlbums) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLStoriesReorderAlbums) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x8535fbd9: func() error {
+			x.PutClazzID(0x8535fbd9)
+
+			_ = m.Peer.Encode(x, layer)
+
+			iface.EncodeInt32List(x, m.Order)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_stories_reorderAlbums, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stories_reorderAlbums, layer)
+	}
+}
+
+// Decode <--
+func (m *TLStoriesReorderAlbums) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x8535fbd9: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Order, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLStoriesDeleteAlbum <--
+type TLStoriesDeleteAlbum struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	AlbumId int32          `json:"album_id"`
+}
+
+func (m *TLStoriesDeleteAlbum) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLStoriesDeleteAlbum) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x8d3456d0: func() error {
+			x.PutClazzID(0x8d3456d0)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.AlbumId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_stories_deleteAlbum, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stories_deleteAlbum, layer)
+	}
+}
+
+// Decode <--
+func (m *TLStoriesDeleteAlbum) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x8d3456d0: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.AlbumId, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLStoriesGetAlbums <--
+type TLStoriesGetAlbums struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	Hash    int64          `json:"hash"`
+}
+
+func (m *TLStoriesGetAlbums) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLStoriesGetAlbums) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x25b3eac7: func() error {
+			x.PutClazzID(0x25b3eac7)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt64(m.Hash)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_stories_getAlbums, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stories_getAlbums, layer)
+	}
+}
+
+// Decode <--
+func (m *TLStoriesGetAlbums) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x25b3eac7: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.Hash, err = d.Int64()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLStoriesGetAlbumStories <--
+type TLStoriesGetAlbumStories struct {
+	ClazzID uint32         `json:"_id"`
+	Peer    InputPeerClazz `json:"peer"`
+	AlbumId int32          `json:"album_id"`
+	Offset  int32          `json:"offset"`
+	Limit   int32          `json:"limit"`
+}
+
+func (m *TLStoriesGetAlbumStories) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLStoriesGetAlbumStories) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xac806d61: func() error {
+			x.PutClazzID(0xac806d61)
+
+			_ = m.Peer.Encode(x, layer)
+			x.PutInt32(m.AlbumId)
+			x.PutInt32(m.Offset)
+			x.PutInt32(m.Limit)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_stories_getAlbumStories, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_stories_getAlbumStories, layer)
+	}
+}
+
+// Decode <--
+func (m *TLStoriesGetAlbumStories) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xac806d61: func() (err error) {
+
+			// m1 := &InputPeer{}
+			// _ = m1.Decode(d)
+			// m.Peer = m1
+			m.Peer, _ = DecodeInputPeerClazz(d)
+
+			m.AlbumId, err = d.Int32()
+			m.Offset, err = d.Int32()
+			m.Limit, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
 // TLPremiumGetBoostsList <--
 type TLPremiumGetBoostsList struct {
 	ClazzID uint32         `json:"_id"`
@@ -49803,47 +52302,106 @@ func (m *TLFragmentGetCollectibleInfo) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// TLPaymentsCanPurchasePremium <--
-type TLPaymentsCanPurchasePremium struct {
-	ClazzID uint32                        `json:"_id"`
-	Purpose InputStorePaymentPurposeClazz `json:"purpose"`
+// TLChannelsCreateForumTopic <--
+type TLChannelsCreateForumTopic struct {
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	Title       string            `json:"title"`
+	IconColor   *int32            `json:"icon_color"`
+	IconEmojiId *int64            `json:"icon_emoji_id"`
+	RandomId    int64             `json:"random_id"`
+	SendAs      InputPeerClazz    `json:"send_as"`
 }
 
-func (m *TLPaymentsCanPurchasePremium) String() string {
+func (m *TLChannelsCreateForumTopic) String() string {
 	wrapper := iface.WithNameWrapper{"", m}
 	return wrapper.String()
 }
 
 // Encode <--
-func (m *TLPaymentsCanPurchasePremium) Encode(x *bin.Encoder, layer int32) error {
+func (m *TLChannelsCreateForumTopic) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0x9fc19eb6: func() error {
-			x.PutClazzID(0x9fc19eb6)
+		0xf40c0224: func() error {
+			x.PutClazzID(0xf40c0224)
 
-			_ = m.Purpose.Encode(x, layer)
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.IconColor != nil {
+					flags |= 1 << 0
+				}
+				if m.IconEmojiId != nil {
+					flags |= 1 << 3
+				}
+
+				if m.SendAs != nil {
+					flags |= 1 << 2
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Channel.Encode(x, layer)
+			x.PutString(m.Title)
+			if m.IconColor != nil {
+				x.PutInt32(*m.IconColor)
+			}
+
+			if m.IconEmojiId != nil {
+				x.PutInt64(*m.IconEmojiId)
+			}
+
+			x.PutInt64(m.RandomId)
+			if m.SendAs != nil {
+				_ = m.SendAs.Encode(x, layer)
+			}
 
 			return nil
 		},
 	}
 
-	clazzId := iface.GetClazzIDByName(ClazzName_payments_canPurchasePremium, int(layer))
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_createForumTopic, int(layer))
 	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_payments_canPurchasePremium, layer)
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_createForumTopic, layer)
 	}
 }
 
 // Decode <--
-func (m *TLPaymentsCanPurchasePremium) Decode(d *bin.Decoder) (err error) {
+func (m *TLChannelsCreateForumTopic) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0x9fc19eb6: func() (err error) {
+		0xf40c0224: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
 
-			// m1 := &InputStorePaymentPurpose{}
-			// _ = m1.Decode(d)
-			// m.Purpose = m1
-			m.Purpose, _ = DecodeInputStorePaymentPurposeClazz(d)
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Channel = m2
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.Title, err = d.String()
+			if (flags & (1 << 0)) != 0 {
+				m.IconColor = new(int32)
+				*m.IconColor, err = d.Int32()
+			}
+			if (flags & (1 << 3)) != 0 {
+				m.IconEmojiId = new(int64)
+				*m.IconEmojiId, err = d.Int64()
+			}
+
+			m.RandomId, err = d.Int64()
+			if (flags & (1 << 2)) != 0 {
+				// m7 := &InputPeer{}
+				// _ = m7.Decode(d)
+				// m.SendAs = m7
+				m.SendAs, _ = DecodeInputPeerClazz(d)
+			}
 
 			return nil
 		},
@@ -49859,59 +52417,481 @@ func (m *TLPaymentsCanPurchasePremium) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// TLUsersGetIsPremiumRequiredToContact <--
-type TLUsersGetIsPremiumRequiredToContact struct {
-	ClazzID uint32           `json:"_id"`
-	Id      []InputUserClazz `json:"id"`
+// TLChannelsGetForumTopics <--
+type TLChannelsGetForumTopics struct {
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	Q           *string           `json:"q"`
+	OffsetDate  int32             `json:"offset_date"`
+	OffsetId    int32             `json:"offset_id"`
+	OffsetTopic int32             `json:"offset_topic"`
+	Limit       int32             `json:"limit"`
 }
 
-func (m *TLUsersGetIsPremiumRequiredToContact) String() string {
+func (m *TLChannelsGetForumTopics) String() string {
 	wrapper := iface.WithNameWrapper{"", m}
 	return wrapper.String()
 }
 
 // Encode <--
-func (m *TLUsersGetIsPremiumRequiredToContact) Encode(x *bin.Encoder, layer int32) error {
+func (m *TLChannelsGetForumTopics) Encode(x *bin.Encoder, layer int32) error {
 	var encodeF = map[uint32]func() error{
-		0xa622aa10: func() error {
-			x.PutClazzID(0xa622aa10)
+		0xde560d1: func() error {
+			x.PutClazzID(0xde560d1)
 
-			_ = iface.EncodeObjectList(x, m.Id, layer)
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Q != nil {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Channel.Encode(x, layer)
+			if m.Q != nil {
+				x.PutString(*m.Q)
+			}
+
+			x.PutInt32(m.OffsetDate)
+			x.PutInt32(m.OffsetId)
+			x.PutInt32(m.OffsetTopic)
+			x.PutInt32(m.Limit)
 
 			return nil
 		},
 	}
 
-	clazzId := iface.GetClazzIDByName(ClazzName_users_getIsPremiumRequiredToContact, int(layer))
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_getForumTopics, int(layer))
 	if f, ok := encodeF[clazzId]; ok {
 		return f()
 	} else {
 		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_users_getIsPremiumRequiredToContact, layer)
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_getForumTopics, layer)
 	}
 }
 
 // Decode <--
-func (m *TLUsersGetIsPremiumRequiredToContact) Decode(d *bin.Decoder) (err error) {
+func (m *TLChannelsGetForumTopics) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
-		0xa622aa10: func() (err error) {
-			c1, err2 := d.ClazzID()
-			if c1 != iface.ClazzID_vector {
-				// dBuf.err = fmt.Errorf("invalid ClazzID_vector, c%d: %d", 1, c1)
-				return err2
+		0xde560d1: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Channel = m2
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			if (flags & (1 << 0)) != 0 {
+				m.Q = new(string)
+				*m.Q, err = d.String()
 			}
-			l1, err3 := d.Int()
-			// v1 := make([]*InputUser, l1)
-			v1 := make([]InputUserClazz, l1)
-			for i := 0; i < l1; i++ {
-				// vv := new(InputUser)
-				// err3 = vv.Decode(d)
-				// _ = err3
-				// v1[i] = vv
-				v1[i], _ = DecodeInputUserClazz(d)
-				_ = err3
+
+			m.OffsetDate, err = d.Int32()
+			m.OffsetId, err = d.Int32()
+			m.OffsetTopic, err = d.Int32()
+			m.Limit, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsGetForumTopicsByID <--
+type TLChannelsGetForumTopicsByID struct {
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	Topics  []int32           `json:"topics"`
+}
+
+func (m *TLChannelsGetForumTopicsByID) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsGetForumTopicsByID) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xb0831eb9: func() error {
+			x.PutClazzID(0xb0831eb9)
+
+			_ = m.Channel.Encode(x, layer)
+
+			iface.EncodeInt32List(x, m.Topics)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_getForumTopicsByID, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_getForumTopicsByID, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsGetForumTopicsByID) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xb0831eb9: func() (err error) {
+
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.Topics, err = iface.DecodeInt32List(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsEditForumTopic <--
+type TLChannelsEditForumTopic struct {
+	ClazzID     uint32            `json:"_id"`
+	Channel     InputChannelClazz `json:"channel"`
+	TopicId     int32             `json:"topic_id"`
+	Title       *string           `json:"title"`
+	IconEmojiId *int64            `json:"icon_emoji_id"`
+	Closed      BoolClazz         `json:"closed"`
+	Hidden      BoolClazz         `json:"hidden"`
+}
+
+func (m *TLChannelsEditForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsEditForumTopic) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0xf4dfa185: func() error {
+			x.PutClazzID(0xf4dfa185)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Title != nil {
+					flags |= 1 << 0
+				}
+				if m.IconEmojiId != nil {
+					flags |= 1 << 1
+				}
+				if m.Closed != nil {
+					flags |= 1 << 2
+				}
+				if m.Hidden != nil {
+					flags |= 1 << 3
+				}
+
+				return flags
 			}
-			m.Id = v1
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Channel.Encode(x, layer)
+			x.PutInt32(m.TopicId)
+			if m.Title != nil {
+				x.PutString(*m.Title)
+			}
+
+			if m.IconEmojiId != nil {
+				x.PutInt64(*m.IconEmojiId)
+			}
+
+			if m.Closed != nil {
+				_ = m.Closed.Encode(x, layer)
+			}
+
+			if m.Hidden != nil {
+				_ = m.Hidden.Encode(x, layer)
+			}
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_editForumTopic, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_editForumTopic, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsEditForumTopic) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0xf4dfa185: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+
+			// m2 := &InputChannel{}
+			// _ = m2.Decode(d)
+			// m.Channel = m2
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.TopicId, err = d.Int32()
+			if (flags & (1 << 0)) != 0 {
+				m.Title = new(string)
+				*m.Title, err = d.String()
+			}
+
+			if (flags & (1 << 1)) != 0 {
+				m.IconEmojiId = new(int64)
+				*m.IconEmojiId, err = d.Int64()
+			}
+
+			if (flags & (1 << 2)) != 0 {
+				// m6 := &Bool{}
+				// _ = m6.Decode(d)
+				// m.Closed = m6
+				m.Closed, _ = DecodeBoolClazz(d)
+			}
+			if (flags & (1 << 3)) != 0 {
+				// m7 := &Bool{}
+				// _ = m7.Decode(d)
+				// m.Hidden = m7
+				m.Hidden, _ = DecodeBoolClazz(d)
+			}
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsUpdatePinnedForumTopic <--
+type TLChannelsUpdatePinnedForumTopic struct {
+	ClazzID uint32            `json:"_id"`
+	Channel InputChannelClazz `json:"channel"`
+	TopicId int32             `json:"topic_id"`
+	Pinned  BoolClazz         `json:"pinned"`
+}
+
+func (m *TLChannelsUpdatePinnedForumTopic) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsUpdatePinnedForumTopic) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x6c2d9026: func() error {
+			x.PutClazzID(0x6c2d9026)
+
+			_ = m.Channel.Encode(x, layer)
+			x.PutInt32(m.TopicId)
+			_ = m.Pinned.Encode(x, layer)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_updatePinnedForumTopic, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_updatePinnedForumTopic, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsUpdatePinnedForumTopic) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x6c2d9026: func() (err error) {
+
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.TopicId, err = d.Int32()
+
+			// m3 := &Bool{}
+			// _ = m3.Decode(d)
+			// m.Pinned = m3
+			m.Pinned, _ = DecodeBoolClazz(d)
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsDeleteTopicHistory <--
+type TLChannelsDeleteTopicHistory struct {
+	ClazzID  uint32            `json:"_id"`
+	Channel  InputChannelClazz `json:"channel"`
+	TopMsgId int32             `json:"top_msg_id"`
+}
+
+func (m *TLChannelsDeleteTopicHistory) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsDeleteTopicHistory) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x34435f2d: func() error {
+			x.PutClazzID(0x34435f2d)
+
+			_ = m.Channel.Encode(x, layer)
+			x.PutInt32(m.TopMsgId)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_deleteTopicHistory, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_deleteTopicHistory, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsDeleteTopicHistory) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x34435f2d: func() (err error) {
+
+			// m1 := &InputChannel{}
+			// _ = m1.Decode(d)
+			// m.Channel = m1
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.TopMsgId, err = d.Int32()
+
+			return nil
+		},
+	}
+
+	if m.ClazzID == 0 {
+		m.ClazzID, _ = d.ClazzID()
+	}
+	if f, ok := decodeF[m.ClazzID]; ok {
+		return f()
+	} else {
+		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
+	}
+}
+
+// TLChannelsReorderPinnedForumTopics <--
+type TLChannelsReorderPinnedForumTopics struct {
+	ClazzID uint32            `json:"_id"`
+	Force   bool              `json:"force"`
+	Channel InputChannelClazz `json:"channel"`
+	Order   []int32           `json:"order"`
+}
+
+func (m *TLChannelsReorderPinnedForumTopics) String() string {
+	wrapper := iface.WithNameWrapper{"", m}
+	return wrapper.String()
+}
+
+// Encode <--
+func (m *TLChannelsReorderPinnedForumTopics) Encode(x *bin.Encoder, layer int32) error {
+	var encodeF = map[uint32]func() error{
+		0x2950a18f: func() error {
+			x.PutClazzID(0x2950a18f)
+
+			// set flags
+			var getFlags = func() uint32 {
+				var flags uint32 = 0
+
+				if m.Force == true {
+					flags |= 1 << 0
+				}
+
+				return flags
+			}
+
+			// set flags
+			var flags = getFlags()
+			x.PutUint32(flags)
+			_ = m.Channel.Encode(x, layer)
+
+			iface.EncodeInt32List(x, m.Order)
+
+			return nil
+		},
+	}
+
+	clazzId := iface.GetClazzIDByName(ClazzName_channels_reorderPinnedForumTopics, int(layer))
+	if f, ok := encodeF[clazzId]; ok {
+		return f()
+	} else {
+		// TODO(@benqi): handle error
+		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_reorderPinnedForumTopics, layer)
+	}
+}
+
+// Decode <--
+func (m *TLChannelsReorderPinnedForumTopics) Decode(d *bin.Decoder) (err error) {
+	var decodeF = map[uint32]func() error{
+		0x2950a18f: func() (err error) {
+			flags, _ := d.Uint32()
+			_ = flags
+			if (flags & (1 << 0)) != 0 {
+				m.Force = true
+			}
+
+			// m3 := &InputChannel{}
+			// _ = m3.Decode(d)
+			// m.Channel = m3
+			m.Channel, _ = DecodeInputChannelClazz(d)
+
+			m.Order, err = iface.DecodeInt32List(d)
 
 			return nil
 		},
@@ -51476,30 +54456,6 @@ func (m *VectorPeer) Decode(d *bin.Decoder) (err error) {
 	return err
 }
 
-// VectorBool <--
-type VectorBool struct {
-	Datas []BoolClazz `json:"_datas"`
-}
-
-func (m *VectorBool) String() string {
-	data, _ := json.Marshal(m)
-	return string(data)
-}
-
-// Encode <--
-func (m *VectorBool) Encode(x *bin.Encoder, layer int32) error {
-	_ = iface.EncodeObjectList(x, m.Datas, layer)
-
-	return nil
-}
-
-// Decode <--
-func (m *VectorBool) Decode(d *bin.Decoder) (err error) {
-	m.Datas, err = iface.DecodeObjectList[BoolClazz](d)
-
-	return err
-}
-
 // VectorPredefinedUser <--
 type VectorPredefinedUser struct {
 	Datas []PredefinedUserClazz `json:"_datas"`
@@ -51548,6 +54504,7 @@ type RPCAuthorization interface {
 	AuthRequestFirebaseSms(ctx context.Context, in *TLAuthRequestFirebaseSms) (*Bool, error)
 	AuthResetLoginEmail(ctx context.Context, in *TLAuthResetLoginEmail) (*AuthSentCode, error)
 	AuthReportMissingCode(ctx context.Context, in *TLAuthReportMissingCode) (*Bool, error)
+	AuthCheckPaidAuth(ctx context.Context, in *TLAuthCheckPaidAuth) (*AuthSentCode, error)
 	AccountSendVerifyEmailCode(ctx context.Context, in *TLAccountSendVerifyEmailCode) (*AccountSentEmailCode, error)
 	AccountVerifyEmail(ctx context.Context, in *TLAccountVerifyEmail) (*AccountEmailVerified, error)
 	AccountResetPassword(ctx context.Context, in *TLAccountResetPassword) (*AccountResetPasswordResult, error)
@@ -51573,17 +54530,24 @@ type RPCNotification interface {
 	AccountGetNotifyExceptions(ctx context.Context, in *TLAccountGetNotifyExceptions) (*Updates, error)
 }
 
-type RPCUserProfile interface {
+type RPCUserChannelProfiles interface {
 	AccountUpdateProfile(ctx context.Context, in *TLAccountUpdateProfile) (*User, error)
 	AccountUpdateStatus(ctx context.Context, in *TLAccountUpdateStatus) (*Bool, error)
 	AccountUpdateBirthday(ctx context.Context, in *TLAccountUpdateBirthday) (*Bool, error)
 	AccountUpdatePersonalChannel(ctx context.Context, in *TLAccountUpdatePersonalChannel) (*Bool, error)
+	AccountSetMainProfileTab(ctx context.Context, in *TLAccountSetMainProfileTab) (*Bool, error)
+	AccountSaveMusic(ctx context.Context, in *TLAccountSaveMusic) (*Bool, error)
+	AccountGetSavedMusicIds(ctx context.Context, in *TLAccountGetSavedMusicIds) (*AccountSavedMusicIds, error)
+	UsersGetSavedMusic(ctx context.Context, in *TLUsersGetSavedMusic) (*UsersSavedMusic, error)
+	UsersGetSavedMusicByID(ctx context.Context, in *TLUsersGetSavedMusicByID) (*UsersSavedMusic, error)
+	UsersSuggestBirthday(ctx context.Context, in *TLUsersSuggestBirthday) (*Updates, error)
 	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays) (*ContactsContactBirthdays, error)
 	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto) (*PhotosPhoto, error)
 	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto) (*PhotosPhoto, error)
 	PhotosDeletePhotos(ctx context.Context, in *TLPhotosDeletePhotos) (*VectorLong, error)
 	PhotosGetUserPhotos(ctx context.Context, in *TLPhotosGetUserPhotos) (*PhotosPhotos, error)
 	PhotosUploadContactProfilePhoto(ctx context.Context, in *TLPhotosUploadContactProfilePhoto) (*PhotosPhoto, error)
+	ChannelsSetMainProfileTab(ctx context.Context, in *TLChannelsSetMainProfileTab) (*Bool, error)
 	AccountUpdateVerified(ctx context.Context, in *TLAccountUpdateVerified) (*User, error)
 }
 
@@ -51623,7 +54587,6 @@ type RPCPrivacySettings interface {
 	UsersGetRequirementsToContact(ctx context.Context, in *TLUsersGetRequirementsToContact) (*VectorRequirementToContact, error)
 	MessagesSetDefaultHistoryTTL(ctx context.Context, in *TLMessagesSetDefaultHistoryTTL) (*Bool, error)
 	MessagesGetDefaultHistoryTTL(ctx context.Context, in *TLMessagesGetDefaultHistoryTTL) (*DefaultHistoryTTL, error)
-	UsersGetIsPremiumRequiredToContact(ctx context.Context, in *TLUsersGetIsPremiumRequiredToContact) (*VectorBool, error)
 }
 
 type RPCAccount interface {
@@ -51713,6 +54676,7 @@ type RPCContacts interface {
 	ContactsGetLocated(ctx context.Context, in *TLContactsGetLocated) (*Updates, error)
 	ContactsEditCloseFriends(ctx context.Context, in *TLContactsEditCloseFriends) (*Bool, error)
 	ContactsSetBlocked(ctx context.Context, in *TLContactsSetBlocked) (*Bool, error)
+	ContactsUpdateContactNote(ctx context.Context, in *TLContactsUpdateContactNote) (*Bool, error)
 }
 
 type RPCAutoDownload interface {
@@ -51729,6 +54693,7 @@ type RPCThemes interface {
 	AccountGetTheme(ctx context.Context, in *TLAccountGetTheme) (*Theme, error)
 	AccountGetThemes(ctx context.Context, in *TLAccountGetThemes) (*AccountThemes, error)
 	AccountGetChatThemes(ctx context.Context, in *TLAccountGetChatThemes) (*AccountThemes, error)
+	AccountGetUniqueGiftChatThemes(ctx context.Context, in *TLAccountGetUniqueGiftChatThemes) (*AccountChatThemes, error)
 	MessagesSetChatTheme(ctx context.Context, in *TLMessagesSetChatTheme) (*Updates, error)
 }
 
@@ -51838,8 +54803,8 @@ type RPCReactionNotification interface {
 }
 
 type RPCPaidMessage interface {
-	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException) (*Bool, error)
 	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue) (*AccountPaidMessagesRevenue, error)
+	AccountToggleNoPaidMessagesException(ctx context.Context, in *TLAccountToggleNoPaidMessagesException) (*Bool, error)
 	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
 }
 
@@ -51891,9 +54856,9 @@ type RPCMessages interface {
 	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs) (*Bool, error)
 	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia) (*MessagesMessages, error)
 	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
-	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery) (*Bool, error)
 	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs) (*ChannelsSendAsPeers, error)
 	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts) (*MessagesMessages, error)
+	ChannelsCheckSearchPostsFlood(ctx context.Context, in *TLChannelsCheckSearchPostsFlood) (*SearchPostsFlood, error)
 }
 
 type RPCDialogs interface {
@@ -52102,7 +55067,6 @@ type RPCVoipCalls interface {
 	PhoneSaveCallDebug(ctx context.Context, in *TLPhoneSaveCallDebug) (*Bool, error)
 	PhoneSendSignalingData(ctx context.Context, in *TLPhoneSendSignalingData) (*Bool, error)
 	PhoneSaveCallLog(ctx context.Context, in *TLPhoneSaveCallLog) (*Bool, error)
-	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall) (*PhonePhoneCall, error)
 }
 
 type RPCImportedChats interface {
@@ -52134,6 +55098,7 @@ type RPCReactions interface {
 type RPCTranslation interface {
 	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText) (*MessagesTranslatedText, error)
 	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations) (*Bool, error)
+	ChannelsToggleAutotranslation(ctx context.Context, in *TLChannelsToggleAutotranslation) (*Updates, error)
 }
 
 type RPCBotMenu interface {
@@ -52179,6 +55144,9 @@ type RPCSavedMessageDialogs interface {
 	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs) (*MessagesSavedDialogs, error)
 	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin) (*Bool, error)
 	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
+	MessagesGetSavedDialogsByID(ctx context.Context, in *TLMessagesGetSavedDialogsByID) (*MessagesSavedDialogs, error)
+	MessagesReadSavedHistory(ctx context.Context, in *TLMessagesReadSavedHistory) (*Bool, error)
+	ChannelsGetMessageAuthor(ctx context.Context, in *TLChannelsGetMessageAuthor) (*User, error)
 }
 
 type RPCSavedMessageTags interface {
@@ -52226,6 +55194,38 @@ type RPCMainMiniBotApps interface {
 type RPCPreparedInlineMessages interface {
 	MessagesSavePreparedInlineMessage(ctx context.Context, in *TLMessagesSavePreparedInlineMessage) (*MessagesBotPreparedInlineMessage, error)
 	MessagesGetPreparedInlineMessage(ctx context.Context, in *TLMessagesGetPreparedInlineMessage) (*MessagesPreparedInlineMessage, error)
+}
+
+type RPCGatewayVerificationMessages interface {
+	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery) (*Bool, error)
+}
+
+type RPCTodoLists interface {
+	MessagesToggleTodoCompleted(ctx context.Context, in *TLMessagesToggleTodoCompleted) (*Updates, error)
+	MessagesAppendTodoList(ctx context.Context, in *TLMessagesAppendTodoList) (*Updates, error)
+}
+
+type RPCSuggestedPosts interface {
+	MessagesToggleSuggestedPostApproval(ctx context.Context, in *TLMessagesToggleSuggestedPostApproval) (*Updates, error)
+}
+
+type RPCForums interface {
+	MessagesGetForumTopics(ctx context.Context, in *TLMessagesGetForumTopics) (*MessagesForumTopics, error)
+	MessagesGetForumTopicsByID(ctx context.Context, in *TLMessagesGetForumTopicsByID) (*MessagesForumTopics, error)
+	MessagesEditForumTopic(ctx context.Context, in *TLMessagesEditForumTopic) (*Updates, error)
+	MessagesUpdatePinnedForumTopic(ctx context.Context, in *TLMessagesUpdatePinnedForumTopic) (*Updates, error)
+	MessagesReorderPinnedForumTopics(ctx context.Context, in *TLMessagesReorderPinnedForumTopics) (*Updates, error)
+	MessagesCreateForumTopic(ctx context.Context, in *TLMessagesCreateForumTopic) (*Updates, error)
+	MessagesDeleteTopicHistory(ctx context.Context, in *TLMessagesDeleteTopicHistory) (*MessagesAffectedHistory, error)
+	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum) (*Updates, error)
+	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
+	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic) (*Updates, error)
+	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics) (*MessagesForumTopics, error)
+	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID) (*MessagesForumTopics, error)
+	ChannelsEditForumTopic(ctx context.Context, in *TLChannelsEditForumTopic) (*Updates, error)
+	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
+	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
+	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
 }
 
 type RPCUpdates interface {
@@ -52277,7 +55277,6 @@ type RPCPremium interface {
 	PaymentsAssignAppStoreTransaction(ctx context.Context, in *TLPaymentsAssignAppStoreTransaction) (*Updates, error)
 	PaymentsAssignPlayMarketTransaction(ctx context.Context, in *TLPaymentsAssignPlayMarketTransaction) (*Updates, error)
 	PaymentsCanPurchaseStore(ctx context.Context, in *TLPaymentsCanPurchaseStore) (*Bool, error)
-	PaymentsCanPurchasePremium(ctx context.Context, in *TLPaymentsCanPurchasePremium) (*Bool, error)
 }
 
 type RPCTimezones interface {
@@ -52319,18 +55318,6 @@ type RPCChannels interface {
 	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden) (*Updates, error)
 }
 
-type RPCForums interface {
-	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum) (*Updates, error)
-	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic) (*Updates, error)
-	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics) (*MessagesForumTopics, error)
-	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID) (*MessagesForumTopics, error)
-	ChannelsEditForumTopic(ctx context.Context, in *TLChannelsEditForumTopic) (*Updates, error)
-	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
-	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
-	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
-	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
-}
-
 type RPCAntiSpam interface {
 	ChannelsToggleAntiSpam(ctx context.Context, in *TLChannelsToggleAntiSpam) (*Updates, error)
 	ChannelsReportAntiSpamFalsePositive(ctx context.Context, in *TLChannelsReportAntiSpamFalsePositive) (*Bool, error)
@@ -52356,8 +55343,6 @@ type RPCBots interface {
 	BotsSetBotInfo(ctx context.Context, in *TLBotsSetBotInfo) (*Bool, error)
 	BotsGetBotInfo(ctx context.Context, in *TLBotsGetBotInfo) (*BotsBotInfo, error)
 	BotsGetAdminedBots(ctx context.Context, in *TLBotsGetAdminedBots) (*VectorUser, error)
-	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
-	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
 }
 
 type RPCBotMenuButton interface {
@@ -52377,6 +55362,11 @@ type RPCAffiliatePrograms interface {
 	PaymentsGetSuggestedStarRefBots(ctx context.Context, in *TLPaymentsGetSuggestedStarRefBots) (*PaymentsSuggestedStarRefBots, error)
 	PaymentsConnectStarRefBot(ctx context.Context, in *TLPaymentsConnectStarRefBot) (*PaymentsConnectedStarRefBots, error)
 	PaymentsEditConnectedStarRefBot(ctx context.Context, in *TLPaymentsEditConnectedStarRefBot) (*PaymentsConnectedStarRefBots, error)
+}
+
+type RPCBotVerificationIcons interface {
+	BotsSetCustomVerification(ctx context.Context, in *TLBotsSetCustomVerification) (*Bool, error)
+	BotsGetBotRecommendations(ctx context.Context, in *TLBotsGetBotRecommendations) (*UsersUsers, error)
 }
 
 type RPCGiveaways interface {
@@ -52424,6 +55414,18 @@ type RPCGifts interface {
 	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl) (*PaymentsStarGiftWithdrawalUrl, error)
 	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
 	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
+	PaymentsGetResaleStarGifts(ctx context.Context, in *TLPaymentsGetResaleStarGifts) (*PaymentsResaleStarGifts, error)
+	PaymentsUpdateStarGiftPrice(ctx context.Context, in *TLPaymentsUpdateStarGiftPrice) (*Updates, error)
+	PaymentsGetUniqueStarGiftValueInfo(ctx context.Context, in *TLPaymentsGetUniqueStarGiftValueInfo) (*PaymentsUniqueStarGiftValueInfo, error)
+	PaymentsCheckCanSendGift(ctx context.Context, in *TLPaymentsCheckCanSendGift) (*PaymentsCheckCanSendGiftResult, error)
+}
+
+type RPCGiftCollections interface {
+	PaymentsCreateStarGiftCollection(ctx context.Context, in *TLPaymentsCreateStarGiftCollection) (*StarGiftCollection, error)
+	PaymentsUpdateStarGiftCollection(ctx context.Context, in *TLPaymentsUpdateStarGiftCollection) (*StarGiftCollection, error)
+	PaymentsReorderStarGiftCollections(ctx context.Context, in *TLPaymentsReorderStarGiftCollections) (*Bool, error)
+	PaymentsDeleteStarGiftCollection(ctx context.Context, in *TLPaymentsDeleteStarGiftCollection) (*Bool, error)
+	PaymentsGetStarGiftCollections(ctx context.Context, in *TLPaymentsGetStarGiftCollections) (*PaymentsStarGiftCollections, error)
 }
 
 type RPCGroupCalls interface {
@@ -52448,6 +55450,17 @@ type RPCGroupCalls interface {
 	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
 	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels) (*PhoneGroupCallStreamChannels, error)
 	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl) (*PhoneGroupCallStreamRtmpUrl, error)
+	PhoneSendGroupCallMessage(ctx context.Context, in *TLPhoneSendGroupCallMessage) (*Bool, error)
+}
+
+type RPCE2EConferenceCalls interface {
+	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall) (*Updates, error)
+	PhoneDeleteConferenceCallParticipants(ctx context.Context, in *TLPhoneDeleteConferenceCallParticipants) (*Updates, error)
+	PhoneSendConferenceCallBroadcast(ctx context.Context, in *TLPhoneSendConferenceCallBroadcast) (*Updates, error)
+	PhoneInviteConferenceCallParticipant(ctx context.Context, in *TLPhoneInviteConferenceCallParticipant) (*Updates, error)
+	PhoneDeclineConferenceCallInvite(ctx context.Context, in *TLPhoneDeclineConferenceCallInvite) (*Updates, error)
+	PhoneGetGroupCallChainBlocks(ctx context.Context, in *TLPhoneGetGroupCallChainBlocks) (*Updates, error)
+	PhoneSendGroupCallEncryptedMessage(ctx context.Context, in *TLPhoneSendGroupCallEncryptedMessage) (*Bool, error)
 }
 
 type RPCLangpack interface {
@@ -52468,14 +55481,8 @@ type RPCStatistics interface {
 	StatsGetStoryPublicForwards(ctx context.Context, in *TLStatsGetStoryPublicForwards) (*StatsPublicForwards, error)
 }
 
-type RPCChannelAdRevenue interface {
-	StatsGetBroadcastRevenueStats(ctx context.Context, in *TLStatsGetBroadcastRevenueStats) (*StatsBroadcastRevenueStats, error)
-	StatsGetBroadcastRevenueWithdrawalUrl(ctx context.Context, in *TLStatsGetBroadcastRevenueWithdrawalUrl) (*StatsBroadcastRevenueWithdrawalUrl, error)
-	StatsGetBroadcastRevenueTransactions(ctx context.Context, in *TLStatsGetBroadcastRevenueTransactions) (*StatsBroadcastRevenueTransactions, error)
-}
-
 type RPCStories interface {
-	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory) (*Bool, error)
+	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory) (*StoriesCanSendStoryCount, error)
 	StoriesSendStory(ctx context.Context, in *TLStoriesSendStory) (*Updates, error)
 	StoriesEditStory(ctx context.Context, in *TLStoriesEditStory) (*Updates, error)
 	StoriesDeleteStories(ctx context.Context, in *TLStoriesDeleteStories) (*VectorInt, error)
@@ -52501,6 +55508,12 @@ type RPCStories interface {
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList) (*StoriesStoryReactionsList, error)
 	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop) (*Bool, error)
 	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts) (*StoriesFoundStories, error)
+	StoriesCreateAlbum(ctx context.Context, in *TLStoriesCreateAlbum) (*StoryAlbum, error)
+	StoriesUpdateAlbum(ctx context.Context, in *TLStoriesUpdateAlbum) (*StoryAlbum, error)
+	StoriesReorderAlbums(ctx context.Context, in *TLStoriesReorderAlbums) (*Bool, error)
+	StoriesDeleteAlbum(ctx context.Context, in *TLStoriesDeleteAlbum) (*Bool, error)
+	StoriesGetAlbums(ctx context.Context, in *TLStoriesGetAlbums) (*StoriesAlbums, error)
+	StoriesGetAlbumStories(ctx context.Context, in *TLStoriesGetAlbumStories) (*StoriesStories, error)
 }
 
 type RPCSmsjobs interface {

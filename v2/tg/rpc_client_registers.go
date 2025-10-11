@@ -36,6 +36,7 @@ func init() {
 	iface.RegisterRPCContextTuple("TLAuthRequestFirebaseSms", "/tg.RPCAuthorization/auth.requestFirebaseSms", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLAuthResetLoginEmail", "/tg.RPCAuthorization/auth.resetLoginEmail", func() interface{} { return new(AuthSentCode) })
 	iface.RegisterRPCContextTuple("TLAuthReportMissingCode", "/tg.RPCAuthorization/auth.reportMissingCode", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLAuthCheckPaidAuth", "/tg.RPCAuthorization/auth.checkPaidAuth", func() interface{} { return new(AuthSentCode) })
 	iface.RegisterRPCContextTuple("TLAccountSendVerifyEmailCode", "/tg.RPCAuthorization/account.sendVerifyEmailCode", func() interface{} { return new(AccountSentEmailCode) })
 	iface.RegisterRPCContextTuple("TLAccountVerifyEmail", "/tg.RPCAuthorization/account.verifyEmail", func() interface{} { return new(AccountEmailVerified) })
 	iface.RegisterRPCContextTuple("TLAccountResetPassword", "/tg.RPCAuthorization/account.resetPassword", func() interface{} { return new(AccountResetPasswordResult) })
@@ -58,18 +59,25 @@ func init() {
 	iface.RegisterRPCContextTuple("TLAccountUpdateDeviceLocked", "/tg.RPCNotification/account.updateDeviceLocked", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLAccountGetNotifyExceptions", "/tg.RPCNotification/account.getNotifyExceptions", func() interface{} { return new(Updates) })
 
-	// RPCUserProfile
-	iface.RegisterRPCContextTuple("TLAccountUpdateProfile", "/tg.RPCUserProfile/account.updateProfile", func() interface{} { return new(User) })
-	iface.RegisterRPCContextTuple("TLAccountUpdateStatus", "/tg.RPCUserProfile/account.updateStatus", func() interface{} { return new(Bool) })
-	iface.RegisterRPCContextTuple("TLAccountUpdateBirthday", "/tg.RPCUserProfile/account.updateBirthday", func() interface{} { return new(Bool) })
-	iface.RegisterRPCContextTuple("TLAccountUpdatePersonalChannel", "/tg.RPCUserProfile/account.updatePersonalChannel", func() interface{} { return new(Bool) })
-	iface.RegisterRPCContextTuple("TLContactsGetBirthdays", "/tg.RPCUserProfile/contacts.getBirthdays", func() interface{} { return new(ContactsContactBirthdays) })
-	iface.RegisterRPCContextTuple("TLPhotosUpdateProfilePhoto", "/tg.RPCUserProfile/photos.updateProfilePhoto", func() interface{} { return new(PhotosPhoto) })
-	iface.RegisterRPCContextTuple("TLPhotosUploadProfilePhoto", "/tg.RPCUserProfile/photos.uploadProfilePhoto", func() interface{} { return new(PhotosPhoto) })
-	iface.RegisterRPCContextTuple("TLPhotosDeletePhotos", "/tg.RPCUserProfile/photos.deletePhotos", func() interface{} { return new(VectorLong) })
-	iface.RegisterRPCContextTuple("TLPhotosGetUserPhotos", "/tg.RPCUserProfile/photos.getUserPhotos", func() interface{} { return new(PhotosPhotos) })
-	iface.RegisterRPCContextTuple("TLPhotosUploadContactProfilePhoto", "/tg.RPCUserProfile/photos.uploadContactProfilePhoto", func() interface{} { return new(PhotosPhoto) })
-	iface.RegisterRPCContextTuple("TLAccountUpdateVerified", "/tg.RPCUserProfile/account.updateVerified", func() interface{} { return new(User) })
+	// RPCUserChannelProfiles
+	iface.RegisterRPCContextTuple("TLAccountUpdateProfile", "/tg.RPCUserChannelProfiles/account.updateProfile", func() interface{} { return new(User) })
+	iface.RegisterRPCContextTuple("TLAccountUpdateStatus", "/tg.RPCUserChannelProfiles/account.updateStatus", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLAccountUpdateBirthday", "/tg.RPCUserChannelProfiles/account.updateBirthday", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLAccountUpdatePersonalChannel", "/tg.RPCUserChannelProfiles/account.updatePersonalChannel", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLAccountSetMainProfileTab", "/tg.RPCUserChannelProfiles/account.setMainProfileTab", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLAccountSaveMusic", "/tg.RPCUserChannelProfiles/account.saveMusic", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLAccountGetSavedMusicIds", "/tg.RPCUserChannelProfiles/account.getSavedMusicIds", func() interface{} { return new(AccountSavedMusicIds) })
+	iface.RegisterRPCContextTuple("TLUsersGetSavedMusic", "/tg.RPCUserChannelProfiles/users.getSavedMusic", func() interface{} { return new(UsersSavedMusic) })
+	iface.RegisterRPCContextTuple("TLUsersGetSavedMusicByID", "/tg.RPCUserChannelProfiles/users.getSavedMusicByID", func() interface{} { return new(UsersSavedMusic) })
+	iface.RegisterRPCContextTuple("TLUsersSuggestBirthday", "/tg.RPCUserChannelProfiles/users.suggestBirthday", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLContactsGetBirthdays", "/tg.RPCUserChannelProfiles/contacts.getBirthdays", func() interface{} { return new(ContactsContactBirthdays) })
+	iface.RegisterRPCContextTuple("TLPhotosUpdateProfilePhoto", "/tg.RPCUserChannelProfiles/photos.updateProfilePhoto", func() interface{} { return new(PhotosPhoto) })
+	iface.RegisterRPCContextTuple("TLPhotosUploadProfilePhoto", "/tg.RPCUserChannelProfiles/photos.uploadProfilePhoto", func() interface{} { return new(PhotosPhoto) })
+	iface.RegisterRPCContextTuple("TLPhotosDeletePhotos", "/tg.RPCUserChannelProfiles/photos.deletePhotos", func() interface{} { return new(VectorLong) })
+	iface.RegisterRPCContextTuple("TLPhotosGetUserPhotos", "/tg.RPCUserChannelProfiles/photos.getUserPhotos", func() interface{} { return new(PhotosPhotos) })
+	iface.RegisterRPCContextTuple("TLPhotosUploadContactProfilePhoto", "/tg.RPCUserChannelProfiles/photos.uploadContactProfilePhoto", func() interface{} { return new(PhotosPhoto) })
+	iface.RegisterRPCContextTuple("TLChannelsSetMainProfileTab", "/tg.RPCUserChannelProfiles/channels.setMainProfileTab", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLAccountUpdateVerified", "/tg.RPCUserChannelProfiles/account.updateVerified", func() interface{} { return new(User) })
 
 	// RPCWallpapers
 	iface.RegisterRPCContextTuple("TLAccountGetWallPapers", "/tg.RPCWallpapers/account.getWallPapers", func() interface{} { return new(AccountWallPapers) })
@@ -104,7 +112,6 @@ func init() {
 	iface.RegisterRPCContextTuple("TLUsersGetRequirementsToContact", "/tg.RPCPrivacySettings/users.getRequirementsToContact", func() interface{} { return new(VectorRequirementToContact) })
 	iface.RegisterRPCContextTuple("TLMessagesSetDefaultHistoryTTL", "/tg.RPCPrivacySettings/messages.setDefaultHistoryTTL", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLMessagesGetDefaultHistoryTTL", "/tg.RPCPrivacySettings/messages.getDefaultHistoryTTL", func() interface{} { return new(DefaultHistoryTTL) })
-	iface.RegisterRPCContextTuple("TLUsersGetIsPremiumRequiredToContact", "/tg.RPCPrivacySettings/users.getIsPremiumRequiredToContact", func() interface{} { return new(VectorBool) })
 
 	// RPCAccount
 	iface.RegisterRPCContextTuple("TLAccountDeleteAccount", "/tg.RPCAccount/account.deleteAccount", func() interface{} { return new(Bool) })
@@ -187,6 +194,7 @@ func init() {
 	iface.RegisterRPCContextTuple("TLContactsGetLocated", "/tg.RPCContacts/contacts.getLocated", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLContactsEditCloseFriends", "/tg.RPCContacts/contacts.editCloseFriends", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLContactsSetBlocked", "/tg.RPCContacts/contacts.setBlocked", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLContactsUpdateContactNote", "/tg.RPCContacts/contacts.updateContactNote", func() interface{} { return new(Bool) })
 
 	// RPCAutoDownload
 	iface.RegisterRPCContextTuple("TLAccountGetAutoDownloadSettings", "/tg.RPCAutoDownload/account.getAutoDownloadSettings", func() interface{} { return new(AccountAutoDownloadSettings) })
@@ -201,6 +209,7 @@ func init() {
 	iface.RegisterRPCContextTuple("TLAccountGetTheme", "/tg.RPCThemes/account.getTheme", func() interface{} { return new(Theme) })
 	iface.RegisterRPCContextTuple("TLAccountGetThemes", "/tg.RPCThemes/account.getThemes", func() interface{} { return new(AccountThemes) })
 	iface.RegisterRPCContextTuple("TLAccountGetChatThemes", "/tg.RPCThemes/account.getChatThemes", func() interface{} { return new(AccountThemes) })
+	iface.RegisterRPCContextTuple("TLAccountGetUniqueGiftChatThemes", "/tg.RPCThemes/account.getUniqueGiftChatThemes", func() interface{} { return new(AccountChatThemes) })
 	iface.RegisterRPCContextTuple("TLMessagesSetChatTheme", "/tg.RPCThemes/messages.setChatTheme", func() interface{} { return new(Updates) })
 
 	// RPCNsfw
@@ -294,8 +303,8 @@ func init() {
 	iface.RegisterRPCContextTuple("TLAccountSetReactionsNotifySettings", "/tg.RPCReactionNotification/account.setReactionsNotifySettings", func() interface{} { return new(ReactionsNotifySettings) })
 
 	// RPCPaidMessage
-	iface.RegisterRPCContextTuple("TLAccountAddNoPaidMessagesException", "/tg.RPCPaidMessage/account.addNoPaidMessagesException", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLAccountGetPaidMessagesRevenue", "/tg.RPCPaidMessage/account.getPaidMessagesRevenue", func() interface{} { return new(AccountPaidMessagesRevenue) })
+	iface.RegisterRPCContextTuple("TLAccountToggleNoPaidMessagesException", "/tg.RPCPaidMessage/account.toggleNoPaidMessagesException", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLChannelsUpdatePaidMessagesPrice", "/tg.RPCPaidMessage/channels.updatePaidMessagesPrice", func() interface{} { return new(Updates) })
 
 	// RPCUsers
@@ -343,9 +352,9 @@ func init() {
 	iface.RegisterRPCContextTuple("TLMessagesSaveDefaultSendAs", "/tg.RPCMessages/messages.saveDefaultSendAs", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLMessagesSearchSentMedia", "/tg.RPCMessages/messages.searchSentMedia", func() interface{} { return new(MessagesMessages) })
 	iface.RegisterRPCContextTuple("TLMessagesGetOutboxReadDate", "/tg.RPCMessages/messages.getOutboxReadDate", func() interface{} { return new(OutboxReadDate) })
-	iface.RegisterRPCContextTuple("TLMessagesReportMessagesDelivery", "/tg.RPCMessages/messages.reportMessagesDelivery", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLChannelsGetSendAs", "/tg.RPCMessages/channels.getSendAs", func() interface{} { return new(ChannelsSendAsPeers) })
 	iface.RegisterRPCContextTuple("TLChannelsSearchPosts", "/tg.RPCMessages/channels.searchPosts", func() interface{} { return new(MessagesMessages) })
+	iface.RegisterRPCContextTuple("TLChannelsCheckSearchPostsFlood", "/tg.RPCMessages/channels.checkSearchPostsFlood", func() interface{} { return new(SearchPostsFlood) })
 
 	// RPCDialogs
 	iface.RegisterRPCContextTuple("TLMessagesGetDialogs", "/tg.RPCDialogs/messages.getDialogs", func() interface{} { return new(MessagesDialogs) })
@@ -537,7 +546,6 @@ func init() {
 	iface.RegisterRPCContextTuple("TLPhoneSaveCallDebug", "/tg.RPCVoipCalls/phone.saveCallDebug", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLPhoneSendSignalingData", "/tg.RPCVoipCalls/phone.sendSignalingData", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLPhoneSaveCallLog", "/tg.RPCVoipCalls/phone.saveCallLog", func() interface{} { return new(Bool) })
-	iface.RegisterRPCContextTuple("TLPhoneCreateConferenceCall", "/tg.RPCVoipCalls/phone.createConferenceCall", func() interface{} { return new(PhonePhoneCall) })
 
 	// RPCImportedChats
 	iface.RegisterRPCContextTuple("TLMessagesCheckHistoryImport", "/tg.RPCImportedChats/messages.checkHistoryImport", func() interface{} { return new(MessagesHistoryImportParsed) })
@@ -566,6 +574,7 @@ func init() {
 	// RPCTranslation
 	iface.RegisterRPCContextTuple("TLMessagesTranslateText", "/tg.RPCTranslation/messages.translateText", func() interface{} { return new(MessagesTranslatedText) })
 	iface.RegisterRPCContextTuple("TLMessagesTogglePeerTranslations", "/tg.RPCTranslation/messages.togglePeerTranslations", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLChannelsToggleAutotranslation", "/tg.RPCTranslation/channels.toggleAutotranslation", func() interface{} { return new(Updates) })
 
 	// RPCBotMenu
 	iface.RegisterRPCContextTuple("TLMessagesGetAttachMenuBots", "/tg.RPCBotMenu/messages.getAttachMenuBots", func() interface{} { return new(AttachMenuBots) })
@@ -605,6 +614,9 @@ func init() {
 	iface.RegisterRPCContextTuple("TLMessagesGetPinnedSavedDialogs", "/tg.RPCSavedMessageDialogs/messages.getPinnedSavedDialogs", func() interface{} { return new(MessagesSavedDialogs) })
 	iface.RegisterRPCContextTuple("TLMessagesToggleSavedDialogPin", "/tg.RPCSavedMessageDialogs/messages.toggleSavedDialogPin", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLMessagesReorderPinnedSavedDialogs", "/tg.RPCSavedMessageDialogs/messages.reorderPinnedSavedDialogs", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLMessagesGetSavedDialogsByID", "/tg.RPCSavedMessageDialogs/messages.getSavedDialogsByID", func() interface{} { return new(MessagesSavedDialogs) })
+	iface.RegisterRPCContextTuple("TLMessagesReadSavedHistory", "/tg.RPCSavedMessageDialogs/messages.readSavedHistory", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLChannelsGetMessageAuthor", "/tg.RPCSavedMessageDialogs/channels.getMessageAuthor", func() interface{} { return new(User) })
 
 	// RPCSavedMessageTags
 	iface.RegisterRPCContextTuple("TLMessagesGetSavedReactionTags", "/tg.RPCSavedMessageTags/messages.getSavedReactionTags", func() interface{} { return new(MessagesSavedReactionTags) })
@@ -645,6 +657,34 @@ func init() {
 	// RPCPreparedInlineMessages
 	iface.RegisterRPCContextTuple("TLMessagesSavePreparedInlineMessage", "/tg.RPCPreparedInlineMessages/messages.savePreparedInlineMessage", func() interface{} { return new(MessagesBotPreparedInlineMessage) })
 	iface.RegisterRPCContextTuple("TLMessagesGetPreparedInlineMessage", "/tg.RPCPreparedInlineMessages/messages.getPreparedInlineMessage", func() interface{} { return new(MessagesPreparedInlineMessage) })
+
+	// RPCGatewayVerificationMessages
+	iface.RegisterRPCContextTuple("TLMessagesReportMessagesDelivery", "/tg.RPCGatewayVerificationMessages/messages.reportMessagesDelivery", func() interface{} { return new(Bool) })
+
+	// RPCTodoLists
+	iface.RegisterRPCContextTuple("TLMessagesToggleTodoCompleted", "/tg.RPCTodoLists/messages.toggleTodoCompleted", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLMessagesAppendTodoList", "/tg.RPCTodoLists/messages.appendTodoList", func() interface{} { return new(Updates) })
+
+	// RPCSuggestedPosts
+	iface.RegisterRPCContextTuple("TLMessagesToggleSuggestedPostApproval", "/tg.RPCSuggestedPosts/messages.toggleSuggestedPostApproval", func() interface{} { return new(Updates) })
+
+	// RPCForums
+	iface.RegisterRPCContextTuple("TLMessagesGetForumTopics", "/tg.RPCForums/messages.getForumTopics", func() interface{} { return new(MessagesForumTopics) })
+	iface.RegisterRPCContextTuple("TLMessagesGetForumTopicsByID", "/tg.RPCForums/messages.getForumTopicsByID", func() interface{} { return new(MessagesForumTopics) })
+	iface.RegisterRPCContextTuple("TLMessagesEditForumTopic", "/tg.RPCForums/messages.editForumTopic", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLMessagesUpdatePinnedForumTopic", "/tg.RPCForums/messages.updatePinnedForumTopic", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLMessagesReorderPinnedForumTopics", "/tg.RPCForums/messages.reorderPinnedForumTopics", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLMessagesCreateForumTopic", "/tg.RPCForums/messages.createForumTopic", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLMessagesDeleteTopicHistory", "/tg.RPCForums/messages.deleteTopicHistory", func() interface{} { return new(MessagesAffectedHistory) })
+	iface.RegisterRPCContextTuple("TLChannelsToggleForum", "/tg.RPCForums/channels.toggleForum", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLChannelsToggleViewForumAsMessages", "/tg.RPCForums/channels.toggleViewForumAsMessages", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLChannelsCreateForumTopic", "/tg.RPCForums/channels.createForumTopic", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLChannelsGetForumTopics", "/tg.RPCForums/channels.getForumTopics", func() interface{} { return new(MessagesForumTopics) })
+	iface.RegisterRPCContextTuple("TLChannelsGetForumTopicsByID", "/tg.RPCForums/channels.getForumTopicsByID", func() interface{} { return new(MessagesForumTopics) })
+	iface.RegisterRPCContextTuple("TLChannelsEditForumTopic", "/tg.RPCForums/channels.editForumTopic", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLChannelsUpdatePinnedForumTopic", "/tg.RPCForums/channels.updatePinnedForumTopic", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLChannelsDeleteTopicHistory", "/tg.RPCForums/channels.deleteTopicHistory", func() interface{} { return new(MessagesAffectedHistory) })
+	iface.RegisterRPCContextTuple("TLChannelsReorderPinnedForumTopics", "/tg.RPCForums/channels.reorderPinnedForumTopics", func() interface{} { return new(Updates) })
 
 	// RPCUpdates
 	iface.RegisterRPCContextTuple("TLUpdatesGetState", "/tg.RPCUpdates/updates.getState", func() interface{} { return new(UpdatesState) })
@@ -688,7 +728,6 @@ func init() {
 	iface.RegisterRPCContextTuple("TLPaymentsAssignAppStoreTransaction", "/tg.RPCPremium/payments.assignAppStoreTransaction", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLPaymentsAssignPlayMarketTransaction", "/tg.RPCPremium/payments.assignPlayMarketTransaction", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLPaymentsCanPurchaseStore", "/tg.RPCPremium/payments.canPurchaseStore", func() interface{} { return new(Bool) })
-	iface.RegisterRPCContextTuple("TLPaymentsCanPurchasePremium", "/tg.RPCPremium/payments.canPurchasePremium", func() interface{} { return new(Bool) })
 
 	// RPCTimezones
 	iface.RegisterRPCContextTuple("TLHelpGetTimezonesList", "/tg.RPCTimezones/help.getTimezonesList", func() interface{} { return new(HelpTimezonesList) })
@@ -727,17 +766,6 @@ func init() {
 	iface.RegisterRPCContextTuple("TLChannelsDeleteParticipantHistory", "/tg.RPCChannels/channels.deleteParticipantHistory", func() interface{} { return new(MessagesAffectedHistory) })
 	iface.RegisterRPCContextTuple("TLChannelsToggleParticipantsHidden", "/tg.RPCChannels/channels.toggleParticipantsHidden", func() interface{} { return new(Updates) })
 
-	// RPCForums
-	iface.RegisterRPCContextTuple("TLChannelsToggleForum", "/tg.RPCForums/channels.toggleForum", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsCreateForumTopic", "/tg.RPCForums/channels.createForumTopic", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsGetForumTopics", "/tg.RPCForums/channels.getForumTopics", func() interface{} { return new(MessagesForumTopics) })
-	iface.RegisterRPCContextTuple("TLChannelsGetForumTopicsByID", "/tg.RPCForums/channels.getForumTopicsByID", func() interface{} { return new(MessagesForumTopics) })
-	iface.RegisterRPCContextTuple("TLChannelsEditForumTopic", "/tg.RPCForums/channels.editForumTopic", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsUpdatePinnedForumTopic", "/tg.RPCForums/channels.updatePinnedForumTopic", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsDeleteTopicHistory", "/tg.RPCForums/channels.deleteTopicHistory", func() interface{} { return new(MessagesAffectedHistory) })
-	iface.RegisterRPCContextTuple("TLChannelsReorderPinnedForumTopics", "/tg.RPCForums/channels.reorderPinnedForumTopics", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsToggleViewForumAsMessages", "/tg.RPCForums/channels.toggleViewForumAsMessages", func() interface{} { return new(Updates) })
-
 	// RPCAntiSpam
 	iface.RegisterRPCContextTuple("TLChannelsToggleAntiSpam", "/tg.RPCAntiSpam/channels.toggleAntiSpam", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLChannelsReportAntiSpamFalsePositive", "/tg.RPCAntiSpam/channels.reportAntiSpamFalsePositive", func() interface{} { return new(Bool) })
@@ -760,8 +788,6 @@ func init() {
 	iface.RegisterRPCContextTuple("TLBotsSetBotInfo", "/tg.RPCBots/bots.setBotInfo", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLBotsGetBotInfo", "/tg.RPCBots/bots.getBotInfo", func() interface{} { return new(BotsBotInfo) })
 	iface.RegisterRPCContextTuple("TLBotsGetAdminedBots", "/tg.RPCBots/bots.getAdminedBots", func() interface{} { return new(VectorUser) })
-	iface.RegisterRPCContextTuple("TLBotsSetCustomVerification", "/tg.RPCBots/bots.setCustomVerification", func() interface{} { return new(Bool) })
-	iface.RegisterRPCContextTuple("TLBotsGetBotRecommendations", "/tg.RPCBots/bots.getBotRecommendations", func() interface{} { return new(UsersUsers) })
 
 	// RPCBotMenuButton
 	iface.RegisterRPCContextTuple("TLBotsSetBotMenuButton", "/tg.RPCBotMenuButton/bots.setBotMenuButton", func() interface{} { return new(Bool) })
@@ -778,6 +804,10 @@ func init() {
 	iface.RegisterRPCContextTuple("TLPaymentsGetSuggestedStarRefBots", "/tg.RPCAffiliatePrograms/payments.getSuggestedStarRefBots", func() interface{} { return new(PaymentsSuggestedStarRefBots) })
 	iface.RegisterRPCContextTuple("TLPaymentsConnectStarRefBot", "/tg.RPCAffiliatePrograms/payments.connectStarRefBot", func() interface{} { return new(PaymentsConnectedStarRefBots) })
 	iface.RegisterRPCContextTuple("TLPaymentsEditConnectedStarRefBot", "/tg.RPCAffiliatePrograms/payments.editConnectedStarRefBot", func() interface{} { return new(PaymentsConnectedStarRefBots) })
+
+	// RPCBotVerificationIcons
+	iface.RegisterRPCContextTuple("TLBotsSetCustomVerification", "/tg.RPCBotVerificationIcons/bots.setCustomVerification", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLBotsGetBotRecommendations", "/tg.RPCBotVerificationIcons/bots.getBotRecommendations", func() interface{} { return new(UsersUsers) })
 
 	// RPCGiveaways
 	iface.RegisterRPCContextTuple("TLPaymentsGetPremiumGiftCodeOptions", "/tg.RPCGiveaways/payments.getPremiumGiftCodeOptions", func() interface{} { return new(VectorPremiumGiftCodeOption) })
@@ -820,6 +850,17 @@ func init() {
 	iface.RegisterRPCContextTuple("TLPaymentsGetStarGiftWithdrawalUrl", "/tg.RPCGifts/payments.getStarGiftWithdrawalUrl", func() interface{} { return new(PaymentsStarGiftWithdrawalUrl) })
 	iface.RegisterRPCContextTuple("TLPaymentsToggleChatStarGiftNotifications", "/tg.RPCGifts/payments.toggleChatStarGiftNotifications", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLPaymentsToggleStarGiftsPinnedToTop", "/tg.RPCGifts/payments.toggleStarGiftsPinnedToTop", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLPaymentsGetResaleStarGifts", "/tg.RPCGifts/payments.getResaleStarGifts", func() interface{} { return new(PaymentsResaleStarGifts) })
+	iface.RegisterRPCContextTuple("TLPaymentsUpdateStarGiftPrice", "/tg.RPCGifts/payments.updateStarGiftPrice", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPaymentsGetUniqueStarGiftValueInfo", "/tg.RPCGifts/payments.getUniqueStarGiftValueInfo", func() interface{} { return new(PaymentsUniqueStarGiftValueInfo) })
+	iface.RegisterRPCContextTuple("TLPaymentsCheckCanSendGift", "/tg.RPCGifts/payments.checkCanSendGift", func() interface{} { return new(PaymentsCheckCanSendGiftResult) })
+
+	// RPCGiftCollections
+	iface.RegisterRPCContextTuple("TLPaymentsCreateStarGiftCollection", "/tg.RPCGiftCollections/payments.createStarGiftCollection", func() interface{} { return new(StarGiftCollection) })
+	iface.RegisterRPCContextTuple("TLPaymentsUpdateStarGiftCollection", "/tg.RPCGiftCollections/payments.updateStarGiftCollection", func() interface{} { return new(StarGiftCollection) })
+	iface.RegisterRPCContextTuple("TLPaymentsReorderStarGiftCollections", "/tg.RPCGiftCollections/payments.reorderStarGiftCollections", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLPaymentsDeleteStarGiftCollection", "/tg.RPCGiftCollections/payments.deleteStarGiftCollection", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLPaymentsGetStarGiftCollections", "/tg.RPCGiftCollections/payments.getStarGiftCollections", func() interface{} { return new(PaymentsStarGiftCollections) })
 
 	// RPCGroupCalls
 	iface.RegisterRPCContextTuple("TLPhoneCreateGroupCall", "/tg.RPCGroupCalls/phone.createGroupCall", func() interface{} { return new(Updates) })
@@ -843,6 +884,16 @@ func init() {
 	iface.RegisterRPCContextTuple("TLPhoneLeaveGroupCallPresentation", "/tg.RPCGroupCalls/phone.leaveGroupCallPresentation", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallStreamChannels", "/tg.RPCGroupCalls/phone.getGroupCallStreamChannels", func() interface{} { return new(PhoneGroupCallStreamChannels) })
 	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallStreamRtmpUrl", "/tg.RPCGroupCalls/phone.getGroupCallStreamRtmpUrl", func() interface{} { return new(PhoneGroupCallStreamRtmpUrl) })
+	iface.RegisterRPCContextTuple("TLPhoneSendGroupCallMessage", "/tg.RPCGroupCalls/phone.sendGroupCallMessage", func() interface{} { return new(Bool) })
+
+	// RPCE2EConferenceCalls
+	iface.RegisterRPCContextTuple("TLPhoneCreateConferenceCall", "/tg.RPCE2EConferenceCalls/phone.createConferenceCall", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneDeleteConferenceCallParticipants", "/tg.RPCE2EConferenceCalls/phone.deleteConferenceCallParticipants", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneSendConferenceCallBroadcast", "/tg.RPCE2EConferenceCalls/phone.sendConferenceCallBroadcast", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneInviteConferenceCallParticipant", "/tg.RPCE2EConferenceCalls/phone.inviteConferenceCallParticipant", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneDeclineConferenceCallInvite", "/tg.RPCE2EConferenceCalls/phone.declineConferenceCallInvite", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallChainBlocks", "/tg.RPCE2EConferenceCalls/phone.getGroupCallChainBlocks", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneSendGroupCallEncryptedMessage", "/tg.RPCE2EConferenceCalls/phone.sendGroupCallEncryptedMessage", func() interface{} { return new(Bool) })
 
 	// RPCLangpack
 	iface.RegisterRPCContextTuple("TLLangpackGetLangPack", "/tg.RPCLangpack/langpack.getLangPack", func() interface{} { return new(LangPackDifference) })
@@ -860,13 +911,8 @@ func init() {
 	iface.RegisterRPCContextTuple("TLStatsGetStoryStats", "/tg.RPCStatistics/stats.getStoryStats", func() interface{} { return new(StatsStoryStats) })
 	iface.RegisterRPCContextTuple("TLStatsGetStoryPublicForwards", "/tg.RPCStatistics/stats.getStoryPublicForwards", func() interface{} { return new(StatsPublicForwards) })
 
-	// RPCChannelAdRevenue
-	iface.RegisterRPCContextTuple("TLStatsGetBroadcastRevenueStats", "/tg.RPCChannelAdRevenue/stats.getBroadcastRevenueStats", func() interface{} { return new(StatsBroadcastRevenueStats) })
-	iface.RegisterRPCContextTuple("TLStatsGetBroadcastRevenueWithdrawalUrl", "/tg.RPCChannelAdRevenue/stats.getBroadcastRevenueWithdrawalUrl", func() interface{} { return new(StatsBroadcastRevenueWithdrawalUrl) })
-	iface.RegisterRPCContextTuple("TLStatsGetBroadcastRevenueTransactions", "/tg.RPCChannelAdRevenue/stats.getBroadcastRevenueTransactions", func() interface{} { return new(StatsBroadcastRevenueTransactions) })
-
 	// RPCStories
-	iface.RegisterRPCContextTuple("TLStoriesCanSendStory", "/tg.RPCStories/stories.canSendStory", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLStoriesCanSendStory", "/tg.RPCStories/stories.canSendStory", func() interface{} { return new(StoriesCanSendStoryCount) })
 	iface.RegisterRPCContextTuple("TLStoriesSendStory", "/tg.RPCStories/stories.sendStory", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLStoriesEditStory", "/tg.RPCStories/stories.editStory", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLStoriesDeleteStories", "/tg.RPCStories/stories.deleteStories", func() interface{} { return new(VectorInt) })
@@ -892,6 +938,12 @@ func init() {
 	iface.RegisterRPCContextTuple("TLStoriesGetStoryReactionsList", "/tg.RPCStories/stories.getStoryReactionsList", func() interface{} { return new(StoriesStoryReactionsList) })
 	iface.RegisterRPCContextTuple("TLStoriesTogglePinnedToTop", "/tg.RPCStories/stories.togglePinnedToTop", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLStoriesSearchPosts", "/tg.RPCStories/stories.searchPosts", func() interface{} { return new(StoriesFoundStories) })
+	iface.RegisterRPCContextTuple("TLStoriesCreateAlbum", "/tg.RPCStories/stories.createAlbum", func() interface{} { return new(StoryAlbum) })
+	iface.RegisterRPCContextTuple("TLStoriesUpdateAlbum", "/tg.RPCStories/stories.updateAlbum", func() interface{} { return new(StoryAlbum) })
+	iface.RegisterRPCContextTuple("TLStoriesReorderAlbums", "/tg.RPCStories/stories.reorderAlbums", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLStoriesDeleteAlbum", "/tg.RPCStories/stories.deleteAlbum", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLStoriesGetAlbums", "/tg.RPCStories/stories.getAlbums", func() interface{} { return new(StoriesAlbums) })
+	iface.RegisterRPCContextTuple("TLStoriesGetAlbumStories", "/tg.RPCStories/stories.getAlbumStories", func() interface{} { return new(StoriesStories) })
 
 	// RPCSmsjobs
 	iface.RegisterRPCContextTuple("TLSmsjobsIsEligibleToJoin", "/tg.RPCSmsjobs/smsjobs.isEligibleToJoin", func() interface{} { return new(SmsjobsEligibilityToJoin) })
