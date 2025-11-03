@@ -7849,11 +7849,9 @@ func (m *TLAccountInvalidateSignInCodes) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountUpdateColor <--
 type TLAccountUpdateColor struct {
-	ClazzID             uint32         `json:"_id"`
-	ForProfile          bool           `json:"for_profile"`
-	Color_FLAGPEERCOLOR PeerColorClazz `json:"color_FLAGPEERCOLOR"`
-	Color_FLAGINT32     *int32         `json:"color_FLAGINT32"`
-	BackgroundEmojiId   *int64         `json:"background_emoji_id"`
+	ClazzID    uint32         `json:"_id"`
+	ForProfile bool           `json:"for_profile"`
+	Color      PeerColorClazz `json:"color"`
 }
 
 func (m *TLAccountUpdateColor) String() string {
@@ -7874,7 +7872,7 @@ func (m *TLAccountUpdateColor) Encode(x *bin.Encoder, layer int32) error {
 				if m.ForProfile == true {
 					flags |= 1 << 1
 				}
-				if m.Color_FLAGPEERCOLOR != nil {
+				if m.Color != nil {
 					flags |= 1 << 2
 				}
 
@@ -7884,41 +7882,8 @@ func (m *TLAccountUpdateColor) Encode(x *bin.Encoder, layer int32) error {
 			// set flags
 			var flags = getFlags()
 			x.PutUint32(flags)
-			if m.Color_FLAGPEERCOLOR != nil {
-				_ = m.Color_FLAGPEERCOLOR.Encode(x, layer)
-			}
-
-			return nil
-		},
-		0x7cefa15d: func() error {
-			x.PutClazzID(0x7cefa15d)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.ForProfile == true {
-					flags |= 1 << 1
-				}
-				if m.Color_FLAGINT32 != nil {
-					flags |= 1 << 2
-				}
-				if m.BackgroundEmojiId != nil {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			if m.Color_FLAGINT32 != nil {
-				x.PutInt32(*m.Color_FLAGINT32)
-			}
-
-			if m.BackgroundEmojiId != nil {
-				x.PutInt64(*m.BackgroundEmojiId)
+			if m.Color != nil {
+				_ = m.Color.Encode(x, layer)
 			}
 
 			return nil
@@ -7946,25 +7911,8 @@ func (m *TLAccountUpdateColor) Decode(d *bin.Decoder) (err error) {
 			if (flags & (1 << 2)) != 0 {
 				// m3 := &PeerColor{}
 				// _ = m3.Decode(d)
-				// m.Color_FLAGPEERCOLOR = m3
-				m.Color_FLAGPEERCOLOR, _ = DecodePeerColorClazz(d)
-			}
-
-			return nil
-		},
-		0x7cefa15d: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 1)) != 0 {
-				m.ForProfile = true
-			}
-			if (flags & (1 << 2)) != 0 {
-				m.Color_FLAGINT32 = new(int32)
-				*m.Color_FLAGINT32, err = d.Int32()
-			}
-			if (flags & (1 << 0)) != 0 {
-				m.BackgroundEmojiId = new(int64)
-				*m.BackgroundEmojiId, err = d.Int64()
+				// m.Color = m3
+				m.Color, _ = DecodePeerColorClazz(d)
 			}
 
 			return nil
@@ -9831,11 +9779,10 @@ func (m *TLAccountGetSavedMusicIds) Decode(d *bin.Decoder) (err error) {
 
 // TLAccountGetUniqueGiftChatThemes <--
 type TLAccountGetUniqueGiftChatThemes struct {
-	ClazzID       uint32 `json:"_id"`
-	Offset_STRING string `json:"offset_STRING_STRING"`
-	Limit         int32  `json:"limit"`
-	Hash          int64  `json:"hash"`
-	Offset_INT32  int32  `json:"offset_INT32"`
+	ClazzID uint32 `json:"_id"`
+	Offset  string `json:"offset"`
+	Limit   int32  `json:"limit"`
+	Hash    int64  `json:"hash"`
 }
 
 func (m *TLAccountGetUniqueGiftChatThemes) String() string {
@@ -9849,16 +9796,7 @@ func (m *TLAccountGetUniqueGiftChatThemes) Encode(x *bin.Encoder, layer int32) e
 		0xe42ce9c9: func() error {
 			x.PutClazzID(0xe42ce9c9)
 
-			x.PutString(m.Offset_STRING)
-			x.PutInt32(m.Limit)
-			x.PutInt64(m.Hash)
-
-			return nil
-		},
-		0xfe74ef9f: func() error {
-			x.PutClazzID(0xfe74ef9f)
-
-			x.PutInt32(m.Offset_INT32)
+			x.PutString(m.Offset)
 			x.PutInt32(m.Limit)
 			x.PutInt64(m.Hash)
 
@@ -9879,14 +9817,7 @@ func (m *TLAccountGetUniqueGiftChatThemes) Encode(x *bin.Encoder, layer int32) e
 func (m *TLAccountGetUniqueGiftChatThemes) Decode(d *bin.Decoder) (err error) {
 	var decodeF = map[uint32]func() error{
 		0xe42ce9c9: func() (err error) {
-			m.Offset_STRING, err = d.String()
-			m.Limit, err = d.Int32()
-			m.Hash, err = d.Int64()
-
-			return nil
-		},
-		0xfe74ef9f: func() (err error) {
-			m.Offset_INT32, err = d.Int32()
+			m.Offset, err = d.String()
 			m.Limit, err = d.Int32()
 			m.Hash, err = d.Int64()
 
@@ -11477,30 +11408,6 @@ func (m *TLContactsAddContact) Encode(x *bin.Encoder, layer int32) error {
 
 			return nil
 		},
-		0xe8f463d0: func() error {
-			x.PutClazzID(0xe8f463d0)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.AddPhonePrivacyException == true {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Id.Encode(x, layer)
-			x.PutString(m.FirstName)
-			x.PutString(m.LastName)
-			x.PutString(m.Phone)
-
-			return nil
-		},
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_contacts_addContact, int(layer))
@@ -11536,24 +11443,6 @@ func (m *TLContactsAddContact) Decode(d *bin.Decoder) (err error) {
 				// m.Note = m7
 				m.Note, _ = DecodeTextWithEntitiesClazz(d)
 			}
-
-			return nil
-		},
-		0xe8f463d0: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 0)) != 0 {
-				m.AddPhonePrivacyException = true
-			}
-
-			// m3 := &InputUser{}
-			// _ = m3.Decode(d)
-			// m.Id = m3
-			m.Id, _ = DecodeInputUserClazz(d)
-
-			m.FirstName, err = d.String()
-			m.LastName, err = d.String()
-			m.Phone, err = d.String()
 
 			return nil
 		},
@@ -45501,34 +45390,6 @@ func (m *TLPhoneToggleGroupCallSettings) Encode(x *bin.Encoder, layer int32) err
 
 			return nil
 		},
-		0x74bbb43d: func() error {
-			x.PutClazzID(0x74bbb43d)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.ResetInviteHash == true {
-					flags |= 1 << 1
-				}
-
-				if m.JoinMuted != nil {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Call.Encode(x, layer)
-			if m.JoinMuted != nil {
-				_ = m.JoinMuted.Encode(x, layer)
-			}
-
-			return nil
-		},
 	}
 
 	clazzId := iface.GetClazzIDByName(ClazzName_phone_toggleGroupCallSettings, int(layer))
@@ -45566,27 +45427,6 @@ func (m *TLPhoneToggleGroupCallSettings) Decode(d *bin.Decoder) (err error) {
 				// _ = m5.Decode(d)
 				// m.MessagesEnabled = m5
 				m.MessagesEnabled, _ = DecodeBoolClazz(d)
-			}
-
-			return nil
-		},
-		0x74bbb43d: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 1)) != 0 {
-				m.ResetInviteHash = true
-			}
-
-			// m3 := &InputGroupCall{}
-			// _ = m3.Decode(d)
-			// m.Call = m3
-			m.Call, _ = DecodeInputGroupCallClazz(d)
-
-			if (flags & (1 << 0)) != 0 {
-				// m4 := &Bool{}
-				// _ = m4.Decode(d)
-				// m.JoinMuted = m4
-				m.JoinMuted, _ = DecodeBoolClazz(d)
 			}
 
 			return nil
@@ -52302,611 +52142,6 @@ func (m *TLFragmentGetCollectibleInfo) Decode(d *bin.Decoder) (err error) {
 	}
 }
 
-// TLChannelsCreateForumTopic <--
-type TLChannelsCreateForumTopic struct {
-	ClazzID     uint32            `json:"_id"`
-	Channel     InputChannelClazz `json:"channel"`
-	Title       string            `json:"title"`
-	IconColor   *int32            `json:"icon_color"`
-	IconEmojiId *int64            `json:"icon_emoji_id"`
-	RandomId    int64             `json:"random_id"`
-	SendAs      InputPeerClazz    `json:"send_as"`
-}
-
-func (m *TLChannelsCreateForumTopic) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsCreateForumTopic) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xf40c0224: func() error {
-			x.PutClazzID(0xf40c0224)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.IconColor != nil {
-					flags |= 1 << 0
-				}
-				if m.IconEmojiId != nil {
-					flags |= 1 << 3
-				}
-
-				if m.SendAs != nil {
-					flags |= 1 << 2
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-			x.PutString(m.Title)
-			if m.IconColor != nil {
-				x.PutInt32(*m.IconColor)
-			}
-
-			if m.IconEmojiId != nil {
-				x.PutInt64(*m.IconEmojiId)
-			}
-
-			x.PutInt64(m.RandomId)
-			if m.SendAs != nil {
-				_ = m.SendAs.Encode(x, layer)
-			}
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_createForumTopic, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_createForumTopic, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsCreateForumTopic) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xf40c0224: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-
-			// m2 := &InputChannel{}
-			// _ = m2.Decode(d)
-			// m.Channel = m2
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.Title, err = d.String()
-			if (flags & (1 << 0)) != 0 {
-				m.IconColor = new(int32)
-				*m.IconColor, err = d.Int32()
-			}
-			if (flags & (1 << 3)) != 0 {
-				m.IconEmojiId = new(int64)
-				*m.IconEmojiId, err = d.Int64()
-			}
-
-			m.RandomId, err = d.Int64()
-			if (flags & (1 << 2)) != 0 {
-				// m7 := &InputPeer{}
-				// _ = m7.Decode(d)
-				// m.SendAs = m7
-				m.SendAs, _ = DecodeInputPeerClazz(d)
-			}
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsGetForumTopics <--
-type TLChannelsGetForumTopics struct {
-	ClazzID     uint32            `json:"_id"`
-	Channel     InputChannelClazz `json:"channel"`
-	Q           *string           `json:"q"`
-	OffsetDate  int32             `json:"offset_date"`
-	OffsetId    int32             `json:"offset_id"`
-	OffsetTopic int32             `json:"offset_topic"`
-	Limit       int32             `json:"limit"`
-}
-
-func (m *TLChannelsGetForumTopics) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsGetForumTopics) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xde560d1: func() error {
-			x.PutClazzID(0xde560d1)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Q != nil {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-			if m.Q != nil {
-				x.PutString(*m.Q)
-			}
-
-			x.PutInt32(m.OffsetDate)
-			x.PutInt32(m.OffsetId)
-			x.PutInt32(m.OffsetTopic)
-			x.PutInt32(m.Limit)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_getForumTopics, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_getForumTopics, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsGetForumTopics) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xde560d1: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-
-			// m2 := &InputChannel{}
-			// _ = m2.Decode(d)
-			// m.Channel = m2
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			if (flags & (1 << 0)) != 0 {
-				m.Q = new(string)
-				*m.Q, err = d.String()
-			}
-
-			m.OffsetDate, err = d.Int32()
-			m.OffsetId, err = d.Int32()
-			m.OffsetTopic, err = d.Int32()
-			m.Limit, err = d.Int32()
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsGetForumTopicsByID <--
-type TLChannelsGetForumTopicsByID struct {
-	ClazzID uint32            `json:"_id"`
-	Channel InputChannelClazz `json:"channel"`
-	Topics  []int32           `json:"topics"`
-}
-
-func (m *TLChannelsGetForumTopicsByID) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsGetForumTopicsByID) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xb0831eb9: func() error {
-			x.PutClazzID(0xb0831eb9)
-
-			_ = m.Channel.Encode(x, layer)
-
-			iface.EncodeInt32List(x, m.Topics)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_getForumTopicsByID, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_getForumTopicsByID, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsGetForumTopicsByID) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xb0831eb9: func() (err error) {
-
-			// m1 := &InputChannel{}
-			// _ = m1.Decode(d)
-			// m.Channel = m1
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.Topics, err = iface.DecodeInt32List(d)
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsEditForumTopic <--
-type TLChannelsEditForumTopic struct {
-	ClazzID     uint32            `json:"_id"`
-	Channel     InputChannelClazz `json:"channel"`
-	TopicId     int32             `json:"topic_id"`
-	Title       *string           `json:"title"`
-	IconEmojiId *int64            `json:"icon_emoji_id"`
-	Closed      BoolClazz         `json:"closed"`
-	Hidden      BoolClazz         `json:"hidden"`
-}
-
-func (m *TLChannelsEditForumTopic) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsEditForumTopic) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0xf4dfa185: func() error {
-			x.PutClazzID(0xf4dfa185)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Title != nil {
-					flags |= 1 << 0
-				}
-				if m.IconEmojiId != nil {
-					flags |= 1 << 1
-				}
-				if m.Closed != nil {
-					flags |= 1 << 2
-				}
-				if m.Hidden != nil {
-					flags |= 1 << 3
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-			x.PutInt32(m.TopicId)
-			if m.Title != nil {
-				x.PutString(*m.Title)
-			}
-
-			if m.IconEmojiId != nil {
-				x.PutInt64(*m.IconEmojiId)
-			}
-
-			if m.Closed != nil {
-				_ = m.Closed.Encode(x, layer)
-			}
-
-			if m.Hidden != nil {
-				_ = m.Hidden.Encode(x, layer)
-			}
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_editForumTopic, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_editForumTopic, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsEditForumTopic) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0xf4dfa185: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-
-			// m2 := &InputChannel{}
-			// _ = m2.Decode(d)
-			// m.Channel = m2
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.TopicId, err = d.Int32()
-			if (flags & (1 << 0)) != 0 {
-				m.Title = new(string)
-				*m.Title, err = d.String()
-			}
-
-			if (flags & (1 << 1)) != 0 {
-				m.IconEmojiId = new(int64)
-				*m.IconEmojiId, err = d.Int64()
-			}
-
-			if (flags & (1 << 2)) != 0 {
-				// m6 := &Bool{}
-				// _ = m6.Decode(d)
-				// m.Closed = m6
-				m.Closed, _ = DecodeBoolClazz(d)
-			}
-			if (flags & (1 << 3)) != 0 {
-				// m7 := &Bool{}
-				// _ = m7.Decode(d)
-				// m.Hidden = m7
-				m.Hidden, _ = DecodeBoolClazz(d)
-			}
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsUpdatePinnedForumTopic <--
-type TLChannelsUpdatePinnedForumTopic struct {
-	ClazzID uint32            `json:"_id"`
-	Channel InputChannelClazz `json:"channel"`
-	TopicId int32             `json:"topic_id"`
-	Pinned  BoolClazz         `json:"pinned"`
-}
-
-func (m *TLChannelsUpdatePinnedForumTopic) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsUpdatePinnedForumTopic) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x6c2d9026: func() error {
-			x.PutClazzID(0x6c2d9026)
-
-			_ = m.Channel.Encode(x, layer)
-			x.PutInt32(m.TopicId)
-			_ = m.Pinned.Encode(x, layer)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_updatePinnedForumTopic, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_updatePinnedForumTopic, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsUpdatePinnedForumTopic) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x6c2d9026: func() (err error) {
-
-			// m1 := &InputChannel{}
-			// _ = m1.Decode(d)
-			// m.Channel = m1
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.TopicId, err = d.Int32()
-
-			// m3 := &Bool{}
-			// _ = m3.Decode(d)
-			// m.Pinned = m3
-			m.Pinned, _ = DecodeBoolClazz(d)
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsDeleteTopicHistory <--
-type TLChannelsDeleteTopicHistory struct {
-	ClazzID  uint32            `json:"_id"`
-	Channel  InputChannelClazz `json:"channel"`
-	TopMsgId int32             `json:"top_msg_id"`
-}
-
-func (m *TLChannelsDeleteTopicHistory) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsDeleteTopicHistory) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x34435f2d: func() error {
-			x.PutClazzID(0x34435f2d)
-
-			_ = m.Channel.Encode(x, layer)
-			x.PutInt32(m.TopMsgId)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_deleteTopicHistory, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_deleteTopicHistory, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsDeleteTopicHistory) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x34435f2d: func() (err error) {
-
-			// m1 := &InputChannel{}
-			// _ = m1.Decode(d)
-			// m.Channel = m1
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.TopMsgId, err = d.Int32()
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
-// TLChannelsReorderPinnedForumTopics <--
-type TLChannelsReorderPinnedForumTopics struct {
-	ClazzID uint32            `json:"_id"`
-	Force   bool              `json:"force"`
-	Channel InputChannelClazz `json:"channel"`
-	Order   []int32           `json:"order"`
-}
-
-func (m *TLChannelsReorderPinnedForumTopics) String() string {
-	wrapper := iface.WithNameWrapper{"", m}
-	return wrapper.String()
-}
-
-// Encode <--
-func (m *TLChannelsReorderPinnedForumTopics) Encode(x *bin.Encoder, layer int32) error {
-	var encodeF = map[uint32]func() error{
-		0x2950a18f: func() error {
-			x.PutClazzID(0x2950a18f)
-
-			// set flags
-			var getFlags = func() uint32 {
-				var flags uint32 = 0
-
-				if m.Force == true {
-					flags |= 1 << 0
-				}
-
-				return flags
-			}
-
-			// set flags
-			var flags = getFlags()
-			x.PutUint32(flags)
-			_ = m.Channel.Encode(x, layer)
-
-			iface.EncodeInt32List(x, m.Order)
-
-			return nil
-		},
-	}
-
-	clazzId := iface.GetClazzIDByName(ClazzName_channels_reorderPinnedForumTopics, int(layer))
-	if f, ok := encodeF[clazzId]; ok {
-		return f()
-	} else {
-		// TODO(@benqi): handle error
-		return fmt.Errorf("not found clazzId by (%s, %d)", ClazzName_channels_reorderPinnedForumTopics, layer)
-	}
-}
-
-// Decode <--
-func (m *TLChannelsReorderPinnedForumTopics) Decode(d *bin.Decoder) (err error) {
-	var decodeF = map[uint32]func() error{
-		0x2950a18f: func() (err error) {
-			flags, _ := d.Uint32()
-			_ = flags
-			if (flags & (1 << 0)) != 0 {
-				m.Force = true
-			}
-
-			// m3 := &InputChannel{}
-			// _ = m3.Decode(d)
-			// m.Channel = m3
-			m.Channel, _ = DecodeInputChannelClazz(d)
-
-			m.Order, err = iface.DecodeInt32List(d)
-
-			return nil
-		},
-	}
-
-	if m.ClazzID == 0 {
-		m.ClazzID, _ = d.ClazzID()
-	}
-	if f, ok := decodeF[m.ClazzID]; ok {
-		return f()
-	} else {
-		return fmt.Errorf("invalid constructor: %x", m.ClazzID)
-	}
-}
-
 // TLTestParseInputAppEvent <--
 type TLTestParseInputAppEvent struct {
 	ClazzID uint32 `json:"_id"`
@@ -55219,13 +54454,6 @@ type RPCForums interface {
 	MessagesDeleteTopicHistory(ctx context.Context, in *TLMessagesDeleteTopicHistory) (*MessagesAffectedHistory, error)
 	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum) (*Updates, error)
 	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages) (*Updates, error)
-	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic) (*Updates, error)
-	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics) (*MessagesForumTopics, error)
-	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID) (*MessagesForumTopics, error)
-	ChannelsEditForumTopic(ctx context.Context, in *TLChannelsEditForumTopic) (*Updates, error)
-	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
-	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory) (*MessagesAffectedHistory, error)
-	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics) (*Updates, error)
 }
 
 type RPCUpdates interface {

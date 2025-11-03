@@ -678,13 +678,6 @@ func init() {
 	iface.RegisterRPCContextTuple("TLMessagesDeleteTopicHistory", "/tg.RPCForums/messages.deleteTopicHistory", func() interface{} { return new(MessagesAffectedHistory) })
 	iface.RegisterRPCContextTuple("TLChannelsToggleForum", "/tg.RPCForums/channels.toggleForum", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLChannelsToggleViewForumAsMessages", "/tg.RPCForums/channels.toggleViewForumAsMessages", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsCreateForumTopic", "/tg.RPCForums/channels.createForumTopic", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsGetForumTopics", "/tg.RPCForums/channels.getForumTopics", func() interface{} { return new(MessagesForumTopics) })
-	iface.RegisterRPCContextTuple("TLChannelsGetForumTopicsByID", "/tg.RPCForums/channels.getForumTopicsByID", func() interface{} { return new(MessagesForumTopics) })
-	iface.RegisterRPCContextTuple("TLChannelsEditForumTopic", "/tg.RPCForums/channels.editForumTopic", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsUpdatePinnedForumTopic", "/tg.RPCForums/channels.updatePinnedForumTopic", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLChannelsDeleteTopicHistory", "/tg.RPCForums/channels.deleteTopicHistory", func() interface{} { return new(MessagesAffectedHistory) })
-	iface.RegisterRPCContextTuple("TLChannelsReorderPinnedForumTopics", "/tg.RPCForums/channels.reorderPinnedForumTopics", func() interface{} { return new(Updates) })
 
 	// RPCUpdates
 	iface.RegisterRPCContextTuple("TLUpdatesGetState", "/tg.RPCUpdates/updates.getState", func() interface{} { return new(UpdatesState) })

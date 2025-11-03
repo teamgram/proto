@@ -2234,15 +2234,6 @@ const (
 	ClazzName_smsjobs_getSmsJob                                  = "smsjobs_getSmsJob"
 	ClazzName_smsjobs_finishJob                                  = "smsjobs_finishJob"
 	ClazzName_fragment_getCollectibleInfo                        = "fragment_getCollectibleInfo"
-	ClazzName_updateChannelPinnedTopic                           = "updateChannelPinnedTopic"
-	ClazzName_updateChannelPinnedTopics                          = "updateChannelPinnedTopics"
-	ClazzName_channels_createForumTopic                          = "channels_createForumTopic"
-	ClazzName_channels_getForumTopics                            = "channels_getForumTopics"
-	ClazzName_channels_getForumTopicsByID                        = "channels_getForumTopicsByID"
-	ClazzName_channels_editForumTopic                            = "channels_editForumTopic"
-	ClazzName_channels_updatePinnedForumTopic                    = "channels_updatePinnedForumTopic"
-	ClazzName_channels_deleteTopicHistory                        = "channels_deleteTopicHistory"
-	ClazzName_channels_reorderPinnedForumTopics                  = "channels_reorderPinnedForumTopics"
 	ClazzName_int32                                              = "int32"
 	ClazzName_long                                               = "long"
 	ClazzName_int64                                              = "int64"
@@ -2290,5710 +2281,1922 @@ const (
 func init() {
 	// RegisterClazzNameList
 	iface.RegisterClazzName(ClazzName_boolFalse, 216, 0xbc799737)                                          // bc799737
-	iface.RegisterClazzName(ClazzName_boolFalse, 215, 0xbc799737)                                          // bc799737
-	iface.RegisterClazzName(ClazzName_boolFalse, 214, 0xbc799737)                                          // bc799737
 	iface.RegisterClazzName(ClazzName_boolFalse, 0, 0xbc799737)                                            // bc799737
 	iface.RegisterClazzName(ClazzName_boolTrue, 216, 0x997275b5)                                           // 997275b5
-	iface.RegisterClazzName(ClazzName_boolTrue, 215, 0x997275b5)                                           // 997275b5
-	iface.RegisterClazzName(ClazzName_boolTrue, 214, 0x997275b5)                                           // 997275b5
 	iface.RegisterClazzName(ClazzName_boolTrue, 0, 0x997275b5)                                             // 997275b5
 	iface.RegisterClazzName(ClazzName_true, 216, 0x3fedd339)                                               // 3fedd339
-	iface.RegisterClazzName(ClazzName_true, 215, 0x3fedd339)                                               // 3fedd339
-	iface.RegisterClazzName(ClazzName_true, 214, 0x3fedd339)                                               // 3fedd339
 	iface.RegisterClazzName(ClazzName_true, 0, 0x3fedd339)                                                 // 3fedd339
 	iface.RegisterClazzName(ClazzName_error, 216, 0xc4b9f9bb)                                              // c4b9f9bb
-	iface.RegisterClazzName(ClazzName_error, 215, 0xc4b9f9bb)                                              // c4b9f9bb
-	iface.RegisterClazzName(ClazzName_error, 214, 0xc4b9f9bb)                                              // c4b9f9bb
 	iface.RegisterClazzName(ClazzName_error, 0, 0xc4b9f9bb)                                                // c4b9f9bb
 	iface.RegisterClazzName(ClazzName_null, 216, 0x56730bcc)                                               // 56730bcc
-	iface.RegisterClazzName(ClazzName_null, 215, 0x56730bcc)                                               // 56730bcc
-	iface.RegisterClazzName(ClazzName_null, 214, 0x56730bcc)                                               // 56730bcc
 	iface.RegisterClazzName(ClazzName_null, 0, 0x56730bcc)                                                 // 56730bcc
 	iface.RegisterClazzName(ClazzName_inputPeerEmpty, 216, 0x7f3b18ea)                                     // 7f3b18ea
-	iface.RegisterClazzName(ClazzName_inputPeerEmpty, 215, 0x7f3b18ea)                                     // 7f3b18ea
-	iface.RegisterClazzName(ClazzName_inputPeerEmpty, 214, 0x7f3b18ea)                                     // 7f3b18ea
 	iface.RegisterClazzName(ClazzName_inputPeerSelf, 216, 0x7da07ec9)                                      // 7da07ec9
-	iface.RegisterClazzName(ClazzName_inputPeerSelf, 215, 0x7da07ec9)                                      // 7da07ec9
-	iface.RegisterClazzName(ClazzName_inputPeerSelf, 214, 0x7da07ec9)                                      // 7da07ec9
 	iface.RegisterClazzName(ClazzName_inputPeerChat, 216, 0x35a95cb9)                                      // 35a95cb9
-	iface.RegisterClazzName(ClazzName_inputPeerChat, 215, 0x35a95cb9)                                      // 35a95cb9
-	iface.RegisterClazzName(ClazzName_inputPeerChat, 214, 0x35a95cb9)                                      // 35a95cb9
 	iface.RegisterClazzName(ClazzName_inputPeerUser, 216, 0xdde8a54c)                                      // dde8a54c
-	iface.RegisterClazzName(ClazzName_inputPeerUser, 215, 0xdde8a54c)                                      // dde8a54c
-	iface.RegisterClazzName(ClazzName_inputPeerUser, 214, 0xdde8a54c)                                      // dde8a54c
 	iface.RegisterClazzName(ClazzName_inputPeerChannel, 216, 0x27bcbbfc)                                   // 27bcbbfc
-	iface.RegisterClazzName(ClazzName_inputPeerChannel, 215, 0x27bcbbfc)                                   // 27bcbbfc
-	iface.RegisterClazzName(ClazzName_inputPeerChannel, 214, 0x27bcbbfc)                                   // 27bcbbfc
 	iface.RegisterClazzName(ClazzName_inputPeerUserFromMessage, 216, 0xa87b0a1c)                           // a87b0a1c
-	iface.RegisterClazzName(ClazzName_inputPeerUserFromMessage, 215, 0xa87b0a1c)                           // a87b0a1c
-	iface.RegisterClazzName(ClazzName_inputPeerUserFromMessage, 214, 0xa87b0a1c)                           // a87b0a1c
 	iface.RegisterClazzName(ClazzName_inputPeerChannelFromMessage, 216, 0xbd2a0840)                        // bd2a0840
-	iface.RegisterClazzName(ClazzName_inputPeerChannelFromMessage, 215, 0xbd2a0840)                        // bd2a0840
-	iface.RegisterClazzName(ClazzName_inputPeerChannelFromMessage, 214, 0xbd2a0840)                        // bd2a0840
 	iface.RegisterClazzName(ClazzName_inputUserEmpty, 216, 0xb98886cf)                                     // b98886cf
-	iface.RegisterClazzName(ClazzName_inputUserEmpty, 215, 0xb98886cf)                                     // b98886cf
-	iface.RegisterClazzName(ClazzName_inputUserEmpty, 214, 0xb98886cf)                                     // b98886cf
 	iface.RegisterClazzName(ClazzName_inputUserSelf, 216, 0xf7c1b13f)                                      // f7c1b13f
-	iface.RegisterClazzName(ClazzName_inputUserSelf, 215, 0xf7c1b13f)                                      // f7c1b13f
-	iface.RegisterClazzName(ClazzName_inputUserSelf, 214, 0xf7c1b13f)                                      // f7c1b13f
 	iface.RegisterClazzName(ClazzName_inputUser, 216, 0xf21158c6)                                          // f21158c6
-	iface.RegisterClazzName(ClazzName_inputUser, 215, 0xf21158c6)                                          // f21158c6
-	iface.RegisterClazzName(ClazzName_inputUser, 214, 0xf21158c6)                                          // f21158c6
 	iface.RegisterClazzName(ClazzName_inputUserFromMessage, 216, 0x1da448e2)                               // 1da448e2
-	iface.RegisterClazzName(ClazzName_inputUserFromMessage, 215, 0x1da448e2)                               // 1da448e2
-	iface.RegisterClazzName(ClazzName_inputUserFromMessage, 214, 0x1da448e2)                               // 1da448e2
 	iface.RegisterClazzName(ClazzName_inputPhoneContact, 216, 0xf392b7f4)                                  // f392b7f4
-	iface.RegisterClazzName(ClazzName_inputPhoneContact, 215, 0xf392b7f4)                                  // f392b7f4
-	iface.RegisterClazzName(ClazzName_inputPhoneContact, 214, 0xf392b7f4)                                  // f392b7f4
 	iface.RegisterClazzName(ClazzName_inputFile, 216, 0xf52ff27f)                                          // f52ff27f
-	iface.RegisterClazzName(ClazzName_inputFile, 215, 0xf52ff27f)                                          // f52ff27f
-	iface.RegisterClazzName(ClazzName_inputFile, 214, 0xf52ff27f)                                          // f52ff27f
 	iface.RegisterClazzName(ClazzName_inputFileBig, 216, 0xfa4f0bb5)                                       // fa4f0bb5
-	iface.RegisterClazzName(ClazzName_inputFileBig, 215, 0xfa4f0bb5)                                       // fa4f0bb5
-	iface.RegisterClazzName(ClazzName_inputFileBig, 214, 0xfa4f0bb5)                                       // fa4f0bb5
 	iface.RegisterClazzName(ClazzName_inputFileStoryDocument, 216, 0x62dc8b48)                             // 62dc8b48
-	iface.RegisterClazzName(ClazzName_inputFileStoryDocument, 215, 0x62dc8b48)                             // 62dc8b48
-	iface.RegisterClazzName(ClazzName_inputFileStoryDocument, 214, 0x62dc8b48)                             // 62dc8b48
 	iface.RegisterClazzName(ClazzName_inputMediaEmpty, 216, 0x9664f57f)                                    // 9664f57f
-	iface.RegisterClazzName(ClazzName_inputMediaEmpty, 215, 0x9664f57f)                                    // 9664f57f
-	iface.RegisterClazzName(ClazzName_inputMediaEmpty, 214, 0x9664f57f)                                    // 9664f57f
 	iface.RegisterClazzName(ClazzName_inputMediaUploadedPhoto, 216, 0x1e287d04)                            // 1e287d04
-	iface.RegisterClazzName(ClazzName_inputMediaUploadedPhoto, 215, 0x1e287d04)                            // 1e287d04
-	iface.RegisterClazzName(ClazzName_inputMediaUploadedPhoto, 214, 0x1e287d04)                            // 1e287d04
 	iface.RegisterClazzName(ClazzName_inputMediaPhoto, 216, 0xb3ba0635)                                    // b3ba0635
-	iface.RegisterClazzName(ClazzName_inputMediaPhoto, 215, 0xb3ba0635)                                    // b3ba0635
-	iface.RegisterClazzName(ClazzName_inputMediaPhoto, 214, 0xb3ba0635)                                    // b3ba0635
 	iface.RegisterClazzName(ClazzName_inputMediaGeoPoint, 216, 0xf9c44144)                                 // f9c44144
-	iface.RegisterClazzName(ClazzName_inputMediaGeoPoint, 215, 0xf9c44144)                                 // f9c44144
-	iface.RegisterClazzName(ClazzName_inputMediaGeoPoint, 214, 0xf9c44144)                                 // f9c44144
 	iface.RegisterClazzName(ClazzName_inputMediaContact, 216, 0xf8ab7dfb)                                  // f8ab7dfb
-	iface.RegisterClazzName(ClazzName_inputMediaContact, 215, 0xf8ab7dfb)                                  // f8ab7dfb
-	iface.RegisterClazzName(ClazzName_inputMediaContact, 214, 0xf8ab7dfb)                                  // f8ab7dfb
 	iface.RegisterClazzName(ClazzName_inputMediaUploadedDocument, 216, 0x37c9330)                          // 37c9330
-	iface.RegisterClazzName(ClazzName_inputMediaUploadedDocument, 215, 0x37c9330)                          // 37c9330
-	iface.RegisterClazzName(ClazzName_inputMediaUploadedDocument, 214, 0x37c9330)                          // 37c9330
 	iface.RegisterClazzName(ClazzName_inputMediaDocument, 216, 0xa8763ab5)                                 // a8763ab5
-	iface.RegisterClazzName(ClazzName_inputMediaDocument, 215, 0xa8763ab5)                                 // a8763ab5
-	iface.RegisterClazzName(ClazzName_inputMediaDocument, 214, 0xa8763ab5)                                 // a8763ab5
 	iface.RegisterClazzName(ClazzName_inputMediaVenue, 216, 0xc13d1c11)                                    // c13d1c11
-	iface.RegisterClazzName(ClazzName_inputMediaVenue, 215, 0xc13d1c11)                                    // c13d1c11
-	iface.RegisterClazzName(ClazzName_inputMediaVenue, 214, 0xc13d1c11)                                    // c13d1c11
 	iface.RegisterClazzName(ClazzName_inputMediaPhotoExternal, 216, 0xe5bbfe1a)                            // e5bbfe1a
-	iface.RegisterClazzName(ClazzName_inputMediaPhotoExternal, 215, 0xe5bbfe1a)                            // e5bbfe1a
-	iface.RegisterClazzName(ClazzName_inputMediaPhotoExternal, 214, 0xe5bbfe1a)                            // e5bbfe1a
 	iface.RegisterClazzName(ClazzName_inputMediaDocumentExternal, 216, 0x779600f9)                         // 779600f9
-	iface.RegisterClazzName(ClazzName_inputMediaDocumentExternal, 215, 0x779600f9)                         // 779600f9
-	iface.RegisterClazzName(ClazzName_inputMediaDocumentExternal, 214, 0x779600f9)                         // 779600f9
 	iface.RegisterClazzName(ClazzName_inputMediaGame, 216, 0xd33f43f3)                                     // d33f43f3
-	iface.RegisterClazzName(ClazzName_inputMediaGame, 215, 0xd33f43f3)                                     // d33f43f3
-	iface.RegisterClazzName(ClazzName_inputMediaGame, 214, 0xd33f43f3)                                     // d33f43f3
 	iface.RegisterClazzName(ClazzName_inputMediaInvoice, 216, 0x405fef0d)                                  // 405fef0d
-	iface.RegisterClazzName(ClazzName_inputMediaInvoice, 215, 0x405fef0d)                                  // 405fef0d
-	iface.RegisterClazzName(ClazzName_inputMediaInvoice, 214, 0x405fef0d)                                  // 405fef0d
 	iface.RegisterClazzName(ClazzName_inputMediaGeoLive, 216, 0x971fa843)                                  // 971fa843
-	iface.RegisterClazzName(ClazzName_inputMediaGeoLive, 215, 0x971fa843)                                  // 971fa843
-	iface.RegisterClazzName(ClazzName_inputMediaGeoLive, 214, 0x971fa843)                                  // 971fa843
 	iface.RegisterClazzName(ClazzName_inputMediaPoll, 216, 0xf94e5f1)                                      // f94e5f1
-	iface.RegisterClazzName(ClazzName_inputMediaPoll, 215, 0xf94e5f1)                                      // f94e5f1
-	iface.RegisterClazzName(ClazzName_inputMediaPoll, 214, 0xf94e5f1)                                      // f94e5f1
 	iface.RegisterClazzName(ClazzName_inputMediaDice, 216, 0xe66fbf7b)                                     // e66fbf7b
-	iface.RegisterClazzName(ClazzName_inputMediaDice, 215, 0xe66fbf7b)                                     // e66fbf7b
-	iface.RegisterClazzName(ClazzName_inputMediaDice, 214, 0xe66fbf7b)                                     // e66fbf7b
 	iface.RegisterClazzName(ClazzName_inputMediaStory, 216, 0x89fdd778)                                    // 89fdd778
-	iface.RegisterClazzName(ClazzName_inputMediaStory, 215, 0x89fdd778)                                    // 89fdd778
-	iface.RegisterClazzName(ClazzName_inputMediaStory, 214, 0x89fdd778)                                    // 89fdd778
 	iface.RegisterClazzName(ClazzName_inputMediaWebPage, 216, 0xc21b8849)                                  // c21b8849
-	iface.RegisterClazzName(ClazzName_inputMediaWebPage, 215, 0xc21b8849)                                  // c21b8849
-	iface.RegisterClazzName(ClazzName_inputMediaWebPage, 214, 0xc21b8849)                                  // c21b8849
 	iface.RegisterClazzName(ClazzName_inputMediaPaidMedia, 216, 0xc4103386)                                // c4103386
-	iface.RegisterClazzName(ClazzName_inputMediaPaidMedia, 215, 0xc4103386)                                // c4103386
-	iface.RegisterClazzName(ClazzName_inputMediaPaidMedia, 214, 0xc4103386)                                // c4103386
 	iface.RegisterClazzName(ClazzName_inputMediaTodo, 216, 0x9fc55fde)                                     // 9fc55fde
-	iface.RegisterClazzName(ClazzName_inputMediaTodo, 215, 0x9fc55fde)                                     // 9fc55fde
-	iface.RegisterClazzName(ClazzName_inputMediaTodo, 214, 0x9fc55fde)                                     // 9fc55fde
 	iface.RegisterClazzName(ClazzName_inputChatPhotoEmpty, 216, 0x1ca48f57)                                // 1ca48f57
-	iface.RegisterClazzName(ClazzName_inputChatPhotoEmpty, 215, 0x1ca48f57)                                // 1ca48f57
-	iface.RegisterClazzName(ClazzName_inputChatPhotoEmpty, 214, 0x1ca48f57)                                // 1ca48f57
 	iface.RegisterClazzName(ClazzName_inputChatUploadedPhoto, 216, 0xbdcdaec0)                             // bdcdaec0
-	iface.RegisterClazzName(ClazzName_inputChatUploadedPhoto, 215, 0xbdcdaec0)                             // bdcdaec0
-	iface.RegisterClazzName(ClazzName_inputChatUploadedPhoto, 214, 0xbdcdaec0)                             // bdcdaec0
 	iface.RegisterClazzName(ClazzName_inputChatPhoto, 216, 0x8953ad37)                                     // 8953ad37
-	iface.RegisterClazzName(ClazzName_inputChatPhoto, 215, 0x8953ad37)                                     // 8953ad37
-	iface.RegisterClazzName(ClazzName_inputChatPhoto, 214, 0x8953ad37)                                     // 8953ad37
 	iface.RegisterClazzName(ClazzName_inputGeoPointEmpty, 216, 0xe4c123d6)                                 // e4c123d6
-	iface.RegisterClazzName(ClazzName_inputGeoPointEmpty, 215, 0xe4c123d6)                                 // e4c123d6
-	iface.RegisterClazzName(ClazzName_inputGeoPointEmpty, 214, 0xe4c123d6)                                 // e4c123d6
 	iface.RegisterClazzName(ClazzName_inputGeoPoint, 216, 0x48222faf)                                      // 48222faf
-	iface.RegisterClazzName(ClazzName_inputGeoPoint, 215, 0x48222faf)                                      // 48222faf
-	iface.RegisterClazzName(ClazzName_inputGeoPoint, 214, 0x48222faf)                                      // 48222faf
 	iface.RegisterClazzName(ClazzName_inputPhotoEmpty, 216, 0x1cd7bf0d)                                    // 1cd7bf0d
-	iface.RegisterClazzName(ClazzName_inputPhotoEmpty, 215, 0x1cd7bf0d)                                    // 1cd7bf0d
-	iface.RegisterClazzName(ClazzName_inputPhotoEmpty, 214, 0x1cd7bf0d)                                    // 1cd7bf0d
 	iface.RegisterClazzName(ClazzName_inputPhoto, 216, 0x3bb3b94a)                                         // 3bb3b94a
-	iface.RegisterClazzName(ClazzName_inputPhoto, 215, 0x3bb3b94a)                                         // 3bb3b94a
-	iface.RegisterClazzName(ClazzName_inputPhoto, 214, 0x3bb3b94a)                                         // 3bb3b94a
 	iface.RegisterClazzName(ClazzName_inputFileLocation, 216, 0xdfdaabe1)                                  // dfdaabe1
-	iface.RegisterClazzName(ClazzName_inputFileLocation, 215, 0xdfdaabe1)                                  // dfdaabe1
-	iface.RegisterClazzName(ClazzName_inputFileLocation, 214, 0xdfdaabe1)                                  // dfdaabe1
 	iface.RegisterClazzName(ClazzName_inputEncryptedFileLocation, 216, 0xf5235d55)                         // f5235d55
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileLocation, 215, 0xf5235d55)                         // f5235d55
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileLocation, 214, 0xf5235d55)                         // f5235d55
 	iface.RegisterClazzName(ClazzName_inputDocumentFileLocation, 216, 0xbad07584)                          // bad07584
-	iface.RegisterClazzName(ClazzName_inputDocumentFileLocation, 215, 0xbad07584)                          // bad07584
-	iface.RegisterClazzName(ClazzName_inputDocumentFileLocation, 214, 0xbad07584)                          // bad07584
 	iface.RegisterClazzName(ClazzName_inputSecureFileLocation, 216, 0xcbc7ee28)                            // cbc7ee28
-	iface.RegisterClazzName(ClazzName_inputSecureFileLocation, 215, 0xcbc7ee28)                            // cbc7ee28
-	iface.RegisterClazzName(ClazzName_inputSecureFileLocation, 214, 0xcbc7ee28)                            // cbc7ee28
 	iface.RegisterClazzName(ClazzName_inputTakeoutFileLocation, 216, 0x29be5899)                           // 29be5899
-	iface.RegisterClazzName(ClazzName_inputTakeoutFileLocation, 215, 0x29be5899)                           // 29be5899
-	iface.RegisterClazzName(ClazzName_inputTakeoutFileLocation, 214, 0x29be5899)                           // 29be5899
 	iface.RegisterClazzName(ClazzName_inputPhotoFileLocation, 216, 0x40181ffe)                             // 40181ffe
-	iface.RegisterClazzName(ClazzName_inputPhotoFileLocation, 215, 0x40181ffe)                             // 40181ffe
-	iface.RegisterClazzName(ClazzName_inputPhotoFileLocation, 214, 0x40181ffe)                             // 40181ffe
 	iface.RegisterClazzName(ClazzName_inputPhotoLegacyFileLocation, 216, 0xd83466f3)                       // d83466f3
-	iface.RegisterClazzName(ClazzName_inputPhotoLegacyFileLocation, 215, 0xd83466f3)                       // d83466f3
-	iface.RegisterClazzName(ClazzName_inputPhotoLegacyFileLocation, 214, 0xd83466f3)                       // d83466f3
 	iface.RegisterClazzName(ClazzName_inputPeerPhotoFileLocation, 216, 0x37257e99)                         // 37257e99
-	iface.RegisterClazzName(ClazzName_inputPeerPhotoFileLocation, 215, 0x37257e99)                         // 37257e99
-	iface.RegisterClazzName(ClazzName_inputPeerPhotoFileLocation, 214, 0x37257e99)                         // 37257e99
 	iface.RegisterClazzName(ClazzName_inputStickerSetThumb, 216, 0x9d84f3db)                               // 9d84f3db
-	iface.RegisterClazzName(ClazzName_inputStickerSetThumb, 215, 0x9d84f3db)                               // 9d84f3db
-	iface.RegisterClazzName(ClazzName_inputStickerSetThumb, 214, 0x9d84f3db)                               // 9d84f3db
 	iface.RegisterClazzName(ClazzName_inputGroupCallStream, 216, 0x598a92a)                                // 598a92a
-	iface.RegisterClazzName(ClazzName_inputGroupCallStream, 215, 0x598a92a)                                // 598a92a
-	iface.RegisterClazzName(ClazzName_inputGroupCallStream, 214, 0x598a92a)                                // 598a92a
 	iface.RegisterClazzName(ClazzName_peerUser, 216, 0x59511722)                                           // 59511722
-	iface.RegisterClazzName(ClazzName_peerUser, 215, 0x59511722)                                           // 59511722
-	iface.RegisterClazzName(ClazzName_peerUser, 214, 0x59511722)                                           // 59511722
 	iface.RegisterClazzName(ClazzName_peerChat, 216, 0x36c6019a)                                           // 36c6019a
-	iface.RegisterClazzName(ClazzName_peerChat, 215, 0x36c6019a)                                           // 36c6019a
-	iface.RegisterClazzName(ClazzName_peerChat, 214, 0x36c6019a)                                           // 36c6019a
 	iface.RegisterClazzName(ClazzName_peerChannel, 216, 0xa2a5371e)                                        // a2a5371e
-	iface.RegisterClazzName(ClazzName_peerChannel, 215, 0xa2a5371e)                                        // a2a5371e
-	iface.RegisterClazzName(ClazzName_peerChannel, 214, 0xa2a5371e)                                        // a2a5371e
 	iface.RegisterClazzName(ClazzName_storage_fileUnknown, 216, 0xaa963b05)                                // aa963b05
-	iface.RegisterClazzName(ClazzName_storage_fileUnknown, 215, 0xaa963b05)                                // aa963b05
-	iface.RegisterClazzName(ClazzName_storage_fileUnknown, 214, 0xaa963b05)                                // aa963b05
 	iface.RegisterClazzName(ClazzName_storage_filePartial, 216, 0x40bc6f52)                                // 40bc6f52
-	iface.RegisterClazzName(ClazzName_storage_filePartial, 215, 0x40bc6f52)                                // 40bc6f52
-	iface.RegisterClazzName(ClazzName_storage_filePartial, 214, 0x40bc6f52)                                // 40bc6f52
 	iface.RegisterClazzName(ClazzName_storage_fileJpeg, 216, 0x7efe0e)                                     // 7efe0e
-	iface.RegisterClazzName(ClazzName_storage_fileJpeg, 215, 0x7efe0e)                                     // 7efe0e
-	iface.RegisterClazzName(ClazzName_storage_fileJpeg, 214, 0x7efe0e)                                     // 7efe0e
 	iface.RegisterClazzName(ClazzName_storage_fileGif, 216, 0xcae1aadf)                                    // cae1aadf
-	iface.RegisterClazzName(ClazzName_storage_fileGif, 215, 0xcae1aadf)                                    // cae1aadf
-	iface.RegisterClazzName(ClazzName_storage_fileGif, 214, 0xcae1aadf)                                    // cae1aadf
 	iface.RegisterClazzName(ClazzName_storage_filePng, 216, 0xa4f63c0)                                     // a4f63c0
-	iface.RegisterClazzName(ClazzName_storage_filePng, 215, 0xa4f63c0)                                     // a4f63c0
-	iface.RegisterClazzName(ClazzName_storage_filePng, 214, 0xa4f63c0)                                     // a4f63c0
 	iface.RegisterClazzName(ClazzName_storage_filePdf, 216, 0xae1e508d)                                    // ae1e508d
-	iface.RegisterClazzName(ClazzName_storage_filePdf, 215, 0xae1e508d)                                    // ae1e508d
-	iface.RegisterClazzName(ClazzName_storage_filePdf, 214, 0xae1e508d)                                    // ae1e508d
 	iface.RegisterClazzName(ClazzName_storage_fileMp3, 216, 0x528a0677)                                    // 528a0677
-	iface.RegisterClazzName(ClazzName_storage_fileMp3, 215, 0x528a0677)                                    // 528a0677
-	iface.RegisterClazzName(ClazzName_storage_fileMp3, 214, 0x528a0677)                                    // 528a0677
 	iface.RegisterClazzName(ClazzName_storage_fileMov, 216, 0x4b09ebbc)                                    // 4b09ebbc
-	iface.RegisterClazzName(ClazzName_storage_fileMov, 215, 0x4b09ebbc)                                    // 4b09ebbc
-	iface.RegisterClazzName(ClazzName_storage_fileMov, 214, 0x4b09ebbc)                                    // 4b09ebbc
 	iface.RegisterClazzName(ClazzName_storage_fileMp4, 216, 0xb3cea0e4)                                    // b3cea0e4
-	iface.RegisterClazzName(ClazzName_storage_fileMp4, 215, 0xb3cea0e4)                                    // b3cea0e4
-	iface.RegisterClazzName(ClazzName_storage_fileMp4, 214, 0xb3cea0e4)                                    // b3cea0e4
 	iface.RegisterClazzName(ClazzName_storage_fileWebp, 216, 0x1081464c)                                   // 1081464c
-	iface.RegisterClazzName(ClazzName_storage_fileWebp, 215, 0x1081464c)                                   // 1081464c
-	iface.RegisterClazzName(ClazzName_storage_fileWebp, 214, 0x1081464c)                                   // 1081464c
 	iface.RegisterClazzName(ClazzName_userEmpty, 216, 0xd3bc4b7a)                                          // d3bc4b7a
-	iface.RegisterClazzName(ClazzName_userEmpty, 215, 0xd3bc4b7a)                                          // d3bc4b7a
-	iface.RegisterClazzName(ClazzName_userEmpty, 214, 0xd3bc4b7a)                                          // d3bc4b7a
 	iface.RegisterClazzName(ClazzName_user, 216, 0x20b1422)                                                // 20b1422
-	iface.RegisterClazzName(ClazzName_user, 215, 0x20b1422)                                                // 20b1422
-	iface.RegisterClazzName(ClazzName_user, 214, 0x20b1422)                                                // 20b1422
 	iface.RegisterClazzName(ClazzName_userProfilePhotoEmpty, 216, 0x4f11bae1)                              // 4f11bae1
-	iface.RegisterClazzName(ClazzName_userProfilePhotoEmpty, 215, 0x4f11bae1)                              // 4f11bae1
-	iface.RegisterClazzName(ClazzName_userProfilePhotoEmpty, 214, 0x4f11bae1)                              // 4f11bae1
 	iface.RegisterClazzName(ClazzName_userProfilePhoto, 216, 0x82d1f706)                                   // 82d1f706
-	iface.RegisterClazzName(ClazzName_userProfilePhoto, 215, 0x82d1f706)                                   // 82d1f706
-	iface.RegisterClazzName(ClazzName_userProfilePhoto, 214, 0x82d1f706)                                   // 82d1f706
 	iface.RegisterClazzName(ClazzName_userStatusEmpty, 216, 0x9d05049)                                     // 9d05049
-	iface.RegisterClazzName(ClazzName_userStatusEmpty, 215, 0x9d05049)                                     // 9d05049
-	iface.RegisterClazzName(ClazzName_userStatusEmpty, 214, 0x9d05049)                                     // 9d05049
 	iface.RegisterClazzName(ClazzName_userStatusOnline, 216, 0xedb93949)                                   // edb93949
-	iface.RegisterClazzName(ClazzName_userStatusOnline, 215, 0xedb93949)                                   // edb93949
-	iface.RegisterClazzName(ClazzName_userStatusOnline, 214, 0xedb93949)                                   // edb93949
 	iface.RegisterClazzName(ClazzName_userStatusOffline, 216, 0x8c703f)                                    // 8c703f
-	iface.RegisterClazzName(ClazzName_userStatusOffline, 215, 0x8c703f)                                    // 8c703f
-	iface.RegisterClazzName(ClazzName_userStatusOffline, 214, 0x8c703f)                                    // 8c703f
 	iface.RegisterClazzName(ClazzName_userStatusRecently, 216, 0x7b197dc8)                                 // 7b197dc8
-	iface.RegisterClazzName(ClazzName_userStatusRecently, 215, 0x7b197dc8)                                 // 7b197dc8
-	iface.RegisterClazzName(ClazzName_userStatusRecently, 214, 0x7b197dc8)                                 // 7b197dc8
 	iface.RegisterClazzName(ClazzName_userStatusLastWeek, 216, 0x541a1d1a)                                 // 541a1d1a
-	iface.RegisterClazzName(ClazzName_userStatusLastWeek, 215, 0x541a1d1a)                                 // 541a1d1a
-	iface.RegisterClazzName(ClazzName_userStatusLastWeek, 214, 0x541a1d1a)                                 // 541a1d1a
 	iface.RegisterClazzName(ClazzName_userStatusLastMonth, 216, 0x65899777)                                // 65899777
-	iface.RegisterClazzName(ClazzName_userStatusLastMonth, 215, 0x65899777)                                // 65899777
-	iface.RegisterClazzName(ClazzName_userStatusLastMonth, 214, 0x65899777)                                // 65899777
 	iface.RegisterClazzName(ClazzName_chatEmpty, 216, 0x29562865)                                          // 29562865
-	iface.RegisterClazzName(ClazzName_chatEmpty, 215, 0x29562865)                                          // 29562865
-	iface.RegisterClazzName(ClazzName_chatEmpty, 214, 0x29562865)                                          // 29562865
 	iface.RegisterClazzName(ClazzName_chat, 216, 0x41cbf256)                                               // 41cbf256
-	iface.RegisterClazzName(ClazzName_chat, 215, 0x41cbf256)                                               // 41cbf256
-	iface.RegisterClazzName(ClazzName_chat, 214, 0x41cbf256)                                               // 41cbf256
 	iface.RegisterClazzName(ClazzName_chatForbidden, 216, 0x6592a1a7)                                      // 6592a1a7
-	iface.RegisterClazzName(ClazzName_chatForbidden, 215, 0x6592a1a7)                                      // 6592a1a7
-	iface.RegisterClazzName(ClazzName_chatForbidden, 214, 0x6592a1a7)                                      // 6592a1a7
 	iface.RegisterClazzName(ClazzName_channel, 216, 0xfe685355)                                            // fe685355
-	iface.RegisterClazzName(ClazzName_channel, 215, 0xfe685355)                                            // fe685355
-	iface.RegisterClazzName(ClazzName_channel, 214, 0xfe685355)                                            // fe685355
 	iface.RegisterClazzName(ClazzName_channelForbidden, 216, 0x17d493d5)                                   // 17d493d5
-	iface.RegisterClazzName(ClazzName_channelForbidden, 215, 0x17d493d5)                                   // 17d493d5
-	iface.RegisterClazzName(ClazzName_channelForbidden, 214, 0x17d493d5)                                   // 17d493d5
 	iface.RegisterClazzName(ClazzName_chatFull, 216, 0x2633421b)                                           // 2633421b
-	iface.RegisterClazzName(ClazzName_chatFull, 215, 0x2633421b)                                           // 2633421b
-	iface.RegisterClazzName(ClazzName_chatFull, 214, 0x2633421b)                                           // 2633421b
 	iface.RegisterClazzName(ClazzName_channelFull, 216, 0xe4e0b29d)                                        // e4e0b29d
-	iface.RegisterClazzName(ClazzName_channelFull, 215, 0xe4e0b29d)                                        // e4e0b29d
-	iface.RegisterClazzName(ClazzName_channelFull, 214, 0xe4e0b29d)                                        // e4e0b29d
 	iface.RegisterClazzName(ClazzName_chatParticipant, 216, 0xc02d4007)                                    // c02d4007
-	iface.RegisterClazzName(ClazzName_chatParticipant, 215, 0xc02d4007)                                    // c02d4007
-	iface.RegisterClazzName(ClazzName_chatParticipant, 214, 0xc02d4007)                                    // c02d4007
 	iface.RegisterClazzName(ClazzName_chatParticipantCreator, 216, 0xe46bcee4)                             // e46bcee4
-	iface.RegisterClazzName(ClazzName_chatParticipantCreator, 215, 0xe46bcee4)                             // e46bcee4
-	iface.RegisterClazzName(ClazzName_chatParticipantCreator, 214, 0xe46bcee4)                             // e46bcee4
 	iface.RegisterClazzName(ClazzName_chatParticipantAdmin, 216, 0xa0933f5b)                               // a0933f5b
-	iface.RegisterClazzName(ClazzName_chatParticipantAdmin, 215, 0xa0933f5b)                               // a0933f5b
-	iface.RegisterClazzName(ClazzName_chatParticipantAdmin, 214, 0xa0933f5b)                               // a0933f5b
 	iface.RegisterClazzName(ClazzName_chatParticipantsForbidden, 216, 0x8763d3e1)                          // 8763d3e1
-	iface.RegisterClazzName(ClazzName_chatParticipantsForbidden, 215, 0x8763d3e1)                          // 8763d3e1
-	iface.RegisterClazzName(ClazzName_chatParticipantsForbidden, 214, 0x8763d3e1)                          // 8763d3e1
 	iface.RegisterClazzName(ClazzName_chatParticipants, 216, 0x3cbc93f8)                                   // 3cbc93f8
-	iface.RegisterClazzName(ClazzName_chatParticipants, 215, 0x3cbc93f8)                                   // 3cbc93f8
-	iface.RegisterClazzName(ClazzName_chatParticipants, 214, 0x3cbc93f8)                                   // 3cbc93f8
 	iface.RegisterClazzName(ClazzName_chatPhotoEmpty, 216, 0x37c1011c)                                     // 37c1011c
-	iface.RegisterClazzName(ClazzName_chatPhotoEmpty, 215, 0x37c1011c)                                     // 37c1011c
-	iface.RegisterClazzName(ClazzName_chatPhotoEmpty, 214, 0x37c1011c)                                     // 37c1011c
 	iface.RegisterClazzName(ClazzName_chatPhoto, 216, 0x1c6e1c11)                                          // 1c6e1c11
-	iface.RegisterClazzName(ClazzName_chatPhoto, 215, 0x1c6e1c11)                                          // 1c6e1c11
-	iface.RegisterClazzName(ClazzName_chatPhoto, 214, 0x1c6e1c11)                                          // 1c6e1c11
 	iface.RegisterClazzName(ClazzName_messageEmpty, 216, 0x90a6ca84)                                       // 90a6ca84
-	iface.RegisterClazzName(ClazzName_messageEmpty, 215, 0x90a6ca84)                                       // 90a6ca84
-	iface.RegisterClazzName(ClazzName_messageEmpty, 214, 0x90a6ca84)                                       // 90a6ca84
 	iface.RegisterClazzName(ClazzName_message, 216, 0x9815cec8)                                            // 9815cec8
-	iface.RegisterClazzName(ClazzName_message, 215, 0x9815cec8)                                            // 9815cec8
-	iface.RegisterClazzName(ClazzName_message, 214, 0x9815cec8)                                            // 9815cec8
 	iface.RegisterClazzName(ClazzName_messageService, 216, 0x7a800e0a)                                     // 7a800e0a
-	iface.RegisterClazzName(ClazzName_messageService, 215, 0x7a800e0a)                                     // 7a800e0a
-	iface.RegisterClazzName(ClazzName_messageService, 214, 0x7a800e0a)                                     // 7a800e0a
 	iface.RegisterClazzName(ClazzName_messageMediaEmpty, 216, 0x3ded6320)                                  // 3ded6320
-	iface.RegisterClazzName(ClazzName_messageMediaEmpty, 215, 0x3ded6320)                                  // 3ded6320
-	iface.RegisterClazzName(ClazzName_messageMediaEmpty, 214, 0x3ded6320)                                  // 3ded6320
 	iface.RegisterClazzName(ClazzName_messageMediaPhoto, 216, 0x695150d7)                                  // 695150d7
-	iface.RegisterClazzName(ClazzName_messageMediaPhoto, 215, 0x695150d7)                                  // 695150d7
-	iface.RegisterClazzName(ClazzName_messageMediaPhoto, 214, 0x695150d7)                                  // 695150d7
 	iface.RegisterClazzName(ClazzName_messageMediaGeo, 216, 0x56e0d474)                                    // 56e0d474
-	iface.RegisterClazzName(ClazzName_messageMediaGeo, 215, 0x56e0d474)                                    // 56e0d474
-	iface.RegisterClazzName(ClazzName_messageMediaGeo, 214, 0x56e0d474)                                    // 56e0d474
 	iface.RegisterClazzName(ClazzName_messageMediaContact, 216, 0x70322949)                                // 70322949
-	iface.RegisterClazzName(ClazzName_messageMediaContact, 215, 0x70322949)                                // 70322949
-	iface.RegisterClazzName(ClazzName_messageMediaContact, 214, 0x70322949)                                // 70322949
 	iface.RegisterClazzName(ClazzName_messageMediaUnsupported, 216, 0x9f84f49e)                            // 9f84f49e
-	iface.RegisterClazzName(ClazzName_messageMediaUnsupported, 215, 0x9f84f49e)                            // 9f84f49e
-	iface.RegisterClazzName(ClazzName_messageMediaUnsupported, 214, 0x9f84f49e)                            // 9f84f49e
 	iface.RegisterClazzName(ClazzName_messageMediaDocument, 216, 0x52d8ccd9)                               // 52d8ccd9
-	iface.RegisterClazzName(ClazzName_messageMediaDocument, 215, 0x52d8ccd9)                               // 52d8ccd9
-	iface.RegisterClazzName(ClazzName_messageMediaDocument, 214, 0x52d8ccd9)                               // 52d8ccd9
 	iface.RegisterClazzName(ClazzName_messageMediaWebPage, 216, 0xddf10c3b)                                // ddf10c3b
-	iface.RegisterClazzName(ClazzName_messageMediaWebPage, 215, 0xddf10c3b)                                // ddf10c3b
-	iface.RegisterClazzName(ClazzName_messageMediaWebPage, 214, 0xddf10c3b)                                // ddf10c3b
 	iface.RegisterClazzName(ClazzName_messageMediaVenue, 216, 0x2ec0533f)                                  // 2ec0533f
-	iface.RegisterClazzName(ClazzName_messageMediaVenue, 215, 0x2ec0533f)                                  // 2ec0533f
-	iface.RegisterClazzName(ClazzName_messageMediaVenue, 214, 0x2ec0533f)                                  // 2ec0533f
 	iface.RegisterClazzName(ClazzName_messageMediaGame, 216, 0xfdb19008)                                   // fdb19008
-	iface.RegisterClazzName(ClazzName_messageMediaGame, 215, 0xfdb19008)                                   // fdb19008
-	iface.RegisterClazzName(ClazzName_messageMediaGame, 214, 0xfdb19008)                                   // fdb19008
 	iface.RegisterClazzName(ClazzName_messageMediaInvoice, 216, 0xf6a548d3)                                // f6a548d3
-	iface.RegisterClazzName(ClazzName_messageMediaInvoice, 215, 0xf6a548d3)                                // f6a548d3
-	iface.RegisterClazzName(ClazzName_messageMediaInvoice, 214, 0xf6a548d3)                                // f6a548d3
 	iface.RegisterClazzName(ClazzName_messageMediaGeoLive, 216, 0xb940c666)                                // b940c666
-	iface.RegisterClazzName(ClazzName_messageMediaGeoLive, 215, 0xb940c666)                                // b940c666
-	iface.RegisterClazzName(ClazzName_messageMediaGeoLive, 214, 0xb940c666)                                // b940c666
 	iface.RegisterClazzName(ClazzName_messageMediaPoll, 216, 0x4bd6e798)                                   // 4bd6e798
-	iface.RegisterClazzName(ClazzName_messageMediaPoll, 215, 0x4bd6e798)                                   // 4bd6e798
-	iface.RegisterClazzName(ClazzName_messageMediaPoll, 214, 0x4bd6e798)                                   // 4bd6e798
 	iface.RegisterClazzName(ClazzName_messageMediaDice, 216, 0x3f7ee58b)                                   // 3f7ee58b
-	iface.RegisterClazzName(ClazzName_messageMediaDice, 215, 0x3f7ee58b)                                   // 3f7ee58b
-	iface.RegisterClazzName(ClazzName_messageMediaDice, 214, 0x3f7ee58b)                                   // 3f7ee58b
 	iface.RegisterClazzName(ClazzName_messageMediaStory, 216, 0x68cb6283)                                  // 68cb6283
-	iface.RegisterClazzName(ClazzName_messageMediaStory, 215, 0x68cb6283)                                  // 68cb6283
-	iface.RegisterClazzName(ClazzName_messageMediaStory, 214, 0x68cb6283)                                  // 68cb6283
 	iface.RegisterClazzName(ClazzName_messageMediaGiveaway, 216, 0xaa073beb)                               // aa073beb
-	iface.RegisterClazzName(ClazzName_messageMediaGiveaway, 215, 0xaa073beb)                               // aa073beb
-	iface.RegisterClazzName(ClazzName_messageMediaGiveaway, 214, 0xaa073beb)                               // aa073beb
 	iface.RegisterClazzName(ClazzName_messageMediaGiveawayResults, 216, 0xceaa3ea1)                        // ceaa3ea1
-	iface.RegisterClazzName(ClazzName_messageMediaGiveawayResults, 215, 0xceaa3ea1)                        // ceaa3ea1
-	iface.RegisterClazzName(ClazzName_messageMediaGiveawayResults, 214, 0xceaa3ea1)                        // ceaa3ea1
 	iface.RegisterClazzName(ClazzName_messageMediaPaidMedia, 216, 0xa8852491)                              // a8852491
-	iface.RegisterClazzName(ClazzName_messageMediaPaidMedia, 215, 0xa8852491)                              // a8852491
-	iface.RegisterClazzName(ClazzName_messageMediaPaidMedia, 214, 0xa8852491)                              // a8852491
 	iface.RegisterClazzName(ClazzName_messageMediaToDo, 216, 0x8a53b014)                                   // 8a53b014
-	iface.RegisterClazzName(ClazzName_messageMediaToDo, 215, 0x8a53b014)                                   // 8a53b014
-	iface.RegisterClazzName(ClazzName_messageMediaToDo, 214, 0x8a53b014)                                   // 8a53b014
 	iface.RegisterClazzName(ClazzName_messageActionEmpty, 216, 0xb6aef7b0)                                 // b6aef7b0
-	iface.RegisterClazzName(ClazzName_messageActionEmpty, 215, 0xb6aef7b0)                                 // b6aef7b0
-	iface.RegisterClazzName(ClazzName_messageActionEmpty, 214, 0xb6aef7b0)                                 // b6aef7b0
 	iface.RegisterClazzName(ClazzName_messageActionChatCreate, 216, 0xbd47cbad)                            // bd47cbad
-	iface.RegisterClazzName(ClazzName_messageActionChatCreate, 215, 0xbd47cbad)                            // bd47cbad
-	iface.RegisterClazzName(ClazzName_messageActionChatCreate, 214, 0xbd47cbad)                            // bd47cbad
 	iface.RegisterClazzName(ClazzName_messageActionChatEditTitle, 216, 0xb5a1ce5a)                         // b5a1ce5a
-	iface.RegisterClazzName(ClazzName_messageActionChatEditTitle, 215, 0xb5a1ce5a)                         // b5a1ce5a
-	iface.RegisterClazzName(ClazzName_messageActionChatEditTitle, 214, 0xb5a1ce5a)                         // b5a1ce5a
 	iface.RegisterClazzName(ClazzName_messageActionChatEditPhoto, 216, 0x7fcb13a8)                         // 7fcb13a8
-	iface.RegisterClazzName(ClazzName_messageActionChatEditPhoto, 215, 0x7fcb13a8)                         // 7fcb13a8
-	iface.RegisterClazzName(ClazzName_messageActionChatEditPhoto, 214, 0x7fcb13a8)                         // 7fcb13a8
 	iface.RegisterClazzName(ClazzName_messageActionChatDeletePhoto, 216, 0x95e3fbef)                       // 95e3fbef
-	iface.RegisterClazzName(ClazzName_messageActionChatDeletePhoto, 215, 0x95e3fbef)                       // 95e3fbef
-	iface.RegisterClazzName(ClazzName_messageActionChatDeletePhoto, 214, 0x95e3fbef)                       // 95e3fbef
 	iface.RegisterClazzName(ClazzName_messageActionChatAddUser, 216, 0x15cefd00)                           // 15cefd00
-	iface.RegisterClazzName(ClazzName_messageActionChatAddUser, 215, 0x15cefd00)                           // 15cefd00
-	iface.RegisterClazzName(ClazzName_messageActionChatAddUser, 214, 0x15cefd00)                           // 15cefd00
 	iface.RegisterClazzName(ClazzName_messageActionChatDeleteUser, 216, 0xa43f30cc)                        // a43f30cc
-	iface.RegisterClazzName(ClazzName_messageActionChatDeleteUser, 215, 0xa43f30cc)                        // a43f30cc
-	iface.RegisterClazzName(ClazzName_messageActionChatDeleteUser, 214, 0xa43f30cc)                        // a43f30cc
 	iface.RegisterClazzName(ClazzName_messageActionChatJoinedByLink, 216, 0x31224c3)                       // 31224c3
-	iface.RegisterClazzName(ClazzName_messageActionChatJoinedByLink, 215, 0x31224c3)                       // 31224c3
-	iface.RegisterClazzName(ClazzName_messageActionChatJoinedByLink, 214, 0x31224c3)                       // 31224c3
 	iface.RegisterClazzName(ClazzName_messageActionChannelCreate, 216, 0x95d2ac92)                         // 95d2ac92
-	iface.RegisterClazzName(ClazzName_messageActionChannelCreate, 215, 0x95d2ac92)                         // 95d2ac92
-	iface.RegisterClazzName(ClazzName_messageActionChannelCreate, 214, 0x95d2ac92)                         // 95d2ac92
 	iface.RegisterClazzName(ClazzName_messageActionChatMigrateTo, 216, 0xe1037f92)                         // e1037f92
-	iface.RegisterClazzName(ClazzName_messageActionChatMigrateTo, 215, 0xe1037f92)                         // e1037f92
-	iface.RegisterClazzName(ClazzName_messageActionChatMigrateTo, 214, 0xe1037f92)                         // e1037f92
 	iface.RegisterClazzName(ClazzName_messageActionChannelMigrateFrom, 216, 0xea3948e9)                    // ea3948e9
-	iface.RegisterClazzName(ClazzName_messageActionChannelMigrateFrom, 215, 0xea3948e9)                    // ea3948e9
-	iface.RegisterClazzName(ClazzName_messageActionChannelMigrateFrom, 214, 0xea3948e9)                    // ea3948e9
 	iface.RegisterClazzName(ClazzName_messageActionPinMessage, 216, 0x94bd38ed)                            // 94bd38ed
-	iface.RegisterClazzName(ClazzName_messageActionPinMessage, 215, 0x94bd38ed)                            // 94bd38ed
-	iface.RegisterClazzName(ClazzName_messageActionPinMessage, 214, 0x94bd38ed)                            // 94bd38ed
 	iface.RegisterClazzName(ClazzName_messageActionHistoryClear, 216, 0x9fbab604)                          // 9fbab604
-	iface.RegisterClazzName(ClazzName_messageActionHistoryClear, 215, 0x9fbab604)                          // 9fbab604
-	iface.RegisterClazzName(ClazzName_messageActionHistoryClear, 214, 0x9fbab604)                          // 9fbab604
 	iface.RegisterClazzName(ClazzName_messageActionGameScore, 216, 0x92a72876)                             // 92a72876
-	iface.RegisterClazzName(ClazzName_messageActionGameScore, 215, 0x92a72876)                             // 92a72876
-	iface.RegisterClazzName(ClazzName_messageActionGameScore, 214, 0x92a72876)                             // 92a72876
 	iface.RegisterClazzName(ClazzName_messageActionPaymentSentMe, 216, 0xffa00ccc)                         // ffa00ccc
-	iface.RegisterClazzName(ClazzName_messageActionPaymentSentMe, 215, 0xffa00ccc)                         // ffa00ccc
-	iface.RegisterClazzName(ClazzName_messageActionPaymentSentMe, 214, 0xffa00ccc)                         // ffa00ccc
 	iface.RegisterClazzName(ClazzName_messageActionPaymentSent, 216, 0xc624b16e)                           // c624b16e
-	iface.RegisterClazzName(ClazzName_messageActionPaymentSent, 215, 0xc624b16e)                           // c624b16e
-	iface.RegisterClazzName(ClazzName_messageActionPaymentSent, 214, 0xc624b16e)                           // c624b16e
 	iface.RegisterClazzName(ClazzName_messageActionPhoneCall, 216, 0x80e11a7f)                             // 80e11a7f
-	iface.RegisterClazzName(ClazzName_messageActionPhoneCall, 215, 0x80e11a7f)                             // 80e11a7f
-	iface.RegisterClazzName(ClazzName_messageActionPhoneCall, 214, 0x80e11a7f)                             // 80e11a7f
 	iface.RegisterClazzName(ClazzName_messageActionScreenshotTaken, 216, 0x4792929b)                       // 4792929b
-	iface.RegisterClazzName(ClazzName_messageActionScreenshotTaken, 215, 0x4792929b)                       // 4792929b
-	iface.RegisterClazzName(ClazzName_messageActionScreenshotTaken, 214, 0x4792929b)                       // 4792929b
 	iface.RegisterClazzName(ClazzName_messageActionCustomAction, 216, 0xfae69f56)                          // fae69f56
-	iface.RegisterClazzName(ClazzName_messageActionCustomAction, 215, 0xfae69f56)                          // fae69f56
-	iface.RegisterClazzName(ClazzName_messageActionCustomAction, 214, 0xfae69f56)                          // fae69f56
 	iface.RegisterClazzName(ClazzName_messageActionBotAllowed, 216, 0xc516d679)                            // c516d679
-	iface.RegisterClazzName(ClazzName_messageActionBotAllowed, 215, 0xc516d679)                            // c516d679
-	iface.RegisterClazzName(ClazzName_messageActionBotAllowed, 214, 0xc516d679)                            // c516d679
 	iface.RegisterClazzName(ClazzName_messageActionSecureValuesSentMe, 216, 0x1b287353)                    // 1b287353
-	iface.RegisterClazzName(ClazzName_messageActionSecureValuesSentMe, 215, 0x1b287353)                    // 1b287353
-	iface.RegisterClazzName(ClazzName_messageActionSecureValuesSentMe, 214, 0x1b287353)                    // 1b287353
 	iface.RegisterClazzName(ClazzName_messageActionSecureValuesSent, 216, 0xd95c6154)                      // d95c6154
-	iface.RegisterClazzName(ClazzName_messageActionSecureValuesSent, 215, 0xd95c6154)                      // d95c6154
-	iface.RegisterClazzName(ClazzName_messageActionSecureValuesSent, 214, 0xd95c6154)                      // d95c6154
 	iface.RegisterClazzName(ClazzName_messageActionContactSignUp, 216, 0xf3f25f76)                         // f3f25f76
-	iface.RegisterClazzName(ClazzName_messageActionContactSignUp, 215, 0xf3f25f76)                         // f3f25f76
-	iface.RegisterClazzName(ClazzName_messageActionContactSignUp, 214, 0xf3f25f76)                         // f3f25f76
 	iface.RegisterClazzName(ClazzName_messageActionGeoProximityReached, 216, 0x98e0d697)                   // 98e0d697
-	iface.RegisterClazzName(ClazzName_messageActionGeoProximityReached, 215, 0x98e0d697)                   // 98e0d697
-	iface.RegisterClazzName(ClazzName_messageActionGeoProximityReached, 214, 0x98e0d697)                   // 98e0d697
 	iface.RegisterClazzName(ClazzName_messageActionGroupCall, 216, 0x7a0d7f42)                             // 7a0d7f42
-	iface.RegisterClazzName(ClazzName_messageActionGroupCall, 215, 0x7a0d7f42)                             // 7a0d7f42
-	iface.RegisterClazzName(ClazzName_messageActionGroupCall, 214, 0x7a0d7f42)                             // 7a0d7f42
 	iface.RegisterClazzName(ClazzName_messageActionInviteToGroupCall, 216, 0x502f92f7)                     // 502f92f7
-	iface.RegisterClazzName(ClazzName_messageActionInviteToGroupCall, 215, 0x502f92f7)                     // 502f92f7
-	iface.RegisterClazzName(ClazzName_messageActionInviteToGroupCall, 214, 0x502f92f7)                     // 502f92f7
 	iface.RegisterClazzName(ClazzName_messageActionSetMessagesTTL, 216, 0x3c134d7b)                        // 3c134d7b
-	iface.RegisterClazzName(ClazzName_messageActionSetMessagesTTL, 215, 0x3c134d7b)                        // 3c134d7b
-	iface.RegisterClazzName(ClazzName_messageActionSetMessagesTTL, 214, 0x3c134d7b)                        // 3c134d7b
 	iface.RegisterClazzName(ClazzName_messageActionGroupCallScheduled, 216, 0xb3a07661)                    // b3a07661
-	iface.RegisterClazzName(ClazzName_messageActionGroupCallScheduled, 215, 0xb3a07661)                    // b3a07661
-	iface.RegisterClazzName(ClazzName_messageActionGroupCallScheduled, 214, 0xb3a07661)                    // b3a07661
 	iface.RegisterClazzName(ClazzName_messageActionSetChatTheme, 216, 0xb91bbd3a)                          // b91bbd3a
-	iface.RegisterClazzName(ClazzName_messageActionSetChatTheme, 215, 0xb91bbd3a)                          // b91bbd3a
-	iface.RegisterClazzName(ClazzName_messageActionSetChatTheme, 214, 0xb91bbd3a)                          // b91bbd3a
 	iface.RegisterClazzName(ClazzName_messageActionChatJoinedByRequest, 216, 0xebbca3cb)                   // ebbca3cb
-	iface.RegisterClazzName(ClazzName_messageActionChatJoinedByRequest, 215, 0xebbca3cb)                   // ebbca3cb
-	iface.RegisterClazzName(ClazzName_messageActionChatJoinedByRequest, 214, 0xebbca3cb)                   // ebbca3cb
 	iface.RegisterClazzName(ClazzName_messageActionWebViewDataSentMe, 216, 0x47dd8079)                     // 47dd8079
-	iface.RegisterClazzName(ClazzName_messageActionWebViewDataSentMe, 215, 0x47dd8079)                     // 47dd8079
-	iface.RegisterClazzName(ClazzName_messageActionWebViewDataSentMe, 214, 0x47dd8079)                     // 47dd8079
 	iface.RegisterClazzName(ClazzName_messageActionWebViewDataSent, 216, 0xb4c38cb5)                       // b4c38cb5
-	iface.RegisterClazzName(ClazzName_messageActionWebViewDataSent, 215, 0xb4c38cb5)                       // b4c38cb5
-	iface.RegisterClazzName(ClazzName_messageActionWebViewDataSent, 214, 0xb4c38cb5)                       // b4c38cb5
 	iface.RegisterClazzName(ClazzName_messageActionGiftPremium, 216, 0x6c6274fa)                           // 6c6274fa
-	iface.RegisterClazzName(ClazzName_messageActionGiftPremium, 215, 0x6c6274fa)                           // 6c6274fa
-	iface.RegisterClazzName(ClazzName_messageActionGiftPremium, 214, 0x6c6274fa)                           // 6c6274fa
 	iface.RegisterClazzName(ClazzName_messageActionTopicCreate, 216, 0xd999256)                            // d999256
-	iface.RegisterClazzName(ClazzName_messageActionTopicCreate, 215, 0xd999256)                            // d999256
-	iface.RegisterClazzName(ClazzName_messageActionTopicCreate, 214, 0xd999256)                            // d999256
 	iface.RegisterClazzName(ClazzName_messageActionTopicEdit, 216, 0xc0944820)                             // c0944820
-	iface.RegisterClazzName(ClazzName_messageActionTopicEdit, 215, 0xc0944820)                             // c0944820
-	iface.RegisterClazzName(ClazzName_messageActionTopicEdit, 214, 0xc0944820)                             // c0944820
 	iface.RegisterClazzName(ClazzName_messageActionSuggestProfilePhoto, 216, 0x57de635e)                   // 57de635e
-	iface.RegisterClazzName(ClazzName_messageActionSuggestProfilePhoto, 215, 0x57de635e)                   // 57de635e
-	iface.RegisterClazzName(ClazzName_messageActionSuggestProfilePhoto, 214, 0x57de635e)                   // 57de635e
 	iface.RegisterClazzName(ClazzName_messageActionRequestedPeer, 216, 0x31518e9b)                         // 31518e9b
-	iface.RegisterClazzName(ClazzName_messageActionRequestedPeer, 215, 0x31518e9b)                         // 31518e9b
-	iface.RegisterClazzName(ClazzName_messageActionRequestedPeer, 214, 0x31518e9b)                         // 31518e9b
 	iface.RegisterClazzName(ClazzName_messageActionSetChatWallPaper, 216, 0x5060a3f4)                      // 5060a3f4
-	iface.RegisterClazzName(ClazzName_messageActionSetChatWallPaper, 215, 0x5060a3f4)                      // 5060a3f4
-	iface.RegisterClazzName(ClazzName_messageActionSetChatWallPaper, 214, 0x5060a3f4)                      // 5060a3f4
 	iface.RegisterClazzName(ClazzName_messageActionGiftCode, 216, 0x56d03994)                              // 56d03994
-	iface.RegisterClazzName(ClazzName_messageActionGiftCode, 215, 0x56d03994)                              // 56d03994
-	iface.RegisterClazzName(ClazzName_messageActionGiftCode, 214, 0x56d03994)                              // 56d03994
 	iface.RegisterClazzName(ClazzName_messageActionGiveawayLaunch, 216, 0xa80f51e4)                        // a80f51e4
-	iface.RegisterClazzName(ClazzName_messageActionGiveawayLaunch, 215, 0xa80f51e4)                        // a80f51e4
-	iface.RegisterClazzName(ClazzName_messageActionGiveawayLaunch, 214, 0xa80f51e4)                        // a80f51e4
 	iface.RegisterClazzName(ClazzName_messageActionGiveawayResults, 216, 0x87e2f155)                       // 87e2f155
-	iface.RegisterClazzName(ClazzName_messageActionGiveawayResults, 215, 0x87e2f155)                       // 87e2f155
-	iface.RegisterClazzName(ClazzName_messageActionGiveawayResults, 214, 0x87e2f155)                       // 87e2f155
 	iface.RegisterClazzName(ClazzName_messageActionBoostApply, 216, 0xcc02aa6d)                            // cc02aa6d
-	iface.RegisterClazzName(ClazzName_messageActionBoostApply, 215, 0xcc02aa6d)                            // cc02aa6d
-	iface.RegisterClazzName(ClazzName_messageActionBoostApply, 214, 0xcc02aa6d)                            // cc02aa6d
 	iface.RegisterClazzName(ClazzName_messageActionRequestedPeerSentMe, 216, 0x93b31848)                   // 93b31848
-	iface.RegisterClazzName(ClazzName_messageActionRequestedPeerSentMe, 215, 0x93b31848)                   // 93b31848
-	iface.RegisterClazzName(ClazzName_messageActionRequestedPeerSentMe, 214, 0x93b31848)                   // 93b31848
 	iface.RegisterClazzName(ClazzName_messageActionPaymentRefunded, 216, 0x41b3e202)                       // 41b3e202
-	iface.RegisterClazzName(ClazzName_messageActionPaymentRefunded, 215, 0x41b3e202)                       // 41b3e202
-	iface.RegisterClazzName(ClazzName_messageActionPaymentRefunded, 214, 0x41b3e202)                       // 41b3e202
 	iface.RegisterClazzName(ClazzName_messageActionGiftStars, 216, 0x45d5b021)                             // 45d5b021
-	iface.RegisterClazzName(ClazzName_messageActionGiftStars, 215, 0x45d5b021)                             // 45d5b021
-	iface.RegisterClazzName(ClazzName_messageActionGiftStars, 214, 0x45d5b021)                             // 45d5b021
 	iface.RegisterClazzName(ClazzName_messageActionPrizeStars, 216, 0xb00c47a2)                            // b00c47a2
-	iface.RegisterClazzName(ClazzName_messageActionPrizeStars, 215, 0xb00c47a2)                            // b00c47a2
-	iface.RegisterClazzName(ClazzName_messageActionPrizeStars, 214, 0xb00c47a2)                            // b00c47a2
 	iface.RegisterClazzName(ClazzName_messageActionStarGift, 216, 0xf24de7fa)                              // f24de7fa
-	iface.RegisterClazzName(ClazzName_messageActionStarGift, 215, 0xf24de7fa)                              // f24de7fa
-	iface.RegisterClazzName(ClazzName_messageActionStarGift, 214, 0xf24de7fa)                              // f24de7fa
 	iface.RegisterClazzName(ClazzName_messageActionStarGiftUnique, 216, 0x95728543)                        // 95728543
-	iface.RegisterClazzName(ClazzName_messageActionStarGiftUnique, 215, 0x95728543)                        // 95728543
-	iface.RegisterClazzName(ClazzName_messageActionStarGiftUnique, 214, 0x34f762f3)                        // 34f762f3
 	iface.RegisterClazzName(ClazzName_messageActionPaidMessagesRefunded, 216, 0xac1f1fcd)                  // ac1f1fcd
-	iface.RegisterClazzName(ClazzName_messageActionPaidMessagesRefunded, 215, 0xac1f1fcd)                  // ac1f1fcd
-	iface.RegisterClazzName(ClazzName_messageActionPaidMessagesRefunded, 214, 0xac1f1fcd)                  // ac1f1fcd
 	iface.RegisterClazzName(ClazzName_messageActionPaidMessagesPrice, 216, 0x84b88578)                     // 84b88578
-	iface.RegisterClazzName(ClazzName_messageActionPaidMessagesPrice, 215, 0x84b88578)                     // 84b88578
-	iface.RegisterClazzName(ClazzName_messageActionPaidMessagesPrice, 214, 0x84b88578)                     // 84b88578
 	iface.RegisterClazzName(ClazzName_messageActionConferenceCall, 216, 0x2ffe2f7a)                        // 2ffe2f7a
-	iface.RegisterClazzName(ClazzName_messageActionConferenceCall, 215, 0x2ffe2f7a)                        // 2ffe2f7a
-	iface.RegisterClazzName(ClazzName_messageActionConferenceCall, 214, 0x2ffe2f7a)                        // 2ffe2f7a
 	iface.RegisterClazzName(ClazzName_messageActionTodoCompletions, 216, 0xcc7c5c89)                       // cc7c5c89
-	iface.RegisterClazzName(ClazzName_messageActionTodoCompletions, 215, 0xcc7c5c89)                       // cc7c5c89
-	iface.RegisterClazzName(ClazzName_messageActionTodoCompletions, 214, 0xcc7c5c89)                       // cc7c5c89
 	iface.RegisterClazzName(ClazzName_messageActionTodoAppendTasks, 216, 0xc7edbc83)                       // c7edbc83
-	iface.RegisterClazzName(ClazzName_messageActionTodoAppendTasks, 215, 0xc7edbc83)                       // c7edbc83
-	iface.RegisterClazzName(ClazzName_messageActionTodoAppendTasks, 214, 0xc7edbc83)                       // c7edbc83
 	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostApproval, 216, 0xee7a1596)                 // ee7a1596
-	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostApproval, 215, 0xee7a1596)                 // ee7a1596
-	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostApproval, 214, 0xee7a1596)                 // ee7a1596
 	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostSuccess, 216, 0x95ddcf69)                  // 95ddcf69
-	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostSuccess, 215, 0x95ddcf69)                  // 95ddcf69
-	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostSuccess, 214, 0x95ddcf69)                  // 95ddcf69
 	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostRefund, 216, 0x69f916f8)                   // 69f916f8
-	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostRefund, 215, 0x69f916f8)                   // 69f916f8
-	iface.RegisterClazzName(ClazzName_messageActionSuggestedPostRefund, 214, 0x69f916f8)                   // 69f916f8
 	iface.RegisterClazzName(ClazzName_messageActionGiftTon, 216, 0xa8a3c699)                               // a8a3c699
-	iface.RegisterClazzName(ClazzName_messageActionGiftTon, 215, 0xa8a3c699)                               // a8a3c699
-	iface.RegisterClazzName(ClazzName_messageActionGiftTon, 214, 0xa8a3c699)                               // a8a3c699
 	iface.RegisterClazzName(ClazzName_messageActionSuggestBirthday, 216, 0x2c8f2a25)                       // 2c8f2a25
 	iface.RegisterClazzName(ClazzName_dialog, 216, 0xd58a08c6)                                             // d58a08c6
-	iface.RegisterClazzName(ClazzName_dialog, 215, 0xd58a08c6)                                             // d58a08c6
-	iface.RegisterClazzName(ClazzName_dialog, 214, 0xd58a08c6)                                             // d58a08c6
 	iface.RegisterClazzName(ClazzName_dialogFolder, 216, 0x71bd134c)                                       // 71bd134c
-	iface.RegisterClazzName(ClazzName_dialogFolder, 215, 0x71bd134c)                                       // 71bd134c
-	iface.RegisterClazzName(ClazzName_dialogFolder, 214, 0x71bd134c)                                       // 71bd134c
 	iface.RegisterClazzName(ClazzName_photoEmpty, 216, 0x2331b22d)                                         // 2331b22d
-	iface.RegisterClazzName(ClazzName_photoEmpty, 215, 0x2331b22d)                                         // 2331b22d
-	iface.RegisterClazzName(ClazzName_photoEmpty, 214, 0x2331b22d)                                         // 2331b22d
 	iface.RegisterClazzName(ClazzName_photo, 216, 0xfb197a65)                                              // fb197a65
-	iface.RegisterClazzName(ClazzName_photo, 215, 0xfb197a65)                                              // fb197a65
-	iface.RegisterClazzName(ClazzName_photo, 214, 0xfb197a65)                                              // fb197a65
 	iface.RegisterClazzName(ClazzName_photoSizeEmpty, 216, 0xe17e23c)                                      // e17e23c
-	iface.RegisterClazzName(ClazzName_photoSizeEmpty, 215, 0xe17e23c)                                      // e17e23c
-	iface.RegisterClazzName(ClazzName_photoSizeEmpty, 214, 0xe17e23c)                                      // e17e23c
 	iface.RegisterClazzName(ClazzName_photoSize, 216, 0x75c78e60)                                          // 75c78e60
-	iface.RegisterClazzName(ClazzName_photoSize, 215, 0x75c78e60)                                          // 75c78e60
-	iface.RegisterClazzName(ClazzName_photoSize, 214, 0x75c78e60)                                          // 75c78e60
 	iface.RegisterClazzName(ClazzName_photoCachedSize, 216, 0x21e1ad6)                                     // 21e1ad6
-	iface.RegisterClazzName(ClazzName_photoCachedSize, 215, 0x21e1ad6)                                     // 21e1ad6
-	iface.RegisterClazzName(ClazzName_photoCachedSize, 214, 0x21e1ad6)                                     // 21e1ad6
 	iface.RegisterClazzName(ClazzName_photoStrippedSize, 216, 0xe0b0bc2e)                                  // e0b0bc2e
-	iface.RegisterClazzName(ClazzName_photoStrippedSize, 215, 0xe0b0bc2e)                                  // e0b0bc2e
-	iface.RegisterClazzName(ClazzName_photoStrippedSize, 214, 0xe0b0bc2e)                                  // e0b0bc2e
 	iface.RegisterClazzName(ClazzName_photoSizeProgressive, 216, 0xfa3efb95)                               // fa3efb95
-	iface.RegisterClazzName(ClazzName_photoSizeProgressive, 215, 0xfa3efb95)                               // fa3efb95
-	iface.RegisterClazzName(ClazzName_photoSizeProgressive, 214, 0xfa3efb95)                               // fa3efb95
 	iface.RegisterClazzName(ClazzName_photoPathSize, 216, 0xd8214d41)                                      // d8214d41
-	iface.RegisterClazzName(ClazzName_photoPathSize, 215, 0xd8214d41)                                      // d8214d41
-	iface.RegisterClazzName(ClazzName_photoPathSize, 214, 0xd8214d41)                                      // d8214d41
 	iface.RegisterClazzName(ClazzName_geoPointEmpty, 216, 0x1117dd5f)                                      // 1117dd5f
-	iface.RegisterClazzName(ClazzName_geoPointEmpty, 215, 0x1117dd5f)                                      // 1117dd5f
-	iface.RegisterClazzName(ClazzName_geoPointEmpty, 214, 0x1117dd5f)                                      // 1117dd5f
 	iface.RegisterClazzName(ClazzName_geoPoint, 216, 0xb2a2f663)                                           // b2a2f663
-	iface.RegisterClazzName(ClazzName_geoPoint, 215, 0xb2a2f663)                                           // b2a2f663
-	iface.RegisterClazzName(ClazzName_geoPoint, 214, 0xb2a2f663)                                           // b2a2f663
 	iface.RegisterClazzName(ClazzName_auth_sentCode, 216, 0x5e002502)                                      // 5e002502
-	iface.RegisterClazzName(ClazzName_auth_sentCode, 215, 0x5e002502)                                      // 5e002502
-	iface.RegisterClazzName(ClazzName_auth_sentCode, 214, 0x5e002502)                                      // 5e002502
 	iface.RegisterClazzName(ClazzName_auth_sentCodeSuccess, 216, 0x2390fe44)                               // 2390fe44
-	iface.RegisterClazzName(ClazzName_auth_sentCodeSuccess, 215, 0x2390fe44)                               // 2390fe44
-	iface.RegisterClazzName(ClazzName_auth_sentCodeSuccess, 214, 0x2390fe44)                               // 2390fe44
 	iface.RegisterClazzName(ClazzName_auth_sentCodePaymentRequired, 216, 0xe0955a3c)                       // e0955a3c
-	iface.RegisterClazzName(ClazzName_auth_sentCodePaymentRequired, 215, 0xe0955a3c)                       // e0955a3c
-	iface.RegisterClazzName(ClazzName_auth_sentCodePaymentRequired, 214, 0xd7a2fcf9)                       // d7a2fcf9
 	iface.RegisterClazzName(ClazzName_auth_authorization, 216, 0x2ea2c0d4)                                 // 2ea2c0d4
-	iface.RegisterClazzName(ClazzName_auth_authorization, 215, 0x2ea2c0d4)                                 // 2ea2c0d4
-	iface.RegisterClazzName(ClazzName_auth_authorization, 214, 0x2ea2c0d4)                                 // 2ea2c0d4
 	iface.RegisterClazzName(ClazzName_auth_authorizationSignUpRequired, 216, 0x44747e9a)                   // 44747e9a
-	iface.RegisterClazzName(ClazzName_auth_authorizationSignUpRequired, 215, 0x44747e9a)                   // 44747e9a
-	iface.RegisterClazzName(ClazzName_auth_authorizationSignUpRequired, 214, 0x44747e9a)                   // 44747e9a
 	iface.RegisterClazzName(ClazzName_auth_exportedAuthorization, 216, 0xb434e2b8)                         // b434e2b8
-	iface.RegisterClazzName(ClazzName_auth_exportedAuthorization, 215, 0xb434e2b8)                         // b434e2b8
-	iface.RegisterClazzName(ClazzName_auth_exportedAuthorization, 214, 0xb434e2b8)                         // b434e2b8
 	iface.RegisterClazzName(ClazzName_inputNotifyPeer, 216, 0xb8bc5b0c)                                    // b8bc5b0c
-	iface.RegisterClazzName(ClazzName_inputNotifyPeer, 215, 0xb8bc5b0c)                                    // b8bc5b0c
-	iface.RegisterClazzName(ClazzName_inputNotifyPeer, 214, 0xb8bc5b0c)                                    // b8bc5b0c
 	iface.RegisterClazzName(ClazzName_inputNotifyUsers, 216, 0x193b4417)                                   // 193b4417
-	iface.RegisterClazzName(ClazzName_inputNotifyUsers, 215, 0x193b4417)                                   // 193b4417
-	iface.RegisterClazzName(ClazzName_inputNotifyUsers, 214, 0x193b4417)                                   // 193b4417
 	iface.RegisterClazzName(ClazzName_inputNotifyChats, 216, 0x4a95e84e)                                   // 4a95e84e
-	iface.RegisterClazzName(ClazzName_inputNotifyChats, 215, 0x4a95e84e)                                   // 4a95e84e
-	iface.RegisterClazzName(ClazzName_inputNotifyChats, 214, 0x4a95e84e)                                   // 4a95e84e
 	iface.RegisterClazzName(ClazzName_inputNotifyBroadcasts, 216, 0xb1db7c7e)                              // b1db7c7e
-	iface.RegisterClazzName(ClazzName_inputNotifyBroadcasts, 215, 0xb1db7c7e)                              // b1db7c7e
-	iface.RegisterClazzName(ClazzName_inputNotifyBroadcasts, 214, 0xb1db7c7e)                              // b1db7c7e
 	iface.RegisterClazzName(ClazzName_inputNotifyForumTopic, 216, 0x5c467992)                              // 5c467992
-	iface.RegisterClazzName(ClazzName_inputNotifyForumTopic, 215, 0x5c467992)                              // 5c467992
-	iface.RegisterClazzName(ClazzName_inputNotifyForumTopic, 214, 0x5c467992)                              // 5c467992
 	iface.RegisterClazzName(ClazzName_inputPeerNotifySettings, 216, 0xcacb6ae2)                            // cacb6ae2
-	iface.RegisterClazzName(ClazzName_inputPeerNotifySettings, 215, 0xcacb6ae2)                            // cacb6ae2
-	iface.RegisterClazzName(ClazzName_inputPeerNotifySettings, 214, 0xcacb6ae2)                            // cacb6ae2
 	iface.RegisterClazzName(ClazzName_peerNotifySettings, 216, 0x99622c0c)                                 // 99622c0c
-	iface.RegisterClazzName(ClazzName_peerNotifySettings, 215, 0x99622c0c)                                 // 99622c0c
-	iface.RegisterClazzName(ClazzName_peerNotifySettings, 214, 0x99622c0c)                                 // 99622c0c
 	iface.RegisterClazzName(ClazzName_peerSettings, 216, 0xf47741f7)                                       // f47741f7
-	iface.RegisterClazzName(ClazzName_peerSettings, 215, 0xf47741f7)                                       // f47741f7
-	iface.RegisterClazzName(ClazzName_peerSettings, 214, 0xf47741f7)                                       // f47741f7
 	iface.RegisterClazzName(ClazzName_wallPaper, 216, 0xa437c3ed)                                          // a437c3ed
-	iface.RegisterClazzName(ClazzName_wallPaper, 215, 0xa437c3ed)                                          // a437c3ed
-	iface.RegisterClazzName(ClazzName_wallPaper, 214, 0xa437c3ed)                                          // a437c3ed
 	iface.RegisterClazzName(ClazzName_wallPaperNoFile, 216, 0xe0804116)                                    // e0804116
-	iface.RegisterClazzName(ClazzName_wallPaperNoFile, 215, 0xe0804116)                                    // e0804116
-	iface.RegisterClazzName(ClazzName_wallPaperNoFile, 214, 0xe0804116)                                    // e0804116
 	iface.RegisterClazzName(ClazzName_inputReportReasonSpam, 216, 0x58dbcab8)                              // 58dbcab8
-	iface.RegisterClazzName(ClazzName_inputReportReasonSpam, 215, 0x58dbcab8)                              // 58dbcab8
-	iface.RegisterClazzName(ClazzName_inputReportReasonSpam, 214, 0x58dbcab8)                              // 58dbcab8
 	iface.RegisterClazzName(ClazzName_inputReportReasonViolence, 216, 0x1e22c78d)                          // 1e22c78d
-	iface.RegisterClazzName(ClazzName_inputReportReasonViolence, 215, 0x1e22c78d)                          // 1e22c78d
-	iface.RegisterClazzName(ClazzName_inputReportReasonViolence, 214, 0x1e22c78d)                          // 1e22c78d
 	iface.RegisterClazzName(ClazzName_inputReportReasonPornography, 216, 0x2e59d922)                       // 2e59d922
-	iface.RegisterClazzName(ClazzName_inputReportReasonPornography, 215, 0x2e59d922)                       // 2e59d922
-	iface.RegisterClazzName(ClazzName_inputReportReasonPornography, 214, 0x2e59d922)                       // 2e59d922
 	iface.RegisterClazzName(ClazzName_inputReportReasonChildAbuse, 216, 0xadf44ee3)                        // adf44ee3
-	iface.RegisterClazzName(ClazzName_inputReportReasonChildAbuse, 215, 0xadf44ee3)                        // adf44ee3
-	iface.RegisterClazzName(ClazzName_inputReportReasonChildAbuse, 214, 0xadf44ee3)                        // adf44ee3
 	iface.RegisterClazzName(ClazzName_inputReportReasonOther, 216, 0xc1e4a2b1)                             // c1e4a2b1
-	iface.RegisterClazzName(ClazzName_inputReportReasonOther, 215, 0xc1e4a2b1)                             // c1e4a2b1
-	iface.RegisterClazzName(ClazzName_inputReportReasonOther, 214, 0xc1e4a2b1)                             // c1e4a2b1
 	iface.RegisterClazzName(ClazzName_inputReportReasonCopyright, 216, 0x9b89f93a)                         // 9b89f93a
-	iface.RegisterClazzName(ClazzName_inputReportReasonCopyright, 215, 0x9b89f93a)                         // 9b89f93a
-	iface.RegisterClazzName(ClazzName_inputReportReasonCopyright, 214, 0x9b89f93a)                         // 9b89f93a
 	iface.RegisterClazzName(ClazzName_inputReportReasonGeoIrrelevant, 216, 0xdbd4feed)                     // dbd4feed
-	iface.RegisterClazzName(ClazzName_inputReportReasonGeoIrrelevant, 215, 0xdbd4feed)                     // dbd4feed
-	iface.RegisterClazzName(ClazzName_inputReportReasonGeoIrrelevant, 214, 0xdbd4feed)                     // dbd4feed
 	iface.RegisterClazzName(ClazzName_inputReportReasonFake, 216, 0xf5ddd6e7)                              // f5ddd6e7
-	iface.RegisterClazzName(ClazzName_inputReportReasonFake, 215, 0xf5ddd6e7)                              // f5ddd6e7
-	iface.RegisterClazzName(ClazzName_inputReportReasonFake, 214, 0xf5ddd6e7)                              // f5ddd6e7
 	iface.RegisterClazzName(ClazzName_inputReportReasonIllegalDrugs, 216, 0xa8eb2be)                       // a8eb2be
-	iface.RegisterClazzName(ClazzName_inputReportReasonIllegalDrugs, 215, 0xa8eb2be)                       // a8eb2be
-	iface.RegisterClazzName(ClazzName_inputReportReasonIllegalDrugs, 214, 0xa8eb2be)                       // a8eb2be
 	iface.RegisterClazzName(ClazzName_inputReportReasonPersonalDetails, 216, 0x9ec7863d)                   // 9ec7863d
-	iface.RegisterClazzName(ClazzName_inputReportReasonPersonalDetails, 215, 0x9ec7863d)                   // 9ec7863d
-	iface.RegisterClazzName(ClazzName_inputReportReasonPersonalDetails, 214, 0x9ec7863d)                   // 9ec7863d
 	iface.RegisterClazzName(ClazzName_userFull, 216, 0xa02bc13e)                                           // a02bc13e
-	iface.RegisterClazzName(ClazzName_userFull, 215, 0xc577b5ad)                                           // c577b5ad
-	iface.RegisterClazzName(ClazzName_userFull, 214, 0xc577b5ad)                                           // c577b5ad
 	iface.RegisterClazzName(ClazzName_contact, 216, 0x145ade0b)                                            // 145ade0b
-	iface.RegisterClazzName(ClazzName_contact, 215, 0x145ade0b)                                            // 145ade0b
-	iface.RegisterClazzName(ClazzName_contact, 214, 0x145ade0b)                                            // 145ade0b
 	iface.RegisterClazzName(ClazzName_importedContact, 216, 0xc13e3c50)                                    // c13e3c50
-	iface.RegisterClazzName(ClazzName_importedContact, 215, 0xc13e3c50)                                    // c13e3c50
-	iface.RegisterClazzName(ClazzName_importedContact, 214, 0xc13e3c50)                                    // c13e3c50
 	iface.RegisterClazzName(ClazzName_contactStatus, 216, 0x16d9703b)                                      // 16d9703b
-	iface.RegisterClazzName(ClazzName_contactStatus, 215, 0x16d9703b)                                      // 16d9703b
-	iface.RegisterClazzName(ClazzName_contactStatus, 214, 0x16d9703b)                                      // 16d9703b
 	iface.RegisterClazzName(ClazzName_contacts_contactsNotModified, 216, 0xb74ba9d2)                       // b74ba9d2
-	iface.RegisterClazzName(ClazzName_contacts_contactsNotModified, 215, 0xb74ba9d2)                       // b74ba9d2
-	iface.RegisterClazzName(ClazzName_contacts_contactsNotModified, 214, 0xb74ba9d2)                       // b74ba9d2
 	iface.RegisterClazzName(ClazzName_contacts_contacts, 216, 0xeae87e42)                                  // eae87e42
-	iface.RegisterClazzName(ClazzName_contacts_contacts, 215, 0xeae87e42)                                  // eae87e42
-	iface.RegisterClazzName(ClazzName_contacts_contacts, 214, 0xeae87e42)                                  // eae87e42
 	iface.RegisterClazzName(ClazzName_contacts_importedContacts, 216, 0x77d01c3b)                          // 77d01c3b
-	iface.RegisterClazzName(ClazzName_contacts_importedContacts, 215, 0x77d01c3b)                          // 77d01c3b
-	iface.RegisterClazzName(ClazzName_contacts_importedContacts, 214, 0x77d01c3b)                          // 77d01c3b
 	iface.RegisterClazzName(ClazzName_contacts_blocked, 216, 0xade1591)                                    // ade1591
-	iface.RegisterClazzName(ClazzName_contacts_blocked, 215, 0xade1591)                                    // ade1591
-	iface.RegisterClazzName(ClazzName_contacts_blocked, 214, 0xade1591)                                    // ade1591
 	iface.RegisterClazzName(ClazzName_contacts_blockedSlice, 216, 0xe1664194)                              // e1664194
-	iface.RegisterClazzName(ClazzName_contacts_blockedSlice, 215, 0xe1664194)                              // e1664194
-	iface.RegisterClazzName(ClazzName_contacts_blockedSlice, 214, 0xe1664194)                              // e1664194
 	iface.RegisterClazzName(ClazzName_messages_dialogs, 216, 0x15ba6c40)                                   // 15ba6c40
-	iface.RegisterClazzName(ClazzName_messages_dialogs, 215, 0x15ba6c40)                                   // 15ba6c40
-	iface.RegisterClazzName(ClazzName_messages_dialogs, 214, 0x15ba6c40)                                   // 15ba6c40
 	iface.RegisterClazzName(ClazzName_messages_dialogsSlice, 216, 0x71e094f3)                              // 71e094f3
-	iface.RegisterClazzName(ClazzName_messages_dialogsSlice, 215, 0x71e094f3)                              // 71e094f3
-	iface.RegisterClazzName(ClazzName_messages_dialogsSlice, 214, 0x71e094f3)                              // 71e094f3
 	iface.RegisterClazzName(ClazzName_messages_dialogsNotModified, 216, 0xf0e3e596)                        // f0e3e596
-	iface.RegisterClazzName(ClazzName_messages_dialogsNotModified, 215, 0xf0e3e596)                        // f0e3e596
-	iface.RegisterClazzName(ClazzName_messages_dialogsNotModified, 214, 0xf0e3e596)                        // f0e3e596
 	iface.RegisterClazzName(ClazzName_messages_messages, 216, 0x1d73e7ea)                                  // 1d73e7ea
-	iface.RegisterClazzName(ClazzName_messages_messages, 215, 0x8c718e87)                                  // 8c718e87
-	iface.RegisterClazzName(ClazzName_messages_messages, 214, 0x8c718e87)                                  // 8c718e87
 	iface.RegisterClazzName(ClazzName_messages_messagesSlice, 216, 0x5f206716)                             // 5f206716
-	iface.RegisterClazzName(ClazzName_messages_messagesSlice, 215, 0x762b263d)                             // 762b263d
-	iface.RegisterClazzName(ClazzName_messages_messagesSlice, 214, 0x762b263d)                             // 762b263d
 	iface.RegisterClazzName(ClazzName_messages_channelMessages, 216, 0xc776ba4e)                           // c776ba4e
-	iface.RegisterClazzName(ClazzName_messages_channelMessages, 215, 0xc776ba4e)                           // c776ba4e
-	iface.RegisterClazzName(ClazzName_messages_channelMessages, 214, 0xc776ba4e)                           // c776ba4e
 	iface.RegisterClazzName(ClazzName_messages_messagesNotModified, 216, 0x74535f21)                       // 74535f21
-	iface.RegisterClazzName(ClazzName_messages_messagesNotModified, 215, 0x74535f21)                       // 74535f21
-	iface.RegisterClazzName(ClazzName_messages_messagesNotModified, 214, 0x74535f21)                       // 74535f21
 	iface.RegisterClazzName(ClazzName_messages_chats, 216, 0x64ff9fd5)                                     // 64ff9fd5
-	iface.RegisterClazzName(ClazzName_messages_chats, 215, 0x64ff9fd5)                                     // 64ff9fd5
-	iface.RegisterClazzName(ClazzName_messages_chats, 214, 0x64ff9fd5)                                     // 64ff9fd5
 	iface.RegisterClazzName(ClazzName_messages_chatsSlice, 216, 0x9cd81144)                                // 9cd81144
-	iface.RegisterClazzName(ClazzName_messages_chatsSlice, 215, 0x9cd81144)                                // 9cd81144
-	iface.RegisterClazzName(ClazzName_messages_chatsSlice, 214, 0x9cd81144)                                // 9cd81144
 	iface.RegisterClazzName(ClazzName_messages_chatFull, 216, 0xe5d7d19c)                                  // e5d7d19c
-	iface.RegisterClazzName(ClazzName_messages_chatFull, 215, 0xe5d7d19c)                                  // e5d7d19c
-	iface.RegisterClazzName(ClazzName_messages_chatFull, 214, 0xe5d7d19c)                                  // e5d7d19c
 	iface.RegisterClazzName(ClazzName_messages_affectedHistory, 216, 0xb45c69d1)                           // b45c69d1
-	iface.RegisterClazzName(ClazzName_messages_affectedHistory, 215, 0xb45c69d1)                           // b45c69d1
-	iface.RegisterClazzName(ClazzName_messages_affectedHistory, 214, 0xb45c69d1)                           // b45c69d1
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterEmpty, 216, 0x57e2f66c)                           // 57e2f66c
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterEmpty, 215, 0x57e2f66c)                           // 57e2f66c
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterEmpty, 214, 0x57e2f66c)                           // 57e2f66c
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhotos, 216, 0x9609a51c)                          // 9609a51c
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhotos, 215, 0x9609a51c)                          // 9609a51c
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhotos, 214, 0x9609a51c)                          // 9609a51c
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterVideo, 216, 0x9fc00e65)                           // 9fc00e65
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterVideo, 215, 0x9fc00e65)                           // 9fc00e65
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterVideo, 214, 0x9fc00e65)                           // 9fc00e65
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhotoVideo, 216, 0x56e9f0e4)                      // 56e9f0e4
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhotoVideo, 215, 0x56e9f0e4)                      // 56e9f0e4
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhotoVideo, 214, 0x56e9f0e4)                      // 56e9f0e4
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterDocument, 216, 0x9eddf188)                        // 9eddf188
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterDocument, 215, 0x9eddf188)                        // 9eddf188
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterDocument, 214, 0x9eddf188)                        // 9eddf188
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterUrl, 216, 0x7ef0dd87)                             // 7ef0dd87
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterUrl, 215, 0x7ef0dd87)                             // 7ef0dd87
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterUrl, 214, 0x7ef0dd87)                             // 7ef0dd87
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterGif, 216, 0xffc86587)                             // ffc86587
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterGif, 215, 0xffc86587)                             // ffc86587
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterGif, 214, 0xffc86587)                             // ffc86587
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterVoice, 216, 0x50f5c392)                           // 50f5c392
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterVoice, 215, 0x50f5c392)                           // 50f5c392
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterVoice, 214, 0x50f5c392)                           // 50f5c392
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterMusic, 216, 0x3751b49e)                           // 3751b49e
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterMusic, 215, 0x3751b49e)                           // 3751b49e
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterMusic, 214, 0x3751b49e)                           // 3751b49e
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterChatPhotos, 216, 0x3a20ecb8)                      // 3a20ecb8
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterChatPhotos, 215, 0x3a20ecb8)                      // 3a20ecb8
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterChatPhotos, 214, 0x3a20ecb8)                      // 3a20ecb8
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhoneCalls, 216, 0x80c99768)                      // 80c99768
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhoneCalls, 215, 0x80c99768)                      // 80c99768
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPhoneCalls, 214, 0x80c99768)                      // 80c99768
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterRoundVoice, 216, 0x7a7c17a4)                      // 7a7c17a4
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterRoundVoice, 215, 0x7a7c17a4)                      // 7a7c17a4
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterRoundVoice, 214, 0x7a7c17a4)                      // 7a7c17a4
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterRoundVideo, 216, 0xb549da53)                      // b549da53
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterRoundVideo, 215, 0xb549da53)                      // b549da53
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterRoundVideo, 214, 0xb549da53)                      // b549da53
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterMyMentions, 216, 0xc1f8e69a)                      // c1f8e69a
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterMyMentions, 215, 0xc1f8e69a)                      // c1f8e69a
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterMyMentions, 214, 0xc1f8e69a)                      // c1f8e69a
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterGeo, 216, 0xe7026d0d)                             // e7026d0d
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterGeo, 215, 0xe7026d0d)                             // e7026d0d
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterGeo, 214, 0xe7026d0d)                             // e7026d0d
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterContacts, 216, 0xe062db83)                        // e062db83
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterContacts, 215, 0xe062db83)                        // e062db83
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterContacts, 214, 0xe062db83)                        // e062db83
 	iface.RegisterClazzName(ClazzName_inputMessagesFilterPinned, 216, 0x1bb00451)                          // 1bb00451
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPinned, 215, 0x1bb00451)                          // 1bb00451
-	iface.RegisterClazzName(ClazzName_inputMessagesFilterPinned, 214, 0x1bb00451)                          // 1bb00451
 	iface.RegisterClazzName(ClazzName_updateNewMessage, 216, 0x1f2b0afd)                                   // 1f2b0afd
-	iface.RegisterClazzName(ClazzName_updateNewMessage, 215, 0x1f2b0afd)                                   // 1f2b0afd
-	iface.RegisterClazzName(ClazzName_updateNewMessage, 214, 0x1f2b0afd)                                   // 1f2b0afd
 	iface.RegisterClazzName(ClazzName_updateMessageID, 216, 0x4e90bfd6)                                    // 4e90bfd6
-	iface.RegisterClazzName(ClazzName_updateMessageID, 215, 0x4e90bfd6)                                    // 4e90bfd6
-	iface.RegisterClazzName(ClazzName_updateMessageID, 214, 0x4e90bfd6)                                    // 4e90bfd6
 	iface.RegisterClazzName(ClazzName_updateDeleteMessages, 216, 0xa20db0e5)                               // a20db0e5
-	iface.RegisterClazzName(ClazzName_updateDeleteMessages, 215, 0xa20db0e5)                               // a20db0e5
-	iface.RegisterClazzName(ClazzName_updateDeleteMessages, 214, 0xa20db0e5)                               // a20db0e5
 	iface.RegisterClazzName(ClazzName_updateUserTyping, 216, 0x2a17bf5c)                                   // 2a17bf5c
-	iface.RegisterClazzName(ClazzName_updateUserTyping, 215, 0xc01e857f)                                   // c01e857f
-	iface.RegisterClazzName(ClazzName_updateUserTyping, 214, 0xc01e857f)                                   // c01e857f
 	iface.RegisterClazzName(ClazzName_updateChatUserTyping, 216, 0x83487af0)                               // 83487af0
-	iface.RegisterClazzName(ClazzName_updateChatUserTyping, 215, 0x83487af0)                               // 83487af0
-	iface.RegisterClazzName(ClazzName_updateChatUserTyping, 214, 0x83487af0)                               // 83487af0
 	iface.RegisterClazzName(ClazzName_updateChatParticipants, 216, 0x7761198)                              // 7761198
-	iface.RegisterClazzName(ClazzName_updateChatParticipants, 215, 0x7761198)                              // 7761198
-	iface.RegisterClazzName(ClazzName_updateChatParticipants, 214, 0x7761198)                              // 7761198
 	iface.RegisterClazzName(ClazzName_updateUserStatus, 216, 0xe5bdf8de)                                   // e5bdf8de
-	iface.RegisterClazzName(ClazzName_updateUserStatus, 215, 0xe5bdf8de)                                   // e5bdf8de
-	iface.RegisterClazzName(ClazzName_updateUserStatus, 214, 0xe5bdf8de)                                   // e5bdf8de
 	iface.RegisterClazzName(ClazzName_updateUserName, 216, 0xa7848924)                                     // a7848924
-	iface.RegisterClazzName(ClazzName_updateUserName, 215, 0xa7848924)                                     // a7848924
-	iface.RegisterClazzName(ClazzName_updateUserName, 214, 0xa7848924)                                     // a7848924
 	iface.RegisterClazzName(ClazzName_updateNewAuthorization, 216, 0x8951abef)                             // 8951abef
-	iface.RegisterClazzName(ClazzName_updateNewAuthorization, 215, 0x8951abef)                             // 8951abef
-	iface.RegisterClazzName(ClazzName_updateNewAuthorization, 214, 0x8951abef)                             // 8951abef
 	iface.RegisterClazzName(ClazzName_updateNewEncryptedMessage, 216, 0x12bcbd9a)                          // 12bcbd9a
-	iface.RegisterClazzName(ClazzName_updateNewEncryptedMessage, 215, 0x12bcbd9a)                          // 12bcbd9a
-	iface.RegisterClazzName(ClazzName_updateNewEncryptedMessage, 214, 0x12bcbd9a)                          // 12bcbd9a
 	iface.RegisterClazzName(ClazzName_updateEncryptedChatTyping, 216, 0x1710f156)                          // 1710f156
-	iface.RegisterClazzName(ClazzName_updateEncryptedChatTyping, 215, 0x1710f156)                          // 1710f156
-	iface.RegisterClazzName(ClazzName_updateEncryptedChatTyping, 214, 0x1710f156)                          // 1710f156
 	iface.RegisterClazzName(ClazzName_updateEncryption, 216, 0xb4a2e88d)                                   // b4a2e88d
-	iface.RegisterClazzName(ClazzName_updateEncryption, 215, 0xb4a2e88d)                                   // b4a2e88d
-	iface.RegisterClazzName(ClazzName_updateEncryption, 214, 0xb4a2e88d)                                   // b4a2e88d
 	iface.RegisterClazzName(ClazzName_updateEncryptedMessagesRead, 216, 0x38fe25b7)                        // 38fe25b7
-	iface.RegisterClazzName(ClazzName_updateEncryptedMessagesRead, 215, 0x38fe25b7)                        // 38fe25b7
-	iface.RegisterClazzName(ClazzName_updateEncryptedMessagesRead, 214, 0x38fe25b7)                        // 38fe25b7
 	iface.RegisterClazzName(ClazzName_updateChatParticipantAdd, 216, 0x3dda5451)                           // 3dda5451
-	iface.RegisterClazzName(ClazzName_updateChatParticipantAdd, 215, 0x3dda5451)                           // 3dda5451
-	iface.RegisterClazzName(ClazzName_updateChatParticipantAdd, 214, 0x3dda5451)                           // 3dda5451
 	iface.RegisterClazzName(ClazzName_updateChatParticipantDelete, 216, 0xe32f3d77)                        // e32f3d77
-	iface.RegisterClazzName(ClazzName_updateChatParticipantDelete, 215, 0xe32f3d77)                        // e32f3d77
-	iface.RegisterClazzName(ClazzName_updateChatParticipantDelete, 214, 0xe32f3d77)                        // e32f3d77
 	iface.RegisterClazzName(ClazzName_updateDcOptions, 216, 0x8e5e9873)                                    // 8e5e9873
-	iface.RegisterClazzName(ClazzName_updateDcOptions, 215, 0x8e5e9873)                                    // 8e5e9873
-	iface.RegisterClazzName(ClazzName_updateDcOptions, 214, 0x8e5e9873)                                    // 8e5e9873
 	iface.RegisterClazzName(ClazzName_updateNotifySettings, 216, 0xbec268ef)                               // bec268ef
-	iface.RegisterClazzName(ClazzName_updateNotifySettings, 215, 0xbec268ef)                               // bec268ef
-	iface.RegisterClazzName(ClazzName_updateNotifySettings, 214, 0xbec268ef)                               // bec268ef
 	iface.RegisterClazzName(ClazzName_updateServiceNotification, 216, 0xebe46819)                          // ebe46819
-	iface.RegisterClazzName(ClazzName_updateServiceNotification, 215, 0xebe46819)                          // ebe46819
-	iface.RegisterClazzName(ClazzName_updateServiceNotification, 214, 0xebe46819)                          // ebe46819
 	iface.RegisterClazzName(ClazzName_updatePrivacy, 216, 0xee3b272a)                                      // ee3b272a
-	iface.RegisterClazzName(ClazzName_updatePrivacy, 215, 0xee3b272a)                                      // ee3b272a
-	iface.RegisterClazzName(ClazzName_updatePrivacy, 214, 0xee3b272a)                                      // ee3b272a
 	iface.RegisterClazzName(ClazzName_updateUserPhone, 216, 0x5492a13)                                     // 5492a13
-	iface.RegisterClazzName(ClazzName_updateUserPhone, 215, 0x5492a13)                                     // 5492a13
-	iface.RegisterClazzName(ClazzName_updateUserPhone, 214, 0x5492a13)                                     // 5492a13
 	iface.RegisterClazzName(ClazzName_updateReadHistoryInbox, 216, 0x9e84bc99)                             // 9e84bc99
-	iface.RegisterClazzName(ClazzName_updateReadHistoryInbox, 215, 0x9c974fdf)                             // 9c974fdf
-	iface.RegisterClazzName(ClazzName_updateReadHistoryInbox, 214, 0x9c974fdf)                             // 9c974fdf
 	iface.RegisterClazzName(ClazzName_updateReadHistoryOutbox, 216, 0x2f2f21bf)                            // 2f2f21bf
-	iface.RegisterClazzName(ClazzName_updateReadHistoryOutbox, 215, 0x2f2f21bf)                            // 2f2f21bf
-	iface.RegisterClazzName(ClazzName_updateReadHistoryOutbox, 214, 0x2f2f21bf)                            // 2f2f21bf
 	iface.RegisterClazzName(ClazzName_updateWebPage, 216, 0x7f891213)                                      // 7f891213
-	iface.RegisterClazzName(ClazzName_updateWebPage, 215, 0x7f891213)                                      // 7f891213
-	iface.RegisterClazzName(ClazzName_updateWebPage, 214, 0x7f891213)                                      // 7f891213
 	iface.RegisterClazzName(ClazzName_updateReadMessagesContents, 216, 0xf8227181)                         // f8227181
-	iface.RegisterClazzName(ClazzName_updateReadMessagesContents, 215, 0xf8227181)                         // f8227181
-	iface.RegisterClazzName(ClazzName_updateReadMessagesContents, 214, 0xf8227181)                         // f8227181
 	iface.RegisterClazzName(ClazzName_updateChannelTooLong, 216, 0x108d941f)                               // 108d941f
-	iface.RegisterClazzName(ClazzName_updateChannelTooLong, 215, 0x108d941f)                               // 108d941f
-	iface.RegisterClazzName(ClazzName_updateChannelTooLong, 214, 0x108d941f)                               // 108d941f
 	iface.RegisterClazzName(ClazzName_updateChannel, 216, 0x635b4c09)                                      // 635b4c09
-	iface.RegisterClazzName(ClazzName_updateChannel, 215, 0x635b4c09)                                      // 635b4c09
-	iface.RegisterClazzName(ClazzName_updateChannel, 214, 0x635b4c09)                                      // 635b4c09
 	iface.RegisterClazzName(ClazzName_updateNewChannelMessage, 216, 0x62ba04d9)                            // 62ba04d9
-	iface.RegisterClazzName(ClazzName_updateNewChannelMessage, 215, 0x62ba04d9)                            // 62ba04d9
-	iface.RegisterClazzName(ClazzName_updateNewChannelMessage, 214, 0x62ba04d9)                            // 62ba04d9
 	iface.RegisterClazzName(ClazzName_updateReadChannelInbox, 216, 0x922e6e10)                             // 922e6e10
-	iface.RegisterClazzName(ClazzName_updateReadChannelInbox, 215, 0x922e6e10)                             // 922e6e10
-	iface.RegisterClazzName(ClazzName_updateReadChannelInbox, 214, 0x922e6e10)                             // 922e6e10
 	iface.RegisterClazzName(ClazzName_updateDeleteChannelMessages, 216, 0xc32d5b12)                        // c32d5b12
-	iface.RegisterClazzName(ClazzName_updateDeleteChannelMessages, 215, 0xc32d5b12)                        // c32d5b12
-	iface.RegisterClazzName(ClazzName_updateDeleteChannelMessages, 214, 0xc32d5b12)                        // c32d5b12
 	iface.RegisterClazzName(ClazzName_updateChannelMessageViews, 216, 0xf226ac08)                          // f226ac08
-	iface.RegisterClazzName(ClazzName_updateChannelMessageViews, 215, 0xf226ac08)                          // f226ac08
-	iface.RegisterClazzName(ClazzName_updateChannelMessageViews, 214, 0xf226ac08)                          // f226ac08
 	iface.RegisterClazzName(ClazzName_updateChatParticipantAdmin, 216, 0xd7ca61a2)                         // d7ca61a2
-	iface.RegisterClazzName(ClazzName_updateChatParticipantAdmin, 215, 0xd7ca61a2)                         // d7ca61a2
-	iface.RegisterClazzName(ClazzName_updateChatParticipantAdmin, 214, 0xd7ca61a2)                         // d7ca61a2
 	iface.RegisterClazzName(ClazzName_updateNewStickerSet, 216, 0x688a30aa)                                // 688a30aa
-	iface.RegisterClazzName(ClazzName_updateNewStickerSet, 215, 0x688a30aa)                                // 688a30aa
-	iface.RegisterClazzName(ClazzName_updateNewStickerSet, 214, 0x688a30aa)                                // 688a30aa
 	iface.RegisterClazzName(ClazzName_updateStickerSetsOrder, 216, 0xbb2d201)                              // bb2d201
-	iface.RegisterClazzName(ClazzName_updateStickerSetsOrder, 215, 0xbb2d201)                              // bb2d201
-	iface.RegisterClazzName(ClazzName_updateStickerSetsOrder, 214, 0xbb2d201)                              // bb2d201
 	iface.RegisterClazzName(ClazzName_updateStickerSets, 216, 0x31c24808)                                  // 31c24808
-	iface.RegisterClazzName(ClazzName_updateStickerSets, 215, 0x31c24808)                                  // 31c24808
-	iface.RegisterClazzName(ClazzName_updateStickerSets, 214, 0x31c24808)                                  // 31c24808
 	iface.RegisterClazzName(ClazzName_updateSavedGifs, 216, 0x9375341e)                                    // 9375341e
-	iface.RegisterClazzName(ClazzName_updateSavedGifs, 215, 0x9375341e)                                    // 9375341e
-	iface.RegisterClazzName(ClazzName_updateSavedGifs, 214, 0x9375341e)                                    // 9375341e
 	iface.RegisterClazzName(ClazzName_updateBotInlineQuery, 216, 0x496f379c)                               // 496f379c
-	iface.RegisterClazzName(ClazzName_updateBotInlineQuery, 215, 0x496f379c)                               // 496f379c
-	iface.RegisterClazzName(ClazzName_updateBotInlineQuery, 214, 0x496f379c)                               // 496f379c
 	iface.RegisterClazzName(ClazzName_updateBotInlineSend, 216, 0x12f12a07)                                // 12f12a07
-	iface.RegisterClazzName(ClazzName_updateBotInlineSend, 215, 0x12f12a07)                                // 12f12a07
-	iface.RegisterClazzName(ClazzName_updateBotInlineSend, 214, 0x12f12a07)                                // 12f12a07
 	iface.RegisterClazzName(ClazzName_updateEditChannelMessage, 216, 0x1b3f4df7)                           // 1b3f4df7
-	iface.RegisterClazzName(ClazzName_updateEditChannelMessage, 215, 0x1b3f4df7)                           // 1b3f4df7
-	iface.RegisterClazzName(ClazzName_updateEditChannelMessage, 214, 0x1b3f4df7)                           // 1b3f4df7
 	iface.RegisterClazzName(ClazzName_updateBotCallbackQuery, 216, 0xb9cfc48d)                             // b9cfc48d
-	iface.RegisterClazzName(ClazzName_updateBotCallbackQuery, 215, 0xb9cfc48d)                             // b9cfc48d
-	iface.RegisterClazzName(ClazzName_updateBotCallbackQuery, 214, 0xb9cfc48d)                             // b9cfc48d
 	iface.RegisterClazzName(ClazzName_updateEditMessage, 216, 0xe40370a3)                                  // e40370a3
-	iface.RegisterClazzName(ClazzName_updateEditMessage, 215, 0xe40370a3)                                  // e40370a3
-	iface.RegisterClazzName(ClazzName_updateEditMessage, 214, 0xe40370a3)                                  // e40370a3
 	iface.RegisterClazzName(ClazzName_updateInlineBotCallbackQuery, 216, 0x691e9052)                       // 691e9052
-	iface.RegisterClazzName(ClazzName_updateInlineBotCallbackQuery, 215, 0x691e9052)                       // 691e9052
-	iface.RegisterClazzName(ClazzName_updateInlineBotCallbackQuery, 214, 0x691e9052)                       // 691e9052
 	iface.RegisterClazzName(ClazzName_updateReadChannelOutbox, 216, 0xb75f99a9)                            // b75f99a9
-	iface.RegisterClazzName(ClazzName_updateReadChannelOutbox, 215, 0xb75f99a9)                            // b75f99a9
-	iface.RegisterClazzName(ClazzName_updateReadChannelOutbox, 214, 0xb75f99a9)                            // b75f99a9
 	iface.RegisterClazzName(ClazzName_updateDraftMessage, 216, 0xedfc111e)                                 // edfc111e
-	iface.RegisterClazzName(ClazzName_updateDraftMessage, 215, 0xedfc111e)                                 // edfc111e
-	iface.RegisterClazzName(ClazzName_updateDraftMessage, 214, 0xedfc111e)                                 // edfc111e
 	iface.RegisterClazzName(ClazzName_updateReadFeaturedStickers, 216, 0x571d2742)                         // 571d2742
-	iface.RegisterClazzName(ClazzName_updateReadFeaturedStickers, 215, 0x571d2742)                         // 571d2742
-	iface.RegisterClazzName(ClazzName_updateReadFeaturedStickers, 214, 0x571d2742)                         // 571d2742
 	iface.RegisterClazzName(ClazzName_updateRecentStickers, 216, 0x9a422c20)                               // 9a422c20
-	iface.RegisterClazzName(ClazzName_updateRecentStickers, 215, 0x9a422c20)                               // 9a422c20
-	iface.RegisterClazzName(ClazzName_updateRecentStickers, 214, 0x9a422c20)                               // 9a422c20
 	iface.RegisterClazzName(ClazzName_updateConfig, 216, 0xa229dd06)                                       // a229dd06
-	iface.RegisterClazzName(ClazzName_updateConfig, 215, 0xa229dd06)                                       // a229dd06
-	iface.RegisterClazzName(ClazzName_updateConfig, 214, 0xa229dd06)                                       // a229dd06
 	iface.RegisterClazzName(ClazzName_updatePtsChanged, 216, 0x3354678f)                                   // 3354678f
-	iface.RegisterClazzName(ClazzName_updatePtsChanged, 215, 0x3354678f)                                   // 3354678f
-	iface.RegisterClazzName(ClazzName_updatePtsChanged, 214, 0x3354678f)                                   // 3354678f
 	iface.RegisterClazzName(ClazzName_updateChannelWebPage, 216, 0x2f2ba99f)                               // 2f2ba99f
-	iface.RegisterClazzName(ClazzName_updateChannelWebPage, 215, 0x2f2ba99f)                               // 2f2ba99f
-	iface.RegisterClazzName(ClazzName_updateChannelWebPage, 214, 0x2f2ba99f)                               // 2f2ba99f
 	iface.RegisterClazzName(ClazzName_updateDialogPinned, 216, 0x6e6fe51c)                                 // 6e6fe51c
-	iface.RegisterClazzName(ClazzName_updateDialogPinned, 215, 0x6e6fe51c)                                 // 6e6fe51c
-	iface.RegisterClazzName(ClazzName_updateDialogPinned, 214, 0x6e6fe51c)                                 // 6e6fe51c
 	iface.RegisterClazzName(ClazzName_updatePinnedDialogs, 216, 0xfa0f3ca2)                                // fa0f3ca2
-	iface.RegisterClazzName(ClazzName_updatePinnedDialogs, 215, 0xfa0f3ca2)                                // fa0f3ca2
-	iface.RegisterClazzName(ClazzName_updatePinnedDialogs, 214, 0xfa0f3ca2)                                // fa0f3ca2
 	iface.RegisterClazzName(ClazzName_updateBotWebhookJSON, 216, 0x8317c0c3)                               // 8317c0c3
-	iface.RegisterClazzName(ClazzName_updateBotWebhookJSON, 215, 0x8317c0c3)                               // 8317c0c3
-	iface.RegisterClazzName(ClazzName_updateBotWebhookJSON, 214, 0x8317c0c3)                               // 8317c0c3
 	iface.RegisterClazzName(ClazzName_updateBotWebhookJSONQuery, 216, 0x9b9240a6)                          // 9b9240a6
-	iface.RegisterClazzName(ClazzName_updateBotWebhookJSONQuery, 215, 0x9b9240a6)                          // 9b9240a6
-	iface.RegisterClazzName(ClazzName_updateBotWebhookJSONQuery, 214, 0x9b9240a6)                          // 9b9240a6
 	iface.RegisterClazzName(ClazzName_updateBotShippingQuery, 216, 0xb5aefd7d)                             // b5aefd7d
-	iface.RegisterClazzName(ClazzName_updateBotShippingQuery, 215, 0xb5aefd7d)                             // b5aefd7d
-	iface.RegisterClazzName(ClazzName_updateBotShippingQuery, 214, 0xb5aefd7d)                             // b5aefd7d
 	iface.RegisterClazzName(ClazzName_updateBotPrecheckoutQuery, 216, 0x8caa9a96)                          // 8caa9a96
-	iface.RegisterClazzName(ClazzName_updateBotPrecheckoutQuery, 215, 0x8caa9a96)                          // 8caa9a96
-	iface.RegisterClazzName(ClazzName_updateBotPrecheckoutQuery, 214, 0x8caa9a96)                          // 8caa9a96
 	iface.RegisterClazzName(ClazzName_updatePhoneCall, 216, 0xab0f6b1e)                                    // ab0f6b1e
-	iface.RegisterClazzName(ClazzName_updatePhoneCall, 215, 0xab0f6b1e)                                    // ab0f6b1e
-	iface.RegisterClazzName(ClazzName_updatePhoneCall, 214, 0xab0f6b1e)                                    // ab0f6b1e
 	iface.RegisterClazzName(ClazzName_updateLangPackTooLong, 216, 0x46560264)                              // 46560264
-	iface.RegisterClazzName(ClazzName_updateLangPackTooLong, 215, 0x46560264)                              // 46560264
-	iface.RegisterClazzName(ClazzName_updateLangPackTooLong, 214, 0x46560264)                              // 46560264
 	iface.RegisterClazzName(ClazzName_updateLangPack, 216, 0x56022f4d)                                     // 56022f4d
-	iface.RegisterClazzName(ClazzName_updateLangPack, 215, 0x56022f4d)                                     // 56022f4d
-	iface.RegisterClazzName(ClazzName_updateLangPack, 214, 0x56022f4d)                                     // 56022f4d
 	iface.RegisterClazzName(ClazzName_updateFavedStickers, 216, 0xe511996d)                                // e511996d
-	iface.RegisterClazzName(ClazzName_updateFavedStickers, 215, 0xe511996d)                                // e511996d
-	iface.RegisterClazzName(ClazzName_updateFavedStickers, 214, 0xe511996d)                                // e511996d
 	iface.RegisterClazzName(ClazzName_updateChannelReadMessagesContents, 216, 0x25f324f7)                  // 25f324f7
-	iface.RegisterClazzName(ClazzName_updateChannelReadMessagesContents, 215, 0x25f324f7)                  // 25f324f7
-	iface.RegisterClazzName(ClazzName_updateChannelReadMessagesContents, 214, 0x25f324f7)                  // 25f324f7
 	iface.RegisterClazzName(ClazzName_updateContactsReset, 216, 0x7084a7be)                                // 7084a7be
-	iface.RegisterClazzName(ClazzName_updateContactsReset, 215, 0x7084a7be)                                // 7084a7be
-	iface.RegisterClazzName(ClazzName_updateContactsReset, 214, 0x7084a7be)                                // 7084a7be
 	iface.RegisterClazzName(ClazzName_updateChannelAvailableMessages, 216, 0xb23fc698)                     // b23fc698
-	iface.RegisterClazzName(ClazzName_updateChannelAvailableMessages, 215, 0xb23fc698)                     // b23fc698
-	iface.RegisterClazzName(ClazzName_updateChannelAvailableMessages, 214, 0xb23fc698)                     // b23fc698
 	iface.RegisterClazzName(ClazzName_updateDialogUnreadMark, 216, 0xb658f23e)                             // b658f23e
-	iface.RegisterClazzName(ClazzName_updateDialogUnreadMark, 215, 0xb658f23e)                             // b658f23e
-	iface.RegisterClazzName(ClazzName_updateDialogUnreadMark, 214, 0xb658f23e)                             // b658f23e
 	iface.RegisterClazzName(ClazzName_updateMessagePoll, 216, 0xaca1657b)                                  // aca1657b
-	iface.RegisterClazzName(ClazzName_updateMessagePoll, 215, 0xaca1657b)                                  // aca1657b
-	iface.RegisterClazzName(ClazzName_updateMessagePoll, 214, 0xaca1657b)                                  // aca1657b
 	iface.RegisterClazzName(ClazzName_updateChatDefaultBannedRights, 216, 0x54c01850)                      // 54c01850
-	iface.RegisterClazzName(ClazzName_updateChatDefaultBannedRights, 215, 0x54c01850)                      // 54c01850
-	iface.RegisterClazzName(ClazzName_updateChatDefaultBannedRights, 214, 0x54c01850)                      // 54c01850
 	iface.RegisterClazzName(ClazzName_updateFolderPeers, 216, 0x19360dc0)                                  // 19360dc0
-	iface.RegisterClazzName(ClazzName_updateFolderPeers, 215, 0x19360dc0)                                  // 19360dc0
-	iface.RegisterClazzName(ClazzName_updateFolderPeers, 214, 0x19360dc0)                                  // 19360dc0
 	iface.RegisterClazzName(ClazzName_updatePeerSettings, 216, 0x6a7e7366)                                 // 6a7e7366
-	iface.RegisterClazzName(ClazzName_updatePeerSettings, 215, 0x6a7e7366)                                 // 6a7e7366
-	iface.RegisterClazzName(ClazzName_updatePeerSettings, 214, 0x6a7e7366)                                 // 6a7e7366
 	iface.RegisterClazzName(ClazzName_updatePeerLocated, 216, 0xb4afcfb0)                                  // b4afcfb0
-	iface.RegisterClazzName(ClazzName_updatePeerLocated, 215, 0xb4afcfb0)                                  // b4afcfb0
-	iface.RegisterClazzName(ClazzName_updatePeerLocated, 214, 0xb4afcfb0)                                  // b4afcfb0
 	iface.RegisterClazzName(ClazzName_updateNewScheduledMessage, 216, 0x39a51dfb)                          // 39a51dfb
-	iface.RegisterClazzName(ClazzName_updateNewScheduledMessage, 215, 0x39a51dfb)                          // 39a51dfb
-	iface.RegisterClazzName(ClazzName_updateNewScheduledMessage, 214, 0x39a51dfb)                          // 39a51dfb
 	iface.RegisterClazzName(ClazzName_updateDeleteScheduledMessages, 216, 0xf2a71983)                      // f2a71983
-	iface.RegisterClazzName(ClazzName_updateDeleteScheduledMessages, 215, 0xf2a71983)                      // f2a71983
-	iface.RegisterClazzName(ClazzName_updateDeleteScheduledMessages, 214, 0xf2a71983)                      // f2a71983
 	iface.RegisterClazzName(ClazzName_updateTheme, 216, 0x8216fba3)                                        // 8216fba3
-	iface.RegisterClazzName(ClazzName_updateTheme, 215, 0x8216fba3)                                        // 8216fba3
-	iface.RegisterClazzName(ClazzName_updateTheme, 214, 0x8216fba3)                                        // 8216fba3
 	iface.RegisterClazzName(ClazzName_updateGeoLiveViewed, 216, 0x871fb939)                                // 871fb939
-	iface.RegisterClazzName(ClazzName_updateGeoLiveViewed, 215, 0x871fb939)                                // 871fb939
-	iface.RegisterClazzName(ClazzName_updateGeoLiveViewed, 214, 0x871fb939)                                // 871fb939
 	iface.RegisterClazzName(ClazzName_updateLoginToken, 216, 0x564fe691)                                   // 564fe691
-	iface.RegisterClazzName(ClazzName_updateLoginToken, 215, 0x564fe691)                                   // 564fe691
-	iface.RegisterClazzName(ClazzName_updateLoginToken, 214, 0x564fe691)                                   // 564fe691
 	iface.RegisterClazzName(ClazzName_updateMessagePollVote, 216, 0x24f40e77)                              // 24f40e77
-	iface.RegisterClazzName(ClazzName_updateMessagePollVote, 215, 0x24f40e77)                              // 24f40e77
-	iface.RegisterClazzName(ClazzName_updateMessagePollVote, 214, 0x24f40e77)                              // 24f40e77
 	iface.RegisterClazzName(ClazzName_updateDialogFilter, 216, 0x26ffde7d)                                 // 26ffde7d
-	iface.RegisterClazzName(ClazzName_updateDialogFilter, 215, 0x26ffde7d)                                 // 26ffde7d
-	iface.RegisterClazzName(ClazzName_updateDialogFilter, 214, 0x26ffde7d)                                 // 26ffde7d
 	iface.RegisterClazzName(ClazzName_updateDialogFilterOrder, 216, 0xa5d72105)                            // a5d72105
-	iface.RegisterClazzName(ClazzName_updateDialogFilterOrder, 215, 0xa5d72105)                            // a5d72105
-	iface.RegisterClazzName(ClazzName_updateDialogFilterOrder, 214, 0xa5d72105)                            // a5d72105
 	iface.RegisterClazzName(ClazzName_updateDialogFilters, 216, 0x3504914f)                                // 3504914f
-	iface.RegisterClazzName(ClazzName_updateDialogFilters, 215, 0x3504914f)                                // 3504914f
-	iface.RegisterClazzName(ClazzName_updateDialogFilters, 214, 0x3504914f)                                // 3504914f
 	iface.RegisterClazzName(ClazzName_updatePhoneCallSignalingData, 216, 0x2661bf09)                       // 2661bf09
-	iface.RegisterClazzName(ClazzName_updatePhoneCallSignalingData, 215, 0x2661bf09)                       // 2661bf09
-	iface.RegisterClazzName(ClazzName_updatePhoneCallSignalingData, 214, 0x2661bf09)                       // 2661bf09
 	iface.RegisterClazzName(ClazzName_updateChannelMessageForwards, 216, 0xd29a27f4)                       // d29a27f4
-	iface.RegisterClazzName(ClazzName_updateChannelMessageForwards, 215, 0xd29a27f4)                       // d29a27f4
-	iface.RegisterClazzName(ClazzName_updateChannelMessageForwards, 214, 0xd29a27f4)                       // d29a27f4
 	iface.RegisterClazzName(ClazzName_updateReadChannelDiscussionInbox, 216, 0xd6b19546)                   // d6b19546
-	iface.RegisterClazzName(ClazzName_updateReadChannelDiscussionInbox, 215, 0xd6b19546)                   // d6b19546
-	iface.RegisterClazzName(ClazzName_updateReadChannelDiscussionInbox, 214, 0xd6b19546)                   // d6b19546
 	iface.RegisterClazzName(ClazzName_updateReadChannelDiscussionOutbox, 216, 0x695c9e7c)                  // 695c9e7c
-	iface.RegisterClazzName(ClazzName_updateReadChannelDiscussionOutbox, 215, 0x695c9e7c)                  // 695c9e7c
-	iface.RegisterClazzName(ClazzName_updateReadChannelDiscussionOutbox, 214, 0x695c9e7c)                  // 695c9e7c
 	iface.RegisterClazzName(ClazzName_updatePeerBlocked, 216, 0xebe07752)                                  // ebe07752
-	iface.RegisterClazzName(ClazzName_updatePeerBlocked, 215, 0xebe07752)                                  // ebe07752
-	iface.RegisterClazzName(ClazzName_updatePeerBlocked, 214, 0xebe07752)                                  // ebe07752
 	iface.RegisterClazzName(ClazzName_updateChannelUserTyping, 216, 0x8c88c923)                            // 8c88c923
-	iface.RegisterClazzName(ClazzName_updateChannelUserTyping, 215, 0x8c88c923)                            // 8c88c923
-	iface.RegisterClazzName(ClazzName_updateChannelUserTyping, 214, 0x8c88c923)                            // 8c88c923
 	iface.RegisterClazzName(ClazzName_updatePinnedMessages, 216, 0xed85eab5)                               // ed85eab5
-	iface.RegisterClazzName(ClazzName_updatePinnedMessages, 215, 0xed85eab5)                               // ed85eab5
-	iface.RegisterClazzName(ClazzName_updatePinnedMessages, 214, 0xed85eab5)                               // ed85eab5
 	iface.RegisterClazzName(ClazzName_updatePinnedChannelMessages, 216, 0x5bb98608)                        // 5bb98608
-	iface.RegisterClazzName(ClazzName_updatePinnedChannelMessages, 215, 0x5bb98608)                        // 5bb98608
-	iface.RegisterClazzName(ClazzName_updatePinnedChannelMessages, 214, 0x5bb98608)                        // 5bb98608
 	iface.RegisterClazzName(ClazzName_updateChat, 216, 0xf89a6a4e)                                         // f89a6a4e
-	iface.RegisterClazzName(ClazzName_updateChat, 215, 0xf89a6a4e)                                         // f89a6a4e
-	iface.RegisterClazzName(ClazzName_updateChat, 214, 0xf89a6a4e)                                         // f89a6a4e
 	iface.RegisterClazzName(ClazzName_updateGroupCallParticipants, 216, 0xf2ebdb4e)                        // f2ebdb4e
-	iface.RegisterClazzName(ClazzName_updateGroupCallParticipants, 215, 0xf2ebdb4e)                        // f2ebdb4e
-	iface.RegisterClazzName(ClazzName_updateGroupCallParticipants, 214, 0xf2ebdb4e)                        // f2ebdb4e
 	iface.RegisterClazzName(ClazzName_updateGroupCall, 216, 0x97d64341)                                    // 97d64341
-	iface.RegisterClazzName(ClazzName_updateGroupCall, 215, 0x97d64341)                                    // 97d64341
-	iface.RegisterClazzName(ClazzName_updateGroupCall, 214, 0x97d64341)                                    // 97d64341
 	iface.RegisterClazzName(ClazzName_updatePeerHistoryTTL, 216, 0xbb9bb9a5)                               // bb9bb9a5
-	iface.RegisterClazzName(ClazzName_updatePeerHistoryTTL, 215, 0xbb9bb9a5)                               // bb9bb9a5
-	iface.RegisterClazzName(ClazzName_updatePeerHistoryTTL, 214, 0xbb9bb9a5)                               // bb9bb9a5
 	iface.RegisterClazzName(ClazzName_updateChatParticipant, 216, 0xd087663a)                              // d087663a
-	iface.RegisterClazzName(ClazzName_updateChatParticipant, 215, 0xd087663a)                              // d087663a
-	iface.RegisterClazzName(ClazzName_updateChatParticipant, 214, 0xd087663a)                              // d087663a
 	iface.RegisterClazzName(ClazzName_updateChannelParticipant, 216, 0x985d3abb)                           // 985d3abb
-	iface.RegisterClazzName(ClazzName_updateChannelParticipant, 215, 0x985d3abb)                           // 985d3abb
-	iface.RegisterClazzName(ClazzName_updateChannelParticipant, 214, 0x985d3abb)                           // 985d3abb
 	iface.RegisterClazzName(ClazzName_updateBotStopped, 216, 0xc4870a49)                                   // c4870a49
-	iface.RegisterClazzName(ClazzName_updateBotStopped, 215, 0xc4870a49)                                   // c4870a49
-	iface.RegisterClazzName(ClazzName_updateBotStopped, 214, 0xc4870a49)                                   // c4870a49
 	iface.RegisterClazzName(ClazzName_updateGroupCallConnection, 216, 0xb783982)                           // b783982
-	iface.RegisterClazzName(ClazzName_updateGroupCallConnection, 215, 0xb783982)                           // b783982
-	iface.RegisterClazzName(ClazzName_updateGroupCallConnection, 214, 0xb783982)                           // b783982
 	iface.RegisterClazzName(ClazzName_updateBotCommands, 216, 0x4d712f2e)                                  // 4d712f2e
-	iface.RegisterClazzName(ClazzName_updateBotCommands, 215, 0x4d712f2e)                                  // 4d712f2e
-	iface.RegisterClazzName(ClazzName_updateBotCommands, 214, 0x4d712f2e)                                  // 4d712f2e
 	iface.RegisterClazzName(ClazzName_updatePendingJoinRequests, 216, 0x7063c3db)                          // 7063c3db
-	iface.RegisterClazzName(ClazzName_updatePendingJoinRequests, 215, 0x7063c3db)                          // 7063c3db
-	iface.RegisterClazzName(ClazzName_updatePendingJoinRequests, 214, 0x7063c3db)                          // 7063c3db
 	iface.RegisterClazzName(ClazzName_updateBotChatInviteRequester, 216, 0x11dfa986)                       // 11dfa986
-	iface.RegisterClazzName(ClazzName_updateBotChatInviteRequester, 215, 0x11dfa986)                       // 11dfa986
-	iface.RegisterClazzName(ClazzName_updateBotChatInviteRequester, 214, 0x11dfa986)                       // 11dfa986
 	iface.RegisterClazzName(ClazzName_updateMessageReactions, 216, 0x1e297bfa)                             // 1e297bfa
-	iface.RegisterClazzName(ClazzName_updateMessageReactions, 215, 0x1e297bfa)                             // 1e297bfa
-	iface.RegisterClazzName(ClazzName_updateMessageReactions, 214, 0x1e297bfa)                             // 1e297bfa
 	iface.RegisterClazzName(ClazzName_updateAttachMenuBots, 216, 0x17b7a20b)                               // 17b7a20b
-	iface.RegisterClazzName(ClazzName_updateAttachMenuBots, 215, 0x17b7a20b)                               // 17b7a20b
-	iface.RegisterClazzName(ClazzName_updateAttachMenuBots, 214, 0x17b7a20b)                               // 17b7a20b
 	iface.RegisterClazzName(ClazzName_updateWebViewResultSent, 216, 0x1592b79d)                            // 1592b79d
-	iface.RegisterClazzName(ClazzName_updateWebViewResultSent, 215, 0x1592b79d)                            // 1592b79d
-	iface.RegisterClazzName(ClazzName_updateWebViewResultSent, 214, 0x1592b79d)                            // 1592b79d
 	iface.RegisterClazzName(ClazzName_updateBotMenuButton, 216, 0x14b85813)                                // 14b85813
-	iface.RegisterClazzName(ClazzName_updateBotMenuButton, 215, 0x14b85813)                                // 14b85813
-	iface.RegisterClazzName(ClazzName_updateBotMenuButton, 214, 0x14b85813)                                // 14b85813
 	iface.RegisterClazzName(ClazzName_updateSavedRingtones, 216, 0x74d8be99)                               // 74d8be99
-	iface.RegisterClazzName(ClazzName_updateSavedRingtones, 215, 0x74d8be99)                               // 74d8be99
-	iface.RegisterClazzName(ClazzName_updateSavedRingtones, 214, 0x74d8be99)                               // 74d8be99
 	iface.RegisterClazzName(ClazzName_updateTranscribedAudio, 216, 0x84cd5a)                               // 84cd5a
-	iface.RegisterClazzName(ClazzName_updateTranscribedAudio, 215, 0x84cd5a)                               // 84cd5a
-	iface.RegisterClazzName(ClazzName_updateTranscribedAudio, 214, 0x84cd5a)                               // 84cd5a
 	iface.RegisterClazzName(ClazzName_updateReadFeaturedEmojiStickers, 216, 0xfb4c496c)                    // fb4c496c
-	iface.RegisterClazzName(ClazzName_updateReadFeaturedEmojiStickers, 215, 0xfb4c496c)                    // fb4c496c
-	iface.RegisterClazzName(ClazzName_updateReadFeaturedEmojiStickers, 214, 0xfb4c496c)                    // fb4c496c
 	iface.RegisterClazzName(ClazzName_updateUserEmojiStatus, 216, 0x28373599)                              // 28373599
-	iface.RegisterClazzName(ClazzName_updateUserEmojiStatus, 215, 0x28373599)                              // 28373599
-	iface.RegisterClazzName(ClazzName_updateUserEmojiStatus, 214, 0x28373599)                              // 28373599
 	iface.RegisterClazzName(ClazzName_updateRecentEmojiStatuses, 216, 0x30f443db)                          // 30f443db
-	iface.RegisterClazzName(ClazzName_updateRecentEmojiStatuses, 215, 0x30f443db)                          // 30f443db
-	iface.RegisterClazzName(ClazzName_updateRecentEmojiStatuses, 214, 0x30f443db)                          // 30f443db
 	iface.RegisterClazzName(ClazzName_updateRecentReactions, 216, 0x6f7863f4)                              // 6f7863f4
-	iface.RegisterClazzName(ClazzName_updateRecentReactions, 215, 0x6f7863f4)                              // 6f7863f4
-	iface.RegisterClazzName(ClazzName_updateRecentReactions, 214, 0x6f7863f4)                              // 6f7863f4
 	iface.RegisterClazzName(ClazzName_updateMoveStickerSetToTop, 216, 0x86fccf85)                          // 86fccf85
-	iface.RegisterClazzName(ClazzName_updateMoveStickerSetToTop, 215, 0x86fccf85)                          // 86fccf85
-	iface.RegisterClazzName(ClazzName_updateMoveStickerSetToTop, 214, 0x86fccf85)                          // 86fccf85
 	iface.RegisterClazzName(ClazzName_updateMessageExtendedMedia, 216, 0xd5a41724)                         // d5a41724
-	iface.RegisterClazzName(ClazzName_updateMessageExtendedMedia, 215, 0xd5a41724)                         // d5a41724
-	iface.RegisterClazzName(ClazzName_updateMessageExtendedMedia, 214, 0xd5a41724)                         // d5a41724
 	iface.RegisterClazzName(ClazzName_updateUser, 216, 0x20529438)                                         // 20529438
-	iface.RegisterClazzName(ClazzName_updateUser, 215, 0x20529438)                                         // 20529438
-	iface.RegisterClazzName(ClazzName_updateUser, 214, 0x20529438)                                         // 20529438
 	iface.RegisterClazzName(ClazzName_updateAutoSaveSettings, 216, 0xec05b097)                             // ec05b097
-	iface.RegisterClazzName(ClazzName_updateAutoSaveSettings, 215, 0xec05b097)                             // ec05b097
-	iface.RegisterClazzName(ClazzName_updateAutoSaveSettings, 214, 0xec05b097)                             // ec05b097
 	iface.RegisterClazzName(ClazzName_updateStory, 216, 0x75b3b798)                                        // 75b3b798
-	iface.RegisterClazzName(ClazzName_updateStory, 215, 0x75b3b798)                                        // 75b3b798
-	iface.RegisterClazzName(ClazzName_updateStory, 214, 0x75b3b798)                                        // 75b3b798
 	iface.RegisterClazzName(ClazzName_updateReadStories, 216, 0xf74e932b)                                  // f74e932b
-	iface.RegisterClazzName(ClazzName_updateReadStories, 215, 0xf74e932b)                                  // f74e932b
-	iface.RegisterClazzName(ClazzName_updateReadStories, 214, 0xf74e932b)                                  // f74e932b
 	iface.RegisterClazzName(ClazzName_updateStoryID, 216, 0x1bf335b9)                                      // 1bf335b9
-	iface.RegisterClazzName(ClazzName_updateStoryID, 215, 0x1bf335b9)                                      // 1bf335b9
-	iface.RegisterClazzName(ClazzName_updateStoryID, 214, 0x1bf335b9)                                      // 1bf335b9
 	iface.RegisterClazzName(ClazzName_updateStoriesStealthMode, 216, 0x2c084dc1)                           // 2c084dc1
-	iface.RegisterClazzName(ClazzName_updateStoriesStealthMode, 215, 0x2c084dc1)                           // 2c084dc1
-	iface.RegisterClazzName(ClazzName_updateStoriesStealthMode, 214, 0x2c084dc1)                           // 2c084dc1
 	iface.RegisterClazzName(ClazzName_updateSentStoryReaction, 216, 0x7d627683)                            // 7d627683
-	iface.RegisterClazzName(ClazzName_updateSentStoryReaction, 215, 0x7d627683)                            // 7d627683
-	iface.RegisterClazzName(ClazzName_updateSentStoryReaction, 214, 0x7d627683)                            // 7d627683
 	iface.RegisterClazzName(ClazzName_updateBotChatBoost, 216, 0x904dd49c)                                 // 904dd49c
-	iface.RegisterClazzName(ClazzName_updateBotChatBoost, 215, 0x904dd49c)                                 // 904dd49c
-	iface.RegisterClazzName(ClazzName_updateBotChatBoost, 214, 0x904dd49c)                                 // 904dd49c
 	iface.RegisterClazzName(ClazzName_updateChannelViewForumAsMessages, 216, 0x7b68920)                    // 7b68920
-	iface.RegisterClazzName(ClazzName_updateChannelViewForumAsMessages, 215, 0x7b68920)                    // 7b68920
-	iface.RegisterClazzName(ClazzName_updateChannelViewForumAsMessages, 214, 0x7b68920)                    // 7b68920
 	iface.RegisterClazzName(ClazzName_updatePeerWallpaper, 216, 0xae3f101d)                                // ae3f101d
-	iface.RegisterClazzName(ClazzName_updatePeerWallpaper, 215, 0xae3f101d)                                // ae3f101d
-	iface.RegisterClazzName(ClazzName_updatePeerWallpaper, 214, 0xae3f101d)                                // ae3f101d
 	iface.RegisterClazzName(ClazzName_updateBotMessageReaction, 216, 0xac21d3ce)                           // ac21d3ce
-	iface.RegisterClazzName(ClazzName_updateBotMessageReaction, 215, 0xac21d3ce)                           // ac21d3ce
-	iface.RegisterClazzName(ClazzName_updateBotMessageReaction, 214, 0xac21d3ce)                           // ac21d3ce
 	iface.RegisterClazzName(ClazzName_updateBotMessageReactions, 216, 0x9cb7759)                           // 9cb7759
-	iface.RegisterClazzName(ClazzName_updateBotMessageReactions, 215, 0x9cb7759)                           // 9cb7759
-	iface.RegisterClazzName(ClazzName_updateBotMessageReactions, 214, 0x9cb7759)                           // 9cb7759
 	iface.RegisterClazzName(ClazzName_updateSavedDialogPinned, 216, 0xaeaf9e74)                            // aeaf9e74
-	iface.RegisterClazzName(ClazzName_updateSavedDialogPinned, 215, 0xaeaf9e74)                            // aeaf9e74
-	iface.RegisterClazzName(ClazzName_updateSavedDialogPinned, 214, 0xaeaf9e74)                            // aeaf9e74
 	iface.RegisterClazzName(ClazzName_updatePinnedSavedDialogs, 216, 0x686c85a6)                           // 686c85a6
-	iface.RegisterClazzName(ClazzName_updatePinnedSavedDialogs, 215, 0x686c85a6)                           // 686c85a6
-	iface.RegisterClazzName(ClazzName_updatePinnedSavedDialogs, 214, 0x686c85a6)                           // 686c85a6
 	iface.RegisterClazzName(ClazzName_updateSavedReactionTags, 216, 0x39c67432)                            // 39c67432
-	iface.RegisterClazzName(ClazzName_updateSavedReactionTags, 215, 0x39c67432)                            // 39c67432
-	iface.RegisterClazzName(ClazzName_updateSavedReactionTags, 214, 0x39c67432)                            // 39c67432
 	iface.RegisterClazzName(ClazzName_updateSmsJob, 216, 0xf16269d4)                                       // f16269d4
-	iface.RegisterClazzName(ClazzName_updateSmsJob, 215, 0xf16269d4)                                       // f16269d4
-	iface.RegisterClazzName(ClazzName_updateSmsJob, 214, 0xf16269d4)                                       // f16269d4
 	iface.RegisterClazzName(ClazzName_updateQuickReplies, 216, 0xf9470ab2)                                 // f9470ab2
-	iface.RegisterClazzName(ClazzName_updateQuickReplies, 215, 0xf9470ab2)                                 // f9470ab2
-	iface.RegisterClazzName(ClazzName_updateQuickReplies, 214, 0xf9470ab2)                                 // f9470ab2
 	iface.RegisterClazzName(ClazzName_updateNewQuickReply, 216, 0xf53da717)                                // f53da717
-	iface.RegisterClazzName(ClazzName_updateNewQuickReply, 215, 0xf53da717)                                // f53da717
-	iface.RegisterClazzName(ClazzName_updateNewQuickReply, 214, 0xf53da717)                                // f53da717
 	iface.RegisterClazzName(ClazzName_updateDeleteQuickReply, 216, 0x53e6f1ec)                             // 53e6f1ec
-	iface.RegisterClazzName(ClazzName_updateDeleteQuickReply, 215, 0x53e6f1ec)                             // 53e6f1ec
-	iface.RegisterClazzName(ClazzName_updateDeleteQuickReply, 214, 0x53e6f1ec)                             // 53e6f1ec
 	iface.RegisterClazzName(ClazzName_updateQuickReplyMessage, 216, 0x3e050d0f)                            // 3e050d0f
-	iface.RegisterClazzName(ClazzName_updateQuickReplyMessage, 215, 0x3e050d0f)                            // 3e050d0f
-	iface.RegisterClazzName(ClazzName_updateQuickReplyMessage, 214, 0x3e050d0f)                            // 3e050d0f
 	iface.RegisterClazzName(ClazzName_updateDeleteQuickReplyMessages, 216, 0x566fe7cd)                     // 566fe7cd
-	iface.RegisterClazzName(ClazzName_updateDeleteQuickReplyMessages, 215, 0x566fe7cd)                     // 566fe7cd
-	iface.RegisterClazzName(ClazzName_updateDeleteQuickReplyMessages, 214, 0x566fe7cd)                     // 566fe7cd
 	iface.RegisterClazzName(ClazzName_updateBotBusinessConnect, 216, 0x8ae5c97a)                           // 8ae5c97a
-	iface.RegisterClazzName(ClazzName_updateBotBusinessConnect, 215, 0x8ae5c97a)                           // 8ae5c97a
-	iface.RegisterClazzName(ClazzName_updateBotBusinessConnect, 214, 0x8ae5c97a)                           // 8ae5c97a
 	iface.RegisterClazzName(ClazzName_updateBotNewBusinessMessage, 216, 0x9ddb347c)                        // 9ddb347c
-	iface.RegisterClazzName(ClazzName_updateBotNewBusinessMessage, 215, 0x9ddb347c)                        // 9ddb347c
-	iface.RegisterClazzName(ClazzName_updateBotNewBusinessMessage, 214, 0x9ddb347c)                        // 9ddb347c
 	iface.RegisterClazzName(ClazzName_updateBotEditBusinessMessage, 216, 0x7df587c)                        // 7df587c
-	iface.RegisterClazzName(ClazzName_updateBotEditBusinessMessage, 215, 0x7df587c)                        // 7df587c
-	iface.RegisterClazzName(ClazzName_updateBotEditBusinessMessage, 214, 0x7df587c)                        // 7df587c
 	iface.RegisterClazzName(ClazzName_updateBotDeleteBusinessMessage, 216, 0xa02a982e)                     // a02a982e
-	iface.RegisterClazzName(ClazzName_updateBotDeleteBusinessMessage, 215, 0xa02a982e)                     // a02a982e
-	iface.RegisterClazzName(ClazzName_updateBotDeleteBusinessMessage, 214, 0xa02a982e)                     // a02a982e
 	iface.RegisterClazzName(ClazzName_updateNewStoryReaction, 216, 0x1824e40b)                             // 1824e40b
-	iface.RegisterClazzName(ClazzName_updateNewStoryReaction, 215, 0x1824e40b)                             // 1824e40b
-	iface.RegisterClazzName(ClazzName_updateNewStoryReaction, 214, 0x1824e40b)                             // 1824e40b
 	iface.RegisterClazzName(ClazzName_updateStarsBalance, 216, 0x4e80a379)                                 // 4e80a379
-	iface.RegisterClazzName(ClazzName_updateStarsBalance, 215, 0x4e80a379)                                 // 4e80a379
-	iface.RegisterClazzName(ClazzName_updateStarsBalance, 214, 0x4e80a379)                                 // 4e80a379
 	iface.RegisterClazzName(ClazzName_updateBusinessBotCallbackQuery, 216, 0x1ea2fda7)                     // 1ea2fda7
-	iface.RegisterClazzName(ClazzName_updateBusinessBotCallbackQuery, 215, 0x1ea2fda7)                     // 1ea2fda7
-	iface.RegisterClazzName(ClazzName_updateBusinessBotCallbackQuery, 214, 0x1ea2fda7)                     // 1ea2fda7
 	iface.RegisterClazzName(ClazzName_updateStarsRevenueStatus, 216, 0xa584b019)                           // a584b019
-	iface.RegisterClazzName(ClazzName_updateStarsRevenueStatus, 215, 0xa584b019)                           // a584b019
-	iface.RegisterClazzName(ClazzName_updateStarsRevenueStatus, 214, 0xa584b019)                           // a584b019
 	iface.RegisterClazzName(ClazzName_updateBotPurchasedPaidMedia, 216, 0x283bd312)                        // 283bd312
-	iface.RegisterClazzName(ClazzName_updateBotPurchasedPaidMedia, 215, 0x283bd312)                        // 283bd312
-	iface.RegisterClazzName(ClazzName_updateBotPurchasedPaidMedia, 214, 0x283bd312)                        // 283bd312
 	iface.RegisterClazzName(ClazzName_updatePaidReactionPrivacy, 216, 0x8b725fce)                          // 8b725fce
-	iface.RegisterClazzName(ClazzName_updatePaidReactionPrivacy, 215, 0x8b725fce)                          // 8b725fce
-	iface.RegisterClazzName(ClazzName_updatePaidReactionPrivacy, 214, 0x8b725fce)                          // 8b725fce
 	iface.RegisterClazzName(ClazzName_updateSentPhoneCode, 216, 0x504aa18f)                                // 504aa18f
-	iface.RegisterClazzName(ClazzName_updateSentPhoneCode, 215, 0x504aa18f)                                // 504aa18f
-	iface.RegisterClazzName(ClazzName_updateSentPhoneCode, 214, 0x504aa18f)                                // 504aa18f
 	iface.RegisterClazzName(ClazzName_updateGroupCallChainBlocks, 216, 0xa477288f)                         // a477288f
-	iface.RegisterClazzName(ClazzName_updateGroupCallChainBlocks, 215, 0xa477288f)                         // a477288f
-	iface.RegisterClazzName(ClazzName_updateGroupCallChainBlocks, 214, 0xa477288f)                         // a477288f
 	iface.RegisterClazzName(ClazzName_updateReadMonoForumInbox, 216, 0x77b0e372)                           // 77b0e372
-	iface.RegisterClazzName(ClazzName_updateReadMonoForumInbox, 215, 0x77b0e372)                           // 77b0e372
-	iface.RegisterClazzName(ClazzName_updateReadMonoForumInbox, 214, 0x77b0e372)                           // 77b0e372
 	iface.RegisterClazzName(ClazzName_updateReadMonoForumOutbox, 216, 0xa4a79376)                          // a4a79376
-	iface.RegisterClazzName(ClazzName_updateReadMonoForumOutbox, 215, 0xa4a79376)                          // a4a79376
-	iface.RegisterClazzName(ClazzName_updateReadMonoForumOutbox, 214, 0xa4a79376)                          // a4a79376
 	iface.RegisterClazzName(ClazzName_updateMonoForumNoPaidException, 216, 0x9f812b08)                     // 9f812b08
-	iface.RegisterClazzName(ClazzName_updateMonoForumNoPaidException, 215, 0x9f812b08)                     // 9f812b08
-	iface.RegisterClazzName(ClazzName_updateMonoForumNoPaidException, 214, 0x9f812b08)                     // 9f812b08
 	iface.RegisterClazzName(ClazzName_updateGroupCallMessage, 216, 0x78c314e0)                             // 78c314e0
 	iface.RegisterClazzName(ClazzName_updateGroupCallEncryptedMessage, 216, 0xc957a766)                    // c957a766
 	iface.RegisterClazzName(ClazzName_updatePinnedForumTopic, 216, 0x683b2c52)                             // 683b2c52
 	iface.RegisterClazzName(ClazzName_updatePinnedForumTopics, 216, 0xdef143d0)                            // def143d0
 	iface.RegisterClazzName(ClazzName_updates_state, 216, 0xa56c2a3e)                                      // a56c2a3e
-	iface.RegisterClazzName(ClazzName_updates_state, 215, 0xa56c2a3e)                                      // a56c2a3e
-	iface.RegisterClazzName(ClazzName_updates_state, 214, 0xa56c2a3e)                                      // a56c2a3e
 	iface.RegisterClazzName(ClazzName_updates_differenceEmpty, 216, 0x5d75a138)                            // 5d75a138
-	iface.RegisterClazzName(ClazzName_updates_differenceEmpty, 215, 0x5d75a138)                            // 5d75a138
-	iface.RegisterClazzName(ClazzName_updates_differenceEmpty, 214, 0x5d75a138)                            // 5d75a138
 	iface.RegisterClazzName(ClazzName_updates_difference, 216, 0xf49ca0)                                   // f49ca0
-	iface.RegisterClazzName(ClazzName_updates_difference, 215, 0xf49ca0)                                   // f49ca0
-	iface.RegisterClazzName(ClazzName_updates_difference, 214, 0xf49ca0)                                   // f49ca0
 	iface.RegisterClazzName(ClazzName_updates_differenceSlice, 216, 0xa8fb1981)                            // a8fb1981
-	iface.RegisterClazzName(ClazzName_updates_differenceSlice, 215, 0xa8fb1981)                            // a8fb1981
-	iface.RegisterClazzName(ClazzName_updates_differenceSlice, 214, 0xa8fb1981)                            // a8fb1981
 	iface.RegisterClazzName(ClazzName_updates_differenceTooLong, 216, 0x4afe8f6d)                          // 4afe8f6d
-	iface.RegisterClazzName(ClazzName_updates_differenceTooLong, 215, 0x4afe8f6d)                          // 4afe8f6d
-	iface.RegisterClazzName(ClazzName_updates_differenceTooLong, 214, 0x4afe8f6d)                          // 4afe8f6d
 	iface.RegisterClazzName(ClazzName_updatesTooLong, 216, 0xe317af7e)                                     // e317af7e
-	iface.RegisterClazzName(ClazzName_updatesTooLong, 215, 0xe317af7e)                                     // e317af7e
-	iface.RegisterClazzName(ClazzName_updatesTooLong, 214, 0xe317af7e)                                     // e317af7e
 	iface.RegisterClazzName(ClazzName_updateShortMessage, 216, 0x313bc7f8)                                 // 313bc7f8
-	iface.RegisterClazzName(ClazzName_updateShortMessage, 215, 0x313bc7f8)                                 // 313bc7f8
-	iface.RegisterClazzName(ClazzName_updateShortMessage, 214, 0x313bc7f8)                                 // 313bc7f8
 	iface.RegisterClazzName(ClazzName_updateShortChatMessage, 216, 0x4d6deea5)                             // 4d6deea5
-	iface.RegisterClazzName(ClazzName_updateShortChatMessage, 215, 0x4d6deea5)                             // 4d6deea5
-	iface.RegisterClazzName(ClazzName_updateShortChatMessage, 214, 0x4d6deea5)                             // 4d6deea5
 	iface.RegisterClazzName(ClazzName_updateShort, 216, 0x78d4dec1)                                        // 78d4dec1
-	iface.RegisterClazzName(ClazzName_updateShort, 215, 0x78d4dec1)                                        // 78d4dec1
-	iface.RegisterClazzName(ClazzName_updateShort, 214, 0x78d4dec1)                                        // 78d4dec1
 	iface.RegisterClazzName(ClazzName_updatesCombined, 216, 0x725b04c3)                                    // 725b04c3
-	iface.RegisterClazzName(ClazzName_updatesCombined, 215, 0x725b04c3)                                    // 725b04c3
-	iface.RegisterClazzName(ClazzName_updatesCombined, 214, 0x725b04c3)                                    // 725b04c3
 	iface.RegisterClazzName(ClazzName_updates, 216, 0x74ae4240)                                            // 74ae4240
-	iface.RegisterClazzName(ClazzName_updates, 215, 0x74ae4240)                                            // 74ae4240
-	iface.RegisterClazzName(ClazzName_updates, 214, 0x74ae4240)                                            // 74ae4240
 	iface.RegisterClazzName(ClazzName_updateShortSentMessage, 216, 0x9015e101)                             // 9015e101
-	iface.RegisterClazzName(ClazzName_updateShortSentMessage, 215, 0x9015e101)                             // 9015e101
-	iface.RegisterClazzName(ClazzName_updateShortSentMessage, 214, 0x9015e101)                             // 9015e101
 	iface.RegisterClazzName(ClazzName_photos_photos, 216, 0x8dca6aa5)                                      // 8dca6aa5
-	iface.RegisterClazzName(ClazzName_photos_photos, 215, 0x8dca6aa5)                                      // 8dca6aa5
-	iface.RegisterClazzName(ClazzName_photos_photos, 214, 0x8dca6aa5)                                      // 8dca6aa5
 	iface.RegisterClazzName(ClazzName_photos_photosSlice, 216, 0x15051f54)                                 // 15051f54
-	iface.RegisterClazzName(ClazzName_photos_photosSlice, 215, 0x15051f54)                                 // 15051f54
-	iface.RegisterClazzName(ClazzName_photos_photosSlice, 214, 0x15051f54)                                 // 15051f54
 	iface.RegisterClazzName(ClazzName_photos_photo, 216, 0x20212ca8)                                       // 20212ca8
-	iface.RegisterClazzName(ClazzName_photos_photo, 215, 0x20212ca8)                                       // 20212ca8
-	iface.RegisterClazzName(ClazzName_photos_photo, 214, 0x20212ca8)                                       // 20212ca8
 	iface.RegisterClazzName(ClazzName_upload_file, 216, 0x96a18d5)                                         // 96a18d5
-	iface.RegisterClazzName(ClazzName_upload_file, 215, 0x96a18d5)                                         // 96a18d5
-	iface.RegisterClazzName(ClazzName_upload_file, 214, 0x96a18d5)                                         // 96a18d5
 	iface.RegisterClazzName(ClazzName_upload_fileCdnRedirect, 216, 0xf18cda44)                             // f18cda44
-	iface.RegisterClazzName(ClazzName_upload_fileCdnRedirect, 215, 0xf18cda44)                             // f18cda44
-	iface.RegisterClazzName(ClazzName_upload_fileCdnRedirect, 214, 0xf18cda44)                             // f18cda44
 	iface.RegisterClazzName(ClazzName_dcOption, 216, 0x18b7a10d)                                           // 18b7a10d
-	iface.RegisterClazzName(ClazzName_dcOption, 215, 0x18b7a10d)                                           // 18b7a10d
-	iface.RegisterClazzName(ClazzName_dcOption, 214, 0x18b7a10d)                                           // 18b7a10d
 	iface.RegisterClazzName(ClazzName_config, 216, 0xcc1a241e)                                             // cc1a241e
-	iface.RegisterClazzName(ClazzName_config, 215, 0xcc1a241e)                                             // cc1a241e
-	iface.RegisterClazzName(ClazzName_config, 214, 0xcc1a241e)                                             // cc1a241e
 	iface.RegisterClazzName(ClazzName_nearestDc, 216, 0x8e1a1775)                                          // 8e1a1775
-	iface.RegisterClazzName(ClazzName_nearestDc, 215, 0x8e1a1775)                                          // 8e1a1775
-	iface.RegisterClazzName(ClazzName_nearestDc, 214, 0x8e1a1775)                                          // 8e1a1775
 	iface.RegisterClazzName(ClazzName_help_appUpdate, 216, 0xccbbce30)                                     // ccbbce30
-	iface.RegisterClazzName(ClazzName_help_appUpdate, 215, 0xccbbce30)                                     // ccbbce30
-	iface.RegisterClazzName(ClazzName_help_appUpdate, 214, 0xccbbce30)                                     // ccbbce30
 	iface.RegisterClazzName(ClazzName_help_noAppUpdate, 216, 0xc45a6536)                                   // c45a6536
-	iface.RegisterClazzName(ClazzName_help_noAppUpdate, 215, 0xc45a6536)                                   // c45a6536
-	iface.RegisterClazzName(ClazzName_help_noAppUpdate, 214, 0xc45a6536)                                   // c45a6536
 	iface.RegisterClazzName(ClazzName_help_inviteText, 216, 0x18cb9f78)                                    // 18cb9f78
-	iface.RegisterClazzName(ClazzName_help_inviteText, 215, 0x18cb9f78)                                    // 18cb9f78
-	iface.RegisterClazzName(ClazzName_help_inviteText, 214, 0x18cb9f78)                                    // 18cb9f78
 	iface.RegisterClazzName(ClazzName_encryptedChatEmpty, 216, 0xab7ec0a0)                                 // ab7ec0a0
-	iface.RegisterClazzName(ClazzName_encryptedChatEmpty, 215, 0xab7ec0a0)                                 // ab7ec0a0
-	iface.RegisterClazzName(ClazzName_encryptedChatEmpty, 214, 0xab7ec0a0)                                 // ab7ec0a0
 	iface.RegisterClazzName(ClazzName_encryptedChatWaiting, 216, 0x66b25953)                               // 66b25953
-	iface.RegisterClazzName(ClazzName_encryptedChatWaiting, 215, 0x66b25953)                               // 66b25953
-	iface.RegisterClazzName(ClazzName_encryptedChatWaiting, 214, 0x66b25953)                               // 66b25953
 	iface.RegisterClazzName(ClazzName_encryptedChatRequested, 216, 0x48f1d94c)                             // 48f1d94c
-	iface.RegisterClazzName(ClazzName_encryptedChatRequested, 215, 0x48f1d94c)                             // 48f1d94c
-	iface.RegisterClazzName(ClazzName_encryptedChatRequested, 214, 0x48f1d94c)                             // 48f1d94c
 	iface.RegisterClazzName(ClazzName_encryptedChat, 216, 0x61f0d4c7)                                      // 61f0d4c7
-	iface.RegisterClazzName(ClazzName_encryptedChat, 215, 0x61f0d4c7)                                      // 61f0d4c7
-	iface.RegisterClazzName(ClazzName_encryptedChat, 214, 0x61f0d4c7)                                      // 61f0d4c7
 	iface.RegisterClazzName(ClazzName_encryptedChatDiscarded, 216, 0x1e1c7c45)                             // 1e1c7c45
-	iface.RegisterClazzName(ClazzName_encryptedChatDiscarded, 215, 0x1e1c7c45)                             // 1e1c7c45
-	iface.RegisterClazzName(ClazzName_encryptedChatDiscarded, 214, 0x1e1c7c45)                             // 1e1c7c45
 	iface.RegisterClazzName(ClazzName_inputEncryptedChat, 216, 0xf141b5e1)                                 // f141b5e1
-	iface.RegisterClazzName(ClazzName_inputEncryptedChat, 215, 0xf141b5e1)                                 // f141b5e1
-	iface.RegisterClazzName(ClazzName_inputEncryptedChat, 214, 0xf141b5e1)                                 // f141b5e1
 	iface.RegisterClazzName(ClazzName_encryptedFileEmpty, 216, 0xc21f497e)                                 // c21f497e
-	iface.RegisterClazzName(ClazzName_encryptedFileEmpty, 215, 0xc21f497e)                                 // c21f497e
-	iface.RegisterClazzName(ClazzName_encryptedFileEmpty, 214, 0xc21f497e)                                 // c21f497e
 	iface.RegisterClazzName(ClazzName_encryptedFile, 216, 0xa8008cd8)                                      // a8008cd8
-	iface.RegisterClazzName(ClazzName_encryptedFile, 215, 0xa8008cd8)                                      // a8008cd8
-	iface.RegisterClazzName(ClazzName_encryptedFile, 214, 0xa8008cd8)                                      // a8008cd8
 	iface.RegisterClazzName(ClazzName_inputEncryptedFileEmpty, 216, 0x1837c364)                            // 1837c364
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileEmpty, 215, 0x1837c364)                            // 1837c364
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileEmpty, 214, 0x1837c364)                            // 1837c364
 	iface.RegisterClazzName(ClazzName_inputEncryptedFileUploaded, 216, 0x64bd0306)                         // 64bd0306
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileUploaded, 215, 0x64bd0306)                         // 64bd0306
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileUploaded, 214, 0x64bd0306)                         // 64bd0306
 	iface.RegisterClazzName(ClazzName_inputEncryptedFile, 216, 0x5a17b5e5)                                 // 5a17b5e5
-	iface.RegisterClazzName(ClazzName_inputEncryptedFile, 215, 0x5a17b5e5)                                 // 5a17b5e5
-	iface.RegisterClazzName(ClazzName_inputEncryptedFile, 214, 0x5a17b5e5)                                 // 5a17b5e5
 	iface.RegisterClazzName(ClazzName_inputEncryptedFileBigUploaded, 216, 0x2dc173c8)                      // 2dc173c8
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileBigUploaded, 215, 0x2dc173c8)                      // 2dc173c8
-	iface.RegisterClazzName(ClazzName_inputEncryptedFileBigUploaded, 214, 0x2dc173c8)                      // 2dc173c8
 	iface.RegisterClazzName(ClazzName_encryptedMessage, 216, 0xed18c118)                                   // ed18c118
-	iface.RegisterClazzName(ClazzName_encryptedMessage, 215, 0xed18c118)                                   // ed18c118
-	iface.RegisterClazzName(ClazzName_encryptedMessage, 214, 0xed18c118)                                   // ed18c118
 	iface.RegisterClazzName(ClazzName_encryptedMessageService, 216, 0x23734b06)                            // 23734b06
-	iface.RegisterClazzName(ClazzName_encryptedMessageService, 215, 0x23734b06)                            // 23734b06
-	iface.RegisterClazzName(ClazzName_encryptedMessageService, 214, 0x23734b06)                            // 23734b06
 	iface.RegisterClazzName(ClazzName_messages_dhConfigNotModified, 216, 0xc0e24635)                       // c0e24635
-	iface.RegisterClazzName(ClazzName_messages_dhConfigNotModified, 215, 0xc0e24635)                       // c0e24635
-	iface.RegisterClazzName(ClazzName_messages_dhConfigNotModified, 214, 0xc0e24635)                       // c0e24635
 	iface.RegisterClazzName(ClazzName_messages_dhConfig, 216, 0x2c221edd)                                  // 2c221edd
-	iface.RegisterClazzName(ClazzName_messages_dhConfig, 215, 0x2c221edd)                                  // 2c221edd
-	iface.RegisterClazzName(ClazzName_messages_dhConfig, 214, 0x2c221edd)                                  // 2c221edd
 	iface.RegisterClazzName(ClazzName_messages_sentEncryptedMessage, 216, 0x560f8935)                      // 560f8935
-	iface.RegisterClazzName(ClazzName_messages_sentEncryptedMessage, 215, 0x560f8935)                      // 560f8935
-	iface.RegisterClazzName(ClazzName_messages_sentEncryptedMessage, 214, 0x560f8935)                      // 560f8935
 	iface.RegisterClazzName(ClazzName_messages_sentEncryptedFile, 216, 0x9493ff32)                         // 9493ff32
-	iface.RegisterClazzName(ClazzName_messages_sentEncryptedFile, 215, 0x9493ff32)                         // 9493ff32
-	iface.RegisterClazzName(ClazzName_messages_sentEncryptedFile, 214, 0x9493ff32)                         // 9493ff32
 	iface.RegisterClazzName(ClazzName_inputDocumentEmpty, 216, 0x72f0eaae)                                 // 72f0eaae
-	iface.RegisterClazzName(ClazzName_inputDocumentEmpty, 215, 0x72f0eaae)                                 // 72f0eaae
-	iface.RegisterClazzName(ClazzName_inputDocumentEmpty, 214, 0x72f0eaae)                                 // 72f0eaae
 	iface.RegisterClazzName(ClazzName_inputDocument, 216, 0x1abfb575)                                      // 1abfb575
-	iface.RegisterClazzName(ClazzName_inputDocument, 215, 0x1abfb575)                                      // 1abfb575
-	iface.RegisterClazzName(ClazzName_inputDocument, 214, 0x1abfb575)                                      // 1abfb575
 	iface.RegisterClazzName(ClazzName_documentEmpty, 216, 0x36f8c871)                                      // 36f8c871
-	iface.RegisterClazzName(ClazzName_documentEmpty, 215, 0x36f8c871)                                      // 36f8c871
-	iface.RegisterClazzName(ClazzName_documentEmpty, 214, 0x36f8c871)                                      // 36f8c871
 	iface.RegisterClazzName(ClazzName_document, 216, 0x8fd4c4d8)                                           // 8fd4c4d8
-	iface.RegisterClazzName(ClazzName_document, 215, 0x8fd4c4d8)                                           // 8fd4c4d8
-	iface.RegisterClazzName(ClazzName_document, 214, 0x8fd4c4d8)                                           // 8fd4c4d8
 	iface.RegisterClazzName(ClazzName_help_support, 216, 0x17c6b5f6)                                       // 17c6b5f6
-	iface.RegisterClazzName(ClazzName_help_support, 215, 0x17c6b5f6)                                       // 17c6b5f6
-	iface.RegisterClazzName(ClazzName_help_support, 214, 0x17c6b5f6)                                       // 17c6b5f6
 	iface.RegisterClazzName(ClazzName_notifyPeer, 216, 0x9fd40bd8)                                         // 9fd40bd8
-	iface.RegisterClazzName(ClazzName_notifyPeer, 215, 0x9fd40bd8)                                         // 9fd40bd8
-	iface.RegisterClazzName(ClazzName_notifyPeer, 214, 0x9fd40bd8)                                         // 9fd40bd8
 	iface.RegisterClazzName(ClazzName_notifyUsers, 216, 0xb4c83b4c)                                        // b4c83b4c
-	iface.RegisterClazzName(ClazzName_notifyUsers, 215, 0xb4c83b4c)                                        // b4c83b4c
-	iface.RegisterClazzName(ClazzName_notifyUsers, 214, 0xb4c83b4c)                                        // b4c83b4c
 	iface.RegisterClazzName(ClazzName_notifyChats, 216, 0xc007cec3)                                        // c007cec3
-	iface.RegisterClazzName(ClazzName_notifyChats, 215, 0xc007cec3)                                        // c007cec3
-	iface.RegisterClazzName(ClazzName_notifyChats, 214, 0xc007cec3)                                        // c007cec3
 	iface.RegisterClazzName(ClazzName_notifyBroadcasts, 216, 0xd612e8ef)                                   // d612e8ef
-	iface.RegisterClazzName(ClazzName_notifyBroadcasts, 215, 0xd612e8ef)                                   // d612e8ef
-	iface.RegisterClazzName(ClazzName_notifyBroadcasts, 214, 0xd612e8ef)                                   // d612e8ef
 	iface.RegisterClazzName(ClazzName_notifyForumTopic, 216, 0x226e6308)                                   // 226e6308
-	iface.RegisterClazzName(ClazzName_notifyForumTopic, 215, 0x226e6308)                                   // 226e6308
-	iface.RegisterClazzName(ClazzName_notifyForumTopic, 214, 0x226e6308)                                   // 226e6308
 	iface.RegisterClazzName(ClazzName_sendMessageTypingAction, 216, 0x16bf744e)                            // 16bf744e
-	iface.RegisterClazzName(ClazzName_sendMessageTypingAction, 215, 0x16bf744e)                            // 16bf744e
-	iface.RegisterClazzName(ClazzName_sendMessageTypingAction, 214, 0x16bf744e)                            // 16bf744e
 	iface.RegisterClazzName(ClazzName_sendMessageCancelAction, 216, 0xfd5ec8f5)                            // fd5ec8f5
-	iface.RegisterClazzName(ClazzName_sendMessageCancelAction, 215, 0xfd5ec8f5)                            // fd5ec8f5
-	iface.RegisterClazzName(ClazzName_sendMessageCancelAction, 214, 0xfd5ec8f5)                            // fd5ec8f5
 	iface.RegisterClazzName(ClazzName_sendMessageRecordVideoAction, 216, 0xa187d66f)                       // a187d66f
-	iface.RegisterClazzName(ClazzName_sendMessageRecordVideoAction, 215, 0xa187d66f)                       // a187d66f
-	iface.RegisterClazzName(ClazzName_sendMessageRecordVideoAction, 214, 0xa187d66f)                       // a187d66f
 	iface.RegisterClazzName(ClazzName_sendMessageUploadVideoAction, 216, 0xe9763aec)                       // e9763aec
-	iface.RegisterClazzName(ClazzName_sendMessageUploadVideoAction, 215, 0xe9763aec)                       // e9763aec
-	iface.RegisterClazzName(ClazzName_sendMessageUploadVideoAction, 214, 0xe9763aec)                       // e9763aec
 	iface.RegisterClazzName(ClazzName_sendMessageRecordAudioAction, 216, 0xd52f73f7)                       // d52f73f7
-	iface.RegisterClazzName(ClazzName_sendMessageRecordAudioAction, 215, 0xd52f73f7)                       // d52f73f7
-	iface.RegisterClazzName(ClazzName_sendMessageRecordAudioAction, 214, 0xd52f73f7)                       // d52f73f7
 	iface.RegisterClazzName(ClazzName_sendMessageUploadAudioAction, 216, 0xf351d7ab)                       // f351d7ab
-	iface.RegisterClazzName(ClazzName_sendMessageUploadAudioAction, 215, 0xf351d7ab)                       // f351d7ab
-	iface.RegisterClazzName(ClazzName_sendMessageUploadAudioAction, 214, 0xf351d7ab)                       // f351d7ab
 	iface.RegisterClazzName(ClazzName_sendMessageUploadPhotoAction, 216, 0xd1d34a26)                       // d1d34a26
-	iface.RegisterClazzName(ClazzName_sendMessageUploadPhotoAction, 215, 0xd1d34a26)                       // d1d34a26
-	iface.RegisterClazzName(ClazzName_sendMessageUploadPhotoAction, 214, 0xd1d34a26)                       // d1d34a26
 	iface.RegisterClazzName(ClazzName_sendMessageUploadDocumentAction, 216, 0xaa0cd9e4)                    // aa0cd9e4
-	iface.RegisterClazzName(ClazzName_sendMessageUploadDocumentAction, 215, 0xaa0cd9e4)                    // aa0cd9e4
-	iface.RegisterClazzName(ClazzName_sendMessageUploadDocumentAction, 214, 0xaa0cd9e4)                    // aa0cd9e4
 	iface.RegisterClazzName(ClazzName_sendMessageGeoLocationAction, 216, 0x176f8ba1)                       // 176f8ba1
-	iface.RegisterClazzName(ClazzName_sendMessageGeoLocationAction, 215, 0x176f8ba1)                       // 176f8ba1
-	iface.RegisterClazzName(ClazzName_sendMessageGeoLocationAction, 214, 0x176f8ba1)                       // 176f8ba1
 	iface.RegisterClazzName(ClazzName_sendMessageChooseContactAction, 216, 0x628cbc6f)                     // 628cbc6f
-	iface.RegisterClazzName(ClazzName_sendMessageChooseContactAction, 215, 0x628cbc6f)                     // 628cbc6f
-	iface.RegisterClazzName(ClazzName_sendMessageChooseContactAction, 214, 0x628cbc6f)                     // 628cbc6f
 	iface.RegisterClazzName(ClazzName_sendMessageGamePlayAction, 216, 0xdd6a8f48)                          // dd6a8f48
-	iface.RegisterClazzName(ClazzName_sendMessageGamePlayAction, 215, 0xdd6a8f48)                          // dd6a8f48
-	iface.RegisterClazzName(ClazzName_sendMessageGamePlayAction, 214, 0xdd6a8f48)                          // dd6a8f48
 	iface.RegisterClazzName(ClazzName_sendMessageRecordRoundAction, 216, 0x88f27fbc)                       // 88f27fbc
-	iface.RegisterClazzName(ClazzName_sendMessageRecordRoundAction, 215, 0x88f27fbc)                       // 88f27fbc
-	iface.RegisterClazzName(ClazzName_sendMessageRecordRoundAction, 214, 0x88f27fbc)                       // 88f27fbc
 	iface.RegisterClazzName(ClazzName_sendMessageUploadRoundAction, 216, 0x243e1c66)                       // 243e1c66
-	iface.RegisterClazzName(ClazzName_sendMessageUploadRoundAction, 215, 0x243e1c66)                       // 243e1c66
-	iface.RegisterClazzName(ClazzName_sendMessageUploadRoundAction, 214, 0x243e1c66)                       // 243e1c66
 	iface.RegisterClazzName(ClazzName_speakingInGroupCallAction, 216, 0xd92c2285)                          // d92c2285
-	iface.RegisterClazzName(ClazzName_speakingInGroupCallAction, 215, 0xd92c2285)                          // d92c2285
-	iface.RegisterClazzName(ClazzName_speakingInGroupCallAction, 214, 0xd92c2285)                          // d92c2285
 	iface.RegisterClazzName(ClazzName_sendMessageHistoryImportAction, 216, 0xdbda9246)                     // dbda9246
-	iface.RegisterClazzName(ClazzName_sendMessageHistoryImportAction, 215, 0xdbda9246)                     // dbda9246
-	iface.RegisterClazzName(ClazzName_sendMessageHistoryImportAction, 214, 0xdbda9246)                     // dbda9246
 	iface.RegisterClazzName(ClazzName_sendMessageChooseStickerAction, 216, 0xb05ac6b1)                     // b05ac6b1
-	iface.RegisterClazzName(ClazzName_sendMessageChooseStickerAction, 215, 0xb05ac6b1)                     // b05ac6b1
-	iface.RegisterClazzName(ClazzName_sendMessageChooseStickerAction, 214, 0xb05ac6b1)                     // b05ac6b1
 	iface.RegisterClazzName(ClazzName_sendMessageEmojiInteraction, 216, 0x25972bcb)                        // 25972bcb
-	iface.RegisterClazzName(ClazzName_sendMessageEmojiInteraction, 215, 0x25972bcb)                        // 25972bcb
-	iface.RegisterClazzName(ClazzName_sendMessageEmojiInteraction, 214, 0x25972bcb)                        // 25972bcb
 	iface.RegisterClazzName(ClazzName_sendMessageEmojiInteractionSeen, 216, 0xb665902e)                    // b665902e
-	iface.RegisterClazzName(ClazzName_sendMessageEmojiInteractionSeen, 215, 0xb665902e)                    // b665902e
-	iface.RegisterClazzName(ClazzName_sendMessageEmojiInteractionSeen, 214, 0xb665902e)                    // b665902e
 	iface.RegisterClazzName(ClazzName_sendMessageTextDraftAction, 216, 0x376d975c)                         // 376d975c
 	iface.RegisterClazzName(ClazzName_contacts_found, 216, 0xb3134d9d)                                     // b3134d9d
-	iface.RegisterClazzName(ClazzName_contacts_found, 215, 0xb3134d9d)                                     // b3134d9d
-	iface.RegisterClazzName(ClazzName_contacts_found, 214, 0xb3134d9d)                                     // b3134d9d
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyStatusTimestamp, 216, 0x4f96cb18)                     // 4f96cb18
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyStatusTimestamp, 215, 0x4f96cb18)                     // 4f96cb18
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyStatusTimestamp, 214, 0x4f96cb18)                     // 4f96cb18
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyChatInvite, 216, 0xbdfb0426)                          // bdfb0426
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyChatInvite, 215, 0xbdfb0426)                          // bdfb0426
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyChatInvite, 214, 0xbdfb0426)                          // bdfb0426
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneCall, 216, 0xfabadc5f)                           // fabadc5f
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneCall, 215, 0xfabadc5f)                           // fabadc5f
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneCall, 214, 0xfabadc5f)                           // fabadc5f
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneP2P, 216, 0xdb9e70d2)                            // db9e70d2
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneP2P, 215, 0xdb9e70d2)                            // db9e70d2
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneP2P, 214, 0xdb9e70d2)                            // db9e70d2
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyForwards, 216, 0xa4dd4c08)                            // a4dd4c08
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyForwards, 215, 0xa4dd4c08)                            // a4dd4c08
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyForwards, 214, 0xa4dd4c08)                            // a4dd4c08
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyProfilePhoto, 216, 0x5719bacc)                        // 5719bacc
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyProfilePhoto, 215, 0x5719bacc)                        // 5719bacc
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyProfilePhoto, 214, 0x5719bacc)                        // 5719bacc
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneNumber, 216, 0x352dafa)                          // 352dafa
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneNumber, 215, 0x352dafa)                          // 352dafa
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyPhoneNumber, 214, 0x352dafa)                          // 352dafa
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyAddedByPhone, 216, 0xd1219bdd)                        // d1219bdd
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyAddedByPhone, 215, 0xd1219bdd)                        // d1219bdd
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyAddedByPhone, 214, 0xd1219bdd)                        // d1219bdd
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyVoiceMessages, 216, 0xaee69d68)                       // aee69d68
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyVoiceMessages, 215, 0xaee69d68)                       // aee69d68
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyVoiceMessages, 214, 0xaee69d68)                       // aee69d68
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyAbout, 216, 0x3823cc40)                               // 3823cc40
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyAbout, 215, 0x3823cc40)                               // 3823cc40
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyAbout, 214, 0x3823cc40)                               // 3823cc40
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyBirthday, 216, 0xd65a11cc)                            // d65a11cc
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyBirthday, 215, 0xd65a11cc)                            // d65a11cc
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyBirthday, 214, 0xd65a11cc)                            // d65a11cc
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyStarGiftsAutoSave, 216, 0xe1732341)                   // e1732341
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyStarGiftsAutoSave, 215, 0xe1732341)                   // e1732341
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyStarGiftsAutoSave, 214, 0xe1732341)                   // e1732341
 	iface.RegisterClazzName(ClazzName_inputPrivacyKeyNoPaidMessages, 216, 0xbdc597b4)                      // bdc597b4
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyNoPaidMessages, 215, 0xbdc597b4)                      // bdc597b4
-	iface.RegisterClazzName(ClazzName_inputPrivacyKeyNoPaidMessages, 214, 0xbdc597b4)                      // bdc597b4
 	iface.RegisterClazzName(ClazzName_privacyKeyStatusTimestamp, 216, 0xbc2eab30)                          // bc2eab30
-	iface.RegisterClazzName(ClazzName_privacyKeyStatusTimestamp, 215, 0xbc2eab30)                          // bc2eab30
-	iface.RegisterClazzName(ClazzName_privacyKeyStatusTimestamp, 214, 0xbc2eab30)                          // bc2eab30
 	iface.RegisterClazzName(ClazzName_privacyKeyChatInvite, 216, 0x500e6dfa)                               // 500e6dfa
-	iface.RegisterClazzName(ClazzName_privacyKeyChatInvite, 215, 0x500e6dfa)                               // 500e6dfa
-	iface.RegisterClazzName(ClazzName_privacyKeyChatInvite, 214, 0x500e6dfa)                               // 500e6dfa
 	iface.RegisterClazzName(ClazzName_privacyKeyPhoneCall, 216, 0x3d662b7b)                                // 3d662b7b
-	iface.RegisterClazzName(ClazzName_privacyKeyPhoneCall, 215, 0x3d662b7b)                                // 3d662b7b
-	iface.RegisterClazzName(ClazzName_privacyKeyPhoneCall, 214, 0x3d662b7b)                                // 3d662b7b
 	iface.RegisterClazzName(ClazzName_privacyKeyPhoneP2P, 216, 0x39491cc8)                                 // 39491cc8
-	iface.RegisterClazzName(ClazzName_privacyKeyPhoneP2P, 215, 0x39491cc8)                                 // 39491cc8
-	iface.RegisterClazzName(ClazzName_privacyKeyPhoneP2P, 214, 0x39491cc8)                                 // 39491cc8
 	iface.RegisterClazzName(ClazzName_privacyKeyForwards, 216, 0x69ec56a3)                                 // 69ec56a3
-	iface.RegisterClazzName(ClazzName_privacyKeyForwards, 215, 0x69ec56a3)                                 // 69ec56a3
-	iface.RegisterClazzName(ClazzName_privacyKeyForwards, 214, 0x69ec56a3)                                 // 69ec56a3
 	iface.RegisterClazzName(ClazzName_privacyKeyProfilePhoto, 216, 0x96151fed)                             // 96151fed
-	iface.RegisterClazzName(ClazzName_privacyKeyProfilePhoto, 215, 0x96151fed)                             // 96151fed
-	iface.RegisterClazzName(ClazzName_privacyKeyProfilePhoto, 214, 0x96151fed)                             // 96151fed
 	iface.RegisterClazzName(ClazzName_privacyKeyPhoneNumber, 216, 0xd19ae46d)                              // d19ae46d
-	iface.RegisterClazzName(ClazzName_privacyKeyPhoneNumber, 215, 0xd19ae46d)                              // d19ae46d
-	iface.RegisterClazzName(ClazzName_privacyKeyPhoneNumber, 214, 0xd19ae46d)                              // d19ae46d
 	iface.RegisterClazzName(ClazzName_privacyKeyAddedByPhone, 216, 0x42ffd42b)                             // 42ffd42b
-	iface.RegisterClazzName(ClazzName_privacyKeyAddedByPhone, 215, 0x42ffd42b)                             // 42ffd42b
-	iface.RegisterClazzName(ClazzName_privacyKeyAddedByPhone, 214, 0x42ffd42b)                             // 42ffd42b
 	iface.RegisterClazzName(ClazzName_privacyKeyVoiceMessages, 216, 0x697f414)                             // 697f414
-	iface.RegisterClazzName(ClazzName_privacyKeyVoiceMessages, 215, 0x697f414)                             // 697f414
-	iface.RegisterClazzName(ClazzName_privacyKeyVoiceMessages, 214, 0x697f414)                             // 697f414
 	iface.RegisterClazzName(ClazzName_privacyKeyAbout, 216, 0xa486b761)                                    // a486b761
-	iface.RegisterClazzName(ClazzName_privacyKeyAbout, 215, 0xa486b761)                                    // a486b761
-	iface.RegisterClazzName(ClazzName_privacyKeyAbout, 214, 0xa486b761)                                    // a486b761
 	iface.RegisterClazzName(ClazzName_privacyKeyBirthday, 216, 0x2000a518)                                 // 2000a518
-	iface.RegisterClazzName(ClazzName_privacyKeyBirthday, 215, 0x2000a518)                                 // 2000a518
-	iface.RegisterClazzName(ClazzName_privacyKeyBirthday, 214, 0x2000a518)                                 // 2000a518
 	iface.RegisterClazzName(ClazzName_privacyKeyStarGiftsAutoSave, 216, 0x2ca4fdf8)                        // 2ca4fdf8
-	iface.RegisterClazzName(ClazzName_privacyKeyStarGiftsAutoSave, 215, 0x2ca4fdf8)                        // 2ca4fdf8
-	iface.RegisterClazzName(ClazzName_privacyKeyStarGiftsAutoSave, 214, 0x2ca4fdf8)                        // 2ca4fdf8
 	iface.RegisterClazzName(ClazzName_privacyKeyNoPaidMessages, 216, 0x17d348d2)                           // 17d348d2
-	iface.RegisterClazzName(ClazzName_privacyKeyNoPaidMessages, 215, 0x17d348d2)                           // 17d348d2
-	iface.RegisterClazzName(ClazzName_privacyKeyNoPaidMessages, 214, 0x17d348d2)                           // 17d348d2
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowContacts, 216, 0xd09e07b)                      // d09e07b
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowContacts, 215, 0xd09e07b)                      // d09e07b
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowContacts, 214, 0xd09e07b)                      // d09e07b
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowAll, 216, 0x184b35ce)                          // 184b35ce
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowAll, 215, 0x184b35ce)                          // 184b35ce
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowAll, 214, 0x184b35ce)                          // 184b35ce
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowUsers, 216, 0x131cc67f)                        // 131cc67f
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowUsers, 215, 0x131cc67f)                        // 131cc67f
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowUsers, 214, 0x131cc67f)                        // 131cc67f
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowContacts, 216, 0xba52007)                   // ba52007
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowContacts, 215, 0xba52007)                   // ba52007
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowContacts, 214, 0xba52007)                   // ba52007
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowAll, 216, 0xd66b66c9)                       // d66b66c9
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowAll, 215, 0xd66b66c9)                       // d66b66c9
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowAll, 214, 0xd66b66c9)                       // d66b66c9
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowUsers, 216, 0x90110467)                     // 90110467
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowUsers, 215, 0x90110467)                     // 90110467
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowUsers, 214, 0x90110467)                     // 90110467
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowChatParticipants, 216, 0x840649cf)             // 840649cf
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowChatParticipants, 215, 0x840649cf)             // 840649cf
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowChatParticipants, 214, 0x840649cf)             // 840649cf
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowChatParticipants, 216, 0xe94f0f86)          // e94f0f86
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowChatParticipants, 215, 0xe94f0f86)          // e94f0f86
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowChatParticipants, 214, 0xe94f0f86)          // e94f0f86
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowCloseFriends, 216, 0x2f453e49)                 // 2f453e49
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowCloseFriends, 215, 0x2f453e49)                 // 2f453e49
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowCloseFriends, 214, 0x2f453e49)                 // 2f453e49
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowPremium, 216, 0x77cdc9f1)                      // 77cdc9f1
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowPremium, 215, 0x77cdc9f1)                      // 77cdc9f1
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowPremium, 214, 0x77cdc9f1)                      // 77cdc9f1
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowBots, 216, 0x5a4fcce5)                         // 5a4fcce5
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowBots, 215, 0x5a4fcce5)                         // 5a4fcce5
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueAllowBots, 214, 0x5a4fcce5)                         // 5a4fcce5
 	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowBots, 216, 0xc4e57915)                      // c4e57915
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowBots, 215, 0xc4e57915)                      // c4e57915
-	iface.RegisterClazzName(ClazzName_inputPrivacyValueDisallowBots, 214, 0xc4e57915)                      // c4e57915
 	iface.RegisterClazzName(ClazzName_privacyValueAllowContacts, 216, 0xfffe1bac)                          // fffe1bac
-	iface.RegisterClazzName(ClazzName_privacyValueAllowContacts, 215, 0xfffe1bac)                          // fffe1bac
-	iface.RegisterClazzName(ClazzName_privacyValueAllowContacts, 214, 0xfffe1bac)                          // fffe1bac
 	iface.RegisterClazzName(ClazzName_privacyValueAllowAll, 216, 0x65427b82)                               // 65427b82
-	iface.RegisterClazzName(ClazzName_privacyValueAllowAll, 215, 0x65427b82)                               // 65427b82
-	iface.RegisterClazzName(ClazzName_privacyValueAllowAll, 214, 0x65427b82)                               // 65427b82
 	iface.RegisterClazzName(ClazzName_privacyValueAllowUsers, 216, 0xb8905fb2)                             // b8905fb2
-	iface.RegisterClazzName(ClazzName_privacyValueAllowUsers, 215, 0xb8905fb2)                             // b8905fb2
-	iface.RegisterClazzName(ClazzName_privacyValueAllowUsers, 214, 0xb8905fb2)                             // b8905fb2
 	iface.RegisterClazzName(ClazzName_privacyValueDisallowContacts, 216, 0xf888fa1a)                       // f888fa1a
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowContacts, 215, 0xf888fa1a)                       // f888fa1a
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowContacts, 214, 0xf888fa1a)                       // f888fa1a
 	iface.RegisterClazzName(ClazzName_privacyValueDisallowAll, 216, 0x8b73e763)                            // 8b73e763
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowAll, 215, 0x8b73e763)                            // 8b73e763
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowAll, 214, 0x8b73e763)                            // 8b73e763
 	iface.RegisterClazzName(ClazzName_privacyValueDisallowUsers, 216, 0xe4621141)                          // e4621141
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowUsers, 215, 0xe4621141)                          // e4621141
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowUsers, 214, 0xe4621141)                          // e4621141
 	iface.RegisterClazzName(ClazzName_privacyValueAllowChatParticipants, 216, 0x6b134e8e)                  // 6b134e8e
-	iface.RegisterClazzName(ClazzName_privacyValueAllowChatParticipants, 215, 0x6b134e8e)                  // 6b134e8e
-	iface.RegisterClazzName(ClazzName_privacyValueAllowChatParticipants, 214, 0x6b134e8e)                  // 6b134e8e
 	iface.RegisterClazzName(ClazzName_privacyValueDisallowChatParticipants, 216, 0x41c87565)               // 41c87565
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowChatParticipants, 215, 0x41c87565)               // 41c87565
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowChatParticipants, 214, 0x41c87565)               // 41c87565
 	iface.RegisterClazzName(ClazzName_privacyValueAllowCloseFriends, 216, 0xf7e8d89b)                      // f7e8d89b
-	iface.RegisterClazzName(ClazzName_privacyValueAllowCloseFriends, 215, 0xf7e8d89b)                      // f7e8d89b
-	iface.RegisterClazzName(ClazzName_privacyValueAllowCloseFriends, 214, 0xf7e8d89b)                      // f7e8d89b
 	iface.RegisterClazzName(ClazzName_privacyValueAllowPremium, 216, 0xece9814b)                           // ece9814b
-	iface.RegisterClazzName(ClazzName_privacyValueAllowPremium, 215, 0xece9814b)                           // ece9814b
-	iface.RegisterClazzName(ClazzName_privacyValueAllowPremium, 214, 0xece9814b)                           // ece9814b
 	iface.RegisterClazzName(ClazzName_privacyValueAllowBots, 216, 0x21461b5d)                              // 21461b5d
-	iface.RegisterClazzName(ClazzName_privacyValueAllowBots, 215, 0x21461b5d)                              // 21461b5d
-	iface.RegisterClazzName(ClazzName_privacyValueAllowBots, 214, 0x21461b5d)                              // 21461b5d
 	iface.RegisterClazzName(ClazzName_privacyValueDisallowBots, 216, 0xf6a5f82f)                           // f6a5f82f
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowBots, 215, 0xf6a5f82f)                           // f6a5f82f
-	iface.RegisterClazzName(ClazzName_privacyValueDisallowBots, 214, 0xf6a5f82f)                           // f6a5f82f
 	iface.RegisterClazzName(ClazzName_account_privacyRules, 216, 0x50a04e45)                               // 50a04e45
-	iface.RegisterClazzName(ClazzName_account_privacyRules, 215, 0x50a04e45)                               // 50a04e45
-	iface.RegisterClazzName(ClazzName_account_privacyRules, 214, 0x50a04e45)                               // 50a04e45
 	iface.RegisterClazzName(ClazzName_accountDaysTTL, 216, 0xb8d0afdf)                                     // b8d0afdf
-	iface.RegisterClazzName(ClazzName_accountDaysTTL, 215, 0xb8d0afdf)                                     // b8d0afdf
-	iface.RegisterClazzName(ClazzName_accountDaysTTL, 214, 0xb8d0afdf)                                     // b8d0afdf
 	iface.RegisterClazzName(ClazzName_documentAttributeImageSize, 216, 0x6c37c15c)                         // 6c37c15c
-	iface.RegisterClazzName(ClazzName_documentAttributeImageSize, 215, 0x6c37c15c)                         // 6c37c15c
-	iface.RegisterClazzName(ClazzName_documentAttributeImageSize, 214, 0x6c37c15c)                         // 6c37c15c
 	iface.RegisterClazzName(ClazzName_documentAttributeAnimated, 216, 0x11b58939)                          // 11b58939
-	iface.RegisterClazzName(ClazzName_documentAttributeAnimated, 215, 0x11b58939)                          // 11b58939
-	iface.RegisterClazzName(ClazzName_documentAttributeAnimated, 214, 0x11b58939)                          // 11b58939
 	iface.RegisterClazzName(ClazzName_documentAttributeSticker, 216, 0x6319d612)                           // 6319d612
-	iface.RegisterClazzName(ClazzName_documentAttributeSticker, 215, 0x6319d612)                           // 6319d612
-	iface.RegisterClazzName(ClazzName_documentAttributeSticker, 214, 0x6319d612)                           // 6319d612
 	iface.RegisterClazzName(ClazzName_documentAttributeVideo, 216, 0x43c57c48)                             // 43c57c48
-	iface.RegisterClazzName(ClazzName_documentAttributeVideo, 215, 0x43c57c48)                             // 43c57c48
-	iface.RegisterClazzName(ClazzName_documentAttributeVideo, 214, 0x43c57c48)                             // 43c57c48
 	iface.RegisterClazzName(ClazzName_documentAttributeAudio, 216, 0x9852f9c6)                             // 9852f9c6
-	iface.RegisterClazzName(ClazzName_documentAttributeAudio, 215, 0x9852f9c6)                             // 9852f9c6
-	iface.RegisterClazzName(ClazzName_documentAttributeAudio, 214, 0x9852f9c6)                             // 9852f9c6
 	iface.RegisterClazzName(ClazzName_documentAttributeFilename, 216, 0x15590068)                          // 15590068
-	iface.RegisterClazzName(ClazzName_documentAttributeFilename, 215, 0x15590068)                          // 15590068
-	iface.RegisterClazzName(ClazzName_documentAttributeFilename, 214, 0x15590068)                          // 15590068
 	iface.RegisterClazzName(ClazzName_documentAttributeHasStickers, 216, 0x9801d2f7)                       // 9801d2f7
-	iface.RegisterClazzName(ClazzName_documentAttributeHasStickers, 215, 0x9801d2f7)                       // 9801d2f7
-	iface.RegisterClazzName(ClazzName_documentAttributeHasStickers, 214, 0x9801d2f7)                       // 9801d2f7
 	iface.RegisterClazzName(ClazzName_documentAttributeCustomEmoji, 216, 0xfd149899)                       // fd149899
-	iface.RegisterClazzName(ClazzName_documentAttributeCustomEmoji, 215, 0xfd149899)                       // fd149899
-	iface.RegisterClazzName(ClazzName_documentAttributeCustomEmoji, 214, 0xfd149899)                       // fd149899
 	iface.RegisterClazzName(ClazzName_messages_stickersNotModified, 216, 0xf1749a22)                       // f1749a22
-	iface.RegisterClazzName(ClazzName_messages_stickersNotModified, 215, 0xf1749a22)                       // f1749a22
-	iface.RegisterClazzName(ClazzName_messages_stickersNotModified, 214, 0xf1749a22)                       // f1749a22
 	iface.RegisterClazzName(ClazzName_messages_stickers, 216, 0x30a6ec7e)                                  // 30a6ec7e
-	iface.RegisterClazzName(ClazzName_messages_stickers, 215, 0x30a6ec7e)                                  // 30a6ec7e
-	iface.RegisterClazzName(ClazzName_messages_stickers, 214, 0x30a6ec7e)                                  // 30a6ec7e
 	iface.RegisterClazzName(ClazzName_stickerPack, 216, 0x12b299d4)                                        // 12b299d4
-	iface.RegisterClazzName(ClazzName_stickerPack, 215, 0x12b299d4)                                        // 12b299d4
-	iface.RegisterClazzName(ClazzName_stickerPack, 214, 0x12b299d4)                                        // 12b299d4
 	iface.RegisterClazzName(ClazzName_messages_allStickersNotModified, 216, 0xe86602c3)                    // e86602c3
-	iface.RegisterClazzName(ClazzName_messages_allStickersNotModified, 215, 0xe86602c3)                    // e86602c3
-	iface.RegisterClazzName(ClazzName_messages_allStickersNotModified, 214, 0xe86602c3)                    // e86602c3
 	iface.RegisterClazzName(ClazzName_messages_allStickers, 216, 0xcdbbcebb)                               // cdbbcebb
-	iface.RegisterClazzName(ClazzName_messages_allStickers, 215, 0xcdbbcebb)                               // cdbbcebb
-	iface.RegisterClazzName(ClazzName_messages_allStickers, 214, 0xcdbbcebb)                               // cdbbcebb
 	iface.RegisterClazzName(ClazzName_messages_affectedMessages, 216, 0x84d19185)                          // 84d19185
-	iface.RegisterClazzName(ClazzName_messages_affectedMessages, 215, 0x84d19185)                          // 84d19185
-	iface.RegisterClazzName(ClazzName_messages_affectedMessages, 214, 0x84d19185)                          // 84d19185
 	iface.RegisterClazzName(ClazzName_webPageEmpty, 216, 0x211a1788)                                       // 211a1788
-	iface.RegisterClazzName(ClazzName_webPageEmpty, 215, 0x211a1788)                                       // 211a1788
-	iface.RegisterClazzName(ClazzName_webPageEmpty, 214, 0x211a1788)                                       // 211a1788
 	iface.RegisterClazzName(ClazzName_webPagePending, 216, 0xb0d13e47)                                     // b0d13e47
-	iface.RegisterClazzName(ClazzName_webPagePending, 215, 0xb0d13e47)                                     // b0d13e47
-	iface.RegisterClazzName(ClazzName_webPagePending, 214, 0xb0d13e47)                                     // b0d13e47
 	iface.RegisterClazzName(ClazzName_webPage, 216, 0xe89c45b2)                                            // e89c45b2
-	iface.RegisterClazzName(ClazzName_webPage, 215, 0xe89c45b2)                                            // e89c45b2
-	iface.RegisterClazzName(ClazzName_webPage, 214, 0xe89c45b2)                                            // e89c45b2
 	iface.RegisterClazzName(ClazzName_webPageNotModified, 216, 0x7311ca11)                                 // 7311ca11
-	iface.RegisterClazzName(ClazzName_webPageNotModified, 215, 0x7311ca11)                                 // 7311ca11
-	iface.RegisterClazzName(ClazzName_webPageNotModified, 214, 0x7311ca11)                                 // 7311ca11
 	iface.RegisterClazzName(ClazzName_authorization, 216, 0xad01d61d)                                      // ad01d61d
-	iface.RegisterClazzName(ClazzName_authorization, 215, 0xad01d61d)                                      // ad01d61d
-	iface.RegisterClazzName(ClazzName_authorization, 214, 0xad01d61d)                                      // ad01d61d
 	iface.RegisterClazzName(ClazzName_account_authorizations, 216, 0x4bff8ea0)                             // 4bff8ea0
-	iface.RegisterClazzName(ClazzName_account_authorizations, 215, 0x4bff8ea0)                             // 4bff8ea0
-	iface.RegisterClazzName(ClazzName_account_authorizations, 214, 0x4bff8ea0)                             // 4bff8ea0
 	iface.RegisterClazzName(ClazzName_account_password, 216, 0x957b50fb)                                   // 957b50fb
-	iface.RegisterClazzName(ClazzName_account_password, 215, 0x957b50fb)                                   // 957b50fb
-	iface.RegisterClazzName(ClazzName_account_password, 214, 0x957b50fb)                                   // 957b50fb
 	iface.RegisterClazzName(ClazzName_account_passwordSettings, 216, 0x9a5c33e5)                           // 9a5c33e5
-	iface.RegisterClazzName(ClazzName_account_passwordSettings, 215, 0x9a5c33e5)                           // 9a5c33e5
-	iface.RegisterClazzName(ClazzName_account_passwordSettings, 214, 0x9a5c33e5)                           // 9a5c33e5
 	iface.RegisterClazzName(ClazzName_account_passwordInputSettings, 216, 0xc23727c9)                      // c23727c9
-	iface.RegisterClazzName(ClazzName_account_passwordInputSettings, 215, 0xc23727c9)                      // c23727c9
-	iface.RegisterClazzName(ClazzName_account_passwordInputSettings, 214, 0xc23727c9)                      // c23727c9
 	iface.RegisterClazzName(ClazzName_auth_passwordRecovery, 216, 0x137948a5)                              // 137948a5
-	iface.RegisterClazzName(ClazzName_auth_passwordRecovery, 215, 0x137948a5)                              // 137948a5
-	iface.RegisterClazzName(ClazzName_auth_passwordRecovery, 214, 0x137948a5)                              // 137948a5
 	iface.RegisterClazzName(ClazzName_receivedNotifyMessage, 216, 0xa384b779)                              // a384b779
-	iface.RegisterClazzName(ClazzName_receivedNotifyMessage, 215, 0xa384b779)                              // a384b779
-	iface.RegisterClazzName(ClazzName_receivedNotifyMessage, 214, 0xa384b779)                              // a384b779
 	iface.RegisterClazzName(ClazzName_chatInviteExported, 216, 0xa22cbd96)                                 // a22cbd96
-	iface.RegisterClazzName(ClazzName_chatInviteExported, 215, 0xa22cbd96)                                 // a22cbd96
-	iface.RegisterClazzName(ClazzName_chatInviteExported, 214, 0xa22cbd96)                                 // a22cbd96
 	iface.RegisterClazzName(ClazzName_chatInvitePublicJoinRequests, 216, 0xed107ab7)                       // ed107ab7
-	iface.RegisterClazzName(ClazzName_chatInvitePublicJoinRequests, 215, 0xed107ab7)                       // ed107ab7
-	iface.RegisterClazzName(ClazzName_chatInvitePublicJoinRequests, 214, 0xed107ab7)                       // ed107ab7
 	iface.RegisterClazzName(ClazzName_chatInviteAlready, 216, 0x5a686d7c)                                  // 5a686d7c
-	iface.RegisterClazzName(ClazzName_chatInviteAlready, 215, 0x5a686d7c)                                  // 5a686d7c
-	iface.RegisterClazzName(ClazzName_chatInviteAlready, 214, 0x5a686d7c)                                  // 5a686d7c
 	iface.RegisterClazzName(ClazzName_chatInvite, 216, 0x5c9d3702)                                         // 5c9d3702
-	iface.RegisterClazzName(ClazzName_chatInvite, 215, 0x5c9d3702)                                         // 5c9d3702
-	iface.RegisterClazzName(ClazzName_chatInvite, 214, 0x5c9d3702)                                         // 5c9d3702
 	iface.RegisterClazzName(ClazzName_chatInvitePeek, 216, 0x61695cb0)                                     // 61695cb0
-	iface.RegisterClazzName(ClazzName_chatInvitePeek, 215, 0x61695cb0)                                     // 61695cb0
-	iface.RegisterClazzName(ClazzName_chatInvitePeek, 214, 0x61695cb0)                                     // 61695cb0
 	iface.RegisterClazzName(ClazzName_inputStickerSetEmpty, 216, 0xffb62b95)                               // ffb62b95
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmpty, 215, 0xffb62b95)                               // ffb62b95
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmpty, 214, 0xffb62b95)                               // ffb62b95
 	iface.RegisterClazzName(ClazzName_inputStickerSetID, 216, 0x9de7a269)                                  // 9de7a269
-	iface.RegisterClazzName(ClazzName_inputStickerSetID, 215, 0x9de7a269)                                  // 9de7a269
-	iface.RegisterClazzName(ClazzName_inputStickerSetID, 214, 0x9de7a269)                                  // 9de7a269
 	iface.RegisterClazzName(ClazzName_inputStickerSetShortName, 216, 0x861cc8a0)                           // 861cc8a0
-	iface.RegisterClazzName(ClazzName_inputStickerSetShortName, 215, 0x861cc8a0)                           // 861cc8a0
-	iface.RegisterClazzName(ClazzName_inputStickerSetShortName, 214, 0x861cc8a0)                           // 861cc8a0
 	iface.RegisterClazzName(ClazzName_inputStickerSetAnimatedEmoji, 216, 0x28703c8)                        // 28703c8
-	iface.RegisterClazzName(ClazzName_inputStickerSetAnimatedEmoji, 215, 0x28703c8)                        // 28703c8
-	iface.RegisterClazzName(ClazzName_inputStickerSetAnimatedEmoji, 214, 0x28703c8)                        // 28703c8
 	iface.RegisterClazzName(ClazzName_inputStickerSetDice, 216, 0xe67f520e)                                // e67f520e
-	iface.RegisterClazzName(ClazzName_inputStickerSetDice, 215, 0xe67f520e)                                // e67f520e
-	iface.RegisterClazzName(ClazzName_inputStickerSetDice, 214, 0xe67f520e)                                // e67f520e
 	iface.RegisterClazzName(ClazzName_inputStickerSetAnimatedEmojiAnimations, 216, 0xcde3739)              // cde3739
-	iface.RegisterClazzName(ClazzName_inputStickerSetAnimatedEmojiAnimations, 215, 0xcde3739)              // cde3739
-	iface.RegisterClazzName(ClazzName_inputStickerSetAnimatedEmojiAnimations, 214, 0xcde3739)              // cde3739
 	iface.RegisterClazzName(ClazzName_inputStickerSetPremiumGifts, 216, 0xc88b3b02)                        // c88b3b02
-	iface.RegisterClazzName(ClazzName_inputStickerSetPremiumGifts, 215, 0xc88b3b02)                        // c88b3b02
-	iface.RegisterClazzName(ClazzName_inputStickerSetPremiumGifts, 214, 0xc88b3b02)                        // c88b3b02
 	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiGenericAnimations, 216, 0x4c4d4ce)               // 4c4d4ce
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiGenericAnimations, 215, 0x4c4d4ce)               // 4c4d4ce
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiGenericAnimations, 214, 0x4c4d4ce)               // 4c4d4ce
 	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiDefaultStatuses, 216, 0x29d0f5ee)                // 29d0f5ee
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiDefaultStatuses, 215, 0x29d0f5ee)                // 29d0f5ee
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiDefaultStatuses, 214, 0x29d0f5ee)                // 29d0f5ee
 	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiDefaultTopicIcons, 216, 0x44c1f8e9)              // 44c1f8e9
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiDefaultTopicIcons, 215, 0x44c1f8e9)              // 44c1f8e9
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiDefaultTopicIcons, 214, 0x44c1f8e9)              // 44c1f8e9
 	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiChannelDefaultStatuses, 216, 0x49748553)         // 49748553
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiChannelDefaultStatuses, 215, 0x49748553)         // 49748553
-	iface.RegisterClazzName(ClazzName_inputStickerSetEmojiChannelDefaultStatuses, 214, 0x49748553)         // 49748553
 	iface.RegisterClazzName(ClazzName_inputStickerSetTonGifts, 216, 0x1cf671a0)                            // 1cf671a0
-	iface.RegisterClazzName(ClazzName_inputStickerSetTonGifts, 215, 0x1cf671a0)                            // 1cf671a0
-	iface.RegisterClazzName(ClazzName_inputStickerSetTonGifts, 214, 0x1cf671a0)                            // 1cf671a0
 	iface.RegisterClazzName(ClazzName_stickerSet, 216, 0x2dd14edc)                                         // 2dd14edc
-	iface.RegisterClazzName(ClazzName_stickerSet, 215, 0x2dd14edc)                                         // 2dd14edc
-	iface.RegisterClazzName(ClazzName_stickerSet, 214, 0x2dd14edc)                                         // 2dd14edc
 	iface.RegisterClazzName(ClazzName_messages_stickerSet, 216, 0x6e153f16)                                // 6e153f16
-	iface.RegisterClazzName(ClazzName_messages_stickerSet, 215, 0x6e153f16)                                // 6e153f16
-	iface.RegisterClazzName(ClazzName_messages_stickerSet, 214, 0x6e153f16)                                // 6e153f16
 	iface.RegisterClazzName(ClazzName_messages_stickerSetNotModified, 216, 0xd3f924eb)                     // d3f924eb
-	iface.RegisterClazzName(ClazzName_messages_stickerSetNotModified, 215, 0xd3f924eb)                     // d3f924eb
-	iface.RegisterClazzName(ClazzName_messages_stickerSetNotModified, 214, 0xd3f924eb)                     // d3f924eb
 	iface.RegisterClazzName(ClazzName_botCommand, 216, 0xc27ac8c7)                                         // c27ac8c7
-	iface.RegisterClazzName(ClazzName_botCommand, 215, 0xc27ac8c7)                                         // c27ac8c7
-	iface.RegisterClazzName(ClazzName_botCommand, 214, 0xc27ac8c7)                                         // c27ac8c7
 	iface.RegisterClazzName(ClazzName_botInfo, 216, 0x4d8a0299)                                            // 4d8a0299
-	iface.RegisterClazzName(ClazzName_botInfo, 215, 0x4d8a0299)                                            // 4d8a0299
-	iface.RegisterClazzName(ClazzName_botInfo, 214, 0x4d8a0299)                                            // 4d8a0299
 	iface.RegisterClazzName(ClazzName_keyboardButton, 216, 0xa2fa4880)                                     // a2fa4880
-	iface.RegisterClazzName(ClazzName_keyboardButton, 215, 0xa2fa4880)                                     // a2fa4880
-	iface.RegisterClazzName(ClazzName_keyboardButton, 214, 0xa2fa4880)                                     // a2fa4880
 	iface.RegisterClazzName(ClazzName_keyboardButtonUrl, 216, 0x258aff05)                                  // 258aff05
-	iface.RegisterClazzName(ClazzName_keyboardButtonUrl, 215, 0x258aff05)                                  // 258aff05
-	iface.RegisterClazzName(ClazzName_keyboardButtonUrl, 214, 0x258aff05)                                  // 258aff05
 	iface.RegisterClazzName(ClazzName_keyboardButtonCallback, 216, 0x35bbdb6b)                             // 35bbdb6b
-	iface.RegisterClazzName(ClazzName_keyboardButtonCallback, 215, 0x35bbdb6b)                             // 35bbdb6b
-	iface.RegisterClazzName(ClazzName_keyboardButtonCallback, 214, 0x35bbdb6b)                             // 35bbdb6b
 	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPhone, 216, 0xb16a6c29)                         // b16a6c29
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPhone, 215, 0xb16a6c29)                         // b16a6c29
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPhone, 214, 0xb16a6c29)                         // b16a6c29
 	iface.RegisterClazzName(ClazzName_keyboardButtonRequestGeoLocation, 216, 0xfc796b3f)                   // fc796b3f
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestGeoLocation, 215, 0xfc796b3f)                   // fc796b3f
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestGeoLocation, 214, 0xfc796b3f)                   // fc796b3f
 	iface.RegisterClazzName(ClazzName_keyboardButtonSwitchInline, 216, 0x93b9fbb5)                         // 93b9fbb5
-	iface.RegisterClazzName(ClazzName_keyboardButtonSwitchInline, 215, 0x93b9fbb5)                         // 93b9fbb5
-	iface.RegisterClazzName(ClazzName_keyboardButtonSwitchInline, 214, 0x93b9fbb5)                         // 93b9fbb5
 	iface.RegisterClazzName(ClazzName_keyboardButtonGame, 216, 0x50f41ccf)                                 // 50f41ccf
-	iface.RegisterClazzName(ClazzName_keyboardButtonGame, 215, 0x50f41ccf)                                 // 50f41ccf
-	iface.RegisterClazzName(ClazzName_keyboardButtonGame, 214, 0x50f41ccf)                                 // 50f41ccf
 	iface.RegisterClazzName(ClazzName_keyboardButtonBuy, 216, 0xafd93fbb)                                  // afd93fbb
-	iface.RegisterClazzName(ClazzName_keyboardButtonBuy, 215, 0xafd93fbb)                                  // afd93fbb
-	iface.RegisterClazzName(ClazzName_keyboardButtonBuy, 214, 0xafd93fbb)                                  // afd93fbb
 	iface.RegisterClazzName(ClazzName_keyboardButtonUrlAuth, 216, 0x10b78d29)                              // 10b78d29
-	iface.RegisterClazzName(ClazzName_keyboardButtonUrlAuth, 215, 0x10b78d29)                              // 10b78d29
-	iface.RegisterClazzName(ClazzName_keyboardButtonUrlAuth, 214, 0x10b78d29)                              // 10b78d29
 	iface.RegisterClazzName(ClazzName_inputKeyboardButtonUrlAuth, 216, 0xd02e7fd4)                         // d02e7fd4
-	iface.RegisterClazzName(ClazzName_inputKeyboardButtonUrlAuth, 215, 0xd02e7fd4)                         // d02e7fd4
-	iface.RegisterClazzName(ClazzName_inputKeyboardButtonUrlAuth, 214, 0xd02e7fd4)                         // d02e7fd4
 	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPoll, 216, 0xbbc7515d)                          // bbc7515d
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPoll, 215, 0xbbc7515d)                          // bbc7515d
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPoll, 214, 0xbbc7515d)                          // bbc7515d
 	iface.RegisterClazzName(ClazzName_inputKeyboardButtonUserProfile, 216, 0xe988037b)                     // e988037b
-	iface.RegisterClazzName(ClazzName_inputKeyboardButtonUserProfile, 215, 0xe988037b)                     // e988037b
-	iface.RegisterClazzName(ClazzName_inputKeyboardButtonUserProfile, 214, 0xe988037b)                     // e988037b
 	iface.RegisterClazzName(ClazzName_keyboardButtonUserProfile, 216, 0x308660c1)                          // 308660c1
-	iface.RegisterClazzName(ClazzName_keyboardButtonUserProfile, 215, 0x308660c1)                          // 308660c1
-	iface.RegisterClazzName(ClazzName_keyboardButtonUserProfile, 214, 0x308660c1)                          // 308660c1
 	iface.RegisterClazzName(ClazzName_keyboardButtonWebView, 216, 0x13767230)                              // 13767230
-	iface.RegisterClazzName(ClazzName_keyboardButtonWebView, 215, 0x13767230)                              // 13767230
-	iface.RegisterClazzName(ClazzName_keyboardButtonWebView, 214, 0x13767230)                              // 13767230
 	iface.RegisterClazzName(ClazzName_keyboardButtonSimpleWebView, 216, 0xa0c0505c)                        // a0c0505c
-	iface.RegisterClazzName(ClazzName_keyboardButtonSimpleWebView, 215, 0xa0c0505c)                        // a0c0505c
-	iface.RegisterClazzName(ClazzName_keyboardButtonSimpleWebView, 214, 0xa0c0505c)                        // a0c0505c
 	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPeer, 216, 0x53d7bfd8)                          // 53d7bfd8
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPeer, 215, 0x53d7bfd8)                          // 53d7bfd8
-	iface.RegisterClazzName(ClazzName_keyboardButtonRequestPeer, 214, 0x53d7bfd8)                          // 53d7bfd8
 	iface.RegisterClazzName(ClazzName_inputKeyboardButtonRequestPeer, 216, 0xc9662d05)                     // c9662d05
-	iface.RegisterClazzName(ClazzName_inputKeyboardButtonRequestPeer, 215, 0xc9662d05)                     // c9662d05
-	iface.RegisterClazzName(ClazzName_inputKeyboardButtonRequestPeer, 214, 0xc9662d05)                     // c9662d05
 	iface.RegisterClazzName(ClazzName_keyboardButtonCopy, 216, 0x75d2698e)                                 // 75d2698e
-	iface.RegisterClazzName(ClazzName_keyboardButtonCopy, 215, 0x75d2698e)                                 // 75d2698e
-	iface.RegisterClazzName(ClazzName_keyboardButtonCopy, 214, 0x75d2698e)                                 // 75d2698e
 	iface.RegisterClazzName(ClazzName_keyboardButtonRow, 216, 0x77608b83)                                  // 77608b83
-	iface.RegisterClazzName(ClazzName_keyboardButtonRow, 215, 0x77608b83)                                  // 77608b83
-	iface.RegisterClazzName(ClazzName_keyboardButtonRow, 214, 0x77608b83)                                  // 77608b83
 	iface.RegisterClazzName(ClazzName_replyKeyboardHide, 216, 0xa03e5b85)                                  // a03e5b85
-	iface.RegisterClazzName(ClazzName_replyKeyboardHide, 215, 0xa03e5b85)                                  // a03e5b85
-	iface.RegisterClazzName(ClazzName_replyKeyboardHide, 214, 0xa03e5b85)                                  // a03e5b85
 	iface.RegisterClazzName(ClazzName_replyKeyboardForceReply, 216, 0x86b40b08)                            // 86b40b08
-	iface.RegisterClazzName(ClazzName_replyKeyboardForceReply, 215, 0x86b40b08)                            // 86b40b08
-	iface.RegisterClazzName(ClazzName_replyKeyboardForceReply, 214, 0x86b40b08)                            // 86b40b08
 	iface.RegisterClazzName(ClazzName_replyKeyboardMarkup, 216, 0x85dd99d1)                                // 85dd99d1
-	iface.RegisterClazzName(ClazzName_replyKeyboardMarkup, 215, 0x85dd99d1)                                // 85dd99d1
-	iface.RegisterClazzName(ClazzName_replyKeyboardMarkup, 214, 0x85dd99d1)                                // 85dd99d1
 	iface.RegisterClazzName(ClazzName_replyInlineMarkup, 216, 0x48a30254)                                  // 48a30254
-	iface.RegisterClazzName(ClazzName_replyInlineMarkup, 215, 0x48a30254)                                  // 48a30254
-	iface.RegisterClazzName(ClazzName_replyInlineMarkup, 214, 0x48a30254)                                  // 48a30254
 	iface.RegisterClazzName(ClazzName_messageEntityUnknown, 216, 0xbb92ba95)                               // bb92ba95
-	iface.RegisterClazzName(ClazzName_messageEntityUnknown, 215, 0xbb92ba95)                               // bb92ba95
-	iface.RegisterClazzName(ClazzName_messageEntityUnknown, 214, 0xbb92ba95)                               // bb92ba95
 	iface.RegisterClazzName(ClazzName_messageEntityMention, 216, 0xfa04579d)                               // fa04579d
-	iface.RegisterClazzName(ClazzName_messageEntityMention, 215, 0xfa04579d)                               // fa04579d
-	iface.RegisterClazzName(ClazzName_messageEntityMention, 214, 0xfa04579d)                               // fa04579d
 	iface.RegisterClazzName(ClazzName_messageEntityHashtag, 216, 0x6f635b0d)                               // 6f635b0d
-	iface.RegisterClazzName(ClazzName_messageEntityHashtag, 215, 0x6f635b0d)                               // 6f635b0d
-	iface.RegisterClazzName(ClazzName_messageEntityHashtag, 214, 0x6f635b0d)                               // 6f635b0d
 	iface.RegisterClazzName(ClazzName_messageEntityBotCommand, 216, 0x6cef8ac7)                            // 6cef8ac7
-	iface.RegisterClazzName(ClazzName_messageEntityBotCommand, 215, 0x6cef8ac7)                            // 6cef8ac7
-	iface.RegisterClazzName(ClazzName_messageEntityBotCommand, 214, 0x6cef8ac7)                            // 6cef8ac7
 	iface.RegisterClazzName(ClazzName_messageEntityUrl, 216, 0x6ed02538)                                   // 6ed02538
-	iface.RegisterClazzName(ClazzName_messageEntityUrl, 215, 0x6ed02538)                                   // 6ed02538
-	iface.RegisterClazzName(ClazzName_messageEntityUrl, 214, 0x6ed02538)                                   // 6ed02538
 	iface.RegisterClazzName(ClazzName_messageEntityEmail, 216, 0x64e475c2)                                 // 64e475c2
-	iface.RegisterClazzName(ClazzName_messageEntityEmail, 215, 0x64e475c2)                                 // 64e475c2
-	iface.RegisterClazzName(ClazzName_messageEntityEmail, 214, 0x64e475c2)                                 // 64e475c2
 	iface.RegisterClazzName(ClazzName_messageEntityBold, 216, 0xbd610bc9)                                  // bd610bc9
-	iface.RegisterClazzName(ClazzName_messageEntityBold, 215, 0xbd610bc9)                                  // bd610bc9
-	iface.RegisterClazzName(ClazzName_messageEntityBold, 214, 0xbd610bc9)                                  // bd610bc9
 	iface.RegisterClazzName(ClazzName_messageEntityItalic, 216, 0x826f8b60)                                // 826f8b60
-	iface.RegisterClazzName(ClazzName_messageEntityItalic, 215, 0x826f8b60)                                // 826f8b60
-	iface.RegisterClazzName(ClazzName_messageEntityItalic, 214, 0x826f8b60)                                // 826f8b60
 	iface.RegisterClazzName(ClazzName_messageEntityCode, 216, 0x28a20571)                                  // 28a20571
-	iface.RegisterClazzName(ClazzName_messageEntityCode, 215, 0x28a20571)                                  // 28a20571
-	iface.RegisterClazzName(ClazzName_messageEntityCode, 214, 0x28a20571)                                  // 28a20571
 	iface.RegisterClazzName(ClazzName_messageEntityPre, 216, 0x73924be0)                                   // 73924be0
-	iface.RegisterClazzName(ClazzName_messageEntityPre, 215, 0x73924be0)                                   // 73924be0
-	iface.RegisterClazzName(ClazzName_messageEntityPre, 214, 0x73924be0)                                   // 73924be0
 	iface.RegisterClazzName(ClazzName_messageEntityTextUrl, 216, 0x76a6d327)                               // 76a6d327
-	iface.RegisterClazzName(ClazzName_messageEntityTextUrl, 215, 0x76a6d327)                               // 76a6d327
-	iface.RegisterClazzName(ClazzName_messageEntityTextUrl, 214, 0x76a6d327)                               // 76a6d327
 	iface.RegisterClazzName(ClazzName_messageEntityMentionName, 216, 0xdc7b1140)                           // dc7b1140
-	iface.RegisterClazzName(ClazzName_messageEntityMentionName, 215, 0xdc7b1140)                           // dc7b1140
-	iface.RegisterClazzName(ClazzName_messageEntityMentionName, 214, 0xdc7b1140)                           // dc7b1140
 	iface.RegisterClazzName(ClazzName_inputMessageEntityMentionName, 216, 0x208e68c9)                      // 208e68c9
-	iface.RegisterClazzName(ClazzName_inputMessageEntityMentionName, 215, 0x208e68c9)                      // 208e68c9
-	iface.RegisterClazzName(ClazzName_inputMessageEntityMentionName, 214, 0x208e68c9)                      // 208e68c9
 	iface.RegisterClazzName(ClazzName_messageEntityPhone, 216, 0x9b69e34b)                                 // 9b69e34b
-	iface.RegisterClazzName(ClazzName_messageEntityPhone, 215, 0x9b69e34b)                                 // 9b69e34b
-	iface.RegisterClazzName(ClazzName_messageEntityPhone, 214, 0x9b69e34b)                                 // 9b69e34b
 	iface.RegisterClazzName(ClazzName_messageEntityCashtag, 216, 0x4c4e743f)                               // 4c4e743f
-	iface.RegisterClazzName(ClazzName_messageEntityCashtag, 215, 0x4c4e743f)                               // 4c4e743f
-	iface.RegisterClazzName(ClazzName_messageEntityCashtag, 214, 0x4c4e743f)                               // 4c4e743f
 	iface.RegisterClazzName(ClazzName_messageEntityUnderline, 216, 0x9c4e7e8b)                             // 9c4e7e8b
-	iface.RegisterClazzName(ClazzName_messageEntityUnderline, 215, 0x9c4e7e8b)                             // 9c4e7e8b
-	iface.RegisterClazzName(ClazzName_messageEntityUnderline, 214, 0x9c4e7e8b)                             // 9c4e7e8b
 	iface.RegisterClazzName(ClazzName_messageEntityStrike, 216, 0xbf0693d4)                                // bf0693d4
-	iface.RegisterClazzName(ClazzName_messageEntityStrike, 215, 0xbf0693d4)                                // bf0693d4
-	iface.RegisterClazzName(ClazzName_messageEntityStrike, 214, 0xbf0693d4)                                // bf0693d4
 	iface.RegisterClazzName(ClazzName_messageEntityBankCard, 216, 0x761e6af4)                              // 761e6af4
-	iface.RegisterClazzName(ClazzName_messageEntityBankCard, 215, 0x761e6af4)                              // 761e6af4
-	iface.RegisterClazzName(ClazzName_messageEntityBankCard, 214, 0x761e6af4)                              // 761e6af4
 	iface.RegisterClazzName(ClazzName_messageEntitySpoiler, 216, 0x32ca960f)                               // 32ca960f
-	iface.RegisterClazzName(ClazzName_messageEntitySpoiler, 215, 0x32ca960f)                               // 32ca960f
-	iface.RegisterClazzName(ClazzName_messageEntitySpoiler, 214, 0x32ca960f)                               // 32ca960f
 	iface.RegisterClazzName(ClazzName_messageEntityCustomEmoji, 216, 0xc8cf05f8)                           // c8cf05f8
-	iface.RegisterClazzName(ClazzName_messageEntityCustomEmoji, 215, 0xc8cf05f8)                           // c8cf05f8
-	iface.RegisterClazzName(ClazzName_messageEntityCustomEmoji, 214, 0xc8cf05f8)                           // c8cf05f8
 	iface.RegisterClazzName(ClazzName_messageEntityBlockquote, 216, 0xf1ccaaac)                            // f1ccaaac
-	iface.RegisterClazzName(ClazzName_messageEntityBlockquote, 215, 0xf1ccaaac)                            // f1ccaaac
-	iface.RegisterClazzName(ClazzName_messageEntityBlockquote, 214, 0xf1ccaaac)                            // f1ccaaac
 	iface.RegisterClazzName(ClazzName_inputChannelEmpty, 216, 0xee8c1e86)                                  // ee8c1e86
-	iface.RegisterClazzName(ClazzName_inputChannelEmpty, 215, 0xee8c1e86)                                  // ee8c1e86
-	iface.RegisterClazzName(ClazzName_inputChannelEmpty, 214, 0xee8c1e86)                                  // ee8c1e86
 	iface.RegisterClazzName(ClazzName_inputChannel, 216, 0xf35aec28)                                       // f35aec28
-	iface.RegisterClazzName(ClazzName_inputChannel, 215, 0xf35aec28)                                       // f35aec28
-	iface.RegisterClazzName(ClazzName_inputChannel, 214, 0xf35aec28)                                       // f35aec28
 	iface.RegisterClazzName(ClazzName_inputChannelFromMessage, 216, 0x5b934f9d)                            // 5b934f9d
-	iface.RegisterClazzName(ClazzName_inputChannelFromMessage, 215, 0x5b934f9d)                            // 5b934f9d
-	iface.RegisterClazzName(ClazzName_inputChannelFromMessage, 214, 0x5b934f9d)                            // 5b934f9d
 	iface.RegisterClazzName(ClazzName_contacts_resolvedPeer, 216, 0x7f077ad9)                              // 7f077ad9
-	iface.RegisterClazzName(ClazzName_contacts_resolvedPeer, 215, 0x7f077ad9)                              // 7f077ad9
-	iface.RegisterClazzName(ClazzName_contacts_resolvedPeer, 214, 0x7f077ad9)                              // 7f077ad9
 	iface.RegisterClazzName(ClazzName_messageRange, 216, 0xae30253)                                        // ae30253
-	iface.RegisterClazzName(ClazzName_messageRange, 215, 0xae30253)                                        // ae30253
-	iface.RegisterClazzName(ClazzName_messageRange, 214, 0xae30253)                                        // ae30253
 	iface.RegisterClazzName(ClazzName_updates_channelDifferenceEmpty, 216, 0x3e11affb)                     // 3e11affb
-	iface.RegisterClazzName(ClazzName_updates_channelDifferenceEmpty, 215, 0x3e11affb)                     // 3e11affb
-	iface.RegisterClazzName(ClazzName_updates_channelDifferenceEmpty, 214, 0x3e11affb)                     // 3e11affb
 	iface.RegisterClazzName(ClazzName_updates_channelDifferenceTooLong, 216, 0xa4bcc6fe)                   // a4bcc6fe
-	iface.RegisterClazzName(ClazzName_updates_channelDifferenceTooLong, 215, 0xa4bcc6fe)                   // a4bcc6fe
-	iface.RegisterClazzName(ClazzName_updates_channelDifferenceTooLong, 214, 0xa4bcc6fe)                   // a4bcc6fe
 	iface.RegisterClazzName(ClazzName_updates_channelDifference, 216, 0x2064674e)                          // 2064674e
-	iface.RegisterClazzName(ClazzName_updates_channelDifference, 215, 0x2064674e)                          // 2064674e
-	iface.RegisterClazzName(ClazzName_updates_channelDifference, 214, 0x2064674e)                          // 2064674e
 	iface.RegisterClazzName(ClazzName_channelMessagesFilterEmpty, 216, 0x94d42ee7)                         // 94d42ee7
-	iface.RegisterClazzName(ClazzName_channelMessagesFilterEmpty, 215, 0x94d42ee7)                         // 94d42ee7
-	iface.RegisterClazzName(ClazzName_channelMessagesFilterEmpty, 214, 0x94d42ee7)                         // 94d42ee7
 	iface.RegisterClazzName(ClazzName_channelMessagesFilter, 216, 0xcd77d957)                              // cd77d957
-	iface.RegisterClazzName(ClazzName_channelMessagesFilter, 215, 0xcd77d957)                              // cd77d957
-	iface.RegisterClazzName(ClazzName_channelMessagesFilter, 214, 0xcd77d957)                              // cd77d957
 	iface.RegisterClazzName(ClazzName_channelParticipant, 216, 0xcb397619)                                 // cb397619
-	iface.RegisterClazzName(ClazzName_channelParticipant, 215, 0xcb397619)                                 // cb397619
-	iface.RegisterClazzName(ClazzName_channelParticipant, 214, 0xcb397619)                                 // cb397619
 	iface.RegisterClazzName(ClazzName_channelParticipantSelf, 216, 0x4f607bef)                             // 4f607bef
-	iface.RegisterClazzName(ClazzName_channelParticipantSelf, 215, 0x4f607bef)                             // 4f607bef
-	iface.RegisterClazzName(ClazzName_channelParticipantSelf, 214, 0x4f607bef)                             // 4f607bef
 	iface.RegisterClazzName(ClazzName_channelParticipantCreator, 216, 0x2fe601d3)                          // 2fe601d3
-	iface.RegisterClazzName(ClazzName_channelParticipantCreator, 215, 0x2fe601d3)                          // 2fe601d3
-	iface.RegisterClazzName(ClazzName_channelParticipantCreator, 214, 0x2fe601d3)                          // 2fe601d3
 	iface.RegisterClazzName(ClazzName_channelParticipantAdmin, 216, 0x34c3bb53)                            // 34c3bb53
-	iface.RegisterClazzName(ClazzName_channelParticipantAdmin, 215, 0x34c3bb53)                            // 34c3bb53
-	iface.RegisterClazzName(ClazzName_channelParticipantAdmin, 214, 0x34c3bb53)                            // 34c3bb53
 	iface.RegisterClazzName(ClazzName_channelParticipantBanned, 216, 0x6df8014e)                           // 6df8014e
-	iface.RegisterClazzName(ClazzName_channelParticipantBanned, 215, 0x6df8014e)                           // 6df8014e
-	iface.RegisterClazzName(ClazzName_channelParticipantBanned, 214, 0x6df8014e)                           // 6df8014e
 	iface.RegisterClazzName(ClazzName_channelParticipantLeft, 216, 0x1b03f006)                             // 1b03f006
-	iface.RegisterClazzName(ClazzName_channelParticipantLeft, 215, 0x1b03f006)                             // 1b03f006
-	iface.RegisterClazzName(ClazzName_channelParticipantLeft, 214, 0x1b03f006)                             // 1b03f006
 	iface.RegisterClazzName(ClazzName_channelParticipantsRecent, 216, 0xde3f3c79)                          // de3f3c79
-	iface.RegisterClazzName(ClazzName_channelParticipantsRecent, 215, 0xde3f3c79)                          // de3f3c79
-	iface.RegisterClazzName(ClazzName_channelParticipantsRecent, 214, 0xde3f3c79)                          // de3f3c79
 	iface.RegisterClazzName(ClazzName_channelParticipantsAdmins, 216, 0xb4608969)                          // b4608969
-	iface.RegisterClazzName(ClazzName_channelParticipantsAdmins, 215, 0xb4608969)                          // b4608969
-	iface.RegisterClazzName(ClazzName_channelParticipantsAdmins, 214, 0xb4608969)                          // b4608969
 	iface.RegisterClazzName(ClazzName_channelParticipantsKicked, 216, 0xa3b54985)                          // a3b54985
-	iface.RegisterClazzName(ClazzName_channelParticipantsKicked, 215, 0xa3b54985)                          // a3b54985
-	iface.RegisterClazzName(ClazzName_channelParticipantsKicked, 214, 0xa3b54985)                          // a3b54985
 	iface.RegisterClazzName(ClazzName_channelParticipantsBots, 216, 0xb0d1865b)                            // b0d1865b
-	iface.RegisterClazzName(ClazzName_channelParticipantsBots, 215, 0xb0d1865b)                            // b0d1865b
-	iface.RegisterClazzName(ClazzName_channelParticipantsBots, 214, 0xb0d1865b)                            // b0d1865b
 	iface.RegisterClazzName(ClazzName_channelParticipantsBanned, 216, 0x1427a5e1)                          // 1427a5e1
-	iface.RegisterClazzName(ClazzName_channelParticipantsBanned, 215, 0x1427a5e1)                          // 1427a5e1
-	iface.RegisterClazzName(ClazzName_channelParticipantsBanned, 214, 0x1427a5e1)                          // 1427a5e1
 	iface.RegisterClazzName(ClazzName_channelParticipantsSearch, 216, 0x656ac4b)                           // 656ac4b
-	iface.RegisterClazzName(ClazzName_channelParticipantsSearch, 215, 0x656ac4b)                           // 656ac4b
-	iface.RegisterClazzName(ClazzName_channelParticipantsSearch, 214, 0x656ac4b)                           // 656ac4b
 	iface.RegisterClazzName(ClazzName_channelParticipantsContacts, 216, 0xbb6ae88d)                        // bb6ae88d
-	iface.RegisterClazzName(ClazzName_channelParticipantsContacts, 215, 0xbb6ae88d)                        // bb6ae88d
-	iface.RegisterClazzName(ClazzName_channelParticipantsContacts, 214, 0xbb6ae88d)                        // bb6ae88d
 	iface.RegisterClazzName(ClazzName_channelParticipantsMentions, 216, 0xe04b5ceb)                        // e04b5ceb
-	iface.RegisterClazzName(ClazzName_channelParticipantsMentions, 215, 0xe04b5ceb)                        // e04b5ceb
-	iface.RegisterClazzName(ClazzName_channelParticipantsMentions, 214, 0xe04b5ceb)                        // e04b5ceb
 	iface.RegisterClazzName(ClazzName_channels_channelParticipants, 216, 0x9ab0feaf)                       // 9ab0feaf
-	iface.RegisterClazzName(ClazzName_channels_channelParticipants, 215, 0x9ab0feaf)                       // 9ab0feaf
-	iface.RegisterClazzName(ClazzName_channels_channelParticipants, 214, 0x9ab0feaf)                       // 9ab0feaf
 	iface.RegisterClazzName(ClazzName_channels_channelParticipantsNotModified, 216, 0xf0173fe9)            // f0173fe9
-	iface.RegisterClazzName(ClazzName_channels_channelParticipantsNotModified, 215, 0xf0173fe9)            // f0173fe9
-	iface.RegisterClazzName(ClazzName_channels_channelParticipantsNotModified, 214, 0xf0173fe9)            // f0173fe9
 	iface.RegisterClazzName(ClazzName_channels_channelParticipant, 216, 0xdfb80317)                        // dfb80317
-	iface.RegisterClazzName(ClazzName_channels_channelParticipant, 215, 0xdfb80317)                        // dfb80317
-	iface.RegisterClazzName(ClazzName_channels_channelParticipant, 214, 0xdfb80317)                        // dfb80317
 	iface.RegisterClazzName(ClazzName_help_termsOfService, 216, 0x780a0310)                                // 780a0310
-	iface.RegisterClazzName(ClazzName_help_termsOfService, 215, 0x780a0310)                                // 780a0310
-	iface.RegisterClazzName(ClazzName_help_termsOfService, 214, 0x780a0310)                                // 780a0310
 	iface.RegisterClazzName(ClazzName_messages_savedGifsNotModified, 216, 0xe8025ca2)                      // e8025ca2
-	iface.RegisterClazzName(ClazzName_messages_savedGifsNotModified, 215, 0xe8025ca2)                      // e8025ca2
-	iface.RegisterClazzName(ClazzName_messages_savedGifsNotModified, 214, 0xe8025ca2)                      // e8025ca2
 	iface.RegisterClazzName(ClazzName_messages_savedGifs, 216, 0x84a02a0d)                                 // 84a02a0d
-	iface.RegisterClazzName(ClazzName_messages_savedGifs, 215, 0x84a02a0d)                                 // 84a02a0d
-	iface.RegisterClazzName(ClazzName_messages_savedGifs, 214, 0x84a02a0d)                                 // 84a02a0d
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaAuto, 216, 0x3380c786)                     // 3380c786
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaAuto, 215, 0x3380c786)                     // 3380c786
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaAuto, 214, 0x3380c786)                     // 3380c786
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageText, 216, 0x3dcd7a87)                          // 3dcd7a87
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageText, 215, 0x3dcd7a87)                          // 3dcd7a87
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageText, 214, 0x3dcd7a87)                          // 3dcd7a87
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaGeo, 216, 0x96929a85)                      // 96929a85
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaGeo, 215, 0x96929a85)                      // 96929a85
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaGeo, 214, 0x96929a85)                      // 96929a85
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaVenue, 216, 0x417bbf11)                    // 417bbf11
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaVenue, 215, 0x417bbf11)                    // 417bbf11
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaVenue, 214, 0x417bbf11)                    // 417bbf11
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaContact, 216, 0xa6edbffd)                  // a6edbffd
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaContact, 215, 0xa6edbffd)                  // a6edbffd
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaContact, 214, 0xa6edbffd)                  // a6edbffd
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageGame, 216, 0x4b425864)                          // 4b425864
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageGame, 215, 0x4b425864)                          // 4b425864
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageGame, 214, 0x4b425864)                          // 4b425864
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaInvoice, 216, 0xd7e78225)                  // d7e78225
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaInvoice, 215, 0xd7e78225)                  // d7e78225
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaInvoice, 214, 0xd7e78225)                  // d7e78225
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaWebPage, 216, 0xbddcc510)                  // bddcc510
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaWebPage, 215, 0xbddcc510)                  // bddcc510
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageMediaWebPage, 214, 0xbddcc510)                  // bddcc510
 	iface.RegisterClazzName(ClazzName_inputBotInlineResult, 216, 0x88bf9319)                               // 88bf9319
-	iface.RegisterClazzName(ClazzName_inputBotInlineResult, 215, 0x88bf9319)                               // 88bf9319
-	iface.RegisterClazzName(ClazzName_inputBotInlineResult, 214, 0x88bf9319)                               // 88bf9319
 	iface.RegisterClazzName(ClazzName_inputBotInlineResultPhoto, 216, 0xa8d864a7)                          // a8d864a7
-	iface.RegisterClazzName(ClazzName_inputBotInlineResultPhoto, 215, 0xa8d864a7)                          // a8d864a7
-	iface.RegisterClazzName(ClazzName_inputBotInlineResultPhoto, 214, 0xa8d864a7)                          // a8d864a7
 	iface.RegisterClazzName(ClazzName_inputBotInlineResultDocument, 216, 0xfff8fdc4)                       // fff8fdc4
-	iface.RegisterClazzName(ClazzName_inputBotInlineResultDocument, 215, 0xfff8fdc4)                       // fff8fdc4
-	iface.RegisterClazzName(ClazzName_inputBotInlineResultDocument, 214, 0xfff8fdc4)                       // fff8fdc4
 	iface.RegisterClazzName(ClazzName_inputBotInlineResultGame, 216, 0x4fa417f2)                           // 4fa417f2
-	iface.RegisterClazzName(ClazzName_inputBotInlineResultGame, 215, 0x4fa417f2)                           // 4fa417f2
-	iface.RegisterClazzName(ClazzName_inputBotInlineResultGame, 214, 0x4fa417f2)                           // 4fa417f2
 	iface.RegisterClazzName(ClazzName_botInlineMessageMediaAuto, 216, 0x764cf810)                          // 764cf810
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaAuto, 215, 0x764cf810)                          // 764cf810
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaAuto, 214, 0x764cf810)                          // 764cf810
 	iface.RegisterClazzName(ClazzName_botInlineMessageText, 216, 0x8c7f65e2)                               // 8c7f65e2
-	iface.RegisterClazzName(ClazzName_botInlineMessageText, 215, 0x8c7f65e2)                               // 8c7f65e2
-	iface.RegisterClazzName(ClazzName_botInlineMessageText, 214, 0x8c7f65e2)                               // 8c7f65e2
 	iface.RegisterClazzName(ClazzName_botInlineMessageMediaGeo, 216, 0x51846fd)                            // 51846fd
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaGeo, 215, 0x51846fd)                            // 51846fd
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaGeo, 214, 0x51846fd)                            // 51846fd
 	iface.RegisterClazzName(ClazzName_botInlineMessageMediaVenue, 216, 0x8a86659c)                         // 8a86659c
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaVenue, 215, 0x8a86659c)                         // 8a86659c
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaVenue, 214, 0x8a86659c)                         // 8a86659c
 	iface.RegisterClazzName(ClazzName_botInlineMessageMediaContact, 216, 0x18d1cdc2)                       // 18d1cdc2
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaContact, 215, 0x18d1cdc2)                       // 18d1cdc2
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaContact, 214, 0x18d1cdc2)                       // 18d1cdc2
 	iface.RegisterClazzName(ClazzName_botInlineMessageMediaInvoice, 216, 0x354a9b09)                       // 354a9b09
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaInvoice, 215, 0x354a9b09)                       // 354a9b09
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaInvoice, 214, 0x354a9b09)                       // 354a9b09
 	iface.RegisterClazzName(ClazzName_botInlineMessageMediaWebPage, 216, 0x809ad9a6)                       // 809ad9a6
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaWebPage, 215, 0x809ad9a6)                       // 809ad9a6
-	iface.RegisterClazzName(ClazzName_botInlineMessageMediaWebPage, 214, 0x809ad9a6)                       // 809ad9a6
 	iface.RegisterClazzName(ClazzName_botInlineResult, 216, 0x11965f3a)                                    // 11965f3a
-	iface.RegisterClazzName(ClazzName_botInlineResult, 215, 0x11965f3a)                                    // 11965f3a
-	iface.RegisterClazzName(ClazzName_botInlineResult, 214, 0x11965f3a)                                    // 11965f3a
 	iface.RegisterClazzName(ClazzName_botInlineMediaResult, 216, 0x17db940b)                               // 17db940b
-	iface.RegisterClazzName(ClazzName_botInlineMediaResult, 215, 0x17db940b)                               // 17db940b
-	iface.RegisterClazzName(ClazzName_botInlineMediaResult, 214, 0x17db940b)                               // 17db940b
 	iface.RegisterClazzName(ClazzName_messages_botResults, 216, 0xe021f2f6)                                // e021f2f6
-	iface.RegisterClazzName(ClazzName_messages_botResults, 215, 0xe021f2f6)                                // e021f2f6
-	iface.RegisterClazzName(ClazzName_messages_botResults, 214, 0xe021f2f6)                                // e021f2f6
 	iface.RegisterClazzName(ClazzName_exportedMessageLink, 216, 0x5dab1af4)                                // 5dab1af4
-	iface.RegisterClazzName(ClazzName_exportedMessageLink, 215, 0x5dab1af4)                                // 5dab1af4
-	iface.RegisterClazzName(ClazzName_exportedMessageLink, 214, 0x5dab1af4)                                // 5dab1af4
 	iface.RegisterClazzName(ClazzName_messageFwdHeader, 216, 0x4e4df4bb)                                   // 4e4df4bb
-	iface.RegisterClazzName(ClazzName_messageFwdHeader, 215, 0x4e4df4bb)                                   // 4e4df4bb
-	iface.RegisterClazzName(ClazzName_messageFwdHeader, 214, 0x4e4df4bb)                                   // 4e4df4bb
 	iface.RegisterClazzName(ClazzName_auth_codeTypeSms, 216, 0x72a3158c)                                   // 72a3158c
-	iface.RegisterClazzName(ClazzName_auth_codeTypeSms, 215, 0x72a3158c)                                   // 72a3158c
-	iface.RegisterClazzName(ClazzName_auth_codeTypeSms, 214, 0x72a3158c)                                   // 72a3158c
 	iface.RegisterClazzName(ClazzName_auth_codeTypeCall, 216, 0x741cd3e3)                                  // 741cd3e3
-	iface.RegisterClazzName(ClazzName_auth_codeTypeCall, 215, 0x741cd3e3)                                  // 741cd3e3
-	iface.RegisterClazzName(ClazzName_auth_codeTypeCall, 214, 0x741cd3e3)                                  // 741cd3e3
 	iface.RegisterClazzName(ClazzName_auth_codeTypeFlashCall, 216, 0x226ccefb)                             // 226ccefb
-	iface.RegisterClazzName(ClazzName_auth_codeTypeFlashCall, 215, 0x226ccefb)                             // 226ccefb
-	iface.RegisterClazzName(ClazzName_auth_codeTypeFlashCall, 214, 0x226ccefb)                             // 226ccefb
 	iface.RegisterClazzName(ClazzName_auth_codeTypeMissedCall, 216, 0xd61ad6ee)                            // d61ad6ee
-	iface.RegisterClazzName(ClazzName_auth_codeTypeMissedCall, 215, 0xd61ad6ee)                            // d61ad6ee
-	iface.RegisterClazzName(ClazzName_auth_codeTypeMissedCall, 214, 0xd61ad6ee)                            // d61ad6ee
 	iface.RegisterClazzName(ClazzName_auth_codeTypeFragmentSms, 216, 0x6ed998c)                            // 6ed998c
-	iface.RegisterClazzName(ClazzName_auth_codeTypeFragmentSms, 215, 0x6ed998c)                            // 6ed998c
-	iface.RegisterClazzName(ClazzName_auth_codeTypeFragmentSms, 214, 0x6ed998c)                            // 6ed998c
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeApp, 216, 0x3dbb5986)                               // 3dbb5986
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeApp, 215, 0x3dbb5986)                               // 3dbb5986
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeApp, 214, 0x3dbb5986)                               // 3dbb5986
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSms, 216, 0xc000bba2)                               // c000bba2
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSms, 215, 0xc000bba2)                               // c000bba2
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSms, 214, 0xc000bba2)                               // c000bba2
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeCall, 216, 0x5353e5a7)                              // 5353e5a7
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeCall, 215, 0x5353e5a7)                              // 5353e5a7
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeCall, 214, 0x5353e5a7)                              // 5353e5a7
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFlashCall, 216, 0xab03c6d9)                         // ab03c6d9
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFlashCall, 215, 0xab03c6d9)                         // ab03c6d9
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFlashCall, 214, 0xab03c6d9)                         // ab03c6d9
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeMissedCall, 216, 0x82006484)                        // 82006484
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeMissedCall, 215, 0x82006484)                        // 82006484
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeMissedCall, 214, 0x82006484)                        // 82006484
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeEmailCode, 216, 0xf450f59b)                         // f450f59b
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeEmailCode, 215, 0xf450f59b)                         // f450f59b
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeEmailCode, 214, 0xf450f59b)                         // f450f59b
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSetUpEmailRequired, 216, 0xa5491dea)                // a5491dea
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSetUpEmailRequired, 215, 0xa5491dea)                // a5491dea
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSetUpEmailRequired, 214, 0xa5491dea)                // a5491dea
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFragmentSms, 216, 0xd9565c39)                       // d9565c39
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFragmentSms, 215, 0xd9565c39)                       // d9565c39
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFragmentSms, 214, 0xd9565c39)                       // d9565c39
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFirebaseSms, 216, 0x9fd736)                         // 9fd736
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFirebaseSms, 215, 0x9fd736)                         // 9fd736
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeFirebaseSms, 214, 0x9fd736)                         // 9fd736
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSmsWord, 216, 0xa416ac81)                           // a416ac81
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSmsWord, 215, 0xa416ac81)                           // a416ac81
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSmsWord, 214, 0xa416ac81)                           // a416ac81
 	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSmsPhrase, 216, 0xb37794af)                         // b37794af
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSmsPhrase, 215, 0xb37794af)                         // b37794af
-	iface.RegisterClazzName(ClazzName_auth_sentCodeTypeSmsPhrase, 214, 0xb37794af)                         // b37794af
 	iface.RegisterClazzName(ClazzName_messages_botCallbackAnswer, 216, 0x36585ea4)                         // 36585ea4
-	iface.RegisterClazzName(ClazzName_messages_botCallbackAnswer, 215, 0x36585ea4)                         // 36585ea4
-	iface.RegisterClazzName(ClazzName_messages_botCallbackAnswer, 214, 0x36585ea4)                         // 36585ea4
 	iface.RegisterClazzName(ClazzName_messages_messageEditData, 216, 0x26b5dde6)                           // 26b5dde6
-	iface.RegisterClazzName(ClazzName_messages_messageEditData, 215, 0x26b5dde6)                           // 26b5dde6
-	iface.RegisterClazzName(ClazzName_messages_messageEditData, 214, 0x26b5dde6)                           // 26b5dde6
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageID, 216, 0x890c3d89)                            // 890c3d89
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageID, 215, 0x890c3d89)                            // 890c3d89
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageID, 214, 0x890c3d89)                            // 890c3d89
 	iface.RegisterClazzName(ClazzName_inputBotInlineMessageID64, 216, 0xb6d915d7)                          // b6d915d7
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageID64, 215, 0xb6d915d7)                          // b6d915d7
-	iface.RegisterClazzName(ClazzName_inputBotInlineMessageID64, 214, 0xb6d915d7)                          // b6d915d7
 	iface.RegisterClazzName(ClazzName_inlineBotSwitchPM, 216, 0x3c20629f)                                  // 3c20629f
-	iface.RegisterClazzName(ClazzName_inlineBotSwitchPM, 215, 0x3c20629f)                                  // 3c20629f
-	iface.RegisterClazzName(ClazzName_inlineBotSwitchPM, 214, 0x3c20629f)                                  // 3c20629f
 	iface.RegisterClazzName(ClazzName_messages_peerDialogs, 216, 0x3371c354)                               // 3371c354
-	iface.RegisterClazzName(ClazzName_messages_peerDialogs, 215, 0x3371c354)                               // 3371c354
-	iface.RegisterClazzName(ClazzName_messages_peerDialogs, 214, 0x3371c354)                               // 3371c354
 	iface.RegisterClazzName(ClazzName_topPeer, 216, 0xedcdc05b)                                            // edcdc05b
-	iface.RegisterClazzName(ClazzName_topPeer, 215, 0xedcdc05b)                                            // edcdc05b
-	iface.RegisterClazzName(ClazzName_topPeer, 214, 0xedcdc05b)                                            // edcdc05b
 	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsPM, 216, 0xab661b5b)                              // ab661b5b
-	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsPM, 215, 0xab661b5b)                              // ab661b5b
-	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsPM, 214, 0xab661b5b)                              // ab661b5b
 	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsInline, 216, 0x148677e2)                          // 148677e2
-	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsInline, 215, 0x148677e2)                          // 148677e2
-	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsInline, 214, 0x148677e2)                          // 148677e2
 	iface.RegisterClazzName(ClazzName_topPeerCategoryCorrespondents, 216, 0x637b7ed)                       // 637b7ed
-	iface.RegisterClazzName(ClazzName_topPeerCategoryCorrespondents, 215, 0x637b7ed)                       // 637b7ed
-	iface.RegisterClazzName(ClazzName_topPeerCategoryCorrespondents, 214, 0x637b7ed)                       // 637b7ed
 	iface.RegisterClazzName(ClazzName_topPeerCategoryGroups, 216, 0xbd17a14a)                              // bd17a14a
-	iface.RegisterClazzName(ClazzName_topPeerCategoryGroups, 215, 0xbd17a14a)                              // bd17a14a
-	iface.RegisterClazzName(ClazzName_topPeerCategoryGroups, 214, 0xbd17a14a)                              // bd17a14a
 	iface.RegisterClazzName(ClazzName_topPeerCategoryChannels, 216, 0x161d9628)                            // 161d9628
-	iface.RegisterClazzName(ClazzName_topPeerCategoryChannels, 215, 0x161d9628)                            // 161d9628
-	iface.RegisterClazzName(ClazzName_topPeerCategoryChannels, 214, 0x161d9628)                            // 161d9628
 	iface.RegisterClazzName(ClazzName_topPeerCategoryPhoneCalls, 216, 0x1e76a78c)                          // 1e76a78c
-	iface.RegisterClazzName(ClazzName_topPeerCategoryPhoneCalls, 215, 0x1e76a78c)                          // 1e76a78c
-	iface.RegisterClazzName(ClazzName_topPeerCategoryPhoneCalls, 214, 0x1e76a78c)                          // 1e76a78c
 	iface.RegisterClazzName(ClazzName_topPeerCategoryForwardUsers, 216, 0xa8406ca9)                        // a8406ca9
-	iface.RegisterClazzName(ClazzName_topPeerCategoryForwardUsers, 215, 0xa8406ca9)                        // a8406ca9
-	iface.RegisterClazzName(ClazzName_topPeerCategoryForwardUsers, 214, 0xa8406ca9)                        // a8406ca9
 	iface.RegisterClazzName(ClazzName_topPeerCategoryForwardChats, 216, 0xfbeec0f0)                        // fbeec0f0
-	iface.RegisterClazzName(ClazzName_topPeerCategoryForwardChats, 215, 0xfbeec0f0)                        // fbeec0f0
-	iface.RegisterClazzName(ClazzName_topPeerCategoryForwardChats, 214, 0xfbeec0f0)                        // fbeec0f0
 	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsApp, 216, 0xfd9e7bec)                             // fd9e7bec
-	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsApp, 215, 0xfd9e7bec)                             // fd9e7bec
-	iface.RegisterClazzName(ClazzName_topPeerCategoryBotsApp, 214, 0xfd9e7bec)                             // fd9e7bec
 	iface.RegisterClazzName(ClazzName_topPeerCategoryPeers, 216, 0xfb834291)                               // fb834291
-	iface.RegisterClazzName(ClazzName_topPeerCategoryPeers, 215, 0xfb834291)                               // fb834291
-	iface.RegisterClazzName(ClazzName_topPeerCategoryPeers, 214, 0xfb834291)                               // fb834291
 	iface.RegisterClazzName(ClazzName_contacts_topPeersNotModified, 216, 0xde266ef5)                       // de266ef5
-	iface.RegisterClazzName(ClazzName_contacts_topPeersNotModified, 215, 0xde266ef5)                       // de266ef5
-	iface.RegisterClazzName(ClazzName_contacts_topPeersNotModified, 214, 0xde266ef5)                       // de266ef5
 	iface.RegisterClazzName(ClazzName_contacts_topPeers, 216, 0x70b772a8)                                  // 70b772a8
-	iface.RegisterClazzName(ClazzName_contacts_topPeers, 215, 0x70b772a8)                                  // 70b772a8
-	iface.RegisterClazzName(ClazzName_contacts_topPeers, 214, 0x70b772a8)                                  // 70b772a8
 	iface.RegisterClazzName(ClazzName_contacts_topPeersDisabled, 216, 0xb52c939d)                          // b52c939d
-	iface.RegisterClazzName(ClazzName_contacts_topPeersDisabled, 215, 0xb52c939d)                          // b52c939d
-	iface.RegisterClazzName(ClazzName_contacts_topPeersDisabled, 214, 0xb52c939d)                          // b52c939d
 	iface.RegisterClazzName(ClazzName_draftMessageEmpty, 216, 0x1b0c841a)                                  // 1b0c841a
-	iface.RegisterClazzName(ClazzName_draftMessageEmpty, 215, 0x1b0c841a)                                  // 1b0c841a
-	iface.RegisterClazzName(ClazzName_draftMessageEmpty, 214, 0x1b0c841a)                                  // 1b0c841a
 	iface.RegisterClazzName(ClazzName_draftMessage, 216, 0x96eaa5eb)                                       // 96eaa5eb
-	iface.RegisterClazzName(ClazzName_draftMessage, 215, 0x96eaa5eb)                                       // 96eaa5eb
-	iface.RegisterClazzName(ClazzName_draftMessage, 214, 0x96eaa5eb)                                       // 96eaa5eb
 	iface.RegisterClazzName(ClazzName_messages_featuredStickersNotModified, 216, 0xc6dc0c66)               // c6dc0c66
-	iface.RegisterClazzName(ClazzName_messages_featuredStickersNotModified, 215, 0xc6dc0c66)               // c6dc0c66
-	iface.RegisterClazzName(ClazzName_messages_featuredStickersNotModified, 214, 0xc6dc0c66)               // c6dc0c66
 	iface.RegisterClazzName(ClazzName_messages_featuredStickers, 216, 0xbe382906)                          // be382906
-	iface.RegisterClazzName(ClazzName_messages_featuredStickers, 215, 0xbe382906)                          // be382906
-	iface.RegisterClazzName(ClazzName_messages_featuredStickers, 214, 0xbe382906)                          // be382906
 	iface.RegisterClazzName(ClazzName_messages_recentStickersNotModified, 216, 0xb17f890)                  // b17f890
-	iface.RegisterClazzName(ClazzName_messages_recentStickersNotModified, 215, 0xb17f890)                  // b17f890
-	iface.RegisterClazzName(ClazzName_messages_recentStickersNotModified, 214, 0xb17f890)                  // b17f890
 	iface.RegisterClazzName(ClazzName_messages_recentStickers, 216, 0x88d37c56)                            // 88d37c56
-	iface.RegisterClazzName(ClazzName_messages_recentStickers, 215, 0x88d37c56)                            // 88d37c56
-	iface.RegisterClazzName(ClazzName_messages_recentStickers, 214, 0x88d37c56)                            // 88d37c56
 	iface.RegisterClazzName(ClazzName_messages_archivedStickers, 216, 0x4fcba9c8)                          // 4fcba9c8
-	iface.RegisterClazzName(ClazzName_messages_archivedStickers, 215, 0x4fcba9c8)                          // 4fcba9c8
-	iface.RegisterClazzName(ClazzName_messages_archivedStickers, 214, 0x4fcba9c8)                          // 4fcba9c8
 	iface.RegisterClazzName(ClazzName_messages_stickerSetInstallResultSuccess, 216, 0x38641628)            // 38641628
-	iface.RegisterClazzName(ClazzName_messages_stickerSetInstallResultSuccess, 215, 0x38641628)            // 38641628
-	iface.RegisterClazzName(ClazzName_messages_stickerSetInstallResultSuccess, 214, 0x38641628)            // 38641628
 	iface.RegisterClazzName(ClazzName_messages_stickerSetInstallResultArchive, 216, 0x35e410a8)            // 35e410a8
-	iface.RegisterClazzName(ClazzName_messages_stickerSetInstallResultArchive, 215, 0x35e410a8)            // 35e410a8
-	iface.RegisterClazzName(ClazzName_messages_stickerSetInstallResultArchive, 214, 0x35e410a8)            // 35e410a8
 	iface.RegisterClazzName(ClazzName_stickerSetCovered, 216, 0x6410a5d2)                                  // 6410a5d2
-	iface.RegisterClazzName(ClazzName_stickerSetCovered, 215, 0x6410a5d2)                                  // 6410a5d2
-	iface.RegisterClazzName(ClazzName_stickerSetCovered, 214, 0x6410a5d2)                                  // 6410a5d2
 	iface.RegisterClazzName(ClazzName_stickerSetMultiCovered, 216, 0x3407e51b)                             // 3407e51b
-	iface.RegisterClazzName(ClazzName_stickerSetMultiCovered, 215, 0x3407e51b)                             // 3407e51b
-	iface.RegisterClazzName(ClazzName_stickerSetMultiCovered, 214, 0x3407e51b)                             // 3407e51b
 	iface.RegisterClazzName(ClazzName_stickerSetFullCovered, 216, 0x40d13c0e)                              // 40d13c0e
-	iface.RegisterClazzName(ClazzName_stickerSetFullCovered, 215, 0x40d13c0e)                              // 40d13c0e
-	iface.RegisterClazzName(ClazzName_stickerSetFullCovered, 214, 0x40d13c0e)                              // 40d13c0e
 	iface.RegisterClazzName(ClazzName_stickerSetNoCovered, 216, 0x77b15d1c)                                // 77b15d1c
-	iface.RegisterClazzName(ClazzName_stickerSetNoCovered, 215, 0x77b15d1c)                                // 77b15d1c
-	iface.RegisterClazzName(ClazzName_stickerSetNoCovered, 214, 0x77b15d1c)                                // 77b15d1c
 	iface.RegisterClazzName(ClazzName_maskCoords, 216, 0xaed6dbb2)                                         // aed6dbb2
-	iface.RegisterClazzName(ClazzName_maskCoords, 215, 0xaed6dbb2)                                         // aed6dbb2
-	iface.RegisterClazzName(ClazzName_maskCoords, 214, 0xaed6dbb2)                                         // aed6dbb2
 	iface.RegisterClazzName(ClazzName_inputStickeredMediaPhoto, 216, 0x4a992157)                           // 4a992157
-	iface.RegisterClazzName(ClazzName_inputStickeredMediaPhoto, 215, 0x4a992157)                           // 4a992157
-	iface.RegisterClazzName(ClazzName_inputStickeredMediaPhoto, 214, 0x4a992157)                           // 4a992157
 	iface.RegisterClazzName(ClazzName_inputStickeredMediaDocument, 216, 0x438865b)                         // 438865b
-	iface.RegisterClazzName(ClazzName_inputStickeredMediaDocument, 215, 0x438865b)                         // 438865b
-	iface.RegisterClazzName(ClazzName_inputStickeredMediaDocument, 214, 0x438865b)                         // 438865b
 	iface.RegisterClazzName(ClazzName_game, 216, 0xbdf9653b)                                               // bdf9653b
-	iface.RegisterClazzName(ClazzName_game, 215, 0xbdf9653b)                                               // bdf9653b
-	iface.RegisterClazzName(ClazzName_game, 214, 0xbdf9653b)                                               // bdf9653b
 	iface.RegisterClazzName(ClazzName_inputGameID, 216, 0x32c3e77)                                         // 32c3e77
-	iface.RegisterClazzName(ClazzName_inputGameID, 215, 0x32c3e77)                                         // 32c3e77
-	iface.RegisterClazzName(ClazzName_inputGameID, 214, 0x32c3e77)                                         // 32c3e77
 	iface.RegisterClazzName(ClazzName_inputGameShortName, 216, 0xc331e80a)                                 // c331e80a
-	iface.RegisterClazzName(ClazzName_inputGameShortName, 215, 0xc331e80a)                                 // c331e80a
-	iface.RegisterClazzName(ClazzName_inputGameShortName, 214, 0xc331e80a)                                 // c331e80a
 	iface.RegisterClazzName(ClazzName_highScore, 216, 0x73a379eb)                                          // 73a379eb
-	iface.RegisterClazzName(ClazzName_highScore, 215, 0x73a379eb)                                          // 73a379eb
-	iface.RegisterClazzName(ClazzName_highScore, 214, 0x73a379eb)                                          // 73a379eb
 	iface.RegisterClazzName(ClazzName_messages_highScores, 216, 0x9a3bfd99)                                // 9a3bfd99
-	iface.RegisterClazzName(ClazzName_messages_highScores, 215, 0x9a3bfd99)                                // 9a3bfd99
-	iface.RegisterClazzName(ClazzName_messages_highScores, 214, 0x9a3bfd99)                                // 9a3bfd99
 	iface.RegisterClazzName(ClazzName_textEmpty, 216, 0xdc3d824f)                                          // dc3d824f
-	iface.RegisterClazzName(ClazzName_textEmpty, 215, 0xdc3d824f)                                          // dc3d824f
-	iface.RegisterClazzName(ClazzName_textEmpty, 214, 0xdc3d824f)                                          // dc3d824f
 	iface.RegisterClazzName(ClazzName_textPlain, 216, 0x744694e0)                                          // 744694e0
-	iface.RegisterClazzName(ClazzName_textPlain, 215, 0x744694e0)                                          // 744694e0
-	iface.RegisterClazzName(ClazzName_textPlain, 214, 0x744694e0)                                          // 744694e0
 	iface.RegisterClazzName(ClazzName_textBold, 216, 0x6724abc4)                                           // 6724abc4
-	iface.RegisterClazzName(ClazzName_textBold, 215, 0x6724abc4)                                           // 6724abc4
-	iface.RegisterClazzName(ClazzName_textBold, 214, 0x6724abc4)                                           // 6724abc4
 	iface.RegisterClazzName(ClazzName_textItalic, 216, 0xd912a59c)                                         // d912a59c
-	iface.RegisterClazzName(ClazzName_textItalic, 215, 0xd912a59c)                                         // d912a59c
-	iface.RegisterClazzName(ClazzName_textItalic, 214, 0xd912a59c)                                         // d912a59c
 	iface.RegisterClazzName(ClazzName_textUnderline, 216, 0xc12622c4)                                      // c12622c4
-	iface.RegisterClazzName(ClazzName_textUnderline, 215, 0xc12622c4)                                      // c12622c4
-	iface.RegisterClazzName(ClazzName_textUnderline, 214, 0xc12622c4)                                      // c12622c4
 	iface.RegisterClazzName(ClazzName_textStrike, 216, 0x9bf8bb95)                                         // 9bf8bb95
-	iface.RegisterClazzName(ClazzName_textStrike, 215, 0x9bf8bb95)                                         // 9bf8bb95
-	iface.RegisterClazzName(ClazzName_textStrike, 214, 0x9bf8bb95)                                         // 9bf8bb95
 	iface.RegisterClazzName(ClazzName_textFixed, 216, 0x6c3f19b9)                                          // 6c3f19b9
-	iface.RegisterClazzName(ClazzName_textFixed, 215, 0x6c3f19b9)                                          // 6c3f19b9
-	iface.RegisterClazzName(ClazzName_textFixed, 214, 0x6c3f19b9)                                          // 6c3f19b9
 	iface.RegisterClazzName(ClazzName_textUrl, 216, 0x3c2884c1)                                            // 3c2884c1
-	iface.RegisterClazzName(ClazzName_textUrl, 215, 0x3c2884c1)                                            // 3c2884c1
-	iface.RegisterClazzName(ClazzName_textUrl, 214, 0x3c2884c1)                                            // 3c2884c1
 	iface.RegisterClazzName(ClazzName_textEmail, 216, 0xde5a0dd6)                                          // de5a0dd6
-	iface.RegisterClazzName(ClazzName_textEmail, 215, 0xde5a0dd6)                                          // de5a0dd6
-	iface.RegisterClazzName(ClazzName_textEmail, 214, 0xde5a0dd6)                                          // de5a0dd6
 	iface.RegisterClazzName(ClazzName_textConcat, 216, 0x7e6260d7)                                         // 7e6260d7
-	iface.RegisterClazzName(ClazzName_textConcat, 215, 0x7e6260d7)                                         // 7e6260d7
-	iface.RegisterClazzName(ClazzName_textConcat, 214, 0x7e6260d7)                                         // 7e6260d7
 	iface.RegisterClazzName(ClazzName_textSubscript, 216, 0xed6a8504)                                      // ed6a8504
-	iface.RegisterClazzName(ClazzName_textSubscript, 215, 0xed6a8504)                                      // ed6a8504
-	iface.RegisterClazzName(ClazzName_textSubscript, 214, 0xed6a8504)                                      // ed6a8504
 	iface.RegisterClazzName(ClazzName_textSuperscript, 216, 0xc7fb5e01)                                    // c7fb5e01
-	iface.RegisterClazzName(ClazzName_textSuperscript, 215, 0xc7fb5e01)                                    // c7fb5e01
-	iface.RegisterClazzName(ClazzName_textSuperscript, 214, 0xc7fb5e01)                                    // c7fb5e01
 	iface.RegisterClazzName(ClazzName_textMarked, 216, 0x34b8621)                                          // 34b8621
-	iface.RegisterClazzName(ClazzName_textMarked, 215, 0x34b8621)                                          // 34b8621
-	iface.RegisterClazzName(ClazzName_textMarked, 214, 0x34b8621)                                          // 34b8621
 	iface.RegisterClazzName(ClazzName_textPhone, 216, 0x1ccb966a)                                          // 1ccb966a
-	iface.RegisterClazzName(ClazzName_textPhone, 215, 0x1ccb966a)                                          // 1ccb966a
-	iface.RegisterClazzName(ClazzName_textPhone, 214, 0x1ccb966a)                                          // 1ccb966a
 	iface.RegisterClazzName(ClazzName_textImage, 216, 0x81ccf4f)                                           // 81ccf4f
-	iface.RegisterClazzName(ClazzName_textImage, 215, 0x81ccf4f)                                           // 81ccf4f
-	iface.RegisterClazzName(ClazzName_textImage, 214, 0x81ccf4f)                                           // 81ccf4f
 	iface.RegisterClazzName(ClazzName_textAnchor, 216, 0x35553762)                                         // 35553762
-	iface.RegisterClazzName(ClazzName_textAnchor, 215, 0x35553762)                                         // 35553762
-	iface.RegisterClazzName(ClazzName_textAnchor, 214, 0x35553762)                                         // 35553762
 	iface.RegisterClazzName(ClazzName_pageBlockUnsupported, 216, 0x13567e8a)                               // 13567e8a
-	iface.RegisterClazzName(ClazzName_pageBlockUnsupported, 215, 0x13567e8a)                               // 13567e8a
-	iface.RegisterClazzName(ClazzName_pageBlockUnsupported, 214, 0x13567e8a)                               // 13567e8a
 	iface.RegisterClazzName(ClazzName_pageBlockTitle, 216, 0x70abc3fd)                                     // 70abc3fd
-	iface.RegisterClazzName(ClazzName_pageBlockTitle, 215, 0x70abc3fd)                                     // 70abc3fd
-	iface.RegisterClazzName(ClazzName_pageBlockTitle, 214, 0x70abc3fd)                                     // 70abc3fd
 	iface.RegisterClazzName(ClazzName_pageBlockSubtitle, 216, 0x8ffa9a1f)                                  // 8ffa9a1f
-	iface.RegisterClazzName(ClazzName_pageBlockSubtitle, 215, 0x8ffa9a1f)                                  // 8ffa9a1f
-	iface.RegisterClazzName(ClazzName_pageBlockSubtitle, 214, 0x8ffa9a1f)                                  // 8ffa9a1f
 	iface.RegisterClazzName(ClazzName_pageBlockAuthorDate, 216, 0xbaafe5e0)                                // baafe5e0
-	iface.RegisterClazzName(ClazzName_pageBlockAuthorDate, 215, 0xbaafe5e0)                                // baafe5e0
-	iface.RegisterClazzName(ClazzName_pageBlockAuthorDate, 214, 0xbaafe5e0)                                // baafe5e0
 	iface.RegisterClazzName(ClazzName_pageBlockHeader, 216, 0xbfd064ec)                                    // bfd064ec
-	iface.RegisterClazzName(ClazzName_pageBlockHeader, 215, 0xbfd064ec)                                    // bfd064ec
-	iface.RegisterClazzName(ClazzName_pageBlockHeader, 214, 0xbfd064ec)                                    // bfd064ec
 	iface.RegisterClazzName(ClazzName_pageBlockSubheader, 216, 0xf12bb6e1)                                 // f12bb6e1
-	iface.RegisterClazzName(ClazzName_pageBlockSubheader, 215, 0xf12bb6e1)                                 // f12bb6e1
-	iface.RegisterClazzName(ClazzName_pageBlockSubheader, 214, 0xf12bb6e1)                                 // f12bb6e1
 	iface.RegisterClazzName(ClazzName_pageBlockParagraph, 216, 0x467a0766)                                 // 467a0766
-	iface.RegisterClazzName(ClazzName_pageBlockParagraph, 215, 0x467a0766)                                 // 467a0766
-	iface.RegisterClazzName(ClazzName_pageBlockParagraph, 214, 0x467a0766)                                 // 467a0766
 	iface.RegisterClazzName(ClazzName_pageBlockPreformatted, 216, 0xc070d93e)                              // c070d93e
-	iface.RegisterClazzName(ClazzName_pageBlockPreformatted, 215, 0xc070d93e)                              // c070d93e
-	iface.RegisterClazzName(ClazzName_pageBlockPreformatted, 214, 0xc070d93e)                              // c070d93e
 	iface.RegisterClazzName(ClazzName_pageBlockFooter, 216, 0x48870999)                                    // 48870999
-	iface.RegisterClazzName(ClazzName_pageBlockFooter, 215, 0x48870999)                                    // 48870999
-	iface.RegisterClazzName(ClazzName_pageBlockFooter, 214, 0x48870999)                                    // 48870999
 	iface.RegisterClazzName(ClazzName_pageBlockDivider, 216, 0xdb20b188)                                   // db20b188
-	iface.RegisterClazzName(ClazzName_pageBlockDivider, 215, 0xdb20b188)                                   // db20b188
-	iface.RegisterClazzName(ClazzName_pageBlockDivider, 214, 0xdb20b188)                                   // db20b188
 	iface.RegisterClazzName(ClazzName_pageBlockAnchor, 216, 0xce0d37b0)                                    // ce0d37b0
-	iface.RegisterClazzName(ClazzName_pageBlockAnchor, 215, 0xce0d37b0)                                    // ce0d37b0
-	iface.RegisterClazzName(ClazzName_pageBlockAnchor, 214, 0xce0d37b0)                                    // ce0d37b0
 	iface.RegisterClazzName(ClazzName_pageBlockList, 216, 0xe4e88011)                                      // e4e88011
-	iface.RegisterClazzName(ClazzName_pageBlockList, 215, 0xe4e88011)                                      // e4e88011
-	iface.RegisterClazzName(ClazzName_pageBlockList, 214, 0xe4e88011)                                      // e4e88011
 	iface.RegisterClazzName(ClazzName_pageBlockBlockquote, 216, 0x263d7c26)                                // 263d7c26
-	iface.RegisterClazzName(ClazzName_pageBlockBlockquote, 215, 0x263d7c26)                                // 263d7c26
-	iface.RegisterClazzName(ClazzName_pageBlockBlockquote, 214, 0x263d7c26)                                // 263d7c26
 	iface.RegisterClazzName(ClazzName_pageBlockPullquote, 216, 0x4f4456d3)                                 // 4f4456d3
-	iface.RegisterClazzName(ClazzName_pageBlockPullquote, 215, 0x4f4456d3)                                 // 4f4456d3
-	iface.RegisterClazzName(ClazzName_pageBlockPullquote, 214, 0x4f4456d3)                                 // 4f4456d3
 	iface.RegisterClazzName(ClazzName_pageBlockPhoto, 216, 0x1759c560)                                     // 1759c560
-	iface.RegisterClazzName(ClazzName_pageBlockPhoto, 215, 0x1759c560)                                     // 1759c560
-	iface.RegisterClazzName(ClazzName_pageBlockPhoto, 214, 0x1759c560)                                     // 1759c560
 	iface.RegisterClazzName(ClazzName_pageBlockVideo, 216, 0x7c8fe7b6)                                     // 7c8fe7b6
-	iface.RegisterClazzName(ClazzName_pageBlockVideo, 215, 0x7c8fe7b6)                                     // 7c8fe7b6
-	iface.RegisterClazzName(ClazzName_pageBlockVideo, 214, 0x7c8fe7b6)                                     // 7c8fe7b6
 	iface.RegisterClazzName(ClazzName_pageBlockCover, 216, 0x39f23300)                                     // 39f23300
-	iface.RegisterClazzName(ClazzName_pageBlockCover, 215, 0x39f23300)                                     // 39f23300
-	iface.RegisterClazzName(ClazzName_pageBlockCover, 214, 0x39f23300)                                     // 39f23300
 	iface.RegisterClazzName(ClazzName_pageBlockEmbed, 216, 0xa8718dc5)                                     // a8718dc5
-	iface.RegisterClazzName(ClazzName_pageBlockEmbed, 215, 0xa8718dc5)                                     // a8718dc5
-	iface.RegisterClazzName(ClazzName_pageBlockEmbed, 214, 0xa8718dc5)                                     // a8718dc5
 	iface.RegisterClazzName(ClazzName_pageBlockEmbedPost, 216, 0xf259a80b)                                 // f259a80b
-	iface.RegisterClazzName(ClazzName_pageBlockEmbedPost, 215, 0xf259a80b)                                 // f259a80b
-	iface.RegisterClazzName(ClazzName_pageBlockEmbedPost, 214, 0xf259a80b)                                 // f259a80b
 	iface.RegisterClazzName(ClazzName_pageBlockCollage, 216, 0x65a0fa4d)                                   // 65a0fa4d
-	iface.RegisterClazzName(ClazzName_pageBlockCollage, 215, 0x65a0fa4d)                                   // 65a0fa4d
-	iface.RegisterClazzName(ClazzName_pageBlockCollage, 214, 0x65a0fa4d)                                   // 65a0fa4d
 	iface.RegisterClazzName(ClazzName_pageBlockSlideshow, 216, 0x31f9590)                                  // 31f9590
-	iface.RegisterClazzName(ClazzName_pageBlockSlideshow, 215, 0x31f9590)                                  // 31f9590
-	iface.RegisterClazzName(ClazzName_pageBlockSlideshow, 214, 0x31f9590)                                  // 31f9590
 	iface.RegisterClazzName(ClazzName_pageBlockChannel, 216, 0xef1751b5)                                   // ef1751b5
-	iface.RegisterClazzName(ClazzName_pageBlockChannel, 215, 0xef1751b5)                                   // ef1751b5
-	iface.RegisterClazzName(ClazzName_pageBlockChannel, 214, 0xef1751b5)                                   // ef1751b5
 	iface.RegisterClazzName(ClazzName_pageBlockAudio, 216, 0x804361ea)                                     // 804361ea
-	iface.RegisterClazzName(ClazzName_pageBlockAudio, 215, 0x804361ea)                                     // 804361ea
-	iface.RegisterClazzName(ClazzName_pageBlockAudio, 214, 0x804361ea)                                     // 804361ea
 	iface.RegisterClazzName(ClazzName_pageBlockKicker, 216, 0x1e148390)                                    // 1e148390
-	iface.RegisterClazzName(ClazzName_pageBlockKicker, 215, 0x1e148390)                                    // 1e148390
-	iface.RegisterClazzName(ClazzName_pageBlockKicker, 214, 0x1e148390)                                    // 1e148390
 	iface.RegisterClazzName(ClazzName_pageBlockTable, 216, 0xbf4dea82)                                     // bf4dea82
-	iface.RegisterClazzName(ClazzName_pageBlockTable, 215, 0xbf4dea82)                                     // bf4dea82
-	iface.RegisterClazzName(ClazzName_pageBlockTable, 214, 0xbf4dea82)                                     // bf4dea82
 	iface.RegisterClazzName(ClazzName_pageBlockOrderedList, 216, 0x9a8ae1e1)                               // 9a8ae1e1
-	iface.RegisterClazzName(ClazzName_pageBlockOrderedList, 215, 0x9a8ae1e1)                               // 9a8ae1e1
-	iface.RegisterClazzName(ClazzName_pageBlockOrderedList, 214, 0x9a8ae1e1)                               // 9a8ae1e1
 	iface.RegisterClazzName(ClazzName_pageBlockDetails, 216, 0x76768bed)                                   // 76768bed
-	iface.RegisterClazzName(ClazzName_pageBlockDetails, 215, 0x76768bed)                                   // 76768bed
-	iface.RegisterClazzName(ClazzName_pageBlockDetails, 214, 0x76768bed)                                   // 76768bed
 	iface.RegisterClazzName(ClazzName_pageBlockRelatedArticles, 216, 0x16115a96)                           // 16115a96
-	iface.RegisterClazzName(ClazzName_pageBlockRelatedArticles, 215, 0x16115a96)                           // 16115a96
-	iface.RegisterClazzName(ClazzName_pageBlockRelatedArticles, 214, 0x16115a96)                           // 16115a96
 	iface.RegisterClazzName(ClazzName_pageBlockMap, 216, 0xa44f3ef6)                                       // a44f3ef6
-	iface.RegisterClazzName(ClazzName_pageBlockMap, 215, 0xa44f3ef6)                                       // a44f3ef6
-	iface.RegisterClazzName(ClazzName_pageBlockMap, 214, 0xa44f3ef6)                                       // a44f3ef6
 	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonMissed, 216, 0x85e42301)                       // 85e42301
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonMissed, 215, 0x85e42301)                       // 85e42301
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonMissed, 214, 0x85e42301)                       // 85e42301
 	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonDisconnect, 216, 0xe095c1a0)                   // e095c1a0
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonDisconnect, 215, 0xe095c1a0)                   // e095c1a0
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonDisconnect, 214, 0xe095c1a0)                   // e095c1a0
 	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonHangup, 216, 0x57adc690)                       // 57adc690
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonHangup, 215, 0x57adc690)                       // 57adc690
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonHangup, 214, 0x57adc690)                       // 57adc690
 	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonBusy, 216, 0xfaf7e8c9)                         // faf7e8c9
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonBusy, 215, 0xfaf7e8c9)                         // faf7e8c9
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonBusy, 214, 0xfaf7e8c9)                         // faf7e8c9
 	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonMigrateConferenceCall, 216, 0x9fbbf1f7)        // 9fbbf1f7
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonMigrateConferenceCall, 215, 0x9fbbf1f7)        // 9fbbf1f7
-	iface.RegisterClazzName(ClazzName_phoneCallDiscardReasonMigrateConferenceCall, 214, 0x9fbbf1f7)        // 9fbbf1f7
 	iface.RegisterClazzName(ClazzName_dataJSON, 216, 0x7d748d04)                                           // 7d748d04
-	iface.RegisterClazzName(ClazzName_dataJSON, 215, 0x7d748d04)                                           // 7d748d04
-	iface.RegisterClazzName(ClazzName_dataJSON, 214, 0x7d748d04)                                           // 7d748d04
 	iface.RegisterClazzName(ClazzName_labeledPrice, 216, 0xcb296bf8)                                       // cb296bf8
-	iface.RegisterClazzName(ClazzName_labeledPrice, 215, 0xcb296bf8)                                       // cb296bf8
-	iface.RegisterClazzName(ClazzName_labeledPrice, 214, 0xcb296bf8)                                       // cb296bf8
 	iface.RegisterClazzName(ClazzName_invoice, 216, 0x49ee584)                                             // 49ee584
-	iface.RegisterClazzName(ClazzName_invoice, 215, 0x49ee584)                                             // 49ee584
-	iface.RegisterClazzName(ClazzName_invoice, 214, 0x49ee584)                                             // 49ee584
 	iface.RegisterClazzName(ClazzName_paymentCharge, 216, 0xea02c27e)                                      // ea02c27e
-	iface.RegisterClazzName(ClazzName_paymentCharge, 215, 0xea02c27e)                                      // ea02c27e
-	iface.RegisterClazzName(ClazzName_paymentCharge, 214, 0xea02c27e)                                      // ea02c27e
 	iface.RegisterClazzName(ClazzName_postAddress, 216, 0x1e8caaeb)                                        // 1e8caaeb
-	iface.RegisterClazzName(ClazzName_postAddress, 215, 0x1e8caaeb)                                        // 1e8caaeb
-	iface.RegisterClazzName(ClazzName_postAddress, 214, 0x1e8caaeb)                                        // 1e8caaeb
 	iface.RegisterClazzName(ClazzName_paymentRequestedInfo, 216, 0x909c3f94)                               // 909c3f94
-	iface.RegisterClazzName(ClazzName_paymentRequestedInfo, 215, 0x909c3f94)                               // 909c3f94
-	iface.RegisterClazzName(ClazzName_paymentRequestedInfo, 214, 0x909c3f94)                               // 909c3f94
 	iface.RegisterClazzName(ClazzName_paymentSavedCredentialsCard, 216, 0xcdc27a1f)                        // cdc27a1f
-	iface.RegisterClazzName(ClazzName_paymentSavedCredentialsCard, 215, 0xcdc27a1f)                        // cdc27a1f
-	iface.RegisterClazzName(ClazzName_paymentSavedCredentialsCard, 214, 0xcdc27a1f)                        // cdc27a1f
 	iface.RegisterClazzName(ClazzName_webDocument, 216, 0x1c570ed1)                                        // 1c570ed1
-	iface.RegisterClazzName(ClazzName_webDocument, 215, 0x1c570ed1)                                        // 1c570ed1
-	iface.RegisterClazzName(ClazzName_webDocument, 214, 0x1c570ed1)                                        // 1c570ed1
 	iface.RegisterClazzName(ClazzName_webDocumentNoProxy, 216, 0xf9c8bcc6)                                 // f9c8bcc6
-	iface.RegisterClazzName(ClazzName_webDocumentNoProxy, 215, 0xf9c8bcc6)                                 // f9c8bcc6
-	iface.RegisterClazzName(ClazzName_webDocumentNoProxy, 214, 0xf9c8bcc6)                                 // f9c8bcc6
 	iface.RegisterClazzName(ClazzName_inputWebDocument, 216, 0x9bed434d)                                   // 9bed434d
-	iface.RegisterClazzName(ClazzName_inputWebDocument, 215, 0x9bed434d)                                   // 9bed434d
-	iface.RegisterClazzName(ClazzName_inputWebDocument, 214, 0x9bed434d)                                   // 9bed434d
 	iface.RegisterClazzName(ClazzName_inputWebFileLocation, 216, 0xc239d686)                               // c239d686
-	iface.RegisterClazzName(ClazzName_inputWebFileLocation, 215, 0xc239d686)                               // c239d686
-	iface.RegisterClazzName(ClazzName_inputWebFileLocation, 214, 0xc239d686)                               // c239d686
 	iface.RegisterClazzName(ClazzName_inputWebFileGeoPointLocation, 216, 0x9f2221c9)                       // 9f2221c9
-	iface.RegisterClazzName(ClazzName_inputWebFileGeoPointLocation, 215, 0x9f2221c9)                       // 9f2221c9
-	iface.RegisterClazzName(ClazzName_inputWebFileGeoPointLocation, 214, 0x9f2221c9)                       // 9f2221c9
 	iface.RegisterClazzName(ClazzName_inputWebFileAudioAlbumThumbLocation, 216, 0xf46fe924)                // f46fe924
-	iface.RegisterClazzName(ClazzName_inputWebFileAudioAlbumThumbLocation, 215, 0xf46fe924)                // f46fe924
-	iface.RegisterClazzName(ClazzName_inputWebFileAudioAlbumThumbLocation, 214, 0xf46fe924)                // f46fe924
 	iface.RegisterClazzName(ClazzName_upload_webFile, 216, 0x21e753bc)                                     // 21e753bc
-	iface.RegisterClazzName(ClazzName_upload_webFile, 215, 0x21e753bc)                                     // 21e753bc
-	iface.RegisterClazzName(ClazzName_upload_webFile, 214, 0x21e753bc)                                     // 21e753bc
 	iface.RegisterClazzName(ClazzName_payments_paymentForm, 216, 0xa0058751)                               // a0058751
-	iface.RegisterClazzName(ClazzName_payments_paymentForm, 215, 0xa0058751)                               // a0058751
-	iface.RegisterClazzName(ClazzName_payments_paymentForm, 214, 0xa0058751)                               // a0058751
 	iface.RegisterClazzName(ClazzName_payments_paymentFormStars, 216, 0x7bf6b15c)                          // 7bf6b15c
-	iface.RegisterClazzName(ClazzName_payments_paymentFormStars, 215, 0x7bf6b15c)                          // 7bf6b15c
-	iface.RegisterClazzName(ClazzName_payments_paymentFormStars, 214, 0x7bf6b15c)                          // 7bf6b15c
 	iface.RegisterClazzName(ClazzName_payments_paymentFormStarGift, 216, 0xb425cfe1)                       // b425cfe1
-	iface.RegisterClazzName(ClazzName_payments_paymentFormStarGift, 215, 0xb425cfe1)                       // b425cfe1
-	iface.RegisterClazzName(ClazzName_payments_paymentFormStarGift, 214, 0xb425cfe1)                       // b425cfe1
 	iface.RegisterClazzName(ClazzName_payments_validatedRequestedInfo, 216, 0xd1451883)                    // d1451883
-	iface.RegisterClazzName(ClazzName_payments_validatedRequestedInfo, 215, 0xd1451883)                    // d1451883
-	iface.RegisterClazzName(ClazzName_payments_validatedRequestedInfo, 214, 0xd1451883)                    // d1451883
 	iface.RegisterClazzName(ClazzName_payments_paymentResult, 216, 0x4e5f810d)                             // 4e5f810d
-	iface.RegisterClazzName(ClazzName_payments_paymentResult, 215, 0x4e5f810d)                             // 4e5f810d
-	iface.RegisterClazzName(ClazzName_payments_paymentResult, 214, 0x4e5f810d)                             // 4e5f810d
 	iface.RegisterClazzName(ClazzName_payments_paymentVerificationNeeded, 216, 0xd8411139)                 // d8411139
-	iface.RegisterClazzName(ClazzName_payments_paymentVerificationNeeded, 215, 0xd8411139)                 // d8411139
-	iface.RegisterClazzName(ClazzName_payments_paymentVerificationNeeded, 214, 0xd8411139)                 // d8411139
 	iface.RegisterClazzName(ClazzName_payments_paymentReceipt, 216, 0x70c4fe03)                            // 70c4fe03
-	iface.RegisterClazzName(ClazzName_payments_paymentReceipt, 215, 0x70c4fe03)                            // 70c4fe03
-	iface.RegisterClazzName(ClazzName_payments_paymentReceipt, 214, 0x70c4fe03)                            // 70c4fe03
 	iface.RegisterClazzName(ClazzName_payments_paymentReceiptStars, 216, 0xdabbf83a)                       // dabbf83a
-	iface.RegisterClazzName(ClazzName_payments_paymentReceiptStars, 215, 0xdabbf83a)                       // dabbf83a
-	iface.RegisterClazzName(ClazzName_payments_paymentReceiptStars, 214, 0xdabbf83a)                       // dabbf83a
 	iface.RegisterClazzName(ClazzName_payments_savedInfo, 216, 0xfb8fe43c)                                 // fb8fe43c
-	iface.RegisterClazzName(ClazzName_payments_savedInfo, 215, 0xfb8fe43c)                                 // fb8fe43c
-	iface.RegisterClazzName(ClazzName_payments_savedInfo, 214, 0xfb8fe43c)                                 // fb8fe43c
 	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsSaved, 216, 0xc10eb2cf)                       // c10eb2cf
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsSaved, 215, 0xc10eb2cf)                       // c10eb2cf
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsSaved, 214, 0xc10eb2cf)                       // c10eb2cf
 	iface.RegisterClazzName(ClazzName_inputPaymentCredentials, 216, 0x3417d728)                            // 3417d728
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentials, 215, 0x3417d728)                            // 3417d728
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentials, 214, 0x3417d728)                            // 3417d728
 	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsApplePay, 216, 0xaa1c39f)                     // aa1c39f
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsApplePay, 215, 0xaa1c39f)                     // aa1c39f
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsApplePay, 214, 0xaa1c39f)                     // aa1c39f
 	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsGooglePay, 216, 0x8ac32801)                   // 8ac32801
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsGooglePay, 215, 0x8ac32801)                   // 8ac32801
-	iface.RegisterClazzName(ClazzName_inputPaymentCredentialsGooglePay, 214, 0x8ac32801)                   // 8ac32801
 	iface.RegisterClazzName(ClazzName_account_tmpPassword, 216, 0xdb64fd34)                                // db64fd34
-	iface.RegisterClazzName(ClazzName_account_tmpPassword, 215, 0xdb64fd34)                                // db64fd34
-	iface.RegisterClazzName(ClazzName_account_tmpPassword, 214, 0xdb64fd34)                                // db64fd34
 	iface.RegisterClazzName(ClazzName_shippingOption, 216, 0xb6213cdf)                                     // b6213cdf
-	iface.RegisterClazzName(ClazzName_shippingOption, 215, 0xb6213cdf)                                     // b6213cdf
-	iface.RegisterClazzName(ClazzName_shippingOption, 214, 0xb6213cdf)                                     // b6213cdf
 	iface.RegisterClazzName(ClazzName_inputStickerSetItem, 216, 0x32da9e9c)                                // 32da9e9c
-	iface.RegisterClazzName(ClazzName_inputStickerSetItem, 215, 0x32da9e9c)                                // 32da9e9c
-	iface.RegisterClazzName(ClazzName_inputStickerSetItem, 214, 0x32da9e9c)                                // 32da9e9c
 	iface.RegisterClazzName(ClazzName_inputPhoneCall, 216, 0x1e36fded)                                     // 1e36fded
-	iface.RegisterClazzName(ClazzName_inputPhoneCall, 215, 0x1e36fded)                                     // 1e36fded
-	iface.RegisterClazzName(ClazzName_inputPhoneCall, 214, 0x1e36fded)                                     // 1e36fded
 	iface.RegisterClazzName(ClazzName_phoneCallEmpty, 216, 0x5366c915)                                     // 5366c915
-	iface.RegisterClazzName(ClazzName_phoneCallEmpty, 215, 0x5366c915)                                     // 5366c915
-	iface.RegisterClazzName(ClazzName_phoneCallEmpty, 214, 0x5366c915)                                     // 5366c915
 	iface.RegisterClazzName(ClazzName_phoneCallWaiting, 216, 0xc5226f17)                                   // c5226f17
-	iface.RegisterClazzName(ClazzName_phoneCallWaiting, 215, 0xc5226f17)                                   // c5226f17
-	iface.RegisterClazzName(ClazzName_phoneCallWaiting, 214, 0xc5226f17)                                   // c5226f17
 	iface.RegisterClazzName(ClazzName_phoneCallRequested, 216, 0x14b0ed0c)                                 // 14b0ed0c
-	iface.RegisterClazzName(ClazzName_phoneCallRequested, 215, 0x14b0ed0c)                                 // 14b0ed0c
-	iface.RegisterClazzName(ClazzName_phoneCallRequested, 214, 0x14b0ed0c)                                 // 14b0ed0c
 	iface.RegisterClazzName(ClazzName_phoneCallAccepted, 216, 0x3660c311)                                  // 3660c311
-	iface.RegisterClazzName(ClazzName_phoneCallAccepted, 215, 0x3660c311)                                  // 3660c311
-	iface.RegisterClazzName(ClazzName_phoneCallAccepted, 214, 0x3660c311)                                  // 3660c311
 	iface.RegisterClazzName(ClazzName_phoneCall, 216, 0x30535af5)                                          // 30535af5
-	iface.RegisterClazzName(ClazzName_phoneCall, 215, 0x30535af5)                                          // 30535af5
-	iface.RegisterClazzName(ClazzName_phoneCall, 214, 0x30535af5)                                          // 30535af5
 	iface.RegisterClazzName(ClazzName_phoneCallDiscarded, 216, 0x50ca4de1)                                 // 50ca4de1
-	iface.RegisterClazzName(ClazzName_phoneCallDiscarded, 215, 0x50ca4de1)                                 // 50ca4de1
-	iface.RegisterClazzName(ClazzName_phoneCallDiscarded, 214, 0x50ca4de1)                                 // 50ca4de1
 	iface.RegisterClazzName(ClazzName_phoneConnection, 216, 0x9cc123c7)                                    // 9cc123c7
-	iface.RegisterClazzName(ClazzName_phoneConnection, 215, 0x9cc123c7)                                    // 9cc123c7
-	iface.RegisterClazzName(ClazzName_phoneConnection, 214, 0x9cc123c7)                                    // 9cc123c7
 	iface.RegisterClazzName(ClazzName_phoneConnectionWebrtc, 216, 0x635fe375)                              // 635fe375
-	iface.RegisterClazzName(ClazzName_phoneConnectionWebrtc, 215, 0x635fe375)                              // 635fe375
-	iface.RegisterClazzName(ClazzName_phoneConnectionWebrtc, 214, 0x635fe375)                              // 635fe375
 	iface.RegisterClazzName(ClazzName_phoneCallProtocol, 216, 0xfc878fc8)                                  // fc878fc8
-	iface.RegisterClazzName(ClazzName_phoneCallProtocol, 215, 0xfc878fc8)                                  // fc878fc8
-	iface.RegisterClazzName(ClazzName_phoneCallProtocol, 214, 0xfc878fc8)                                  // fc878fc8
 	iface.RegisterClazzName(ClazzName_phone_phoneCall, 216, 0xec82e140)                                    // ec82e140
-	iface.RegisterClazzName(ClazzName_phone_phoneCall, 215, 0xec82e140)                                    // ec82e140
-	iface.RegisterClazzName(ClazzName_phone_phoneCall, 214, 0xec82e140)                                    // ec82e140
 	iface.RegisterClazzName(ClazzName_upload_cdnFileReuploadNeeded, 216, 0xeea8e46e)                       // eea8e46e
-	iface.RegisterClazzName(ClazzName_upload_cdnFileReuploadNeeded, 215, 0xeea8e46e)                       // eea8e46e
-	iface.RegisterClazzName(ClazzName_upload_cdnFileReuploadNeeded, 214, 0xeea8e46e)                       // eea8e46e
 	iface.RegisterClazzName(ClazzName_upload_cdnFile, 216, 0xa99fca4f)                                     // a99fca4f
-	iface.RegisterClazzName(ClazzName_upload_cdnFile, 215, 0xa99fca4f)                                     // a99fca4f
-	iface.RegisterClazzName(ClazzName_upload_cdnFile, 214, 0xa99fca4f)                                     // a99fca4f
 	iface.RegisterClazzName(ClazzName_cdnPublicKey, 216, 0xc982eaba)                                       // c982eaba
-	iface.RegisterClazzName(ClazzName_cdnPublicKey, 215, 0xc982eaba)                                       // c982eaba
-	iface.RegisterClazzName(ClazzName_cdnPublicKey, 214, 0xc982eaba)                                       // c982eaba
 	iface.RegisterClazzName(ClazzName_cdnConfig, 216, 0x5725e40a)                                          // 5725e40a
-	iface.RegisterClazzName(ClazzName_cdnConfig, 215, 0x5725e40a)                                          // 5725e40a
-	iface.RegisterClazzName(ClazzName_cdnConfig, 214, 0x5725e40a)                                          // 5725e40a
 	iface.RegisterClazzName(ClazzName_langPackString, 216, 0xcad181f6)                                     // cad181f6
-	iface.RegisterClazzName(ClazzName_langPackString, 215, 0xcad181f6)                                     // cad181f6
-	iface.RegisterClazzName(ClazzName_langPackString, 214, 0xcad181f6)                                     // cad181f6
 	iface.RegisterClazzName(ClazzName_langPackStringPluralized, 216, 0x6c47ac9f)                           // 6c47ac9f
-	iface.RegisterClazzName(ClazzName_langPackStringPluralized, 215, 0x6c47ac9f)                           // 6c47ac9f
-	iface.RegisterClazzName(ClazzName_langPackStringPluralized, 214, 0x6c47ac9f)                           // 6c47ac9f
 	iface.RegisterClazzName(ClazzName_langPackStringDeleted, 216, 0x2979eeb2)                              // 2979eeb2
-	iface.RegisterClazzName(ClazzName_langPackStringDeleted, 215, 0x2979eeb2)                              // 2979eeb2
-	iface.RegisterClazzName(ClazzName_langPackStringDeleted, 214, 0x2979eeb2)                              // 2979eeb2
 	iface.RegisterClazzName(ClazzName_langPackDifference, 216, 0xf385c1f6)                                 // f385c1f6
-	iface.RegisterClazzName(ClazzName_langPackDifference, 215, 0xf385c1f6)                                 // f385c1f6
-	iface.RegisterClazzName(ClazzName_langPackDifference, 214, 0xf385c1f6)                                 // f385c1f6
 	iface.RegisterClazzName(ClazzName_langPackLanguage, 216, 0xeeca5ce3)                                   // eeca5ce3
-	iface.RegisterClazzName(ClazzName_langPackLanguage, 215, 0xeeca5ce3)                                   // eeca5ce3
-	iface.RegisterClazzName(ClazzName_langPackLanguage, 214, 0xeeca5ce3)                                   // eeca5ce3
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeTitle, 216, 0xe6dfb825)              // e6dfb825
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeTitle, 215, 0xe6dfb825)              // e6dfb825
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeTitle, 214, 0xe6dfb825)              // e6dfb825
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeAbout, 216, 0x55188a2e)              // 55188a2e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeAbout, 215, 0x55188a2e)              // 55188a2e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeAbout, 214, 0x55188a2e)              // 55188a2e
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeUsername, 216, 0x6a4afc38)           // 6a4afc38
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeUsername, 215, 0x6a4afc38)           // 6a4afc38
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeUsername, 214, 0x6a4afc38)           // 6a4afc38
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangePhoto, 216, 0x434bd2af)              // 434bd2af
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangePhoto, 215, 0x434bd2af)              // 434bd2af
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangePhoto, 214, 0x434bd2af)              // 434bd2af
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleInvites, 216, 0x1b7907ae)            // 1b7907ae
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleInvites, 215, 0x1b7907ae)            // 1b7907ae
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleInvites, 214, 0x1b7907ae)            // 1b7907ae
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSignatures, 216, 0x26ae0971)         // 26ae0971
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSignatures, 215, 0x26ae0971)         // 26ae0971
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSignatures, 214, 0x26ae0971)         // 26ae0971
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionUpdatePinned, 216, 0xe9e82c18)             // e9e82c18
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionUpdatePinned, 215, 0xe9e82c18)             // e9e82c18
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionUpdatePinned, 214, 0xe9e82c18)             // e9e82c18
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionEditMessage, 216, 0x709b2405)              // 709b2405
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionEditMessage, 215, 0x709b2405)              // 709b2405
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionEditMessage, 214, 0x709b2405)              // 709b2405
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDeleteMessage, 216, 0x42e047bb)            // 42e047bb
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDeleteMessage, 215, 0x42e047bb)            // 42e047bb
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDeleteMessage, 214, 0x42e047bb)            // 42e047bb
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoin, 216, 0x183040d3)          // 183040d3
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoin, 215, 0x183040d3)          // 183040d3
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoin, 214, 0x183040d3)          // 183040d3
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantLeave, 216, 0xf89777f2)         // f89777f2
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantLeave, 215, 0xf89777f2)         // f89777f2
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantLeave, 214, 0xf89777f2)         // f89777f2
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantInvite, 216, 0xe31c34d8)        // e31c34d8
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantInvite, 215, 0xe31c34d8)        // e31c34d8
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantInvite, 214, 0xe31c34d8)        // e31c34d8
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantToggleBan, 216, 0xe6d83d7e)     // e6d83d7e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantToggleBan, 215, 0xe6d83d7e)     // e6d83d7e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantToggleBan, 214, 0xe6d83d7e)     // e6d83d7e
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantToggleAdmin, 216, 0xd5676710)   // d5676710
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantToggleAdmin, 215, 0xd5676710)   // d5676710
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantToggleAdmin, 214, 0xd5676710)   // d5676710
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeStickerSet, 216, 0xb1c3caa7)         // b1c3caa7
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeStickerSet, 215, 0xb1c3caa7)         // b1c3caa7
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeStickerSet, 214, 0xb1c3caa7)         // b1c3caa7
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionTogglePreHistoryHidden, 216, 0x5f5c95f1)   // 5f5c95f1
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionTogglePreHistoryHidden, 215, 0x5f5c95f1)   // 5f5c95f1
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionTogglePreHistoryHidden, 214, 0x5f5c95f1)   // 5f5c95f1
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDefaultBannedRights, 216, 0x2df5fc0a)      // 2df5fc0a
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDefaultBannedRights, 215, 0x2df5fc0a)      // 2df5fc0a
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDefaultBannedRights, 214, 0x2df5fc0a)      // 2df5fc0a
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionStopPoll, 216, 0x8f079643)                 // 8f079643
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionStopPoll, 215, 0x8f079643)                 // 8f079643
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionStopPoll, 214, 0x8f079643)                 // 8f079643
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeLinkedChat, 216, 0x50c7ac8)          // 50c7ac8
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeLinkedChat, 215, 0x50c7ac8)          // 50c7ac8
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeLinkedChat, 214, 0x50c7ac8)          // 50c7ac8
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeLocation, 216, 0xe6b76ae)            // e6b76ae
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeLocation, 215, 0xe6b76ae)            // e6b76ae
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeLocation, 214, 0xe6b76ae)            // e6b76ae
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSlowMode, 216, 0x53909779)           // 53909779
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSlowMode, 215, 0x53909779)           // 53909779
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSlowMode, 214, 0x53909779)           // 53909779
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionStartGroupCall, 216, 0x23209745)           // 23209745
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionStartGroupCall, 215, 0x23209745)           // 23209745
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionStartGroupCall, 214, 0x23209745)           // 23209745
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDiscardGroupCall, 216, 0xdb9f9140)         // db9f9140
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDiscardGroupCall, 215, 0xdb9f9140)         // db9f9140
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDiscardGroupCall, 214, 0xdb9f9140)         // db9f9140
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantMute, 216, 0xf92424d2)          // f92424d2
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantMute, 215, 0xf92424d2)          // f92424d2
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantMute, 214, 0xf92424d2)          // f92424d2
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantUnmute, 216, 0xe64429c0)        // e64429c0
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantUnmute, 215, 0xe64429c0)        // e64429c0
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantUnmute, 214, 0xe64429c0)        // e64429c0
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleGroupCallSetting, 216, 0x56d6a247)   // 56d6a247
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleGroupCallSetting, 215, 0x56d6a247)   // 56d6a247
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleGroupCallSetting, 214, 0x56d6a247)   // 56d6a247
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoinByInvite, 216, 0xfe9fc158)  // fe9fc158
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoinByInvite, 215, 0xfe9fc158)  // fe9fc158
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoinByInvite, 214, 0xfe9fc158)  // fe9fc158
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteDelete, 216, 0x5a50fca4)     // 5a50fca4
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteDelete, 215, 0x5a50fca4)     // 5a50fca4
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteDelete, 214, 0x5a50fca4)     // 5a50fca4
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteRevoke, 216, 0x410a134e)     // 410a134e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteRevoke, 215, 0x410a134e)     // 410a134e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteRevoke, 214, 0x410a134e)     // 410a134e
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteEdit, 216, 0xe90ebb59)       // e90ebb59
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteEdit, 215, 0xe90ebb59)       // e90ebb59
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionExportedInviteEdit, 214, 0xe90ebb59)       // e90ebb59
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantVolume, 216, 0x3e7f6847)        // 3e7f6847
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantVolume, 215, 0x3e7f6847)        // 3e7f6847
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantVolume, 214, 0x3e7f6847)        // 3e7f6847
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeHistoryTTL, 216, 0x6e941a38)         // 6e941a38
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeHistoryTTL, 215, 0x6e941a38)         // 6e941a38
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeHistoryTTL, 214, 0x6e941a38)         // 6e941a38
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoinByRequest, 216, 0xafb6144a) // afb6144a
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoinByRequest, 215, 0xafb6144a) // afb6144a
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantJoinByRequest, 214, 0xafb6144a) // afb6144a
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleNoForwards, 216, 0xcb2ac766)         // cb2ac766
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleNoForwards, 215, 0xcb2ac766)         // cb2ac766
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleNoForwards, 214, 0xcb2ac766)         // cb2ac766
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionSendMessage, 216, 0x278f2868)              // 278f2868
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionSendMessage, 215, 0x278f2868)              // 278f2868
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionSendMessage, 214, 0x278f2868)              // 278f2868
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeAvailableReactions, 216, 0xbe4e0ef8) // be4e0ef8
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeAvailableReactions, 215, 0xbe4e0ef8) // be4e0ef8
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeAvailableReactions, 214, 0xbe4e0ef8) // be4e0ef8
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeUsernames, 216, 0xf04fb3a9)          // f04fb3a9
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeUsernames, 215, 0xf04fb3a9)          // f04fb3a9
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeUsernames, 214, 0xf04fb3a9)          // f04fb3a9
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleForum, 216, 0x2cc6383)               // 2cc6383
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleForum, 215, 0x2cc6383)               // 2cc6383
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleForum, 214, 0x2cc6383)               // 2cc6383
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionCreateTopic, 216, 0x58707d28)              // 58707d28
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionCreateTopic, 215, 0x58707d28)              // 58707d28
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionCreateTopic, 214, 0x58707d28)              // 58707d28
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionEditTopic, 216, 0xf06fe208)                // f06fe208
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionEditTopic, 215, 0xf06fe208)                // f06fe208
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionEditTopic, 214, 0xf06fe208)                // f06fe208
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDeleteTopic, 216, 0xae168909)              // ae168909
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDeleteTopic, 215, 0xae168909)              // ae168909
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionDeleteTopic, 214, 0xae168909)              // ae168909
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionPinTopic, 216, 0x5d8d353b)                 // 5d8d353b
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionPinTopic, 215, 0x5d8d353b)                 // 5d8d353b
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionPinTopic, 214, 0x5d8d353b)                 // 5d8d353b
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleAntiSpam, 216, 0x64f36dfc)           // 64f36dfc
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleAntiSpam, 215, 0x64f36dfc)           // 64f36dfc
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleAntiSpam, 214, 0x64f36dfc)           // 64f36dfc
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangePeerColor, 216, 0x5796e780)          // 5796e780
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangePeerColor, 215, 0x5796e780)          // 5796e780
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangePeerColor, 214, 0x5796e780)          // 5796e780
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeProfilePeerColor, 216, 0x5e477b25)   // 5e477b25
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeProfilePeerColor, 215, 0x5e477b25)   // 5e477b25
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeProfilePeerColor, 214, 0x5e477b25)   // 5e477b25
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeWallpaper, 216, 0x31bb5d52)          // 31bb5d52
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeWallpaper, 215, 0x31bb5d52)          // 31bb5d52
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeWallpaper, 214, 0x31bb5d52)          // 31bb5d52
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeEmojiStatus, 216, 0x3ea9feb1)        // 3ea9feb1
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeEmojiStatus, 215, 0x3ea9feb1)        // 3ea9feb1
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeEmojiStatus, 214, 0x3ea9feb1)        // 3ea9feb1
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeEmojiStickerSet, 216, 0x46d840ab)    // 46d840ab
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeEmojiStickerSet, 215, 0x46d840ab)    // 46d840ab
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionChangeEmojiStickerSet, 214, 0x46d840ab)    // 46d840ab
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSignatureProfiles, 216, 0x60a79c79)  // 60a79c79
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSignatureProfiles, 215, 0x60a79c79)  // 60a79c79
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleSignatureProfiles, 214, 0x60a79c79)  // 60a79c79
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantSubExtend, 216, 0x64642db3)     // 64642db3
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantSubExtend, 215, 0x64642db3)     // 64642db3
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionParticipantSubExtend, 214, 0x64642db3)     // 64642db3
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleAutotranslation, 216, 0xc517f77e)    // c517f77e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleAutotranslation, 215, 0xc517f77e)    // c517f77e
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventActionToggleAutotranslation, 214, 0xc517f77e)    // c517f77e
 	iface.RegisterClazzName(ClazzName_channelAdminLogEvent, 216, 0x1fad68cd)                               // 1fad68cd
-	iface.RegisterClazzName(ClazzName_channelAdminLogEvent, 215, 0x1fad68cd)                               // 1fad68cd
-	iface.RegisterClazzName(ClazzName_channelAdminLogEvent, 214, 0x1fad68cd)                               // 1fad68cd
 	iface.RegisterClazzName(ClazzName_channels_adminLogResults, 216, 0xed8af74d)                           // ed8af74d
-	iface.RegisterClazzName(ClazzName_channels_adminLogResults, 215, 0xed8af74d)                           // ed8af74d
-	iface.RegisterClazzName(ClazzName_channels_adminLogResults, 214, 0xed8af74d)                           // ed8af74d
 	iface.RegisterClazzName(ClazzName_channelAdminLogEventsFilter, 216, 0xea107ae4)                        // ea107ae4
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventsFilter, 215, 0xea107ae4)                        // ea107ae4
-	iface.RegisterClazzName(ClazzName_channelAdminLogEventsFilter, 214, 0xea107ae4)                        // ea107ae4
 	iface.RegisterClazzName(ClazzName_popularContact, 216, 0x5ce14175)                                     // 5ce14175
-	iface.RegisterClazzName(ClazzName_popularContact, 215, 0x5ce14175)                                     // 5ce14175
-	iface.RegisterClazzName(ClazzName_popularContact, 214, 0x5ce14175)                                     // 5ce14175
 	iface.RegisterClazzName(ClazzName_messages_favedStickersNotModified, 216, 0x9e8fa6d3)                  // 9e8fa6d3
-	iface.RegisterClazzName(ClazzName_messages_favedStickersNotModified, 215, 0x9e8fa6d3)                  // 9e8fa6d3
-	iface.RegisterClazzName(ClazzName_messages_favedStickersNotModified, 214, 0x9e8fa6d3)                  // 9e8fa6d3
 	iface.RegisterClazzName(ClazzName_messages_favedStickers, 216, 0x2cb51097)                             // 2cb51097
-	iface.RegisterClazzName(ClazzName_messages_favedStickers, 215, 0x2cb51097)                             // 2cb51097
-	iface.RegisterClazzName(ClazzName_messages_favedStickers, 214, 0x2cb51097)                             // 2cb51097
 	iface.RegisterClazzName(ClazzName_recentMeUrlUnknown, 216, 0x46e1d13d)                                 // 46e1d13d
-	iface.RegisterClazzName(ClazzName_recentMeUrlUnknown, 215, 0x46e1d13d)                                 // 46e1d13d
-	iface.RegisterClazzName(ClazzName_recentMeUrlUnknown, 214, 0x46e1d13d)                                 // 46e1d13d
 	iface.RegisterClazzName(ClazzName_recentMeUrlUser, 216, 0xb92c09e2)                                    // b92c09e2
-	iface.RegisterClazzName(ClazzName_recentMeUrlUser, 215, 0xb92c09e2)                                    // b92c09e2
-	iface.RegisterClazzName(ClazzName_recentMeUrlUser, 214, 0xb92c09e2)                                    // b92c09e2
 	iface.RegisterClazzName(ClazzName_recentMeUrlChat, 216, 0xb2da71d2)                                    // b2da71d2
-	iface.RegisterClazzName(ClazzName_recentMeUrlChat, 215, 0xb2da71d2)                                    // b2da71d2
-	iface.RegisterClazzName(ClazzName_recentMeUrlChat, 214, 0xb2da71d2)                                    // b2da71d2
 	iface.RegisterClazzName(ClazzName_recentMeUrlChatInvite, 216, 0xeb49081d)                              // eb49081d
-	iface.RegisterClazzName(ClazzName_recentMeUrlChatInvite, 215, 0xeb49081d)                              // eb49081d
-	iface.RegisterClazzName(ClazzName_recentMeUrlChatInvite, 214, 0xeb49081d)                              // eb49081d
 	iface.RegisterClazzName(ClazzName_recentMeUrlStickerSet, 216, 0xbc0a57dc)                              // bc0a57dc
-	iface.RegisterClazzName(ClazzName_recentMeUrlStickerSet, 215, 0xbc0a57dc)                              // bc0a57dc
-	iface.RegisterClazzName(ClazzName_recentMeUrlStickerSet, 214, 0xbc0a57dc)                              // bc0a57dc
 	iface.RegisterClazzName(ClazzName_help_recentMeUrls, 216, 0xe0310d7)                                   // e0310d7
-	iface.RegisterClazzName(ClazzName_help_recentMeUrls, 215, 0xe0310d7)                                   // e0310d7
-	iface.RegisterClazzName(ClazzName_help_recentMeUrls, 214, 0xe0310d7)                                   // e0310d7
 	iface.RegisterClazzName(ClazzName_inputSingleMedia, 216, 0x1cc6e91f)                                   // 1cc6e91f
-	iface.RegisterClazzName(ClazzName_inputSingleMedia, 215, 0x1cc6e91f)                                   // 1cc6e91f
-	iface.RegisterClazzName(ClazzName_inputSingleMedia, 214, 0x1cc6e91f)                                   // 1cc6e91f
 	iface.RegisterClazzName(ClazzName_webAuthorization, 216, 0xa6f8f452)                                   // a6f8f452
-	iface.RegisterClazzName(ClazzName_webAuthorization, 215, 0xa6f8f452)                                   // a6f8f452
-	iface.RegisterClazzName(ClazzName_webAuthorization, 214, 0xa6f8f452)                                   // a6f8f452
 	iface.RegisterClazzName(ClazzName_account_webAuthorizations, 216, 0xed56c9fc)                          // ed56c9fc
-	iface.RegisterClazzName(ClazzName_account_webAuthorizations, 215, 0xed56c9fc)                          // ed56c9fc
-	iface.RegisterClazzName(ClazzName_account_webAuthorizations, 214, 0xed56c9fc)                          // ed56c9fc
 	iface.RegisterClazzName(ClazzName_inputMessageID, 216, 0xa676a322)                                     // a676a322
-	iface.RegisterClazzName(ClazzName_inputMessageID, 215, 0xa676a322)                                     // a676a322
-	iface.RegisterClazzName(ClazzName_inputMessageID, 214, 0xa676a322)                                     // a676a322
 	iface.RegisterClazzName(ClazzName_inputMessageReplyTo, 216, 0xbad88395)                                // bad88395
-	iface.RegisterClazzName(ClazzName_inputMessageReplyTo, 215, 0xbad88395)                                // bad88395
-	iface.RegisterClazzName(ClazzName_inputMessageReplyTo, 214, 0xbad88395)                                // bad88395
 	iface.RegisterClazzName(ClazzName_inputMessagePinned, 216, 0x86872538)                                 // 86872538
-	iface.RegisterClazzName(ClazzName_inputMessagePinned, 215, 0x86872538)                                 // 86872538
-	iface.RegisterClazzName(ClazzName_inputMessagePinned, 214, 0x86872538)                                 // 86872538
 	iface.RegisterClazzName(ClazzName_inputMessageCallbackQuery, 216, 0xacfa1a7e)                          // acfa1a7e
-	iface.RegisterClazzName(ClazzName_inputMessageCallbackQuery, 215, 0xacfa1a7e)                          // acfa1a7e
-	iface.RegisterClazzName(ClazzName_inputMessageCallbackQuery, 214, 0xacfa1a7e)                          // acfa1a7e
 	iface.RegisterClazzName(ClazzName_inputDialogPeer, 216, 0xfcaafeb7)                                    // fcaafeb7
-	iface.RegisterClazzName(ClazzName_inputDialogPeer, 215, 0xfcaafeb7)                                    // fcaafeb7
-	iface.RegisterClazzName(ClazzName_inputDialogPeer, 214, 0xfcaafeb7)                                    // fcaafeb7
 	iface.RegisterClazzName(ClazzName_inputDialogPeerFolder, 216, 0x64600527)                              // 64600527
-	iface.RegisterClazzName(ClazzName_inputDialogPeerFolder, 215, 0x64600527)                              // 64600527
-	iface.RegisterClazzName(ClazzName_inputDialogPeerFolder, 214, 0x64600527)                              // 64600527
 	iface.RegisterClazzName(ClazzName_dialogPeer, 216, 0xe56dbf05)                                         // e56dbf05
-	iface.RegisterClazzName(ClazzName_dialogPeer, 215, 0xe56dbf05)                                         // e56dbf05
-	iface.RegisterClazzName(ClazzName_dialogPeer, 214, 0xe56dbf05)                                         // e56dbf05
 	iface.RegisterClazzName(ClazzName_dialogPeerFolder, 216, 0x514519e2)                                   // 514519e2
-	iface.RegisterClazzName(ClazzName_dialogPeerFolder, 215, 0x514519e2)                                   // 514519e2
-	iface.RegisterClazzName(ClazzName_dialogPeerFolder, 214, 0x514519e2)                                   // 514519e2
 	iface.RegisterClazzName(ClazzName_messages_foundStickerSetsNotModified, 216, 0xd54b65d)                // d54b65d
-	iface.RegisterClazzName(ClazzName_messages_foundStickerSetsNotModified, 215, 0xd54b65d)                // d54b65d
-	iface.RegisterClazzName(ClazzName_messages_foundStickerSetsNotModified, 214, 0xd54b65d)                // d54b65d
 	iface.RegisterClazzName(ClazzName_messages_foundStickerSets, 216, 0x8af09dd2)                          // 8af09dd2
-	iface.RegisterClazzName(ClazzName_messages_foundStickerSets, 215, 0x8af09dd2)                          // 8af09dd2
-	iface.RegisterClazzName(ClazzName_messages_foundStickerSets, 214, 0x8af09dd2)                          // 8af09dd2
 	iface.RegisterClazzName(ClazzName_fileHash, 216, 0xf39b035c)                                           // f39b035c
-	iface.RegisterClazzName(ClazzName_fileHash, 215, 0xf39b035c)                                           // f39b035c
-	iface.RegisterClazzName(ClazzName_fileHash, 214, 0xf39b035c)                                           // f39b035c
 	iface.RegisterClazzName(ClazzName_inputClientProxy, 216, 0x75588b3f)                                   // 75588b3f
-	iface.RegisterClazzName(ClazzName_inputClientProxy, 215, 0x75588b3f)                                   // 75588b3f
-	iface.RegisterClazzName(ClazzName_inputClientProxy, 214, 0x75588b3f)                                   // 75588b3f
 	iface.RegisterClazzName(ClazzName_help_termsOfServiceUpdateEmpty, 216, 0xe3309f7f)                     // e3309f7f
-	iface.RegisterClazzName(ClazzName_help_termsOfServiceUpdateEmpty, 215, 0xe3309f7f)                     // e3309f7f
-	iface.RegisterClazzName(ClazzName_help_termsOfServiceUpdateEmpty, 214, 0xe3309f7f)                     // e3309f7f
 	iface.RegisterClazzName(ClazzName_help_termsOfServiceUpdate, 216, 0x28ecf961)                          // 28ecf961
-	iface.RegisterClazzName(ClazzName_help_termsOfServiceUpdate, 215, 0x28ecf961)                          // 28ecf961
-	iface.RegisterClazzName(ClazzName_help_termsOfServiceUpdate, 214, 0x28ecf961)                          // 28ecf961
 	iface.RegisterClazzName(ClazzName_inputSecureFileUploaded, 216, 0x3334b0f0)                            // 3334b0f0
-	iface.RegisterClazzName(ClazzName_inputSecureFileUploaded, 215, 0x3334b0f0)                            // 3334b0f0
-	iface.RegisterClazzName(ClazzName_inputSecureFileUploaded, 214, 0x3334b0f0)                            // 3334b0f0
 	iface.RegisterClazzName(ClazzName_inputSecureFile, 216, 0x5367e5be)                                    // 5367e5be
-	iface.RegisterClazzName(ClazzName_inputSecureFile, 215, 0x5367e5be)                                    // 5367e5be
-	iface.RegisterClazzName(ClazzName_inputSecureFile, 214, 0x5367e5be)                                    // 5367e5be
 	iface.RegisterClazzName(ClazzName_secureFileEmpty, 216, 0x64199744)                                    // 64199744
-	iface.RegisterClazzName(ClazzName_secureFileEmpty, 215, 0x64199744)                                    // 64199744
-	iface.RegisterClazzName(ClazzName_secureFileEmpty, 214, 0x64199744)                                    // 64199744
 	iface.RegisterClazzName(ClazzName_secureFile, 216, 0x7d09c27e)                                         // 7d09c27e
-	iface.RegisterClazzName(ClazzName_secureFile, 215, 0x7d09c27e)                                         // 7d09c27e
-	iface.RegisterClazzName(ClazzName_secureFile, 214, 0x7d09c27e)                                         // 7d09c27e
 	iface.RegisterClazzName(ClazzName_secureData, 216, 0x8aeabec3)                                         // 8aeabec3
-	iface.RegisterClazzName(ClazzName_secureData, 215, 0x8aeabec3)                                         // 8aeabec3
-	iface.RegisterClazzName(ClazzName_secureData, 214, 0x8aeabec3)                                         // 8aeabec3
 	iface.RegisterClazzName(ClazzName_securePlainPhone, 216, 0x7d6099dd)                                   // 7d6099dd
-	iface.RegisterClazzName(ClazzName_securePlainPhone, 215, 0x7d6099dd)                                   // 7d6099dd
-	iface.RegisterClazzName(ClazzName_securePlainPhone, 214, 0x7d6099dd)                                   // 7d6099dd
 	iface.RegisterClazzName(ClazzName_securePlainEmail, 216, 0x21ec5a5f)                                   // 21ec5a5f
-	iface.RegisterClazzName(ClazzName_securePlainEmail, 215, 0x21ec5a5f)                                   // 21ec5a5f
-	iface.RegisterClazzName(ClazzName_securePlainEmail, 214, 0x21ec5a5f)                                   // 21ec5a5f
 	iface.RegisterClazzName(ClazzName_secureValueTypePersonalDetails, 216, 0x9d2a81e3)                     // 9d2a81e3
-	iface.RegisterClazzName(ClazzName_secureValueTypePersonalDetails, 215, 0x9d2a81e3)                     // 9d2a81e3
-	iface.RegisterClazzName(ClazzName_secureValueTypePersonalDetails, 214, 0x9d2a81e3)                     // 9d2a81e3
 	iface.RegisterClazzName(ClazzName_secureValueTypePassport, 216, 0x3dac6a00)                            // 3dac6a00
-	iface.RegisterClazzName(ClazzName_secureValueTypePassport, 215, 0x3dac6a00)                            // 3dac6a00
-	iface.RegisterClazzName(ClazzName_secureValueTypePassport, 214, 0x3dac6a00)                            // 3dac6a00
 	iface.RegisterClazzName(ClazzName_secureValueTypeDriverLicense, 216, 0x6e425c4)                        // 6e425c4
-	iface.RegisterClazzName(ClazzName_secureValueTypeDriverLicense, 215, 0x6e425c4)                        // 6e425c4
-	iface.RegisterClazzName(ClazzName_secureValueTypeDriverLicense, 214, 0x6e425c4)                        // 6e425c4
 	iface.RegisterClazzName(ClazzName_secureValueTypeIdentityCard, 216, 0xa0d0744b)                        // a0d0744b
-	iface.RegisterClazzName(ClazzName_secureValueTypeIdentityCard, 215, 0xa0d0744b)                        // a0d0744b
-	iface.RegisterClazzName(ClazzName_secureValueTypeIdentityCard, 214, 0xa0d0744b)                        // a0d0744b
 	iface.RegisterClazzName(ClazzName_secureValueTypeInternalPassport, 216, 0x99a48f23)                    // 99a48f23
-	iface.RegisterClazzName(ClazzName_secureValueTypeInternalPassport, 215, 0x99a48f23)                    // 99a48f23
-	iface.RegisterClazzName(ClazzName_secureValueTypeInternalPassport, 214, 0x99a48f23)                    // 99a48f23
 	iface.RegisterClazzName(ClazzName_secureValueTypeAddress, 216, 0xcbe31e26)                             // cbe31e26
-	iface.RegisterClazzName(ClazzName_secureValueTypeAddress, 215, 0xcbe31e26)                             // cbe31e26
-	iface.RegisterClazzName(ClazzName_secureValueTypeAddress, 214, 0xcbe31e26)                             // cbe31e26
 	iface.RegisterClazzName(ClazzName_secureValueTypeUtilityBill, 216, 0xfc36954e)                         // fc36954e
-	iface.RegisterClazzName(ClazzName_secureValueTypeUtilityBill, 215, 0xfc36954e)                         // fc36954e
-	iface.RegisterClazzName(ClazzName_secureValueTypeUtilityBill, 214, 0xfc36954e)                         // fc36954e
 	iface.RegisterClazzName(ClazzName_secureValueTypeBankStatement, 216, 0x89137c0d)                       // 89137c0d
-	iface.RegisterClazzName(ClazzName_secureValueTypeBankStatement, 215, 0x89137c0d)                       // 89137c0d
-	iface.RegisterClazzName(ClazzName_secureValueTypeBankStatement, 214, 0x89137c0d)                       // 89137c0d
 	iface.RegisterClazzName(ClazzName_secureValueTypeRentalAgreement, 216, 0x8b883488)                     // 8b883488
-	iface.RegisterClazzName(ClazzName_secureValueTypeRentalAgreement, 215, 0x8b883488)                     // 8b883488
-	iface.RegisterClazzName(ClazzName_secureValueTypeRentalAgreement, 214, 0x8b883488)                     // 8b883488
 	iface.RegisterClazzName(ClazzName_secureValueTypePassportRegistration, 216, 0x99e3806a)                // 99e3806a
-	iface.RegisterClazzName(ClazzName_secureValueTypePassportRegistration, 215, 0x99e3806a)                // 99e3806a
-	iface.RegisterClazzName(ClazzName_secureValueTypePassportRegistration, 214, 0x99e3806a)                // 99e3806a
 	iface.RegisterClazzName(ClazzName_secureValueTypeTemporaryRegistration, 216, 0xea02ec33)               // ea02ec33
-	iface.RegisterClazzName(ClazzName_secureValueTypeTemporaryRegistration, 215, 0xea02ec33)               // ea02ec33
-	iface.RegisterClazzName(ClazzName_secureValueTypeTemporaryRegistration, 214, 0xea02ec33)               // ea02ec33
 	iface.RegisterClazzName(ClazzName_secureValueTypePhone, 216, 0xb320aadb)                               // b320aadb
-	iface.RegisterClazzName(ClazzName_secureValueTypePhone, 215, 0xb320aadb)                               // b320aadb
-	iface.RegisterClazzName(ClazzName_secureValueTypePhone, 214, 0xb320aadb)                               // b320aadb
 	iface.RegisterClazzName(ClazzName_secureValueTypeEmail, 216, 0x8e3ca7ee)                               // 8e3ca7ee
-	iface.RegisterClazzName(ClazzName_secureValueTypeEmail, 215, 0x8e3ca7ee)                               // 8e3ca7ee
-	iface.RegisterClazzName(ClazzName_secureValueTypeEmail, 214, 0x8e3ca7ee)                               // 8e3ca7ee
 	iface.RegisterClazzName(ClazzName_secureValue, 216, 0x187fa0ca)                                        // 187fa0ca
-	iface.RegisterClazzName(ClazzName_secureValue, 215, 0x187fa0ca)                                        // 187fa0ca
-	iface.RegisterClazzName(ClazzName_secureValue, 214, 0x187fa0ca)                                        // 187fa0ca
 	iface.RegisterClazzName(ClazzName_inputSecureValue, 216, 0xdb21d0a7)                                   // db21d0a7
-	iface.RegisterClazzName(ClazzName_inputSecureValue, 215, 0xdb21d0a7)                                   // db21d0a7
-	iface.RegisterClazzName(ClazzName_inputSecureValue, 214, 0xdb21d0a7)                                   // db21d0a7
 	iface.RegisterClazzName(ClazzName_secureValueHash, 216, 0xed1ecdb0)                                    // ed1ecdb0
-	iface.RegisterClazzName(ClazzName_secureValueHash, 215, 0xed1ecdb0)                                    // ed1ecdb0
-	iface.RegisterClazzName(ClazzName_secureValueHash, 214, 0xed1ecdb0)                                    // ed1ecdb0
 	iface.RegisterClazzName(ClazzName_secureValueErrorData, 216, 0xe8a40bd9)                               // e8a40bd9
-	iface.RegisterClazzName(ClazzName_secureValueErrorData, 215, 0xe8a40bd9)                               // e8a40bd9
-	iface.RegisterClazzName(ClazzName_secureValueErrorData, 214, 0xe8a40bd9)                               // e8a40bd9
 	iface.RegisterClazzName(ClazzName_secureValueErrorFrontSide, 216, 0xbe3dfa)                            // be3dfa
-	iface.RegisterClazzName(ClazzName_secureValueErrorFrontSide, 215, 0xbe3dfa)                            // be3dfa
-	iface.RegisterClazzName(ClazzName_secureValueErrorFrontSide, 214, 0xbe3dfa)                            // be3dfa
 	iface.RegisterClazzName(ClazzName_secureValueErrorReverseSide, 216, 0x868a2aa5)                        // 868a2aa5
-	iface.RegisterClazzName(ClazzName_secureValueErrorReverseSide, 215, 0x868a2aa5)                        // 868a2aa5
-	iface.RegisterClazzName(ClazzName_secureValueErrorReverseSide, 214, 0x868a2aa5)                        // 868a2aa5
 	iface.RegisterClazzName(ClazzName_secureValueErrorSelfie, 216, 0xe537ced6)                             // e537ced6
-	iface.RegisterClazzName(ClazzName_secureValueErrorSelfie, 215, 0xe537ced6)                             // e537ced6
-	iface.RegisterClazzName(ClazzName_secureValueErrorSelfie, 214, 0xe537ced6)                             // e537ced6
 	iface.RegisterClazzName(ClazzName_secureValueErrorFile, 216, 0x7a700873)                               // 7a700873
-	iface.RegisterClazzName(ClazzName_secureValueErrorFile, 215, 0x7a700873)                               // 7a700873
-	iface.RegisterClazzName(ClazzName_secureValueErrorFile, 214, 0x7a700873)                               // 7a700873
 	iface.RegisterClazzName(ClazzName_secureValueErrorFiles, 216, 0x666220e9)                              // 666220e9
-	iface.RegisterClazzName(ClazzName_secureValueErrorFiles, 215, 0x666220e9)                              // 666220e9
-	iface.RegisterClazzName(ClazzName_secureValueErrorFiles, 214, 0x666220e9)                              // 666220e9
 	iface.RegisterClazzName(ClazzName_secureValueError, 216, 0x869d758f)                                   // 869d758f
-	iface.RegisterClazzName(ClazzName_secureValueError, 215, 0x869d758f)                                   // 869d758f
-	iface.RegisterClazzName(ClazzName_secureValueError, 214, 0x869d758f)                                   // 869d758f
 	iface.RegisterClazzName(ClazzName_secureValueErrorTranslationFile, 216, 0xa1144770)                    // a1144770
-	iface.RegisterClazzName(ClazzName_secureValueErrorTranslationFile, 215, 0xa1144770)                    // a1144770
-	iface.RegisterClazzName(ClazzName_secureValueErrorTranslationFile, 214, 0xa1144770)                    // a1144770
 	iface.RegisterClazzName(ClazzName_secureValueErrorTranslationFiles, 216, 0x34636dd8)                   // 34636dd8
-	iface.RegisterClazzName(ClazzName_secureValueErrorTranslationFiles, 215, 0x34636dd8)                   // 34636dd8
-	iface.RegisterClazzName(ClazzName_secureValueErrorTranslationFiles, 214, 0x34636dd8)                   // 34636dd8
 	iface.RegisterClazzName(ClazzName_secureCredentialsEncrypted, 216, 0x33f0ea47)                         // 33f0ea47
-	iface.RegisterClazzName(ClazzName_secureCredentialsEncrypted, 215, 0x33f0ea47)                         // 33f0ea47
-	iface.RegisterClazzName(ClazzName_secureCredentialsEncrypted, 214, 0x33f0ea47)                         // 33f0ea47
 	iface.RegisterClazzName(ClazzName_account_authorizationForm, 216, 0xad2e1cd8)                          // ad2e1cd8
-	iface.RegisterClazzName(ClazzName_account_authorizationForm, 215, 0xad2e1cd8)                          // ad2e1cd8
-	iface.RegisterClazzName(ClazzName_account_authorizationForm, 214, 0xad2e1cd8)                          // ad2e1cd8
 	iface.RegisterClazzName(ClazzName_account_sentEmailCode, 216, 0x811f854f)                              // 811f854f
-	iface.RegisterClazzName(ClazzName_account_sentEmailCode, 215, 0x811f854f)                              // 811f854f
-	iface.RegisterClazzName(ClazzName_account_sentEmailCode, 214, 0x811f854f)                              // 811f854f
 	iface.RegisterClazzName(ClazzName_help_deepLinkInfoEmpty, 216, 0x66afa166)                             // 66afa166
-	iface.RegisterClazzName(ClazzName_help_deepLinkInfoEmpty, 215, 0x66afa166)                             // 66afa166
-	iface.RegisterClazzName(ClazzName_help_deepLinkInfoEmpty, 214, 0x66afa166)                             // 66afa166
 	iface.RegisterClazzName(ClazzName_help_deepLinkInfo, 216, 0x6a4ee832)                                  // 6a4ee832
-	iface.RegisterClazzName(ClazzName_help_deepLinkInfo, 215, 0x6a4ee832)                                  // 6a4ee832
-	iface.RegisterClazzName(ClazzName_help_deepLinkInfo, 214, 0x6a4ee832)                                  // 6a4ee832
 	iface.RegisterClazzName(ClazzName_savedPhoneContact, 216, 0x1142bd56)                                  // 1142bd56
-	iface.RegisterClazzName(ClazzName_savedPhoneContact, 215, 0x1142bd56)                                  // 1142bd56
-	iface.RegisterClazzName(ClazzName_savedPhoneContact, 214, 0x1142bd56)                                  // 1142bd56
 	iface.RegisterClazzName(ClazzName_account_takeout, 216, 0x4dba4501)                                    // 4dba4501
-	iface.RegisterClazzName(ClazzName_account_takeout, 215, 0x4dba4501)                                    // 4dba4501
-	iface.RegisterClazzName(ClazzName_account_takeout, 214, 0x4dba4501)                                    // 4dba4501
 	iface.RegisterClazzName(ClazzName_passwordKdfAlgoUnknown, 216, 0xd45ab096)                             // d45ab096
-	iface.RegisterClazzName(ClazzName_passwordKdfAlgoUnknown, 215, 0xd45ab096)                             // d45ab096
-	iface.RegisterClazzName(ClazzName_passwordKdfAlgoUnknown, 214, 0xd45ab096)                             // d45ab096
 	iface.RegisterClazzName(ClazzName_passwordKdfAlgoModPow, 216, 0x3a912d4a)                              // 3a912d4a
-	iface.RegisterClazzName(ClazzName_passwordKdfAlgoModPow, 215, 0x3a912d4a)                              // 3a912d4a
-	iface.RegisterClazzName(ClazzName_passwordKdfAlgoModPow, 214, 0x3a912d4a)                              // 3a912d4a
 	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoUnknown, 216, 0x4a8537)                         // 4a8537
-	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoUnknown, 215, 0x4a8537)                         // 4a8537
-	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoUnknown, 214, 0x4a8537)                         // 4a8537
 	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoPBKDF2, 216, 0xbbf2dda0)                        // bbf2dda0
-	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoPBKDF2, 215, 0xbbf2dda0)                        // bbf2dda0
-	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoPBKDF2, 214, 0xbbf2dda0)                        // bbf2dda0
 	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoSHA512, 216, 0x86471d92)                        // 86471d92
-	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoSHA512, 215, 0x86471d92)                        // 86471d92
-	iface.RegisterClazzName(ClazzName_securePasswordKdfAlgoSHA512, 214, 0x86471d92)                        // 86471d92
 	iface.RegisterClazzName(ClazzName_secureSecretSettings, 216, 0x1527bcac)                               // 1527bcac
-	iface.RegisterClazzName(ClazzName_secureSecretSettings, 215, 0x1527bcac)                               // 1527bcac
-	iface.RegisterClazzName(ClazzName_secureSecretSettings, 214, 0x1527bcac)                               // 1527bcac
 	iface.RegisterClazzName(ClazzName_inputCheckPasswordEmpty, 216, 0x9880f658)                            // 9880f658
-	iface.RegisterClazzName(ClazzName_inputCheckPasswordEmpty, 215, 0x9880f658)                            // 9880f658
-	iface.RegisterClazzName(ClazzName_inputCheckPasswordEmpty, 214, 0x9880f658)                            // 9880f658
 	iface.RegisterClazzName(ClazzName_inputCheckPasswordSRP, 216, 0xd27ff082)                              // d27ff082
-	iface.RegisterClazzName(ClazzName_inputCheckPasswordSRP, 215, 0xd27ff082)                              // d27ff082
-	iface.RegisterClazzName(ClazzName_inputCheckPasswordSRP, 214, 0xd27ff082)                              // d27ff082
 	iface.RegisterClazzName(ClazzName_secureRequiredType, 216, 0x829d99da)                                 // 829d99da
-	iface.RegisterClazzName(ClazzName_secureRequiredType, 215, 0x829d99da)                                 // 829d99da
-	iface.RegisterClazzName(ClazzName_secureRequiredType, 214, 0x829d99da)                                 // 829d99da
 	iface.RegisterClazzName(ClazzName_secureRequiredTypeOneOf, 216, 0x27477b4)                             // 27477b4
-	iface.RegisterClazzName(ClazzName_secureRequiredTypeOneOf, 215, 0x27477b4)                             // 27477b4
-	iface.RegisterClazzName(ClazzName_secureRequiredTypeOneOf, 214, 0x27477b4)                             // 27477b4
 	iface.RegisterClazzName(ClazzName_help_passportConfigNotModified, 216, 0xbfb9f457)                     // bfb9f457
-	iface.RegisterClazzName(ClazzName_help_passportConfigNotModified, 215, 0xbfb9f457)                     // bfb9f457
-	iface.RegisterClazzName(ClazzName_help_passportConfigNotModified, 214, 0xbfb9f457)                     // bfb9f457
 	iface.RegisterClazzName(ClazzName_help_passportConfig, 216, 0xa098d6af)                                // a098d6af
-	iface.RegisterClazzName(ClazzName_help_passportConfig, 215, 0xa098d6af)                                // a098d6af
-	iface.RegisterClazzName(ClazzName_help_passportConfig, 214, 0xa098d6af)                                // a098d6af
 	iface.RegisterClazzName(ClazzName_inputAppEvent, 216, 0x1d1b1245)                                      // 1d1b1245
-	iface.RegisterClazzName(ClazzName_inputAppEvent, 215, 0x1d1b1245)                                      // 1d1b1245
-	iface.RegisterClazzName(ClazzName_inputAppEvent, 214, 0x1d1b1245)                                      // 1d1b1245
 	iface.RegisterClazzName(ClazzName_jsonObjectValue, 216, 0xc0de1bd9)                                    // c0de1bd9
-	iface.RegisterClazzName(ClazzName_jsonObjectValue, 215, 0xc0de1bd9)                                    // c0de1bd9
-	iface.RegisterClazzName(ClazzName_jsonObjectValue, 214, 0xc0de1bd9)                                    // c0de1bd9
 	iface.RegisterClazzName(ClazzName_jsonNull, 216, 0x3f6d7b68)                                           // 3f6d7b68
-	iface.RegisterClazzName(ClazzName_jsonNull, 215, 0x3f6d7b68)                                           // 3f6d7b68
-	iface.RegisterClazzName(ClazzName_jsonNull, 214, 0x3f6d7b68)                                           // 3f6d7b68
 	iface.RegisterClazzName(ClazzName_jsonBool, 216, 0xc7345e6a)                                           // c7345e6a
-	iface.RegisterClazzName(ClazzName_jsonBool, 215, 0xc7345e6a)                                           // c7345e6a
-	iface.RegisterClazzName(ClazzName_jsonBool, 214, 0xc7345e6a)                                           // c7345e6a
 	iface.RegisterClazzName(ClazzName_jsonNumber, 216, 0x2be0dfa4)                                         // 2be0dfa4
-	iface.RegisterClazzName(ClazzName_jsonNumber, 215, 0x2be0dfa4)                                         // 2be0dfa4
-	iface.RegisterClazzName(ClazzName_jsonNumber, 214, 0x2be0dfa4)                                         // 2be0dfa4
 	iface.RegisterClazzName(ClazzName_jsonString, 216, 0xb71e767a)                                         // b71e767a
-	iface.RegisterClazzName(ClazzName_jsonString, 215, 0xb71e767a)                                         // b71e767a
-	iface.RegisterClazzName(ClazzName_jsonString, 214, 0xb71e767a)                                         // b71e767a
 	iface.RegisterClazzName(ClazzName_jsonArray, 216, 0xf7444763)                                          // f7444763
-	iface.RegisterClazzName(ClazzName_jsonArray, 215, 0xf7444763)                                          // f7444763
-	iface.RegisterClazzName(ClazzName_jsonArray, 214, 0xf7444763)                                          // f7444763
 	iface.RegisterClazzName(ClazzName_jsonObject, 216, 0x99c1d49d)                                         // 99c1d49d
-	iface.RegisterClazzName(ClazzName_jsonObject, 215, 0x99c1d49d)                                         // 99c1d49d
-	iface.RegisterClazzName(ClazzName_jsonObject, 214, 0x99c1d49d)                                         // 99c1d49d
 	iface.RegisterClazzName(ClazzName_pageTableCell, 216, 0x34566b6a)                                      // 34566b6a
-	iface.RegisterClazzName(ClazzName_pageTableCell, 215, 0x34566b6a)                                      // 34566b6a
-	iface.RegisterClazzName(ClazzName_pageTableCell, 214, 0x34566b6a)                                      // 34566b6a
 	iface.RegisterClazzName(ClazzName_pageTableRow, 216, 0xe0c0c5e5)                                       // e0c0c5e5
-	iface.RegisterClazzName(ClazzName_pageTableRow, 215, 0xe0c0c5e5)                                       // e0c0c5e5
-	iface.RegisterClazzName(ClazzName_pageTableRow, 214, 0xe0c0c5e5)                                       // e0c0c5e5
 	iface.RegisterClazzName(ClazzName_pageCaption, 216, 0x6f747657)                                        // 6f747657
-	iface.RegisterClazzName(ClazzName_pageCaption, 215, 0x6f747657)                                        // 6f747657
-	iface.RegisterClazzName(ClazzName_pageCaption, 214, 0x6f747657)                                        // 6f747657
 	iface.RegisterClazzName(ClazzName_pageListItemText, 216, 0xb92fb6cd)                                   // b92fb6cd
-	iface.RegisterClazzName(ClazzName_pageListItemText, 215, 0xb92fb6cd)                                   // b92fb6cd
-	iface.RegisterClazzName(ClazzName_pageListItemText, 214, 0xb92fb6cd)                                   // b92fb6cd
 	iface.RegisterClazzName(ClazzName_pageListItemBlocks, 216, 0x25e073fc)                                 // 25e073fc
-	iface.RegisterClazzName(ClazzName_pageListItemBlocks, 215, 0x25e073fc)                                 // 25e073fc
-	iface.RegisterClazzName(ClazzName_pageListItemBlocks, 214, 0x25e073fc)                                 // 25e073fc
 	iface.RegisterClazzName(ClazzName_pageListOrderedItemText, 216, 0x5e068047)                            // 5e068047
-	iface.RegisterClazzName(ClazzName_pageListOrderedItemText, 215, 0x5e068047)                            // 5e068047
-	iface.RegisterClazzName(ClazzName_pageListOrderedItemText, 214, 0x5e068047)                            // 5e068047
 	iface.RegisterClazzName(ClazzName_pageListOrderedItemBlocks, 216, 0x98dd8936)                          // 98dd8936
-	iface.RegisterClazzName(ClazzName_pageListOrderedItemBlocks, 215, 0x98dd8936)                          // 98dd8936
-	iface.RegisterClazzName(ClazzName_pageListOrderedItemBlocks, 214, 0x98dd8936)                          // 98dd8936
 	iface.RegisterClazzName(ClazzName_pageRelatedArticle, 216, 0xb390dc08)                                 // b390dc08
-	iface.RegisterClazzName(ClazzName_pageRelatedArticle, 215, 0xb390dc08)                                 // b390dc08
-	iface.RegisterClazzName(ClazzName_pageRelatedArticle, 214, 0xb390dc08)                                 // b390dc08
 	iface.RegisterClazzName(ClazzName_page, 216, 0x98657f0d)                                               // 98657f0d
-	iface.RegisterClazzName(ClazzName_page, 215, 0x98657f0d)                                               // 98657f0d
-	iface.RegisterClazzName(ClazzName_page, 214, 0x98657f0d)                                               // 98657f0d
 	iface.RegisterClazzName(ClazzName_help_supportName, 216, 0x8c05f1c9)                                   // 8c05f1c9
-	iface.RegisterClazzName(ClazzName_help_supportName, 215, 0x8c05f1c9)                                   // 8c05f1c9
-	iface.RegisterClazzName(ClazzName_help_supportName, 214, 0x8c05f1c9)                                   // 8c05f1c9
 	iface.RegisterClazzName(ClazzName_help_userInfoEmpty, 216, 0xf3ae2eed)                                 // f3ae2eed
-	iface.RegisterClazzName(ClazzName_help_userInfoEmpty, 215, 0xf3ae2eed)                                 // f3ae2eed
-	iface.RegisterClazzName(ClazzName_help_userInfoEmpty, 214, 0xf3ae2eed)                                 // f3ae2eed
 	iface.RegisterClazzName(ClazzName_help_userInfo, 216, 0x1eb3758)                                       // 1eb3758
-	iface.RegisterClazzName(ClazzName_help_userInfo, 215, 0x1eb3758)                                       // 1eb3758
-	iface.RegisterClazzName(ClazzName_help_userInfo, 214, 0x1eb3758)                                       // 1eb3758
 	iface.RegisterClazzName(ClazzName_pollAnswer, 216, 0xff16e2ca)                                         // ff16e2ca
-	iface.RegisterClazzName(ClazzName_pollAnswer, 215, 0xff16e2ca)                                         // ff16e2ca
-	iface.RegisterClazzName(ClazzName_pollAnswer, 214, 0xff16e2ca)                                         // ff16e2ca
 	iface.RegisterClazzName(ClazzName_poll, 216, 0x58747131)                                               // 58747131
-	iface.RegisterClazzName(ClazzName_poll, 215, 0x58747131)                                               // 58747131
-	iface.RegisterClazzName(ClazzName_poll, 214, 0x58747131)                                               // 58747131
 	iface.RegisterClazzName(ClazzName_pollAnswerVoters, 216, 0x3b6ddad2)                                   // 3b6ddad2
-	iface.RegisterClazzName(ClazzName_pollAnswerVoters, 215, 0x3b6ddad2)                                   // 3b6ddad2
-	iface.RegisterClazzName(ClazzName_pollAnswerVoters, 214, 0x3b6ddad2)                                   // 3b6ddad2
 	iface.RegisterClazzName(ClazzName_pollResults, 216, 0x7adf2420)                                        // 7adf2420
-	iface.RegisterClazzName(ClazzName_pollResults, 215, 0x7adf2420)                                        // 7adf2420
-	iface.RegisterClazzName(ClazzName_pollResults, 214, 0x7adf2420)                                        // 7adf2420
 	iface.RegisterClazzName(ClazzName_chatOnlines, 216, 0xf041e250)                                        // f041e250
-	iface.RegisterClazzName(ClazzName_chatOnlines, 215, 0xf041e250)                                        // f041e250
-	iface.RegisterClazzName(ClazzName_chatOnlines, 214, 0xf041e250)                                        // f041e250
 	iface.RegisterClazzName(ClazzName_statsURL, 216, 0x47a971e0)                                           // 47a971e0
-	iface.RegisterClazzName(ClazzName_statsURL, 215, 0x47a971e0)                                           // 47a971e0
-	iface.RegisterClazzName(ClazzName_statsURL, 214, 0x47a971e0)                                           // 47a971e0
 	iface.RegisterClazzName(ClazzName_chatAdminRights, 216, 0x5fb224d5)                                    // 5fb224d5
-	iface.RegisterClazzName(ClazzName_chatAdminRights, 215, 0x5fb224d5)                                    // 5fb224d5
-	iface.RegisterClazzName(ClazzName_chatAdminRights, 214, 0x5fb224d5)                                    // 5fb224d5
 	iface.RegisterClazzName(ClazzName_chatBannedRights, 216, 0x9f120418)                                   // 9f120418
-	iface.RegisterClazzName(ClazzName_chatBannedRights, 215, 0x9f120418)                                   // 9f120418
-	iface.RegisterClazzName(ClazzName_chatBannedRights, 214, 0x9f120418)                                   // 9f120418
 	iface.RegisterClazzName(ClazzName_inputWallPaper, 216, 0xe630b979)                                     // e630b979
-	iface.RegisterClazzName(ClazzName_inputWallPaper, 215, 0xe630b979)                                     // e630b979
-	iface.RegisterClazzName(ClazzName_inputWallPaper, 214, 0xe630b979)                                     // e630b979
 	iface.RegisterClazzName(ClazzName_inputWallPaperSlug, 216, 0x72091c80)                                 // 72091c80
-	iface.RegisterClazzName(ClazzName_inputWallPaperSlug, 215, 0x72091c80)                                 // 72091c80
-	iface.RegisterClazzName(ClazzName_inputWallPaperSlug, 214, 0x72091c80)                                 // 72091c80
 	iface.RegisterClazzName(ClazzName_inputWallPaperNoFile, 216, 0x967a462e)                               // 967a462e
-	iface.RegisterClazzName(ClazzName_inputWallPaperNoFile, 215, 0x967a462e)                               // 967a462e
-	iface.RegisterClazzName(ClazzName_inputWallPaperNoFile, 214, 0x967a462e)                               // 967a462e
 	iface.RegisterClazzName(ClazzName_account_wallPapersNotModified, 216, 0x1c199183)                      // 1c199183
-	iface.RegisterClazzName(ClazzName_account_wallPapersNotModified, 215, 0x1c199183)                      // 1c199183
-	iface.RegisterClazzName(ClazzName_account_wallPapersNotModified, 214, 0x1c199183)                      // 1c199183
 	iface.RegisterClazzName(ClazzName_account_wallPapers, 216, 0xcdc3858c)                                 // cdc3858c
-	iface.RegisterClazzName(ClazzName_account_wallPapers, 215, 0xcdc3858c)                                 // cdc3858c
-	iface.RegisterClazzName(ClazzName_account_wallPapers, 214, 0xcdc3858c)                                 // cdc3858c
 	iface.RegisterClazzName(ClazzName_codeSettings, 216, 0xad253d78)                                       // ad253d78
-	iface.RegisterClazzName(ClazzName_codeSettings, 215, 0xad253d78)                                       // ad253d78
-	iface.RegisterClazzName(ClazzName_codeSettings, 214, 0xad253d78)                                       // ad253d78
 	iface.RegisterClazzName(ClazzName_wallPaperSettings, 216, 0x372efcd0)                                  // 372efcd0
-	iface.RegisterClazzName(ClazzName_wallPaperSettings, 215, 0x372efcd0)                                  // 372efcd0
-	iface.RegisterClazzName(ClazzName_wallPaperSettings, 214, 0x372efcd0)                                  // 372efcd0
 	iface.RegisterClazzName(ClazzName_autoDownloadSettings, 216, 0xbaa57628)                               // baa57628
-	iface.RegisterClazzName(ClazzName_autoDownloadSettings, 215, 0xbaa57628)                               // baa57628
-	iface.RegisterClazzName(ClazzName_autoDownloadSettings, 214, 0xbaa57628)                               // baa57628
 	iface.RegisterClazzName(ClazzName_account_autoDownloadSettings, 216, 0x63cacf26)                       // 63cacf26
-	iface.RegisterClazzName(ClazzName_account_autoDownloadSettings, 215, 0x63cacf26)                       // 63cacf26
-	iface.RegisterClazzName(ClazzName_account_autoDownloadSettings, 214, 0x63cacf26)                       // 63cacf26
 	iface.RegisterClazzName(ClazzName_emojiKeyword, 216, 0xd5b3b9f9)                                       // d5b3b9f9
-	iface.RegisterClazzName(ClazzName_emojiKeyword, 215, 0xd5b3b9f9)                                       // d5b3b9f9
-	iface.RegisterClazzName(ClazzName_emojiKeyword, 214, 0xd5b3b9f9)                                       // d5b3b9f9
 	iface.RegisterClazzName(ClazzName_emojiKeywordDeleted, 216, 0x236df622)                                // 236df622
-	iface.RegisterClazzName(ClazzName_emojiKeywordDeleted, 215, 0x236df622)                                // 236df622
-	iface.RegisterClazzName(ClazzName_emojiKeywordDeleted, 214, 0x236df622)                                // 236df622
 	iface.RegisterClazzName(ClazzName_emojiKeywordsDifference, 216, 0x5cc761bd)                            // 5cc761bd
-	iface.RegisterClazzName(ClazzName_emojiKeywordsDifference, 215, 0x5cc761bd)                            // 5cc761bd
-	iface.RegisterClazzName(ClazzName_emojiKeywordsDifference, 214, 0x5cc761bd)                            // 5cc761bd
 	iface.RegisterClazzName(ClazzName_emojiURL, 216, 0xa575739d)                                           // a575739d
-	iface.RegisterClazzName(ClazzName_emojiURL, 215, 0xa575739d)                                           // a575739d
-	iface.RegisterClazzName(ClazzName_emojiURL, 214, 0xa575739d)                                           // a575739d
 	iface.RegisterClazzName(ClazzName_emojiLanguage, 216, 0xb3fb5361)                                      // b3fb5361
-	iface.RegisterClazzName(ClazzName_emojiLanguage, 215, 0xb3fb5361)                                      // b3fb5361
-	iface.RegisterClazzName(ClazzName_emojiLanguage, 214, 0xb3fb5361)                                      // b3fb5361
 	iface.RegisterClazzName(ClazzName_folder, 216, 0xff544e65)                                             // ff544e65
-	iface.RegisterClazzName(ClazzName_folder, 215, 0xff544e65)                                             // ff544e65
-	iface.RegisterClazzName(ClazzName_folder, 214, 0xff544e65)                                             // ff544e65
 	iface.RegisterClazzName(ClazzName_inputFolderPeer, 216, 0xfbd2c296)                                    // fbd2c296
-	iface.RegisterClazzName(ClazzName_inputFolderPeer, 215, 0xfbd2c296)                                    // fbd2c296
-	iface.RegisterClazzName(ClazzName_inputFolderPeer, 214, 0xfbd2c296)                                    // fbd2c296
 	iface.RegisterClazzName(ClazzName_folderPeer, 216, 0xe9baa668)                                         // e9baa668
-	iface.RegisterClazzName(ClazzName_folderPeer, 215, 0xe9baa668)                                         // e9baa668
-	iface.RegisterClazzName(ClazzName_folderPeer, 214, 0xe9baa668)                                         // e9baa668
 	iface.RegisterClazzName(ClazzName_messages_searchCounter, 216, 0xe844ebff)                             // e844ebff
-	iface.RegisterClazzName(ClazzName_messages_searchCounter, 215, 0xe844ebff)                             // e844ebff
-	iface.RegisterClazzName(ClazzName_messages_searchCounter, 214, 0xe844ebff)                             // e844ebff
 	iface.RegisterClazzName(ClazzName_urlAuthResultRequest, 216, 0x92d33a0e)                               // 92d33a0e
-	iface.RegisterClazzName(ClazzName_urlAuthResultRequest, 215, 0x92d33a0e)                               // 92d33a0e
-	iface.RegisterClazzName(ClazzName_urlAuthResultRequest, 214, 0x92d33a0e)                               // 92d33a0e
 	iface.RegisterClazzName(ClazzName_urlAuthResultAccepted, 216, 0x8f8c0e4e)                              // 8f8c0e4e
-	iface.RegisterClazzName(ClazzName_urlAuthResultAccepted, 215, 0x8f8c0e4e)                              // 8f8c0e4e
-	iface.RegisterClazzName(ClazzName_urlAuthResultAccepted, 214, 0x8f8c0e4e)                              // 8f8c0e4e
 	iface.RegisterClazzName(ClazzName_urlAuthResultDefault, 216, 0xa9d6db1f)                               // a9d6db1f
-	iface.RegisterClazzName(ClazzName_urlAuthResultDefault, 215, 0xa9d6db1f)                               // a9d6db1f
-	iface.RegisterClazzName(ClazzName_urlAuthResultDefault, 214, 0xa9d6db1f)                               // a9d6db1f
 	iface.RegisterClazzName(ClazzName_channelLocationEmpty, 216, 0xbfb5ad8b)                               // bfb5ad8b
-	iface.RegisterClazzName(ClazzName_channelLocationEmpty, 215, 0xbfb5ad8b)                               // bfb5ad8b
-	iface.RegisterClazzName(ClazzName_channelLocationEmpty, 214, 0xbfb5ad8b)                               // bfb5ad8b
 	iface.RegisterClazzName(ClazzName_channelLocation, 216, 0x209b82db)                                    // 209b82db
-	iface.RegisterClazzName(ClazzName_channelLocation, 215, 0x209b82db)                                    // 209b82db
-	iface.RegisterClazzName(ClazzName_channelLocation, 214, 0x209b82db)                                    // 209b82db
 	iface.RegisterClazzName(ClazzName_peerLocated, 216, 0xca461b5d)                                        // ca461b5d
-	iface.RegisterClazzName(ClazzName_peerLocated, 215, 0xca461b5d)                                        // ca461b5d
-	iface.RegisterClazzName(ClazzName_peerLocated, 214, 0xca461b5d)                                        // ca461b5d
 	iface.RegisterClazzName(ClazzName_peerSelfLocated, 216, 0xf8ec284b)                                    // f8ec284b
-	iface.RegisterClazzName(ClazzName_peerSelfLocated, 215, 0xf8ec284b)                                    // f8ec284b
-	iface.RegisterClazzName(ClazzName_peerSelfLocated, 214, 0xf8ec284b)                                    // f8ec284b
 	iface.RegisterClazzName(ClazzName_restrictionReason, 216, 0xd072acb4)                                  // d072acb4
-	iface.RegisterClazzName(ClazzName_restrictionReason, 215, 0xd072acb4)                                  // d072acb4
-	iface.RegisterClazzName(ClazzName_restrictionReason, 214, 0xd072acb4)                                  // d072acb4
 	iface.RegisterClazzName(ClazzName_inputTheme, 216, 0x3c5693e9)                                         // 3c5693e9
-	iface.RegisterClazzName(ClazzName_inputTheme, 215, 0x3c5693e9)                                         // 3c5693e9
-	iface.RegisterClazzName(ClazzName_inputTheme, 214, 0x3c5693e9)                                         // 3c5693e9
 	iface.RegisterClazzName(ClazzName_inputThemeSlug, 216, 0xf5890df1)                                     // f5890df1
-	iface.RegisterClazzName(ClazzName_inputThemeSlug, 215, 0xf5890df1)                                     // f5890df1
-	iface.RegisterClazzName(ClazzName_inputThemeSlug, 214, 0xf5890df1)                                     // f5890df1
 	iface.RegisterClazzName(ClazzName_theme, 216, 0xa00e67d6)                                              // a00e67d6
-	iface.RegisterClazzName(ClazzName_theme, 215, 0xa00e67d6)                                              // a00e67d6
-	iface.RegisterClazzName(ClazzName_theme, 214, 0xa00e67d6)                                              // a00e67d6
 	iface.RegisterClazzName(ClazzName_account_themesNotModified, 216, 0xf41eb622)                          // f41eb622
-	iface.RegisterClazzName(ClazzName_account_themesNotModified, 215, 0xf41eb622)                          // f41eb622
-	iface.RegisterClazzName(ClazzName_account_themesNotModified, 214, 0xf41eb622)                          // f41eb622
 	iface.RegisterClazzName(ClazzName_account_themes, 216, 0x9a3d8c6d)                                     // 9a3d8c6d
-	iface.RegisterClazzName(ClazzName_account_themes, 215, 0x9a3d8c6d)                                     // 9a3d8c6d
-	iface.RegisterClazzName(ClazzName_account_themes, 214, 0x9a3d8c6d)                                     // 9a3d8c6d
 	iface.RegisterClazzName(ClazzName_auth_loginToken, 216, 0x629f1980)                                    // 629f1980
-	iface.RegisterClazzName(ClazzName_auth_loginToken, 215, 0x629f1980)                                    // 629f1980
-	iface.RegisterClazzName(ClazzName_auth_loginToken, 214, 0x629f1980)                                    // 629f1980
 	iface.RegisterClazzName(ClazzName_auth_loginTokenMigrateTo, 216, 0x68e9916)                            // 68e9916
-	iface.RegisterClazzName(ClazzName_auth_loginTokenMigrateTo, 215, 0x68e9916)                            // 68e9916
-	iface.RegisterClazzName(ClazzName_auth_loginTokenMigrateTo, 214, 0x68e9916)                            // 68e9916
 	iface.RegisterClazzName(ClazzName_auth_loginTokenSuccess, 216, 0x390d5c5e)                             // 390d5c5e
-	iface.RegisterClazzName(ClazzName_auth_loginTokenSuccess, 215, 0x390d5c5e)                             // 390d5c5e
-	iface.RegisterClazzName(ClazzName_auth_loginTokenSuccess, 214, 0x390d5c5e)                             // 390d5c5e
 	iface.RegisterClazzName(ClazzName_account_contentSettings, 216, 0x57e28221)                            // 57e28221
-	iface.RegisterClazzName(ClazzName_account_contentSettings, 215, 0x57e28221)                            // 57e28221
-	iface.RegisterClazzName(ClazzName_account_contentSettings, 214, 0x57e28221)                            // 57e28221
 	iface.RegisterClazzName(ClazzName_messages_inactiveChats, 216, 0xa927fec5)                             // a927fec5
-	iface.RegisterClazzName(ClazzName_messages_inactiveChats, 215, 0xa927fec5)                             // a927fec5
-	iface.RegisterClazzName(ClazzName_messages_inactiveChats, 214, 0xa927fec5)                             // a927fec5
 	iface.RegisterClazzName(ClazzName_baseThemeClassic, 216, 0xc3a12462)                                   // c3a12462
-	iface.RegisterClazzName(ClazzName_baseThemeClassic, 215, 0xc3a12462)                                   // c3a12462
-	iface.RegisterClazzName(ClazzName_baseThemeClassic, 214, 0xc3a12462)                                   // c3a12462
 	iface.RegisterClazzName(ClazzName_baseThemeDay, 216, 0xfbd81688)                                       // fbd81688
-	iface.RegisterClazzName(ClazzName_baseThemeDay, 215, 0xfbd81688)                                       // fbd81688
-	iface.RegisterClazzName(ClazzName_baseThemeDay, 214, 0xfbd81688)                                       // fbd81688
 	iface.RegisterClazzName(ClazzName_baseThemeNight, 216, 0xb7b31ea8)                                     // b7b31ea8
-	iface.RegisterClazzName(ClazzName_baseThemeNight, 215, 0xb7b31ea8)                                     // b7b31ea8
-	iface.RegisterClazzName(ClazzName_baseThemeNight, 214, 0xb7b31ea8)                                     // b7b31ea8
 	iface.RegisterClazzName(ClazzName_baseThemeTinted, 216, 0x6d5f77ee)                                    // 6d5f77ee
-	iface.RegisterClazzName(ClazzName_baseThemeTinted, 215, 0x6d5f77ee)                                    // 6d5f77ee
-	iface.RegisterClazzName(ClazzName_baseThemeTinted, 214, 0x6d5f77ee)                                    // 6d5f77ee
 	iface.RegisterClazzName(ClazzName_baseThemeArctic, 216, 0x5b11125a)                                    // 5b11125a
-	iface.RegisterClazzName(ClazzName_baseThemeArctic, 215, 0x5b11125a)                                    // 5b11125a
-	iface.RegisterClazzName(ClazzName_baseThemeArctic, 214, 0x5b11125a)                                    // 5b11125a
 	iface.RegisterClazzName(ClazzName_inputThemeSettings, 216, 0x8fde504f)                                 // 8fde504f
-	iface.RegisterClazzName(ClazzName_inputThemeSettings, 215, 0x8fde504f)                                 // 8fde504f
-	iface.RegisterClazzName(ClazzName_inputThemeSettings, 214, 0x8fde504f)                                 // 8fde504f
 	iface.RegisterClazzName(ClazzName_themeSettings, 216, 0xfa58b6d4)                                      // fa58b6d4
-	iface.RegisterClazzName(ClazzName_themeSettings, 215, 0xfa58b6d4)                                      // fa58b6d4
-	iface.RegisterClazzName(ClazzName_themeSettings, 214, 0xfa58b6d4)                                      // fa58b6d4
 	iface.RegisterClazzName(ClazzName_webPageAttributeTheme, 216, 0x54b56617)                              // 54b56617
-	iface.RegisterClazzName(ClazzName_webPageAttributeTheme, 215, 0x54b56617)                              // 54b56617
-	iface.RegisterClazzName(ClazzName_webPageAttributeTheme, 214, 0x54b56617)                              // 54b56617
 	iface.RegisterClazzName(ClazzName_webPageAttributeStory, 216, 0x2e94c3e7)                              // 2e94c3e7
-	iface.RegisterClazzName(ClazzName_webPageAttributeStory, 215, 0x2e94c3e7)                              // 2e94c3e7
-	iface.RegisterClazzName(ClazzName_webPageAttributeStory, 214, 0x2e94c3e7)                              // 2e94c3e7
 	iface.RegisterClazzName(ClazzName_webPageAttributeStickerSet, 216, 0x50cc03d3)                         // 50cc03d3
-	iface.RegisterClazzName(ClazzName_webPageAttributeStickerSet, 215, 0x50cc03d3)                         // 50cc03d3
-	iface.RegisterClazzName(ClazzName_webPageAttributeStickerSet, 214, 0x50cc03d3)                         // 50cc03d3
 	iface.RegisterClazzName(ClazzName_webPageAttributeUniqueStarGift, 216, 0xcf6f6db8)                     // cf6f6db8
-	iface.RegisterClazzName(ClazzName_webPageAttributeUniqueStarGift, 215, 0xcf6f6db8)                     // cf6f6db8
-	iface.RegisterClazzName(ClazzName_webPageAttributeUniqueStarGift, 214, 0xcf6f6db8)                     // cf6f6db8
 	iface.RegisterClazzName(ClazzName_webPageAttributeStarGiftCollection, 216, 0x31cad303)                 // 31cad303
-	iface.RegisterClazzName(ClazzName_webPageAttributeStarGiftCollection, 215, 0x31cad303)                 // 31cad303
-	iface.RegisterClazzName(ClazzName_webPageAttributeStarGiftCollection, 214, 0x31cad303)                 // 31cad303
 	iface.RegisterClazzName(ClazzName_messages_votesList, 216, 0x4899484e)                                 // 4899484e
-	iface.RegisterClazzName(ClazzName_messages_votesList, 215, 0x4899484e)                                 // 4899484e
-	iface.RegisterClazzName(ClazzName_messages_votesList, 214, 0x4899484e)                                 // 4899484e
 	iface.RegisterClazzName(ClazzName_bankCardOpenUrl, 216, 0xf568028a)                                    // f568028a
-	iface.RegisterClazzName(ClazzName_bankCardOpenUrl, 215, 0xf568028a)                                    // f568028a
-	iface.RegisterClazzName(ClazzName_bankCardOpenUrl, 214, 0xf568028a)                                    // f568028a
 	iface.RegisterClazzName(ClazzName_payments_bankCardData, 216, 0x3e24e573)                              // 3e24e573
-	iface.RegisterClazzName(ClazzName_payments_bankCardData, 215, 0x3e24e573)                              // 3e24e573
-	iface.RegisterClazzName(ClazzName_payments_bankCardData, 214, 0x3e24e573)                              // 3e24e573
 	iface.RegisterClazzName(ClazzName_dialogFilter, 216, 0xaa472651)                                       // aa472651
-	iface.RegisterClazzName(ClazzName_dialogFilter, 215, 0xaa472651)                                       // aa472651
-	iface.RegisterClazzName(ClazzName_dialogFilter, 214, 0xaa472651)                                       // aa472651
 	iface.RegisterClazzName(ClazzName_dialogFilterDefault, 216, 0x363293ae)                                // 363293ae
-	iface.RegisterClazzName(ClazzName_dialogFilterDefault, 215, 0x363293ae)                                // 363293ae
-	iface.RegisterClazzName(ClazzName_dialogFilterDefault, 214, 0x363293ae)                                // 363293ae
 	iface.RegisterClazzName(ClazzName_dialogFilterChatlist, 216, 0x96537bd7)                               // 96537bd7
-	iface.RegisterClazzName(ClazzName_dialogFilterChatlist, 215, 0x96537bd7)                               // 96537bd7
-	iface.RegisterClazzName(ClazzName_dialogFilterChatlist, 214, 0x96537bd7)                               // 96537bd7
 	iface.RegisterClazzName(ClazzName_dialogFilterSuggested, 216, 0x77744d4a)                              // 77744d4a
-	iface.RegisterClazzName(ClazzName_dialogFilterSuggested, 215, 0x77744d4a)                              // 77744d4a
-	iface.RegisterClazzName(ClazzName_dialogFilterSuggested, 214, 0x77744d4a)                              // 77744d4a
 	iface.RegisterClazzName(ClazzName_statsDateRangeDays, 216, 0xb637edaf)                                 // b637edaf
-	iface.RegisterClazzName(ClazzName_statsDateRangeDays, 215, 0xb637edaf)                                 // b637edaf
-	iface.RegisterClazzName(ClazzName_statsDateRangeDays, 214, 0xb637edaf)                                 // b637edaf
 	iface.RegisterClazzName(ClazzName_statsAbsValueAndPrev, 216, 0xcb43acde)                               // cb43acde
-	iface.RegisterClazzName(ClazzName_statsAbsValueAndPrev, 215, 0xcb43acde)                               // cb43acde
-	iface.RegisterClazzName(ClazzName_statsAbsValueAndPrev, 214, 0xcb43acde)                               // cb43acde
 	iface.RegisterClazzName(ClazzName_statsPercentValue, 216, 0xcbce2fe0)                                  // cbce2fe0
-	iface.RegisterClazzName(ClazzName_statsPercentValue, 215, 0xcbce2fe0)                                  // cbce2fe0
-	iface.RegisterClazzName(ClazzName_statsPercentValue, 214, 0xcbce2fe0)                                  // cbce2fe0
 	iface.RegisterClazzName(ClazzName_statsGraphAsync, 216, 0x4a27eb2d)                                    // 4a27eb2d
-	iface.RegisterClazzName(ClazzName_statsGraphAsync, 215, 0x4a27eb2d)                                    // 4a27eb2d
-	iface.RegisterClazzName(ClazzName_statsGraphAsync, 214, 0x4a27eb2d)                                    // 4a27eb2d
 	iface.RegisterClazzName(ClazzName_statsGraphError, 216, 0xbedc9822)                                    // bedc9822
-	iface.RegisterClazzName(ClazzName_statsGraphError, 215, 0xbedc9822)                                    // bedc9822
-	iface.RegisterClazzName(ClazzName_statsGraphError, 214, 0xbedc9822)                                    // bedc9822
 	iface.RegisterClazzName(ClazzName_statsGraph, 216, 0x8ea464b6)                                         // 8ea464b6
-	iface.RegisterClazzName(ClazzName_statsGraph, 215, 0x8ea464b6)                                         // 8ea464b6
-	iface.RegisterClazzName(ClazzName_statsGraph, 214, 0x8ea464b6)                                         // 8ea464b6
 	iface.RegisterClazzName(ClazzName_stats_broadcastStats, 216, 0x396ca5fc)                               // 396ca5fc
-	iface.RegisterClazzName(ClazzName_stats_broadcastStats, 215, 0x396ca5fc)                               // 396ca5fc
-	iface.RegisterClazzName(ClazzName_stats_broadcastStats, 214, 0x396ca5fc)                               // 396ca5fc
 	iface.RegisterClazzName(ClazzName_help_promoDataEmpty, 216, 0x98f6ac75)                                // 98f6ac75
-	iface.RegisterClazzName(ClazzName_help_promoDataEmpty, 215, 0x98f6ac75)                                // 98f6ac75
-	iface.RegisterClazzName(ClazzName_help_promoDataEmpty, 214, 0x98f6ac75)                                // 98f6ac75
 	iface.RegisterClazzName(ClazzName_help_promoData, 216, 0x8a4d87a)                                      // 8a4d87a
-	iface.RegisterClazzName(ClazzName_help_promoData, 215, 0x8a4d87a)                                      // 8a4d87a
-	iface.RegisterClazzName(ClazzName_help_promoData, 214, 0x8a4d87a)                                      // 8a4d87a
 	iface.RegisterClazzName(ClazzName_videoSize, 216, 0xde33b094)                                          // de33b094
-	iface.RegisterClazzName(ClazzName_videoSize, 215, 0xde33b094)                                          // de33b094
-	iface.RegisterClazzName(ClazzName_videoSize, 214, 0xde33b094)                                          // de33b094
 	iface.RegisterClazzName(ClazzName_videoSizeEmojiMarkup, 216, 0xf85c413c)                               // f85c413c
-	iface.RegisterClazzName(ClazzName_videoSizeEmojiMarkup, 215, 0xf85c413c)                               // f85c413c
-	iface.RegisterClazzName(ClazzName_videoSizeEmojiMarkup, 214, 0xf85c413c)                               // f85c413c
 	iface.RegisterClazzName(ClazzName_videoSizeStickerMarkup, 216, 0xda082fe)                              // da082fe
-	iface.RegisterClazzName(ClazzName_videoSizeStickerMarkup, 215, 0xda082fe)                              // da082fe
-	iface.RegisterClazzName(ClazzName_videoSizeStickerMarkup, 214, 0xda082fe)                              // da082fe
 	iface.RegisterClazzName(ClazzName_statsGroupTopPoster, 216, 0x9d04af9b)                                // 9d04af9b
-	iface.RegisterClazzName(ClazzName_statsGroupTopPoster, 215, 0x9d04af9b)                                // 9d04af9b
-	iface.RegisterClazzName(ClazzName_statsGroupTopPoster, 214, 0x9d04af9b)                                // 9d04af9b
 	iface.RegisterClazzName(ClazzName_statsGroupTopAdmin, 216, 0xd7584c87)                                 // d7584c87
-	iface.RegisterClazzName(ClazzName_statsGroupTopAdmin, 215, 0xd7584c87)                                 // d7584c87
-	iface.RegisterClazzName(ClazzName_statsGroupTopAdmin, 214, 0xd7584c87)                                 // d7584c87
 	iface.RegisterClazzName(ClazzName_statsGroupTopInviter, 216, 0x535f779d)                               // 535f779d
-	iface.RegisterClazzName(ClazzName_statsGroupTopInviter, 215, 0x535f779d)                               // 535f779d
-	iface.RegisterClazzName(ClazzName_statsGroupTopInviter, 214, 0x535f779d)                               // 535f779d
 	iface.RegisterClazzName(ClazzName_stats_megagroupStats, 216, 0xef7ff916)                               // ef7ff916
-	iface.RegisterClazzName(ClazzName_stats_megagroupStats, 215, 0xef7ff916)                               // ef7ff916
-	iface.RegisterClazzName(ClazzName_stats_megagroupStats, 214, 0xef7ff916)                               // ef7ff916
 	iface.RegisterClazzName(ClazzName_globalPrivacySettings, 216, 0xfe41b34f)                              // fe41b34f
-	iface.RegisterClazzName(ClazzName_globalPrivacySettings, 215, 0xfe41b34f)                              // fe41b34f
-	iface.RegisterClazzName(ClazzName_globalPrivacySettings, 214, 0xfe41b34f)                              // fe41b34f
 	iface.RegisterClazzName(ClazzName_help_countryCode, 216, 0x4203c5ef)                                   // 4203c5ef
-	iface.RegisterClazzName(ClazzName_help_countryCode, 215, 0x4203c5ef)                                   // 4203c5ef
-	iface.RegisterClazzName(ClazzName_help_countryCode, 214, 0x4203c5ef)                                   // 4203c5ef
 	iface.RegisterClazzName(ClazzName_help_country, 216, 0xc3878e23)                                       // c3878e23
-	iface.RegisterClazzName(ClazzName_help_country, 215, 0xc3878e23)                                       // c3878e23
-	iface.RegisterClazzName(ClazzName_help_country, 214, 0xc3878e23)                                       // c3878e23
 	iface.RegisterClazzName(ClazzName_help_countriesListNotModified, 216, 0x93cc1f32)                      // 93cc1f32
-	iface.RegisterClazzName(ClazzName_help_countriesListNotModified, 215, 0x93cc1f32)                      // 93cc1f32
-	iface.RegisterClazzName(ClazzName_help_countriesListNotModified, 214, 0x93cc1f32)                      // 93cc1f32
 	iface.RegisterClazzName(ClazzName_help_countriesList, 216, 0x87d0759e)                                 // 87d0759e
-	iface.RegisterClazzName(ClazzName_help_countriesList, 215, 0x87d0759e)                                 // 87d0759e
-	iface.RegisterClazzName(ClazzName_help_countriesList, 214, 0x87d0759e)                                 // 87d0759e
 	iface.RegisterClazzName(ClazzName_messageViews, 216, 0x455b853d)                                       // 455b853d
-	iface.RegisterClazzName(ClazzName_messageViews, 215, 0x455b853d)                                       // 455b853d
-	iface.RegisterClazzName(ClazzName_messageViews, 214, 0x455b853d)                                       // 455b853d
 	iface.RegisterClazzName(ClazzName_messages_messageViews, 216, 0xb6c4f543)                              // b6c4f543
-	iface.RegisterClazzName(ClazzName_messages_messageViews, 215, 0xb6c4f543)                              // b6c4f543
-	iface.RegisterClazzName(ClazzName_messages_messageViews, 214, 0xb6c4f543)                              // b6c4f543
 	iface.RegisterClazzName(ClazzName_messages_discussionMessage, 216, 0xa6341782)                         // a6341782
-	iface.RegisterClazzName(ClazzName_messages_discussionMessage, 215, 0xa6341782)                         // a6341782
-	iface.RegisterClazzName(ClazzName_messages_discussionMessage, 214, 0xa6341782)                         // a6341782
 	iface.RegisterClazzName(ClazzName_messageReplyHeader, 216, 0x6917560b)                                 // 6917560b
-	iface.RegisterClazzName(ClazzName_messageReplyHeader, 215, 0x6917560b)                                 // 6917560b
-	iface.RegisterClazzName(ClazzName_messageReplyHeader, 214, 0x6917560b)                                 // 6917560b
 	iface.RegisterClazzName(ClazzName_messageReplyStoryHeader, 216, 0xe5af939)                             // e5af939
-	iface.RegisterClazzName(ClazzName_messageReplyStoryHeader, 215, 0xe5af939)                             // e5af939
-	iface.RegisterClazzName(ClazzName_messageReplyStoryHeader, 214, 0xe5af939)                             // e5af939
 	iface.RegisterClazzName(ClazzName_messageReplies, 216, 0x83d60fc2)                                     // 83d60fc2
-	iface.RegisterClazzName(ClazzName_messageReplies, 215, 0x83d60fc2)                                     // 83d60fc2
-	iface.RegisterClazzName(ClazzName_messageReplies, 214, 0x83d60fc2)                                     // 83d60fc2
 	iface.RegisterClazzName(ClazzName_peerBlocked, 216, 0xe8fd8014)                                        // e8fd8014
-	iface.RegisterClazzName(ClazzName_peerBlocked, 215, 0xe8fd8014)                                        // e8fd8014
-	iface.RegisterClazzName(ClazzName_peerBlocked, 214, 0xe8fd8014)                                        // e8fd8014
 	iface.RegisterClazzName(ClazzName_stats_messageStats, 216, 0x7fe91c14)                                 // 7fe91c14
-	iface.RegisterClazzName(ClazzName_stats_messageStats, 215, 0x7fe91c14)                                 // 7fe91c14
-	iface.RegisterClazzName(ClazzName_stats_messageStats, 214, 0x7fe91c14)                                 // 7fe91c14
 	iface.RegisterClazzName(ClazzName_groupCallDiscarded, 216, 0x7780bcb4)                                 // 7780bcb4
-	iface.RegisterClazzName(ClazzName_groupCallDiscarded, 215, 0x7780bcb4)                                 // 7780bcb4
-	iface.RegisterClazzName(ClazzName_groupCallDiscarded, 214, 0x7780bcb4)                                 // 7780bcb4
 	iface.RegisterClazzName(ClazzName_groupCall, 216, 0x553b0ba1)                                          // 553b0ba1
-	iface.RegisterClazzName(ClazzName_groupCall, 215, 0x553b0ba1)                                          // 553b0ba1
-	iface.RegisterClazzName(ClazzName_groupCall, 214, 0x553b0ba1)                                          // 553b0ba1
 	iface.RegisterClazzName(ClazzName_inputGroupCall, 216, 0xd8aa840f)                                     // d8aa840f
-	iface.RegisterClazzName(ClazzName_inputGroupCall, 215, 0xd8aa840f)                                     // d8aa840f
-	iface.RegisterClazzName(ClazzName_inputGroupCall, 214, 0xd8aa840f)                                     // d8aa840f
 	iface.RegisterClazzName(ClazzName_inputGroupCallSlug, 216, 0xfe06823f)                                 // fe06823f
-	iface.RegisterClazzName(ClazzName_inputGroupCallSlug, 215, 0xfe06823f)                                 // fe06823f
-	iface.RegisterClazzName(ClazzName_inputGroupCallSlug, 214, 0xfe06823f)                                 // fe06823f
 	iface.RegisterClazzName(ClazzName_inputGroupCallInviteMessage, 216, 0x8c10603f)                        // 8c10603f
-	iface.RegisterClazzName(ClazzName_inputGroupCallInviteMessage, 215, 0x8c10603f)                        // 8c10603f
-	iface.RegisterClazzName(ClazzName_inputGroupCallInviteMessage, 214, 0x8c10603f)                        // 8c10603f
 	iface.RegisterClazzName(ClazzName_groupCallParticipant, 216, 0xeba636fe)                               // eba636fe
-	iface.RegisterClazzName(ClazzName_groupCallParticipant, 215, 0xeba636fe)                               // eba636fe
-	iface.RegisterClazzName(ClazzName_groupCallParticipant, 214, 0xeba636fe)                               // eba636fe
 	iface.RegisterClazzName(ClazzName_phone_groupCall, 216, 0x9e727aad)                                    // 9e727aad
-	iface.RegisterClazzName(ClazzName_phone_groupCall, 215, 0x9e727aad)                                    // 9e727aad
-	iface.RegisterClazzName(ClazzName_phone_groupCall, 214, 0x9e727aad)                                    // 9e727aad
 	iface.RegisterClazzName(ClazzName_phone_groupParticipants, 216, 0xf47751b6)                            // f47751b6
-	iface.RegisterClazzName(ClazzName_phone_groupParticipants, 215, 0xf47751b6)                            // f47751b6
-	iface.RegisterClazzName(ClazzName_phone_groupParticipants, 214, 0xf47751b6)                            // f47751b6
 	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeSameBotPM, 216, 0x3081ed9d)                       // 3081ed9d
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeSameBotPM, 215, 0x3081ed9d)                       // 3081ed9d
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeSameBotPM, 214, 0x3081ed9d)                       // 3081ed9d
 	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypePM, 216, 0x833c0fac)                              // 833c0fac
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypePM, 215, 0x833c0fac)                              // 833c0fac
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypePM, 214, 0x833c0fac)                              // 833c0fac
 	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeChat, 216, 0xd766c50a)                            // d766c50a
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeChat, 215, 0xd766c50a)                            // d766c50a
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeChat, 214, 0xd766c50a)                            // d766c50a
 	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeMegagroup, 216, 0x5ec4be43)                       // 5ec4be43
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeMegagroup, 215, 0x5ec4be43)                       // 5ec4be43
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeMegagroup, 214, 0x5ec4be43)                       // 5ec4be43
 	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeBroadcast, 216, 0x6334ee9a)                       // 6334ee9a
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeBroadcast, 215, 0x6334ee9a)                       // 6334ee9a
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeBroadcast, 214, 0x6334ee9a)                       // 6334ee9a
 	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeBotPM, 216, 0xe3b2d0c)                            // e3b2d0c
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeBotPM, 215, 0xe3b2d0c)                            // e3b2d0c
-	iface.RegisterClazzName(ClazzName_inlineQueryPeerTypeBotPM, 214, 0xe3b2d0c)                            // e3b2d0c
 	iface.RegisterClazzName(ClazzName_messages_historyImport, 216, 0x1662af0b)                             // 1662af0b
-	iface.RegisterClazzName(ClazzName_messages_historyImport, 215, 0x1662af0b)                             // 1662af0b
-	iface.RegisterClazzName(ClazzName_messages_historyImport, 214, 0x1662af0b)                             // 1662af0b
 	iface.RegisterClazzName(ClazzName_messages_historyImportParsed, 216, 0x5e0fb7b9)                       // 5e0fb7b9
-	iface.RegisterClazzName(ClazzName_messages_historyImportParsed, 215, 0x5e0fb7b9)                       // 5e0fb7b9
-	iface.RegisterClazzName(ClazzName_messages_historyImportParsed, 214, 0x5e0fb7b9)                       // 5e0fb7b9
 	iface.RegisterClazzName(ClazzName_messages_affectedFoundMessages, 216, 0xef8d3e6c)                     // ef8d3e6c
-	iface.RegisterClazzName(ClazzName_messages_affectedFoundMessages, 215, 0xef8d3e6c)                     // ef8d3e6c
-	iface.RegisterClazzName(ClazzName_messages_affectedFoundMessages, 214, 0xef8d3e6c)                     // ef8d3e6c
 	iface.RegisterClazzName(ClazzName_chatInviteImporter, 216, 0x8c5adfd9)                                 // 8c5adfd9
-	iface.RegisterClazzName(ClazzName_chatInviteImporter, 215, 0x8c5adfd9)                                 // 8c5adfd9
-	iface.RegisterClazzName(ClazzName_chatInviteImporter, 214, 0x8c5adfd9)                                 // 8c5adfd9
 	iface.RegisterClazzName(ClazzName_messages_exportedChatInvites, 216, 0xbdc62dcc)                       // bdc62dcc
-	iface.RegisterClazzName(ClazzName_messages_exportedChatInvites, 215, 0xbdc62dcc)                       // bdc62dcc
-	iface.RegisterClazzName(ClazzName_messages_exportedChatInvites, 214, 0xbdc62dcc)                       // bdc62dcc
 	iface.RegisterClazzName(ClazzName_messages_exportedChatInvite, 216, 0x1871be50)                        // 1871be50
-	iface.RegisterClazzName(ClazzName_messages_exportedChatInvite, 215, 0x1871be50)                        // 1871be50
-	iface.RegisterClazzName(ClazzName_messages_exportedChatInvite, 214, 0x1871be50)                        // 1871be50
 	iface.RegisterClazzName(ClazzName_messages_exportedChatInviteReplaced, 216, 0x222600ef)                // 222600ef
-	iface.RegisterClazzName(ClazzName_messages_exportedChatInviteReplaced, 215, 0x222600ef)                // 222600ef
-	iface.RegisterClazzName(ClazzName_messages_exportedChatInviteReplaced, 214, 0x222600ef)                // 222600ef
 	iface.RegisterClazzName(ClazzName_messages_chatInviteImporters, 216, 0x81b6b00a)                       // 81b6b00a
-	iface.RegisterClazzName(ClazzName_messages_chatInviteImporters, 215, 0x81b6b00a)                       // 81b6b00a
-	iface.RegisterClazzName(ClazzName_messages_chatInviteImporters, 214, 0x81b6b00a)                       // 81b6b00a
 	iface.RegisterClazzName(ClazzName_chatAdminWithInvites, 216, 0xf2ecef23)                               // f2ecef23
-	iface.RegisterClazzName(ClazzName_chatAdminWithInvites, 215, 0xf2ecef23)                               // f2ecef23
-	iface.RegisterClazzName(ClazzName_chatAdminWithInvites, 214, 0xf2ecef23)                               // f2ecef23
 	iface.RegisterClazzName(ClazzName_messages_chatAdminsWithInvites, 216, 0xb69b72d7)                     // b69b72d7
-	iface.RegisterClazzName(ClazzName_messages_chatAdminsWithInvites, 215, 0xb69b72d7)                     // b69b72d7
-	iface.RegisterClazzName(ClazzName_messages_chatAdminsWithInvites, 214, 0xb69b72d7)                     // b69b72d7
 	iface.RegisterClazzName(ClazzName_messages_checkedHistoryImportPeer, 216, 0xa24de717)                  // a24de717
-	iface.RegisterClazzName(ClazzName_messages_checkedHistoryImportPeer, 215, 0xa24de717)                  // a24de717
-	iface.RegisterClazzName(ClazzName_messages_checkedHistoryImportPeer, 214, 0xa24de717)                  // a24de717
 	iface.RegisterClazzName(ClazzName_phone_joinAsPeers, 216, 0xafe5623f)                                  // afe5623f
-	iface.RegisterClazzName(ClazzName_phone_joinAsPeers, 215, 0xafe5623f)                                  // afe5623f
-	iface.RegisterClazzName(ClazzName_phone_joinAsPeers, 214, 0xafe5623f)                                  // afe5623f
 	iface.RegisterClazzName(ClazzName_phone_exportedGroupCallInvite, 216, 0x204bd158)                      // 204bd158
-	iface.RegisterClazzName(ClazzName_phone_exportedGroupCallInvite, 215, 0x204bd158)                      // 204bd158
-	iface.RegisterClazzName(ClazzName_phone_exportedGroupCallInvite, 214, 0x204bd158)                      // 204bd158
 	iface.RegisterClazzName(ClazzName_groupCallParticipantVideoSourceGroup, 216, 0xdcb118b7)               // dcb118b7
-	iface.RegisterClazzName(ClazzName_groupCallParticipantVideoSourceGroup, 215, 0xdcb118b7)               // dcb118b7
-	iface.RegisterClazzName(ClazzName_groupCallParticipantVideoSourceGroup, 214, 0xdcb118b7)               // dcb118b7
 	iface.RegisterClazzName(ClazzName_groupCallParticipantVideo, 216, 0x67753ac8)                          // 67753ac8
-	iface.RegisterClazzName(ClazzName_groupCallParticipantVideo, 215, 0x67753ac8)                          // 67753ac8
-	iface.RegisterClazzName(ClazzName_groupCallParticipantVideo, 214, 0x67753ac8)                          // 67753ac8
 	iface.RegisterClazzName(ClazzName_stickers_suggestedShortName, 216, 0x85fea03f)                        // 85fea03f
-	iface.RegisterClazzName(ClazzName_stickers_suggestedShortName, 215, 0x85fea03f)                        // 85fea03f
-	iface.RegisterClazzName(ClazzName_stickers_suggestedShortName, 214, 0x85fea03f)                        // 85fea03f
 	iface.RegisterClazzName(ClazzName_botCommandScopeDefault, 216, 0x2f6cb2ab)                             // 2f6cb2ab
-	iface.RegisterClazzName(ClazzName_botCommandScopeDefault, 215, 0x2f6cb2ab)                             // 2f6cb2ab
-	iface.RegisterClazzName(ClazzName_botCommandScopeDefault, 214, 0x2f6cb2ab)                             // 2f6cb2ab
 	iface.RegisterClazzName(ClazzName_botCommandScopeUsers, 216, 0x3c4f04d8)                               // 3c4f04d8
-	iface.RegisterClazzName(ClazzName_botCommandScopeUsers, 215, 0x3c4f04d8)                               // 3c4f04d8
-	iface.RegisterClazzName(ClazzName_botCommandScopeUsers, 214, 0x3c4f04d8)                               // 3c4f04d8
 	iface.RegisterClazzName(ClazzName_botCommandScopeChats, 216, 0x6fe1a881)                               // 6fe1a881
-	iface.RegisterClazzName(ClazzName_botCommandScopeChats, 215, 0x6fe1a881)                               // 6fe1a881
-	iface.RegisterClazzName(ClazzName_botCommandScopeChats, 214, 0x6fe1a881)                               // 6fe1a881
 	iface.RegisterClazzName(ClazzName_botCommandScopeChatAdmins, 216, 0xb9aa606a)                          // b9aa606a
-	iface.RegisterClazzName(ClazzName_botCommandScopeChatAdmins, 215, 0xb9aa606a)                          // b9aa606a
-	iface.RegisterClazzName(ClazzName_botCommandScopeChatAdmins, 214, 0xb9aa606a)                          // b9aa606a
 	iface.RegisterClazzName(ClazzName_botCommandScopePeer, 216, 0xdb9d897d)                                // db9d897d
-	iface.RegisterClazzName(ClazzName_botCommandScopePeer, 215, 0xdb9d897d)                                // db9d897d
-	iface.RegisterClazzName(ClazzName_botCommandScopePeer, 214, 0xdb9d897d)                                // db9d897d
 	iface.RegisterClazzName(ClazzName_botCommandScopePeerAdmins, 216, 0x3fd863d1)                          // 3fd863d1
-	iface.RegisterClazzName(ClazzName_botCommandScopePeerAdmins, 215, 0x3fd863d1)                          // 3fd863d1
-	iface.RegisterClazzName(ClazzName_botCommandScopePeerAdmins, 214, 0x3fd863d1)                          // 3fd863d1
 	iface.RegisterClazzName(ClazzName_botCommandScopePeerUser, 216, 0xa1321f3)                             // a1321f3
-	iface.RegisterClazzName(ClazzName_botCommandScopePeerUser, 215, 0xa1321f3)                             // a1321f3
-	iface.RegisterClazzName(ClazzName_botCommandScopePeerUser, 214, 0xa1321f3)                             // a1321f3
 	iface.RegisterClazzName(ClazzName_account_resetPasswordFailedWait, 216, 0xe3779861)                    // e3779861
-	iface.RegisterClazzName(ClazzName_account_resetPasswordFailedWait, 215, 0xe3779861)                    // e3779861
-	iface.RegisterClazzName(ClazzName_account_resetPasswordFailedWait, 214, 0xe3779861)                    // e3779861
 	iface.RegisterClazzName(ClazzName_account_resetPasswordRequestedWait, 216, 0xe9effc7d)                 // e9effc7d
-	iface.RegisterClazzName(ClazzName_account_resetPasswordRequestedWait, 215, 0xe9effc7d)                 // e9effc7d
-	iface.RegisterClazzName(ClazzName_account_resetPasswordRequestedWait, 214, 0xe9effc7d)                 // e9effc7d
 	iface.RegisterClazzName(ClazzName_account_resetPasswordOk, 216, 0xe926d63e)                            // e926d63e
-	iface.RegisterClazzName(ClazzName_account_resetPasswordOk, 215, 0xe926d63e)                            // e926d63e
-	iface.RegisterClazzName(ClazzName_account_resetPasswordOk, 214, 0xe926d63e)                            // e926d63e
 	iface.RegisterClazzName(ClazzName_chatTheme, 216, 0xc3dffc04)                                          // c3dffc04
-	iface.RegisterClazzName(ClazzName_chatTheme, 215, 0xc3dffc04)                                          // c3dffc04
-	iface.RegisterClazzName(ClazzName_chatTheme, 214, 0xc3dffc04)                                          // c3dffc04
 	iface.RegisterClazzName(ClazzName_chatThemeUniqueGift, 216, 0x3458f9c8)                                // 3458f9c8
-	iface.RegisterClazzName(ClazzName_chatThemeUniqueGift, 215, 0x3458f9c8)                                // 3458f9c8
-	iface.RegisterClazzName(ClazzName_chatThemeUniqueGift, 214, 0x3458f9c8)                                // 3458f9c8
 	iface.RegisterClazzName(ClazzName_account_chatThemesNotModified, 216, 0xe011e1c4)                      // e011e1c4
-	iface.RegisterClazzName(ClazzName_account_chatThemesNotModified, 215, 0xe011e1c4)                      // e011e1c4
-	iface.RegisterClazzName(ClazzName_account_chatThemesNotModified, 214, 0xe011e1c4)                      // e011e1c4
 	iface.RegisterClazzName(ClazzName_account_chatThemes, 216, 0xbe098173)                                 // be098173
-	iface.RegisterClazzName(ClazzName_account_chatThemes, 215, 0xbe098173)                                 // be098173
-	iface.RegisterClazzName(ClazzName_account_chatThemes, 214, 0x16484857)                                 // 16484857
 	iface.RegisterClazzName(ClazzName_sponsoredMessage, 216, 0x7dbf8673)                                   // 7dbf8673
-	iface.RegisterClazzName(ClazzName_sponsoredMessage, 215, 0x7dbf8673)                                   // 7dbf8673
-	iface.RegisterClazzName(ClazzName_sponsoredMessage, 214, 0x7dbf8673)                                   // 7dbf8673
 	iface.RegisterClazzName(ClazzName_messages_sponsoredMessages, 216, 0xffda656d)                         // ffda656d
-	iface.RegisterClazzName(ClazzName_messages_sponsoredMessages, 215, 0xffda656d)                         // ffda656d
-	iface.RegisterClazzName(ClazzName_messages_sponsoredMessages, 214, 0xffda656d)                         // ffda656d
 	iface.RegisterClazzName(ClazzName_messages_sponsoredMessagesEmpty, 216, 0x1839490f)                    // 1839490f
-	iface.RegisterClazzName(ClazzName_messages_sponsoredMessagesEmpty, 215, 0x1839490f)                    // 1839490f
-	iface.RegisterClazzName(ClazzName_messages_sponsoredMessagesEmpty, 214, 0x1839490f)                    // 1839490f
 	iface.RegisterClazzName(ClazzName_searchResultsCalendarPeriod, 216, 0xc9b0539f)                        // c9b0539f
-	iface.RegisterClazzName(ClazzName_searchResultsCalendarPeriod, 215, 0xc9b0539f)                        // c9b0539f
-	iface.RegisterClazzName(ClazzName_searchResultsCalendarPeriod, 214, 0xc9b0539f)                        // c9b0539f
 	iface.RegisterClazzName(ClazzName_messages_searchResultsCalendar, 216, 0x147ee23c)                     // 147ee23c
-	iface.RegisterClazzName(ClazzName_messages_searchResultsCalendar, 215, 0x147ee23c)                     // 147ee23c
-	iface.RegisterClazzName(ClazzName_messages_searchResultsCalendar, 214, 0x147ee23c)                     // 147ee23c
 	iface.RegisterClazzName(ClazzName_searchResultPosition, 216, 0x7f648b67)                               // 7f648b67
-	iface.RegisterClazzName(ClazzName_searchResultPosition, 215, 0x7f648b67)                               // 7f648b67
-	iface.RegisterClazzName(ClazzName_searchResultPosition, 214, 0x7f648b67)                               // 7f648b67
 	iface.RegisterClazzName(ClazzName_messages_searchResultsPositions, 216, 0x53b22baf)                    // 53b22baf
-	iface.RegisterClazzName(ClazzName_messages_searchResultsPositions, 215, 0x53b22baf)                    // 53b22baf
-	iface.RegisterClazzName(ClazzName_messages_searchResultsPositions, 214, 0x53b22baf)                    // 53b22baf
 	iface.RegisterClazzName(ClazzName_channels_sendAsPeers, 216, 0xf496b0c6)                               // f496b0c6
-	iface.RegisterClazzName(ClazzName_channels_sendAsPeers, 215, 0xf496b0c6)                               // f496b0c6
-	iface.RegisterClazzName(ClazzName_channels_sendAsPeers, 214, 0xf496b0c6)                               // f496b0c6
 	iface.RegisterClazzName(ClazzName_users_userFull, 216, 0x3b6d152e)                                     // 3b6d152e
-	iface.RegisterClazzName(ClazzName_users_userFull, 215, 0x3b6d152e)                                     // 3b6d152e
-	iface.RegisterClazzName(ClazzName_users_userFull, 214, 0x3b6d152e)                                     // 3b6d152e
 	iface.RegisterClazzName(ClazzName_messages_peerSettings, 216, 0x6880b94d)                              // 6880b94d
-	iface.RegisterClazzName(ClazzName_messages_peerSettings, 215, 0x6880b94d)                              // 6880b94d
-	iface.RegisterClazzName(ClazzName_messages_peerSettings, 214, 0x6880b94d)                              // 6880b94d
 	iface.RegisterClazzName(ClazzName_auth_loggedOut, 216, 0xc3a2835f)                                     // c3a2835f
-	iface.RegisterClazzName(ClazzName_auth_loggedOut, 215, 0xc3a2835f)                                     // c3a2835f
-	iface.RegisterClazzName(ClazzName_auth_loggedOut, 214, 0xc3a2835f)                                     // c3a2835f
 	iface.RegisterClazzName(ClazzName_reactionCount, 216, 0xa3d1cb80)                                      // a3d1cb80
-	iface.RegisterClazzName(ClazzName_reactionCount, 215, 0xa3d1cb80)                                      // a3d1cb80
-	iface.RegisterClazzName(ClazzName_reactionCount, 214, 0xa3d1cb80)                                      // a3d1cb80
 	iface.RegisterClazzName(ClazzName_messageReactions, 216, 0xa339f0b)                                    // a339f0b
-	iface.RegisterClazzName(ClazzName_messageReactions, 215, 0xa339f0b)                                    // a339f0b
-	iface.RegisterClazzName(ClazzName_messageReactions, 214, 0xa339f0b)                                    // a339f0b
 	iface.RegisterClazzName(ClazzName_messages_messageReactionsList, 216, 0x31bd492d)                      // 31bd492d
-	iface.RegisterClazzName(ClazzName_messages_messageReactionsList, 215, 0x31bd492d)                      // 31bd492d
-	iface.RegisterClazzName(ClazzName_messages_messageReactionsList, 214, 0x31bd492d)                      // 31bd492d
 	iface.RegisterClazzName(ClazzName_availableReaction, 216, 0xc077ec01)                                  // c077ec01
-	iface.RegisterClazzName(ClazzName_availableReaction, 215, 0xc077ec01)                                  // c077ec01
-	iface.RegisterClazzName(ClazzName_availableReaction, 214, 0xc077ec01)                                  // c077ec01
 	iface.RegisterClazzName(ClazzName_messages_availableReactionsNotModified, 216, 0x9f071957)             // 9f071957
-	iface.RegisterClazzName(ClazzName_messages_availableReactionsNotModified, 215, 0x9f071957)             // 9f071957
-	iface.RegisterClazzName(ClazzName_messages_availableReactionsNotModified, 214, 0x9f071957)             // 9f071957
 	iface.RegisterClazzName(ClazzName_messages_availableReactions, 216, 0x768e3aad)                        // 768e3aad
-	iface.RegisterClazzName(ClazzName_messages_availableReactions, 215, 0x768e3aad)                        // 768e3aad
-	iface.RegisterClazzName(ClazzName_messages_availableReactions, 214, 0x768e3aad)                        // 768e3aad
 	iface.RegisterClazzName(ClazzName_messagePeerReaction, 216, 0x8c79b63c)                                // 8c79b63c
-	iface.RegisterClazzName(ClazzName_messagePeerReaction, 215, 0x8c79b63c)                                // 8c79b63c
-	iface.RegisterClazzName(ClazzName_messagePeerReaction, 214, 0x8c79b63c)                                // 8c79b63c
 	iface.RegisterClazzName(ClazzName_groupCallStreamChannel, 216, 0x80eb48af)                             // 80eb48af
-	iface.RegisterClazzName(ClazzName_groupCallStreamChannel, 215, 0x80eb48af)                             // 80eb48af
-	iface.RegisterClazzName(ClazzName_groupCallStreamChannel, 214, 0x80eb48af)                             // 80eb48af
 	iface.RegisterClazzName(ClazzName_phone_groupCallStreamChannels, 216, 0xd0e482b2)                      // d0e482b2
-	iface.RegisterClazzName(ClazzName_phone_groupCallStreamChannels, 215, 0xd0e482b2)                      // d0e482b2
-	iface.RegisterClazzName(ClazzName_phone_groupCallStreamChannels, 214, 0xd0e482b2)                      // d0e482b2
 	iface.RegisterClazzName(ClazzName_phone_groupCallStreamRtmpUrl, 216, 0x2dbf3432)                       // 2dbf3432
-	iface.RegisterClazzName(ClazzName_phone_groupCallStreamRtmpUrl, 215, 0x2dbf3432)                       // 2dbf3432
-	iface.RegisterClazzName(ClazzName_phone_groupCallStreamRtmpUrl, 214, 0x2dbf3432)                       // 2dbf3432
 	iface.RegisterClazzName(ClazzName_attachMenuBotIconColor, 216, 0x4576f3f0)                             // 4576f3f0
-	iface.RegisterClazzName(ClazzName_attachMenuBotIconColor, 215, 0x4576f3f0)                             // 4576f3f0
-	iface.RegisterClazzName(ClazzName_attachMenuBotIconColor, 214, 0x4576f3f0)                             // 4576f3f0
 	iface.RegisterClazzName(ClazzName_attachMenuBotIcon, 216, 0xb2a7386b)                                  // b2a7386b
-	iface.RegisterClazzName(ClazzName_attachMenuBotIcon, 215, 0xb2a7386b)                                  // b2a7386b
-	iface.RegisterClazzName(ClazzName_attachMenuBotIcon, 214, 0xb2a7386b)                                  // b2a7386b
 	iface.RegisterClazzName(ClazzName_attachMenuBot, 216, 0xd90d8dfe)                                      // d90d8dfe
-	iface.RegisterClazzName(ClazzName_attachMenuBot, 215, 0xd90d8dfe)                                      // d90d8dfe
-	iface.RegisterClazzName(ClazzName_attachMenuBot, 214, 0xd90d8dfe)                                      // d90d8dfe
 	iface.RegisterClazzName(ClazzName_attachMenuBotsNotModified, 216, 0xf1d88a5c)                          // f1d88a5c
-	iface.RegisterClazzName(ClazzName_attachMenuBotsNotModified, 215, 0xf1d88a5c)                          // f1d88a5c
-	iface.RegisterClazzName(ClazzName_attachMenuBotsNotModified, 214, 0xf1d88a5c)                          // f1d88a5c
 	iface.RegisterClazzName(ClazzName_attachMenuBots, 216, 0x3c4301c0)                                     // 3c4301c0
-	iface.RegisterClazzName(ClazzName_attachMenuBots, 215, 0x3c4301c0)                                     // 3c4301c0
-	iface.RegisterClazzName(ClazzName_attachMenuBots, 214, 0x3c4301c0)                                     // 3c4301c0
 	iface.RegisterClazzName(ClazzName_attachMenuBotsBot, 216, 0x93bf667f)                                  // 93bf667f
-	iface.RegisterClazzName(ClazzName_attachMenuBotsBot, 215, 0x93bf667f)                                  // 93bf667f
-	iface.RegisterClazzName(ClazzName_attachMenuBotsBot, 214, 0x93bf667f)                                  // 93bf667f
 	iface.RegisterClazzName(ClazzName_webViewResultUrl, 216, 0x4d22ff98)                                   // 4d22ff98
-	iface.RegisterClazzName(ClazzName_webViewResultUrl, 215, 0x4d22ff98)                                   // 4d22ff98
-	iface.RegisterClazzName(ClazzName_webViewResultUrl, 214, 0x4d22ff98)                                   // 4d22ff98
 	iface.RegisterClazzName(ClazzName_webViewMessageSent, 216, 0xc94511c)                                  // c94511c
-	iface.RegisterClazzName(ClazzName_webViewMessageSent, 215, 0xc94511c)                                  // c94511c
-	iface.RegisterClazzName(ClazzName_webViewMessageSent, 214, 0xc94511c)                                  // c94511c
 	iface.RegisterClazzName(ClazzName_botMenuButtonDefault, 216, 0x7533a588)                               // 7533a588
-	iface.RegisterClazzName(ClazzName_botMenuButtonDefault, 215, 0x7533a588)                               // 7533a588
-	iface.RegisterClazzName(ClazzName_botMenuButtonDefault, 214, 0x7533a588)                               // 7533a588
 	iface.RegisterClazzName(ClazzName_botMenuButtonCommands, 216, 0x4258c205)                              // 4258c205
-	iface.RegisterClazzName(ClazzName_botMenuButtonCommands, 215, 0x4258c205)                              // 4258c205
-	iface.RegisterClazzName(ClazzName_botMenuButtonCommands, 214, 0x4258c205)                              // 4258c205
 	iface.RegisterClazzName(ClazzName_botMenuButton, 216, 0xc7b57ce6)                                      // c7b57ce6
-	iface.RegisterClazzName(ClazzName_botMenuButton, 215, 0xc7b57ce6)                                      // c7b57ce6
-	iface.RegisterClazzName(ClazzName_botMenuButton, 214, 0xc7b57ce6)                                      // c7b57ce6
 	iface.RegisterClazzName(ClazzName_account_savedRingtonesNotModified, 216, 0xfbf6e8b1)                  // fbf6e8b1
-	iface.RegisterClazzName(ClazzName_account_savedRingtonesNotModified, 215, 0xfbf6e8b1)                  // fbf6e8b1
-	iface.RegisterClazzName(ClazzName_account_savedRingtonesNotModified, 214, 0xfbf6e8b1)                  // fbf6e8b1
 	iface.RegisterClazzName(ClazzName_account_savedRingtones, 216, 0xc1e92cc5)                             // c1e92cc5
-	iface.RegisterClazzName(ClazzName_account_savedRingtones, 215, 0xc1e92cc5)                             // c1e92cc5
-	iface.RegisterClazzName(ClazzName_account_savedRingtones, 214, 0xc1e92cc5)                             // c1e92cc5
 	iface.RegisterClazzName(ClazzName_notificationSoundDefault, 216, 0x97e8bebe)                           // 97e8bebe
-	iface.RegisterClazzName(ClazzName_notificationSoundDefault, 215, 0x97e8bebe)                           // 97e8bebe
-	iface.RegisterClazzName(ClazzName_notificationSoundDefault, 214, 0x97e8bebe)                           // 97e8bebe
 	iface.RegisterClazzName(ClazzName_notificationSoundNone, 216, 0x6f0c34df)                              // 6f0c34df
-	iface.RegisterClazzName(ClazzName_notificationSoundNone, 215, 0x6f0c34df)                              // 6f0c34df
-	iface.RegisterClazzName(ClazzName_notificationSoundNone, 214, 0x6f0c34df)                              // 6f0c34df
 	iface.RegisterClazzName(ClazzName_notificationSoundLocal, 216, 0x830b9ae4)                             // 830b9ae4
-	iface.RegisterClazzName(ClazzName_notificationSoundLocal, 215, 0x830b9ae4)                             // 830b9ae4
-	iface.RegisterClazzName(ClazzName_notificationSoundLocal, 214, 0x830b9ae4)                             // 830b9ae4
 	iface.RegisterClazzName(ClazzName_notificationSoundRingtone, 216, 0xff6c8049)                          // ff6c8049
-	iface.RegisterClazzName(ClazzName_notificationSoundRingtone, 215, 0xff6c8049)                          // ff6c8049
-	iface.RegisterClazzName(ClazzName_notificationSoundRingtone, 214, 0xff6c8049)                          // ff6c8049
 	iface.RegisterClazzName(ClazzName_account_savedRingtone, 216, 0xb7263f6d)                              // b7263f6d
-	iface.RegisterClazzName(ClazzName_account_savedRingtone, 215, 0xb7263f6d)                              // b7263f6d
-	iface.RegisterClazzName(ClazzName_account_savedRingtone, 214, 0xb7263f6d)                              // b7263f6d
 	iface.RegisterClazzName(ClazzName_account_savedRingtoneConverted, 216, 0x1f307eb7)                     // 1f307eb7
-	iface.RegisterClazzName(ClazzName_account_savedRingtoneConverted, 215, 0x1f307eb7)                     // 1f307eb7
-	iface.RegisterClazzName(ClazzName_account_savedRingtoneConverted, 214, 0x1f307eb7)                     // 1f307eb7
 	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeSameBotPM, 216, 0x7d6be90e)                        // 7d6be90e
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeSameBotPM, 215, 0x7d6be90e)                        // 7d6be90e
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeSameBotPM, 214, 0x7d6be90e)                        // 7d6be90e
 	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeBotPM, 216, 0xc32bfa1a)                            // c32bfa1a
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeBotPM, 215, 0xc32bfa1a)                            // c32bfa1a
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeBotPM, 214, 0xc32bfa1a)                            // c32bfa1a
 	iface.RegisterClazzName(ClazzName_attachMenuPeerTypePM, 216, 0xf146d31f)                               // f146d31f
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypePM, 215, 0xf146d31f)                               // f146d31f
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypePM, 214, 0xf146d31f)                               // f146d31f
 	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeChat, 216, 0x509113f)                              // 509113f
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeChat, 215, 0x509113f)                              // 509113f
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeChat, 214, 0x509113f)                              // 509113f
 	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeBroadcast, 216, 0x7bfbdefc)                        // 7bfbdefc
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeBroadcast, 215, 0x7bfbdefc)                        // 7bfbdefc
-	iface.RegisterClazzName(ClazzName_attachMenuPeerTypeBroadcast, 214, 0x7bfbdefc)                        // 7bfbdefc
 	iface.RegisterClazzName(ClazzName_inputInvoiceMessage, 216, 0xc5b56859)                                // c5b56859
-	iface.RegisterClazzName(ClazzName_inputInvoiceMessage, 215, 0xc5b56859)                                // c5b56859
-	iface.RegisterClazzName(ClazzName_inputInvoiceMessage, 214, 0xc5b56859)                                // c5b56859
 	iface.RegisterClazzName(ClazzName_inputInvoiceSlug, 216, 0xc326caef)                                   // c326caef
-	iface.RegisterClazzName(ClazzName_inputInvoiceSlug, 215, 0xc326caef)                                   // c326caef
-	iface.RegisterClazzName(ClazzName_inputInvoiceSlug, 214, 0xc326caef)                                   // c326caef
 	iface.RegisterClazzName(ClazzName_inputInvoicePremiumGiftCode, 216, 0x98986c0d)                        // 98986c0d
-	iface.RegisterClazzName(ClazzName_inputInvoicePremiumGiftCode, 215, 0x98986c0d)                        // 98986c0d
-	iface.RegisterClazzName(ClazzName_inputInvoicePremiumGiftCode, 214, 0x98986c0d)                        // 98986c0d
 	iface.RegisterClazzName(ClazzName_inputInvoiceStars, 216, 0x65f00ce3)                                  // 65f00ce3
-	iface.RegisterClazzName(ClazzName_inputInvoiceStars, 215, 0x65f00ce3)                                  // 65f00ce3
-	iface.RegisterClazzName(ClazzName_inputInvoiceStars, 214, 0x65f00ce3)                                  // 65f00ce3
 	iface.RegisterClazzName(ClazzName_inputInvoiceChatInviteSubscription, 216, 0x34e793f1)                 // 34e793f1
-	iface.RegisterClazzName(ClazzName_inputInvoiceChatInviteSubscription, 215, 0x34e793f1)                 // 34e793f1
-	iface.RegisterClazzName(ClazzName_inputInvoiceChatInviteSubscription, 214, 0x34e793f1)                 // 34e793f1
 	iface.RegisterClazzName(ClazzName_inputInvoiceStarGift, 216, 0xe8625e92)                               // e8625e92
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGift, 215, 0xe8625e92)                               // e8625e92
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGift, 214, 0xe8625e92)                               // e8625e92
 	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftUpgrade, 216, 0x4d818d5d)                        // 4d818d5d
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftUpgrade, 215, 0x4d818d5d)                        // 4d818d5d
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftUpgrade, 214, 0x4d818d5d)                        // 4d818d5d
 	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftTransfer, 216, 0x4a5f5bd9)                       // 4a5f5bd9
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftTransfer, 215, 0x4a5f5bd9)                       // 4a5f5bd9
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftTransfer, 214, 0x4a5f5bd9)                       // 4a5f5bd9
 	iface.RegisterClazzName(ClazzName_inputInvoicePremiumGiftStars, 216, 0xdabab2ef)                       // dabab2ef
-	iface.RegisterClazzName(ClazzName_inputInvoicePremiumGiftStars, 215, 0xdabab2ef)                       // dabab2ef
-	iface.RegisterClazzName(ClazzName_inputInvoicePremiumGiftStars, 214, 0xdabab2ef)                       // dabab2ef
 	iface.RegisterClazzName(ClazzName_inputInvoiceBusinessBotTransferStars, 216, 0xf4997e42)               // f4997e42
-	iface.RegisterClazzName(ClazzName_inputInvoiceBusinessBotTransferStars, 215, 0xf4997e42)               // f4997e42
-	iface.RegisterClazzName(ClazzName_inputInvoiceBusinessBotTransferStars, 214, 0xf4997e42)               // f4997e42
 	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftResale, 216, 0xc39f5324)                         // c39f5324
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftResale, 215, 0xc39f5324)                         // c39f5324
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftResale, 214, 0xc39f5324)                         // c39f5324
 	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftPrepaidUpgrade, 216, 0x9a0b48b8)                 // 9a0b48b8
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftPrepaidUpgrade, 215, 0x9a0b48b8)                 // 9a0b48b8
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftPrepaidUpgrade, 214, 0x9a0b48b8)                 // 9a0b48b8
 	iface.RegisterClazzName(ClazzName_inputInvoicePremiumAuthCode, 216, 0x3e77f614)                        // 3e77f614
-	iface.RegisterClazzName(ClazzName_inputInvoicePremiumAuthCode, 215, 0x3e77f614)                        // 3e77f614
 	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftDropOriginalDetails, 216, 0x923d8d1)             // 923d8d1
-	iface.RegisterClazzName(ClazzName_inputInvoiceStarGiftDropOriginalDetails, 215, 0x923d8d1)             // 923d8d1
 	iface.RegisterClazzName(ClazzName_payments_exportedInvoice, 216, 0xaed0cbd9)                           // aed0cbd9
-	iface.RegisterClazzName(ClazzName_payments_exportedInvoice, 215, 0xaed0cbd9)                           // aed0cbd9
-	iface.RegisterClazzName(ClazzName_payments_exportedInvoice, 214, 0xaed0cbd9)                           // aed0cbd9
 	iface.RegisterClazzName(ClazzName_messages_transcribedAudio, 216, 0xcfb9d957)                          // cfb9d957
-	iface.RegisterClazzName(ClazzName_messages_transcribedAudio, 215, 0xcfb9d957)                          // cfb9d957
-	iface.RegisterClazzName(ClazzName_messages_transcribedAudio, 214, 0xcfb9d957)                          // cfb9d957
 	iface.RegisterClazzName(ClazzName_help_premiumPromo, 216, 0x5334759c)                                  // 5334759c
-	iface.RegisterClazzName(ClazzName_help_premiumPromo, 215, 0x5334759c)                                  // 5334759c
-	iface.RegisterClazzName(ClazzName_help_premiumPromo, 214, 0x5334759c)                                  // 5334759c
 	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumSubscription, 216, 0xa6751e66)               // a6751e66
-	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumSubscription, 215, 0xa6751e66)               // a6751e66
-	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumSubscription, 214, 0xa6751e66)               // a6751e66
 	iface.RegisterClazzName(ClazzName_inputStorePaymentGiftPremium, 216, 0x616f7fe8)                       // 616f7fe8
-	iface.RegisterClazzName(ClazzName_inputStorePaymentGiftPremium, 215, 0x616f7fe8)                       // 616f7fe8
-	iface.RegisterClazzName(ClazzName_inputStorePaymentGiftPremium, 214, 0x616f7fe8)                       // 616f7fe8
 	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumGiftCode, 216, 0xfb790393)                   // fb790393
-	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumGiftCode, 215, 0xfb790393)                   // fb790393
-	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumGiftCode, 214, 0xfb790393)                   // fb790393
 	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumGiveaway, 216, 0x160544ca)                   // 160544ca
-	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumGiveaway, 215, 0x160544ca)                   // 160544ca
-	iface.RegisterClazzName(ClazzName_inputStorePaymentPremiumGiveaway, 214, 0x160544ca)                   // 160544ca
 	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsTopup, 216, 0xf9a2a6cb)                        // f9a2a6cb
-	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsTopup, 215, 0xf9a2a6cb)                        // f9a2a6cb
-	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsTopup, 214, 0xf9a2a6cb)                        // f9a2a6cb
 	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsGift, 216, 0x1d741ef7)                         // 1d741ef7
-	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsGift, 215, 0x1d741ef7)                         // 1d741ef7
-	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsGift, 214, 0x1d741ef7)                         // 1d741ef7
 	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsGiveaway, 216, 0x751f08fa)                     // 751f08fa
-	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsGiveaway, 215, 0x751f08fa)                     // 751f08fa
-	iface.RegisterClazzName(ClazzName_inputStorePaymentStarsGiveaway, 214, 0x751f08fa)                     // 751f08fa
 	iface.RegisterClazzName(ClazzName_inputStorePaymentAuthCode, 216, 0x9bb2636d)                          // 9bb2636d
-	iface.RegisterClazzName(ClazzName_inputStorePaymentAuthCode, 215, 0x9bb2636d)                          // 9bb2636d
-	iface.RegisterClazzName(ClazzName_inputStorePaymentAuthCode, 214, 0x9bb2636d)                          // 9bb2636d
 	iface.RegisterClazzName(ClazzName_paymentFormMethod, 216, 0x88f8f21b)                                  // 88f8f21b
-	iface.RegisterClazzName(ClazzName_paymentFormMethod, 215, 0x88f8f21b)                                  // 88f8f21b
-	iface.RegisterClazzName(ClazzName_paymentFormMethod, 214, 0x88f8f21b)                                  // 88f8f21b
 	iface.RegisterClazzName(ClazzName_emojiStatusEmpty, 216, 0x2de11aae)                                   // 2de11aae
-	iface.RegisterClazzName(ClazzName_emojiStatusEmpty, 215, 0x2de11aae)                                   // 2de11aae
-	iface.RegisterClazzName(ClazzName_emojiStatusEmpty, 214, 0x2de11aae)                                   // 2de11aae
 	iface.RegisterClazzName(ClazzName_emojiStatus, 216, 0xe7ff068a)                                        // e7ff068a
-	iface.RegisterClazzName(ClazzName_emojiStatus, 215, 0xe7ff068a)                                        // e7ff068a
-	iface.RegisterClazzName(ClazzName_emojiStatus, 214, 0xe7ff068a)                                        // e7ff068a
 	iface.RegisterClazzName(ClazzName_emojiStatusCollectible, 216, 0x7184603b)                             // 7184603b
-	iface.RegisterClazzName(ClazzName_emojiStatusCollectible, 215, 0x7184603b)                             // 7184603b
-	iface.RegisterClazzName(ClazzName_emojiStatusCollectible, 214, 0x7184603b)                             // 7184603b
 	iface.RegisterClazzName(ClazzName_inputEmojiStatusCollectible, 216, 0x7141dbf)                         // 7141dbf
-	iface.RegisterClazzName(ClazzName_inputEmojiStatusCollectible, 215, 0x7141dbf)                         // 7141dbf
-	iface.RegisterClazzName(ClazzName_inputEmojiStatusCollectible, 214, 0x7141dbf)                         // 7141dbf
 	iface.RegisterClazzName(ClazzName_account_emojiStatusesNotModified, 216, 0xd08ce645)                   // d08ce645
-	iface.RegisterClazzName(ClazzName_account_emojiStatusesNotModified, 215, 0xd08ce645)                   // d08ce645
-	iface.RegisterClazzName(ClazzName_account_emojiStatusesNotModified, 214, 0xd08ce645)                   // d08ce645
 	iface.RegisterClazzName(ClazzName_account_emojiStatuses, 216, 0x90c467d1)                              // 90c467d1
-	iface.RegisterClazzName(ClazzName_account_emojiStatuses, 215, 0x90c467d1)                              // 90c467d1
-	iface.RegisterClazzName(ClazzName_account_emojiStatuses, 214, 0x90c467d1)                              // 90c467d1
 	iface.RegisterClazzName(ClazzName_reactionEmpty, 216, 0x79f5d419)                                      // 79f5d419
-	iface.RegisterClazzName(ClazzName_reactionEmpty, 215, 0x79f5d419)                                      // 79f5d419
-	iface.RegisterClazzName(ClazzName_reactionEmpty, 214, 0x79f5d419)                                      // 79f5d419
 	iface.RegisterClazzName(ClazzName_reactionEmoji, 216, 0x1b2286b8)                                      // 1b2286b8
-	iface.RegisterClazzName(ClazzName_reactionEmoji, 215, 0x1b2286b8)                                      // 1b2286b8
-	iface.RegisterClazzName(ClazzName_reactionEmoji, 214, 0x1b2286b8)                                      // 1b2286b8
 	iface.RegisterClazzName(ClazzName_reactionCustomEmoji, 216, 0x8935fc73)                                // 8935fc73
-	iface.RegisterClazzName(ClazzName_reactionCustomEmoji, 215, 0x8935fc73)                                // 8935fc73
-	iface.RegisterClazzName(ClazzName_reactionCustomEmoji, 214, 0x8935fc73)                                // 8935fc73
 	iface.RegisterClazzName(ClazzName_reactionPaid, 216, 0x523da4eb)                                       // 523da4eb
-	iface.RegisterClazzName(ClazzName_reactionPaid, 215, 0x523da4eb)                                       // 523da4eb
-	iface.RegisterClazzName(ClazzName_reactionPaid, 214, 0x523da4eb)                                       // 523da4eb
 	iface.RegisterClazzName(ClazzName_chatReactionsNone, 216, 0xeafc32bc)                                  // eafc32bc
-	iface.RegisterClazzName(ClazzName_chatReactionsNone, 215, 0xeafc32bc)                                  // eafc32bc
-	iface.RegisterClazzName(ClazzName_chatReactionsNone, 214, 0xeafc32bc)                                  // eafc32bc
 	iface.RegisterClazzName(ClazzName_chatReactionsAll, 216, 0x52928bca)                                   // 52928bca
-	iface.RegisterClazzName(ClazzName_chatReactionsAll, 215, 0x52928bca)                                   // 52928bca
-	iface.RegisterClazzName(ClazzName_chatReactionsAll, 214, 0x52928bca)                                   // 52928bca
 	iface.RegisterClazzName(ClazzName_chatReactionsSome, 216, 0x661d4037)                                  // 661d4037
-	iface.RegisterClazzName(ClazzName_chatReactionsSome, 215, 0x661d4037)                                  // 661d4037
-	iface.RegisterClazzName(ClazzName_chatReactionsSome, 214, 0x661d4037)                                  // 661d4037
 	iface.RegisterClazzName(ClazzName_messages_reactionsNotModified, 216, 0xb06fdbdf)                      // b06fdbdf
-	iface.RegisterClazzName(ClazzName_messages_reactionsNotModified, 215, 0xb06fdbdf)                      // b06fdbdf
-	iface.RegisterClazzName(ClazzName_messages_reactionsNotModified, 214, 0xb06fdbdf)                      // b06fdbdf
 	iface.RegisterClazzName(ClazzName_messages_reactions, 216, 0xeafdf716)                                 // eafdf716
-	iface.RegisterClazzName(ClazzName_messages_reactions, 215, 0xeafdf716)                                 // eafdf716
-	iface.RegisterClazzName(ClazzName_messages_reactions, 214, 0xeafdf716)                                 // eafdf716
 	iface.RegisterClazzName(ClazzName_emailVerifyPurposeLoginSetup, 216, 0x4345be73)                       // 4345be73
-	iface.RegisterClazzName(ClazzName_emailVerifyPurposeLoginSetup, 215, 0x4345be73)                       // 4345be73
-	iface.RegisterClazzName(ClazzName_emailVerifyPurposeLoginSetup, 214, 0x4345be73)                       // 4345be73
 	iface.RegisterClazzName(ClazzName_emailVerifyPurposeLoginChange, 216, 0x527d22eb)                      // 527d22eb
-	iface.RegisterClazzName(ClazzName_emailVerifyPurposeLoginChange, 215, 0x527d22eb)                      // 527d22eb
-	iface.RegisterClazzName(ClazzName_emailVerifyPurposeLoginChange, 214, 0x527d22eb)                      // 527d22eb
 	iface.RegisterClazzName(ClazzName_emailVerifyPurposePassport, 216, 0xbbf51685)                         // bbf51685
-	iface.RegisterClazzName(ClazzName_emailVerifyPurposePassport, 215, 0xbbf51685)                         // bbf51685
-	iface.RegisterClazzName(ClazzName_emailVerifyPurposePassport, 214, 0xbbf51685)                         // bbf51685
 	iface.RegisterClazzName(ClazzName_emailVerificationCode, 216, 0x922e55a9)                              // 922e55a9
-	iface.RegisterClazzName(ClazzName_emailVerificationCode, 215, 0x922e55a9)                              // 922e55a9
-	iface.RegisterClazzName(ClazzName_emailVerificationCode, 214, 0x922e55a9)                              // 922e55a9
 	iface.RegisterClazzName(ClazzName_emailVerificationGoogle, 216, 0xdb909ec2)                            // db909ec2
-	iface.RegisterClazzName(ClazzName_emailVerificationGoogle, 215, 0xdb909ec2)                            // db909ec2
-	iface.RegisterClazzName(ClazzName_emailVerificationGoogle, 214, 0xdb909ec2)                            // db909ec2
 	iface.RegisterClazzName(ClazzName_emailVerificationApple, 216, 0x96d074fd)                             // 96d074fd
-	iface.RegisterClazzName(ClazzName_emailVerificationApple, 215, 0x96d074fd)                             // 96d074fd
-	iface.RegisterClazzName(ClazzName_emailVerificationApple, 214, 0x96d074fd)                             // 96d074fd
 	iface.RegisterClazzName(ClazzName_account_emailVerified, 216, 0x2b96cd1b)                              // 2b96cd1b
-	iface.RegisterClazzName(ClazzName_account_emailVerified, 215, 0x2b96cd1b)                              // 2b96cd1b
-	iface.RegisterClazzName(ClazzName_account_emailVerified, 214, 0x2b96cd1b)                              // 2b96cd1b
 	iface.RegisterClazzName(ClazzName_account_emailVerifiedLogin, 216, 0xe1bb0d61)                         // e1bb0d61
-	iface.RegisterClazzName(ClazzName_account_emailVerifiedLogin, 215, 0xe1bb0d61)                         // e1bb0d61
-	iface.RegisterClazzName(ClazzName_account_emailVerifiedLogin, 214, 0xe1bb0d61)                         // e1bb0d61
 	iface.RegisterClazzName(ClazzName_premiumSubscriptionOption, 216, 0x5f2d1df2)                          // 5f2d1df2
-	iface.RegisterClazzName(ClazzName_premiumSubscriptionOption, 215, 0x5f2d1df2)                          // 5f2d1df2
-	iface.RegisterClazzName(ClazzName_premiumSubscriptionOption, 214, 0x5f2d1df2)                          // 5f2d1df2
 	iface.RegisterClazzName(ClazzName_sendAsPeer, 216, 0xb81c7034)                                         // b81c7034
-	iface.RegisterClazzName(ClazzName_sendAsPeer, 215, 0xb81c7034)                                         // b81c7034
-	iface.RegisterClazzName(ClazzName_sendAsPeer, 214, 0xb81c7034)                                         // b81c7034
 	iface.RegisterClazzName(ClazzName_messageExtendedMediaPreview, 216, 0xad628cc8)                        // ad628cc8
-	iface.RegisterClazzName(ClazzName_messageExtendedMediaPreview, 215, 0xad628cc8)                        // ad628cc8
-	iface.RegisterClazzName(ClazzName_messageExtendedMediaPreview, 214, 0xad628cc8)                        // ad628cc8
 	iface.RegisterClazzName(ClazzName_messageExtendedMedia, 216, 0xee479c64)                               // ee479c64
-	iface.RegisterClazzName(ClazzName_messageExtendedMedia, 215, 0xee479c64)                               // ee479c64
-	iface.RegisterClazzName(ClazzName_messageExtendedMedia, 214, 0xee479c64)                               // ee479c64
 	iface.RegisterClazzName(ClazzName_stickerKeyword, 216, 0xfcfeb29c)                                     // fcfeb29c
-	iface.RegisterClazzName(ClazzName_stickerKeyword, 215, 0xfcfeb29c)                                     // fcfeb29c
-	iface.RegisterClazzName(ClazzName_stickerKeyword, 214, 0xfcfeb29c)                                     // fcfeb29c
 	iface.RegisterClazzName(ClazzName_username, 216, 0xb4073647)                                           // b4073647
-	iface.RegisterClazzName(ClazzName_username, 215, 0xb4073647)                                           // b4073647
-	iface.RegisterClazzName(ClazzName_username, 214, 0xb4073647)                                           // b4073647
 	iface.RegisterClazzName(ClazzName_forumTopicDeleted, 216, 0x23f109b)                                   // 23f109b
-	iface.RegisterClazzName(ClazzName_forumTopicDeleted, 215, 0x23f109b)                                   // 23f109b
-	iface.RegisterClazzName(ClazzName_forumTopicDeleted, 214, 0x23f109b)                                   // 23f109b
 	iface.RegisterClazzName(ClazzName_forumTopic, 216, 0xcdff0eca)                                         // cdff0eca
-	iface.RegisterClazzName(ClazzName_forumTopic, 215, 0x71701da9)                                         // 71701da9
-	iface.RegisterClazzName(ClazzName_forumTopic, 214, 0x71701da9)                                         // 71701da9
 	iface.RegisterClazzName(ClazzName_messages_forumTopics, 216, 0x367617d3)                               // 367617d3
-	iface.RegisterClazzName(ClazzName_messages_forumTopics, 215, 0x367617d3)                               // 367617d3
-	iface.RegisterClazzName(ClazzName_messages_forumTopics, 214, 0x367617d3)                               // 367617d3
 	iface.RegisterClazzName(ClazzName_defaultHistoryTTL, 216, 0x43b46b20)                                  // 43b46b20
-	iface.RegisterClazzName(ClazzName_defaultHistoryTTL, 215, 0x43b46b20)                                  // 43b46b20
-	iface.RegisterClazzName(ClazzName_defaultHistoryTTL, 214, 0x43b46b20)                                  // 43b46b20
 	iface.RegisterClazzName(ClazzName_exportedContactToken, 216, 0x41bf109b)                               // 41bf109b
-	iface.RegisterClazzName(ClazzName_exportedContactToken, 215, 0x41bf109b)                               // 41bf109b
-	iface.RegisterClazzName(ClazzName_exportedContactToken, 214, 0x41bf109b)                               // 41bf109b
 	iface.RegisterClazzName(ClazzName_requestPeerTypeUser, 216, 0x5f3b8a00)                                // 5f3b8a00
-	iface.RegisterClazzName(ClazzName_requestPeerTypeUser, 215, 0x5f3b8a00)                                // 5f3b8a00
-	iface.RegisterClazzName(ClazzName_requestPeerTypeUser, 214, 0x5f3b8a00)                                // 5f3b8a00
 	iface.RegisterClazzName(ClazzName_requestPeerTypeChat, 216, 0xc9f06e1b)                                // c9f06e1b
-	iface.RegisterClazzName(ClazzName_requestPeerTypeChat, 215, 0xc9f06e1b)                                // c9f06e1b
-	iface.RegisterClazzName(ClazzName_requestPeerTypeChat, 214, 0xc9f06e1b)                                // c9f06e1b
 	iface.RegisterClazzName(ClazzName_requestPeerTypeBroadcast, 216, 0x339bef6c)                           // 339bef6c
-	iface.RegisterClazzName(ClazzName_requestPeerTypeBroadcast, 215, 0x339bef6c)                           // 339bef6c
-	iface.RegisterClazzName(ClazzName_requestPeerTypeBroadcast, 214, 0x339bef6c)                           // 339bef6c
 	iface.RegisterClazzName(ClazzName_emojiListNotModified, 216, 0x481eadfa)                               // 481eadfa
-	iface.RegisterClazzName(ClazzName_emojiListNotModified, 215, 0x481eadfa)                               // 481eadfa
-	iface.RegisterClazzName(ClazzName_emojiListNotModified, 214, 0x481eadfa)                               // 481eadfa
 	iface.RegisterClazzName(ClazzName_emojiList, 216, 0x7a1e11d1)                                          // 7a1e11d1
-	iface.RegisterClazzName(ClazzName_emojiList, 215, 0x7a1e11d1)                                          // 7a1e11d1
-	iface.RegisterClazzName(ClazzName_emojiList, 214, 0x7a1e11d1)                                          // 7a1e11d1
 	iface.RegisterClazzName(ClazzName_emojiGroup, 216, 0x7a9abda9)                                         // 7a9abda9
-	iface.RegisterClazzName(ClazzName_emojiGroup, 215, 0x7a9abda9)                                         // 7a9abda9
-	iface.RegisterClazzName(ClazzName_emojiGroup, 214, 0x7a9abda9)                                         // 7a9abda9
 	iface.RegisterClazzName(ClazzName_emojiGroupGreeting, 216, 0x80d26cc7)                                 // 80d26cc7
-	iface.RegisterClazzName(ClazzName_emojiGroupGreeting, 215, 0x80d26cc7)                                 // 80d26cc7
-	iface.RegisterClazzName(ClazzName_emojiGroupGreeting, 214, 0x80d26cc7)                                 // 80d26cc7
 	iface.RegisterClazzName(ClazzName_emojiGroupPremium, 216, 0x93bcf34)                                   // 93bcf34
-	iface.RegisterClazzName(ClazzName_emojiGroupPremium, 215, 0x93bcf34)                                   // 93bcf34
-	iface.RegisterClazzName(ClazzName_emojiGroupPremium, 214, 0x93bcf34)                                   // 93bcf34
 	iface.RegisterClazzName(ClazzName_messages_emojiGroupsNotModified, 216, 0x6fb4ad87)                    // 6fb4ad87
-	iface.RegisterClazzName(ClazzName_messages_emojiGroupsNotModified, 215, 0x6fb4ad87)                    // 6fb4ad87
-	iface.RegisterClazzName(ClazzName_messages_emojiGroupsNotModified, 214, 0x6fb4ad87)                    // 6fb4ad87
 	iface.RegisterClazzName(ClazzName_messages_emojiGroups, 216, 0x881fb94b)                               // 881fb94b
-	iface.RegisterClazzName(ClazzName_messages_emojiGroups, 215, 0x881fb94b)                               // 881fb94b
-	iface.RegisterClazzName(ClazzName_messages_emojiGroups, 214, 0x881fb94b)                               // 881fb94b
 	iface.RegisterClazzName(ClazzName_textWithEntities, 216, 0x751f3146)                                   // 751f3146
-	iface.RegisterClazzName(ClazzName_textWithEntities, 215, 0x751f3146)                                   // 751f3146
-	iface.RegisterClazzName(ClazzName_textWithEntities, 214, 0x751f3146)                                   // 751f3146
 	iface.RegisterClazzName(ClazzName_messages_translateResult, 216, 0x33db32f8)                           // 33db32f8
-	iface.RegisterClazzName(ClazzName_messages_translateResult, 215, 0x33db32f8)                           // 33db32f8
-	iface.RegisterClazzName(ClazzName_messages_translateResult, 214, 0x33db32f8)                           // 33db32f8
 	iface.RegisterClazzName(ClazzName_autoSaveSettings, 216, 0xc84834ce)                                   // c84834ce
-	iface.RegisterClazzName(ClazzName_autoSaveSettings, 215, 0xc84834ce)                                   // c84834ce
-	iface.RegisterClazzName(ClazzName_autoSaveSettings, 214, 0xc84834ce)                                   // c84834ce
 	iface.RegisterClazzName(ClazzName_autoSaveException, 216, 0x81602d47)                                  // 81602d47
-	iface.RegisterClazzName(ClazzName_autoSaveException, 215, 0x81602d47)                                  // 81602d47
-	iface.RegisterClazzName(ClazzName_autoSaveException, 214, 0x81602d47)                                  // 81602d47
 	iface.RegisterClazzName(ClazzName_account_autoSaveSettings, 216, 0x4c3e069d)                           // 4c3e069d
-	iface.RegisterClazzName(ClazzName_account_autoSaveSettings, 215, 0x4c3e069d)                           // 4c3e069d
-	iface.RegisterClazzName(ClazzName_account_autoSaveSettings, 214, 0x4c3e069d)                           // 4c3e069d
 	iface.RegisterClazzName(ClazzName_help_appConfigNotModified, 216, 0x7cde641d)                          // 7cde641d
-	iface.RegisterClazzName(ClazzName_help_appConfigNotModified, 215, 0x7cde641d)                          // 7cde641d
-	iface.RegisterClazzName(ClazzName_help_appConfigNotModified, 214, 0x7cde641d)                          // 7cde641d
 	iface.RegisterClazzName(ClazzName_help_appConfig, 216, 0xdd18782e)                                     // dd18782e
-	iface.RegisterClazzName(ClazzName_help_appConfig, 215, 0xdd18782e)                                     // dd18782e
-	iface.RegisterClazzName(ClazzName_help_appConfig, 214, 0xdd18782e)                                     // dd18782e
 	iface.RegisterClazzName(ClazzName_inputBotAppID, 216, 0xa920bd7a)                                      // a920bd7a
-	iface.RegisterClazzName(ClazzName_inputBotAppID, 215, 0xa920bd7a)                                      // a920bd7a
-	iface.RegisterClazzName(ClazzName_inputBotAppID, 214, 0xa920bd7a)                                      // a920bd7a
 	iface.RegisterClazzName(ClazzName_inputBotAppShortName, 216, 0x908c0407)                               // 908c0407
-	iface.RegisterClazzName(ClazzName_inputBotAppShortName, 215, 0x908c0407)                               // 908c0407
-	iface.RegisterClazzName(ClazzName_inputBotAppShortName, 214, 0x908c0407)                               // 908c0407
 	iface.RegisterClazzName(ClazzName_botAppNotModified, 216, 0x5da674b7)                                  // 5da674b7
-	iface.RegisterClazzName(ClazzName_botAppNotModified, 215, 0x5da674b7)                                  // 5da674b7
-	iface.RegisterClazzName(ClazzName_botAppNotModified, 214, 0x5da674b7)                                  // 5da674b7
 	iface.RegisterClazzName(ClazzName_botApp, 216, 0x95fcd1d6)                                             // 95fcd1d6
-	iface.RegisterClazzName(ClazzName_botApp, 215, 0x95fcd1d6)                                             // 95fcd1d6
-	iface.RegisterClazzName(ClazzName_botApp, 214, 0x95fcd1d6)                                             // 95fcd1d6
 	iface.RegisterClazzName(ClazzName_messages_botApp, 216, 0xeb50adf5)                                    // eb50adf5
-	iface.RegisterClazzName(ClazzName_messages_botApp, 215, 0xeb50adf5)                                    // eb50adf5
-	iface.RegisterClazzName(ClazzName_messages_botApp, 214, 0xeb50adf5)                                    // eb50adf5
 	iface.RegisterClazzName(ClazzName_inlineBotWebView, 216, 0xb57295d5)                                   // b57295d5
-	iface.RegisterClazzName(ClazzName_inlineBotWebView, 215, 0xb57295d5)                                   // b57295d5
-	iface.RegisterClazzName(ClazzName_inlineBotWebView, 214, 0xb57295d5)                                   // b57295d5
 	iface.RegisterClazzName(ClazzName_readParticipantDate, 216, 0x4a4ff172)                                // 4a4ff172
-	iface.RegisterClazzName(ClazzName_readParticipantDate, 215, 0x4a4ff172)                                // 4a4ff172
-	iface.RegisterClazzName(ClazzName_readParticipantDate, 214, 0x4a4ff172)                                // 4a4ff172
 	iface.RegisterClazzName(ClazzName_inputChatlistDialogFilter, 216, 0xf3e0da33)                          // f3e0da33
-	iface.RegisterClazzName(ClazzName_inputChatlistDialogFilter, 215, 0xf3e0da33)                          // f3e0da33
-	iface.RegisterClazzName(ClazzName_inputChatlistDialogFilter, 214, 0xf3e0da33)                          // f3e0da33
 	iface.RegisterClazzName(ClazzName_exportedChatlistInvite, 216, 0xc5181ac)                              // c5181ac
-	iface.RegisterClazzName(ClazzName_exportedChatlistInvite, 215, 0xc5181ac)                              // c5181ac
-	iface.RegisterClazzName(ClazzName_exportedChatlistInvite, 214, 0xc5181ac)                              // c5181ac
 	iface.RegisterClazzName(ClazzName_chatlists_exportedChatlistInvite, 216, 0x10e6e3a6)                   // 10e6e3a6
-	iface.RegisterClazzName(ClazzName_chatlists_exportedChatlistInvite, 215, 0x10e6e3a6)                   // 10e6e3a6
-	iface.RegisterClazzName(ClazzName_chatlists_exportedChatlistInvite, 214, 0x10e6e3a6)                   // 10e6e3a6
 	iface.RegisterClazzName(ClazzName_chatlists_exportedInvites, 216, 0x10ab6dc7)                          // 10ab6dc7
-	iface.RegisterClazzName(ClazzName_chatlists_exportedInvites, 215, 0x10ab6dc7)                          // 10ab6dc7
-	iface.RegisterClazzName(ClazzName_chatlists_exportedInvites, 214, 0x10ab6dc7)                          // 10ab6dc7
 	iface.RegisterClazzName(ClazzName_chatlists_chatlistInviteAlready, 216, 0xfa87f659)                    // fa87f659
-	iface.RegisterClazzName(ClazzName_chatlists_chatlistInviteAlready, 215, 0xfa87f659)                    // fa87f659
-	iface.RegisterClazzName(ClazzName_chatlists_chatlistInviteAlready, 214, 0xfa87f659)                    // fa87f659
 	iface.RegisterClazzName(ClazzName_chatlists_chatlistInvite, 216, 0xf10ece2f)                           // f10ece2f
-	iface.RegisterClazzName(ClazzName_chatlists_chatlistInvite, 215, 0xf10ece2f)                           // f10ece2f
-	iface.RegisterClazzName(ClazzName_chatlists_chatlistInvite, 214, 0xf10ece2f)                           // f10ece2f
 	iface.RegisterClazzName(ClazzName_chatlists_chatlistUpdates, 216, 0x93bd878d)                          // 93bd878d
-	iface.RegisterClazzName(ClazzName_chatlists_chatlistUpdates, 215, 0x93bd878d)                          // 93bd878d
-	iface.RegisterClazzName(ClazzName_chatlists_chatlistUpdates, 214, 0x93bd878d)                          // 93bd878d
 	iface.RegisterClazzName(ClazzName_bots_botInfo, 216, 0xe8a775b0)                                       // e8a775b0
-	iface.RegisterClazzName(ClazzName_bots_botInfo, 215, 0xe8a775b0)                                       // e8a775b0
-	iface.RegisterClazzName(ClazzName_bots_botInfo, 214, 0xe8a775b0)                                       // e8a775b0
 	iface.RegisterClazzName(ClazzName_messagePeerVote, 216, 0xb6cc2d5c)                                    // b6cc2d5c
-	iface.RegisterClazzName(ClazzName_messagePeerVote, 215, 0xb6cc2d5c)                                    // b6cc2d5c
-	iface.RegisterClazzName(ClazzName_messagePeerVote, 214, 0xb6cc2d5c)                                    // b6cc2d5c
 	iface.RegisterClazzName(ClazzName_messagePeerVoteInputOption, 216, 0x74cda504)                         // 74cda504
-	iface.RegisterClazzName(ClazzName_messagePeerVoteInputOption, 215, 0x74cda504)                         // 74cda504
-	iface.RegisterClazzName(ClazzName_messagePeerVoteInputOption, 214, 0x74cda504)                         // 74cda504
 	iface.RegisterClazzName(ClazzName_messagePeerVoteMultiple, 216, 0x4628f6e6)                            // 4628f6e6
-	iface.RegisterClazzName(ClazzName_messagePeerVoteMultiple, 215, 0x4628f6e6)                            // 4628f6e6
-	iface.RegisterClazzName(ClazzName_messagePeerVoteMultiple, 214, 0x4628f6e6)                            // 4628f6e6
 	iface.RegisterClazzName(ClazzName_storyViews, 216, 0x8d595cd6)                                         // 8d595cd6
-	iface.RegisterClazzName(ClazzName_storyViews, 215, 0x8d595cd6)                                         // 8d595cd6
-	iface.RegisterClazzName(ClazzName_storyViews, 214, 0x8d595cd6)                                         // 8d595cd6
 	iface.RegisterClazzName(ClazzName_storyItemDeleted, 216, 0x51e6ee4f)                                   // 51e6ee4f
-	iface.RegisterClazzName(ClazzName_storyItemDeleted, 215, 0x51e6ee4f)                                   // 51e6ee4f
-	iface.RegisterClazzName(ClazzName_storyItemDeleted, 214, 0x51e6ee4f)                                   // 51e6ee4f
 	iface.RegisterClazzName(ClazzName_storyItemSkipped, 216, 0xffadc913)                                   // ffadc913
-	iface.RegisterClazzName(ClazzName_storyItemSkipped, 215, 0xffadc913)                                   // ffadc913
-	iface.RegisterClazzName(ClazzName_storyItemSkipped, 214, 0xffadc913)                                   // ffadc913
 	iface.RegisterClazzName(ClazzName_storyItem, 216, 0xedf164f1)                                          // edf164f1
-	iface.RegisterClazzName(ClazzName_storyItem, 215, 0xedf164f1)                                          // edf164f1
-	iface.RegisterClazzName(ClazzName_storyItem, 214, 0xedf164f1)                                          // edf164f1
 	iface.RegisterClazzName(ClazzName_stories_allStoriesNotModified, 216, 0x1158fe3e)                      // 1158fe3e
-	iface.RegisterClazzName(ClazzName_stories_allStoriesNotModified, 215, 0x1158fe3e)                      // 1158fe3e
-	iface.RegisterClazzName(ClazzName_stories_allStoriesNotModified, 214, 0x1158fe3e)                      // 1158fe3e
 	iface.RegisterClazzName(ClazzName_stories_allStories, 216, 0x6efc5e81)                                 // 6efc5e81
-	iface.RegisterClazzName(ClazzName_stories_allStories, 215, 0x6efc5e81)                                 // 6efc5e81
-	iface.RegisterClazzName(ClazzName_stories_allStories, 214, 0x6efc5e81)                                 // 6efc5e81
 	iface.RegisterClazzName(ClazzName_stories_stories, 216, 0x63c3dd0a)                                    // 63c3dd0a
-	iface.RegisterClazzName(ClazzName_stories_stories, 215, 0x63c3dd0a)                                    // 63c3dd0a
-	iface.RegisterClazzName(ClazzName_stories_stories, 214, 0x63c3dd0a)                                    // 63c3dd0a
 	iface.RegisterClazzName(ClazzName_storyView, 216, 0xb0bdeac5)                                          // b0bdeac5
-	iface.RegisterClazzName(ClazzName_storyView, 215, 0xb0bdeac5)                                          // b0bdeac5
-	iface.RegisterClazzName(ClazzName_storyView, 214, 0xb0bdeac5)                                          // b0bdeac5
 	iface.RegisterClazzName(ClazzName_storyViewPublicForward, 216, 0x9083670b)                             // 9083670b
-	iface.RegisterClazzName(ClazzName_storyViewPublicForward, 215, 0x9083670b)                             // 9083670b
-	iface.RegisterClazzName(ClazzName_storyViewPublicForward, 214, 0x9083670b)                             // 9083670b
 	iface.RegisterClazzName(ClazzName_storyViewPublicRepost, 216, 0xbd74cf49)                              // bd74cf49
-	iface.RegisterClazzName(ClazzName_storyViewPublicRepost, 215, 0xbd74cf49)                              // bd74cf49
-	iface.RegisterClazzName(ClazzName_storyViewPublicRepost, 214, 0xbd74cf49)                              // bd74cf49
 	iface.RegisterClazzName(ClazzName_stories_storyViewsList, 216, 0x59d78fc5)                             // 59d78fc5
-	iface.RegisterClazzName(ClazzName_stories_storyViewsList, 215, 0x59d78fc5)                             // 59d78fc5
-	iface.RegisterClazzName(ClazzName_stories_storyViewsList, 214, 0x59d78fc5)                             // 59d78fc5
 	iface.RegisterClazzName(ClazzName_stories_storyViews, 216, 0xde9eed1d)                                 // de9eed1d
-	iface.RegisterClazzName(ClazzName_stories_storyViews, 215, 0xde9eed1d)                                 // de9eed1d
-	iface.RegisterClazzName(ClazzName_stories_storyViews, 214, 0xde9eed1d)                                 // de9eed1d
 	iface.RegisterClazzName(ClazzName_inputReplyToMessage, 216, 0x869fbe10)                                // 869fbe10
-	iface.RegisterClazzName(ClazzName_inputReplyToMessage, 215, 0x869fbe10)                                // 869fbe10
-	iface.RegisterClazzName(ClazzName_inputReplyToMessage, 214, 0x869fbe10)                                // 869fbe10
 	iface.RegisterClazzName(ClazzName_inputReplyToStory, 216, 0x5881323a)                                  // 5881323a
-	iface.RegisterClazzName(ClazzName_inputReplyToStory, 215, 0x5881323a)                                  // 5881323a
-	iface.RegisterClazzName(ClazzName_inputReplyToStory, 214, 0x5881323a)                                  // 5881323a
 	iface.RegisterClazzName(ClazzName_inputReplyToMonoForum, 216, 0x69d66c45)                              // 69d66c45
-	iface.RegisterClazzName(ClazzName_inputReplyToMonoForum, 215, 0x69d66c45)                              // 69d66c45
-	iface.RegisterClazzName(ClazzName_inputReplyToMonoForum, 214, 0x69d66c45)                              // 69d66c45
 	iface.RegisterClazzName(ClazzName_exportedStoryLink, 216, 0x3fc9053b)                                  // 3fc9053b
-	iface.RegisterClazzName(ClazzName_exportedStoryLink, 215, 0x3fc9053b)                                  // 3fc9053b
-	iface.RegisterClazzName(ClazzName_exportedStoryLink, 214, 0x3fc9053b)                                  // 3fc9053b
 	iface.RegisterClazzName(ClazzName_storiesStealthMode, 216, 0x712e27fd)                                 // 712e27fd
-	iface.RegisterClazzName(ClazzName_storiesStealthMode, 215, 0x712e27fd)                                 // 712e27fd
-	iface.RegisterClazzName(ClazzName_storiesStealthMode, 214, 0x712e27fd)                                 // 712e27fd
 	iface.RegisterClazzName(ClazzName_mediaAreaCoordinates, 216, 0xcfc9e002)                               // cfc9e002
-	iface.RegisterClazzName(ClazzName_mediaAreaCoordinates, 215, 0xcfc9e002)                               // cfc9e002
-	iface.RegisterClazzName(ClazzName_mediaAreaCoordinates, 214, 0xcfc9e002)                               // cfc9e002
 	iface.RegisterClazzName(ClazzName_mediaAreaVenue, 216, 0xbe82db9c)                                     // be82db9c
-	iface.RegisterClazzName(ClazzName_mediaAreaVenue, 215, 0xbe82db9c)                                     // be82db9c
-	iface.RegisterClazzName(ClazzName_mediaAreaVenue, 214, 0xbe82db9c)                                     // be82db9c
 	iface.RegisterClazzName(ClazzName_inputMediaAreaVenue, 216, 0xb282217f)                                // b282217f
-	iface.RegisterClazzName(ClazzName_inputMediaAreaVenue, 215, 0xb282217f)                                // b282217f
-	iface.RegisterClazzName(ClazzName_inputMediaAreaVenue, 214, 0xb282217f)                                // b282217f
 	iface.RegisterClazzName(ClazzName_mediaAreaGeoPoint, 216, 0xcad5452d)                                  // cad5452d
-	iface.RegisterClazzName(ClazzName_mediaAreaGeoPoint, 215, 0xcad5452d)                                  // cad5452d
-	iface.RegisterClazzName(ClazzName_mediaAreaGeoPoint, 214, 0xcad5452d)                                  // cad5452d
 	iface.RegisterClazzName(ClazzName_mediaAreaSuggestedReaction, 216, 0x14455871)                         // 14455871
-	iface.RegisterClazzName(ClazzName_mediaAreaSuggestedReaction, 215, 0x14455871)                         // 14455871
-	iface.RegisterClazzName(ClazzName_mediaAreaSuggestedReaction, 214, 0x14455871)                         // 14455871
 	iface.RegisterClazzName(ClazzName_mediaAreaChannelPost, 216, 0x770416af)                               // 770416af
-	iface.RegisterClazzName(ClazzName_mediaAreaChannelPost, 215, 0x770416af)                               // 770416af
-	iface.RegisterClazzName(ClazzName_mediaAreaChannelPost, 214, 0x770416af)                               // 770416af
 	iface.RegisterClazzName(ClazzName_inputMediaAreaChannelPost, 216, 0x2271f2bf)                          // 2271f2bf
-	iface.RegisterClazzName(ClazzName_inputMediaAreaChannelPost, 215, 0x2271f2bf)                          // 2271f2bf
-	iface.RegisterClazzName(ClazzName_inputMediaAreaChannelPost, 214, 0x2271f2bf)                          // 2271f2bf
 	iface.RegisterClazzName(ClazzName_mediaAreaUrl, 216, 0x37381085)                                       // 37381085
-	iface.RegisterClazzName(ClazzName_mediaAreaUrl, 215, 0x37381085)                                       // 37381085
-	iface.RegisterClazzName(ClazzName_mediaAreaUrl, 214, 0x37381085)                                       // 37381085
 	iface.RegisterClazzName(ClazzName_mediaAreaWeather, 216, 0x49a6549c)                                   // 49a6549c
-	iface.RegisterClazzName(ClazzName_mediaAreaWeather, 215, 0x49a6549c)                                   // 49a6549c
-	iface.RegisterClazzName(ClazzName_mediaAreaWeather, 214, 0x49a6549c)                                   // 49a6549c
 	iface.RegisterClazzName(ClazzName_mediaAreaStarGift, 216, 0x5787686d)                                  // 5787686d
-	iface.RegisterClazzName(ClazzName_mediaAreaStarGift, 215, 0x5787686d)                                  // 5787686d
-	iface.RegisterClazzName(ClazzName_mediaAreaStarGift, 214, 0x5787686d)                                  // 5787686d
 	iface.RegisterClazzName(ClazzName_peerStories, 216, 0x9a35e999)                                        // 9a35e999
-	iface.RegisterClazzName(ClazzName_peerStories, 215, 0x9a35e999)                                        // 9a35e999
-	iface.RegisterClazzName(ClazzName_peerStories, 214, 0x9a35e999)                                        // 9a35e999
 	iface.RegisterClazzName(ClazzName_stories_peerStories, 216, 0xcae68768)                                // cae68768
-	iface.RegisterClazzName(ClazzName_stories_peerStories, 215, 0xcae68768)                                // cae68768
-	iface.RegisterClazzName(ClazzName_stories_peerStories, 214, 0xcae68768)                                // cae68768
 	iface.RegisterClazzName(ClazzName_messages_webPage, 216, 0xfd5e12bd)                                   // fd5e12bd
-	iface.RegisterClazzName(ClazzName_messages_webPage, 215, 0xfd5e12bd)                                   // fd5e12bd
-	iface.RegisterClazzName(ClazzName_messages_webPage, 214, 0xfd5e12bd)                                   // fd5e12bd
 	iface.RegisterClazzName(ClazzName_premiumGiftCodeOption, 216, 0x257e962b)                              // 257e962b
-	iface.RegisterClazzName(ClazzName_premiumGiftCodeOption, 215, 0x257e962b)                              // 257e962b
-	iface.RegisterClazzName(ClazzName_premiumGiftCodeOption, 214, 0x257e962b)                              // 257e962b
 	iface.RegisterClazzName(ClazzName_payments_checkedGiftCode, 216, 0x284a1096)                           // 284a1096
-	iface.RegisterClazzName(ClazzName_payments_checkedGiftCode, 215, 0x284a1096)                           // 284a1096
-	iface.RegisterClazzName(ClazzName_payments_checkedGiftCode, 214, 0x284a1096)                           // 284a1096
 	iface.RegisterClazzName(ClazzName_payments_giveawayInfo, 216, 0x4367daa0)                              // 4367daa0
-	iface.RegisterClazzName(ClazzName_payments_giveawayInfo, 215, 0x4367daa0)                              // 4367daa0
-	iface.RegisterClazzName(ClazzName_payments_giveawayInfo, 214, 0x4367daa0)                              // 4367daa0
 	iface.RegisterClazzName(ClazzName_payments_giveawayInfoResults, 216, 0xe175e66f)                       // e175e66f
-	iface.RegisterClazzName(ClazzName_payments_giveawayInfoResults, 215, 0xe175e66f)                       // e175e66f
-	iface.RegisterClazzName(ClazzName_payments_giveawayInfoResults, 214, 0xe175e66f)                       // e175e66f
 	iface.RegisterClazzName(ClazzName_prepaidGiveaway, 216, 0xb2539d54)                                    // b2539d54
-	iface.RegisterClazzName(ClazzName_prepaidGiveaway, 215, 0xb2539d54)                                    // b2539d54
-	iface.RegisterClazzName(ClazzName_prepaidGiveaway, 214, 0xb2539d54)                                    // b2539d54
 	iface.RegisterClazzName(ClazzName_prepaidStarsGiveaway, 216, 0x9a9d77e0)                               // 9a9d77e0
-	iface.RegisterClazzName(ClazzName_prepaidStarsGiveaway, 215, 0x9a9d77e0)                               // 9a9d77e0
-	iface.RegisterClazzName(ClazzName_prepaidStarsGiveaway, 214, 0x9a9d77e0)                               // 9a9d77e0
 	iface.RegisterClazzName(ClazzName_boost, 216, 0x4b3e14d6)                                              // 4b3e14d6
-	iface.RegisterClazzName(ClazzName_boost, 215, 0x4b3e14d6)                                              // 4b3e14d6
-	iface.RegisterClazzName(ClazzName_boost, 214, 0x4b3e14d6)                                              // 4b3e14d6
 	iface.RegisterClazzName(ClazzName_premium_boostsList, 216, 0x86f8613c)                                 // 86f8613c
-	iface.RegisterClazzName(ClazzName_premium_boostsList, 215, 0x86f8613c)                                 // 86f8613c
-	iface.RegisterClazzName(ClazzName_premium_boostsList, 214, 0x86f8613c)                                 // 86f8613c
 	iface.RegisterClazzName(ClazzName_myBoost, 216, 0xc448415c)                                            // c448415c
-	iface.RegisterClazzName(ClazzName_myBoost, 215, 0xc448415c)                                            // c448415c
-	iface.RegisterClazzName(ClazzName_myBoost, 214, 0xc448415c)                                            // c448415c
 	iface.RegisterClazzName(ClazzName_premium_myBoosts, 216, 0x9ae228e2)                                   // 9ae228e2
-	iface.RegisterClazzName(ClazzName_premium_myBoosts, 215, 0x9ae228e2)                                   // 9ae228e2
-	iface.RegisterClazzName(ClazzName_premium_myBoosts, 214, 0x9ae228e2)                                   // 9ae228e2
 	iface.RegisterClazzName(ClazzName_premium_boostsStatus, 216, 0x4959427a)                               // 4959427a
-	iface.RegisterClazzName(ClazzName_premium_boostsStatus, 215, 0x4959427a)                               // 4959427a
-	iface.RegisterClazzName(ClazzName_premium_boostsStatus, 214, 0x4959427a)                               // 4959427a
 	iface.RegisterClazzName(ClazzName_storyFwdHeader, 216, 0xb826e150)                                     // b826e150
-	iface.RegisterClazzName(ClazzName_storyFwdHeader, 215, 0xb826e150)                                     // b826e150
-	iface.RegisterClazzName(ClazzName_storyFwdHeader, 214, 0xb826e150)                                     // b826e150
 	iface.RegisterClazzName(ClazzName_postInteractionCountersMessage, 216, 0xe7058e7f)                     // e7058e7f
-	iface.RegisterClazzName(ClazzName_postInteractionCountersMessage, 215, 0xe7058e7f)                     // e7058e7f
-	iface.RegisterClazzName(ClazzName_postInteractionCountersMessage, 214, 0xe7058e7f)                     // e7058e7f
 	iface.RegisterClazzName(ClazzName_postInteractionCountersStory, 216, 0x8a480e27)                       // 8a480e27
-	iface.RegisterClazzName(ClazzName_postInteractionCountersStory, 215, 0x8a480e27)                       // 8a480e27
-	iface.RegisterClazzName(ClazzName_postInteractionCountersStory, 214, 0x8a480e27)                       // 8a480e27
 	iface.RegisterClazzName(ClazzName_stats_storyStats, 216, 0x50cd067c)                                   // 50cd067c
-	iface.RegisterClazzName(ClazzName_stats_storyStats, 215, 0x50cd067c)                                   // 50cd067c
-	iface.RegisterClazzName(ClazzName_stats_storyStats, 214, 0x50cd067c)                                   // 50cd067c
 	iface.RegisterClazzName(ClazzName_publicForwardMessage, 216, 0x1f2bf4a)                                // 1f2bf4a
-	iface.RegisterClazzName(ClazzName_publicForwardMessage, 215, 0x1f2bf4a)                                // 1f2bf4a
-	iface.RegisterClazzName(ClazzName_publicForwardMessage, 214, 0x1f2bf4a)                                // 1f2bf4a
 	iface.RegisterClazzName(ClazzName_publicForwardStory, 216, 0xedf3add0)                                 // edf3add0
-	iface.RegisterClazzName(ClazzName_publicForwardStory, 215, 0xedf3add0)                                 // edf3add0
-	iface.RegisterClazzName(ClazzName_publicForwardStory, 214, 0xedf3add0)                                 // edf3add0
 	iface.RegisterClazzName(ClazzName_stats_publicForwards, 216, 0x93037e20)                               // 93037e20
-	iface.RegisterClazzName(ClazzName_stats_publicForwards, 215, 0x93037e20)                               // 93037e20
-	iface.RegisterClazzName(ClazzName_stats_publicForwards, 214, 0x93037e20)                               // 93037e20
 	iface.RegisterClazzName(ClazzName_peerColor, 216, 0xb54b5acf)                                          // b54b5acf
-	iface.RegisterClazzName(ClazzName_peerColor, 215, 0xb54b5acf)                                          // b54b5acf
-	iface.RegisterClazzName(ClazzName_peerColor, 214, 0xb54b5acf)                                          // b54b5acf
 	iface.RegisterClazzName(ClazzName_peerColorCollectible, 216, 0xb9c0639a)                               // b9c0639a
 	iface.RegisterClazzName(ClazzName_inputPeerColorCollectible, 216, 0xb8ea86a9)                          // b8ea86a9
 	iface.RegisterClazzName(ClazzName_help_peerColorSet, 216, 0x26219a58)                                  // 26219a58
-	iface.RegisterClazzName(ClazzName_help_peerColorSet, 215, 0x26219a58)                                  // 26219a58
-	iface.RegisterClazzName(ClazzName_help_peerColorSet, 214, 0x26219a58)                                  // 26219a58
 	iface.RegisterClazzName(ClazzName_help_peerColorProfileSet, 216, 0x767d61eb)                           // 767d61eb
-	iface.RegisterClazzName(ClazzName_help_peerColorProfileSet, 215, 0x767d61eb)                           // 767d61eb
-	iface.RegisterClazzName(ClazzName_help_peerColorProfileSet, 214, 0x767d61eb)                           // 767d61eb
 	iface.RegisterClazzName(ClazzName_help_peerColorOption, 216, 0xadec6ebe)                               // adec6ebe
-	iface.RegisterClazzName(ClazzName_help_peerColorOption, 215, 0xadec6ebe)                               // adec6ebe
-	iface.RegisterClazzName(ClazzName_help_peerColorOption, 214, 0xadec6ebe)                               // adec6ebe
 	iface.RegisterClazzName(ClazzName_help_peerColorsNotModified, 216, 0x2ba1f5ce)                         // 2ba1f5ce
-	iface.RegisterClazzName(ClazzName_help_peerColorsNotModified, 215, 0x2ba1f5ce)                         // 2ba1f5ce
-	iface.RegisterClazzName(ClazzName_help_peerColorsNotModified, 214, 0x2ba1f5ce)                         // 2ba1f5ce
 	iface.RegisterClazzName(ClazzName_help_peerColors, 216, 0xf8ed08)                                      // f8ed08
-	iface.RegisterClazzName(ClazzName_help_peerColors, 215, 0xf8ed08)                                      // f8ed08
-	iface.RegisterClazzName(ClazzName_help_peerColors, 214, 0xf8ed08)                                      // f8ed08
 	iface.RegisterClazzName(ClazzName_storyReaction, 216, 0x6090d6d5)                                      // 6090d6d5
-	iface.RegisterClazzName(ClazzName_storyReaction, 215, 0x6090d6d5)                                      // 6090d6d5
-	iface.RegisterClazzName(ClazzName_storyReaction, 214, 0x6090d6d5)                                      // 6090d6d5
 	iface.RegisterClazzName(ClazzName_storyReactionPublicForward, 216, 0xbbab2643)                         // bbab2643
-	iface.RegisterClazzName(ClazzName_storyReactionPublicForward, 215, 0xbbab2643)                         // bbab2643
-	iface.RegisterClazzName(ClazzName_storyReactionPublicForward, 214, 0xbbab2643)                         // bbab2643
 	iface.RegisterClazzName(ClazzName_storyReactionPublicRepost, 216, 0xcfcd0f13)                          // cfcd0f13
-	iface.RegisterClazzName(ClazzName_storyReactionPublicRepost, 215, 0xcfcd0f13)                          // cfcd0f13
-	iface.RegisterClazzName(ClazzName_storyReactionPublicRepost, 214, 0xcfcd0f13)                          // cfcd0f13
 	iface.RegisterClazzName(ClazzName_stories_storyReactionsList, 216, 0xaa5f789c)                         // aa5f789c
-	iface.RegisterClazzName(ClazzName_stories_storyReactionsList, 215, 0xaa5f789c)                         // aa5f789c
-	iface.RegisterClazzName(ClazzName_stories_storyReactionsList, 214, 0xaa5f789c)                         // aa5f789c
 	iface.RegisterClazzName(ClazzName_savedDialog, 216, 0xbd87cb6c)                                        // bd87cb6c
-	iface.RegisterClazzName(ClazzName_savedDialog, 215, 0xbd87cb6c)                                        // bd87cb6c
-	iface.RegisterClazzName(ClazzName_savedDialog, 214, 0xbd87cb6c)                                        // bd87cb6c
 	iface.RegisterClazzName(ClazzName_monoForumDialog, 216, 0x64407ea7)                                    // 64407ea7
-	iface.RegisterClazzName(ClazzName_monoForumDialog, 215, 0x64407ea7)                                    // 64407ea7
-	iface.RegisterClazzName(ClazzName_monoForumDialog, 214, 0x64407ea7)                                    // 64407ea7
 	iface.RegisterClazzName(ClazzName_messages_savedDialogs, 216, 0xf83ae221)                              // f83ae221
-	iface.RegisterClazzName(ClazzName_messages_savedDialogs, 215, 0xf83ae221)                              // f83ae221
-	iface.RegisterClazzName(ClazzName_messages_savedDialogs, 214, 0xf83ae221)                              // f83ae221
 	iface.RegisterClazzName(ClazzName_messages_savedDialogsSlice, 216, 0x44ba9dd9)                         // 44ba9dd9
-	iface.RegisterClazzName(ClazzName_messages_savedDialogsSlice, 215, 0x44ba9dd9)                         // 44ba9dd9
-	iface.RegisterClazzName(ClazzName_messages_savedDialogsSlice, 214, 0x44ba9dd9)                         // 44ba9dd9
 	iface.RegisterClazzName(ClazzName_messages_savedDialogsNotModified, 216, 0xc01f6fe8)                   // c01f6fe8
-	iface.RegisterClazzName(ClazzName_messages_savedDialogsNotModified, 215, 0xc01f6fe8)                   // c01f6fe8
-	iface.RegisterClazzName(ClazzName_messages_savedDialogsNotModified, 214, 0xc01f6fe8)                   // c01f6fe8
 	iface.RegisterClazzName(ClazzName_savedReactionTag, 216, 0xcb6ff828)                                   // cb6ff828
-	iface.RegisterClazzName(ClazzName_savedReactionTag, 215, 0xcb6ff828)                                   // cb6ff828
-	iface.RegisterClazzName(ClazzName_savedReactionTag, 214, 0xcb6ff828)                                   // cb6ff828
 	iface.RegisterClazzName(ClazzName_messages_savedReactionTagsNotModified, 216, 0x889b59ef)              // 889b59ef
-	iface.RegisterClazzName(ClazzName_messages_savedReactionTagsNotModified, 215, 0x889b59ef)              // 889b59ef
-	iface.RegisterClazzName(ClazzName_messages_savedReactionTagsNotModified, 214, 0x889b59ef)              // 889b59ef
 	iface.RegisterClazzName(ClazzName_messages_savedReactionTags, 216, 0x3259950a)                         // 3259950a
-	iface.RegisterClazzName(ClazzName_messages_savedReactionTags, 215, 0x3259950a)                         // 3259950a
-	iface.RegisterClazzName(ClazzName_messages_savedReactionTags, 214, 0x3259950a)                         // 3259950a
 	iface.RegisterClazzName(ClazzName_outboxReadDate, 216, 0x3bb842ac)                                     // 3bb842ac
-	iface.RegisterClazzName(ClazzName_outboxReadDate, 215, 0x3bb842ac)                                     // 3bb842ac
-	iface.RegisterClazzName(ClazzName_outboxReadDate, 214, 0x3bb842ac)                                     // 3bb842ac
 	iface.RegisterClazzName(ClazzName_smsjobs_eligibleToJoin, 216, 0xdc8b44cf)                             // dc8b44cf
-	iface.RegisterClazzName(ClazzName_smsjobs_eligibleToJoin, 215, 0xdc8b44cf)                             // dc8b44cf
-	iface.RegisterClazzName(ClazzName_smsjobs_eligibleToJoin, 214, 0xdc8b44cf)                             // dc8b44cf
 	iface.RegisterClazzName(ClazzName_smsjobs_status, 216, 0x2aee9191)                                     // 2aee9191
-	iface.RegisterClazzName(ClazzName_smsjobs_status, 215, 0x2aee9191)                                     // 2aee9191
-	iface.RegisterClazzName(ClazzName_smsjobs_status, 214, 0x2aee9191)                                     // 2aee9191
 	iface.RegisterClazzName(ClazzName_smsJob, 216, 0xe6a1eeb8)                                             // e6a1eeb8
-	iface.RegisterClazzName(ClazzName_smsJob, 215, 0xe6a1eeb8)                                             // e6a1eeb8
-	iface.RegisterClazzName(ClazzName_smsJob, 214, 0xe6a1eeb8)                                             // e6a1eeb8
 	iface.RegisterClazzName(ClazzName_businessWeeklyOpen, 216, 0x120b1ab9)                                 // 120b1ab9
-	iface.RegisterClazzName(ClazzName_businessWeeklyOpen, 215, 0x120b1ab9)                                 // 120b1ab9
-	iface.RegisterClazzName(ClazzName_businessWeeklyOpen, 214, 0x120b1ab9)                                 // 120b1ab9
 	iface.RegisterClazzName(ClazzName_businessWorkHours, 216, 0x8c92b098)                                  // 8c92b098
-	iface.RegisterClazzName(ClazzName_businessWorkHours, 215, 0x8c92b098)                                  // 8c92b098
-	iface.RegisterClazzName(ClazzName_businessWorkHours, 214, 0x8c92b098)                                  // 8c92b098
 	iface.RegisterClazzName(ClazzName_businessLocation, 216, 0xac5c1af7)                                   // ac5c1af7
-	iface.RegisterClazzName(ClazzName_businessLocation, 215, 0xac5c1af7)                                   // ac5c1af7
-	iface.RegisterClazzName(ClazzName_businessLocation, 214, 0xac5c1af7)                                   // ac5c1af7
 	iface.RegisterClazzName(ClazzName_inputBusinessRecipients, 216, 0x6f8b32aa)                            // 6f8b32aa
-	iface.RegisterClazzName(ClazzName_inputBusinessRecipients, 215, 0x6f8b32aa)                            // 6f8b32aa
-	iface.RegisterClazzName(ClazzName_inputBusinessRecipients, 214, 0x6f8b32aa)                            // 6f8b32aa
 	iface.RegisterClazzName(ClazzName_businessRecipients, 216, 0x21108ff7)                                 // 21108ff7
-	iface.RegisterClazzName(ClazzName_businessRecipients, 215, 0x21108ff7)                                 // 21108ff7
-	iface.RegisterClazzName(ClazzName_businessRecipients, 214, 0x21108ff7)                                 // 21108ff7
 	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleAlways, 216, 0xc9b9e2b9)                  // c9b9e2b9
-	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleAlways, 215, 0xc9b9e2b9)                  // c9b9e2b9
-	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleAlways, 214, 0xc9b9e2b9)                  // c9b9e2b9
 	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleOutsideWorkHours, 216, 0xc3f2f501)        // c3f2f501
-	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleOutsideWorkHours, 215, 0xc3f2f501)        // c3f2f501
-	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleOutsideWorkHours, 214, 0xc3f2f501)        // c3f2f501
 	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleCustom, 216, 0xcc4d9ecc)                  // cc4d9ecc
-	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleCustom, 215, 0xcc4d9ecc)                  // cc4d9ecc
-	iface.RegisterClazzName(ClazzName_businessAwayMessageScheduleCustom, 214, 0xcc4d9ecc)                  // cc4d9ecc
 	iface.RegisterClazzName(ClazzName_inputBusinessGreetingMessage, 216, 0x194cb3b)                        // 194cb3b
-	iface.RegisterClazzName(ClazzName_inputBusinessGreetingMessage, 215, 0x194cb3b)                        // 194cb3b
-	iface.RegisterClazzName(ClazzName_inputBusinessGreetingMessage, 214, 0x194cb3b)                        // 194cb3b
 	iface.RegisterClazzName(ClazzName_businessGreetingMessage, 216, 0xe519abab)                            // e519abab
-	iface.RegisterClazzName(ClazzName_businessGreetingMessage, 215, 0xe519abab)                            // e519abab
-	iface.RegisterClazzName(ClazzName_businessGreetingMessage, 214, 0xe519abab)                            // e519abab
 	iface.RegisterClazzName(ClazzName_inputBusinessAwayMessage, 216, 0x832175e0)                           // 832175e0
-	iface.RegisterClazzName(ClazzName_inputBusinessAwayMessage, 215, 0x832175e0)                           // 832175e0
-	iface.RegisterClazzName(ClazzName_inputBusinessAwayMessage, 214, 0x832175e0)                           // 832175e0
 	iface.RegisterClazzName(ClazzName_businessAwayMessage, 216, 0xef156a5c)                                // ef156a5c
-	iface.RegisterClazzName(ClazzName_businessAwayMessage, 215, 0xef156a5c)                                // ef156a5c
-	iface.RegisterClazzName(ClazzName_businessAwayMessage, 214, 0xef156a5c)                                // ef156a5c
 	iface.RegisterClazzName(ClazzName_timezone, 216, 0xff9289f5)                                           // ff9289f5
-	iface.RegisterClazzName(ClazzName_timezone, 215, 0xff9289f5)                                           // ff9289f5
-	iface.RegisterClazzName(ClazzName_timezone, 214, 0xff9289f5)                                           // ff9289f5
 	iface.RegisterClazzName(ClazzName_help_timezonesListNotModified, 216, 0x970708cc)                      // 970708cc
-	iface.RegisterClazzName(ClazzName_help_timezonesListNotModified, 215, 0x970708cc)                      // 970708cc
-	iface.RegisterClazzName(ClazzName_help_timezonesListNotModified, 214, 0x970708cc)                      // 970708cc
 	iface.RegisterClazzName(ClazzName_help_timezonesList, 216, 0x7b74ed71)                                 // 7b74ed71
-	iface.RegisterClazzName(ClazzName_help_timezonesList, 215, 0x7b74ed71)                                 // 7b74ed71
-	iface.RegisterClazzName(ClazzName_help_timezonesList, 214, 0x7b74ed71)                                 // 7b74ed71
 	iface.RegisterClazzName(ClazzName_quickReply, 216, 0x697102b)                                          // 697102b
-	iface.RegisterClazzName(ClazzName_quickReply, 215, 0x697102b)                                          // 697102b
-	iface.RegisterClazzName(ClazzName_quickReply, 214, 0x697102b)                                          // 697102b
 	iface.RegisterClazzName(ClazzName_inputQuickReplyShortcut, 216, 0x24596d41)                            // 24596d41
-	iface.RegisterClazzName(ClazzName_inputQuickReplyShortcut, 215, 0x24596d41)                            // 24596d41
-	iface.RegisterClazzName(ClazzName_inputQuickReplyShortcut, 214, 0x24596d41)                            // 24596d41
 	iface.RegisterClazzName(ClazzName_inputQuickReplyShortcutId, 216, 0x1190cf1)                           // 1190cf1
-	iface.RegisterClazzName(ClazzName_inputQuickReplyShortcutId, 215, 0x1190cf1)                           // 1190cf1
-	iface.RegisterClazzName(ClazzName_inputQuickReplyShortcutId, 214, 0x1190cf1)                           // 1190cf1
 	iface.RegisterClazzName(ClazzName_messages_quickReplies, 216, 0xc68d6695)                              // c68d6695
-	iface.RegisterClazzName(ClazzName_messages_quickReplies, 215, 0xc68d6695)                              // c68d6695
-	iface.RegisterClazzName(ClazzName_messages_quickReplies, 214, 0xc68d6695)                              // c68d6695
 	iface.RegisterClazzName(ClazzName_messages_quickRepliesNotModified, 216, 0x5f91eb5b)                   // 5f91eb5b
-	iface.RegisterClazzName(ClazzName_messages_quickRepliesNotModified, 215, 0x5f91eb5b)                   // 5f91eb5b
-	iface.RegisterClazzName(ClazzName_messages_quickRepliesNotModified, 214, 0x5f91eb5b)                   // 5f91eb5b
 	iface.RegisterClazzName(ClazzName_connectedBot, 216, 0xcd64636c)                                       // cd64636c
-	iface.RegisterClazzName(ClazzName_connectedBot, 215, 0xcd64636c)                                       // cd64636c
-	iface.RegisterClazzName(ClazzName_connectedBot, 214, 0xcd64636c)                                       // cd64636c
 	iface.RegisterClazzName(ClazzName_account_connectedBots, 216, 0x17d7f87b)                              // 17d7f87b
-	iface.RegisterClazzName(ClazzName_account_connectedBots, 215, 0x17d7f87b)                              // 17d7f87b
-	iface.RegisterClazzName(ClazzName_account_connectedBots, 214, 0x17d7f87b)                              // 17d7f87b
 	iface.RegisterClazzName(ClazzName_messages_dialogFilters, 216, 0x2ad93719)                             // 2ad93719
-	iface.RegisterClazzName(ClazzName_messages_dialogFilters, 215, 0x2ad93719)                             // 2ad93719
-	iface.RegisterClazzName(ClazzName_messages_dialogFilters, 214, 0x2ad93719)                             // 2ad93719
 	iface.RegisterClazzName(ClazzName_birthday, 216, 0x6c8e1e06)                                           // 6c8e1e06
-	iface.RegisterClazzName(ClazzName_birthday, 215, 0x6c8e1e06)                                           // 6c8e1e06
-	iface.RegisterClazzName(ClazzName_birthday, 214, 0x6c8e1e06)                                           // 6c8e1e06
 	iface.RegisterClazzName(ClazzName_botBusinessConnection, 216, 0x8f34b2f5)                              // 8f34b2f5
-	iface.RegisterClazzName(ClazzName_botBusinessConnection, 215, 0x8f34b2f5)                              // 8f34b2f5
-	iface.RegisterClazzName(ClazzName_botBusinessConnection, 214, 0x8f34b2f5)                              // 8f34b2f5
 	iface.RegisterClazzName(ClazzName_inputBusinessIntro, 216, 0x9c469cd)                                  // 9c469cd
-	iface.RegisterClazzName(ClazzName_inputBusinessIntro, 215, 0x9c469cd)                                  // 9c469cd
-	iface.RegisterClazzName(ClazzName_inputBusinessIntro, 214, 0x9c469cd)                                  // 9c469cd
 	iface.RegisterClazzName(ClazzName_businessIntro, 216, 0x5a0a066d)                                      // 5a0a066d
-	iface.RegisterClazzName(ClazzName_businessIntro, 215, 0x5a0a066d)                                      // 5a0a066d
-	iface.RegisterClazzName(ClazzName_businessIntro, 214, 0x5a0a066d)                                      // 5a0a066d
 	iface.RegisterClazzName(ClazzName_messages_myStickers, 216, 0xfaff629d)                                // faff629d
-	iface.RegisterClazzName(ClazzName_messages_myStickers, 215, 0xfaff629d)                                // faff629d
-	iface.RegisterClazzName(ClazzName_messages_myStickers, 214, 0xfaff629d)                                // faff629d
 	iface.RegisterClazzName(ClazzName_inputCollectibleUsername, 216, 0xe39460a9)                           // e39460a9
-	iface.RegisterClazzName(ClazzName_inputCollectibleUsername, 215, 0xe39460a9)                           // e39460a9
-	iface.RegisterClazzName(ClazzName_inputCollectibleUsername, 214, 0xe39460a9)                           // e39460a9
 	iface.RegisterClazzName(ClazzName_inputCollectiblePhone, 216, 0xa2e214a4)                              // a2e214a4
-	iface.RegisterClazzName(ClazzName_inputCollectiblePhone, 215, 0xa2e214a4)                              // a2e214a4
-	iface.RegisterClazzName(ClazzName_inputCollectiblePhone, 214, 0xa2e214a4)                              // a2e214a4
 	iface.RegisterClazzName(ClazzName_fragment_collectibleInfo, 216, 0x6ebdff91)                           // 6ebdff91
-	iface.RegisterClazzName(ClazzName_fragment_collectibleInfo, 215, 0x6ebdff91)                           // 6ebdff91
-	iface.RegisterClazzName(ClazzName_fragment_collectibleInfo, 214, 0x6ebdff91)                           // 6ebdff91
 	iface.RegisterClazzName(ClazzName_inputBusinessBotRecipients, 216, 0xc4e5921e)                         // c4e5921e
-	iface.RegisterClazzName(ClazzName_inputBusinessBotRecipients, 215, 0xc4e5921e)                         // c4e5921e
-	iface.RegisterClazzName(ClazzName_inputBusinessBotRecipients, 214, 0xc4e5921e)                         // c4e5921e
 	iface.RegisterClazzName(ClazzName_businessBotRecipients, 216, 0xb88cf373)                              // b88cf373
-	iface.RegisterClazzName(ClazzName_businessBotRecipients, 215, 0xb88cf373)                              // b88cf373
-	iface.RegisterClazzName(ClazzName_businessBotRecipients, 214, 0xb88cf373)                              // b88cf373
 	iface.RegisterClazzName(ClazzName_contactBirthday, 216, 0x1d998733)                                    // 1d998733
-	iface.RegisterClazzName(ClazzName_contactBirthday, 215, 0x1d998733)                                    // 1d998733
-	iface.RegisterClazzName(ClazzName_contactBirthday, 214, 0x1d998733)                                    // 1d998733
 	iface.RegisterClazzName(ClazzName_contacts_contactBirthdays, 216, 0x114ff30d)                          // 114ff30d
-	iface.RegisterClazzName(ClazzName_contacts_contactBirthdays, 215, 0x114ff30d)                          // 114ff30d
-	iface.RegisterClazzName(ClazzName_contacts_contactBirthdays, 214, 0x114ff30d)                          // 114ff30d
 	iface.RegisterClazzName(ClazzName_missingInvitee, 216, 0x628c9224)                                     // 628c9224
-	iface.RegisterClazzName(ClazzName_missingInvitee, 215, 0x628c9224)                                     // 628c9224
-	iface.RegisterClazzName(ClazzName_missingInvitee, 214, 0x628c9224)                                     // 628c9224
 	iface.RegisterClazzName(ClazzName_messages_invitedUsers, 216, 0x7f5defa6)                              // 7f5defa6
-	iface.RegisterClazzName(ClazzName_messages_invitedUsers, 215, 0x7f5defa6)                              // 7f5defa6
-	iface.RegisterClazzName(ClazzName_messages_invitedUsers, 214, 0x7f5defa6)                              // 7f5defa6
 	iface.RegisterClazzName(ClazzName_inputBusinessChatLink, 216, 0x11679fa7)                              // 11679fa7
-	iface.RegisterClazzName(ClazzName_inputBusinessChatLink, 215, 0x11679fa7)                              // 11679fa7
-	iface.RegisterClazzName(ClazzName_inputBusinessChatLink, 214, 0x11679fa7)                              // 11679fa7
 	iface.RegisterClazzName(ClazzName_businessChatLink, 216, 0xb4ae666f)                                   // b4ae666f
-	iface.RegisterClazzName(ClazzName_businessChatLink, 215, 0xb4ae666f)                                   // b4ae666f
-	iface.RegisterClazzName(ClazzName_businessChatLink, 214, 0xb4ae666f)                                   // b4ae666f
 	iface.RegisterClazzName(ClazzName_account_businessChatLinks, 216, 0xec43a2d1)                          // ec43a2d1
-	iface.RegisterClazzName(ClazzName_account_businessChatLinks, 215, 0xec43a2d1)                          // ec43a2d1
-	iface.RegisterClazzName(ClazzName_account_businessChatLinks, 214, 0xec43a2d1)                          // ec43a2d1
 	iface.RegisterClazzName(ClazzName_account_resolvedBusinessChatLinks, 216, 0x9a23af21)                  // 9a23af21
-	iface.RegisterClazzName(ClazzName_account_resolvedBusinessChatLinks, 215, 0x9a23af21)                  // 9a23af21
-	iface.RegisterClazzName(ClazzName_account_resolvedBusinessChatLinks, 214, 0x9a23af21)                  // 9a23af21
 	iface.RegisterClazzName(ClazzName_requestedPeerUser, 216, 0xd62ff46a)                                  // d62ff46a
-	iface.RegisterClazzName(ClazzName_requestedPeerUser, 215, 0xd62ff46a)                                  // d62ff46a
-	iface.RegisterClazzName(ClazzName_requestedPeerUser, 214, 0xd62ff46a)                                  // d62ff46a
 	iface.RegisterClazzName(ClazzName_requestedPeerChat, 216, 0x7307544f)                                  // 7307544f
-	iface.RegisterClazzName(ClazzName_requestedPeerChat, 215, 0x7307544f)                                  // 7307544f
-	iface.RegisterClazzName(ClazzName_requestedPeerChat, 214, 0x7307544f)                                  // 7307544f
 	iface.RegisterClazzName(ClazzName_requestedPeerChannel, 216, 0x8ba403e4)                               // 8ba403e4
-	iface.RegisterClazzName(ClazzName_requestedPeerChannel, 215, 0x8ba403e4)                               // 8ba403e4
-	iface.RegisterClazzName(ClazzName_requestedPeerChannel, 214, 0x8ba403e4)                               // 8ba403e4
 	iface.RegisterClazzName(ClazzName_sponsoredMessageReportOption, 216, 0x430d3150)                       // 430d3150
-	iface.RegisterClazzName(ClazzName_sponsoredMessageReportOption, 215, 0x430d3150)                       // 430d3150
-	iface.RegisterClazzName(ClazzName_sponsoredMessageReportOption, 214, 0x430d3150)                       // 430d3150
 	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultChooseOption, 216, 0x846f9e42)  // 846f9e42
-	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultChooseOption, 215, 0x846f9e42)  // 846f9e42
-	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultChooseOption, 214, 0x846f9e42)  // 846f9e42
 	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultAdsHidden, 216, 0x3e3bcf2f)     // 3e3bcf2f
-	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultAdsHidden, 215, 0x3e3bcf2f)     // 3e3bcf2f
-	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultAdsHidden, 214, 0x3e3bcf2f)     // 3e3bcf2f
 	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultReported, 216, 0xad798849)      // ad798849
-	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultReported, 215, 0xad798849)      // ad798849
-	iface.RegisterClazzName(ClazzName_channels_sponsoredMessageReportResultReported, 214, 0xad798849)      // ad798849
 	iface.RegisterClazzName(ClazzName_reactionNotificationsFromContacts, 216, 0xbac3a61a)                  // bac3a61a
-	iface.RegisterClazzName(ClazzName_reactionNotificationsFromContacts, 215, 0xbac3a61a)                  // bac3a61a
-	iface.RegisterClazzName(ClazzName_reactionNotificationsFromContacts, 214, 0xbac3a61a)                  // bac3a61a
 	iface.RegisterClazzName(ClazzName_reactionNotificationsFromAll, 216, 0x4b9e22a0)                       // 4b9e22a0
-	iface.RegisterClazzName(ClazzName_reactionNotificationsFromAll, 215, 0x4b9e22a0)                       // 4b9e22a0
-	iface.RegisterClazzName(ClazzName_reactionNotificationsFromAll, 214, 0x4b9e22a0)                       // 4b9e22a0
 	iface.RegisterClazzName(ClazzName_reactionsNotifySettings, 216, 0x56e34970)                            // 56e34970
-	iface.RegisterClazzName(ClazzName_reactionsNotifySettings, 215, 0x56e34970)                            // 56e34970
-	iface.RegisterClazzName(ClazzName_reactionsNotifySettings, 214, 0x56e34970)                            // 56e34970
 	iface.RegisterClazzName(ClazzName_availableEffect, 216, 0x93c3e27e)                                    // 93c3e27e
-	iface.RegisterClazzName(ClazzName_availableEffect, 215, 0x93c3e27e)                                    // 93c3e27e
-	iface.RegisterClazzName(ClazzName_availableEffect, 214, 0x93c3e27e)                                    // 93c3e27e
 	iface.RegisterClazzName(ClazzName_messages_availableEffectsNotModified, 216, 0xd1ed9a5b)               // d1ed9a5b
-	iface.RegisterClazzName(ClazzName_messages_availableEffectsNotModified, 215, 0xd1ed9a5b)               // d1ed9a5b
-	iface.RegisterClazzName(ClazzName_messages_availableEffectsNotModified, 214, 0xd1ed9a5b)               // d1ed9a5b
 	iface.RegisterClazzName(ClazzName_messages_availableEffects, 216, 0xbddb616e)                          // bddb616e
-	iface.RegisterClazzName(ClazzName_messages_availableEffects, 215, 0xbddb616e)                          // bddb616e
-	iface.RegisterClazzName(ClazzName_messages_availableEffects, 214, 0xbddb616e)                          // bddb616e
 	iface.RegisterClazzName(ClazzName_factCheck, 216, 0xb89bfccf)                                          // b89bfccf
-	iface.RegisterClazzName(ClazzName_factCheck, 215, 0xb89bfccf)                                          // b89bfccf
-	iface.RegisterClazzName(ClazzName_factCheck, 214, 0xb89bfccf)                                          // b89bfccf
 	iface.RegisterClazzName(ClazzName_starsTransactionPeerUnsupported, 216, 0x95f2bfe4)                    // 95f2bfe4
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerUnsupported, 215, 0x95f2bfe4)                    // 95f2bfe4
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerUnsupported, 214, 0x95f2bfe4)                    // 95f2bfe4
 	iface.RegisterClazzName(ClazzName_starsTransactionPeerAppStore, 216, 0xb457b375)                       // b457b375
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerAppStore, 215, 0xb457b375)                       // b457b375
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerAppStore, 214, 0xb457b375)                       // b457b375
 	iface.RegisterClazzName(ClazzName_starsTransactionPeerPlayMarket, 216, 0x7b560a0b)                     // 7b560a0b
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerPlayMarket, 215, 0x7b560a0b)                     // 7b560a0b
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerPlayMarket, 214, 0x7b560a0b)                     // 7b560a0b
 	iface.RegisterClazzName(ClazzName_starsTransactionPeerPremiumBot, 216, 0x250dbaf8)                     // 250dbaf8
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerPremiumBot, 215, 0x250dbaf8)                     // 250dbaf8
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerPremiumBot, 214, 0x250dbaf8)                     // 250dbaf8
 	iface.RegisterClazzName(ClazzName_starsTransactionPeerFragment, 216, 0xe92fd902)                       // e92fd902
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerFragment, 215, 0xe92fd902)                       // e92fd902
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerFragment, 214, 0xe92fd902)                       // e92fd902
 	iface.RegisterClazzName(ClazzName_starsTransactionPeer, 216, 0xd80da15d)                               // d80da15d
-	iface.RegisterClazzName(ClazzName_starsTransactionPeer, 215, 0xd80da15d)                               // d80da15d
-	iface.RegisterClazzName(ClazzName_starsTransactionPeer, 214, 0xd80da15d)                               // d80da15d
 	iface.RegisterClazzName(ClazzName_starsTransactionPeerAds, 216, 0x60682812)                            // 60682812
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerAds, 215, 0x60682812)                            // 60682812
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerAds, 214, 0x60682812)                            // 60682812
 	iface.RegisterClazzName(ClazzName_starsTransactionPeerAPI, 216, 0xf9677aad)                            // f9677aad
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerAPI, 215, 0xf9677aad)                            // f9677aad
-	iface.RegisterClazzName(ClazzName_starsTransactionPeerAPI, 214, 0xf9677aad)                            // f9677aad
 	iface.RegisterClazzName(ClazzName_starsTopupOption, 216, 0xbd915c0)                                    // bd915c0
-	iface.RegisterClazzName(ClazzName_starsTopupOption, 215, 0xbd915c0)                                    // bd915c0
-	iface.RegisterClazzName(ClazzName_starsTopupOption, 214, 0xbd915c0)                                    // bd915c0
 	iface.RegisterClazzName(ClazzName_starsTransaction, 216, 0x13659eb0)                                   // 13659eb0
-	iface.RegisterClazzName(ClazzName_starsTransaction, 215, 0x13659eb0)                                   // 13659eb0
-	iface.RegisterClazzName(ClazzName_starsTransaction, 214, 0x13659eb0)                                   // 13659eb0
 	iface.RegisterClazzName(ClazzName_payments_starsStatus, 216, 0x6c9ce8ed)                               // 6c9ce8ed
-	iface.RegisterClazzName(ClazzName_payments_starsStatus, 215, 0x6c9ce8ed)                               // 6c9ce8ed
-	iface.RegisterClazzName(ClazzName_payments_starsStatus, 214, 0x6c9ce8ed)                               // 6c9ce8ed
 	iface.RegisterClazzName(ClazzName_foundStory, 216, 0xe87acbc0)                                         // e87acbc0
-	iface.RegisterClazzName(ClazzName_foundStory, 215, 0xe87acbc0)                                         // e87acbc0
-	iface.RegisterClazzName(ClazzName_foundStory, 214, 0xe87acbc0)                                         // e87acbc0
 	iface.RegisterClazzName(ClazzName_stories_foundStories, 216, 0xe2de7737)                               // e2de7737
-	iface.RegisterClazzName(ClazzName_stories_foundStories, 215, 0xe2de7737)                               // e2de7737
-	iface.RegisterClazzName(ClazzName_stories_foundStories, 214, 0xe2de7737)                               // e2de7737
 	iface.RegisterClazzName(ClazzName_geoPointAddress, 216, 0xde4c5d93)                                    // de4c5d93
-	iface.RegisterClazzName(ClazzName_geoPointAddress, 215, 0xde4c5d93)                                    // de4c5d93
-	iface.RegisterClazzName(ClazzName_geoPointAddress, 214, 0xde4c5d93)                                    // de4c5d93
 	iface.RegisterClazzName(ClazzName_starsRevenueStatus, 216, 0xfebe5491)                                 // febe5491
-	iface.RegisterClazzName(ClazzName_starsRevenueStatus, 215, 0xfebe5491)                                 // febe5491
-	iface.RegisterClazzName(ClazzName_starsRevenueStatus, 214, 0xfebe5491)                                 // febe5491
 	iface.RegisterClazzName(ClazzName_payments_starsRevenueStats, 216, 0x6c207376)                         // 6c207376
-	iface.RegisterClazzName(ClazzName_payments_starsRevenueStats, 215, 0x6c207376)                         // 6c207376
-	iface.RegisterClazzName(ClazzName_payments_starsRevenueStats, 214, 0x6c207376)                         // 6c207376
 	iface.RegisterClazzName(ClazzName_payments_starsRevenueWithdrawalUrl, 216, 0x1dab80b7)                 // 1dab80b7
-	iface.RegisterClazzName(ClazzName_payments_starsRevenueWithdrawalUrl, 215, 0x1dab80b7)                 // 1dab80b7
-	iface.RegisterClazzName(ClazzName_payments_starsRevenueWithdrawalUrl, 214, 0x1dab80b7)                 // 1dab80b7
 	iface.RegisterClazzName(ClazzName_payments_starsRevenueAdsAccountUrl, 216, 0x394e7f21)                 // 394e7f21
-	iface.RegisterClazzName(ClazzName_payments_starsRevenueAdsAccountUrl, 215, 0x394e7f21)                 // 394e7f21
-	iface.RegisterClazzName(ClazzName_payments_starsRevenueAdsAccountUrl, 214, 0x394e7f21)                 // 394e7f21
 	iface.RegisterClazzName(ClazzName_inputStarsTransaction, 216, 0x206ae6d1)                              // 206ae6d1
-	iface.RegisterClazzName(ClazzName_inputStarsTransaction, 215, 0x206ae6d1)                              // 206ae6d1
-	iface.RegisterClazzName(ClazzName_inputStarsTransaction, 214, 0x206ae6d1)                              // 206ae6d1
 	iface.RegisterClazzName(ClazzName_starsGiftOption, 216, 0x5e0589f1)                                    // 5e0589f1
-	iface.RegisterClazzName(ClazzName_starsGiftOption, 215, 0x5e0589f1)                                    // 5e0589f1
-	iface.RegisterClazzName(ClazzName_starsGiftOption, 214, 0x5e0589f1)                                    // 5e0589f1
 	iface.RegisterClazzName(ClazzName_bots_popularAppBots, 216, 0x1991b13b)                                // 1991b13b
-	iface.RegisterClazzName(ClazzName_bots_popularAppBots, 215, 0x1991b13b)                                // 1991b13b
-	iface.RegisterClazzName(ClazzName_bots_popularAppBots, 214, 0x1991b13b)                                // 1991b13b
 	iface.RegisterClazzName(ClazzName_botPreviewMedia, 216, 0x23e91ba3)                                    // 23e91ba3
-	iface.RegisterClazzName(ClazzName_botPreviewMedia, 215, 0x23e91ba3)                                    // 23e91ba3
-	iface.RegisterClazzName(ClazzName_botPreviewMedia, 214, 0x23e91ba3)                                    // 23e91ba3
 	iface.RegisterClazzName(ClazzName_bots_previewInfo, 216, 0xca71d64)                                    // ca71d64
-	iface.RegisterClazzName(ClazzName_bots_previewInfo, 215, 0xca71d64)                                    // ca71d64
-	iface.RegisterClazzName(ClazzName_bots_previewInfo, 214, 0xca71d64)                                    // ca71d64
 	iface.RegisterClazzName(ClazzName_starsSubscriptionPricing, 216, 0x5416d58)                            // 5416d58
-	iface.RegisterClazzName(ClazzName_starsSubscriptionPricing, 215, 0x5416d58)                            // 5416d58
-	iface.RegisterClazzName(ClazzName_starsSubscriptionPricing, 214, 0x5416d58)                            // 5416d58
 	iface.RegisterClazzName(ClazzName_starsSubscription, 216, 0x2e6eab1a)                                  // 2e6eab1a
-	iface.RegisterClazzName(ClazzName_starsSubscription, 215, 0x2e6eab1a)                                  // 2e6eab1a
-	iface.RegisterClazzName(ClazzName_starsSubscription, 214, 0x2e6eab1a)                                  // 2e6eab1a
 	iface.RegisterClazzName(ClazzName_messageReactor, 216, 0x4ba3a95a)                                     // 4ba3a95a
-	iface.RegisterClazzName(ClazzName_messageReactor, 215, 0x4ba3a95a)                                     // 4ba3a95a
-	iface.RegisterClazzName(ClazzName_messageReactor, 214, 0x4ba3a95a)                                     // 4ba3a95a
 	iface.RegisterClazzName(ClazzName_starsGiveawayOption, 216, 0x94ce852a)                                // 94ce852a
-	iface.RegisterClazzName(ClazzName_starsGiveawayOption, 215, 0x94ce852a)                                // 94ce852a
-	iface.RegisterClazzName(ClazzName_starsGiveawayOption, 214, 0x94ce852a)                                // 94ce852a
 	iface.RegisterClazzName(ClazzName_starsGiveawayWinnersOption, 216, 0x54236209)                         // 54236209
-	iface.RegisterClazzName(ClazzName_starsGiveawayWinnersOption, 215, 0x54236209)                         // 54236209
-	iface.RegisterClazzName(ClazzName_starsGiveawayWinnersOption, 214, 0x54236209)                         // 54236209
 	iface.RegisterClazzName(ClazzName_starGift, 216, 0x80ac53c3)                                           // 80ac53c3
-	iface.RegisterClazzName(ClazzName_starGift, 215, 0x80ac53c3)                                           // 80ac53c3
-	iface.RegisterClazzName(ClazzName_starGift, 214, 0x80ac53c3)                                           // 80ac53c3
 	iface.RegisterClazzName(ClazzName_starGiftUnique, 216, 0xb0bf741b)                                     // b0bf741b
-	iface.RegisterClazzName(ClazzName_starGiftUnique, 215, 0x1befe865)                                     // 1befe865
-	iface.RegisterClazzName(ClazzName_starGiftUnique, 214, 0x1befe865)                                     // 1befe865
 	iface.RegisterClazzName(ClazzName_payments_starGiftsNotModified, 216, 0xa388a368)                      // a388a368
-	iface.RegisterClazzName(ClazzName_payments_starGiftsNotModified, 215, 0xa388a368)                      // a388a368
-	iface.RegisterClazzName(ClazzName_payments_starGiftsNotModified, 214, 0xa388a368)                      // a388a368
 	iface.RegisterClazzName(ClazzName_payments_starGifts, 216, 0x2ed82995)                                 // 2ed82995
-	iface.RegisterClazzName(ClazzName_payments_starGifts, 215, 0x2ed82995)                                 // 2ed82995
-	iface.RegisterClazzName(ClazzName_payments_starGifts, 214, 0x2ed82995)                                 // 2ed82995
 	iface.RegisterClazzName(ClazzName_messageReportOption, 216, 0x7903e3d9)                                // 7903e3d9
-	iface.RegisterClazzName(ClazzName_messageReportOption, 215, 0x7903e3d9)                                // 7903e3d9
-	iface.RegisterClazzName(ClazzName_messageReportOption, 214, 0x7903e3d9)                                // 7903e3d9
 	iface.RegisterClazzName(ClazzName_reportResultChooseOption, 216, 0xf0e4e0b6)                           // f0e4e0b6
-	iface.RegisterClazzName(ClazzName_reportResultChooseOption, 215, 0xf0e4e0b6)                           // f0e4e0b6
-	iface.RegisterClazzName(ClazzName_reportResultChooseOption, 214, 0xf0e4e0b6)                           // f0e4e0b6
 	iface.RegisterClazzName(ClazzName_reportResultAddComment, 216, 0x6f09ac31)                             // 6f09ac31
-	iface.RegisterClazzName(ClazzName_reportResultAddComment, 215, 0x6f09ac31)                             // 6f09ac31
-	iface.RegisterClazzName(ClazzName_reportResultAddComment, 214, 0x6f09ac31)                             // 6f09ac31
 	iface.RegisterClazzName(ClazzName_reportResultReported, 216, 0x8db33c4b)                               // 8db33c4b
-	iface.RegisterClazzName(ClazzName_reportResultReported, 215, 0x8db33c4b)                               // 8db33c4b
-	iface.RegisterClazzName(ClazzName_reportResultReported, 214, 0x8db33c4b)                               // 8db33c4b
 	iface.RegisterClazzName(ClazzName_messages_botPreparedInlineMessage, 216, 0x8ecf0511)                  // 8ecf0511
-	iface.RegisterClazzName(ClazzName_messages_botPreparedInlineMessage, 215, 0x8ecf0511)                  // 8ecf0511
-	iface.RegisterClazzName(ClazzName_messages_botPreparedInlineMessage, 214, 0x8ecf0511)                  // 8ecf0511
 	iface.RegisterClazzName(ClazzName_messages_preparedInlineMessage, 216, 0xff57708d)                     // ff57708d
-	iface.RegisterClazzName(ClazzName_messages_preparedInlineMessage, 215, 0xff57708d)                     // ff57708d
-	iface.RegisterClazzName(ClazzName_messages_preparedInlineMessage, 214, 0xff57708d)                     // ff57708d
 	iface.RegisterClazzName(ClazzName_botAppSettings, 216, 0xc99b1950)                                     // c99b1950
-	iface.RegisterClazzName(ClazzName_botAppSettings, 215, 0xc99b1950)                                     // c99b1950
-	iface.RegisterClazzName(ClazzName_botAppSettings, 214, 0xc99b1950)                                     // c99b1950
 	iface.RegisterClazzName(ClazzName_starRefProgram, 216, 0xdd0c66f2)                                     // dd0c66f2
-	iface.RegisterClazzName(ClazzName_starRefProgram, 215, 0xdd0c66f2)                                     // dd0c66f2
-	iface.RegisterClazzName(ClazzName_starRefProgram, 214, 0xdd0c66f2)                                     // dd0c66f2
 	iface.RegisterClazzName(ClazzName_connectedBotStarRef, 216, 0x19a13f71)                                // 19a13f71
-	iface.RegisterClazzName(ClazzName_connectedBotStarRef, 215, 0x19a13f71)                                // 19a13f71
-	iface.RegisterClazzName(ClazzName_connectedBotStarRef, 214, 0x19a13f71)                                // 19a13f71
 	iface.RegisterClazzName(ClazzName_payments_connectedStarRefBots, 216, 0x98d5ea1d)                      // 98d5ea1d
-	iface.RegisterClazzName(ClazzName_payments_connectedStarRefBots, 215, 0x98d5ea1d)                      // 98d5ea1d
-	iface.RegisterClazzName(ClazzName_payments_connectedStarRefBots, 214, 0x98d5ea1d)                      // 98d5ea1d
 	iface.RegisterClazzName(ClazzName_payments_suggestedStarRefBots, 216, 0xb4d5d859)                      // b4d5d859
-	iface.RegisterClazzName(ClazzName_payments_suggestedStarRefBots, 215, 0xb4d5d859)                      // b4d5d859
-	iface.RegisterClazzName(ClazzName_payments_suggestedStarRefBots, 214, 0xb4d5d859)                      // b4d5d859
 	iface.RegisterClazzName(ClazzName_starsAmount, 216, 0xbbb6b4a3)                                        // bbb6b4a3
-	iface.RegisterClazzName(ClazzName_starsAmount, 215, 0xbbb6b4a3)                                        // bbb6b4a3
-	iface.RegisterClazzName(ClazzName_starsAmount, 214, 0xbbb6b4a3)                                        // bbb6b4a3
 	iface.RegisterClazzName(ClazzName_starsTonAmount, 216, 0x74aee3e0)                                     // 74aee3e0
-	iface.RegisterClazzName(ClazzName_starsTonAmount, 215, 0x74aee3e0)                                     // 74aee3e0
-	iface.RegisterClazzName(ClazzName_starsTonAmount, 214, 0x74aee3e0)                                     // 74aee3e0
 	iface.RegisterClazzName(ClazzName_messages_foundStickersNotModified, 216, 0x6010c534)                  // 6010c534
-	iface.RegisterClazzName(ClazzName_messages_foundStickersNotModified, 215, 0x6010c534)                  // 6010c534
-	iface.RegisterClazzName(ClazzName_messages_foundStickersNotModified, 214, 0x6010c534)                  // 6010c534
 	iface.RegisterClazzName(ClazzName_messages_foundStickers, 216, 0x82c9e290)                             // 82c9e290
-	iface.RegisterClazzName(ClazzName_messages_foundStickers, 215, 0x82c9e290)                             // 82c9e290
-	iface.RegisterClazzName(ClazzName_messages_foundStickers, 214, 0x82c9e290)                             // 82c9e290
 	iface.RegisterClazzName(ClazzName_botVerifierSettings, 216, 0xb0cd6617)                                // b0cd6617
-	iface.RegisterClazzName(ClazzName_botVerifierSettings, 215, 0xb0cd6617)                                // b0cd6617
-	iface.RegisterClazzName(ClazzName_botVerifierSettings, 214, 0xb0cd6617)                                // b0cd6617
 	iface.RegisterClazzName(ClazzName_botVerification, 216, 0xf93cd45c)                                    // f93cd45c
-	iface.RegisterClazzName(ClazzName_botVerification, 215, 0xf93cd45c)                                    // f93cd45c
-	iface.RegisterClazzName(ClazzName_botVerification, 214, 0xf93cd45c)                                    // f93cd45c
 	iface.RegisterClazzName(ClazzName_starGiftAttributeModel, 216, 0x39d99013)                             // 39d99013
-	iface.RegisterClazzName(ClazzName_starGiftAttributeModel, 215, 0x39d99013)                             // 39d99013
-	iface.RegisterClazzName(ClazzName_starGiftAttributeModel, 214, 0x39d99013)                             // 39d99013
 	iface.RegisterClazzName(ClazzName_starGiftAttributePattern, 216, 0x13acff19)                           // 13acff19
-	iface.RegisterClazzName(ClazzName_starGiftAttributePattern, 215, 0x13acff19)                           // 13acff19
-	iface.RegisterClazzName(ClazzName_starGiftAttributePattern, 214, 0x13acff19)                           // 13acff19
 	iface.RegisterClazzName(ClazzName_starGiftAttributeBackdrop, 216, 0xd93d859c)                          // d93d859c
-	iface.RegisterClazzName(ClazzName_starGiftAttributeBackdrop, 215, 0xd93d859c)                          // d93d859c
-	iface.RegisterClazzName(ClazzName_starGiftAttributeBackdrop, 214, 0xd93d859c)                          // d93d859c
 	iface.RegisterClazzName(ClazzName_starGiftAttributeOriginalDetails, 216, 0xe0bff26c)                   // e0bff26c
-	iface.RegisterClazzName(ClazzName_starGiftAttributeOriginalDetails, 215, 0xe0bff26c)                   // e0bff26c
-	iface.RegisterClazzName(ClazzName_starGiftAttributeOriginalDetails, 214, 0xe0bff26c)                   // e0bff26c
 	iface.RegisterClazzName(ClazzName_payments_starGiftUpgradePreview, 216, 0x3de1dfed)                    // 3de1dfed
-	iface.RegisterClazzName(ClazzName_payments_starGiftUpgradePreview, 215, 0x3de1dfed)                    // 3de1dfed
-	iface.RegisterClazzName(ClazzName_payments_starGiftUpgradePreview, 214, 0x167bd90b)                    // 167bd90b
 	iface.RegisterClazzName(ClazzName_users_users, 216, 0x62d706b8)                                        // 62d706b8
-	iface.RegisterClazzName(ClazzName_users_users, 215, 0x62d706b8)                                        // 62d706b8
-	iface.RegisterClazzName(ClazzName_users_users, 214, 0x62d706b8)                                        // 62d706b8
 	iface.RegisterClazzName(ClazzName_users_usersSlice, 216, 0x315a4974)                                   // 315a4974
-	iface.RegisterClazzName(ClazzName_users_usersSlice, 215, 0x315a4974)                                   // 315a4974
-	iface.RegisterClazzName(ClazzName_users_usersSlice, 214, 0x315a4974)                                   // 315a4974
 	iface.RegisterClazzName(ClazzName_payments_uniqueStarGift, 216, 0x416c56e8)                            // 416c56e8
-	iface.RegisterClazzName(ClazzName_payments_uniqueStarGift, 215, 0x416c56e8)                            // 416c56e8
-	iface.RegisterClazzName(ClazzName_payments_uniqueStarGift, 214, 0x416c56e8)                            // 416c56e8
 	iface.RegisterClazzName(ClazzName_messages_webPagePreview, 216, 0x8c9a88ac)                            // 8c9a88ac
-	iface.RegisterClazzName(ClazzName_messages_webPagePreview, 215, 0x8c9a88ac)                            // 8c9a88ac
-	iface.RegisterClazzName(ClazzName_messages_webPagePreview, 214, 0x8c9a88ac)                            // 8c9a88ac
 	iface.RegisterClazzName(ClazzName_savedStarGift, 216, 0x8983a452)                                      // 8983a452
-	iface.RegisterClazzName(ClazzName_savedStarGift, 215, 0x8983a452)                                      // 8983a452
-	iface.RegisterClazzName(ClazzName_savedStarGift, 214, 0x19a9b572)                                      // 19a9b572
 	iface.RegisterClazzName(ClazzName_payments_savedStarGifts, 216, 0x95f389b1)                            // 95f389b1
-	iface.RegisterClazzName(ClazzName_payments_savedStarGifts, 215, 0x95f389b1)                            // 95f389b1
-	iface.RegisterClazzName(ClazzName_payments_savedStarGifts, 214, 0x95f389b1)                            // 95f389b1
 	iface.RegisterClazzName(ClazzName_inputSavedStarGiftUser, 216, 0x69279795)                             // 69279795
-	iface.RegisterClazzName(ClazzName_inputSavedStarGiftUser, 215, 0x69279795)                             // 69279795
-	iface.RegisterClazzName(ClazzName_inputSavedStarGiftUser, 214, 0x69279795)                             // 69279795
 	iface.RegisterClazzName(ClazzName_inputSavedStarGiftChat, 216, 0xf101aa7f)                             // f101aa7f
-	iface.RegisterClazzName(ClazzName_inputSavedStarGiftChat, 215, 0xf101aa7f)                             // f101aa7f
-	iface.RegisterClazzName(ClazzName_inputSavedStarGiftChat, 214, 0xf101aa7f)                             // f101aa7f
 	iface.RegisterClazzName(ClazzName_inputSavedStarGiftSlug, 216, 0x2085c238)                             // 2085c238
-	iface.RegisterClazzName(ClazzName_inputSavedStarGiftSlug, 215, 0x2085c238)                             // 2085c238
-	iface.RegisterClazzName(ClazzName_inputSavedStarGiftSlug, 214, 0x2085c238)                             // 2085c238
 	iface.RegisterClazzName(ClazzName_payments_starGiftWithdrawalUrl, 216, 0x84aa3a9c)                     // 84aa3a9c
-	iface.RegisterClazzName(ClazzName_payments_starGiftWithdrawalUrl, 215, 0x84aa3a9c)                     // 84aa3a9c
-	iface.RegisterClazzName(ClazzName_payments_starGiftWithdrawalUrl, 214, 0x84aa3a9c)                     // 84aa3a9c
 	iface.RegisterClazzName(ClazzName_paidReactionPrivacyDefault, 216, 0x206ad49e)                         // 206ad49e
-	iface.RegisterClazzName(ClazzName_paidReactionPrivacyDefault, 215, 0x206ad49e)                         // 206ad49e
-	iface.RegisterClazzName(ClazzName_paidReactionPrivacyDefault, 214, 0x206ad49e)                         // 206ad49e
 	iface.RegisterClazzName(ClazzName_paidReactionPrivacyAnonymous, 216, 0x1f0c1ad9)                       // 1f0c1ad9
-	iface.RegisterClazzName(ClazzName_paidReactionPrivacyAnonymous, 215, 0x1f0c1ad9)                       // 1f0c1ad9
-	iface.RegisterClazzName(ClazzName_paidReactionPrivacyAnonymous, 214, 0x1f0c1ad9)                       // 1f0c1ad9
 	iface.RegisterClazzName(ClazzName_paidReactionPrivacyPeer, 216, 0xdc6cfcf0)                            // dc6cfcf0
-	iface.RegisterClazzName(ClazzName_paidReactionPrivacyPeer, 215, 0xdc6cfcf0)                            // dc6cfcf0
-	iface.RegisterClazzName(ClazzName_paidReactionPrivacyPeer, 214, 0xdc6cfcf0)                            // dc6cfcf0
 	iface.RegisterClazzName(ClazzName_account_paidMessagesRevenue, 216, 0x1e109708)                        // 1e109708
-	iface.RegisterClazzName(ClazzName_account_paidMessagesRevenue, 215, 0x1e109708)                        // 1e109708
-	iface.RegisterClazzName(ClazzName_account_paidMessagesRevenue, 214, 0x1e109708)                        // 1e109708
 	iface.RegisterClazzName(ClazzName_requirementToContactEmpty, 216, 0x50a9839)                           // 50a9839
-	iface.RegisterClazzName(ClazzName_requirementToContactEmpty, 215, 0x50a9839)                           // 50a9839
-	iface.RegisterClazzName(ClazzName_requirementToContactEmpty, 214, 0x50a9839)                           // 50a9839
 	iface.RegisterClazzName(ClazzName_requirementToContactPremium, 216, 0xe581e4e9)                        // e581e4e9
-	iface.RegisterClazzName(ClazzName_requirementToContactPremium, 215, 0xe581e4e9)                        // e581e4e9
-	iface.RegisterClazzName(ClazzName_requirementToContactPremium, 214, 0xe581e4e9)                        // e581e4e9
 	iface.RegisterClazzName(ClazzName_requirementToContactPaidMessages, 216, 0xb4f67e93)                   // b4f67e93
-	iface.RegisterClazzName(ClazzName_requirementToContactPaidMessages, 215, 0xb4f67e93)                   // b4f67e93
-	iface.RegisterClazzName(ClazzName_requirementToContactPaidMessages, 214, 0xb4f67e93)                   // b4f67e93
 	iface.RegisterClazzName(ClazzName_businessBotRights, 216, 0xa0624cf7)                                  // a0624cf7
-	iface.RegisterClazzName(ClazzName_businessBotRights, 215, 0xa0624cf7)                                  // a0624cf7
-	iface.RegisterClazzName(ClazzName_businessBotRights, 214, 0xa0624cf7)                                  // a0624cf7
 	iface.RegisterClazzName(ClazzName_disallowedGiftsSettings, 216, 0x71f276c4)                            // 71f276c4
-	iface.RegisterClazzName(ClazzName_disallowedGiftsSettings, 215, 0x71f276c4)                            // 71f276c4
-	iface.RegisterClazzName(ClazzName_disallowedGiftsSettings, 214, 0x71f276c4)                            // 71f276c4
 	iface.RegisterClazzName(ClazzName_sponsoredPeer, 216, 0xc69708d3)                                      // c69708d3
-	iface.RegisterClazzName(ClazzName_sponsoredPeer, 215, 0xc69708d3)                                      // c69708d3
-	iface.RegisterClazzName(ClazzName_sponsoredPeer, 214, 0xc69708d3)                                      // c69708d3
 	iface.RegisterClazzName(ClazzName_contacts_sponsoredPeersEmpty, 216, 0xea32b4b1)                       // ea32b4b1
-	iface.RegisterClazzName(ClazzName_contacts_sponsoredPeersEmpty, 215, 0xea32b4b1)                       // ea32b4b1
-	iface.RegisterClazzName(ClazzName_contacts_sponsoredPeersEmpty, 214, 0xea32b4b1)                       // ea32b4b1
 	iface.RegisterClazzName(ClazzName_contacts_sponsoredPeers, 216, 0xeb032884)                            // eb032884
-	iface.RegisterClazzName(ClazzName_contacts_sponsoredPeers, 215, 0xeb032884)                            // eb032884
-	iface.RegisterClazzName(ClazzName_contacts_sponsoredPeers, 214, 0xeb032884)                            // eb032884
 	iface.RegisterClazzName(ClazzName_starGiftAttributeIdModel, 216, 0x48aaae3c)                           // 48aaae3c
-	iface.RegisterClazzName(ClazzName_starGiftAttributeIdModel, 215, 0x48aaae3c)                           // 48aaae3c
-	iface.RegisterClazzName(ClazzName_starGiftAttributeIdModel, 214, 0x48aaae3c)                           // 48aaae3c
 	iface.RegisterClazzName(ClazzName_starGiftAttributeIdPattern, 216, 0x4a162433)                         // 4a162433
-	iface.RegisterClazzName(ClazzName_starGiftAttributeIdPattern, 215, 0x4a162433)                         // 4a162433
-	iface.RegisterClazzName(ClazzName_starGiftAttributeIdPattern, 214, 0x4a162433)                         // 4a162433
 	iface.RegisterClazzName(ClazzName_starGiftAttributeIdBackdrop, 216, 0x1f01c757)                        // 1f01c757
-	iface.RegisterClazzName(ClazzName_starGiftAttributeIdBackdrop, 215, 0x1f01c757)                        // 1f01c757
-	iface.RegisterClazzName(ClazzName_starGiftAttributeIdBackdrop, 214, 0x1f01c757)                        // 1f01c757
 	iface.RegisterClazzName(ClazzName_starGiftAttributeCounter, 216, 0x2eb1b658)                           // 2eb1b658
-	iface.RegisterClazzName(ClazzName_starGiftAttributeCounter, 215, 0x2eb1b658)                           // 2eb1b658
-	iface.RegisterClazzName(ClazzName_starGiftAttributeCounter, 214, 0x2eb1b658)                           // 2eb1b658
 	iface.RegisterClazzName(ClazzName_payments_resaleStarGifts, 216, 0x947a12df)                           // 947a12df
-	iface.RegisterClazzName(ClazzName_payments_resaleStarGifts, 215, 0x947a12df)                           // 947a12df
-	iface.RegisterClazzName(ClazzName_payments_resaleStarGifts, 214, 0x947a12df)                           // 947a12df
 	iface.RegisterClazzName(ClazzName_stories_canSendStoryCount, 216, 0xc387c04e)                          // c387c04e
-	iface.RegisterClazzName(ClazzName_stories_canSendStoryCount, 215, 0xc387c04e)                          // c387c04e
-	iface.RegisterClazzName(ClazzName_stories_canSendStoryCount, 214, 0xc387c04e)                          // c387c04e
 	iface.RegisterClazzName(ClazzName_pendingSuggestion, 216, 0xe7e82e12)                                  // e7e82e12
-	iface.RegisterClazzName(ClazzName_pendingSuggestion, 215, 0xe7e82e12)                                  // e7e82e12
-	iface.RegisterClazzName(ClazzName_pendingSuggestion, 214, 0xe7e82e12)                                  // e7e82e12
 	iface.RegisterClazzName(ClazzName_todoItem, 216, 0xcba9a52f)                                           // cba9a52f
-	iface.RegisterClazzName(ClazzName_todoItem, 215, 0xcba9a52f)                                           // cba9a52f
-	iface.RegisterClazzName(ClazzName_todoItem, 214, 0xcba9a52f)                                           // cba9a52f
 	iface.RegisterClazzName(ClazzName_todoList, 216, 0x49b92a26)                                           // 49b92a26
-	iface.RegisterClazzName(ClazzName_todoList, 215, 0x49b92a26)                                           // 49b92a26
-	iface.RegisterClazzName(ClazzName_todoList, 214, 0x49b92a26)                                           // 49b92a26
 	iface.RegisterClazzName(ClazzName_todoCompletion, 216, 0x4cc120b7)                                     // 4cc120b7
-	iface.RegisterClazzName(ClazzName_todoCompletion, 215, 0x4cc120b7)                                     // 4cc120b7
-	iface.RegisterClazzName(ClazzName_todoCompletion, 214, 0x4cc120b7)                                     // 4cc120b7
 	iface.RegisterClazzName(ClazzName_suggestedPost, 216, 0xe8e37e5)                                       // e8e37e5
-	iface.RegisterClazzName(ClazzName_suggestedPost, 215, 0xe8e37e5)                                       // e8e37e5
-	iface.RegisterClazzName(ClazzName_suggestedPost, 214, 0xe8e37e5)                                       // e8e37e5
 	iface.RegisterClazzName(ClazzName_starsRating, 216, 0x1b0e4f07)                                        // 1b0e4f07
-	iface.RegisterClazzName(ClazzName_starsRating, 215, 0x1b0e4f07)                                        // 1b0e4f07
-	iface.RegisterClazzName(ClazzName_starsRating, 214, 0x1b0e4f07)                                        // 1b0e4f07
 	iface.RegisterClazzName(ClazzName_starGiftCollection, 216, 0x9d6b13b0)                                 // 9d6b13b0
-	iface.RegisterClazzName(ClazzName_starGiftCollection, 215, 0x9d6b13b0)                                 // 9d6b13b0
-	iface.RegisterClazzName(ClazzName_starGiftCollection, 214, 0x9d6b13b0)                                 // 9d6b13b0
 	iface.RegisterClazzName(ClazzName_payments_starGiftCollectionsNotModified, 216, 0xa0ba4f17)            // a0ba4f17
-	iface.RegisterClazzName(ClazzName_payments_starGiftCollectionsNotModified, 215, 0xa0ba4f17)            // a0ba4f17
-	iface.RegisterClazzName(ClazzName_payments_starGiftCollectionsNotModified, 214, 0xa0ba4f17)            // a0ba4f17
 	iface.RegisterClazzName(ClazzName_payments_starGiftCollections, 216, 0x8a2932f3)                       // 8a2932f3
-	iface.RegisterClazzName(ClazzName_payments_starGiftCollections, 215, 0x8a2932f3)                       // 8a2932f3
-	iface.RegisterClazzName(ClazzName_payments_starGiftCollections, 214, 0x8a2932f3)                       // 8a2932f3
 	iface.RegisterClazzName(ClazzName_storyAlbum, 216, 0x9325705a)                                         // 9325705a
-	iface.RegisterClazzName(ClazzName_storyAlbum, 215, 0x9325705a)                                         // 9325705a
-	iface.RegisterClazzName(ClazzName_storyAlbum, 214, 0x9325705a)                                         // 9325705a
 	iface.RegisterClazzName(ClazzName_stories_albumsNotModified, 216, 0x564edaeb)                          // 564edaeb
-	iface.RegisterClazzName(ClazzName_stories_albumsNotModified, 215, 0x564edaeb)                          // 564edaeb
-	iface.RegisterClazzName(ClazzName_stories_albumsNotModified, 214, 0x564edaeb)                          // 564edaeb
 	iface.RegisterClazzName(ClazzName_stories_albums, 216, 0xc3987a3a)                                     // c3987a3a
-	iface.RegisterClazzName(ClazzName_stories_albums, 215, 0xc3987a3a)                                     // c3987a3a
-	iface.RegisterClazzName(ClazzName_stories_albums, 214, 0xc3987a3a)                                     // c3987a3a
 	iface.RegisterClazzName(ClazzName_searchPostsFlood, 216, 0x3e0b5b6a)                                   // 3e0b5b6a
-	iface.RegisterClazzName(ClazzName_searchPostsFlood, 215, 0x3e0b5b6a)                                   // 3e0b5b6a
-	iface.RegisterClazzName(ClazzName_searchPostsFlood, 214, 0x3e0b5b6a)                                   // 3e0b5b6a
 	iface.RegisterClazzName(ClazzName_payments_uniqueStarGiftValueInfo, 216, 0x512fe446)                   // 512fe446
-	iface.RegisterClazzName(ClazzName_payments_uniqueStarGiftValueInfo, 215, 0x512fe446)                   // 512fe446
-	iface.RegisterClazzName(ClazzName_payments_uniqueStarGiftValueInfo, 214, 0x512fe446)                   // 512fe446
 	iface.RegisterClazzName(ClazzName_profileTabPosts, 216, 0xb98cd696)                                    // b98cd696
-	iface.RegisterClazzName(ClazzName_profileTabPosts, 215, 0xb98cd696)                                    // b98cd696
-	iface.RegisterClazzName(ClazzName_profileTabPosts, 214, 0xb98cd696)                                    // b98cd696
 	iface.RegisterClazzName(ClazzName_profileTabGifts, 216, 0x4d4bd46a)                                    // 4d4bd46a
-	iface.RegisterClazzName(ClazzName_profileTabGifts, 215, 0x4d4bd46a)                                    // 4d4bd46a
-	iface.RegisterClazzName(ClazzName_profileTabGifts, 214, 0x4d4bd46a)                                    // 4d4bd46a
 	iface.RegisterClazzName(ClazzName_profileTabMedia, 216, 0x72c64955)                                    // 72c64955
-	iface.RegisterClazzName(ClazzName_profileTabMedia, 215, 0x72c64955)                                    // 72c64955
-	iface.RegisterClazzName(ClazzName_profileTabMedia, 214, 0x72c64955)                                    // 72c64955
 	iface.RegisterClazzName(ClazzName_profileTabFiles, 216, 0xab339c00)                                    // ab339c00
-	iface.RegisterClazzName(ClazzName_profileTabFiles, 215, 0xab339c00)                                    // ab339c00
-	iface.RegisterClazzName(ClazzName_profileTabFiles, 214, 0xab339c00)                                    // ab339c00
 	iface.RegisterClazzName(ClazzName_profileTabMusic, 216, 0x9f27d26e)                                    // 9f27d26e
-	iface.RegisterClazzName(ClazzName_profileTabMusic, 215, 0x9f27d26e)                                    // 9f27d26e
-	iface.RegisterClazzName(ClazzName_profileTabMusic, 214, 0x9f27d26e)                                    // 9f27d26e
 	iface.RegisterClazzName(ClazzName_profileTabVoice, 216, 0xe477092e)                                    // e477092e
-	iface.RegisterClazzName(ClazzName_profileTabVoice, 215, 0xe477092e)                                    // e477092e
-	iface.RegisterClazzName(ClazzName_profileTabVoice, 214, 0xe477092e)                                    // e477092e
 	iface.RegisterClazzName(ClazzName_profileTabLinks, 216, 0xd3656499)                                    // d3656499
-	iface.RegisterClazzName(ClazzName_profileTabLinks, 215, 0xd3656499)                                    // d3656499
-	iface.RegisterClazzName(ClazzName_profileTabLinks, 214, 0xd3656499)                                    // d3656499
 	iface.RegisterClazzName(ClazzName_profileTabGifs, 216, 0xa2c0f695)                                     // a2c0f695
-	iface.RegisterClazzName(ClazzName_profileTabGifs, 215, 0xa2c0f695)                                     // a2c0f695
-	iface.RegisterClazzName(ClazzName_profileTabGifs, 214, 0xa2c0f695)                                     // a2c0f695
 	iface.RegisterClazzName(ClazzName_users_savedMusicNotModified, 216, 0xe3878aa4)                        // e3878aa4
-	iface.RegisterClazzName(ClazzName_users_savedMusicNotModified, 215, 0xe3878aa4)                        // e3878aa4
-	iface.RegisterClazzName(ClazzName_users_savedMusicNotModified, 214, 0xe3878aa4)                        // e3878aa4
 	iface.RegisterClazzName(ClazzName_users_savedMusic, 216, 0x34a2f297)                                   // 34a2f297
-	iface.RegisterClazzName(ClazzName_users_savedMusic, 215, 0x34a2f297)                                   // 34a2f297
-	iface.RegisterClazzName(ClazzName_users_savedMusic, 214, 0x34a2f297)                                   // 34a2f297
 	iface.RegisterClazzName(ClazzName_account_savedMusicIdsNotModified, 216, 0x4fc81d6e)                   // 4fc81d6e
-	iface.RegisterClazzName(ClazzName_account_savedMusicIdsNotModified, 215, 0x4fc81d6e)                   // 4fc81d6e
-	iface.RegisterClazzName(ClazzName_account_savedMusicIdsNotModified, 214, 0x4fc81d6e)                   // 4fc81d6e
 	iface.RegisterClazzName(ClazzName_account_savedMusicIds, 216, 0x998d6636)                              // 998d6636
-	iface.RegisterClazzName(ClazzName_account_savedMusicIds, 215, 0x998d6636)                              // 998d6636
-	iface.RegisterClazzName(ClazzName_account_savedMusicIds, 214, 0x998d6636)                              // 998d6636
 	iface.RegisterClazzName(ClazzName_payments_checkCanSendGiftResultOk, 216, 0x374fa7ad)                  // 374fa7ad
-	iface.RegisterClazzName(ClazzName_payments_checkCanSendGiftResultOk, 215, 0x374fa7ad)                  // 374fa7ad
-	iface.RegisterClazzName(ClazzName_payments_checkCanSendGiftResultOk, 214, 0x374fa7ad)                  // 374fa7ad
 	iface.RegisterClazzName(ClazzName_payments_checkCanSendGiftResultFail, 216, 0xd5e58274)                // d5e58274
-	iface.RegisterClazzName(ClazzName_payments_checkCanSendGiftResultFail, 215, 0xd5e58274)                // d5e58274
-	iface.RegisterClazzName(ClazzName_payments_checkCanSendGiftResultFail, 214, 0xd5e58274)                // d5e58274
 	iface.RegisterClazzName(ClazzName_inputChatThemeEmpty, 216, 0x83268483)                                // 83268483
-	iface.RegisterClazzName(ClazzName_inputChatThemeEmpty, 215, 0x83268483)                                // 83268483
-	iface.RegisterClazzName(ClazzName_inputChatThemeEmpty, 214, 0x83268483)                                // 83268483
 	iface.RegisterClazzName(ClazzName_inputChatTheme, 216, 0xc93de95c)                                     // c93de95c
-	iface.RegisterClazzName(ClazzName_inputChatTheme, 215, 0xc93de95c)                                     // c93de95c
-	iface.RegisterClazzName(ClazzName_inputChatTheme, 214, 0xc93de95c)                                     // c93de95c
 	iface.RegisterClazzName(ClazzName_inputChatThemeUniqueGift, 216, 0x87e5dfe4)                           // 87e5dfe4
-	iface.RegisterClazzName(ClazzName_inputChatThemeUniqueGift, 215, 0x87e5dfe4)                           // 87e5dfe4
-	iface.RegisterClazzName(ClazzName_inputChatThemeUniqueGift, 214, 0x87e5dfe4)                           // 87e5dfe4
 	iface.RegisterClazzName(ClazzName_starGiftUpgradePrice, 216, 0x99ea331d)                               // 99ea331d
-	iface.RegisterClazzName(ClazzName_starGiftUpgradePrice, 215, 0x99ea331d)                               // 99ea331d
 	iface.RegisterClazzName(ClazzName_invokeAfterMsg, 216, 0xcb9f372d)                                     // cb9f372d
-	iface.RegisterClazzName(ClazzName_invokeAfterMsg, 215, 0xcb9f372d)                                     // cb9f372d
-	iface.RegisterClazzName(ClazzName_invokeAfterMsg, 214, 0xcb9f372d)                                     // cb9f372d
 	iface.RegisterClazzName(ClazzName_invokeAfterMsgs, 216, 0x3dc4b4f0)                                    // 3dc4b4f0
-	iface.RegisterClazzName(ClazzName_invokeAfterMsgs, 215, 0x3dc4b4f0)                                    // 3dc4b4f0
-	iface.RegisterClazzName(ClazzName_invokeAfterMsgs, 214, 0x3dc4b4f0)                                    // 3dc4b4f0
 	iface.RegisterClazzName(ClazzName_initConnection, 216, 0xc1cd5ea9)                                     // c1cd5ea9
-	iface.RegisterClazzName(ClazzName_initConnection, 215, 0xc1cd5ea9)                                     // c1cd5ea9
-	iface.RegisterClazzName(ClazzName_initConnection, 214, 0xc1cd5ea9)                                     // c1cd5ea9
 	iface.RegisterClazzName(ClazzName_initConnection, 0, 0x785188b8)                                       // 785188b8
 	iface.RegisterClazzName(ClazzName_invokeWithLayer, 216, 0xda9b0d0d)                                    // da9b0d0d
-	iface.RegisterClazzName(ClazzName_invokeWithLayer, 215, 0xda9b0d0d)                                    // da9b0d0d
-	iface.RegisterClazzName(ClazzName_invokeWithLayer, 214, 0xda9b0d0d)                                    // da9b0d0d
 	iface.RegisterClazzName(ClazzName_invokeWithoutUpdates, 216, 0xbf9459b7)                               // bf9459b7
-	iface.RegisterClazzName(ClazzName_invokeWithoutUpdates, 215, 0xbf9459b7)                               // bf9459b7
-	iface.RegisterClazzName(ClazzName_invokeWithoutUpdates, 214, 0xbf9459b7)                               // bf9459b7
 	iface.RegisterClazzName(ClazzName_invokeWithMessagesRange, 216, 0x365275f2)                            // 365275f2
-	iface.RegisterClazzName(ClazzName_invokeWithMessagesRange, 215, 0x365275f2)                            // 365275f2
-	iface.RegisterClazzName(ClazzName_invokeWithMessagesRange, 214, 0x365275f2)                            // 365275f2
 	iface.RegisterClazzName(ClazzName_invokeWithTakeout, 216, 0xaca9fd2e)                                  // aca9fd2e
-	iface.RegisterClazzName(ClazzName_invokeWithTakeout, 215, 0xaca9fd2e)                                  // aca9fd2e
-	iface.RegisterClazzName(ClazzName_invokeWithTakeout, 214, 0xaca9fd2e)                                  // aca9fd2e
 	iface.RegisterClazzName(ClazzName_invokeWithBusinessConnection, 216, 0xdd289f8e)                       // dd289f8e
-	iface.RegisterClazzName(ClazzName_invokeWithBusinessConnection, 215, 0xdd289f8e)                       // dd289f8e
-	iface.RegisterClazzName(ClazzName_invokeWithBusinessConnection, 214, 0xdd289f8e)                       // dd289f8e
 	iface.RegisterClazzName(ClazzName_invokeWithGooglePlayIntegrity, 216, 0x1df92984)                      // 1df92984
-	iface.RegisterClazzName(ClazzName_invokeWithGooglePlayIntegrity, 215, 0x1df92984)                      // 1df92984
-	iface.RegisterClazzName(ClazzName_invokeWithGooglePlayIntegrity, 214, 0x1df92984)                      // 1df92984
 	iface.RegisterClazzName(ClazzName_invokeWithApnsSecret, 216, 0xdae54f8)                                // dae54f8
-	iface.RegisterClazzName(ClazzName_invokeWithApnsSecret, 215, 0xdae54f8)                                // dae54f8
-	iface.RegisterClazzName(ClazzName_invokeWithApnsSecret, 214, 0xdae54f8)                                // dae54f8
 	iface.RegisterClazzName(ClazzName_invokeWithReCaptcha, 216, 0xadbb0f94)                                // adbb0f94
-	iface.RegisterClazzName(ClazzName_invokeWithReCaptcha, 215, 0xadbb0f94)                                // adbb0f94
-	iface.RegisterClazzName(ClazzName_invokeWithReCaptcha, 214, 0xadbb0f94)                                // adbb0f94
 	iface.RegisterClazzName(ClazzName_auth_sendCode, 216, 0xa677244f)                                      // a677244f
-	iface.RegisterClazzName(ClazzName_auth_sendCode, 215, 0xa677244f)                                      // a677244f
-	iface.RegisterClazzName(ClazzName_auth_sendCode, 214, 0xa677244f)                                      // a677244f
 	iface.RegisterClazzName(ClazzName_auth_signUp, 216, 0xaac7b717)                                        // aac7b717
-	iface.RegisterClazzName(ClazzName_auth_signUp, 215, 0xaac7b717)                                        // aac7b717
-	iface.RegisterClazzName(ClazzName_auth_signUp, 214, 0xaac7b717)                                        // aac7b717
 	iface.RegisterClazzName(ClazzName_auth_signIn, 216, 0x8d52a951)                                        // 8d52a951
-	iface.RegisterClazzName(ClazzName_auth_signIn, 215, 0x8d52a951)                                        // 8d52a951
-	iface.RegisterClazzName(ClazzName_auth_signIn, 214, 0x8d52a951)                                        // 8d52a951
 	iface.RegisterClazzName(ClazzName_auth_logOut, 216, 0x3e72ba19)                                        // 3e72ba19
-	iface.RegisterClazzName(ClazzName_auth_logOut, 215, 0x3e72ba19)                                        // 3e72ba19
-	iface.RegisterClazzName(ClazzName_auth_logOut, 214, 0x3e72ba19)                                        // 3e72ba19
 	iface.RegisterClazzName(ClazzName_auth_resetAuthorizations, 216, 0x9fab0d1a)                           // 9fab0d1a
-	iface.RegisterClazzName(ClazzName_auth_resetAuthorizations, 215, 0x9fab0d1a)                           // 9fab0d1a
-	iface.RegisterClazzName(ClazzName_auth_resetAuthorizations, 214, 0x9fab0d1a)                           // 9fab0d1a
 	iface.RegisterClazzName(ClazzName_auth_exportAuthorization, 216, 0xe5bfffcd)                           // e5bfffcd
-	iface.RegisterClazzName(ClazzName_auth_exportAuthorization, 215, 0xe5bfffcd)                           // e5bfffcd
-	iface.RegisterClazzName(ClazzName_auth_exportAuthorization, 214, 0xe5bfffcd)                           // e5bfffcd
 	iface.RegisterClazzName(ClazzName_auth_importAuthorization, 216, 0xa57a7dad)                           // a57a7dad
-	iface.RegisterClazzName(ClazzName_auth_importAuthorization, 215, 0xa57a7dad)                           // a57a7dad
-	iface.RegisterClazzName(ClazzName_auth_importAuthorization, 214, 0xa57a7dad)                           // a57a7dad
 	iface.RegisterClazzName(ClazzName_auth_bindTempAuthKey, 216, 0xcdd42a05)                               // cdd42a05
-	iface.RegisterClazzName(ClazzName_auth_bindTempAuthKey, 215, 0xcdd42a05)                               // cdd42a05
-	iface.RegisterClazzName(ClazzName_auth_bindTempAuthKey, 214, 0xcdd42a05)                               // cdd42a05
 	iface.RegisterClazzName(ClazzName_auth_importBotAuthorization, 216, 0x67a3ff2c)                        // 67a3ff2c
-	iface.RegisterClazzName(ClazzName_auth_importBotAuthorization, 215, 0x67a3ff2c)                        // 67a3ff2c
-	iface.RegisterClazzName(ClazzName_auth_importBotAuthorization, 214, 0x67a3ff2c)                        // 67a3ff2c
 	iface.RegisterClazzName(ClazzName_auth_checkPassword, 216, 0xd18b4d16)                                 // d18b4d16
-	iface.RegisterClazzName(ClazzName_auth_checkPassword, 215, 0xd18b4d16)                                 // d18b4d16
-	iface.RegisterClazzName(ClazzName_auth_checkPassword, 214, 0xd18b4d16)                                 // d18b4d16
 	iface.RegisterClazzName(ClazzName_auth_requestPasswordRecovery, 216, 0xd897bc66)                       // d897bc66
-	iface.RegisterClazzName(ClazzName_auth_requestPasswordRecovery, 215, 0xd897bc66)                       // d897bc66
-	iface.RegisterClazzName(ClazzName_auth_requestPasswordRecovery, 214, 0xd897bc66)                       // d897bc66
 	iface.RegisterClazzName(ClazzName_auth_recoverPassword, 216, 0x37096c70)                               // 37096c70
-	iface.RegisterClazzName(ClazzName_auth_recoverPassword, 215, 0x37096c70)                               // 37096c70
-	iface.RegisterClazzName(ClazzName_auth_recoverPassword, 214, 0x37096c70)                               // 37096c70
 	iface.RegisterClazzName(ClazzName_auth_resendCode, 216, 0xcae47523)                                    // cae47523
-	iface.RegisterClazzName(ClazzName_auth_resendCode, 215, 0xcae47523)                                    // cae47523
-	iface.RegisterClazzName(ClazzName_auth_resendCode, 214, 0xcae47523)                                    // cae47523
 	iface.RegisterClazzName(ClazzName_auth_cancelCode, 216, 0x1f040578)                                    // 1f040578
-	iface.RegisterClazzName(ClazzName_auth_cancelCode, 215, 0x1f040578)                                    // 1f040578
-	iface.RegisterClazzName(ClazzName_auth_cancelCode, 214, 0x1f040578)                                    // 1f040578
 	iface.RegisterClazzName(ClazzName_auth_dropTempAuthKeys, 216, 0x8e48a188)                              // 8e48a188
-	iface.RegisterClazzName(ClazzName_auth_dropTempAuthKeys, 215, 0x8e48a188)                              // 8e48a188
-	iface.RegisterClazzName(ClazzName_auth_dropTempAuthKeys, 214, 0x8e48a188)                              // 8e48a188
 	iface.RegisterClazzName(ClazzName_auth_exportLoginToken, 216, 0xb7e085fe)                              // b7e085fe
-	iface.RegisterClazzName(ClazzName_auth_exportLoginToken, 215, 0xb7e085fe)                              // b7e085fe
-	iface.RegisterClazzName(ClazzName_auth_exportLoginToken, 214, 0xb7e085fe)                              // b7e085fe
 	iface.RegisterClazzName(ClazzName_auth_importLoginToken, 216, 0x95ac5ce4)                              // 95ac5ce4
-	iface.RegisterClazzName(ClazzName_auth_importLoginToken, 215, 0x95ac5ce4)                              // 95ac5ce4
-	iface.RegisterClazzName(ClazzName_auth_importLoginToken, 214, 0x95ac5ce4)                              // 95ac5ce4
 	iface.RegisterClazzName(ClazzName_auth_acceptLoginToken, 216, 0xe894ad4d)                              // e894ad4d
-	iface.RegisterClazzName(ClazzName_auth_acceptLoginToken, 215, 0xe894ad4d)                              // e894ad4d
-	iface.RegisterClazzName(ClazzName_auth_acceptLoginToken, 214, 0xe894ad4d)                              // e894ad4d
 	iface.RegisterClazzName(ClazzName_auth_checkRecoveryPassword, 216, 0xd36bf79)                          // d36bf79
-	iface.RegisterClazzName(ClazzName_auth_checkRecoveryPassword, 215, 0xd36bf79)                          // d36bf79
-	iface.RegisterClazzName(ClazzName_auth_checkRecoveryPassword, 214, 0xd36bf79)                          // d36bf79
 	iface.RegisterClazzName(ClazzName_auth_importWebTokenAuthorization, 216, 0x2db873a9)                   // 2db873a9
-	iface.RegisterClazzName(ClazzName_auth_importWebTokenAuthorization, 215, 0x2db873a9)                   // 2db873a9
-	iface.RegisterClazzName(ClazzName_auth_importWebTokenAuthorization, 214, 0x2db873a9)                   // 2db873a9
 	iface.RegisterClazzName(ClazzName_auth_requestFirebaseSms, 216, 0x8e39261e)                            // 8e39261e
-	iface.RegisterClazzName(ClazzName_auth_requestFirebaseSms, 215, 0x8e39261e)                            // 8e39261e
-	iface.RegisterClazzName(ClazzName_auth_requestFirebaseSms, 214, 0x8e39261e)                            // 8e39261e
 	iface.RegisterClazzName(ClazzName_auth_resetLoginEmail, 216, 0x7e960193)                               // 7e960193
-	iface.RegisterClazzName(ClazzName_auth_resetLoginEmail, 215, 0x7e960193)                               // 7e960193
-	iface.RegisterClazzName(ClazzName_auth_resetLoginEmail, 214, 0x7e960193)                               // 7e960193
 	iface.RegisterClazzName(ClazzName_auth_reportMissingCode, 216, 0xcb9deff6)                             // cb9deff6
-	iface.RegisterClazzName(ClazzName_auth_reportMissingCode, 215, 0xcb9deff6)                             // cb9deff6
-	iface.RegisterClazzName(ClazzName_auth_reportMissingCode, 214, 0xcb9deff6)                             // cb9deff6
 	iface.RegisterClazzName(ClazzName_auth_checkPaidAuth, 216, 0x56e59f9c)                                 // 56e59f9c
-	iface.RegisterClazzName(ClazzName_auth_checkPaidAuth, 215, 0x56e59f9c)                                 // 56e59f9c
 	iface.RegisterClazzName(ClazzName_account_registerDevice, 216, 0xec86017a)                             // ec86017a
-	iface.RegisterClazzName(ClazzName_account_registerDevice, 215, 0xec86017a)                             // ec86017a
-	iface.RegisterClazzName(ClazzName_account_registerDevice, 214, 0xec86017a)                             // ec86017a
 	iface.RegisterClazzName(ClazzName_account_registerDevice, 71, 0x637ea878)                              // 637ea878
 	iface.RegisterClazzName(ClazzName_account_unregisterDevice, 216, 0x6a0d3206)                           // 6a0d3206
-	iface.RegisterClazzName(ClazzName_account_unregisterDevice, 215, 0x6a0d3206)                           // 6a0d3206
-	iface.RegisterClazzName(ClazzName_account_unregisterDevice, 214, 0x6a0d3206)                           // 6a0d3206
 	iface.RegisterClazzName(ClazzName_account_unregisterDevice, 71, 0x65c55b40)                            // 65c55b40
 	iface.RegisterClazzName(ClazzName_account_updateNotifySettings, 216, 0x84be5b93)                       // 84be5b93
-	iface.RegisterClazzName(ClazzName_account_updateNotifySettings, 215, 0x84be5b93)                       // 84be5b93
-	iface.RegisterClazzName(ClazzName_account_updateNotifySettings, 214, 0x84be5b93)                       // 84be5b93
 	iface.RegisterClazzName(ClazzName_account_getNotifySettings, 216, 0x12b3ad31)                          // 12b3ad31
-	iface.RegisterClazzName(ClazzName_account_getNotifySettings, 215, 0x12b3ad31)                          // 12b3ad31
-	iface.RegisterClazzName(ClazzName_account_getNotifySettings, 214, 0x12b3ad31)                          // 12b3ad31
 	iface.RegisterClazzName(ClazzName_account_resetNotifySettings, 216, 0xdb7e1747)                        // db7e1747
-	iface.RegisterClazzName(ClazzName_account_resetNotifySettings, 215, 0xdb7e1747)                        // db7e1747
-	iface.RegisterClazzName(ClazzName_account_resetNotifySettings, 214, 0xdb7e1747)                        // db7e1747
 	iface.RegisterClazzName(ClazzName_account_updateProfile, 216, 0x78515775)                              // 78515775
-	iface.RegisterClazzName(ClazzName_account_updateProfile, 215, 0x78515775)                              // 78515775
-	iface.RegisterClazzName(ClazzName_account_updateProfile, 214, 0x78515775)                              // 78515775
 	iface.RegisterClazzName(ClazzName_account_updateStatus, 216, 0x6628562c)                               // 6628562c
-	iface.RegisterClazzName(ClazzName_account_updateStatus, 215, 0x6628562c)                               // 6628562c
-	iface.RegisterClazzName(ClazzName_account_updateStatus, 214, 0x6628562c)                               // 6628562c
 	iface.RegisterClazzName(ClazzName_account_getWallPapers, 216, 0x7967d36)                               // 7967d36
-	iface.RegisterClazzName(ClazzName_account_getWallPapers, 215, 0x7967d36)                               // 7967d36
-	iface.RegisterClazzName(ClazzName_account_getWallPapers, 214, 0x7967d36)                               // 7967d36
 	iface.RegisterClazzName(ClazzName_account_reportPeer, 216, 0xc5ba3d86)                                 // c5ba3d86
-	iface.RegisterClazzName(ClazzName_account_reportPeer, 215, 0xc5ba3d86)                                 // c5ba3d86
-	iface.RegisterClazzName(ClazzName_account_reportPeer, 214, 0xc5ba3d86)                                 // c5ba3d86
 	iface.RegisterClazzName(ClazzName_account_checkUsername, 216, 0x2714d86c)                              // 2714d86c
-	iface.RegisterClazzName(ClazzName_account_checkUsername, 215, 0x2714d86c)                              // 2714d86c
-	iface.RegisterClazzName(ClazzName_account_checkUsername, 214, 0x2714d86c)                              // 2714d86c
 	iface.RegisterClazzName(ClazzName_account_updateUsername, 216, 0x3e0bdd7c)                             // 3e0bdd7c
-	iface.RegisterClazzName(ClazzName_account_updateUsername, 215, 0x3e0bdd7c)                             // 3e0bdd7c
-	iface.RegisterClazzName(ClazzName_account_updateUsername, 214, 0x3e0bdd7c)                             // 3e0bdd7c
 	iface.RegisterClazzName(ClazzName_account_getPrivacy, 216, 0xdadbc950)                                 // dadbc950
-	iface.RegisterClazzName(ClazzName_account_getPrivacy, 215, 0xdadbc950)                                 // dadbc950
-	iface.RegisterClazzName(ClazzName_account_getPrivacy, 214, 0xdadbc950)                                 // dadbc950
 	iface.RegisterClazzName(ClazzName_account_setPrivacy, 216, 0xc9f81ce8)                                 // c9f81ce8
-	iface.RegisterClazzName(ClazzName_account_setPrivacy, 215, 0xc9f81ce8)                                 // c9f81ce8
-	iface.RegisterClazzName(ClazzName_account_setPrivacy, 214, 0xc9f81ce8)                                 // c9f81ce8
 	iface.RegisterClazzName(ClazzName_account_deleteAccount, 216, 0xa2c0cf74)                              // a2c0cf74
-	iface.RegisterClazzName(ClazzName_account_deleteAccount, 215, 0xa2c0cf74)                              // a2c0cf74
-	iface.RegisterClazzName(ClazzName_account_deleteAccount, 214, 0xa2c0cf74)                              // a2c0cf74
 	iface.RegisterClazzName(ClazzName_account_getAccountTTL, 216, 0x8fc711d)                               // 8fc711d
-	iface.RegisterClazzName(ClazzName_account_getAccountTTL, 215, 0x8fc711d)                               // 8fc711d
-	iface.RegisterClazzName(ClazzName_account_getAccountTTL, 214, 0x8fc711d)                               // 8fc711d
 	iface.RegisterClazzName(ClazzName_account_setAccountTTL, 216, 0x2442485e)                              // 2442485e
-	iface.RegisterClazzName(ClazzName_account_setAccountTTL, 215, 0x2442485e)                              // 2442485e
-	iface.RegisterClazzName(ClazzName_account_setAccountTTL, 214, 0x2442485e)                              // 2442485e
 	iface.RegisterClazzName(ClazzName_account_sendChangePhoneCode, 216, 0x82574ae5)                        // 82574ae5
-	iface.RegisterClazzName(ClazzName_account_sendChangePhoneCode, 215, 0x82574ae5)                        // 82574ae5
-	iface.RegisterClazzName(ClazzName_account_sendChangePhoneCode, 214, 0x82574ae5)                        // 82574ae5
 	iface.RegisterClazzName(ClazzName_account_changePhone, 216, 0x70c32edb)                                // 70c32edb
-	iface.RegisterClazzName(ClazzName_account_changePhone, 215, 0x70c32edb)                                // 70c32edb
-	iface.RegisterClazzName(ClazzName_account_changePhone, 214, 0x70c32edb)                                // 70c32edb
 	iface.RegisterClazzName(ClazzName_account_updateDeviceLocked, 216, 0x38df3532)                         // 38df3532
-	iface.RegisterClazzName(ClazzName_account_updateDeviceLocked, 215, 0x38df3532)                         // 38df3532
-	iface.RegisterClazzName(ClazzName_account_updateDeviceLocked, 214, 0x38df3532)                         // 38df3532
 	iface.RegisterClazzName(ClazzName_account_getAuthorizations, 216, 0xe320c158)                          // e320c158
-	iface.RegisterClazzName(ClazzName_account_getAuthorizations, 215, 0xe320c158)                          // e320c158
-	iface.RegisterClazzName(ClazzName_account_getAuthorizations, 214, 0xe320c158)                          // e320c158
 	iface.RegisterClazzName(ClazzName_account_resetAuthorization, 216, 0xdf77f3bc)                         // df77f3bc
-	iface.RegisterClazzName(ClazzName_account_resetAuthorization, 215, 0xdf77f3bc)                         // df77f3bc
-	iface.RegisterClazzName(ClazzName_account_resetAuthorization, 214, 0xdf77f3bc)                         // df77f3bc
 	iface.RegisterClazzName(ClazzName_account_getPassword, 216, 0x548a30f5)                                // 548a30f5
-	iface.RegisterClazzName(ClazzName_account_getPassword, 215, 0x548a30f5)                                // 548a30f5
-	iface.RegisterClazzName(ClazzName_account_getPassword, 214, 0x548a30f5)                                // 548a30f5
 	iface.RegisterClazzName(ClazzName_account_getPasswordSettings, 216, 0x9cd4eaf9)                        // 9cd4eaf9
-	iface.RegisterClazzName(ClazzName_account_getPasswordSettings, 215, 0x9cd4eaf9)                        // 9cd4eaf9
-	iface.RegisterClazzName(ClazzName_account_getPasswordSettings, 214, 0x9cd4eaf9)                        // 9cd4eaf9
 	iface.RegisterClazzName(ClazzName_account_updatePasswordSettings, 216, 0xa59b102f)                     // a59b102f
-	iface.RegisterClazzName(ClazzName_account_updatePasswordSettings, 215, 0xa59b102f)                     // a59b102f
-	iface.RegisterClazzName(ClazzName_account_updatePasswordSettings, 214, 0xa59b102f)                     // a59b102f
 	iface.RegisterClazzName(ClazzName_account_sendConfirmPhoneCode, 216, 0x1b3faa88)                       // 1b3faa88
-	iface.RegisterClazzName(ClazzName_account_sendConfirmPhoneCode, 215, 0x1b3faa88)                       // 1b3faa88
-	iface.RegisterClazzName(ClazzName_account_sendConfirmPhoneCode, 214, 0x1b3faa88)                       // 1b3faa88
 	iface.RegisterClazzName(ClazzName_account_confirmPhone, 216, 0x5f2178c3)                               // 5f2178c3
-	iface.RegisterClazzName(ClazzName_account_confirmPhone, 215, 0x5f2178c3)                               // 5f2178c3
-	iface.RegisterClazzName(ClazzName_account_confirmPhone, 214, 0x5f2178c3)                               // 5f2178c3
 	iface.RegisterClazzName(ClazzName_account_getTmpPassword, 216, 0x449e0b51)                             // 449e0b51
-	iface.RegisterClazzName(ClazzName_account_getTmpPassword, 215, 0x449e0b51)                             // 449e0b51
-	iface.RegisterClazzName(ClazzName_account_getTmpPassword, 214, 0x449e0b51)                             // 449e0b51
 	iface.RegisterClazzName(ClazzName_account_getWebAuthorizations, 216, 0x182e6d6f)                       // 182e6d6f
-	iface.RegisterClazzName(ClazzName_account_getWebAuthorizations, 215, 0x182e6d6f)                       // 182e6d6f
-	iface.RegisterClazzName(ClazzName_account_getWebAuthorizations, 214, 0x182e6d6f)                       // 182e6d6f
 	iface.RegisterClazzName(ClazzName_account_resetWebAuthorization, 216, 0x2d01b9ef)                      // 2d01b9ef
-	iface.RegisterClazzName(ClazzName_account_resetWebAuthorization, 215, 0x2d01b9ef)                      // 2d01b9ef
-	iface.RegisterClazzName(ClazzName_account_resetWebAuthorization, 214, 0x2d01b9ef)                      // 2d01b9ef
 	iface.RegisterClazzName(ClazzName_account_resetWebAuthorizations, 216, 0x682d2594)                     // 682d2594
-	iface.RegisterClazzName(ClazzName_account_resetWebAuthorizations, 215, 0x682d2594)                     // 682d2594
-	iface.RegisterClazzName(ClazzName_account_resetWebAuthorizations, 214, 0x682d2594)                     // 682d2594
 	iface.RegisterClazzName(ClazzName_account_getAllSecureValues, 216, 0xb288bc7d)                         // b288bc7d
-	iface.RegisterClazzName(ClazzName_account_getAllSecureValues, 215, 0xb288bc7d)                         // b288bc7d
-	iface.RegisterClazzName(ClazzName_account_getAllSecureValues, 214, 0xb288bc7d)                         // b288bc7d
 	iface.RegisterClazzName(ClazzName_account_getSecureValue, 216, 0x73665bc2)                             // 73665bc2
-	iface.RegisterClazzName(ClazzName_account_getSecureValue, 215, 0x73665bc2)                             // 73665bc2
-	iface.RegisterClazzName(ClazzName_account_getSecureValue, 214, 0x73665bc2)                             // 73665bc2
 	iface.RegisterClazzName(ClazzName_account_saveSecureValue, 216, 0x899fe31d)                            // 899fe31d
-	iface.RegisterClazzName(ClazzName_account_saveSecureValue, 215, 0x899fe31d)                            // 899fe31d
-	iface.RegisterClazzName(ClazzName_account_saveSecureValue, 214, 0x899fe31d)                            // 899fe31d
 	iface.RegisterClazzName(ClazzName_account_deleteSecureValue, 216, 0xb880bc4b)                          // b880bc4b
-	iface.RegisterClazzName(ClazzName_account_deleteSecureValue, 215, 0xb880bc4b)                          // b880bc4b
-	iface.RegisterClazzName(ClazzName_account_deleteSecureValue, 214, 0xb880bc4b)                          // b880bc4b
 	iface.RegisterClazzName(ClazzName_account_getAuthorizationForm, 216, 0xa929597a)                       // a929597a
-	iface.RegisterClazzName(ClazzName_account_getAuthorizationForm, 215, 0xa929597a)                       // a929597a
-	iface.RegisterClazzName(ClazzName_account_getAuthorizationForm, 214, 0xa929597a)                       // a929597a
 	iface.RegisterClazzName(ClazzName_account_acceptAuthorization, 216, 0xf3ed4c73)                        // f3ed4c73
-	iface.RegisterClazzName(ClazzName_account_acceptAuthorization, 215, 0xf3ed4c73)                        // f3ed4c73
-	iface.RegisterClazzName(ClazzName_account_acceptAuthorization, 214, 0xf3ed4c73)                        // f3ed4c73
 	iface.RegisterClazzName(ClazzName_account_sendVerifyPhoneCode, 216, 0xa5a356f9)                        // a5a356f9
-	iface.RegisterClazzName(ClazzName_account_sendVerifyPhoneCode, 215, 0xa5a356f9)                        // a5a356f9
-	iface.RegisterClazzName(ClazzName_account_sendVerifyPhoneCode, 214, 0xa5a356f9)                        // a5a356f9
 	iface.RegisterClazzName(ClazzName_account_verifyPhone, 216, 0x4dd3a7f6)                                // 4dd3a7f6
-	iface.RegisterClazzName(ClazzName_account_verifyPhone, 215, 0x4dd3a7f6)                                // 4dd3a7f6
-	iface.RegisterClazzName(ClazzName_account_verifyPhone, 214, 0x4dd3a7f6)                                // 4dd3a7f6
 	iface.RegisterClazzName(ClazzName_account_sendVerifyEmailCode, 216, 0x98e037bb)                        // 98e037bb
-	iface.RegisterClazzName(ClazzName_account_sendVerifyEmailCode, 215, 0x98e037bb)                        // 98e037bb
-	iface.RegisterClazzName(ClazzName_account_sendVerifyEmailCode, 214, 0x98e037bb)                        // 98e037bb
 	iface.RegisterClazzName(ClazzName_account_verifyEmail, 216, 0x32da4cf)                                 // 32da4cf
-	iface.RegisterClazzName(ClazzName_account_verifyEmail, 215, 0x32da4cf)                                 // 32da4cf
-	iface.RegisterClazzName(ClazzName_account_verifyEmail, 214, 0x32da4cf)                                 // 32da4cf
 	iface.RegisterClazzName(ClazzName_account_initTakeoutSession, 216, 0x8ef3eab0)                         // 8ef3eab0
-	iface.RegisterClazzName(ClazzName_account_initTakeoutSession, 215, 0x8ef3eab0)                         // 8ef3eab0
-	iface.RegisterClazzName(ClazzName_account_initTakeoutSession, 214, 0x8ef3eab0)                         // 8ef3eab0
 	iface.RegisterClazzName(ClazzName_account_finishTakeoutSession, 216, 0x1d2652ee)                       // 1d2652ee
-	iface.RegisterClazzName(ClazzName_account_finishTakeoutSession, 215, 0x1d2652ee)                       // 1d2652ee
-	iface.RegisterClazzName(ClazzName_account_finishTakeoutSession, 214, 0x1d2652ee)                       // 1d2652ee
 	iface.RegisterClazzName(ClazzName_account_confirmPasswordEmail, 216, 0x8fdf1920)                       // 8fdf1920
-	iface.RegisterClazzName(ClazzName_account_confirmPasswordEmail, 215, 0x8fdf1920)                       // 8fdf1920
-	iface.RegisterClazzName(ClazzName_account_confirmPasswordEmail, 214, 0x8fdf1920)                       // 8fdf1920
 	iface.RegisterClazzName(ClazzName_account_resendPasswordEmail, 216, 0x7a7f2a15)                        // 7a7f2a15
-	iface.RegisterClazzName(ClazzName_account_resendPasswordEmail, 215, 0x7a7f2a15)                        // 7a7f2a15
-	iface.RegisterClazzName(ClazzName_account_resendPasswordEmail, 214, 0x7a7f2a15)                        // 7a7f2a15
 	iface.RegisterClazzName(ClazzName_account_cancelPasswordEmail, 216, 0xc1cbd5b6)                        // c1cbd5b6
-	iface.RegisterClazzName(ClazzName_account_cancelPasswordEmail, 215, 0xc1cbd5b6)                        // c1cbd5b6
-	iface.RegisterClazzName(ClazzName_account_cancelPasswordEmail, 214, 0xc1cbd5b6)                        // c1cbd5b6
 	iface.RegisterClazzName(ClazzName_account_getContactSignUpNotification, 216, 0x9f07c728)               // 9f07c728
-	iface.RegisterClazzName(ClazzName_account_getContactSignUpNotification, 215, 0x9f07c728)               // 9f07c728
-	iface.RegisterClazzName(ClazzName_account_getContactSignUpNotification, 214, 0x9f07c728)               // 9f07c728
 	iface.RegisterClazzName(ClazzName_account_setContactSignUpNotification, 216, 0xcff43f61)               // cff43f61
-	iface.RegisterClazzName(ClazzName_account_setContactSignUpNotification, 215, 0xcff43f61)               // cff43f61
-	iface.RegisterClazzName(ClazzName_account_setContactSignUpNotification, 214, 0xcff43f61)               // cff43f61
 	iface.RegisterClazzName(ClazzName_account_getNotifyExceptions, 216, 0x53577479)                        // 53577479
-	iface.RegisterClazzName(ClazzName_account_getNotifyExceptions, 215, 0x53577479)                        // 53577479
-	iface.RegisterClazzName(ClazzName_account_getNotifyExceptions, 214, 0x53577479)                        // 53577479
 	iface.RegisterClazzName(ClazzName_account_getWallPaper, 216, 0xfc8ddbea)                               // fc8ddbea
-	iface.RegisterClazzName(ClazzName_account_getWallPaper, 215, 0xfc8ddbea)                               // fc8ddbea
-	iface.RegisterClazzName(ClazzName_account_getWallPaper, 214, 0xfc8ddbea)                               // fc8ddbea
 	iface.RegisterClazzName(ClazzName_account_uploadWallPaper, 216, 0xe39a8f03)                            // e39a8f03
-	iface.RegisterClazzName(ClazzName_account_uploadWallPaper, 215, 0xe39a8f03)                            // e39a8f03
-	iface.RegisterClazzName(ClazzName_account_uploadWallPaper, 214, 0xe39a8f03)                            // e39a8f03
 	iface.RegisterClazzName(ClazzName_account_saveWallPaper, 216, 0x6c5a5b37)                              // 6c5a5b37
-	iface.RegisterClazzName(ClazzName_account_saveWallPaper, 215, 0x6c5a5b37)                              // 6c5a5b37
-	iface.RegisterClazzName(ClazzName_account_saveWallPaper, 214, 0x6c5a5b37)                              // 6c5a5b37
 	iface.RegisterClazzName(ClazzName_account_installWallPaper, 216, 0xfeed5769)                           // feed5769
-	iface.RegisterClazzName(ClazzName_account_installWallPaper, 215, 0xfeed5769)                           // feed5769
-	iface.RegisterClazzName(ClazzName_account_installWallPaper, 214, 0xfeed5769)                           // feed5769
 	iface.RegisterClazzName(ClazzName_account_resetWallPapers, 216, 0xbb3b9804)                            // bb3b9804
-	iface.RegisterClazzName(ClazzName_account_resetWallPapers, 215, 0xbb3b9804)                            // bb3b9804
-	iface.RegisterClazzName(ClazzName_account_resetWallPapers, 214, 0xbb3b9804)                            // bb3b9804
 	iface.RegisterClazzName(ClazzName_account_getAutoDownloadSettings, 216, 0x56da0b3f)                    // 56da0b3f
-	iface.RegisterClazzName(ClazzName_account_getAutoDownloadSettings, 215, 0x56da0b3f)                    // 56da0b3f
-	iface.RegisterClazzName(ClazzName_account_getAutoDownloadSettings, 214, 0x56da0b3f)                    // 56da0b3f
 	iface.RegisterClazzName(ClazzName_account_saveAutoDownloadSettings, 216, 0x76f36233)                   // 76f36233
-	iface.RegisterClazzName(ClazzName_account_saveAutoDownloadSettings, 215, 0x76f36233)                   // 76f36233
-	iface.RegisterClazzName(ClazzName_account_saveAutoDownloadSettings, 214, 0x76f36233)                   // 76f36233
 	iface.RegisterClazzName(ClazzName_account_uploadTheme, 216, 0x1c3db333)                                // 1c3db333
-	iface.RegisterClazzName(ClazzName_account_uploadTheme, 215, 0x1c3db333)                                // 1c3db333
-	iface.RegisterClazzName(ClazzName_account_uploadTheme, 214, 0x1c3db333)                                // 1c3db333
 	iface.RegisterClazzName(ClazzName_account_createTheme, 216, 0x652e4400)                                // 652e4400
-	iface.RegisterClazzName(ClazzName_account_createTheme, 215, 0x652e4400)                                // 652e4400
-	iface.RegisterClazzName(ClazzName_account_createTheme, 214, 0x652e4400)                                // 652e4400
 	iface.RegisterClazzName(ClazzName_account_updateTheme, 216, 0x2bf40ccc)                                // 2bf40ccc
-	iface.RegisterClazzName(ClazzName_account_updateTheme, 215, 0x2bf40ccc)                                // 2bf40ccc
-	iface.RegisterClazzName(ClazzName_account_updateTheme, 214, 0x2bf40ccc)                                // 2bf40ccc
 	iface.RegisterClazzName(ClazzName_account_saveTheme, 216, 0xf257106c)                                  // f257106c
-	iface.RegisterClazzName(ClazzName_account_saveTheme, 215, 0xf257106c)                                  // f257106c
-	iface.RegisterClazzName(ClazzName_account_saveTheme, 214, 0xf257106c)                                  // f257106c
 	iface.RegisterClazzName(ClazzName_account_installTheme, 216, 0xc727bb3b)                               // c727bb3b
-	iface.RegisterClazzName(ClazzName_account_installTheme, 215, 0xc727bb3b)                               // c727bb3b
-	iface.RegisterClazzName(ClazzName_account_installTheme, 214, 0xc727bb3b)                               // c727bb3b
 	iface.RegisterClazzName(ClazzName_account_installTheme, 133, 0x7ae43737)                               // 7ae43737
 	iface.RegisterClazzName(ClazzName_account_getTheme, 216, 0x3a5869ec)                                   // 3a5869ec
-	iface.RegisterClazzName(ClazzName_account_getTheme, 215, 0x3a5869ec)                                   // 3a5869ec
-	iface.RegisterClazzName(ClazzName_account_getTheme, 214, 0x3a5869ec)                                   // 3a5869ec
 	iface.RegisterClazzName(ClazzName_account_getThemes, 216, 0x7206e458)                                  // 7206e458
-	iface.RegisterClazzName(ClazzName_account_getThemes, 215, 0x7206e458)                                  // 7206e458
-	iface.RegisterClazzName(ClazzName_account_getThemes, 214, 0x7206e458)                                  // 7206e458
 	iface.RegisterClazzName(ClazzName_account_setContentSettings, 216, 0xb574b16b)                         // b574b16b
-	iface.RegisterClazzName(ClazzName_account_setContentSettings, 215, 0xb574b16b)                         // b574b16b
-	iface.RegisterClazzName(ClazzName_account_setContentSettings, 214, 0xb574b16b)                         // b574b16b
 	iface.RegisterClazzName(ClazzName_account_getContentSettings, 216, 0x8b9b4dae)                         // 8b9b4dae
-	iface.RegisterClazzName(ClazzName_account_getContentSettings, 215, 0x8b9b4dae)                         // 8b9b4dae
-	iface.RegisterClazzName(ClazzName_account_getContentSettings, 214, 0x8b9b4dae)                         // 8b9b4dae
 	iface.RegisterClazzName(ClazzName_account_getMultiWallPapers, 216, 0x65ad71dc)                         // 65ad71dc
-	iface.RegisterClazzName(ClazzName_account_getMultiWallPapers, 215, 0x65ad71dc)                         // 65ad71dc
-	iface.RegisterClazzName(ClazzName_account_getMultiWallPapers, 214, 0x65ad71dc)                         // 65ad71dc
 	iface.RegisterClazzName(ClazzName_account_getGlobalPrivacySettings, 216, 0xeb2b4cf6)                   // eb2b4cf6
-	iface.RegisterClazzName(ClazzName_account_getGlobalPrivacySettings, 215, 0xeb2b4cf6)                   // eb2b4cf6
-	iface.RegisterClazzName(ClazzName_account_getGlobalPrivacySettings, 214, 0xeb2b4cf6)                   // eb2b4cf6
 	iface.RegisterClazzName(ClazzName_account_setGlobalPrivacySettings, 216, 0x1edaaac2)                   // 1edaaac2
-	iface.RegisterClazzName(ClazzName_account_setGlobalPrivacySettings, 215, 0x1edaaac2)                   // 1edaaac2
-	iface.RegisterClazzName(ClazzName_account_setGlobalPrivacySettings, 214, 0x1edaaac2)                   // 1edaaac2
 	iface.RegisterClazzName(ClazzName_account_reportProfilePhoto, 216, 0xfa8cc6f5)                         // fa8cc6f5
-	iface.RegisterClazzName(ClazzName_account_reportProfilePhoto, 215, 0xfa8cc6f5)                         // fa8cc6f5
-	iface.RegisterClazzName(ClazzName_account_reportProfilePhoto, 214, 0xfa8cc6f5)                         // fa8cc6f5
 	iface.RegisterClazzName(ClazzName_account_resetPassword, 216, 0x9308ce1b)                              // 9308ce1b
-	iface.RegisterClazzName(ClazzName_account_resetPassword, 215, 0x9308ce1b)                              // 9308ce1b
-	iface.RegisterClazzName(ClazzName_account_resetPassword, 214, 0x9308ce1b)                              // 9308ce1b
 	iface.RegisterClazzName(ClazzName_account_declinePasswordReset, 216, 0x4c9409f6)                       // 4c9409f6
-	iface.RegisterClazzName(ClazzName_account_declinePasswordReset, 215, 0x4c9409f6)                       // 4c9409f6
-	iface.RegisterClazzName(ClazzName_account_declinePasswordReset, 214, 0x4c9409f6)                       // 4c9409f6
 	iface.RegisterClazzName(ClazzName_account_getChatThemes, 216, 0xd638de89)                              // d638de89
-	iface.RegisterClazzName(ClazzName_account_getChatThemes, 215, 0xd638de89)                              // d638de89
-	iface.RegisterClazzName(ClazzName_account_getChatThemes, 214, 0xd638de89)                              // d638de89
 	iface.RegisterClazzName(ClazzName_account_setAuthorizationTTL, 216, 0xbf899aa0)                        // bf899aa0
-	iface.RegisterClazzName(ClazzName_account_setAuthorizationTTL, 215, 0xbf899aa0)                        // bf899aa0
-	iface.RegisterClazzName(ClazzName_account_setAuthorizationTTL, 214, 0xbf899aa0)                        // bf899aa0
 	iface.RegisterClazzName(ClazzName_account_changeAuthorizationSettings, 216, 0x40f48462)                // 40f48462
-	iface.RegisterClazzName(ClazzName_account_changeAuthorizationSettings, 215, 0x40f48462)                // 40f48462
-	iface.RegisterClazzName(ClazzName_account_changeAuthorizationSettings, 214, 0x40f48462)                // 40f48462
 	iface.RegisterClazzName(ClazzName_account_getSavedRingtones, 216, 0xe1902288)                          // e1902288
-	iface.RegisterClazzName(ClazzName_account_getSavedRingtones, 215, 0xe1902288)                          // e1902288
-	iface.RegisterClazzName(ClazzName_account_getSavedRingtones, 214, 0xe1902288)                          // e1902288
 	iface.RegisterClazzName(ClazzName_account_saveRingtone, 216, 0x3dea5b03)                               // 3dea5b03
-	iface.RegisterClazzName(ClazzName_account_saveRingtone, 215, 0x3dea5b03)                               // 3dea5b03
-	iface.RegisterClazzName(ClazzName_account_saveRingtone, 214, 0x3dea5b03)                               // 3dea5b03
 	iface.RegisterClazzName(ClazzName_account_uploadRingtone, 216, 0x831a83a2)                             // 831a83a2
-	iface.RegisterClazzName(ClazzName_account_uploadRingtone, 215, 0x831a83a2)                             // 831a83a2
-	iface.RegisterClazzName(ClazzName_account_uploadRingtone, 214, 0x831a83a2)                             // 831a83a2
 	iface.RegisterClazzName(ClazzName_account_updateEmojiStatus, 216, 0xfbd3de6b)                          // fbd3de6b
-	iface.RegisterClazzName(ClazzName_account_updateEmojiStatus, 215, 0xfbd3de6b)                          // fbd3de6b
-	iface.RegisterClazzName(ClazzName_account_updateEmojiStatus, 214, 0xfbd3de6b)                          // fbd3de6b
 	iface.RegisterClazzName(ClazzName_account_getDefaultEmojiStatuses, 216, 0xd6753386)                    // d6753386
-	iface.RegisterClazzName(ClazzName_account_getDefaultEmojiStatuses, 215, 0xd6753386)                    // d6753386
-	iface.RegisterClazzName(ClazzName_account_getDefaultEmojiStatuses, 214, 0xd6753386)                    // d6753386
 	iface.RegisterClazzName(ClazzName_account_getRecentEmojiStatuses, 216, 0xf578105)                      // f578105
-	iface.RegisterClazzName(ClazzName_account_getRecentEmojiStatuses, 215, 0xf578105)                      // f578105
-	iface.RegisterClazzName(ClazzName_account_getRecentEmojiStatuses, 214, 0xf578105)                      // f578105
 	iface.RegisterClazzName(ClazzName_account_clearRecentEmojiStatuses, 216, 0x18201aae)                   // 18201aae
-	iface.RegisterClazzName(ClazzName_account_clearRecentEmojiStatuses, 215, 0x18201aae)                   // 18201aae
-	iface.RegisterClazzName(ClazzName_account_clearRecentEmojiStatuses, 214, 0x18201aae)                   // 18201aae
 	iface.RegisterClazzName(ClazzName_account_reorderUsernames, 216, 0xef500eab)                           // ef500eab
-	iface.RegisterClazzName(ClazzName_account_reorderUsernames, 215, 0xef500eab)                           // ef500eab
-	iface.RegisterClazzName(ClazzName_account_reorderUsernames, 214, 0xef500eab)                           // ef500eab
 	iface.RegisterClazzName(ClazzName_account_toggleUsername, 216, 0x58d6b376)                             // 58d6b376
-	iface.RegisterClazzName(ClazzName_account_toggleUsername, 215, 0x58d6b376)                             // 58d6b376
-	iface.RegisterClazzName(ClazzName_account_toggleUsername, 214, 0x58d6b376)                             // 58d6b376
 	iface.RegisterClazzName(ClazzName_account_getDefaultProfilePhotoEmojis, 216, 0xe2750328)               // e2750328
-	iface.RegisterClazzName(ClazzName_account_getDefaultProfilePhotoEmojis, 215, 0xe2750328)               // e2750328
-	iface.RegisterClazzName(ClazzName_account_getDefaultProfilePhotoEmojis, 214, 0xe2750328)               // e2750328
 	iface.RegisterClazzName(ClazzName_account_getDefaultGroupPhotoEmojis, 216, 0x915860ae)                 // 915860ae
-	iface.RegisterClazzName(ClazzName_account_getDefaultGroupPhotoEmojis, 215, 0x915860ae)                 // 915860ae
-	iface.RegisterClazzName(ClazzName_account_getDefaultGroupPhotoEmojis, 214, 0x915860ae)                 // 915860ae
 	iface.RegisterClazzName(ClazzName_account_getAutoSaveSettings, 216, 0xadcbbcda)                        // adcbbcda
-	iface.RegisterClazzName(ClazzName_account_getAutoSaveSettings, 215, 0xadcbbcda)                        // adcbbcda
-	iface.RegisterClazzName(ClazzName_account_getAutoSaveSettings, 214, 0xadcbbcda)                        // adcbbcda
 	iface.RegisterClazzName(ClazzName_account_saveAutoSaveSettings, 216, 0xd69b8361)                       // d69b8361
-	iface.RegisterClazzName(ClazzName_account_saveAutoSaveSettings, 215, 0xd69b8361)                       // d69b8361
-	iface.RegisterClazzName(ClazzName_account_saveAutoSaveSettings, 214, 0xd69b8361)                       // d69b8361
 	iface.RegisterClazzName(ClazzName_account_deleteAutoSaveExceptions, 216, 0x53bc0020)                   // 53bc0020
-	iface.RegisterClazzName(ClazzName_account_deleteAutoSaveExceptions, 215, 0x53bc0020)                   // 53bc0020
-	iface.RegisterClazzName(ClazzName_account_deleteAutoSaveExceptions, 214, 0x53bc0020)                   // 53bc0020
 	iface.RegisterClazzName(ClazzName_account_invalidateSignInCodes, 216, 0xca8ae8ba)                      // ca8ae8ba
-	iface.RegisterClazzName(ClazzName_account_invalidateSignInCodes, 215, 0xca8ae8ba)                      // ca8ae8ba
-	iface.RegisterClazzName(ClazzName_account_invalidateSignInCodes, 214, 0xca8ae8ba)                      // ca8ae8ba
 	iface.RegisterClazzName(ClazzName_account_updateColor, 216, 0x684d214e)                                // 684d214e
-	iface.RegisterClazzName(ClazzName_account_updateColor, 215, 0x7cefa15d)                                // 7cefa15d
-	iface.RegisterClazzName(ClazzName_account_updateColor, 214, 0x7cefa15d)                                // 7cefa15d
 	iface.RegisterClazzName(ClazzName_account_getDefaultBackgroundEmojis, 216, 0xa60ab9ce)                 // a60ab9ce
-	iface.RegisterClazzName(ClazzName_account_getDefaultBackgroundEmojis, 215, 0xa60ab9ce)                 // a60ab9ce
-	iface.RegisterClazzName(ClazzName_account_getDefaultBackgroundEmojis, 214, 0xa60ab9ce)                 // a60ab9ce
 	iface.RegisterClazzName(ClazzName_account_getChannelDefaultEmojiStatuses, 216, 0x7727a7d5)             // 7727a7d5
-	iface.RegisterClazzName(ClazzName_account_getChannelDefaultEmojiStatuses, 215, 0x7727a7d5)             // 7727a7d5
-	iface.RegisterClazzName(ClazzName_account_getChannelDefaultEmojiStatuses, 214, 0x7727a7d5)             // 7727a7d5
 	iface.RegisterClazzName(ClazzName_account_getChannelRestrictedStatusEmojis, 216, 0x35a9e0d5)           // 35a9e0d5
-	iface.RegisterClazzName(ClazzName_account_getChannelRestrictedStatusEmojis, 215, 0x35a9e0d5)           // 35a9e0d5
-	iface.RegisterClazzName(ClazzName_account_getChannelRestrictedStatusEmojis, 214, 0x35a9e0d5)           // 35a9e0d5
 	iface.RegisterClazzName(ClazzName_account_updateBusinessWorkHours, 216, 0x4b00e066)                    // 4b00e066
-	iface.RegisterClazzName(ClazzName_account_updateBusinessWorkHours, 215, 0x4b00e066)                    // 4b00e066
-	iface.RegisterClazzName(ClazzName_account_updateBusinessWorkHours, 214, 0x4b00e066)                    // 4b00e066
 	iface.RegisterClazzName(ClazzName_account_updateBusinessLocation, 216, 0x9e6b131a)                     // 9e6b131a
-	iface.RegisterClazzName(ClazzName_account_updateBusinessLocation, 215, 0x9e6b131a)                     // 9e6b131a
-	iface.RegisterClazzName(ClazzName_account_updateBusinessLocation, 214, 0x9e6b131a)                     // 9e6b131a
 	iface.RegisterClazzName(ClazzName_account_updateBusinessGreetingMessage, 216, 0x66cdafc4)              // 66cdafc4
-	iface.RegisterClazzName(ClazzName_account_updateBusinessGreetingMessage, 215, 0x66cdafc4)              // 66cdafc4
-	iface.RegisterClazzName(ClazzName_account_updateBusinessGreetingMessage, 214, 0x66cdafc4)              // 66cdafc4
 	iface.RegisterClazzName(ClazzName_account_updateBusinessAwayMessage, 216, 0xa26a7fa5)                  // a26a7fa5
-	iface.RegisterClazzName(ClazzName_account_updateBusinessAwayMessage, 215, 0xa26a7fa5)                  // a26a7fa5
-	iface.RegisterClazzName(ClazzName_account_updateBusinessAwayMessage, 214, 0xa26a7fa5)                  // a26a7fa5
 	iface.RegisterClazzName(ClazzName_account_updateConnectedBot, 216, 0x66a08c7e)                         // 66a08c7e
-	iface.RegisterClazzName(ClazzName_account_updateConnectedBot, 215, 0x66a08c7e)                         // 66a08c7e
-	iface.RegisterClazzName(ClazzName_account_updateConnectedBot, 214, 0x66a08c7e)                         // 66a08c7e
 	iface.RegisterClazzName(ClazzName_account_getConnectedBots, 216, 0x4ea4c80f)                           // 4ea4c80f
-	iface.RegisterClazzName(ClazzName_account_getConnectedBots, 215, 0x4ea4c80f)                           // 4ea4c80f
-	iface.RegisterClazzName(ClazzName_account_getConnectedBots, 214, 0x4ea4c80f)                           // 4ea4c80f
 	iface.RegisterClazzName(ClazzName_account_getBotBusinessConnection, 216, 0x76a86270)                   // 76a86270
-	iface.RegisterClazzName(ClazzName_account_getBotBusinessConnection, 215, 0x76a86270)                   // 76a86270
-	iface.RegisterClazzName(ClazzName_account_getBotBusinessConnection, 214, 0x76a86270)                   // 76a86270
 	iface.RegisterClazzName(ClazzName_account_updateBusinessIntro, 216, 0xa614d034)                        // a614d034
-	iface.RegisterClazzName(ClazzName_account_updateBusinessIntro, 215, 0xa614d034)                        // a614d034
-	iface.RegisterClazzName(ClazzName_account_updateBusinessIntro, 214, 0xa614d034)                        // a614d034
 	iface.RegisterClazzName(ClazzName_account_toggleConnectedBotPaused, 216, 0x646e1097)                   // 646e1097
-	iface.RegisterClazzName(ClazzName_account_toggleConnectedBotPaused, 215, 0x646e1097)                   // 646e1097
-	iface.RegisterClazzName(ClazzName_account_toggleConnectedBotPaused, 214, 0x646e1097)                   // 646e1097
 	iface.RegisterClazzName(ClazzName_account_disablePeerConnectedBot, 216, 0x5e437ed9)                    // 5e437ed9
-	iface.RegisterClazzName(ClazzName_account_disablePeerConnectedBot, 215, 0x5e437ed9)                    // 5e437ed9
-	iface.RegisterClazzName(ClazzName_account_disablePeerConnectedBot, 214, 0x5e437ed9)                    // 5e437ed9
 	iface.RegisterClazzName(ClazzName_account_updateBirthday, 216, 0xcc6e0c11)                             // cc6e0c11
-	iface.RegisterClazzName(ClazzName_account_updateBirthday, 215, 0xcc6e0c11)                             // cc6e0c11
-	iface.RegisterClazzName(ClazzName_account_updateBirthday, 214, 0xcc6e0c11)                             // cc6e0c11
 	iface.RegisterClazzName(ClazzName_account_createBusinessChatLink, 216, 0x8851e68e)                     // 8851e68e
-	iface.RegisterClazzName(ClazzName_account_createBusinessChatLink, 215, 0x8851e68e)                     // 8851e68e
-	iface.RegisterClazzName(ClazzName_account_createBusinessChatLink, 214, 0x8851e68e)                     // 8851e68e
 	iface.RegisterClazzName(ClazzName_account_editBusinessChatLink, 216, 0x8c3410af)                       // 8c3410af
-	iface.RegisterClazzName(ClazzName_account_editBusinessChatLink, 215, 0x8c3410af)                       // 8c3410af
-	iface.RegisterClazzName(ClazzName_account_editBusinessChatLink, 214, 0x8c3410af)                       // 8c3410af
 	iface.RegisterClazzName(ClazzName_account_deleteBusinessChatLink, 216, 0x60073674)                     // 60073674
-	iface.RegisterClazzName(ClazzName_account_deleteBusinessChatLink, 215, 0x60073674)                     // 60073674
-	iface.RegisterClazzName(ClazzName_account_deleteBusinessChatLink, 214, 0x60073674)                     // 60073674
 	iface.RegisterClazzName(ClazzName_account_getBusinessChatLinks, 216, 0x6f70dde1)                       // 6f70dde1
-	iface.RegisterClazzName(ClazzName_account_getBusinessChatLinks, 215, 0x6f70dde1)                       // 6f70dde1
-	iface.RegisterClazzName(ClazzName_account_getBusinessChatLinks, 214, 0x6f70dde1)                       // 6f70dde1
 	iface.RegisterClazzName(ClazzName_account_resolveBusinessChatLink, 216, 0x5492e5ee)                    // 5492e5ee
-	iface.RegisterClazzName(ClazzName_account_resolveBusinessChatLink, 215, 0x5492e5ee)                    // 5492e5ee
-	iface.RegisterClazzName(ClazzName_account_resolveBusinessChatLink, 214, 0x5492e5ee)                    // 5492e5ee
 	iface.RegisterClazzName(ClazzName_account_updatePersonalChannel, 216, 0xd94305e0)                      // d94305e0
-	iface.RegisterClazzName(ClazzName_account_updatePersonalChannel, 215, 0xd94305e0)                      // d94305e0
-	iface.RegisterClazzName(ClazzName_account_updatePersonalChannel, 214, 0xd94305e0)                      // d94305e0
 	iface.RegisterClazzName(ClazzName_account_toggleSponsoredMessages, 216, 0xb9d9a38d)                    // b9d9a38d
-	iface.RegisterClazzName(ClazzName_account_toggleSponsoredMessages, 215, 0xb9d9a38d)                    // b9d9a38d
-	iface.RegisterClazzName(ClazzName_account_toggleSponsoredMessages, 214, 0xb9d9a38d)                    // b9d9a38d
 	iface.RegisterClazzName(ClazzName_account_getReactionsNotifySettings, 216, 0x6dd654c)                  // 6dd654c
-	iface.RegisterClazzName(ClazzName_account_getReactionsNotifySettings, 215, 0x6dd654c)                  // 6dd654c
-	iface.RegisterClazzName(ClazzName_account_getReactionsNotifySettings, 214, 0x6dd654c)                  // 6dd654c
 	iface.RegisterClazzName(ClazzName_account_setReactionsNotifySettings, 216, 0x316ce548)                 // 316ce548
-	iface.RegisterClazzName(ClazzName_account_setReactionsNotifySettings, 215, 0x316ce548)                 // 316ce548
-	iface.RegisterClazzName(ClazzName_account_setReactionsNotifySettings, 214, 0x316ce548)                 // 316ce548
 	iface.RegisterClazzName(ClazzName_account_getCollectibleEmojiStatuses, 216, 0x2e7b4543)                // 2e7b4543
-	iface.RegisterClazzName(ClazzName_account_getCollectibleEmojiStatuses, 215, 0x2e7b4543)                // 2e7b4543
-	iface.RegisterClazzName(ClazzName_account_getCollectibleEmojiStatuses, 214, 0x2e7b4543)                // 2e7b4543
 	iface.RegisterClazzName(ClazzName_account_getPaidMessagesRevenue, 216, 0x19ba4a67)                     // 19ba4a67
-	iface.RegisterClazzName(ClazzName_account_getPaidMessagesRevenue, 215, 0x19ba4a67)                     // 19ba4a67
-	iface.RegisterClazzName(ClazzName_account_getPaidMessagesRevenue, 214, 0x19ba4a67)                     // 19ba4a67
 	iface.RegisterClazzName(ClazzName_account_toggleNoPaidMessagesException, 216, 0xfe2eda76)              // fe2eda76
-	iface.RegisterClazzName(ClazzName_account_toggleNoPaidMessagesException, 215, 0xfe2eda76)              // fe2eda76
-	iface.RegisterClazzName(ClazzName_account_toggleNoPaidMessagesException, 214, 0xfe2eda76)              // fe2eda76
 	iface.RegisterClazzName(ClazzName_account_setMainProfileTab, 216, 0x5dee78b0)                          // 5dee78b0
-	iface.RegisterClazzName(ClazzName_account_setMainProfileTab, 215, 0x5dee78b0)                          // 5dee78b0
-	iface.RegisterClazzName(ClazzName_account_setMainProfileTab, 214, 0x5dee78b0)                          // 5dee78b0
 	iface.RegisterClazzName(ClazzName_account_saveMusic, 216, 0xb26732a9)                                  // b26732a9
-	iface.RegisterClazzName(ClazzName_account_saveMusic, 215, 0xb26732a9)                                  // b26732a9
-	iface.RegisterClazzName(ClazzName_account_saveMusic, 214, 0xb26732a9)                                  // b26732a9
 	iface.RegisterClazzName(ClazzName_account_getSavedMusicIds, 216, 0xe09d5faf)                           // e09d5faf
-	iface.RegisterClazzName(ClazzName_account_getSavedMusicIds, 215, 0xe09d5faf)                           // e09d5faf
-	iface.RegisterClazzName(ClazzName_account_getSavedMusicIds, 214, 0xe09d5faf)                           // e09d5faf
 	iface.RegisterClazzName(ClazzName_account_getUniqueGiftChatThemes, 216, 0xe42ce9c9)                    // e42ce9c9
-	iface.RegisterClazzName(ClazzName_account_getUniqueGiftChatThemes, 215, 0xe42ce9c9)                    // e42ce9c9
-	iface.RegisterClazzName(ClazzName_account_getUniqueGiftChatThemes, 214, 0xfe74ef9f)                    // fe74ef9f
 	iface.RegisterClazzName(ClazzName_users_getUsers, 216, 0xd91a548)                                      // d91a548
-	iface.RegisterClazzName(ClazzName_users_getUsers, 215, 0xd91a548)                                      // d91a548
-	iface.RegisterClazzName(ClazzName_users_getUsers, 214, 0xd91a548)                                      // d91a548
 	iface.RegisterClazzName(ClazzName_users_getFullUser, 216, 0xb60f5918)                                  // b60f5918
-	iface.RegisterClazzName(ClazzName_users_getFullUser, 215, 0xb60f5918)                                  // b60f5918
-	iface.RegisterClazzName(ClazzName_users_getFullUser, 214, 0xb60f5918)                                  // b60f5918
 	iface.RegisterClazzName(ClazzName_users_setSecureValueErrors, 216, 0x90c894b5)                         // 90c894b5
-	iface.RegisterClazzName(ClazzName_users_setSecureValueErrors, 215, 0x90c894b5)                         // 90c894b5
-	iface.RegisterClazzName(ClazzName_users_setSecureValueErrors, 214, 0x90c894b5)                         // 90c894b5
 	iface.RegisterClazzName(ClazzName_users_getRequirementsToContact, 216, 0xd89a83a3)                     // d89a83a3
-	iface.RegisterClazzName(ClazzName_users_getRequirementsToContact, 215, 0xd89a83a3)                     // d89a83a3
-	iface.RegisterClazzName(ClazzName_users_getRequirementsToContact, 214, 0xd89a83a3)                     // d89a83a3
 	iface.RegisterClazzName(ClazzName_users_getSavedMusic, 216, 0x788d7fe3)                                // 788d7fe3
-	iface.RegisterClazzName(ClazzName_users_getSavedMusic, 215, 0x788d7fe3)                                // 788d7fe3
-	iface.RegisterClazzName(ClazzName_users_getSavedMusic, 214, 0x788d7fe3)                                // 788d7fe3
 	iface.RegisterClazzName(ClazzName_users_getSavedMusicByID, 216, 0x7573a4e9)                            // 7573a4e9
-	iface.RegisterClazzName(ClazzName_users_getSavedMusicByID, 215, 0x7573a4e9)                            // 7573a4e9
-	iface.RegisterClazzName(ClazzName_users_getSavedMusicByID, 214, 0x7573a4e9)                            // 7573a4e9
 	iface.RegisterClazzName(ClazzName_users_suggestBirthday, 216, 0xfc533372)                              // fc533372
 	iface.RegisterClazzName(ClazzName_contacts_getContactIDs, 216, 0x7adc669d)                             // 7adc669d
-	iface.RegisterClazzName(ClazzName_contacts_getContactIDs, 215, 0x7adc669d)                             // 7adc669d
-	iface.RegisterClazzName(ClazzName_contacts_getContactIDs, 214, 0x7adc669d)                             // 7adc669d
 	iface.RegisterClazzName(ClazzName_contacts_getStatuses, 216, 0xc4a353ee)                               // c4a353ee
-	iface.RegisterClazzName(ClazzName_contacts_getStatuses, 215, 0xc4a353ee)                               // c4a353ee
-	iface.RegisterClazzName(ClazzName_contacts_getStatuses, 214, 0xc4a353ee)                               // c4a353ee
 	iface.RegisterClazzName(ClazzName_contacts_getContacts, 216, 0x5dd69e12)                               // 5dd69e12
-	iface.RegisterClazzName(ClazzName_contacts_getContacts, 215, 0x5dd69e12)                               // 5dd69e12
-	iface.RegisterClazzName(ClazzName_contacts_getContacts, 214, 0x5dd69e12)                               // 5dd69e12
 	iface.RegisterClazzName(ClazzName_contacts_importContacts, 216, 0x2c800be5)                            // 2c800be5
-	iface.RegisterClazzName(ClazzName_contacts_importContacts, 215, 0x2c800be5)                            // 2c800be5
-	iface.RegisterClazzName(ClazzName_contacts_importContacts, 214, 0x2c800be5)                            // 2c800be5
 	iface.RegisterClazzName(ClazzName_contacts_deleteContacts, 216, 0x96a0e00)                             // 96a0e00
-	iface.RegisterClazzName(ClazzName_contacts_deleteContacts, 215, 0x96a0e00)                             // 96a0e00
-	iface.RegisterClazzName(ClazzName_contacts_deleteContacts, 214, 0x96a0e00)                             // 96a0e00
 	iface.RegisterClazzName(ClazzName_contacts_deleteByPhones, 216, 0x1013fd9e)                            // 1013fd9e
-	iface.RegisterClazzName(ClazzName_contacts_deleteByPhones, 215, 0x1013fd9e)                            // 1013fd9e
-	iface.RegisterClazzName(ClazzName_contacts_deleteByPhones, 214, 0x1013fd9e)                            // 1013fd9e
 	iface.RegisterClazzName(ClazzName_contacts_block, 216, 0x2e2e8734)                                     // 2e2e8734
-	iface.RegisterClazzName(ClazzName_contacts_block, 215, 0x2e2e8734)                                     // 2e2e8734
-	iface.RegisterClazzName(ClazzName_contacts_block, 214, 0x2e2e8734)                                     // 2e2e8734
 	iface.RegisterClazzName(ClazzName_contacts_unblock, 216, 0xb550d328)                                   // b550d328
-	iface.RegisterClazzName(ClazzName_contacts_unblock, 215, 0xb550d328)                                   // b550d328
-	iface.RegisterClazzName(ClazzName_contacts_unblock, 214, 0xb550d328)                                   // b550d328
 	iface.RegisterClazzName(ClazzName_contacts_getBlocked, 216, 0x9a868f80)                                // 9a868f80
-	iface.RegisterClazzName(ClazzName_contacts_getBlocked, 215, 0x9a868f80)                                // 9a868f80
-	iface.RegisterClazzName(ClazzName_contacts_getBlocked, 214, 0x9a868f80)                                // 9a868f80
 	iface.RegisterClazzName(ClazzName_contacts_search, 216, 0x11f812d8)                                    // 11f812d8
-	iface.RegisterClazzName(ClazzName_contacts_search, 215, 0x11f812d8)                                    // 11f812d8
-	iface.RegisterClazzName(ClazzName_contacts_search, 214, 0x11f812d8)                                    // 11f812d8
 	iface.RegisterClazzName(ClazzName_contacts_resolveUsername, 216, 0x725afbbc)                           // 725afbbc
-	iface.RegisterClazzName(ClazzName_contacts_resolveUsername, 215, 0x725afbbc)                           // 725afbbc
-	iface.RegisterClazzName(ClazzName_contacts_resolveUsername, 214, 0x725afbbc)                           // 725afbbc
 	iface.RegisterClazzName(ClazzName_contacts_getTopPeers, 216, 0x973478b6)                               // 973478b6
-	iface.RegisterClazzName(ClazzName_contacts_getTopPeers, 215, 0x973478b6)                               // 973478b6
-	iface.RegisterClazzName(ClazzName_contacts_getTopPeers, 214, 0x973478b6)                               // 973478b6
 	iface.RegisterClazzName(ClazzName_contacts_resetTopPeerRating, 216, 0x1ae373ac)                        // 1ae373ac
-	iface.RegisterClazzName(ClazzName_contacts_resetTopPeerRating, 215, 0x1ae373ac)                        // 1ae373ac
-	iface.RegisterClazzName(ClazzName_contacts_resetTopPeerRating, 214, 0x1ae373ac)                        // 1ae373ac
 	iface.RegisterClazzName(ClazzName_contacts_resetSaved, 216, 0x879537f1)                                // 879537f1
-	iface.RegisterClazzName(ClazzName_contacts_resetSaved, 215, 0x879537f1)                                // 879537f1
-	iface.RegisterClazzName(ClazzName_contacts_resetSaved, 214, 0x879537f1)                                // 879537f1
 	iface.RegisterClazzName(ClazzName_contacts_getSaved, 216, 0x82f1e39f)                                  // 82f1e39f
-	iface.RegisterClazzName(ClazzName_contacts_getSaved, 215, 0x82f1e39f)                                  // 82f1e39f
-	iface.RegisterClazzName(ClazzName_contacts_getSaved, 214, 0x82f1e39f)                                  // 82f1e39f
 	iface.RegisterClazzName(ClazzName_contacts_toggleTopPeers, 216, 0x8514bdda)                            // 8514bdda
-	iface.RegisterClazzName(ClazzName_contacts_toggleTopPeers, 215, 0x8514bdda)                            // 8514bdda
-	iface.RegisterClazzName(ClazzName_contacts_toggleTopPeers, 214, 0x8514bdda)                            // 8514bdda
 	iface.RegisterClazzName(ClazzName_contacts_addContact, 216, 0xd9ba2e54)                                // d9ba2e54
-	iface.RegisterClazzName(ClazzName_contacts_addContact, 215, 0xe8f463d0)                                // e8f463d0
-	iface.RegisterClazzName(ClazzName_contacts_addContact, 214, 0xe8f463d0)                                // e8f463d0
 	iface.RegisterClazzName(ClazzName_contacts_acceptContact, 216, 0xf831a20f)                             // f831a20f
-	iface.RegisterClazzName(ClazzName_contacts_acceptContact, 215, 0xf831a20f)                             // f831a20f
-	iface.RegisterClazzName(ClazzName_contacts_acceptContact, 214, 0xf831a20f)                             // f831a20f
 	iface.RegisterClazzName(ClazzName_contacts_getLocated, 216, 0xd348bc44)                                // d348bc44
-	iface.RegisterClazzName(ClazzName_contacts_getLocated, 215, 0xd348bc44)                                // d348bc44
-	iface.RegisterClazzName(ClazzName_contacts_getLocated, 214, 0xd348bc44)                                // d348bc44
 	iface.RegisterClazzName(ClazzName_contacts_blockFromReplies, 216, 0x29a8962c)                          // 29a8962c
-	iface.RegisterClazzName(ClazzName_contacts_blockFromReplies, 215, 0x29a8962c)                          // 29a8962c
-	iface.RegisterClazzName(ClazzName_contacts_blockFromReplies, 214, 0x29a8962c)                          // 29a8962c
 	iface.RegisterClazzName(ClazzName_contacts_resolvePhone, 216, 0x8af94344)                              // 8af94344
-	iface.RegisterClazzName(ClazzName_contacts_resolvePhone, 215, 0x8af94344)                              // 8af94344
-	iface.RegisterClazzName(ClazzName_contacts_resolvePhone, 214, 0x8af94344)                              // 8af94344
 	iface.RegisterClazzName(ClazzName_contacts_exportContactToken, 216, 0xf8654027)                        // f8654027
-	iface.RegisterClazzName(ClazzName_contacts_exportContactToken, 215, 0xf8654027)                        // f8654027
-	iface.RegisterClazzName(ClazzName_contacts_exportContactToken, 214, 0xf8654027)                        // f8654027
 	iface.RegisterClazzName(ClazzName_contacts_importContactToken, 216, 0x13005788)                        // 13005788
-	iface.RegisterClazzName(ClazzName_contacts_importContactToken, 215, 0x13005788)                        // 13005788
-	iface.RegisterClazzName(ClazzName_contacts_importContactToken, 214, 0x13005788)                        // 13005788
 	iface.RegisterClazzName(ClazzName_contacts_editCloseFriends, 216, 0xba6705f0)                          // ba6705f0
-	iface.RegisterClazzName(ClazzName_contacts_editCloseFriends, 215, 0xba6705f0)                          // ba6705f0
-	iface.RegisterClazzName(ClazzName_contacts_editCloseFriends, 214, 0xba6705f0)                          // ba6705f0
 	iface.RegisterClazzName(ClazzName_contacts_setBlocked, 216, 0x94c65c76)                                // 94c65c76
-	iface.RegisterClazzName(ClazzName_contacts_setBlocked, 215, 0x94c65c76)                                // 94c65c76
-	iface.RegisterClazzName(ClazzName_contacts_setBlocked, 214, 0x94c65c76)                                // 94c65c76
 	iface.RegisterClazzName(ClazzName_contacts_getBirthdays, 216, 0xdaeda864)                              // daeda864
-	iface.RegisterClazzName(ClazzName_contacts_getBirthdays, 215, 0xdaeda864)                              // daeda864
-	iface.RegisterClazzName(ClazzName_contacts_getBirthdays, 214, 0xdaeda864)                              // daeda864
 	iface.RegisterClazzName(ClazzName_contacts_getSponsoredPeers, 216, 0xb6c8c393)                         // b6c8c393
-	iface.RegisterClazzName(ClazzName_contacts_getSponsoredPeers, 215, 0xb6c8c393)                         // b6c8c393
-	iface.RegisterClazzName(ClazzName_contacts_getSponsoredPeers, 214, 0xb6c8c393)                         // b6c8c393
 	iface.RegisterClazzName(ClazzName_contacts_updateContactNote, 216, 0x139f63fb)                         // 139f63fb
 	iface.RegisterClazzName(ClazzName_messages_getMessages, 216, 0x63c66506)                               // 63c66506
-	iface.RegisterClazzName(ClazzName_messages_getMessages, 215, 0x63c66506)                               // 63c66506
-	iface.RegisterClazzName(ClazzName_messages_getMessages, 214, 0x63c66506)                               // 63c66506
 	iface.RegisterClazzName(ClazzName_messages_getMessages, 74, 0x4222fa74)                                // 4222fa74
 	iface.RegisterClazzName(ClazzName_messages_getDialogs, 216, 0xa0f4cb4f)                                // a0f4cb4f
-	iface.RegisterClazzName(ClazzName_messages_getDialogs, 215, 0xa0f4cb4f)                                // a0f4cb4f
-	iface.RegisterClazzName(ClazzName_messages_getDialogs, 214, 0xa0f4cb4f)                                // a0f4cb4f
 	iface.RegisterClazzName(ClazzName_messages_getHistory, 216, 0x4423e6c5)                                // 4423e6c5
-	iface.RegisterClazzName(ClazzName_messages_getHistory, 215, 0x4423e6c5)                                // 4423e6c5
-	iface.RegisterClazzName(ClazzName_messages_getHistory, 214, 0x4423e6c5)                                // 4423e6c5
 	iface.RegisterClazzName(ClazzName_messages_search, 216, 0x29ee847a)                                    // 29ee847a
-	iface.RegisterClazzName(ClazzName_messages_search, 215, 0x29ee847a)                                    // 29ee847a
-	iface.RegisterClazzName(ClazzName_messages_search, 214, 0x29ee847a)                                    // 29ee847a
 	iface.RegisterClazzName(ClazzName_messages_readHistory, 216, 0xe306d3a)                                // e306d3a
-	iface.RegisterClazzName(ClazzName_messages_readHistory, 215, 0xe306d3a)                                // e306d3a
-	iface.RegisterClazzName(ClazzName_messages_readHistory, 214, 0xe306d3a)                                // e306d3a
 	iface.RegisterClazzName(ClazzName_messages_deleteHistory, 216, 0xb08f922a)                             // b08f922a
-	iface.RegisterClazzName(ClazzName_messages_deleteHistory, 215, 0xb08f922a)                             // b08f922a
-	iface.RegisterClazzName(ClazzName_messages_deleteHistory, 214, 0xb08f922a)                             // b08f922a
 	iface.RegisterClazzName(ClazzName_messages_deleteMessages, 216, 0xe58e95d2)                            // e58e95d2
-	iface.RegisterClazzName(ClazzName_messages_deleteMessages, 215, 0xe58e95d2)                            // e58e95d2
-	iface.RegisterClazzName(ClazzName_messages_deleteMessages, 214, 0xe58e95d2)                            // e58e95d2
 	iface.RegisterClazzName(ClazzName_messages_receivedMessages, 216, 0x5a954c0)                           // 5a954c0
-	iface.RegisterClazzName(ClazzName_messages_receivedMessages, 215, 0x5a954c0)                           // 5a954c0
-	iface.RegisterClazzName(ClazzName_messages_receivedMessages, 214, 0x5a954c0)                           // 5a954c0
 	iface.RegisterClazzName(ClazzName_messages_setTyping, 216, 0x58943ee2)                                 // 58943ee2
-	iface.RegisterClazzName(ClazzName_messages_setTyping, 215, 0x58943ee2)                                 // 58943ee2
-	iface.RegisterClazzName(ClazzName_messages_setTyping, 214, 0x58943ee2)                                 // 58943ee2
 	iface.RegisterClazzName(ClazzName_messages_sendMessage, 216, 0xfe05dc9a)                               // fe05dc9a
-	iface.RegisterClazzName(ClazzName_messages_sendMessage, 215, 0xfe05dc9a)                               // fe05dc9a
-	iface.RegisterClazzName(ClazzName_messages_sendMessage, 214, 0xfe05dc9a)                               // fe05dc9a
 	iface.RegisterClazzName(ClazzName_messages_sendMedia, 216, 0xac55d9c1)                                 // ac55d9c1
-	iface.RegisterClazzName(ClazzName_messages_sendMedia, 215, 0xac55d9c1)                                 // ac55d9c1
-	iface.RegisterClazzName(ClazzName_messages_sendMedia, 214, 0xac55d9c1)                                 // ac55d9c1
 	iface.RegisterClazzName(ClazzName_messages_forwardMessages, 216, 0x978928ca)                           // 978928ca
-	iface.RegisterClazzName(ClazzName_messages_forwardMessages, 215, 0x978928ca)                           // 978928ca
-	iface.RegisterClazzName(ClazzName_messages_forwardMessages, 214, 0x978928ca)                           // 978928ca
 	iface.RegisterClazzName(ClazzName_messages_reportSpam, 216, 0xcf1592db)                                // cf1592db
-	iface.RegisterClazzName(ClazzName_messages_reportSpam, 215, 0xcf1592db)                                // cf1592db
-	iface.RegisterClazzName(ClazzName_messages_reportSpam, 214, 0xcf1592db)                                // cf1592db
 	iface.RegisterClazzName(ClazzName_messages_getPeerSettings, 216, 0xefd9a6a2)                           // efd9a6a2
-	iface.RegisterClazzName(ClazzName_messages_getPeerSettings, 215, 0xefd9a6a2)                           // efd9a6a2
-	iface.RegisterClazzName(ClazzName_messages_getPeerSettings, 214, 0xefd9a6a2)                           // efd9a6a2
 	iface.RegisterClazzName(ClazzName_messages_report, 216, 0xfc78af9b)                                    // fc78af9b
-	iface.RegisterClazzName(ClazzName_messages_report, 215, 0xfc78af9b)                                    // fc78af9b
-	iface.RegisterClazzName(ClazzName_messages_report, 214, 0xfc78af9b)                                    // fc78af9b
 	iface.RegisterClazzName(ClazzName_messages_getChats, 216, 0x49e9528f)                                  // 49e9528f
-	iface.RegisterClazzName(ClazzName_messages_getChats, 215, 0x49e9528f)                                  // 49e9528f
-	iface.RegisterClazzName(ClazzName_messages_getChats, 214, 0x49e9528f)                                  // 49e9528f
 	iface.RegisterClazzName(ClazzName_messages_getFullChat, 216, 0xaeb00b34)                               // aeb00b34
-	iface.RegisterClazzName(ClazzName_messages_getFullChat, 215, 0xaeb00b34)                               // aeb00b34
-	iface.RegisterClazzName(ClazzName_messages_getFullChat, 214, 0xaeb00b34)                               // aeb00b34
 	iface.RegisterClazzName(ClazzName_messages_editChatTitle, 216, 0x73783ffd)                             // 73783ffd
-	iface.RegisterClazzName(ClazzName_messages_editChatTitle, 215, 0x73783ffd)                             // 73783ffd
-	iface.RegisterClazzName(ClazzName_messages_editChatTitle, 214, 0x73783ffd)                             // 73783ffd
 	iface.RegisterClazzName(ClazzName_messages_editChatPhoto, 216, 0x35ddd674)                             // 35ddd674
-	iface.RegisterClazzName(ClazzName_messages_editChatPhoto, 215, 0x35ddd674)                             // 35ddd674
-	iface.RegisterClazzName(ClazzName_messages_editChatPhoto, 214, 0x35ddd674)                             // 35ddd674
 	iface.RegisterClazzName(ClazzName_messages_addChatUser, 216, 0xcbc6d107)                               // cbc6d107
-	iface.RegisterClazzName(ClazzName_messages_addChatUser, 215, 0xcbc6d107)                               // cbc6d107
-	iface.RegisterClazzName(ClazzName_messages_addChatUser, 214, 0xcbc6d107)                               // cbc6d107
 	iface.RegisterClazzName(ClazzName_messages_deleteChatUser, 216, 0xa2185cab)                            // a2185cab
-	iface.RegisterClazzName(ClazzName_messages_deleteChatUser, 215, 0xa2185cab)                            // a2185cab
-	iface.RegisterClazzName(ClazzName_messages_deleteChatUser, 214, 0xa2185cab)                            // a2185cab
 	iface.RegisterClazzName(ClazzName_messages_createChat, 216, 0x92ceddd4)                                // 92ceddd4
-	iface.RegisterClazzName(ClazzName_messages_createChat, 215, 0x92ceddd4)                                // 92ceddd4
-	iface.RegisterClazzName(ClazzName_messages_createChat, 214, 0x92ceddd4)                                // 92ceddd4
 	iface.RegisterClazzName(ClazzName_messages_getDhConfig, 216, 0x26cf8950)                               // 26cf8950
-	iface.RegisterClazzName(ClazzName_messages_getDhConfig, 215, 0x26cf8950)                               // 26cf8950
-	iface.RegisterClazzName(ClazzName_messages_getDhConfig, 214, 0x26cf8950)                               // 26cf8950
 	iface.RegisterClazzName(ClazzName_messages_requestEncryption, 216, 0xf64daf43)                         // f64daf43
-	iface.RegisterClazzName(ClazzName_messages_requestEncryption, 215, 0xf64daf43)                         // f64daf43
-	iface.RegisterClazzName(ClazzName_messages_requestEncryption, 214, 0xf64daf43)                         // f64daf43
 	iface.RegisterClazzName(ClazzName_messages_acceptEncryption, 216, 0x3dbc0415)                          // 3dbc0415
-	iface.RegisterClazzName(ClazzName_messages_acceptEncryption, 215, 0x3dbc0415)                          // 3dbc0415
-	iface.RegisterClazzName(ClazzName_messages_acceptEncryption, 214, 0x3dbc0415)                          // 3dbc0415
 	iface.RegisterClazzName(ClazzName_messages_discardEncryption, 216, 0xf393aea0)                         // f393aea0
-	iface.RegisterClazzName(ClazzName_messages_discardEncryption, 215, 0xf393aea0)                         // f393aea0
-	iface.RegisterClazzName(ClazzName_messages_discardEncryption, 214, 0xf393aea0)                         // f393aea0
 	iface.RegisterClazzName(ClazzName_messages_setEncryptedTyping, 216, 0x791451ed)                        // 791451ed
-	iface.RegisterClazzName(ClazzName_messages_setEncryptedTyping, 215, 0x791451ed)                        // 791451ed
-	iface.RegisterClazzName(ClazzName_messages_setEncryptedTyping, 214, 0x791451ed)                        // 791451ed
 	iface.RegisterClazzName(ClazzName_messages_readEncryptedHistory, 216, 0x7f4b690a)                      // 7f4b690a
-	iface.RegisterClazzName(ClazzName_messages_readEncryptedHistory, 215, 0x7f4b690a)                      // 7f4b690a
-	iface.RegisterClazzName(ClazzName_messages_readEncryptedHistory, 214, 0x7f4b690a)                      // 7f4b690a
 	iface.RegisterClazzName(ClazzName_messages_sendEncrypted, 216, 0x44fa7a15)                             // 44fa7a15
-	iface.RegisterClazzName(ClazzName_messages_sendEncrypted, 215, 0x44fa7a15)                             // 44fa7a15
-	iface.RegisterClazzName(ClazzName_messages_sendEncrypted, 214, 0x44fa7a15)                             // 44fa7a15
 	iface.RegisterClazzName(ClazzName_messages_sendEncryptedFile, 216, 0x5559481d)                         // 5559481d
-	iface.RegisterClazzName(ClazzName_messages_sendEncryptedFile, 215, 0x5559481d)                         // 5559481d
-	iface.RegisterClazzName(ClazzName_messages_sendEncryptedFile, 214, 0x5559481d)                         // 5559481d
 	iface.RegisterClazzName(ClazzName_messages_sendEncryptedService, 216, 0x32d439a4)                      // 32d439a4
-	iface.RegisterClazzName(ClazzName_messages_sendEncryptedService, 215, 0x32d439a4)                      // 32d439a4
-	iface.RegisterClazzName(ClazzName_messages_sendEncryptedService, 214, 0x32d439a4)                      // 32d439a4
 	iface.RegisterClazzName(ClazzName_messages_receivedQueue, 216, 0x55a5bb66)                             // 55a5bb66
-	iface.RegisterClazzName(ClazzName_messages_receivedQueue, 215, 0x55a5bb66)                             // 55a5bb66
-	iface.RegisterClazzName(ClazzName_messages_receivedQueue, 214, 0x55a5bb66)                             // 55a5bb66
 	iface.RegisterClazzName(ClazzName_messages_reportEncryptedSpam, 216, 0x4b0c8c0f)                       // 4b0c8c0f
-	iface.RegisterClazzName(ClazzName_messages_reportEncryptedSpam, 215, 0x4b0c8c0f)                       // 4b0c8c0f
-	iface.RegisterClazzName(ClazzName_messages_reportEncryptedSpam, 214, 0x4b0c8c0f)                       // 4b0c8c0f
 	iface.RegisterClazzName(ClazzName_messages_readMessageContents, 216, 0x36a73f77)                       // 36a73f77
-	iface.RegisterClazzName(ClazzName_messages_readMessageContents, 215, 0x36a73f77)                       // 36a73f77
-	iface.RegisterClazzName(ClazzName_messages_readMessageContents, 214, 0x36a73f77)                       // 36a73f77
 	iface.RegisterClazzName(ClazzName_messages_getStickers, 216, 0xd5a5d3a1)                               // d5a5d3a1
-	iface.RegisterClazzName(ClazzName_messages_getStickers, 215, 0xd5a5d3a1)                               // d5a5d3a1
-	iface.RegisterClazzName(ClazzName_messages_getStickers, 214, 0xd5a5d3a1)                               // d5a5d3a1
 	iface.RegisterClazzName(ClazzName_messages_getAllStickers, 216, 0xb8a0a1a8)                            // b8a0a1a8
-	iface.RegisterClazzName(ClazzName_messages_getAllStickers, 215, 0xb8a0a1a8)                            // b8a0a1a8
-	iface.RegisterClazzName(ClazzName_messages_getAllStickers, 214, 0xb8a0a1a8)                            // b8a0a1a8
 	iface.RegisterClazzName(ClazzName_messages_getWebPagePreview, 216, 0x570d6f6f)                         // 570d6f6f
-	iface.RegisterClazzName(ClazzName_messages_getWebPagePreview, 215, 0x570d6f6f)                         // 570d6f6f
-	iface.RegisterClazzName(ClazzName_messages_getWebPagePreview, 214, 0x570d6f6f)                         // 570d6f6f
 	iface.RegisterClazzName(ClazzName_messages_exportChatInvite, 216, 0xa455de90)                          // a455de90
-	iface.RegisterClazzName(ClazzName_messages_exportChatInvite, 215, 0xa455de90)                          // a455de90
-	iface.RegisterClazzName(ClazzName_messages_exportChatInvite, 214, 0xa455de90)                          // a455de90
 	iface.RegisterClazzName(ClazzName_messages_checkChatInvite, 216, 0x3eadb1bb)                           // 3eadb1bb
-	iface.RegisterClazzName(ClazzName_messages_checkChatInvite, 215, 0x3eadb1bb)                           // 3eadb1bb
-	iface.RegisterClazzName(ClazzName_messages_checkChatInvite, 214, 0x3eadb1bb)                           // 3eadb1bb
 	iface.RegisterClazzName(ClazzName_messages_importChatInvite, 216, 0x6c50051c)                          // 6c50051c
-	iface.RegisterClazzName(ClazzName_messages_importChatInvite, 215, 0x6c50051c)                          // 6c50051c
-	iface.RegisterClazzName(ClazzName_messages_importChatInvite, 214, 0x6c50051c)                          // 6c50051c
 	iface.RegisterClazzName(ClazzName_messages_getStickerSet, 216, 0xc8a0ec74)                             // c8a0ec74
-	iface.RegisterClazzName(ClazzName_messages_getStickerSet, 215, 0xc8a0ec74)                             // c8a0ec74
-	iface.RegisterClazzName(ClazzName_messages_getStickerSet, 214, 0xc8a0ec74)                             // c8a0ec74
 	iface.RegisterClazzName(ClazzName_messages_getStickerSet, 134, 0x2619a90e)                             // 2619a90e
 	iface.RegisterClazzName(ClazzName_messages_installStickerSet, 216, 0xc78fe460)                         // c78fe460
-	iface.RegisterClazzName(ClazzName_messages_installStickerSet, 215, 0xc78fe460)                         // c78fe460
-	iface.RegisterClazzName(ClazzName_messages_installStickerSet, 214, 0xc78fe460)                         // c78fe460
 	iface.RegisterClazzName(ClazzName_messages_uninstallStickerSet, 216, 0xf96e55de)                       // f96e55de
-	iface.RegisterClazzName(ClazzName_messages_uninstallStickerSet, 215, 0xf96e55de)                       // f96e55de
-	iface.RegisterClazzName(ClazzName_messages_uninstallStickerSet, 214, 0xf96e55de)                       // f96e55de
 	iface.RegisterClazzName(ClazzName_messages_startBot, 216, 0xe6df7378)                                  // e6df7378
-	iface.RegisterClazzName(ClazzName_messages_startBot, 215, 0xe6df7378)                                  // e6df7378
-	iface.RegisterClazzName(ClazzName_messages_startBot, 214, 0xe6df7378)                                  // e6df7378
 	iface.RegisterClazzName(ClazzName_messages_getMessagesViews, 216, 0x5784d3e1)                          // 5784d3e1
-	iface.RegisterClazzName(ClazzName_messages_getMessagesViews, 215, 0x5784d3e1)                          // 5784d3e1
-	iface.RegisterClazzName(ClazzName_messages_getMessagesViews, 214, 0x5784d3e1)                          // 5784d3e1
 	iface.RegisterClazzName(ClazzName_messages_editChatAdmin, 216, 0xa85bd1c2)                             // a85bd1c2
-	iface.RegisterClazzName(ClazzName_messages_editChatAdmin, 215, 0xa85bd1c2)                             // a85bd1c2
-	iface.RegisterClazzName(ClazzName_messages_editChatAdmin, 214, 0xa85bd1c2)                             // a85bd1c2
 	iface.RegisterClazzName(ClazzName_messages_migrateChat, 216, 0xa2875319)                               // a2875319
-	iface.RegisterClazzName(ClazzName_messages_migrateChat, 215, 0xa2875319)                               // a2875319
-	iface.RegisterClazzName(ClazzName_messages_migrateChat, 214, 0xa2875319)                               // a2875319
 	iface.RegisterClazzName(ClazzName_messages_searchGlobal, 216, 0x4bc6589a)                              // 4bc6589a
-	iface.RegisterClazzName(ClazzName_messages_searchGlobal, 215, 0x4bc6589a)                              // 4bc6589a
-	iface.RegisterClazzName(ClazzName_messages_searchGlobal, 214, 0x4bc6589a)                              // 4bc6589a
 	iface.RegisterClazzName(ClazzName_messages_reorderStickerSets, 216, 0x78337739)                        // 78337739
-	iface.RegisterClazzName(ClazzName_messages_reorderStickerSets, 215, 0x78337739)                        // 78337739
-	iface.RegisterClazzName(ClazzName_messages_reorderStickerSets, 214, 0x78337739)                        // 78337739
 	iface.RegisterClazzName(ClazzName_messages_getDocumentByHash, 216, 0xb1f2061f)                         // b1f2061f
-	iface.RegisterClazzName(ClazzName_messages_getDocumentByHash, 215, 0xb1f2061f)                         // b1f2061f
-	iface.RegisterClazzName(ClazzName_messages_getDocumentByHash, 214, 0xb1f2061f)                         // b1f2061f
 	iface.RegisterClazzName(ClazzName_messages_getSavedGifs, 216, 0x5cf09635)                              // 5cf09635
-	iface.RegisterClazzName(ClazzName_messages_getSavedGifs, 215, 0x5cf09635)                              // 5cf09635
-	iface.RegisterClazzName(ClazzName_messages_getSavedGifs, 214, 0x5cf09635)                              // 5cf09635
 	iface.RegisterClazzName(ClazzName_messages_saveGif, 216, 0x327a30cb)                                   // 327a30cb
-	iface.RegisterClazzName(ClazzName_messages_saveGif, 215, 0x327a30cb)                                   // 327a30cb
-	iface.RegisterClazzName(ClazzName_messages_saveGif, 214, 0x327a30cb)                                   // 327a30cb
 	iface.RegisterClazzName(ClazzName_messages_getInlineBotResults, 216, 0x514e999d)                       // 514e999d
-	iface.RegisterClazzName(ClazzName_messages_getInlineBotResults, 215, 0x514e999d)                       // 514e999d
-	iface.RegisterClazzName(ClazzName_messages_getInlineBotResults, 214, 0x514e999d)                       // 514e999d
 	iface.RegisterClazzName(ClazzName_messages_setInlineBotResults, 216, 0xbb12a419)                       // bb12a419
-	iface.RegisterClazzName(ClazzName_messages_setInlineBotResults, 215, 0xbb12a419)                       // bb12a419
-	iface.RegisterClazzName(ClazzName_messages_setInlineBotResults, 214, 0xbb12a419)                       // bb12a419
 	iface.RegisterClazzName(ClazzName_messages_sendInlineBotResult, 216, 0xc0cf7646)                       // c0cf7646
-	iface.RegisterClazzName(ClazzName_messages_sendInlineBotResult, 215, 0xc0cf7646)                       // c0cf7646
-	iface.RegisterClazzName(ClazzName_messages_sendInlineBotResult, 214, 0xc0cf7646)                       // c0cf7646
 	iface.RegisterClazzName(ClazzName_messages_getMessageEditData, 216, 0xfda68d36)                        // fda68d36
-	iface.RegisterClazzName(ClazzName_messages_getMessageEditData, 215, 0xfda68d36)                        // fda68d36
-	iface.RegisterClazzName(ClazzName_messages_getMessageEditData, 214, 0xfda68d36)                        // fda68d36
 	iface.RegisterClazzName(ClazzName_messages_editMessage, 216, 0xdfd14005)                               // dfd14005
-	iface.RegisterClazzName(ClazzName_messages_editMessage, 215, 0xdfd14005)                               // dfd14005
-	iface.RegisterClazzName(ClazzName_messages_editMessage, 214, 0xdfd14005)                               // dfd14005
 	iface.RegisterClazzName(ClazzName_messages_editInlineBotMessage, 216, 0x83557dba)                      // 83557dba
-	iface.RegisterClazzName(ClazzName_messages_editInlineBotMessage, 215, 0x83557dba)                      // 83557dba
-	iface.RegisterClazzName(ClazzName_messages_editInlineBotMessage, 214, 0x83557dba)                      // 83557dba
 	iface.RegisterClazzName(ClazzName_messages_getBotCallbackAnswer, 216, 0x9342ca07)                      // 9342ca07
-	iface.RegisterClazzName(ClazzName_messages_getBotCallbackAnswer, 215, 0x9342ca07)                      // 9342ca07
-	iface.RegisterClazzName(ClazzName_messages_getBotCallbackAnswer, 214, 0x9342ca07)                      // 9342ca07
 	iface.RegisterClazzName(ClazzName_messages_setBotCallbackAnswer, 216, 0xd58f130a)                      // d58f130a
-	iface.RegisterClazzName(ClazzName_messages_setBotCallbackAnswer, 215, 0xd58f130a)                      // d58f130a
-	iface.RegisterClazzName(ClazzName_messages_setBotCallbackAnswer, 214, 0xd58f130a)                      // d58f130a
 	iface.RegisterClazzName(ClazzName_messages_getPeerDialogs, 216, 0xe470bcfd)                            // e470bcfd
-	iface.RegisterClazzName(ClazzName_messages_getPeerDialogs, 215, 0xe470bcfd)                            // e470bcfd
-	iface.RegisterClazzName(ClazzName_messages_getPeerDialogs, 214, 0xe470bcfd)                            // e470bcfd
 	iface.RegisterClazzName(ClazzName_messages_saveDraft, 216, 0x54ae308e)                                 // 54ae308e
-	iface.RegisterClazzName(ClazzName_messages_saveDraft, 215, 0x54ae308e)                                 // 54ae308e
-	iface.RegisterClazzName(ClazzName_messages_saveDraft, 214, 0x54ae308e)                                 // 54ae308e
 	iface.RegisterClazzName(ClazzName_messages_getAllDrafts, 216, 0x6a3f8d65)                              // 6a3f8d65
-	iface.RegisterClazzName(ClazzName_messages_getAllDrafts, 215, 0x6a3f8d65)                              // 6a3f8d65
-	iface.RegisterClazzName(ClazzName_messages_getAllDrafts, 214, 0x6a3f8d65)                              // 6a3f8d65
 	iface.RegisterClazzName(ClazzName_messages_getFeaturedStickers, 216, 0x64780b14)                       // 64780b14
-	iface.RegisterClazzName(ClazzName_messages_getFeaturedStickers, 215, 0x64780b14)                       // 64780b14
-	iface.RegisterClazzName(ClazzName_messages_getFeaturedStickers, 214, 0x64780b14)                       // 64780b14
 	iface.RegisterClazzName(ClazzName_messages_readFeaturedStickers, 216, 0x5b118126)                      // 5b118126
-	iface.RegisterClazzName(ClazzName_messages_readFeaturedStickers, 215, 0x5b118126)                      // 5b118126
-	iface.RegisterClazzName(ClazzName_messages_readFeaturedStickers, 214, 0x5b118126)                      // 5b118126
 	iface.RegisterClazzName(ClazzName_messages_getRecentStickers, 216, 0x9da9403b)                         // 9da9403b
-	iface.RegisterClazzName(ClazzName_messages_getRecentStickers, 215, 0x9da9403b)                         // 9da9403b
-	iface.RegisterClazzName(ClazzName_messages_getRecentStickers, 214, 0x9da9403b)                         // 9da9403b
 	iface.RegisterClazzName(ClazzName_messages_saveRecentSticker, 216, 0x392718f8)                         // 392718f8
-	iface.RegisterClazzName(ClazzName_messages_saveRecentSticker, 215, 0x392718f8)                         // 392718f8
-	iface.RegisterClazzName(ClazzName_messages_saveRecentSticker, 214, 0x392718f8)                         // 392718f8
 	iface.RegisterClazzName(ClazzName_messages_clearRecentStickers, 216, 0x8999602d)                       // 8999602d
-	iface.RegisterClazzName(ClazzName_messages_clearRecentStickers, 215, 0x8999602d)                       // 8999602d
-	iface.RegisterClazzName(ClazzName_messages_clearRecentStickers, 214, 0x8999602d)                       // 8999602d
 	iface.RegisterClazzName(ClazzName_messages_getArchivedStickers, 216, 0x57f17692)                       // 57f17692
-	iface.RegisterClazzName(ClazzName_messages_getArchivedStickers, 215, 0x57f17692)                       // 57f17692
-	iface.RegisterClazzName(ClazzName_messages_getArchivedStickers, 214, 0x57f17692)                       // 57f17692
 	iface.RegisterClazzName(ClazzName_messages_getMaskStickers, 216, 0x640f82b8)                           // 640f82b8
-	iface.RegisterClazzName(ClazzName_messages_getMaskStickers, 215, 0x640f82b8)                           // 640f82b8
-	iface.RegisterClazzName(ClazzName_messages_getMaskStickers, 214, 0x640f82b8)                           // 640f82b8
 	iface.RegisterClazzName(ClazzName_messages_getAttachedStickers, 216, 0xcc5b67cc)                       // cc5b67cc
-	iface.RegisterClazzName(ClazzName_messages_getAttachedStickers, 215, 0xcc5b67cc)                       // cc5b67cc
-	iface.RegisterClazzName(ClazzName_messages_getAttachedStickers, 214, 0xcc5b67cc)                       // cc5b67cc
 	iface.RegisterClazzName(ClazzName_messages_setGameScore, 216, 0x8ef8ecc0)                              // 8ef8ecc0
-	iface.RegisterClazzName(ClazzName_messages_setGameScore, 215, 0x8ef8ecc0)                              // 8ef8ecc0
-	iface.RegisterClazzName(ClazzName_messages_setGameScore, 214, 0x8ef8ecc0)                              // 8ef8ecc0
 	iface.RegisterClazzName(ClazzName_messages_setInlineGameScore, 216, 0x15ad9f64)                        // 15ad9f64
-	iface.RegisterClazzName(ClazzName_messages_setInlineGameScore, 215, 0x15ad9f64)                        // 15ad9f64
-	iface.RegisterClazzName(ClazzName_messages_setInlineGameScore, 214, 0x15ad9f64)                        // 15ad9f64
 	iface.RegisterClazzName(ClazzName_messages_getGameHighScores, 216, 0xe822649d)                         // e822649d
-	iface.RegisterClazzName(ClazzName_messages_getGameHighScores, 215, 0xe822649d)                         // e822649d
-	iface.RegisterClazzName(ClazzName_messages_getGameHighScores, 214, 0xe822649d)                         // e822649d
 	iface.RegisterClazzName(ClazzName_messages_getInlineGameHighScores, 216, 0xf635e1b)                    // f635e1b
-	iface.RegisterClazzName(ClazzName_messages_getInlineGameHighScores, 215, 0xf635e1b)                    // f635e1b
-	iface.RegisterClazzName(ClazzName_messages_getInlineGameHighScores, 214, 0xf635e1b)                    // f635e1b
 	iface.RegisterClazzName(ClazzName_messages_getCommonChats, 216, 0xe40ca104)                            // e40ca104
-	iface.RegisterClazzName(ClazzName_messages_getCommonChats, 215, 0xe40ca104)                            // e40ca104
-	iface.RegisterClazzName(ClazzName_messages_getCommonChats, 214, 0xe40ca104)                            // e40ca104
 	iface.RegisterClazzName(ClazzName_messages_getWebPage, 216, 0x8d9692a3)                                // 8d9692a3
-	iface.RegisterClazzName(ClazzName_messages_getWebPage, 215, 0x8d9692a3)                                // 8d9692a3
-	iface.RegisterClazzName(ClazzName_messages_getWebPage, 214, 0x8d9692a3)                                // 8d9692a3
 	iface.RegisterClazzName(ClazzName_messages_toggleDialogPin, 216, 0xa731e257)                           // a731e257
-	iface.RegisterClazzName(ClazzName_messages_toggleDialogPin, 215, 0xa731e257)                           // a731e257
-	iface.RegisterClazzName(ClazzName_messages_toggleDialogPin, 214, 0xa731e257)                           // a731e257
 	iface.RegisterClazzName(ClazzName_messages_reorderPinnedDialogs, 216, 0x3b1adf37)                      // 3b1adf37
-	iface.RegisterClazzName(ClazzName_messages_reorderPinnedDialogs, 215, 0x3b1adf37)                      // 3b1adf37
-	iface.RegisterClazzName(ClazzName_messages_reorderPinnedDialogs, 214, 0x3b1adf37)                      // 3b1adf37
 	iface.RegisterClazzName(ClazzName_messages_getPinnedDialogs, 216, 0xd6b94df2)                          // d6b94df2
-	iface.RegisterClazzName(ClazzName_messages_getPinnedDialogs, 215, 0xd6b94df2)                          // d6b94df2
-	iface.RegisterClazzName(ClazzName_messages_getPinnedDialogs, 214, 0xd6b94df2)                          // d6b94df2
 	iface.RegisterClazzName(ClazzName_messages_setBotShippingResults, 216, 0xe5f672fa)                     // e5f672fa
-	iface.RegisterClazzName(ClazzName_messages_setBotShippingResults, 215, 0xe5f672fa)                     // e5f672fa
-	iface.RegisterClazzName(ClazzName_messages_setBotShippingResults, 214, 0xe5f672fa)                     // e5f672fa
 	iface.RegisterClazzName(ClazzName_messages_setBotPrecheckoutResults, 216, 0x9c2dd95)                   // 9c2dd95
-	iface.RegisterClazzName(ClazzName_messages_setBotPrecheckoutResults, 215, 0x9c2dd95)                   // 9c2dd95
-	iface.RegisterClazzName(ClazzName_messages_setBotPrecheckoutResults, 214, 0x9c2dd95)                   // 9c2dd95
 	iface.RegisterClazzName(ClazzName_messages_uploadMedia, 216, 0x14967978)                               // 14967978
-	iface.RegisterClazzName(ClazzName_messages_uploadMedia, 215, 0x14967978)                               // 14967978
-	iface.RegisterClazzName(ClazzName_messages_uploadMedia, 214, 0x14967978)                               // 14967978
 	iface.RegisterClazzName(ClazzName_messages_sendScreenshotNotification, 216, 0xa1405817)                // a1405817
-	iface.RegisterClazzName(ClazzName_messages_sendScreenshotNotification, 215, 0xa1405817)                // a1405817
-	iface.RegisterClazzName(ClazzName_messages_sendScreenshotNotification, 214, 0xa1405817)                // a1405817
 	iface.RegisterClazzName(ClazzName_messages_getFavedStickers, 216, 0x4f1aaa9)                           // 4f1aaa9
-	iface.RegisterClazzName(ClazzName_messages_getFavedStickers, 215, 0x4f1aaa9)                           // 4f1aaa9
-	iface.RegisterClazzName(ClazzName_messages_getFavedStickers, 214, 0x4f1aaa9)                           // 4f1aaa9
 	iface.RegisterClazzName(ClazzName_messages_faveSticker, 216, 0xb9ffc55b)                               // b9ffc55b
-	iface.RegisterClazzName(ClazzName_messages_faveSticker, 215, 0xb9ffc55b)                               // b9ffc55b
-	iface.RegisterClazzName(ClazzName_messages_faveSticker, 214, 0xb9ffc55b)                               // b9ffc55b
 	iface.RegisterClazzName(ClazzName_messages_getUnreadMentions, 216, 0xf107e790)                         // f107e790
-	iface.RegisterClazzName(ClazzName_messages_getUnreadMentions, 215, 0xf107e790)                         // f107e790
-	iface.RegisterClazzName(ClazzName_messages_getUnreadMentions, 214, 0xf107e790)                         // f107e790
 	iface.RegisterClazzName(ClazzName_messages_readMentions, 216, 0x36e5bf4d)                              // 36e5bf4d
-	iface.RegisterClazzName(ClazzName_messages_readMentions, 215, 0x36e5bf4d)                              // 36e5bf4d
-	iface.RegisterClazzName(ClazzName_messages_readMentions, 214, 0x36e5bf4d)                              // 36e5bf4d
 	iface.RegisterClazzName(ClazzName_messages_getRecentLocations, 216, 0x702a40e0)                        // 702a40e0
-	iface.RegisterClazzName(ClazzName_messages_getRecentLocations, 215, 0x702a40e0)                        // 702a40e0
-	iface.RegisterClazzName(ClazzName_messages_getRecentLocations, 214, 0x702a40e0)                        // 702a40e0
 	iface.RegisterClazzName(ClazzName_messages_sendMultiMedia, 216, 0x1bf89d74)                            // 1bf89d74
-	iface.RegisterClazzName(ClazzName_messages_sendMultiMedia, 215, 0x1bf89d74)                            // 1bf89d74
-	iface.RegisterClazzName(ClazzName_messages_sendMultiMedia, 214, 0x1bf89d74)                            // 1bf89d74
 	iface.RegisterClazzName(ClazzName_messages_uploadEncryptedFile, 216, 0x5057c497)                       // 5057c497
-	iface.RegisterClazzName(ClazzName_messages_uploadEncryptedFile, 215, 0x5057c497)                       // 5057c497
-	iface.RegisterClazzName(ClazzName_messages_uploadEncryptedFile, 214, 0x5057c497)                       // 5057c497
 	iface.RegisterClazzName(ClazzName_messages_searchStickerSets, 216, 0x35705b8a)                         // 35705b8a
-	iface.RegisterClazzName(ClazzName_messages_searchStickerSets, 215, 0x35705b8a)                         // 35705b8a
-	iface.RegisterClazzName(ClazzName_messages_searchStickerSets, 214, 0x35705b8a)                         // 35705b8a
 	iface.RegisterClazzName(ClazzName_messages_getSplitRanges, 216, 0x1cff7e08)                            // 1cff7e08
-	iface.RegisterClazzName(ClazzName_messages_getSplitRanges, 215, 0x1cff7e08)                            // 1cff7e08
-	iface.RegisterClazzName(ClazzName_messages_getSplitRanges, 214, 0x1cff7e08)                            // 1cff7e08
 	iface.RegisterClazzName(ClazzName_messages_markDialogUnread, 216, 0x8c5006f8)                          // 8c5006f8
-	iface.RegisterClazzName(ClazzName_messages_markDialogUnread, 215, 0x8c5006f8)                          // 8c5006f8
-	iface.RegisterClazzName(ClazzName_messages_markDialogUnread, 214, 0x8c5006f8)                          // 8c5006f8
 	iface.RegisterClazzName(ClazzName_messages_getDialogUnreadMarks, 216, 0x21202222)                      // 21202222
-	iface.RegisterClazzName(ClazzName_messages_getDialogUnreadMarks, 215, 0x21202222)                      // 21202222
-	iface.RegisterClazzName(ClazzName_messages_getDialogUnreadMarks, 214, 0x21202222)                      // 21202222
 	iface.RegisterClazzName(ClazzName_messages_clearAllDrafts, 216, 0x7e58ee9c)                            // 7e58ee9c
-	iface.RegisterClazzName(ClazzName_messages_clearAllDrafts, 215, 0x7e58ee9c)                            // 7e58ee9c
-	iface.RegisterClazzName(ClazzName_messages_clearAllDrafts, 214, 0x7e58ee9c)                            // 7e58ee9c
 	iface.RegisterClazzName(ClazzName_messages_updatePinnedMessage, 216, 0xd2aaf7ec)                       // d2aaf7ec
-	iface.RegisterClazzName(ClazzName_messages_updatePinnedMessage, 215, 0xd2aaf7ec)                       // d2aaf7ec
-	iface.RegisterClazzName(ClazzName_messages_updatePinnedMessage, 214, 0xd2aaf7ec)                       // d2aaf7ec
 	iface.RegisterClazzName(ClazzName_messages_sendVote, 216, 0x10ea6184)                                  // 10ea6184
-	iface.RegisterClazzName(ClazzName_messages_sendVote, 215, 0x10ea6184)                                  // 10ea6184
-	iface.RegisterClazzName(ClazzName_messages_sendVote, 214, 0x10ea6184)                                  // 10ea6184
 	iface.RegisterClazzName(ClazzName_messages_getPollResults, 216, 0x73bb643b)                            // 73bb643b
-	iface.RegisterClazzName(ClazzName_messages_getPollResults, 215, 0x73bb643b)                            // 73bb643b
-	iface.RegisterClazzName(ClazzName_messages_getPollResults, 214, 0x73bb643b)                            // 73bb643b
 	iface.RegisterClazzName(ClazzName_messages_getOnlines, 216, 0x6e2be050)                                // 6e2be050
-	iface.RegisterClazzName(ClazzName_messages_getOnlines, 215, 0x6e2be050)                                // 6e2be050
-	iface.RegisterClazzName(ClazzName_messages_getOnlines, 214, 0x6e2be050)                                // 6e2be050
 	iface.RegisterClazzName(ClazzName_messages_editChatAbout, 216, 0xdef60797)                             // def60797
-	iface.RegisterClazzName(ClazzName_messages_editChatAbout, 215, 0xdef60797)                             // def60797
-	iface.RegisterClazzName(ClazzName_messages_editChatAbout, 214, 0xdef60797)                             // def60797
 	iface.RegisterClazzName(ClazzName_messages_editChatDefaultBannedRights, 216, 0xa5866b41)               // a5866b41
-	iface.RegisterClazzName(ClazzName_messages_editChatDefaultBannedRights, 215, 0xa5866b41)               // a5866b41
-	iface.RegisterClazzName(ClazzName_messages_editChatDefaultBannedRights, 214, 0xa5866b41)               // a5866b41
 	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywords, 216, 0x35a0e062)                          // 35a0e062
-	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywords, 215, 0x35a0e062)                          // 35a0e062
-	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywords, 214, 0x35a0e062)                          // 35a0e062
 	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywordsDifference, 216, 0x1508b6af)                // 1508b6af
-	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywordsDifference, 215, 0x1508b6af)                // 1508b6af
-	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywordsDifference, 214, 0x1508b6af)                // 1508b6af
 	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywordsLanguages, 216, 0x4e9963b2)                 // 4e9963b2
-	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywordsLanguages, 215, 0x4e9963b2)                 // 4e9963b2
-	iface.RegisterClazzName(ClazzName_messages_getEmojiKeywordsLanguages, 214, 0x4e9963b2)                 // 4e9963b2
 	iface.RegisterClazzName(ClazzName_messages_getEmojiURL, 216, 0xd5b10c26)                               // d5b10c26
-	iface.RegisterClazzName(ClazzName_messages_getEmojiURL, 215, 0xd5b10c26)                               // d5b10c26
-	iface.RegisterClazzName(ClazzName_messages_getEmojiURL, 214, 0xd5b10c26)                               // d5b10c26
 	iface.RegisterClazzName(ClazzName_messages_getSearchCounters, 216, 0x1bbcf300)                         // 1bbcf300
-	iface.RegisterClazzName(ClazzName_messages_getSearchCounters, 215, 0x1bbcf300)                         // 1bbcf300
-	iface.RegisterClazzName(ClazzName_messages_getSearchCounters, 214, 0x1bbcf300)                         // 1bbcf300
 	iface.RegisterClazzName(ClazzName_messages_requestUrlAuth, 216, 0x198fb446)                            // 198fb446
-	iface.RegisterClazzName(ClazzName_messages_requestUrlAuth, 215, 0x198fb446)                            // 198fb446
-	iface.RegisterClazzName(ClazzName_messages_requestUrlAuth, 214, 0x198fb446)                            // 198fb446
 	iface.RegisterClazzName(ClazzName_messages_acceptUrlAuth, 216, 0xb12c7125)                             // b12c7125
-	iface.RegisterClazzName(ClazzName_messages_acceptUrlAuth, 215, 0xb12c7125)                             // b12c7125
-	iface.RegisterClazzName(ClazzName_messages_acceptUrlAuth, 214, 0xb12c7125)                             // b12c7125
 	iface.RegisterClazzName(ClazzName_messages_hidePeerSettingsBar, 216, 0x4facb138)                       // 4facb138
-	iface.RegisterClazzName(ClazzName_messages_hidePeerSettingsBar, 215, 0x4facb138)                       // 4facb138
-	iface.RegisterClazzName(ClazzName_messages_hidePeerSettingsBar, 214, 0x4facb138)                       // 4facb138
 	iface.RegisterClazzName(ClazzName_messages_getScheduledHistory, 216, 0xf516760b)                       // f516760b
-	iface.RegisterClazzName(ClazzName_messages_getScheduledHistory, 215, 0xf516760b)                       // f516760b
-	iface.RegisterClazzName(ClazzName_messages_getScheduledHistory, 214, 0xf516760b)                       // f516760b
 	iface.RegisterClazzName(ClazzName_messages_getScheduledMessages, 216, 0xbdbb0464)                      // bdbb0464
-	iface.RegisterClazzName(ClazzName_messages_getScheduledMessages, 215, 0xbdbb0464)                      // bdbb0464
-	iface.RegisterClazzName(ClazzName_messages_getScheduledMessages, 214, 0xbdbb0464)                      // bdbb0464
 	iface.RegisterClazzName(ClazzName_messages_sendScheduledMessages, 216, 0xbd38850a)                     // bd38850a
-	iface.RegisterClazzName(ClazzName_messages_sendScheduledMessages, 215, 0xbd38850a)                     // bd38850a
-	iface.RegisterClazzName(ClazzName_messages_sendScheduledMessages, 214, 0xbd38850a)                     // bd38850a
 	iface.RegisterClazzName(ClazzName_messages_deleteScheduledMessages, 216, 0x59ae2b16)                   // 59ae2b16
-	iface.RegisterClazzName(ClazzName_messages_deleteScheduledMessages, 215, 0x59ae2b16)                   // 59ae2b16
-	iface.RegisterClazzName(ClazzName_messages_deleteScheduledMessages, 214, 0x59ae2b16)                   // 59ae2b16
 	iface.RegisterClazzName(ClazzName_messages_getPollVotes, 216, 0xb86e380e)                              // b86e380e
-	iface.RegisterClazzName(ClazzName_messages_getPollVotes, 215, 0xb86e380e)                              // b86e380e
-	iface.RegisterClazzName(ClazzName_messages_getPollVotes, 214, 0xb86e380e)                              // b86e380e
 	iface.RegisterClazzName(ClazzName_messages_toggleStickerSets, 216, 0xb5052fea)                         // b5052fea
-	iface.RegisterClazzName(ClazzName_messages_toggleStickerSets, 215, 0xb5052fea)                         // b5052fea
-	iface.RegisterClazzName(ClazzName_messages_toggleStickerSets, 214, 0xb5052fea)                         // b5052fea
 	iface.RegisterClazzName(ClazzName_messages_getDialogFilters, 216, 0xefd48c89)                          // efd48c89
-	iface.RegisterClazzName(ClazzName_messages_getDialogFilters, 215, 0xefd48c89)                          // efd48c89
-	iface.RegisterClazzName(ClazzName_messages_getDialogFilters, 214, 0xefd48c89)                          // efd48c89
 	iface.RegisterClazzName(ClazzName_messages_getSuggestedDialogFilters, 216, 0xa29cd42c)                 // a29cd42c
-	iface.RegisterClazzName(ClazzName_messages_getSuggestedDialogFilters, 215, 0xa29cd42c)                 // a29cd42c
-	iface.RegisterClazzName(ClazzName_messages_getSuggestedDialogFilters, 214, 0xa29cd42c)                 // a29cd42c
 	iface.RegisterClazzName(ClazzName_messages_updateDialogFilter, 216, 0x1ad4a04a)                        // 1ad4a04a
-	iface.RegisterClazzName(ClazzName_messages_updateDialogFilter, 215, 0x1ad4a04a)                        // 1ad4a04a
-	iface.RegisterClazzName(ClazzName_messages_updateDialogFilter, 214, 0x1ad4a04a)                        // 1ad4a04a
 	iface.RegisterClazzName(ClazzName_messages_updateDialogFiltersOrder, 216, 0xc563c1e4)                  // c563c1e4
-	iface.RegisterClazzName(ClazzName_messages_updateDialogFiltersOrder, 215, 0xc563c1e4)                  // c563c1e4
-	iface.RegisterClazzName(ClazzName_messages_updateDialogFiltersOrder, 214, 0xc563c1e4)                  // c563c1e4
 	iface.RegisterClazzName(ClazzName_messages_getOldFeaturedStickers, 216, 0x7ed094a1)                    // 7ed094a1
-	iface.RegisterClazzName(ClazzName_messages_getOldFeaturedStickers, 215, 0x7ed094a1)                    // 7ed094a1
-	iface.RegisterClazzName(ClazzName_messages_getOldFeaturedStickers, 214, 0x7ed094a1)                    // 7ed094a1
 	iface.RegisterClazzName(ClazzName_messages_getReplies, 216, 0x22ddd30c)                                // 22ddd30c
-	iface.RegisterClazzName(ClazzName_messages_getReplies, 215, 0x22ddd30c)                                // 22ddd30c
-	iface.RegisterClazzName(ClazzName_messages_getReplies, 214, 0x22ddd30c)                                // 22ddd30c
 	iface.RegisterClazzName(ClazzName_messages_getDiscussionMessage, 216, 0x446972fd)                      // 446972fd
-	iface.RegisterClazzName(ClazzName_messages_getDiscussionMessage, 215, 0x446972fd)                      // 446972fd
-	iface.RegisterClazzName(ClazzName_messages_getDiscussionMessage, 214, 0x446972fd)                      // 446972fd
 	iface.RegisterClazzName(ClazzName_messages_readDiscussion, 216, 0xf731a9f4)                            // f731a9f4
-	iface.RegisterClazzName(ClazzName_messages_readDiscussion, 215, 0xf731a9f4)                            // f731a9f4
-	iface.RegisterClazzName(ClazzName_messages_readDiscussion, 214, 0xf731a9f4)                            // f731a9f4
 	iface.RegisterClazzName(ClazzName_messages_unpinAllMessages, 216, 0x62dd747)                           // 62dd747
-	iface.RegisterClazzName(ClazzName_messages_unpinAllMessages, 215, 0x62dd747)                           // 62dd747
-	iface.RegisterClazzName(ClazzName_messages_unpinAllMessages, 214, 0x62dd747)                           // 62dd747
 	iface.RegisterClazzName(ClazzName_messages_deleteChat, 216, 0x5bd0ee50)                                // 5bd0ee50
-	iface.RegisterClazzName(ClazzName_messages_deleteChat, 215, 0x5bd0ee50)                                // 5bd0ee50
-	iface.RegisterClazzName(ClazzName_messages_deleteChat, 214, 0x5bd0ee50)                                // 5bd0ee50
 	iface.RegisterClazzName(ClazzName_messages_deletePhoneCallHistory, 216, 0xf9cbe409)                    // f9cbe409
-	iface.RegisterClazzName(ClazzName_messages_deletePhoneCallHistory, 215, 0xf9cbe409)                    // f9cbe409
-	iface.RegisterClazzName(ClazzName_messages_deletePhoneCallHistory, 214, 0xf9cbe409)                    // f9cbe409
 	iface.RegisterClazzName(ClazzName_messages_checkHistoryImport, 216, 0x43fe19f3)                        // 43fe19f3
-	iface.RegisterClazzName(ClazzName_messages_checkHistoryImport, 215, 0x43fe19f3)                        // 43fe19f3
-	iface.RegisterClazzName(ClazzName_messages_checkHistoryImport, 214, 0x43fe19f3)                        // 43fe19f3
 	iface.RegisterClazzName(ClazzName_messages_initHistoryImport, 216, 0x34090c3b)                         // 34090c3b
-	iface.RegisterClazzName(ClazzName_messages_initHistoryImport, 215, 0x34090c3b)                         // 34090c3b
-	iface.RegisterClazzName(ClazzName_messages_initHistoryImport, 214, 0x34090c3b)                         // 34090c3b
 	iface.RegisterClazzName(ClazzName_messages_uploadImportedMedia, 216, 0x2a862092)                       // 2a862092
-	iface.RegisterClazzName(ClazzName_messages_uploadImportedMedia, 215, 0x2a862092)                       // 2a862092
-	iface.RegisterClazzName(ClazzName_messages_uploadImportedMedia, 214, 0x2a862092)                       // 2a862092
 	iface.RegisterClazzName(ClazzName_messages_startHistoryImport, 216, 0xb43df344)                        // b43df344
-	iface.RegisterClazzName(ClazzName_messages_startHistoryImport, 215, 0xb43df344)                        // b43df344
-	iface.RegisterClazzName(ClazzName_messages_startHistoryImport, 214, 0xb43df344)                        // b43df344
 	iface.RegisterClazzName(ClazzName_messages_getExportedChatInvites, 216, 0xa2b5a3f6)                    // a2b5a3f6
-	iface.RegisterClazzName(ClazzName_messages_getExportedChatInvites, 215, 0xa2b5a3f6)                    // a2b5a3f6
-	iface.RegisterClazzName(ClazzName_messages_getExportedChatInvites, 214, 0xa2b5a3f6)                    // a2b5a3f6
 	iface.RegisterClazzName(ClazzName_messages_getExportedChatInvite, 216, 0x73746f5c)                     // 73746f5c
-	iface.RegisterClazzName(ClazzName_messages_getExportedChatInvite, 215, 0x73746f5c)                     // 73746f5c
-	iface.RegisterClazzName(ClazzName_messages_getExportedChatInvite, 214, 0x73746f5c)                     // 73746f5c
 	iface.RegisterClazzName(ClazzName_messages_editExportedChatInvite, 216, 0xbdca2f75)                    // bdca2f75
-	iface.RegisterClazzName(ClazzName_messages_editExportedChatInvite, 215, 0xbdca2f75)                    // bdca2f75
-	iface.RegisterClazzName(ClazzName_messages_editExportedChatInvite, 214, 0xbdca2f75)                    // bdca2f75
 	iface.RegisterClazzName(ClazzName_messages_deleteRevokedExportedChatInvites, 216, 0x56987bd5)          // 56987bd5
-	iface.RegisterClazzName(ClazzName_messages_deleteRevokedExportedChatInvites, 215, 0x56987bd5)          // 56987bd5
-	iface.RegisterClazzName(ClazzName_messages_deleteRevokedExportedChatInvites, 214, 0x56987bd5)          // 56987bd5
 	iface.RegisterClazzName(ClazzName_messages_deleteExportedChatInvite, 216, 0xd464a42b)                  // d464a42b
-	iface.RegisterClazzName(ClazzName_messages_deleteExportedChatInvite, 215, 0xd464a42b)                  // d464a42b
-	iface.RegisterClazzName(ClazzName_messages_deleteExportedChatInvite, 214, 0xd464a42b)                  // d464a42b
 	iface.RegisterClazzName(ClazzName_messages_getAdminsWithInvites, 216, 0x3920e6ef)                      // 3920e6ef
-	iface.RegisterClazzName(ClazzName_messages_getAdminsWithInvites, 215, 0x3920e6ef)                      // 3920e6ef
-	iface.RegisterClazzName(ClazzName_messages_getAdminsWithInvites, 214, 0x3920e6ef)                      // 3920e6ef
 	iface.RegisterClazzName(ClazzName_messages_getChatInviteImporters, 216, 0xdf04dd4e)                    // df04dd4e
-	iface.RegisterClazzName(ClazzName_messages_getChatInviteImporters, 215, 0xdf04dd4e)                    // df04dd4e
-	iface.RegisterClazzName(ClazzName_messages_getChatInviteImporters, 214, 0xdf04dd4e)                    // df04dd4e
 	iface.RegisterClazzName(ClazzName_messages_setHistoryTTL, 216, 0xb80e5fe4)                             // b80e5fe4
-	iface.RegisterClazzName(ClazzName_messages_setHistoryTTL, 215, 0xb80e5fe4)                             // b80e5fe4
-	iface.RegisterClazzName(ClazzName_messages_setHistoryTTL, 214, 0xb80e5fe4)                             // b80e5fe4
 	iface.RegisterClazzName(ClazzName_messages_checkHistoryImportPeer, 216, 0x5dc60f03)                    // 5dc60f03
-	iface.RegisterClazzName(ClazzName_messages_checkHistoryImportPeer, 215, 0x5dc60f03)                    // 5dc60f03
-	iface.RegisterClazzName(ClazzName_messages_checkHistoryImportPeer, 214, 0x5dc60f03)                    // 5dc60f03
 	iface.RegisterClazzName(ClazzName_messages_setChatTheme, 216, 0x81202c9)                               // 81202c9
-	iface.RegisterClazzName(ClazzName_messages_setChatTheme, 215, 0x81202c9)                               // 81202c9
-	iface.RegisterClazzName(ClazzName_messages_setChatTheme, 214, 0x81202c9)                               // 81202c9
 	iface.RegisterClazzName(ClazzName_messages_getMessageReadParticipants, 216, 0x31c1c44f)                // 31c1c44f
-	iface.RegisterClazzName(ClazzName_messages_getMessageReadParticipants, 215, 0x31c1c44f)                // 31c1c44f
-	iface.RegisterClazzName(ClazzName_messages_getMessageReadParticipants, 214, 0x31c1c44f)                // 31c1c44f
 	iface.RegisterClazzName(ClazzName_messages_getSearchResultsCalendar, 216, 0x6aa3f6bd)                  // 6aa3f6bd
-	iface.RegisterClazzName(ClazzName_messages_getSearchResultsCalendar, 215, 0x6aa3f6bd)                  // 6aa3f6bd
-	iface.RegisterClazzName(ClazzName_messages_getSearchResultsCalendar, 214, 0x6aa3f6bd)                  // 6aa3f6bd
 	iface.RegisterClazzName(ClazzName_messages_getSearchResultsPositions, 216, 0x9c7f2f10)                 // 9c7f2f10
-	iface.RegisterClazzName(ClazzName_messages_getSearchResultsPositions, 215, 0x9c7f2f10)                 // 9c7f2f10
-	iface.RegisterClazzName(ClazzName_messages_getSearchResultsPositions, 214, 0x9c7f2f10)                 // 9c7f2f10
 	iface.RegisterClazzName(ClazzName_messages_hideChatJoinRequest, 216, 0x7fe7e815)                       // 7fe7e815
-	iface.RegisterClazzName(ClazzName_messages_hideChatJoinRequest, 215, 0x7fe7e815)                       // 7fe7e815
-	iface.RegisterClazzName(ClazzName_messages_hideChatJoinRequest, 214, 0x7fe7e815)                       // 7fe7e815
 	iface.RegisterClazzName(ClazzName_messages_hideAllChatJoinRequests, 216, 0xe085f4ea)                   // e085f4ea
-	iface.RegisterClazzName(ClazzName_messages_hideAllChatJoinRequests, 215, 0xe085f4ea)                   // e085f4ea
-	iface.RegisterClazzName(ClazzName_messages_hideAllChatJoinRequests, 214, 0xe085f4ea)                   // e085f4ea
 	iface.RegisterClazzName(ClazzName_messages_toggleNoForwards, 216, 0xb11eafa2)                          // b11eafa2
-	iface.RegisterClazzName(ClazzName_messages_toggleNoForwards, 215, 0xb11eafa2)                          // b11eafa2
-	iface.RegisterClazzName(ClazzName_messages_toggleNoForwards, 214, 0xb11eafa2)                          // b11eafa2
 	iface.RegisterClazzName(ClazzName_messages_saveDefaultSendAs, 216, 0xccfddf96)                         // ccfddf96
-	iface.RegisterClazzName(ClazzName_messages_saveDefaultSendAs, 215, 0xccfddf96)                         // ccfddf96
-	iface.RegisterClazzName(ClazzName_messages_saveDefaultSendAs, 214, 0xccfddf96)                         // ccfddf96
 	iface.RegisterClazzName(ClazzName_messages_sendReaction, 216, 0xd30d78d4)                              // d30d78d4
-	iface.RegisterClazzName(ClazzName_messages_sendReaction, 215, 0xd30d78d4)                              // d30d78d4
-	iface.RegisterClazzName(ClazzName_messages_sendReaction, 214, 0xd30d78d4)                              // d30d78d4
 	iface.RegisterClazzName(ClazzName_messages_getMessagesReactions, 216, 0x8bba90e6)                      // 8bba90e6
-	iface.RegisterClazzName(ClazzName_messages_getMessagesReactions, 215, 0x8bba90e6)                      // 8bba90e6
-	iface.RegisterClazzName(ClazzName_messages_getMessagesReactions, 214, 0x8bba90e6)                      // 8bba90e6
 	iface.RegisterClazzName(ClazzName_messages_getMessageReactionsList, 216, 0x461b3f48)                   // 461b3f48
-	iface.RegisterClazzName(ClazzName_messages_getMessageReactionsList, 215, 0x461b3f48)                   // 461b3f48
-	iface.RegisterClazzName(ClazzName_messages_getMessageReactionsList, 214, 0x461b3f48)                   // 461b3f48
 	iface.RegisterClazzName(ClazzName_messages_setChatAvailableReactions, 216, 0x864b2581)                 // 864b2581
-	iface.RegisterClazzName(ClazzName_messages_setChatAvailableReactions, 215, 0x864b2581)                 // 864b2581
-	iface.RegisterClazzName(ClazzName_messages_setChatAvailableReactions, 214, 0x864b2581)                 // 864b2581
 	iface.RegisterClazzName(ClazzName_messages_getAvailableReactions, 216, 0x18dea0ac)                     // 18dea0ac
-	iface.RegisterClazzName(ClazzName_messages_getAvailableReactions, 215, 0x18dea0ac)                     // 18dea0ac
-	iface.RegisterClazzName(ClazzName_messages_getAvailableReactions, 214, 0x18dea0ac)                     // 18dea0ac
 	iface.RegisterClazzName(ClazzName_messages_setDefaultReaction, 216, 0x4f47a016)                        // 4f47a016
-	iface.RegisterClazzName(ClazzName_messages_setDefaultReaction, 215, 0x4f47a016)                        // 4f47a016
-	iface.RegisterClazzName(ClazzName_messages_setDefaultReaction, 214, 0x4f47a016)                        // 4f47a016
 	iface.RegisterClazzName(ClazzName_messages_translateText, 216, 0x63183030)                             // 63183030
-	iface.RegisterClazzName(ClazzName_messages_translateText, 215, 0x63183030)                             // 63183030
-	iface.RegisterClazzName(ClazzName_messages_translateText, 214, 0x63183030)                             // 63183030
 	iface.RegisterClazzName(ClazzName_messages_getUnreadReactions, 216, 0xbd7f90ac)                        // bd7f90ac
-	iface.RegisterClazzName(ClazzName_messages_getUnreadReactions, 215, 0xbd7f90ac)                        // bd7f90ac
-	iface.RegisterClazzName(ClazzName_messages_getUnreadReactions, 214, 0xbd7f90ac)                        // bd7f90ac
 	iface.RegisterClazzName(ClazzName_messages_readReactions, 216, 0x9ec44f93)                             // 9ec44f93
-	iface.RegisterClazzName(ClazzName_messages_readReactions, 215, 0x9ec44f93)                             // 9ec44f93
-	iface.RegisterClazzName(ClazzName_messages_readReactions, 214, 0x9ec44f93)                             // 9ec44f93
 	iface.RegisterClazzName(ClazzName_messages_searchSentMedia, 216, 0x107e31a0)                           // 107e31a0
-	iface.RegisterClazzName(ClazzName_messages_searchSentMedia, 215, 0x107e31a0)                           // 107e31a0
-	iface.RegisterClazzName(ClazzName_messages_searchSentMedia, 214, 0x107e31a0)                           // 107e31a0
 	iface.RegisterClazzName(ClazzName_messages_getAttachMenuBots, 216, 0x16fcc2cb)                         // 16fcc2cb
-	iface.RegisterClazzName(ClazzName_messages_getAttachMenuBots, 215, 0x16fcc2cb)                         // 16fcc2cb
-	iface.RegisterClazzName(ClazzName_messages_getAttachMenuBots, 214, 0x16fcc2cb)                         // 16fcc2cb
 	iface.RegisterClazzName(ClazzName_messages_getAttachMenuBot, 216, 0x77216192)                          // 77216192
-	iface.RegisterClazzName(ClazzName_messages_getAttachMenuBot, 215, 0x77216192)                          // 77216192
-	iface.RegisterClazzName(ClazzName_messages_getAttachMenuBot, 214, 0x77216192)                          // 77216192
 	iface.RegisterClazzName(ClazzName_messages_toggleBotInAttachMenu, 216, 0x69f59d69)                     // 69f59d69
-	iface.RegisterClazzName(ClazzName_messages_toggleBotInAttachMenu, 215, 0x69f59d69)                     // 69f59d69
-	iface.RegisterClazzName(ClazzName_messages_toggleBotInAttachMenu, 214, 0x69f59d69)                     // 69f59d69
 	iface.RegisterClazzName(ClazzName_messages_requestWebView, 216, 0x269dc2c1)                            // 269dc2c1
-	iface.RegisterClazzName(ClazzName_messages_requestWebView, 215, 0x269dc2c1)                            // 269dc2c1
-	iface.RegisterClazzName(ClazzName_messages_requestWebView, 214, 0x269dc2c1)                            // 269dc2c1
 	iface.RegisterClazzName(ClazzName_messages_prolongWebView, 216, 0xb0d81a83)                            // b0d81a83
-	iface.RegisterClazzName(ClazzName_messages_prolongWebView, 215, 0xb0d81a83)                            // b0d81a83
-	iface.RegisterClazzName(ClazzName_messages_prolongWebView, 214, 0xb0d81a83)                            // b0d81a83
 	iface.RegisterClazzName(ClazzName_messages_requestSimpleWebView, 216, 0x413a3e73)                      // 413a3e73
-	iface.RegisterClazzName(ClazzName_messages_requestSimpleWebView, 215, 0x413a3e73)                      // 413a3e73
-	iface.RegisterClazzName(ClazzName_messages_requestSimpleWebView, 214, 0x413a3e73)                      // 413a3e73
 	iface.RegisterClazzName(ClazzName_messages_sendWebViewResultMessage, 216, 0xa4314f5)                   // a4314f5
-	iface.RegisterClazzName(ClazzName_messages_sendWebViewResultMessage, 215, 0xa4314f5)                   // a4314f5
-	iface.RegisterClazzName(ClazzName_messages_sendWebViewResultMessage, 214, 0xa4314f5)                   // a4314f5
 	iface.RegisterClazzName(ClazzName_messages_sendWebViewData, 216, 0xdc0242c8)                           // dc0242c8
-	iface.RegisterClazzName(ClazzName_messages_sendWebViewData, 215, 0xdc0242c8)                           // dc0242c8
-	iface.RegisterClazzName(ClazzName_messages_sendWebViewData, 214, 0xdc0242c8)                           // dc0242c8
 	iface.RegisterClazzName(ClazzName_messages_transcribeAudio, 216, 0x269e9a49)                           // 269e9a49
-	iface.RegisterClazzName(ClazzName_messages_transcribeAudio, 215, 0x269e9a49)                           // 269e9a49
-	iface.RegisterClazzName(ClazzName_messages_transcribeAudio, 214, 0x269e9a49)                           // 269e9a49
 	iface.RegisterClazzName(ClazzName_messages_rateTranscribedAudio, 216, 0x7f1d072f)                      // 7f1d072f
-	iface.RegisterClazzName(ClazzName_messages_rateTranscribedAudio, 215, 0x7f1d072f)                      // 7f1d072f
-	iface.RegisterClazzName(ClazzName_messages_rateTranscribedAudio, 214, 0x7f1d072f)                      // 7f1d072f
 	iface.RegisterClazzName(ClazzName_messages_getCustomEmojiDocuments, 216, 0xd9ab0f54)                   // d9ab0f54
-	iface.RegisterClazzName(ClazzName_messages_getCustomEmojiDocuments, 215, 0xd9ab0f54)                   // d9ab0f54
-	iface.RegisterClazzName(ClazzName_messages_getCustomEmojiDocuments, 214, 0xd9ab0f54)                   // d9ab0f54
 	iface.RegisterClazzName(ClazzName_messages_getEmojiStickers, 216, 0xfbfca18f)                          // fbfca18f
-	iface.RegisterClazzName(ClazzName_messages_getEmojiStickers, 215, 0xfbfca18f)                          // fbfca18f
-	iface.RegisterClazzName(ClazzName_messages_getEmojiStickers, 214, 0xfbfca18f)                          // fbfca18f
 	iface.RegisterClazzName(ClazzName_messages_getFeaturedEmojiStickers, 216, 0xecf6736)                   // ecf6736
-	iface.RegisterClazzName(ClazzName_messages_getFeaturedEmojiStickers, 215, 0xecf6736)                   // ecf6736
-	iface.RegisterClazzName(ClazzName_messages_getFeaturedEmojiStickers, 214, 0xecf6736)                   // ecf6736
 	iface.RegisterClazzName(ClazzName_messages_reportReaction, 216, 0x3f64c076)                            // 3f64c076
-	iface.RegisterClazzName(ClazzName_messages_reportReaction, 215, 0x3f64c076)                            // 3f64c076
-	iface.RegisterClazzName(ClazzName_messages_reportReaction, 214, 0x3f64c076)                            // 3f64c076
 	iface.RegisterClazzName(ClazzName_messages_getTopReactions, 216, 0xbb8125ba)                           // bb8125ba
-	iface.RegisterClazzName(ClazzName_messages_getTopReactions, 215, 0xbb8125ba)                           // bb8125ba
-	iface.RegisterClazzName(ClazzName_messages_getTopReactions, 214, 0xbb8125ba)                           // bb8125ba
 	iface.RegisterClazzName(ClazzName_messages_getRecentReactions, 216, 0x39461db2)                        // 39461db2
-	iface.RegisterClazzName(ClazzName_messages_getRecentReactions, 215, 0x39461db2)                        // 39461db2
-	iface.RegisterClazzName(ClazzName_messages_getRecentReactions, 214, 0x39461db2)                        // 39461db2
 	iface.RegisterClazzName(ClazzName_messages_clearRecentReactions, 216, 0x9dfeefb4)                      // 9dfeefb4
-	iface.RegisterClazzName(ClazzName_messages_clearRecentReactions, 215, 0x9dfeefb4)                      // 9dfeefb4
-	iface.RegisterClazzName(ClazzName_messages_clearRecentReactions, 214, 0x9dfeefb4)                      // 9dfeefb4
 	iface.RegisterClazzName(ClazzName_messages_getExtendedMedia, 216, 0x84f80814)                          // 84f80814
-	iface.RegisterClazzName(ClazzName_messages_getExtendedMedia, 215, 0x84f80814)                          // 84f80814
-	iface.RegisterClazzName(ClazzName_messages_getExtendedMedia, 214, 0x84f80814)                          // 84f80814
 	iface.RegisterClazzName(ClazzName_messages_setDefaultHistoryTTL, 216, 0x9eb51445)                      // 9eb51445
-	iface.RegisterClazzName(ClazzName_messages_setDefaultHistoryTTL, 215, 0x9eb51445)                      // 9eb51445
-	iface.RegisterClazzName(ClazzName_messages_setDefaultHistoryTTL, 214, 0x9eb51445)                      // 9eb51445
 	iface.RegisterClazzName(ClazzName_messages_getDefaultHistoryTTL, 216, 0x658b7188)                      // 658b7188
-	iface.RegisterClazzName(ClazzName_messages_getDefaultHistoryTTL, 215, 0x658b7188)                      // 658b7188
-	iface.RegisterClazzName(ClazzName_messages_getDefaultHistoryTTL, 214, 0x658b7188)                      // 658b7188
 	iface.RegisterClazzName(ClazzName_messages_sendBotRequestedPeer, 216, 0x91b2d060)                      // 91b2d060
-	iface.RegisterClazzName(ClazzName_messages_sendBotRequestedPeer, 215, 0x91b2d060)                      // 91b2d060
-	iface.RegisterClazzName(ClazzName_messages_sendBotRequestedPeer, 214, 0x91b2d060)                      // 91b2d060
 	iface.RegisterClazzName(ClazzName_messages_getEmojiGroups, 216, 0x7488ce5b)                            // 7488ce5b
-	iface.RegisterClazzName(ClazzName_messages_getEmojiGroups, 215, 0x7488ce5b)                            // 7488ce5b
-	iface.RegisterClazzName(ClazzName_messages_getEmojiGroups, 214, 0x7488ce5b)                            // 7488ce5b
 	iface.RegisterClazzName(ClazzName_messages_getEmojiStatusGroups, 216, 0x2ecd56cd)                      // 2ecd56cd
-	iface.RegisterClazzName(ClazzName_messages_getEmojiStatusGroups, 215, 0x2ecd56cd)                      // 2ecd56cd
-	iface.RegisterClazzName(ClazzName_messages_getEmojiStatusGroups, 214, 0x2ecd56cd)                      // 2ecd56cd
 	iface.RegisterClazzName(ClazzName_messages_getEmojiProfilePhotoGroups, 216, 0x21a548f3)                // 21a548f3
-	iface.RegisterClazzName(ClazzName_messages_getEmojiProfilePhotoGroups, 215, 0x21a548f3)                // 21a548f3
-	iface.RegisterClazzName(ClazzName_messages_getEmojiProfilePhotoGroups, 214, 0x21a548f3)                // 21a548f3
 	iface.RegisterClazzName(ClazzName_messages_searchCustomEmoji, 216, 0x2c11c0d7)                         // 2c11c0d7
-	iface.RegisterClazzName(ClazzName_messages_searchCustomEmoji, 215, 0x2c11c0d7)                         // 2c11c0d7
-	iface.RegisterClazzName(ClazzName_messages_searchCustomEmoji, 214, 0x2c11c0d7)                         // 2c11c0d7
 	iface.RegisterClazzName(ClazzName_messages_togglePeerTranslations, 216, 0xe47cb579)                    // e47cb579
-	iface.RegisterClazzName(ClazzName_messages_togglePeerTranslations, 215, 0xe47cb579)                    // e47cb579
-	iface.RegisterClazzName(ClazzName_messages_togglePeerTranslations, 214, 0xe47cb579)                    // e47cb579
 	iface.RegisterClazzName(ClazzName_messages_getBotApp, 216, 0x34fdc5c3)                                 // 34fdc5c3
-	iface.RegisterClazzName(ClazzName_messages_getBotApp, 215, 0x34fdc5c3)                                 // 34fdc5c3
-	iface.RegisterClazzName(ClazzName_messages_getBotApp, 214, 0x34fdc5c3)                                 // 34fdc5c3
 	iface.RegisterClazzName(ClazzName_messages_requestAppWebView, 216, 0x53618bce)                         // 53618bce
-	iface.RegisterClazzName(ClazzName_messages_requestAppWebView, 215, 0x53618bce)                         // 53618bce
-	iface.RegisterClazzName(ClazzName_messages_requestAppWebView, 214, 0x53618bce)                         // 53618bce
 	iface.RegisterClazzName(ClazzName_messages_setChatWallPaper, 216, 0x8ffacae1)                          // 8ffacae1
-	iface.RegisterClazzName(ClazzName_messages_setChatWallPaper, 215, 0x8ffacae1)                          // 8ffacae1
-	iface.RegisterClazzName(ClazzName_messages_setChatWallPaper, 214, 0x8ffacae1)                          // 8ffacae1
 	iface.RegisterClazzName(ClazzName_messages_searchEmojiStickerSets, 216, 0x92b4494c)                    // 92b4494c
-	iface.RegisterClazzName(ClazzName_messages_searchEmojiStickerSets, 215, 0x92b4494c)                    // 92b4494c
-	iface.RegisterClazzName(ClazzName_messages_searchEmojiStickerSets, 214, 0x92b4494c)                    // 92b4494c
 	iface.RegisterClazzName(ClazzName_messages_getSavedDialogs, 216, 0x1e91fc99)                           // 1e91fc99
-	iface.RegisterClazzName(ClazzName_messages_getSavedDialogs, 215, 0x1e91fc99)                           // 1e91fc99
-	iface.RegisterClazzName(ClazzName_messages_getSavedDialogs, 214, 0x1e91fc99)                           // 1e91fc99
 	iface.RegisterClazzName(ClazzName_messages_getSavedHistory, 216, 0x998ab009)                           // 998ab009
-	iface.RegisterClazzName(ClazzName_messages_getSavedHistory, 215, 0x998ab009)                           // 998ab009
-	iface.RegisterClazzName(ClazzName_messages_getSavedHistory, 214, 0x998ab009)                           // 998ab009
 	iface.RegisterClazzName(ClazzName_messages_deleteSavedHistory, 216, 0x4dc5085f)                        // 4dc5085f
-	iface.RegisterClazzName(ClazzName_messages_deleteSavedHistory, 215, 0x4dc5085f)                        // 4dc5085f
-	iface.RegisterClazzName(ClazzName_messages_deleteSavedHistory, 214, 0x4dc5085f)                        // 4dc5085f
 	iface.RegisterClazzName(ClazzName_messages_getPinnedSavedDialogs, 216, 0xd63d94e0)                     // d63d94e0
-	iface.RegisterClazzName(ClazzName_messages_getPinnedSavedDialogs, 215, 0xd63d94e0)                     // d63d94e0
-	iface.RegisterClazzName(ClazzName_messages_getPinnedSavedDialogs, 214, 0xd63d94e0)                     // d63d94e0
 	iface.RegisterClazzName(ClazzName_messages_toggleSavedDialogPin, 216, 0xac81bbde)                      // ac81bbde
-	iface.RegisterClazzName(ClazzName_messages_toggleSavedDialogPin, 215, 0xac81bbde)                      // ac81bbde
-	iface.RegisterClazzName(ClazzName_messages_toggleSavedDialogPin, 214, 0xac81bbde)                      // ac81bbde
 	iface.RegisterClazzName(ClazzName_messages_reorderPinnedSavedDialogs, 216, 0x8b716587)                 // 8b716587
-	iface.RegisterClazzName(ClazzName_messages_reorderPinnedSavedDialogs, 215, 0x8b716587)                 // 8b716587
-	iface.RegisterClazzName(ClazzName_messages_reorderPinnedSavedDialogs, 214, 0x8b716587)                 // 8b716587
 	iface.RegisterClazzName(ClazzName_messages_getSavedReactionTags, 216, 0x3637e05b)                      // 3637e05b
-	iface.RegisterClazzName(ClazzName_messages_getSavedReactionTags, 215, 0x3637e05b)                      // 3637e05b
-	iface.RegisterClazzName(ClazzName_messages_getSavedReactionTags, 214, 0x3637e05b)                      // 3637e05b
 	iface.RegisterClazzName(ClazzName_messages_updateSavedReactionTag, 216, 0x60297dec)                    // 60297dec
-	iface.RegisterClazzName(ClazzName_messages_updateSavedReactionTag, 215, 0x60297dec)                    // 60297dec
-	iface.RegisterClazzName(ClazzName_messages_updateSavedReactionTag, 214, 0x60297dec)                    // 60297dec
 	iface.RegisterClazzName(ClazzName_messages_getDefaultTagReactions, 216, 0xbdf93428)                    // bdf93428
-	iface.RegisterClazzName(ClazzName_messages_getDefaultTagReactions, 215, 0xbdf93428)                    // bdf93428
-	iface.RegisterClazzName(ClazzName_messages_getDefaultTagReactions, 214, 0xbdf93428)                    // bdf93428
 	iface.RegisterClazzName(ClazzName_messages_getOutboxReadDate, 216, 0x8c4bfe5d)                         // 8c4bfe5d
-	iface.RegisterClazzName(ClazzName_messages_getOutboxReadDate, 215, 0x8c4bfe5d)                         // 8c4bfe5d
-	iface.RegisterClazzName(ClazzName_messages_getOutboxReadDate, 214, 0x8c4bfe5d)                         // 8c4bfe5d
 	iface.RegisterClazzName(ClazzName_messages_getQuickReplies, 216, 0xd483f2a8)                           // d483f2a8
-	iface.RegisterClazzName(ClazzName_messages_getQuickReplies, 215, 0xd483f2a8)                           // d483f2a8
-	iface.RegisterClazzName(ClazzName_messages_getQuickReplies, 214, 0xd483f2a8)                           // d483f2a8
 	iface.RegisterClazzName(ClazzName_messages_reorderQuickReplies, 216, 0x60331907)                       // 60331907
-	iface.RegisterClazzName(ClazzName_messages_reorderQuickReplies, 215, 0x60331907)                       // 60331907
-	iface.RegisterClazzName(ClazzName_messages_reorderQuickReplies, 214, 0x60331907)                       // 60331907
 	iface.RegisterClazzName(ClazzName_messages_checkQuickReplyShortcut, 216, 0xf1d0fbd3)                   // f1d0fbd3
-	iface.RegisterClazzName(ClazzName_messages_checkQuickReplyShortcut, 215, 0xf1d0fbd3)                   // f1d0fbd3
-	iface.RegisterClazzName(ClazzName_messages_checkQuickReplyShortcut, 214, 0xf1d0fbd3)                   // f1d0fbd3
 	iface.RegisterClazzName(ClazzName_messages_editQuickReplyShortcut, 216, 0x5c003cef)                    // 5c003cef
-	iface.RegisterClazzName(ClazzName_messages_editQuickReplyShortcut, 215, 0x5c003cef)                    // 5c003cef
-	iface.RegisterClazzName(ClazzName_messages_editQuickReplyShortcut, 214, 0x5c003cef)                    // 5c003cef
 	iface.RegisterClazzName(ClazzName_messages_deleteQuickReplyShortcut, 216, 0x3cc04740)                  // 3cc04740
-	iface.RegisterClazzName(ClazzName_messages_deleteQuickReplyShortcut, 215, 0x3cc04740)                  // 3cc04740
-	iface.RegisterClazzName(ClazzName_messages_deleteQuickReplyShortcut, 214, 0x3cc04740)                  // 3cc04740
 	iface.RegisterClazzName(ClazzName_messages_getQuickReplyMessages, 216, 0x94a495c3)                     // 94a495c3
-	iface.RegisterClazzName(ClazzName_messages_getQuickReplyMessages, 215, 0x94a495c3)                     // 94a495c3
-	iface.RegisterClazzName(ClazzName_messages_getQuickReplyMessages, 214, 0x94a495c3)                     // 94a495c3
 	iface.RegisterClazzName(ClazzName_messages_sendQuickReplyMessages, 216, 0x6c750de1)                    // 6c750de1
-	iface.RegisterClazzName(ClazzName_messages_sendQuickReplyMessages, 215, 0x6c750de1)                    // 6c750de1
-	iface.RegisterClazzName(ClazzName_messages_sendQuickReplyMessages, 214, 0x6c750de1)                    // 6c750de1
 	iface.RegisterClazzName(ClazzName_messages_deleteQuickReplyMessages, 216, 0xe105e910)                  // e105e910
-	iface.RegisterClazzName(ClazzName_messages_deleteQuickReplyMessages, 215, 0xe105e910)                  // e105e910
-	iface.RegisterClazzName(ClazzName_messages_deleteQuickReplyMessages, 214, 0xe105e910)                  // e105e910
 	iface.RegisterClazzName(ClazzName_messages_toggleDialogFilterTags, 216, 0xfd2dda49)                    // fd2dda49
-	iface.RegisterClazzName(ClazzName_messages_toggleDialogFilterTags, 215, 0xfd2dda49)                    // fd2dda49
-	iface.RegisterClazzName(ClazzName_messages_toggleDialogFilterTags, 214, 0xfd2dda49)                    // fd2dda49
 	iface.RegisterClazzName(ClazzName_messages_getMyStickers, 216, 0xd0b5e1fc)                             // d0b5e1fc
-	iface.RegisterClazzName(ClazzName_messages_getMyStickers, 215, 0xd0b5e1fc)                             // d0b5e1fc
-	iface.RegisterClazzName(ClazzName_messages_getMyStickers, 214, 0xd0b5e1fc)                             // d0b5e1fc
 	iface.RegisterClazzName(ClazzName_messages_getEmojiStickerGroups, 216, 0x1dd840f5)                     // 1dd840f5
-	iface.RegisterClazzName(ClazzName_messages_getEmojiStickerGroups, 215, 0x1dd840f5)                     // 1dd840f5
-	iface.RegisterClazzName(ClazzName_messages_getEmojiStickerGroups, 214, 0x1dd840f5)                     // 1dd840f5
 	iface.RegisterClazzName(ClazzName_messages_getAvailableEffects, 216, 0xdea20a39)                       // dea20a39
-	iface.RegisterClazzName(ClazzName_messages_getAvailableEffects, 215, 0xdea20a39)                       // dea20a39
-	iface.RegisterClazzName(ClazzName_messages_getAvailableEffects, 214, 0xdea20a39)                       // dea20a39
 	iface.RegisterClazzName(ClazzName_messages_editFactCheck, 216, 0x589ee75)                              // 589ee75
-	iface.RegisterClazzName(ClazzName_messages_editFactCheck, 215, 0x589ee75)                              // 589ee75
-	iface.RegisterClazzName(ClazzName_messages_editFactCheck, 214, 0x589ee75)                              // 589ee75
 	iface.RegisterClazzName(ClazzName_messages_deleteFactCheck, 216, 0xd1da940c)                           // d1da940c
-	iface.RegisterClazzName(ClazzName_messages_deleteFactCheck, 215, 0xd1da940c)                           // d1da940c
-	iface.RegisterClazzName(ClazzName_messages_deleteFactCheck, 214, 0xd1da940c)                           // d1da940c
 	iface.RegisterClazzName(ClazzName_messages_getFactCheck, 216, 0xb9cdc5ee)                              // b9cdc5ee
-	iface.RegisterClazzName(ClazzName_messages_getFactCheck, 215, 0xb9cdc5ee)                              // b9cdc5ee
-	iface.RegisterClazzName(ClazzName_messages_getFactCheck, 214, 0xb9cdc5ee)                              // b9cdc5ee
 	iface.RegisterClazzName(ClazzName_messages_requestMainWebView, 216, 0xc9e01e7b)                        // c9e01e7b
-	iface.RegisterClazzName(ClazzName_messages_requestMainWebView, 215, 0xc9e01e7b)                        // c9e01e7b
-	iface.RegisterClazzName(ClazzName_messages_requestMainWebView, 214, 0xc9e01e7b)                        // c9e01e7b
 	iface.RegisterClazzName(ClazzName_messages_sendPaidReaction, 216, 0x58bbcb50)                          // 58bbcb50
-	iface.RegisterClazzName(ClazzName_messages_sendPaidReaction, 215, 0x58bbcb50)                          // 58bbcb50
-	iface.RegisterClazzName(ClazzName_messages_sendPaidReaction, 214, 0x58bbcb50)                          // 58bbcb50
 	iface.RegisterClazzName(ClazzName_messages_togglePaidReactionPrivacy, 216, 0x435885b5)                 // 435885b5
-	iface.RegisterClazzName(ClazzName_messages_togglePaidReactionPrivacy, 215, 0x435885b5)                 // 435885b5
-	iface.RegisterClazzName(ClazzName_messages_togglePaidReactionPrivacy, 214, 0x435885b5)                 // 435885b5
 	iface.RegisterClazzName(ClazzName_messages_getPaidReactionPrivacy, 216, 0x472455aa)                    // 472455aa
-	iface.RegisterClazzName(ClazzName_messages_getPaidReactionPrivacy, 215, 0x472455aa)                    // 472455aa
-	iface.RegisterClazzName(ClazzName_messages_getPaidReactionPrivacy, 214, 0x472455aa)                    // 472455aa
 	iface.RegisterClazzName(ClazzName_messages_viewSponsoredMessage, 216, 0x269e3643)                      // 269e3643
-	iface.RegisterClazzName(ClazzName_messages_viewSponsoredMessage, 215, 0x269e3643)                      // 269e3643
-	iface.RegisterClazzName(ClazzName_messages_viewSponsoredMessage, 214, 0x269e3643)                      // 269e3643
 	iface.RegisterClazzName(ClazzName_messages_clickSponsoredMessage, 216, 0x8235057e)                     // 8235057e
-	iface.RegisterClazzName(ClazzName_messages_clickSponsoredMessage, 215, 0x8235057e)                     // 8235057e
-	iface.RegisterClazzName(ClazzName_messages_clickSponsoredMessage, 214, 0x8235057e)                     // 8235057e
 	iface.RegisterClazzName(ClazzName_messages_reportSponsoredMessage, 216, 0x12cbf0c4)                    // 12cbf0c4
-	iface.RegisterClazzName(ClazzName_messages_reportSponsoredMessage, 215, 0x12cbf0c4)                    // 12cbf0c4
-	iface.RegisterClazzName(ClazzName_messages_reportSponsoredMessage, 214, 0x12cbf0c4)                    // 12cbf0c4
 	iface.RegisterClazzName(ClazzName_messages_getSponsoredMessages, 216, 0x3d6ce850)                      // 3d6ce850
-	iface.RegisterClazzName(ClazzName_messages_getSponsoredMessages, 215, 0x3d6ce850)                      // 3d6ce850
-	iface.RegisterClazzName(ClazzName_messages_getSponsoredMessages, 214, 0x3d6ce850)                      // 3d6ce850
 	iface.RegisterClazzName(ClazzName_messages_savePreparedInlineMessage, 216, 0xf21f7f2f)                 // f21f7f2f
-	iface.RegisterClazzName(ClazzName_messages_savePreparedInlineMessage, 215, 0xf21f7f2f)                 // f21f7f2f
-	iface.RegisterClazzName(ClazzName_messages_savePreparedInlineMessage, 214, 0xf21f7f2f)                 // f21f7f2f
 	iface.RegisterClazzName(ClazzName_messages_getPreparedInlineMessage, 216, 0x857ebdb8)                  // 857ebdb8
-	iface.RegisterClazzName(ClazzName_messages_getPreparedInlineMessage, 215, 0x857ebdb8)                  // 857ebdb8
-	iface.RegisterClazzName(ClazzName_messages_getPreparedInlineMessage, 214, 0x857ebdb8)                  // 857ebdb8
 	iface.RegisterClazzName(ClazzName_messages_searchStickers, 216, 0x29b1c66a)                            // 29b1c66a
-	iface.RegisterClazzName(ClazzName_messages_searchStickers, 215, 0x29b1c66a)                            // 29b1c66a
-	iface.RegisterClazzName(ClazzName_messages_searchStickers, 214, 0x29b1c66a)                            // 29b1c66a
 	iface.RegisterClazzName(ClazzName_messages_reportMessagesDelivery, 216, 0x5a6d7395)                    // 5a6d7395
-	iface.RegisterClazzName(ClazzName_messages_reportMessagesDelivery, 215, 0x5a6d7395)                    // 5a6d7395
-	iface.RegisterClazzName(ClazzName_messages_reportMessagesDelivery, 214, 0x5a6d7395)                    // 5a6d7395
 	iface.RegisterClazzName(ClazzName_messages_getSavedDialogsByID, 216, 0x6f6f9c96)                       // 6f6f9c96
-	iface.RegisterClazzName(ClazzName_messages_getSavedDialogsByID, 215, 0x6f6f9c96)                       // 6f6f9c96
-	iface.RegisterClazzName(ClazzName_messages_getSavedDialogsByID, 214, 0x6f6f9c96)                       // 6f6f9c96
 	iface.RegisterClazzName(ClazzName_messages_readSavedHistory, 216, 0xba4a3b5b)                          // ba4a3b5b
-	iface.RegisterClazzName(ClazzName_messages_readSavedHistory, 215, 0xba4a3b5b)                          // ba4a3b5b
-	iface.RegisterClazzName(ClazzName_messages_readSavedHistory, 214, 0xba4a3b5b)                          // ba4a3b5b
 	iface.RegisterClazzName(ClazzName_messages_toggleTodoCompleted, 216, 0xd3e03124)                       // d3e03124
-	iface.RegisterClazzName(ClazzName_messages_toggleTodoCompleted, 215, 0xd3e03124)                       // d3e03124
-	iface.RegisterClazzName(ClazzName_messages_toggleTodoCompleted, 214, 0xd3e03124)                       // d3e03124
 	iface.RegisterClazzName(ClazzName_messages_appendTodoList, 216, 0x21a61057)                            // 21a61057
-	iface.RegisterClazzName(ClazzName_messages_appendTodoList, 215, 0x21a61057)                            // 21a61057
-	iface.RegisterClazzName(ClazzName_messages_appendTodoList, 214, 0x21a61057)                            // 21a61057
 	iface.RegisterClazzName(ClazzName_messages_toggleSuggestedPostApproval, 216, 0x8107455c)               // 8107455c
-	iface.RegisterClazzName(ClazzName_messages_toggleSuggestedPostApproval, 215, 0x8107455c)               // 8107455c
-	iface.RegisterClazzName(ClazzName_messages_toggleSuggestedPostApproval, 214, 0x8107455c)               // 8107455c
 	iface.RegisterClazzName(ClazzName_messages_getForumTopics, 216, 0x3ba47bff)                            // 3ba47bff
 	iface.RegisterClazzName(ClazzName_messages_getForumTopicsByID, 216, 0xaf0a4a08)                        // af0a4a08
 	iface.RegisterClazzName(ClazzName_messages_editForumTopic, 216, 0xcecc1134)                            // cecc1134
@@ -8002,941 +4205,315 @@ func init() {
 	iface.RegisterClazzName(ClazzName_messages_createForumTopic, 216, 0x2f98c3d5)                          // 2f98c3d5
 	iface.RegisterClazzName(ClazzName_messages_deleteTopicHistory, 216, 0xd2816f10)                        // d2816f10
 	iface.RegisterClazzName(ClazzName_updates_getState, 216, 0xedd4882a)                                   // edd4882a
-	iface.RegisterClazzName(ClazzName_updates_getState, 215, 0xedd4882a)                                   // edd4882a
-	iface.RegisterClazzName(ClazzName_updates_getState, 214, 0xedd4882a)                                   // edd4882a
 	iface.RegisterClazzName(ClazzName_updates_getDifference, 216, 0x19c2f763)                              // 19c2f763
-	iface.RegisterClazzName(ClazzName_updates_getDifference, 215, 0x19c2f763)                              // 19c2f763
-	iface.RegisterClazzName(ClazzName_updates_getDifference, 214, 0x19c2f763)                              // 19c2f763
 	iface.RegisterClazzName(ClazzName_updates_getChannelDifference, 216, 0x3173d78)                        // 3173d78
-	iface.RegisterClazzName(ClazzName_updates_getChannelDifference, 215, 0x3173d78)                        // 3173d78
-	iface.RegisterClazzName(ClazzName_updates_getChannelDifference, 214, 0x3173d78)                        // 3173d78
 	iface.RegisterClazzName(ClazzName_photos_updateProfilePhoto, 216, 0x9e82039)                           // 9e82039
-	iface.RegisterClazzName(ClazzName_photos_updateProfilePhoto, 215, 0x9e82039)                           // 9e82039
-	iface.RegisterClazzName(ClazzName_photos_updateProfilePhoto, 214, 0x9e82039)                           // 9e82039
 	iface.RegisterClazzName(ClazzName_photos_uploadProfilePhoto, 216, 0x388a3b5)                           // 388a3b5
-	iface.RegisterClazzName(ClazzName_photos_uploadProfilePhoto, 215, 0x388a3b5)                           // 388a3b5
-	iface.RegisterClazzName(ClazzName_photos_uploadProfilePhoto, 214, 0x388a3b5)                           // 388a3b5
 	iface.RegisterClazzName(ClazzName_photos_deletePhotos, 216, 0x87cf7f2f)                                // 87cf7f2f
-	iface.RegisterClazzName(ClazzName_photos_deletePhotos, 215, 0x87cf7f2f)                                // 87cf7f2f
-	iface.RegisterClazzName(ClazzName_photos_deletePhotos, 214, 0x87cf7f2f)                                // 87cf7f2f
 	iface.RegisterClazzName(ClazzName_photos_getUserPhotos, 216, 0x91cd32a8)                               // 91cd32a8
-	iface.RegisterClazzName(ClazzName_photos_getUserPhotos, 215, 0x91cd32a8)                               // 91cd32a8
-	iface.RegisterClazzName(ClazzName_photos_getUserPhotos, 214, 0x91cd32a8)                               // 91cd32a8
 	iface.RegisterClazzName(ClazzName_photos_uploadContactProfilePhoto, 216, 0xe14c4a71)                   // e14c4a71
-	iface.RegisterClazzName(ClazzName_photos_uploadContactProfilePhoto, 215, 0xe14c4a71)                   // e14c4a71
-	iface.RegisterClazzName(ClazzName_photos_uploadContactProfilePhoto, 214, 0xe14c4a71)                   // e14c4a71
 	iface.RegisterClazzName(ClazzName_upload_saveFilePart, 216, 0xb304a621)                                // b304a621
-	iface.RegisterClazzName(ClazzName_upload_saveFilePart, 215, 0xb304a621)                                // b304a621
-	iface.RegisterClazzName(ClazzName_upload_saveFilePart, 214, 0xb304a621)                                // b304a621
 	iface.RegisterClazzName(ClazzName_upload_getFile, 216, 0xbe5335be)                                     // be5335be
-	iface.RegisterClazzName(ClazzName_upload_getFile, 215, 0xbe5335be)                                     // be5335be
-	iface.RegisterClazzName(ClazzName_upload_getFile, 214, 0xbe5335be)                                     // be5335be
 	iface.RegisterClazzName(ClazzName_upload_saveBigFilePart, 216, 0xde7b673d)                             // de7b673d
-	iface.RegisterClazzName(ClazzName_upload_saveBigFilePart, 215, 0xde7b673d)                             // de7b673d
-	iface.RegisterClazzName(ClazzName_upload_saveBigFilePart, 214, 0xde7b673d)                             // de7b673d
 	iface.RegisterClazzName(ClazzName_upload_getWebFile, 216, 0x24e6818d)                                  // 24e6818d
-	iface.RegisterClazzName(ClazzName_upload_getWebFile, 215, 0x24e6818d)                                  // 24e6818d
-	iface.RegisterClazzName(ClazzName_upload_getWebFile, 214, 0x24e6818d)                                  // 24e6818d
 	iface.RegisterClazzName(ClazzName_upload_getCdnFile, 216, 0x395f69da)                                  // 395f69da
-	iface.RegisterClazzName(ClazzName_upload_getCdnFile, 215, 0x395f69da)                                  // 395f69da
-	iface.RegisterClazzName(ClazzName_upload_getCdnFile, 214, 0x395f69da)                                  // 395f69da
 	iface.RegisterClazzName(ClazzName_upload_reuploadCdnFile, 216, 0x9b2754a8)                             // 9b2754a8
-	iface.RegisterClazzName(ClazzName_upload_reuploadCdnFile, 215, 0x9b2754a8)                             // 9b2754a8
-	iface.RegisterClazzName(ClazzName_upload_reuploadCdnFile, 214, 0x9b2754a8)                             // 9b2754a8
 	iface.RegisterClazzName(ClazzName_upload_getCdnFileHashes, 216, 0x91dc3f31)                            // 91dc3f31
-	iface.RegisterClazzName(ClazzName_upload_getCdnFileHashes, 215, 0x91dc3f31)                            // 91dc3f31
-	iface.RegisterClazzName(ClazzName_upload_getCdnFileHashes, 214, 0x91dc3f31)                            // 91dc3f31
 	iface.RegisterClazzName(ClazzName_upload_getFileHashes, 216, 0x9156982a)                               // 9156982a
-	iface.RegisterClazzName(ClazzName_upload_getFileHashes, 215, 0x9156982a)                               // 9156982a
-	iface.RegisterClazzName(ClazzName_upload_getFileHashes, 214, 0x9156982a)                               // 9156982a
 	iface.RegisterClazzName(ClazzName_help_getConfig, 216, 0xc4f9186b)                                     // c4f9186b
-	iface.RegisterClazzName(ClazzName_help_getConfig, 215, 0xc4f9186b)                                     // c4f9186b
-	iface.RegisterClazzName(ClazzName_help_getConfig, 214, 0xc4f9186b)                                     // c4f9186b
 	iface.RegisterClazzName(ClazzName_help_getNearestDc, 216, 0x1fb33026)                                  // 1fb33026
-	iface.RegisterClazzName(ClazzName_help_getNearestDc, 215, 0x1fb33026)                                  // 1fb33026
-	iface.RegisterClazzName(ClazzName_help_getNearestDc, 214, 0x1fb33026)                                  // 1fb33026
 	iface.RegisterClazzName(ClazzName_help_getAppUpdate, 216, 0x522d5a7d)                                  // 522d5a7d
-	iface.RegisterClazzName(ClazzName_help_getAppUpdate, 215, 0x522d5a7d)                                  // 522d5a7d
-	iface.RegisterClazzName(ClazzName_help_getAppUpdate, 214, 0x522d5a7d)                                  // 522d5a7d
 	iface.RegisterClazzName(ClazzName_help_getInviteText, 216, 0x4d392343)                                 // 4d392343
-	iface.RegisterClazzName(ClazzName_help_getInviteText, 215, 0x4d392343)                                 // 4d392343
-	iface.RegisterClazzName(ClazzName_help_getInviteText, 214, 0x4d392343)                                 // 4d392343
 	iface.RegisterClazzName(ClazzName_help_getSupport, 216, 0x9cdf08cd)                                    // 9cdf08cd
-	iface.RegisterClazzName(ClazzName_help_getSupport, 215, 0x9cdf08cd)                                    // 9cdf08cd
-	iface.RegisterClazzName(ClazzName_help_getSupport, 214, 0x9cdf08cd)                                    // 9cdf08cd
 	iface.RegisterClazzName(ClazzName_help_setBotUpdatesStatus, 216, 0xec22cfcd)                           // ec22cfcd
-	iface.RegisterClazzName(ClazzName_help_setBotUpdatesStatus, 215, 0xec22cfcd)                           // ec22cfcd
-	iface.RegisterClazzName(ClazzName_help_setBotUpdatesStatus, 214, 0xec22cfcd)                           // ec22cfcd
 	iface.RegisterClazzName(ClazzName_help_getCdnConfig, 216, 0x52029342)                                  // 52029342
-	iface.RegisterClazzName(ClazzName_help_getCdnConfig, 215, 0x52029342)                                  // 52029342
-	iface.RegisterClazzName(ClazzName_help_getCdnConfig, 214, 0x52029342)                                  // 52029342
 	iface.RegisterClazzName(ClazzName_help_getRecentMeUrls, 216, 0x3dc0f114)                               // 3dc0f114
-	iface.RegisterClazzName(ClazzName_help_getRecentMeUrls, 215, 0x3dc0f114)                               // 3dc0f114
-	iface.RegisterClazzName(ClazzName_help_getRecentMeUrls, 214, 0x3dc0f114)                               // 3dc0f114
 	iface.RegisterClazzName(ClazzName_help_getTermsOfServiceUpdate, 216, 0x2ca51fd1)                       // 2ca51fd1
-	iface.RegisterClazzName(ClazzName_help_getTermsOfServiceUpdate, 215, 0x2ca51fd1)                       // 2ca51fd1
-	iface.RegisterClazzName(ClazzName_help_getTermsOfServiceUpdate, 214, 0x2ca51fd1)                       // 2ca51fd1
 	iface.RegisterClazzName(ClazzName_help_acceptTermsOfService, 216, 0xee72f79a)                          // ee72f79a
-	iface.RegisterClazzName(ClazzName_help_acceptTermsOfService, 215, 0xee72f79a)                          // ee72f79a
-	iface.RegisterClazzName(ClazzName_help_acceptTermsOfService, 214, 0xee72f79a)                          // ee72f79a
 	iface.RegisterClazzName(ClazzName_help_getDeepLinkInfo, 216, 0x3fedc75f)                               // 3fedc75f
-	iface.RegisterClazzName(ClazzName_help_getDeepLinkInfo, 215, 0x3fedc75f)                               // 3fedc75f
-	iface.RegisterClazzName(ClazzName_help_getDeepLinkInfo, 214, 0x3fedc75f)                               // 3fedc75f
 	iface.RegisterClazzName(ClazzName_help_getAppConfig, 216, 0x61e3f854)                                  // 61e3f854
-	iface.RegisterClazzName(ClazzName_help_getAppConfig, 215, 0x61e3f854)                                  // 61e3f854
-	iface.RegisterClazzName(ClazzName_help_getAppConfig, 214, 0x61e3f854)                                  // 61e3f854
 	iface.RegisterClazzName(ClazzName_help_saveAppLog, 216, 0x6f02f748)                                    // 6f02f748
-	iface.RegisterClazzName(ClazzName_help_saveAppLog, 215, 0x6f02f748)                                    // 6f02f748
-	iface.RegisterClazzName(ClazzName_help_saveAppLog, 214, 0x6f02f748)                                    // 6f02f748
 	iface.RegisterClazzName(ClazzName_help_getPassportConfig, 216, 0xc661ad08)                             // c661ad08
-	iface.RegisterClazzName(ClazzName_help_getPassportConfig, 215, 0xc661ad08)                             // c661ad08
-	iface.RegisterClazzName(ClazzName_help_getPassportConfig, 214, 0xc661ad08)                             // c661ad08
 	iface.RegisterClazzName(ClazzName_help_getSupportName, 216, 0xd360e72c)                                // d360e72c
-	iface.RegisterClazzName(ClazzName_help_getSupportName, 215, 0xd360e72c)                                // d360e72c
-	iface.RegisterClazzName(ClazzName_help_getSupportName, 214, 0xd360e72c)                                // d360e72c
 	iface.RegisterClazzName(ClazzName_help_getUserInfo, 216, 0x38a08d3)                                    // 38a08d3
-	iface.RegisterClazzName(ClazzName_help_getUserInfo, 215, 0x38a08d3)                                    // 38a08d3
-	iface.RegisterClazzName(ClazzName_help_getUserInfo, 214, 0x38a08d3)                                    // 38a08d3
 	iface.RegisterClazzName(ClazzName_help_editUserInfo, 216, 0x66b91b70)                                  // 66b91b70
-	iface.RegisterClazzName(ClazzName_help_editUserInfo, 215, 0x66b91b70)                                  // 66b91b70
-	iface.RegisterClazzName(ClazzName_help_editUserInfo, 214, 0x66b91b70)                                  // 66b91b70
 	iface.RegisterClazzName(ClazzName_help_getPromoData, 216, 0xc0977421)                                  // c0977421
-	iface.RegisterClazzName(ClazzName_help_getPromoData, 215, 0xc0977421)                                  // c0977421
-	iface.RegisterClazzName(ClazzName_help_getPromoData, 214, 0xc0977421)                                  // c0977421
 	iface.RegisterClazzName(ClazzName_help_hidePromoData, 216, 0x1e251c95)                                 // 1e251c95
-	iface.RegisterClazzName(ClazzName_help_hidePromoData, 215, 0x1e251c95)                                 // 1e251c95
-	iface.RegisterClazzName(ClazzName_help_hidePromoData, 214, 0x1e251c95)                                 // 1e251c95
 	iface.RegisterClazzName(ClazzName_help_dismissSuggestion, 216, 0xf50dbaa1)                             // f50dbaa1
-	iface.RegisterClazzName(ClazzName_help_dismissSuggestion, 215, 0xf50dbaa1)                             // f50dbaa1
-	iface.RegisterClazzName(ClazzName_help_dismissSuggestion, 214, 0xf50dbaa1)                             // f50dbaa1
 	iface.RegisterClazzName(ClazzName_help_getCountriesList, 216, 0x735787a8)                              // 735787a8
-	iface.RegisterClazzName(ClazzName_help_getCountriesList, 215, 0x735787a8)                              // 735787a8
-	iface.RegisterClazzName(ClazzName_help_getCountriesList, 214, 0x735787a8)                              // 735787a8
 	iface.RegisterClazzName(ClazzName_help_getPremiumPromo, 216, 0xb81b93d4)                               // b81b93d4
-	iface.RegisterClazzName(ClazzName_help_getPremiumPromo, 215, 0xb81b93d4)                               // b81b93d4
-	iface.RegisterClazzName(ClazzName_help_getPremiumPromo, 214, 0xb81b93d4)                               // b81b93d4
 	iface.RegisterClazzName(ClazzName_help_getPeerColors, 216, 0xda80f42f)                                 // da80f42f
-	iface.RegisterClazzName(ClazzName_help_getPeerColors, 215, 0xda80f42f)                                 // da80f42f
-	iface.RegisterClazzName(ClazzName_help_getPeerColors, 214, 0xda80f42f)                                 // da80f42f
 	iface.RegisterClazzName(ClazzName_help_getPeerProfileColors, 216, 0xabcfa9fd)                          // abcfa9fd
-	iface.RegisterClazzName(ClazzName_help_getPeerProfileColors, 215, 0xabcfa9fd)                          // abcfa9fd
-	iface.RegisterClazzName(ClazzName_help_getPeerProfileColors, 214, 0xabcfa9fd)                          // abcfa9fd
 	iface.RegisterClazzName(ClazzName_help_getTimezonesList, 216, 0x49b30240)                              // 49b30240
-	iface.RegisterClazzName(ClazzName_help_getTimezonesList, 215, 0x49b30240)                              // 49b30240
-	iface.RegisterClazzName(ClazzName_help_getTimezonesList, 214, 0x49b30240)                              // 49b30240
 	iface.RegisterClazzName(ClazzName_channels_readHistory, 216, 0xcc104937)                               // cc104937
-	iface.RegisterClazzName(ClazzName_channels_readHistory, 215, 0xcc104937)                               // cc104937
-	iface.RegisterClazzName(ClazzName_channels_readHistory, 214, 0xcc104937)                               // cc104937
 	iface.RegisterClazzName(ClazzName_channels_deleteMessages, 216, 0x84c1fd4e)                            // 84c1fd4e
-	iface.RegisterClazzName(ClazzName_channels_deleteMessages, 215, 0x84c1fd4e)                            // 84c1fd4e
-	iface.RegisterClazzName(ClazzName_channels_deleteMessages, 214, 0x84c1fd4e)                            // 84c1fd4e
 	iface.RegisterClazzName(ClazzName_channels_reportSpam, 216, 0xf44a8315)                                // f44a8315
-	iface.RegisterClazzName(ClazzName_channels_reportSpam, 215, 0xf44a8315)                                // f44a8315
-	iface.RegisterClazzName(ClazzName_channels_reportSpam, 214, 0xf44a8315)                                // f44a8315
 	iface.RegisterClazzName(ClazzName_channels_getMessages, 216, 0xad8c9a23)                               // ad8c9a23
-	iface.RegisterClazzName(ClazzName_channels_getMessages, 215, 0xad8c9a23)                               // ad8c9a23
-	iface.RegisterClazzName(ClazzName_channels_getMessages, 214, 0xad8c9a23)                               // ad8c9a23
 	iface.RegisterClazzName(ClazzName_channels_getMessages, 71, 0x93d7b347)                                // 93d7b347
 	iface.RegisterClazzName(ClazzName_channels_getParticipants, 216, 0x77ced9d0)                           // 77ced9d0
-	iface.RegisterClazzName(ClazzName_channels_getParticipants, 215, 0x77ced9d0)                           // 77ced9d0
-	iface.RegisterClazzName(ClazzName_channels_getParticipants, 214, 0x77ced9d0)                           // 77ced9d0
 	iface.RegisterClazzName(ClazzName_channels_getParticipant, 216, 0xa0ab6cc6)                            // a0ab6cc6
-	iface.RegisterClazzName(ClazzName_channels_getParticipant, 215, 0xa0ab6cc6)                            // a0ab6cc6
-	iface.RegisterClazzName(ClazzName_channels_getParticipant, 214, 0xa0ab6cc6)                            // a0ab6cc6
 	iface.RegisterClazzName(ClazzName_channels_getChannels, 216, 0xa7f6bbb)                                // a7f6bbb
-	iface.RegisterClazzName(ClazzName_channels_getChannels, 215, 0xa7f6bbb)                                // a7f6bbb
-	iface.RegisterClazzName(ClazzName_channels_getChannels, 214, 0xa7f6bbb)                                // a7f6bbb
 	iface.RegisterClazzName(ClazzName_channels_getFullChannel, 216, 0x8736a09)                             // 8736a09
-	iface.RegisterClazzName(ClazzName_channels_getFullChannel, 215, 0x8736a09)                             // 8736a09
-	iface.RegisterClazzName(ClazzName_channels_getFullChannel, 214, 0x8736a09)                             // 8736a09
 	iface.RegisterClazzName(ClazzName_channels_createChannel, 216, 0x91006707)                             // 91006707
-	iface.RegisterClazzName(ClazzName_channels_createChannel, 215, 0x91006707)                             // 91006707
-	iface.RegisterClazzName(ClazzName_channels_createChannel, 214, 0x91006707)                             // 91006707
 	iface.RegisterClazzName(ClazzName_channels_editAdmin, 216, 0xd33c8902)                                 // d33c8902
-	iface.RegisterClazzName(ClazzName_channels_editAdmin, 215, 0xd33c8902)                                 // d33c8902
-	iface.RegisterClazzName(ClazzName_channels_editAdmin, 214, 0xd33c8902)                                 // d33c8902
 	iface.RegisterClazzName(ClazzName_channels_editTitle, 216, 0x566decd0)                                 // 566decd0
-	iface.RegisterClazzName(ClazzName_channels_editTitle, 215, 0x566decd0)                                 // 566decd0
-	iface.RegisterClazzName(ClazzName_channels_editTitle, 214, 0x566decd0)                                 // 566decd0
 	iface.RegisterClazzName(ClazzName_channels_editPhoto, 216, 0xf12e57c9)                                 // f12e57c9
-	iface.RegisterClazzName(ClazzName_channels_editPhoto, 215, 0xf12e57c9)                                 // f12e57c9
-	iface.RegisterClazzName(ClazzName_channels_editPhoto, 214, 0xf12e57c9)                                 // f12e57c9
 	iface.RegisterClazzName(ClazzName_channels_checkUsername, 216, 0x10e6bd2c)                             // 10e6bd2c
-	iface.RegisterClazzName(ClazzName_channels_checkUsername, 215, 0x10e6bd2c)                             // 10e6bd2c
-	iface.RegisterClazzName(ClazzName_channels_checkUsername, 214, 0x10e6bd2c)                             // 10e6bd2c
 	iface.RegisterClazzName(ClazzName_channels_updateUsername, 216, 0x3514b3de)                            // 3514b3de
-	iface.RegisterClazzName(ClazzName_channels_updateUsername, 215, 0x3514b3de)                            // 3514b3de
-	iface.RegisterClazzName(ClazzName_channels_updateUsername, 214, 0x3514b3de)                            // 3514b3de
 	iface.RegisterClazzName(ClazzName_channels_joinChannel, 216, 0x24b524c5)                               // 24b524c5
-	iface.RegisterClazzName(ClazzName_channels_joinChannel, 215, 0x24b524c5)                               // 24b524c5
-	iface.RegisterClazzName(ClazzName_channels_joinChannel, 214, 0x24b524c5)                               // 24b524c5
 	iface.RegisterClazzName(ClazzName_channels_leaveChannel, 216, 0xf836aa95)                              // f836aa95
-	iface.RegisterClazzName(ClazzName_channels_leaveChannel, 215, 0xf836aa95)                              // f836aa95
-	iface.RegisterClazzName(ClazzName_channels_leaveChannel, 214, 0xf836aa95)                              // f836aa95
 	iface.RegisterClazzName(ClazzName_channels_inviteToChannel, 216, 0xc9e33d54)                           // c9e33d54
-	iface.RegisterClazzName(ClazzName_channels_inviteToChannel, 215, 0xc9e33d54)                           // c9e33d54
-	iface.RegisterClazzName(ClazzName_channels_inviteToChannel, 214, 0xc9e33d54)                           // c9e33d54
 	iface.RegisterClazzName(ClazzName_channels_deleteChannel, 216, 0xc0111fe3)                             // c0111fe3
-	iface.RegisterClazzName(ClazzName_channels_deleteChannel, 215, 0xc0111fe3)                             // c0111fe3
-	iface.RegisterClazzName(ClazzName_channels_deleteChannel, 214, 0xc0111fe3)                             // c0111fe3
 	iface.RegisterClazzName(ClazzName_channels_exportMessageLink, 216, 0xe63fadeb)                         // e63fadeb
-	iface.RegisterClazzName(ClazzName_channels_exportMessageLink, 215, 0xe63fadeb)                         // e63fadeb
-	iface.RegisterClazzName(ClazzName_channels_exportMessageLink, 214, 0xe63fadeb)                         // e63fadeb
 	iface.RegisterClazzName(ClazzName_channels_toggleSignatures, 216, 0x418d549c)                          // 418d549c
-	iface.RegisterClazzName(ClazzName_channels_toggleSignatures, 215, 0x418d549c)                          // 418d549c
-	iface.RegisterClazzName(ClazzName_channels_toggleSignatures, 214, 0x418d549c)                          // 418d549c
 	iface.RegisterClazzName(ClazzName_channels_getAdminedPublicChannels, 216, 0xf8b036af)                  // f8b036af
-	iface.RegisterClazzName(ClazzName_channels_getAdminedPublicChannels, 215, 0xf8b036af)                  // f8b036af
-	iface.RegisterClazzName(ClazzName_channels_getAdminedPublicChannels, 214, 0xf8b036af)                  // f8b036af
 	iface.RegisterClazzName(ClazzName_channels_editBanned, 216, 0x96e6cd81)                                // 96e6cd81
-	iface.RegisterClazzName(ClazzName_channels_editBanned, 215, 0x96e6cd81)                                // 96e6cd81
-	iface.RegisterClazzName(ClazzName_channels_editBanned, 214, 0x96e6cd81)                                // 96e6cd81
 	iface.RegisterClazzName(ClazzName_channels_getAdminLog, 216, 0x33ddf480)                               // 33ddf480
-	iface.RegisterClazzName(ClazzName_channels_getAdminLog, 215, 0x33ddf480)                               // 33ddf480
-	iface.RegisterClazzName(ClazzName_channels_getAdminLog, 214, 0x33ddf480)                               // 33ddf480
 	iface.RegisterClazzName(ClazzName_channels_setStickers, 216, 0xea8ca4f9)                               // ea8ca4f9
-	iface.RegisterClazzName(ClazzName_channels_setStickers, 215, 0xea8ca4f9)                               // ea8ca4f9
-	iface.RegisterClazzName(ClazzName_channels_setStickers, 214, 0xea8ca4f9)                               // ea8ca4f9
 	iface.RegisterClazzName(ClazzName_channels_readMessageContents, 216, 0xeab5dc38)                       // eab5dc38
-	iface.RegisterClazzName(ClazzName_channels_readMessageContents, 215, 0xeab5dc38)                       // eab5dc38
-	iface.RegisterClazzName(ClazzName_channels_readMessageContents, 214, 0xeab5dc38)                       // eab5dc38
 	iface.RegisterClazzName(ClazzName_channels_deleteHistory, 216, 0x9baa9647)                             // 9baa9647
-	iface.RegisterClazzName(ClazzName_channels_deleteHistory, 215, 0x9baa9647)                             // 9baa9647
-	iface.RegisterClazzName(ClazzName_channels_deleteHistory, 214, 0x9baa9647)                             // 9baa9647
 	iface.RegisterClazzName(ClazzName_channels_togglePreHistoryHidden, 216, 0xeabbb94c)                    // eabbb94c
-	iface.RegisterClazzName(ClazzName_channels_togglePreHistoryHidden, 215, 0xeabbb94c)                    // eabbb94c
-	iface.RegisterClazzName(ClazzName_channels_togglePreHistoryHidden, 214, 0xeabbb94c)                    // eabbb94c
 	iface.RegisterClazzName(ClazzName_channels_getLeftChannels, 216, 0x8341ecc0)                           // 8341ecc0
-	iface.RegisterClazzName(ClazzName_channels_getLeftChannels, 215, 0x8341ecc0)                           // 8341ecc0
-	iface.RegisterClazzName(ClazzName_channels_getLeftChannels, 214, 0x8341ecc0)                           // 8341ecc0
 	iface.RegisterClazzName(ClazzName_channels_getGroupsForDiscussion, 216, 0xf5dad378)                    // f5dad378
-	iface.RegisterClazzName(ClazzName_channels_getGroupsForDiscussion, 215, 0xf5dad378)                    // f5dad378
-	iface.RegisterClazzName(ClazzName_channels_getGroupsForDiscussion, 214, 0xf5dad378)                    // f5dad378
 	iface.RegisterClazzName(ClazzName_channels_setDiscussionGroup, 216, 0x40582bb2)                        // 40582bb2
-	iface.RegisterClazzName(ClazzName_channels_setDiscussionGroup, 215, 0x40582bb2)                        // 40582bb2
-	iface.RegisterClazzName(ClazzName_channels_setDiscussionGroup, 214, 0x40582bb2)                        // 40582bb2
 	iface.RegisterClazzName(ClazzName_channels_editCreator, 216, 0x8f38cd1f)                               // 8f38cd1f
-	iface.RegisterClazzName(ClazzName_channels_editCreator, 215, 0x8f38cd1f)                               // 8f38cd1f
-	iface.RegisterClazzName(ClazzName_channels_editCreator, 214, 0x8f38cd1f)                               // 8f38cd1f
 	iface.RegisterClazzName(ClazzName_channels_editLocation, 216, 0x58e63f6d)                              // 58e63f6d
-	iface.RegisterClazzName(ClazzName_channels_editLocation, 215, 0x58e63f6d)                              // 58e63f6d
-	iface.RegisterClazzName(ClazzName_channels_editLocation, 214, 0x58e63f6d)                              // 58e63f6d
 	iface.RegisterClazzName(ClazzName_channels_toggleSlowMode, 216, 0xedd49ef0)                            // edd49ef0
-	iface.RegisterClazzName(ClazzName_channels_toggleSlowMode, 215, 0xedd49ef0)                            // edd49ef0
-	iface.RegisterClazzName(ClazzName_channels_toggleSlowMode, 214, 0xedd49ef0)                            // edd49ef0
 	iface.RegisterClazzName(ClazzName_channels_getInactiveChannels, 216, 0x11e831ee)                       // 11e831ee
-	iface.RegisterClazzName(ClazzName_channels_getInactiveChannels, 215, 0x11e831ee)                       // 11e831ee
-	iface.RegisterClazzName(ClazzName_channels_getInactiveChannels, 214, 0x11e831ee)                       // 11e831ee
 	iface.RegisterClazzName(ClazzName_channels_convertToGigagroup, 216, 0xb290c69)                         // b290c69
-	iface.RegisterClazzName(ClazzName_channels_convertToGigagroup, 215, 0xb290c69)                         // b290c69
-	iface.RegisterClazzName(ClazzName_channels_convertToGigagroup, 214, 0xb290c69)                         // b290c69
 	iface.RegisterClazzName(ClazzName_channels_getSendAs, 216, 0xe785a43f)                                 // e785a43f
-	iface.RegisterClazzName(ClazzName_channels_getSendAs, 215, 0xe785a43f)                                 // e785a43f
-	iface.RegisterClazzName(ClazzName_channels_getSendAs, 214, 0xe785a43f)                                 // e785a43f
 	iface.RegisterClazzName(ClazzName_channels_deleteParticipantHistory, 216, 0x367544db)                  // 367544db
-	iface.RegisterClazzName(ClazzName_channels_deleteParticipantHistory, 215, 0x367544db)                  // 367544db
-	iface.RegisterClazzName(ClazzName_channels_deleteParticipantHistory, 214, 0x367544db)                  // 367544db
 	iface.RegisterClazzName(ClazzName_channels_toggleJoinToSend, 216, 0xe4cb9580)                          // e4cb9580
-	iface.RegisterClazzName(ClazzName_channels_toggleJoinToSend, 215, 0xe4cb9580)                          // e4cb9580
-	iface.RegisterClazzName(ClazzName_channels_toggleJoinToSend, 214, 0xe4cb9580)                          // e4cb9580
 	iface.RegisterClazzName(ClazzName_channels_toggleJoinRequest, 216, 0x4c2985b6)                         // 4c2985b6
-	iface.RegisterClazzName(ClazzName_channels_toggleJoinRequest, 215, 0x4c2985b6)                         // 4c2985b6
-	iface.RegisterClazzName(ClazzName_channels_toggleJoinRequest, 214, 0x4c2985b6)                         // 4c2985b6
 	iface.RegisterClazzName(ClazzName_channels_reorderUsernames, 216, 0xb45ced1d)                          // b45ced1d
-	iface.RegisterClazzName(ClazzName_channels_reorderUsernames, 215, 0xb45ced1d)                          // b45ced1d
-	iface.RegisterClazzName(ClazzName_channels_reorderUsernames, 214, 0xb45ced1d)                          // b45ced1d
 	iface.RegisterClazzName(ClazzName_channels_toggleUsername, 216, 0x50f24105)                            // 50f24105
-	iface.RegisterClazzName(ClazzName_channels_toggleUsername, 215, 0x50f24105)                            // 50f24105
-	iface.RegisterClazzName(ClazzName_channels_toggleUsername, 214, 0x50f24105)                            // 50f24105
 	iface.RegisterClazzName(ClazzName_channels_deactivateAllUsernames, 216, 0xa245dd3)                     // a245dd3
-	iface.RegisterClazzName(ClazzName_channels_deactivateAllUsernames, 215, 0xa245dd3)                     // a245dd3
-	iface.RegisterClazzName(ClazzName_channels_deactivateAllUsernames, 214, 0xa245dd3)                     // a245dd3
 	iface.RegisterClazzName(ClazzName_channels_toggleForum, 216, 0x3ff75734)                               // 3ff75734
-	iface.RegisterClazzName(ClazzName_channels_toggleForum, 215, 0x3ff75734)                               // 3ff75734
-	iface.RegisterClazzName(ClazzName_channels_toggleForum, 214, 0x3ff75734)                               // 3ff75734
 	iface.RegisterClazzName(ClazzName_channels_toggleAntiSpam, 216, 0x68f3e4eb)                            // 68f3e4eb
-	iface.RegisterClazzName(ClazzName_channels_toggleAntiSpam, 215, 0x68f3e4eb)                            // 68f3e4eb
-	iface.RegisterClazzName(ClazzName_channels_toggleAntiSpam, 214, 0x68f3e4eb)                            // 68f3e4eb
 	iface.RegisterClazzName(ClazzName_channels_reportAntiSpamFalsePositive, 216, 0xa850a693)               // a850a693
-	iface.RegisterClazzName(ClazzName_channels_reportAntiSpamFalsePositive, 215, 0xa850a693)               // a850a693
-	iface.RegisterClazzName(ClazzName_channels_reportAntiSpamFalsePositive, 214, 0xa850a693)               // a850a693
 	iface.RegisterClazzName(ClazzName_channels_toggleParticipantsHidden, 216, 0x6a6e7854)                  // 6a6e7854
-	iface.RegisterClazzName(ClazzName_channels_toggleParticipantsHidden, 215, 0x6a6e7854)                  // 6a6e7854
-	iface.RegisterClazzName(ClazzName_channels_toggleParticipantsHidden, 214, 0x6a6e7854)                  // 6a6e7854
 	iface.RegisterClazzName(ClazzName_channels_updateColor, 216, 0xd8aa3671)                               // d8aa3671
-	iface.RegisterClazzName(ClazzName_channels_updateColor, 215, 0xd8aa3671)                               // d8aa3671
-	iface.RegisterClazzName(ClazzName_channels_updateColor, 214, 0xd8aa3671)                               // d8aa3671
 	iface.RegisterClazzName(ClazzName_channels_toggleViewForumAsMessages, 216, 0x9738bb15)                 // 9738bb15
-	iface.RegisterClazzName(ClazzName_channels_toggleViewForumAsMessages, 215, 0x9738bb15)                 // 9738bb15
-	iface.RegisterClazzName(ClazzName_channels_toggleViewForumAsMessages, 214, 0x9738bb15)                 // 9738bb15
 	iface.RegisterClazzName(ClazzName_channels_getChannelRecommendations, 216, 0x25a71742)                 // 25a71742
-	iface.RegisterClazzName(ClazzName_channels_getChannelRecommendations, 215, 0x25a71742)                 // 25a71742
-	iface.RegisterClazzName(ClazzName_channels_getChannelRecommendations, 214, 0x25a71742)                 // 25a71742
 	iface.RegisterClazzName(ClazzName_channels_updateEmojiStatus, 216, 0xf0d3e6a8)                         // f0d3e6a8
-	iface.RegisterClazzName(ClazzName_channels_updateEmojiStatus, 215, 0xf0d3e6a8)                         // f0d3e6a8
-	iface.RegisterClazzName(ClazzName_channels_updateEmojiStatus, 214, 0xf0d3e6a8)                         // f0d3e6a8
 	iface.RegisterClazzName(ClazzName_channels_setBoostsToUnblockRestrictions, 216, 0xad399cee)            // ad399cee
-	iface.RegisterClazzName(ClazzName_channels_setBoostsToUnblockRestrictions, 215, 0xad399cee)            // ad399cee
-	iface.RegisterClazzName(ClazzName_channels_setBoostsToUnblockRestrictions, 214, 0xad399cee)            // ad399cee
 	iface.RegisterClazzName(ClazzName_channels_setEmojiStickers, 216, 0x3cd930b7)                          // 3cd930b7
-	iface.RegisterClazzName(ClazzName_channels_setEmojiStickers, 215, 0x3cd930b7)                          // 3cd930b7
-	iface.RegisterClazzName(ClazzName_channels_setEmojiStickers, 214, 0x3cd930b7)                          // 3cd930b7
 	iface.RegisterClazzName(ClazzName_channels_restrictSponsoredMessages, 216, 0x9ae91519)                 // 9ae91519
-	iface.RegisterClazzName(ClazzName_channels_restrictSponsoredMessages, 215, 0x9ae91519)                 // 9ae91519
-	iface.RegisterClazzName(ClazzName_channels_restrictSponsoredMessages, 214, 0x9ae91519)                 // 9ae91519
 	iface.RegisterClazzName(ClazzName_channels_searchPosts, 216, 0xf2c4f24d)                               // f2c4f24d
-	iface.RegisterClazzName(ClazzName_channels_searchPosts, 215, 0xf2c4f24d)                               // f2c4f24d
-	iface.RegisterClazzName(ClazzName_channels_searchPosts, 214, 0xf2c4f24d)                               // f2c4f24d
 	iface.RegisterClazzName(ClazzName_channels_updatePaidMessagesPrice, 216, 0x4b12327b)                   // 4b12327b
-	iface.RegisterClazzName(ClazzName_channels_updatePaidMessagesPrice, 215, 0x4b12327b)                   // 4b12327b
-	iface.RegisterClazzName(ClazzName_channels_updatePaidMessagesPrice, 214, 0x4b12327b)                   // 4b12327b
 	iface.RegisterClazzName(ClazzName_channels_toggleAutotranslation, 216, 0x167fc0a1)                     // 167fc0a1
-	iface.RegisterClazzName(ClazzName_channels_toggleAutotranslation, 215, 0x167fc0a1)                     // 167fc0a1
-	iface.RegisterClazzName(ClazzName_channels_toggleAutotranslation, 214, 0x167fc0a1)                     // 167fc0a1
 	iface.RegisterClazzName(ClazzName_channels_getMessageAuthor, 216, 0xece2a0e6)                          // ece2a0e6
-	iface.RegisterClazzName(ClazzName_channels_getMessageAuthor, 215, 0xece2a0e6)                          // ece2a0e6
-	iface.RegisterClazzName(ClazzName_channels_getMessageAuthor, 214, 0xece2a0e6)                          // ece2a0e6
 	iface.RegisterClazzName(ClazzName_channels_checkSearchPostsFlood, 216, 0x22567115)                     // 22567115
-	iface.RegisterClazzName(ClazzName_channels_checkSearchPostsFlood, 215, 0x22567115)                     // 22567115
-	iface.RegisterClazzName(ClazzName_channels_checkSearchPostsFlood, 214, 0x22567115)                     // 22567115
 	iface.RegisterClazzName(ClazzName_channels_setMainProfileTab, 216, 0x3583fcb1)                         // 3583fcb1
-	iface.RegisterClazzName(ClazzName_channels_setMainProfileTab, 215, 0x3583fcb1)                         // 3583fcb1
-	iface.RegisterClazzName(ClazzName_channels_setMainProfileTab, 214, 0x3583fcb1)                         // 3583fcb1
 	iface.RegisterClazzName(ClazzName_bots_sendCustomRequest, 216, 0xaa2769ed)                             // aa2769ed
-	iface.RegisterClazzName(ClazzName_bots_sendCustomRequest, 215, 0xaa2769ed)                             // aa2769ed
-	iface.RegisterClazzName(ClazzName_bots_sendCustomRequest, 214, 0xaa2769ed)                             // aa2769ed
 	iface.RegisterClazzName(ClazzName_bots_answerWebhookJSONQuery, 216, 0xe6213f4d)                        // e6213f4d
-	iface.RegisterClazzName(ClazzName_bots_answerWebhookJSONQuery, 215, 0xe6213f4d)                        // e6213f4d
-	iface.RegisterClazzName(ClazzName_bots_answerWebhookJSONQuery, 214, 0xe6213f4d)                        // e6213f4d
 	iface.RegisterClazzName(ClazzName_bots_setBotCommands, 216, 0x517165a)                                 // 517165a
-	iface.RegisterClazzName(ClazzName_bots_setBotCommands, 215, 0x517165a)                                 // 517165a
-	iface.RegisterClazzName(ClazzName_bots_setBotCommands, 214, 0x517165a)                                 // 517165a
 	iface.RegisterClazzName(ClazzName_bots_resetBotCommands, 216, 0x3d8de0f9)                              // 3d8de0f9
-	iface.RegisterClazzName(ClazzName_bots_resetBotCommands, 215, 0x3d8de0f9)                              // 3d8de0f9
-	iface.RegisterClazzName(ClazzName_bots_resetBotCommands, 214, 0x3d8de0f9)                              // 3d8de0f9
 	iface.RegisterClazzName(ClazzName_bots_getBotCommands, 216, 0xe34c0dd6)                                // e34c0dd6
-	iface.RegisterClazzName(ClazzName_bots_getBotCommands, 215, 0xe34c0dd6)                                // e34c0dd6
-	iface.RegisterClazzName(ClazzName_bots_getBotCommands, 214, 0xe34c0dd6)                                // e34c0dd6
 	iface.RegisterClazzName(ClazzName_bots_setBotMenuButton, 216, 0x4504d54f)                              // 4504d54f
-	iface.RegisterClazzName(ClazzName_bots_setBotMenuButton, 215, 0x4504d54f)                              // 4504d54f
-	iface.RegisterClazzName(ClazzName_bots_setBotMenuButton, 214, 0x4504d54f)                              // 4504d54f
 	iface.RegisterClazzName(ClazzName_bots_getBotMenuButton, 216, 0x9c60eb28)                              // 9c60eb28
-	iface.RegisterClazzName(ClazzName_bots_getBotMenuButton, 215, 0x9c60eb28)                              // 9c60eb28
-	iface.RegisterClazzName(ClazzName_bots_getBotMenuButton, 214, 0x9c60eb28)                              // 9c60eb28
 	iface.RegisterClazzName(ClazzName_bots_setBotBroadcastDefaultAdminRights, 216, 0x788464e1)             // 788464e1
-	iface.RegisterClazzName(ClazzName_bots_setBotBroadcastDefaultAdminRights, 215, 0x788464e1)             // 788464e1
-	iface.RegisterClazzName(ClazzName_bots_setBotBroadcastDefaultAdminRights, 214, 0x788464e1)             // 788464e1
 	iface.RegisterClazzName(ClazzName_bots_setBotGroupDefaultAdminRights, 216, 0x925ec9ea)                 // 925ec9ea
-	iface.RegisterClazzName(ClazzName_bots_setBotGroupDefaultAdminRights, 215, 0x925ec9ea)                 // 925ec9ea
-	iface.RegisterClazzName(ClazzName_bots_setBotGroupDefaultAdminRights, 214, 0x925ec9ea)                 // 925ec9ea
 	iface.RegisterClazzName(ClazzName_bots_setBotInfo, 216, 0x10cf3123)                                    // 10cf3123
-	iface.RegisterClazzName(ClazzName_bots_setBotInfo, 215, 0x10cf3123)                                    // 10cf3123
-	iface.RegisterClazzName(ClazzName_bots_setBotInfo, 214, 0x10cf3123)                                    // 10cf3123
 	iface.RegisterClazzName(ClazzName_bots_getBotInfo, 216, 0xdcd914fd)                                    // dcd914fd
-	iface.RegisterClazzName(ClazzName_bots_getBotInfo, 215, 0xdcd914fd)                                    // dcd914fd
-	iface.RegisterClazzName(ClazzName_bots_getBotInfo, 214, 0xdcd914fd)                                    // dcd914fd
 	iface.RegisterClazzName(ClazzName_bots_reorderUsernames, 216, 0x9709b1c2)                              // 9709b1c2
-	iface.RegisterClazzName(ClazzName_bots_reorderUsernames, 215, 0x9709b1c2)                              // 9709b1c2
-	iface.RegisterClazzName(ClazzName_bots_reorderUsernames, 214, 0x9709b1c2)                              // 9709b1c2
 	iface.RegisterClazzName(ClazzName_bots_toggleUsername, 216, 0x53ca973)                                 // 53ca973
-	iface.RegisterClazzName(ClazzName_bots_toggleUsername, 215, 0x53ca973)                                 // 53ca973
-	iface.RegisterClazzName(ClazzName_bots_toggleUsername, 214, 0x53ca973)                                 // 53ca973
 	iface.RegisterClazzName(ClazzName_bots_canSendMessage, 216, 0x1359f4e6)                                // 1359f4e6
-	iface.RegisterClazzName(ClazzName_bots_canSendMessage, 215, 0x1359f4e6)                                // 1359f4e6
-	iface.RegisterClazzName(ClazzName_bots_canSendMessage, 214, 0x1359f4e6)                                // 1359f4e6
 	iface.RegisterClazzName(ClazzName_bots_allowSendMessage, 216, 0xf132e3ef)                              // f132e3ef
-	iface.RegisterClazzName(ClazzName_bots_allowSendMessage, 215, 0xf132e3ef)                              // f132e3ef
-	iface.RegisterClazzName(ClazzName_bots_allowSendMessage, 214, 0xf132e3ef)                              // f132e3ef
 	iface.RegisterClazzName(ClazzName_bots_invokeWebViewCustomMethod, 216, 0x87fc5e7)                      // 87fc5e7
-	iface.RegisterClazzName(ClazzName_bots_invokeWebViewCustomMethod, 215, 0x87fc5e7)                      // 87fc5e7
-	iface.RegisterClazzName(ClazzName_bots_invokeWebViewCustomMethod, 214, 0x87fc5e7)                      // 87fc5e7
 	iface.RegisterClazzName(ClazzName_bots_getPopularAppBots, 216, 0xc2510192)                             // c2510192
-	iface.RegisterClazzName(ClazzName_bots_getPopularAppBots, 215, 0xc2510192)                             // c2510192
-	iface.RegisterClazzName(ClazzName_bots_getPopularAppBots, 214, 0xc2510192)                             // c2510192
 	iface.RegisterClazzName(ClazzName_bots_addPreviewMedia, 216, 0x17aeb75a)                               // 17aeb75a
-	iface.RegisterClazzName(ClazzName_bots_addPreviewMedia, 215, 0x17aeb75a)                               // 17aeb75a
-	iface.RegisterClazzName(ClazzName_bots_addPreviewMedia, 214, 0x17aeb75a)                               // 17aeb75a
 	iface.RegisterClazzName(ClazzName_bots_editPreviewMedia, 216, 0x8525606f)                              // 8525606f
-	iface.RegisterClazzName(ClazzName_bots_editPreviewMedia, 215, 0x8525606f)                              // 8525606f
-	iface.RegisterClazzName(ClazzName_bots_editPreviewMedia, 214, 0x8525606f)                              // 8525606f
 	iface.RegisterClazzName(ClazzName_bots_deletePreviewMedia, 216, 0x2d0135b3)                            // 2d0135b3
-	iface.RegisterClazzName(ClazzName_bots_deletePreviewMedia, 215, 0x2d0135b3)                            // 2d0135b3
-	iface.RegisterClazzName(ClazzName_bots_deletePreviewMedia, 214, 0x2d0135b3)                            // 2d0135b3
 	iface.RegisterClazzName(ClazzName_bots_reorderPreviewMedias, 216, 0xb627f3aa)                          // b627f3aa
-	iface.RegisterClazzName(ClazzName_bots_reorderPreviewMedias, 215, 0xb627f3aa)                          // b627f3aa
-	iface.RegisterClazzName(ClazzName_bots_reorderPreviewMedias, 214, 0xb627f3aa)                          // b627f3aa
 	iface.RegisterClazzName(ClazzName_bots_getPreviewInfo, 216, 0x423ab3ad)                                // 423ab3ad
-	iface.RegisterClazzName(ClazzName_bots_getPreviewInfo, 215, 0x423ab3ad)                                // 423ab3ad
-	iface.RegisterClazzName(ClazzName_bots_getPreviewInfo, 214, 0x423ab3ad)                                // 423ab3ad
 	iface.RegisterClazzName(ClazzName_bots_getPreviewMedias, 216, 0xa2a5594d)                              // a2a5594d
-	iface.RegisterClazzName(ClazzName_bots_getPreviewMedias, 215, 0xa2a5594d)                              // a2a5594d
-	iface.RegisterClazzName(ClazzName_bots_getPreviewMedias, 214, 0xa2a5594d)                              // a2a5594d
 	iface.RegisterClazzName(ClazzName_bots_updateUserEmojiStatus, 216, 0xed9f30c5)                         // ed9f30c5
-	iface.RegisterClazzName(ClazzName_bots_updateUserEmojiStatus, 215, 0xed9f30c5)                         // ed9f30c5
-	iface.RegisterClazzName(ClazzName_bots_updateUserEmojiStatus, 214, 0xed9f30c5)                         // ed9f30c5
 	iface.RegisterClazzName(ClazzName_bots_toggleUserEmojiStatusPermission, 216, 0x6de6392)                // 6de6392
-	iface.RegisterClazzName(ClazzName_bots_toggleUserEmojiStatusPermission, 215, 0x6de6392)                // 6de6392
-	iface.RegisterClazzName(ClazzName_bots_toggleUserEmojiStatusPermission, 214, 0x6de6392)                // 6de6392
 	iface.RegisterClazzName(ClazzName_bots_checkDownloadFileParams, 216, 0x50077589)                       // 50077589
-	iface.RegisterClazzName(ClazzName_bots_checkDownloadFileParams, 215, 0x50077589)                       // 50077589
-	iface.RegisterClazzName(ClazzName_bots_checkDownloadFileParams, 214, 0x50077589)                       // 50077589
 	iface.RegisterClazzName(ClazzName_bots_getAdminedBots, 216, 0xb0711d83)                                // b0711d83
-	iface.RegisterClazzName(ClazzName_bots_getAdminedBots, 215, 0xb0711d83)                                // b0711d83
-	iface.RegisterClazzName(ClazzName_bots_getAdminedBots, 214, 0xb0711d83)                                // b0711d83
 	iface.RegisterClazzName(ClazzName_bots_updateStarRefProgram, 216, 0x778b5ab3)                          // 778b5ab3
-	iface.RegisterClazzName(ClazzName_bots_updateStarRefProgram, 215, 0x778b5ab3)                          // 778b5ab3
-	iface.RegisterClazzName(ClazzName_bots_updateStarRefProgram, 214, 0x778b5ab3)                          // 778b5ab3
 	iface.RegisterClazzName(ClazzName_bots_setCustomVerification, 216, 0x8b89dfbd)                         // 8b89dfbd
-	iface.RegisterClazzName(ClazzName_bots_setCustomVerification, 215, 0x8b89dfbd)                         // 8b89dfbd
-	iface.RegisterClazzName(ClazzName_bots_setCustomVerification, 214, 0x8b89dfbd)                         // 8b89dfbd
 	iface.RegisterClazzName(ClazzName_bots_getBotRecommendations, 216, 0xa1b70815)                         // a1b70815
-	iface.RegisterClazzName(ClazzName_bots_getBotRecommendations, 215, 0xa1b70815)                         // a1b70815
-	iface.RegisterClazzName(ClazzName_bots_getBotRecommendations, 214, 0xa1b70815)                         // a1b70815
 	iface.RegisterClazzName(ClazzName_payments_getPaymentForm, 216, 0x37148dbb)                            // 37148dbb
-	iface.RegisterClazzName(ClazzName_payments_getPaymentForm, 215, 0x37148dbb)                            // 37148dbb
-	iface.RegisterClazzName(ClazzName_payments_getPaymentForm, 214, 0x37148dbb)                            // 37148dbb
 	iface.RegisterClazzName(ClazzName_payments_getPaymentReceipt, 216, 0x2478d1cc)                         // 2478d1cc
-	iface.RegisterClazzName(ClazzName_payments_getPaymentReceipt, 215, 0x2478d1cc)                         // 2478d1cc
-	iface.RegisterClazzName(ClazzName_payments_getPaymentReceipt, 214, 0x2478d1cc)                         // 2478d1cc
 	iface.RegisterClazzName(ClazzName_payments_validateRequestedInfo, 216, 0xb6c8f12b)                     // b6c8f12b
-	iface.RegisterClazzName(ClazzName_payments_validateRequestedInfo, 215, 0xb6c8f12b)                     // b6c8f12b
-	iface.RegisterClazzName(ClazzName_payments_validateRequestedInfo, 214, 0xb6c8f12b)                     // b6c8f12b
 	iface.RegisterClazzName(ClazzName_payments_sendPaymentForm, 216, 0x2d03522f)                           // 2d03522f
-	iface.RegisterClazzName(ClazzName_payments_sendPaymentForm, 215, 0x2d03522f)                           // 2d03522f
-	iface.RegisterClazzName(ClazzName_payments_sendPaymentForm, 214, 0x2d03522f)                           // 2d03522f
 	iface.RegisterClazzName(ClazzName_payments_getSavedInfo, 216, 0x227d824b)                              // 227d824b
-	iface.RegisterClazzName(ClazzName_payments_getSavedInfo, 215, 0x227d824b)                              // 227d824b
-	iface.RegisterClazzName(ClazzName_payments_getSavedInfo, 214, 0x227d824b)                              // 227d824b
 	iface.RegisterClazzName(ClazzName_payments_clearSavedInfo, 216, 0xd83d70c1)                            // d83d70c1
-	iface.RegisterClazzName(ClazzName_payments_clearSavedInfo, 215, 0xd83d70c1)                            // d83d70c1
-	iface.RegisterClazzName(ClazzName_payments_clearSavedInfo, 214, 0xd83d70c1)                            // d83d70c1
 	iface.RegisterClazzName(ClazzName_payments_getBankCardData, 216, 0x2e79d779)                           // 2e79d779
-	iface.RegisterClazzName(ClazzName_payments_getBankCardData, 215, 0x2e79d779)                           // 2e79d779
-	iface.RegisterClazzName(ClazzName_payments_getBankCardData, 214, 0x2e79d779)                           // 2e79d779
 	iface.RegisterClazzName(ClazzName_payments_exportInvoice, 216, 0xf91b065)                              // f91b065
-	iface.RegisterClazzName(ClazzName_payments_exportInvoice, 215, 0xf91b065)                              // f91b065
-	iface.RegisterClazzName(ClazzName_payments_exportInvoice, 214, 0xf91b065)                              // f91b065
 	iface.RegisterClazzName(ClazzName_payments_assignAppStoreTransaction, 216, 0x80ed747d)                 // 80ed747d
-	iface.RegisterClazzName(ClazzName_payments_assignAppStoreTransaction, 215, 0x80ed747d)                 // 80ed747d
-	iface.RegisterClazzName(ClazzName_payments_assignAppStoreTransaction, 214, 0x80ed747d)                 // 80ed747d
 	iface.RegisterClazzName(ClazzName_payments_assignPlayMarketTransaction, 216, 0xdffd50d3)               // dffd50d3
-	iface.RegisterClazzName(ClazzName_payments_assignPlayMarketTransaction, 215, 0xdffd50d3)               // dffd50d3
-	iface.RegisterClazzName(ClazzName_payments_assignPlayMarketTransaction, 214, 0xdffd50d3)               // dffd50d3
 	iface.RegisterClazzName(ClazzName_payments_getPremiumGiftCodeOptions, 216, 0x2757ba54)                 // 2757ba54
-	iface.RegisterClazzName(ClazzName_payments_getPremiumGiftCodeOptions, 215, 0x2757ba54)                 // 2757ba54
-	iface.RegisterClazzName(ClazzName_payments_getPremiumGiftCodeOptions, 214, 0x2757ba54)                 // 2757ba54
 	iface.RegisterClazzName(ClazzName_payments_checkGiftCode, 216, 0x8e51b4c1)                             // 8e51b4c1
-	iface.RegisterClazzName(ClazzName_payments_checkGiftCode, 215, 0x8e51b4c1)                             // 8e51b4c1
-	iface.RegisterClazzName(ClazzName_payments_checkGiftCode, 214, 0x8e51b4c1)                             // 8e51b4c1
 	iface.RegisterClazzName(ClazzName_payments_applyGiftCode, 216, 0xf6e26854)                             // f6e26854
-	iface.RegisterClazzName(ClazzName_payments_applyGiftCode, 215, 0xf6e26854)                             // f6e26854
-	iface.RegisterClazzName(ClazzName_payments_applyGiftCode, 214, 0xf6e26854)                             // f6e26854
 	iface.RegisterClazzName(ClazzName_payments_getGiveawayInfo, 216, 0xf4239425)                           // f4239425
-	iface.RegisterClazzName(ClazzName_payments_getGiveawayInfo, 215, 0xf4239425)                           // f4239425
-	iface.RegisterClazzName(ClazzName_payments_getGiveawayInfo, 214, 0xf4239425)                           // f4239425
 	iface.RegisterClazzName(ClazzName_payments_launchPrepaidGiveaway, 216, 0x5ff58f20)                     // 5ff58f20
-	iface.RegisterClazzName(ClazzName_payments_launchPrepaidGiveaway, 215, 0x5ff58f20)                     // 5ff58f20
-	iface.RegisterClazzName(ClazzName_payments_launchPrepaidGiveaway, 214, 0x5ff58f20)                     // 5ff58f20
 	iface.RegisterClazzName(ClazzName_payments_getStarsTopupOptions, 216, 0xc00ec7d3)                      // c00ec7d3
-	iface.RegisterClazzName(ClazzName_payments_getStarsTopupOptions, 215, 0xc00ec7d3)                      // c00ec7d3
-	iface.RegisterClazzName(ClazzName_payments_getStarsTopupOptions, 214, 0xc00ec7d3)                      // c00ec7d3
 	iface.RegisterClazzName(ClazzName_payments_getStarsStatus, 216, 0x4ea9b3bf)                            // 4ea9b3bf
-	iface.RegisterClazzName(ClazzName_payments_getStarsStatus, 215, 0x4ea9b3bf)                            // 4ea9b3bf
-	iface.RegisterClazzName(ClazzName_payments_getStarsStatus, 214, 0x4ea9b3bf)                            // 4ea9b3bf
 	iface.RegisterClazzName(ClazzName_payments_getStarsTransactions, 216, 0x69da4557)                      // 69da4557
-	iface.RegisterClazzName(ClazzName_payments_getStarsTransactions, 215, 0x69da4557)                      // 69da4557
-	iface.RegisterClazzName(ClazzName_payments_getStarsTransactions, 214, 0x69da4557)                      // 69da4557
 	iface.RegisterClazzName(ClazzName_payments_sendStarsForm, 216, 0x7998c914)                             // 7998c914
-	iface.RegisterClazzName(ClazzName_payments_sendStarsForm, 215, 0x7998c914)                             // 7998c914
-	iface.RegisterClazzName(ClazzName_payments_sendStarsForm, 214, 0x7998c914)                             // 7998c914
 	iface.RegisterClazzName(ClazzName_payments_refundStarsCharge, 216, 0x25ae8f4a)                         // 25ae8f4a
-	iface.RegisterClazzName(ClazzName_payments_refundStarsCharge, 215, 0x25ae8f4a)                         // 25ae8f4a
-	iface.RegisterClazzName(ClazzName_payments_refundStarsCharge, 214, 0x25ae8f4a)                         // 25ae8f4a
 	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueStats, 216, 0xd91ffad6)                      // d91ffad6
-	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueStats, 215, 0xd91ffad6)                      // d91ffad6
-	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueStats, 214, 0xd91ffad6)                      // d91ffad6
 	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueWithdrawalUrl, 216, 0x2433dc92)              // 2433dc92
-	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueWithdrawalUrl, 215, 0x2433dc92)              // 2433dc92
-	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueWithdrawalUrl, 214, 0x2433dc92)              // 2433dc92
 	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueAdsAccountUrl, 216, 0xd1d7efc5)              // d1d7efc5
-	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueAdsAccountUrl, 215, 0xd1d7efc5)              // d1d7efc5
-	iface.RegisterClazzName(ClazzName_payments_getStarsRevenueAdsAccountUrl, 214, 0xd1d7efc5)              // d1d7efc5
 	iface.RegisterClazzName(ClazzName_payments_getStarsTransactionsByID, 216, 0x2dca16b8)                  // 2dca16b8
-	iface.RegisterClazzName(ClazzName_payments_getStarsTransactionsByID, 215, 0x2dca16b8)                  // 2dca16b8
-	iface.RegisterClazzName(ClazzName_payments_getStarsTransactionsByID, 214, 0x2dca16b8)                  // 2dca16b8
 	iface.RegisterClazzName(ClazzName_payments_getStarsGiftOptions, 216, 0xd3c96bc8)                       // d3c96bc8
-	iface.RegisterClazzName(ClazzName_payments_getStarsGiftOptions, 215, 0xd3c96bc8)                       // d3c96bc8
-	iface.RegisterClazzName(ClazzName_payments_getStarsGiftOptions, 214, 0xd3c96bc8)                       // d3c96bc8
 	iface.RegisterClazzName(ClazzName_payments_getStarsSubscriptions, 216, 0x32512c5)                      // 32512c5
-	iface.RegisterClazzName(ClazzName_payments_getStarsSubscriptions, 215, 0x32512c5)                      // 32512c5
-	iface.RegisterClazzName(ClazzName_payments_getStarsSubscriptions, 214, 0x32512c5)                      // 32512c5
 	iface.RegisterClazzName(ClazzName_payments_changeStarsSubscription, 216, 0xc7770878)                   // c7770878
-	iface.RegisterClazzName(ClazzName_payments_changeStarsSubscription, 215, 0xc7770878)                   // c7770878
-	iface.RegisterClazzName(ClazzName_payments_changeStarsSubscription, 214, 0xc7770878)                   // c7770878
 	iface.RegisterClazzName(ClazzName_payments_fulfillStarsSubscription, 216, 0xcc5bebb3)                  // cc5bebb3
-	iface.RegisterClazzName(ClazzName_payments_fulfillStarsSubscription, 215, 0xcc5bebb3)                  // cc5bebb3
-	iface.RegisterClazzName(ClazzName_payments_fulfillStarsSubscription, 214, 0xcc5bebb3)                  // cc5bebb3
 	iface.RegisterClazzName(ClazzName_payments_getStarsGiveawayOptions, 216, 0xbd1efd3e)                   // bd1efd3e
-	iface.RegisterClazzName(ClazzName_payments_getStarsGiveawayOptions, 215, 0xbd1efd3e)                   // bd1efd3e
-	iface.RegisterClazzName(ClazzName_payments_getStarsGiveawayOptions, 214, 0xbd1efd3e)                   // bd1efd3e
 	iface.RegisterClazzName(ClazzName_payments_getStarGifts, 216, 0xc4563590)                              // c4563590
-	iface.RegisterClazzName(ClazzName_payments_getStarGifts, 215, 0xc4563590)                              // c4563590
-	iface.RegisterClazzName(ClazzName_payments_getStarGifts, 214, 0xc4563590)                              // c4563590
 	iface.RegisterClazzName(ClazzName_payments_saveStarGift, 216, 0x2a2a697c)                              // 2a2a697c
-	iface.RegisterClazzName(ClazzName_payments_saveStarGift, 215, 0x2a2a697c)                              // 2a2a697c
-	iface.RegisterClazzName(ClazzName_payments_saveStarGift, 214, 0x2a2a697c)                              // 2a2a697c
 	iface.RegisterClazzName(ClazzName_payments_convertStarGift, 216, 0x74bf076b)                           // 74bf076b
-	iface.RegisterClazzName(ClazzName_payments_convertStarGift, 215, 0x74bf076b)                           // 74bf076b
-	iface.RegisterClazzName(ClazzName_payments_convertStarGift, 214, 0x74bf076b)                           // 74bf076b
 	iface.RegisterClazzName(ClazzName_payments_botCancelStarsSubscription, 216, 0x6dfa0622)                // 6dfa0622
-	iface.RegisterClazzName(ClazzName_payments_botCancelStarsSubscription, 215, 0x6dfa0622)                // 6dfa0622
-	iface.RegisterClazzName(ClazzName_payments_botCancelStarsSubscription, 214, 0x6dfa0622)                // 6dfa0622
 	iface.RegisterClazzName(ClazzName_payments_getConnectedStarRefBots, 216, 0x5869a553)                   // 5869a553
-	iface.RegisterClazzName(ClazzName_payments_getConnectedStarRefBots, 215, 0x5869a553)                   // 5869a553
-	iface.RegisterClazzName(ClazzName_payments_getConnectedStarRefBots, 214, 0x5869a553)                   // 5869a553
 	iface.RegisterClazzName(ClazzName_payments_getConnectedStarRefBot, 216, 0xb7d998f0)                    // b7d998f0
-	iface.RegisterClazzName(ClazzName_payments_getConnectedStarRefBot, 215, 0xb7d998f0)                    // b7d998f0
-	iface.RegisterClazzName(ClazzName_payments_getConnectedStarRefBot, 214, 0xb7d998f0)                    // b7d998f0
 	iface.RegisterClazzName(ClazzName_payments_getSuggestedStarRefBots, 216, 0xd6b48f7)                    // d6b48f7
-	iface.RegisterClazzName(ClazzName_payments_getSuggestedStarRefBots, 215, 0xd6b48f7)                    // d6b48f7
-	iface.RegisterClazzName(ClazzName_payments_getSuggestedStarRefBots, 214, 0xd6b48f7)                    // d6b48f7
 	iface.RegisterClazzName(ClazzName_payments_connectStarRefBot, 216, 0x7ed5348a)                         // 7ed5348a
-	iface.RegisterClazzName(ClazzName_payments_connectStarRefBot, 215, 0x7ed5348a)                         // 7ed5348a
-	iface.RegisterClazzName(ClazzName_payments_connectStarRefBot, 214, 0x7ed5348a)                         // 7ed5348a
 	iface.RegisterClazzName(ClazzName_payments_editConnectedStarRefBot, 216, 0xe4fca4a3)                   // e4fca4a3
-	iface.RegisterClazzName(ClazzName_payments_editConnectedStarRefBot, 215, 0xe4fca4a3)                   // e4fca4a3
-	iface.RegisterClazzName(ClazzName_payments_editConnectedStarRefBot, 214, 0xe4fca4a3)                   // e4fca4a3
 	iface.RegisterClazzName(ClazzName_payments_getStarGiftUpgradePreview, 216, 0x9c9abcb1)                 // 9c9abcb1
-	iface.RegisterClazzName(ClazzName_payments_getStarGiftUpgradePreview, 215, 0x9c9abcb1)                 // 9c9abcb1
-	iface.RegisterClazzName(ClazzName_payments_getStarGiftUpgradePreview, 214, 0x9c9abcb1)                 // 9c9abcb1
 	iface.RegisterClazzName(ClazzName_payments_upgradeStarGift, 216, 0xaed6e4f5)                           // aed6e4f5
-	iface.RegisterClazzName(ClazzName_payments_upgradeStarGift, 215, 0xaed6e4f5)                           // aed6e4f5
-	iface.RegisterClazzName(ClazzName_payments_upgradeStarGift, 214, 0xaed6e4f5)                           // aed6e4f5
 	iface.RegisterClazzName(ClazzName_payments_transferStarGift, 216, 0x7f18176a)                          // 7f18176a
-	iface.RegisterClazzName(ClazzName_payments_transferStarGift, 215, 0x7f18176a)                          // 7f18176a
-	iface.RegisterClazzName(ClazzName_payments_transferStarGift, 214, 0x7f18176a)                          // 7f18176a
 	iface.RegisterClazzName(ClazzName_payments_getUniqueStarGift, 216, 0xa1974d72)                         // a1974d72
-	iface.RegisterClazzName(ClazzName_payments_getUniqueStarGift, 215, 0xa1974d72)                         // a1974d72
-	iface.RegisterClazzName(ClazzName_payments_getUniqueStarGift, 214, 0xa1974d72)                         // a1974d72
 	iface.RegisterClazzName(ClazzName_payments_getSavedStarGifts, 216, 0xa319e569)                         // a319e569
-	iface.RegisterClazzName(ClazzName_payments_getSavedStarGifts, 215, 0xa319e569)                         // a319e569
-	iface.RegisterClazzName(ClazzName_payments_getSavedStarGifts, 214, 0xa319e569)                         // a319e569
 	iface.RegisterClazzName(ClazzName_payments_getSavedStarGift, 216, 0xb455a106)                          // b455a106
-	iface.RegisterClazzName(ClazzName_payments_getSavedStarGift, 215, 0xb455a106)                          // b455a106
-	iface.RegisterClazzName(ClazzName_payments_getSavedStarGift, 214, 0xb455a106)                          // b455a106
 	iface.RegisterClazzName(ClazzName_payments_getStarGiftWithdrawalUrl, 216, 0xd06e93a8)                  // d06e93a8
-	iface.RegisterClazzName(ClazzName_payments_getStarGiftWithdrawalUrl, 215, 0xd06e93a8)                  // d06e93a8
-	iface.RegisterClazzName(ClazzName_payments_getStarGiftWithdrawalUrl, 214, 0xd06e93a8)                  // d06e93a8
 	iface.RegisterClazzName(ClazzName_payments_toggleChatStarGiftNotifications, 216, 0x60eaefa1)           // 60eaefa1
-	iface.RegisterClazzName(ClazzName_payments_toggleChatStarGiftNotifications, 215, 0x60eaefa1)           // 60eaefa1
-	iface.RegisterClazzName(ClazzName_payments_toggleChatStarGiftNotifications, 214, 0x60eaefa1)           // 60eaefa1
 	iface.RegisterClazzName(ClazzName_payments_toggleStarGiftsPinnedToTop, 216, 0x1513e7b0)                // 1513e7b0
-	iface.RegisterClazzName(ClazzName_payments_toggleStarGiftsPinnedToTop, 215, 0x1513e7b0)                // 1513e7b0
-	iface.RegisterClazzName(ClazzName_payments_toggleStarGiftsPinnedToTop, 214, 0x1513e7b0)                // 1513e7b0
 	iface.RegisterClazzName(ClazzName_payments_canPurchaseStore, 216, 0x4fdc5ea7)                          // 4fdc5ea7
-	iface.RegisterClazzName(ClazzName_payments_canPurchaseStore, 215, 0x4fdc5ea7)                          // 4fdc5ea7
-	iface.RegisterClazzName(ClazzName_payments_canPurchaseStore, 214, 0x4fdc5ea7)                          // 4fdc5ea7
 	iface.RegisterClazzName(ClazzName_payments_getResaleStarGifts, 216, 0x7a5fa236)                        // 7a5fa236
-	iface.RegisterClazzName(ClazzName_payments_getResaleStarGifts, 215, 0x7a5fa236)                        // 7a5fa236
-	iface.RegisterClazzName(ClazzName_payments_getResaleStarGifts, 214, 0x7a5fa236)                        // 7a5fa236
 	iface.RegisterClazzName(ClazzName_payments_updateStarGiftPrice, 216, 0xedbe6ccb)                       // edbe6ccb
-	iface.RegisterClazzName(ClazzName_payments_updateStarGiftPrice, 215, 0xedbe6ccb)                       // edbe6ccb
-	iface.RegisterClazzName(ClazzName_payments_updateStarGiftPrice, 214, 0xedbe6ccb)                       // edbe6ccb
 	iface.RegisterClazzName(ClazzName_payments_createStarGiftCollection, 216, 0x1f4a0e87)                  // 1f4a0e87
-	iface.RegisterClazzName(ClazzName_payments_createStarGiftCollection, 215, 0x1f4a0e87)                  // 1f4a0e87
-	iface.RegisterClazzName(ClazzName_payments_createStarGiftCollection, 214, 0x1f4a0e87)                  // 1f4a0e87
 	iface.RegisterClazzName(ClazzName_payments_updateStarGiftCollection, 216, 0x4fddbee7)                  // 4fddbee7
-	iface.RegisterClazzName(ClazzName_payments_updateStarGiftCollection, 215, 0x4fddbee7)                  // 4fddbee7
-	iface.RegisterClazzName(ClazzName_payments_updateStarGiftCollection, 214, 0x4fddbee7)                  // 4fddbee7
 	iface.RegisterClazzName(ClazzName_payments_reorderStarGiftCollections, 216, 0xc32af4cc)                // c32af4cc
-	iface.RegisterClazzName(ClazzName_payments_reorderStarGiftCollections, 215, 0xc32af4cc)                // c32af4cc
-	iface.RegisterClazzName(ClazzName_payments_reorderStarGiftCollections, 214, 0xc32af4cc)                // c32af4cc
 	iface.RegisterClazzName(ClazzName_payments_deleteStarGiftCollection, 216, 0xad5648e8)                  // ad5648e8
-	iface.RegisterClazzName(ClazzName_payments_deleteStarGiftCollection, 215, 0xad5648e8)                  // ad5648e8
-	iface.RegisterClazzName(ClazzName_payments_deleteStarGiftCollection, 214, 0xad5648e8)                  // ad5648e8
 	iface.RegisterClazzName(ClazzName_payments_getStarGiftCollections, 216, 0x981b91dd)                    // 981b91dd
-	iface.RegisterClazzName(ClazzName_payments_getStarGiftCollections, 215, 0x981b91dd)                    // 981b91dd
-	iface.RegisterClazzName(ClazzName_payments_getStarGiftCollections, 214, 0x981b91dd)                    // 981b91dd
 	iface.RegisterClazzName(ClazzName_payments_getUniqueStarGiftValueInfo, 216, 0x4365af6b)                // 4365af6b
-	iface.RegisterClazzName(ClazzName_payments_getUniqueStarGiftValueInfo, 215, 0x4365af6b)                // 4365af6b
-	iface.RegisterClazzName(ClazzName_payments_getUniqueStarGiftValueInfo, 214, 0x4365af6b)                // 4365af6b
 	iface.RegisterClazzName(ClazzName_payments_checkCanSendGift, 216, 0xc0c4edc9)                          // c0c4edc9
-	iface.RegisterClazzName(ClazzName_payments_checkCanSendGift, 215, 0xc0c4edc9)                          // c0c4edc9
-	iface.RegisterClazzName(ClazzName_payments_checkCanSendGift, 214, 0xc0c4edc9)                          // c0c4edc9
 	iface.RegisterClazzName(ClazzName_stickers_createStickerSet, 216, 0x9021ab67)                          // 9021ab67
-	iface.RegisterClazzName(ClazzName_stickers_createStickerSet, 215, 0x9021ab67)                          // 9021ab67
-	iface.RegisterClazzName(ClazzName_stickers_createStickerSet, 214, 0x9021ab67)                          // 9021ab67
 	iface.RegisterClazzName(ClazzName_stickers_removeStickerFromSet, 216, 0xf7760f51)                      // f7760f51
-	iface.RegisterClazzName(ClazzName_stickers_removeStickerFromSet, 215, 0xf7760f51)                      // f7760f51
-	iface.RegisterClazzName(ClazzName_stickers_removeStickerFromSet, 214, 0xf7760f51)                      // f7760f51
 	iface.RegisterClazzName(ClazzName_stickers_changeStickerPosition, 216, 0xffb6d4ca)                     // ffb6d4ca
-	iface.RegisterClazzName(ClazzName_stickers_changeStickerPosition, 215, 0xffb6d4ca)                     // ffb6d4ca
-	iface.RegisterClazzName(ClazzName_stickers_changeStickerPosition, 214, 0xffb6d4ca)                     // ffb6d4ca
 	iface.RegisterClazzName(ClazzName_stickers_addStickerToSet, 216, 0x8653febe)                           // 8653febe
-	iface.RegisterClazzName(ClazzName_stickers_addStickerToSet, 215, 0x8653febe)                           // 8653febe
-	iface.RegisterClazzName(ClazzName_stickers_addStickerToSet, 214, 0x8653febe)                           // 8653febe
 	iface.RegisterClazzName(ClazzName_stickers_setStickerSetThumb, 216, 0xa76a5392)                        // a76a5392
-	iface.RegisterClazzName(ClazzName_stickers_setStickerSetThumb, 215, 0xa76a5392)                        // a76a5392
-	iface.RegisterClazzName(ClazzName_stickers_setStickerSetThumb, 214, 0xa76a5392)                        // a76a5392
 	iface.RegisterClazzName(ClazzName_stickers_checkShortName, 216, 0x284b3639)                            // 284b3639
-	iface.RegisterClazzName(ClazzName_stickers_checkShortName, 215, 0x284b3639)                            // 284b3639
-	iface.RegisterClazzName(ClazzName_stickers_checkShortName, 214, 0x284b3639)                            // 284b3639
 	iface.RegisterClazzName(ClazzName_stickers_suggestShortName, 216, 0x4dafc503)                          // 4dafc503
-	iface.RegisterClazzName(ClazzName_stickers_suggestShortName, 215, 0x4dafc503)                          // 4dafc503
-	iface.RegisterClazzName(ClazzName_stickers_suggestShortName, 214, 0x4dafc503)                          // 4dafc503
 	iface.RegisterClazzName(ClazzName_stickers_changeSticker, 216, 0xf5537ebc)                             // f5537ebc
-	iface.RegisterClazzName(ClazzName_stickers_changeSticker, 215, 0xf5537ebc)                             // f5537ebc
-	iface.RegisterClazzName(ClazzName_stickers_changeSticker, 214, 0xf5537ebc)                             // f5537ebc
 	iface.RegisterClazzName(ClazzName_stickers_renameStickerSet, 216, 0x124b1c00)                          // 124b1c00
-	iface.RegisterClazzName(ClazzName_stickers_renameStickerSet, 215, 0x124b1c00)                          // 124b1c00
-	iface.RegisterClazzName(ClazzName_stickers_renameStickerSet, 214, 0x124b1c00)                          // 124b1c00
 	iface.RegisterClazzName(ClazzName_stickers_deleteStickerSet, 216, 0x87704394)                          // 87704394
-	iface.RegisterClazzName(ClazzName_stickers_deleteStickerSet, 215, 0x87704394)                          // 87704394
-	iface.RegisterClazzName(ClazzName_stickers_deleteStickerSet, 214, 0x87704394)                          // 87704394
 	iface.RegisterClazzName(ClazzName_stickers_replaceSticker, 216, 0x4696459a)                            // 4696459a
-	iface.RegisterClazzName(ClazzName_stickers_replaceSticker, 215, 0x4696459a)                            // 4696459a
-	iface.RegisterClazzName(ClazzName_stickers_replaceSticker, 214, 0x4696459a)                            // 4696459a
 	iface.RegisterClazzName(ClazzName_phone_getCallConfig, 216, 0x55451fa9)                                // 55451fa9
-	iface.RegisterClazzName(ClazzName_phone_getCallConfig, 215, 0x55451fa9)                                // 55451fa9
-	iface.RegisterClazzName(ClazzName_phone_getCallConfig, 214, 0x55451fa9)                                // 55451fa9
 	iface.RegisterClazzName(ClazzName_phone_requestCall, 216, 0x42ff96ed)                                  // 42ff96ed
-	iface.RegisterClazzName(ClazzName_phone_requestCall, 215, 0x42ff96ed)                                  // 42ff96ed
-	iface.RegisterClazzName(ClazzName_phone_requestCall, 214, 0x42ff96ed)                                  // 42ff96ed
 	iface.RegisterClazzName(ClazzName_phone_acceptCall, 216, 0x3bd2b4a0)                                   // 3bd2b4a0
-	iface.RegisterClazzName(ClazzName_phone_acceptCall, 215, 0x3bd2b4a0)                                   // 3bd2b4a0
-	iface.RegisterClazzName(ClazzName_phone_acceptCall, 214, 0x3bd2b4a0)                                   // 3bd2b4a0
 	iface.RegisterClazzName(ClazzName_phone_confirmCall, 216, 0x2efe1722)                                  // 2efe1722
-	iface.RegisterClazzName(ClazzName_phone_confirmCall, 215, 0x2efe1722)                                  // 2efe1722
-	iface.RegisterClazzName(ClazzName_phone_confirmCall, 214, 0x2efe1722)                                  // 2efe1722
 	iface.RegisterClazzName(ClazzName_phone_receivedCall, 216, 0x17d54f61)                                 // 17d54f61
-	iface.RegisterClazzName(ClazzName_phone_receivedCall, 215, 0x17d54f61)                                 // 17d54f61
-	iface.RegisterClazzName(ClazzName_phone_receivedCall, 214, 0x17d54f61)                                 // 17d54f61
 	iface.RegisterClazzName(ClazzName_phone_discardCall, 216, 0xb2cbc1c0)                                  // b2cbc1c0
-	iface.RegisterClazzName(ClazzName_phone_discardCall, 215, 0xb2cbc1c0)                                  // b2cbc1c0
-	iface.RegisterClazzName(ClazzName_phone_discardCall, 214, 0xb2cbc1c0)                                  // b2cbc1c0
 	iface.RegisterClazzName(ClazzName_phone_setCallRating, 216, 0x59ead627)                                // 59ead627
-	iface.RegisterClazzName(ClazzName_phone_setCallRating, 215, 0x59ead627)                                // 59ead627
-	iface.RegisterClazzName(ClazzName_phone_setCallRating, 214, 0x59ead627)                                // 59ead627
 	iface.RegisterClazzName(ClazzName_phone_saveCallDebug, 216, 0x277add7e)                                // 277add7e
-	iface.RegisterClazzName(ClazzName_phone_saveCallDebug, 215, 0x277add7e)                                // 277add7e
-	iface.RegisterClazzName(ClazzName_phone_saveCallDebug, 214, 0x277add7e)                                // 277add7e
 	iface.RegisterClazzName(ClazzName_phone_sendSignalingData, 216, 0xff7a9383)                            // ff7a9383
-	iface.RegisterClazzName(ClazzName_phone_sendSignalingData, 215, 0xff7a9383)                            // ff7a9383
-	iface.RegisterClazzName(ClazzName_phone_sendSignalingData, 214, 0xff7a9383)                            // ff7a9383
 	iface.RegisterClazzName(ClazzName_phone_createGroupCall, 216, 0x48cdc6d8)                              // 48cdc6d8
-	iface.RegisterClazzName(ClazzName_phone_createGroupCall, 215, 0x48cdc6d8)                              // 48cdc6d8
-	iface.RegisterClazzName(ClazzName_phone_createGroupCall, 214, 0x48cdc6d8)                              // 48cdc6d8
 	iface.RegisterClazzName(ClazzName_phone_joinGroupCall, 216, 0x8fb53057)                                // 8fb53057
-	iface.RegisterClazzName(ClazzName_phone_joinGroupCall, 215, 0x8fb53057)                                // 8fb53057
-	iface.RegisterClazzName(ClazzName_phone_joinGroupCall, 214, 0x8fb53057)                                // 8fb53057
 	iface.RegisterClazzName(ClazzName_phone_leaveGroupCall, 216, 0x500377f9)                               // 500377f9
-	iface.RegisterClazzName(ClazzName_phone_leaveGroupCall, 215, 0x500377f9)                               // 500377f9
-	iface.RegisterClazzName(ClazzName_phone_leaveGroupCall, 214, 0x500377f9)                               // 500377f9
 	iface.RegisterClazzName(ClazzName_phone_inviteToGroupCall, 216, 0x7b393160)                            // 7b393160
-	iface.RegisterClazzName(ClazzName_phone_inviteToGroupCall, 215, 0x7b393160)                            // 7b393160
-	iface.RegisterClazzName(ClazzName_phone_inviteToGroupCall, 214, 0x7b393160)                            // 7b393160
 	iface.RegisterClazzName(ClazzName_phone_discardGroupCall, 216, 0x7a777135)                             // 7a777135
-	iface.RegisterClazzName(ClazzName_phone_discardGroupCall, 215, 0x7a777135)                             // 7a777135
-	iface.RegisterClazzName(ClazzName_phone_discardGroupCall, 214, 0x7a777135)                             // 7a777135
 	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallSettings, 216, 0xe9723804)                      // e9723804
-	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallSettings, 215, 0x74bbb43d)                      // 74bbb43d
-	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallSettings, 214, 0x74bbb43d)                      // 74bbb43d
 	iface.RegisterClazzName(ClazzName_phone_getGroupCall, 216, 0x41845db)                                  // 41845db
-	iface.RegisterClazzName(ClazzName_phone_getGroupCall, 215, 0x41845db)                                  // 41845db
-	iface.RegisterClazzName(ClazzName_phone_getGroupCall, 214, 0x41845db)                                  // 41845db
 	iface.RegisterClazzName(ClazzName_phone_getGroupParticipants, 216, 0xc558d8ab)                         // c558d8ab
-	iface.RegisterClazzName(ClazzName_phone_getGroupParticipants, 215, 0xc558d8ab)                         // c558d8ab
-	iface.RegisterClazzName(ClazzName_phone_getGroupParticipants, 214, 0xc558d8ab)                         // c558d8ab
 	iface.RegisterClazzName(ClazzName_phone_checkGroupCall, 216, 0xb59cf977)                               // b59cf977
-	iface.RegisterClazzName(ClazzName_phone_checkGroupCall, 215, 0xb59cf977)                               // b59cf977
-	iface.RegisterClazzName(ClazzName_phone_checkGroupCall, 214, 0xb59cf977)                               // b59cf977
 	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallRecord, 216, 0xf128c708)                        // f128c708
-	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallRecord, 215, 0xf128c708)                        // f128c708
-	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallRecord, 214, 0xf128c708)                        // f128c708
 	iface.RegisterClazzName(ClazzName_phone_editGroupCallParticipant, 216, 0xa5273abf)                     // a5273abf
-	iface.RegisterClazzName(ClazzName_phone_editGroupCallParticipant, 215, 0xa5273abf)                     // a5273abf
-	iface.RegisterClazzName(ClazzName_phone_editGroupCallParticipant, 214, 0xa5273abf)                     // a5273abf
 	iface.RegisterClazzName(ClazzName_phone_editGroupCallTitle, 216, 0x1ca6ac0a)                           // 1ca6ac0a
-	iface.RegisterClazzName(ClazzName_phone_editGroupCallTitle, 215, 0x1ca6ac0a)                           // 1ca6ac0a
-	iface.RegisterClazzName(ClazzName_phone_editGroupCallTitle, 214, 0x1ca6ac0a)                           // 1ca6ac0a
 	iface.RegisterClazzName(ClazzName_phone_getGroupCallJoinAs, 216, 0xef7c213a)                           // ef7c213a
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallJoinAs, 215, 0xef7c213a)                           // ef7c213a
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallJoinAs, 214, 0xef7c213a)                           // ef7c213a
 	iface.RegisterClazzName(ClazzName_phone_exportGroupCallInvite, 216, 0xe6aa647f)                        // e6aa647f
-	iface.RegisterClazzName(ClazzName_phone_exportGroupCallInvite, 215, 0xe6aa647f)                        // e6aa647f
-	iface.RegisterClazzName(ClazzName_phone_exportGroupCallInvite, 214, 0xe6aa647f)                        // e6aa647f
 	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallStartSubscription, 216, 0x219c34e6)             // 219c34e6
-	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallStartSubscription, 215, 0x219c34e6)             // 219c34e6
-	iface.RegisterClazzName(ClazzName_phone_toggleGroupCallStartSubscription, 214, 0x219c34e6)             // 219c34e6
 	iface.RegisterClazzName(ClazzName_phone_startScheduledGroupCall, 216, 0x5680e342)                      // 5680e342
-	iface.RegisterClazzName(ClazzName_phone_startScheduledGroupCall, 215, 0x5680e342)                      // 5680e342
-	iface.RegisterClazzName(ClazzName_phone_startScheduledGroupCall, 214, 0x5680e342)                      // 5680e342
 	iface.RegisterClazzName(ClazzName_phone_saveDefaultGroupCallJoinAs, 216, 0x575e1f8c)                   // 575e1f8c
-	iface.RegisterClazzName(ClazzName_phone_saveDefaultGroupCallJoinAs, 215, 0x575e1f8c)                   // 575e1f8c
-	iface.RegisterClazzName(ClazzName_phone_saveDefaultGroupCallJoinAs, 214, 0x575e1f8c)                   // 575e1f8c
 	iface.RegisterClazzName(ClazzName_phone_joinGroupCallPresentation, 216, 0xcbea6bc4)                    // cbea6bc4
-	iface.RegisterClazzName(ClazzName_phone_joinGroupCallPresentation, 215, 0xcbea6bc4)                    // cbea6bc4
-	iface.RegisterClazzName(ClazzName_phone_joinGroupCallPresentation, 214, 0xcbea6bc4)                    // cbea6bc4
 	iface.RegisterClazzName(ClazzName_phone_leaveGroupCallPresentation, 216, 0x1c50d144)                   // 1c50d144
-	iface.RegisterClazzName(ClazzName_phone_leaveGroupCallPresentation, 215, 0x1c50d144)                   // 1c50d144
-	iface.RegisterClazzName(ClazzName_phone_leaveGroupCallPresentation, 214, 0x1c50d144)                   // 1c50d144
 	iface.RegisterClazzName(ClazzName_phone_getGroupCallStreamChannels, 216, 0x1ab21940)                   // 1ab21940
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallStreamChannels, 215, 0x1ab21940)                   // 1ab21940
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallStreamChannels, 214, 0x1ab21940)                   // 1ab21940
 	iface.RegisterClazzName(ClazzName_phone_getGroupCallStreamRtmpUrl, 216, 0xdeb3abbf)                    // deb3abbf
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallStreamRtmpUrl, 215, 0xdeb3abbf)                    // deb3abbf
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallStreamRtmpUrl, 214, 0xdeb3abbf)                    // deb3abbf
 	iface.RegisterClazzName(ClazzName_phone_saveCallLog, 216, 0x41248786)                                  // 41248786
-	iface.RegisterClazzName(ClazzName_phone_saveCallLog, 215, 0x41248786)                                  // 41248786
-	iface.RegisterClazzName(ClazzName_phone_saveCallLog, 214, 0x41248786)                                  // 41248786
 	iface.RegisterClazzName(ClazzName_phone_createConferenceCall, 216, 0x7d0444bb)                         // 7d0444bb
-	iface.RegisterClazzName(ClazzName_phone_createConferenceCall, 215, 0x7d0444bb)                         // 7d0444bb
-	iface.RegisterClazzName(ClazzName_phone_createConferenceCall, 214, 0x7d0444bb)                         // 7d0444bb
 	iface.RegisterClazzName(ClazzName_phone_deleteConferenceCallParticipants, 216, 0x8ca60525)             // 8ca60525
-	iface.RegisterClazzName(ClazzName_phone_deleteConferenceCallParticipants, 215, 0x8ca60525)             // 8ca60525
-	iface.RegisterClazzName(ClazzName_phone_deleteConferenceCallParticipants, 214, 0x8ca60525)             // 8ca60525
 	iface.RegisterClazzName(ClazzName_phone_sendConferenceCallBroadcast, 216, 0xc6701900)                  // c6701900
-	iface.RegisterClazzName(ClazzName_phone_sendConferenceCallBroadcast, 215, 0xc6701900)                  // c6701900
-	iface.RegisterClazzName(ClazzName_phone_sendConferenceCallBroadcast, 214, 0xc6701900)                  // c6701900
 	iface.RegisterClazzName(ClazzName_phone_inviteConferenceCallParticipant, 216, 0xbcf22685)              // bcf22685
-	iface.RegisterClazzName(ClazzName_phone_inviteConferenceCallParticipant, 215, 0xbcf22685)              // bcf22685
-	iface.RegisterClazzName(ClazzName_phone_inviteConferenceCallParticipant, 214, 0xbcf22685)              // bcf22685
 	iface.RegisterClazzName(ClazzName_phone_declineConferenceCallInvite, 216, 0x3c479971)                  // 3c479971
-	iface.RegisterClazzName(ClazzName_phone_declineConferenceCallInvite, 215, 0x3c479971)                  // 3c479971
-	iface.RegisterClazzName(ClazzName_phone_declineConferenceCallInvite, 214, 0x3c479971)                  // 3c479971
 	iface.RegisterClazzName(ClazzName_phone_getGroupCallChainBlocks, 216, 0xee9f88a6)                      // ee9f88a6
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallChainBlocks, 215, 0xee9f88a6)                      // ee9f88a6
-	iface.RegisterClazzName(ClazzName_phone_getGroupCallChainBlocks, 214, 0xee9f88a6)                      // ee9f88a6
 	iface.RegisterClazzName(ClazzName_phone_sendGroupCallMessage, 216, 0x87893014)                         // 87893014
 	iface.RegisterClazzName(ClazzName_phone_sendGroupCallEncryptedMessage, 216, 0xe5afa56d)                // e5afa56d
 	iface.RegisterClazzName(ClazzName_langpack_getLangPack, 216, 0xf2f2330a)                               // f2f2330a
-	iface.RegisterClazzName(ClazzName_langpack_getLangPack, 215, 0xf2f2330a)                               // f2f2330a
-	iface.RegisterClazzName(ClazzName_langpack_getLangPack, 214, 0xf2f2330a)                               // f2f2330a
 	iface.RegisterClazzName(ClazzName_langpack_getLangPack, 74, 0x9ab5c58e)                                // 9ab5c58e
 	iface.RegisterClazzName(ClazzName_langpack_getStrings, 216, 0xefea3803)                                // efea3803
-	iface.RegisterClazzName(ClazzName_langpack_getStrings, 215, 0xefea3803)                                // efea3803
-	iface.RegisterClazzName(ClazzName_langpack_getStrings, 214, 0xefea3803)                                // efea3803
 	iface.RegisterClazzName(ClazzName_langpack_getStrings, 85, 0x2e1ee318)                                 // 2e1ee318
 	iface.RegisterClazzName(ClazzName_langpack_getDifference, 216, 0xcd984aa5)                             // cd984aa5
-	iface.RegisterClazzName(ClazzName_langpack_getDifference, 215, 0xcd984aa5)                             // cd984aa5
-	iface.RegisterClazzName(ClazzName_langpack_getDifference, 214, 0xcd984aa5)                             // cd984aa5
 	iface.RegisterClazzName(ClazzName_langpack_getLanguages, 216, 0x42c6978f)                              // 42c6978f
-	iface.RegisterClazzName(ClazzName_langpack_getLanguages, 215, 0x42c6978f)                              // 42c6978f
-	iface.RegisterClazzName(ClazzName_langpack_getLanguages, 214, 0x42c6978f)                              // 42c6978f
 	iface.RegisterClazzName(ClazzName_langpack_getLanguages, 74, 0x800fd57d)                               // 800fd57d
 	iface.RegisterClazzName(ClazzName_langpack_getLanguage, 216, 0x6a596502)                               // 6a596502
-	iface.RegisterClazzName(ClazzName_langpack_getLanguage, 215, 0x6a596502)                               // 6a596502
-	iface.RegisterClazzName(ClazzName_langpack_getLanguage, 214, 0x6a596502)                               // 6a596502
 	iface.RegisterClazzName(ClazzName_folders_editPeerFolders, 216, 0x6847d0ab)                            // 6847d0ab
-	iface.RegisterClazzName(ClazzName_folders_editPeerFolders, 215, 0x6847d0ab)                            // 6847d0ab
-	iface.RegisterClazzName(ClazzName_folders_editPeerFolders, 214, 0x6847d0ab)                            // 6847d0ab
 	iface.RegisterClazzName(ClazzName_stats_getBroadcastStats, 216, 0xab42441a)                            // ab42441a
-	iface.RegisterClazzName(ClazzName_stats_getBroadcastStats, 215, 0xab42441a)                            // ab42441a
-	iface.RegisterClazzName(ClazzName_stats_getBroadcastStats, 214, 0xab42441a)                            // ab42441a
 	iface.RegisterClazzName(ClazzName_stats_loadAsyncGraph, 216, 0x621d5fa0)                               // 621d5fa0
-	iface.RegisterClazzName(ClazzName_stats_loadAsyncGraph, 215, 0x621d5fa0)                               // 621d5fa0
-	iface.RegisterClazzName(ClazzName_stats_loadAsyncGraph, 214, 0x621d5fa0)                               // 621d5fa0
 	iface.RegisterClazzName(ClazzName_stats_getMegagroupStats, 216, 0xdcdf8607)                            // dcdf8607
-	iface.RegisterClazzName(ClazzName_stats_getMegagroupStats, 215, 0xdcdf8607)                            // dcdf8607
-	iface.RegisterClazzName(ClazzName_stats_getMegagroupStats, 214, 0xdcdf8607)                            // dcdf8607
 	iface.RegisterClazzName(ClazzName_stats_getMessagePublicForwards, 216, 0x5f150144)                     // 5f150144
-	iface.RegisterClazzName(ClazzName_stats_getMessagePublicForwards, 215, 0x5f150144)                     // 5f150144
-	iface.RegisterClazzName(ClazzName_stats_getMessagePublicForwards, 214, 0x5f150144)                     // 5f150144
 	iface.RegisterClazzName(ClazzName_stats_getMessageStats, 216, 0xb6e0a3f5)                              // b6e0a3f5
-	iface.RegisterClazzName(ClazzName_stats_getMessageStats, 215, 0xb6e0a3f5)                              // b6e0a3f5
-	iface.RegisterClazzName(ClazzName_stats_getMessageStats, 214, 0xb6e0a3f5)                              // b6e0a3f5
 	iface.RegisterClazzName(ClazzName_stats_getStoryStats, 216, 0x374fef40)                                // 374fef40
-	iface.RegisterClazzName(ClazzName_stats_getStoryStats, 215, 0x374fef40)                                // 374fef40
-	iface.RegisterClazzName(ClazzName_stats_getStoryStats, 214, 0x374fef40)                                // 374fef40
 	iface.RegisterClazzName(ClazzName_stats_getStoryPublicForwards, 216, 0xa6437ef6)                       // a6437ef6
-	iface.RegisterClazzName(ClazzName_stats_getStoryPublicForwards, 215, 0xa6437ef6)                       // a6437ef6
-	iface.RegisterClazzName(ClazzName_stats_getStoryPublicForwards, 214, 0xa6437ef6)                       // a6437ef6
 	iface.RegisterClazzName(ClazzName_chatlists_exportChatlistInvite, 216, 0x8472478e)                     // 8472478e
-	iface.RegisterClazzName(ClazzName_chatlists_exportChatlistInvite, 215, 0x8472478e)                     // 8472478e
-	iface.RegisterClazzName(ClazzName_chatlists_exportChatlistInvite, 214, 0x8472478e)                     // 8472478e
 	iface.RegisterClazzName(ClazzName_chatlists_deleteExportedInvite, 216, 0x719c5c5e)                     // 719c5c5e
-	iface.RegisterClazzName(ClazzName_chatlists_deleteExportedInvite, 215, 0x719c5c5e)                     // 719c5c5e
-	iface.RegisterClazzName(ClazzName_chatlists_deleteExportedInvite, 214, 0x719c5c5e)                     // 719c5c5e
 	iface.RegisterClazzName(ClazzName_chatlists_editExportedInvite, 216, 0x653db63d)                       // 653db63d
-	iface.RegisterClazzName(ClazzName_chatlists_editExportedInvite, 215, 0x653db63d)                       // 653db63d
-	iface.RegisterClazzName(ClazzName_chatlists_editExportedInvite, 214, 0x653db63d)                       // 653db63d
 	iface.RegisterClazzName(ClazzName_chatlists_getExportedInvites, 216, 0xce03da83)                       // ce03da83
-	iface.RegisterClazzName(ClazzName_chatlists_getExportedInvites, 215, 0xce03da83)                       // ce03da83
-	iface.RegisterClazzName(ClazzName_chatlists_getExportedInvites, 214, 0xce03da83)                       // ce03da83
 	iface.RegisterClazzName(ClazzName_chatlists_checkChatlistInvite, 216, 0x41c10fff)                      // 41c10fff
-	iface.RegisterClazzName(ClazzName_chatlists_checkChatlistInvite, 215, 0x41c10fff)                      // 41c10fff
-	iface.RegisterClazzName(ClazzName_chatlists_checkChatlistInvite, 214, 0x41c10fff)                      // 41c10fff
 	iface.RegisterClazzName(ClazzName_chatlists_joinChatlistInvite, 216, 0xa6b1e39a)                       // a6b1e39a
-	iface.RegisterClazzName(ClazzName_chatlists_joinChatlistInvite, 215, 0xa6b1e39a)                       // a6b1e39a
-	iface.RegisterClazzName(ClazzName_chatlists_joinChatlistInvite, 214, 0xa6b1e39a)                       // a6b1e39a
 	iface.RegisterClazzName(ClazzName_chatlists_getChatlistUpdates, 216, 0x89419521)                       // 89419521
-	iface.RegisterClazzName(ClazzName_chatlists_getChatlistUpdates, 215, 0x89419521)                       // 89419521
-	iface.RegisterClazzName(ClazzName_chatlists_getChatlistUpdates, 214, 0x89419521)                       // 89419521
 	iface.RegisterClazzName(ClazzName_chatlists_joinChatlistUpdates, 216, 0xe089f8f5)                      // e089f8f5
-	iface.RegisterClazzName(ClazzName_chatlists_joinChatlistUpdates, 215, 0xe089f8f5)                      // e089f8f5
-	iface.RegisterClazzName(ClazzName_chatlists_joinChatlistUpdates, 214, 0xe089f8f5)                      // e089f8f5
 	iface.RegisterClazzName(ClazzName_chatlists_hideChatlistUpdates, 216, 0x66e486fb)                      // 66e486fb
-	iface.RegisterClazzName(ClazzName_chatlists_hideChatlistUpdates, 215, 0x66e486fb)                      // 66e486fb
-	iface.RegisterClazzName(ClazzName_chatlists_hideChatlistUpdates, 214, 0x66e486fb)                      // 66e486fb
 	iface.RegisterClazzName(ClazzName_chatlists_getLeaveChatlistSuggestions, 216, 0xfdbcd714)              // fdbcd714
-	iface.RegisterClazzName(ClazzName_chatlists_getLeaveChatlistSuggestions, 215, 0xfdbcd714)              // fdbcd714
-	iface.RegisterClazzName(ClazzName_chatlists_getLeaveChatlistSuggestions, 214, 0xfdbcd714)              // fdbcd714
 	iface.RegisterClazzName(ClazzName_chatlists_leaveChatlist, 216, 0x74fae13a)                            // 74fae13a
-	iface.RegisterClazzName(ClazzName_chatlists_leaveChatlist, 215, 0x74fae13a)                            // 74fae13a
-	iface.RegisterClazzName(ClazzName_chatlists_leaveChatlist, 214, 0x74fae13a)                            // 74fae13a
 	iface.RegisterClazzName(ClazzName_stories_canSendStory, 216, 0x30eb63f0)                               // 30eb63f0
-	iface.RegisterClazzName(ClazzName_stories_canSendStory, 215, 0x30eb63f0)                               // 30eb63f0
-	iface.RegisterClazzName(ClazzName_stories_canSendStory, 214, 0x30eb63f0)                               // 30eb63f0
 	iface.RegisterClazzName(ClazzName_stories_sendStory, 216, 0x737fc2ec)                                  // 737fc2ec
-	iface.RegisterClazzName(ClazzName_stories_sendStory, 215, 0x737fc2ec)                                  // 737fc2ec
-	iface.RegisterClazzName(ClazzName_stories_sendStory, 214, 0x737fc2ec)                                  // 737fc2ec
 	iface.RegisterClazzName(ClazzName_stories_editStory, 216, 0xb583ba46)                                  // b583ba46
-	iface.RegisterClazzName(ClazzName_stories_editStory, 215, 0xb583ba46)                                  // b583ba46
-	iface.RegisterClazzName(ClazzName_stories_editStory, 214, 0xb583ba46)                                  // b583ba46
 	iface.RegisterClazzName(ClazzName_stories_deleteStories, 216, 0xae59db5f)                              // ae59db5f
-	iface.RegisterClazzName(ClazzName_stories_deleteStories, 215, 0xae59db5f)                              // ae59db5f
-	iface.RegisterClazzName(ClazzName_stories_deleteStories, 214, 0xae59db5f)                              // ae59db5f
 	iface.RegisterClazzName(ClazzName_stories_togglePinned, 216, 0x9a75a1ef)                               // 9a75a1ef
-	iface.RegisterClazzName(ClazzName_stories_togglePinned, 215, 0x9a75a1ef)                               // 9a75a1ef
-	iface.RegisterClazzName(ClazzName_stories_togglePinned, 214, 0x9a75a1ef)                               // 9a75a1ef
 	iface.RegisterClazzName(ClazzName_stories_getAllStories, 216, 0xeeb0d625)                              // eeb0d625
-	iface.RegisterClazzName(ClazzName_stories_getAllStories, 215, 0xeeb0d625)                              // eeb0d625
-	iface.RegisterClazzName(ClazzName_stories_getAllStories, 214, 0xeeb0d625)                              // eeb0d625
 	iface.RegisterClazzName(ClazzName_stories_getPinnedStories, 216, 0x5821a5dc)                           // 5821a5dc
-	iface.RegisterClazzName(ClazzName_stories_getPinnedStories, 215, 0x5821a5dc)                           // 5821a5dc
-	iface.RegisterClazzName(ClazzName_stories_getPinnedStories, 214, 0x5821a5dc)                           // 5821a5dc
 	iface.RegisterClazzName(ClazzName_stories_getStoriesArchive, 216, 0xb4352016)                          // b4352016
-	iface.RegisterClazzName(ClazzName_stories_getStoriesArchive, 215, 0xb4352016)                          // b4352016
-	iface.RegisterClazzName(ClazzName_stories_getStoriesArchive, 214, 0xb4352016)                          // b4352016
 	iface.RegisterClazzName(ClazzName_stories_getStoriesByID, 216, 0x5774ca74)                             // 5774ca74
-	iface.RegisterClazzName(ClazzName_stories_getStoriesByID, 215, 0x5774ca74)                             // 5774ca74
-	iface.RegisterClazzName(ClazzName_stories_getStoriesByID, 214, 0x5774ca74)                             // 5774ca74
 	iface.RegisterClazzName(ClazzName_stories_toggleAllStoriesHidden, 216, 0x7c2557c4)                     // 7c2557c4
-	iface.RegisterClazzName(ClazzName_stories_toggleAllStoriesHidden, 215, 0x7c2557c4)                     // 7c2557c4
-	iface.RegisterClazzName(ClazzName_stories_toggleAllStoriesHidden, 214, 0x7c2557c4)                     // 7c2557c4
 	iface.RegisterClazzName(ClazzName_stories_readStories, 216, 0xa556dac8)                                // a556dac8
-	iface.RegisterClazzName(ClazzName_stories_readStories, 215, 0xa556dac8)                                // a556dac8
-	iface.RegisterClazzName(ClazzName_stories_readStories, 214, 0xa556dac8)                                // a556dac8
 	iface.RegisterClazzName(ClazzName_stories_incrementStoryViews, 216, 0xb2028afb)                        // b2028afb
-	iface.RegisterClazzName(ClazzName_stories_incrementStoryViews, 215, 0xb2028afb)                        // b2028afb
-	iface.RegisterClazzName(ClazzName_stories_incrementStoryViews, 214, 0xb2028afb)                        // b2028afb
 	iface.RegisterClazzName(ClazzName_stories_getStoryViewsList, 216, 0x7ed23c57)                          // 7ed23c57
-	iface.RegisterClazzName(ClazzName_stories_getStoryViewsList, 215, 0x7ed23c57)                          // 7ed23c57
-	iface.RegisterClazzName(ClazzName_stories_getStoryViewsList, 214, 0x7ed23c57)                          // 7ed23c57
 	iface.RegisterClazzName(ClazzName_stories_getStoriesViews, 216, 0x28e16cc8)                            // 28e16cc8
-	iface.RegisterClazzName(ClazzName_stories_getStoriesViews, 215, 0x28e16cc8)                            // 28e16cc8
-	iface.RegisterClazzName(ClazzName_stories_getStoriesViews, 214, 0x28e16cc8)                            // 28e16cc8
 	iface.RegisterClazzName(ClazzName_stories_exportStoryLink, 216, 0x7b8def20)                            // 7b8def20
-	iface.RegisterClazzName(ClazzName_stories_exportStoryLink, 215, 0x7b8def20)                            // 7b8def20
-	iface.RegisterClazzName(ClazzName_stories_exportStoryLink, 214, 0x7b8def20)                            // 7b8def20
 	iface.RegisterClazzName(ClazzName_stories_report, 216, 0x19d8eb45)                                     // 19d8eb45
-	iface.RegisterClazzName(ClazzName_stories_report, 215, 0x19d8eb45)                                     // 19d8eb45
-	iface.RegisterClazzName(ClazzName_stories_report, 214, 0x19d8eb45)                                     // 19d8eb45
 	iface.RegisterClazzName(ClazzName_stories_activateStealthMode, 216, 0x57bbd166)                        // 57bbd166
-	iface.RegisterClazzName(ClazzName_stories_activateStealthMode, 215, 0x57bbd166)                        // 57bbd166
-	iface.RegisterClazzName(ClazzName_stories_activateStealthMode, 214, 0x57bbd166)                        // 57bbd166
 	iface.RegisterClazzName(ClazzName_stories_sendReaction, 216, 0x7fd736b2)                               // 7fd736b2
-	iface.RegisterClazzName(ClazzName_stories_sendReaction, 215, 0x7fd736b2)                               // 7fd736b2
-	iface.RegisterClazzName(ClazzName_stories_sendReaction, 214, 0x7fd736b2)                               // 7fd736b2
 	iface.RegisterClazzName(ClazzName_stories_getPeerStories, 216, 0x2c4ada50)                             // 2c4ada50
-	iface.RegisterClazzName(ClazzName_stories_getPeerStories, 215, 0x2c4ada50)                             // 2c4ada50
-	iface.RegisterClazzName(ClazzName_stories_getPeerStories, 214, 0x2c4ada50)                             // 2c4ada50
 	iface.RegisterClazzName(ClazzName_stories_getAllReadPeerStories, 216, 0x9b5ae7f9)                      // 9b5ae7f9
-	iface.RegisterClazzName(ClazzName_stories_getAllReadPeerStories, 215, 0x9b5ae7f9)                      // 9b5ae7f9
-	iface.RegisterClazzName(ClazzName_stories_getAllReadPeerStories, 214, 0x9b5ae7f9)                      // 9b5ae7f9
 	iface.RegisterClazzName(ClazzName_stories_getPeerMaxIDs, 216, 0x535983c3)                              // 535983c3
-	iface.RegisterClazzName(ClazzName_stories_getPeerMaxIDs, 215, 0x535983c3)                              // 535983c3
-	iface.RegisterClazzName(ClazzName_stories_getPeerMaxIDs, 214, 0x535983c3)                              // 535983c3
 	iface.RegisterClazzName(ClazzName_stories_getChatsToSend, 216, 0xa56a8b60)                             // a56a8b60
-	iface.RegisterClazzName(ClazzName_stories_getChatsToSend, 215, 0xa56a8b60)                             // a56a8b60
-	iface.RegisterClazzName(ClazzName_stories_getChatsToSend, 214, 0xa56a8b60)                             // a56a8b60
 	iface.RegisterClazzName(ClazzName_stories_togglePeerStoriesHidden, 216, 0xbd0415c4)                    // bd0415c4
-	iface.RegisterClazzName(ClazzName_stories_togglePeerStoriesHidden, 215, 0xbd0415c4)                    // bd0415c4
-	iface.RegisterClazzName(ClazzName_stories_togglePeerStoriesHidden, 214, 0xbd0415c4)                    // bd0415c4
 	iface.RegisterClazzName(ClazzName_stories_getStoryReactionsList, 216, 0xb9b2881f)                      // b9b2881f
-	iface.RegisterClazzName(ClazzName_stories_getStoryReactionsList, 215, 0xb9b2881f)                      // b9b2881f
-	iface.RegisterClazzName(ClazzName_stories_getStoryReactionsList, 214, 0xb9b2881f)                      // b9b2881f
 	iface.RegisterClazzName(ClazzName_stories_togglePinnedToTop, 216, 0xb297e9b)                           // b297e9b
-	iface.RegisterClazzName(ClazzName_stories_togglePinnedToTop, 215, 0xb297e9b)                           // b297e9b
-	iface.RegisterClazzName(ClazzName_stories_togglePinnedToTop, 214, 0xb297e9b)                           // b297e9b
 	iface.RegisterClazzName(ClazzName_stories_searchPosts, 216, 0xd1810907)                                // d1810907
-	iface.RegisterClazzName(ClazzName_stories_searchPosts, 215, 0xd1810907)                                // d1810907
-	iface.RegisterClazzName(ClazzName_stories_searchPosts, 214, 0xd1810907)                                // d1810907
 	iface.RegisterClazzName(ClazzName_stories_createAlbum, 216, 0xa36396e5)                                // a36396e5
-	iface.RegisterClazzName(ClazzName_stories_createAlbum, 215, 0xa36396e5)                                // a36396e5
-	iface.RegisterClazzName(ClazzName_stories_createAlbum, 214, 0xa36396e5)                                // a36396e5
 	iface.RegisterClazzName(ClazzName_stories_updateAlbum, 216, 0x5e5259b6)                                // 5e5259b6
-	iface.RegisterClazzName(ClazzName_stories_updateAlbum, 215, 0x5e5259b6)                                // 5e5259b6
-	iface.RegisterClazzName(ClazzName_stories_updateAlbum, 214, 0x5e5259b6)                                // 5e5259b6
 	iface.RegisterClazzName(ClazzName_stories_reorderAlbums, 216, 0x8535fbd9)                              // 8535fbd9
-	iface.RegisterClazzName(ClazzName_stories_reorderAlbums, 215, 0x8535fbd9)                              // 8535fbd9
-	iface.RegisterClazzName(ClazzName_stories_reorderAlbums, 214, 0x8535fbd9)                              // 8535fbd9
 	iface.RegisterClazzName(ClazzName_stories_deleteAlbum, 216, 0x8d3456d0)                                // 8d3456d0
-	iface.RegisterClazzName(ClazzName_stories_deleteAlbum, 215, 0x8d3456d0)                                // 8d3456d0
-	iface.RegisterClazzName(ClazzName_stories_deleteAlbum, 214, 0x8d3456d0)                                // 8d3456d0
 	iface.RegisterClazzName(ClazzName_stories_getAlbums, 216, 0x25b3eac7)                                  // 25b3eac7
-	iface.RegisterClazzName(ClazzName_stories_getAlbums, 215, 0x25b3eac7)                                  // 25b3eac7
-	iface.RegisterClazzName(ClazzName_stories_getAlbums, 214, 0x25b3eac7)                                  // 25b3eac7
 	iface.RegisterClazzName(ClazzName_stories_getAlbumStories, 216, 0xac806d61)                            // ac806d61
-	iface.RegisterClazzName(ClazzName_stories_getAlbumStories, 215, 0xac806d61)                            // ac806d61
-	iface.RegisterClazzName(ClazzName_stories_getAlbumStories, 214, 0xac806d61)                            // ac806d61
 	iface.RegisterClazzName(ClazzName_premium_getBoostsList, 216, 0x60f67660)                              // 60f67660
-	iface.RegisterClazzName(ClazzName_premium_getBoostsList, 215, 0x60f67660)                              // 60f67660
-	iface.RegisterClazzName(ClazzName_premium_getBoostsList, 214, 0x60f67660)                              // 60f67660
 	iface.RegisterClazzName(ClazzName_premium_getMyBoosts, 216, 0xbe77b4a)                                 // be77b4a
-	iface.RegisterClazzName(ClazzName_premium_getMyBoosts, 215, 0xbe77b4a)                                 // be77b4a
-	iface.RegisterClazzName(ClazzName_premium_getMyBoosts, 214, 0xbe77b4a)                                 // be77b4a
 	iface.RegisterClazzName(ClazzName_premium_applyBoost, 216, 0x6b7da746)                                 // 6b7da746
-	iface.RegisterClazzName(ClazzName_premium_applyBoost, 215, 0x6b7da746)                                 // 6b7da746
-	iface.RegisterClazzName(ClazzName_premium_applyBoost, 214, 0x6b7da746)                                 // 6b7da746
 	iface.RegisterClazzName(ClazzName_premium_getBoostsStatus, 216, 0x42f1f61)                             // 42f1f61
-	iface.RegisterClazzName(ClazzName_premium_getBoostsStatus, 215, 0x42f1f61)                             // 42f1f61
-	iface.RegisterClazzName(ClazzName_premium_getBoostsStatus, 214, 0x42f1f61)                             // 42f1f61
 	iface.RegisterClazzName(ClazzName_premium_getUserBoosts, 216, 0x39854d1f)                              // 39854d1f
-	iface.RegisterClazzName(ClazzName_premium_getUserBoosts, 215, 0x39854d1f)                              // 39854d1f
-	iface.RegisterClazzName(ClazzName_premium_getUserBoosts, 214, 0x39854d1f)                              // 39854d1f
 	iface.RegisterClazzName(ClazzName_smsjobs_isEligibleToJoin, 216, 0xedc39d0)                            // edc39d0
-	iface.RegisterClazzName(ClazzName_smsjobs_isEligibleToJoin, 215, 0xedc39d0)                            // edc39d0
-	iface.RegisterClazzName(ClazzName_smsjobs_isEligibleToJoin, 214, 0xedc39d0)                            // edc39d0
 	iface.RegisterClazzName(ClazzName_smsjobs_join, 216, 0xa74ece2d)                                       // a74ece2d
-	iface.RegisterClazzName(ClazzName_smsjobs_join, 215, 0xa74ece2d)                                       // a74ece2d
-	iface.RegisterClazzName(ClazzName_smsjobs_join, 214, 0xa74ece2d)                                       // a74ece2d
 	iface.RegisterClazzName(ClazzName_smsjobs_leave, 216, 0x9898ad73)                                      // 9898ad73
-	iface.RegisterClazzName(ClazzName_smsjobs_leave, 215, 0x9898ad73)                                      // 9898ad73
-	iface.RegisterClazzName(ClazzName_smsjobs_leave, 214, 0x9898ad73)                                      // 9898ad73
 	iface.RegisterClazzName(ClazzName_smsjobs_updateSettings, 216, 0x93fa0bf)                              // 93fa0bf
-	iface.RegisterClazzName(ClazzName_smsjobs_updateSettings, 215, 0x93fa0bf)                              // 93fa0bf
-	iface.RegisterClazzName(ClazzName_smsjobs_updateSettings, 214, 0x93fa0bf)                              // 93fa0bf
 	iface.RegisterClazzName(ClazzName_smsjobs_getStatus, 216, 0x10a698e8)                                  // 10a698e8
-	iface.RegisterClazzName(ClazzName_smsjobs_getStatus, 215, 0x10a698e8)                                  // 10a698e8
-	iface.RegisterClazzName(ClazzName_smsjobs_getStatus, 214, 0x10a698e8)                                  // 10a698e8
 	iface.RegisterClazzName(ClazzName_smsjobs_getSmsJob, 216, 0x778d902f)                                  // 778d902f
-	iface.RegisterClazzName(ClazzName_smsjobs_getSmsJob, 215, 0x778d902f)                                  // 778d902f
-	iface.RegisterClazzName(ClazzName_smsjobs_getSmsJob, 214, 0x778d902f)                                  // 778d902f
 	iface.RegisterClazzName(ClazzName_smsjobs_finishJob, 216, 0x4f1ebf24)                                  // 4f1ebf24
-	iface.RegisterClazzName(ClazzName_smsjobs_finishJob, 215, 0x4f1ebf24)                                  // 4f1ebf24
-	iface.RegisterClazzName(ClazzName_smsjobs_finishJob, 214, 0x4f1ebf24)                                  // 4f1ebf24
 	iface.RegisterClazzName(ClazzName_fragment_getCollectibleInfo, 216, 0xbe1e85ba)                        // be1e85ba
-	iface.RegisterClazzName(ClazzName_fragment_getCollectibleInfo, 215, 0xbe1e85ba)                        // be1e85ba
-	iface.RegisterClazzName(ClazzName_fragment_getCollectibleInfo, 214, 0xbe1e85ba)                        // be1e85ba
-	iface.RegisterClazzName(ClazzName_updateChannelPinnedTopic, 215, 0x192efbe3)                           // 192efbe3
-	iface.RegisterClazzName(ClazzName_updateChannelPinnedTopic, 214, 0x192efbe3)                           // 192efbe3
-	iface.RegisterClazzName(ClazzName_updateChannelPinnedTopics, 215, 0xfe198602)                          // fe198602
-	iface.RegisterClazzName(ClazzName_updateChannelPinnedTopics, 214, 0xfe198602)                          // fe198602
-	iface.RegisterClazzName(ClazzName_channels_createForumTopic, 215, 0xf40c0224)                          // f40c0224
-	iface.RegisterClazzName(ClazzName_channels_createForumTopic, 214, 0xf40c0224)                          // f40c0224
-	iface.RegisterClazzName(ClazzName_channels_getForumTopics, 215, 0xde560d1)                             // de560d1
-	iface.RegisterClazzName(ClazzName_channels_getForumTopics, 214, 0xde560d1)                             // de560d1
-	iface.RegisterClazzName(ClazzName_channels_getForumTopicsByID, 215, 0xb0831eb9)                        // b0831eb9
-	iface.RegisterClazzName(ClazzName_channels_getForumTopicsByID, 214, 0xb0831eb9)                        // b0831eb9
-	iface.RegisterClazzName(ClazzName_channels_editForumTopic, 215, 0xf4dfa185)                            // f4dfa185
-	iface.RegisterClazzName(ClazzName_channels_editForumTopic, 214, 0xf4dfa185)                            // f4dfa185
-	iface.RegisterClazzName(ClazzName_channels_updatePinnedForumTopic, 215, 0x6c2d9026)                    // 6c2d9026
-	iface.RegisterClazzName(ClazzName_channels_updatePinnedForumTopic, 214, 0x6c2d9026)                    // 6c2d9026
-	iface.RegisterClazzName(ClazzName_channels_deleteTopicHistory, 215, 0x34435f2d)                        // 34435f2d
-	iface.RegisterClazzName(ClazzName_channels_deleteTopicHistory, 214, 0x34435f2d)                        // 34435f2d
-	iface.RegisterClazzName(ClazzName_channels_reorderPinnedForumTopics, 215, 0x2950a18f)                  // 2950a18f
-	iface.RegisterClazzName(ClazzName_channels_reorderPinnedForumTopics, 214, 0x2950a18f)                  // 2950a18f
 	iface.RegisterClazzName(ClazzName_int32, 0, 0x8ccffa3f)                                                // 8ccffa3f
 	iface.RegisterClazzName(ClazzName_long, 0, 0x4ab29f6d)                                                 // 4ab29f6d
 	iface.RegisterClazzName(ClazzName_int64, 0, 0xa2813660)                                                // a2813660
@@ -11200,31 +6777,6 @@ func init() {
 	iface.RegisterClazzIDName(ClazzName_smsjobs_getSmsJob, 0x778d902f)                                  // 778d902f
 	iface.RegisterClazzIDName(ClazzName_smsjobs_finishJob, 0x4f1ebf24)                                  // 4f1ebf24
 	iface.RegisterClazzIDName(ClazzName_fragment_getCollectibleInfo, 0xbe1e85ba)                        // be1e85ba
-	iface.RegisterClazzIDName(ClazzName_userFull, 0xc577b5ad)                                           // c577b5ad
-	iface.RegisterClazzIDName(ClazzName_messages_messages, 0x8c718e87)                                  // 8c718e87
-	iface.RegisterClazzIDName(ClazzName_messages_messagesSlice, 0x762b263d)                             // 762b263d
-	iface.RegisterClazzIDName(ClazzName_updateUserTyping, 0xc01e857f)                                   // c01e857f
-	iface.RegisterClazzIDName(ClazzName_updateReadHistoryInbox, 0x9c974fdf)                             // 9c974fdf
-	iface.RegisterClazzIDName(ClazzName_updateChannelPinnedTopic, 0x192efbe3)                           // 192efbe3
-	iface.RegisterClazzIDName(ClazzName_updateChannelPinnedTopics, 0xfe198602)                          // fe198602
-	iface.RegisterClazzIDName(ClazzName_forumTopic, 0x71701da9)                                         // 71701da9
-	iface.RegisterClazzIDName(ClazzName_starGiftUnique, 0x1befe865)                                     // 1befe865
-	iface.RegisterClazzIDName(ClazzName_account_updateColor, 0x7cefa15d)                                // 7cefa15d
-	iface.RegisterClazzIDName(ClazzName_contacts_addContact, 0xe8f463d0)                                // e8f463d0
-	iface.RegisterClazzIDName(ClazzName_channels_createForumTopic, 0xf40c0224)                          // f40c0224
-	iface.RegisterClazzIDName(ClazzName_channels_getForumTopics, 0xde560d1)                             // de560d1
-	iface.RegisterClazzIDName(ClazzName_channels_getForumTopicsByID, 0xb0831eb9)                        // b0831eb9
-	iface.RegisterClazzIDName(ClazzName_channels_editForumTopic, 0xf4dfa185)                            // f4dfa185
-	iface.RegisterClazzIDName(ClazzName_channels_updatePinnedForumTopic, 0x6c2d9026)                    // 6c2d9026
-	iface.RegisterClazzIDName(ClazzName_channels_deleteTopicHistory, 0x34435f2d)                        // 34435f2d
-	iface.RegisterClazzIDName(ClazzName_channels_reorderPinnedForumTopics, 0x2950a18f)                  // 2950a18f
-	iface.RegisterClazzIDName(ClazzName_phone_toggleGroupCallSettings, 0x74bbb43d)                      // 74bbb43d
-	iface.RegisterClazzIDName(ClazzName_messageActionStarGiftUnique, 0x34f762f3)                        // 34f762f3
-	iface.RegisterClazzIDName(ClazzName_auth_sentCodePaymentRequired, 0xd7a2fcf9)                       // d7a2fcf9
-	iface.RegisterClazzIDName(ClazzName_account_chatThemes, 0x16484857)                                 // 16484857
-	iface.RegisterClazzIDName(ClazzName_payments_starGiftUpgradePreview, 0x167bd90b)                    // 167bd90b
-	iface.RegisterClazzIDName(ClazzName_savedStarGift, 0x19a9b572)                                      // 19a9b572
-	iface.RegisterClazzIDName(ClazzName_account_getUniqueGiftChatThemes, 0xfe74ef9f)                    // fe74ef9f
 	iface.RegisterClazzIDName(ClazzName_messages_getStickerSet, 0x2619a90e)                             // 2619a90e
 	iface.RegisterClazzIDName(ClazzName_account_installTheme, 0x7ae43737)                               // 7ae43737
 	iface.RegisterClazzIDName(ClazzName_langpack_getStrings, 0x2e1ee318)                                // 2e1ee318
