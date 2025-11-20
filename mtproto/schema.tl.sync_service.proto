@@ -4084,6 +4084,22 @@ message TL_payments_checkCanSendGift {
     int64 gift_id = 3;
 }
 
+message TL_payments_getStarGiftAuctionState {
+    TLConstructor  constructor = 1;
+    InputStarGiftAuction auction = 3;
+    int32 version = 4;
+}
+
+message TL_payments_getStarGiftAuctionAcquiredGifts {
+    TLConstructor  constructor = 1;
+    int64 gift_id = 3;
+}
+
+message TL_payments_getStarGiftActiveAuctions {
+    TLConstructor  constructor = 1;
+    int64 hash = 3;
+}
+
 message TL_stickers_createStickerSet {
     TLConstructor  constructor = 1;
     bool masks = 3;
@@ -5966,6 +5982,9 @@ service RPCGifts {
     rpc payments_updateStarGiftPrice(TL_payments_updateStarGiftPrice) returns (Updates) {}
     rpc payments_getUniqueStarGiftValueInfo(TL_payments_getUniqueStarGiftValueInfo) returns (payments_UniqueStarGiftValueInfo) {}
     rpc payments_checkCanSendGift(TL_payments_checkCanSendGift) returns (payments_CheckCanSendGiftResult) {}
+    rpc payments_getStarGiftAuctionState(TL_payments_getStarGiftAuctionState) returns (payments_StarGiftAuctionState) {}
+    rpc payments_getStarGiftAuctionAcquiredGifts(TL_payments_getStarGiftAuctionAcquiredGifts) returns (payments_StarGiftAuctionAcquiredGifts) {}
+    rpc payments_getStarGiftActiveAuctions(TL_payments_getStarGiftActiveAuctions) returns (payments_StarGiftActiveAuctions) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }
