@@ -1324,6 +1324,7 @@ const (
 	CRC32_messageViews                                                TLConstructor = 1163625789  // 455b853d
 	CRC32_messages_messageViews                                       TLConstructor = -1228606141 // b6c4f543
 	CRC32_messages_discussionMessage                                  TLConstructor = -1506535550 // a6341782
+	CRC32_messageReplyHeader_6917560b                                 TLConstructor = 1763137035  // 6917560b
 	CRC32_messageReplyHeader_afbc09db                                 TLConstructor = -1346631205 // afbc09db
 	CRC32_messageReplyHeader_6eebcabd                                 TLConstructor = 1860946621  // 6eebcabd
 	CRC32_messageReplyHeader_a6d57763                                 TLConstructor = -1495959709 // a6d57763
@@ -1564,6 +1565,7 @@ const (
 	CRC32_stories_storyViewsList_46e9b9ec                             TLConstructor = 1189722604  // 46e9b9ec
 	CRC32_stories_storyViewsList_fb3f77ac                             TLConstructor = -79726676   // fb3f77ac
 	CRC32_stories_storyViews                                          TLConstructor = -560009955  // de9eed1d
+	CRC32_inputReplyToMessage_869fbe10                                TLConstructor = -2036351472 // 869fbe10
 	CRC32_inputReplyToMessage_b07038b0                                TLConstructor = -1334822736 // b07038b0
 	CRC32_inputReplyToMessage_22c0f6d5                                TLConstructor = 583071445   // 22c0f6d5
 	CRC32_inputReplyToMessage_73ec805                                 TLConstructor = 121554949   // 73ec805

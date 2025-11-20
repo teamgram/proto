@@ -5222,6 +5222,7 @@ message TL_inputQuickReplyShortcutId {
 //  + TL_inputReplyToStory
 //  + TL_inputReplyToMonoForum
 //  + TL_inputReplyToMessage
+//  + TL_inputReplyToMessage
 //  + TL_inputReplyToStory
 //  + TL_inputReplyToMessage
 //  + TL_inputReplyToMessage
@@ -5236,9 +5237,10 @@ message InputReplyTo {
     repeated MessageEntity quote_entities = 7;
     google.protobuf.Int32Value quote_offset = 8;
     InputPeer monoforum_peer_id = 9;
-    InputPeer peer = 10;
-    int32 story_id = 11;
-    InputUser user_id = 12;
+    google.protobuf.Int32Value todo_item_id = 10;
+    InputPeer peer = 11;
+    int32 story_id = 12;
+    InputUser user_id = 13;
 }
 
 // TL_inputReplyToMessage
@@ -7401,6 +7403,7 @@ message TL_messageReplies {
 // MessageReplyHeader <--
 //  + TL_messageReplyHeader
 //  + TL_messageReplyStoryHeader
+//  + TL_messageReplyHeader
 //  + TL_messageReplyStoryHeader
 //  + TL_messageReplyHeader
 //  + TL_messageReplyHeader
@@ -7419,10 +7422,11 @@ message MessageReplyHeader {
     google.protobuf.StringValue quote_text = 11;
     repeated MessageEntity quote_entities = 12;
     google.protobuf.Int32Value quote_offset = 13;
-    Peer peer = 14;
-    int32 story_id = 15;
-    int64 user_id = 16;
-    int32 reply_to_msg_id_INT32 = 17;
+    google.protobuf.Int32Value todo_item_id = 14;
+    Peer peer = 15;
+    int32 story_id = 16;
+    int64 user_id = 17;
+    int32 reply_to_msg_id_INT32 = 18;
     int32 reply_to_msg_id = 100;
 }
 

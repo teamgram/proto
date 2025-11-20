@@ -3462,6 +3462,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 18418929
 		return o
 	},
+	-2036351472: func() TLObject { // 0x869fbe10
+		o := MakeTLInputReplyToMessage(nil)
+		o.Data2.Constructor = -2036351472
+		return o
+	},
 	-1334822736: func() TLObject { // 0xb07038b0
 		o := MakeTLInputReplyToMessage(nil)
 		o.Data2.Constructor = -1334822736
@@ -4825,6 +4830,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-2083123262: func() TLObject { // 0x83d60fc2
 		o := MakeTLMessageReplies(nil)
 		o.Data2.Constructor = -2083123262
+		return o
+	},
+	1763137035: func() TLObject { // 0x6917560b
+		o := MakeTLMessageReplyHeader(nil)
+		o.Data2.Constructor = 1763137035
 		return o
 	},
 	-1346631205: func() TLObject { // 0xafbc09db
