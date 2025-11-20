@@ -753,9 +753,10 @@ message TL_account_invalidateSignInCodes {
 message TL_account_updateColor {
     TLConstructor  constructor = 1;
     bool for_profile = 3;
-    google.protobuf.Int32Value color_FLAGINT32 = 4;
-    google.protobuf.Int64Value background_emoji_id = 5;
-    int32 color_INT32 = 6;
+    PeerColor color_FLAGPEERCOLOR = 4;
+    google.protobuf.Int32Value color_FLAGINT32 = 5;
+    google.protobuf.Int64Value background_emoji_id = 6;
+    int32 color_INT32 = 7;
 }
 
 message TL_account_getDefaultBackgroundEmojis {
@@ -957,6 +958,12 @@ message TL_users_getSavedMusicByID {
     repeated InputDocument documents = 4;
 }
 
+message TL_users_suggestBirthday {
+    TLConstructor  constructor = 1;
+    InputUser id = 3;
+    Birthday birthday = 4;
+}
+
 message TL_contacts_getContactIDs {
     TLConstructor  constructor = 1;
     int64 hash = 3;
@@ -1059,6 +1066,7 @@ message TL_contacts_addContact {
     string first_name = 5;
     string last_name = 6;
     string phone = 7;
+    TextWithEntities note = 8;
 }
 
 message TL_contacts_acceptContact {
@@ -1114,6 +1122,12 @@ message TL_contacts_getBirthdays {
 message TL_contacts_getSponsoredPeers {
     TLConstructor  constructor = 1;
     string q = 3;
+}
+
+message TL_contacts_updateContactNote {
+    TLConstructor  constructor = 1;
+    InputUser id = 3;
+    TextWithEntities note = 4;
 }
 
 message TL_messages_getMessages {
@@ -2808,6 +2822,63 @@ message TL_messages_toggleSuggestedPostApproval {
     google.protobuf.StringValue reject_comment = 7;
 }
 
+message TL_messages_getForumTopics {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    google.protobuf.StringValue q = 4;
+    int32 offset_date = 5;
+    int32 offset_id = 6;
+    int32 offset_topic = 7;
+    int32 limit = 8;
+}
+
+message TL_messages_getForumTopicsByID {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    repeated int32 topics = 4;
+}
+
+message TL_messages_editForumTopic {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 topic_id = 4;
+    google.protobuf.StringValue title = 5;
+    google.protobuf.Int64Value icon_emoji_id = 6;
+    Bool closed = 7;
+    Bool hidden = 8;
+}
+
+message TL_messages_updatePinnedForumTopic {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 topic_id = 4;
+    Bool pinned = 5;
+}
+
+message TL_messages_reorderPinnedForumTopics {
+    TLConstructor  constructor = 1;
+    bool force = 3;
+    InputPeer peer = 4;
+    repeated int32 order = 5;
+}
+
+message TL_messages_createForumTopic {
+    TLConstructor  constructor = 1;
+    bool title_missing = 3;
+    InputPeer peer = 4;
+    string title = 5;
+    google.protobuf.Int32Value icon_color = 6;
+    google.protobuf.Int64Value icon_emoji_id = 7;
+    int64 random_id = 8;
+    InputPeer send_as = 9;
+}
+
+message TL_messages_deleteTopicHistory {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 top_msg_id = 4;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3327,62 +3398,6 @@ message TL_channels_toggleForum {
     InputChannel channel = 3;
     Bool enabled = 4;
     Bool tabs = 5;
-}
-
-message TL_channels_createForumTopic {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    string title = 4;
-    google.protobuf.Int32Value icon_color = 5;
-    google.protobuf.Int64Value icon_emoji_id = 6;
-    int64 random_id = 7;
-    InputPeer send_as = 8;
-}
-
-message TL_channels_getForumTopics {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    google.protobuf.StringValue q = 4;
-    int32 offset_date = 5;
-    int32 offset_id = 6;
-    int32 offset_topic = 7;
-    int32 limit = 8;
-}
-
-message TL_channels_getForumTopicsByID {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    repeated int32 topics = 4;
-}
-
-message TL_channels_editForumTopic {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    int32 topic_id = 4;
-    google.protobuf.StringValue title = 5;
-    google.protobuf.Int64Value icon_emoji_id = 6;
-    Bool closed = 7;
-    Bool hidden = 8;
-}
-
-message TL_channels_updatePinnedForumTopic {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    int32 topic_id = 4;
-    Bool pinned = 5;
-}
-
-message TL_channels_deleteTopicHistory {
-    TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    int32 top_msg_id = 4;
-}
-
-message TL_channels_reorderPinnedForumTopics {
-    TLConstructor  constructor = 1;
-    bool force = 3;
-    InputChannel channel = 4;
-    repeated int32 order = 5;
 }
 
 message TL_channels_toggleAntiSpam {
@@ -3964,11 +3979,13 @@ message TL_payments_getSavedStarGifts {
     bool sort_by_value = 7;
     bool exclude_upgradable = 8;
     bool exclude_unupgradable = 9;
-    InputPeer peer = 10;
-    google.protobuf.Int32Value collection_id = 11;
-    string offset = 12;
-    int32 limit = 13;
-    bool exclude_limited = 14;
+    bool peer_color_available = 10;
+    bool exclude_hosted = 11;
+    InputPeer peer = 12;
+    google.protobuf.Int32Value collection_id = 13;
+    string offset = 14;
+    int32 limit = 15;
+    bool exclude_limited = 16;
 }
 
 message TL_payments_getSavedStarGift {
@@ -4243,6 +4260,7 @@ message TL_phone_toggleGroupCallSettings {
     bool reset_invite_hash = 3;
     InputGroupCall call = 4;
     Bool join_muted = 5;
+    Bool messages_enabled = 6;
 }
 
 message TL_phone_getGroupCall {
@@ -4393,6 +4411,19 @@ message TL_phone_getGroupCallChainBlocks {
     int32 sub_chain_id = 4;
     int32 offset = 5;
     int32 limit = 6;
+}
+
+message TL_phone_sendGroupCallMessage {
+    TLConstructor  constructor = 1;
+    InputGroupCall call = 3;
+    int64 random_id = 4;
+    TextWithEntities message = 5;
+}
+
+message TL_phone_sendGroupCallEncryptedMessage {
+    TLConstructor  constructor = 1;
+    InputGroupCall call = 3;
+    bytes encrypted_message = 4;
 }
 
 message TL_langpack_getLangPack {
@@ -4844,6 +4875,62 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
+}
+
+message TL_channels_createForumTopic {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    string title = 4;
+    google.protobuf.Int32Value icon_color = 5;
+    google.protobuf.Int64Value icon_emoji_id = 6;
+    int64 random_id = 7;
+    InputPeer send_as = 8;
+}
+
+message TL_channels_getForumTopics {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    google.protobuf.StringValue q = 4;
+    int32 offset_date = 5;
+    int32 offset_id = 6;
+    int32 offset_topic = 7;
+    int32 limit = 8;
+}
+
+message TL_channels_getForumTopicsByID {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    repeated int32 topics = 4;
+}
+
+message TL_channels_editForumTopic {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    int32 topic_id = 4;
+    google.protobuf.StringValue title = 5;
+    google.protobuf.Int64Value icon_emoji_id = 6;
+    Bool closed = 7;
+    Bool hidden = 8;
+}
+
+message TL_channels_updatePinnedForumTopic {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    int32 topic_id = 4;
+    Bool pinned = 5;
+}
+
+message TL_channels_deleteTopicHistory {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    int32 top_msg_id = 4;
+}
+
+message TL_channels_reorderPinnedForumTopics {
+    TLConstructor  constructor = 1;
+    bool force = 3;
+    InputChannel channel = 4;
+    repeated int32 order = 5;
 }
 
 message TL_stats_getBroadcastRevenueStats {
@@ -5583,6 +5670,7 @@ service RPCConferenceCalls {
     rpc phone_inviteConferenceCallParticipant(TL_phone_inviteConferenceCallParticipant) returns (Updates) {}
     rpc phone_declineConferenceCallInvite(TL_phone_declineConferenceCallInvite) returns (Updates) {}
     rpc phone_getGroupCallChainBlocks(TL_phone_getGroupCallChainBlocks) returns (Updates) {}
+    rpc phone_sendGroupCallEncryptedMessage(TL_phone_sendGroupCallEncryptedMessage) returns (Bool) {}
     rpc phone_createConferenceCallDFC909AB(TL_phone_createConferenceCallDFC909AB) returns (phone_PhoneCall) {}
 }
 
@@ -5623,6 +5711,7 @@ service RPCContacts {
     rpc contacts_getLocated(TL_contacts_getLocated) returns (Updates) {}
     rpc contacts_editCloseFriends(TL_contacts_editCloseFriends) returns (Bool) {}
     rpc contacts_setBlocked(TL_contacts_setBlocked) returns (Bool) {}
+    rpc contacts_updateContactNote(TL_contacts_updateContactNote) returns (Bool) {}
 }
 
 service RPCCustomEmojis {
@@ -5736,7 +5825,15 @@ service RPCFolders {
 }
 
 service RPCForums {
+    rpc messages_getForumTopics(TL_messages_getForumTopics) returns (messages_ForumTopics) {}
+    rpc messages_getForumTopicsByID(TL_messages_getForumTopicsByID) returns (messages_ForumTopics) {}
+    rpc messages_editForumTopic(TL_messages_editForumTopic) returns (Updates) {}
+    rpc messages_updatePinnedForumTopic(TL_messages_updatePinnedForumTopic) returns (Updates) {}
+    rpc messages_reorderPinnedForumTopics(TL_messages_reorderPinnedForumTopics) returns (Updates) {}
+    rpc messages_createForumTopic(TL_messages_createForumTopic) returns (Updates) {}
+    rpc messages_deleteTopicHistory(TL_messages_deleteTopicHistory) returns (messages_AffectedHistory) {}
     rpc channels_toggleForum(TL_channels_toggleForum) returns (Updates) {}
+    rpc channels_toggleViewForumAsMessages(TL_channels_toggleViewForumAsMessages) returns (Updates) {}
     rpc channels_createForumTopic(TL_channels_createForumTopic) returns (Updates) {}
     rpc channels_getForumTopics(TL_channels_getForumTopics) returns (messages_ForumTopics) {}
     rpc channels_getForumTopicsByID(TL_channels_getForumTopicsByID) returns (messages_ForumTopics) {}
@@ -5744,7 +5841,6 @@ service RPCForums {
     rpc channels_updatePinnedForumTopic(TL_channels_updatePinnedForumTopic) returns (Updates) {}
     rpc channels_deleteTopicHistory(TL_channels_deleteTopicHistory) returns (messages_AffectedHistory) {}
     rpc channels_reorderPinnedForumTopics(TL_channels_reorderPinnedForumTopics) returns (Updates) {}
-    rpc channels_toggleViewForumAsMessages(TL_channels_toggleViewForumAsMessages) returns (Updates) {}
 }
 
 service RPCFragment {
@@ -5840,6 +5936,7 @@ service RPCGroupCalls {
     rpc phone_leaveGroupCallPresentation(TL_phone_leaveGroupCallPresentation) returns (Updates) {}
     rpc phone_getGroupCallStreamChannels(TL_phone_getGroupCallStreamChannels) returns (phone_GroupCallStreamChannels) {}
     rpc phone_getGroupCallStreamRtmpUrl(TL_phone_getGroupCallStreamRtmpUrl) returns (phone_GroupCallStreamRtmpUrl) {}
+    rpc phone_sendGroupCallMessage(TL_phone_sendGroupCallMessage) returns (Bool) {}
 }
 
 service RPCImportedChats {
@@ -6364,6 +6461,7 @@ service RPCUserChannelProfiles {
     rpc account_getSavedMusicIds(TL_account_getSavedMusicIds) returns (account_SavedMusicIds) {}
     rpc users_getSavedMusic(TL_users_getSavedMusic) returns (users_SavedMusic) {}
     rpc users_getSavedMusicByID(TL_users_getSavedMusicByID) returns (users_SavedMusic) {}
+    rpc users_suggestBirthday(TL_users_suggestBirthday) returns (Updates) {}
     rpc contacts_getBirthdays(TL_contacts_getBirthdays) returns (contacts_ContactBirthdays) {}
     rpc photos_updateProfilePhoto(TL_photos_updateProfilePhoto) returns (photos_Photo) {}
     rpc photos_uploadProfilePhoto(TL_photos_uploadProfilePhoto) returns (photos_Photo) {}

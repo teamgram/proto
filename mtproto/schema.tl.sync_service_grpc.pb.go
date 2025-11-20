@@ -8310,6 +8310,7 @@ const (
 	RPCConferenceCalls_PhoneInviteConferenceCallParticipant_FullMethodName  = "/mtproto.RPCConferenceCalls/phone_inviteConferenceCallParticipant"
 	RPCConferenceCalls_PhoneDeclineConferenceCallInvite_FullMethodName      = "/mtproto.RPCConferenceCalls/phone_declineConferenceCallInvite"
 	RPCConferenceCalls_PhoneGetGroupCallChainBlocks_FullMethodName          = "/mtproto.RPCConferenceCalls/phone_getGroupCallChainBlocks"
+	RPCConferenceCalls_PhoneSendGroupCallEncryptedMessage_FullMethodName    = "/mtproto.RPCConferenceCalls/phone_sendGroupCallEncryptedMessage"
 	RPCConferenceCalls_PhoneCreateConferenceCallDFC909AB_FullMethodName     = "/mtproto.RPCConferenceCalls/phone_createConferenceCallDFC909AB"
 )
 
@@ -8323,6 +8324,7 @@ type RPCConferenceCallsClient interface {
 	PhoneInviteConferenceCallParticipant(ctx context.Context, in *TLPhoneInviteConferenceCallParticipant, opts ...grpc.CallOption) (*Updates, error)
 	PhoneDeclineConferenceCallInvite(ctx context.Context, in *TLPhoneDeclineConferenceCallInvite, opts ...grpc.CallOption) (*Updates, error)
 	PhoneGetGroupCallChainBlocks(ctx context.Context, in *TLPhoneGetGroupCallChainBlocks, opts ...grpc.CallOption) (*Updates, error)
+	PhoneSendGroupCallEncryptedMessage(ctx context.Context, in *TLPhoneSendGroupCallEncryptedMessage, opts ...grpc.CallOption) (*Bool, error)
 	PhoneCreateConferenceCallDFC909AB(ctx context.Context, in *TLPhoneCreateConferenceCallDFC909AB, opts ...grpc.CallOption) (*Phone_PhoneCall, error)
 }
 
@@ -8394,6 +8396,16 @@ func (c *rPCConferenceCallsClient) PhoneGetGroupCallChainBlocks(ctx context.Cont
 	return out, nil
 }
 
+func (c *rPCConferenceCallsClient) PhoneSendGroupCallEncryptedMessage(ctx context.Context, in *TLPhoneSendGroupCallEncryptedMessage, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneSendGroupCallEncryptedMessage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCConferenceCallsClient) PhoneCreateConferenceCallDFC909AB(ctx context.Context, in *TLPhoneCreateConferenceCallDFC909AB, opts ...grpc.CallOption) (*Phone_PhoneCall, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Phone_PhoneCall)
@@ -8414,6 +8426,7 @@ type RPCConferenceCallsServer interface {
 	PhoneInviteConferenceCallParticipant(context.Context, *TLPhoneInviteConferenceCallParticipant) (*Updates, error)
 	PhoneDeclineConferenceCallInvite(context.Context, *TLPhoneDeclineConferenceCallInvite) (*Updates, error)
 	PhoneGetGroupCallChainBlocks(context.Context, *TLPhoneGetGroupCallChainBlocks) (*Updates, error)
+	PhoneSendGroupCallEncryptedMessage(context.Context, *TLPhoneSendGroupCallEncryptedMessage) (*Bool, error)
 	PhoneCreateConferenceCallDFC909AB(context.Context, *TLPhoneCreateConferenceCallDFC909AB) (*Phone_PhoneCall, error)
 }
 
@@ -8441,6 +8454,9 @@ func (UnimplementedRPCConferenceCallsServer) PhoneDeclineConferenceCallInvite(co
 }
 func (UnimplementedRPCConferenceCallsServer) PhoneGetGroupCallChainBlocks(context.Context, *TLPhoneGetGroupCallChainBlocks) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PhoneGetGroupCallChainBlocks not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) PhoneSendGroupCallEncryptedMessage(context.Context, *TLPhoneSendGroupCallEncryptedMessage) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneSendGroupCallEncryptedMessage not implemented")
 }
 func (UnimplementedRPCConferenceCallsServer) PhoneCreateConferenceCallDFC909AB(context.Context, *TLPhoneCreateConferenceCallDFC909AB) (*Phone_PhoneCall, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PhoneCreateConferenceCallDFC909AB not implemented")
@@ -8573,6 +8589,24 @@ func _RPCConferenceCalls_PhoneGetGroupCallChainBlocks_Handler(srv interface{}, c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCConferenceCalls_PhoneSendGroupCallEncryptedMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneSendGroupCallEncryptedMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneSendGroupCallEncryptedMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneSendGroupCallEncryptedMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneSendGroupCallEncryptedMessage(ctx, req.(*TLPhoneSendGroupCallEncryptedMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCConferenceCalls_PhoneCreateConferenceCallDFC909AB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPhoneCreateConferenceCallDFC909AB)
 	if err := dec(in); err != nil {
@@ -8621,6 +8655,10 @@ var RPCConferenceCalls_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "phone_getGroupCallChainBlocks",
 			Handler:    _RPCConferenceCalls_PhoneGetGroupCallChainBlocks_Handler,
+		},
+		{
+			MethodName: "phone_sendGroupCallEncryptedMessage",
+			Handler:    _RPCConferenceCalls_PhoneSendGroupCallEncryptedMessage_Handler,
 		},
 		{
 			MethodName: "phone_createConferenceCallDFC909AB",
@@ -9134,6 +9172,7 @@ const (
 	RPCContacts_ContactsGetLocated_FullMethodName                  = "/mtproto.RPCContacts/contacts_getLocated"
 	RPCContacts_ContactsEditCloseFriends_FullMethodName            = "/mtproto.RPCContacts/contacts_editCloseFriends"
 	RPCContacts_ContactsSetBlocked_FullMethodName                  = "/mtproto.RPCContacts/contacts_setBlocked"
+	RPCContacts_ContactsUpdateContactNote_FullMethodName           = "/mtproto.RPCContacts/contacts_updateContactNote"
 )
 
 // RPCContactsClient is the client API for RPCContacts service.
@@ -9162,6 +9201,7 @@ type RPCContactsClient interface {
 	ContactsGetLocated(ctx context.Context, in *TLContactsGetLocated, opts ...grpc.CallOption) (*Updates, error)
 	ContactsEditCloseFriends(ctx context.Context, in *TLContactsEditCloseFriends, opts ...grpc.CallOption) (*Bool, error)
 	ContactsSetBlocked(ctx context.Context, in *TLContactsSetBlocked, opts ...grpc.CallOption) (*Bool, error)
+	ContactsUpdateContactNote(ctx context.Context, in *TLContactsUpdateContactNote, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCContactsClient struct {
@@ -9392,6 +9432,16 @@ func (c *rPCContactsClient) ContactsSetBlocked(ctx context.Context, in *TLContac
 	return out, nil
 }
 
+func (c *rPCContactsClient) ContactsUpdateContactNote(ctx context.Context, in *TLContactsUpdateContactNote, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCContacts_ContactsUpdateContactNote_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCContactsServer is the server API for RPCContacts service.
 // All implementations should embed UnimplementedRPCContactsServer
 // for forward compatibility.
@@ -9418,6 +9468,7 @@ type RPCContactsServer interface {
 	ContactsGetLocated(context.Context, *TLContactsGetLocated) (*Updates, error)
 	ContactsEditCloseFriends(context.Context, *TLContactsEditCloseFriends) (*Bool, error)
 	ContactsSetBlocked(context.Context, *TLContactsSetBlocked) (*Bool, error)
+	ContactsUpdateContactNote(context.Context, *TLContactsUpdateContactNote) (*Bool, error)
 }
 
 // UnimplementedRPCContactsServer should be embedded to have
@@ -9492,6 +9543,9 @@ func (UnimplementedRPCContactsServer) ContactsEditCloseFriends(context.Context, 
 }
 func (UnimplementedRPCContactsServer) ContactsSetBlocked(context.Context, *TLContactsSetBlocked) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContactsSetBlocked not implemented")
+}
+func (UnimplementedRPCContactsServer) ContactsUpdateContactNote(context.Context, *TLContactsUpdateContactNote) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ContactsUpdateContactNote not implemented")
 }
 func (UnimplementedRPCContactsServer) testEmbeddedByValue() {}
 
@@ -9909,6 +9963,24 @@ func _RPCContacts_ContactsSetBlocked_Handler(srv interface{}, ctx context.Contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCContacts_ContactsUpdateContactNote_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLContactsUpdateContactNote)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCContactsServer).ContactsUpdateContactNote(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCContacts_ContactsUpdateContactNote_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCContactsServer).ContactsUpdateContactNote(ctx, req.(*TLContactsUpdateContactNote))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCContacts_ServiceDesc is the grpc.ServiceDesc for RPCContacts service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -10003,6 +10075,10 @@ var RPCContacts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "contacts_setBlocked",
 			Handler:    _RPCContacts_ContactsSetBlocked_Handler,
+		},
+		{
+			MethodName: "contacts_updateContactNote",
+			Handler:    _RPCContacts_ContactsUpdateContactNote_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -13618,7 +13694,15 @@ var RPCFolders_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCForums_MessagesGetForumTopics_FullMethodName            = "/mtproto.RPCForums/messages_getForumTopics"
+	RPCForums_MessagesGetForumTopicsByID_FullMethodName        = "/mtproto.RPCForums/messages_getForumTopicsByID"
+	RPCForums_MessagesEditForumTopic_FullMethodName            = "/mtproto.RPCForums/messages_editForumTopic"
+	RPCForums_MessagesUpdatePinnedForumTopic_FullMethodName    = "/mtproto.RPCForums/messages_updatePinnedForumTopic"
+	RPCForums_MessagesReorderPinnedForumTopics_FullMethodName  = "/mtproto.RPCForums/messages_reorderPinnedForumTopics"
+	RPCForums_MessagesCreateForumTopic_FullMethodName          = "/mtproto.RPCForums/messages_createForumTopic"
+	RPCForums_MessagesDeleteTopicHistory_FullMethodName        = "/mtproto.RPCForums/messages_deleteTopicHistory"
 	RPCForums_ChannelsToggleForum_FullMethodName               = "/mtproto.RPCForums/channels_toggleForum"
+	RPCForums_ChannelsToggleViewForumAsMessages_FullMethodName = "/mtproto.RPCForums/channels_toggleViewForumAsMessages"
 	RPCForums_ChannelsCreateForumTopic_FullMethodName          = "/mtproto.RPCForums/channels_createForumTopic"
 	RPCForums_ChannelsGetForumTopics_FullMethodName            = "/mtproto.RPCForums/channels_getForumTopics"
 	RPCForums_ChannelsGetForumTopicsByID_FullMethodName        = "/mtproto.RPCForums/channels_getForumTopicsByID"
@@ -13626,14 +13710,21 @@ const (
 	RPCForums_ChannelsUpdatePinnedForumTopic_FullMethodName    = "/mtproto.RPCForums/channels_updatePinnedForumTopic"
 	RPCForums_ChannelsDeleteTopicHistory_FullMethodName        = "/mtproto.RPCForums/channels_deleteTopicHistory"
 	RPCForums_ChannelsReorderPinnedForumTopics_FullMethodName  = "/mtproto.RPCForums/channels_reorderPinnedForumTopics"
-	RPCForums_ChannelsToggleViewForumAsMessages_FullMethodName = "/mtproto.RPCForums/channels_toggleViewForumAsMessages"
 )
 
 // RPCForumsClient is the client API for RPCForums service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCForumsClient interface {
+	MessagesGetForumTopics(ctx context.Context, in *TLMessagesGetForumTopics, opts ...grpc.CallOption) (*Messages_ForumTopics, error)
+	MessagesGetForumTopicsByID(ctx context.Context, in *TLMessagesGetForumTopicsByID, opts ...grpc.CallOption) (*Messages_ForumTopics, error)
+	MessagesEditForumTopic(ctx context.Context, in *TLMessagesEditForumTopic, opts ...grpc.CallOption) (*Updates, error)
+	MessagesUpdatePinnedForumTopic(ctx context.Context, in *TLMessagesUpdatePinnedForumTopic, opts ...grpc.CallOption) (*Updates, error)
+	MessagesReorderPinnedForumTopics(ctx context.Context, in *TLMessagesReorderPinnedForumTopics, opts ...grpc.CallOption) (*Updates, error)
+	MessagesCreateForumTopic(ctx context.Context, in *TLMessagesCreateForumTopic, opts ...grpc.CallOption) (*Updates, error)
+	MessagesDeleteTopicHistory(ctx context.Context, in *TLMessagesDeleteTopicHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
 	ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum, opts ...grpc.CallOption) (*Updates, error)
+	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsCreateForumTopic(ctx context.Context, in *TLChannelsCreateForumTopic, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsGetForumTopics(ctx context.Context, in *TLChannelsGetForumTopics, opts ...grpc.CallOption) (*Messages_ForumTopics, error)
 	ChannelsGetForumTopicsByID(ctx context.Context, in *TLChannelsGetForumTopicsByID, opts ...grpc.CallOption) (*Messages_ForumTopics, error)
@@ -13641,7 +13732,6 @@ type RPCForumsClient interface {
 	ChannelsUpdatePinnedForumTopic(ctx context.Context, in *TLChannelsUpdatePinnedForumTopic, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsDeleteTopicHistory(ctx context.Context, in *TLChannelsDeleteTopicHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
 	ChannelsReorderPinnedForumTopics(ctx context.Context, in *TLChannelsReorderPinnedForumTopics, opts ...grpc.CallOption) (*Updates, error)
-	ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCForumsClient struct {
@@ -13652,10 +13742,90 @@ func NewRPCForumsClient(cc grpc.ClientConnInterface) RPCForumsClient {
 	return &rPCForumsClient{cc}
 }
 
+func (c *rPCForumsClient) MessagesGetForumTopics(ctx context.Context, in *TLMessagesGetForumTopics, opts ...grpc.CallOption) (*Messages_ForumTopics, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Messages_ForumTopics)
+	err := c.cc.Invoke(ctx, RPCForums_MessagesGetForumTopics_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCForumsClient) MessagesGetForumTopicsByID(ctx context.Context, in *TLMessagesGetForumTopicsByID, opts ...grpc.CallOption) (*Messages_ForumTopics, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Messages_ForumTopics)
+	err := c.cc.Invoke(ctx, RPCForums_MessagesGetForumTopicsByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCForumsClient) MessagesEditForumTopic(ctx context.Context, in *TLMessagesEditForumTopic, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCForums_MessagesEditForumTopic_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCForumsClient) MessagesUpdatePinnedForumTopic(ctx context.Context, in *TLMessagesUpdatePinnedForumTopic, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCForums_MessagesUpdatePinnedForumTopic_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCForumsClient) MessagesReorderPinnedForumTopics(ctx context.Context, in *TLMessagesReorderPinnedForumTopics, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCForums_MessagesReorderPinnedForumTopics_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCForumsClient) MessagesCreateForumTopic(ctx context.Context, in *TLMessagesCreateForumTopic, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCForums_MessagesCreateForumTopic_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCForumsClient) MessagesDeleteTopicHistory(ctx context.Context, in *TLMessagesDeleteTopicHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Messages_AffectedHistory)
+	err := c.cc.Invoke(ctx, RPCForums_MessagesDeleteTopicHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCForumsClient) ChannelsToggleForum(ctx context.Context, in *TLChannelsToggleForum, opts ...grpc.CallOption) (*Updates, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Updates)
 	err := c.cc.Invoke(ctx, RPCForums_ChannelsToggleForum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCForumsClient) ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCForums_ChannelsToggleViewForumAsMessages_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -13732,21 +13902,19 @@ func (c *rPCForumsClient) ChannelsReorderPinnedForumTopics(ctx context.Context, 
 	return out, nil
 }
 
-func (c *rPCForumsClient) ChannelsToggleViewForumAsMessages(ctx context.Context, in *TLChannelsToggleViewForumAsMessages, opts ...grpc.CallOption) (*Updates, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Updates)
-	err := c.cc.Invoke(ctx, RPCForums_ChannelsToggleViewForumAsMessages_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCForumsServer is the server API for RPCForums service.
 // All implementations should embed UnimplementedRPCForumsServer
 // for forward compatibility.
 type RPCForumsServer interface {
+	MessagesGetForumTopics(context.Context, *TLMessagesGetForumTopics) (*Messages_ForumTopics, error)
+	MessagesGetForumTopicsByID(context.Context, *TLMessagesGetForumTopicsByID) (*Messages_ForumTopics, error)
+	MessagesEditForumTopic(context.Context, *TLMessagesEditForumTopic) (*Updates, error)
+	MessagesUpdatePinnedForumTopic(context.Context, *TLMessagesUpdatePinnedForumTopic) (*Updates, error)
+	MessagesReorderPinnedForumTopics(context.Context, *TLMessagesReorderPinnedForumTopics) (*Updates, error)
+	MessagesCreateForumTopic(context.Context, *TLMessagesCreateForumTopic) (*Updates, error)
+	MessagesDeleteTopicHistory(context.Context, *TLMessagesDeleteTopicHistory) (*Messages_AffectedHistory, error)
 	ChannelsToggleForum(context.Context, *TLChannelsToggleForum) (*Updates, error)
+	ChannelsToggleViewForumAsMessages(context.Context, *TLChannelsToggleViewForumAsMessages) (*Updates, error)
 	ChannelsCreateForumTopic(context.Context, *TLChannelsCreateForumTopic) (*Updates, error)
 	ChannelsGetForumTopics(context.Context, *TLChannelsGetForumTopics) (*Messages_ForumTopics, error)
 	ChannelsGetForumTopicsByID(context.Context, *TLChannelsGetForumTopicsByID) (*Messages_ForumTopics, error)
@@ -13754,7 +13922,6 @@ type RPCForumsServer interface {
 	ChannelsUpdatePinnedForumTopic(context.Context, *TLChannelsUpdatePinnedForumTopic) (*Updates, error)
 	ChannelsDeleteTopicHistory(context.Context, *TLChannelsDeleteTopicHistory) (*Messages_AffectedHistory, error)
 	ChannelsReorderPinnedForumTopics(context.Context, *TLChannelsReorderPinnedForumTopics) (*Updates, error)
-	ChannelsToggleViewForumAsMessages(context.Context, *TLChannelsToggleViewForumAsMessages) (*Updates, error)
 }
 
 // UnimplementedRPCForumsServer should be embedded to have
@@ -13764,8 +13931,32 @@ type RPCForumsServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRPCForumsServer struct{}
 
+func (UnimplementedRPCForumsServer) MessagesGetForumTopics(context.Context, *TLMessagesGetForumTopics) (*Messages_ForumTopics, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetForumTopics not implemented")
+}
+func (UnimplementedRPCForumsServer) MessagesGetForumTopicsByID(context.Context, *TLMessagesGetForumTopicsByID) (*Messages_ForumTopics, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetForumTopicsByID not implemented")
+}
+func (UnimplementedRPCForumsServer) MessagesEditForumTopic(context.Context, *TLMessagesEditForumTopic) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesEditForumTopic not implemented")
+}
+func (UnimplementedRPCForumsServer) MessagesUpdatePinnedForumTopic(context.Context, *TLMessagesUpdatePinnedForumTopic) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesUpdatePinnedForumTopic not implemented")
+}
+func (UnimplementedRPCForumsServer) MessagesReorderPinnedForumTopics(context.Context, *TLMessagesReorderPinnedForumTopics) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesReorderPinnedForumTopics not implemented")
+}
+func (UnimplementedRPCForumsServer) MessagesCreateForumTopic(context.Context, *TLMessagesCreateForumTopic) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesCreateForumTopic not implemented")
+}
+func (UnimplementedRPCForumsServer) MessagesDeleteTopicHistory(context.Context, *TLMessagesDeleteTopicHistory) (*Messages_AffectedHistory, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesDeleteTopicHistory not implemented")
+}
 func (UnimplementedRPCForumsServer) ChannelsToggleForum(context.Context, *TLChannelsToggleForum) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsToggleForum not implemented")
+}
+func (UnimplementedRPCForumsServer) ChannelsToggleViewForumAsMessages(context.Context, *TLChannelsToggleViewForumAsMessages) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsToggleViewForumAsMessages not implemented")
 }
 func (UnimplementedRPCForumsServer) ChannelsCreateForumTopic(context.Context, *TLChannelsCreateForumTopic) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsCreateForumTopic not implemented")
@@ -13788,9 +13979,6 @@ func (UnimplementedRPCForumsServer) ChannelsDeleteTopicHistory(context.Context, 
 func (UnimplementedRPCForumsServer) ChannelsReorderPinnedForumTopics(context.Context, *TLChannelsReorderPinnedForumTopics) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsReorderPinnedForumTopics not implemented")
 }
-func (UnimplementedRPCForumsServer) ChannelsToggleViewForumAsMessages(context.Context, *TLChannelsToggleViewForumAsMessages) (*Updates, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ChannelsToggleViewForumAsMessages not implemented")
-}
 func (UnimplementedRPCForumsServer) testEmbeddedByValue() {}
 
 // UnsafeRPCForumsServer may be embedded to opt out of forward compatibility for this service.
@@ -13811,6 +13999,132 @@ func RegisterRPCForumsServer(s grpc.ServiceRegistrar, srv RPCForumsServer) {
 	s.RegisterService(&RPCForums_ServiceDesc, srv)
 }
 
+func _RPCForums_MessagesGetForumTopics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetForumTopics)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).MessagesGetForumTopics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_MessagesGetForumTopics_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).MessagesGetForumTopics(ctx, req.(*TLMessagesGetForumTopics))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCForums_MessagesGetForumTopicsByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetForumTopicsByID)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).MessagesGetForumTopicsByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_MessagesGetForumTopicsByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).MessagesGetForumTopicsByID(ctx, req.(*TLMessagesGetForumTopicsByID))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCForums_MessagesEditForumTopic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesEditForumTopic)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).MessagesEditForumTopic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_MessagesEditForumTopic_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).MessagesEditForumTopic(ctx, req.(*TLMessagesEditForumTopic))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCForums_MessagesUpdatePinnedForumTopic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesUpdatePinnedForumTopic)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).MessagesUpdatePinnedForumTopic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_MessagesUpdatePinnedForumTopic_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).MessagesUpdatePinnedForumTopic(ctx, req.(*TLMessagesUpdatePinnedForumTopic))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCForums_MessagesReorderPinnedForumTopics_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesReorderPinnedForumTopics)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).MessagesReorderPinnedForumTopics(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_MessagesReorderPinnedForumTopics_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).MessagesReorderPinnedForumTopics(ctx, req.(*TLMessagesReorderPinnedForumTopics))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCForums_MessagesCreateForumTopic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesCreateForumTopic)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).MessagesCreateForumTopic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_MessagesCreateForumTopic_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).MessagesCreateForumTopic(ctx, req.(*TLMessagesCreateForumTopic))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCForums_MessagesDeleteTopicHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesDeleteTopicHistory)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).MessagesDeleteTopicHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_MessagesDeleteTopicHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).MessagesDeleteTopicHistory(ctx, req.(*TLMessagesDeleteTopicHistory))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCForums_ChannelsToggleForum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsToggleForum)
 	if err := dec(in); err != nil {
@@ -13825,6 +14139,24 @@ func _RPCForums_ChannelsToggleForum_Handler(srv interface{}, ctx context.Context
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCForumsServer).ChannelsToggleForum(ctx, req.(*TLChannelsToggleForum))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCForums_ChannelsToggleViewForumAsMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsToggleViewForumAsMessages)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCForumsServer).ChannelsToggleViewForumAsMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCForums_ChannelsToggleViewForumAsMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCForumsServer).ChannelsToggleViewForumAsMessages(ctx, req.(*TLChannelsToggleViewForumAsMessages))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -13955,24 +14287,6 @@ func _RPCForums_ChannelsReorderPinnedForumTopics_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCForums_ChannelsToggleViewForumAsMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLChannelsToggleViewForumAsMessages)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCForumsServer).ChannelsToggleViewForumAsMessages(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCForums_ChannelsToggleViewForumAsMessages_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCForumsServer).ChannelsToggleViewForumAsMessages(ctx, req.(*TLChannelsToggleViewForumAsMessages))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCForums_ServiceDesc is the grpc.ServiceDesc for RPCForums service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -13981,8 +14295,40 @@ var RPCForums_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RPCForumsServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
+			MethodName: "messages_getForumTopics",
+			Handler:    _RPCForums_MessagesGetForumTopics_Handler,
+		},
+		{
+			MethodName: "messages_getForumTopicsByID",
+			Handler:    _RPCForums_MessagesGetForumTopicsByID_Handler,
+		},
+		{
+			MethodName: "messages_editForumTopic",
+			Handler:    _RPCForums_MessagesEditForumTopic_Handler,
+		},
+		{
+			MethodName: "messages_updatePinnedForumTopic",
+			Handler:    _RPCForums_MessagesUpdatePinnedForumTopic_Handler,
+		},
+		{
+			MethodName: "messages_reorderPinnedForumTopics",
+			Handler:    _RPCForums_MessagesReorderPinnedForumTopics_Handler,
+		},
+		{
+			MethodName: "messages_createForumTopic",
+			Handler:    _RPCForums_MessagesCreateForumTopic_Handler,
+		},
+		{
+			MethodName: "messages_deleteTopicHistory",
+			Handler:    _RPCForums_MessagesDeleteTopicHistory_Handler,
+		},
+		{
 			MethodName: "channels_toggleForum",
 			Handler:    _RPCForums_ChannelsToggleForum_Handler,
+		},
+		{
+			MethodName: "channels_toggleViewForumAsMessages",
+			Handler:    _RPCForums_ChannelsToggleViewForumAsMessages_Handler,
 		},
 		{
 			MethodName: "channels_createForumTopic",
@@ -14011,10 +14357,6 @@ var RPCForums_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "channels_reorderPinnedForumTopics",
 			Handler:    _RPCForums_ChannelsReorderPinnedForumTopics_Handler,
-		},
-		{
-			MethodName: "channels_toggleViewForumAsMessages",
-			Handler:    _RPCForums_ChannelsToggleViewForumAsMessages_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -16273,6 +16615,7 @@ const (
 	RPCGroupCalls_PhoneLeaveGroupCallPresentation_FullMethodName       = "/mtproto.RPCGroupCalls/phone_leaveGroupCallPresentation"
 	RPCGroupCalls_PhoneGetGroupCallStreamChannels_FullMethodName       = "/mtproto.RPCGroupCalls/phone_getGroupCallStreamChannels"
 	RPCGroupCalls_PhoneGetGroupCallStreamRtmpUrl_FullMethodName        = "/mtproto.RPCGroupCalls/phone_getGroupCallStreamRtmpUrl"
+	RPCGroupCalls_PhoneSendGroupCallMessage_FullMethodName             = "/mtproto.RPCGroupCalls/phone_sendGroupCallMessage"
 )
 
 // RPCGroupCallsClient is the client API for RPCGroupCalls service.
@@ -16300,6 +16643,7 @@ type RPCGroupCallsClient interface {
 	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation, opts ...grpc.CallOption) (*Updates, error)
 	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels, opts ...grpc.CallOption) (*Phone_GroupCallStreamChannels, error)
 	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl, opts ...grpc.CallOption) (*Phone_GroupCallStreamRtmpUrl, error)
+	PhoneSendGroupCallMessage(ctx context.Context, in *TLPhoneSendGroupCallMessage, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCGroupCallsClient struct {
@@ -16520,6 +16864,16 @@ func (c *rPCGroupCallsClient) PhoneGetGroupCallStreamRtmpUrl(ctx context.Context
 	return out, nil
 }
 
+func (c *rPCGroupCallsClient) PhoneSendGroupCallMessage(ctx context.Context, in *TLPhoneSendGroupCallMessage, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneSendGroupCallMessage_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCGroupCallsServer is the server API for RPCGroupCalls service.
 // All implementations should embed UnimplementedRPCGroupCallsServer
 // for forward compatibility.
@@ -16545,6 +16899,7 @@ type RPCGroupCallsServer interface {
 	PhoneLeaveGroupCallPresentation(context.Context, *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
 	PhoneGetGroupCallStreamChannels(context.Context, *TLPhoneGetGroupCallStreamChannels) (*Phone_GroupCallStreamChannels, error)
 	PhoneGetGroupCallStreamRtmpUrl(context.Context, *TLPhoneGetGroupCallStreamRtmpUrl) (*Phone_GroupCallStreamRtmpUrl, error)
+	PhoneSendGroupCallMessage(context.Context, *TLPhoneSendGroupCallMessage) (*Bool, error)
 }
 
 // UnimplementedRPCGroupCallsServer should be embedded to have
@@ -16616,6 +16971,9 @@ func (UnimplementedRPCGroupCallsServer) PhoneGetGroupCallStreamChannels(context.
 }
 func (UnimplementedRPCGroupCallsServer) PhoneGetGroupCallStreamRtmpUrl(context.Context, *TLPhoneGetGroupCallStreamRtmpUrl) (*Phone_GroupCallStreamRtmpUrl, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PhoneGetGroupCallStreamRtmpUrl not implemented")
+}
+func (UnimplementedRPCGroupCallsServer) PhoneSendGroupCallMessage(context.Context, *TLPhoneSendGroupCallMessage) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneSendGroupCallMessage not implemented")
 }
 func (UnimplementedRPCGroupCallsServer) testEmbeddedByValue() {}
 
@@ -17015,6 +17373,24 @@ func _RPCGroupCalls_PhoneGetGroupCallStreamRtmpUrl_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGroupCalls_PhoneSendGroupCallMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneSendGroupCallMessage)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessage(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGroupCalls_PhoneSendGroupCallMessage_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessage(ctx, req.(*TLPhoneSendGroupCallMessage))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCGroupCalls_ServiceDesc is the grpc.ServiceDesc for RPCGroupCalls service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -17105,6 +17481,10 @@ var RPCGroupCalls_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "phone_getGroupCallStreamRtmpUrl",
 			Handler:    _RPCGroupCalls_PhoneGetGroupCallStreamRtmpUrl_Handler,
+		},
+		{
+			MethodName: "phone_sendGroupCallMessage",
+			Handler:    _RPCGroupCalls_PhoneSendGroupCallMessage_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -33925,6 +34305,7 @@ const (
 	RPCUserChannelProfiles_AccountGetSavedMusicIds_FullMethodName         = "/mtproto.RPCUserChannelProfiles/account_getSavedMusicIds"
 	RPCUserChannelProfiles_UsersGetSavedMusic_FullMethodName              = "/mtproto.RPCUserChannelProfiles/users_getSavedMusic"
 	RPCUserChannelProfiles_UsersGetSavedMusicByID_FullMethodName          = "/mtproto.RPCUserChannelProfiles/users_getSavedMusicByID"
+	RPCUserChannelProfiles_UsersSuggestBirthday_FullMethodName            = "/mtproto.RPCUserChannelProfiles/users_suggestBirthday"
 	RPCUserChannelProfiles_ContactsGetBirthdays_FullMethodName            = "/mtproto.RPCUserChannelProfiles/contacts_getBirthdays"
 	RPCUserChannelProfiles_PhotosUpdateProfilePhoto_FullMethodName        = "/mtproto.RPCUserChannelProfiles/photos_updateProfilePhoto"
 	RPCUserChannelProfiles_PhotosUploadProfilePhoto_FullMethodName        = "/mtproto.RPCUserChannelProfiles/photos_uploadProfilePhoto"
@@ -33948,6 +34329,7 @@ type RPCUserChannelProfilesClient interface {
 	AccountGetSavedMusicIds(ctx context.Context, in *TLAccountGetSavedMusicIds, opts ...grpc.CallOption) (*Account_SavedMusicIds, error)
 	UsersGetSavedMusic(ctx context.Context, in *TLUsersGetSavedMusic, opts ...grpc.CallOption) (*Users_SavedMusic, error)
 	UsersGetSavedMusicByID(ctx context.Context, in *TLUsersGetSavedMusicByID, opts ...grpc.CallOption) (*Users_SavedMusic, error)
+	UsersSuggestBirthday(ctx context.Context, in *TLUsersSuggestBirthday, opts ...grpc.CallOption) (*Updates, error)
 	ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays, opts ...grpc.CallOption) (*Contacts_ContactBirthdays, error)
 	PhotosUpdateProfilePhoto(ctx context.Context, in *TLPhotosUpdateProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
 	PhotosUploadProfilePhoto(ctx context.Context, in *TLPhotosUploadProfilePhoto, opts ...grpc.CallOption) (*Photos_Photo, error)
@@ -34056,6 +34438,16 @@ func (c *rPCUserChannelProfilesClient) UsersGetSavedMusicByID(ctx context.Contex
 	return out, nil
 }
 
+func (c *rPCUserChannelProfilesClient) UsersSuggestBirthday(ctx context.Context, in *TLUsersSuggestBirthday, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCUserChannelProfiles_UsersSuggestBirthday_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCUserChannelProfilesClient) ContactsGetBirthdays(ctx context.Context, in *TLContactsGetBirthdays, opts ...grpc.CallOption) (*Contacts_ContactBirthdays, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Contacts_ContactBirthdays)
@@ -34149,6 +34541,7 @@ type RPCUserChannelProfilesServer interface {
 	AccountGetSavedMusicIds(context.Context, *TLAccountGetSavedMusicIds) (*Account_SavedMusicIds, error)
 	UsersGetSavedMusic(context.Context, *TLUsersGetSavedMusic) (*Users_SavedMusic, error)
 	UsersGetSavedMusicByID(context.Context, *TLUsersGetSavedMusicByID) (*Users_SavedMusic, error)
+	UsersSuggestBirthday(context.Context, *TLUsersSuggestBirthday) (*Updates, error)
 	ContactsGetBirthdays(context.Context, *TLContactsGetBirthdays) (*Contacts_ContactBirthdays, error)
 	PhotosUpdateProfilePhoto(context.Context, *TLPhotosUpdateProfilePhoto) (*Photos_Photo, error)
 	PhotosUploadProfilePhoto(context.Context, *TLPhotosUploadProfilePhoto) (*Photos_Photo, error)
@@ -34192,6 +34585,9 @@ func (UnimplementedRPCUserChannelProfilesServer) UsersGetSavedMusic(context.Cont
 }
 func (UnimplementedRPCUserChannelProfilesServer) UsersGetSavedMusicByID(context.Context, *TLUsersGetSavedMusicByID) (*Users_SavedMusic, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UsersGetSavedMusicByID not implemented")
+}
+func (UnimplementedRPCUserChannelProfilesServer) UsersSuggestBirthday(context.Context, *TLUsersSuggestBirthday) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersSuggestBirthday not implemented")
 }
 func (UnimplementedRPCUserChannelProfilesServer) ContactsGetBirthdays(context.Context, *TLContactsGetBirthdays) (*Contacts_ContactBirthdays, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContactsGetBirthdays not implemented")
@@ -34399,6 +34795,24 @@ func _RPCUserChannelProfiles_UsersGetSavedMusicByID_Handler(srv interface{}, ctx
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCUserChannelProfiles_UsersSuggestBirthday_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLUsersSuggestBirthday)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserChannelProfilesServer).UsersSuggestBirthday(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserChannelProfiles_UsersSuggestBirthday_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserChannelProfilesServer).UsersSuggestBirthday(ctx, req.(*TLUsersSuggestBirthday))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCUserChannelProfiles_ContactsGetBirthdays_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLContactsGetBirthdays)
 	if err := dec(in); err != nil {
@@ -34585,6 +34999,10 @@ var RPCUserChannelProfiles_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "users_getSavedMusicByID",
 			Handler:    _RPCUserChannelProfiles_UsersGetSavedMusicByID_Handler,
+		},
+		{
+			MethodName: "users_suggestBirthday",
+			Handler:    _RPCUserChannelProfiles_UsersSuggestBirthday_Handler,
 		},
 		{
 			MethodName: "contacts_getBirthdays",
