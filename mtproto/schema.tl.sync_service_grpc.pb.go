@@ -14852,6 +14852,8 @@ const (
 	RPCGifts_PaymentsGetStarGiftWithdrawalUrl_FullMethodName        = "/mtproto.RPCGifts/payments_getStarGiftWithdrawalUrl"
 	RPCGifts_PaymentsToggleChatStarGiftNotifications_FullMethodName = "/mtproto.RPCGifts/payments_toggleChatStarGiftNotifications"
 	RPCGifts_PaymentsToggleStarGiftsPinnedToTop_FullMethodName      = "/mtproto.RPCGifts/payments_toggleStarGiftsPinnedToTop"
+	RPCGifts_PaymentsGetResaleStarGifts_FullMethodName              = "/mtproto.RPCGifts/payments_getResaleStarGifts"
+	RPCGifts_PaymentsUpdateStarGiftPrice_FullMethodName             = "/mtproto.RPCGifts/payments_updateStarGiftPrice"
 	RPCGifts_PaymentsGetUserStarGifts_FullMethodName                = "/mtproto.RPCGifts/payments_getUserStarGifts"
 	RPCGifts_PaymentsGetUserStarGift_FullMethodName                 = "/mtproto.RPCGifts/payments_getUserStarGift"
 )
@@ -14872,6 +14874,8 @@ type RPCGiftsClient interface {
 	PaymentsGetStarGiftWithdrawalUrl(ctx context.Context, in *TLPaymentsGetStarGiftWithdrawalUrl, opts ...grpc.CallOption) (*Payments_StarGiftWithdrawalUrl, error)
 	PaymentsToggleChatStarGiftNotifications(ctx context.Context, in *TLPaymentsToggleChatStarGiftNotifications, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsToggleStarGiftsPinnedToTop(ctx context.Context, in *TLPaymentsToggleStarGiftsPinnedToTop, opts ...grpc.CallOption) (*Bool, error)
+	PaymentsGetResaleStarGifts(ctx context.Context, in *TLPaymentsGetResaleStarGifts, opts ...grpc.CallOption) (*Payments_ResaleStarGifts, error)
+	PaymentsUpdateStarGiftPrice(ctx context.Context, in *TLPaymentsUpdateStarGiftPrice, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 }
@@ -15004,6 +15008,26 @@ func (c *rPCGiftsClient) PaymentsToggleStarGiftsPinnedToTop(ctx context.Context,
 	return out, nil
 }
 
+func (c *rPCGiftsClient) PaymentsGetResaleStarGifts(ctx context.Context, in *TLPaymentsGetResaleStarGifts, opts ...grpc.CallOption) (*Payments_ResaleStarGifts, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_ResaleStarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetResaleStarGifts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsUpdateStarGiftPrice(ctx context.Context, in *TLPaymentsUpdateStarGiftPrice, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsUpdateStarGiftPrice_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCGiftsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Payments_UserStarGifts)
@@ -15040,6 +15064,8 @@ type RPCGiftsServer interface {
 	PaymentsGetStarGiftWithdrawalUrl(context.Context, *TLPaymentsGetStarGiftWithdrawalUrl) (*Payments_StarGiftWithdrawalUrl, error)
 	PaymentsToggleChatStarGiftNotifications(context.Context, *TLPaymentsToggleChatStarGiftNotifications) (*Bool, error)
 	PaymentsToggleStarGiftsPinnedToTop(context.Context, *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error)
+	PaymentsGetResaleStarGifts(context.Context, *TLPaymentsGetResaleStarGifts) (*Payments_ResaleStarGifts, error)
+	PaymentsUpdateStarGiftPrice(context.Context, *TLPaymentsUpdateStarGiftPrice) (*Updates, error)
 	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error)
 }
@@ -15086,6 +15112,12 @@ func (UnimplementedRPCGiftsServer) PaymentsToggleChatStarGiftNotifications(conte
 }
 func (UnimplementedRPCGiftsServer) PaymentsToggleStarGiftsPinnedToTop(context.Context, *TLPaymentsToggleStarGiftsPinnedToTop) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsToggleStarGiftsPinnedToTop not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetResaleStarGifts(context.Context, *TLPaymentsGetResaleStarGifts) (*Payments_ResaleStarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetResaleStarGifts not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsUpdateStarGiftPrice(context.Context, *TLPaymentsUpdateStarGiftPrice) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsUpdateStarGiftPrice not implemented")
 }
 func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
@@ -15329,6 +15361,42 @@ func _RPCGifts_PaymentsToggleStarGiftsPinnedToTop_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGifts_PaymentsGetResaleStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetResaleStarGifts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetResaleStarGifts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetResaleStarGifts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetResaleStarGifts(ctx, req.(*TLPaymentsGetResaleStarGifts))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsUpdateStarGiftPrice_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsUpdateStarGiftPrice)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsUpdateStarGiftPrice(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsUpdateStarGiftPrice_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsUpdateStarGiftPrice(ctx, req.(*TLPaymentsUpdateStarGiftPrice))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCGifts_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsGetUserStarGifts)
 	if err := dec(in); err != nil {
@@ -15419,6 +15487,14 @@ var RPCGifts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_toggleStarGiftsPinnedToTop",
 			Handler:    _RPCGifts_PaymentsToggleStarGiftsPinnedToTop_Handler,
+		},
+		{
+			MethodName: "payments_getResaleStarGifts",
+			Handler:    _RPCGifts_PaymentsGetResaleStarGifts_Handler,
+		},
+		{
+			MethodName: "payments_updateStarGiftPrice",
+			Handler:    _RPCGifts_PaymentsUpdateStarGiftPrice_Handler,
 		},
 		{
 			MethodName: "payments_getUserStarGifts",
@@ -29490,7 +29566,7 @@ var RPCStickers_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCStories_StoriesCanSendStory_FullMethodName            = "/mtproto.RPCStories/stories_canSendStory"
+	RPCStories_StoriesCanSendStory30EB63F0_FullMethodName    = "/mtproto.RPCStories/stories_canSendStory30EB63F0"
 	RPCStories_StoriesSendStory_FullMethodName               = "/mtproto.RPCStories/stories_sendStory"
 	RPCStories_StoriesEditStory_FullMethodName               = "/mtproto.RPCStories/stories_editStory"
 	RPCStories_StoriesDeleteStories_FullMethodName           = "/mtproto.RPCStories/stories_deleteStories"
@@ -29516,9 +29592,11 @@ const (
 	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
 	RPCStories_StoriesTogglePinnedToTop_FullMethodName       = "/mtproto.RPCStories/stories_togglePinnedToTop"
 	RPCStories_StoriesSearchPosts_FullMethodName             = "/mtproto.RPCStories/stories_searchPosts"
+	RPCStories_StoriesCanSendStoryC7DFDFDD_FullMethodName    = "/mtproto.RPCStories/stories_canSendStoryC7DFDFDD"
 	RPCStories_StoriesReport1923FA8C_FullMethodName          = "/mtproto.RPCStories/stories_report1923FA8C"
 	RPCStories_UsersGetStoriesMaxIDs_FullMethodName          = "/mtproto.RPCStories/users_getStoriesMaxIDs"
 	RPCStories_ContactsToggleStoriesHidden_FullMethodName    = "/mtproto.RPCStories/contacts_toggleStoriesHidden"
+	RPCStories_StoriesCanSendStoryB100D45D_FullMethodName    = "/mtproto.RPCStories/stories_canSendStoryB100D45D"
 	RPCStories_StoriesGetUserStories_FullMethodName          = "/mtproto.RPCStories/stories_getUserStories"
 	RPCStories_StoriesGetAllReadUserStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadUserStories"
 	RPCStories_StoriesReportC95BE06A_FullMethodName          = "/mtproto.RPCStories/stories_reportC95BE06A"
@@ -29528,7 +29606,7 @@ const (
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCStoriesClient interface {
-	StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory, opts ...grpc.CallOption) (*Bool, error)
+	StoriesCanSendStory30EB63F0(ctx context.Context, in *TLStoriesCanSendStory30EB63F0, opts ...grpc.CallOption) (*Stories_CanSendStoryCount, error)
 	StoriesSendStory(ctx context.Context, in *TLStoriesSendStory, opts ...grpc.CallOption) (*Updates, error)
 	StoriesEditStory(ctx context.Context, in *TLStoriesEditStory, opts ...grpc.CallOption) (*Updates, error)
 	StoriesDeleteStories(ctx context.Context, in *TLStoriesDeleteStories, opts ...grpc.CallOption) (*Vector_Int, error)
@@ -29554,9 +29632,11 @@ type RPCStoriesClient interface {
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList, opts ...grpc.CallOption) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop, opts ...grpc.CallOption) (*Bool, error)
 	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts, opts ...grpc.CallOption) (*Stories_FoundStories, error)
+	StoriesCanSendStoryC7DFDFDD(ctx context.Context, in *TLStoriesCanSendStoryC7DFDFDD, opts ...grpc.CallOption) (*Bool, error)
 	StoriesReport1923FA8C(ctx context.Context, in *TLStoriesReport1923FA8C, opts ...grpc.CallOption) (*Bool, error)
 	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(ctx context.Context, in *TLContactsToggleStoriesHidden, opts ...grpc.CallOption) (*Bool, error)
+	StoriesCanSendStoryB100D45D(ctx context.Context, in *TLStoriesCanSendStoryB100D45D, opts ...grpc.CallOption) (*Bool, error)
 	StoriesGetUserStories(ctx context.Context, in *TLStoriesGetUserStories, opts ...grpc.CallOption) (*Stories_UserStories, error)
 	StoriesGetAllReadUserStories(ctx context.Context, in *TLStoriesGetAllReadUserStories, opts ...grpc.CallOption) (*Updates, error)
 	StoriesReportC95BE06A(ctx context.Context, in *TLStoriesReportC95BE06A, opts ...grpc.CallOption) (*Bool, error)
@@ -29570,10 +29650,10 @@ func NewRPCStoriesClient(cc grpc.ClientConnInterface) RPCStoriesClient {
 	return &rPCStoriesClient{cc}
 }
 
-func (c *rPCStoriesClient) StoriesCanSendStory(ctx context.Context, in *TLStoriesCanSendStory, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCStoriesClient) StoriesCanSendStory30EB63F0(ctx context.Context, in *TLStoriesCanSendStory30EB63F0, opts ...grpc.CallOption) (*Stories_CanSendStoryCount, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCStories_StoriesCanSendStory_FullMethodName, in, out, cOpts...)
+	out := new(Stories_CanSendStoryCount)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesCanSendStory30EB63F0_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -29830,6 +29910,16 @@ func (c *rPCStoriesClient) StoriesSearchPosts(ctx context.Context, in *TLStories
 	return out, nil
 }
 
+func (c *rPCStoriesClient) StoriesCanSendStoryC7DFDFDD(ctx context.Context, in *TLStoriesCanSendStoryC7DFDFDD, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesCanSendStoryC7DFDFDD_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCStoriesClient) StoriesReport1923FA8C(ctx context.Context, in *TLStoriesReport1923FA8C, opts ...grpc.CallOption) (*Bool, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Bool)
@@ -29854,6 +29944,16 @@ func (c *rPCStoriesClient) ContactsToggleStoriesHidden(ctx context.Context, in *
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Bool)
 	err := c.cc.Invoke(ctx, RPCStories_ContactsToggleStoriesHidden_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesCanSendStoryB100D45D(ctx context.Context, in *TLStoriesCanSendStoryB100D45D, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesCanSendStoryB100D45D_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -29894,7 +29994,7 @@ func (c *rPCStoriesClient) StoriesReportC95BE06A(ctx context.Context, in *TLStor
 // All implementations should embed UnimplementedRPCStoriesServer
 // for forward compatibility.
 type RPCStoriesServer interface {
-	StoriesCanSendStory(context.Context, *TLStoriesCanSendStory) (*Bool, error)
+	StoriesCanSendStory30EB63F0(context.Context, *TLStoriesCanSendStory30EB63F0) (*Stories_CanSendStoryCount, error)
 	StoriesSendStory(context.Context, *TLStoriesSendStory) (*Updates, error)
 	StoriesEditStory(context.Context, *TLStoriesEditStory) (*Updates, error)
 	StoriesDeleteStories(context.Context, *TLStoriesDeleteStories) (*Vector_Int, error)
@@ -29920,9 +30020,11 @@ type RPCStoriesServer interface {
 	StoriesGetStoryReactionsList(context.Context, *TLStoriesGetStoryReactionsList) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(context.Context, *TLStoriesTogglePinnedToTop) (*Bool, error)
 	StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error)
+	StoriesCanSendStoryC7DFDFDD(context.Context, *TLStoriesCanSendStoryC7DFDFDD) (*Bool, error)
 	StoriesReport1923FA8C(context.Context, *TLStoriesReport1923FA8C) (*Bool, error)
 	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
 	ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error)
+	StoriesCanSendStoryB100D45D(context.Context, *TLStoriesCanSendStoryB100D45D) (*Bool, error)
 	StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error)
 	StoriesGetAllReadUserStories(context.Context, *TLStoriesGetAllReadUserStories) (*Updates, error)
 	StoriesReportC95BE06A(context.Context, *TLStoriesReportC95BE06A) (*Bool, error)
@@ -29935,8 +30037,8 @@ type RPCStoriesServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRPCStoriesServer struct{}
 
-func (UnimplementedRPCStoriesServer) StoriesCanSendStory(context.Context, *TLStoriesCanSendStory) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStory not implemented")
+func (UnimplementedRPCStoriesServer) StoriesCanSendStory30EB63F0(context.Context, *TLStoriesCanSendStory30EB63F0) (*Stories_CanSendStoryCount, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStory30EB63F0 not implemented")
 }
 func (UnimplementedRPCStoriesServer) StoriesSendStory(context.Context, *TLStoriesSendStory) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesSendStory not implemented")
@@ -30013,6 +30115,9 @@ func (UnimplementedRPCStoriesServer) StoriesTogglePinnedToTop(context.Context, *
 func (UnimplementedRPCStoriesServer) StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesSearchPosts not implemented")
 }
+func (UnimplementedRPCStoriesServer) StoriesCanSendStoryC7DFDFDD(context.Context, *TLStoriesCanSendStoryC7DFDFDD) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStoryC7DFDFDD not implemented")
+}
 func (UnimplementedRPCStoriesServer) StoriesReport1923FA8C(context.Context, *TLStoriesReport1923FA8C) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesReport1923FA8C not implemented")
 }
@@ -30021,6 +30126,9 @@ func (UnimplementedRPCStoriesServer) UsersGetStoriesMaxIDs(context.Context, *TLU
 }
 func (UnimplementedRPCStoriesServer) ContactsToggleStoriesHidden(context.Context, *TLContactsToggleStoriesHidden) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ContactsToggleStoriesHidden not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesCanSendStoryB100D45D(context.Context, *TLStoriesCanSendStoryB100D45D) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStoryB100D45D not implemented")
 }
 func (UnimplementedRPCStoriesServer) StoriesGetUserStories(context.Context, *TLStoriesGetUserStories) (*Stories_UserStories, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetUserStories not implemented")
@@ -30051,20 +30159,20 @@ func RegisterRPCStoriesServer(s grpc.ServiceRegistrar, srv RPCStoriesServer) {
 	s.RegisterService(&RPCStories_ServiceDesc, srv)
 }
 
-func _RPCStories_StoriesCanSendStory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStoriesCanSendStory)
+func _RPCStories_StoriesCanSendStory30EB63F0_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesCanSendStory30EB63F0)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCStoriesServer).StoriesCanSendStory(ctx, in)
+		return srv.(RPCStoriesServer).StoriesCanSendStory30EB63F0(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCStories_StoriesCanSendStory_FullMethodName,
+		FullMethod: RPCStories_StoriesCanSendStory30EB63F0_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStoriesServer).StoriesCanSendStory(ctx, req.(*TLStoriesCanSendStory))
+		return srv.(RPCStoriesServer).StoriesCanSendStory30EB63F0(ctx, req.(*TLStoriesCanSendStory30EB63F0))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -30519,6 +30627,24 @@ func _RPCStories_StoriesSearchPosts_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStories_StoriesCanSendStoryC7DFDFDD_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesCanSendStoryC7DFDFDD)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesCanSendStoryC7DFDFDD(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesCanSendStoryC7DFDFDD_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesCanSendStoryC7DFDFDD(ctx, req.(*TLStoriesCanSendStoryC7DFDFDD))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCStories_StoriesReport1923FA8C_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLStoriesReport1923FA8C)
 	if err := dec(in); err != nil {
@@ -30569,6 +30695,24 @@ func _RPCStories_ContactsToggleStoriesHidden_Handler(srv interface{}, ctx contex
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCStoriesServer).ContactsToggleStoriesHidden(ctx, req.(*TLContactsToggleStoriesHidden))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesCanSendStoryB100D45D_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesCanSendStoryB100D45D)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesCanSendStoryB100D45D(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesCanSendStoryB100D45D_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesCanSendStoryB100D45D(ctx, req.(*TLStoriesCanSendStoryB100D45D))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -30635,8 +30779,8 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RPCStoriesServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "stories_canSendStory",
-			Handler:    _RPCStories_StoriesCanSendStory_Handler,
+			MethodName: "stories_canSendStory30EB63F0",
+			Handler:    _RPCStories_StoriesCanSendStory30EB63F0_Handler,
 		},
 		{
 			MethodName: "stories_sendStory",
@@ -30739,6 +30883,10 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCStories_StoriesSearchPosts_Handler,
 		},
 		{
+			MethodName: "stories_canSendStoryC7DFDFDD",
+			Handler:    _RPCStories_StoriesCanSendStoryC7DFDFDD_Handler,
+		},
+		{
 			MethodName: "stories_report1923FA8C",
 			Handler:    _RPCStories_StoriesReport1923FA8C_Handler,
 		},
@@ -30749,6 +30897,10 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "contacts_toggleStoriesHidden",
 			Handler:    _RPCStories_ContactsToggleStoriesHidden_Handler,
+		},
+		{
+			MethodName: "stories_canSendStoryB100D45D",
+			Handler:    _RPCStories_StoriesCanSendStoryB100D45D_Handler,
 		},
 		{
 			MethodName: "stories_getUserStories",
@@ -31764,6 +31916,7 @@ var RPCTranscription_ServiceDesc = grpc.ServiceDesc{
 const (
 	RPCTranslation_MessagesTranslateText_FullMethodName          = "/mtproto.RPCTranslation/messages_translateText"
 	RPCTranslation_MessagesTogglePeerTranslations_FullMethodName = "/mtproto.RPCTranslation/messages_togglePeerTranslations"
+	RPCTranslation_ChannelsToggleAutotranslation_FullMethodName  = "/mtproto.RPCTranslation/channels_toggleAutotranslation"
 )
 
 // RPCTranslationClient is the client API for RPCTranslation service.
@@ -31772,6 +31925,7 @@ const (
 type RPCTranslationClient interface {
 	MessagesTranslateText(ctx context.Context, in *TLMessagesTranslateText, opts ...grpc.CallOption) (*Messages_TranslatedText, error)
 	MessagesTogglePeerTranslations(ctx context.Context, in *TLMessagesTogglePeerTranslations, opts ...grpc.CallOption) (*Bool, error)
+	ChannelsToggleAutotranslation(ctx context.Context, in *TLChannelsToggleAutotranslation, opts ...grpc.CallOption) (*Updates, error)
 }
 
 type rPCTranslationClient struct {
@@ -31802,12 +31956,23 @@ func (c *rPCTranslationClient) MessagesTogglePeerTranslations(ctx context.Contex
 	return out, nil
 }
 
+func (c *rPCTranslationClient) ChannelsToggleAutotranslation(ctx context.Context, in *TLChannelsToggleAutotranslation, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCTranslation_ChannelsToggleAutotranslation_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCTranslationServer is the server API for RPCTranslation service.
 // All implementations should embed UnimplementedRPCTranslationServer
 // for forward compatibility.
 type RPCTranslationServer interface {
 	MessagesTranslateText(context.Context, *TLMessagesTranslateText) (*Messages_TranslatedText, error)
 	MessagesTogglePeerTranslations(context.Context, *TLMessagesTogglePeerTranslations) (*Bool, error)
+	ChannelsToggleAutotranslation(context.Context, *TLChannelsToggleAutotranslation) (*Updates, error)
 }
 
 // UnimplementedRPCTranslationServer should be embedded to have
@@ -31822,6 +31987,9 @@ func (UnimplementedRPCTranslationServer) MessagesTranslateText(context.Context, 
 }
 func (UnimplementedRPCTranslationServer) MessagesTogglePeerTranslations(context.Context, *TLMessagesTogglePeerTranslations) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesTogglePeerTranslations not implemented")
+}
+func (UnimplementedRPCTranslationServer) ChannelsToggleAutotranslation(context.Context, *TLChannelsToggleAutotranslation) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsToggleAutotranslation not implemented")
 }
 func (UnimplementedRPCTranslationServer) testEmbeddedByValue() {}
 
@@ -31879,6 +32047,24 @@ func _RPCTranslation_MessagesTogglePeerTranslations_Handler(srv interface{}, ctx
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCTranslation_ChannelsToggleAutotranslation_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsToggleAutotranslation)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCTranslationServer).ChannelsToggleAutotranslation(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCTranslation_ChannelsToggleAutotranslation_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCTranslationServer).ChannelsToggleAutotranslation(ctx, req.(*TLChannelsToggleAutotranslation))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCTranslation_ServiceDesc is the grpc.ServiceDesc for RPCTranslation service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -31893,6 +32079,10 @@ var RPCTranslation_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_togglePeerTranslations",
 			Handler:    _RPCTranslation_MessagesTogglePeerTranslations_Handler,
+		},
+		{
+			MethodName: "channels_toggleAutotranslation",
+			Handler:    _RPCTranslation_ChannelsToggleAutotranslation_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

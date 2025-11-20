@@ -3360,6 +3360,12 @@ message TL_channels_updatePaidMessagesPrice {
     int64 send_paid_messages_stars = 4;
 }
 
+message TL_channels_toggleAutotranslation {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    Bool enabled = 4;
+}
+
 message TL_bots_sendCustomRequest {
     TLConstructor  constructor = 1;
     string custom_method = 3;
@@ -3859,6 +3865,23 @@ message TL_payments_toggleStarGiftsPinnedToTop {
 message TL_payments_canPurchaseStore {
     TLConstructor  constructor = 1;
     InputStorePaymentPurpose purpose = 3;
+}
+
+message TL_payments_getResaleStarGifts {
+    TLConstructor  constructor = 1;
+    bool sort_by_price = 3;
+    bool sort_by_num = 4;
+    google.protobuf.Int64Value attributes_hash = 5;
+    int64 gift_id = 6;
+    repeated StarGiftAttributeId attributes = 7;
+    string offset = 8;
+    int32 limit = 9;
+}
+
+message TL_payments_updateStarGiftPrice {
+    TLConstructor  constructor = 1;
+    InputSavedStarGift stargift = 3;
+    int64 resell_stars = 4;
 }
 
 message TL_stickers_createStickerSet {
@@ -4364,7 +4387,7 @@ message TL_chatlists_leaveChatlist {
     repeated InputPeer peers = 4;
 }
 
-message TL_stories_canSendStory {
+message TL_stories_canSendStory30EB63F0 {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
 }
@@ -4623,6 +4646,11 @@ message TL_fragment_getCollectibleInfo {
     InputCollectible collectible = 3;
 }
 
+message TL_stories_canSendStoryC7DFDFDD {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+}
+
 message TL_phone_createConferenceCallDFC909AB {
     TLConstructor  constructor = 1;
     InputPhoneCall peer = 3;
@@ -4796,6 +4824,10 @@ message TL_contacts_toggleStoriesHidden {
     TLConstructor  constructor = 1;
     InputUser id = 3;
     Bool hidden = 4;
+}
+
+message TL_stories_canSendStoryB100D45D {
+    TLConstructor  constructor = 1;
 }
 
 message TL_stories_getUserStories {
@@ -5527,6 +5559,8 @@ service RPCGifts {
     rpc payments_getStarGiftWithdrawalUrl(TL_payments_getStarGiftWithdrawalUrl) returns (payments_StarGiftWithdrawalUrl) {}
     rpc payments_toggleChatStarGiftNotifications(TL_payments_toggleChatStarGiftNotifications) returns (Bool) {}
     rpc payments_toggleStarGiftsPinnedToTop(TL_payments_toggleStarGiftsPinnedToTop) returns (Bool) {}
+    rpc payments_getResaleStarGifts(TL_payments_getResaleStarGifts) returns (payments_ResaleStarGifts) {}
+    rpc payments_updateStarGiftPrice(TL_payments_updateStarGiftPrice) returns (Updates) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }
@@ -5958,7 +5992,7 @@ service RPCStickers {
 }
 
 service RPCStories {
-    rpc stories_canSendStory(TL_stories_canSendStory) returns (Bool) {}
+    rpc stories_canSendStory30EB63F0(TL_stories_canSendStory30EB63F0) returns (stories_CanSendStoryCount) {}
     rpc stories_sendStory(TL_stories_sendStory) returns (Updates) {}
     rpc stories_editStory(TL_stories_editStory) returns (Updates) {}
     rpc stories_deleteStories(TL_stories_deleteStories) returns (Vector_Int) {}
@@ -5984,9 +6018,11 @@ service RPCStories {
     rpc stories_getStoryReactionsList(TL_stories_getStoryReactionsList) returns (stories_StoryReactionsList) {}
     rpc stories_togglePinnedToTop(TL_stories_togglePinnedToTop) returns (Bool) {}
     rpc stories_searchPosts(TL_stories_searchPosts) returns (stories_FoundStories) {}
+    rpc stories_canSendStoryC7DFDFDD(TL_stories_canSendStoryC7DFDFDD) returns (Bool) {}
     rpc stories_report1923FA8C(TL_stories_report1923FA8C) returns (Bool) {}
     rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
     rpc contacts_toggleStoriesHidden(TL_contacts_toggleStoriesHidden) returns (Bool) {}
+    rpc stories_canSendStoryB100D45D(TL_stories_canSendStoryB100D45D) returns (Bool) {}
     rpc stories_getUserStories(TL_stories_getUserStories) returns (stories_UserStories) {}
     rpc stories_getAllReadUserStories(TL_stories_getAllReadUserStories) returns (Updates) {}
     rpc stories_reportC95BE06A(TL_stories_reportC95BE06A) returns (Bool) {}
@@ -6028,6 +6064,7 @@ service RPCTranscription {
 service RPCTranslation {
     rpc messages_translateText(TL_messages_translateText) returns (messages_TranslatedText) {}
     rpc messages_togglePeerTranslations(TL_messages_togglePeerTranslations) returns (Bool) {}
+    rpc channels_toggleAutotranslation(TL_channels_toggleAutotranslation) returns (Updates) {}
 }
 
 service RPCTsf {
