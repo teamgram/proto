@@ -361,6 +361,7 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLPaymentsReorderStarGiftCollections":         RPCContextTuple{"/mtproto.RPCGifts/payments_reorderStarGiftCollections", func() interface{} { return new(Bool) }},
 	"TLPaymentsDeleteStarGiftCollection":           RPCContextTuple{"/mtproto.RPCGifts/payments_deleteStarGiftCollection", func() interface{} { return new(Bool) }},
 	"TLPaymentsGetStarGiftCollections":             RPCContextTuple{"/mtproto.RPCGifts/payments_getStarGiftCollections", func() interface{} { return new(Payments_StarGiftCollections) }},
+	"TLPaymentsGetUniqueStarGiftValueInfo":         RPCContextTuple{"/mtproto.RPCGifts/payments_getUniqueStarGiftValueInfo", func() interface{} { return new(Payments_UniqueStarGiftValueInfo) }},
 	"TLPaymentsGetUserStarGifts":                   RPCContextTuple{"/mtproto.RPCGifts/payments_getUserStarGifts", func() interface{} { return new(Payments_UserStarGifts) }},
 	"TLPaymentsGetUserStarGift":                    RPCContextTuple{"/mtproto.RPCGifts/payments_getUserStarGift", func() interface{} { return new(Payments_UserStarGifts) }},
 	"TLPaymentsGetPremiumGiftCodeOptions":          RPCContextTuple{"/mtproto.RPCGiveaways/payments_getPremiumGiftCodeOptions", func() interface{} { return new(Vector_PremiumGiftCodeOption) }},

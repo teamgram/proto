@@ -3907,13 +3907,15 @@ message TL_payments_getSavedStarGifts {
     bool exclude_unsaved = 3;
     bool exclude_saved = 4;
     bool exclude_unlimited = 5;
-    bool exclude_limited = 6;
-    bool exclude_unique = 7;
-    bool sort_by_value = 8;
-    InputPeer peer = 9;
-    google.protobuf.Int32Value collection_id = 10;
-    string offset = 11;
-    int32 limit = 12;
+    bool exclude_unique = 6;
+    bool sort_by_value = 7;
+    bool exclude_upgradable = 8;
+    bool exclude_unupgradable = 9;
+    InputPeer peer = 10;
+    google.protobuf.Int32Value collection_id = 11;
+    string offset = 12;
+    int32 limit = 13;
+    bool exclude_limited = 14;
 }
 
 message TL_payments_getSavedStarGift {
@@ -3995,6 +3997,11 @@ message TL_payments_getStarGiftCollections {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     int64 hash = 4;
+}
+
+message TL_payments_getUniqueStarGiftValueInfo {
+    TLConstructor  constructor = 1;
+    string slug = 3;
 }
 
 message TL_stickers_createStickerSet {
@@ -5731,6 +5738,7 @@ service RPCGifts {
     rpc payments_reorderStarGiftCollections(TL_payments_reorderStarGiftCollections) returns (Bool) {}
     rpc payments_deleteStarGiftCollection(TL_payments_deleteStarGiftCollection) returns (Bool) {}
     rpc payments_getStarGiftCollections(TL_payments_getStarGiftCollections) returns (payments_StarGiftCollections) {}
+    rpc payments_getUniqueStarGiftValueInfo(TL_payments_getUniqueStarGiftValueInfo) returns (payments_UniqueStarGiftValueInfo) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }

@@ -4515,6 +4515,7 @@ message TL_inputGroupCallInviteMessage {
 //  + TL_inputInvoicePremiumGiftStars
 //  + TL_inputInvoiceBusinessBotTransferStars
 //  + TL_inputInvoiceStarGiftResale
+//  + TL_inputInvoiceStarGiftPrepaidUpgrade
 //  + TL_inputInvoiceStarGiftResale
 //  + TL_inputInvoiceStarGift
 //  + TL_inputInvoiceStarGiftUpgrade
@@ -4598,6 +4599,11 @@ message TL_inputInvoiceBusinessBotTransferStars {
 
 // TL_inputInvoiceStarGiftResale
 message TL_inputInvoiceStarGiftResale {
+    InputInvoice data2 = 1;
+}
+
+// TL_inputInvoiceStarGiftPrepaidUpgrade
+message TL_inputInvoiceStarGiftPrepaidUpgrade {
     InputInvoice data2 = 1;
 }
 
@@ -6353,6 +6359,7 @@ message TL_messageService {
 //  + TL_messageActionSuggestedPostSuccess
 //  + TL_messageActionSuggestedPostRefund
 //  + TL_messageActionGiftTon
+//  + TL_messageActionStarGift
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionPaidMessagesPrice
 //  + TL_messageActionStarGiftUnique
@@ -6460,38 +6467,41 @@ message MessageAction {
     bool upgraded = 79;
     bool refunded = 80;
     bool can_upgrade = 81;
-    StarGift gift = 82;
-    google.protobuf.Int64Value convert_stars_FLAGINT64 = 83;
-    google.protobuf.Int32Value upgrade_msg_id = 84;
-    google.protobuf.Int64Value upgrade_stars = 85;
-    google.protobuf.Int64Value saved_id = 86;
-    bool upgrade = 87;
-    bool transferred = 88;
-    google.protobuf.Int32Value can_export_at = 89;
-    google.protobuf.Int64Value transfer_stars = 90;
-    StarsAmount resale_amount = 91;
-    google.protobuf.Int32Value can_transfer_at = 92;
-    google.protobuf.Int32Value can_resell_at = 93;
-    int32 count = 94;
-    bool broadcast_messages_allowed = 95;
-    bool missed = 96;
-    bool active = 97;
-    repeated Peer other_participants = 98;
-    repeated int32 completed = 99;
-    repeated int32 incompleted = 100;
-    repeated TodoItem list = 101;
-    bool rejected = 102;
-    bool balance_too_low = 103;
-    google.protobuf.StringValue reject_comment = 104;
-    google.protobuf.Int32Value schedule_date_FLAGINT32 = 105;
-    StarsAmount price = 106;
-    bool payer_initiated = 107;
-    string crypto_currency_STRING = 108;
-    int64 crypto_amount_INT64 = 109;
-    google.protobuf.Int64Value resale_stars = 110;
-    int64 convert_stars_INT64 = 111;
-    string domain_STRING = 112;
-    BizDataRaw biz_data = 113;
+    bool prepaid_upgrade = 82;
+    StarGift gift = 83;
+    google.protobuf.Int64Value convert_stars_FLAGINT64 = 84;
+    google.protobuf.Int32Value upgrade_msg_id = 85;
+    google.protobuf.Int64Value upgrade_stars = 86;
+    google.protobuf.Int64Value saved_id = 87;
+    google.protobuf.StringValue prepaid_upgrade_hash = 88;
+    google.protobuf.Int32Value gift_msg_id = 89;
+    bool upgrade = 90;
+    bool transferred = 91;
+    google.protobuf.Int32Value can_export_at = 92;
+    google.protobuf.Int64Value transfer_stars = 93;
+    StarsAmount resale_amount = 94;
+    google.protobuf.Int32Value can_transfer_at = 95;
+    google.protobuf.Int32Value can_resell_at = 96;
+    int32 count = 97;
+    bool broadcast_messages_allowed = 98;
+    bool missed = 99;
+    bool active = 100;
+    repeated Peer other_participants = 101;
+    repeated int32 completed = 102;
+    repeated int32 incompleted = 103;
+    repeated TodoItem list = 104;
+    bool rejected = 105;
+    bool balance_too_low = 106;
+    google.protobuf.StringValue reject_comment = 107;
+    google.protobuf.Int32Value schedule_date_FLAGINT32 = 108;
+    StarsAmount price = 109;
+    bool payer_initiated = 110;
+    string crypto_currency_STRING = 111;
+    int64 crypto_amount_INT64 = 112;
+    google.protobuf.Int64Value resale_stars = 113;
+    int64 convert_stars_INT64 = 114;
+    string domain_STRING = 115;
+    BizDataRaw biz_data = 116;
     string title = 200;
 }
 
@@ -9804,6 +9814,7 @@ message TL_savedReactionTag {
 //  + TL_savedStarGift
 //  + TL_savedStarGift
 //  + TL_savedStarGift
+//  + TL_savedStarGift
 //
 message SavedStarGift {
     string predicate_name = 1;
@@ -9826,6 +9837,7 @@ message SavedStarGift {
     google.protobuf.Int32Value can_transfer_at = 18;
     google.protobuf.Int32Value can_resell_at = 19;
     repeated int32 collection_id = 20;
+    google.protobuf.StringValue prepaid_upgrade_hash = 21;
 }
 
 // TL_savedStarGift
@@ -10520,6 +10532,7 @@ message TL_sponsoredWebPage {
 //  + TL_starGift
 //  + TL_starGiftUnique
 //  + TL_starGiftUnique
+//  + TL_starGiftUnique
 //  + TL_starGift
 //  + TL_starGift
 //  + TL_starGiftUnique
@@ -10555,20 +10568,23 @@ message StarGift {
     google.protobuf.Int32Value per_user_total = 21;
     google.protobuf.Int32Value per_user_remains = 22;
     bool resale_ton_only = 23;
-    string title_STRING = 24;
-    string slug = 25;
-    int32 num = 26;
-    Peer owner_id_FLAGPEER = 27;
-    google.protobuf.StringValue owner_name = 28;
-    google.protobuf.StringValue owner_address = 29;
-    repeated StarGiftAttribute attributes = 30;
-    int32 availability_issued = 31;
-    int32 availability_total_INT32 = 32;
-    google.protobuf.StringValue gift_address = 33;
-    repeated StarsAmount resell_amount = 34;
-    google.protobuf.Int64Value resell_stars = 35;
-    google.protobuf.Int64Value owner_id_FLAGINT64 = 36;
-    int64 owner_id_INT64 = 37;
+    int64 gift_id = 24;
+    string title_STRING = 25;
+    string slug = 26;
+    int32 num = 27;
+    Peer owner_id_FLAGPEER = 28;
+    google.protobuf.StringValue owner_name = 29;
+    google.protobuf.StringValue owner_address = 30;
+    repeated StarGiftAttribute attributes = 31;
+    int32 availability_issued = 32;
+    int32 availability_total_INT32 = 33;
+    google.protobuf.StringValue gift_address = 34;
+    repeated StarsAmount resell_amount = 35;
+    google.protobuf.Int64Value value_amount = 36;
+    google.protobuf.StringValue value_currency = 37;
+    google.protobuf.Int64Value resell_stars = 38;
+    google.protobuf.Int64Value owner_id_FLAGINT64 = 39;
+    int64 owner_id_INT64 = 40;
 }
 
 // TL_starGift
@@ -10919,31 +10935,32 @@ message StarsTransaction {
     bool business_transfer = 9;
     bool stargift_resale = 10;
     bool posts_search = 11;
-    string id = 12;
-    StarsAmount amount = 13;
-    int32 date = 14;
-    StarsTransactionPeer peer = 15;
-    google.protobuf.StringValue title = 16;
-    google.protobuf.StringValue description = 17;
-    WebDocument photo = 18;
-    google.protobuf.Int32Value transaction_date = 19;
-    google.protobuf.StringValue transaction_url = 20;
-    bytes bot_payload = 21;
-    google.protobuf.Int32Value msg_id = 22;
-    repeated MessageMedia extended_media = 23;
-    google.protobuf.Int32Value subscription_period = 24;
-    google.protobuf.Int32Value giveaway_post_id = 25;
-    StarGift stargift = 26;
-    google.protobuf.Int32Value floodskip_number = 27;
-    google.protobuf.Int32Value starref_commission_permille = 28;
-    Peer starref_peer = 29;
-    StarsAmount starref_amount = 30;
-    google.protobuf.Int32Value paid_messages = 31;
-    google.protobuf.Int32Value premium_gift_months = 32;
-    google.protobuf.Int32Value ads_proceeds_from_date = 33;
-    google.protobuf.Int32Value ads_proceeds_to_date = 34;
-    StarsAmount stars_STARSAMOUNT = 35;
-    int64 stars_INT64 = 36;
+    bool stargift_prepaid_upgrade = 12;
+    string id = 13;
+    StarsAmount amount = 14;
+    int32 date = 15;
+    StarsTransactionPeer peer = 16;
+    google.protobuf.StringValue title = 17;
+    google.protobuf.StringValue description = 18;
+    WebDocument photo = 19;
+    google.protobuf.Int32Value transaction_date = 20;
+    google.protobuf.StringValue transaction_url = 21;
+    bytes bot_payload = 22;
+    google.protobuf.Int32Value msg_id = 23;
+    repeated MessageMedia extended_media = 24;
+    google.protobuf.Int32Value subscription_period = 25;
+    google.protobuf.Int32Value giveaway_post_id = 26;
+    StarGift stargift = 27;
+    google.protobuf.Int32Value floodskip_number = 28;
+    google.protobuf.Int32Value starref_commission_permille = 29;
+    Peer starref_peer = 30;
+    StarsAmount starref_amount = 31;
+    google.protobuf.Int32Value paid_messages = 32;
+    google.protobuf.Int32Value premium_gift_months = 33;
+    google.protobuf.Int32Value ads_proceeds_from_date = 34;
+    google.protobuf.Int32Value ads_proceeds_to_date = 35;
+    StarsAmount stars_STARSAMOUNT = 36;
+    int64 stars_INT64 = 37;
 }
 
 // TL_starsTransaction
@@ -16808,6 +16825,34 @@ message payments_UniqueStarGift {
 // TL_payments_uniqueStarGift
 message TL_payments_uniqueStarGift {
     payments_UniqueStarGift data2 = 1;
+}
+
+
+// payments_UniqueStarGiftValueInfo <--
+//  + TL_payments_uniqueStarGiftValueInfo
+//
+message payments_UniqueStarGiftValueInfo {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool last_sale_on_fragment = 3;
+    bool value_is_average = 4;
+    string currency = 5;
+    int64 value = 6;
+    int32 initial_sale_date = 7;
+    int64 initial_sale_stars = 8;
+    int64 initial_sale_price = 9;
+    google.protobuf.Int32Value last_sale_date = 10;
+    google.protobuf.Int64Value last_sale_price = 11;
+    google.protobuf.Int64Value floor_price = 12;
+    google.protobuf.Int64Value average_price = 13;
+    google.protobuf.Int32Value listed_count = 14;
+    google.protobuf.Int32Value fragment_listed_count = 15;
+    google.protobuf.StringValue fragment_listed_url = 16;
+}
+
+// TL_payments_uniqueStarGiftValueInfo
+message TL_payments_uniqueStarGiftValueInfo {
+    payments_UniqueStarGiftValueInfo data2 = 1;
 }
 
 

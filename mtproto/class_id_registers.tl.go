@@ -3062,6 +3062,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1674298252
 		return o
 	},
+	-1710536520: func() TLObject { // 0x9a0b48b8
+		o := MakeTLInputInvoiceStarGiftPrepaidUpgrade(nil)
+		o.Data2.Constructor = -1710536520
+		return o
+	},
 	-1771768449: func() TLObject { // 0x9664f57f
 		o := MakeTLInputMediaEmpty(nil)
 		o.Data2.Constructor = -1771768449
@@ -4390,6 +4395,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1341372510: func() TLObject { // 0xb00c47a2
 		o := MakeTLMessageActionPrizeStars(nil)
 		o.Data2.Constructor = -1341372510
+		return o
+	},
+	-229775366: func() TLObject { // 0xf24de7fa
+		o := MakeTLMessageActionStarGift(nil)
+		o.Data2.Constructor = -229775366
 		return o
 	},
 	1192749220: func() TLObject { // 0x4717e8a4
@@ -5972,6 +5982,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -895289845
 		return o
 	},
+	1362093126: func() TLObject { // 0x512fe446
+		o := MakeTLPaymentsUniqueStarGiftValueInfo(nil)
+		o.Data2.Constructor = 1362093126
+		return o
+	},
 	1801827607: func() TLObject { // 0x6b65b517
 		o := MakeTLPaymentsUserStarGifts(nil)
 		o.Data2.Constructor = 1801827607
@@ -6827,6 +6842,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -881854424
 		return o
 	},
+	430552434: func() TLObject { // 0x19a9b572
+		o := MakeTLSavedStarGift(nil)
+		o.Data2.Constructor = 430552434
+		return o
+	},
 	514213599: func() TLObject { // 0x1ea646df
 		o := MakeTLSavedStarGift(nil)
 		o.Data2.Constructor = 514213599
@@ -7240,6 +7260,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1365150482: func() TLObject { // 0xaea174ee
 		o := MakeTLStarGift(nil)
 		o.Data2.Constructor = -1365150482
+		return o
+	},
+	648369470: func() TLObject { // 0x26a5553e
+		o := MakeTLStarGiftUnique(nil)
+		o.Data2.Constructor = 648369470
 		return o
 	},
 	975654224: func() TLObject { // 0x3a274d50
@@ -13157,6 +13182,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1743023651: func() TLObject { // 0x981b91dd
 		return &TLPaymentsGetStarGiftCollections{
 			Constructor: -1743023651,
+		}
+	},
+	1130737515: func() TLObject { // 0x4365af6b
+		return &TLPaymentsGetUniqueStarGiftValueInfo{
+			Constructor: 1130737515,
 		}
 	},
 	-1876841625: func() TLObject { // 0x9021ab67
