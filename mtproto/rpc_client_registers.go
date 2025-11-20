@@ -446,6 +446,7 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLMessagesReportMessagesDelivery":             RPCContextTuple{"/mtproto.RPCMessages/messages_reportMessagesDelivery", func() interface{} { return new(Bool) }},
 	"TLMessagesToggleTodoCompleted":                RPCContextTuple{"/mtproto.RPCMessages/messages_toggleTodoCompleted", func() interface{} { return new(Updates) }},
 	"TLMessagesAppendTodoList":                     RPCContextTuple{"/mtproto.RPCMessages/messages_appendTodoList", func() interface{} { return new(Updates) }},
+	"TLMessagesToggleSuggestedPostApproval":        RPCContextTuple{"/mtproto.RPCMessages/messages_toggleSuggestedPostApproval", func() interface{} { return new(Updates) }},
 	"TLChannelsGetSendAs":                          RPCContextTuple{"/mtproto.RPCMessages/channels_getSendAs", func() interface{} { return new(Channels_SendAsPeers) }},
 	"TLChannelsSearchPosts":                        RPCContextTuple{"/mtproto.RPCMessages/channels_searchPosts", func() interface{} { return new(Messages_Messages) }},
 	"TLMessagesRequestWebView":                     RPCContextTuple{"/mtproto.RPCMiniBotApps/messages_requestWebView", func() interface{} { return new(WebViewResult) }},

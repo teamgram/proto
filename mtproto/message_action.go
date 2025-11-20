@@ -305,8 +305,9 @@ func MakeMessageActionSetMessagesTTL(period int32) *MessageAction {
 // messageActionGroupCallScheduled#b3a07661 call:InputGroupCall schedule_date:int = MessageAction;
 func MakeMessageActionGroupCallScheduled(call *InputGroupCall, scheduleDate int32) *MessageAction {
 	return MakeTLMessageActionGroupCallScheduled(&MessageAction{
-		Call:         call,
-		ScheduleDate: scheduleDate,
+		Call:                   call,
+		ScheduleDate_FLAGINT32: MakeFlagsInt32(scheduleDate),
+		ScheduleDate_INT32:     scheduleDate,
 	}).To_MessageAction()
 }
 

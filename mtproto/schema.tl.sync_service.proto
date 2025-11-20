@@ -1173,8 +1173,9 @@ message TL_messages_sendMessage {
     InputQuickReplyShortcut quick_reply_shortcut = 19;
     google.protobuf.Int64Value effect = 20;
     google.protobuf.Int64Value allow_paid_stars = 21;
-    google.protobuf.Int32Value reply_to_msg_id = 22;
-    google.protobuf.Int32Value top_msg_id = 23;
+    SuggestedPost suggested_post = 22;
+    google.protobuf.Int32Value reply_to_msg_id = 23;
+    google.protobuf.Int32Value top_msg_id = 24;
 }
 
 message TL_messages_sendMedia {
@@ -1198,8 +1199,9 @@ message TL_messages_sendMedia {
     InputQuickReplyShortcut quick_reply_shortcut = 19;
     google.protobuf.Int64Value effect = 20;
     google.protobuf.Int64Value allow_paid_stars = 21;
-    google.protobuf.Int32Value reply_to_msg_id = 22;
-    google.protobuf.Int32Value top_msg_id = 23;
+    SuggestedPost suggested_post = 22;
+    google.protobuf.Int32Value reply_to_msg_id = 23;
+    google.protobuf.Int32Value top_msg_id = 24;
 }
 
 message TL_messages_forwardMessages {
@@ -1222,6 +1224,7 @@ message TL_messages_forwardMessages {
     InputQuickReplyShortcut quick_reply_shortcut = 18;
     google.protobuf.Int32Value video_timestamp = 19;
     google.protobuf.Int64Value allow_paid_stars = 20;
+    SuggestedPost suggested_post = 21;
 }
 
 message TL_messages_reportSpam {
@@ -1590,8 +1593,9 @@ message TL_messages_saveDraft {
     repeated MessageEntity entities = 8;
     InputMedia media = 9;
     google.protobuf.Int64Value effect = 10;
-    google.protobuf.Int32Value reply_to_msg_id = 11;
-    google.protobuf.Int32Value top_msg_id = 12;
+    SuggestedPost suggested_post = 11;
+    google.protobuf.Int32Value reply_to_msg_id = 12;
+    google.protobuf.Int32Value top_msg_id = 13;
 }
 
 message TL_messages_getAllDrafts {
@@ -2748,6 +2752,15 @@ message TL_messages_appendTodoList {
     repeated TodoItem list = 5;
 }
 
+message TL_messages_toggleSuggestedPostApproval {
+    TLConstructor  constructor = 1;
+    bool reject = 3;
+    InputPeer peer = 4;
+    int32 msg_id = 5;
+    google.protobuf.Int32Value schedule_date = 6;
+    google.protobuf.StringValue reject_comment = 7;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -3706,7 +3719,8 @@ message TL_payments_getStarsTopupOptions {
 
 message TL_payments_getStarsStatus {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
+    bool ton = 3;
+    InputPeer peer = 4;
 }
 
 message TL_payments_getStarsTransactions {
@@ -3714,10 +3728,11 @@ message TL_payments_getStarsTransactions {
     bool inbound = 3;
     bool outbound = 4;
     bool ascending = 5;
-    google.protobuf.StringValue subscription_id = 6;
-    InputPeer peer = 7;
-    string offset = 8;
-    int32 limit = 9;
+    bool ton = 6;
+    google.protobuf.StringValue subscription_id = 7;
+    InputPeer peer = 8;
+    string offset = 9;
+    int32 limit = 10;
 }
 
 message TL_payments_sendStarsForm {
@@ -3735,14 +3750,17 @@ message TL_payments_refundStarsCharge {
 message TL_payments_getStarsRevenueStats {
     TLConstructor  constructor = 1;
     bool dark = 3;
-    InputPeer peer = 4;
+    bool ton = 4;
+    InputPeer peer = 5;
 }
 
 message TL_payments_getStarsRevenueWithdrawalUrl {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    int64 stars = 4;
-    InputCheckPasswordSRP password = 5;
+    bool ton = 3;
+    InputPeer peer = 4;
+    google.protobuf.Int64Value amount = 5;
+    InputCheckPasswordSRP password = 6;
+    int64 stars = 7;
 }
 
 message TL_payments_getStarsRevenueAdsAccountUrl {
@@ -3752,8 +3770,9 @@ message TL_payments_getStarsRevenueAdsAccountUrl {
 
 message TL_payments_getStarsTransactionsByID {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    repeated InputStarsTransaction id = 4;
+    bool ton = 3;
+    InputPeer peer = 4;
+    repeated InputStarsTransaction id = 5;
 }
 
 message TL_payments_getStarsGiftOptions {
@@ -4350,28 +4369,6 @@ message TL_stats_getStoryPublicForwards {
     int32 limit = 6;
 }
 
-message TL_stats_getBroadcastRevenueStats {
-    TLConstructor  constructor = 1;
-    bool dark = 3;
-    InputPeer peer = 4;
-    InputChannel channel = 5;
-}
-
-message TL_stats_getBroadcastRevenueWithdrawalUrl {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    InputCheckPasswordSRP password = 4;
-    InputChannel channel = 5;
-}
-
-message TL_stats_getBroadcastRevenueTransactions {
-    TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    int32 offset = 4;
-    int32 limit = 5;
-    InputChannel channel = 6;
-}
-
 message TL_chatlists_exportChatlistInvite {
     TLConstructor  constructor = 1;
     InputChatlist chatlist = 3;
@@ -4693,6 +4690,28 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
+}
+
+message TL_stats_getBroadcastRevenueStats {
+    TLConstructor  constructor = 1;
+    bool dark = 3;
+    InputPeer peer = 4;
+    InputChannel channel = 5;
+}
+
+message TL_stats_getBroadcastRevenueWithdrawalUrl {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    InputCheckPasswordSRP password = 4;
+    InputChannel channel = 5;
+}
+
+message TL_stats_getBroadcastRevenueTransactions {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 offset = 4;
+    int32 limit = 5;
+    InputChannel channel = 6;
 }
 
 message TL_account_addNoPaidMessagesException {
@@ -5738,6 +5757,7 @@ service RPCMessages {
     rpc messages_reportMessagesDelivery(TL_messages_reportMessagesDelivery) returns (Bool) {}
     rpc messages_toggleTodoCompleted(TL_messages_toggleTodoCompleted) returns (Updates) {}
     rpc messages_appendTodoList(TL_messages_appendTodoList) returns (Updates) {}
+    rpc messages_toggleSuggestedPostApproval(TL_messages_toggleSuggestedPostApproval) returns (Updates) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
     rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
 }

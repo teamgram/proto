@@ -18310,39 +18310,40 @@ var RPCMessageThreads_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCMessages_MessagesGetMessages_FullMethodName               = "/mtproto.RPCMessages/messages_getMessages"
-	RPCMessages_MessagesGetHistory_FullMethodName                = "/mtproto.RPCMessages/messages_getHistory"
-	RPCMessages_MessagesSearch_FullMethodName                    = "/mtproto.RPCMessages/messages_search"
-	RPCMessages_MessagesReadHistory_FullMethodName               = "/mtproto.RPCMessages/messages_readHistory"
-	RPCMessages_MessagesDeleteHistory_FullMethodName             = "/mtproto.RPCMessages/messages_deleteHistory"
-	RPCMessages_MessagesDeleteMessages_FullMethodName            = "/mtproto.RPCMessages/messages_deleteMessages"
-	RPCMessages_MessagesReceivedMessages_FullMethodName          = "/mtproto.RPCMessages/messages_receivedMessages"
-	RPCMessages_MessagesSendMessage_FullMethodName               = "/mtproto.RPCMessages/messages_sendMessage"
-	RPCMessages_MessagesSendMedia_FullMethodName                 = "/mtproto.RPCMessages/messages_sendMedia"
-	RPCMessages_MessagesForwardMessages_FullMethodName           = "/mtproto.RPCMessages/messages_forwardMessages"
-	RPCMessages_MessagesReadMessageContents_FullMethodName       = "/mtproto.RPCMessages/messages_readMessageContents"
-	RPCMessages_MessagesGetMessagesViews_FullMethodName          = "/mtproto.RPCMessages/messages_getMessagesViews"
-	RPCMessages_MessagesSearchGlobal_FullMethodName              = "/mtproto.RPCMessages/messages_searchGlobal"
-	RPCMessages_MessagesGetMessageEditData_FullMethodName        = "/mtproto.RPCMessages/messages_getMessageEditData"
-	RPCMessages_MessagesEditMessage_FullMethodName               = "/mtproto.RPCMessages/messages_editMessage"
-	RPCMessages_MessagesGetUnreadMentions_FullMethodName         = "/mtproto.RPCMessages/messages_getUnreadMentions"
-	RPCMessages_MessagesReadMentions_FullMethodName              = "/mtproto.RPCMessages/messages_readMentions"
-	RPCMessages_MessagesGetRecentLocations_FullMethodName        = "/mtproto.RPCMessages/messages_getRecentLocations"
-	RPCMessages_MessagesSendMultiMedia_FullMethodName            = "/mtproto.RPCMessages/messages_sendMultiMedia"
-	RPCMessages_MessagesUpdatePinnedMessage_FullMethodName       = "/mtproto.RPCMessages/messages_updatePinnedMessage"
-	RPCMessages_MessagesGetSearchCounters_FullMethodName         = "/mtproto.RPCMessages/messages_getSearchCounters"
-	RPCMessages_MessagesUnpinAllMessages_FullMethodName          = "/mtproto.RPCMessages/messages_unpinAllMessages"
-	RPCMessages_MessagesGetSearchResultsCalendar_FullMethodName  = "/mtproto.RPCMessages/messages_getSearchResultsCalendar"
-	RPCMessages_MessagesGetSearchResultsPositions_FullMethodName = "/mtproto.RPCMessages/messages_getSearchResultsPositions"
-	RPCMessages_MessagesToggleNoForwards_FullMethodName          = "/mtproto.RPCMessages/messages_toggleNoForwards"
-	RPCMessages_MessagesSaveDefaultSendAs_FullMethodName         = "/mtproto.RPCMessages/messages_saveDefaultSendAs"
-	RPCMessages_MessagesSearchSentMedia_FullMethodName           = "/mtproto.RPCMessages/messages_searchSentMedia"
-	RPCMessages_MessagesGetOutboxReadDate_FullMethodName         = "/mtproto.RPCMessages/messages_getOutboxReadDate"
-	RPCMessages_MessagesReportMessagesDelivery_FullMethodName    = "/mtproto.RPCMessages/messages_reportMessagesDelivery"
-	RPCMessages_MessagesToggleTodoCompleted_FullMethodName       = "/mtproto.RPCMessages/messages_toggleTodoCompleted"
-	RPCMessages_MessagesAppendTodoList_FullMethodName            = "/mtproto.RPCMessages/messages_appendTodoList"
-	RPCMessages_ChannelsGetSendAs_FullMethodName                 = "/mtproto.RPCMessages/channels_getSendAs"
-	RPCMessages_ChannelsSearchPosts_FullMethodName               = "/mtproto.RPCMessages/channels_searchPosts"
+	RPCMessages_MessagesGetMessages_FullMethodName                 = "/mtproto.RPCMessages/messages_getMessages"
+	RPCMessages_MessagesGetHistory_FullMethodName                  = "/mtproto.RPCMessages/messages_getHistory"
+	RPCMessages_MessagesSearch_FullMethodName                      = "/mtproto.RPCMessages/messages_search"
+	RPCMessages_MessagesReadHistory_FullMethodName                 = "/mtproto.RPCMessages/messages_readHistory"
+	RPCMessages_MessagesDeleteHistory_FullMethodName               = "/mtproto.RPCMessages/messages_deleteHistory"
+	RPCMessages_MessagesDeleteMessages_FullMethodName              = "/mtproto.RPCMessages/messages_deleteMessages"
+	RPCMessages_MessagesReceivedMessages_FullMethodName            = "/mtproto.RPCMessages/messages_receivedMessages"
+	RPCMessages_MessagesSendMessage_FullMethodName                 = "/mtproto.RPCMessages/messages_sendMessage"
+	RPCMessages_MessagesSendMedia_FullMethodName                   = "/mtproto.RPCMessages/messages_sendMedia"
+	RPCMessages_MessagesForwardMessages_FullMethodName             = "/mtproto.RPCMessages/messages_forwardMessages"
+	RPCMessages_MessagesReadMessageContents_FullMethodName         = "/mtproto.RPCMessages/messages_readMessageContents"
+	RPCMessages_MessagesGetMessagesViews_FullMethodName            = "/mtproto.RPCMessages/messages_getMessagesViews"
+	RPCMessages_MessagesSearchGlobal_FullMethodName                = "/mtproto.RPCMessages/messages_searchGlobal"
+	RPCMessages_MessagesGetMessageEditData_FullMethodName          = "/mtproto.RPCMessages/messages_getMessageEditData"
+	RPCMessages_MessagesEditMessage_FullMethodName                 = "/mtproto.RPCMessages/messages_editMessage"
+	RPCMessages_MessagesGetUnreadMentions_FullMethodName           = "/mtproto.RPCMessages/messages_getUnreadMentions"
+	RPCMessages_MessagesReadMentions_FullMethodName                = "/mtproto.RPCMessages/messages_readMentions"
+	RPCMessages_MessagesGetRecentLocations_FullMethodName          = "/mtproto.RPCMessages/messages_getRecentLocations"
+	RPCMessages_MessagesSendMultiMedia_FullMethodName              = "/mtproto.RPCMessages/messages_sendMultiMedia"
+	RPCMessages_MessagesUpdatePinnedMessage_FullMethodName         = "/mtproto.RPCMessages/messages_updatePinnedMessage"
+	RPCMessages_MessagesGetSearchCounters_FullMethodName           = "/mtproto.RPCMessages/messages_getSearchCounters"
+	RPCMessages_MessagesUnpinAllMessages_FullMethodName            = "/mtproto.RPCMessages/messages_unpinAllMessages"
+	RPCMessages_MessagesGetSearchResultsCalendar_FullMethodName    = "/mtproto.RPCMessages/messages_getSearchResultsCalendar"
+	RPCMessages_MessagesGetSearchResultsPositions_FullMethodName   = "/mtproto.RPCMessages/messages_getSearchResultsPositions"
+	RPCMessages_MessagesToggleNoForwards_FullMethodName            = "/mtproto.RPCMessages/messages_toggleNoForwards"
+	RPCMessages_MessagesSaveDefaultSendAs_FullMethodName           = "/mtproto.RPCMessages/messages_saveDefaultSendAs"
+	RPCMessages_MessagesSearchSentMedia_FullMethodName             = "/mtproto.RPCMessages/messages_searchSentMedia"
+	RPCMessages_MessagesGetOutboxReadDate_FullMethodName           = "/mtproto.RPCMessages/messages_getOutboxReadDate"
+	RPCMessages_MessagesReportMessagesDelivery_FullMethodName      = "/mtproto.RPCMessages/messages_reportMessagesDelivery"
+	RPCMessages_MessagesToggleTodoCompleted_FullMethodName         = "/mtproto.RPCMessages/messages_toggleTodoCompleted"
+	RPCMessages_MessagesAppendTodoList_FullMethodName              = "/mtproto.RPCMessages/messages_appendTodoList"
+	RPCMessages_MessagesToggleSuggestedPostApproval_FullMethodName = "/mtproto.RPCMessages/messages_toggleSuggestedPostApproval"
+	RPCMessages_ChannelsGetSendAs_FullMethodName                   = "/mtproto.RPCMessages/channels_getSendAs"
+	RPCMessages_ChannelsSearchPosts_FullMethodName                 = "/mtproto.RPCMessages/channels_searchPosts"
 )
 
 // RPCMessagesClient is the client API for RPCMessages service.
@@ -18380,6 +18381,7 @@ type RPCMessagesClient interface {
 	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery, opts ...grpc.CallOption) (*Bool, error)
 	MessagesToggleTodoCompleted(ctx context.Context, in *TLMessagesToggleTodoCompleted, opts ...grpc.CallOption) (*Updates, error)
 	MessagesAppendTodoList(ctx context.Context, in *TLMessagesAppendTodoList, opts ...grpc.CallOption) (*Updates, error)
+	MessagesToggleSuggestedPostApproval(ctx context.Context, in *TLMessagesToggleSuggestedPostApproval, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts, opts ...grpc.CallOption) (*Messages_Messages, error)
 }
@@ -18702,6 +18704,16 @@ func (c *rPCMessagesClient) MessagesAppendTodoList(ctx context.Context, in *TLMe
 	return out, nil
 }
 
+func (c *rPCMessagesClient) MessagesToggleSuggestedPostApproval(ctx context.Context, in *TLMessagesToggleSuggestedPostApproval, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesToggleSuggestedPostApproval_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCMessagesClient) ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Channels_SendAsPeers)
@@ -18757,6 +18769,7 @@ type RPCMessagesServer interface {
 	MessagesReportMessagesDelivery(context.Context, *TLMessagesReportMessagesDelivery) (*Bool, error)
 	MessagesToggleTodoCompleted(context.Context, *TLMessagesToggleTodoCompleted) (*Updates, error)
 	MessagesAppendTodoList(context.Context, *TLMessagesAppendTodoList) (*Updates, error)
+	MessagesToggleSuggestedPostApproval(context.Context, *TLMessagesToggleSuggestedPostApproval) (*Updates, error)
 	ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(context.Context, *TLChannelsSearchPosts) (*Messages_Messages, error)
 }
@@ -18860,6 +18873,9 @@ func (UnimplementedRPCMessagesServer) MessagesToggleTodoCompleted(context.Contex
 }
 func (UnimplementedRPCMessagesServer) MessagesAppendTodoList(context.Context, *TLMessagesAppendTodoList) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesAppendTodoList not implemented")
+}
+func (UnimplementedRPCMessagesServer) MessagesToggleSuggestedPostApproval(context.Context, *TLMessagesToggleSuggestedPostApproval) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesToggleSuggestedPostApproval not implemented")
 }
 func (UnimplementedRPCMessagesServer) ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetSendAs not implemented")
@@ -19445,6 +19461,24 @@ func _RPCMessages_MessagesAppendTodoList_Handler(srv interface{}, ctx context.Co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMessages_MessagesToggleSuggestedPostApproval_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesToggleSuggestedPostApproval)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesToggleSuggestedPostApproval(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesToggleSuggestedPostApproval_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesToggleSuggestedPostApproval(ctx, req.(*TLMessagesToggleSuggestedPostApproval))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCMessages_ChannelsGetSendAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsGetSendAs)
 	if err := dec(in); err != nil {
@@ -19611,6 +19645,10 @@ var RPCMessages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_appendTodoList",
 			Handler:    _RPCMessages_MessagesAppendTodoList_Handler,
+		},
+		{
+			MethodName: "messages_toggleSuggestedPostApproval",
+			Handler:    _RPCMessages_MessagesToggleSuggestedPostApproval_Handler,
 		},
 		{
 			MethodName: "channels_getSendAs",
