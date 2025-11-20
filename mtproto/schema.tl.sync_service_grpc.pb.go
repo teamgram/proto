@@ -5429,6 +5429,7 @@ const (
 	RPCChannels_ChannelsDeleteParticipantHistory_FullMethodName = "/mtproto.RPCChannels/channels_deleteParticipantHistory"
 	RPCChannels_ChannelsToggleParticipantsHidden_FullMethodName = "/mtproto.RPCChannels/channels_toggleParticipantsHidden"
 	RPCChannels_ChannelsGetMessageAuthor_FullMethodName         = "/mtproto.RPCChannels/channels_getMessageAuthor"
+	RPCChannels_ChannelsCheckSearchPostsFlood_FullMethodName    = "/mtproto.RPCChannels/channels_checkSearchPostsFlood"
 	RPCChannels_ChannelsInviteToChannel199F3A6C_FullMethodName  = "/mtproto.RPCChannels/channels_inviteToChannel199F3A6C"
 	RPCChannels_ChannelsDeleteHistoryAF369D42_FullMethodName    = "/mtproto.RPCChannels/channels_deleteHistoryAF369D42"
 )
@@ -5470,6 +5471,7 @@ type RPCChannelsClient interface {
 	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsGetMessageAuthor(ctx context.Context, in *TLChannelsGetMessageAuthor, opts ...grpc.CallOption) (*User, error)
+	ChannelsCheckSearchPostsFlood(ctx context.Context, in *TLChannelsCheckSearchPostsFlood, opts ...grpc.CallOption) (*SearchPostsFlood, error)
 	ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(ctx context.Context, in *TLChannelsDeleteHistoryAF369D42, opts ...grpc.CallOption) (*Bool, error)
 }
@@ -5812,6 +5814,16 @@ func (c *rPCChannelsClient) ChannelsGetMessageAuthor(ctx context.Context, in *TL
 	return out, nil
 }
 
+func (c *rPCChannelsClient) ChannelsCheckSearchPostsFlood(ctx context.Context, in *TLChannelsCheckSearchPostsFlood, opts ...grpc.CallOption) (*SearchPostsFlood, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(SearchPostsFlood)
+	err := c.cc.Invoke(ctx, RPCChannels_ChannelsCheckSearchPostsFlood_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCChannelsClient) ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Updates)
@@ -5869,6 +5881,7 @@ type RPCChannelsServer interface {
 	ChannelsDeleteParticipantHistory(context.Context, *TLChannelsDeleteParticipantHistory) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(context.Context, *TLChannelsToggleParticipantsHidden) (*Updates, error)
 	ChannelsGetMessageAuthor(context.Context, *TLChannelsGetMessageAuthor) (*User, error)
+	ChannelsCheckSearchPostsFlood(context.Context, *TLChannelsCheckSearchPostsFlood) (*SearchPostsFlood, error)
 	ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(context.Context, *TLChannelsDeleteHistoryAF369D42) (*Bool, error)
 }
@@ -5978,6 +5991,9 @@ func (UnimplementedRPCChannelsServer) ChannelsToggleParticipantsHidden(context.C
 }
 func (UnimplementedRPCChannelsServer) ChannelsGetMessageAuthor(context.Context, *TLChannelsGetMessageAuthor) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetMessageAuthor not implemented")
+}
+func (UnimplementedRPCChannelsServer) ChannelsCheckSearchPostsFlood(context.Context, *TLChannelsCheckSearchPostsFlood) (*SearchPostsFlood, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsCheckSearchPostsFlood not implemented")
 }
 func (UnimplementedRPCChannelsServer) ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsInviteToChannel199F3A6C not implemented")
@@ -6599,6 +6615,24 @@ func _RPCChannels_ChannelsGetMessageAuthor_Handler(srv interface{}, ctx context.
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCChannels_ChannelsCheckSearchPostsFlood_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsCheckSearchPostsFlood)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCChannelsServer).ChannelsCheckSearchPostsFlood(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCChannels_ChannelsCheckSearchPostsFlood_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCChannelsServer).ChannelsCheckSearchPostsFlood(ctx, req.(*TLChannelsCheckSearchPostsFlood))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCChannels_ChannelsInviteToChannel199F3A6C_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsInviteToChannel199F3A6C)
 	if err := dec(in); err != nil {
@@ -6773,6 +6807,10 @@ var RPCChannels_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "channels_getMessageAuthor",
 			Handler:    _RPCChannels_ChannelsGetMessageAuthor_Handler,
+		},
+		{
+			MethodName: "channels_checkSearchPostsFlood",
+			Handler:    _RPCChannels_ChannelsCheckSearchPostsFlood_Handler,
 		},
 		{
 			MethodName: "channels_inviteToChannel199F3A6C",
@@ -30048,6 +30086,12 @@ const (
 	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
 	RPCStories_StoriesTogglePinnedToTop_FullMethodName       = "/mtproto.RPCStories/stories_togglePinnedToTop"
 	RPCStories_StoriesSearchPosts_FullMethodName             = "/mtproto.RPCStories/stories_searchPosts"
+	RPCStories_StoriesCreateAlbum_FullMethodName             = "/mtproto.RPCStories/stories_createAlbum"
+	RPCStories_StoriesUpdateAlbum_FullMethodName             = "/mtproto.RPCStories/stories_updateAlbum"
+	RPCStories_StoriesReorderAlbums_FullMethodName           = "/mtproto.RPCStories/stories_reorderAlbums"
+	RPCStories_StoriesDeleteAlbum_FullMethodName             = "/mtproto.RPCStories/stories_deleteAlbum"
+	RPCStories_StoriesGetAlbums_FullMethodName               = "/mtproto.RPCStories/stories_getAlbums"
+	RPCStories_StoriesGetAlbumStories_FullMethodName         = "/mtproto.RPCStories/stories_getAlbumStories"
 	RPCStories_StoriesCanSendStoryC7DFDFDD_FullMethodName    = "/mtproto.RPCStories/stories_canSendStoryC7DFDFDD"
 	RPCStories_StoriesReport1923FA8C_FullMethodName          = "/mtproto.RPCStories/stories_report1923FA8C"
 	RPCStories_UsersGetStoriesMaxIDs_FullMethodName          = "/mtproto.RPCStories/users_getStoriesMaxIDs"
@@ -30088,6 +30132,12 @@ type RPCStoriesClient interface {
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList, opts ...grpc.CallOption) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(ctx context.Context, in *TLStoriesTogglePinnedToTop, opts ...grpc.CallOption) (*Bool, error)
 	StoriesSearchPosts(ctx context.Context, in *TLStoriesSearchPosts, opts ...grpc.CallOption) (*Stories_FoundStories, error)
+	StoriesCreateAlbum(ctx context.Context, in *TLStoriesCreateAlbum, opts ...grpc.CallOption) (*StoryAlbum, error)
+	StoriesUpdateAlbum(ctx context.Context, in *TLStoriesUpdateAlbum, opts ...grpc.CallOption) (*StoryAlbum, error)
+	StoriesReorderAlbums(ctx context.Context, in *TLStoriesReorderAlbums, opts ...grpc.CallOption) (*Bool, error)
+	StoriesDeleteAlbum(ctx context.Context, in *TLStoriesDeleteAlbum, opts ...grpc.CallOption) (*Bool, error)
+	StoriesGetAlbums(ctx context.Context, in *TLStoriesGetAlbums, opts ...grpc.CallOption) (*Stories_Albums, error)
+	StoriesGetAlbumStories(ctx context.Context, in *TLStoriesGetAlbumStories, opts ...grpc.CallOption) (*Stories_Stories, error)
 	StoriesCanSendStoryC7DFDFDD(ctx context.Context, in *TLStoriesCanSendStoryC7DFDFDD, opts ...grpc.CallOption) (*Bool, error)
 	StoriesReport1923FA8C(ctx context.Context, in *TLStoriesReport1923FA8C, opts ...grpc.CallOption) (*Bool, error)
 	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
@@ -30366,6 +30416,66 @@ func (c *rPCStoriesClient) StoriesSearchPosts(ctx context.Context, in *TLStories
 	return out, nil
 }
 
+func (c *rPCStoriesClient) StoriesCreateAlbum(ctx context.Context, in *TLStoriesCreateAlbum, opts ...grpc.CallOption) (*StoryAlbum, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StoryAlbum)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesCreateAlbum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesUpdateAlbum(ctx context.Context, in *TLStoriesUpdateAlbum, opts ...grpc.CallOption) (*StoryAlbum, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(StoryAlbum)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesUpdateAlbum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesReorderAlbums(ctx context.Context, in *TLStoriesReorderAlbums, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesReorderAlbums_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesDeleteAlbum(ctx context.Context, in *TLStoriesDeleteAlbum, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesDeleteAlbum_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesGetAlbums(ctx context.Context, in *TLStoriesGetAlbums, opts ...grpc.CallOption) (*Stories_Albums, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Stories_Albums)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesGetAlbums_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesGetAlbumStories(ctx context.Context, in *TLStoriesGetAlbumStories, opts ...grpc.CallOption) (*Stories_Stories, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Stories_Stories)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesGetAlbumStories_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCStoriesClient) StoriesCanSendStoryC7DFDFDD(ctx context.Context, in *TLStoriesCanSendStoryC7DFDFDD, opts ...grpc.CallOption) (*Bool, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Bool)
@@ -30476,6 +30586,12 @@ type RPCStoriesServer interface {
 	StoriesGetStoryReactionsList(context.Context, *TLStoriesGetStoryReactionsList) (*Stories_StoryReactionsList, error)
 	StoriesTogglePinnedToTop(context.Context, *TLStoriesTogglePinnedToTop) (*Bool, error)
 	StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error)
+	StoriesCreateAlbum(context.Context, *TLStoriesCreateAlbum) (*StoryAlbum, error)
+	StoriesUpdateAlbum(context.Context, *TLStoriesUpdateAlbum) (*StoryAlbum, error)
+	StoriesReorderAlbums(context.Context, *TLStoriesReorderAlbums) (*Bool, error)
+	StoriesDeleteAlbum(context.Context, *TLStoriesDeleteAlbum) (*Bool, error)
+	StoriesGetAlbums(context.Context, *TLStoriesGetAlbums) (*Stories_Albums, error)
+	StoriesGetAlbumStories(context.Context, *TLStoriesGetAlbumStories) (*Stories_Stories, error)
 	StoriesCanSendStoryC7DFDFDD(context.Context, *TLStoriesCanSendStoryC7DFDFDD) (*Bool, error)
 	StoriesReport1923FA8C(context.Context, *TLStoriesReport1923FA8C) (*Bool, error)
 	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
@@ -30570,6 +30686,24 @@ func (UnimplementedRPCStoriesServer) StoriesTogglePinnedToTop(context.Context, *
 }
 func (UnimplementedRPCStoriesServer) StoriesSearchPosts(context.Context, *TLStoriesSearchPosts) (*Stories_FoundStories, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesSearchPosts not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesCreateAlbum(context.Context, *TLStoriesCreateAlbum) (*StoryAlbum, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesCreateAlbum not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesUpdateAlbum(context.Context, *TLStoriesUpdateAlbum) (*StoryAlbum, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesUpdateAlbum not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesReorderAlbums(context.Context, *TLStoriesReorderAlbums) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesReorderAlbums not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesDeleteAlbum(context.Context, *TLStoriesDeleteAlbum) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesDeleteAlbum not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesGetAlbums(context.Context, *TLStoriesGetAlbums) (*Stories_Albums, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAlbums not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesGetAlbumStories(context.Context, *TLStoriesGetAlbumStories) (*Stories_Stories, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAlbumStories not implemented")
 }
 func (UnimplementedRPCStoriesServer) StoriesCanSendStoryC7DFDFDD(context.Context, *TLStoriesCanSendStoryC7DFDFDD) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStoryC7DFDFDD not implemented")
@@ -31083,6 +31217,114 @@ func _RPCStories_StoriesSearchPosts_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCStories_StoriesCreateAlbum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesCreateAlbum)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesCreateAlbum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesCreateAlbum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesCreateAlbum(ctx, req.(*TLStoriesCreateAlbum))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesUpdateAlbum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesUpdateAlbum)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesUpdateAlbum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesUpdateAlbum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesUpdateAlbum(ctx, req.(*TLStoriesUpdateAlbum))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesReorderAlbums_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesReorderAlbums)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesReorderAlbums(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesReorderAlbums_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesReorderAlbums(ctx, req.(*TLStoriesReorderAlbums))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesDeleteAlbum_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesDeleteAlbum)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesDeleteAlbum(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesDeleteAlbum_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesDeleteAlbum(ctx, req.(*TLStoriesDeleteAlbum))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesGetAlbums_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetAlbums)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesGetAlbums(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesGetAlbums_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesGetAlbums(ctx, req.(*TLStoriesGetAlbums))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesGetAlbumStories_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetAlbumStories)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesGetAlbumStories(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesGetAlbumStories_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesGetAlbumStories(ctx, req.(*TLStoriesGetAlbumStories))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCStories_StoriesCanSendStoryC7DFDFDD_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLStoriesCanSendStoryC7DFDFDD)
 	if err := dec(in); err != nil {
@@ -31337,6 +31579,30 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "stories_searchPosts",
 			Handler:    _RPCStories_StoriesSearchPosts_Handler,
+		},
+		{
+			MethodName: "stories_createAlbum",
+			Handler:    _RPCStories_StoriesCreateAlbum_Handler,
+		},
+		{
+			MethodName: "stories_updateAlbum",
+			Handler:    _RPCStories_StoriesUpdateAlbum_Handler,
+		},
+		{
+			MethodName: "stories_reorderAlbums",
+			Handler:    _RPCStories_StoriesReorderAlbums_Handler,
+		},
+		{
+			MethodName: "stories_deleteAlbum",
+			Handler:    _RPCStories_StoriesDeleteAlbum_Handler,
+		},
+		{
+			MethodName: "stories_getAlbums",
+			Handler:    _RPCStories_StoriesGetAlbums_Handler,
+		},
+		{
+			MethodName: "stories_getAlbumStories",
+			Handler:    _RPCStories_StoriesGetAlbumStories_Handler,
 		},
 		{
 			MethodName: "stories_canSendStoryC7DFDFDD",

@@ -4515,6 +4515,7 @@ message TL_inputGroupCallInviteMessage {
 //  + TL_inputInvoicePremiumGiftStars
 //  + TL_inputInvoiceBusinessBotTransferStars
 //  + TL_inputInvoiceStarGiftResale
+//  + TL_inputInvoiceStarGiftResale
 //  + TL_inputInvoiceStarGift
 //  + TL_inputInvoiceStarGiftUpgrade
 //  + TL_inputInvoiceStarGiftTransfer
@@ -4540,8 +4541,9 @@ message InputInvoice {
     int32 months = 17;
     InputUser bot = 18;
     int64 stars = 19;
-    InputUser to_id_INPUTUSER = 20;
-    StarsTopupOption option_STARSTOPUPOPTION = 21;
+    bool ton = 20;
+    InputUser to_id_INPUTUSER = 21;
+    StarsTopupOption option_STARSTOPUPOPTION = 22;
 }
 
 // TL_inputInvoiceMessage
@@ -6351,6 +6353,7 @@ message TL_messageService {
 //  + TL_messageActionSuggestedPostSuccess
 //  + TL_messageActionSuggestedPostRefund
 //  + TL_messageActionGiftTon
+//  + TL_messageActionStarGiftUnique
 //  + TL_messageActionPaidMessagesPrice
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGift
@@ -6466,7 +6469,7 @@ message MessageAction {
     bool transferred = 88;
     google.protobuf.Int32Value can_export_at = 89;
     google.protobuf.Int64Value transfer_stars = 90;
-    google.protobuf.Int64Value resale_stars = 91;
+    StarsAmount resale_amount = 91;
     google.protobuf.Int32Value can_transfer_at = 92;
     google.protobuf.Int32Value can_resell_at = 93;
     int32 count = 94;
@@ -6485,9 +6488,10 @@ message MessageAction {
     bool payer_initiated = 107;
     string crypto_currency_STRING = 108;
     int64 crypto_amount_INT64 = 109;
-    int64 convert_stars_INT64 = 110;
-    string domain_STRING = 111;
-    BizDataRaw biz_data = 112;
+    google.protobuf.Int64Value resale_stars = 110;
+    int64 convert_stars_INT64 = 111;
+    string domain_STRING = 112;
+    BizDataRaw biz_data = 113;
     string title = 200;
 }
 
@@ -9830,6 +9834,25 @@ message TL_savedStarGift {
 }
 
 
+// SearchPostsFlood <--
+//  + TL_searchPostsFlood
+//
+message SearchPostsFlood {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool query_is_free = 3;
+    int32 total_daily = 4;
+    int32 remains = 5;
+    google.protobuf.Int32Value wait_till = 6;
+    int64 stars_amount = 7;
+}
+
+// TL_searchPostsFlood
+message TL_searchPostsFlood {
+    SearchPostsFlood data2 = 1;
+}
+
+
 // SearchResultsCalendarPeriod <--
 //  + TL_searchResultsCalendarPeriod
 //
@@ -10496,6 +10519,7 @@ message TL_sponsoredWebPage {
 // StarGift <--
 //  + TL_starGift
 //  + TL_starGiftUnique
+//  + TL_starGiftUnique
 //  + TL_starGift
 //  + TL_starGift
 //  + TL_starGiftUnique
@@ -10530,19 +10554,21 @@ message StarGift {
     Peer released_by = 20;
     google.protobuf.Int32Value per_user_total = 21;
     google.protobuf.Int32Value per_user_remains = 22;
-    string title_STRING = 23;
-    string slug = 24;
-    int32 num = 25;
-    Peer owner_id_FLAGPEER = 26;
-    google.protobuf.StringValue owner_name = 27;
-    google.protobuf.StringValue owner_address = 28;
-    repeated StarGiftAttribute attributes = 29;
-    int32 availability_issued = 30;
-    int32 availability_total_INT32 = 31;
-    google.protobuf.StringValue gift_address = 32;
-    google.protobuf.Int64Value resell_stars = 33;
-    google.protobuf.Int64Value owner_id_FLAGINT64 = 34;
-    int64 owner_id_INT64 = 35;
+    bool resale_ton_only = 23;
+    string title_STRING = 24;
+    string slug = 25;
+    int32 num = 26;
+    Peer owner_id_FLAGPEER = 27;
+    google.protobuf.StringValue owner_name = 28;
+    google.protobuf.StringValue owner_address = 29;
+    repeated StarGiftAttribute attributes = 30;
+    int32 availability_issued = 31;
+    int32 availability_total_INT32 = 32;
+    google.protobuf.StringValue gift_address = 33;
+    repeated StarsAmount resell_amount = 34;
+    google.protobuf.Int64Value resell_stars = 35;
+    google.protobuf.Int64Value owner_id_FLAGINT64 = 36;
+    int64 owner_id_INT64 = 37;
 }
 
 // TL_starGift
@@ -10892,31 +10918,32 @@ message StarsTransaction {
     bool stargift_upgrade = 8;
     bool business_transfer = 9;
     bool stargift_resale = 10;
-    string id = 11;
-    StarsAmount amount = 12;
-    int32 date = 13;
-    StarsTransactionPeer peer = 14;
-    google.protobuf.StringValue title = 15;
-    google.protobuf.StringValue description = 16;
-    WebDocument photo = 17;
-    google.protobuf.Int32Value transaction_date = 18;
-    google.protobuf.StringValue transaction_url = 19;
-    bytes bot_payload = 20;
-    google.protobuf.Int32Value msg_id = 21;
-    repeated MessageMedia extended_media = 22;
-    google.protobuf.Int32Value subscription_period = 23;
-    google.protobuf.Int32Value giveaway_post_id = 24;
-    StarGift stargift = 25;
-    google.protobuf.Int32Value floodskip_number = 26;
-    google.protobuf.Int32Value starref_commission_permille = 27;
-    Peer starref_peer = 28;
-    StarsAmount starref_amount = 29;
-    google.protobuf.Int32Value paid_messages = 30;
-    google.protobuf.Int32Value premium_gift_months = 31;
-    google.protobuf.Int32Value ads_proceeds_from_date = 32;
-    google.protobuf.Int32Value ads_proceeds_to_date = 33;
-    StarsAmount stars_STARSAMOUNT = 34;
-    int64 stars_INT64 = 35;
+    bool posts_search = 11;
+    string id = 12;
+    StarsAmount amount = 13;
+    int32 date = 14;
+    StarsTransactionPeer peer = 15;
+    google.protobuf.StringValue title = 16;
+    google.protobuf.StringValue description = 17;
+    WebDocument photo = 18;
+    google.protobuf.Int32Value transaction_date = 19;
+    google.protobuf.StringValue transaction_url = 20;
+    bytes bot_payload = 21;
+    google.protobuf.Int32Value msg_id = 22;
+    repeated MessageMedia extended_media = 23;
+    google.protobuf.Int32Value subscription_period = 24;
+    google.protobuf.Int32Value giveaway_post_id = 25;
+    StarGift stargift = 26;
+    google.protobuf.Int32Value floodskip_number = 27;
+    google.protobuf.Int32Value starref_commission_permille = 28;
+    Peer starref_peer = 29;
+    StarsAmount starref_amount = 30;
+    google.protobuf.Int32Value paid_messages = 31;
+    google.protobuf.Int32Value premium_gift_months = 32;
+    google.protobuf.Int32Value ads_proceeds_from_date = 33;
+    google.protobuf.Int32Value ads_proceeds_to_date = 34;
+    StarsAmount stars_STARSAMOUNT = 35;
+    int64 stars_INT64 = 36;
 }
 
 // TL_starsTransaction
@@ -11248,6 +11275,24 @@ message TL_storiesStealthMode {
 }
 
 
+// StoryAlbum <--
+//  + TL_storyAlbum
+//
+message StoryAlbum {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 album_id = 3;
+    string title = 4;
+    Photo icon_photo = 5;
+    Document icon_video = 6;
+}
+
+// TL_storyAlbum
+message TL_storyAlbum {
+    StoryAlbum data2 = 1;
+}
+
+
 // StoryFwdHeader <--
 //  + TL_storyFwdHeader
 //
@@ -11269,6 +11314,7 @@ message TL_storyFwdHeader {
 // StoryItem <--
 //  + TL_storyItemDeleted
 //  + TL_storyItemSkipped
+//  + TL_storyItem
 //  + TL_storyItem
 //  + TL_storyItem
 //  + TL_storyItem
@@ -11298,6 +11344,7 @@ message StoryItem {
     repeated PrivacyRule privacy = 21;
     StoryViews views = 22;
     Reaction sent_reaction = 23;
+    repeated int32 albums = 24;
 }
 
 // TL_storyItemDeleted
@@ -13012,6 +13059,7 @@ message TL_userData {
 //  + TL_userFull
 //  + TL_userFull
 //  + TL_userFull
+//  + TL_userFull
 //
 message UserFull {
     string predicate_name = 1;
@@ -13065,8 +13113,10 @@ message UserFull {
     google.protobuf.Int64Value send_paid_messages_stars = 49;
     DisallowedGiftsSettings disallowed_gifts = 50;
     StarsRating stars_rating = 51;
-    repeated PremiumGiftOption premium_gifts = 52;
-    UserStories stories_FLAGUSERSTORIES = 53;
+    StarsRating stars_my_pending_rating = 52;
+    google.protobuf.Int32Value stars_my_pending_rating_date = 53;
+    repeated PremiumGiftOption premium_gifts = 54;
+    UserStories stories_FLAGUSERSTORIES = 55;
 }
 
 // TL_userFull
@@ -13424,6 +13474,7 @@ message TL_webPageNotModified {
 //  + TL_webPageAttributeStory
 //  + TL_webPageAttributeStickerSet
 //  + TL_webPageAttributeUniqueStarGift
+//  + TL_webPageAttributeStarGiftCollection
 //  + TL_webPageAttributeStory
 //
 message WebPageAttribute {
@@ -13438,7 +13489,8 @@ message WebPageAttribute {
     bool text_color = 9;
     repeated Document stickers = 10;
     StarGift gift = 11;
-    int64 user_id = 12;
+    repeated Document icons = 12;
+    int64 user_id = 13;
 }
 
 // TL_webPageAttributeTheme
@@ -13458,6 +13510,11 @@ message TL_webPageAttributeStickerSet {
 
 // TL_webPageAttributeUniqueStarGift
 message TL_webPageAttributeUniqueStarGift {
+    WebPageAttribute data2 = 1;
+}
+
+// TL_webPageAttributeStarGiftCollection
+message TL_webPageAttributeStarGiftCollection {
     WebPageAttribute data2 = 1;
 }
 
@@ -15772,6 +15829,7 @@ message TL_messages_messageViews {
 //  + TL_messages_messagesSlice
 //  + TL_messages_channelMessages
 //  + TL_messages_messagesNotModified
+//  + TL_messages_messagesSlice
 //  + TL_messages_channelMessages
 //
 message messages_Messages {
@@ -15784,8 +15842,9 @@ message messages_Messages {
     int32 count = 7;
     google.protobuf.Int32Value next_rate = 8;
     google.protobuf.Int32Value offset_id_offset = 9;
-    int32 pts = 10;
-    repeated ForumTopic topics = 11;
+    SearchPostsFlood search_flood = 10;
+    int32 pts = 11;
+    repeated ForumTopic topics = 12;
 }
 
 // TL_messages_messages
@@ -17294,6 +17353,28 @@ message TL_storage_fileMp4 {
 // TL_storage_fileWebp
 message TL_storage_fileWebp {
     storage_FileType data2 = 1;
+}
+
+
+// stories_Albums <--
+//  + TL_stories_albumsNotModified
+//  + TL_stories_albums
+//
+message stories_Albums {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int64 hash = 3;
+    repeated StoryAlbum albums = 4;
+}
+
+// TL_stories_albumsNotModified
+message TL_stories_albumsNotModified {
+    stories_Albums data2 = 1;
+}
+
+// TL_stories_albums
+message TL_stories_albums {
+    stories_Albums data2 = 1;
 }
 
 
