@@ -3903,8 +3903,9 @@ message TL_payments_getSavedStarGifts {
     bool exclude_unique = 7;
     bool sort_by_value = 8;
     InputPeer peer = 9;
-    string offset = 10;
-    int32 limit = 11;
+    google.protobuf.Int32Value collection_id = 10;
+    string offset = 11;
+    int32 limit = 12;
 }
 
 message TL_payments_getSavedStarGift {
@@ -3950,6 +3951,41 @@ message TL_payments_updateStarGiftPrice {
     TLConstructor  constructor = 1;
     InputSavedStarGift stargift = 3;
     int64 resell_stars = 4;
+}
+
+message TL_payments_createStarGiftCollection {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    string title = 4;
+    repeated InputSavedStarGift stargift = 5;
+}
+
+message TL_payments_updateStarGiftCollection {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 collection_id = 4;
+    google.protobuf.StringValue title = 5;
+    repeated InputSavedStarGift delete_stargift = 6;
+    repeated InputSavedStarGift add_stargift = 7;
+    repeated InputSavedStarGift order = 8;
+}
+
+message TL_payments_reorderStarGiftCollections {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    repeated int32 order = 4;
+}
+
+message TL_payments_deleteStarGiftCollection {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 collection_id = 4;
+}
+
+message TL_payments_getStarGiftCollections {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int64 hash = 4;
 }
 
 message TL_stickers_createStickerSet {
@@ -5636,6 +5672,11 @@ service RPCGifts {
     rpc payments_toggleStarGiftsPinnedToTop(TL_payments_toggleStarGiftsPinnedToTop) returns (Bool) {}
     rpc payments_getResaleStarGifts(TL_payments_getResaleStarGifts) returns (payments_ResaleStarGifts) {}
     rpc payments_updateStarGiftPrice(TL_payments_updateStarGiftPrice) returns (Updates) {}
+    rpc payments_createStarGiftCollection(TL_payments_createStarGiftCollection) returns (StarGiftCollection) {}
+    rpc payments_updateStarGiftCollection(TL_payments_updateStarGiftCollection) returns (StarGiftCollection) {}
+    rpc payments_reorderStarGiftCollections(TL_payments_reorderStarGiftCollections) returns (Bool) {}
+    rpc payments_deleteStarGiftCollection(TL_payments_deleteStarGiftCollection) returns (Bool) {}
+    rpc payments_getStarGiftCollections(TL_payments_getStarGiftCollections) returns (payments_StarGiftCollections) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }

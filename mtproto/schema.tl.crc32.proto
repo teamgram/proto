@@ -382,6 +382,7 @@ enum TLConstructor {
     CRC32_inputReportReasonFake = -170010905; // f5ddd6e7
     CRC32_inputReportReasonIllegalDrugs = 177124030; // a8eb2be
     CRC32_inputReportReasonPersonalDetails = -1631091139; // 9ec7863d
+    CRC32_userFull_29de80be = 702447806; // 29de80be
     CRC32_userFull_99e78045 = -1712881595; // 99e78045
     CRC32_userFull_d2234ea0 = -769438048; // d2234ea0
     CRC32_userFull_4d975bbc = 1301765052; // 4d975bbc
@@ -1742,6 +1743,7 @@ enum TLConstructor {
     CRC32_messageReactor = 1269016922; // 4ba3a95a
     CRC32_starsGiveawayOption = -1798404822; // 94ce852a
     CRC32_starsGiveawayWinnersOption = 1411605001; // 54236209
+    CRC32_starGift_bcff5b = 12386139; // bcff5b
     CRC32_starGift_7f853c12 = 2139438098; // 7f853c12
     CRC32_starGift_c62aca28 = -970274264; // c62aca28
     CRC32_starGift_2cc73c8 = 46953416; // 2cc73c8
@@ -1784,6 +1786,7 @@ enum TLConstructor {
     CRC32_users_usersSlice = 828000628; // 315a4974
     CRC32_payments_uniqueStarGift = -895289845; // caa2f60b
     CRC32_messages_webPagePreview = -1254192351; // b53e8b21
+    CRC32_savedStarGift_1ea646df = 514213599; // 1ea646df
     CRC32_savedStarGift_dfda0499 = -539360103; // dfda0499
     CRC32_savedStarGift_6056dba5 = 1616305061; // 6056dba5
     CRC32_payments_savedStarGifts = -1779201615; // 95f389b1
@@ -1814,6 +1817,10 @@ enum TLConstructor {
     CRC32_todoList = 1236871718; // 49b92a26
     CRC32_todoCompletion = 1287725239; // 4cc120b7
     CRC32_suggestedPost = 244201445; // e8e37e5
+    CRC32_starsRating = 453922567; // 1b0e4f07
+    CRC32_starGiftCollection = -1653926992; // 9d6b13b0
+    CRC32_payments_starGiftCollectionsNotModified = -1598402793; // a0ba4f17
+    CRC32_payments_starGiftCollections = -1977011469; // 8a2932f3
     CRC32_updateBroadcastRevenueTransactions = -539401739; // dfd961f5
     CRC32_stats_broadcastRevenueStats_5407e297 = 1409802903; // 5407e297
     CRC32_stats_broadcastRevenueStats_d07b4bad = -797226067; // d07b4bad
@@ -2615,7 +2622,8 @@ enum TLConstructor {
     CRC32_payments_transferStarGift_7f18176a = 2132285290; // 7f18176a
     CRC32_payments_transferStarGift_333fb526 = 859813158; // 333fb526
     CRC32_payments_getUniqueStarGift = -1583919758; // a1974d72
-    CRC32_payments_getSavedStarGifts = 595791337; // 23830de9
+    CRC32_payments_getSavedStarGifts_a319e569 = -1558583959; // a319e569
+    CRC32_payments_getSavedStarGifts_23830de9 = 595791337; // 23830de9
     CRC32_payments_getSavedStarGift = -1269456634; // b455a106
     CRC32_payments_getStarGiftWithdrawalUrl = -798059608; // d06e93a8
     CRC32_payments_toggleChatStarGiftNotifications = 1626009505; // 60eaefa1
@@ -2623,6 +2631,11 @@ enum TLConstructor {
     CRC32_payments_canPurchaseStore = 1339842215; // 4fdc5ea7
     CRC32_payments_getResaleStarGifts = 2053087798; // 7a5fa236
     CRC32_payments_updateStarGiftPrice = 1001301217; // 3baea4e1
+    CRC32_payments_createStarGiftCollection = 524947079; // 1f4a0e87
+    CRC32_payments_updateStarGiftCollection = 1339932391; // 4fddbee7
+    CRC32_payments_reorderStarGiftCollections = -1020594996; // c32af4cc
+    CRC32_payments_deleteStarGiftCollection = -1386854168; // ad5648e8
+    CRC32_payments_getStarGiftCollections = -1743023651; // 981b91dd
     CRC32_stickers_createStickerSet = -1876841625; // 9021ab67
     CRC32_stickers_removeStickerFromSet = -143257775; // f7760f51
     CRC32_stickers_changeStickerPosition = -4795190; // ffb6d4ca
