@@ -1094,6 +1094,7 @@ const (
 	RPCAuthorization_AuthRequestFirebaseSms_FullMethodName             = "/mtproto.RPCAuthorization/auth_requestFirebaseSms"
 	RPCAuthorization_AuthResetLoginEmail_FullMethodName                = "/mtproto.RPCAuthorization/auth_resetLoginEmail"
 	RPCAuthorization_AuthReportMissingCode_FullMethodName              = "/mtproto.RPCAuthorization/auth_reportMissingCode"
+	RPCAuthorization_AuthCheckPaidAuth_FullMethodName                  = "/mtproto.RPCAuthorization/auth_checkPaidAuth"
 	RPCAuthorization_AccountSendVerifyEmailCode_FullMethodName         = "/mtproto.RPCAuthorization/account_sendVerifyEmailCode"
 	RPCAuthorization_AccountVerifyEmail32DA4CF_FullMethodName          = "/mtproto.RPCAuthorization/account_verifyEmail32DA4CF"
 	RPCAuthorization_AccountResetPassword_FullMethodName               = "/mtproto.RPCAuthorization/account_resetPassword"
@@ -1128,6 +1129,7 @@ type RPCAuthorizationClient interface {
 	AuthRequestFirebaseSms(ctx context.Context, in *TLAuthRequestFirebaseSms, opts ...grpc.CallOption) (*Bool, error)
 	AuthResetLoginEmail(ctx context.Context, in *TLAuthResetLoginEmail, opts ...grpc.CallOption) (*Auth_SentCode, error)
 	AuthReportMissingCode(ctx context.Context, in *TLAuthReportMissingCode, opts ...grpc.CallOption) (*Bool, error)
+	AuthCheckPaidAuth(ctx context.Context, in *TLAuthCheckPaidAuth, opts ...grpc.CallOption) (*Auth_SentCode, error)
 	AccountSendVerifyEmailCode(ctx context.Context, in *TLAccountSendVerifyEmailCode, opts ...grpc.CallOption) (*Account_SentEmailCode, error)
 	AccountVerifyEmail32DA4CF(ctx context.Context, in *TLAccountVerifyEmail32DA4CF, opts ...grpc.CallOption) (*Account_EmailVerified, error)
 	AccountResetPassword(ctx context.Context, in *TLAccountResetPassword, opts ...grpc.CallOption) (*Account_ResetPasswordResult, error)
@@ -1346,6 +1348,16 @@ func (c *rPCAuthorizationClient) AuthReportMissingCode(ctx context.Context, in *
 	return out, nil
 }
 
+func (c *rPCAuthorizationClient) AuthCheckPaidAuth(ctx context.Context, in *TLAuthCheckPaidAuth, opts ...grpc.CallOption) (*Auth_SentCode, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Auth_SentCode)
+	err := c.cc.Invoke(ctx, RPCAuthorization_AuthCheckPaidAuth_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCAuthorizationClient) AccountSendVerifyEmailCode(ctx context.Context, in *TLAccountSendVerifyEmailCode, opts ...grpc.CallOption) (*Account_SentEmailCode, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Account_SentEmailCode)
@@ -1450,6 +1462,7 @@ type RPCAuthorizationServer interface {
 	AuthRequestFirebaseSms(context.Context, *TLAuthRequestFirebaseSms) (*Bool, error)
 	AuthResetLoginEmail(context.Context, *TLAuthResetLoginEmail) (*Auth_SentCode, error)
 	AuthReportMissingCode(context.Context, *TLAuthReportMissingCode) (*Bool, error)
+	AuthCheckPaidAuth(context.Context, *TLAuthCheckPaidAuth) (*Auth_SentCode, error)
 	AccountSendVerifyEmailCode(context.Context, *TLAccountSendVerifyEmailCode) (*Account_SentEmailCode, error)
 	AccountVerifyEmail32DA4CF(context.Context, *TLAccountVerifyEmail32DA4CF) (*Account_EmailVerified, error)
 	AccountResetPassword(context.Context, *TLAccountResetPassword) (*Account_ResetPasswordResult, error)
@@ -1526,6 +1539,9 @@ func (UnimplementedRPCAuthorizationServer) AuthResetLoginEmail(context.Context, 
 }
 func (UnimplementedRPCAuthorizationServer) AuthReportMissingCode(context.Context, *TLAuthReportMissingCode) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AuthReportMissingCode not implemented")
+}
+func (UnimplementedRPCAuthorizationServer) AuthCheckPaidAuth(context.Context, *TLAuthCheckPaidAuth) (*Auth_SentCode, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthCheckPaidAuth not implemented")
 }
 func (UnimplementedRPCAuthorizationServer) AccountSendVerifyEmailCode(context.Context, *TLAccountSendVerifyEmailCode) (*Account_SentEmailCode, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountSendVerifyEmailCode not implemented")
@@ -1931,6 +1947,24 @@ func _RPCAuthorization_AuthReportMissingCode_Handler(srv interface{}, ctx contex
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCAuthorization_AuthCheckPaidAuth_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAuthCheckPaidAuth)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCAuthorizationServer).AuthCheckPaidAuth(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCAuthorization_AuthCheckPaidAuth_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCAuthorizationServer).AuthCheckPaidAuth(ctx, req.(*TLAuthCheckPaidAuth))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCAuthorization_AccountSendVerifyEmailCode_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLAccountSendVerifyEmailCode)
 	if err := dec(in); err != nil {
@@ -2161,6 +2195,10 @@ var RPCAuthorization_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "auth_reportMissingCode",
 			Handler:    _RPCAuthorization_AuthReportMissingCode_Handler,
+		},
+		{
+			MethodName: "auth_checkPaidAuth",
+			Handler:    _RPCAuthorization_AuthCheckPaidAuth_Handler,
 		},
 		{
 			MethodName: "account_sendVerifyEmailCode",

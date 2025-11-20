@@ -63,6 +63,7 @@ var rpcContextRegisters = map[string]RPCContextTuple{
 	"TLAuthRequestFirebaseSms":                     RPCContextTuple{"/mtproto.RPCAuthorization/auth_requestFirebaseSms", func() interface{} { return new(Bool) }},
 	"TLAuthResetLoginEmail":                        RPCContextTuple{"/mtproto.RPCAuthorization/auth_resetLoginEmail", func() interface{} { return new(Auth_SentCode) }},
 	"TLAuthReportMissingCode":                      RPCContextTuple{"/mtproto.RPCAuthorization/auth_reportMissingCode", func() interface{} { return new(Bool) }},
+	"TLAuthCheckPaidAuth":                          RPCContextTuple{"/mtproto.RPCAuthorization/auth_checkPaidAuth", func() interface{} { return new(Auth_SentCode) }},
 	"TLAccountSendVerifyEmailCode":                 RPCContextTuple{"/mtproto.RPCAuthorization/account_sendVerifyEmailCode", func() interface{} { return new(Account_SentEmailCode) }},
 	"TLAccountVerifyEmail32DA4CF":                  RPCContextTuple{"/mtproto.RPCAuthorization/account_verifyEmail32DA4CF", func() interface{} { return new(Account_EmailVerified) }},
 	"TLAccountResetPassword":                       RPCContextTuple{"/mtproto.RPCAuthorization/account_resetPassword", func() interface{} { return new(Account_ResetPasswordResult) }},

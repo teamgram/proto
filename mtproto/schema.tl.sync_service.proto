@@ -240,6 +240,13 @@ message TL_auth_reportMissingCode {
     string mnc = 5;
 }
 
+message TL_auth_checkPaidAuth {
+    TLConstructor  constructor = 1;
+    string phone_number = 3;
+    string phone_code_hash = 4;
+    int64 form_id = 5;
+}
+
 message TL_account_registerDevice {
     TLConstructor  constructor = 1;
     bool no_muted = 3;
@@ -909,9 +916,10 @@ message TL_account_getSavedMusicIds {
 
 message TL_account_getUniqueGiftChatThemes {
     TLConstructor  constructor = 1;
-    int32 offset = 3;
+    string offset_STRING = 3;
     int32 limit = 4;
     int64 hash = 5;
+    int32 offset_INT32 = 6;
 }
 
 message TL_users_getUsers {
@@ -5370,6 +5378,7 @@ service RPCAuthorization {
     rpc auth_requestFirebaseSms(TL_auth_requestFirebaseSms) returns (Bool) {}
     rpc auth_resetLoginEmail(TL_auth_resetLoginEmail) returns (auth_SentCode) {}
     rpc auth_reportMissingCode(TL_auth_reportMissingCode) returns (Bool) {}
+    rpc auth_checkPaidAuth(TL_auth_checkPaidAuth) returns (auth_SentCode) {}
     rpc account_sendVerifyEmailCode(TL_account_sendVerifyEmailCode) returns (account_SentEmailCode) {}
     rpc account_verifyEmail32DA4CF(TL_account_verifyEmail32DA4CF) returns (account_EmailVerified) {}
     rpc account_resetPassword(TL_account_resetPassword) returns (account_ResetPasswordResult) {}
