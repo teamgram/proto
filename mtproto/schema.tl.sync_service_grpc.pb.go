@@ -18339,6 +18339,8 @@ const (
 	RPCMessages_MessagesSearchSentMedia_FullMethodName           = "/mtproto.RPCMessages/messages_searchSentMedia"
 	RPCMessages_MessagesGetOutboxReadDate_FullMethodName         = "/mtproto.RPCMessages/messages_getOutboxReadDate"
 	RPCMessages_MessagesReportMessagesDelivery_FullMethodName    = "/mtproto.RPCMessages/messages_reportMessagesDelivery"
+	RPCMessages_MessagesToggleTodoCompleted_FullMethodName       = "/mtproto.RPCMessages/messages_toggleTodoCompleted"
+	RPCMessages_MessagesAppendTodoList_FullMethodName            = "/mtproto.RPCMessages/messages_appendTodoList"
 	RPCMessages_ChannelsGetSendAs_FullMethodName                 = "/mtproto.RPCMessages/channels_getSendAs"
 	RPCMessages_ChannelsSearchPosts_FullMethodName               = "/mtproto.RPCMessages/channels_searchPosts"
 )
@@ -18376,6 +18378,8 @@ type RPCMessagesClient interface {
 	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia, opts ...grpc.CallOption) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate, opts ...grpc.CallOption) (*OutboxReadDate, error)
 	MessagesReportMessagesDelivery(ctx context.Context, in *TLMessagesReportMessagesDelivery, opts ...grpc.CallOption) (*Bool, error)
+	MessagesToggleTodoCompleted(ctx context.Context, in *TLMessagesToggleTodoCompleted, opts ...grpc.CallOption) (*Updates, error)
+	MessagesAppendTodoList(ctx context.Context, in *TLMessagesAppendTodoList, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts, opts ...grpc.CallOption) (*Messages_Messages, error)
 }
@@ -18678,6 +18682,26 @@ func (c *rPCMessagesClient) MessagesReportMessagesDelivery(ctx context.Context, 
 	return out, nil
 }
 
+func (c *rPCMessagesClient) MessagesToggleTodoCompleted(ctx context.Context, in *TLMessagesToggleTodoCompleted, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesToggleTodoCompleted_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCMessagesClient) MessagesAppendTodoList(ctx context.Context, in *TLMessagesAppendTodoList, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesAppendTodoList_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCMessagesClient) ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Channels_SendAsPeers)
@@ -18731,6 +18755,8 @@ type RPCMessagesServer interface {
 	MessagesSearchSentMedia(context.Context, *TLMessagesSearchSentMedia) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
 	MessagesReportMessagesDelivery(context.Context, *TLMessagesReportMessagesDelivery) (*Bool, error)
+	MessagesToggleTodoCompleted(context.Context, *TLMessagesToggleTodoCompleted) (*Updates, error)
+	MessagesAppendTodoList(context.Context, *TLMessagesAppendTodoList) (*Updates, error)
 	ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(context.Context, *TLChannelsSearchPosts) (*Messages_Messages, error)
 }
@@ -18828,6 +18854,12 @@ func (UnimplementedRPCMessagesServer) MessagesGetOutboxReadDate(context.Context,
 }
 func (UnimplementedRPCMessagesServer) MessagesReportMessagesDelivery(context.Context, *TLMessagesReportMessagesDelivery) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesReportMessagesDelivery not implemented")
+}
+func (UnimplementedRPCMessagesServer) MessagesToggleTodoCompleted(context.Context, *TLMessagesToggleTodoCompleted) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesToggleTodoCompleted not implemented")
+}
+func (UnimplementedRPCMessagesServer) MessagesAppendTodoList(context.Context, *TLMessagesAppendTodoList) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesAppendTodoList not implemented")
 }
 func (UnimplementedRPCMessagesServer) ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetSendAs not implemented")
@@ -19377,6 +19409,42 @@ func _RPCMessages_MessagesReportMessagesDelivery_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMessages_MessagesToggleTodoCompleted_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesToggleTodoCompleted)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesToggleTodoCompleted(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesToggleTodoCompleted_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesToggleTodoCompleted(ctx, req.(*TLMessagesToggleTodoCompleted))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCMessages_MessagesAppendTodoList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesAppendTodoList)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesAppendTodoList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesAppendTodoList_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesAppendTodoList(ctx, req.(*TLMessagesAppendTodoList))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCMessages_ChannelsGetSendAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsGetSendAs)
 	if err := dec(in); err != nil {
@@ -19535,6 +19603,14 @@ var RPCMessages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_reportMessagesDelivery",
 			Handler:    _RPCMessages_MessagesReportMessagesDelivery_Handler,
+		},
+		{
+			MethodName: "messages_toggleTodoCompleted",
+			Handler:    _RPCMessages_MessagesToggleTodoCompleted_Handler,
+		},
+		{
+			MethodName: "messages_appendTodoList",
+			Handler:    _RPCMessages_MessagesAppendTodoList_Handler,
 		},
 		{
 			MethodName: "channels_getSendAs",
@@ -20886,18 +20962,20 @@ var RPCPaidMedia_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCPaidMessage_AccountAddNoPaidMessagesException_FullMethodName = "/mtproto.RPCPaidMessage/account_addNoPaidMessagesException"
-	RPCPaidMessage_AccountGetPaidMessagesRevenue_FullMethodName     = "/mtproto.RPCPaidMessage/account_getPaidMessagesRevenue"
-	RPCPaidMessage_ChannelsUpdatePaidMessagesPrice_FullMethodName   = "/mtproto.RPCPaidMessage/channels_updatePaidMessagesPrice"
+	RPCPaidMessage_AccountGetPaidMessagesRevenue_FullMethodName        = "/mtproto.RPCPaidMessage/account_getPaidMessagesRevenue"
+	RPCPaidMessage_AccountToggleNoPaidMessagesException_FullMethodName = "/mtproto.RPCPaidMessage/account_toggleNoPaidMessagesException"
+	RPCPaidMessage_ChannelsUpdatePaidMessagesPrice_FullMethodName      = "/mtproto.RPCPaidMessage/channels_updatePaidMessagesPrice"
+	RPCPaidMessage_AccountAddNoPaidMessagesException_FullMethodName    = "/mtproto.RPCPaidMessage/account_addNoPaidMessagesException"
 )
 
 // RPCPaidMessageClient is the client API for RPCPaidMessage service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type RPCPaidMessageClient interface {
-	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException, opts ...grpc.CallOption) (*Bool, error)
 	AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue, opts ...grpc.CallOption) (*Account_PaidMessagesRevenue, error)
+	AccountToggleNoPaidMessagesException(ctx context.Context, in *TLAccountToggleNoPaidMessagesException, opts ...grpc.CallOption) (*Bool, error)
 	ChannelsUpdatePaidMessagesPrice(ctx context.Context, in *TLChannelsUpdatePaidMessagesPrice, opts ...grpc.CallOption) (*Updates, error)
+	AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCPaidMessageClient struct {
@@ -20908,20 +20986,20 @@ func NewRPCPaidMessageClient(cc grpc.ClientConnInterface) RPCPaidMessageClient {
 	return &rPCPaidMessageClient{cc}
 }
 
-func (c *rPCPaidMessageClient) AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCPaidMessageClient) AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue, opts ...grpc.CallOption) (*Account_PaidMessagesRevenue, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCPaidMessage_AccountAddNoPaidMessagesException_FullMethodName, in, out, cOpts...)
+	out := new(Account_PaidMessagesRevenue)
+	err := c.cc.Invoke(ctx, RPCPaidMessage_AccountGetPaidMessagesRevenue_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *rPCPaidMessageClient) AccountGetPaidMessagesRevenue(ctx context.Context, in *TLAccountGetPaidMessagesRevenue, opts ...grpc.CallOption) (*Account_PaidMessagesRevenue, error) {
+func (c *rPCPaidMessageClient) AccountToggleNoPaidMessagesException(ctx context.Context, in *TLAccountToggleNoPaidMessagesException, opts ...grpc.CallOption) (*Bool, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Account_PaidMessagesRevenue)
-	err := c.cc.Invoke(ctx, RPCPaidMessage_AccountGetPaidMessagesRevenue_FullMethodName, in, out, cOpts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCPaidMessage_AccountToggleNoPaidMessagesException_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -20938,13 +21016,24 @@ func (c *rPCPaidMessageClient) ChannelsUpdatePaidMessagesPrice(ctx context.Conte
 	return out, nil
 }
 
+func (c *rPCPaidMessageClient) AccountAddNoPaidMessagesException(ctx context.Context, in *TLAccountAddNoPaidMessagesException, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCPaidMessage_AccountAddNoPaidMessagesException_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCPaidMessageServer is the server API for RPCPaidMessage service.
 // All implementations should embed UnimplementedRPCPaidMessageServer
 // for forward compatibility.
 type RPCPaidMessageServer interface {
-	AccountAddNoPaidMessagesException(context.Context, *TLAccountAddNoPaidMessagesException) (*Bool, error)
 	AccountGetPaidMessagesRevenue(context.Context, *TLAccountGetPaidMessagesRevenue) (*Account_PaidMessagesRevenue, error)
+	AccountToggleNoPaidMessagesException(context.Context, *TLAccountToggleNoPaidMessagesException) (*Bool, error)
 	ChannelsUpdatePaidMessagesPrice(context.Context, *TLChannelsUpdatePaidMessagesPrice) (*Updates, error)
+	AccountAddNoPaidMessagesException(context.Context, *TLAccountAddNoPaidMessagesException) (*Bool, error)
 }
 
 // UnimplementedRPCPaidMessageServer should be embedded to have
@@ -20954,14 +21043,17 @@ type RPCPaidMessageServer interface {
 // pointer dereference when methods are called.
 type UnimplementedRPCPaidMessageServer struct{}
 
-func (UnimplementedRPCPaidMessageServer) AccountAddNoPaidMessagesException(context.Context, *TLAccountAddNoPaidMessagesException) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method AccountAddNoPaidMessagesException not implemented")
-}
 func (UnimplementedRPCPaidMessageServer) AccountGetPaidMessagesRevenue(context.Context, *TLAccountGetPaidMessagesRevenue) (*Account_PaidMessagesRevenue, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method AccountGetPaidMessagesRevenue not implemented")
 }
+func (UnimplementedRPCPaidMessageServer) AccountToggleNoPaidMessagesException(context.Context, *TLAccountToggleNoPaidMessagesException) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountToggleNoPaidMessagesException not implemented")
+}
 func (UnimplementedRPCPaidMessageServer) ChannelsUpdatePaidMessagesPrice(context.Context, *TLChannelsUpdatePaidMessagesPrice) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsUpdatePaidMessagesPrice not implemented")
+}
+func (UnimplementedRPCPaidMessageServer) AccountAddNoPaidMessagesException(context.Context, *TLAccountAddNoPaidMessagesException) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountAddNoPaidMessagesException not implemented")
 }
 func (UnimplementedRPCPaidMessageServer) testEmbeddedByValue() {}
 
@@ -20983,24 +21075,6 @@ func RegisterRPCPaidMessageServer(s grpc.ServiceRegistrar, srv RPCPaidMessageSer
 	s.RegisterService(&RPCPaidMessage_ServiceDesc, srv)
 }
 
-func _RPCPaidMessage_AccountAddNoPaidMessagesException_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLAccountAddNoPaidMessagesException)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCPaidMessageServer).AccountAddNoPaidMessagesException(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCPaidMessage_AccountAddNoPaidMessagesException_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCPaidMessageServer).AccountAddNoPaidMessagesException(ctx, req.(*TLAccountAddNoPaidMessagesException))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _RPCPaidMessage_AccountGetPaidMessagesRevenue_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLAccountGetPaidMessagesRevenue)
 	if err := dec(in); err != nil {
@@ -21015,6 +21089,24 @@ func _RPCPaidMessage_AccountGetPaidMessagesRevenue_Handler(srv interface{}, ctx 
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCPaidMessageServer).AccountGetPaidMessagesRevenue(ctx, req.(*TLAccountGetPaidMessagesRevenue))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPaidMessage_AccountToggleNoPaidMessagesException_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountToggleNoPaidMessagesException)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaidMessageServer).AccountToggleNoPaidMessagesException(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPaidMessage_AccountToggleNoPaidMessagesException_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaidMessageServer).AccountToggleNoPaidMessagesException(ctx, req.(*TLAccountToggleNoPaidMessagesException))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -21037,6 +21129,24 @@ func _RPCPaidMessage_ChannelsUpdatePaidMessagesPrice_Handler(srv interface{}, ct
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCPaidMessage_AccountAddNoPaidMessagesException_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountAddNoPaidMessagesException)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPaidMessageServer).AccountAddNoPaidMessagesException(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPaidMessage_AccountAddNoPaidMessagesException_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPaidMessageServer).AccountAddNoPaidMessagesException(ctx, req.(*TLAccountAddNoPaidMessagesException))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCPaidMessage_ServiceDesc is the grpc.ServiceDesc for RPCPaidMessage service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -21045,16 +21155,20 @@ var RPCPaidMessage_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*RPCPaidMessageServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "account_addNoPaidMessagesException",
-			Handler:    _RPCPaidMessage_AccountAddNoPaidMessagesException_Handler,
-		},
-		{
 			MethodName: "account_getPaidMessagesRevenue",
 			Handler:    _RPCPaidMessage_AccountGetPaidMessagesRevenue_Handler,
 		},
 		{
+			MethodName: "account_toggleNoPaidMessagesException",
+			Handler:    _RPCPaidMessage_AccountToggleNoPaidMessagesException_Handler,
+		},
+		{
 			MethodName: "channels_updatePaidMessagesPrice",
 			Handler:    _RPCPaidMessage_ChannelsUpdatePaidMessagesPrice_Handler,
+		},
+		{
+			MethodName: "account_addNoPaidMessagesException",
+			Handler:    _RPCPaidMessage_AccountAddNoPaidMessagesException_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

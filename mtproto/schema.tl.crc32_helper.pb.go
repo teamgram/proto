@@ -124,6 +124,7 @@ const (
 	CRC32_inputMediaWebPage                                           TLConstructor = -1038383031 // c21b8849
 	CRC32_inputMediaPaidMedia_c4103386                                TLConstructor = -1005571194 // c4103386
 	CRC32_inputMediaPaidMedia_aa661fc3                                TLConstructor = -1436147773 // aa661fc3
+	CRC32_inputMediaTodo                                              TLConstructor = -1614454818 // 9fc55fde
 	CRC32_inputChatPhotoEmpty                                         TLConstructor = 480546647   // 1ca48f57
 	CRC32_inputChatUploadedPhoto_bdcdaec0                             TLConstructor = -1110593856 // bdcdaec0
 	CRC32_inputChatUploadedPhoto_c642724e                             TLConstructor = -968723890  // c642724e
@@ -219,6 +220,7 @@ const (
 	CRC32_message_1e4c8a69                                            TLConstructor = 508332649   // 1e4c8a69
 	CRC32_message_76bec211                                            TLConstructor = 1992213009  // 76bec211
 	CRC32_message_38116ee0                                            TLConstructor = 940666592   // 38116ee0
+	CRC32_messageService_7a800e0a                                     TLConstructor = 2055212554  // 7a800e0a
 	CRC32_messageService_d3d28540                                     TLConstructor = -741178048  // d3d28540
 	CRC32_messageService_2b085862                                     TLConstructor = 721967202   // 2b085862
 	CRC32_messageMediaEmpty                                           TLConstructor = 1038967584  // 3ded6320
@@ -247,6 +249,7 @@ const (
 	CRC32_messageMediaGiveawayResults_ceaa3ea1                        TLConstructor = -827703647  // ceaa3ea1
 	CRC32_messageMediaGiveawayResults_c6991068                        TLConstructor = -963047320  // c6991068
 	CRC32_messageMediaPaidMedia                                       TLConstructor = -1467669359 // a8852491
+	CRC32_messageMediaToDo                                            TLConstructor = -1974226924 // 8a53b014
 	CRC32_messageActionEmpty                                          TLConstructor = -1230047312 // b6aef7b0
 	CRC32_messageActionChatCreate                                     TLConstructor = -1119368275 // bd47cbad
 	CRC32_messageActionChatEditTitle                                  TLConstructor = -1247687078 // b5a1ce5a
@@ -318,6 +321,8 @@ const (
 	CRC32_messageActionPaidMessagesPrice_84b88578                     TLConstructor = -2068281992 // 84b88578
 	CRC32_messageActionPaidMessagesPrice_bcd71419                     TLConstructor = -1126755303 // bcd71419
 	CRC32_messageActionConferenceCall                                 TLConstructor = 805187450   // 2ffe2f7a
+	CRC32_messageActionTodoCompletions                                TLConstructor = -864265079  // cc7c5c89
+	CRC32_messageActionTodoAppendTasks                                TLConstructor = -940721021  // c7edbc83
 	CRC32_dialog_d58a08c6                                             TLConstructor = -712374074  // d58a08c6
 	CRC32_dialog_a8edd0f5                                             TLConstructor = -1460809483 // a8edd0f5
 	CRC32_dialogFolder                                                TLConstructor = 1908216652  // 71bd134c
@@ -1362,12 +1367,14 @@ const (
 	CRC32_account_resetPasswordFailedWait                             TLConstructor = -478701471  // e3779861
 	CRC32_account_resetPasswordRequestedWait                          TLConstructor = -370148227  // e9effc7d
 	CRC32_account_resetPasswordOk                                     TLConstructor = -383330754  // e926d63e
+	CRC32_sponsoredMessage_7dbf8673                                   TLConstructor = 2109703795  // 7dbf8673
 	CRC32_sponsoredMessage_4d93a990                                   TLConstructor = 1301522832  // 4d93a990
 	CRC32_sponsoredMessage_bdedf566                                   TLConstructor = -1108478618 // bdedf566
 	CRC32_sponsoredMessage_ed5383f7                                   TLConstructor = -313293833  // ed5383f7
 	CRC32_sponsoredMessage_daafff6b                                   TLConstructor = -626000021  // daafff6b
 	CRC32_sponsoredMessage_fc25b828                                   TLConstructor = -64636888   // fc25b828
 	CRC32_sponsoredMessage_3a836df8                                   TLConstructor = 981691896   // 3a836df8
+	CRC32_messages_sponsoredMessages_ffda656d                         TLConstructor = -2464403    // ffda656d
 	CRC32_messages_sponsoredMessages_c9ee1d87                         TLConstructor = -907141753  // c9ee1d87
 	CRC32_messages_sponsoredMessages_65a4c7d5                         TLConstructor = 1705297877  // 65a4c7d5
 	CRC32_messages_sponsoredMessagesEmpty                             TLConstructor = 406407439   // 1839490f
@@ -1789,6 +1796,9 @@ const (
 	CRC32_payments_resaleStarGifts                                    TLConstructor = -1803939105 // 947a12df
 	CRC32_stories_canSendStoryCount                                   TLConstructor = -1014513586 // c387c04e
 	CRC32_pendingSuggestion                                           TLConstructor = -404214254  // e7e82e12
+	CRC32_todoItem                                                    TLConstructor = -878074577  // cba9a52f
+	CRC32_todoList                                                    TLConstructor = 1236871718  // 49b92a26
+	CRC32_todoCompletion                                              TLConstructor = 1287725239  // 4cc120b7
 	CRC32_phoneCallDiscardReasonAllowGroupCall                        TLConstructor = -1344096199 // afe2b839
 	CRC32_premiumGiftOption                                           TLConstructor = 1958953753  // 74c34319
 	CRC32_emojiStatusUntil                                            TLConstructor = -97474361   // fa30a8c7
@@ -2012,8 +2022,9 @@ const (
 	CRC32_account_getReactionsNotifySettings                          TLConstructor = 115172684   // 6dd654c
 	CRC32_account_setReactionsNotifySettings                          TLConstructor = 829220168   // 316ce548
 	CRC32_account_getCollectibleEmojiStatuses                         TLConstructor = 779830595   // 2e7b4543
-	CRC32_account_addNoPaidMessagesException                          TLConstructor = 1869122215  // 6f688aa7
-	CRC32_account_getPaidMessagesRevenue                              TLConstructor = -249139400  // f1266f38
+	CRC32_account_getPaidMessagesRevenue_19ba4a67                     TLConstructor = 431639143   // 19ba4a67
+	CRC32_account_getPaidMessagesRevenue_f1266f38                     TLConstructor = -249139400  // f1266f38
+	CRC32_account_toggleNoPaidMessagesException                       TLConstructor = -30483850   // fe2eda76
 	CRC32_users_getUsers                                              TLConstructor = 227648840   // d91a548
 	CRC32_users_getFullUser                                           TLConstructor = -1240508136 // b60f5918
 	CRC32_users_setSecureValueErrors                                  TLConstructor = -1865902923 // 90c894b5
@@ -2347,13 +2358,16 @@ const (
 	CRC32_messages_clickSponsoredMessage_f093465                      TLConstructor = 252261477   // f093465
 	CRC32_messages_reportSponsoredMessage_12cbf0c4                    TLConstructor = 315355332   // 12cbf0c4
 	CRC32_messages_reportSponsoredMessage_1af3dbb8                    TLConstructor = 452189112   // 1af3dbb8
-	CRC32_messages_getSponsoredMessages                               TLConstructor = -1680673735 // 9bd2f439
+	CRC32_messages_getSponsoredMessages_3d6ce850                      TLConstructor = 1030547536  // 3d6ce850
+	CRC32_messages_getSponsoredMessages_9bd2f439                      TLConstructor = -1680673735 // 9bd2f439
 	CRC32_messages_savePreparedInlineMessage                          TLConstructor = -232816849  // f21f7f2f
 	CRC32_messages_getPreparedInlineMessage                           TLConstructor = -2055291464 // 857ebdb8
 	CRC32_messages_searchStickers                                     TLConstructor = 699516522   // 29b1c66a
 	CRC32_messages_reportMessagesDelivery                             TLConstructor = 1517122453  // 5a6d7395
 	CRC32_messages_getSavedDialogsByID                                TLConstructor = 1869585558  // 6f6f9c96
 	CRC32_messages_readSavedHistory                                   TLConstructor = -1169540261 // ba4a3b5b
+	CRC32_messages_toggleTodoCompleted                                TLConstructor = -740282076  // d3e03124
+	CRC32_messages_appendTodoList                                     TLConstructor = 564531287   // 21a61057
 	CRC32_updates_getState                                            TLConstructor = -304838614  // edd4882a
 	CRC32_updates_getDifference_19c2f763                              TLConstructor = 432207715   // 19c2f763
 	CRC32_updates_getDifference_25939651                              TLConstructor = 630429265   // 25939651
@@ -2718,6 +2732,7 @@ const (
 	CRC32_smsjobs_getSmsJob                                           TLConstructor = 2005766191  // 778d902f
 	CRC32_smsjobs_finishJob                                           TLConstructor = 1327415076  // 4f1ebf24
 	CRC32_fragment_getCollectibleInfo                                 TLConstructor = -1105295942 // be1e85ba
+	CRC32_account_addNoPaidMessagesException                          TLConstructor = 1869122215  // 6f688aa7
 	CRC32_stories_canSendStoryC7DFDFDD                                TLConstructor = -941629475  // c7dfdfdd
 	CRC32_phone_createConferenceCallDFC909AB                          TLConstructor = -540472917  // dfc909ab
 	CRC32_payments_canPurchasePremium_9fc19eb6                        TLConstructor = -1614700874 // 9fc19eb6

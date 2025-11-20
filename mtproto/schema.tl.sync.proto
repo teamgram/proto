@@ -4614,6 +4614,7 @@ message TL_inputInvoiceStarGiftResale {
 //  + TL_inputMediaStory
 //  + TL_inputMediaWebPage
 //  + TL_inputMediaPaidMedia
+//  + TL_inputMediaTodo
 //  + TL_inputMediaUploadedDocument
 //  + TL_inputMediaDocument
 //  + TL_inputMediaDocumentExternal
@@ -4677,8 +4678,9 @@ message InputMedia {
     int64 stars_amount = 51;
     repeated InputMedia extended_media_VECTORINPUTMEDIA = 52;
     google.protobuf.StringValue payload_FLAGSTRING = 53;
-    InputUser user_id = 54;
-    BizDataRaw biz_data = 55;
+    TodoList todo = 54;
+    InputUser user_id = 55;
+    BizDataRaw biz_data = 56;
 }
 
 // TL_inputMediaEmpty
@@ -4768,6 +4770,11 @@ message TL_inputMediaWebPage {
 
 // TL_inputMediaPaidMedia
 message TL_inputMediaPaidMedia {
+    InputMedia data2 = 1;
+}
+
+// TL_inputMediaTodo
+message TL_inputMediaTodo {
     InputMedia data2 = 1;
 }
 
@@ -6194,6 +6201,7 @@ message TL_mediaAreaCoordinates {
 //  + TL_messageEmpty
 //  + TL_message
 //  + TL_messageService
+//  + TL_messageService
 //  + TL_message
 //  + TL_message
 //  + TL_messageService
@@ -6320,6 +6328,8 @@ message TL_messageService {
 //  + TL_messageActionPaidMessagesRefunded
 //  + TL_messageActionPaidMessagesPrice
 //  + TL_messageActionConferenceCall
+//  + TL_messageActionTodoCompletions
+//  + TL_messageActionTodoAppendTasks
 //  + TL_messageActionPaidMessagesPrice
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGift
@@ -6443,9 +6453,12 @@ message MessageAction {
     bool missed = 96;
     bool active = 97;
     repeated Peer other_participants = 98;
-    int64 convert_stars_INT64 = 99;
-    string domain_STRING = 100;
-    BizDataRaw biz_data = 101;
+    repeated int32 completed = 99;
+    repeated int32 incompleted = 100;
+    repeated TodoItem list = 101;
+    int64 convert_stars_INT64 = 102;
+    string domain_STRING = 103;
+    BizDataRaw biz_data = 104;
     string title = 200;
 }
 
@@ -6701,6 +6714,16 @@ message TL_messageActionPaidMessagesPrice {
 
 // TL_messageActionConferenceCall
 message TL_messageActionConferenceCall {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionTodoCompletions
+message TL_messageActionTodoCompletions {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionTodoAppendTasks
+message TL_messageActionTodoAppendTasks {
     MessageAction data2 = 1;
 }
 
@@ -7013,6 +7036,7 @@ message TL_messageInteractionCounters {
 //  + TL_messageMediaGiveaway
 //  + TL_messageMediaGiveawayResults
 //  + TL_messageMediaPaidMedia
+//  + TL_messageMediaToDo
 //  + TL_messageMediaDocument
 //  + TL_messageMediaDocument
 //  + TL_messageMediaGiveaway
@@ -7093,9 +7117,11 @@ message MessageMedia {
     repeated int64 winners = 66;
     int64 stars_amount = 67;
     repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 68;
-    Document alt_document = 69;
-    int32 months_INT32 = 70;
-    BizDataRaw biz_data = 71;
+    TodoList todo = 69;
+    repeated TodoCompletion completions = 70;
+    Document alt_document = 71;
+    int32 months_INT32 = 72;
+    BizDataRaw biz_data = 73;
 }
 
 // TL_messageMediaEmpty
@@ -7180,6 +7206,11 @@ message TL_messageMediaGiveawayResults {
 
 // TL_messageMediaPaidMedia
 message TL_messageMediaPaidMedia {
+    MessageMedia data2 = 1;
+}
+
+// TL_messageMediaToDo
+message TL_messageMediaToDo {
     MessageMedia data2 = 1;
 }
 
@@ -9678,11 +9709,12 @@ message SavedDialog {
     Peer peer = 4;
     int32 top_message = 5;
     bool unread_mark = 6;
-    int32 read_inbox_max_id = 7;
-    int32 read_outbox_max_id = 8;
-    int32 unread_count = 9;
-    int32 unread_reactions_count = 10;
-    DraftMessage draft = 11;
+    bool nopaid_messages_exception = 7;
+    int32 read_inbox_max_id = 8;
+    int32 read_outbox_max_id = 9;
+    int32 unread_count = 10;
+    int32 unread_reactions_count = 11;
+    DraftMessage draft = 12;
 }
 
 // TL_savedDialog
@@ -10320,6 +10352,7 @@ message TL_smsJob {
 //  + TL_sponsoredMessage
 //  + TL_sponsoredMessage
 //  + TL_sponsoredMessage
+//  + TL_sponsoredMessage
 //
 message SponsoredMessage {
     string predicate_name = 1;
@@ -10337,15 +10370,17 @@ message SponsoredMessage {
     string button_text_STRING = 13;
     google.protobuf.StringValue sponsor_info = 14;
     google.protobuf.StringValue additional_info = 15;
-    bool show_peer_photo = 16;
-    Peer from_id = 17;
-    ChatInvite chat_invite = 18;
-    google.protobuf.StringValue chat_invite_hash = 19;
-    google.protobuf.Int32Value channel_post = 20;
-    google.protobuf.StringValue start_param = 21;
-    SponsoredWebPage webpage = 22;
-    BotApp app = 23;
-    google.protobuf.StringValue button_text_FLAGSTRING = 24;
+    google.protobuf.Int32Value min_display_duration = 16;
+    google.protobuf.Int32Value max_display_duration = 17;
+    bool show_peer_photo = 18;
+    Peer from_id = 19;
+    ChatInvite chat_invite = 20;
+    google.protobuf.StringValue chat_invite_hash = 21;
+    google.protobuf.Int32Value channel_post = 22;
+    google.protobuf.StringValue start_param = 23;
+    SponsoredWebPage webpage = 24;
+    BotApp app = 25;
+    google.protobuf.StringValue button_text_FLAGSTRING = 26;
 }
 
 // TL_sponsoredMessage
@@ -11337,6 +11372,57 @@ message Timezone {
 // TL_timezone
 message TL_timezone {
     Timezone data2 = 1;
+}
+
+
+// TodoCompletion <--
+//  + TL_todoCompletion
+//
+message TodoCompletion {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 id = 3;
+    int64 completed_by = 4;
+    int32 date = 5;
+}
+
+// TL_todoCompletion
+message TL_todoCompletion {
+    TodoCompletion data2 = 1;
+}
+
+
+// TodoItem <--
+//  + TL_todoItem
+//
+message TodoItem {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int32 id = 3;
+    TextWithEntities title = 4;
+}
+
+// TL_todoItem
+message TL_todoItem {
+    TodoItem data2 = 1;
+}
+
+
+// TodoList <--
+//  + TL_todoList
+//
+message TodoList {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    bool others_can_append = 3;
+    bool others_can_complete = 4;
+    TextWithEntities title = 5;
+    repeated TodoItem list = 6;
+}
+
+// TL_todoList
+message TL_todoList {
+    TodoList data2 = 1;
 }
 
 
@@ -15886,14 +15972,17 @@ message TL_messages_sentEncryptedFile {
 //  + TL_messages_sponsoredMessages
 //  + TL_messages_sponsoredMessagesEmpty
 //  + TL_messages_sponsoredMessages
+//  + TL_messages_sponsoredMessages
 //
 message messages_SponsoredMessages {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     google.protobuf.Int32Value posts_between = 3;
-    repeated SponsoredMessage messages = 4;
-    repeated Chat chats = 5;
-    repeated User users = 6;
+    google.protobuf.Int32Value start_delay = 4;
+    google.protobuf.Int32Value between_delay = 5;
+    repeated SponsoredMessage messages = 6;
+    repeated Chat chats = 7;
+    repeated User users = 8;
 }
 
 // TL_messages_sponsoredMessages

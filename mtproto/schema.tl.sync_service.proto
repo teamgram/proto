@@ -876,15 +876,18 @@ message TL_account_getCollectibleEmojiStatuses {
     int64 hash = 3;
 }
 
-message TL_account_addNoPaidMessagesException {
+message TL_account_getPaidMessagesRevenue {
     TLConstructor  constructor = 1;
-    bool refund_charged = 3;
+    InputPeer parent_peer = 3;
     InputUser user_id = 4;
 }
 
-message TL_account_getPaidMessagesRevenue {
+message TL_account_toggleNoPaidMessagesException {
     TLConstructor  constructor = 1;
-    InputUser user_id = 3;
+    bool refund_charged = 3;
+    bool require_payment = 4;
+    InputPeer parent_peer = 5;
+    InputUser user_id = 6;
 }
 
 message TL_users_getUsers {
@@ -2683,6 +2686,7 @@ message TL_messages_reportSponsoredMessage {
 message TL_messages_getSponsoredMessages {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
+    google.protobuf.Int32Value msg_id = 4;
 }
 
 message TL_messages_savePreparedInlineMessage {
@@ -2727,6 +2731,21 @@ message TL_messages_readSavedHistory {
     InputPeer parent_peer = 3;
     InputPeer peer = 4;
     int32 max_id = 5;
+}
+
+message TL_messages_toggleTodoCompleted {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 msg_id = 4;
+    repeated int32 completed = 5;
+    repeated int32 incompleted = 6;
+}
+
+message TL_messages_appendTodoList {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 msg_id = 4;
+    repeated TodoItem list = 5;
 }
 
 message TL_updates_getState {
@@ -4676,6 +4695,12 @@ message TL_fragment_getCollectibleInfo {
     InputCollectible collectible = 3;
 }
 
+message TL_account_addNoPaidMessagesException {
+    TLConstructor  constructor = 1;
+    bool refund_charged = 3;
+    InputUser user_id = 4;
+}
+
 message TL_stories_canSendStoryC7DFDFDD {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
@@ -5711,6 +5736,8 @@ service RPCMessages {
     rpc messages_searchSentMedia(TL_messages_searchSentMedia) returns (messages_Messages) {}
     rpc messages_getOutboxReadDate(TL_messages_getOutboxReadDate) returns (OutboxReadDate) {}
     rpc messages_reportMessagesDelivery(TL_messages_reportMessagesDelivery) returns (Bool) {}
+    rpc messages_toggleTodoCompleted(TL_messages_toggleTodoCompleted) returns (Updates) {}
+    rpc messages_appendTodoList(TL_messages_appendTodoList) returns (Updates) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
     rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
 }
@@ -5758,9 +5785,10 @@ service RPCPaidMedia {
 }
 
 service RPCPaidMessage {
-    rpc account_addNoPaidMessagesException(TL_account_addNoPaidMessagesException) returns (Bool) {}
     rpc account_getPaidMessagesRevenue(TL_account_getPaidMessagesRevenue) returns (account_PaidMessagesRevenue) {}
+    rpc account_toggleNoPaidMessagesException(TL_account_toggleNoPaidMessagesException) returns (Bool) {}
     rpc channels_updatePaidMessagesPrice(TL_channels_updatePaidMessagesPrice) returns (Updates) {}
+    rpc account_addNoPaidMessagesException(TL_account_addNoPaidMessagesException) returns (Bool) {}
 }
 
 service RPCPassport {
