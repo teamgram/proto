@@ -14936,6 +14936,7 @@ const (
 	RPCGifts_PaymentsDeleteStarGiftCollection_FullMethodName        = "/mtproto.RPCGifts/payments_deleteStarGiftCollection"
 	RPCGifts_PaymentsGetStarGiftCollections_FullMethodName          = "/mtproto.RPCGifts/payments_getStarGiftCollections"
 	RPCGifts_PaymentsGetUniqueStarGiftValueInfo_FullMethodName      = "/mtproto.RPCGifts/payments_getUniqueStarGiftValueInfo"
+	RPCGifts_PaymentsCheckCanSendGift_FullMethodName                = "/mtproto.RPCGifts/payments_checkCanSendGift"
 	RPCGifts_PaymentsGetUserStarGifts_FullMethodName                = "/mtproto.RPCGifts/payments_getUserStarGifts"
 	RPCGifts_PaymentsGetUserStarGift_FullMethodName                 = "/mtproto.RPCGifts/payments_getUserStarGift"
 )
@@ -14964,6 +14965,7 @@ type RPCGiftsClient interface {
 	PaymentsDeleteStarGiftCollection(ctx context.Context, in *TLPaymentsDeleteStarGiftCollection, opts ...grpc.CallOption) (*Bool, error)
 	PaymentsGetStarGiftCollections(ctx context.Context, in *TLPaymentsGetStarGiftCollections, opts ...grpc.CallOption) (*Payments_StarGiftCollections, error)
 	PaymentsGetUniqueStarGiftValueInfo(ctx context.Context, in *TLPaymentsGetUniqueStarGiftValueInfo, opts ...grpc.CallOption) (*Payments_UniqueStarGiftValueInfo, error)
+	PaymentsCheckCanSendGift(ctx context.Context, in *TLPaymentsCheckCanSendGift, opts ...grpc.CallOption) (*Payments_CheckCanSendGiftResult, error)
 	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 }
@@ -15176,6 +15178,16 @@ func (c *rPCGiftsClient) PaymentsGetUniqueStarGiftValueInfo(ctx context.Context,
 	return out, nil
 }
 
+func (c *rPCGiftsClient) PaymentsCheckCanSendGift(ctx context.Context, in *TLPaymentsCheckCanSendGift, opts ...grpc.CallOption) (*Payments_CheckCanSendGiftResult, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_CheckCanSendGiftResult)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsCheckCanSendGift_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCGiftsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Payments_UserStarGifts)
@@ -15220,6 +15232,7 @@ type RPCGiftsServer interface {
 	PaymentsDeleteStarGiftCollection(context.Context, *TLPaymentsDeleteStarGiftCollection) (*Bool, error)
 	PaymentsGetStarGiftCollections(context.Context, *TLPaymentsGetStarGiftCollections) (*Payments_StarGiftCollections, error)
 	PaymentsGetUniqueStarGiftValueInfo(context.Context, *TLPaymentsGetUniqueStarGiftValueInfo) (*Payments_UniqueStarGiftValueInfo, error)
+	PaymentsCheckCanSendGift(context.Context, *TLPaymentsCheckCanSendGift) (*Payments_CheckCanSendGiftResult, error)
 	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error)
 }
@@ -15290,6 +15303,9 @@ func (UnimplementedRPCGiftsServer) PaymentsGetStarGiftCollections(context.Contex
 }
 func (UnimplementedRPCGiftsServer) PaymentsGetUniqueStarGiftValueInfo(context.Context, *TLPaymentsGetUniqueStarGiftValueInfo) (*Payments_UniqueStarGiftValueInfo, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUniqueStarGiftValueInfo not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsCheckCanSendGift(context.Context, *TLPaymentsCheckCanSendGift) (*Payments_CheckCanSendGiftResult, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsCheckCanSendGift not implemented")
 }
 func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
@@ -15677,6 +15693,24 @@ func _RPCGifts_PaymentsGetUniqueStarGiftValueInfo_Handler(srv interface{}, ctx c
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGifts_PaymentsCheckCanSendGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsCheckCanSendGift)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsCheckCanSendGift(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsCheckCanSendGift_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsCheckCanSendGift(ctx, req.(*TLPaymentsCheckCanSendGift))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCGifts_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsGetUserStarGifts)
 	if err := dec(in); err != nil {
@@ -15799,6 +15833,10 @@ var RPCGifts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getUniqueStarGiftValueInfo",
 			Handler:    _RPCGifts_PaymentsGetUniqueStarGiftValueInfo_Handler,
+		},
+		{
+			MethodName: "payments_checkCanSendGift",
+			Handler:    _RPCGifts_PaymentsCheckCanSendGift_Handler,
 		},
 		{
 			MethodName: "payments_getUserStarGifts",
@@ -33485,6 +33523,296 @@ var RPCUpdates_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "updates_getChannelDifference",
 			Handler:    _RPCUpdates_UpdatesGetChannelDifference_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
+	RPCUserChannelProfiles_AccountSetMainProfileTab_FullMethodName  = "/mtproto.RPCUserChannelProfiles/account_setMainProfileTab"
+	RPCUserChannelProfiles_AccountSaveMusic_FullMethodName          = "/mtproto.RPCUserChannelProfiles/account_saveMusic"
+	RPCUserChannelProfiles_AccountGetSavedMusicIds_FullMethodName   = "/mtproto.RPCUserChannelProfiles/account_getSavedMusicIds"
+	RPCUserChannelProfiles_UsersGetSavedMusic_FullMethodName        = "/mtproto.RPCUserChannelProfiles/users_getSavedMusic"
+	RPCUserChannelProfiles_UsersGetSavedMusicByID_FullMethodName    = "/mtproto.RPCUserChannelProfiles/users_getSavedMusicByID"
+	RPCUserChannelProfiles_ChannelsSetMainProfileTab_FullMethodName = "/mtproto.RPCUserChannelProfiles/channels_setMainProfileTab"
+)
+
+// RPCUserChannelProfilesClient is the client API for RPCUserChannelProfiles service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCUserChannelProfilesClient interface {
+	AccountSetMainProfileTab(ctx context.Context, in *TLAccountSetMainProfileTab, opts ...grpc.CallOption) (*Bool, error)
+	AccountSaveMusic(ctx context.Context, in *TLAccountSaveMusic, opts ...grpc.CallOption) (*Bool, error)
+	AccountGetSavedMusicIds(ctx context.Context, in *TLAccountGetSavedMusicIds, opts ...grpc.CallOption) (*Account_SavedMusicIds, error)
+	UsersGetSavedMusic(ctx context.Context, in *TLUsersGetSavedMusic, opts ...grpc.CallOption) (*Users_SavedMusic, error)
+	UsersGetSavedMusicByID(ctx context.Context, in *TLUsersGetSavedMusicByID, opts ...grpc.CallOption) (*Users_SavedMusic, error)
+	ChannelsSetMainProfileTab(ctx context.Context, in *TLChannelsSetMainProfileTab, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCUserChannelProfilesClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCUserChannelProfilesClient(cc grpc.ClientConnInterface) RPCUserChannelProfilesClient {
+	return &rPCUserChannelProfilesClient{cc}
+}
+
+func (c *rPCUserChannelProfilesClient) AccountSetMainProfileTab(ctx context.Context, in *TLAccountSetMainProfileTab, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCUserChannelProfiles_AccountSetMainProfileTab_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserChannelProfilesClient) AccountSaveMusic(ctx context.Context, in *TLAccountSaveMusic, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCUserChannelProfiles_AccountSaveMusic_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserChannelProfilesClient) AccountGetSavedMusicIds(ctx context.Context, in *TLAccountGetSavedMusicIds, opts ...grpc.CallOption) (*Account_SavedMusicIds, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Account_SavedMusicIds)
+	err := c.cc.Invoke(ctx, RPCUserChannelProfiles_AccountGetSavedMusicIds_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserChannelProfilesClient) UsersGetSavedMusic(ctx context.Context, in *TLUsersGetSavedMusic, opts ...grpc.CallOption) (*Users_SavedMusic, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Users_SavedMusic)
+	err := c.cc.Invoke(ctx, RPCUserChannelProfiles_UsersGetSavedMusic_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserChannelProfilesClient) UsersGetSavedMusicByID(ctx context.Context, in *TLUsersGetSavedMusicByID, opts ...grpc.CallOption) (*Users_SavedMusic, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Users_SavedMusic)
+	err := c.cc.Invoke(ctx, RPCUserChannelProfiles_UsersGetSavedMusicByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCUserChannelProfilesClient) ChannelsSetMainProfileTab(ctx context.Context, in *TLChannelsSetMainProfileTab, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCUserChannelProfiles_ChannelsSetMainProfileTab_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCUserChannelProfilesServer is the server API for RPCUserChannelProfiles service.
+// All implementations should embed UnimplementedRPCUserChannelProfilesServer
+// for forward compatibility.
+type RPCUserChannelProfilesServer interface {
+	AccountSetMainProfileTab(context.Context, *TLAccountSetMainProfileTab) (*Bool, error)
+	AccountSaveMusic(context.Context, *TLAccountSaveMusic) (*Bool, error)
+	AccountGetSavedMusicIds(context.Context, *TLAccountGetSavedMusicIds) (*Account_SavedMusicIds, error)
+	UsersGetSavedMusic(context.Context, *TLUsersGetSavedMusic) (*Users_SavedMusic, error)
+	UsersGetSavedMusicByID(context.Context, *TLUsersGetSavedMusicByID) (*Users_SavedMusic, error)
+	ChannelsSetMainProfileTab(context.Context, *TLChannelsSetMainProfileTab) (*Bool, error)
+}
+
+// UnimplementedRPCUserChannelProfilesServer should be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedRPCUserChannelProfilesServer struct{}
+
+func (UnimplementedRPCUserChannelProfilesServer) AccountSetMainProfileTab(context.Context, *TLAccountSetMainProfileTab) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountSetMainProfileTab not implemented")
+}
+func (UnimplementedRPCUserChannelProfilesServer) AccountSaveMusic(context.Context, *TLAccountSaveMusic) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountSaveMusic not implemented")
+}
+func (UnimplementedRPCUserChannelProfilesServer) AccountGetSavedMusicIds(context.Context, *TLAccountGetSavedMusicIds) (*Account_SavedMusicIds, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetSavedMusicIds not implemented")
+}
+func (UnimplementedRPCUserChannelProfilesServer) UsersGetSavedMusic(context.Context, *TLUsersGetSavedMusic) (*Users_SavedMusic, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersGetSavedMusic not implemented")
+}
+func (UnimplementedRPCUserChannelProfilesServer) UsersGetSavedMusicByID(context.Context, *TLUsersGetSavedMusicByID) (*Users_SavedMusic, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method UsersGetSavedMusicByID not implemented")
+}
+func (UnimplementedRPCUserChannelProfilesServer) ChannelsSetMainProfileTab(context.Context, *TLChannelsSetMainProfileTab) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsSetMainProfileTab not implemented")
+}
+func (UnimplementedRPCUserChannelProfilesServer) testEmbeddedByValue() {}
+
+// UnsafeRPCUserChannelProfilesServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCUserChannelProfilesServer will
+// result in compilation errors.
+type UnsafeRPCUserChannelProfilesServer interface {
+	mustEmbedUnimplementedRPCUserChannelProfilesServer()
+}
+
+func RegisterRPCUserChannelProfilesServer(s grpc.ServiceRegistrar, srv RPCUserChannelProfilesServer) {
+	// If the following call pancis, it indicates UnimplementedRPCUserChannelProfilesServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&RPCUserChannelProfiles_ServiceDesc, srv)
+}
+
+func _RPCUserChannelProfiles_AccountSetMainProfileTab_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountSetMainProfileTab)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserChannelProfilesServer).AccountSetMainProfileTab(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserChannelProfiles_AccountSetMainProfileTab_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserChannelProfilesServer).AccountSetMainProfileTab(ctx, req.(*TLAccountSetMainProfileTab))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserChannelProfiles_AccountSaveMusic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountSaveMusic)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserChannelProfilesServer).AccountSaveMusic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserChannelProfiles_AccountSaveMusic_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserChannelProfilesServer).AccountSaveMusic(ctx, req.(*TLAccountSaveMusic))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserChannelProfiles_AccountGetSavedMusicIds_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetSavedMusicIds)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserChannelProfilesServer).AccountGetSavedMusicIds(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserChannelProfiles_AccountGetSavedMusicIds_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserChannelProfilesServer).AccountGetSavedMusicIds(ctx, req.(*TLAccountGetSavedMusicIds))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserChannelProfiles_UsersGetSavedMusic_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLUsersGetSavedMusic)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserChannelProfilesServer).UsersGetSavedMusic(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserChannelProfiles_UsersGetSavedMusic_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserChannelProfilesServer).UsersGetSavedMusic(ctx, req.(*TLUsersGetSavedMusic))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserChannelProfiles_UsersGetSavedMusicByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLUsersGetSavedMusicByID)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserChannelProfilesServer).UsersGetSavedMusicByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserChannelProfiles_UsersGetSavedMusicByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserChannelProfilesServer).UsersGetSavedMusicByID(ctx, req.(*TLUsersGetSavedMusicByID))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCUserChannelProfiles_ChannelsSetMainProfileTab_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsSetMainProfileTab)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCUserChannelProfilesServer).ChannelsSetMainProfileTab(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCUserChannelProfiles_ChannelsSetMainProfileTab_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCUserChannelProfilesServer).ChannelsSetMainProfileTab(ctx, req.(*TLChannelsSetMainProfileTab))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCUserChannelProfiles_ServiceDesc is the grpc.ServiceDesc for RPCUserChannelProfiles service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCUserChannelProfiles_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCUserChannelProfiles",
+	HandlerType: (*RPCUserChannelProfilesServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "account_setMainProfileTab",
+			Handler:    _RPCUserChannelProfiles_AccountSetMainProfileTab_Handler,
+		},
+		{
+			MethodName: "account_saveMusic",
+			Handler:    _RPCUserChannelProfiles_AccountSaveMusic_Handler,
+		},
+		{
+			MethodName: "account_getSavedMusicIds",
+			Handler:    _RPCUserChannelProfiles_AccountGetSavedMusicIds_Handler,
+		},
+		{
+			MethodName: "users_getSavedMusic",
+			Handler:    _RPCUserChannelProfiles_UsersGetSavedMusic_Handler,
+		},
+		{
+			MethodName: "users_getSavedMusicByID",
+			Handler:    _RPCUserChannelProfiles_UsersGetSavedMusicByID_Handler,
+		},
+		{
+			MethodName: "channels_setMainProfileTab",
+			Handler:    _RPCUserChannelProfiles_ChannelsSetMainProfileTab_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

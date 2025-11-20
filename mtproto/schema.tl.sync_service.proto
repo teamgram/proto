@@ -890,6 +890,23 @@ message TL_account_toggleNoPaidMessagesException {
     InputUser user_id = 6;
 }
 
+message TL_account_setMainProfileTab {
+    TLConstructor  constructor = 1;
+    ProfileTab tab = 3;
+}
+
+message TL_account_saveMusic {
+    TLConstructor  constructor = 1;
+    bool unsave = 3;
+    InputDocument id = 4;
+    InputDocument after_id = 5;
+}
+
+message TL_account_getSavedMusicIds {
+    TLConstructor  constructor = 1;
+    int64 hash = 3;
+}
+
 message TL_users_getUsers {
     TLConstructor  constructor = 1;
     repeated InputUser id = 3;
@@ -909,6 +926,20 @@ message TL_users_setSecureValueErrors {
 message TL_users_getRequirementsToContact {
     TLConstructor  constructor = 1;
     repeated InputUser id = 3;
+}
+
+message TL_users_getSavedMusic {
+    TLConstructor  constructor = 1;
+    InputUser id = 3;
+    int32 offset = 4;
+    int32 limit = 5;
+    int64 hash = 6;
+}
+
+message TL_users_getSavedMusicByID {
+    TLConstructor  constructor = 1;
+    InputUser id = 3;
+    repeated InputDocument documents = 4;
 }
 
 message TL_contacts_getContactIDs {
@@ -3436,6 +3467,12 @@ message TL_channels_checkSearchPostsFlood {
     google.protobuf.StringValue query = 3;
 }
 
+message TL_channels_setMainProfileTab {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    ProfileTab tab = 4;
+}
+
 message TL_bots_sendCustomRequest {
     TLConstructor  constructor = 1;
     string custom_method = 3;
@@ -4002,6 +4039,11 @@ message TL_payments_getStarGiftCollections {
 message TL_payments_getUniqueStarGiftValueInfo {
     TLConstructor  constructor = 1;
     string slug = 3;
+}
+
+message TL_payments_checkCanSendGift {
+    TLConstructor  constructor = 1;
+    int64 gift_id = 3;
 }
 
 message TL_stickers_createStickerSet {
@@ -5739,6 +5781,7 @@ service RPCGifts {
     rpc payments_deleteStarGiftCollection(TL_payments_deleteStarGiftCollection) returns (Bool) {}
     rpc payments_getStarGiftCollections(TL_payments_getStarGiftCollections) returns (payments_StarGiftCollections) {}
     rpc payments_getUniqueStarGiftValueInfo(TL_payments_getUniqueStarGiftValueInfo) returns (payments_UniqueStarGiftValueInfo) {}
+    rpc payments_checkCanSendGift(TL_payments_checkCanSendGift) returns (payments_CheckCanSendGiftResult) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }
@@ -6276,6 +6319,15 @@ service RPCUpdates {
     rpc updates_getState(TL_updates_getState) returns (updates_State) {}
     rpc updates_getDifference(TL_updates_getDifference) returns (updates_Difference) {}
     rpc updates_getChannelDifference(TL_updates_getChannelDifference) returns (updates_ChannelDifference) {}
+}
+
+service RPCUserChannelProfiles {
+    rpc account_setMainProfileTab(TL_account_setMainProfileTab) returns (Bool) {}
+    rpc account_saveMusic(TL_account_saveMusic) returns (Bool) {}
+    rpc account_getSavedMusicIds(TL_account_getSavedMusicIds) returns (account_SavedMusicIds) {}
+    rpc users_getSavedMusic(TL_users_getSavedMusic) returns (users_SavedMusic) {}
+    rpc users_getSavedMusicByID(TL_users_getSavedMusicByID) returns (users_SavedMusic) {}
+    rpc channels_setMainProfileTab(TL_channels_setMainProfileTab) returns (Bool) {}
 }
 
 service RPCUserProfile {
