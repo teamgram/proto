@@ -2221,6 +2221,29 @@ message TL_chatReactionsSome {
 }
 
 
+// ChatTheme <--
+//  + TL_chatTheme
+//  + TL_chatThemeUniqueGift
+//
+message ChatTheme {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string emoticon = 3;
+    StarGift gift = 4;
+    repeated ThemeSettings theme_settings = 5;
+}
+
+// TL_chatTheme
+message TL_chatTheme {
+    ChatTheme data2 = 1;
+}
+
+// TL_chatThemeUniqueGift
+message TL_chatThemeUniqueGift {
+    ChatTheme data2 = 1;
+}
+
+
 // CodeSettings <--
 //  + TL_codeSettings
 //  + TL_codeSettings
@@ -4101,6 +4124,34 @@ message TL_inputChatUploadedPhoto {
 // TL_inputChatPhoto
 message TL_inputChatPhoto {
     InputChatPhoto data2 = 1;
+}
+
+
+// InputChatTheme <--
+//  + TL_inputChatThemeEmpty
+//  + TL_inputChatTheme
+//  + TL_inputChatThemeUniqueGift
+//
+message InputChatTheme {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string emoticon = 3;
+    string slug = 4;
+}
+
+// TL_inputChatThemeEmpty
+message TL_inputChatThemeEmpty {
+    InputChatTheme data2 = 1;
+}
+
+// TL_inputChatTheme
+message TL_inputChatTheme {
+    InputChatTheme data2 = 1;
+}
+
+// TL_inputChatThemeUniqueGift
+message TL_inputChatThemeUniqueGift {
+    InputChatTheme data2 = 1;
 }
 
 
@@ -6363,6 +6414,7 @@ message TL_messageService {
 //  + TL_messageActionSuggestedPostSuccess
 //  + TL_messageActionSuggestedPostRefund
 //  + TL_messageActionGiftTon
+//  + TL_messageActionSetChatTheme
 //  + TL_messageActionStarGift
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionPaidMessagesPrice
@@ -6430,7 +6482,7 @@ message MessageAction {
     int32 period = 38;
     google.protobuf.Int64Value auto_setting_from = 39;
     int32 schedule_date_INT32 = 40;
-    string emoticon = 41;
+    ChatTheme theme = 41;
     string text = 42;
     string data = 43;
     int64 amount_INT64 = 44;
@@ -6503,10 +6555,11 @@ message MessageAction {
     bool payer_initiated = 111;
     string crypto_currency_STRING = 112;
     int64 crypto_amount_INT64 = 113;
-    google.protobuf.Int64Value resale_stars = 114;
-    int64 convert_stars_INT64 = 115;
-    string domain_STRING = 116;
-    BizDataRaw biz_data = 117;
+    string emoticon = 114;
+    google.protobuf.Int64Value resale_stars = 115;
+    int64 convert_stars_INT64 = 116;
+    string domain_STRING = 117;
+    BizDataRaw biz_data = 118;
     string title = 200;
 }
 
@@ -10593,6 +10646,7 @@ message TL_sponsoredWebPage {
 // StarGift <--
 //  + TL_starGift
 //  + TL_starGiftUnique
+//  + TL_starGiftUnique
 //  + TL_starGift
 //  + TL_starGiftUnique
 //  + TL_starGiftUnique
@@ -10632,23 +10686,25 @@ message StarGift {
     google.protobuf.Int32Value per_user_remains = 22;
     google.protobuf.Int32Value locked_until_date = 23;
     bool resale_ton_only = 24;
-    int64 gift_id = 25;
-    string title_STRING = 26;
-    string slug = 27;
-    int32 num = 28;
-    Peer owner_id_FLAGPEER = 29;
-    google.protobuf.StringValue owner_name = 30;
-    google.protobuf.StringValue owner_address = 31;
-    repeated StarGiftAttribute attributes = 32;
-    int32 availability_issued = 33;
-    int32 availability_total_INT32 = 34;
-    google.protobuf.StringValue gift_address = 35;
-    repeated StarsAmount resell_amount = 36;
-    google.protobuf.Int64Value value_amount = 37;
-    google.protobuf.StringValue value_currency = 38;
-    google.protobuf.Int64Value resell_stars = 39;
-    google.protobuf.Int64Value owner_id_FLAGINT64 = 40;
-    int64 owner_id_INT64 = 41;
+    bool theme_available = 25;
+    int64 gift_id = 26;
+    string title_STRING = 27;
+    string slug = 28;
+    int32 num = 29;
+    Peer owner_id_FLAGPEER = 30;
+    google.protobuf.StringValue owner_name = 31;
+    google.protobuf.StringValue owner_address = 32;
+    repeated StarGiftAttribute attributes = 33;
+    int32 availability_issued = 34;
+    int32 availability_total_INT32 = 35;
+    google.protobuf.StringValue gift_address = 36;
+    repeated StarsAmount resell_amount = 37;
+    google.protobuf.Int64Value value_amount = 38;
+    google.protobuf.StringValue value_currency = 39;
+    Peer theme_peer = 40;
+    google.protobuf.Int64Value resell_stars = 41;
+    google.protobuf.Int64Value owner_id_FLAGINT64 = 42;
+    int64 owner_id_INT64 = 43;
 }
 
 // TL_starGift
@@ -13142,6 +13198,7 @@ message TL_userData {
 //  + TL_userFull
 //  + TL_userFull
 //  + TL_userFull
+//  + TL_userFull
 //
 message UserFull {
     string predicate_name = 1;
@@ -13175,7 +13232,7 @@ message UserFull {
     int32 common_chats_count = 29;
     google.protobuf.Int32Value folder_id = 30;
     google.protobuf.Int32Value ttl_period = 31;
-    google.protobuf.StringValue theme_emoticon = 32;
+    ChatTheme theme = 32;
     google.protobuf.StringValue private_forward_name = 33;
     ChatAdminRights bot_group_admin_rights = 34;
     ChatAdminRights bot_broadcast_admin_rights = 35;
@@ -13199,8 +13256,9 @@ message UserFull {
     google.protobuf.Int32Value stars_my_pending_rating_date = 53;
     ProfileTab main_tab = 54;
     Document saved_music = 55;
-    repeated PremiumGiftOption premium_gifts = 56;
-    UserStories stories_FLAGUSERSTORIES = 57;
+    google.protobuf.StringValue theme_emoticon = 56;
+    repeated PremiumGiftOption premium_gifts = 57;
+    UserStories stories_FLAGUSERSTORIES = 58;
 }
 
 // TL_userFull
@@ -13724,6 +13782,31 @@ message account_BusinessChatLinks {
 // TL_account_businessChatLinks
 message TL_account_businessChatLinks {
     account_BusinessChatLinks data2 = 1;
+}
+
+
+// account_ChatThemes <--
+//  + TL_account_chatThemesNotModified
+//  + TL_account_chatThemes
+//
+message account_ChatThemes {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    int64 hash = 3;
+    repeated ChatTheme themes = 4;
+    repeated Chat chats = 5;
+    repeated User users = 6;
+    google.protobuf.Int32Value next_offset = 7;
+}
+
+// TL_account_chatThemesNotModified
+message TL_account_chatThemesNotModified {
+    account_ChatThemes data2 = 1;
+}
+
+// TL_account_chatThemes
+message TL_account_chatThemes {
+    account_ChatThemes data2 = 1;
 }
 
 
@@ -14261,6 +14344,7 @@ message TL_auth_passwordRecovery {
 //  + TL_auth_sentCode
 //  + TL_auth_sentCodeSuccess
 //  + TL_auth_sentCodePaymentRequired
+//  + TL_auth_sentCodePaymentRequired
 //
 message auth_SentCode {
     string predicate_name = 1;
@@ -14271,6 +14355,8 @@ message auth_SentCode {
     google.protobuf.Int32Value timeout = 6;
     auth_Authorization authorization = 7;
     string store_product = 8;
+    string support_email_address = 9;
+    string support_email_subject = 10;
 }
 
 // TL_auth_sentCode

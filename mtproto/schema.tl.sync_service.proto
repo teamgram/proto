@@ -907,6 +907,13 @@ message TL_account_getSavedMusicIds {
     int64 hash = 3;
 }
 
+message TL_account_getUniqueGiftChatThemes {
+    TLConstructor  constructor = 1;
+    int32 offset = 3;
+    int32 limit = 4;
+    int64 hash = 5;
+}
+
 message TL_users_getUsers {
     TLConstructor  constructor = 1;
     repeated InputUser id = 3;
@@ -2156,7 +2163,8 @@ message TL_messages_checkHistoryImportPeer {
 message TL_messages_setChatTheme {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
-    string emoticon = 4;
+    InputChatTheme theme = 4;
+    string emoticon = 5;
 }
 
 message TL_messages_getMessageReadParticipants31C1C44F {
@@ -5412,6 +5420,11 @@ service RPCBotMenuButton {
     rpc bots_getBotMenuButton(TL_bots_getBotMenuButton) returns (BotMenuButton) {}
 }
 
+service RPCBotVerificationIcons {
+    rpc bots_setCustomVerification(TL_bots_setCustomVerification) returns (Bool) {}
+    rpc bots_getBotRecommendations(TL_bots_getBotRecommendations) returns (users_Users) {}
+}
+
 service RPCBots {
     rpc bots_setBotCommands(TL_bots_setBotCommands) returns (Bool) {}
     rpc bots_resetBotCommands(TL_bots_resetBotCommands) returns (Bool) {}
@@ -5419,8 +5432,6 @@ service RPCBots {
     rpc bots_setBotInfo(TL_bots_setBotInfo) returns (Bool) {}
     rpc bots_getBotInfoDCD914FD(TL_bots_getBotInfoDCD914FD) returns (bots_BotInfo) {}
     rpc bots_getAdminedBots(TL_bots_getAdminedBots) returns (Vector_User) {}
-    rpc bots_setCustomVerification(TL_bots_setCustomVerification) returns (Bool) {}
-    rpc bots_getBotRecommendations(TL_bots_getBotRecommendations) returns (users_Users) {}
     rpc bots_getBotInfo75EC12E6(TL_bots_getBotInfo75EC12E6) returns (Vector_String) {}
 }
 
@@ -5511,8 +5522,6 @@ service RPCChannels {
     rpc channels_getInactiveChannels(TL_channels_getInactiveChannels) returns (messages_InactiveChats) {}
     rpc channels_deleteParticipantHistory(TL_channels_deleteParticipantHistory) returns (messages_AffectedHistory) {}
     rpc channels_toggleParticipantsHidden(TL_channels_toggleParticipantsHidden) returns (Updates) {}
-    rpc channels_getMessageAuthor(TL_channels_getMessageAuthor) returns (User) {}
-    rpc channels_checkSearchPostsFlood(TL_channels_checkSearchPostsFlood) returns (SearchPostsFlood) {}
     rpc channels_inviteToChannel199F3A6C(TL_channels_inviteToChannel199F3A6C) returns (Updates) {}
     rpc channels_deleteHistoryAF369D42(TL_channels_deleteHistoryAF369D42) returns (Bool) {}
 }
@@ -5750,6 +5759,10 @@ service RPCGames {
     rpc messages_getInlineGameHighScores(TL_messages_getInlineGameHighScores) returns (messages_HighScores) {}
 }
 
+service RPCGatewayVerificationMessages {
+    rpc messages_reportMessagesDelivery(TL_messages_reportMessagesDelivery) returns (Bool) {}
+}
+
 service RPCGifs {
     rpc messages_getSavedGifs(TL_messages_getSavedGifs) returns (messages_SavedGifs) {}
     rpc messages_saveGif(TL_messages_saveGif) returns (Bool) {}
@@ -5758,6 +5771,14 @@ service RPCGifs {
 service RPCGiftCodes {
     rpc payments_checkGiftCode(TL_payments_checkGiftCode) returns (payments_CheckedGiftCode) {}
     rpc payments_applyGiftCode(TL_payments_applyGiftCode) returns (Updates) {}
+}
+
+service RPCGiftCollections {
+    rpc payments_createStarGiftCollection(TL_payments_createStarGiftCollection) returns (StarGiftCollection) {}
+    rpc payments_updateStarGiftCollection(TL_payments_updateStarGiftCollection) returns (StarGiftCollection) {}
+    rpc payments_reorderStarGiftCollections(TL_payments_reorderStarGiftCollections) returns (Bool) {}
+    rpc payments_deleteStarGiftCollection(TL_payments_deleteStarGiftCollection) returns (Bool) {}
+    rpc payments_getStarGiftCollections(TL_payments_getStarGiftCollections) returns (payments_StarGiftCollections) {}
 }
 
 service RPCGifts {
@@ -5775,11 +5796,6 @@ service RPCGifts {
     rpc payments_toggleStarGiftsPinnedToTop(TL_payments_toggleStarGiftsPinnedToTop) returns (Bool) {}
     rpc payments_getResaleStarGifts(TL_payments_getResaleStarGifts) returns (payments_ResaleStarGifts) {}
     rpc payments_updateStarGiftPrice(TL_payments_updateStarGiftPrice) returns (Updates) {}
-    rpc payments_createStarGiftCollection(TL_payments_createStarGiftCollection) returns (StarGiftCollection) {}
-    rpc payments_updateStarGiftCollection(TL_payments_updateStarGiftCollection) returns (StarGiftCollection) {}
-    rpc payments_reorderStarGiftCollections(TL_payments_reorderStarGiftCollections) returns (Bool) {}
-    rpc payments_deleteStarGiftCollection(TL_payments_deleteStarGiftCollection) returns (Bool) {}
-    rpc payments_getStarGiftCollections(TL_payments_getStarGiftCollections) returns (payments_StarGiftCollections) {}
     rpc payments_getUniqueStarGiftValueInfo(TL_payments_getUniqueStarGiftValueInfo) returns (payments_UniqueStarGiftValueInfo) {}
     rpc payments_checkCanSendGift(TL_payments_checkCanSendGift) returns (payments_CheckCanSendGiftResult) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
@@ -5900,12 +5916,9 @@ service RPCMessages {
     rpc messages_saveDefaultSendAs(TL_messages_saveDefaultSendAs) returns (Bool) {}
     rpc messages_searchSentMedia(TL_messages_searchSentMedia) returns (messages_Messages) {}
     rpc messages_getOutboxReadDate(TL_messages_getOutboxReadDate) returns (OutboxReadDate) {}
-    rpc messages_reportMessagesDelivery(TL_messages_reportMessagesDelivery) returns (Bool) {}
-    rpc messages_toggleTodoCompleted(TL_messages_toggleTodoCompleted) returns (Updates) {}
-    rpc messages_appendTodoList(TL_messages_appendTodoList) returns (Updates) {}
-    rpc messages_toggleSuggestedPostApproval(TL_messages_toggleSuggestedPostApproval) returns (Updates) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
     rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
+    rpc channels_checkSearchPostsFlood(TL_channels_checkSearchPostsFlood) returns (SearchPostsFlood) {}
 }
 
 service RPCMiniBotApps {
@@ -6091,6 +6104,7 @@ service RPCSavedMessageDialogs {
     rpc messages_reorderPinnedSavedDialogs(TL_messages_reorderPinnedSavedDialogs) returns (Bool) {}
     rpc messages_getSavedDialogsByID(TL_messages_getSavedDialogsByID) returns (messages_SavedDialogs) {}
     rpc messages_readSavedHistory(TL_messages_readSavedHistory) returns (Bool) {}
+    rpc channels_getMessageAuthor(TL_channels_getMessageAuthor) returns (User) {}
 }
 
 service RPCSavedMessageTags {
@@ -6261,6 +6275,10 @@ service RPCStories {
     rpc stories_reportC95BE06A(TL_stories_reportC95BE06A) returns (Bool) {}
 }
 
+service RPCSuggestedPosts {
+    rpc messages_toggleSuggestedPostApproval(TL_messages_toggleSuggestedPostApproval) returns (Updates) {}
+}
+
 service RPCTakeout {
     rpc account_initTakeoutSession(TL_account_initTakeoutSession) returns (account_Takeout) {}
     rpc account_finishTakeoutSession(TL_account_finishTakeoutSession) returns (Bool) {}
@@ -6277,11 +6295,17 @@ service RPCThemes {
     rpc account_getTheme(TL_account_getTheme) returns (Theme) {}
     rpc account_getThemes(TL_account_getThemes) returns (account_Themes) {}
     rpc account_getChatThemes(TL_account_getChatThemes) returns (account_Themes) {}
+    rpc account_getUniqueGiftChatThemes(TL_account_getUniqueGiftChatThemes) returns (account_ChatThemes) {}
     rpc messages_setChatTheme(TL_messages_setChatTheme) returns (Updates) {}
 }
 
 service RPCTimezones {
     rpc help_getTimezonesList(TL_help_getTimezonesList) returns (help_TimezonesList) {}
+}
+
+service RPCTodoLists {
+    rpc messages_toggleTodoCompleted(TL_messages_toggleTodoCompleted) returns (Updates) {}
+    rpc messages_appendTodoList(TL_messages_appendTodoList) returns (Updates) {}
 }
 
 service RPCTos {
@@ -6322,25 +6346,22 @@ service RPCUpdates {
 }
 
 service RPCUserChannelProfiles {
+    rpc account_updateProfile(TL_account_updateProfile) returns (User) {}
+    rpc account_updateStatus(TL_account_updateStatus) returns (Bool) {}
+    rpc account_updateBirthday(TL_account_updateBirthday) returns (Bool) {}
+    rpc account_updatePersonalChannel(TL_account_updatePersonalChannel) returns (Bool) {}
     rpc account_setMainProfileTab(TL_account_setMainProfileTab) returns (Bool) {}
     rpc account_saveMusic(TL_account_saveMusic) returns (Bool) {}
     rpc account_getSavedMusicIds(TL_account_getSavedMusicIds) returns (account_SavedMusicIds) {}
     rpc users_getSavedMusic(TL_users_getSavedMusic) returns (users_SavedMusic) {}
     rpc users_getSavedMusicByID(TL_users_getSavedMusicByID) returns (users_SavedMusic) {}
-    rpc channels_setMainProfileTab(TL_channels_setMainProfileTab) returns (Bool) {}
-}
-
-service RPCUserProfile {
-    rpc account_updateProfile(TL_account_updateProfile) returns (User) {}
-    rpc account_updateStatus(TL_account_updateStatus) returns (Bool) {}
-    rpc account_updateBirthday(TL_account_updateBirthday) returns (Bool) {}
-    rpc account_updatePersonalChannel(TL_account_updatePersonalChannel) returns (Bool) {}
     rpc contacts_getBirthdays(TL_contacts_getBirthdays) returns (contacts_ContactBirthdays) {}
     rpc photos_updateProfilePhoto(TL_photos_updateProfilePhoto) returns (photos_Photo) {}
     rpc photos_uploadProfilePhoto(TL_photos_uploadProfilePhoto) returns (photos_Photo) {}
     rpc photos_deletePhotos(TL_photos_deletePhotos) returns (Vector_Long) {}
     rpc photos_getUserPhotos(TL_photos_getUserPhotos) returns (photos_Photos) {}
     rpc photos_uploadContactProfilePhoto(TL_photos_uploadContactProfilePhoto) returns (photos_Photo) {}
+    rpc channels_setMainProfileTab(TL_channels_setMainProfileTab) returns (Bool) {}
     rpc account_updateVerified(TL_account_updateVerified) returns (User) {}
 }
 
