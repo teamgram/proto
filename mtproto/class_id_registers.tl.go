@@ -5882,6 +5882,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1551326360
 		return o
 	},
+	785918357: func() TLObject { // 0x2ed82995
+		o := MakeTLPaymentsStarGifts(nil)
+		o.Data2.Constructor = 785918357
+		return o
+	},
 	-1877571094: func() TLObject { // 0x901689ea
 		o := MakeTLPaymentsStarGifts(nil)
 		o.Data2.Constructor = -1877571094
@@ -7162,6 +7167,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1035529315
 		return o
 	},
+	2139438098: func() TLObject { // 0x7f853c12
+		o := MakeTLStarGift(nil)
+		o.Data2.Constructor = 2139438098
+		return o
+	},
 	-970274264: func() TLObject { // 0xc62aca28
 		o := MakeTLStarGift(nil)
 		o.Data2.Constructor = -970274264
@@ -7180,6 +7190,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1365150482: func() TLObject { // 0xaea174ee
 		o := MakeTLStarGift(nil)
 		o.Data2.Constructor = -1365150482
+		return o
+	},
+	-164136786: func() TLObject { // 0xf63778ae
+		o := MakeTLStarGiftUnique(nil)
+		o.Data2.Constructor = -164136786
 		return o
 	},
 	1678891913: func() TLObject { // 0x6411db89

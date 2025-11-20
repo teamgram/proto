@@ -10492,6 +10492,8 @@ message TL_sponsoredWebPage {
 //  + TL_starGiftUnique
 //  + TL_starGift
 //  + TL_starGiftUnique
+//  + TL_starGift
+//  + TL_starGiftUnique
 //  + TL_starGiftUnique
 //  + TL_starGiftUnique
 //  + TL_starGiftUnique
@@ -10516,19 +10518,20 @@ message StarGift {
     google.protobuf.Int64Value upgrade_stars = 15;
     google.protobuf.Int64Value resell_min_stars = 16;
     google.protobuf.StringValue title_FLAGSTRING = 17;
-    string title_STRING = 18;
-    string slug = 19;
-    int32 num = 20;
-    Peer owner_id_FLAGPEER = 21;
-    google.protobuf.StringValue owner_name = 22;
-    google.protobuf.StringValue owner_address = 23;
-    repeated StarGiftAttribute attributes = 24;
-    int32 availability_issued = 25;
-    int32 availability_total_INT32 = 26;
-    google.protobuf.StringValue gift_address = 27;
-    google.protobuf.Int64Value resell_stars = 28;
-    google.protobuf.Int64Value owner_id_FLAGINT64 = 29;
-    int64 owner_id_INT64 = 30;
+    Peer released_by = 18;
+    string title_STRING = 19;
+    string slug = 20;
+    int32 num = 21;
+    Peer owner_id_FLAGPEER = 22;
+    google.protobuf.StringValue owner_name = 23;
+    google.protobuf.StringValue owner_address = 24;
+    repeated StarGiftAttribute attributes = 25;
+    int32 availability_issued = 26;
+    int32 availability_total_INT32 = 27;
+    google.protobuf.StringValue gift_address = 28;
+    google.protobuf.Int64Value resell_stars = 29;
+    google.protobuf.Int64Value owner_id_FLAGINT64 = 30;
+    int64 owner_id_INT64 = 31;
 }
 
 // TL_starGift
@@ -16548,12 +16551,15 @@ message TL_payments_starGiftWithdrawalUrl {
 // payments_StarGifts <--
 //  + TL_payments_starGiftsNotModified
 //  + TL_payments_starGifts
+//  + TL_payments_starGifts
 //
 message payments_StarGifts {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int32 hash = 3;
     repeated StarGift gifts = 4;
+    repeated Chat chats = 5;
+    repeated User users = 6;
 }
 
 // TL_payments_starGiftsNotModified
