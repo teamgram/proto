@@ -5428,6 +5428,7 @@ const (
 	RPCChannels_ChannelsGetInactiveChannels_FullMethodName      = "/mtproto.RPCChannels/channels_getInactiveChannels"
 	RPCChannels_ChannelsDeleteParticipantHistory_FullMethodName = "/mtproto.RPCChannels/channels_deleteParticipantHistory"
 	RPCChannels_ChannelsToggleParticipantsHidden_FullMethodName = "/mtproto.RPCChannels/channels_toggleParticipantsHidden"
+	RPCChannels_ChannelsGetMessageAuthor_FullMethodName         = "/mtproto.RPCChannels/channels_getMessageAuthor"
 	RPCChannels_ChannelsInviteToChannel199F3A6C_FullMethodName  = "/mtproto.RPCChannels/channels_inviteToChannel199F3A6C"
 	RPCChannels_ChannelsDeleteHistoryAF369D42_FullMethodName    = "/mtproto.RPCChannels/channels_deleteHistoryAF369D42"
 )
@@ -5468,6 +5469,7 @@ type RPCChannelsClient interface {
 	ChannelsGetInactiveChannels(ctx context.Context, in *TLChannelsGetInactiveChannels, opts ...grpc.CallOption) (*Messages_InactiveChats, error)
 	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden, opts ...grpc.CallOption) (*Updates, error)
+	ChannelsGetMessageAuthor(ctx context.Context, in *TLChannelsGetMessageAuthor, opts ...grpc.CallOption) (*User, error)
 	ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(ctx context.Context, in *TLChannelsDeleteHistoryAF369D42, opts ...grpc.CallOption) (*Bool, error)
 }
@@ -5800,6 +5802,16 @@ func (c *rPCChannelsClient) ChannelsToggleParticipantsHidden(ctx context.Context
 	return out, nil
 }
 
+func (c *rPCChannelsClient) ChannelsGetMessageAuthor(ctx context.Context, in *TLChannelsGetMessageAuthor, opts ...grpc.CallOption) (*User, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(User)
+	err := c.cc.Invoke(ctx, RPCChannels_ChannelsGetMessageAuthor_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCChannelsClient) ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Updates)
@@ -5856,6 +5868,7 @@ type RPCChannelsServer interface {
 	ChannelsGetInactiveChannels(context.Context, *TLChannelsGetInactiveChannels) (*Messages_InactiveChats, error)
 	ChannelsDeleteParticipantHistory(context.Context, *TLChannelsDeleteParticipantHistory) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(context.Context, *TLChannelsToggleParticipantsHidden) (*Updates, error)
+	ChannelsGetMessageAuthor(context.Context, *TLChannelsGetMessageAuthor) (*User, error)
 	ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(context.Context, *TLChannelsDeleteHistoryAF369D42) (*Bool, error)
 }
@@ -5962,6 +5975,9 @@ func (UnimplementedRPCChannelsServer) ChannelsDeleteParticipantHistory(context.C
 }
 func (UnimplementedRPCChannelsServer) ChannelsToggleParticipantsHidden(context.Context, *TLChannelsToggleParticipantsHidden) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsToggleParticipantsHidden not implemented")
+}
+func (UnimplementedRPCChannelsServer) ChannelsGetMessageAuthor(context.Context, *TLChannelsGetMessageAuthor) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetMessageAuthor not implemented")
 }
 func (UnimplementedRPCChannelsServer) ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsInviteToChannel199F3A6C not implemented")
@@ -6565,6 +6581,24 @@ func _RPCChannels_ChannelsToggleParticipantsHidden_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCChannels_ChannelsGetMessageAuthor_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsGetMessageAuthor)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCChannelsServer).ChannelsGetMessageAuthor(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCChannels_ChannelsGetMessageAuthor_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCChannelsServer).ChannelsGetMessageAuthor(ctx, req.(*TLChannelsGetMessageAuthor))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCChannels_ChannelsInviteToChannel199F3A6C_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsInviteToChannel199F3A6C)
 	if err := dec(in); err != nil {
@@ -6735,6 +6769,10 @@ var RPCChannels_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "channels_toggleParticipantsHidden",
 			Handler:    _RPCChannels_ChannelsToggleParticipantsHidden_Handler,
+		},
+		{
+			MethodName: "channels_getMessageAuthor",
+			Handler:    _RPCChannels_ChannelsGetMessageAuthor_Handler,
 		},
 		{
 			MethodName: "channels_inviteToChannel199F3A6C",
@@ -25052,6 +25090,8 @@ const (
 	RPCSavedMessageDialogs_MessagesGetPinnedSavedDialogs_FullMethodName     = "/mtproto.RPCSavedMessageDialogs/messages_getPinnedSavedDialogs"
 	RPCSavedMessageDialogs_MessagesToggleSavedDialogPin_FullMethodName      = "/mtproto.RPCSavedMessageDialogs/messages_toggleSavedDialogPin"
 	RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_FullMethodName = "/mtproto.RPCSavedMessageDialogs/messages_reorderPinnedSavedDialogs"
+	RPCSavedMessageDialogs_MessagesGetSavedDialogsByID_FullMethodName       = "/mtproto.RPCSavedMessageDialogs/messages_getSavedDialogsByID"
+	RPCSavedMessageDialogs_MessagesReadSavedHistory_FullMethodName          = "/mtproto.RPCSavedMessageDialogs/messages_readSavedHistory"
 )
 
 // RPCSavedMessageDialogsClient is the client API for RPCSavedMessageDialogs service.
@@ -25064,6 +25104,8 @@ type RPCSavedMessageDialogsClient interface {
 	MessagesGetPinnedSavedDialogs(ctx context.Context, in *TLMessagesGetPinnedSavedDialogs, opts ...grpc.CallOption) (*Messages_SavedDialogs, error)
 	MessagesToggleSavedDialogPin(ctx context.Context, in *TLMessagesToggleSavedDialogPin, opts ...grpc.CallOption) (*Bool, error)
 	MessagesReorderPinnedSavedDialogs(ctx context.Context, in *TLMessagesReorderPinnedSavedDialogs, opts ...grpc.CallOption) (*Bool, error)
+	MessagesGetSavedDialogsByID(ctx context.Context, in *TLMessagesGetSavedDialogsByID, opts ...grpc.CallOption) (*Messages_SavedDialogs, error)
+	MessagesReadSavedHistory(ctx context.Context, in *TLMessagesReadSavedHistory, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCSavedMessageDialogsClient struct {
@@ -25134,6 +25176,26 @@ func (c *rPCSavedMessageDialogsClient) MessagesReorderPinnedSavedDialogs(ctx con
 	return out, nil
 }
 
+func (c *rPCSavedMessageDialogsClient) MessagesGetSavedDialogsByID(ctx context.Context, in *TLMessagesGetSavedDialogsByID, opts ...grpc.CallOption) (*Messages_SavedDialogs, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Messages_SavedDialogs)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesGetSavedDialogsByID_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCSavedMessageDialogsClient) MessagesReadSavedHistory(ctx context.Context, in *TLMessagesReadSavedHistory, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCSavedMessageDialogs_MessagesReadSavedHistory_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCSavedMessageDialogsServer is the server API for RPCSavedMessageDialogs service.
 // All implementations should embed UnimplementedRPCSavedMessageDialogsServer
 // for forward compatibility.
@@ -25144,6 +25206,8 @@ type RPCSavedMessageDialogsServer interface {
 	MessagesGetPinnedSavedDialogs(context.Context, *TLMessagesGetPinnedSavedDialogs) (*Messages_SavedDialogs, error)
 	MessagesToggleSavedDialogPin(context.Context, *TLMessagesToggleSavedDialogPin) (*Bool, error)
 	MessagesReorderPinnedSavedDialogs(context.Context, *TLMessagesReorderPinnedSavedDialogs) (*Bool, error)
+	MessagesGetSavedDialogsByID(context.Context, *TLMessagesGetSavedDialogsByID) (*Messages_SavedDialogs, error)
+	MessagesReadSavedHistory(context.Context, *TLMessagesReadSavedHistory) (*Bool, error)
 }
 
 // UnimplementedRPCSavedMessageDialogsServer should be embedded to have
@@ -25170,6 +25234,12 @@ func (UnimplementedRPCSavedMessageDialogsServer) MessagesToggleSavedDialogPin(co
 }
 func (UnimplementedRPCSavedMessageDialogsServer) MessagesReorderPinnedSavedDialogs(context.Context, *TLMessagesReorderPinnedSavedDialogs) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesReorderPinnedSavedDialogs not implemented")
+}
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesGetSavedDialogsByID(context.Context, *TLMessagesGetSavedDialogsByID) (*Messages_SavedDialogs, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetSavedDialogsByID not implemented")
+}
+func (UnimplementedRPCSavedMessageDialogsServer) MessagesReadSavedHistory(context.Context, *TLMessagesReadSavedHistory) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesReadSavedHistory not implemented")
 }
 func (UnimplementedRPCSavedMessageDialogsServer) testEmbeddedByValue() {}
 
@@ -25299,6 +25369,42 @@ func _RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_Handler(srv inter
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCSavedMessageDialogs_MessagesGetSavedDialogsByID_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetSavedDialogsByID)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetSavedDialogsByID(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesGetSavedDialogsByID_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesGetSavedDialogsByID(ctx, req.(*TLMessagesGetSavedDialogsByID))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCSavedMessageDialogs_MessagesReadSavedHistory_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesReadSavedHistory)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCSavedMessageDialogsServer).MessagesReadSavedHistory(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCSavedMessageDialogs_MessagesReadSavedHistory_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCSavedMessageDialogsServer).MessagesReadSavedHistory(ctx, req.(*TLMessagesReadSavedHistory))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCSavedMessageDialogs_ServiceDesc is the grpc.ServiceDesc for RPCSavedMessageDialogs service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -25329,6 +25435,14 @@ var RPCSavedMessageDialogs_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_reorderPinnedSavedDialogs",
 			Handler:    _RPCSavedMessageDialogs_MessagesReorderPinnedSavedDialogs_Handler,
+		},
+		{
+			MethodName: "messages_getSavedDialogsByID",
+			Handler:    _RPCSavedMessageDialogs_MessagesGetSavedDialogsByID_Handler,
+		},
+		{
+			MethodName: "messages_readSavedHistory",
+			Handler:    _RPCSavedMessageDialogs_MessagesReadSavedHistory_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

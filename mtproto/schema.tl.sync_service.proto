@@ -1213,11 +1213,12 @@ message TL_messages_forwardMessages {
     repeated int64 random_id = 12;
     InputPeer to_peer = 13;
     google.protobuf.Int32Value top_msg_id = 14;
-    google.protobuf.Int32Value schedule_date = 15;
-    InputPeer send_as = 16;
-    InputQuickReplyShortcut quick_reply_shortcut = 17;
-    google.protobuf.Int32Value video_timestamp = 18;
-    google.protobuf.Int64Value allow_paid_stars = 19;
+    InputReplyTo reply_to = 15;
+    google.protobuf.Int32Value schedule_date = 16;
+    InputPeer send_as = 17;
+    InputQuickReplyShortcut quick_reply_shortcut = 18;
+    google.protobuf.Int32Value video_timestamp = 19;
+    google.protobuf.Int64Value allow_paid_stars = 20;
 }
 
 message TL_messages_reportSpam {
@@ -1808,11 +1809,13 @@ message TL_messages_getSplitRanges {
 message TL_messages_markDialogUnread {
     TLConstructor  constructor = 1;
     bool unread = 3;
-    InputDialogPeer peer = 4;
+    InputPeer parent_peer = 4;
+    InputDialogPeer peer = 5;
 }
 
 message TL_messages_getDialogUnreadMarks {
     TLConstructor  constructor = 1;
+    InputPeer parent_peer = 3;
 }
 
 message TL_messages_clearAllDrafts {
@@ -2006,6 +2009,7 @@ message TL_messages_unpinAllMessages {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     google.protobuf.Int32Value top_msg_id = 4;
+    InputPeer saved_peer_id = 5;
 }
 
 message TL_messages_deleteChat {
@@ -2228,17 +2232,19 @@ message TL_messages_getUnreadReactions {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     google.protobuf.Int32Value top_msg_id = 4;
-    int32 offset_id = 5;
-    int32 add_offset = 6;
-    int32 limit = 7;
-    int32 max_id = 8;
-    int32 min_id = 9;
+    InputPeer saved_peer_id = 5;
+    int32 offset_id = 6;
+    int32 add_offset = 7;
+    int32 limit = 8;
+    int32 max_id = 9;
+    int32 min_id = 10;
 }
 
 message TL_messages_readReactions {
     TLConstructor  constructor = 1;
     InputPeer peer = 3;
     google.protobuf.Int32Value top_msg_id = 4;
+    InputPeer saved_peer_id = 5;
 }
 
 message TL_messages_searchSentMedia {
@@ -2463,31 +2469,34 @@ message TL_messages_searchEmojiStickerSets {
 message TL_messages_getSavedDialogs {
     TLConstructor  constructor = 1;
     bool exclude_pinned = 3;
-    int32 offset_date = 4;
-    int32 offset_id = 5;
-    InputPeer offset_peer = 6;
-    int32 limit = 7;
-    int64 hash = 8;
+    InputPeer parent_peer = 4;
+    int32 offset_date = 5;
+    int32 offset_id = 6;
+    InputPeer offset_peer = 7;
+    int32 limit = 8;
+    int64 hash = 9;
 }
 
 message TL_messages_getSavedHistory {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    int32 offset_id = 4;
-    int32 offset_date = 5;
-    int32 add_offset = 6;
-    int32 limit = 7;
-    int32 max_id = 8;
-    int32 min_id = 9;
-    int64 hash = 10;
+    InputPeer parent_peer = 3;
+    InputPeer peer = 4;
+    int32 offset_id = 5;
+    int32 offset_date = 6;
+    int32 add_offset = 7;
+    int32 limit = 8;
+    int32 max_id = 9;
+    int32 min_id = 10;
+    int64 hash = 11;
 }
 
 message TL_messages_deleteSavedHistory {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    int32 max_id = 4;
-    google.protobuf.Int32Value min_date = 5;
-    google.protobuf.Int32Value max_date = 6;
+    InputPeer parent_peer = 3;
+    InputPeer peer = 4;
+    int32 max_id = 5;
+    google.protobuf.Int32Value min_date = 6;
+    google.protobuf.Int32Value max_date = 7;
 }
 
 message TL_messages_getPinnedSavedDialogs {
@@ -2705,6 +2714,19 @@ message TL_messages_reportMessagesDelivery {
     bool push = 3;
     InputPeer peer = 4;
     repeated int32 id = 5;
+}
+
+message TL_messages_getSavedDialogsByID {
+    TLConstructor  constructor = 1;
+    InputPeer parent_peer = 3;
+    repeated InputPeer ids = 4;
+}
+
+message TL_messages_readSavedHistory {
+    TLConstructor  constructor = 1;
+    InputPeer parent_peer = 3;
+    InputPeer peer = 4;
+    int32 max_id = 5;
 }
 
 message TL_updates_getState {
@@ -3225,6 +3247,7 @@ message TL_channels_toggleForum {
     TLConstructor  constructor = 1;
     InputChannel channel = 3;
     Bool enabled = 4;
+    Bool tabs = 5;
 }
 
 message TL_channels_createForumTopic {
@@ -3356,14 +3379,21 @@ message TL_channels_searchPosts {
 
 message TL_channels_updatePaidMessagesPrice {
     TLConstructor  constructor = 1;
-    InputChannel channel = 3;
-    int64 send_paid_messages_stars = 4;
+    bool broadcast_messages_allowed = 3;
+    InputChannel channel = 4;
+    int64 send_paid_messages_stars = 5;
 }
 
 message TL_channels_toggleAutotranslation {
     TLConstructor  constructor = 1;
     InputChannel channel = 3;
     Bool enabled = 4;
+}
+
+message TL_channels_getMessageAuthor {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+    int32 id = 4;
 }
 
 message TL_bots_sendCustomRequest {
@@ -5299,6 +5329,7 @@ service RPCChannels {
     rpc channels_getInactiveChannels(TL_channels_getInactiveChannels) returns (messages_InactiveChats) {}
     rpc channels_deleteParticipantHistory(TL_channels_deleteParticipantHistory) returns (messages_AffectedHistory) {}
     rpc channels_toggleParticipantsHidden(TL_channels_toggleParticipantsHidden) returns (Updates) {}
+    rpc channels_getMessageAuthor(TL_channels_getMessageAuthor) returns (User) {}
     rpc channels_inviteToChannel199F3A6C(TL_channels_inviteToChannel199F3A6C) returns (Updates) {}
     rpc channels_deleteHistoryAF369D42(TL_channels_deleteHistoryAF369D42) returns (Bool) {}
 }
@@ -5864,6 +5895,8 @@ service RPCSavedMessageDialogs {
     rpc messages_getPinnedSavedDialogs(TL_messages_getPinnedSavedDialogs) returns (messages_SavedDialogs) {}
     rpc messages_toggleSavedDialogPin(TL_messages_toggleSavedDialogPin) returns (Bool) {}
     rpc messages_reorderPinnedSavedDialogs(TL_messages_reorderPinnedSavedDialogs) returns (Bool) {}
+    rpc messages_getSavedDialogsByID(TL_messages_getSavedDialogsByID) returns (messages_SavedDialogs) {}
+    rpc messages_readSavedHistory(TL_messages_readSavedHistory) returns (Bool) {}
 }
 
 service RPCSavedMessageTags {

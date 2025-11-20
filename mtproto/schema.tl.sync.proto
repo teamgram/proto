@@ -1759,6 +1759,7 @@ message TL_channelParticipantsMentions {
 //  + TL_channel
 //  + TL_channel
 //  + TL_channel
+//  + TL_channel
 //
 message Chat {
     string predicate_name = 1;
@@ -1798,24 +1799,28 @@ message Chat {
     bool stories_unavailable = 35;
     bool signature_profiles = 36;
     bool autotranslation = 37;
-    google.protobuf.Int64Value access_hash_FLAGINT64 = 38;
-    google.protobuf.StringValue username = 39;
-    repeated RestrictionReason restriction_reason = 40;
-    ChatBannedRights banned_rights = 41;
-    google.protobuf.Int32Value participants_count_FLAGINT32 = 42;
-    repeated Username usernames = 43;
-    google.protobuf.Int32Value stories_max_id = 44;
-    PeerColor color_FLAGPEERCOLOR = 45;
-    PeerColor profile_color = 46;
-    EmojiStatus emoji_status = 47;
-    google.protobuf.Int32Value level = 48;
-    google.protobuf.Int32Value subscription_until_date = 49;
-    google.protobuf.Int64Value bot_verification_icon = 50;
-    google.protobuf.Int64Value send_paid_messages_stars = 51;
-    int64 access_hash_INT64 = 52;
-    google.protobuf.Int32Value until_date = 53;
-    google.protobuf.Int32Value color_FLAGINT32 = 54;
-    google.protobuf.Int64Value background_emoji_id = 55;
+    bool broadcast_messages_allowed = 38;
+    bool monoforum = 39;
+    bool forum_tabs = 40;
+    google.protobuf.Int64Value access_hash_FLAGINT64 = 41;
+    google.protobuf.StringValue username = 42;
+    repeated RestrictionReason restriction_reason = 43;
+    ChatBannedRights banned_rights = 44;
+    google.protobuf.Int32Value participants_count_FLAGINT32 = 45;
+    repeated Username usernames = 46;
+    google.protobuf.Int32Value stories_max_id = 47;
+    PeerColor color_FLAGPEERCOLOR = 48;
+    PeerColor profile_color = 49;
+    EmojiStatus emoji_status = 50;
+    google.protobuf.Int32Value level = 51;
+    google.protobuf.Int32Value subscription_until_date = 52;
+    google.protobuf.Int64Value bot_verification_icon = 53;
+    google.protobuf.Int64Value send_paid_messages_stars = 54;
+    google.protobuf.Int64Value linked_monoforum_id = 55;
+    int64 access_hash_INT64 = 56;
+    google.protobuf.Int32Value until_date = 57;
+    google.protobuf.Int32Value color_FLAGINT32 = 58;
+    google.protobuf.Int64Value background_emoji_id = 59;
     google.protobuf.Int32Value color = 100;
 }
 
@@ -5203,6 +5208,8 @@ message TL_inputQuickReplyShortcutId {
 // InputReplyTo <--
 //  + TL_inputReplyToMessage
 //  + TL_inputReplyToStory
+//  + TL_inputReplyToMonoForum
+//  + TL_inputReplyToMessage
 //  + TL_inputReplyToStory
 //  + TL_inputReplyToMessage
 //  + TL_inputReplyToMessage
@@ -5216,9 +5223,10 @@ message InputReplyTo {
     google.protobuf.StringValue quote_text = 6;
     repeated MessageEntity quote_entities = 7;
     google.protobuf.Int32Value quote_offset = 8;
-    InputPeer peer = 9;
-    int32 story_id = 10;
-    InputUser user_id = 11;
+    InputPeer monoforum_peer_id = 9;
+    InputPeer peer = 10;
+    int32 story_id = 11;
+    InputUser user_id = 12;
 }
 
 // TL_inputReplyToMessage
@@ -5228,6 +5236,11 @@ message TL_inputReplyToMessage {
 
 // TL_inputReplyToStory
 message TL_inputReplyToStory {
+    InputReplyTo data2 = 1;
+}
+
+// TL_inputReplyToMonoForum
+message TL_inputReplyToMonoForum {
     InputReplyTo data2 = 1;
 }
 
@@ -6307,6 +6320,7 @@ message TL_messageService {
 //  + TL_messageActionPaidMessagesRefunded
 //  + TL_messageActionPaidMessagesPrice
 //  + TL_messageActionConferenceCall
+//  + TL_messageActionPaidMessagesPrice
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGift
 //  + TL_messageActionStarGiftUnique
@@ -6425,12 +6439,13 @@ message MessageAction {
     google.protobuf.Int32Value can_transfer_at = 92;
     google.protobuf.Int32Value can_resell_at = 93;
     int32 count = 94;
-    bool missed = 95;
-    bool active = 96;
-    repeated Peer other_participants = 97;
-    int64 convert_stars_INT64 = 98;
-    string domain_STRING = 99;
-    BizDataRaw biz_data = 100;
+    bool broadcast_messages_allowed = 95;
+    bool missed = 96;
+    bool active = 97;
+    repeated Peer other_participants = 98;
+    int64 convert_stars_INT64 = 99;
+    string domain_STRING = 100;
+    BizDataRaw biz_data = 101;
     string title = 200;
 }
 
@@ -9654,6 +9669,7 @@ message TL_savedPhoneContact {
 
 // SavedDialog <--
 //  + TL_savedDialog
+//  + TL_monoForumDialog
 //
 message SavedDialog {
     string predicate_name = 1;
@@ -9661,10 +9677,21 @@ message SavedDialog {
     bool pinned = 3;
     Peer peer = 4;
     int32 top_message = 5;
+    bool unread_mark = 6;
+    int32 read_inbox_max_id = 7;
+    int32 read_outbox_max_id = 8;
+    int32 unread_count = 9;
+    int32 unread_reactions_count = 10;
+    DraftMessage draft = 11;
 }
 
 // TL_savedDialog
 message TL_savedDialog {
+    SavedDialog data2 = 1;
+}
+
+// TL_monoForumDialog
+message TL_monoForumDialog {
     SavedDialog data2 = 1;
 }
 
@@ -11552,6 +11579,12 @@ message TL_topPeerCategoryPeers {
 //  + TL_updatePaidReactionPrivacy
 //  + TL_updateSentPhoneCode
 //  + TL_updateGroupCallChainBlocks
+//  + TL_updateReadMonoForumInbox
+//  + TL_updateReadMonoForumOutbox
+//  + TL_updateDraftMessage
+//  + TL_updateChannelReadMessagesContents
+//  + TL_updateDialogUnreadMark
+//  + TL_updateMessageReactions
 //  + TL_updatePaidReactionPrivacy
 //  + TL_updateGroupCall
 //  + TL_updateStarsBalance
@@ -11643,112 +11676,113 @@ message Update {
     bytes data_FLAGBYTES = 66;
     google.protobuf.StringValue game_short_name = 67;
     google.protobuf.Int32Value top_msg_id_FLAGINT32 = 68;
-    DraftMessage draft = 69;
-    bool pinned = 70;
-    DialogPeer peer_DIALOGPEER = 71;
-    repeated DialogPeer order_FLAGVECTORDIALOGPEER = 72;
-    DataJSON data_DATAJSON = 73;
-    int32 timeout = 74;
-    bytes payload_BYTES = 75;
-    PostAddress shipping_address = 76;
-    PaymentRequestedInfo info = 77;
-    google.protobuf.StringValue shipping_option_id = 78;
-    string currency = 79;
-    int64 total_amount = 80;
-    PhoneCall phone_call = 81;
-    string lang_code = 82;
-    LangPackDifference difference = 83;
-    int32 available_min_id = 84;
-    bool unread = 85;
-    int64 poll_id = 86;
-    Poll poll = 87;
-    PollResults results = 88;
-    ChatBannedRights default_banned_rights = 89;
-    repeated FolderPeer folder_peers = 90;
-    PeerSettings settings = 91;
-    repeated PeerLocated peers = 92;
-    repeated int32 sent_messages = 93;
-    Theme theme = 94;
-    repeated bytes options = 95;
-    DialogFilter filter = 96;
-    repeated int32 order_VECTORINT32 = 97;
-    int64 phone_call_id = 98;
-    int32 forwards = 99;
-    int32 top_msg_id_INT32 = 100;
-    int32 read_max_id = 101;
-    google.protobuf.Int64Value broadcast_id = 102;
-    google.protobuf.Int32Value broadcast_post = 103;
-    bool blocked_FLAGBOOLEAN = 104;
-    bool blocked_my_stories_from = 105;
-    Peer peer_id = 106;
-    InputGroupCall call_INPUTGROUPCALL = 107;
-    repeated GroupCallParticipant participants_VECTORGROUPCALLPARTICIPANT = 108;
-    google.protobuf.Int64Value chat_id_FLAGINT64 = 109;
-    GroupCall call_GROUPCALL = 110;
-    google.protobuf.Int32Value ttl_period = 111;
-    int64 actor_id = 112;
-    ChatParticipant prev_participant_FLAGCHATPARTICIPANT = 113;
-    ChatParticipant new_participant_FLAGCHATPARTICIPANT = 114;
-    ExportedChatInvite invite = 115;
-    bool via_chatlist = 116;
-    ChannelParticipant prev_participant_FLAGCHANNELPARTICIPANT = 117;
-    ChannelParticipant new_participant_FLAGCHANNELPARTICIPANT = 118;
-    Bool stopped = 119;
-    bool presentation = 120;
-    DataJSON params = 121;
-    int64 bot_id = 122;
-    repeated BotCommand commands = 123;
-    int32 requests_pending = 124;
-    repeated int64 recent_requesters = 125;
-    string about = 126;
-    MessageReactions reactions_MESSAGEREACTIONS = 127;
-    BotMenuButton button = 128;
-    bool pending = 129;
-    int64 transcription_id = 130;
-    string text = 131;
-    EmojiStatus emoji_status = 132;
-    int64 stickerset_INT64 = 133;
-    repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 134;
-    int32 topic_id_INT32 = 135;
-    StoryItem story = 136;
-    StoriesStealthMode stealth_mode = 137;
-    int32 story_id = 138;
-    Reaction reaction = 139;
-    Boost boost = 140;
-    Bool enabled = 141;
-    bool wallpaper_overridden = 142;
-    WallPaper wallpaper = 143;
-    Peer actor = 144;
-    repeated Reaction old_reactions = 145;
-    repeated Reaction new_reactions = 146;
-    repeated ReactionCount reactions_VECTORREACTIONCOUNT = 147;
-    string job_id = 148;
-    repeated QuickReply quick_replies = 149;
-    QuickReply quick_reply = 150;
-    int32 shortcut_id = 151;
-    BotBusinessConnection connection = 152;
-    string connection_id = 153;
-    Message reply_to_message = 154;
-    BroadcastRevenueBalances balances = 155;
-    StarsAmount balance_STARSAMOUNT = 156;
-    StarsRevenueStatus status_STARSREVENUESTATUS = 157;
-    string payload_STRING = 158;
-    PaidReactionPrivacy private_PAIDREACTIONPRIVACY = 159;
-    auth_SentCode sent_code = 160;
-    int32 sub_chain_id = 161;
-    repeated bytes blocks = 162;
-    int32 next_offset = 163;
-    Bool private_BOOL = 164;
-    int64 balance_INT64 = 165;
-    string invoice_slug = 166;
-    int32 until_date = 167;
-    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 168;
-    Bool blocked_BOOL = 169;
-    UserProfilePhoto photo = 170;
-    Bool previous = 171;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 172;
-    string username = 173;
-    BizDataRaw biz_data = 174;
+    Peer saved_peer_id = 69;
+    DraftMessage draft = 70;
+    bool pinned = 71;
+    DialogPeer peer_DIALOGPEER = 72;
+    repeated DialogPeer order_FLAGVECTORDIALOGPEER = 73;
+    DataJSON data_DATAJSON = 74;
+    int32 timeout = 75;
+    bytes payload_BYTES = 76;
+    PostAddress shipping_address = 77;
+    PaymentRequestedInfo info = 78;
+    google.protobuf.StringValue shipping_option_id = 79;
+    string currency = 80;
+    int64 total_amount = 81;
+    PhoneCall phone_call = 82;
+    string lang_code = 83;
+    LangPackDifference difference = 84;
+    int32 available_min_id = 85;
+    bool unread = 86;
+    int64 poll_id = 87;
+    Poll poll = 88;
+    PollResults results = 89;
+    ChatBannedRights default_banned_rights = 90;
+    repeated FolderPeer folder_peers = 91;
+    PeerSettings settings = 92;
+    repeated PeerLocated peers = 93;
+    repeated int32 sent_messages = 94;
+    Theme theme = 95;
+    repeated bytes options = 96;
+    DialogFilter filter = 97;
+    repeated int32 order_VECTORINT32 = 98;
+    int64 phone_call_id = 99;
+    int32 forwards = 100;
+    int32 top_msg_id_INT32 = 101;
+    int32 read_max_id = 102;
+    google.protobuf.Int64Value broadcast_id = 103;
+    google.protobuf.Int32Value broadcast_post = 104;
+    bool blocked_FLAGBOOLEAN = 105;
+    bool blocked_my_stories_from = 106;
+    Peer peer_id = 107;
+    InputGroupCall call_INPUTGROUPCALL = 108;
+    repeated GroupCallParticipant participants_VECTORGROUPCALLPARTICIPANT = 109;
+    google.protobuf.Int64Value chat_id_FLAGINT64 = 110;
+    GroupCall call_GROUPCALL = 111;
+    google.protobuf.Int32Value ttl_period = 112;
+    int64 actor_id = 113;
+    ChatParticipant prev_participant_FLAGCHATPARTICIPANT = 114;
+    ChatParticipant new_participant_FLAGCHATPARTICIPANT = 115;
+    ExportedChatInvite invite = 116;
+    bool via_chatlist = 117;
+    ChannelParticipant prev_participant_FLAGCHANNELPARTICIPANT = 118;
+    ChannelParticipant new_participant_FLAGCHANNELPARTICIPANT = 119;
+    Bool stopped = 120;
+    bool presentation = 121;
+    DataJSON params = 122;
+    int64 bot_id = 123;
+    repeated BotCommand commands = 124;
+    int32 requests_pending = 125;
+    repeated int64 recent_requesters = 126;
+    string about = 127;
+    MessageReactions reactions_MESSAGEREACTIONS = 128;
+    BotMenuButton button = 129;
+    bool pending = 130;
+    int64 transcription_id = 131;
+    string text = 132;
+    EmojiStatus emoji_status = 133;
+    int64 stickerset_INT64 = 134;
+    repeated MessageExtendedMedia extended_media_VECTORMESSAGEEXTENDEDMEDIA = 135;
+    int32 topic_id_INT32 = 136;
+    StoryItem story = 137;
+    StoriesStealthMode stealth_mode = 138;
+    int32 story_id = 139;
+    Reaction reaction = 140;
+    Boost boost = 141;
+    Bool enabled = 142;
+    bool wallpaper_overridden = 143;
+    WallPaper wallpaper = 144;
+    Peer actor = 145;
+    repeated Reaction old_reactions = 146;
+    repeated Reaction new_reactions = 147;
+    repeated ReactionCount reactions_VECTORREACTIONCOUNT = 148;
+    string job_id = 149;
+    repeated QuickReply quick_replies = 150;
+    QuickReply quick_reply = 151;
+    int32 shortcut_id = 152;
+    BotBusinessConnection connection = 153;
+    string connection_id = 154;
+    Message reply_to_message = 155;
+    BroadcastRevenueBalances balances = 156;
+    StarsAmount balance_STARSAMOUNT = 157;
+    StarsRevenueStatus status_STARSREVENUESTATUS = 158;
+    string payload_STRING = 159;
+    PaidReactionPrivacy private_PAIDREACTIONPRIVACY = 160;
+    auth_SentCode sent_code = 161;
+    int32 sub_chain_id = 162;
+    repeated bytes blocks = 163;
+    int32 next_offset = 164;
+    Bool private_BOOL = 165;
+    int64 balance_INT64 = 166;
+    string invoice_slug = 167;
+    int32 until_date = 168;
+    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 169;
+    Bool blocked_BOOL = 170;
+    UserProfilePhoto photo = 171;
+    Bool previous = 172;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 173;
+    string username = 174;
+    BizDataRaw biz_data = 175;
 }
 
 // TL_updateNewMessage
@@ -12463,6 +12497,16 @@ message TL_updateSentPhoneCode {
 
 // TL_updateGroupCallChainBlocks
 message TL_updateGroupCallChainBlocks {
+    Update data2 = 1;
+}
+
+// TL_updateReadMonoForumInbox
+message TL_updateReadMonoForumInbox {
+    Update data2 = 1;
+}
+
+// TL_updateReadMonoForumOutbox
+message TL_updateReadMonoForumOutbox {
     Update data2 = 1;
 }
 
