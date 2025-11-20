@@ -16594,28 +16594,33 @@ var RPCGiveaways_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCGroupCalls_PhoneCreateGroupCall_FullMethodName                  = "/mtproto.RPCGroupCalls/phone_createGroupCall"
-	RPCGroupCalls_PhoneJoinGroupCall_FullMethodName                    = "/mtproto.RPCGroupCalls/phone_joinGroupCall"
-	RPCGroupCalls_PhoneLeaveGroupCall_FullMethodName                   = "/mtproto.RPCGroupCalls/phone_leaveGroupCall"
-	RPCGroupCalls_PhoneInviteToGroupCall_FullMethodName                = "/mtproto.RPCGroupCalls/phone_inviteToGroupCall"
-	RPCGroupCalls_PhoneDiscardGroupCall_FullMethodName                 = "/mtproto.RPCGroupCalls/phone_discardGroupCall"
-	RPCGroupCalls_PhoneToggleGroupCallSettings_FullMethodName          = "/mtproto.RPCGroupCalls/phone_toggleGroupCallSettings"
-	RPCGroupCalls_PhoneGetGroupCall_FullMethodName                     = "/mtproto.RPCGroupCalls/phone_getGroupCall"
-	RPCGroupCalls_PhoneGetGroupParticipants_FullMethodName             = "/mtproto.RPCGroupCalls/phone_getGroupParticipants"
-	RPCGroupCalls_PhoneCheckGroupCall_FullMethodName                   = "/mtproto.RPCGroupCalls/phone_checkGroupCall"
-	RPCGroupCalls_PhoneToggleGroupCallRecord_FullMethodName            = "/mtproto.RPCGroupCalls/phone_toggleGroupCallRecord"
-	RPCGroupCalls_PhoneEditGroupCallParticipant_FullMethodName         = "/mtproto.RPCGroupCalls/phone_editGroupCallParticipant"
-	RPCGroupCalls_PhoneEditGroupCallTitle_FullMethodName               = "/mtproto.RPCGroupCalls/phone_editGroupCallTitle"
-	RPCGroupCalls_PhoneGetGroupCallJoinAs_FullMethodName               = "/mtproto.RPCGroupCalls/phone_getGroupCallJoinAs"
-	RPCGroupCalls_PhoneExportGroupCallInvite_FullMethodName            = "/mtproto.RPCGroupCalls/phone_exportGroupCallInvite"
-	RPCGroupCalls_PhoneToggleGroupCallStartSubscription_FullMethodName = "/mtproto.RPCGroupCalls/phone_toggleGroupCallStartSubscription"
-	RPCGroupCalls_PhoneStartScheduledGroupCall_FullMethodName          = "/mtproto.RPCGroupCalls/phone_startScheduledGroupCall"
-	RPCGroupCalls_PhoneSaveDefaultGroupCallJoinAs_FullMethodName       = "/mtproto.RPCGroupCalls/phone_saveDefaultGroupCallJoinAs"
-	RPCGroupCalls_PhoneJoinGroupCallPresentation_FullMethodName        = "/mtproto.RPCGroupCalls/phone_joinGroupCallPresentation"
-	RPCGroupCalls_PhoneLeaveGroupCallPresentation_FullMethodName       = "/mtproto.RPCGroupCalls/phone_leaveGroupCallPresentation"
-	RPCGroupCalls_PhoneGetGroupCallStreamChannels_FullMethodName       = "/mtproto.RPCGroupCalls/phone_getGroupCallStreamChannels"
-	RPCGroupCalls_PhoneGetGroupCallStreamRtmpUrl_FullMethodName        = "/mtproto.RPCGroupCalls/phone_getGroupCallStreamRtmpUrl"
-	RPCGroupCalls_PhoneSendGroupCallMessage_FullMethodName             = "/mtproto.RPCGroupCalls/phone_sendGroupCallMessage"
+	RPCGroupCalls_PhoneCreateGroupCall_FullMethodName                    = "/mtproto.RPCGroupCalls/phone_createGroupCall"
+	RPCGroupCalls_PhoneJoinGroupCall_FullMethodName                      = "/mtproto.RPCGroupCalls/phone_joinGroupCall"
+	RPCGroupCalls_PhoneLeaveGroupCall_FullMethodName                     = "/mtproto.RPCGroupCalls/phone_leaveGroupCall"
+	RPCGroupCalls_PhoneInviteToGroupCall_FullMethodName                  = "/mtproto.RPCGroupCalls/phone_inviteToGroupCall"
+	RPCGroupCalls_PhoneDiscardGroupCall_FullMethodName                   = "/mtproto.RPCGroupCalls/phone_discardGroupCall"
+	RPCGroupCalls_PhoneToggleGroupCallSettings_FullMethodName            = "/mtproto.RPCGroupCalls/phone_toggleGroupCallSettings"
+	RPCGroupCalls_PhoneGetGroupCall_FullMethodName                       = "/mtproto.RPCGroupCalls/phone_getGroupCall"
+	RPCGroupCalls_PhoneGetGroupParticipants_FullMethodName               = "/mtproto.RPCGroupCalls/phone_getGroupParticipants"
+	RPCGroupCalls_PhoneCheckGroupCall_FullMethodName                     = "/mtproto.RPCGroupCalls/phone_checkGroupCall"
+	RPCGroupCalls_PhoneToggleGroupCallRecord_FullMethodName              = "/mtproto.RPCGroupCalls/phone_toggleGroupCallRecord"
+	RPCGroupCalls_PhoneEditGroupCallParticipant_FullMethodName           = "/mtproto.RPCGroupCalls/phone_editGroupCallParticipant"
+	RPCGroupCalls_PhoneEditGroupCallTitle_FullMethodName                 = "/mtproto.RPCGroupCalls/phone_editGroupCallTitle"
+	RPCGroupCalls_PhoneGetGroupCallJoinAs_FullMethodName                 = "/mtproto.RPCGroupCalls/phone_getGroupCallJoinAs"
+	RPCGroupCalls_PhoneExportGroupCallInvite_FullMethodName              = "/mtproto.RPCGroupCalls/phone_exportGroupCallInvite"
+	RPCGroupCalls_PhoneToggleGroupCallStartSubscription_FullMethodName   = "/mtproto.RPCGroupCalls/phone_toggleGroupCallStartSubscription"
+	RPCGroupCalls_PhoneStartScheduledGroupCall_FullMethodName            = "/mtproto.RPCGroupCalls/phone_startScheduledGroupCall"
+	RPCGroupCalls_PhoneSaveDefaultGroupCallJoinAs_FullMethodName         = "/mtproto.RPCGroupCalls/phone_saveDefaultGroupCallJoinAs"
+	RPCGroupCalls_PhoneJoinGroupCallPresentation_FullMethodName          = "/mtproto.RPCGroupCalls/phone_joinGroupCallPresentation"
+	RPCGroupCalls_PhoneLeaveGroupCallPresentation_FullMethodName         = "/mtproto.RPCGroupCalls/phone_leaveGroupCallPresentation"
+	RPCGroupCalls_PhoneGetGroupCallStreamChannels_FullMethodName         = "/mtproto.RPCGroupCalls/phone_getGroupCallStreamChannels"
+	RPCGroupCalls_PhoneGetGroupCallStreamRtmpUrl_FullMethodName          = "/mtproto.RPCGroupCalls/phone_getGroupCallStreamRtmpUrl"
+	RPCGroupCalls_PhoneSendGroupCallMessageB1D11410_FullMethodName       = "/mtproto.RPCGroupCalls/phone_sendGroupCallMessageB1D11410"
+	RPCGroupCalls_PhoneDeleteGroupCallMessages_FullMethodName            = "/mtproto.RPCGroupCalls/phone_deleteGroupCallMessages"
+	RPCGroupCalls_PhoneDeleteGroupCallParticipantMessages_FullMethodName = "/mtproto.RPCGroupCalls/phone_deleteGroupCallParticipantMessages"
+	RPCGroupCalls_PhoneGetGroupCallStars_FullMethodName                  = "/mtproto.RPCGroupCalls/phone_getGroupCallStars"
+	RPCGroupCalls_PhoneSaveDefaultSendAs_FullMethodName                  = "/mtproto.RPCGroupCalls/phone_saveDefaultSendAs"
+	RPCGroupCalls_PhoneSendGroupCallMessage87893014_FullMethodName       = "/mtproto.RPCGroupCalls/phone_sendGroupCallMessage87893014"
 )
 
 // RPCGroupCallsClient is the client API for RPCGroupCalls service.
@@ -16643,7 +16648,12 @@ type RPCGroupCallsClient interface {
 	PhoneLeaveGroupCallPresentation(ctx context.Context, in *TLPhoneLeaveGroupCallPresentation, opts ...grpc.CallOption) (*Updates, error)
 	PhoneGetGroupCallStreamChannels(ctx context.Context, in *TLPhoneGetGroupCallStreamChannels, opts ...grpc.CallOption) (*Phone_GroupCallStreamChannels, error)
 	PhoneGetGroupCallStreamRtmpUrl(ctx context.Context, in *TLPhoneGetGroupCallStreamRtmpUrl, opts ...grpc.CallOption) (*Phone_GroupCallStreamRtmpUrl, error)
-	PhoneSendGroupCallMessage(ctx context.Context, in *TLPhoneSendGroupCallMessage, opts ...grpc.CallOption) (*Bool, error)
+	PhoneSendGroupCallMessageB1D11410(ctx context.Context, in *TLPhoneSendGroupCallMessageB1D11410, opts ...grpc.CallOption) (*Updates, error)
+	PhoneDeleteGroupCallMessages(ctx context.Context, in *TLPhoneDeleteGroupCallMessages, opts ...grpc.CallOption) (*Updates, error)
+	PhoneDeleteGroupCallParticipantMessages(ctx context.Context, in *TLPhoneDeleteGroupCallParticipantMessages, opts ...grpc.CallOption) (*Updates, error)
+	PhoneGetGroupCallStars(ctx context.Context, in *TLPhoneGetGroupCallStars, opts ...grpc.CallOption) (*Phone_GroupCallStars, error)
+	PhoneSaveDefaultSendAs(ctx context.Context, in *TLPhoneSaveDefaultSendAs, opts ...grpc.CallOption) (*Bool, error)
+	PhoneSendGroupCallMessage87893014(ctx context.Context, in *TLPhoneSendGroupCallMessage87893014, opts ...grpc.CallOption) (*Bool, error)
 }
 
 type rPCGroupCallsClient struct {
@@ -16864,10 +16874,60 @@ func (c *rPCGroupCallsClient) PhoneGetGroupCallStreamRtmpUrl(ctx context.Context
 	return out, nil
 }
 
-func (c *rPCGroupCallsClient) PhoneSendGroupCallMessage(ctx context.Context, in *TLPhoneSendGroupCallMessage, opts ...grpc.CallOption) (*Bool, error) {
+func (c *rPCGroupCallsClient) PhoneSendGroupCallMessageB1D11410(ctx context.Context, in *TLPhoneSendGroupCallMessageB1D11410, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneSendGroupCallMessageB1D11410_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGroupCallsClient) PhoneDeleteGroupCallMessages(ctx context.Context, in *TLPhoneDeleteGroupCallMessages, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneDeleteGroupCallMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGroupCallsClient) PhoneDeleteGroupCallParticipantMessages(ctx context.Context, in *TLPhoneDeleteGroupCallParticipantMessages, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneDeleteGroupCallParticipantMessages_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGroupCallsClient) PhoneGetGroupCallStars(ctx context.Context, in *TLPhoneGetGroupCallStars, opts ...grpc.CallOption) (*Phone_GroupCallStars, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Phone_GroupCallStars)
+	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneGetGroupCallStars_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGroupCallsClient) PhoneSaveDefaultSendAs(ctx context.Context, in *TLPhoneSaveDefaultSendAs, opts ...grpc.CallOption) (*Bool, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Bool)
-	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneSendGroupCallMessage_FullMethodName, in, out, cOpts...)
+	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneSaveDefaultSendAs_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGroupCallsClient) PhoneSendGroupCallMessage87893014(ctx context.Context, in *TLPhoneSendGroupCallMessage87893014, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCGroupCalls_PhoneSendGroupCallMessage87893014_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -16899,7 +16959,12 @@ type RPCGroupCallsServer interface {
 	PhoneLeaveGroupCallPresentation(context.Context, *TLPhoneLeaveGroupCallPresentation) (*Updates, error)
 	PhoneGetGroupCallStreamChannels(context.Context, *TLPhoneGetGroupCallStreamChannels) (*Phone_GroupCallStreamChannels, error)
 	PhoneGetGroupCallStreamRtmpUrl(context.Context, *TLPhoneGetGroupCallStreamRtmpUrl) (*Phone_GroupCallStreamRtmpUrl, error)
-	PhoneSendGroupCallMessage(context.Context, *TLPhoneSendGroupCallMessage) (*Bool, error)
+	PhoneSendGroupCallMessageB1D11410(context.Context, *TLPhoneSendGroupCallMessageB1D11410) (*Updates, error)
+	PhoneDeleteGroupCallMessages(context.Context, *TLPhoneDeleteGroupCallMessages) (*Updates, error)
+	PhoneDeleteGroupCallParticipantMessages(context.Context, *TLPhoneDeleteGroupCallParticipantMessages) (*Updates, error)
+	PhoneGetGroupCallStars(context.Context, *TLPhoneGetGroupCallStars) (*Phone_GroupCallStars, error)
+	PhoneSaveDefaultSendAs(context.Context, *TLPhoneSaveDefaultSendAs) (*Bool, error)
+	PhoneSendGroupCallMessage87893014(context.Context, *TLPhoneSendGroupCallMessage87893014) (*Bool, error)
 }
 
 // UnimplementedRPCGroupCallsServer should be embedded to have
@@ -16972,8 +17037,23 @@ func (UnimplementedRPCGroupCallsServer) PhoneGetGroupCallStreamChannels(context.
 func (UnimplementedRPCGroupCallsServer) PhoneGetGroupCallStreamRtmpUrl(context.Context, *TLPhoneGetGroupCallStreamRtmpUrl) (*Phone_GroupCallStreamRtmpUrl, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PhoneGetGroupCallStreamRtmpUrl not implemented")
 }
-func (UnimplementedRPCGroupCallsServer) PhoneSendGroupCallMessage(context.Context, *TLPhoneSendGroupCallMessage) (*Bool, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PhoneSendGroupCallMessage not implemented")
+func (UnimplementedRPCGroupCallsServer) PhoneSendGroupCallMessageB1D11410(context.Context, *TLPhoneSendGroupCallMessageB1D11410) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneSendGroupCallMessageB1D11410 not implemented")
+}
+func (UnimplementedRPCGroupCallsServer) PhoneDeleteGroupCallMessages(context.Context, *TLPhoneDeleteGroupCallMessages) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneDeleteGroupCallMessages not implemented")
+}
+func (UnimplementedRPCGroupCallsServer) PhoneDeleteGroupCallParticipantMessages(context.Context, *TLPhoneDeleteGroupCallParticipantMessages) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneDeleteGroupCallParticipantMessages not implemented")
+}
+func (UnimplementedRPCGroupCallsServer) PhoneGetGroupCallStars(context.Context, *TLPhoneGetGroupCallStars) (*Phone_GroupCallStars, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneGetGroupCallStars not implemented")
+}
+func (UnimplementedRPCGroupCallsServer) PhoneSaveDefaultSendAs(context.Context, *TLPhoneSaveDefaultSendAs) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneSaveDefaultSendAs not implemented")
+}
+func (UnimplementedRPCGroupCallsServer) PhoneSendGroupCallMessage87893014(context.Context, *TLPhoneSendGroupCallMessage87893014) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneSendGroupCallMessage87893014 not implemented")
 }
 func (UnimplementedRPCGroupCallsServer) testEmbeddedByValue() {}
 
@@ -17373,20 +17453,110 @@ func _RPCGroupCalls_PhoneGetGroupCallStreamRtmpUrl_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCGroupCalls_PhoneSendGroupCallMessage_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPhoneSendGroupCallMessage)
+func _RPCGroupCalls_PhoneSendGroupCallMessageB1D11410_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneSendGroupCallMessageB1D11410)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessage(ctx, in)
+		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessageB1D11410(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCGroupCalls_PhoneSendGroupCallMessage_FullMethodName,
+		FullMethod: RPCGroupCalls_PhoneSendGroupCallMessageB1D11410_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessage(ctx, req.(*TLPhoneSendGroupCallMessage))
+		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessageB1D11410(ctx, req.(*TLPhoneSendGroupCallMessageB1D11410))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGroupCalls_PhoneDeleteGroupCallMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneDeleteGroupCallMessages)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGroupCallsServer).PhoneDeleteGroupCallMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGroupCalls_PhoneDeleteGroupCallMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGroupCallsServer).PhoneDeleteGroupCallMessages(ctx, req.(*TLPhoneDeleteGroupCallMessages))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGroupCalls_PhoneDeleteGroupCallParticipantMessages_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneDeleteGroupCallParticipantMessages)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGroupCallsServer).PhoneDeleteGroupCallParticipantMessages(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGroupCalls_PhoneDeleteGroupCallParticipantMessages_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGroupCallsServer).PhoneDeleteGroupCallParticipantMessages(ctx, req.(*TLPhoneDeleteGroupCallParticipantMessages))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGroupCalls_PhoneGetGroupCallStars_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneGetGroupCallStars)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGroupCallsServer).PhoneGetGroupCallStars(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGroupCalls_PhoneGetGroupCallStars_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGroupCallsServer).PhoneGetGroupCallStars(ctx, req.(*TLPhoneGetGroupCallStars))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGroupCalls_PhoneSaveDefaultSendAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneSaveDefaultSendAs)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGroupCallsServer).PhoneSaveDefaultSendAs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGroupCalls_PhoneSaveDefaultSendAs_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGroupCallsServer).PhoneSaveDefaultSendAs(ctx, req.(*TLPhoneSaveDefaultSendAs))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGroupCalls_PhoneSendGroupCallMessage87893014_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneSendGroupCallMessage87893014)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessage87893014(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGroupCalls_PhoneSendGroupCallMessage87893014_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGroupCallsServer).PhoneSendGroupCallMessage87893014(ctx, req.(*TLPhoneSendGroupCallMessage87893014))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -17483,8 +17653,28 @@ var RPCGroupCalls_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCGroupCalls_PhoneGetGroupCallStreamRtmpUrl_Handler,
 		},
 		{
-			MethodName: "phone_sendGroupCallMessage",
-			Handler:    _RPCGroupCalls_PhoneSendGroupCallMessage_Handler,
+			MethodName: "phone_sendGroupCallMessageB1D11410",
+			Handler:    _RPCGroupCalls_PhoneSendGroupCallMessageB1D11410_Handler,
+		},
+		{
+			MethodName: "phone_deleteGroupCallMessages",
+			Handler:    _RPCGroupCalls_PhoneDeleteGroupCallMessages_Handler,
+		},
+		{
+			MethodName: "phone_deleteGroupCallParticipantMessages",
+			Handler:    _RPCGroupCalls_PhoneDeleteGroupCallParticipantMessages_Handler,
+		},
+		{
+			MethodName: "phone_getGroupCallStars",
+			Handler:    _RPCGroupCalls_PhoneGetGroupCallStars_Handler,
+		},
+		{
+			MethodName: "phone_saveDefaultSendAs",
+			Handler:    _RPCGroupCalls_PhoneSaveDefaultSendAs_Handler,
+		},
+		{
+			MethodName: "phone_sendGroupCallMessage87893014",
+			Handler:    _RPCGroupCalls_PhoneSendGroupCallMessage87893014_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -30646,7 +30836,7 @@ const (
 	RPCStories_StoriesSendReaction_FullMethodName            = "/mtproto.RPCStories/stories_sendReaction"
 	RPCStories_StoriesGetPeerStories_FullMethodName          = "/mtproto.RPCStories/stories_getPeerStories"
 	RPCStories_StoriesGetAllReadPeerStories_FullMethodName   = "/mtproto.RPCStories/stories_getAllReadPeerStories"
-	RPCStories_StoriesGetPeerMaxIDs_FullMethodName           = "/mtproto.RPCStories/stories_getPeerMaxIDs"
+	RPCStories_StoriesGetPeerMaxIDs78499170_FullMethodName   = "/mtproto.RPCStories/stories_getPeerMaxIDs78499170"
 	RPCStories_StoriesGetChatsToSend_FullMethodName          = "/mtproto.RPCStories/stories_getChatsToSend"
 	RPCStories_StoriesTogglePeerStoriesHidden_FullMethodName = "/mtproto.RPCStories/stories_togglePeerStoriesHidden"
 	RPCStories_StoriesGetStoryReactionsList_FullMethodName   = "/mtproto.RPCStories/stories_getStoryReactionsList"
@@ -30658,6 +30848,8 @@ const (
 	RPCStories_StoriesDeleteAlbum_FullMethodName             = "/mtproto.RPCStories/stories_deleteAlbum"
 	RPCStories_StoriesGetAlbums_FullMethodName               = "/mtproto.RPCStories/stories_getAlbums"
 	RPCStories_StoriesGetAlbumStories_FullMethodName         = "/mtproto.RPCStories/stories_getAlbumStories"
+	RPCStories_StoriesStartLive_FullMethodName               = "/mtproto.RPCStories/stories_startLive"
+	RPCStories_StoriesGetPeerMaxIDs535983C3_FullMethodName   = "/mtproto.RPCStories/stories_getPeerMaxIDs535983C3"
 	RPCStories_StoriesCanSendStoryC7DFDFDD_FullMethodName    = "/mtproto.RPCStories/stories_canSendStoryC7DFDFDD"
 	RPCStories_StoriesReport1923FA8C_FullMethodName          = "/mtproto.RPCStories/stories_report1923FA8C"
 	RPCStories_UsersGetStoriesMaxIDs_FullMethodName          = "/mtproto.RPCStories/users_getStoriesMaxIDs"
@@ -30692,7 +30884,7 @@ type RPCStoriesClient interface {
 	StoriesSendReaction(ctx context.Context, in *TLStoriesSendReaction, opts ...grpc.CallOption) (*Updates, error)
 	StoriesGetPeerStories(ctx context.Context, in *TLStoriesGetPeerStories, opts ...grpc.CallOption) (*Stories_PeerStories, error)
 	StoriesGetAllReadPeerStories(ctx context.Context, in *TLStoriesGetAllReadPeerStories, opts ...grpc.CallOption) (*Updates, error)
-	StoriesGetPeerMaxIDs(ctx context.Context, in *TLStoriesGetPeerMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
+	StoriesGetPeerMaxIDs78499170(ctx context.Context, in *TLStoriesGetPeerMaxIDs78499170, opts ...grpc.CallOption) (*Vector_RecentStory, error)
 	StoriesGetChatsToSend(ctx context.Context, in *TLStoriesGetChatsToSend, opts ...grpc.CallOption) (*Messages_Chats, error)
 	StoriesTogglePeerStoriesHidden(ctx context.Context, in *TLStoriesTogglePeerStoriesHidden, opts ...grpc.CallOption) (*Bool, error)
 	StoriesGetStoryReactionsList(ctx context.Context, in *TLStoriesGetStoryReactionsList, opts ...grpc.CallOption) (*Stories_StoryReactionsList, error)
@@ -30704,6 +30896,8 @@ type RPCStoriesClient interface {
 	StoriesDeleteAlbum(ctx context.Context, in *TLStoriesDeleteAlbum, opts ...grpc.CallOption) (*Bool, error)
 	StoriesGetAlbums(ctx context.Context, in *TLStoriesGetAlbums, opts ...grpc.CallOption) (*Stories_Albums, error)
 	StoriesGetAlbumStories(ctx context.Context, in *TLStoriesGetAlbumStories, opts ...grpc.CallOption) (*Stories_Stories, error)
+	StoriesStartLive(ctx context.Context, in *TLStoriesStartLive, opts ...grpc.CallOption) (*Updates, error)
+	StoriesGetPeerMaxIDs535983C3(ctx context.Context, in *TLStoriesGetPeerMaxIDs535983C3, opts ...grpc.CallOption) (*Vector_Int, error)
 	StoriesCanSendStoryC7DFDFDD(ctx context.Context, in *TLStoriesCanSendStoryC7DFDFDD, opts ...grpc.CallOption) (*Bool, error)
 	StoriesReport1923FA8C(ctx context.Context, in *TLStoriesReport1923FA8C, opts ...grpc.CallOption) (*Bool, error)
 	UsersGetStoriesMaxIDs(ctx context.Context, in *TLUsersGetStoriesMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error)
@@ -30922,10 +31116,10 @@ func (c *rPCStoriesClient) StoriesGetAllReadPeerStories(ctx context.Context, in 
 	return out, nil
 }
 
-func (c *rPCStoriesClient) StoriesGetPeerMaxIDs(ctx context.Context, in *TLStoriesGetPeerMaxIDs, opts ...grpc.CallOption) (*Vector_Int, error) {
+func (c *rPCStoriesClient) StoriesGetPeerMaxIDs78499170(ctx context.Context, in *TLStoriesGetPeerMaxIDs78499170, opts ...grpc.CallOption) (*Vector_RecentStory, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Vector_Int)
-	err := c.cc.Invoke(ctx, RPCStories_StoriesGetPeerMaxIDs_FullMethodName, in, out, cOpts...)
+	out := new(Vector_RecentStory)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesGetPeerMaxIDs78499170_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -31042,6 +31236,26 @@ func (c *rPCStoriesClient) StoriesGetAlbumStories(ctx context.Context, in *TLSto
 	return out, nil
 }
 
+func (c *rPCStoriesClient) StoriesStartLive(ctx context.Context, in *TLStoriesStartLive, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesStartLive_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCStoriesClient) StoriesGetPeerMaxIDs535983C3(ctx context.Context, in *TLStoriesGetPeerMaxIDs535983C3, opts ...grpc.CallOption) (*Vector_Int, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Vector_Int)
+	err := c.cc.Invoke(ctx, RPCStories_StoriesGetPeerMaxIDs535983C3_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCStoriesClient) StoriesCanSendStoryC7DFDFDD(ctx context.Context, in *TLStoriesCanSendStoryC7DFDFDD, opts ...grpc.CallOption) (*Bool, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Bool)
@@ -31146,7 +31360,7 @@ type RPCStoriesServer interface {
 	StoriesSendReaction(context.Context, *TLStoriesSendReaction) (*Updates, error)
 	StoriesGetPeerStories(context.Context, *TLStoriesGetPeerStories) (*Stories_PeerStories, error)
 	StoriesGetAllReadPeerStories(context.Context, *TLStoriesGetAllReadPeerStories) (*Updates, error)
-	StoriesGetPeerMaxIDs(context.Context, *TLStoriesGetPeerMaxIDs) (*Vector_Int, error)
+	StoriesGetPeerMaxIDs78499170(context.Context, *TLStoriesGetPeerMaxIDs78499170) (*Vector_RecentStory, error)
 	StoriesGetChatsToSend(context.Context, *TLStoriesGetChatsToSend) (*Messages_Chats, error)
 	StoriesTogglePeerStoriesHidden(context.Context, *TLStoriesTogglePeerStoriesHidden) (*Bool, error)
 	StoriesGetStoryReactionsList(context.Context, *TLStoriesGetStoryReactionsList) (*Stories_StoryReactionsList, error)
@@ -31158,6 +31372,8 @@ type RPCStoriesServer interface {
 	StoriesDeleteAlbum(context.Context, *TLStoriesDeleteAlbum) (*Bool, error)
 	StoriesGetAlbums(context.Context, *TLStoriesGetAlbums) (*Stories_Albums, error)
 	StoriesGetAlbumStories(context.Context, *TLStoriesGetAlbumStories) (*Stories_Stories, error)
+	StoriesStartLive(context.Context, *TLStoriesStartLive) (*Updates, error)
+	StoriesGetPeerMaxIDs535983C3(context.Context, *TLStoriesGetPeerMaxIDs535983C3) (*Vector_Int, error)
 	StoriesCanSendStoryC7DFDFDD(context.Context, *TLStoriesCanSendStoryC7DFDFDD) (*Bool, error)
 	StoriesReport1923FA8C(context.Context, *TLStoriesReport1923FA8C) (*Bool, error)
 	UsersGetStoriesMaxIDs(context.Context, *TLUsersGetStoriesMaxIDs) (*Vector_Int, error)
@@ -31235,8 +31451,8 @@ func (UnimplementedRPCStoriesServer) StoriesGetPeerStories(context.Context, *TLS
 func (UnimplementedRPCStoriesServer) StoriesGetAllReadPeerStories(context.Context, *TLStoriesGetAllReadPeerStories) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAllReadPeerStories not implemented")
 }
-func (UnimplementedRPCStoriesServer) StoriesGetPeerMaxIDs(context.Context, *TLStoriesGetPeerMaxIDs) (*Vector_Int, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetPeerMaxIDs not implemented")
+func (UnimplementedRPCStoriesServer) StoriesGetPeerMaxIDs78499170(context.Context, *TLStoriesGetPeerMaxIDs78499170) (*Vector_RecentStory, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetPeerMaxIDs78499170 not implemented")
 }
 func (UnimplementedRPCStoriesServer) StoriesGetChatsToSend(context.Context, *TLStoriesGetChatsToSend) (*Messages_Chats, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetChatsToSend not implemented")
@@ -31270,6 +31486,12 @@ func (UnimplementedRPCStoriesServer) StoriesGetAlbums(context.Context, *TLStorie
 }
 func (UnimplementedRPCStoriesServer) StoriesGetAlbumStories(context.Context, *TLStoriesGetAlbumStories) (*Stories_Stories, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetAlbumStories not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesStartLive(context.Context, *TLStoriesStartLive) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesStartLive not implemented")
+}
+func (UnimplementedRPCStoriesServer) StoriesGetPeerMaxIDs535983C3(context.Context, *TLStoriesGetPeerMaxIDs535983C3) (*Vector_Int, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method StoriesGetPeerMaxIDs535983C3 not implemented")
 }
 func (UnimplementedRPCStoriesServer) StoriesCanSendStoryC7DFDFDD(context.Context, *TLStoriesCanSendStoryC7DFDFDD) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method StoriesCanSendStoryC7DFDFDD not implemented")
@@ -31675,20 +31897,20 @@ func _RPCStories_StoriesGetAllReadPeerStories_Handler(srv interface{}, ctx conte
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCStories_StoriesGetPeerMaxIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLStoriesGetPeerMaxIDs)
+func _RPCStories_StoriesGetPeerMaxIDs78499170_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetPeerMaxIDs78499170)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(RPCStoriesServer).StoriesGetPeerMaxIDs(ctx, in)
+		return srv.(RPCStoriesServer).StoriesGetPeerMaxIDs78499170(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: RPCStories_StoriesGetPeerMaxIDs_FullMethodName,
+		FullMethod: RPCStories_StoriesGetPeerMaxIDs78499170_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCStoriesServer).StoriesGetPeerMaxIDs(ctx, req.(*TLStoriesGetPeerMaxIDs))
+		return srv.(RPCStoriesServer).StoriesGetPeerMaxIDs78499170(ctx, req.(*TLStoriesGetPeerMaxIDs78499170))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -31887,6 +32109,42 @@ func _RPCStories_StoriesGetAlbumStories_Handler(srv interface{}, ctx context.Con
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(RPCStoriesServer).StoriesGetAlbumStories(ctx, req.(*TLStoriesGetAlbumStories))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesStartLive_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesStartLive)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesStartLive(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesStartLive_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesStartLive(ctx, req.(*TLStoriesStartLive))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCStories_StoriesGetPeerMaxIDs535983C3_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLStoriesGetPeerMaxIDs535983C3)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCStoriesServer).StoriesGetPeerMaxIDs535983C3(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCStories_StoriesGetPeerMaxIDs535983C3_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCStoriesServer).StoriesGetPeerMaxIDs535983C3(ctx, req.(*TLStoriesGetPeerMaxIDs535983C3))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -32123,8 +32381,8 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _RPCStories_StoriesGetAllReadPeerStories_Handler,
 		},
 		{
-			MethodName: "stories_getPeerMaxIDs",
-			Handler:    _RPCStories_StoriesGetPeerMaxIDs_Handler,
+			MethodName: "stories_getPeerMaxIDs78499170",
+			Handler:    _RPCStories_StoriesGetPeerMaxIDs78499170_Handler,
 		},
 		{
 			MethodName: "stories_getChatsToSend",
@@ -32169,6 +32427,14 @@ var RPCStories_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "stories_getAlbumStories",
 			Handler:    _RPCStories_StoriesGetAlbumStories_Handler,
+		},
+		{
+			MethodName: "stories_startLive",
+			Handler:    _RPCStories_StoriesStartLive_Handler,
+		},
+		{
+			MethodName: "stories_getPeerMaxIDs535983C3",
+			Handler:    _RPCStories_StoriesGetPeerMaxIDs535983C3_Handler,
 		},
 		{
 			MethodName: "stories_canSendStoryC7DFDFDD",

@@ -102,7 +102,8 @@ enum TLConstructor {
     CRC32_inputUserSelf = -138301121; // f7c1b13f
     CRC32_inputUser = -233744186; // f21158c6
     CRC32_inputUserFromMessage = 497305826; // 1da448e2
-    CRC32_inputPhoneContact = -208488460; // f392b7f4
+    CRC32_inputPhoneContact_6a1dc4be = 1780335806; // 6a1dc4be
+    CRC32_inputPhoneContact_f392b7f4 = -208488460; // f392b7f4
     CRC32_inputFile = -181407105; // f52ff27f
     CRC32_inputFileBig = -95482955; // fa4f0bb5
     CRC32_inputFileStoryDocument = 1658620744; // 62dc8b48
@@ -164,6 +165,7 @@ enum TLConstructor {
     CRC32_storage_fileMp4 = -1278304028; // b3cea0e4
     CRC32_storage_fileWebp = 276907596; // 1081464c
     CRC32_userEmpty = -742634630; // d3bc4b7a
+    CRC32_user_31774388 = 829899656; // 31774388
     CRC32_user_20b1422 = 34280482; // 20b1422
     CRC32_user_4b46c37e = 1262928766; // 4b46c37e
     CRC32_user_83314fca = -2093920310; // 83314fca
@@ -187,6 +189,7 @@ enum TLConstructor {
     CRC32_chatEmpty = 693512293; // 29562865
     CRC32_chat = 1103884886; // 41cbf256
     CRC32_chatForbidden = 1704108455; // 6592a1a7
+    CRC32_channel_1c32b11c = 473084188; // 1c32b11c
     CRC32_channel_fe685355 = -26717355; // fe685355
     CRC32_channel_7482147e = 1954681982; // 7482147e
     CRC32_channel_e00998b7 = -536241993; // e00998b7
@@ -220,6 +223,7 @@ enum TLConstructor {
     CRC32_chatPhotoEmpty = 935395612; // 37c1011c
     CRC32_chatPhoto = 476978193; // 1c6e1c11
     CRC32_messageEmpty = -1868117372; // 90a6ca84
+    CRC32_message_b92f76cf = -1188071729; // b92f76cf
     CRC32_message_9815cec8 = -1743401272; // 9815cec8
     CRC32_message_eabcdd4d = -356721331; // eabcdd4d
     CRC32_message_96fdbbe9 = -1761756183; // 96fdbbe9
@@ -260,6 +264,7 @@ enum TLConstructor {
     CRC32_messageMediaGiveawayResults_c6991068 = -963047320; // c6991068
     CRC32_messageMediaPaidMedia = -1467669359; // a8852491
     CRC32_messageMediaToDo = -1974226924; // 8a53b014
+    CRC32_messageMediaVideoStream = -899896439; // ca5cab89
     CRC32_messageActionEmpty = -1230047312; // b6aef7b0
     CRC32_messageActionChatCreate = -1119368275; // bd47cbad
     CRC32_messageActionChatEditTitle = -1247687078; // b5a1ce5a
@@ -298,6 +303,7 @@ enum TLConstructor {
     CRC32_messageActionChatJoinedByRequest = -339958837; // ebbca3cb
     CRC32_messageActionWebViewDataSentMe = 1205698681; // 47dd8079
     CRC32_messageActionWebViewDataSent = -1262252875; // b4c38cb5
+    CRC32_messageActionGiftPremium_48e91302 = 1223234306; // 48e91302
     CRC32_messageActionGiftPremium_6c6274fa = 1818391802; // 6c6274fa
     CRC32_messageActionGiftPremium_c83d6aec = -935499028; // c83d6aec
     CRC32_messageActionGiftPremium_aba0f5c6 = -1415514682; // aba0f5c6
@@ -309,6 +315,7 @@ enum TLConstructor {
     CRC32_messageActionRequestedPeer_fe77345d = -25742243; // fe77345d
     CRC32_messageActionSetChatWallPaper_5060a3f4 = 1348510708; // 5060a3f4
     CRC32_messageActionSetChatWallPaper_bc44a927 = -1136350937; // bc44a927
+    CRC32_messageActionGiftCode_31c48347 = 834962247; // 31c48347
     CRC32_messageActionGiftCode_56d03994 = 1456486804; // 56d03994
     CRC32_messageActionGiftCode_678c2e09 = 1737240073; // 678c2e09
     CRC32_messageActionGiftCode_d2cfdb0e = -758129906; // d2cfdb0e
@@ -548,6 +555,7 @@ enum TLConstructor {
     CRC32_updatePinnedChannelMessages = 1538885128; // 5bb98608
     CRC32_updateChat = -124097970; // f89a6a4e
     CRC32_updateGroupCallParticipants = -219423922; // f2ebdb4e
+    CRC32_updateGroupCall_9d2216e0 = -1658710304; // 9d2216e0
     CRC32_updateGroupCall_97d64341 = -1747565759; // 97d64341
     CRC32_updateGroupCall_14b24500 = 347227392; // 14b24500
     CRC32_updatePeerHistoryTTL = -1147422299; // bb9bb9a5
@@ -614,10 +622,12 @@ enum TLConstructor {
     CRC32_updateReadMonoForumInbox = 2008081266; // 77b0e372
     CRC32_updateReadMonoForumOutbox = -1532521610; // a4a79376
     CRC32_updateMonoForumNoPaidException = -1618924792; // 9f812b08
-    CRC32_updateGroupCallMessage = 2026050784; // 78c314e0
+    CRC32_updateGroupCallMessage_d8326f0d = -667783411; // d8326f0d
+    CRC32_updateGroupCallMessage_78c314e0 = 2026050784; // 78c314e0
     CRC32_updateGroupCallEncryptedMessage = -917002394; // c957a766
     CRC32_updatePinnedForumTopic = 1748708434; // 683b2c52
     CRC32_updatePinnedForumTopics = -554613808; // def143d0
+    CRC32_updateDeleteGroupCallMessages = 1048963372; // 3e85e92c
     CRC32_updates_state = -1519637954; // a56c2a3e
     CRC32_updates_differenceEmpty = 1567990072; // 5d75a138
     CRC32_updates_difference = 16030880; // f49ca0
@@ -706,6 +716,7 @@ enum TLConstructor {
     CRC32_inputPrivacyKeyBirthday = -698740276; // d65a11cc
     CRC32_inputPrivacyKeyStarGiftsAutoSave = -512548031; // e1732341
     CRC32_inputPrivacyKeyNoPaidMessages = -1111124044; // bdc597b4
+    CRC32_inputPrivacyKeySavedMusic = 1304334886; // 4dbe9226
     CRC32_privacyKeyStatusTimestamp = -1137792208; // bc2eab30
     CRC32_privacyKeyChatInvite = 1343122938; // 500e6dfa
     CRC32_privacyKeyPhoneCall = 1030105979; // 3d662b7b
@@ -719,6 +730,7 @@ enum TLConstructor {
     CRC32_privacyKeyBirthday = 536913176; // 2000a518
     CRC32_privacyKeyStarGiftsAutoSave = 749010424; // 2ca4fdf8
     CRC32_privacyKeyNoPaidMessages = 399722706; // 17d348d2
+    CRC32_privacyKeySavedMusic = -8759525; // ff7a571b
     CRC32_inputPrivacyValueAllowContacts = 218751099; // d09e07b
     CRC32_inputPrivacyValueAllowAll = 407582158; // 184b35ce
     CRC32_inputPrivacyValueAllowUsers = 320652927; // 131cc67f
@@ -1363,13 +1375,15 @@ enum TLConstructor {
     CRC32_stats_messageStats_7fe91c14 = 2145983508; // 7fe91c14
     CRC32_stats_messageStats_8999f295 = -1986399595; // 8999f295
     CRC32_groupCallDiscarded = 2004925620; // 7780bcb4
+    CRC32_groupCall_efb2b617 = -273500649; // efb2b617
     CRC32_groupCall_553b0ba1 = 1429932961; // 553b0ba1
     CRC32_groupCall_cdf8d3e3 = -839330845; // cdf8d3e3
     CRC32_groupCall_d597650c = -711498484; // d597650c
     CRC32_inputGroupCall = -659913713; // d8aa840f
     CRC32_inputGroupCallSlug = -33127873; // fe06823f
     CRC32_inputGroupCallInviteMessage = -1945083841; // 8c10603f
-    CRC32_groupCallParticipant = -341428482; // eba636fe
+    CRC32_groupCallParticipant_2a3dc7ac = 708691884; // 2a3dc7ac
+    CRC32_groupCallParticipant_eba636fe = -341428482; // eba636fe
     CRC32_phone_groupCall = -1636664659; // 9e727aad
     CRC32_phone_groupParticipants = -193506890; // f47751b6
     CRC32_inlineQueryPeerTypeSameBotPM = 813821341; // 3081ed9d
@@ -1631,6 +1645,7 @@ enum TLConstructor {
     CRC32_stories_peerStories = -890861720; // cae68768
     CRC32_messages_webPage = -44166467; // fd5e12bd
     CRC32_premiumGiftCodeOption = 629052971; // 257e962b
+    CRC32_payments_checkedGiftCode_eb983f8f = -342343793; // eb983f8f
     CRC32_payments_checkedGiftCode_284a1096 = 675942550; // 284a1096
     CRC32_payments_checkedGiftCode_b722f158 = -1222446760; // b722f158
     CRC32_payments_giveawayInfo = 1130879648; // 4367daa0
@@ -1859,7 +1874,8 @@ enum TLConstructor {
     CRC32_pendingSuggestion = -404214254; // e7e82e12
     CRC32_todoItem = -878074577; // cba9a52f
     CRC32_todoList = 1236871718; // 49b92a26
-    CRC32_todoCompletion = 1287725239; // 4cc120b7
+    CRC32_todoCompletion_221bb5e4 = 572241380; // 221bb5e4
+    CRC32_todoCompletion_4cc120b7 = 1287725239; // 4cc120b7
     CRC32_suggestedPost = 244201445; // e8e37e5
     CRC32_starsRating = 453922567; // 1b0e4f07
     CRC32_starGiftCollection = -1653926992; // 9d6b13b0
@@ -1888,6 +1904,10 @@ enum TLConstructor {
     CRC32_inputChatTheme = -918689444; // c93de95c
     CRC32_inputChatThemeUniqueGift = -2014978076; // 87e5dfe4
     CRC32_starGiftUpgradePrice = -1712704739; // 99ea331d
+    CRC32_groupCallMessage = 445316222; // 1a8afc7e
+    CRC32_groupCallDonor = -297595771; // ee430c85
+    CRC32_phone_groupCallStars = -1658995418; // 9d1dbd26
+    CRC32_recentStory = 1897752877; // 711d692d
     CRC32_updateChannelPinnedTopic_192efbe3 = 422509539; // 192efbe3
     CRC32_updateChannelPinnedTopic_f694b0ae = -158027602; // f694b0ae
     CRC32_updateChannelPinnedTopics = -31881726; // fe198602
@@ -2186,6 +2206,7 @@ enum TLConstructor {
     CRC32_messages_deleteMessages = -443640366; // e58e95d2
     CRC32_messages_receivedMessages = 94983360; // 5a954c0
     CRC32_messages_setTyping = 1486110434; // 58943ee2
+    CRC32_messages_sendMessage_545cd15a = 1415369050; // 545cd15a
     CRC32_messages_sendMessage_fe05dc9a = -33170278; // fe05dc9a
     CRC32_messages_sendMessage_fbf2340a = -68013046; // fbf2340a
     CRC32_messages_sendMessage_983f9745 = -1740662971; // 983f9745
@@ -2193,6 +2214,7 @@ enum TLConstructor {
     CRC32_messages_sendMessage_280d096f = 671943023; // 280d096f
     CRC32_messages_sendMessage_1cc20387 = 482476935; // 1cc20387
     CRC32_messages_sendMessage_d9d75a4 = 228423076; // d9d75a4
+    CRC32_messages_sendMedia_330e77f = 53536639; // 330e77f
     CRC32_messages_sendMedia_ac55d9c1 = -1403659839; // ac55d9c1
     CRC32_messages_sendMedia_a550cd78 = -1521431176; // a550cd78
     CRC32_messages_sendMedia_7852834e = 2018673486; // 7852834e
@@ -2200,6 +2222,7 @@ enum TLConstructor {
     CRC32_messages_sendMedia_72ccc23d = 1926021693; // 72ccc23d
     CRC32_messages_sendMedia_7547c966 = 1967638886; // 7547c966
     CRC32_messages_sendMedia_e25ff8e0 = -497026848; // e25ff8e0
+    CRC32_messages_forwardMessages_41d41ade = 1104419550; // 41d41ade
     CRC32_messages_forwardMessages_978928ca = -1752618806; // 978928ca
     CRC32_messages_forwardMessages_38f0188c = 955259020; // 38f0188c
     CRC32_messages_forwardMessages_bb9fa475 = -1147165579; // bb9fa475
@@ -2259,6 +2282,7 @@ enum TLConstructor {
     CRC32_messages_sendInlineBotResult_d3fbdccb = -738468661; // d3fbdccb
     CRC32_messages_sendInlineBotResult_7aa11297 = 2057376407; // 7aa11297
     CRC32_messages_getMessageEditData = -39416522; // fda68d36
+    CRC32_messages_editMessage_51e842e1 = 1374175969; // 51e842e1
     CRC32_messages_editMessage_dfd14005 = -539934715; // dfd14005
     CRC32_messages_editMessage_48f71778 = 1224152952; // 48f71778
     CRC32_messages_editInlineBotMessage = -2091549254; // 83557dba
@@ -2753,6 +2777,7 @@ enum TLConstructor {
     CRC32_phone_leaveGroupCall = 1342404601; // 500377f9
     CRC32_phone_inviteToGroupCall = 2067345760; // 7b393160
     CRC32_phone_discardGroupCall = 2054648117; // 7a777135
+    CRC32_phone_toggleGroupCallSettings_974392f2 = -1757179150; // 974392f2
     CRC32_phone_toggleGroupCallSettings_e9723804 = -378390524; // e9723804
     CRC32_phone_toggleGroupCallSettings_74bbb43d = 1958458429; // 74bbb43d
     CRC32_phone_getGroupCall = 68699611; // 41845db
@@ -2769,7 +2794,8 @@ enum TLConstructor {
     CRC32_phone_joinGroupCallPresentation = -873829436; // cbea6bc4
     CRC32_phone_leaveGroupCallPresentation = 475058500; // 1c50d144
     CRC32_phone_getGroupCallStreamChannels = 447879488; // 1ab21940
-    CRC32_phone_getGroupCallStreamRtmpUrl = -558650433; // deb3abbf
+    CRC32_phone_getGroupCallStreamRtmpUrl_5af4c73a = 1525991226; // 5af4c73a
+    CRC32_phone_getGroupCallStreamRtmpUrl_deb3abbf = -558650433; // deb3abbf
     CRC32_phone_saveCallLog = 1092913030; // 41248786
     CRC32_phone_createConferenceCall7D0444BB = 2097431739; // 7d0444bb
     CRC32_phone_deleteConferenceCallParticipants = -1935276763; // 8ca60525
@@ -2777,8 +2803,12 @@ enum TLConstructor {
     CRC32_phone_inviteConferenceCallParticipant = -1124981115; // bcf22685
     CRC32_phone_declineConferenceCallInvite = 1011325297; // 3c479971
     CRC32_phone_getGroupCallChainBlocks = -291534682; // ee9f88a6
-    CRC32_phone_sendGroupCallMessage = -2021052396; // 87893014
+    CRC32_phone_sendGroupCallMessageB1D11410 = -1311697904; // b1d11410
     CRC32_phone_sendGroupCallEncryptedMessage = -441473683; // e5afa56d
+    CRC32_phone_deleteGroupCallMessages = -162573065; // f64f54f7
+    CRC32_phone_deleteGroupCallParticipantMessages = 499117216; // 1dbfeca0
+    CRC32_phone_getGroupCallStars = 1868784386; // 6f636302
+    CRC32_phone_saveDefaultSendAs = 1097313745; // 4167add1
     CRC32_langpack_getLangPack_f2f2330a = -219008246; // f2f2330a
     CRC32_langpack_getLangPack_9ab5c58e = -1699363442; // 9ab5c58e
     CRC32_langpack_getStrings_efea3803 = -269862909; // efea3803
@@ -2844,7 +2874,7 @@ enum TLConstructor {
     CRC32_stories_sendReaction_49aaa9b3 = 1235921331; // 49aaa9b3
     CRC32_stories_getPeerStories = 743103056; // 2c4ada50
     CRC32_stories_getAllReadPeerStories = -1688541191; // 9b5ae7f9
-    CRC32_stories_getPeerMaxIDs = 1398375363; // 535983c3
+    CRC32_stories_getPeerMaxIDs78499170 = 2018087280; // 78499170
     CRC32_stories_getChatsToSend = -1519744160; // a56a8b60
     CRC32_stories_togglePeerStoriesHidden = -1123805756; // bd0415c4
     CRC32_stories_getStoryReactionsList = -1179482081; // b9b2881f
@@ -2857,6 +2887,7 @@ enum TLConstructor {
     CRC32_stories_deleteAlbum = -1925949744; // 8d3456d0
     CRC32_stories_getAlbums = 632548039; // 25b3eac7
     CRC32_stories_getAlbumStories = -1400869535; // ac806d61
+    CRC32_stories_startLive = -798372642; // d069ccde
     CRC32_premium_getBoostsList = 1626764896; // 60f67660
     CRC32_premium_getMyBoosts = 199719754; // be77b4a
     CRC32_premium_applyBoost = 1803396934; // 6b7da746
@@ -2870,6 +2901,8 @@ enum TLConstructor {
     CRC32_smsjobs_getSmsJob = 2005766191; // 778d902f
     CRC32_smsjobs_finishJob = 1327415076; // 4f1ebf24
     CRC32_fragment_getCollectibleInfo = -1105295942; // be1e85ba
+    CRC32_phone_sendGroupCallMessage87893014 = -2021052396; // 87893014
+    CRC32_stories_getPeerMaxIDs535983C3 = 1398375363; // 535983c3
     CRC32_channels_createForumTopic = -200539612; // f40c0224
     CRC32_channels_getForumTopics = 233136337; // de560d1
     CRC32_channels_getForumTopicsByID = -1333584199; // b0831eb9

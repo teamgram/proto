@@ -1229,13 +1229,14 @@ message TL_messages_sendMessage {
     ReplyMarkup reply_markup = 15;
     repeated MessageEntity entities = 16;
     google.protobuf.Int32Value schedule_date = 17;
-    InputPeer send_as = 18;
-    InputQuickReplyShortcut quick_reply_shortcut = 19;
-    google.protobuf.Int64Value effect = 20;
-    google.protobuf.Int64Value allow_paid_stars = 21;
-    SuggestedPost suggested_post = 22;
-    google.protobuf.Int32Value reply_to_msg_id = 23;
-    google.protobuf.Int32Value top_msg_id = 24;
+    google.protobuf.Int32Value schedule_repeat_period = 18;
+    InputPeer send_as = 19;
+    InputQuickReplyShortcut quick_reply_shortcut = 20;
+    google.protobuf.Int64Value effect = 21;
+    google.protobuf.Int64Value allow_paid_stars = 22;
+    SuggestedPost suggested_post = 23;
+    google.protobuf.Int32Value reply_to_msg_id = 24;
+    google.protobuf.Int32Value top_msg_id = 25;
 }
 
 message TL_messages_sendMedia {
@@ -1255,13 +1256,14 @@ message TL_messages_sendMedia {
     ReplyMarkup reply_markup = 15;
     repeated MessageEntity entities = 16;
     google.protobuf.Int32Value schedule_date = 17;
-    InputPeer send_as = 18;
-    InputQuickReplyShortcut quick_reply_shortcut = 19;
-    google.protobuf.Int64Value effect = 20;
-    google.protobuf.Int64Value allow_paid_stars = 21;
-    SuggestedPost suggested_post = 22;
-    google.protobuf.Int32Value reply_to_msg_id = 23;
-    google.protobuf.Int32Value top_msg_id = 24;
+    google.protobuf.Int32Value schedule_repeat_period = 18;
+    InputPeer send_as = 19;
+    InputQuickReplyShortcut quick_reply_shortcut = 20;
+    google.protobuf.Int64Value effect = 21;
+    google.protobuf.Int64Value allow_paid_stars = 22;
+    SuggestedPost suggested_post = 23;
+    google.protobuf.Int32Value reply_to_msg_id = 24;
+    google.protobuf.Int32Value top_msg_id = 25;
 }
 
 message TL_messages_forwardMessages {
@@ -1280,11 +1282,12 @@ message TL_messages_forwardMessages {
     google.protobuf.Int32Value top_msg_id = 14;
     InputReplyTo reply_to = 15;
     google.protobuf.Int32Value schedule_date = 16;
-    InputPeer send_as = 17;
-    InputQuickReplyShortcut quick_reply_shortcut = 18;
-    google.protobuf.Int32Value video_timestamp = 19;
-    google.protobuf.Int64Value allow_paid_stars = 20;
-    SuggestedPost suggested_post = 21;
+    google.protobuf.Int32Value schedule_repeat_period = 17;
+    InputPeer send_as = 18;
+    InputQuickReplyShortcut quick_reply_shortcut = 19;
+    google.protobuf.Int32Value video_timestamp = 20;
+    google.protobuf.Int64Value allow_paid_stars = 21;
+    SuggestedPost suggested_post = 22;
 }
 
 message TL_messages_reportSpam {
@@ -1606,7 +1609,8 @@ message TL_messages_editMessage {
     ReplyMarkup reply_markup = 9;
     repeated MessageEntity entities = 10;
     google.protobuf.Int32Value schedule_date = 11;
-    google.protobuf.Int32Value quick_reply_shortcut_id = 12;
+    google.protobuf.Int32Value schedule_repeat_period = 12;
+    google.protobuf.Int32Value quick_reply_shortcut_id = 13;
 }
 
 message TL_messages_editInlineBotMessage {
@@ -3354,7 +3358,8 @@ message TL_channels_convertToGigagroup {
 message TL_channels_getSendAs {
     TLConstructor  constructor = 1;
     bool for_paid_reactions = 3;
-    InputPeer peer = 4;
+    bool for_live_stories = 4;
+    InputPeer peer = 5;
 }
 
 message TL_channels_deleteParticipantHistory {
@@ -4261,6 +4266,7 @@ message TL_phone_toggleGroupCallSettings {
     InputGroupCall call = 4;
     Bool join_muted = 5;
     Bool messages_enabled = 6;
+    google.protobuf.Int64Value send_paid_messages_stars = 7;
 }
 
 message TL_phone_getGroupCall {
@@ -4357,8 +4363,9 @@ message TL_phone_getGroupCallStreamChannels {
 
 message TL_phone_getGroupCallStreamRtmpUrl {
     TLConstructor  constructor = 1;
-    InputPeer peer = 3;
-    Bool revoke = 4;
+    bool live_story = 3;
+    InputPeer peer = 4;
+    Bool revoke = 5;
 }
 
 message TL_phone_saveCallLog {
@@ -4413,17 +4420,44 @@ message TL_phone_getGroupCallChainBlocks {
     int32 limit = 6;
 }
 
-message TL_phone_sendGroupCallMessage {
+message TL_phone_sendGroupCallMessageB1D11410 {
     TLConstructor  constructor = 1;
     InputGroupCall call = 3;
     int64 random_id = 4;
     TextWithEntities message = 5;
+    google.protobuf.Int64Value allow_paid_stars = 6;
+    InputPeer send_as = 7;
 }
 
 message TL_phone_sendGroupCallEncryptedMessage {
     TLConstructor  constructor = 1;
     InputGroupCall call = 3;
     bytes encrypted_message = 4;
+}
+
+message TL_phone_deleteGroupCallMessages {
+    TLConstructor  constructor = 1;
+    bool report_spam = 3;
+    InputGroupCall call = 4;
+    repeated int32 messages = 5;
+}
+
+message TL_phone_deleteGroupCallParticipantMessages {
+    TLConstructor  constructor = 1;
+    bool report_spam = 3;
+    InputGroupCall call = 4;
+    InputPeer participant = 5;
+}
+
+message TL_phone_getGroupCallStars {
+    TLConstructor  constructor = 1;
+    InputGroupCall call = 3;
+}
+
+message TL_phone_saveDefaultSendAs {
+    TLConstructor  constructor = 1;
+    InputGroupCall call = 3;
+    InputPeer send_as = 4;
 }
 
 message TL_langpack_getLangPack {
@@ -4728,7 +4762,7 @@ message TL_stories_getAllReadPeerStories {
     TLConstructor  constructor = 1;
 }
 
-message TL_stories_getPeerMaxIDs {
+message TL_stories_getPeerMaxIDs78499170 {
     TLConstructor  constructor = 1;
     repeated InputPeer id = 3;
 }
@@ -4811,6 +4845,20 @@ message TL_stories_getAlbumStories {
     int32 limit = 6;
 }
 
+message TL_stories_startLive {
+    TLConstructor  constructor = 1;
+    bool pinned = 3;
+    bool noforwards = 4;
+    bool rtmp_stream = 5;
+    InputPeer peer = 6;
+    google.protobuf.StringValue caption = 7;
+    repeated MessageEntity entities = 8;
+    repeated InputPrivacyRule privacy_rules = 9;
+    int64 random_id = 10;
+    Bool messages_enabled = 11;
+    google.protobuf.Int64Value send_paid_messages_stars = 12;
+}
+
 message TL_premium_getBoostsList {
     TLConstructor  constructor = 1;
     bool gifts = 3;
@@ -4875,6 +4923,18 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
+}
+
+message TL_phone_sendGroupCallMessage87893014 {
+    TLConstructor  constructor = 1;
+    InputGroupCall call = 3;
+    int64 random_id = 4;
+    TextWithEntities message = 5;
+}
+
+message TL_stories_getPeerMaxIDs535983C3 {
+    TLConstructor  constructor = 1;
+    repeated InputPeer id = 3;
 }
 
 message TL_channels_createForumTopic {
@@ -5393,6 +5453,9 @@ message Vector_LangPackLanguage {
 }
 message Vector_Peer {
     repeated Peer datas = 1;
+}
+message Vector_RecentStory {
+    repeated RecentStory datas = 1;
 }
 message Vector_Bool {
     repeated Bool datas = 1;
@@ -5936,7 +5999,12 @@ service RPCGroupCalls {
     rpc phone_leaveGroupCallPresentation(TL_phone_leaveGroupCallPresentation) returns (Updates) {}
     rpc phone_getGroupCallStreamChannels(TL_phone_getGroupCallStreamChannels) returns (phone_GroupCallStreamChannels) {}
     rpc phone_getGroupCallStreamRtmpUrl(TL_phone_getGroupCallStreamRtmpUrl) returns (phone_GroupCallStreamRtmpUrl) {}
-    rpc phone_sendGroupCallMessage(TL_phone_sendGroupCallMessage) returns (Bool) {}
+    rpc phone_sendGroupCallMessageB1D11410(TL_phone_sendGroupCallMessageB1D11410) returns (Updates) {}
+    rpc phone_deleteGroupCallMessages(TL_phone_deleteGroupCallMessages) returns (Updates) {}
+    rpc phone_deleteGroupCallParticipantMessages(TL_phone_deleteGroupCallParticipantMessages) returns (Updates) {}
+    rpc phone_getGroupCallStars(TL_phone_getGroupCallStars) returns (phone_GroupCallStars) {}
+    rpc phone_saveDefaultSendAs(TL_phone_saveDefaultSendAs) returns (Bool) {}
+    rpc phone_sendGroupCallMessage87893014(TL_phone_sendGroupCallMessage87893014) returns (Bool) {}
 }
 
 service RPCImportedChats {
@@ -6359,7 +6427,7 @@ service RPCStories {
     rpc stories_sendReaction(TL_stories_sendReaction) returns (Updates) {}
     rpc stories_getPeerStories(TL_stories_getPeerStories) returns (stories_PeerStories) {}
     rpc stories_getAllReadPeerStories(TL_stories_getAllReadPeerStories) returns (Updates) {}
-    rpc stories_getPeerMaxIDs(TL_stories_getPeerMaxIDs) returns (Vector_Int) {}
+    rpc stories_getPeerMaxIDs78499170(TL_stories_getPeerMaxIDs78499170) returns (Vector_RecentStory) {}
     rpc stories_getChatsToSend(TL_stories_getChatsToSend) returns (messages_Chats) {}
     rpc stories_togglePeerStoriesHidden(TL_stories_togglePeerStoriesHidden) returns (Bool) {}
     rpc stories_getStoryReactionsList(TL_stories_getStoryReactionsList) returns (stories_StoryReactionsList) {}
@@ -6371,6 +6439,8 @@ service RPCStories {
     rpc stories_deleteAlbum(TL_stories_deleteAlbum) returns (Bool) {}
     rpc stories_getAlbums(TL_stories_getAlbums) returns (stories_Albums) {}
     rpc stories_getAlbumStories(TL_stories_getAlbumStories) returns (stories_Stories) {}
+    rpc stories_startLive(TL_stories_startLive) returns (Updates) {}
+    rpc stories_getPeerMaxIDs535983C3(TL_stories_getPeerMaxIDs535983C3) returns (Vector_Int) {}
     rpc stories_canSendStoryC7DFDFDD(TL_stories_canSendStoryC7DFDFDD) returns (Bool) {}
     rpc stories_report1923FA8C(TL_stories_report1923FA8C) returns (Bool) {}
     rpc users_getStoriesMaxIDs(TL_users_getStoriesMaxIDs) returns (Vector_Int) {}
