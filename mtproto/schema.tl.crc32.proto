@@ -321,6 +321,7 @@ enum TLConstructor {
     CRC32_messageActionStarGiftUnique_26077b99 = 638024601; // 26077b99
     CRC32_messageActionPaidMessagesRefunded = -1407246387; // ac1f1fcd
     CRC32_messageActionPaidMessagesPrice = -1126755303; // bcd71419
+    CRC32_messageActionConferenceCall = 805187450; // 2ffe2f7a
     CRC32_dialog_d58a08c6 = -712374074; // d58a08c6
     CRC32_dialog_a8edd0f5 = -1460809483; // a8edd0f5
     CRC32_dialogFolder = 1908216652; // 71bd134c
@@ -577,6 +578,7 @@ enum TLConstructor {
     CRC32_updatePaidReactionPrivacy_8b725fce = -1955438642; // 8b725fce
     CRC32_updatePaidReactionPrivacy_51ca7aec = 1372224236; // 51ca7aec
     CRC32_updateSentPhoneCode = 1347068303; // 504aa18f
+    CRC32_updateGroupCallChainBlocks = -1535694705; // a477288f
     CRC32_updates_state = -1519637954; // a56c2a3e
     CRC32_updates_differenceEmpty = 1567990072; // 5d75a138
     CRC32_updates_difference = 16030880; // f49ca0
@@ -984,7 +986,7 @@ enum TLConstructor {
     CRC32_phoneCallDiscardReasonDisconnect = -527056480; // e095c1a0
     CRC32_phoneCallDiscardReasonHangup = 1471006352; // 57adc690
     CRC32_phoneCallDiscardReasonBusy = -84416311; // faf7e8c9
-    CRC32_phoneCallDiscardReasonAllowGroupCall = -1344096199; // afe2b839
+    CRC32_phoneCallDiscardReasonMigrateConferenceCall = -1615072777; // 9fbbf1f7
     CRC32_dataJSON = 2104790276; // 7d748d04
     CRC32_labeledPrice = -886477832; // cb296bf8
     CRC32_invoice_49ee584 = 77522308; // 49ee584
@@ -1023,17 +1025,17 @@ enum TLConstructor {
     CRC32_inputStickerSetItem_ffa0a496 = -6249322; // ffa0a496
     CRC32_inputPhoneCall = 506920429; // 1e36fded
     CRC32_phoneCallEmpty = 1399245077; // 5366c915
-    CRC32_phoneCallWaiting_eed42858 = -288085928; // eed42858
     CRC32_phoneCallWaiting_c5226f17 = -987599081; // c5226f17
-    CRC32_phoneCallRequested_45361c63 = 1161174115; // 45361c63
+    CRC32_phoneCallWaiting_eed42858 = -288085928; // eed42858
     CRC32_phoneCallRequested_14b0ed0c = 347139340; // 14b0ed0c
-    CRC32_phoneCallAccepted_22fd7181 = 587035009; // 22fd7181
+    CRC32_phoneCallRequested_45361c63 = 1161174115; // 45361c63
     CRC32_phoneCallAccepted_3660c311 = 912311057; // 3660c311
-    CRC32_phoneCall_3ba5940c = 1000707084; // 3ba5940c
+    CRC32_phoneCallAccepted_22fd7181 = 587035009; // 22fd7181
     CRC32_phoneCall_30535af5 = 810769141; // 30535af5
+    CRC32_phoneCall_3ba5940c = 1000707084; // 3ba5940c
     CRC32_phoneCall_967f7c67 = -1770029977; // 967f7c67
-    CRC32_phoneCallDiscarded_f9d25503 = -103656189; // f9d25503
     CRC32_phoneCallDiscarded_50ca4de1 = 1355435489; // 50ca4de1
+    CRC32_phoneCallDiscarded_f9d25503 = -103656189; // f9d25503
     CRC32_phoneConnection_9cc123c7 = -1665063993; // 9cc123c7
     CRC32_phoneConnection_9d4c17c0 = -1655957568; // 9d4c17c0
     CRC32_phoneConnectionWebrtc = 1667228533; // 635fe375
@@ -1315,9 +1317,12 @@ enum TLConstructor {
     CRC32_stats_messageStats_7fe91c14 = 2145983508; // 7fe91c14
     CRC32_stats_messageStats_8999f295 = -1986399595; // 8999f295
     CRC32_groupCallDiscarded = 2004925620; // 7780bcb4
+    CRC32_groupCall_553b0ba1 = 1429932961; // 553b0ba1
     CRC32_groupCall_cdf8d3e3 = -839330845; // cdf8d3e3
     CRC32_groupCall_d597650c = -711498484; // d597650c
     CRC32_inputGroupCall = -659913713; // d8aa840f
+    CRC32_inputGroupCallSlug = -33127873; // fe06823f
+    CRC32_inputGroupCallInviteMessage = -1945083841; // 8c10603f
     CRC32_groupCallParticipant = -341428482; // eba636fe
     CRC32_phone_groupCall = -1636664659; // 9e727aad
     CRC32_phone_groupParticipants = -193506890; // f47751b6
@@ -1425,6 +1430,7 @@ enum TLConstructor {
     CRC32_inputInvoiceStarGiftTransfer_4a5f5bd9 = 1247763417; // 4a5f5bd9
     CRC32_inputInvoiceStarGiftTransfer_ae3ba9ed = -1371821587; // ae3ba9ed
     CRC32_inputInvoicePremiumGiftStars = -625298705; // dabab2ef
+    CRC32_inputInvoiceBusinessBotTransferStars = -191267262; // f4997e42
     CRC32_payments_exportedInvoice = -1362048039; // aed0cbd9
     CRC32_messages_transcribedAudio_cfb9d957 = -809903785; // cfb9d957
     CRC32_messages_transcribedAudio_93752c52 = -1821037486; // 93752c52
@@ -1763,6 +1769,7 @@ enum TLConstructor {
     CRC32_sponsoredPeer = -963180333; // c69708d3
     CRC32_contacts_sponsoredPeersEmpty = -365775695; // ea32b4b1
     CRC32_contacts_sponsoredPeers = -352114556; // eb032884
+    CRC32_phoneCallDiscardReasonAllowGroupCall = -1344096199; // afe2b839
     CRC32_premiumGiftOption = 1958953753; // 74c34319
     CRC32_emojiStatusUntil = -97474361; // fa30a8c7
     CRC32_userStarGift_325835e1 = 844641761; // 325835e1
@@ -2545,8 +2552,8 @@ enum TLConstructor {
     CRC32_stickers_deleteStickerSet = -2022685804; // 87704394
     CRC32_stickers_replaceSticker = 1184253338; // 4696459a
     CRC32_phone_getCallConfig = 1430593449; // 55451fa9
-    CRC32_phone_requestCall_a6c4600c = -1497079796; // a6c4600c
     CRC32_phone_requestCall_42ff96ed = 1124046573; // 42ff96ed
+    CRC32_phone_requestCall_a6c4600c = -1497079796; // a6c4600c
     CRC32_phone_acceptCall = 1003664544; // 3bd2b4a0
     CRC32_phone_confirmCall = 788404002; // 2efe1722
     CRC32_phone_receivedCall = 399855457; // 17d54f61
@@ -2555,6 +2562,7 @@ enum TLConstructor {
     CRC32_phone_saveCallDebug = 662363518; // 277add7e
     CRC32_phone_sendSignalingData = -8744061; // ff7a9383
     CRC32_phone_createGroupCall = 1221445336; // 48cdc6d8
+    CRC32_phone_joinGroupCall_8fb53057 = -1883951017; // 8fb53057
     CRC32_phone_joinGroupCall_d61e1df3 = -702669325; // d61e1df3
     CRC32_phone_joinGroupCall_b132ff7b = -1322057861; // b132ff7b
     CRC32_phone_leaveGroupCall = 1342404601; // 500377f9
@@ -2577,7 +2585,12 @@ enum TLConstructor {
     CRC32_phone_getGroupCallStreamChannels = 447879488; // 1ab21940
     CRC32_phone_getGroupCallStreamRtmpUrl = -558650433; // deb3abbf
     CRC32_phone_saveCallLog = 1092913030; // 41248786
-    CRC32_phone_createConferenceCall = -540472917; // dfc909ab
+    CRC32_phone_createConferenceCall7D0444BB = 2097431739; // 7d0444bb
+    CRC32_phone_deleteConferenceCallParticipants = -1935276763; // 8ca60525
+    CRC32_phone_sendConferenceCallBroadcast = -965732096; // c6701900
+    CRC32_phone_inviteConferenceCallParticipant = -1124981115; // bcf22685
+    CRC32_phone_declineConferenceCallInvite = 1011325297; // 3c479971
+    CRC32_phone_getGroupCallChainBlocks = -291534682; // ee9f88a6
     CRC32_langpack_getLangPack_f2f2330a = -219008246; // f2f2330a
     CRC32_langpack_getLangPack_9ab5c58e = -1699363442; // 9ab5c58e
     CRC32_langpack_getStrings_efea3803 = -269862909; // efea3803
@@ -2669,6 +2682,7 @@ enum TLConstructor {
     CRC32_smsjobs_getSmsJob = 2005766191; // 778d902f
     CRC32_smsjobs_finishJob = 1327415076; // 4f1ebf24
     CRC32_fragment_getCollectibleInfo = -1105295942; // be1e85ba
+    CRC32_phone_createConferenceCallDFC909AB = -540472917; // dfc909ab
     CRC32_payments_canPurchasePremium_9fc19eb6 = -1614700874; // 9fc19eb6
     CRC32_payments_canPurchasePremium_aa6a90c8 = -1435856696; // aa6a90c8
     CRC32_users_getIsPremiumRequiredToContact = -1507677680; // a622aa10

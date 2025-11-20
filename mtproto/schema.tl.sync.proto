@@ -3404,6 +3404,7 @@ message TL_globalPrivacySettings {
 //  + TL_groupCallDiscarded
 //  + TL_groupCall
 //  + TL_groupCall
+//  + TL_groupCall
 //
 message GroupCall {
     string predicate_name = 1;
@@ -3419,15 +3420,18 @@ message GroupCall {
     bool record_video_active = 11;
     bool rtmp_stream = 12;
     bool listeners_hidden = 13;
-    int32 participants_count = 14;
-    google.protobuf.StringValue title = 15;
-    google.protobuf.Int32Value stream_dc_id = 16;
-    google.protobuf.Int32Value record_start_date = 17;
-    google.protobuf.Int32Value schedule_date = 18;
-    google.protobuf.Int32Value unmuted_video_count = 19;
-    int32 unmuted_video_limit = 20;
-    int32 version = 21;
-    google.protobuf.Int64Value conference_from_call = 22;
+    bool conference = 14;
+    bool creator = 15;
+    int32 participants_count = 16;
+    google.protobuf.StringValue title = 17;
+    google.protobuf.Int32Value stream_dc_id = 18;
+    google.protobuf.Int32Value record_start_date = 19;
+    google.protobuf.Int32Value schedule_date = 20;
+    google.protobuf.Int32Value unmuted_video_count = 21;
+    int32 unmuted_video_limit = 22;
+    int32 version = 23;
+    google.protobuf.StringValue invite_link = 24;
+    google.protobuf.Int64Value conference_from_call = 25;
 }
 
 // TL_groupCallDiscarded
@@ -4454,16 +4458,30 @@ message TL_inputGeoPoint {
 
 // InputGroupCall <--
 //  + TL_inputGroupCall
+//  + TL_inputGroupCallSlug
+//  + TL_inputGroupCallInviteMessage
 //
 message InputGroupCall {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
     int64 id = 3;
     int64 access_hash = 4;
+    string slug = 5;
+    int32 msg_id = 6;
 }
 
 // TL_inputGroupCall
 message TL_inputGroupCall {
+    InputGroupCall data2 = 1;
+}
+
+// TL_inputGroupCallSlug
+message TL_inputGroupCallSlug {
+    InputGroupCall data2 = 1;
+}
+
+// TL_inputGroupCallInviteMessage
+message TL_inputGroupCallInviteMessage {
     InputGroupCall data2 = 1;
 }
 
@@ -4478,6 +4496,7 @@ message TL_inputGroupCall {
 //  + TL_inputInvoiceStarGiftUpgrade
 //  + TL_inputInvoiceStarGiftTransfer
 //  + TL_inputInvoicePremiumGiftStars
+//  + TL_inputInvoiceBusinessBotTransferStars
 //  + TL_inputInvoiceStarGift
 //  + TL_inputInvoiceStarGiftUpgrade
 //  + TL_inputInvoiceStarGiftTransfer
@@ -4501,8 +4520,10 @@ message InputInvoice {
     InputPeer to_id_INPUTPEER = 15;
     InputUser user_id = 16;
     int32 months = 17;
-    InputUser to_id_INPUTUSER = 18;
-    StarsTopupOption option_STARSTOPUPOPTION = 19;
+    InputUser bot = 18;
+    int64 stars = 19;
+    InputUser to_id_INPUTUSER = 20;
+    StarsTopupOption option_STARSTOPUPOPTION = 21;
 }
 
 // TL_inputInvoiceMessage
@@ -4547,6 +4568,11 @@ message TL_inputInvoiceStarGiftTransfer {
 
 // TL_inputInvoicePremiumGiftStars
 message TL_inputInvoicePremiumGiftStars {
+    InputInvoice data2 = 1;
+}
+
+// TL_inputInvoiceBusinessBotTransferStars
+message TL_inputInvoiceBusinessBotTransferStars {
     InputInvoice data2 = 1;
 }
 
@@ -6260,6 +6286,7 @@ message TL_messageService {
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionPaidMessagesRefunded
 //  + TL_messageActionPaidMessagesPrice
+//  + TL_messageActionConferenceCall
 //  + TL_messageActionStarGift
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGift
@@ -6374,9 +6401,12 @@ message MessageAction {
     google.protobuf.Int32Value can_export_at = 89;
     google.protobuf.Int64Value transfer_stars = 90;
     int32 count = 91;
-    int64 convert_stars_INT64 = 92;
-    string domain_STRING = 93;
-    BizDataRaw biz_data = 94;
+    bool missed = 92;
+    bool active = 93;
+    repeated Peer other_participants = 94;
+    int64 convert_stars_INT64 = 95;
+    string domain_STRING = 96;
+    BizDataRaw biz_data = 97;
     string title = 100;
 }
 
@@ -6627,6 +6657,11 @@ message TL_messageActionPaidMessagesRefunded {
 
 // TL_messageActionPaidMessagesPrice
 message TL_messageActionPaidMessagesPrice {
+    MessageAction data2 = 1;
+}
+
+// TL_messageActionConferenceCall
+message TL_messageActionConferenceCall {
     MessageAction data2 = 1;
 }
 
@@ -8323,10 +8358,10 @@ message PhoneCall {
     int64 participant_id = 8;
     PhoneCallProtocol protocol = 9;
     google.protobuf.Int32Value receive_date = 10;
-    InputGroupCall conference_call = 11;
-    bytes g_a_hash = 12;
-    bytes g_b = 13;
-    bool p2p_allowed = 14;
+    bytes g_a_hash = 11;
+    bytes g_b = 12;
+    bool p2p_allowed = 13;
+    bool conference_supported = 14;
     bytes g_a_or_b = 15;
     int64 key_fingerprint = 16;
     repeated PhoneConnection connections = 17;
@@ -8336,6 +8371,7 @@ message PhoneCall {
     bool need_debug = 21;
     PhoneCallDiscardReason reason = 22;
     google.protobuf.Int32Value duration = 23;
+    InputGroupCall conference_call = 24;
 }
 
 // TL_phoneCallEmpty
@@ -8374,12 +8410,14 @@ message TL_phoneCallDiscarded {
 //  + TL_phoneCallDiscardReasonDisconnect
 //  + TL_phoneCallDiscardReasonHangup
 //  + TL_phoneCallDiscardReasonBusy
+//  + TL_phoneCallDiscardReasonMigrateConferenceCall
 //  + TL_phoneCallDiscardReasonAllowGroupCall
 //
 message PhoneCallDiscardReason {
     string predicate_name = 1;
     TLConstructor  constructor = 2;
-    bytes encrypted_key = 3;
+    string slug = 3;
+    bytes encrypted_key = 4;
 }
 
 // TL_phoneCallDiscardReasonMissed
@@ -8399,6 +8437,11 @@ message TL_phoneCallDiscardReasonHangup {
 
 // TL_phoneCallDiscardReasonBusy
 message TL_phoneCallDiscardReasonBusy {
+    PhoneCallDiscardReason data2 = 1;
+}
+
+// TL_phoneCallDiscardReasonMigrateConferenceCall
+message TL_phoneCallDiscardReasonMigrateConferenceCall {
     PhoneCallDiscardReason data2 = 1;
 }
 
@@ -10583,28 +10626,29 @@ message StarsTransaction {
     bool gift = 6;
     bool reaction = 7;
     bool stargift_upgrade = 8;
-    string id = 9;
-    StarsAmount stars_STARSAMOUNT = 10;
-    int32 date = 11;
-    StarsTransactionPeer peer = 12;
-    google.protobuf.StringValue title = 13;
-    google.protobuf.StringValue description = 14;
-    WebDocument photo = 15;
-    google.protobuf.Int32Value transaction_date = 16;
-    google.protobuf.StringValue transaction_url = 17;
-    bytes bot_payload = 18;
-    google.protobuf.Int32Value msg_id = 19;
-    repeated MessageMedia extended_media = 20;
-    google.protobuf.Int32Value subscription_period = 21;
-    google.protobuf.Int32Value giveaway_post_id = 22;
-    StarGift stargift = 23;
-    google.protobuf.Int32Value floodskip_number = 24;
-    google.protobuf.Int32Value starref_commission_permille = 25;
-    Peer starref_peer = 26;
-    StarsAmount starref_amount = 27;
-    google.protobuf.Int32Value paid_messages = 28;
-    google.protobuf.Int32Value premium_gift_months = 29;
-    int64 stars_INT64 = 30;
+    bool business_transfer = 9;
+    string id = 10;
+    StarsAmount stars_STARSAMOUNT = 11;
+    int32 date = 12;
+    StarsTransactionPeer peer = 13;
+    google.protobuf.StringValue title = 14;
+    google.protobuf.StringValue description = 15;
+    WebDocument photo = 16;
+    google.protobuf.Int32Value transaction_date = 17;
+    google.protobuf.StringValue transaction_url = 18;
+    bytes bot_payload = 19;
+    google.protobuf.Int32Value msg_id = 20;
+    repeated MessageMedia extended_media = 21;
+    google.protobuf.Int32Value subscription_period = 22;
+    google.protobuf.Int32Value giveaway_post_id = 23;
+    StarGift stargift = 24;
+    google.protobuf.Int32Value floodskip_number = 25;
+    google.protobuf.Int32Value starref_commission_permille = 26;
+    Peer starref_peer = 27;
+    StarsAmount starref_amount = 28;
+    google.protobuf.Int32Value paid_messages = 29;
+    google.protobuf.Int32Value premium_gift_months = 30;
+    int64 stars_INT64 = 31;
 }
 
 // TL_starsTransaction
@@ -11409,6 +11453,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateBotPurchasedPaidMedia
 //  + TL_updatePaidReactionPrivacy
 //  + TL_updateSentPhoneCode
+//  + TL_updateGroupCallChainBlocks
 //  + TL_updatePaidReactionPrivacy
 //  + TL_updateGroupCall
 //  + TL_updateStarsBalance
@@ -11592,17 +11637,20 @@ message Update {
     string payload_STRING = 158;
     PaidReactionPrivacy private_PAIDREACTIONPRIVACY = 159;
     auth_SentCode sent_code = 160;
-    Bool private_BOOL = 161;
-    int64 balance_INT64 = 162;
-    string invoice_slug = 163;
-    int32 until_date = 164;
-    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 165;
-    Bool blocked_BOOL = 166;
-    UserProfilePhoto photo = 167;
-    Bool previous = 168;
-    google.protobuf.Int32Value topic_id_FLAGINT32 = 169;
-    string username = 170;
-    BizDataRaw biz_data = 171;
+    int32 sub_chain_id = 161;
+    repeated bytes blocks = 162;
+    int32 next_offset = 163;
+    Bool private_BOOL = 164;
+    int64 balance_INT64 = 165;
+    string invoice_slug = 166;
+    int32 until_date = 167;
+    MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 168;
+    Bool blocked_BOOL = 169;
+    UserProfilePhoto photo = 170;
+    Bool previous = 171;
+    google.protobuf.Int32Value topic_id_FLAGINT32 = 172;
+    string username = 173;
+    BizDataRaw biz_data = 174;
 }
 
 // TL_updateNewMessage
@@ -12312,6 +12360,11 @@ message TL_updatePaidReactionPrivacy {
 
 // TL_updateSentPhoneCode
 message TL_updateSentPhoneCode {
+    Update data2 = 1;
+}
+
+// TL_updateGroupCallChainBlocks
+message TL_updateGroupCallChainBlocks {
     Update data2 = 1;
 }
 

@@ -8204,6 +8204,334 @@ var RPCChats_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCConferenceCalls_PhoneCreateConferenceCall7D0444BB_FullMethodName     = "/mtproto.RPCConferenceCalls/phone_createConferenceCall7D0444BB"
+	RPCConferenceCalls_PhoneDeleteConferenceCallParticipants_FullMethodName = "/mtproto.RPCConferenceCalls/phone_deleteConferenceCallParticipants"
+	RPCConferenceCalls_PhoneSendConferenceCallBroadcast_FullMethodName      = "/mtproto.RPCConferenceCalls/phone_sendConferenceCallBroadcast"
+	RPCConferenceCalls_PhoneInviteConferenceCallParticipant_FullMethodName  = "/mtproto.RPCConferenceCalls/phone_inviteConferenceCallParticipant"
+	RPCConferenceCalls_PhoneDeclineConferenceCallInvite_FullMethodName      = "/mtproto.RPCConferenceCalls/phone_declineConferenceCallInvite"
+	RPCConferenceCalls_PhoneGetGroupCallChainBlocks_FullMethodName          = "/mtproto.RPCConferenceCalls/phone_getGroupCallChainBlocks"
+	RPCConferenceCalls_PhoneCreateConferenceCallDFC909AB_FullMethodName     = "/mtproto.RPCConferenceCalls/phone_createConferenceCallDFC909AB"
+)
+
+// RPCConferenceCallsClient is the client API for RPCConferenceCalls service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCConferenceCallsClient interface {
+	PhoneCreateConferenceCall7D0444BB(ctx context.Context, in *TLPhoneCreateConferenceCall7D0444BB, opts ...grpc.CallOption) (*Updates, error)
+	PhoneDeleteConferenceCallParticipants(ctx context.Context, in *TLPhoneDeleteConferenceCallParticipants, opts ...grpc.CallOption) (*Updates, error)
+	PhoneSendConferenceCallBroadcast(ctx context.Context, in *TLPhoneSendConferenceCallBroadcast, opts ...grpc.CallOption) (*Updates, error)
+	PhoneInviteConferenceCallParticipant(ctx context.Context, in *TLPhoneInviteConferenceCallParticipant, opts ...grpc.CallOption) (*Updates, error)
+	PhoneDeclineConferenceCallInvite(ctx context.Context, in *TLPhoneDeclineConferenceCallInvite, opts ...grpc.CallOption) (*Updates, error)
+	PhoneGetGroupCallChainBlocks(ctx context.Context, in *TLPhoneGetGroupCallChainBlocks, opts ...grpc.CallOption) (*Updates, error)
+	PhoneCreateConferenceCallDFC909AB(ctx context.Context, in *TLPhoneCreateConferenceCallDFC909AB, opts ...grpc.CallOption) (*Phone_PhoneCall, error)
+}
+
+type rPCConferenceCallsClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCConferenceCallsClient(cc grpc.ClientConnInterface) RPCConferenceCallsClient {
+	return &rPCConferenceCallsClient{cc}
+}
+
+func (c *rPCConferenceCallsClient) PhoneCreateConferenceCall7D0444BB(ctx context.Context, in *TLPhoneCreateConferenceCall7D0444BB, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneCreateConferenceCall7D0444BB_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCConferenceCallsClient) PhoneDeleteConferenceCallParticipants(ctx context.Context, in *TLPhoneDeleteConferenceCallParticipants, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneDeleteConferenceCallParticipants_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCConferenceCallsClient) PhoneSendConferenceCallBroadcast(ctx context.Context, in *TLPhoneSendConferenceCallBroadcast, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneSendConferenceCallBroadcast_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCConferenceCallsClient) PhoneInviteConferenceCallParticipant(ctx context.Context, in *TLPhoneInviteConferenceCallParticipant, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneInviteConferenceCallParticipant_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCConferenceCallsClient) PhoneDeclineConferenceCallInvite(ctx context.Context, in *TLPhoneDeclineConferenceCallInvite, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneDeclineConferenceCallInvite_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCConferenceCallsClient) PhoneGetGroupCallChainBlocks(ctx context.Context, in *TLPhoneGetGroupCallChainBlocks, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneGetGroupCallChainBlocks_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCConferenceCallsClient) PhoneCreateConferenceCallDFC909AB(ctx context.Context, in *TLPhoneCreateConferenceCallDFC909AB, opts ...grpc.CallOption) (*Phone_PhoneCall, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Phone_PhoneCall)
+	err := c.cc.Invoke(ctx, RPCConferenceCalls_PhoneCreateConferenceCallDFC909AB_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCConferenceCallsServer is the server API for RPCConferenceCalls service.
+// All implementations should embed UnimplementedRPCConferenceCallsServer
+// for forward compatibility.
+type RPCConferenceCallsServer interface {
+	PhoneCreateConferenceCall7D0444BB(context.Context, *TLPhoneCreateConferenceCall7D0444BB) (*Updates, error)
+	PhoneDeleteConferenceCallParticipants(context.Context, *TLPhoneDeleteConferenceCallParticipants) (*Updates, error)
+	PhoneSendConferenceCallBroadcast(context.Context, *TLPhoneSendConferenceCallBroadcast) (*Updates, error)
+	PhoneInviteConferenceCallParticipant(context.Context, *TLPhoneInviteConferenceCallParticipant) (*Updates, error)
+	PhoneDeclineConferenceCallInvite(context.Context, *TLPhoneDeclineConferenceCallInvite) (*Updates, error)
+	PhoneGetGroupCallChainBlocks(context.Context, *TLPhoneGetGroupCallChainBlocks) (*Updates, error)
+	PhoneCreateConferenceCallDFC909AB(context.Context, *TLPhoneCreateConferenceCallDFC909AB) (*Phone_PhoneCall, error)
+}
+
+// UnimplementedRPCConferenceCallsServer should be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedRPCConferenceCallsServer struct{}
+
+func (UnimplementedRPCConferenceCallsServer) PhoneCreateConferenceCall7D0444BB(context.Context, *TLPhoneCreateConferenceCall7D0444BB) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneCreateConferenceCall7D0444BB not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) PhoneDeleteConferenceCallParticipants(context.Context, *TLPhoneDeleteConferenceCallParticipants) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneDeleteConferenceCallParticipants not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) PhoneSendConferenceCallBroadcast(context.Context, *TLPhoneSendConferenceCallBroadcast) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneSendConferenceCallBroadcast not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) PhoneInviteConferenceCallParticipant(context.Context, *TLPhoneInviteConferenceCallParticipant) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneInviteConferenceCallParticipant not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) PhoneDeclineConferenceCallInvite(context.Context, *TLPhoneDeclineConferenceCallInvite) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneDeclineConferenceCallInvite not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) PhoneGetGroupCallChainBlocks(context.Context, *TLPhoneGetGroupCallChainBlocks) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneGetGroupCallChainBlocks not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) PhoneCreateConferenceCallDFC909AB(context.Context, *TLPhoneCreateConferenceCallDFC909AB) (*Phone_PhoneCall, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PhoneCreateConferenceCallDFC909AB not implemented")
+}
+func (UnimplementedRPCConferenceCallsServer) testEmbeddedByValue() {}
+
+// UnsafeRPCConferenceCallsServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCConferenceCallsServer will
+// result in compilation errors.
+type UnsafeRPCConferenceCallsServer interface {
+	mustEmbedUnimplementedRPCConferenceCallsServer()
+}
+
+func RegisterRPCConferenceCallsServer(s grpc.ServiceRegistrar, srv RPCConferenceCallsServer) {
+	// If the following call pancis, it indicates UnimplementedRPCConferenceCallsServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&RPCConferenceCalls_ServiceDesc, srv)
+}
+
+func _RPCConferenceCalls_PhoneCreateConferenceCall7D0444BB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneCreateConferenceCall7D0444BB)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneCreateConferenceCall7D0444BB(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneCreateConferenceCall7D0444BB_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneCreateConferenceCall7D0444BB(ctx, req.(*TLPhoneCreateConferenceCall7D0444BB))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCConferenceCalls_PhoneDeleteConferenceCallParticipants_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneDeleteConferenceCallParticipants)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneDeleteConferenceCallParticipants(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneDeleteConferenceCallParticipants_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneDeleteConferenceCallParticipants(ctx, req.(*TLPhoneDeleteConferenceCallParticipants))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCConferenceCalls_PhoneSendConferenceCallBroadcast_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneSendConferenceCallBroadcast)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneSendConferenceCallBroadcast(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneSendConferenceCallBroadcast_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneSendConferenceCallBroadcast(ctx, req.(*TLPhoneSendConferenceCallBroadcast))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCConferenceCalls_PhoneInviteConferenceCallParticipant_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneInviteConferenceCallParticipant)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneInviteConferenceCallParticipant(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneInviteConferenceCallParticipant_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneInviteConferenceCallParticipant(ctx, req.(*TLPhoneInviteConferenceCallParticipant))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCConferenceCalls_PhoneDeclineConferenceCallInvite_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneDeclineConferenceCallInvite)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneDeclineConferenceCallInvite(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneDeclineConferenceCallInvite_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneDeclineConferenceCallInvite(ctx, req.(*TLPhoneDeclineConferenceCallInvite))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCConferenceCalls_PhoneGetGroupCallChainBlocks_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneGetGroupCallChainBlocks)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneGetGroupCallChainBlocks(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneGetGroupCallChainBlocks_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneGetGroupCallChainBlocks(ctx, req.(*TLPhoneGetGroupCallChainBlocks))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCConferenceCalls_PhoneCreateConferenceCallDFC909AB_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPhoneCreateConferenceCallDFC909AB)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCConferenceCallsServer).PhoneCreateConferenceCallDFC909AB(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCConferenceCalls_PhoneCreateConferenceCallDFC909AB_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCConferenceCallsServer).PhoneCreateConferenceCallDFC909AB(ctx, req.(*TLPhoneCreateConferenceCallDFC909AB))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCConferenceCalls_ServiceDesc is the grpc.ServiceDesc for RPCConferenceCalls service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCConferenceCalls_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCConferenceCalls",
+	HandlerType: (*RPCConferenceCallsServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "phone_createConferenceCall7D0444BB",
+			Handler:    _RPCConferenceCalls_PhoneCreateConferenceCall7D0444BB_Handler,
+		},
+		{
+			MethodName: "phone_deleteConferenceCallParticipants",
+			Handler:    _RPCConferenceCalls_PhoneDeleteConferenceCallParticipants_Handler,
+		},
+		{
+			MethodName: "phone_sendConferenceCallBroadcast",
+			Handler:    _RPCConferenceCalls_PhoneSendConferenceCallBroadcast_Handler,
+		},
+		{
+			MethodName: "phone_inviteConferenceCallParticipant",
+			Handler:    _RPCConferenceCalls_PhoneInviteConferenceCallParticipant_Handler,
+		},
+		{
+			MethodName: "phone_declineConferenceCallInvite",
+			Handler:    _RPCConferenceCalls_PhoneDeclineConferenceCallInvite_Handler,
+		},
+		{
+			MethodName: "phone_getGroupCallChainBlocks",
+			Handler:    _RPCConferenceCalls_PhoneGetGroupCallChainBlocks_Handler,
+		},
+		{
+			MethodName: "phone_createConferenceCallDFC909AB",
+			Handler:    _RPCConferenceCalls_PhoneCreateConferenceCallDFC909AB_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCConfiguration_HelpGetConfig_FullMethodName            = "/mtproto.RPCConfiguration/help_getConfig"
 	RPCConfiguration_HelpGetNearestDc_FullMethodName         = "/mtproto.RPCConfiguration/help_getNearestDc"
 	RPCConfiguration_HelpGetAppUpdate_FullMethodName         = "/mtproto.RPCConfiguration/help_getAppUpdate"
@@ -33171,7 +33499,6 @@ const (
 	RPCVoipCalls_PhoneSaveCallDebug_FullMethodName             = "/mtproto.RPCVoipCalls/phone_saveCallDebug"
 	RPCVoipCalls_PhoneSendSignalingData_FullMethodName         = "/mtproto.RPCVoipCalls/phone_sendSignalingData"
 	RPCVoipCalls_PhoneSaveCallLog_FullMethodName               = "/mtproto.RPCVoipCalls/phone_saveCallLog"
-	RPCVoipCalls_PhoneCreateConferenceCall_FullMethodName      = "/mtproto.RPCVoipCalls/phone_createConferenceCall"
 )
 
 // RPCVoipCallsClient is the client API for RPCVoipCalls service.
@@ -33189,7 +33516,6 @@ type RPCVoipCallsClient interface {
 	PhoneSaveCallDebug(ctx context.Context, in *TLPhoneSaveCallDebug, opts ...grpc.CallOption) (*Bool, error)
 	PhoneSendSignalingData(ctx context.Context, in *TLPhoneSendSignalingData, opts ...grpc.CallOption) (*Bool, error)
 	PhoneSaveCallLog(ctx context.Context, in *TLPhoneSaveCallLog, opts ...grpc.CallOption) (*Bool, error)
-	PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall, opts ...grpc.CallOption) (*Phone_PhoneCall, error)
 }
 
 type rPCVoipCallsClient struct {
@@ -33310,16 +33636,6 @@ func (c *rPCVoipCallsClient) PhoneSaveCallLog(ctx context.Context, in *TLPhoneSa
 	return out, nil
 }
 
-func (c *rPCVoipCallsClient) PhoneCreateConferenceCall(ctx context.Context, in *TLPhoneCreateConferenceCall, opts ...grpc.CallOption) (*Phone_PhoneCall, error) {
-	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(Phone_PhoneCall)
-	err := c.cc.Invoke(ctx, RPCVoipCalls_PhoneCreateConferenceCall_FullMethodName, in, out, cOpts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // RPCVoipCallsServer is the server API for RPCVoipCalls service.
 // All implementations should embed UnimplementedRPCVoipCallsServer
 // for forward compatibility.
@@ -33335,7 +33651,6 @@ type RPCVoipCallsServer interface {
 	PhoneSaveCallDebug(context.Context, *TLPhoneSaveCallDebug) (*Bool, error)
 	PhoneSendSignalingData(context.Context, *TLPhoneSendSignalingData) (*Bool, error)
 	PhoneSaveCallLog(context.Context, *TLPhoneSaveCallLog) (*Bool, error)
-	PhoneCreateConferenceCall(context.Context, *TLPhoneCreateConferenceCall) (*Phone_PhoneCall, error)
 }
 
 // UnimplementedRPCVoipCallsServer should be embedded to have
@@ -33377,9 +33692,6 @@ func (UnimplementedRPCVoipCallsServer) PhoneSendSignalingData(context.Context, *
 }
 func (UnimplementedRPCVoipCallsServer) PhoneSaveCallLog(context.Context, *TLPhoneSaveCallLog) (*Bool, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PhoneSaveCallLog not implemented")
-}
-func (UnimplementedRPCVoipCallsServer) PhoneCreateConferenceCall(context.Context, *TLPhoneCreateConferenceCall) (*Phone_PhoneCall, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method PhoneCreateConferenceCall not implemented")
 }
 func (UnimplementedRPCVoipCallsServer) testEmbeddedByValue() {}
 
@@ -33599,24 +33911,6 @@ func _RPCVoipCalls_PhoneSaveCallLog_Handler(srv interface{}, ctx context.Context
 	return interceptor(ctx, in, info, handler)
 }
 
-func _RPCVoipCalls_PhoneCreateConferenceCall_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(TLPhoneCreateConferenceCall)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(RPCVoipCallsServer).PhoneCreateConferenceCall(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: RPCVoipCalls_PhoneCreateConferenceCall_FullMethodName,
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(RPCVoipCallsServer).PhoneCreateConferenceCall(ctx, req.(*TLPhoneCreateConferenceCall))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 // RPCVoipCalls_ServiceDesc is the grpc.ServiceDesc for RPCVoipCalls service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -33667,10 +33961,6 @@ var RPCVoipCalls_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "phone_saveCallLog",
 			Handler:    _RPCVoipCalls_PhoneSaveCallLog_Handler,
-		},
-		{
-			MethodName: "phone_createConferenceCall",
-			Handler:    _RPCVoipCalls_PhoneCreateConferenceCall_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

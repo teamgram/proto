@@ -314,6 +314,7 @@ const (
 	CRC32_messageActionStarGiftUnique_26077b99                        TLConstructor = 638024601   // 26077b99
 	CRC32_messageActionPaidMessagesRefunded                           TLConstructor = -1407246387 // ac1f1fcd
 	CRC32_messageActionPaidMessagesPrice                              TLConstructor = -1126755303 // bcd71419
+	CRC32_messageActionConferenceCall                                 TLConstructor = 805187450   // 2ffe2f7a
 	CRC32_dialog_d58a08c6                                             TLConstructor = -712374074  // d58a08c6
 	CRC32_dialog_a8edd0f5                                             TLConstructor = -1460809483 // a8edd0f5
 	CRC32_dialogFolder                                                TLConstructor = 1908216652  // 71bd134c
@@ -570,6 +571,7 @@ const (
 	CRC32_updatePaidReactionPrivacy_8b725fce                          TLConstructor = -1955438642 // 8b725fce
 	CRC32_updatePaidReactionPrivacy_51ca7aec                          TLConstructor = 1372224236  // 51ca7aec
 	CRC32_updateSentPhoneCode                                         TLConstructor = 1347068303  // 504aa18f
+	CRC32_updateGroupCallChainBlocks                                  TLConstructor = -1535694705 // a477288f
 	CRC32_updates_state                                               TLConstructor = -1519637954 // a56c2a3e
 	CRC32_updates_differenceEmpty                                     TLConstructor = 1567990072  // 5d75a138
 	CRC32_updates_difference                                          TLConstructor = 16030880    // f49ca0
@@ -977,7 +979,7 @@ const (
 	CRC32_phoneCallDiscardReasonDisconnect                            TLConstructor = -527056480  // e095c1a0
 	CRC32_phoneCallDiscardReasonHangup                                TLConstructor = 1471006352  // 57adc690
 	CRC32_phoneCallDiscardReasonBusy                                  TLConstructor = -84416311   // faf7e8c9
-	CRC32_phoneCallDiscardReasonAllowGroupCall                        TLConstructor = -1344096199 // afe2b839
+	CRC32_phoneCallDiscardReasonMigrateConferenceCall                 TLConstructor = -1615072777 // 9fbbf1f7
 	CRC32_dataJSON                                                    TLConstructor = 2104790276  // 7d748d04
 	CRC32_labeledPrice                                                TLConstructor = -886477832  // cb296bf8
 	CRC32_invoice_49ee584                                             TLConstructor = 77522308    // 49ee584
@@ -1016,17 +1018,17 @@ const (
 	CRC32_inputStickerSetItem_ffa0a496                                TLConstructor = -6249322    // ffa0a496
 	CRC32_inputPhoneCall                                              TLConstructor = 506920429   // 1e36fded
 	CRC32_phoneCallEmpty                                              TLConstructor = 1399245077  // 5366c915
-	CRC32_phoneCallWaiting_eed42858                                   TLConstructor = -288085928  // eed42858
 	CRC32_phoneCallWaiting_c5226f17                                   TLConstructor = -987599081  // c5226f17
-	CRC32_phoneCallRequested_45361c63                                 TLConstructor = 1161174115  // 45361c63
+	CRC32_phoneCallWaiting_eed42858                                   TLConstructor = -288085928  // eed42858
 	CRC32_phoneCallRequested_14b0ed0c                                 TLConstructor = 347139340   // 14b0ed0c
-	CRC32_phoneCallAccepted_22fd7181                                  TLConstructor = 587035009   // 22fd7181
+	CRC32_phoneCallRequested_45361c63                                 TLConstructor = 1161174115  // 45361c63
 	CRC32_phoneCallAccepted_3660c311                                  TLConstructor = 912311057   // 3660c311
-	CRC32_phoneCall_3ba5940c                                          TLConstructor = 1000707084  // 3ba5940c
+	CRC32_phoneCallAccepted_22fd7181                                  TLConstructor = 587035009   // 22fd7181
 	CRC32_phoneCall_30535af5                                          TLConstructor = 810769141   // 30535af5
+	CRC32_phoneCall_3ba5940c                                          TLConstructor = 1000707084  // 3ba5940c
 	CRC32_phoneCall_967f7c67                                          TLConstructor = -1770029977 // 967f7c67
-	CRC32_phoneCallDiscarded_f9d25503                                 TLConstructor = -103656189  // f9d25503
 	CRC32_phoneCallDiscarded_50ca4de1                                 TLConstructor = 1355435489  // 50ca4de1
+	CRC32_phoneCallDiscarded_f9d25503                                 TLConstructor = -103656189  // f9d25503
 	CRC32_phoneConnection_9cc123c7                                    TLConstructor = -1665063993 // 9cc123c7
 	CRC32_phoneConnection_9d4c17c0                                    TLConstructor = -1655957568 // 9d4c17c0
 	CRC32_phoneConnectionWebrtc                                       TLConstructor = 1667228533  // 635fe375
@@ -1308,9 +1310,12 @@ const (
 	CRC32_stats_messageStats_7fe91c14                                 TLConstructor = 2145983508  // 7fe91c14
 	CRC32_stats_messageStats_8999f295                                 TLConstructor = -1986399595 // 8999f295
 	CRC32_groupCallDiscarded                                          TLConstructor = 2004925620  // 7780bcb4
+	CRC32_groupCall_553b0ba1                                          TLConstructor = 1429932961  // 553b0ba1
 	CRC32_groupCall_cdf8d3e3                                          TLConstructor = -839330845  // cdf8d3e3
 	CRC32_groupCall_d597650c                                          TLConstructor = -711498484  // d597650c
 	CRC32_inputGroupCall                                              TLConstructor = -659913713  // d8aa840f
+	CRC32_inputGroupCallSlug                                          TLConstructor = -33127873   // fe06823f
+	CRC32_inputGroupCallInviteMessage                                 TLConstructor = -1945083841 // 8c10603f
 	CRC32_groupCallParticipant                                        TLConstructor = -341428482  // eba636fe
 	CRC32_phone_groupCall                                             TLConstructor = -1636664659 // 9e727aad
 	CRC32_phone_groupParticipants                                     TLConstructor = -193506890  // f47751b6
@@ -1418,6 +1423,7 @@ const (
 	CRC32_inputInvoiceStarGiftTransfer_4a5f5bd9                       TLConstructor = 1247763417  // 4a5f5bd9
 	CRC32_inputInvoiceStarGiftTransfer_ae3ba9ed                       TLConstructor = -1371821587 // ae3ba9ed
 	CRC32_inputInvoicePremiumGiftStars                                TLConstructor = -625298705  // dabab2ef
+	CRC32_inputInvoiceBusinessBotTransferStars                        TLConstructor = -191267262  // f4997e42
 	CRC32_payments_exportedInvoice                                    TLConstructor = -1362048039 // aed0cbd9
 	CRC32_messages_transcribedAudio_cfb9d957                          TLConstructor = -809903785  // cfb9d957
 	CRC32_messages_transcribedAudio_93752c52                          TLConstructor = -1821037486 // 93752c52
@@ -1756,6 +1762,7 @@ const (
 	CRC32_sponsoredPeer                                               TLConstructor = -963180333  // c69708d3
 	CRC32_contacts_sponsoredPeersEmpty                                TLConstructor = -365775695  // ea32b4b1
 	CRC32_contacts_sponsoredPeers                                     TLConstructor = -352114556  // eb032884
+	CRC32_phoneCallDiscardReasonAllowGroupCall                        TLConstructor = -1344096199 // afe2b839
 	CRC32_premiumGiftOption                                           TLConstructor = 1958953753  // 74c34319
 	CRC32_emojiStatusUntil                                            TLConstructor = -97474361   // fa30a8c7
 	CRC32_userStarGift_325835e1                                       TLConstructor = 844641761   // 325835e1
@@ -2538,8 +2545,8 @@ const (
 	CRC32_stickers_deleteStickerSet                                   TLConstructor = -2022685804 // 87704394
 	CRC32_stickers_replaceSticker                                     TLConstructor = 1184253338  // 4696459a
 	CRC32_phone_getCallConfig                                         TLConstructor = 1430593449  // 55451fa9
-	CRC32_phone_requestCall_a6c4600c                                  TLConstructor = -1497079796 // a6c4600c
 	CRC32_phone_requestCall_42ff96ed                                  TLConstructor = 1124046573  // 42ff96ed
+	CRC32_phone_requestCall_a6c4600c                                  TLConstructor = -1497079796 // a6c4600c
 	CRC32_phone_acceptCall                                            TLConstructor = 1003664544  // 3bd2b4a0
 	CRC32_phone_confirmCall                                           TLConstructor = 788404002   // 2efe1722
 	CRC32_phone_receivedCall                                          TLConstructor = 399855457   // 17d54f61
@@ -2548,6 +2555,7 @@ const (
 	CRC32_phone_saveCallDebug                                         TLConstructor = 662363518   // 277add7e
 	CRC32_phone_sendSignalingData                                     TLConstructor = -8744061    // ff7a9383
 	CRC32_phone_createGroupCall                                       TLConstructor = 1221445336  // 48cdc6d8
+	CRC32_phone_joinGroupCall_8fb53057                                TLConstructor = -1883951017 // 8fb53057
 	CRC32_phone_joinGroupCall_d61e1df3                                TLConstructor = -702669325  // d61e1df3
 	CRC32_phone_joinGroupCall_b132ff7b                                TLConstructor = -1322057861 // b132ff7b
 	CRC32_phone_leaveGroupCall                                        TLConstructor = 1342404601  // 500377f9
@@ -2570,7 +2578,12 @@ const (
 	CRC32_phone_getGroupCallStreamChannels                            TLConstructor = 447879488   // 1ab21940
 	CRC32_phone_getGroupCallStreamRtmpUrl                             TLConstructor = -558650433  // deb3abbf
 	CRC32_phone_saveCallLog                                           TLConstructor = 1092913030  // 41248786
-	CRC32_phone_createConferenceCall                                  TLConstructor = -540472917  // dfc909ab
+	CRC32_phone_createConferenceCall7D0444BB                          TLConstructor = 2097431739  // 7d0444bb
+	CRC32_phone_deleteConferenceCallParticipants                      TLConstructor = -1935276763 // 8ca60525
+	CRC32_phone_sendConferenceCallBroadcast                           TLConstructor = -965732096  // c6701900
+	CRC32_phone_inviteConferenceCallParticipant                       TLConstructor = -1124981115 // bcf22685
+	CRC32_phone_declineConferenceCallInvite                           TLConstructor = 1011325297  // 3c479971
+	CRC32_phone_getGroupCallChainBlocks                               TLConstructor = -291534682  // ee9f88a6
 	CRC32_langpack_getLangPack_f2f2330a                               TLConstructor = -219008246  // f2f2330a
 	CRC32_langpack_getLangPack_9ab5c58e                               TLConstructor = -1699363442 // 9ab5c58e
 	CRC32_langpack_getStrings_efea3803                                TLConstructor = -269862909  // efea3803
@@ -2662,6 +2675,7 @@ const (
 	CRC32_smsjobs_getSmsJob                                           TLConstructor = 2005766191  // 778d902f
 	CRC32_smsjobs_finishJob                                           TLConstructor = 1327415076  // 4f1ebf24
 	CRC32_fragment_getCollectibleInfo                                 TLConstructor = -1105295942 // be1e85ba
+	CRC32_phone_createConferenceCallDFC909AB                          TLConstructor = -540472917  // dfc909ab
 	CRC32_payments_canPurchasePremium_9fc19eb6                        TLConstructor = -1614700874 // 9fc19eb6
 	CRC32_payments_canPurchasePremium_aa6a90c8                        TLConstructor = -1435856696 // aa6a90c8
 	CRC32_users_getIsPremiumRequiredToContact                         TLConstructor = -1507677680 // a622aa10

@@ -3943,10 +3943,10 @@ message TL_phone_requestCall {
     TLConstructor  constructor = 1;
     bool video = 3;
     InputUser user_id = 4;
-    InputGroupCall conference_call = 5;
-    int32 random_id = 6;
-    bytes g_a_hash = 7;
-    PhoneCallProtocol protocol = 8;
+    int32 random_id = 5;
+    bytes g_a_hash = 6;
+    PhoneCallProtocol protocol = 7;
+    InputGroupCall conference_call = 8;
 }
 
 message TL_phone_acceptCall {
@@ -4014,8 +4014,10 @@ message TL_phone_joinGroupCall {
     InputGroupCall call = 5;
     InputPeer join_as = 6;
     google.protobuf.StringValue invite_hash = 7;
-    google.protobuf.Int64Value key_fingerprint = 8;
-    DataJSON params = 9;
+    bytes public_key = 8;
+    bytes block = 9;
+    DataJSON params = 10;
+    google.protobuf.Int64Value key_fingerprint = 11;
 }
 
 message TL_phone_leaveGroupCall {
@@ -4146,10 +4148,50 @@ message TL_phone_saveCallLog {
     InputFile file = 4;
 }
 
-message TL_phone_createConferenceCall {
+message TL_phone_createConferenceCall7D0444BB {
     TLConstructor  constructor = 1;
-    InputPhoneCall peer = 3;
-    int64 key_fingerprint = 4;
+    bool muted = 3;
+    bool video_stopped = 4;
+    bool join = 5;
+    int32 random_id = 6;
+    bytes public_key = 7;
+    bytes block = 8;
+    DataJSON params = 9;
+}
+
+message TL_phone_deleteConferenceCallParticipants {
+    TLConstructor  constructor = 1;
+    bool only_left = 3;
+    bool kick = 4;
+    InputGroupCall call = 5;
+    repeated int64 ids = 6;
+    bytes block = 7;
+}
+
+message TL_phone_sendConferenceCallBroadcast {
+    TLConstructor  constructor = 1;
+    InputGroupCall call = 3;
+    bytes block = 4;
+}
+
+message TL_phone_inviteConferenceCallParticipant {
+    TLConstructor  constructor = 1;
+    bool video = 3;
+    InputGroupCall call = 4;
+    InputUser user_id = 5;
+}
+
+message TL_phone_declineConferenceCallInvite {
+    TLConstructor  constructor = 1;
+    int32 msg_id = 3;
+}
+
+message TL_phone_getGroupCallChainBlocks {
+    TLConstructor  constructor = 1;
+    InputGroupCall call = 3;
+    int32 sub_chain_id = 4;
+    int32 offset = 5;
+    int32 limit = 6;
 }
 
 message TL_langpack_getLangPack {
@@ -4579,6 +4621,12 @@ message TL_smsjobs_finishJob {
 message TL_fragment_getCollectibleInfo {
     TLConstructor  constructor = 1;
     InputCollectible collectible = 3;
+}
+
+message TL_phone_createConferenceCallDFC909AB {
+    TLConstructor  constructor = 1;
+    InputPhoneCall peer = 3;
+    int64 key_fingerprint = 4;
 }
 
 message TL_payments_canPurchasePremium {
@@ -5262,6 +5310,16 @@ service RPCChats {
     rpc messages_getAllChats(TL_messages_getAllChats) returns (messages_Chats) {}
     rpc messages_getMessageReadParticipants2C6F97B7(TL_messages_getMessageReadParticipants2C6F97B7) returns (Vector_Long) {}
     rpc messages_createChat9CB126E(TL_messages_createChat9CB126E) returns (Updates) {}
+}
+
+service RPCConferenceCalls {
+    rpc phone_createConferenceCall7D0444BB(TL_phone_createConferenceCall7D0444BB) returns (Updates) {}
+    rpc phone_deleteConferenceCallParticipants(TL_phone_deleteConferenceCallParticipants) returns (Updates) {}
+    rpc phone_sendConferenceCallBroadcast(TL_phone_sendConferenceCallBroadcast) returns (Updates) {}
+    rpc phone_inviteConferenceCallParticipant(TL_phone_inviteConferenceCallParticipant) returns (Updates) {}
+    rpc phone_declineConferenceCallInvite(TL_phone_declineConferenceCallInvite) returns (Updates) {}
+    rpc phone_getGroupCallChainBlocks(TL_phone_getGroupCallChainBlocks) returns (Updates) {}
+    rpc phone_createConferenceCallDFC909AB(TL_phone_createConferenceCallDFC909AB) returns (phone_PhoneCall) {}
 }
 
 service RPCConfiguration {
@@ -6034,7 +6092,6 @@ service RPCVoipCalls {
     rpc phone_saveCallDebug(TL_phone_saveCallDebug) returns (Bool) {}
     rpc phone_sendSignalingData(TL_phone_sendSignalingData) returns (Bool) {}
     rpc phone_saveCallLog(TL_phone_saveCallLog) returns (Bool) {}
-    rpc phone_createConferenceCall(TL_phone_createConferenceCall) returns (phone_PhoneCall) {}
 }
 
 service RPCWallpapers {
