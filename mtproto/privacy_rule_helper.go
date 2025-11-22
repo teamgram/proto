@@ -76,6 +76,7 @@ const (
 	inputPrivacyKeyBirthday#d65a11cc = InputPrivacyKey;
 	inputPrivacyKeyStarGiftsAutoSave#e1732341 = InputPrivacyKey;
 	inputPrivacyKeyNoPaidMessages#bdc597b4 = InputPrivacyKey;
+	inputPrivacyKeySavedMusic#4dbe9226 = InputPrivacyKey;
 
 	privacyKeyStatusTimestamp#bc2eab30 = PrivacyKey;
 	privacyKeyChatInvite#500e6dfa = PrivacyKey;
@@ -90,6 +91,7 @@ const (
 	privacyKeyBirthday#2000a518 = PrivacyKey;
 	privacyKeyStarGiftsAutoSave#2ca4fdf8 = PrivacyKey;
 	privacyKeyNoPaidMessages#17d348d2 = PrivacyKey;
+	privacyKeySavedMusic#ff7a571b = PrivacyKey;
 **/
 
 const (
@@ -107,6 +109,7 @@ const (
 	BIRTHDAY             = 11
 	STAR_GIFTS_AUTO_SAVE = 12
 	NO_PAID_MESSAGES     = 13
+	SAVED_MUSIC          = 14
 )
 
 func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
@@ -137,6 +140,8 @@ func FromInputPrivacyKeyType(k *InputPrivacyKey) int {
 		return STAR_GIFTS_AUTO_SAVE
 	case Predicate_inputPrivacyKeyNoPaidMessages:
 		return NO_PAID_MESSAGES
+	case Predicate_inputPrivacyKeySavedMusic:
+		return SAVED_MUSIC
 	default:
 		panic("type is invalid")
 	}
@@ -171,6 +176,8 @@ func ToPrivacyKey(keyType int) (key *PrivacyKey) {
 		key = MakeTLPrivacyKeyStarGiftsAutoSave(nil).To_PrivacyKey()
 	case NO_PAID_MESSAGES:
 		key = MakeTLPrivacyKeyNoPaidMessages(nil).To_PrivacyKey()
+	case SAVED_MUSIC:
+		key = MakeTLPrivacyKeySavedMusic(nil).To_PrivacyKey()
 	default:
 		panic("type is invalid")
 	}
