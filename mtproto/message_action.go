@@ -316,6 +316,9 @@ func MakeMessageActionGroupCallScheduled(call *InputGroupCall, scheduleDate int3
 func MakeMessageActionSetChatTheme(emoticon string) *MessageAction {
 	return MakeTLMessageActionSetChatTheme(&MessageAction{
 		Emoticon: emoticon,
+		Theme: MakeTLChatTheme(&ChatTheme{
+			Emoticon: emoticon,
+		}).To_ChatTheme(),
 	}).To_MessageAction()
 }
 
