@@ -30,6 +30,17 @@ func (m *MessageAction) FixData() *MessageAction {
 			m.Title_STRING = m.Title
 		}
 	}
+	if m.GetPredicateName() == Predicate_messageActionSetChatTheme {
+		if m.Theme == nil {
+			m.Theme = MakeTLChatTheme(&ChatTheme{
+				Emoticon: m.Emoticon,
+			}).To_ChatTheme()
+		} else {
+			if m.Emoticon == "" {
+				m.Emoticon = m.GetTheme().GetEmoticon()
+			}
+		}
+	}
 
 	return m
 }
