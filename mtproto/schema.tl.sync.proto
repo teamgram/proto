@@ -3524,9 +3524,8 @@ message GroupCallDonor {
     TLConstructor  constructor = 2;
     bool top = 3;
     bool my = 4;
-    bool anonymous = 5;
-    Peer peer_id = 6;
-    int64 stars = 7;
+    Peer peer_id = 5;
+    int64 stars = 6;
 }
 
 // TL_groupCallDonor
@@ -5013,6 +5012,48 @@ message TL_inputNotifyBroadcasts {
 // TL_inputNotifyForumTopic
 message TL_inputNotifyForumTopic {
     InputNotifyPeer data2 = 1;
+}
+
+
+// InputPasskeyCredential <--
+//  + TL_inputPasskeyCredentialPublicKey
+//
+message InputPasskeyCredential {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string id = 3;
+    string raw_id = 4;
+    InputPasskeyResponse response = 5;
+}
+
+// TL_inputPasskeyCredentialPublicKey
+message TL_inputPasskeyCredentialPublicKey {
+    InputPasskeyCredential data2 = 1;
+}
+
+
+// InputPasskeyResponse <--
+//  + TL_inputPasskeyResponseRegister
+//  + TL_inputPasskeyResponseLogin
+//
+message InputPasskeyResponse {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    DataJSON client_data = 3;
+    bytes attestation_data = 4;
+    bytes authenticator_data = 5;
+    bytes signature = 6;
+    string user_handle = 7;
+}
+
+// TL_inputPasskeyResponseRegister
+message TL_inputPasskeyResponseRegister {
+    InputPasskeyResponse data2 = 1;
+}
+
+// TL_inputPasskeyResponseLogin
+message TL_inputPasskeyResponseLogin {
+    InputPasskeyResponse data2 = 1;
 }
 
 
@@ -8398,6 +8439,25 @@ message TL_paidReactionPrivacyPeer {
 }
 
 
+// Passkey <--
+//  + TL_passkey
+//
+message Passkey {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    string id = 3;
+    string name = 4;
+    int32 date = 5;
+    google.protobuf.Int64Value software_emoji_id = 6;
+    google.protobuf.Int32Value last_usage_date = 7;
+}
+
+// TL_passkey
+message TL_passkey {
+    Passkey data2 = 1;
+}
+
+
 // PasswordKdfAlgo <--
 //  + TL_passwordKdfAlgoUnknown
 //  + TL_passwordKdfAlgoModPow
@@ -11375,31 +11435,32 @@ message StarsTransaction {
     bool stargift_drop_original_details = 13;
     bool phonegroup_message = 14;
     bool stargift_auction_bid = 15;
-    string id = 16;
-    StarsAmount amount = 17;
-    int32 date = 18;
-    StarsTransactionPeer peer = 19;
-    google.protobuf.StringValue title = 20;
-    google.protobuf.StringValue description = 21;
-    WebDocument photo = 22;
-    google.protobuf.Int32Value transaction_date = 23;
-    google.protobuf.StringValue transaction_url = 24;
-    bytes bot_payload = 25;
-    google.protobuf.Int32Value msg_id = 26;
-    repeated MessageMedia extended_media = 27;
-    google.protobuf.Int32Value subscription_period = 28;
-    google.protobuf.Int32Value giveaway_post_id = 29;
-    StarGift stargift = 30;
-    google.protobuf.Int32Value floodskip_number = 31;
-    google.protobuf.Int32Value starref_commission_permille = 32;
-    Peer starref_peer = 33;
-    StarsAmount starref_amount = 34;
-    google.protobuf.Int32Value paid_messages = 35;
-    google.protobuf.Int32Value premium_gift_months = 36;
-    google.protobuf.Int32Value ads_proceeds_from_date = 37;
-    google.protobuf.Int32Value ads_proceeds_to_date = 38;
-    StarsAmount stars_STARSAMOUNT = 39;
-    int64 stars_INT64 = 40;
+    bool offer = 16;
+    string id = 17;
+    StarsAmount amount = 18;
+    int32 date = 19;
+    StarsTransactionPeer peer = 20;
+    google.protobuf.StringValue title = 21;
+    google.protobuf.StringValue description = 22;
+    WebDocument photo = 23;
+    google.protobuf.Int32Value transaction_date = 24;
+    google.protobuf.StringValue transaction_url = 25;
+    bytes bot_payload = 26;
+    google.protobuf.Int32Value msg_id = 27;
+    repeated MessageMedia extended_media = 28;
+    google.protobuf.Int32Value subscription_period = 29;
+    google.protobuf.Int32Value giveaway_post_id = 30;
+    StarGift stargift = 31;
+    google.protobuf.Int32Value floodskip_number = 32;
+    google.protobuf.Int32Value starref_commission_permille = 33;
+    Peer starref_peer = 34;
+    StarsAmount starref_amount = 35;
+    google.protobuf.Int32Value paid_messages = 36;
+    google.protobuf.Int32Value premium_gift_months = 37;
+    google.protobuf.Int32Value ads_proceeds_from_date = 38;
+    google.protobuf.Int32Value ads_proceeds_to_date = 39;
+    StarsAmount stars_STARSAMOUNT = 40;
+    int64 stars_INT64 = 41;
 }
 
 // TL_starsTransaction
@@ -14293,6 +14354,36 @@ message TL_account_paidMessagesRevenue {
 }
 
 
+// account_PasskeyRegistrationOptions <--
+//  + TL_account_passkeyRegistrationOptions
+//
+message account_PasskeyRegistrationOptions {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    DataJSON options = 3;
+}
+
+// TL_account_passkeyRegistrationOptions
+message TL_account_passkeyRegistrationOptions {
+    account_PasskeyRegistrationOptions data2 = 1;
+}
+
+
+// account_Passkeys <--
+//  + TL_account_passkeys
+//
+message account_Passkeys {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    repeated Passkey passkeys = 3;
+}
+
+// TL_account_passkeys
+message TL_account_passkeys {
+    account_Passkeys data2 = 1;
+}
+
+
 // account_Password <--
 //  + TL_account_password
 //  + TL_account_password
@@ -14714,6 +14805,21 @@ message TL_auth_loginTokenMigrateTo {
 // TL_auth_loginTokenSuccess
 message TL_auth_loginTokenSuccess {
     auth_LoginToken data2 = 1;
+}
+
+
+// auth_PasskeyLoginOptions <--
+//  + TL_auth_passkeyLoginOptions
+//
+message auth_PasskeyLoginOptions {
+    string predicate_name = 1;
+    TLConstructor  constructor = 2;
+    DataJSON options = 3;
+}
+
+// TL_auth_passkeyLoginOptions
+message TL_auth_passkeyLoginOptions {
+    auth_PasskeyLoginOptions data2 = 1;
 }
 
 

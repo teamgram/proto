@@ -1920,6 +1920,13 @@ const (
 	CRC32_payments_starGiftActiveAuctions                             TLConstructor = -1745778728 // 97f187d8
 	CRC32_inputStarGiftAuction                                        TLConstructor = 48327832    // 2e16c98
 	CRC32_inputStarGiftAuctionSlug                                    TLConstructor = 2058715912  // 7ab58308
+	CRC32_passkey                                                     TLConstructor = -1738457409 // 98613ebf
+	CRC32_account_passkeys                                            TLConstructor = -119494116  // f8e0aa1c
+	CRC32_account_passkeyRegistrationOptions                          TLConstructor = -513057567  // e16b5ce1
+	CRC32_auth_passkeyLoginOptions                                    TLConstructor = -503089271  // e2037789
+	CRC32_inputPasskeyResponseRegister                                TLConstructor = 1046713180  // 3e63935c
+	CRC32_inputPasskeyResponseLogin                                   TLConstructor = -1021329078 // c31fc14a
+	CRC32_inputPasskeyCredentialPublicKey                             TLConstructor = 1009235855  // 3c27b78f
 	CRC32_updateChannelPinnedTopic_192efbe3                           TLConstructor = 422509539   // 192efbe3
 	CRC32_updateChannelPinnedTopic_f694b0ae                           TLConstructor = -158027602  // f694b0ae
 	CRC32_updateChannelPinnedTopics                                   TLConstructor = -31881726   // fe198602
@@ -2033,6 +2040,8 @@ const (
 	CRC32_auth_resetLoginEmail                                        TLConstructor = 2123760019  // 7e960193
 	CRC32_auth_reportMissingCode                                      TLConstructor = -878841866  // cb9deff6
 	CRC32_auth_checkPaidAuth                                          TLConstructor = 1457889180  // 56e59f9c
+	CRC32_auth_initPasskeyLogin                                       TLConstructor = 1368051895  // 518ad0b7
+	CRC32_auth_finishPasskeyLogin                                     TLConstructor = -1739084537 // 9857ad07
 	CRC32_account_registerDevice_ec86017a                             TLConstructor = -326762118  // ec86017a
 	CRC32_account_registerDevice_637ea878                             TLConstructor = 1669245048  // 637ea878
 	CRC32_account_unregisterDevice_6a0d3206                           TLConstructor = 1779249670  // 6a0d3206
@@ -2166,6 +2175,10 @@ const (
 	CRC32_account_getSavedMusicIds                                    TLConstructor = -526557265  // e09d5faf
 	CRC32_account_getUniqueGiftChatThemes_e42ce9c9                    TLConstructor = -466818615  // e42ce9c9
 	CRC32_account_getUniqueGiftChatThemes_fe74ef9f                    TLConstructor = -25890913   // fe74ef9f
+	CRC32_account_initPasskeyRegistration                             TLConstructor = 1117079528  // 429547e8
+	CRC32_account_registerPasskey                                     TLConstructor = 1437867990  // 55b41fd6
+	CRC32_account_getPasskeys                                         TLConstructor = -367063982  // ea1f0c52
+	CRC32_account_deletePasskey                                       TLConstructor = -172665281  // f5b5563f
 	CRC32_users_getUsers                                              TLConstructor = 227648840   // d91a548
 	CRC32_users_getFullUser                                           TLConstructor = -1240508136 // b60f5918
 	CRC32_users_setSecureValueErrors                                  TLConstructor = -1865902923 // 90c894b5
@@ -2234,6 +2247,7 @@ const (
 	CRC32_messages_sendMedia_72ccc23d                                 TLConstructor = 1926021693  // 72ccc23d
 	CRC32_messages_sendMedia_7547c966                                 TLConstructor = 1967638886  // 7547c966
 	CRC32_messages_sendMedia_e25ff8e0                                 TLConstructor = -497026848  // e25ff8e0
+	CRC32_messages_forwardMessages_13704a7c                           TLConstructor = 326126204   // 13704a7c
 	CRC32_messages_forwardMessages_41d41ade                           TLConstructor = 1104419550  // 41d41ade
 	CRC32_messages_forwardMessages_978928ca                           TLConstructor = -1752618806 // 978928ca
 	CRC32_messages_forwardMessages_38f0188c                           TLConstructor = 955259020   // 38f0188c

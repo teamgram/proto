@@ -247,6 +247,19 @@ message TL_auth_checkPaidAuth {
     int64 form_id = 5;
 }
 
+message TL_auth_initPasskeyLogin {
+    TLConstructor  constructor = 1;
+    int32 api_id = 3;
+    string api_hash = 4;
+}
+
+message TL_auth_finishPasskeyLogin {
+    TLConstructor  constructor = 1;
+    InputPasskeyCredential credential = 3;
+    google.protobuf.Int32Value from_dc_id = 4;
+    google.protobuf.Int64Value from_auth_key_id = 5;
+}
+
 message TL_account_registerDevice {
     TLConstructor  constructor = 1;
     bool no_muted = 3;
@@ -923,6 +936,24 @@ message TL_account_getUniqueGiftChatThemes {
     int32 offset_INT32 = 6;
 }
 
+message TL_account_initPasskeyRegistration {
+    TLConstructor  constructor = 1;
+}
+
+message TL_account_registerPasskey {
+    TLConstructor  constructor = 1;
+    InputPasskeyCredential credential = 3;
+}
+
+message TL_account_getPasskeys {
+    TLConstructor  constructor = 1;
+}
+
+message TL_account_deletePasskey {
+    TLConstructor  constructor = 1;
+    string id = 3;
+}
+
 message TL_users_getUsers {
     TLConstructor  constructor = 1;
     repeated InputUser id = 3;
@@ -1285,9 +1316,10 @@ message TL_messages_forwardMessages {
     google.protobuf.Int32Value schedule_repeat_period = 17;
     InputPeer send_as = 18;
     InputQuickReplyShortcut quick_reply_shortcut = 19;
-    google.protobuf.Int32Value video_timestamp = 20;
-    google.protobuf.Int64Value allow_paid_stars = 21;
-    SuggestedPost suggested_post = 22;
+    google.protobuf.Int64Value effect = 20;
+    google.protobuf.Int32Value video_timestamp = 21;
+    google.protobuf.Int64Value allow_paid_stars = 22;
+    SuggestedPost suggested_post = 23;
 }
 
 message TL_messages_reportSpam {
@@ -6161,6 +6193,15 @@ service RPCPaidMessage {
     rpc account_toggleNoPaidMessagesException(TL_account_toggleNoPaidMessagesException) returns (Bool) {}
     rpc channels_updatePaidMessagesPrice(TL_channels_updatePaidMessagesPrice) returns (Updates) {}
     rpc account_addNoPaidMessagesException(TL_account_addNoPaidMessagesException) returns (Bool) {}
+}
+
+service RPCPasskey {
+    rpc auth_initPasskeyLogin(TL_auth_initPasskeyLogin) returns (auth_PasskeyLoginOptions) {}
+    rpc auth_finishPasskeyLogin(TL_auth_finishPasskeyLogin) returns (auth_Authorization) {}
+    rpc account_initPasskeyRegistration(TL_account_initPasskeyRegistration) returns (account_PasskeyRegistrationOptions) {}
+    rpc account_registerPasskey(TL_account_registerPasskey) returns (Passkey) {}
+    rpc account_getPasskeys(TL_account_getPasskeys) returns (account_Passkeys) {}
+    rpc account_deletePasskey(TL_account_deletePasskey) returns (Bool) {}
 }
 
 service RPCPassport {

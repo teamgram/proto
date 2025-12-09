@@ -352,6 +352,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 504403720
 		return o
 	},
+	-513057567: func() TLObject { // 0xe16b5ce1
+		o := MakeTLAccountPasskeyRegistrationOptions(nil)
+		o.Data2.Constructor = -513057567
+		return o
+	},
+	-119494116: func() TLObject { // 0xf8e0aa1c
+		o := MakeTLAccountPasskeys(nil)
+		o.Data2.Constructor = -119494116
+		return o
+	},
 	-1787080453: func() TLObject { // 0x957b50fb
 		o := MakeTLAccountPassword(nil)
 		o.Data2.Constructor = -1787080453
@@ -610,6 +620,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	957176926: func() TLObject { // 0x390d5c5e
 		o := MakeTLAuthLoginTokenSuccess(nil)
 		o.Data2.Constructor = 957176926
+		return o
+	},
+	-503089271: func() TLObject { // 0xe2037789
+		o := MakeTLAuthPasskeyLoginOptions(nil)
+		o.Data2.Constructor = -503089271
 		return o
 	},
 	326715557: func() TLObject { // 0x137948a5
@@ -3367,6 +3382,21 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1548122514
 		return o
 	},
+	1009235855: func() TLObject { // 0x3c27b78f
+		o := MakeTLInputPasskeyCredentialPublicKey(nil)
+		o.Data2.Constructor = 1009235855
+		return o
+	},
+	1046713180: func() TLObject { // 0x3e63935c
+		o := MakeTLInputPasskeyResponseRegister(nil)
+		o.Data2.Constructor = 1046713180
+		return o
+	},
+	-1021329078: func() TLObject { // 0xc31fc14a
+		o := MakeTLInputPasskeyResponseLogin(nil)
+		o.Data2.Constructor = -1021329078
+		return o
+	},
 	-1056001329: func() TLObject { // 0xc10eb2cf
 		o := MakeTLInputPaymentCredentialsSaved(nil)
 		o.Data2.Constructor = -1056001329
@@ -5965,6 +5995,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-596837136: func() TLObject { // 0xdc6cfcf0
 		o := MakeTLPaidReactionPrivacyPeer(nil)
 		o.Data2.Constructor = -596837136
+		return o
+	},
+	-1738457409: func() TLObject { // 0x98613ebf
+		o := MakeTLPasskey(nil)
+		o.Data2.Constructor = -1738457409
 		return o
 	},
 	-732254058: func() TLObject { // 0xd45ab096
@@ -10109,6 +10144,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 1457889180,
 		}
 	},
+	1368051895: func() TLObject { // 0x518ad0b7
+		return &TLAuthInitPasskeyLogin{
+			Constructor: 1368051895,
+		}
+	},
+	-1739084537: func() TLObject { // 0x9857ad07
+		return &TLAuthFinishPasskeyLogin{
+			Constructor: -1739084537,
+		}
+	},
 	-326762118: func() TLObject { // 0xec86017a
 		return &TLAccountRegisterDevice{
 			Constructor: -326762118,
@@ -10774,6 +10819,26 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: -25890913,
 		}
 	},
+	1117079528: func() TLObject { // 0x429547e8
+		return &TLAccountInitPasskeyRegistration{
+			Constructor: 1117079528,
+		}
+	},
+	1437867990: func() TLObject { // 0x55b41fd6
+		return &TLAccountRegisterPasskey{
+			Constructor: 1437867990,
+		}
+	},
+	-367063982: func() TLObject { // 0xea1f0c52
+		return &TLAccountGetPasskeys{
+			Constructor: -367063982,
+		}
+	},
+	-172665281: func() TLObject { // 0xf5b5563f
+		return &TLAccountDeletePasskey{
+			Constructor: -172665281,
+		}
+	},
 	227648840: func() TLObject { // 0xd91a548
 		return &TLUsersGetUsers{
 			Constructor: 227648840,
@@ -11112,6 +11177,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-497026848: func() TLObject { // 0xe25ff8e0
 		return &TLMessagesSendMedia{
 			Constructor: -497026848,
+		}
+	},
+	326126204: func() TLObject { // 0x13704a7c
+		return &TLMessagesForwardMessages{
+			Constructor: 326126204,
 		}
 	},
 	1104419550: func() TLObject { // 0x41d41ade

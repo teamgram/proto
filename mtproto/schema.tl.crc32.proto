@@ -1927,6 +1927,13 @@ enum TLConstructor {
     CRC32_payments_starGiftActiveAuctions = -1745778728; // 97f187d8
     CRC32_inputStarGiftAuction = 48327832; // 2e16c98
     CRC32_inputStarGiftAuctionSlug = 2058715912; // 7ab58308
+    CRC32_passkey = -1738457409; // 98613ebf
+    CRC32_account_passkeys = -119494116; // f8e0aa1c
+    CRC32_account_passkeyRegistrationOptions = -513057567; // e16b5ce1
+    CRC32_auth_passkeyLoginOptions = -503089271; // e2037789
+    CRC32_inputPasskeyResponseRegister = 1046713180; // 3e63935c
+    CRC32_inputPasskeyResponseLogin = -1021329078; // c31fc14a
+    CRC32_inputPasskeyCredentialPublicKey = 1009235855; // 3c27b78f
     CRC32_updateChannelPinnedTopic_192efbe3 = 422509539; // 192efbe3
     CRC32_updateChannelPinnedTopic_f694b0ae = -158027602; // f694b0ae
     CRC32_updateChannelPinnedTopics = -31881726; // fe198602
@@ -2040,6 +2047,8 @@ enum TLConstructor {
     CRC32_auth_resetLoginEmail = 2123760019; // 7e960193
     CRC32_auth_reportMissingCode = -878841866; // cb9deff6
     CRC32_auth_checkPaidAuth = 1457889180; // 56e59f9c
+    CRC32_auth_initPasskeyLogin = 1368051895; // 518ad0b7
+    CRC32_auth_finishPasskeyLogin = -1739084537; // 9857ad07
     CRC32_account_registerDevice_ec86017a = -326762118; // ec86017a
     CRC32_account_registerDevice_637ea878 = 1669245048; // 637ea878
     CRC32_account_unregisterDevice_6a0d3206 = 1779249670; // 6a0d3206
@@ -2173,6 +2182,10 @@ enum TLConstructor {
     CRC32_account_getSavedMusicIds = -526557265; // e09d5faf
     CRC32_account_getUniqueGiftChatThemes_e42ce9c9 = -466818615; // e42ce9c9
     CRC32_account_getUniqueGiftChatThemes_fe74ef9f = -25890913; // fe74ef9f
+    CRC32_account_initPasskeyRegistration = 1117079528; // 429547e8
+    CRC32_account_registerPasskey = 1437867990; // 55b41fd6
+    CRC32_account_getPasskeys = -367063982; // ea1f0c52
+    CRC32_account_deletePasskey = -172665281; // f5b5563f
     CRC32_users_getUsers = 227648840; // d91a548
     CRC32_users_getFullUser = -1240508136; // b60f5918
     CRC32_users_setSecureValueErrors = -1865902923; // 90c894b5
@@ -2241,6 +2254,7 @@ enum TLConstructor {
     CRC32_messages_sendMedia_72ccc23d = 1926021693; // 72ccc23d
     CRC32_messages_sendMedia_7547c966 = 1967638886; // 7547c966
     CRC32_messages_sendMedia_e25ff8e0 = -497026848; // e25ff8e0
+    CRC32_messages_forwardMessages_13704a7c = 326126204; // 13704a7c
     CRC32_messages_forwardMessages_41d41ade = 1104419550; // 41d41ade
     CRC32_messages_forwardMessages_978928ca = -1752618806; // 978928ca
     CRC32_messages_forwardMessages_38f0188c = 955259020; // 38f0188c

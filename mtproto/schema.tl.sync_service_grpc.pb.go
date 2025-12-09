@@ -22274,6 +22274,296 @@ var RPCPaidMessage_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
+	RPCPasskey_AuthInitPasskeyLogin_FullMethodName           = "/mtproto.RPCPasskey/auth_initPasskeyLogin"
+	RPCPasskey_AuthFinishPasskeyLogin_FullMethodName         = "/mtproto.RPCPasskey/auth_finishPasskeyLogin"
+	RPCPasskey_AccountInitPasskeyRegistration_FullMethodName = "/mtproto.RPCPasskey/account_initPasskeyRegistration"
+	RPCPasskey_AccountRegisterPasskey_FullMethodName         = "/mtproto.RPCPasskey/account_registerPasskey"
+	RPCPasskey_AccountGetPasskeys_FullMethodName             = "/mtproto.RPCPasskey/account_getPasskeys"
+	RPCPasskey_AccountDeletePasskey_FullMethodName           = "/mtproto.RPCPasskey/account_deletePasskey"
+)
+
+// RPCPasskeyClient is the client API for RPCPasskey service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
+type RPCPasskeyClient interface {
+	AuthInitPasskeyLogin(ctx context.Context, in *TLAuthInitPasskeyLogin, opts ...grpc.CallOption) (*Auth_PasskeyLoginOptions, error)
+	AuthFinishPasskeyLogin(ctx context.Context, in *TLAuthFinishPasskeyLogin, opts ...grpc.CallOption) (*Auth_Authorization, error)
+	AccountInitPasskeyRegistration(ctx context.Context, in *TLAccountInitPasskeyRegistration, opts ...grpc.CallOption) (*Account_PasskeyRegistrationOptions, error)
+	AccountRegisterPasskey(ctx context.Context, in *TLAccountRegisterPasskey, opts ...grpc.CallOption) (*Passkey, error)
+	AccountGetPasskeys(ctx context.Context, in *TLAccountGetPasskeys, opts ...grpc.CallOption) (*Account_Passkeys, error)
+	AccountDeletePasskey(ctx context.Context, in *TLAccountDeletePasskey, opts ...grpc.CallOption) (*Bool, error)
+}
+
+type rPCPasskeyClient struct {
+	cc grpc.ClientConnInterface
+}
+
+func NewRPCPasskeyClient(cc grpc.ClientConnInterface) RPCPasskeyClient {
+	return &rPCPasskeyClient{cc}
+}
+
+func (c *rPCPasskeyClient) AuthInitPasskeyLogin(ctx context.Context, in *TLAuthInitPasskeyLogin, opts ...grpc.CallOption) (*Auth_PasskeyLoginOptions, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Auth_PasskeyLoginOptions)
+	err := c.cc.Invoke(ctx, RPCPasskey_AuthInitPasskeyLogin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPasskeyClient) AuthFinishPasskeyLogin(ctx context.Context, in *TLAuthFinishPasskeyLogin, opts ...grpc.CallOption) (*Auth_Authorization, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Auth_Authorization)
+	err := c.cc.Invoke(ctx, RPCPasskey_AuthFinishPasskeyLogin_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPasskeyClient) AccountInitPasskeyRegistration(ctx context.Context, in *TLAccountInitPasskeyRegistration, opts ...grpc.CallOption) (*Account_PasskeyRegistrationOptions, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Account_PasskeyRegistrationOptions)
+	err := c.cc.Invoke(ctx, RPCPasskey_AccountInitPasskeyRegistration_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPasskeyClient) AccountRegisterPasskey(ctx context.Context, in *TLAccountRegisterPasskey, opts ...grpc.CallOption) (*Passkey, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Passkey)
+	err := c.cc.Invoke(ctx, RPCPasskey_AccountRegisterPasskey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPasskeyClient) AccountGetPasskeys(ctx context.Context, in *TLAccountGetPasskeys, opts ...grpc.CallOption) (*Account_Passkeys, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Account_Passkeys)
+	err := c.cc.Invoke(ctx, RPCPasskey_AccountGetPasskeys_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCPasskeyClient) AccountDeletePasskey(ctx context.Context, in *TLAccountDeletePasskey, opts ...grpc.CallOption) (*Bool, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Bool)
+	err := c.cc.Invoke(ctx, RPCPasskey_AccountDeletePasskey_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+// RPCPasskeyServer is the server API for RPCPasskey service.
+// All implementations should embed UnimplementedRPCPasskeyServer
+// for forward compatibility.
+type RPCPasskeyServer interface {
+	AuthInitPasskeyLogin(context.Context, *TLAuthInitPasskeyLogin) (*Auth_PasskeyLoginOptions, error)
+	AuthFinishPasskeyLogin(context.Context, *TLAuthFinishPasskeyLogin) (*Auth_Authorization, error)
+	AccountInitPasskeyRegistration(context.Context, *TLAccountInitPasskeyRegistration) (*Account_PasskeyRegistrationOptions, error)
+	AccountRegisterPasskey(context.Context, *TLAccountRegisterPasskey) (*Passkey, error)
+	AccountGetPasskeys(context.Context, *TLAccountGetPasskeys) (*Account_Passkeys, error)
+	AccountDeletePasskey(context.Context, *TLAccountDeletePasskey) (*Bool, error)
+}
+
+// UnimplementedRPCPasskeyServer should be embedded to have
+// forward compatible implementations.
+//
+// NOTE: this should be embedded by value instead of pointer to avoid a nil
+// pointer dereference when methods are called.
+type UnimplementedRPCPasskeyServer struct{}
+
+func (UnimplementedRPCPasskeyServer) AuthInitPasskeyLogin(context.Context, *TLAuthInitPasskeyLogin) (*Auth_PasskeyLoginOptions, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthInitPasskeyLogin not implemented")
+}
+func (UnimplementedRPCPasskeyServer) AuthFinishPasskeyLogin(context.Context, *TLAuthFinishPasskeyLogin) (*Auth_Authorization, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AuthFinishPasskeyLogin not implemented")
+}
+func (UnimplementedRPCPasskeyServer) AccountInitPasskeyRegistration(context.Context, *TLAccountInitPasskeyRegistration) (*Account_PasskeyRegistrationOptions, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountInitPasskeyRegistration not implemented")
+}
+func (UnimplementedRPCPasskeyServer) AccountRegisterPasskey(context.Context, *TLAccountRegisterPasskey) (*Passkey, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountRegisterPasskey not implemented")
+}
+func (UnimplementedRPCPasskeyServer) AccountGetPasskeys(context.Context, *TLAccountGetPasskeys) (*Account_Passkeys, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountGetPasskeys not implemented")
+}
+func (UnimplementedRPCPasskeyServer) AccountDeletePasskey(context.Context, *TLAccountDeletePasskey) (*Bool, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method AccountDeletePasskey not implemented")
+}
+func (UnimplementedRPCPasskeyServer) testEmbeddedByValue() {}
+
+// UnsafeRPCPasskeyServer may be embedded to opt out of forward compatibility for this service.
+// Use of this interface is not recommended, as added methods to RPCPasskeyServer will
+// result in compilation errors.
+type UnsafeRPCPasskeyServer interface {
+	mustEmbedUnimplementedRPCPasskeyServer()
+}
+
+func RegisterRPCPasskeyServer(s grpc.ServiceRegistrar, srv RPCPasskeyServer) {
+	// If the following call pancis, it indicates UnimplementedRPCPasskeyServer was
+	// embedded by pointer and is nil.  This will cause panics if an
+	// unimplemented method is ever invoked, so we test this at initialization
+	// time to prevent it from happening at runtime later due to I/O.
+	if t, ok := srv.(interface{ testEmbeddedByValue() }); ok {
+		t.testEmbeddedByValue()
+	}
+	s.RegisterService(&RPCPasskey_ServiceDesc, srv)
+}
+
+func _RPCPasskey_AuthInitPasskeyLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAuthInitPasskeyLogin)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPasskeyServer).AuthInitPasskeyLogin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPasskey_AuthInitPasskeyLogin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPasskeyServer).AuthInitPasskeyLogin(ctx, req.(*TLAuthInitPasskeyLogin))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPasskey_AuthFinishPasskeyLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAuthFinishPasskeyLogin)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPasskeyServer).AuthFinishPasskeyLogin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPasskey_AuthFinishPasskeyLogin_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPasskeyServer).AuthFinishPasskeyLogin(ctx, req.(*TLAuthFinishPasskeyLogin))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPasskey_AccountInitPasskeyRegistration_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountInitPasskeyRegistration)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPasskeyServer).AccountInitPasskeyRegistration(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPasskey_AccountInitPasskeyRegistration_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPasskeyServer).AccountInitPasskeyRegistration(ctx, req.(*TLAccountInitPasskeyRegistration))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPasskey_AccountRegisterPasskey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountRegisterPasskey)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPasskeyServer).AccountRegisterPasskey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPasskey_AccountRegisterPasskey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPasskeyServer).AccountRegisterPasskey(ctx, req.(*TLAccountRegisterPasskey))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPasskey_AccountGetPasskeys_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountGetPasskeys)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPasskeyServer).AccountGetPasskeys(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPasskey_AccountGetPasskeys_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPasskeyServer).AccountGetPasskeys(ctx, req.(*TLAccountGetPasskeys))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCPasskey_AccountDeletePasskey_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLAccountDeletePasskey)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCPasskeyServer).AccountDeletePasskey(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCPasskey_AccountDeletePasskey_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCPasskeyServer).AccountDeletePasskey(ctx, req.(*TLAccountDeletePasskey))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+// RPCPasskey_ServiceDesc is the grpc.ServiceDesc for RPCPasskey service.
+// It's only intended for direct use with grpc.RegisterService,
+// and not to be introspected or modified (even as a copy)
+var RPCPasskey_ServiceDesc = grpc.ServiceDesc{
+	ServiceName: "mtproto.RPCPasskey",
+	HandlerType: (*RPCPasskeyServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "auth_initPasskeyLogin",
+			Handler:    _RPCPasskey_AuthInitPasskeyLogin_Handler,
+		},
+		{
+			MethodName: "auth_finishPasskeyLogin",
+			Handler:    _RPCPasskey_AuthFinishPasskeyLogin_Handler,
+		},
+		{
+			MethodName: "account_initPasskeyRegistration",
+			Handler:    _RPCPasskey_AccountInitPasskeyRegistration_Handler,
+		},
+		{
+			MethodName: "account_registerPasskey",
+			Handler:    _RPCPasskey_AccountRegisterPasskey_Handler,
+		},
+		{
+			MethodName: "account_getPasskeys",
+			Handler:    _RPCPasskey_AccountGetPasskeys_Handler,
+		},
+		{
+			MethodName: "account_deletePasskey",
+			Handler:    _RPCPasskey_AccountDeletePasskey_Handler,
+		},
+	},
+	Streams:  []grpc.StreamDesc{},
+	Metadata: "schema.tl.sync_service.proto",
+}
+
+const (
 	RPCPassport_AccountGetAuthorizations_FullMethodName    = "/mtproto.RPCPassport/account_getAuthorizations"
 	RPCPassport_AccountGetAllSecureValues_FullMethodName   = "/mtproto.RPCPassport/account_getAllSecureValues"
 	RPCPassport_AccountGetSecureValue_FullMethodName       = "/mtproto.RPCPassport/account_getSecureValue"
