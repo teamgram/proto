@@ -15653,6 +15653,9 @@ const (
 	RPCGifts_PaymentsGetStarGiftAuctionState_FullMethodName         = "/mtproto.RPCGifts/payments_getStarGiftAuctionState"
 	RPCGifts_PaymentsGetStarGiftAuctionAcquiredGifts_FullMethodName = "/mtproto.RPCGifts/payments_getStarGiftAuctionAcquiredGifts"
 	RPCGifts_PaymentsGetStarGiftActiveAuctions_FullMethodName       = "/mtproto.RPCGifts/payments_getStarGiftActiveAuctions"
+	RPCGifts_PaymentsResolveStarGiftOffer_FullMethodName            = "/mtproto.RPCGifts/payments_resolveStarGiftOffer"
+	RPCGifts_PaymentsSendStarGiftOffer_FullMethodName               = "/mtproto.RPCGifts/payments_sendStarGiftOffer"
+	RPCGifts_PaymentsGetStarGiftUpgradeAttributes_FullMethodName    = "/mtproto.RPCGifts/payments_getStarGiftUpgradeAttributes"
 	RPCGifts_PaymentsGetUserStarGifts_FullMethodName                = "/mtproto.RPCGifts/payments_getUserStarGifts"
 	RPCGifts_PaymentsGetUserStarGift_FullMethodName                 = "/mtproto.RPCGifts/payments_getUserStarGift"
 )
@@ -15680,6 +15683,9 @@ type RPCGiftsClient interface {
 	PaymentsGetStarGiftAuctionState(ctx context.Context, in *TLPaymentsGetStarGiftAuctionState, opts ...grpc.CallOption) (*Payments_StarGiftAuctionState, error)
 	PaymentsGetStarGiftAuctionAcquiredGifts(ctx context.Context, in *TLPaymentsGetStarGiftAuctionAcquiredGifts, opts ...grpc.CallOption) (*Payments_StarGiftAuctionAcquiredGifts, error)
 	PaymentsGetStarGiftActiveAuctions(ctx context.Context, in *TLPaymentsGetStarGiftActiveAuctions, opts ...grpc.CallOption) (*Payments_StarGiftActiveAuctions, error)
+	PaymentsResolveStarGiftOffer(ctx context.Context, in *TLPaymentsResolveStarGiftOffer, opts ...grpc.CallOption) (*Updates, error)
+	PaymentsSendStarGiftOffer(ctx context.Context, in *TLPaymentsSendStarGiftOffer, opts ...grpc.CallOption) (*Updates, error)
+	PaymentsGetStarGiftUpgradeAttributes(ctx context.Context, in *TLPaymentsGetStarGiftUpgradeAttributes, opts ...grpc.CallOption) (*Payments_StarGiftUpgradeAttributes, error)
 	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 }
@@ -15882,6 +15888,36 @@ func (c *rPCGiftsClient) PaymentsGetStarGiftActiveAuctions(ctx context.Context, 
 	return out, nil
 }
 
+func (c *rPCGiftsClient) PaymentsResolveStarGiftOffer(ctx context.Context, in *TLPaymentsResolveStarGiftOffer, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsResolveStarGiftOffer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsSendStarGiftOffer(ctx context.Context, in *TLPaymentsSendStarGiftOffer, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsSendStarGiftOffer_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsGetStarGiftUpgradeAttributes(ctx context.Context, in *TLPaymentsGetStarGiftUpgradeAttributes, opts ...grpc.CallOption) (*Payments_StarGiftUpgradeAttributes, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_StarGiftUpgradeAttributes)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetStarGiftUpgradeAttributes_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCGiftsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Payments_UserStarGifts)
@@ -15925,6 +15961,9 @@ type RPCGiftsServer interface {
 	PaymentsGetStarGiftAuctionState(context.Context, *TLPaymentsGetStarGiftAuctionState) (*Payments_StarGiftAuctionState, error)
 	PaymentsGetStarGiftAuctionAcquiredGifts(context.Context, *TLPaymentsGetStarGiftAuctionAcquiredGifts) (*Payments_StarGiftAuctionAcquiredGifts, error)
 	PaymentsGetStarGiftActiveAuctions(context.Context, *TLPaymentsGetStarGiftActiveAuctions) (*Payments_StarGiftActiveAuctions, error)
+	PaymentsResolveStarGiftOffer(context.Context, *TLPaymentsResolveStarGiftOffer) (*Updates, error)
+	PaymentsSendStarGiftOffer(context.Context, *TLPaymentsSendStarGiftOffer) (*Updates, error)
+	PaymentsGetStarGiftUpgradeAttributes(context.Context, *TLPaymentsGetStarGiftUpgradeAttributes) (*Payments_StarGiftUpgradeAttributes, error)
 	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error)
 }
@@ -15992,6 +16031,15 @@ func (UnimplementedRPCGiftsServer) PaymentsGetStarGiftAuctionAcquiredGifts(conte
 }
 func (UnimplementedRPCGiftsServer) PaymentsGetStarGiftActiveAuctions(context.Context, *TLPaymentsGetStarGiftActiveAuctions) (*Payments_StarGiftActiveAuctions, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarGiftActiveAuctions not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsResolveStarGiftOffer(context.Context, *TLPaymentsResolveStarGiftOffer) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsResolveStarGiftOffer not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsSendStarGiftOffer(context.Context, *TLPaymentsSendStarGiftOffer) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsSendStarGiftOffer not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetStarGiftUpgradeAttributes(context.Context, *TLPaymentsGetStarGiftUpgradeAttributes) (*Payments_StarGiftUpgradeAttributes, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarGiftUpgradeAttributes not implemented")
 }
 func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
@@ -16361,6 +16409,60 @@ func _RPCGifts_PaymentsGetStarGiftActiveAuctions_Handler(srv interface{}, ctx co
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGifts_PaymentsResolveStarGiftOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsResolveStarGiftOffer)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsResolveStarGiftOffer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsResolveStarGiftOffer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsResolveStarGiftOffer(ctx, req.(*TLPaymentsResolveStarGiftOffer))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsSendStarGiftOffer_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsSendStarGiftOffer)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsSendStarGiftOffer(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsSendStarGiftOffer_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsSendStarGiftOffer(ctx, req.(*TLPaymentsSendStarGiftOffer))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsGetStarGiftUpgradeAttributes_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetStarGiftUpgradeAttributes)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetStarGiftUpgradeAttributes(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetStarGiftUpgradeAttributes_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetStarGiftUpgradeAttributes(ctx, req.(*TLPaymentsGetStarGiftUpgradeAttributes))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCGifts_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsGetUserStarGifts)
 	if err := dec(in); err != nil {
@@ -16479,6 +16581,18 @@ var RPCGifts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarGiftActiveAuctions",
 			Handler:    _RPCGifts_PaymentsGetStarGiftActiveAuctions_Handler,
+		},
+		{
+			MethodName: "payments_resolveStarGiftOffer",
+			Handler:    _RPCGifts_PaymentsResolveStarGiftOffer_Handler,
+		},
+		{
+			MethodName: "payments_sendStarGiftOffer",
+			Handler:    _RPCGifts_PaymentsSendStarGiftOffer_Handler,
+		},
+		{
+			MethodName: "payments_getStarGiftUpgradeAttributes",
+			Handler:    _RPCGifts_PaymentsGetStarGiftUpgradeAttributes_Handler,
 		},
 		{
 			MethodName: "payments_getUserStarGifts",

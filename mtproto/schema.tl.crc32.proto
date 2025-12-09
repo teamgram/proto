@@ -328,6 +328,7 @@ enum TLConstructor {
     CRC32_messageActionPaymentRefunded = 1102307842; // 41b3e202
     CRC32_messageActionGiftStars = 1171632161; // 45d5b021
     CRC32_messageActionPrizeStars = -1341372510; // b00c47a2
+    CRC32_messageActionStarGift_ea2c31d3 = -366202413; // ea2c31d3
     CRC32_messageActionStarGift_db596550 = -614898352; // db596550
     CRC32_messageActionStarGift_f24de7fa = -229775366; // f24de7fa
     CRC32_messageActionStarGift_4717e8a4 = 1192749220; // 4717e8a4
@@ -350,6 +351,8 @@ enum TLConstructor {
     CRC32_messageActionSuggestedPostRefund = 1777932024; // 69f916f8
     CRC32_messageActionGiftTon = -1465661799; // a8a3c699
     CRC32_messageActionSuggestBirthday = 747579941; // 2c8f2a25
+    CRC32_messageActionStarGiftPurchaseOffer = 2000845012; // 774278d4
+    CRC32_messageActionStarGiftPurchaseOfferDeclined = 1940760427; // 73ada76b
     CRC32_dialog_d58a08c6 = -712374074; // d58a08c6
     CRC32_dialog_a8edd0f5 = -1460809483; // a8edd0f5
     CRC32_dialogFolder = 1908216652; // 71bd134c
@@ -1326,7 +1329,8 @@ enum TLConstructor {
     CRC32_webPageAttributeStickerSet = 1355547603; // 50cc03d3
     CRC32_webPageAttributeUniqueStarGift = -814781000; // cf6f6db8
     CRC32_webPageAttributeStarGiftCollection = 835375875; // 31cad303
-    CRC32_webPageAttributeStarGiftAuction = 55150251; // 34986ab
+    CRC32_webPageAttributeStarGiftAuction_1c641c2 = 29770178; // 1c641c2
+    CRC32_webPageAttributeStarGiftAuction_34986ab = 55150251; // 34986ab
     CRC32_messages_votesList_4899484e = 1218005070; // 4899484e
     CRC32_messages_votesList_823f649 = 136574537; // 823f649
     CRC32_bankCardOpenUrl = -177732982; // f568028a
@@ -1797,6 +1801,7 @@ enum TLConstructor {
     CRC32_messageReactor = 1269016922; // 4ba3a95a
     CRC32_starsGiveawayOption = -1798404822; // 94ce852a
     CRC32_starsGiveawayWinnersOption = 1411605001; // 54236209
+    CRC32_starGift_313a9547 = 825922887; // 313a9547
     CRC32_starGift_1b9a4d7f = 463097215; // 1b9a4d7f
     CRC32_starGift_80ac53c3 = -2136190013; // 80ac53c3
     CRC32_starGift_bcff5b = 12386139; // bcff5b
@@ -1805,6 +1810,7 @@ enum TLConstructor {
     CRC32_starGift_2cc73c8 = 46953416; // 2cc73c8
     CRC32_starGift_49c577cd = 1237678029; // 49c577cd
     CRC32_starGift_aea174ee = -1365150482; // aea174ee
+    CRC32_starGiftUnique_569d64c9 = 1453155529; // 569d64c9
     CRC32_starGiftUnique_b0bf741b = -1329630181; // b0bf741b
     CRC32_starGiftUnique_1befe865 = 468707429; // 1befe865
     CRC32_starGiftUnique_26a5553e = 648369470; // 26a5553e
@@ -1849,6 +1855,7 @@ enum TLConstructor {
     CRC32_payments_uniqueStarGift_caa2f60b = -895289845; // caa2f60b
     CRC32_messages_webPagePreview_8c9a88ac = -1936029524; // 8c9a88ac
     CRC32_messages_webPagePreview_b53e8b21 = -1254192351; // b53e8b21
+    CRC32_savedStarGift_ead6805e = -355041186; // ead6805e
     CRC32_savedStarGift_8983a452 = -1987861422; // 8983a452
     CRC32_savedStarGift_19a9b572 = 430552434; // 19a9b572
     CRC32_savedStarGift_1ea646df = 514213599; // 1ea646df
@@ -1916,15 +1923,20 @@ enum TLConstructor {
     CRC32_recentStory = 1897752877; // 711d692d
     CRC32_auctionBidLevel = 822231244; // 310240cc
     CRC32_starGiftAuctionStateNotModified = -30197422; // fe333952
-    CRC32_starGiftAuctionState = 1571835723; // 5db04f4b
-    CRC32_starGiftAuctionStateFinished = 2107014202; // 7d967c3a
+    CRC32_starGiftAuctionState_771a4e66 = 1998212710; // 771a4e66
+    CRC32_starGiftAuctionState_5db04f4b = 1571835723; // 5db04f4b
+    CRC32_starGiftAuctionStateFinished_972dabbf = -1758614593; // 972dabbf
+    CRC32_starGiftAuctionStateFinished_7d967c3a = 2107014202; // 7d967c3a
     CRC32_starGiftAuctionUserState = 787403204; // 2eeed1c4
-    CRC32_payments_starGiftAuctionState = 244900980; // e98e474
-    CRC32_starGiftAuctionAcquiredGift = -1419714037; // ab60e20b
+    CRC32_payments_starGiftAuctionState_6b39f4ec = 1798960364; // 6b39f4ec
+    CRC32_payments_starGiftAuctionState_e98e474 = 244900980; // e98e474
+    CRC32_starGiftAuctionAcquiredGift_42b00348 = 1118831432; // 42b00348
+    CRC32_starGiftAuctionAcquiredGift_ab60e20b = -1419714037; // ab60e20b
     CRC32_payments_starGiftAuctionAcquiredGifts = 2103169520; // 7d5bd1f0
     CRC32_starGiftActiveAuctionState = -753154979; // d31bc45d
     CRC32_payments_starGiftActiveAuctionsNotModified = -617358640; // db33dad0
-    CRC32_payments_starGiftActiveAuctions = -1745778728; // 97f187d8
+    CRC32_payments_starGiftActiveAuctions_aef6abbc = -1359565892; // aef6abbc
+    CRC32_payments_starGiftActiveAuctions_97f187d8 = -1745778728; // 97f187d8
     CRC32_inputStarGiftAuction = 48327832; // 2e16c98
     CRC32_inputStarGiftAuctionSlug = 2058715912; // 7ab58308
     CRC32_passkey = -1738457409; // 98613ebf
@@ -1934,6 +1946,10 @@ enum TLConstructor {
     CRC32_inputPasskeyResponseRegister = 1046713180; // 3e63935c
     CRC32_inputPasskeyResponseLogin = -1021329078; // c31fc14a
     CRC32_inputPasskeyCredentialPublicKey = 1009235855; // 3c27b78f
+    CRC32_starGiftBackground = -1342872680; // aff56398
+    CRC32_starGiftAuctionRound = 984483112; // 3aae0528
+    CRC32_starGiftAuctionRoundExtendable = 178266597; // aa021e5
+    CRC32_payments_starGiftUpgradeAttributes = 1187439471; // 46c6e36f
     CRC32_updateChannelPinnedTopic_192efbe3 = 422509539; // 192efbe3
     CRC32_updateChannelPinnedTopic_f694b0ae = -158027602; // f694b0ae
     CRC32_updateChannelPinnedTopics = -31881726; // fe198602
@@ -2784,6 +2800,9 @@ enum TLConstructor {
     CRC32_payments_getStarGiftAuctionState = 1553986774; // 5c9ff4d6
     CRC32_payments_getStarGiftAuctionAcquiredGifts = 1805831148; // 6ba2cbec
     CRC32_payments_getStarGiftActiveAuctions = -1513074355; // a5d0514d
+    CRC32_payments_resolveStarGiftOffer = -372344804; // e9ce781c
+    CRC32_payments_sendStarGiftOffer = -1883739327; // 8fb86b41
+    CRC32_payments_getStarGiftUpgradeAttributes = 1828948824; // 6d038b58
     CRC32_stickers_createStickerSet = -1876841625; // 9021ab67
     CRC32_stickers_removeStickerFromSet = -143257775; // f7760f51
     CRC32_stickers_changeStickerPosition = -4795190; // ffb6d4ca

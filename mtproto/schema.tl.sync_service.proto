@@ -4132,6 +4132,27 @@ message TL_payments_getStarGiftActiveAuctions {
     int64 hash = 3;
 }
 
+message TL_payments_resolveStarGiftOffer {
+    TLConstructor  constructor = 1;
+    bool decline = 3;
+    int32 offer_msg_id = 4;
+}
+
+message TL_payments_sendStarGiftOffer {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    string slug = 4;
+    StarsAmount price = 5;
+    int32 duration = 6;
+    int64 random_id = 7;
+    google.protobuf.Int64Value allow_paid_stars = 8;
+}
+
+message TL_payments_getStarGiftUpgradeAttributes {
+    TLConstructor  constructor = 1;
+    int64 gift_id = 3;
+}
+
 message TL_stickers_createStickerSet {
     TLConstructor  constructor = 1;
     bool masks = 3;
@@ -6017,6 +6038,9 @@ service RPCGifts {
     rpc payments_getStarGiftAuctionState(TL_payments_getStarGiftAuctionState) returns (payments_StarGiftAuctionState) {}
     rpc payments_getStarGiftAuctionAcquiredGifts(TL_payments_getStarGiftAuctionAcquiredGifts) returns (payments_StarGiftAuctionAcquiredGifts) {}
     rpc payments_getStarGiftActiveAuctions(TL_payments_getStarGiftActiveAuctions) returns (payments_StarGiftActiveAuctions) {}
+    rpc payments_resolveStarGiftOffer(TL_payments_resolveStarGiftOffer) returns (Updates) {}
+    rpc payments_sendStarGiftOffer(TL_payments_sendStarGiftOffer) returns (Updates) {}
+    rpc payments_getStarGiftUpgradeAttributes(TL_payments_getStarGiftUpgradeAttributes) returns (payments_StarGiftUpgradeAttributes) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }

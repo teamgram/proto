@@ -4587,6 +4587,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1341372510
 		return o
 	},
+	-366202413: func() TLObject { // 0xea2c31d3
+		o := MakeTLMessageActionStarGift(nil)
+		o.Data2.Constructor = -366202413
+		return o
+	},
 	-614898352: func() TLObject { // 0xdb596550
 		o := MakeTLMessageActionStarGift(nil)
 		o.Data2.Constructor = -614898352
@@ -4695,6 +4700,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	747579941: func() TLObject { // 0x2c8f2a25
 		o := MakeTLMessageActionSuggestBirthday(nil)
 		o.Data2.Constructor = 747579941
+		return o
+	},
+	2000845012: func() TLObject { // 0x774278d4
+		o := MakeTLMessageActionStarGiftPurchaseOffer(nil)
+		o.Data2.Constructor = 2000845012
+		return o
+	},
+	1940760427: func() TLObject { // 0x73ada76b
+		o := MakeTLMessageActionStarGiftPurchaseOfferDeclined(nil)
+		o.Data2.Constructor = 1940760427
 		return o
 	},
 	-1065845395: func() TLObject { // 0xc0787d6d
@@ -6152,6 +6167,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -617358640
 		return o
 	},
+	-1359565892: func() TLObject { // 0xaef6abbc
+		o := MakeTLPaymentsStarGiftActiveAuctions(nil)
+		o.Data2.Constructor = -1359565892
+		return o
+	},
 	-1745778728: func() TLObject { // 0x97f187d8
 		o := MakeTLPaymentsStarGiftActiveAuctions(nil)
 		o.Data2.Constructor = -1745778728
@@ -6160,6 +6180,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	2103169520: func() TLObject { // 0x7d5bd1f0
 		o := MakeTLPaymentsStarGiftAuctionAcquiredGifts(nil)
 		o.Data2.Constructor = 2103169520
+		return o
+	},
+	1798960364: func() TLObject { // 0x6b39f4ec
+		o := MakeTLPaymentsStarGiftAuctionState(nil)
+		o.Data2.Constructor = 1798960364
 		return o
 	},
 	244900980: func() TLObject { // 0xe98e474
@@ -6175,6 +6200,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1977011469: func() TLObject { // 0x8a2932f3
 		o := MakeTLPaymentsStarGiftCollections(nil)
 		o.Data2.Constructor = -1977011469
+		return o
+	},
+	1187439471: func() TLObject { // 0x46c6e36f
+		o := MakeTLPaymentsStarGiftUpgradeAttributes(nil)
+		o.Data2.Constructor = 1187439471
 		return o
 	},
 	1038213101: func() TLObject { // 0x3de1dfed
@@ -7182,6 +7212,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -881854424
 		return o
 	},
+	-355041186: func() TLObject { // 0xead6805e
+		o := MakeTLSavedStarGift(nil)
+		o.Data2.Constructor = -355041186
+		return o
+	},
 	-1987861422: func() TLObject { // 0x8983a452
 		o := MakeTLSavedStarGift(nil)
 		o.Data2.Constructor = -1987861422
@@ -7582,6 +7617,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1035529315
 		return o
 	},
+	825922887: func() TLObject { // 0x313a9547
+		o := MakeTLStarGift(nil)
+		o.Data2.Constructor = 825922887
+		return o
+	},
 	463097215: func() TLObject { // 0x1b9a4d7f
 		o := MakeTLStarGift(nil)
 		o.Data2.Constructor = 463097215
@@ -7620,6 +7660,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1365150482: func() TLObject { // 0xaea174ee
 		o := MakeTLStarGift(nil)
 		o.Data2.Constructor = -1365150482
+		return o
+	},
+	1453155529: func() TLObject { // 0x569d64c9
+		o := MakeTLStarGiftUnique(nil)
+		o.Data2.Constructor = 1453155529
 		return o
 	},
 	-1329630181: func() TLObject { // 0xb0bf741b
@@ -7727,9 +7772,24 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 520210263
 		return o
 	},
+	1118831432: func() TLObject { // 0x42b00348
+		o := MakeTLStarGiftAuctionAcquiredGift(nil)
+		o.Data2.Constructor = 1118831432
+		return o
+	},
 	-1419714037: func() TLObject { // 0xab60e20b
 		o := MakeTLStarGiftAuctionAcquiredGift(nil)
 		o.Data2.Constructor = -1419714037
+		return o
+	},
+	984483112: func() TLObject { // 0x3aae0528
+		o := MakeTLStarGiftAuctionRound(nil)
+		o.Data2.Constructor = 984483112
+		return o
+	},
+	178266597: func() TLObject { // 0xaa021e5
+		o := MakeTLStarGiftAuctionRoundExtendable(nil)
+		o.Data2.Constructor = 178266597
 		return o
 	},
 	-30197422: func() TLObject { // 0xfe333952
@@ -7737,9 +7797,19 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -30197422
 		return o
 	},
+	1998212710: func() TLObject { // 0x771a4e66
+		o := MakeTLStarGiftAuctionState(nil)
+		o.Data2.Constructor = 1998212710
+		return o
+	},
 	1571835723: func() TLObject { // 0x5db04f4b
 		o := MakeTLStarGiftAuctionState(nil)
 		o.Data2.Constructor = 1571835723
+		return o
+	},
+	-1758614593: func() TLObject { // 0x972dabbf
+		o := MakeTLStarGiftAuctionStateFinished(nil)
+		o.Data2.Constructor = -1758614593
 		return o
 	},
 	2107014202: func() TLObject { // 0x7d967c3a
@@ -7750,6 +7820,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	787403204: func() TLObject { // 0x2eeed1c4
 		o := MakeTLStarGiftAuctionUserState(nil)
 		o.Data2.Constructor = 787403204
+		return o
+	},
+	-1342872680: func() TLObject { // 0xaff56398
+		o := MakeTLStarGiftBackground(nil)
+		o.Data2.Constructor = -1342872680
 		return o
 	},
 	-1653926992: func() TLObject { // 0x9d6b13b0
@@ -9855,6 +9930,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	835375875: func() TLObject { // 0x31cad303
 		o := MakeTLWebPageAttributeStarGiftCollection(nil)
 		o.Data2.Constructor = 835375875
+		return o
+	},
+	29770178: func() TLObject { // 0x1c641c2
+		o := MakeTLWebPageAttributeStarGiftAuction(nil)
+		o.Data2.Constructor = 29770178
 		return o
 	},
 	55150251: func() TLObject { // 0x34986ab
@@ -13827,6 +13907,21 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1513074355: func() TLObject { // 0xa5d0514d
 		return &TLPaymentsGetStarGiftActiveAuctions{
 			Constructor: -1513074355,
+		}
+	},
+	-372344804: func() TLObject { // 0xe9ce781c
+		return &TLPaymentsResolveStarGiftOffer{
+			Constructor: -372344804,
+		}
+	},
+	-1883739327: func() TLObject { // 0x8fb86b41
+		return &TLPaymentsSendStarGiftOffer{
+			Constructor: -1883739327,
+		}
+	},
+	1828948824: func() TLObject { // 0x6d038b58
+		return &TLPaymentsGetStarGiftUpgradeAttributes{
+			Constructor: 1828948824,
 		}
 	},
 	-1876841625: func() TLObject { // 0x9021ab67
