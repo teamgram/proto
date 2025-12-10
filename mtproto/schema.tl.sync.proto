@@ -13689,6 +13689,7 @@ message UserData {
     string birthday = 30;
     int64 personal_channel_id = 31;
     google.protobuf.Int64Value premium_expire_date = 32;
+    Document saved_music = 33;
 }
 
 // TL_userData

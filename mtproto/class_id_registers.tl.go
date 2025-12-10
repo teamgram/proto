@@ -9617,9 +9617,9 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1073147056
 		return o
 	},
-	615670548: func() TLObject { // 0x24b26314
+	1997681895: func() TLObject { // 0x771234e7
 		o := MakeTLUserData(nil)
-		o.Data2.Constructor = 615670548
+		o.Data2.Constructor = 1997681895
 		return o
 	},
 	-1607745218: func() TLObject { // 0xa02bc13e
