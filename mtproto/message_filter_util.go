@@ -41,10 +41,11 @@ const (
 	MEDIA_GIF         = 6  // Gif -> inputMessagesFilterGif
 	MEDIA_PHOTOS_ONLY = 7  // Photo -> inputMessagesFilterPhotos
 	MEDIA_VIDEOS_ONLY = 8  // Video -> inputMessagesFilterVideo
-	//MEDIA_VOICE_FILE = 9  // VoiceFile -> inputMessagesFilterVoice
-	MEDIA_CHAT_PHOTO = 10 // ChatPhoto -> inputMessagesFilterChatPhotos
-	//MEDIA_ROUND_FILE = 11 // RoundFile ->inputMessagesFilterRoundVideo,
-	//MEDIA_PINNED     = 12 // Pinned -> inputMessagesFilterPinned
+	MEDIA_VOICE_FILE  = 9  // VoiceFile -> inputMessagesFilterVoice
+	MEDIA_CHAT_PHOTO  = 10 // ChatPhoto -> inputMessagesFilterChatPhotos
+	MEDIA_ROUND_FILE  = 11 // RoundFile ->inputMessagesFilterRoundVideo,
+	MEDIA_PINNED      = 12 // Pinned -> inputMessagesFilterPinned
+	MEDIA_STICKER     = 13 // Sticker -> inputMessagesFilterSticker
 )
 
 func GetMediaType(message *Message) int32 {
@@ -63,16 +64,16 @@ func GetMediaType(message *Message) int32 {
 	case Predicate_message:
 		switch message.GetMedia().GetPredicateName() {
 		case Predicate_messageMediaPhoto:
-			return MEDIA_PHOTOVIDEO
+			return MEDIA_PHOTOS_ONLY
 		case Predicate_messageMediaDocument:
 			if IsVoiceMessage(message) || IsRoundVideoMessage(message) {
 				return MEDIA_AUDIO
 			} else if IsVideoMessage(message) {
-				return MEDIA_PHOTOVIDEO
+				return MEDIA_VIDEOS_ONLY
 			} else if IsStickerMessage(message) || IsAnimatedStickerMessage(message) {
-				return MEDIA_EMPTY
+				return MEDIA_STICKER
 			} else if IsNewGifMessage(message) {
-				return MEDIA_EMPTY
+				return MEDIA_GIF
 			} else if IsMusicMessage(message) {
 				return MEDIA_MUSIC
 			} else {
