@@ -2017,7 +2017,7 @@ enum TLConstructor {
     CRC32_privacyKeyRules = -1810715178; // 0x9412add6
     CRC32_contactData = -858039014; // 0xccdb5d1a
     CRC32_botData = 1899367594; // 0x71360caa
-    CRC32_userData = 807961708; // 0x3028846c
+    CRC32_userData = 1069231812; // 0x3fbb2ec4
     CRC32_immutableUser = 972235212; // 0x39f321cc
     CRC32_mutableUsers = 917538818; // 0x36b08802
     CRC32_immutableChatParticipant = -100771298; // 0xf9fe5a1e

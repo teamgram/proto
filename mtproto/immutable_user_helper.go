@@ -176,6 +176,21 @@ func (m *ImmutableUser) StoriesMaxId() *wrapperspb.Int32Value {
 	return MakeFlagsInt32(m.User.StoriesMaxId)
 }
 
+func (m *ImmutableUser) StoriesMaxId_FLAGRECENTSTORY() *RecentStory {
+	var (
+		maxId *RecentStory
+	)
+
+	if m.User.StoriesMaxId > 0 {
+		maxId = MakeTLRecentStory(&RecentStory{
+			Live:  false,
+			MaxId: MakeFlagsInt32(m.User.StoriesMaxId),
+		}).To_RecentStory()
+	}
+
+	return maxId
+}
+
 func (m *ImmutableUser) Color() *PeerColor {
 	return m.User.Color
 }
@@ -190,6 +205,10 @@ func (m *ImmutableUser) Birthday() *Birthday {
 
 func (m *ImmutableUser) BotActiveUsers() *wrapperspb.Int32Value {
 	return nil
+}
+
+func (m *ImmutableUser) Usernames() []*Username {
+	return m.User.Usernames
 }
 
 func (m *ImmutableUser) CheckContact(cId int64) (bool, bool) {
@@ -272,52 +291,53 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 	}
 
 	user := MakeTLUser(&User{
-		Self:                   false,
-		Contact:                false,
-		MutualContact:          false,
-		Deleted:                false,
-		Bot:                    m.IsBot(),
-		BotChatHistory:         m.BotChatHistory(),
-		BotNochats:             m.BotNochats(),
-		Verified:               m.Verified(),
-		Restricted:             m.Restricted(),
-		Min:                    false,
-		BotInlineGeo:           m.BotInlineGeo(),
-		Support:                m.Support(),
-		Scam:                   m.Scam(),
-		ApplyMinPhoto:          false,
-		Fake:                   m.Fake(),
-		BotAttachMenu:          m.BotAttachMenu(),
-		Premium:                m.Premium(),
-		AttachMenuEnabled:      m.AttachMenuEnabled(),
-		BotCanEdit:             m.BotCanEdit(),
-		CloseFriend:            false,
-		StoriesHidden:          false,
-		StoriesUnavailable:     m.StoriesUnavailable(),
-		ContactRequirePremium:  false,
-		BotBusiness:            m.BotBusiness(),
-		BotHasMainApp:          m.BotHasMainApp(),
-		Id:                     m.Id(),
-		AccessHash:             MakeFlagsInt64(m.AccessHash()),
-		FirstName:              MakeFlagsString(m.FirstName()),
-		LastName:               MakeFlagsString(m.LastName()),
-		Username:               MakeFlagsString(m.Username()),
-		Phone:                  nil,
-		Photo:                  nil,
-		Status:                 MakeUserStatus(m.LastSeenAt, true),
-		BotInfoVersion:         MakeFlagsInt32(m.BotInfoVersion()),
-		RestrictionReason:      m.RestrictionReason(),
-		BotInlinePlaceholder:   m.BotInlinePlaceholder(),
-		LangCode:               nil,
-		EmojiStatus:            m.EmojiStatus(),
-		Usernames:              nil,
-		StoriesMaxId_FLAGINT32: nil,
-		Color_FLAGPEERCOLOR:    m.Color(),
-		Color:                  m.Color().GetColor(),
-		Color_FLAGINT32:        m.Color().GetColor(),
-		BackgroundEmojiId:      m.Color().GetBackgroundEmojiId(),
-		ProfileColor:           m.ProfileColor(),
-		BotActiveUsers:         m.BotActiveUsers(),
+		Self:                         false,
+		Contact:                      false,
+		MutualContact:                false,
+		Deleted:                      false,
+		Bot:                          m.IsBot(),
+		BotChatHistory:               m.BotChatHistory(),
+		BotNochats:                   m.BotNochats(),
+		Verified:                     m.Verified(),
+		Restricted:                   m.Restricted(),
+		Min:                          false,
+		BotInlineGeo:                 m.BotInlineGeo(),
+		Support:                      m.Support(),
+		Scam:                         m.Scam(),
+		ApplyMinPhoto:                false,
+		Fake:                         m.Fake(),
+		BotAttachMenu:                m.BotAttachMenu(),
+		Premium:                      m.Premium(),
+		AttachMenuEnabled:            m.AttachMenuEnabled(),
+		BotCanEdit:                   m.BotCanEdit(),
+		CloseFriend:                  false,
+		StoriesHidden:                false,
+		StoriesUnavailable:           m.StoriesUnavailable(),
+		ContactRequirePremium:        false,
+		BotBusiness:                  m.BotBusiness(),
+		BotHasMainApp:                m.BotHasMainApp(),
+		Id:                           m.Id(),
+		AccessHash:                   MakeFlagsInt64(m.AccessHash()),
+		FirstName:                    MakeFlagsString(m.FirstName()),
+		LastName:                     MakeFlagsString(m.LastName()),
+		Username:                     nil,
+		Phone:                        nil,
+		Photo:                        nil,
+		Status:                       MakeUserStatus(m.LastSeenAt, true),
+		BotInfoVersion:               MakeFlagsInt32(m.BotInfoVersion()),
+		RestrictionReason:            m.RestrictionReason(),
+		BotInlinePlaceholder:         m.BotInlinePlaceholder(),
+		LangCode:                     nil,
+		EmojiStatus:                  m.EmojiStatus(),
+		Usernames:                    nil,
+		StoriesMaxId_FLAGINT32:       nil,
+		StoriesMaxId_FLAGRECENTSTORY: nil,
+		Color_FLAGPEERCOLOR:          m.Color(),
+		Color:                        m.Color().GetColor(),
+		Color_FLAGINT32:              m.Color().GetColor(),
+		BackgroundEmojiId:            m.Color().GetBackgroundEmojiId(),
+		ProfileColor:                 m.ProfileColor(),
+		BotActiveUsers:               m.BotActiveUsers(),
 	}).To_User()
 
 	if m.IsBot() {
@@ -338,6 +358,7 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 		user.CloseFriend = contact.CloseFriend
 		user.StoriesHidden = contact.StoriesHidden
 		user.StoriesMaxId_FLAGINT32 = m.StoriesMaxId()
+		user.StoriesMaxId_FLAGRECENTSTORY = m.StoriesMaxId_FLAGRECENTSTORY()
 	} else {
 		// reverse contact
 		reverseContact := m.GetReverseContactData(selfUser.Id())
@@ -372,57 +393,66 @@ func (m *ImmutableUser) ToUnsafeUser(selfUser *ImmutableUser) *User {
 	//// TODO: check stories_unavailable
 	// user.StoriesUnavailable = false
 
+	if len(m.Usernames()) > 1 {
+		user.Username = nil
+		user.Usernames = m.Usernames()
+	} else {
+		user.Username = MakeFlagsString(m.Username())
+		user.Usernames = nil
+	}
+
 	return user
 }
 
 func (m *ImmutableUser) ToSelfUser() *User {
 	user := MakeTLUser(&User{
-		Self:                   true,
-		Contact:                true,
-		MutualContact:          true,
-		Deleted:                false,
-		Bot:                    m.IsBot(),
-		BotChatHistory:         m.BotChatHistory(),
-		BotNochats:             m.BotNochats(),
-		Verified:               m.Verified(),
-		Restricted:             m.Restricted(),
-		Min:                    false,
-		BotInlineGeo:           m.BotInlineGeo(),
-		Support:                m.Support(),
-		Scam:                   m.Scam(),
-		ApplyMinPhoto:          false,
-		Fake:                   m.Fake(),
-		BotAttachMenu:          m.BotAttachMenu(),
-		Premium:                m.Premium(),
-		AttachMenuEnabled:      m.AttachMenuEnabled(),
-		BotCanEdit:             m.BotCanEdit(),
-		CloseFriend:            false,
-		StoriesHidden:          false,
-		StoriesUnavailable:     m.StoriesUnavailable(),
-		ContactRequirePremium:  false,
-		BotBusiness:            m.BotBusiness(),
-		BotHasMainApp:          m.BotHasMainApp(),
-		Id:                     m.Id(),
-		AccessHash:             MakeFlagsInt64(m.AccessHash()),
-		FirstName:              MakeFlagsString(m.FirstName()),
-		LastName:               MakeFlagsString(m.LastName()),
-		Username:               MakeFlagsString(m.Username()),
-		Phone:                  MakeFlagsString(m.Phone()),
-		Photo:                  m.ProfilePhoto(),
-		Status:                 MakeUserStatus(m.LastSeenAt, true),
-		BotInfoVersion:         MakeFlagsInt32(m.BotInfoVersion()),
-		RestrictionReason:      m.RestrictionReason(),
-		BotInlinePlaceholder:   m.BotInlinePlaceholder(),
-		LangCode:               nil,
-		EmojiStatus:            m.EmojiStatus(),
-		Usernames:              nil,
-		StoriesMaxId_FLAGINT32: m.StoriesMaxId(),
-		Color_FLAGPEERCOLOR:    m.Color(),
-		Color:                  m.Color().GetColor(),
-		Color_FLAGINT32:        m.Color().GetColor(),
-		BackgroundEmojiId:      m.Color().GetBackgroundEmojiId(),
-		ProfileColor:           m.ProfileColor(),
-		BotActiveUsers:         m.BotActiveUsers(),
+		Self:                         true,
+		Contact:                      true,
+		MutualContact:                true,
+		Deleted:                      false,
+		Bot:                          m.IsBot(),
+		BotChatHistory:               m.BotChatHistory(),
+		BotNochats:                   m.BotNochats(),
+		Verified:                     m.Verified(),
+		Restricted:                   m.Restricted(),
+		Min:                          false,
+		BotInlineGeo:                 m.BotInlineGeo(),
+		Support:                      m.Support(),
+		Scam:                         m.Scam(),
+		ApplyMinPhoto:                false,
+		Fake:                         m.Fake(),
+		BotAttachMenu:                m.BotAttachMenu(),
+		Premium:                      m.Premium(),
+		AttachMenuEnabled:            m.AttachMenuEnabled(),
+		BotCanEdit:                   m.BotCanEdit(),
+		CloseFriend:                  false,
+		StoriesHidden:                false,
+		StoriesUnavailable:           m.StoriesUnavailable(),
+		ContactRequirePremium:        false,
+		BotBusiness:                  m.BotBusiness(),
+		BotHasMainApp:                m.BotHasMainApp(),
+		Id:                           m.Id(),
+		AccessHash:                   MakeFlagsInt64(m.AccessHash()),
+		FirstName:                    MakeFlagsString(m.FirstName()),
+		LastName:                     MakeFlagsString(m.LastName()),
+		Username:                     nil,
+		Phone:                        MakeFlagsString(m.Phone()),
+		Photo:                        m.ProfilePhoto(),
+		Status:                       MakeUserStatus(m.LastSeenAt, true),
+		BotInfoVersion:               MakeFlagsInt32(m.BotInfoVersion()),
+		RestrictionReason:            m.RestrictionReason(),
+		BotInlinePlaceholder:         m.BotInlinePlaceholder(),
+		LangCode:                     nil,
+		EmojiStatus:                  m.EmojiStatus(),
+		Usernames:                    nil,
+		StoriesMaxId_FLAGINT32:       m.StoriesMaxId(),
+		StoriesMaxId_FLAGRECENTSTORY: m.StoriesMaxId_FLAGRECENTSTORY(),
+		Color_FLAGPEERCOLOR:          m.Color(),
+		Color:                        m.Color().GetColor(),
+		Color_FLAGINT32:              m.Color().GetColor(),
+		BackgroundEmojiId:            m.Color().GetBackgroundEmojiId(),
+		ProfileColor:                 m.ProfileColor(),
+		BotActiveUsers:               m.BotActiveUsers(),
 	}).To_User()
 
 	if m.IsBot() {
@@ -431,57 +461,66 @@ func (m *ImmutableUser) ToSelfUser() *User {
 		user.StoriesUnavailable = true
 	}
 
+	if len(m.Usernames()) > 1 {
+		user.Username = nil
+		user.Usernames = m.Usernames()
+	} else {
+		user.Username = MakeFlagsString(m.Username())
+		user.Usernames = nil
+	}
+
 	return user
 }
 
 func (m *ImmutableUser) ToDeletedUser() *User {
 	return MakeTLUser(&User{
-		Self:                   false,
-		Contact:                false,
-		MutualContact:          false,
-		Deleted:                true,
-		Bot:                    false,
-		BotChatHistory:         false,
-		BotNochats:             false,
-		Verified:               false,
-		Restricted:             false,
-		Min:                    false,
-		BotInlineGeo:           false,
-		Support:                false,
-		Scam:                   false,
-		ApplyMinPhoto:          false,
-		Fake:                   false,
-		BotAttachMenu:          false,
-		Premium:                false,
-		AttachMenuEnabled:      false,
-		BotCanEdit:             false,
-		CloseFriend:            false,
-		StoriesHidden:          false,
-		StoriesUnavailable:     false,
-		ContactRequirePremium:  false,
-		BotBusiness:            false,
-		BotHasMainApp:          false,
-		Id:                     m.Id(),
-		AccessHash:             MakeFlagsInt64(m.AccessHash()),
-		FirstName:              nil,
-		LastName:               nil,
-		Username:               nil,
-		Phone:                  nil,
-		Photo:                  nil,
-		Status:                 nil,
-		BotInfoVersion:         nil,
-		RestrictionReason:      nil,
-		BotInlinePlaceholder:   nil,
-		LangCode:               nil,
-		EmojiStatus:            nil,
-		Usernames:              nil,
-		StoriesMaxId_FLAGINT32: nil,
-		Color_FLAGPEERCOLOR:    nil,
-		Color:                  nil,
-		Color_FLAGINT32:        nil,
-		BackgroundEmojiId:      nil,
-		ProfileColor:           nil,
-		BotActiveUsers:         nil,
+		Self:                         false,
+		Contact:                      false,
+		MutualContact:                false,
+		Deleted:                      true,
+		Bot:                          false,
+		BotChatHistory:               false,
+		BotNochats:                   false,
+		Verified:                     false,
+		Restricted:                   false,
+		Min:                          false,
+		BotInlineGeo:                 false,
+		Support:                      false,
+		Scam:                         false,
+		ApplyMinPhoto:                false,
+		Fake:                         false,
+		BotAttachMenu:                false,
+		Premium:                      false,
+		AttachMenuEnabled:            false,
+		BotCanEdit:                   false,
+		CloseFriend:                  false,
+		StoriesHidden:                false,
+		StoriesUnavailable:           false,
+		ContactRequirePremium:        false,
+		BotBusiness:                  false,
+		BotHasMainApp:                false,
+		Id:                           m.Id(),
+		AccessHash:                   MakeFlagsInt64(m.AccessHash()),
+		FirstName:                    nil,
+		LastName:                     nil,
+		Username:                     nil,
+		Phone:                        nil,
+		Photo:                        nil,
+		Status:                       nil,
+		BotInfoVersion:               nil,
+		RestrictionReason:            nil,
+		BotInlinePlaceholder:         nil,
+		LangCode:                     nil,
+		EmojiStatus:                  nil,
+		Usernames:                    nil,
+		StoriesMaxId_FLAGINT32:       nil,
+		StoriesMaxId_FLAGRECENTSTORY: nil,
+		Color_FLAGPEERCOLOR:          nil,
+		Color:                        nil,
+		Color_FLAGINT32:              nil,
+		BackgroundEmojiId:            nil,
+		ProfileColor:                 nil,
+		BotActiveUsers:               nil,
 	}).To_User()
 }
 
@@ -495,52 +534,53 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 	}
 
 	user := MakeTLUser(&User{
-		Self:                   false,
-		Contact:                false,
-		MutualContact:          false,
-		Deleted:                false,
-		Bot:                    m.IsBot(),
-		BotChatHistory:         m.BotChatHistory(),
-		BotNochats:             m.BotNochats(),
-		Verified:               m.Verified(),
-		Restricted:             m.Restricted(),
-		Min:                    false,
-		BotInlineGeo:           m.BotInlineGeo(),
-		Support:                m.Support(),
-		Scam:                   m.Scam(),
-		ApplyMinPhoto:          false,
-		Fake:                   m.Fake(),
-		BotAttachMenu:          m.BotAttachMenu(),
-		Premium:                m.Premium(),
-		AttachMenuEnabled:      m.AttachMenuEnabled(),
-		BotCanEdit:             m.BotCanEdit(),
-		CloseFriend:            false,
-		StoriesHidden:          false,
-		StoriesUnavailable:     m.StoriesUnavailable(),
-		Id:                     m.Id(),
-		ContactRequirePremium:  false,
-		BotBusiness:            m.BotBusiness(),
-		BotHasMainApp:          m.BotHasMainApp(),
-		AccessHash:             MakeFlagsInt64(m.AccessHash()),
-		FirstName:              MakeFlagsString(m.FirstName()),
-		LastName:               MakeFlagsString(m.LastName()),
-		Username:               MakeFlagsString(m.Username()),
-		Phone:                  nil,
-		Photo:                  nil,
-		Status:                 MakeUserStatus(m.LastSeenAt, false),
-		BotInfoVersion:         MakeFlagsInt32(m.BotInfoVersion()),
-		RestrictionReason:      m.RestrictionReason(),
-		BotInlinePlaceholder:   m.BotInlinePlaceholder(),
-		LangCode:               nil,
-		EmojiStatus:            m.EmojiStatus(),
-		Usernames:              nil,
-		StoriesMaxId_FLAGINT32: nil,
-		Color_FLAGPEERCOLOR:    m.Color(),
-		Color:                  m.Color().GetColor(),
-		Color_FLAGINT32:        m.Color().GetColor(),
-		BackgroundEmojiId:      m.Color().GetBackgroundEmojiId(),
-		ProfileColor:           m.ProfileColor(),
-		BotActiveUsers:         m.BotActiveUsers(),
+		Self:                         false,
+		Contact:                      false,
+		MutualContact:                false,
+		Deleted:                      false,
+		Bot:                          m.IsBot(),
+		BotChatHistory:               m.BotChatHistory(),
+		BotNochats:                   m.BotNochats(),
+		Verified:                     m.Verified(),
+		Restricted:                   m.Restricted(),
+		Min:                          false,
+		BotInlineGeo:                 m.BotInlineGeo(),
+		Support:                      m.Support(),
+		Scam:                         m.Scam(),
+		ApplyMinPhoto:                false,
+		Fake:                         m.Fake(),
+		BotAttachMenu:                m.BotAttachMenu(),
+		Premium:                      m.Premium(),
+		AttachMenuEnabled:            m.AttachMenuEnabled(),
+		BotCanEdit:                   m.BotCanEdit(),
+		CloseFriend:                  false,
+		StoriesHidden:                false,
+		StoriesUnavailable:           m.StoriesUnavailable(),
+		Id:                           m.Id(),
+		ContactRequirePremium:        false,
+		BotBusiness:                  m.BotBusiness(),
+		BotHasMainApp:                m.BotHasMainApp(),
+		AccessHash:                   MakeFlagsInt64(m.AccessHash()),
+		FirstName:                    MakeFlagsString(m.FirstName()),
+		LastName:                     MakeFlagsString(m.LastName()),
+		Username:                     nil,
+		Phone:                        nil,
+		Photo:                        nil,
+		Status:                       MakeUserStatus(m.LastSeenAt, false),
+		BotInfoVersion:               MakeFlagsInt32(m.BotInfoVersion()),
+		RestrictionReason:            m.RestrictionReason(),
+		BotInlinePlaceholder:         m.BotInlinePlaceholder(),
+		LangCode:                     nil,
+		EmojiStatus:                  m.EmojiStatus(),
+		Usernames:                    nil,
+		StoriesMaxId_FLAGINT32:       nil,
+		StoriesMaxId_FLAGRECENTSTORY: nil,
+		Color_FLAGPEERCOLOR:          m.Color(),
+		Color:                        m.Color().GetColor(),
+		Color_FLAGINT32:              m.Color().GetColor(),
+		BackgroundEmojiId:            m.Color().GetBackgroundEmojiId(),
+		ProfileColor:                 m.ProfileColor(),
+		BotActiveUsers:               m.BotActiveUsers(),
 	}).To_User()
 
 	if m.IsBot() {
@@ -560,6 +600,7 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 		user.CloseFriend = reverseContact.CloseFriend
 		user.StoriesHidden = reverseContact.StoriesHidden
 		user.StoriesMaxId_FLAGINT32 = m.StoriesMaxId()
+		user.StoriesMaxId_FLAGRECENTSTORY = m.StoriesMaxId_FLAGRECENTSTORY()
 	}
 
 	// phone
@@ -579,6 +620,14 @@ func (m *ImmutableUser) ToUser(selfUserId int64) *User {
 
 	// TODO: check stories_unavailable
 	// user.StoriesUnavailable = false
+
+	if len(m.Usernames()) > 1 {
+		user.Username = nil
+		user.Usernames = m.Usernames()
+	} else {
+		user.Username = MakeFlagsString(m.Username())
+		user.Usernames = nil
+	}
 
 	return user
 }

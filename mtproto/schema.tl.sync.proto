@@ -13691,6 +13691,7 @@ message UserData {
     google.protobuf.Int64Value premium_expire_date = 32;
     Document saved_music = 33;
     ProfileTab main_tab = 34;
+    repeated Username usernames = 35;
 }
 
 // TL_userData
