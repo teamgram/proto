@@ -133,6 +133,7 @@ enum TLConstructor {
     CRC32_inputMediaPaidMedia_c4103386 = -1005571194; // c4103386
     CRC32_inputMediaPaidMedia_aa661fc3 = -1436147773; // aa661fc3
     CRC32_inputMediaTodo = -1614454818; // 9fc55fde
+    CRC32_inputMediaStakeDice = -207018934; // f3a9244a
     CRC32_inputChatPhotoEmpty = 480546647; // 1ca48f57
     CRC32_inputChatUploadedPhoto_bdcdaec0 = -1110593856; // bdcdaec0
     CRC32_inputChatUploadedPhoto_c642724e = -968723890; // c642724e
@@ -223,6 +224,7 @@ enum TLConstructor {
     CRC32_chatPhotoEmpty = 935395612; // 37c1011c
     CRC32_chatPhoto = 476978193; // 1c6e1c11
     CRC32_messageEmpty = -1868117372; // 90a6ca84
+    CRC32_message_9cb490e9 = -1665888023; // 9cb490e9
     CRC32_message_b92f76cf = -1188071729; // b92f76cf
     CRC32_message_9815cec8 = -1743401272; // 9815cec8
     CRC32_message_eabcdd4d = -356721331; // eabcdd4d
@@ -254,7 +256,8 @@ enum TLConstructor {
     CRC32_messageMediaInvoice_84551347 = -2074799289; // 84551347
     CRC32_messageMediaGeoLive = -1186937242; // b940c666
     CRC32_messageMediaPoll = 1272375192; // 4bd6e798
-    CRC32_messageMediaDice = 1065280907; // 3f7ee58b
+    CRC32_messageMediaDice_8cbec07 = 147581959; // 8cbec07
+    CRC32_messageMediaDice_3f7ee58b = 1065280907; // 3f7ee58b
     CRC32_messageMediaStory_68cb6283 = 1758159491; // 68cb6283
     CRC32_messageMediaStory_cbb20d88 = -877523576; // cbb20d88
     CRC32_messageMediaGiveaway_aa073beb = -1442366485; // aa073beb
@@ -634,6 +637,7 @@ enum TLConstructor {
     CRC32_updateDeleteGroupCallMessages = 1048963372; // 3e85e92c
     CRC32_updateStarGiftAuctionState = 1222788802; // 48e246c2
     CRC32_updateStarGiftAuctionUserState = -598150370; // dc58f31e
+    CRC32_updateEmojiGameInfo = -73640838; // fb9c547a
     CRC32_updates_state = -1519637954; // a56c2a3e
     CRC32_updates_differenceEmpty = 1567990072; // 5d75a138
     CRC32_updates_difference = 16030880; // f49ca0
@@ -1946,10 +1950,14 @@ enum TLConstructor {
     CRC32_inputPasskeyResponseRegister = 1046713180; // 3e63935c
     CRC32_inputPasskeyResponseLogin = -1021329078; // c31fc14a
     CRC32_inputPasskeyCredentialPublicKey = 1009235855; // 3c27b78f
+    CRC32_inputPasskeyCredentialFirebasePNV = 1528613672; // 5b1ccb28
     CRC32_starGiftBackground = -1342872680; // aff56398
     CRC32_starGiftAuctionRound = 984483112; // 3aae0528
     CRC32_starGiftAuctionRoundExtendable = 178266597; // aa021e5
     CRC32_payments_starGiftUpgradeAttributes = 1187439471; // 46c6e36f
+    CRC32_messages_emojiGameOutcome = -634726841; // da2ad647
+    CRC32_messages_emojiGameUnavailable = 1508266805; // 59e65335
+    CRC32_messages_emojiGameDiceInfo = 1155883043; // 44e56023
     CRC32_updateChannelPinnedTopic_192efbe3 = 422509539; // 192efbe3
     CRC32_updateChannelPinnedTopic_f694b0ae = -158027602; // f694b0ae
     CRC32_updateChannelPinnedTopics = -31881726; // fe198602
@@ -2568,6 +2576,8 @@ enum TLConstructor {
     CRC32_messages_reorderPinnedForumTopics = 242762224; // e7841f0
     CRC32_messages_createForumTopic = 798540757; // 2f98c3d5
     CRC32_messages_deleteTopicHistory = -763269360; // d2816f10
+    CRC32_messages_getEmojiGameInfo = -75592537; // fb7e8ca7
+    CRC32_messages_summarizeText = -1656683294; // 9d4104e2
     CRC32_updates_getState = -304838614; // edd4882a
     CRC32_updates_getDifference_19c2f763 = 432207715; // 19c2f763
     CRC32_updates_getDifference_25939651 = 630429265; // 25939651

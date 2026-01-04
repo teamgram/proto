@@ -2915,6 +2915,17 @@ message TL_messages_deleteTopicHistory {
     int32 top_msg_id = 4;
 }
 
+message TL_messages_getEmojiGameInfo {
+    TLConstructor  constructor = 1;
+}
+
+message TL_messages_summarizeText {
+    TLConstructor  constructor = 1;
+    InputPeer peer = 3;
+    int32 id = 4;
+    google.protobuf.StringValue to_lang = 5;
+}
+
 message TL_updates_getState {
     TLConstructor  constructor = 1;
 }
@@ -5994,6 +6005,7 @@ service RPCGames {
     rpc messages_setInlineGameScore(TL_messages_setInlineGameScore) returns (Bool) {}
     rpc messages_getGameHighScores(TL_messages_getGameHighScores) returns (messages_HighScores) {}
     rpc messages_getInlineGameHighScores(TL_messages_getInlineGameHighScores) returns (messages_HighScores) {}
+    rpc messages_getEmojiGameInfo(TL_messages_getEmojiGameInfo) returns (messages_EmojiGameInfo) {}
 }
 
 service RPCGatewayVerificationMessages {
@@ -6165,6 +6177,7 @@ service RPCMessages {
     rpc messages_saveDefaultSendAs(TL_messages_saveDefaultSendAs) returns (Bool) {}
     rpc messages_searchSentMedia(TL_messages_searchSentMedia) returns (messages_Messages) {}
     rpc messages_getOutboxReadDate(TL_messages_getOutboxReadDate) returns (OutboxReadDate) {}
+    rpc messages_summarizeText(TL_messages_summarizeText) returns (TextWithEntities) {}
     rpc channels_getSendAs(TL_channels_getSendAs) returns (channels_SendAsPeers) {}
     rpc channels_searchPosts(TL_channels_searchPosts) returns (messages_Messages) {}
     rpc channels_checkSearchPostsFlood(TL_channels_checkSearchPostsFlood) returns (SearchPostsFlood) {}

@@ -14796,6 +14796,7 @@ const (
 	RPCGames_MessagesSetInlineGameScore_FullMethodName      = "/mtproto.RPCGames/messages_setInlineGameScore"
 	RPCGames_MessagesGetGameHighScores_FullMethodName       = "/mtproto.RPCGames/messages_getGameHighScores"
 	RPCGames_MessagesGetInlineGameHighScores_FullMethodName = "/mtproto.RPCGames/messages_getInlineGameHighScores"
+	RPCGames_MessagesGetEmojiGameInfo_FullMethodName        = "/mtproto.RPCGames/messages_getEmojiGameInfo"
 )
 
 // RPCGamesClient is the client API for RPCGames service.
@@ -14806,6 +14807,7 @@ type RPCGamesClient interface {
 	MessagesSetInlineGameScore(ctx context.Context, in *TLMessagesSetInlineGameScore, opts ...grpc.CallOption) (*Bool, error)
 	MessagesGetGameHighScores(ctx context.Context, in *TLMessagesGetGameHighScores, opts ...grpc.CallOption) (*Messages_HighScores, error)
 	MessagesGetInlineGameHighScores(ctx context.Context, in *TLMessagesGetInlineGameHighScores, opts ...grpc.CallOption) (*Messages_HighScores, error)
+	MessagesGetEmojiGameInfo(ctx context.Context, in *TLMessagesGetEmojiGameInfo, opts ...grpc.CallOption) (*Messages_EmojiGameInfo, error)
 }
 
 type rPCGamesClient struct {
@@ -14856,6 +14858,16 @@ func (c *rPCGamesClient) MessagesGetInlineGameHighScores(ctx context.Context, in
 	return out, nil
 }
 
+func (c *rPCGamesClient) MessagesGetEmojiGameInfo(ctx context.Context, in *TLMessagesGetEmojiGameInfo, opts ...grpc.CallOption) (*Messages_EmojiGameInfo, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Messages_EmojiGameInfo)
+	err := c.cc.Invoke(ctx, RPCGames_MessagesGetEmojiGameInfo_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // RPCGamesServer is the server API for RPCGames service.
 // All implementations should embed UnimplementedRPCGamesServer
 // for forward compatibility.
@@ -14864,6 +14876,7 @@ type RPCGamesServer interface {
 	MessagesSetInlineGameScore(context.Context, *TLMessagesSetInlineGameScore) (*Bool, error)
 	MessagesGetGameHighScores(context.Context, *TLMessagesGetGameHighScores) (*Messages_HighScores, error)
 	MessagesGetInlineGameHighScores(context.Context, *TLMessagesGetInlineGameHighScores) (*Messages_HighScores, error)
+	MessagesGetEmojiGameInfo(context.Context, *TLMessagesGetEmojiGameInfo) (*Messages_EmojiGameInfo, error)
 }
 
 // UnimplementedRPCGamesServer should be embedded to have
@@ -14884,6 +14897,9 @@ func (UnimplementedRPCGamesServer) MessagesGetGameHighScores(context.Context, *T
 }
 func (UnimplementedRPCGamesServer) MessagesGetInlineGameHighScores(context.Context, *TLMessagesGetInlineGameHighScores) (*Messages_HighScores, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetInlineGameHighScores not implemented")
+}
+func (UnimplementedRPCGamesServer) MessagesGetEmojiGameInfo(context.Context, *TLMessagesGetEmojiGameInfo) (*Messages_EmojiGameInfo, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetEmojiGameInfo not implemented")
 }
 func (UnimplementedRPCGamesServer) testEmbeddedByValue() {}
 
@@ -14977,6 +14993,24 @@ func _RPCGames_MessagesGetInlineGameHighScores_Handler(srv interface{}, ctx cont
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGames_MessagesGetEmojiGameInfo_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesGetEmojiGameInfo)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGamesServer).MessagesGetEmojiGameInfo(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGames_MessagesGetEmojiGameInfo_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGamesServer).MessagesGetEmojiGameInfo(ctx, req.(*TLMessagesGetEmojiGameInfo))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // RPCGames_ServiceDesc is the grpc.ServiceDesc for RPCGames service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -14999,6 +15033,10 @@ var RPCGames_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_getInlineGameHighScores",
 			Handler:    _RPCGames_MessagesGetInlineGameHighScores_Handler,
+		},
+		{
+			MethodName: "messages_getEmojiGameInfo",
+			Handler:    _RPCGames_MessagesGetEmojiGameInfo_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
@@ -19626,6 +19664,7 @@ const (
 	RPCMessages_MessagesSaveDefaultSendAs_FullMethodName         = "/mtproto.RPCMessages/messages_saveDefaultSendAs"
 	RPCMessages_MessagesSearchSentMedia_FullMethodName           = "/mtproto.RPCMessages/messages_searchSentMedia"
 	RPCMessages_MessagesGetOutboxReadDate_FullMethodName         = "/mtproto.RPCMessages/messages_getOutboxReadDate"
+	RPCMessages_MessagesSummarizeText_FullMethodName             = "/mtproto.RPCMessages/messages_summarizeText"
 	RPCMessages_ChannelsGetSendAs_FullMethodName                 = "/mtproto.RPCMessages/channels_getSendAs"
 	RPCMessages_ChannelsSearchPosts_FullMethodName               = "/mtproto.RPCMessages/channels_searchPosts"
 	RPCMessages_ChannelsCheckSearchPostsFlood_FullMethodName     = "/mtproto.RPCMessages/channels_checkSearchPostsFlood"
@@ -19663,6 +19702,7 @@ type RPCMessagesClient interface {
 	MessagesSaveDefaultSendAs(ctx context.Context, in *TLMessagesSaveDefaultSendAs, opts ...grpc.CallOption) (*Bool, error)
 	MessagesSearchSentMedia(ctx context.Context, in *TLMessagesSearchSentMedia, opts ...grpc.CallOption) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(ctx context.Context, in *TLMessagesGetOutboxReadDate, opts ...grpc.CallOption) (*OutboxReadDate, error)
+	MessagesSummarizeText(ctx context.Context, in *TLMessagesSummarizeText, opts ...grpc.CallOption) (*TextWithEntities, error)
 	ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(ctx context.Context, in *TLChannelsSearchPosts, opts ...grpc.CallOption) (*Messages_Messages, error)
 	ChannelsCheckSearchPostsFlood(ctx context.Context, in *TLChannelsCheckSearchPostsFlood, opts ...grpc.CallOption) (*SearchPostsFlood, error)
@@ -19956,6 +19996,16 @@ func (c *rPCMessagesClient) MessagesGetOutboxReadDate(ctx context.Context, in *T
 	return out, nil
 }
 
+func (c *rPCMessagesClient) MessagesSummarizeText(ctx context.Context, in *TLMessagesSummarizeText, opts ...grpc.CallOption) (*TextWithEntities, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(TextWithEntities)
+	err := c.cc.Invoke(ctx, RPCMessages_MessagesSummarizeText_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCMessagesClient) ChannelsGetSendAs(ctx context.Context, in *TLChannelsGetSendAs, opts ...grpc.CallOption) (*Channels_SendAsPeers, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Channels_SendAsPeers)
@@ -20018,6 +20068,7 @@ type RPCMessagesServer interface {
 	MessagesSaveDefaultSendAs(context.Context, *TLMessagesSaveDefaultSendAs) (*Bool, error)
 	MessagesSearchSentMedia(context.Context, *TLMessagesSearchSentMedia) (*Messages_Messages, error)
 	MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error)
+	MessagesSummarizeText(context.Context, *TLMessagesSummarizeText) (*TextWithEntities, error)
 	ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error)
 	ChannelsSearchPosts(context.Context, *TLChannelsSearchPosts) (*Messages_Messages, error)
 	ChannelsCheckSearchPostsFlood(context.Context, *TLChannelsCheckSearchPostsFlood) (*SearchPostsFlood, error)
@@ -20113,6 +20164,9 @@ func (UnimplementedRPCMessagesServer) MessagesSearchSentMedia(context.Context, *
 }
 func (UnimplementedRPCMessagesServer) MessagesGetOutboxReadDate(context.Context, *TLMessagesGetOutboxReadDate) (*OutboxReadDate, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method MessagesGetOutboxReadDate not implemented")
+}
+func (UnimplementedRPCMessagesServer) MessagesSummarizeText(context.Context, *TLMessagesSummarizeText) (*TextWithEntities, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method MessagesSummarizeText not implemented")
 }
 func (UnimplementedRPCMessagesServer) ChannelsGetSendAs(context.Context, *TLChannelsGetSendAs) (*Channels_SendAsPeers, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetSendAs not implemented")
@@ -20647,6 +20701,24 @@ func _RPCMessages_MessagesGetOutboxReadDate_Handler(srv interface{}, ctx context
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCMessages_MessagesSummarizeText_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLMessagesSummarizeText)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCMessagesServer).MessagesSummarizeText(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCMessages_MessagesSummarizeText_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCMessagesServer).MessagesSummarizeText(ctx, req.(*TLMessagesSummarizeText))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCMessages_ChannelsGetSendAs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsGetSendAs)
 	if err := dec(in); err != nil {
@@ -20819,6 +20891,10 @@ var RPCMessages_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "messages_getOutboxReadDate",
 			Handler:    _RPCMessages_MessagesGetOutboxReadDate_Handler,
+		},
+		{
+			MethodName: "messages_summarizeText",
+			Handler:    _RPCMessages_MessagesSummarizeText_Handler,
 		},
 		{
 			MethodName: "channels_getSendAs",
