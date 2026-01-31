@@ -50,6 +50,14 @@ func init() {
 	iface.RegisterRPCContextTuple("TLAuthImportLoginToken", "/tg.RPCQrCode/auth.importLoginToken", func() interface{} { return new(AuthLoginToken) })
 	iface.RegisterRPCContextTuple("TLAuthAcceptLoginToken", "/tg.RPCQrCode/auth.acceptLoginToken", func() interface{} { return new(Authorization) })
 
+	// RPCPasskey
+	iface.RegisterRPCContextTuple("TLAuthInitPasskeyLogin", "/tg.RPCPasskey/auth.initPasskeyLogin", func() interface{} { return new(AuthPasskeyLoginOptions) })
+	iface.RegisterRPCContextTuple("TLAuthFinishPasskeyLogin", "/tg.RPCPasskey/auth.finishPasskeyLogin", func() interface{} { return new(AuthAuthorization) })
+	iface.RegisterRPCContextTuple("TLAccountInitPasskeyRegistration", "/tg.RPCPasskey/account.initPasskeyRegistration", func() interface{} { return new(AccountPasskeyRegistrationOptions) })
+	iface.RegisterRPCContextTuple("TLAccountRegisterPasskey", "/tg.RPCPasskey/account.registerPasskey", func() interface{} { return new(Passkey) })
+	iface.RegisterRPCContextTuple("TLAccountGetPasskeys", "/tg.RPCPasskey/account.getPasskeys", func() interface{} { return new(AccountPasskeys) })
+	iface.RegisterRPCContextTuple("TLAccountDeletePasskey", "/tg.RPCPasskey/account.deletePasskey", func() interface{} { return new(Bool) })
+
 	// RPCNotification
 	iface.RegisterRPCContextTuple("TLAccountRegisterDevice", "/tg.RPCNotification/account.registerDevice", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLAccountUnregisterDevice", "/tg.RPCNotification/account.unregisterDevice", func() interface{} { return new(Bool) })
@@ -352,6 +360,7 @@ func init() {
 	iface.RegisterRPCContextTuple("TLMessagesSaveDefaultSendAs", "/tg.RPCMessages/messages.saveDefaultSendAs", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLMessagesSearchSentMedia", "/tg.RPCMessages/messages.searchSentMedia", func() interface{} { return new(MessagesMessages) })
 	iface.RegisterRPCContextTuple("TLMessagesGetOutboxReadDate", "/tg.RPCMessages/messages.getOutboxReadDate", func() interface{} { return new(OutboxReadDate) })
+	iface.RegisterRPCContextTuple("TLMessagesSummarizeText", "/tg.RPCMessages/messages.summarizeText", func() interface{} { return new(TextWithEntities) })
 	iface.RegisterRPCContextTuple("TLChannelsGetSendAs", "/tg.RPCMessages/channels.getSendAs", func() interface{} { return new(ChannelsSendAsPeers) })
 	iface.RegisterRPCContextTuple("TLChannelsSearchPosts", "/tg.RPCMessages/channels.searchPosts", func() interface{} { return new(MessagesMessages) })
 	iface.RegisterRPCContextTuple("TLChannelsCheckSearchPostsFlood", "/tg.RPCMessages/channels.checkSearchPostsFlood", func() interface{} { return new(SearchPostsFlood) })
@@ -498,6 +507,7 @@ func init() {
 	iface.RegisterRPCContextTuple("TLMessagesSetInlineGameScore", "/tg.RPCGames/messages.setInlineGameScore", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLMessagesGetGameHighScores", "/tg.RPCGames/messages.getGameHighScores", func() interface{} { return new(MessagesHighScores) })
 	iface.RegisterRPCContextTuple("TLMessagesGetInlineGameHighScores", "/tg.RPCGames/messages.getInlineGameHighScores", func() interface{} { return new(MessagesHighScores) })
+	iface.RegisterRPCContextTuple("TLMessagesGetEmojiGameInfo", "/tg.RPCGames/messages.getEmojiGameInfo", func() interface{} { return new(MessagesEmojiGameInfo) })
 
 	// RPCPolls
 	iface.RegisterRPCContextTuple("TLMessagesSendVote", "/tg.RPCPolls/messages.sendVote", func() interface{} { return new(Updates) })
@@ -847,6 +857,12 @@ func init() {
 	iface.RegisterRPCContextTuple("TLPaymentsUpdateStarGiftPrice", "/tg.RPCGifts/payments.updateStarGiftPrice", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLPaymentsGetUniqueStarGiftValueInfo", "/tg.RPCGifts/payments.getUniqueStarGiftValueInfo", func() interface{} { return new(PaymentsUniqueStarGiftValueInfo) })
 	iface.RegisterRPCContextTuple("TLPaymentsCheckCanSendGift", "/tg.RPCGifts/payments.checkCanSendGift", func() interface{} { return new(PaymentsCheckCanSendGiftResult) })
+	iface.RegisterRPCContextTuple("TLPaymentsGetStarGiftAuctionState", "/tg.RPCGifts/payments.getStarGiftAuctionState", func() interface{} { return new(PaymentsStarGiftAuctionState) })
+	iface.RegisterRPCContextTuple("TLPaymentsGetStarGiftAuctionAcquiredGifts", "/tg.RPCGifts/payments.getStarGiftAuctionAcquiredGifts", func() interface{} { return new(PaymentsStarGiftAuctionAcquiredGifts) })
+	iface.RegisterRPCContextTuple("TLPaymentsGetStarGiftActiveAuctions", "/tg.RPCGifts/payments.getStarGiftActiveAuctions", func() interface{} { return new(PaymentsStarGiftActiveAuctions) })
+	iface.RegisterRPCContextTuple("TLPaymentsResolveStarGiftOffer", "/tg.RPCGifts/payments.resolveStarGiftOffer", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPaymentsSendStarGiftOffer", "/tg.RPCGifts/payments.sendStarGiftOffer", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPaymentsGetStarGiftUpgradeAttributes", "/tg.RPCGifts/payments.getStarGiftUpgradeAttributes", func() interface{} { return new(PaymentsStarGiftUpgradeAttributes) })
 
 	// RPCGiftCollections
 	iface.RegisterRPCContextTuple("TLPaymentsCreateStarGiftCollection", "/tg.RPCGiftCollections/payments.createStarGiftCollection", func() interface{} { return new(StarGiftCollection) })
@@ -877,16 +893,20 @@ func init() {
 	iface.RegisterRPCContextTuple("TLPhoneLeaveGroupCallPresentation", "/tg.RPCGroupCalls/phone.leaveGroupCallPresentation", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallStreamChannels", "/tg.RPCGroupCalls/phone.getGroupCallStreamChannels", func() interface{} { return new(PhoneGroupCallStreamChannels) })
 	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallStreamRtmpUrl", "/tg.RPCGroupCalls/phone.getGroupCallStreamRtmpUrl", func() interface{} { return new(PhoneGroupCallStreamRtmpUrl) })
-	iface.RegisterRPCContextTuple("TLPhoneSendGroupCallMessage", "/tg.RPCGroupCalls/phone.sendGroupCallMessage", func() interface{} { return new(Bool) })
+	iface.RegisterRPCContextTuple("TLPhoneSendGroupCallMessage", "/tg.RPCGroupCalls/phone.sendGroupCallMessage", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneDeleteGroupCallMessages", "/tg.RPCGroupCalls/phone.deleteGroupCallMessages", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneDeleteGroupCallParticipantMessages", "/tg.RPCGroupCalls/phone.deleteGroupCallParticipantMessages", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallStars", "/tg.RPCGroupCalls/phone.getGroupCallStars", func() interface{} { return new(PhoneGroupCallStars) })
+	iface.RegisterRPCContextTuple("TLPhoneSaveDefaultSendAs", "/tg.RPCGroupCalls/phone.saveDefaultSendAs", func() interface{} { return new(Bool) })
 
-	// RPCE2EConferenceCalls
-	iface.RegisterRPCContextTuple("TLPhoneCreateConferenceCall", "/tg.RPCE2EConferenceCalls/phone.createConferenceCall", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLPhoneDeleteConferenceCallParticipants", "/tg.RPCE2EConferenceCalls/phone.deleteConferenceCallParticipants", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLPhoneSendConferenceCallBroadcast", "/tg.RPCE2EConferenceCalls/phone.sendConferenceCallBroadcast", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLPhoneInviteConferenceCallParticipant", "/tg.RPCE2EConferenceCalls/phone.inviteConferenceCallParticipant", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLPhoneDeclineConferenceCallInvite", "/tg.RPCE2EConferenceCalls/phone.declineConferenceCallInvite", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallChainBlocks", "/tg.RPCE2EConferenceCalls/phone.getGroupCallChainBlocks", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLPhoneSendGroupCallEncryptedMessage", "/tg.RPCE2EConferenceCalls/phone.sendGroupCallEncryptedMessage", func() interface{} { return new(Bool) })
+	// RPCConferenceCalls
+	iface.RegisterRPCContextTuple("TLPhoneCreateConferenceCall", "/tg.RPCConferenceCalls/phone.createConferenceCall", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneDeleteConferenceCallParticipants", "/tg.RPCConferenceCalls/phone.deleteConferenceCallParticipants", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneSendConferenceCallBroadcast", "/tg.RPCConferenceCalls/phone.sendConferenceCallBroadcast", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneInviteConferenceCallParticipant", "/tg.RPCConferenceCalls/phone.inviteConferenceCallParticipant", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneDeclineConferenceCallInvite", "/tg.RPCConferenceCalls/phone.declineConferenceCallInvite", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneGetGroupCallChainBlocks", "/tg.RPCConferenceCalls/phone.getGroupCallChainBlocks", func() interface{} { return new(Updates) })
+	iface.RegisterRPCContextTuple("TLPhoneSendGroupCallEncryptedMessage", "/tg.RPCConferenceCalls/phone.sendGroupCallEncryptedMessage", func() interface{} { return new(Bool) })
 
 	// RPCLangpack
 	iface.RegisterRPCContextTuple("TLLangpackGetLangPack", "/tg.RPCLangpack/langpack.getLangPack", func() interface{} { return new(LangPackDifference) })
@@ -925,7 +945,7 @@ func init() {
 	iface.RegisterRPCContextTuple("TLStoriesSendReaction", "/tg.RPCStories/stories.sendReaction", func() interface{} { return new(Updates) })
 	iface.RegisterRPCContextTuple("TLStoriesGetPeerStories", "/tg.RPCStories/stories.getPeerStories", func() interface{} { return new(StoriesPeerStories) })
 	iface.RegisterRPCContextTuple("TLStoriesGetAllReadPeerStories", "/tg.RPCStories/stories.getAllReadPeerStories", func() interface{} { return new(Updates) })
-	iface.RegisterRPCContextTuple("TLStoriesGetPeerMaxIDs", "/tg.RPCStories/stories.getPeerMaxIDs", func() interface{} { return new(VectorInt) })
+	iface.RegisterRPCContextTuple("TLStoriesGetPeerMaxIDs", "/tg.RPCStories/stories.getPeerMaxIDs", func() interface{} { return new(VectorRecentStory) })
 	iface.RegisterRPCContextTuple("TLStoriesGetChatsToSend", "/tg.RPCStories/stories.getChatsToSend", func() interface{} { return new(MessagesChats) })
 	iface.RegisterRPCContextTuple("TLStoriesTogglePeerStoriesHidden", "/tg.RPCStories/stories.togglePeerStoriesHidden", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLStoriesGetStoryReactionsList", "/tg.RPCStories/stories.getStoryReactionsList", func() interface{} { return new(StoriesStoryReactionsList) })
@@ -937,6 +957,7 @@ func init() {
 	iface.RegisterRPCContextTuple("TLStoriesDeleteAlbum", "/tg.RPCStories/stories.deleteAlbum", func() interface{} { return new(Bool) })
 	iface.RegisterRPCContextTuple("TLStoriesGetAlbums", "/tg.RPCStories/stories.getAlbums", func() interface{} { return new(StoriesAlbums) })
 	iface.RegisterRPCContextTuple("TLStoriesGetAlbumStories", "/tg.RPCStories/stories.getAlbumStories", func() interface{} { return new(StoriesStories) })
+	iface.RegisterRPCContextTuple("TLStoriesStartLive", "/tg.RPCStories/stories.startLive", func() interface{} { return new(Updates) })
 
 	// RPCSmsjobs
 	iface.RegisterRPCContextTuple("TLSmsjobsIsEligibleToJoin", "/tg.RPCSmsjobs/smsjobs.isEligibleToJoin", func() interface{} { return new(SmsjobsEligibilityToJoin) })
