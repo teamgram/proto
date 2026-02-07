@@ -2004,10 +2004,11 @@ message TL_messages_requestUrlAuth {
 message TL_messages_acceptUrlAuth {
     TLConstructor  constructor = 1;
     bool write_allowed = 3;
-    InputPeer peer = 4;
-    google.protobuf.Int32Value msg_id = 5;
-    google.protobuf.Int32Value button_id = 6;
-    google.protobuf.StringValue url = 7;
+    bool share_phone_number = 4;
+    InputPeer peer = 5;
+    google.protobuf.Int32Value msg_id = 6;
+    google.protobuf.Int32Value button_id = 7;
+    google.protobuf.StringValue url = 8;
 }
 
 message TL_messages_hidePeerSettingsBar {
@@ -3552,6 +3553,11 @@ message TL_channels_setMainProfileTab {
     ProfileTab tab = 4;
 }
 
+message TL_channels_getFutureCreatorAfterLeave {
+    TLConstructor  constructor = 1;
+    InputChannel channel = 3;
+}
+
 message TL_bots_sendCustomRequest {
     TLConstructor  constructor = 1;
     string custom_method = 3;
@@ -4068,11 +4074,12 @@ message TL_payments_getResaleStarGifts {
     TLConstructor  constructor = 1;
     bool sort_by_price = 3;
     bool sort_by_num = 4;
-    google.protobuf.Int64Value attributes_hash = 5;
-    int64 gift_id = 6;
-    repeated StarGiftAttributeId attributes = 7;
-    string offset = 8;
-    int32 limit = 9;
+    bool for_craft = 5;
+    google.protobuf.Int64Value attributes_hash = 6;
+    int64 gift_id = 7;
+    repeated StarGiftAttributeId attributes = 8;
+    string offset = 9;
+    int32 limit = 10;
 }
 
 message TL_payments_updateStarGiftPrice {
@@ -4162,6 +4169,18 @@ message TL_payments_sendStarGiftOffer {
 message TL_payments_getStarGiftUpgradeAttributes {
     TLConstructor  constructor = 1;
     int64 gift_id = 3;
+}
+
+message TL_payments_getCraftStarGifts {
+    TLConstructor  constructor = 1;
+    int64 gift_id = 3;
+    string offset = 4;
+    int32 limit = 5;
+}
+
+message TL_payments_craftStarGift {
+    TLConstructor  constructor = 1;
+    repeated InputSavedStarGift stargift = 3;
 }
 
 message TL_stickers_createStickerSet {
@@ -5761,6 +5780,7 @@ service RPCChannels {
     rpc channels_getInactiveChannels(TL_channels_getInactiveChannels) returns (messages_InactiveChats) {}
     rpc channels_deleteParticipantHistory(TL_channels_deleteParticipantHistory) returns (messages_AffectedHistory) {}
     rpc channels_toggleParticipantsHidden(TL_channels_toggleParticipantsHidden) returns (Updates) {}
+    rpc channels_getFutureCreatorAfterLeave(TL_channels_getFutureCreatorAfterLeave) returns (User) {}
     rpc channels_inviteToChannel199F3A6C(TL_channels_inviteToChannel199F3A6C) returns (Updates) {}
     rpc channels_deleteHistoryAF369D42(TL_channels_deleteHistoryAF369D42) returns (Bool) {}
 }
@@ -6053,6 +6073,8 @@ service RPCGifts {
     rpc payments_resolveStarGiftOffer(TL_payments_resolveStarGiftOffer) returns (Updates) {}
     rpc payments_sendStarGiftOffer(TL_payments_sendStarGiftOffer) returns (Updates) {}
     rpc payments_getStarGiftUpgradeAttributes(TL_payments_getStarGiftUpgradeAttributes) returns (payments_StarGiftUpgradeAttributes) {}
+    rpc payments_getCraftStarGifts(TL_payments_getCraftStarGifts) returns (payments_SavedStarGifts) {}
+    rpc payments_craftStarGift(TL_payments_craftStarGift) returns (Updates) {}
     rpc payments_getUserStarGifts(TL_payments_getUserStarGifts) returns (payments_UserStarGifts) {}
     rpc payments_getUserStarGift(TL_payments_getUserStarGift) returns (payments_UserStarGifts) {}
 }

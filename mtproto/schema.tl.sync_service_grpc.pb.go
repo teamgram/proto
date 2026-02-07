@@ -5496,40 +5496,41 @@ var RPCChannelRecommendations_ServiceDesc = grpc.ServiceDesc{
 }
 
 const (
-	RPCChannels_ChannelsReadHistory_FullMethodName              = "/mtproto.RPCChannels/channels_readHistory"
-	RPCChannels_ChannelsDeleteMessages_FullMethodName           = "/mtproto.RPCChannels/channels_deleteMessages"
-	RPCChannels_ChannelsGetMessages_FullMethodName              = "/mtproto.RPCChannels/channels_getMessages"
-	RPCChannels_ChannelsGetParticipants_FullMethodName          = "/mtproto.RPCChannels/channels_getParticipants"
-	RPCChannels_ChannelsGetParticipant_FullMethodName           = "/mtproto.RPCChannels/channels_getParticipant"
-	RPCChannels_ChannelsGetChannels_FullMethodName              = "/mtproto.RPCChannels/channels_getChannels"
-	RPCChannels_ChannelsGetFullChannel_FullMethodName           = "/mtproto.RPCChannels/channels_getFullChannel"
-	RPCChannels_ChannelsCreateChannel_FullMethodName            = "/mtproto.RPCChannels/channels_createChannel"
-	RPCChannels_ChannelsEditAdmin_FullMethodName                = "/mtproto.RPCChannels/channels_editAdmin"
-	RPCChannels_ChannelsEditTitle_FullMethodName                = "/mtproto.RPCChannels/channels_editTitle"
-	RPCChannels_ChannelsEditPhoto_FullMethodName                = "/mtproto.RPCChannels/channels_editPhoto"
-	RPCChannels_ChannelsJoinChannel_FullMethodName              = "/mtproto.RPCChannels/channels_joinChannel"
-	RPCChannels_ChannelsLeaveChannel_FullMethodName             = "/mtproto.RPCChannels/channels_leaveChannel"
-	RPCChannels_ChannelsInviteToChannelC9E33D54_FullMethodName  = "/mtproto.RPCChannels/channels_inviteToChannelC9E33D54"
-	RPCChannels_ChannelsDeleteChannel_FullMethodName            = "/mtproto.RPCChannels/channels_deleteChannel"
-	RPCChannels_ChannelsExportMessageLink_FullMethodName        = "/mtproto.RPCChannels/channels_exportMessageLink"
-	RPCChannels_ChannelsToggleSignatures_FullMethodName         = "/mtproto.RPCChannels/channels_toggleSignatures"
-	RPCChannels_ChannelsGetAdminedPublicChannels_FullMethodName = "/mtproto.RPCChannels/channels_getAdminedPublicChannels"
-	RPCChannels_ChannelsEditBanned_FullMethodName               = "/mtproto.RPCChannels/channels_editBanned"
-	RPCChannels_ChannelsGetAdminLog_FullMethodName              = "/mtproto.RPCChannels/channels_getAdminLog"
-	RPCChannels_ChannelsSetStickers_FullMethodName              = "/mtproto.RPCChannels/channels_setStickers"
-	RPCChannels_ChannelsReadMessageContents_FullMethodName      = "/mtproto.RPCChannels/channels_readMessageContents"
-	RPCChannels_ChannelsDeleteHistory9BAA9647_FullMethodName    = "/mtproto.RPCChannels/channels_deleteHistory9BAA9647"
-	RPCChannels_ChannelsTogglePreHistoryHidden_FullMethodName   = "/mtproto.RPCChannels/channels_togglePreHistoryHidden"
-	RPCChannels_ChannelsGetGroupsForDiscussion_FullMethodName   = "/mtproto.RPCChannels/channels_getGroupsForDiscussion"
-	RPCChannels_ChannelsSetDiscussionGroup_FullMethodName       = "/mtproto.RPCChannels/channels_setDiscussionGroup"
-	RPCChannels_ChannelsEditCreator_FullMethodName              = "/mtproto.RPCChannels/channels_editCreator"
-	RPCChannels_ChannelsEditLocation_FullMethodName             = "/mtproto.RPCChannels/channels_editLocation"
-	RPCChannels_ChannelsToggleSlowMode_FullMethodName           = "/mtproto.RPCChannels/channels_toggleSlowMode"
-	RPCChannels_ChannelsGetInactiveChannels_FullMethodName      = "/mtproto.RPCChannels/channels_getInactiveChannels"
-	RPCChannels_ChannelsDeleteParticipantHistory_FullMethodName = "/mtproto.RPCChannels/channels_deleteParticipantHistory"
-	RPCChannels_ChannelsToggleParticipantsHidden_FullMethodName = "/mtproto.RPCChannels/channels_toggleParticipantsHidden"
-	RPCChannels_ChannelsInviteToChannel199F3A6C_FullMethodName  = "/mtproto.RPCChannels/channels_inviteToChannel199F3A6C"
-	RPCChannels_ChannelsDeleteHistoryAF369D42_FullMethodName    = "/mtproto.RPCChannels/channels_deleteHistoryAF369D42"
+	RPCChannels_ChannelsReadHistory_FullMethodName                = "/mtproto.RPCChannels/channels_readHistory"
+	RPCChannels_ChannelsDeleteMessages_FullMethodName             = "/mtproto.RPCChannels/channels_deleteMessages"
+	RPCChannels_ChannelsGetMessages_FullMethodName                = "/mtproto.RPCChannels/channels_getMessages"
+	RPCChannels_ChannelsGetParticipants_FullMethodName            = "/mtproto.RPCChannels/channels_getParticipants"
+	RPCChannels_ChannelsGetParticipant_FullMethodName             = "/mtproto.RPCChannels/channels_getParticipant"
+	RPCChannels_ChannelsGetChannels_FullMethodName                = "/mtproto.RPCChannels/channels_getChannels"
+	RPCChannels_ChannelsGetFullChannel_FullMethodName             = "/mtproto.RPCChannels/channels_getFullChannel"
+	RPCChannels_ChannelsCreateChannel_FullMethodName              = "/mtproto.RPCChannels/channels_createChannel"
+	RPCChannels_ChannelsEditAdmin_FullMethodName                  = "/mtproto.RPCChannels/channels_editAdmin"
+	RPCChannels_ChannelsEditTitle_FullMethodName                  = "/mtproto.RPCChannels/channels_editTitle"
+	RPCChannels_ChannelsEditPhoto_FullMethodName                  = "/mtproto.RPCChannels/channels_editPhoto"
+	RPCChannels_ChannelsJoinChannel_FullMethodName                = "/mtproto.RPCChannels/channels_joinChannel"
+	RPCChannels_ChannelsLeaveChannel_FullMethodName               = "/mtproto.RPCChannels/channels_leaveChannel"
+	RPCChannels_ChannelsInviteToChannelC9E33D54_FullMethodName    = "/mtproto.RPCChannels/channels_inviteToChannelC9E33D54"
+	RPCChannels_ChannelsDeleteChannel_FullMethodName              = "/mtproto.RPCChannels/channels_deleteChannel"
+	RPCChannels_ChannelsExportMessageLink_FullMethodName          = "/mtproto.RPCChannels/channels_exportMessageLink"
+	RPCChannels_ChannelsToggleSignatures_FullMethodName           = "/mtproto.RPCChannels/channels_toggleSignatures"
+	RPCChannels_ChannelsGetAdminedPublicChannels_FullMethodName   = "/mtproto.RPCChannels/channels_getAdminedPublicChannels"
+	RPCChannels_ChannelsEditBanned_FullMethodName                 = "/mtproto.RPCChannels/channels_editBanned"
+	RPCChannels_ChannelsGetAdminLog_FullMethodName                = "/mtproto.RPCChannels/channels_getAdminLog"
+	RPCChannels_ChannelsSetStickers_FullMethodName                = "/mtproto.RPCChannels/channels_setStickers"
+	RPCChannels_ChannelsReadMessageContents_FullMethodName        = "/mtproto.RPCChannels/channels_readMessageContents"
+	RPCChannels_ChannelsDeleteHistory9BAA9647_FullMethodName      = "/mtproto.RPCChannels/channels_deleteHistory9BAA9647"
+	RPCChannels_ChannelsTogglePreHistoryHidden_FullMethodName     = "/mtproto.RPCChannels/channels_togglePreHistoryHidden"
+	RPCChannels_ChannelsGetGroupsForDiscussion_FullMethodName     = "/mtproto.RPCChannels/channels_getGroupsForDiscussion"
+	RPCChannels_ChannelsSetDiscussionGroup_FullMethodName         = "/mtproto.RPCChannels/channels_setDiscussionGroup"
+	RPCChannels_ChannelsEditCreator_FullMethodName                = "/mtproto.RPCChannels/channels_editCreator"
+	RPCChannels_ChannelsEditLocation_FullMethodName               = "/mtproto.RPCChannels/channels_editLocation"
+	RPCChannels_ChannelsToggleSlowMode_FullMethodName             = "/mtproto.RPCChannels/channels_toggleSlowMode"
+	RPCChannels_ChannelsGetInactiveChannels_FullMethodName        = "/mtproto.RPCChannels/channels_getInactiveChannels"
+	RPCChannels_ChannelsDeleteParticipantHistory_FullMethodName   = "/mtproto.RPCChannels/channels_deleteParticipantHistory"
+	RPCChannels_ChannelsToggleParticipantsHidden_FullMethodName   = "/mtproto.RPCChannels/channels_toggleParticipantsHidden"
+	RPCChannels_ChannelsGetFutureCreatorAfterLeave_FullMethodName = "/mtproto.RPCChannels/channels_getFutureCreatorAfterLeave"
+	RPCChannels_ChannelsInviteToChannel199F3A6C_FullMethodName    = "/mtproto.RPCChannels/channels_inviteToChannel199F3A6C"
+	RPCChannels_ChannelsDeleteHistoryAF369D42_FullMethodName      = "/mtproto.RPCChannels/channels_deleteHistoryAF369D42"
 )
 
 // RPCChannelsClient is the client API for RPCChannels service.
@@ -5568,6 +5569,7 @@ type RPCChannelsClient interface {
 	ChannelsGetInactiveChannels(ctx context.Context, in *TLChannelsGetInactiveChannels, opts ...grpc.CallOption) (*Messages_InactiveChats, error)
 	ChannelsDeleteParticipantHistory(ctx context.Context, in *TLChannelsDeleteParticipantHistory, opts ...grpc.CallOption) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(ctx context.Context, in *TLChannelsToggleParticipantsHidden, opts ...grpc.CallOption) (*Updates, error)
+	ChannelsGetFutureCreatorAfterLeave(ctx context.Context, in *TLChannelsGetFutureCreatorAfterLeave, opts ...grpc.CallOption) (*User, error)
 	ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(ctx context.Context, in *TLChannelsDeleteHistoryAF369D42, opts ...grpc.CallOption) (*Bool, error)
 }
@@ -5900,6 +5902,16 @@ func (c *rPCChannelsClient) ChannelsToggleParticipantsHidden(ctx context.Context
 	return out, nil
 }
 
+func (c *rPCChannelsClient) ChannelsGetFutureCreatorAfterLeave(ctx context.Context, in *TLChannelsGetFutureCreatorAfterLeave, opts ...grpc.CallOption) (*User, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(User)
+	err := c.cc.Invoke(ctx, RPCChannels_ChannelsGetFutureCreatorAfterLeave_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCChannelsClient) ChannelsInviteToChannel199F3A6C(ctx context.Context, in *TLChannelsInviteToChannel199F3A6C, opts ...grpc.CallOption) (*Updates, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Updates)
@@ -5956,6 +5968,7 @@ type RPCChannelsServer interface {
 	ChannelsGetInactiveChannels(context.Context, *TLChannelsGetInactiveChannels) (*Messages_InactiveChats, error)
 	ChannelsDeleteParticipantHistory(context.Context, *TLChannelsDeleteParticipantHistory) (*Messages_AffectedHistory, error)
 	ChannelsToggleParticipantsHidden(context.Context, *TLChannelsToggleParticipantsHidden) (*Updates, error)
+	ChannelsGetFutureCreatorAfterLeave(context.Context, *TLChannelsGetFutureCreatorAfterLeave) (*User, error)
 	ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error)
 	ChannelsDeleteHistoryAF369D42(context.Context, *TLChannelsDeleteHistoryAF369D42) (*Bool, error)
 }
@@ -6062,6 +6075,9 @@ func (UnimplementedRPCChannelsServer) ChannelsDeleteParticipantHistory(context.C
 }
 func (UnimplementedRPCChannelsServer) ChannelsToggleParticipantsHidden(context.Context, *TLChannelsToggleParticipantsHidden) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsToggleParticipantsHidden not implemented")
+}
+func (UnimplementedRPCChannelsServer) ChannelsGetFutureCreatorAfterLeave(context.Context, *TLChannelsGetFutureCreatorAfterLeave) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ChannelsGetFutureCreatorAfterLeave not implemented")
 }
 func (UnimplementedRPCChannelsServer) ChannelsInviteToChannel199F3A6C(context.Context, *TLChannelsInviteToChannel199F3A6C) (*Updates, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChannelsInviteToChannel199F3A6C not implemented")
@@ -6665,6 +6681,24 @@ func _RPCChannels_ChannelsToggleParticipantsHidden_Handler(srv interface{}, ctx 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCChannels_ChannelsGetFutureCreatorAfterLeave_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLChannelsGetFutureCreatorAfterLeave)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCChannelsServer).ChannelsGetFutureCreatorAfterLeave(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCChannels_ChannelsGetFutureCreatorAfterLeave_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCChannelsServer).ChannelsGetFutureCreatorAfterLeave(ctx, req.(*TLChannelsGetFutureCreatorAfterLeave))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCChannels_ChannelsInviteToChannel199F3A6C_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLChannelsInviteToChannel199F3A6C)
 	if err := dec(in); err != nil {
@@ -6835,6 +6869,10 @@ var RPCChannels_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "channels_toggleParticipantsHidden",
 			Handler:    _RPCChannels_ChannelsToggleParticipantsHidden_Handler,
+		},
+		{
+			MethodName: "channels_getFutureCreatorAfterLeave",
+			Handler:    _RPCChannels_ChannelsGetFutureCreatorAfterLeave_Handler,
 		},
 		{
 			MethodName: "channels_inviteToChannel199F3A6C",
@@ -15694,6 +15732,8 @@ const (
 	RPCGifts_PaymentsResolveStarGiftOffer_FullMethodName            = "/mtproto.RPCGifts/payments_resolveStarGiftOffer"
 	RPCGifts_PaymentsSendStarGiftOffer_FullMethodName               = "/mtproto.RPCGifts/payments_sendStarGiftOffer"
 	RPCGifts_PaymentsGetStarGiftUpgradeAttributes_FullMethodName    = "/mtproto.RPCGifts/payments_getStarGiftUpgradeAttributes"
+	RPCGifts_PaymentsGetCraftStarGifts_FullMethodName               = "/mtproto.RPCGifts/payments_getCraftStarGifts"
+	RPCGifts_PaymentsCraftStarGift_FullMethodName                   = "/mtproto.RPCGifts/payments_craftStarGift"
 	RPCGifts_PaymentsGetUserStarGifts_FullMethodName                = "/mtproto.RPCGifts/payments_getUserStarGifts"
 	RPCGifts_PaymentsGetUserStarGift_FullMethodName                 = "/mtproto.RPCGifts/payments_getUserStarGift"
 )
@@ -15724,6 +15764,8 @@ type RPCGiftsClient interface {
 	PaymentsResolveStarGiftOffer(ctx context.Context, in *TLPaymentsResolveStarGiftOffer, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsSendStarGiftOffer(ctx context.Context, in *TLPaymentsSendStarGiftOffer, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsGetStarGiftUpgradeAttributes(ctx context.Context, in *TLPaymentsGetStarGiftUpgradeAttributes, opts ...grpc.CallOption) (*Payments_StarGiftUpgradeAttributes, error)
+	PaymentsGetCraftStarGifts(ctx context.Context, in *TLPaymentsGetCraftStarGifts, opts ...grpc.CallOption) (*Payments_SavedStarGifts, error)
+	PaymentsCraftStarGift(ctx context.Context, in *TLPaymentsCraftStarGift, opts ...grpc.CallOption) (*Updates, error)
 	PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(ctx context.Context, in *TLPaymentsGetUserStarGift, opts ...grpc.CallOption) (*Payments_UserStarGifts, error)
 }
@@ -15956,6 +15998,26 @@ func (c *rPCGiftsClient) PaymentsGetStarGiftUpgradeAttributes(ctx context.Contex
 	return out, nil
 }
 
+func (c *rPCGiftsClient) PaymentsGetCraftStarGifts(ctx context.Context, in *TLPaymentsGetCraftStarGifts, opts ...grpc.CallOption) (*Payments_SavedStarGifts, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Payments_SavedStarGifts)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsGetCraftStarGifts_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *rPCGiftsClient) PaymentsCraftStarGift(ctx context.Context, in *TLPaymentsCraftStarGift, opts ...grpc.CallOption) (*Updates, error) {
+	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
+	out := new(Updates)
+	err := c.cc.Invoke(ctx, RPCGifts_PaymentsCraftStarGift_FullMethodName, in, out, cOpts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *rPCGiftsClient) PaymentsGetUserStarGifts(ctx context.Context, in *TLPaymentsGetUserStarGifts, opts ...grpc.CallOption) (*Payments_UserStarGifts, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
 	out := new(Payments_UserStarGifts)
@@ -16002,6 +16064,8 @@ type RPCGiftsServer interface {
 	PaymentsResolveStarGiftOffer(context.Context, *TLPaymentsResolveStarGiftOffer) (*Updates, error)
 	PaymentsSendStarGiftOffer(context.Context, *TLPaymentsSendStarGiftOffer) (*Updates, error)
 	PaymentsGetStarGiftUpgradeAttributes(context.Context, *TLPaymentsGetStarGiftUpgradeAttributes) (*Payments_StarGiftUpgradeAttributes, error)
+	PaymentsGetCraftStarGifts(context.Context, *TLPaymentsGetCraftStarGifts) (*Payments_SavedStarGifts, error)
+	PaymentsCraftStarGift(context.Context, *TLPaymentsCraftStarGift) (*Updates, error)
 	PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error)
 	PaymentsGetUserStarGift(context.Context, *TLPaymentsGetUserStarGift) (*Payments_UserStarGifts, error)
 }
@@ -16078,6 +16142,12 @@ func (UnimplementedRPCGiftsServer) PaymentsSendStarGiftOffer(context.Context, *T
 }
 func (UnimplementedRPCGiftsServer) PaymentsGetStarGiftUpgradeAttributes(context.Context, *TLPaymentsGetStarGiftUpgradeAttributes) (*Payments_StarGiftUpgradeAttributes, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetStarGiftUpgradeAttributes not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsGetCraftStarGifts(context.Context, *TLPaymentsGetCraftStarGifts) (*Payments_SavedStarGifts, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetCraftStarGifts not implemented")
+}
+func (UnimplementedRPCGiftsServer) PaymentsCraftStarGift(context.Context, *TLPaymentsCraftStarGift) (*Updates, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method PaymentsCraftStarGift not implemented")
 }
 func (UnimplementedRPCGiftsServer) PaymentsGetUserStarGifts(context.Context, *TLPaymentsGetUserStarGifts) (*Payments_UserStarGifts, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method PaymentsGetUserStarGifts not implemented")
@@ -16501,6 +16571,42 @@ func _RPCGifts_PaymentsGetStarGiftUpgradeAttributes_Handler(srv interface{}, ctx
 	return interceptor(ctx, in, info, handler)
 }
 
+func _RPCGifts_PaymentsGetCraftStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsGetCraftStarGifts)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsGetCraftStarGifts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsGetCraftStarGifts_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsGetCraftStarGifts(ctx, req.(*TLPaymentsGetCraftStarGifts))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _RPCGifts_PaymentsCraftStarGift_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TLPaymentsCraftStarGift)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(RPCGiftsServer).PaymentsCraftStarGift(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: RPCGifts_PaymentsCraftStarGift_FullMethodName,
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(RPCGiftsServer).PaymentsCraftStarGift(ctx, req.(*TLPaymentsCraftStarGift))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _RPCGifts_PaymentsGetUserStarGifts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(TLPaymentsGetUserStarGifts)
 	if err := dec(in); err != nil {
@@ -16631,6 +16737,14 @@ var RPCGifts_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "payments_getStarGiftUpgradeAttributes",
 			Handler:    _RPCGifts_PaymentsGetStarGiftUpgradeAttributes_Handler,
+		},
+		{
+			MethodName: "payments_getCraftStarGifts",
+			Handler:    _RPCGifts_PaymentsGetCraftStarGifts_Handler,
+		},
+		{
+			MethodName: "payments_craftStarGift",
+			Handler:    _RPCGifts_PaymentsCraftStarGift_Handler,
 		},
 		{
 			MethodName: "payments_getUserStarGifts",
