@@ -17,276 +17,260 @@ import "schema.tl.crc32.proto";
 
 option go_package = "github.com/teamgram/proto/mtproto";
 
-
 // AccessPointRule <--
 //  + TL_accessPointRule
 //
 message AccessPointRule {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    string phone_prefix_rules = 3;
-    int32 dc_id = 4;
-    repeated IpPort ips = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string phone_prefix_rules = 3;
+  int32 dc_id = 4;
+  repeated IpPort ips = 5;
 }
 
 // TL_accessPointRule
 message TL_accessPointRule {
-    AccessPointRule data2 = 1;
+  AccessPointRule data2 = 1;
 }
-
 
 // BadMsgNotification <--
 //  + TL_bad_msg_notification
 //  + TL_bad_server_salt
 //
 message BadMsgNotification {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 bad_msg_id = 3;
-    int32 bad_msg_seqno = 4;
-    int32 error_code = 5;
-    int64 new_server_salt = 6;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 bad_msg_id = 3;
+  int32 bad_msg_seqno = 4;
+  int32 error_code = 5;
+  int64 new_server_salt = 6;
 }
 
 // TL_bad_msg_notification
 message TL_bad_msg_notification {
-    BadMsgNotification data2 = 1;
+  BadMsgNotification data2 = 1;
 }
 
 // TL_bad_server_salt
 message TL_bad_server_salt {
-    BadMsgNotification data2 = 1;
+  BadMsgNotification data2 = 1;
 }
-
 
 // DestroySessionRes <--
 //  + TL_destroy_session_ok
 //  + TL_destroy_session_none
 //
 message DestroySessionRes {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 session_id = 3;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 session_id = 3;
 }
 
 // TL_destroy_session_ok
 message TL_destroy_session_ok {
-    DestroySessionRes data2 = 1;
+  DestroySessionRes data2 = 1;
 }
 
 // TL_destroy_session_none
 message TL_destroy_session_none {
-    DestroySessionRes data2 = 1;
+  DestroySessionRes data2 = 1;
 }
-
 
 // FutureSalt <--
 //  + TL_future_salt
 //
 message FutureSalt {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int32 valid_since = 3;
-    int32 valid_until = 4;
-    int64 salt = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int32 valid_since = 3;
+  int32 valid_until = 4;
+  int64 salt = 5;
 }
 
 // TL_future_salt
 message TL_future_salt {
-    FutureSalt data2 = 1;
+  FutureSalt data2 = 1;
 }
-
 
 // FutureSalts <--
 //  + TL_future_salts
 //
 message FutureSalts {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 req_msg_id = 3;
-    int32 now = 4;
-    repeated TL_future_salt salts = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 req_msg_id = 3;
+  int32 now = 4;
+  repeated TL_future_salt salts = 5;
 }
 
 // TL_future_salts
 message TL_future_salts {
-    FutureSalts data2 = 1;
+  FutureSalts data2 = 1;
 }
-
 
 // HttpWait <--
 //  + TL_http_wait
 //
 message HttpWait {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int32 max_delay = 3;
-    int32 wait_after = 4;
-    int32 max_wait = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int32 max_delay = 3;
+  int32 wait_after = 4;
+  int32 max_wait = 5;
 }
 
 // TL_http_wait
 message TL_http_wait {
-    HttpWait data2 = 1;
+  HttpWait data2 = 1;
 }
-
 
 // IpPort <--
 //  + TL_ipPort
 //  + TL_ipPortSecret
 //
 message IpPort {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int32 ipv4 = 3;
-    int32 port = 4;
-    bytes secret = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int32 ipv4 = 3;
+  int32 port = 4;
+  bytes secret = 5;
 }
 
 // TL_ipPort
 message TL_ipPort {
-    IpPort data2 = 1;
+  IpPort data2 = 1;
 }
 
 // TL_ipPortSecret
 message TL_ipPortSecret {
-    IpPort data2 = 1;
+  IpPort data2 = 1;
 }
-
 
 // MsgDetailedInfo <--
 //  + TL_msg_detailed_info
 //  + TL_msg_new_detailed_info
 //
 message MsgDetailedInfo {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 msg_id = 3;
-    int64 answer_msg_id = 4;
-    int32 bytes = 5;
-    int32 status = 6;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 msg_id = 3;
+  int64 answer_msg_id = 4;
+  int32 bytes = 5;
+  int32 status = 6;
 }
 
 // TL_msg_detailed_info
 message TL_msg_detailed_info {
-    MsgDetailedInfo data2 = 1;
+  MsgDetailedInfo data2 = 1;
 }
 
 // TL_msg_new_detailed_info
 message TL_msg_new_detailed_info {
-    MsgDetailedInfo data2 = 1;
+  MsgDetailedInfo data2 = 1;
 }
-
 
 // MsgResendReq <--
 //  + TL_msg_resend_req
 //
 message MsgResendReq {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    repeated int64 msg_ids = 3;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated int64 msg_ids = 3;
 }
 
 // TL_msg_resend_req
 message TL_msg_resend_req {
-    MsgResendReq data2 = 1;
+  MsgResendReq data2 = 1;
 }
-
 
 // MsgsAck <--
 //  + TL_msgs_ack
 //
 message MsgsAck {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    repeated int64 msg_ids = 3;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated int64 msg_ids = 3;
 }
 
 // TL_msgs_ack
 message TL_msgs_ack {
-    MsgsAck data2 = 1;
+  MsgsAck data2 = 1;
 }
-
 
 // MsgsAllInfo <--
 //  + TL_msgs_all_info
 //
 message MsgsAllInfo {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    repeated int64 msg_ids = 3;
-    string info = 4;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated int64 msg_ids = 3;
+  string info = 4;
 }
 
 // TL_msgs_all_info
 message TL_msgs_all_info {
-    MsgsAllInfo data2 = 1;
+  MsgsAllInfo data2 = 1;
 }
-
 
 // MsgsStateInfo <--
 //  + TL_msgs_state_info
 //
 message MsgsStateInfo {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 req_msg_id = 3;
-    string info = 4;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 req_msg_id = 3;
+  string info = 4;
 }
 
 // TL_msgs_state_info
 message TL_msgs_state_info {
-    MsgsStateInfo data2 = 1;
+  MsgsStateInfo data2 = 1;
 }
-
 
 // MsgsStateReq <--
 //  + TL_msgs_state_req
 //
 message MsgsStateReq {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    repeated int64 msg_ids = 3;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated int64 msg_ids = 3;
 }
 
 // TL_msgs_state_req
 message TL_msgs_state_req {
-    MsgsStateReq data2 = 1;
+  MsgsStateReq data2 = 1;
 }
-
 
 // NewSession <--
 //  + TL_new_session_created
 //
 message NewSession {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 first_msg_id = 3;
-    int64 unique_id = 4;
-    int64 server_salt = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 first_msg_id = 3;
+  int64 unique_id = 4;
+  int64 server_salt = 5;
 }
 
 // TL_new_session_created
 message TL_new_session_created {
-    NewSession data2 = 1;
+  NewSession data2 = 1;
 }
-
 
 // Pong <--
 //  + TL_pong
 //
 message Pong {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 msg_id = 3;
-    int64 ping_id = 4;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 msg_id = 3;
+  int64 ping_id = 4;
 }
 
 // TL_pong
 message TL_pong {
-    Pong data2 = 1;
+  Pong data2 = 1;
 }
-
 
 // RpcDropAnswer <--
 //  + TL_rpc_answer_unknown
@@ -294,44 +278,42 @@ message TL_pong {
 //  + TL_rpc_answer_dropped
 //
 message RpcDropAnswer {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int64 msg_id = 3;
-    int32 seq_no = 4;
-    int32 bytes = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 msg_id = 3;
+  int32 seq_no = 4;
+  int32 bytes = 5;
 }
 
 // TL_rpc_answer_unknown
 message TL_rpc_answer_unknown {
-    RpcDropAnswer data2 = 1;
+  RpcDropAnswer data2 = 1;
 }
 
 // TL_rpc_answer_dropped_running
 message TL_rpc_answer_dropped_running {
-    RpcDropAnswer data2 = 1;
+  RpcDropAnswer data2 = 1;
 }
 
 // TL_rpc_answer_dropped
 message TL_rpc_answer_dropped {
-    RpcDropAnswer data2 = 1;
+  RpcDropAnswer data2 = 1;
 }
-
 
 // RpcError <--
 //  + TL_rpc_error
 //
 message RpcError {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int32 error_code = 3;
-    string error_message = 4;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int32 error_code = 3;
+  string error_message = 4;
 }
 
 // TL_rpc_error
 message TL_rpc_error {
-    RpcError data2 = 1;
+  RpcError data2 = 1;
 }
-
 
 // TlsBlock <--
 //  + TL_tlsBlockString
@@ -343,79 +325,75 @@ message TL_rpc_error {
 //  + TL_tlsBlockScope
 //
 message TlsBlock {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    string data = 3;
-    int32 length = 4;
-    int32 seed = 5;
-    repeated TlsBlock entries = 6;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string data = 3;
+  int32 length = 4;
+  int32 seed = 5;
+  repeated TlsBlock entries = 6;
 }
 
 // TL_tlsBlockString
 message TL_tlsBlockString {
-    TlsBlock data2 = 1;
+  TlsBlock data2 = 1;
 }
 
 // TL_tlsBlockRandom
 message TL_tlsBlockRandom {
-    TlsBlock data2 = 1;
+  TlsBlock data2 = 1;
 }
 
 // TL_tlsBlockZero
 message TL_tlsBlockZero {
-    TlsBlock data2 = 1;
+  TlsBlock data2 = 1;
 }
 
 // TL_tlsBlockDomain
 message TL_tlsBlockDomain {
-    TlsBlock data2 = 1;
+  TlsBlock data2 = 1;
 }
 
 // TL_tlsBlockGrease
 message TL_tlsBlockGrease {
-    TlsBlock data2 = 1;
+  TlsBlock data2 = 1;
 }
 
 // TL_tlsBlockPublicKey
 message TL_tlsBlockPublicKey {
-    TlsBlock data2 = 1;
+  TlsBlock data2 = 1;
 }
 
 // TL_tlsBlockScope
 message TL_tlsBlockScope {
-    TlsBlock data2 = 1;
+  TlsBlock data2 = 1;
 }
-
 
 // TlsClientHello <--
 //  + TL_tlsClientHello
 //
 message TlsClientHello {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    repeated TlsBlock blocks = 3;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated TlsBlock blocks = 3;
 }
 
 // TL_tlsClientHello
 message TL_tlsClientHello {
-    TlsClientHello data2 = 1;
+  TlsClientHello data2 = 1;
 }
-
 
 // help_ConfigSimple <--
 //  + TL_help_configSimple
 //
 message help_ConfigSimple {
-    string predicate_name = 1;
-    TLConstructor  constructor = 2;
-    int32 date = 3;
-    int32 expires = 4;
-    repeated AccessPointRule rules = 5;
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int32 date = 3;
+  int32 expires = 4;
+  repeated AccessPointRule rules = 5;
 }
 
 // TL_help_configSimple
 message TL_help_configSimple {
-    help_ConfigSimple data2 = 1;
+  help_ConfigSimple data2 = 1;
 }
-
-

@@ -18,42 +18,40 @@ import "schema.tl.crc32.proto";
 
 option go_package = "github.com/teamgram/proto/mtproto";
 
-
 message TL_rpc_drop_answer {
-    TLConstructor  constructor = 1;
-    int64 req_msg_id = 3;
+  TLConstructor constructor = 1;
+  int64 req_msg_id = 3;
 }
 
 message TL_get_future_salts {
-    TLConstructor  constructor = 1;
-    int32 num = 3;
+  TLConstructor constructor = 1;
+  int32 num = 3;
 }
 
 message TL_ping {
-    TLConstructor  constructor = 1;
-    int64 ping_id = 3;
+  TLConstructor constructor = 1;
+  int64 ping_id = 3;
 }
 
 message TL_ping_delay_disconnect {
-    TLConstructor  constructor = 1;
-    int64 ping_id = 3;
-    int32 disconnect_delay = 4;
+  TLConstructor constructor = 1;
+  int64 ping_id = 3;
+  int32 disconnect_delay = 4;
 }
 
 message TL_destroy_session {
-    TLConstructor  constructor = 1;
-    int64 session_id = 3;
+  TLConstructor constructor = 1;
+  int64 session_id = 3;
 }
 
 message TL_test_useError {
-    TLConstructor  constructor = 1;
+  TLConstructor constructor = 1;
 }
 
 message TL_test_useConfigSimple {
-    TLConstructor  constructor = 1;
+  TLConstructor constructor = 1;
 }
 
 message TL_test_parseInputAppEvent {
-    TLConstructor  constructor = 1;
+  TLConstructor constructor = 1;
 }
-
