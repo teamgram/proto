@@ -155,6 +155,22 @@ func (m *DecodeBuf) Bytes(size int) []byte {
 	return x
 }
 
+// BytesNoCopy returns a slice of the underlying buffer without allocation or copy.
+// The returned slice is only valid while the DecodeBuf's buffer is not modified or freed.
+// Use for synchronous processing paths where the data is consumed before the buffer is reused.
+func (m *DecodeBuf) BytesNoCopy(size int) []byte {
+	if m.err != nil {
+		return nil
+	}
+	if m.off+size > m.size {
+		m.err = errDecodeBytes
+		return nil
+	}
+	x := m.buf[m.off : m.off+size]
+	m.off += size
+	return x
+}
+
 // StringBytes
 /*
    public String readString(boolean exception) {
@@ -216,6 +232,48 @@ func (m *DecodeBuf) StringBytes() []byte {
 	}
 	x := make([]byte, size)
 	copy(x, m.buf[m.off:m.off+size])
+	m.off += size
+
+	if m.off+padding > m.size {
+		m.err = errDecodeStringBytes
+		return nil
+	}
+	m.off += padding
+
+	return x
+}
+
+// StringBytesNoCopy returns a slice of the underlying buffer without allocation or copy.
+// The returned slice is only valid while the DecodeBuf's buffer is not modified or freed.
+// Use for synchronous processing paths where the data is consumed before the buffer is reused.
+func (m *DecodeBuf) StringBytesNoCopy() []byte {
+	if m.err != nil {
+		return nil
+	}
+	var size, padding int
+
+	if m.off+1 > m.size {
+		m.err = errDecodeStringBytes
+		return nil
+	}
+	size = int(m.buf[m.off])
+	m.off++
+	padding = (4 - ((size + 1) % 4)) & 3
+	if size == 254 {
+		if m.off+3 > m.size {
+			m.err = errDecodeStringBytes
+			return nil
+		}
+		size = int(m.buf[m.off]) | int(m.buf[m.off+1])<<8 | int(m.buf[m.off+2])<<16
+		m.off += 3
+		padding = (4 - size%4) & 3
+	}
+
+	if m.off+size > m.size {
+		m.err = fmt.Errorf("DecodeStringBytes - Wrong size, (%d, %d, %d)", m.off, size, m.size)
+		return nil
+	}
+	x := m.buf[m.off : m.off+size]
 	m.off += size
 
 	if m.off+padding > m.size {

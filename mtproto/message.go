@@ -20,6 +20,8 @@ package mtproto
 
 import (
 	"bytes"
+	"crypto/sha1"
+	"crypto/sha256"
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
@@ -109,11 +111,11 @@ func (m *UnencryptedMessage) decode(b []byte) error {
 	// m.authKeyId = dbuf.Long()
 	m.MessageId = dbuf.Long()
 
-	// log.Info("messageId:", m.messageId)
-	// mod := m.messageId & 3
-	// if mod != 1 && mod != 3 {
-	// 	return fmt.Errorf("Wrong bits of message_id: %d", mod)
-	// }
+	// MTProto spec: message_id low 2 bits must be 1 or 3 for client messages
+	mod := m.MessageId & 3
+	if mod != 1 && mod != 3 {
+		return fmt.Errorf("wrong bits of message_id: %d", mod)
+	}
 
 	messageLen := dbuf.Int()
 	if messageLen < 4 {
@@ -173,7 +175,7 @@ func (m *EncryptedMessage2) Encode(x *EncodeBuf, authKeyId int64, authKey []byte
 }
 
 func (m *EncryptedMessage2) encode(x *EncodeBuf, authKeyId int64, authKey []byte) error {
-	x2 := NewEncodeBuf(512)
+	x2 := GetEncodeBuf()
 
 	x2.Long(m.Salt)
 	x2.Long(m.SessionId)
@@ -201,6 +203,8 @@ func (m *EncryptedMessage2) encode(x *EncodeBuf, authKeyId int64, authKey []byte
 
 	// encryptedData
 	encryptedData, _ := m.encrypt(authKey, x2.GetBuf(), szObjLen)
+	PutEncodeBuf(x2)
+
 	x.Long(authKeyId)
 	x.Bytes(m.msgKey)
 	x.Bytes(encryptedData)
@@ -229,10 +233,11 @@ func (m *EncryptedMessage2) decode(authKey []byte, b []byte) error {
 	m.SessionId = dbuf.Long() // session_id
 	m.MessageId = dbuf.Long()
 
-	// mod := m.messageId & 3
-	// if mod != 1 && mod != 3 {
-	//	return fmt.Errorf("Wrong bits of message_id: %d", mod)
-	// }
+	// MTProto spec: message_id low 2 bits must be 1 or 3 for client messages
+	mod := m.MessageId & 3
+	if mod != 1 && mod != 3 {
+		return fmt.Errorf("wrong bits of message_id: %d", mod)
+	}
 
 	m.SeqNo = dbuf.Int()
 	messageLen := dbuf.Int()
@@ -275,15 +280,16 @@ func (m *EncryptedMessage2) decrypt(msgKey, authKey, data []byte) ([]byte, error
 		return nil, err
 	}
 
-	messageKey := make([]byte, 96)
+	var messageKey [96]byte
 	switch MTPROTO_VERSION {
 	case 2:
-		tmpData := make([]byte, 0, 32+dataLen)
-		tmpData = append(tmpData, authKey[88:88+32]...)
-		tmpData = append(tmpData, x[:dataLen]...)
-		copy(messageKey, crypto.Sha256Digest(tmpData))
+		h := sha256.New()
+		h.Write(authKey[88 : 88+32])
+		h.Write(x[:dataLen])
+		h.Sum(messageKey[:0])
 	default:
-		copy(messageKey[4:], crypto.Sha1Digest(x[:32+messageLen]))
+		sha1Dig := sha1.Sum(x[:32+messageLen])
+		copy(messageKey[4:], sha1Dig[:])
 	}
 
 	if !bytes.Equal(messageKey[8:8+16], msgKey[:16]) {
@@ -303,15 +309,16 @@ func (m *EncryptedMessage2) decrypt(msgKey, authKey, data []byte) ([]byte, error
 }
 
 func (m *EncryptedMessage2) encrypt(authKey []byte, data []byte, messageSize int) ([]byte, error) {
-	messageKey := make([]byte, 32)
+	var messageKey [32]byte
 	switch MTPROTO_VERSION {
 	case 2:
-		tmpData := make([]byte, 0, 32+len(data))
-		tmpData = append(tmpData, authKey[88+8:88+8+32]...)
-		tmpData = append(tmpData, data...)
-		copy(messageKey, crypto.Sha256Digest(tmpData))
+		h := sha256.New()
+		h.Write(authKey[88+8 : 88+8+32])
+		h.Write(data)
+		h.Sum(messageKey[:0])
 	default:
-		copy(messageKey[4:], crypto.Sha1Digest(data[:32+messageSize]))
+		sha1Dig := sha1.Sum(data[:32+messageSize])
+		copy(messageKey[4:], sha1Dig[:])
 	}
 
 	// log.Info(data[:messageSize])
@@ -328,6 +335,7 @@ func (m *EncryptedMessage2) encrypt(authKey []byte, data []byte, messageSize int
 		return nil, err
 	}
 
-	m.msgKey = messageKey[8 : 8+16]
+	m.msgKey = make([]byte, 16)
+	copy(m.msgKey, messageKey[8:8+16])
 	return x, nil
 }
