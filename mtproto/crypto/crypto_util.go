@@ -24,7 +24,8 @@ import (
 	"crypto/sha512"
 	"encoding/hex"
 	"math/big"
-	"math/rand"
+
+	crand "crypto/rand"
 
 	"golang.org/x/crypto/pbkdf2"
 )
@@ -144,13 +145,13 @@ func getBigIntegerBytes(value *big.Int) []byte {
 
 func RandomBytes(size int) []byte {
 	b := make([]byte, size)
-	_, _ = rand.Read(b)
+	_, _ = crand.Read(b)
 	return b
 }
 
 func RandomString(size int) string {
 	b := make([]byte, size)
-	_, _ = rand.Read(b)
+	_, _ = crand.Read(b)
 	return hex.EncodeToString(b)
 }
 
@@ -166,12 +167,12 @@ func Sha1Digest(data []byte) []byte {
 
 func GenerateNonce(size int) []byte {
 	b := make([]byte, size)
-	_, _ = rand.Read(b)
+	_, _ = crand.Read(b)
 	return b
 }
 
 func GenerateStringNonce(size int) string {
 	b := make([]byte, size)
-	_, _ = rand.Read(b)
+	_, _ = crand.Read(b)
 	return hex.EncodeToString(b)
 }

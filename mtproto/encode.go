@@ -10,10 +10,29 @@ import (
 	"encoding/binary"
 	"math"
 	"math/big"
+	"sync"
 )
 
 type EncodeBuf struct {
 	buf []byte
+}
+
+var encodeBufPool = sync.Pool{
+	New: func() interface{} { return &EncodeBuf{buf: make([]byte, 0, 512)} },
+}
+
+// GetEncodeBuf returns a pooled EncodeBuf. Call PutEncodeBuf when done.
+func GetEncodeBuf() *EncodeBuf {
+	e := encodeBufPool.Get().(*EncodeBuf)
+	e.buf = e.buf[:0]
+	return e
+}
+
+// PutEncodeBuf returns an EncodeBuf to the pool.
+func PutEncodeBuf(e *EncodeBuf) {
+	if cap(e.buf) <= 65536 {
+		encodeBufPool.Put(e)
+	}
 }
 
 func NewEncodeBuf(cap int) *EncodeBuf {
@@ -71,22 +90,24 @@ func (e *EncodeBuf) BigInt(s *big.Int) {
 }
 
 func (e *EncodeBuf) StringBytes(s []byte) {
-	var res []byte
 	size := len(s)
 	if size < 254 {
-		nl := 1 + size + (4-(size+1)%4)&3
-		res = make([]byte, nl)
-		res[0] = byte(size)
-		copy(res[1:], s)
-
+		padding := (4 - (size + 1) % 4) & 3
+		e.buf = append(e.buf, byte(size))
+		e.buf = append(e.buf, s...)
+		for i := 0; i < padding; i++ {
+			e.buf = append(e.buf, 0)
+		}
 	} else {
-		nl := 4 + size + (4-size%4)&3
-		res = make([]byte, nl)
-		binary.LittleEndian.PutUint32(res, uint32(size<<8|254))
-		copy(res[4:], s)
-
+		padding := (4 - size%4) & 3
+		var hdr [4]byte
+		binary.LittleEndian.PutUint32(hdr[:], uint32(size<<8|254))
+		e.buf = append(e.buf, hdr[:]...)
+		e.buf = append(e.buf, s...)
+		for i := 0; i < padding; i++ {
+			e.buf = append(e.buf, 0)
+		}
 	}
-	e.buf = append(e.buf, res...)
 }
 
 func (e *EncodeBuf) Bytes(s []byte) {
@@ -94,48 +115,32 @@ func (e *EncodeBuf) Bytes(s []byte) {
 }
 
 func (e *EncodeBuf) VectorInt(vList []int32) {
-	x := make([]byte, 4+4+len(vList)*4)
-	var c = int32(CRC32_vector)
-	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
-	i := 8
+	e.UInt(uint32(CRC32_vector))
+	e.Int(int32(len(vList)))
 	for _, v := range vList {
-		binary.LittleEndian.PutUint32(x[i:], uint32(v))
-		i += 4
+		e.Int(v)
 	}
-	e.buf = append(e.buf, x...)
 }
 
 func (e *EncodeBuf) VectorLong(vList []int64) {
-	x := make([]byte, 4+4+len(vList)*8)
-	var c = int32(CRC32_vector)
-	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
-	i := 8
+	e.UInt(uint32(CRC32_vector))
+	e.Int(int32(len(vList)))
 	for _, v := range vList {
-		binary.LittleEndian.PutUint64(x[i:], uint64(v))
-		i += 8
+		e.Long(v)
 	}
-	e.buf = append(e.buf, x...)
 }
 
 func (e *EncodeBuf) VectorString(vList []string) {
-	x := make([]byte, 8)
-	var c = int32(CRC32_vector)
-	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
-	e.buf = append(e.buf, x...)
+	e.UInt(uint32(CRC32_vector))
+	e.Int(int32(len(vList)))
 	for _, v := range vList {
 		e.String(v)
 	}
 }
 
 func (e *EncodeBuf) VectorBytes(vList [][]byte) {
-	x := make([]byte, 8)
-	var c = int32(CRC32_vector)
-	binary.LittleEndian.PutUint32(x, uint32(c))
-	binary.LittleEndian.PutUint32(x[4:], uint32(len(vList)))
-	e.buf = append(e.buf, x...)
+	e.UInt(uint32(CRC32_vector))
+	e.Int(int32(len(vList)))
 	for _, v := range vList {
 		e.StringBytes(v)
 	}

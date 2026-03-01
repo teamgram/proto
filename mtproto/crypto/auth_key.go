@@ -20,6 +20,7 @@ package crypto
 
 import (
 	"bytes"
+	"crypto/sha1"
 	"crypto/sha256"
 	"encoding/binary"
 	"encoding/hex"
@@ -131,37 +132,37 @@ func (k *AuthKey) calcX(incoming bool) int {
 func (k *AuthKey) prepareAESV1(msgKey []byte, incoming bool) ([]byte, []byte) {
 	x := k.calcX(incoming)
 
+	var dataA [48]byte
+	copy(dataA[:16], msgKey[:16])
+	copy(dataA[16:], k.authKey[x:x+32])
+	sha1A := sha1.Sum(dataA[:])
+
+	var dataB [48]byte
+	copy(dataB[:16], k.authKey[32+x:32+x+16])
+	copy(dataB[16:32], msgKey[:16])
+	copy(dataB[32:], k.authKey[48+x:48+x+16])
+	sha1B := sha1.Sum(dataB[:])
+
+	var dataC [48]byte
+	copy(dataC[:32], k.authKey[64+x:64+x+32])
+	copy(dataC[32:], msgKey[:16])
+	sha1C := sha1.Sum(dataC[:])
+
+	var dataD [48]byte
+	copy(dataD[:16], msgKey[:16])
+	copy(dataD[16:], k.authKey[96+x:96+x+32])
+	sha1D := sha1.Sum(dataD[:])
+
 	aesKey := make([]byte, 32)
 	aesIV := make([]byte, 32)
 
-	dataA := make([]byte, 16+32)
-	copy(dataA, msgKey[:16])
-	copy(dataA[16:], k.authKey[x:x+32])
-	sha1A := Sha1Digest(dataA)
-
-	dataB := make([]byte, 16+16+16)
-	copy(dataB, k.authKey[32+x:32+x+16])
-	copy(dataB[16:], msgKey[:16])
-	copy(dataB[32:], k.authKey[48+x:48+x+16])
-	sha1B := Sha1Digest(dataB)
-
-	dataC := make([]byte, 32+16)
-	copy(dataC, k.authKey[64+x:64+x+32])
-	copy(dataC[32:], msgKey[:16])
-	sha1C := Sha1Digest(dataC)
-
-	dataD := make([]byte, 16+32)
-	copy(dataD, msgKey[:16])
-	copy(dataD[16:], k.authKey[96+x:96+x+32])
-	sha1D := Sha1Digest(dataD)
-
 	copy(aesKey, sha1A[:8])
-	copy(aesKey[8:], sha1B[8:8+12])
-	copy(aesKey[8+12:], sha1C[4:4+12])
-	copy(aesIV, sha1A[8:8+12])
+	copy(aesKey[8:], sha1B[8:20])
+	copy(aesKey[20:], sha1C[4:16])
+	copy(aesIV, sha1A[8:20])
 	copy(aesIV[12:], sha1B[:8])
-	copy(aesIV[12+8:], sha1C[16:16+4])
-	copy(aesIV[12+8+4:], sha1D[:8])
+	copy(aesIV[20:], sha1C[16:20])
+	copy(aesIV[24:], sha1D[:8])
 
 	return aesKey, aesIV
 }
@@ -169,25 +170,25 @@ func (k *AuthKey) prepareAESV1(msgKey []byte, incoming bool) ([]byte, []byte) {
 func (k *AuthKey) prepareAES(msgKey []byte, incoming bool) ([]byte, []byte) {
 	x := k.calcX(incoming)
 
+	var dataA [52]byte
+	copy(dataA[:16], msgKey[:16])
+	copy(dataA[16:], k.authKey[x:x+36])
+	sha256A := sha256.Sum256(dataA[:])
+
+	var dataB [52]byte
+	copy(dataB[:36], k.authKey[40+x:40+x+36])
+	copy(dataB[36:], msgKey[:16])
+	sha256B := sha256.Sum256(dataB[:])
+
 	aesKey := make([]byte, 32)
 	aesIV := make([]byte, 32)
 
-	dataA := make([]byte, 16+36)
-	copy(dataA, msgKey[:16])
-	copy(dataA[16:], k.authKey[x:x+36])
-	sha256A := Sha256Digest(dataA)
-
-	dataB := make([]byte, 36+16)
-	copy(dataB, k.authKey[40+x:40+x+36])
-	copy(dataB[36:], msgKey[:16])
-	sha256B := Sha256Digest(dataB)
-
-	copy(aesKey, sha256A[:8])
-	copy(aesKey[8:], sha256B[8:8+16])
-	copy(aesKey[8+16:], sha256A[24:24+8])
-	copy(aesIV, sha256B[:8])
-	copy(aesIV[8:], sha256A[8:8+16])
-	copy(aesIV[8+16:], sha256B[24:24+8])
+	copy(aesKey[:8], sha256A[:8])
+	copy(aesKey[8:24], sha256B[8:24])
+	copy(aesKey[24:], sha256A[24:32])
+	copy(aesIV[:8], sha256B[:8])
+	copy(aesIV[8:24], sha256A[8:24])
+	copy(aesIV[24:], sha256B[24:32])
 
 	return aesKey, aesIV
 }
@@ -208,8 +209,6 @@ func (k *AuthKey) AesIgeEncryptV1(rawData []byte) ([]byte, []byte, error) {
 		additionalSize = 16 - additionalSize
 	}
 
-	// var tmpData []byte
-	// if additionalSize >
 	tmpData := make([]byte, 0, len(rawData)+additionalSize)
 	tmpData = append(tmpData, rawData...)
 	if additionalSize > 0 {
@@ -217,19 +216,21 @@ func (k *AuthKey) AesIgeEncryptV1(rawData []byte) ([]byte, []byte, error) {
 	}
 
 	// calc msg_key
-	msgKey := make([]byte, 32)
-	copy(msgKey[4:], Sha1Digest(rawData))
+	var msgKeyBuf [32]byte
+	sha1Sum := sha1.Sum(rawData)
+	copy(msgKeyBuf[4:], sha1Sum[:])
 
-	aesKey, aesIV := k.prepareAESV1(msgKey[8:8+16], true)
+	aesKey, aesIV := k.prepareAESV1(msgKeyBuf[8:8+16], true)
 	e := NewAES256IGECryptor(aesKey, aesIV)
 
 	x, err := e.Encrypt(tmpData)
 	if err != nil {
-		// log.Errorf("aesIgeEncrypt data error: %v", err)
 		return nil, nil, err
 	}
 
-	return msgKey[8 : 8+16], x, nil
+	result := make([]byte, 16)
+	copy(result, msgKeyBuf[8:8+16])
+	return result, x, nil
 }
 
 func (k *AuthKey) AesIgeEncrypt(rawData []byte) ([]byte, []byte, error) {
@@ -242,8 +243,6 @@ func (k *AuthKey) AesIgeEncrypt(rawData []byte) ([]byte, []byte, error) {
 		additionalSize += 16
 	}
 
-	// var tmpData []byte
-	// if additionalSize >
 	tmpData := make([]byte, 0, len(rawData)+additionalSize)
 	tmpData = append(tmpData, rawData...)
 	if additionalSize > 0 {
@@ -251,22 +250,23 @@ func (k *AuthKey) AesIgeEncrypt(rawData []byte) ([]byte, []byte, error) {
 	}
 
 	// calc msg_key
-	msgKey := make([]byte, 32)
 	sha256Dig := sha256.New()
 	sha256Dig.Write(k.partForMsgKey(true))
 	sha256Dig.Write(tmpData)
-	copy(msgKey, sha256Dig.Sum(nil))
+	var msgKeyBuf [32]byte
+	sha256Dig.Sum(msgKeyBuf[:0])
 
-	aesKey, aesIV := k.prepareAES(msgKey[8:8+16], true)
+	aesKey, aesIV := k.prepareAES(msgKeyBuf[8:8+16], true)
 	e := NewAES256IGECryptor(aesKey, aesIV)
 
 	x, err := e.Encrypt(tmpData)
 	if err != nil {
-		// log.Errorf("aesIgeEncrypt data error: %v", err)
 		return nil, nil, err
 	}
 
-	return msgKey[8 : 8+16], x, nil
+	result := make([]byte, 16)
+	copy(result, msgKeyBuf[8:8+16])
+	return result, x, nil
 }
 
 func (k *AuthKey) AesIgeDecryptV1(msgKey, rawData []byte) ([]byte, error) {
@@ -274,11 +274,9 @@ func (k *AuthKey) AesIgeDecryptV1(msgKey, rawData []byte) ([]byte, error) {
 	d := NewAES256IGECryptor(aesKey, aesIV)
 	x, err := d.Decrypt(rawData)
 	if err != nil {
-		// log.Errorf("aesIgeDecrypt data error: %v", err)
 		return nil, err
 	}
 
-	//// 校验解密后的数据合法性
 	var dataLen = uint32(len(rawData))
 	messageLen := binary.LittleEndian.Uint32(x[28:])
 	if messageLen+32 > dataLen {
@@ -286,8 +284,9 @@ func (k *AuthKey) AesIgeDecryptV1(msgKey, rawData []byte) ([]byte, error) {
 		return nil, err
 	}
 
-	calcMsgKey := make([]byte, 96)
-	copy(calcMsgKey[4:], Sha1Digest(x[:32+messageLen]))
+	var calcMsgKey [32]byte
+	sha1Sum := sha1.Sum(x[:32+messageLen])
+	copy(calcMsgKey[4:], sha1Sum[:])
 
 	if !bytes.Equal(calcMsgKey[8:8+16], msgKey[:16]) {
 		err = fmt.Errorf("aesIgeDecrypt data error - (data: %s, aesKey: %s, aseIV: %s, authKeyId: %d, authKey: %s), msgKey verify error, sign: %s, msgKey: %s",
@@ -309,56 +308,24 @@ func (k *AuthKey) AesIgeDecrypt(msgKey, rawData []byte) ([]byte, error) {
 	d := NewAES256IGECryptor(aesKey, aesIV)
 	x, err := d.Decrypt(rawData)
 	if err != nil {
-		// log.Errorf("aesIgeDecrypt data error: %v", err)
 		return nil, err
 	}
 
-	//// 校验解密后的数据合法性
 	var dataLen = uint32(len(rawData))
-
-	// dBuf := mtproto.NewDecodeBuf(rawData)
-
-	//salt := binary.LittleEndian.Uint64(x[:8])
-	//sessionId := binary.LittleEndian.Uint64(x[8:])
-	//msgId := binary.LittleEndian.Uint64(x[16:])
-	//seq := binary.LittleEndian.Uint32(x[24:])
 	messageLen := binary.LittleEndian.Uint32(x[28:])
-	//c := binary.LittleEndian.Uint32(x[32:])
-	//fmt.Printf("decrypt: {salt: %d, session_id: %d, msg_id: %d, seq: %d, bytes: %d, crc32: 0x%x}\n",
-	//	int64(salt),
-	//	int64(sessionId),
-	//	int64(msgId),
-	//	seq,
-	//	messageLen,
-	//	c)
-
-	//
-	//messageLen := binary.LittleEndian.Uint32(x[28:])
-	//sessionId := int64(binary.LittleEndian.Uint64(x[8:]))
-
-	// log.Info("decrypt - dataLen = %d, messageLen = ", dataLen, messageLen)
-	// log.Debugf("decrypt - dataLen = %d, messageLen = %d, sessionId = %d", dataLen, messageLen, sessionId)
 
 	if messageLen+32 > dataLen {
-		// 	return fmt.Errorf("Message len: %d (need less than %d)", messageLen, dbuf.size-32)
 		err = fmt.Errorf("aesIgeDecrypt data(%d) error - Wrong message length %d", dataLen, messageLen)
-		// log.Error(err.Error())
 		return nil, err
 	}
 
-	calcMsgKey := make([]byte, 96)
 	sha256Dig := sha256.New()
 	sha256Dig.Write(k.partForMsgKey(false))
 	sha256Dig.Write(x[:dataLen])
-	copy(calcMsgKey, sha256Dig.Sum(nil))
+	var calcMsgKey [32]byte
+	sha256Dig.Sum(calcMsgKey[:0])
 
 	if !bytes.Equal(calcMsgKey[8:8+16], msgKey[:16]) {
-		//calcMsgKey := make([]byte, 96)
-		//sha256Dig := sha256.New()
-		//sha256Dig.Write(k.partForMsgKey(false))
-		//sha256Dig.Write(x[:messageLen+32])
-		//copy(calcMsgKey, sha256Dig.Sum(nil))
-		//if !bytes.Equal(calcMsgKey[8:8+16], msgKey[:16]) {
 		err = fmt.Errorf("aesIgeDecrypt data error - (data: %s, aesKey: %s, aseIV: %s, authKeyId: %d, authKey: %s), msgKey verify error, sign: %s, msgKey: %s",
 			hex.EncodeToString(rawData[:64]),
 			hex.EncodeToString(aesKey),
@@ -367,9 +334,7 @@ func (k *AuthKey) AesIgeDecrypt(msgKey, rawData []byte) ([]byte, error) {
 			hex.EncodeToString(k.authKey[88:88+32]),
 			hex.EncodeToString(calcMsgKey[8:8+16]),
 			hex.EncodeToString(msgKey[:16]))
-		// log.Error(err.Error())
 		return nil, err
-		//}
 	}
 
 	return x, nil

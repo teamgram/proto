@@ -24,6 +24,21 @@ import (
 	"fmt"
 	"math"
 	"math/big"
+	"sync"
+)
+
+// Sentinel errors for hot-path decode operations to avoid per-call allocations.
+var (
+	errDecodeLong        = errors.New("DecodeLong")
+	errDecodeDouble      = errors.New("DecodeDouble")
+	errDecodeInt         = errors.New("DecodeInt")
+	errDecodeUInt        = errors.New("DecodeUInt")
+	errDecodeBytes       = errors.New("DecodeBytes")
+	errDecodeStringBytes = errors.New("DecodeStringBytes")
+	errDecodeVectorInt   = errors.New("DecodeVectorInt: Wrong size")
+	errDecodeVectorLong  = errors.New("DecodeVectorLong: Wrong size")
+	errDecodeVectorStr   = errors.New("DecodeVectorString: Wrong size")
+	errDecodeVectorBytes = errors.New("DecodeVectorBytes: Wrong size")
 )
 
 type DecodeBuf struct {
@@ -31,6 +46,27 @@ type DecodeBuf struct {
 	off  int
 	size int
 	err  error
+}
+
+var decodeBufPool = sync.Pool{
+	New: func() interface{} { return &DecodeBuf{} },
+}
+
+// GetDecodeBuf returns a pooled DecodeBuf initialized with b. Call PutDecodeBuf when done.
+func GetDecodeBuf(b []byte) *DecodeBuf {
+	m := decodeBufPool.Get().(*DecodeBuf)
+	m.buf = b
+	m.off = 0
+	m.size = len(b)
+	m.err = nil
+	return m
+}
+
+// PutDecodeBuf returns a DecodeBuf to the pool.
+func PutDecodeBuf(m *DecodeBuf) {
+	m.buf = nil
+	m.err = nil
+	decodeBufPool.Put(m)
 }
 
 func NewDecodeBuf(b []byte) *DecodeBuf {
@@ -58,7 +94,7 @@ func (m *DecodeBuf) Long() int64 {
 		return 0
 	}
 	if m.off+8 > m.size {
-		m.err = errors.New("DecodeLong")
+		m.err = errDecodeLong
 		return 0
 	}
 	x := int64(binary.LittleEndian.Uint64(m.buf[m.off : m.off+8]))
@@ -71,7 +107,7 @@ func (m *DecodeBuf) Double() float64 {
 		return 0
 	}
 	if m.off+8 > m.size {
-		m.err = errors.New("DecodeDouble")
+		m.err = errDecodeDouble
 		return 0
 	}
 	x := math.Float64frombits(binary.LittleEndian.Uint64(m.buf[m.off : m.off+8]))
@@ -84,7 +120,7 @@ func (m *DecodeBuf) Int() int32 {
 		return 0
 	}
 	if m.off+4 > m.size {
-		m.err = errors.New("DecodeInt")
+		m.err = errDecodeInt
 		return 0
 	}
 	x := binary.LittleEndian.Uint32(m.buf[m.off : m.off+4])
@@ -97,7 +133,7 @@ func (m *DecodeBuf) UInt() uint32 {
 		return 0
 	}
 	if m.off+4 > m.size {
-		m.err = errors.New("DecodeUInt")
+		m.err = errDecodeUInt
 		return 0
 	}
 	x := binary.LittleEndian.Uint32(m.buf[m.off : m.off+4])
@@ -110,7 +146,7 @@ func (m *DecodeBuf) Bytes(size int) []byte {
 		return nil
 	}
 	if m.off+size > m.size {
-		m.err = errors.New("DecodeBytes")
+		m.err = errDecodeBytes
 		return nil
 	}
 	x := make([]byte, size)
@@ -158,7 +194,7 @@ func (m *DecodeBuf) StringBytes() []byte {
 	var size, padding int
 
 	if m.off+1 > m.size {
-		m.err = errors.New("DecodeStringBytes")
+		m.err = errDecodeStringBytes
 		return nil
 	}
 	size = int(m.buf[m.off])
@@ -166,7 +202,7 @@ func (m *DecodeBuf) StringBytes() []byte {
 	padding = (4 - ((size + 1) % 4)) & 3
 	if size == 254 {
 		if m.off+3 > m.size {
-			m.err = errors.New("DecodeStringBytes")
+			m.err = errDecodeStringBytes
 			return nil
 		}
 		size = int(m.buf[m.off]) | int(m.buf[m.off+1])<<8 | int(m.buf[m.off+2])<<16
@@ -183,7 +219,7 @@ func (m *DecodeBuf) StringBytes() []byte {
 	m.off += size
 
 	if m.off+padding > m.size {
-		m.err = errors.New("DecodeStringBytes: Wrong padding")
+		m.err = errDecodeStringBytes
 		return nil
 	}
 	m.off += padding
@@ -226,7 +262,7 @@ func (m *DecodeBuf) VectorInt() []int32 {
 		return nil
 	}
 	if size < 0 {
-		m.err = errors.New("DecodeVectorInt: Wrong size")
+		m.err = errDecodeVectorInt
 		return nil
 	}
 	x := make([]int32, size)
@@ -256,7 +292,7 @@ func (m *DecodeBuf) VectorLong() []int64 {
 		return nil
 	}
 	if size < 0 {
-		m.err = errors.New("DecodeVectorLong: Wrong size")
+		m.err = errDecodeVectorLong
 		return nil
 	}
 	x := make([]int64, size)
@@ -286,7 +322,7 @@ func (m *DecodeBuf) VectorString() []string {
 		return nil
 	}
 	if size < 0 {
-		m.err = errors.New("DecodeVectorString: Wrong size")
+		m.err = errDecodeVectorStr
 		return nil
 	}
 	x := make([]string, size)
@@ -316,7 +352,7 @@ func (m *DecodeBuf) VectorBytes() [][]byte {
 		return nil
 	}
 	if size < 0 {
-		m.err = errors.New("DecodeVectorBytes: Wrong size")
+		m.err = errDecodeVectorBytes
 		return nil
 	}
 	x := make([][]byte, size)

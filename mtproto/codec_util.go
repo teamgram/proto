@@ -19,9 +19,9 @@
 package mtproto
 
 import (
+	"crypto/sha1"
+	"crypto/sha256"
 	"time"
-
-	"github.com/teamgram/proto/mtproto/crypto"
 )
 
 //int64_t ConnectionsManager::generateMessageId() {
@@ -92,60 +92,64 @@ func generateMessageKey(msgKey, authKey []byte, incoming bool) (aesKey, aesIV []
 
 	switch MTPROTO_VERSION {
 	case 2:
-		t_a := make([]byte, 0, 52)
-		t_a = append(t_a, msgKey[:16]...)
-		t_a = append(t_a, authKey[x:x+36]...)
-		sha256_a := crypto.Sha256Digest(t_a)
+		var tA [52]byte
+		copy(tA[:16], msgKey[:16])
+		copy(tA[16:], authKey[x:x+36])
+		sha256A := sha256.Sum256(tA[:])
 
-		t_b := make([]byte, 0, 52)
-		t_b = append(t_b, authKey[40+x:40+x+36]...)
-		t_b = append(t_b, msgKey[:16]...)
-		sha256_b := crypto.Sha256Digest(t_b)
+		var tB [52]byte
+		copy(tB[:36], authKey[40+x:40+x+36])
+		copy(tB[36:], msgKey[:16])
+		sha256B := sha256.Sum256(tB[:])
 
-		aesKey = make([]byte, 0, 32)
-		aesKey = append(aesKey, sha256_a[:8]...)
-		aesKey = append(aesKey, sha256_b[8:8+16]...)
-		aesKey = append(aesKey, sha256_a[24:24+8]...)
+		var aesKeyArr [32]byte
+		copy(aesKeyArr[:8], sha256A[:8])
+		copy(aesKeyArr[8:24], sha256B[8:24])
+		copy(aesKeyArr[24:], sha256A[24:32])
 
-		aesIV = make([]byte, 0, 32)
-		aesIV = append(aesIV, sha256_b[:8]...)
-		aesIV = append(aesIV, sha256_a[8:8+16]...)
-		aesIV = append(aesIV, sha256_b[24:24+8]...)
+		var aesIVArr [32]byte
+		copy(aesIVArr[:8], sha256B[:8])
+		copy(aesIVArr[8:24], sha256A[8:24])
+		copy(aesIVArr[24:], sha256B[24:32])
+
+		aesKey = aesKeyArr[:]
+		aesIV = aesIVArr[:]
 
 	default:
-		aesKey = make([]byte, 0, 32)
-		aesIV = make([]byte, 0, 32)
-		t_a := make([]byte, 0, 48)
-		t_b := make([]byte, 0, 48)
-		t_c := make([]byte, 0, 48)
-		t_d := make([]byte, 0, 48)
+		var tA [48]byte
+		copy(tA[:16], msgKey[:16])
+		copy(tA[16:], authKey[x:x+32])
+		sha1A := sha1.Sum(tA[:])
 
-		t_a = append(t_a, msgKey...)
-		t_a = append(t_a, authKey[x:x+32]...)
+		var tB [48]byte
+		copy(tB[:16], authKey[32+x:32+x+16])
+		copy(tB[16:32], msgKey[:16])
+		copy(tB[32:], authKey[48+x:48+x+16])
+		sha1B := sha1.Sum(tB[:])
 
-		t_b = append(t_b, authKey[32+x:32+x+16]...)
-		t_b = append(t_b, msgKey...)
-		t_b = append(t_b, authKey[48+x:48+x+16]...)
+		var tC [48]byte
+		copy(tC[:32], authKey[64+x:64+x+32])
+		copy(tC[32:], msgKey[:16])
+		sha1C := sha1.Sum(tC[:])
 
-		t_c = append(t_c, authKey[64+x:64+x+32]...)
-		t_c = append(t_c, msgKey...)
+		var tD [48]byte
+		copy(tD[:16], msgKey[:16])
+		copy(tD[16:], authKey[96+x:96+x+32])
+		sha1D := sha1.Sum(tD[:])
 
-		t_d = append(t_d, msgKey...)
-		t_d = append(t_d, authKey[96+x:96+x+32]...)
+		var aesKeyArr [32]byte
+		copy(aesKeyArr[:8], sha1A[:8])
+		copy(aesKeyArr[8:20], sha1B[8:20])
+		copy(aesKeyArr[20:], sha1C[4:16])
 
-		sha1_a := crypto.Sha1Digest(t_a)
-		sha1_b := crypto.Sha1Digest(t_b)
-		sha1_c := crypto.Sha1Digest(t_c)
-		sha1_d := crypto.Sha1Digest(t_d)
+		var aesIVArr [32]byte
+		copy(aesIVArr[:12], sha1A[8:20])
+		copy(aesIVArr[12:20], sha1B[:8])
+		copy(aesIVArr[20:24], sha1C[16:20])
+		copy(aesIVArr[24:], sha1D[:8])
 
-		aesKey = append(aesKey, sha1_a[0:8]...)
-		aesKey = append(aesKey, sha1_b[8:8+12]...)
-		aesKey = append(aesKey, sha1_c[4:4+12]...)
-
-		aesIV = append(aesIV, sha1_a[8:8+12]...)
-		aesIV = append(aesIV, sha1_b[0:8]...)
-		aesIV = append(aesIV, sha1_c[16:16+4]...)
-		aesIV = append(aesIV, sha1_d[0:8]...)
+		aesKey = aesKeyArr[:]
+		aesIV = aesIVArr[:]
 	}
 
 	return
