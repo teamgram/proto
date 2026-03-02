@@ -92,7 +92,7 @@ func (e *EncodeBuf) BigInt(s *big.Int) {
 func (e *EncodeBuf) StringBytes(s []byte) {
 	size := len(s)
 	if size < 254 {
-		padding := (4 - (size + 1) % 4) & 3
+		padding := (4 - (size+1)%4) & 3
 		e.buf = append(e.buf, byte(size))
 		e.buf = append(e.buf, s...)
 		for i := 0; i < padding; i++ {

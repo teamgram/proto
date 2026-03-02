@@ -3,7 +3,10 @@
 SRC_DIR=.
 DST_DIR=../../../..
 
-protoc -I=$SRC_DIR --proto_path=$GOPATH/src:./ --go_out=$DST_DIR --go-grpc_out=require_unimplemented_servers=false:$DST_DIR $SRC_DIR/*.proto
+# Format all .proto files (uses ../.clang-format: Language Proto, BasedOnStyle Google)
+find . -name '*.proto' -exec clang-format -i {} \;
+
+protoc -I=$SRC_DIR --proto_path=../../../../:./ --go_out=$DST_DIR --go-grpc_out=require_unimplemented_servers=false:$DST_DIR $SRC_DIR/*.proto
 
 #GOGOPROTO_PATH=$GOPATH/src/github.com/gogo/protobuf/protobuf
 #
