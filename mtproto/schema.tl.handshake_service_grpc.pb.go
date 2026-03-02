@@ -46,9 +46,11 @@ type RPCAuthKeyClient interface {
 	ReqPq(ctx context.Context, in *TLReqPq, opts ...grpc.CallOption) (*ResPQ, error)
 	// req_pq_multi#be7e8ef1 nonce:int128 = ResPQ;
 	ReqPqMulti(ctx context.Context, in *TLReqPqMulti, opts ...grpc.CallOption) (*ResPQ, error)
-	// req_DH_params#d712e4be nonce:int128 server_nonce:int128 p:string q:string public_key_fingerprint:long encrypted_data:string = Server_DH_Params;
+	// req_DH_params#d712e4be nonce:int128 server_nonce:int128 p:string q:string
+	// public_key_fingerprint:long encrypted_data:string = Server_DH_Params;
 	Req_DHParams(ctx context.Context, in *TLReq_DHParams, opts ...grpc.CallOption) (*Server_DH_Params, error)
-	// set_client_DH_params#f5045f1f nonce:int128 server_nonce:int128 encrypted_data:string = Set_client_DH_params_answer;
+	// set_client_DH_params#f5045f1f nonce:int128 server_nonce:int128
+	// encrypted_data:string = Set_client_DH_params_answer;
 	SetClient_DHParams(ctx context.Context, in *TLSetClient_DHParams, opts ...grpc.CallOption) (*SetClient_DHParamsAnswer, error)
 	// destroy_auth_key#d1435160 = DestroyAuthKeyRes;
 	DestroyAuthKey(ctx context.Context, in *TLDestroyAuthKey, opts ...grpc.CallOption) (*DestroyAuthKeyRes, error)
@@ -123,9 +125,11 @@ type RPCAuthKeyServer interface {
 	ReqPq(context.Context, *TLReqPq) (*ResPQ, error)
 	// req_pq_multi#be7e8ef1 nonce:int128 = ResPQ;
 	ReqPqMulti(context.Context, *TLReqPqMulti) (*ResPQ, error)
-	// req_DH_params#d712e4be nonce:int128 server_nonce:int128 p:string q:string public_key_fingerprint:long encrypted_data:string = Server_DH_Params;
+	// req_DH_params#d712e4be nonce:int128 server_nonce:int128 p:string q:string
+	// public_key_fingerprint:long encrypted_data:string = Server_DH_Params;
 	Req_DHParams(context.Context, *TLReq_DHParams) (*Server_DH_Params, error)
-	// set_client_DH_params#f5045f1f nonce:int128 server_nonce:int128 encrypted_data:string = Set_client_DH_params_answer;
+	// set_client_DH_params#f5045f1f nonce:int128 server_nonce:int128
+	// encrypted_data:string = Set_client_DH_params_answer;
 	SetClient_DHParams(context.Context, *TLSetClient_DHParams) (*SetClient_DHParamsAnswer, error)
 	// destroy_auth_key#d1435160 = DestroyAuthKeyRes;
 	DestroyAuthKey(context.Context, *TLDestroyAuthKey) (*DestroyAuthKeyRes, error)
