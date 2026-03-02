@@ -27,6 +27,7 @@ import (
 	"fmt"
 	"io"
 	"reflect"
+	"sync"
 )
 
 // TLMessageRawData
@@ -89,9 +90,14 @@ type TLMsgRawDataContainer struct {
 	Messages []*TLMessageRawData
 }
 
+// gzipBufPool 用于 TLGzipPacked Encode/Decode 复用 bytes.Buffer，减少分配
+var gzipBufPool = sync.Pool{
+	New: func() interface{} { return new(bytes.Buffer) },
+}
+
 func NewTLMsgRawDataContainer() *TLMsgRawDataContainer {
 	return &TLMsgRawDataContainer{
-		Messages: []*TLMessageRawData{},
+		Messages: nil, // Decode 时会预分配，无需分配空 slice
 	}
 }
 
@@ -166,9 +172,11 @@ func (m *TLMessage2) Decode(dBuf *DecodeBuf) error {
 	dBuf2 := NewDecodeBuf(b)
 	m.Object = dBuf2.Object()
 	if m.Object == nil {
-		err := fmt.Errorf("decode core_message error(%v): %s", dBuf2.err, hex.EncodeToString(b))
-		// log.Error(err.Error())
-		return err
+		hexLen := len(b)
+		if hexLen > 128 {
+			hexLen = 128
+		}
+		return fmt.Errorf("decode core_message error(%v): %s", dBuf2.err, hex.EncodeToString(b[:hexLen]))
 	}
 
 	// log.Info("Sucess decoded core_message: ", m.Object.String())
@@ -235,18 +243,29 @@ func (m *TLMsgCopy) String() string {
 
 func (m *TLMsgCopy) Encode(x *EncodeBuf, layer int32) error {
 	x.Int(int32(CRC32_msg_copy))
-	m.OrigMessage.Encode(x, layer)
+	if m.OrigMessage != nil {
+		m.OrigMessage.Encode(x, layer)
+	}
 	return nil
 }
 
 func (m *TLMsgCopy) Decode(dbuf *DecodeBuf) error {
 	o := dbuf.Object()
-	message2, _ := o.(*TLMessage2)
+	if o == nil {
+		return dbuf.err
+	}
+	message2, ok := o.(*TLMessage2)
+	if !ok {
+		return fmt.Errorf("msg_copy: expected *TLMessage2, got %T", o)
+	}
 	m.OrigMessage = message2
 	return dbuf.err
 }
 
 func (m *TLMsgCopy) DebugString() string {
+	if m.OrigMessage == nil {
+		return `{"msg_copy#e06046b2": {"orig_message": null}}`
+	}
 	return fmt.Sprintf(`{"msg_copy#e06046b2": {"orig_message": %s}}`, m.OrigMessage.DebugString())
 }
 
@@ -265,28 +284,20 @@ func (m *TLGzipPacked) Encode(x *EncodeBuf, layer int32) error {
 	if len(m.PackedData) == 0 {
 		return nil
 	}
-
-	var (
-		err error
-		b   = new(bytes.Buffer)
-	)
+	b := gzipBufPool.Get().(*bytes.Buffer)
+	b.Reset()
+	defer func() {
+		b.Reset()
+		gzipBufPool.Put(b)
+	}()
 	gz := gzip.NewWriter(b)
-	// _, err = io.Copy(gz, bytes.NewBuffer(m.PackedData))
-	_, err = gz.Write(m.PackedData)
+	_, err := gz.Write(m.PackedData)
 	gz.Flush()
 	clErr := gz.Close()
-
-	if err != nil {
-		// log.Errorf("gzip write: %v", err)
+	if err != nil || clErr != nil {
 		x.Bytes(m.PackedData)
 		return nil
 	}
-	if clErr != nil {
-		// log.Errorf("gzip write: %v", err)
-		x.Bytes(m.PackedData)
-		return nil
-	}
-
 	x.Int(int32(CRC32_gzip_packed))
 	x.StringBytes(b.Bytes())
 	return nil
@@ -297,22 +308,25 @@ func (m *TLGzipPacked) Decode(dbuf *DecodeBuf) error {
 	if dbuf.err != nil {
 		return dbuf.err
 	}
-
-	var (
-		gz  io.ReadCloser
-		err error
-	)
-	if gz, err = gzip.NewReader(bytes.NewBuffer(data)); err != nil {
-		if gz, err = zlib.NewReader(bytes.NewBuffer(data)); err != nil {
+	r := bytes.NewReader(data)
+	var gz io.ReadCloser
+	gz, err := gzip.NewReader(r)
+	if err != nil {
+		r.Reset(data)
+		gz, err = zlib.NewReader(r)
+		if err != nil {
 			dbuf.err = err
 			return fmt.Errorf("gzip read1: %v", err)
 		}
 	}
-
-	var buf bytes.Buffer
-	_, err = io.Copy(&buf, gz)
+	buf := gzipBufPool.Get().(*bytes.Buffer)
+	buf.Reset()
+	defer func() {
+		buf.Reset()
+		gzipBufPool.Put(buf)
+	}()
+	_, err = io.Copy(buf, gz)
 	clErr := gz.Close()
-
 	if err != nil {
 		dbuf.err = err
 		return fmt.Errorf("gzip read2: %v", err)
@@ -321,13 +335,10 @@ func (m *TLGzipPacked) Decode(dbuf *DecodeBuf) error {
 		dbuf.err = clErr
 		return clErr
 	}
-
-	m.PackedData = buf.Bytes()
-
+	m.PackedData = append([]byte(nil), buf.Bytes()...)
 	dbuf2 := NewDecodeBuf(m.PackedData)
 	m.Obj = dbuf2.Object()
 	dbuf.err = dbuf2.err
-
 	return dbuf.err
 }
 
