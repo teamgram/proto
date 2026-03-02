@@ -24,8 +24,6 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/teamgram/proto/mtproto"
-
 	"google.golang.org/grpc/metadata"
 	"google.golang.org/protobuf/proto"
 )
@@ -63,7 +61,10 @@ func RpcMetadataFromIncoming(ctx context.Context) *RpcMetadata {
 
 	md, err := RpcMetadataFromMD(md2)
 	if err != nil {
-		panic(mtproto.ErrInternalServerError)
+		// 为了提高服务端稳定性，这里不再 panic，而是返回 nil，
+		// 由上层根据 nil metadata 决定返回合适的错误码或降级处理。
+		_ = err
+		return nil
 	}
 
 	return md

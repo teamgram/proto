@@ -186,8 +186,15 @@ func (m *EncryptedMessage2) encode(x *EncodeBuf, authKeyId int64, authKey []byte
 	x2.Int(m.SeqNo)
 	offset := x2.GetOffset()
 	x2.Int(0)
-	m.Object.Encode(x2, 0)
-	//var additionalSize = (32 + len(objData)) % 16
+	if m.Object == nil {
+		PutEncodeBuf(x2)
+		return fmt.Errorf("EncryptedMessage2.encode: object is nil")
+	}
+	if err := m.Object.Encode(x2, 0); err != nil {
+		PutEncodeBuf(x2)
+		return err
+	}
+	// var additionalSize = (32 + len(objData)) % 16
 	szObjLen := x2.GetOffset() - offset - 4
 	x2.IntOffset(offset, int32(szObjLen))
 
@@ -199,11 +206,16 @@ func (m *EncryptedMessage2) encode(x *EncodeBuf, authKeyId int64, authKey []byte
 	if MTPROTO_VERSION == 2 && additionalSize < 12 {
 		additionalSize += 16
 	}
-	x2.Bytes(crypto.GenerateNonce(additionalSize))
+	if additionalSize > 0 {
+		x2.Bytes(crypto.GenerateNonce(additionalSize))
+	}
 
 	// encryptedData
-	encryptedData, _ := m.encrypt(authKey, x2.GetBuf(), szObjLen)
+	encryptedData, err := m.encrypt(authKey, x2.GetBuf(), szObjLen)
 	PutEncodeBuf(x2)
+	if err != nil {
+		return err
+	}
 
 	x.Long(authKeyId)
 	x.Bytes(m.msgKey)
@@ -241,8 +253,11 @@ func (m *EncryptedMessage2) decode(authKey []byte, b []byte) error {
 
 	m.SeqNo = dbuf.Int()
 	messageLen := dbuf.Int()
+	if messageLen <= 0 {
+		return fmt.Errorf("invalid message len: %d", messageLen)
+	}
 	if int(messageLen) > dbuf.size-32 {
-		// 	return fmt.Errorf("Message len: %d (need less than %d)", messagxeLen, dbuf.size-32)
+		return fmt.Errorf("message len: %d (need <= %d)", messageLen, dbuf.size-32)
 	}
 
 	m.Object = dbuf.Object()
