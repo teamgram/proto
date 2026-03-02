@@ -110,14 +110,14 @@ func (m *TLMsgRawDataContainer) Encode(x *EncodeBuf, layer int32) error {
 }
 
 func (m *TLMsgRawDataContainer) Decode(dbuf *DecodeBuf) error {
-	len := dbuf.Int()
-	// log.Infof("msg_container: messages size: %d", len)
-	for i := 0; i < int(len); i++ {
-		// log.Infof("msg_container: decode messages[%d]: ", i)
+	n := dbuf.Int()
+	if n > 0 {
+		m.Messages = make([]*TLMessageRawData, 0, int(n))
+	}
+	for i := 0; i < int(n); i++ {
 		message2 := &TLMessageRawData{}
 		err := message2.Decode(dbuf)
 		if err != nil {
-			// log.Errorf("Decode message2 error: %v", err)
 			return err
 		}
 		m.Messages = append(m.Messages, message2)
@@ -204,12 +204,14 @@ func (m *TLMsgContainer) Encode(x *EncodeBuf, layer int32) error {
 }
 
 func (m *TLMsgContainer) Decode(dbuf *DecodeBuf) error {
-	len2 := dbuf.Int()
-	for i := 0; i < int(len2); i++ {
+	n := dbuf.Int()
+	if n > 0 {
+		m.Messages = make([]*TLMessage2, 0, int(n))
+	}
+	for i := 0; i < int(n); i++ {
 		message2 := new(TLMessage2)
 		err := message2.Decode(dbuf)
 		if err != nil {
-			// log.Errorf("Decode message2 error: %v", err)
 			return err
 		}
 		m.Messages = append(m.Messages, message2)
@@ -348,7 +350,8 @@ func (m *TLRpcResult) Encode(x *EncodeBuf, layer int32) error {
 	x.Int(int32(CRC32_rpc_result))
 	x.Long(m.ReqMsgId)
 
-	x2 := NewEncodeBuf(512)
+	x2 := GetEncodeBuf()
+	defer PutEncodeBuf(x2)
 	m.Result.Encode(x2, layer)
 	rawBody := x2.GetBuf()
 
