@@ -136,7 +136,7 @@ func (m *UnencryptedRawMessage) Decode(b []byte) error {
 	if int(messageLen) != dbuf.size-12 {
 		return fmt.Errorf("invalid UnencryptedRawMessage len: %d (need %d)", messageLen, dbuf.size-12)
 	}
-	m.MessageData = dbuf.Bytes(int(messageLen))
+	m.MessageData = dbuf.BytesNoCopy(int(messageLen))
 	return dbuf.err
 }
 
@@ -166,6 +166,6 @@ func (m *EncryptedRawMessage) Encode() []byte {
 func (m *EncryptedRawMessage) Decode(b []byte) error {
 	dbuf := NewDecodeBuf(b)
 	m.MsgKey = dbuf.Bytes(16)
-	m.EncryptedData = dbuf.Bytes(len(b) - 16)
+	m.EncryptedData = dbuf.BytesNoCopy(len(b) - 16)
 	return dbuf.err
 }
