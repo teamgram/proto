@@ -21,3 +21,5 @@ v2/rpc/client/client
 v2/rpc/server/server
 
 .cursor/
+
+mtproto/specs

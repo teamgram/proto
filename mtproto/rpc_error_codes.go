@@ -219,6 +219,13 @@ func NewErr2faConfirmWaitX(second int32) error {
 	return status.Errorf(ErrFlood, "2FA_CONFIRM_WAIT_%d", second)
 }
 
+// NewErrFloodPremiumWaitX
+// | 420 | FLOOD_PREMIUM_WAIT_%d | A wait of %d seconds is required (where %d is a number); the user may also purchase Telegram Premium to remove this limitation. |
+// See: https://corefork.telegram.org/api/errors#420-flood and the error database JSON.
+func NewErrFloodPremiumWaitX(second int32) error {
+	return status.Errorf(ErrFlood, "FLOOD_PREMIUM_WAIT_%d", second)
+}
+
 // 420 ErrFlood codes.Code = 420
 var (
 	// ErrP0nyFloodwait
@@ -2259,6 +2266,11 @@ var (
 	// | 403 | USER_DELETED | You can't send this secret message because the other participant deleted their account. |
 	ErrUserDeleted = status.Error(ErrForbidden, "USER_DELETED")
 
+	// ErrAllowPaymentRequiredX
+	// | 403 | ALLOW_PAYMENT_REQUIRED_%d | This peer charges %d Telegram Stars per message, but the allow_paid_stars flag was not set or its value is smaller than %d. |
+	// See: https://corefork.telegram.org/api/errors#420-flood and the error database JSON.
+	ErrAllowPaymentRequiredX = status.Error(ErrForbidden, "ALLOW_PAYMENT_REQUIRED_%d")
+
 	// ErrChatAdminInviteRequired
 	// | 403 | CHAT_ADMIN_INVITE_REQUIRED | You do not have the rights to do this. |
 	ErrChatAdminInviteRequired = status.Error(ErrForbidden, "CHAT_ADMIN_INVITE_REQUIRED")
@@ -2402,6 +2414,11 @@ var (
 	// ErrNotAcceptableTopicClosed
 	// | 406 | TOPIC_CLOSED | This topic was closed, you can't send messages to it anymore. |
 	ErrNotAcceptableTopicClosed = status.Error(ErrNotAcceptable, "TOPIC_CLOSED")
+
+	// ErrAllowPaymentRequired
+	// | 406 | ALLOW_PAYMENT_REQUIRED | This peer only accepts paid messages: this error is only emitted for older layers without paid messages support, so the client must be updated in order to use paid messages. |
+	// See: https://corefork.telegram.org/api/errors and https://corefork.telegram.org/file/400780400595/4/HsbGg_CLwoA.209033.json/b017bd1b7b65ae7547
+	ErrAllowPaymentRequired = status.Error(ErrNotAcceptable, "ALLOW_PAYMENT_REQUIRED")
 )
 
 // 500 InternalServerError
