@@ -175,44 +175,40 @@ func (m *EncryptedMessage2) Encode(x *EncodeBuf, authKeyId int64, authKey []byte
 }
 
 func (m *EncryptedMessage2) encode(x *EncodeBuf, authKeyId int64, authKey []byte) error {
-	x2 := GetEncodeBuf()
+	encryptedData, err := func() ([]byte, error) {
+		x2 := GetEncodeBuf()
+		defer PutEncodeBuf(x2)
 
-	x2.Long(m.Salt)
-	x2.Long(m.SessionId)
-	if m.MessageId == 0 {
-		m.MessageId = GenerateMessageId()
-	}
-	x2.Long(m.MessageId)
-	x2.Int(m.SeqNo)
-	offset := x2.GetOffset()
-	x2.Int(0)
-	if m.Object == nil {
-		PutEncodeBuf(x2)
-		return fmt.Errorf("EncryptedMessage2.encode: object is nil")
-	}
-	if err := m.Object.Encode(x2, 0); err != nil {
-		PutEncodeBuf(x2)
-		return err
-	}
-	// var additionalSize = (32 + len(objData)) % 16
-	szObjLen := x2.GetOffset() - offset - 4
-	x2.IntOffset(offset, int32(szObjLen))
+		x2.Long(m.Salt)
+		x2.Long(m.SessionId)
+		if m.MessageId == 0 {
+			m.MessageId = GenerateMessageId()
+		}
+		x2.Long(m.MessageId)
+		x2.Int(m.SeqNo)
+		offset := x2.GetOffset()
+		x2.Int(0)
+		if m.Object == nil {
+			return nil, fmt.Errorf("EncryptedMessage2.encode: object is nil")
+		}
+		if err := m.Object.Encode(x2, 0); err != nil {
+			return nil, err
+		}
+		szObjLen := x2.GetOffset() - offset - 4
+		x2.IntOffset(offset, int32(szObjLen))
 
-	// additionalSize
-	additionalSize := (32 + szObjLen) % 16
-	if additionalSize != 0 {
-		additionalSize = 16 - additionalSize
-	}
-	if MTPROTO_VERSION == 2 && additionalSize < 12 {
-		additionalSize += 16
-	}
-	if additionalSize > 0 {
-		x2.Bytes(crypto.GenerateNonce(additionalSize))
-	}
-
-	// encryptedData
-	encryptedData, err := m.encrypt(authKey, x2.GetBuf(), szObjLen)
-	PutEncodeBuf(x2)
+		additionalSize := (32 + szObjLen) % 16
+		if additionalSize != 0 {
+			additionalSize = 16 - additionalSize
+		}
+		if MTPROTO_VERSION == 2 && additionalSize < 12 {
+			additionalSize += 16
+		}
+		if additionalSize > 0 {
+			x2.Bytes(crypto.GenerateNonce(additionalSize))
+		}
+		return m.encrypt(authKey, x2.GetBuf(), szObjLen)
+	}()
 	if err != nil {
 		return err
 	}

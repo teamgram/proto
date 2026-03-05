@@ -361,12 +361,14 @@ func (m *TLRpcResult) Encode(x *EncodeBuf, layer int32) error {
 	x.Int(int32(CRC32_rpc_result))
 	x.Long(m.ReqMsgId)
 
-	x2 := GetEncodeBuf()
-	defer PutEncodeBuf(x2)
-	m.Result.Encode(x2, layer)
-	rawBody := x2.GetBuf()
+	rawBody, offset := func() ([]byte, int) {
+		x2 := GetEncodeBuf()
+		defer PutEncodeBuf(x2)
+		m.Result.Encode(x2, layer)
+		return append([]byte(nil), x2.GetBuf()...), x2.GetOffset()
+	}()
 
-	if x2.GetOffset() > 256 {
+	if offset > 256 {
 		switch m.Result.(type) {
 		case *Upload_WebFile:
 			x.Bytes(rawBody)
