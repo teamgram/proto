@@ -2,10 +2,10 @@
  * WARNING! All changes made in this file will be lost!
  * Created from 'scheme.tl' by 'mtprotoc'
  *
- * Copyright (c) 2025-present,  Teamgram Authors.
+ * Copyright (c) 2026 The Teamgram Authors (https://teamgram.net).
  *  All rights reserved.
  *
- * Author: Benqi (wubenqi@gmail.com)
+ * Author: teamgramio (teamgram.io@gmail.com)
  */
 
 package mtproto
@@ -209,14 +209,18 @@ const (
 	CRC32_channelFull_f2355507                                        TLConstructor = -231385849  // f2355507
 	CRC32_channelFull_ea68a619                                        TLConstructor = -362240487  // ea68a619
 	CRC32_channelFull_e13c3d20                                        TLConstructor = -516145888  // e13c3d20
-	CRC32_chatParticipant                                             TLConstructor = -1070776313 // c02d4007
-	CRC32_chatParticipantCreator                                      TLConstructor = -462696732  // e46bcee4
-	CRC32_chatParticipantAdmin                                        TLConstructor = -1600962725 // a0933f5b
+	CRC32_chatParticipant_38e79fde                                    TLConstructor = 954703838   // 38e79fde
+	CRC32_chatParticipant_c02d4007                                    TLConstructor = -1070776313 // c02d4007
+	CRC32_chatParticipantCreator_e1f867b8                             TLConstructor = -503814216  // e1f867b8
+	CRC32_chatParticipantCreator_e46bcee4                             TLConstructor = -462696732  // e46bcee4
+	CRC32_chatParticipantAdmin_360d5d2                                TLConstructor = 56677842    // 360d5d2
+	CRC32_chatParticipantAdmin_a0933f5b                               TLConstructor = -1600962725 // a0933f5b
 	CRC32_chatParticipantsForbidden                                   TLConstructor = -2023500831 // 8763d3e1
 	CRC32_chatParticipants                                            TLConstructor = 1018991608  // 3cbc93f8
 	CRC32_chatPhotoEmpty                                              TLConstructor = 935395612   // 37c1011c
 	CRC32_chatPhoto                                                   TLConstructor = 476978193   // 1c6e1c11
 	CRC32_messageEmpty                                                TLConstructor = -1868117372 // 90a6ca84
+	CRC32_message_3ae56482                                            TLConstructor = 988112002   // 3ae56482
 	CRC32_message_9cb490e9                                            TLConstructor = -1665888023 // 9cb490e9
 	CRC32_message_b92f76cf                                            TLConstructor = -1188071729 // b92f76cf
 	CRC32_message_9815cec8                                            TLConstructor = -1743401272 // 9815cec8
@@ -352,6 +356,8 @@ const (
 	CRC32_messageActionStarGiftPurchaseOfferDeclined                  TLConstructor = 1940760427  // 73ada76b
 	CRC32_messageActionNewCreatorPending                              TLConstructor = -1333866363 // b07ed085
 	CRC32_messageActionChangeCreator                                  TLConstructor = -511160261  // e188503b
+	CRC32_messageActionNoForwardsToggle                               TLConstructor = -1082301070 // bf7d6572
+	CRC32_messageActionNoForwardsRequest                              TLConstructor = 1042781114  // 3e2793ba
 	CRC32_dialog_d58a08c6                                             TLConstructor = -712374074  // d58a08c6
 	CRC32_dialog_a8edd0f5                                             TLConstructor = -1460809483 // a8edd0f5
 	CRC32_dialogFolder                                                TLConstructor = 1908216652  // 71bd134c
@@ -635,6 +641,7 @@ const (
 	CRC32_updateStarGiftAuctionUserState                              TLConstructor = -598150370  // dc58f31e
 	CRC32_updateEmojiGameInfo                                         TLConstructor = -73640838   // fb9c547a
 	CRC32_updateStarGiftCraftFail                                     TLConstructor = -1408818108 // ac072444
+	CRC32_updateChatParticipantRank                                   TLConstructor = -1115461703 // bd8367b9
 	CRC32_updates_state                                               TLConstructor = -1519637954 // a56c2a3e
 	CRC32_updates_differenceEmpty                                     TLConstructor = 1567990072  // 5d75a138
 	CRC32_updates_difference                                          TLConstructor = 16030880    // f49ca0
@@ -893,6 +900,7 @@ const (
 	CRC32_messageEntityCustomEmoji                                    TLConstructor = -925956616  // c8cf05f8
 	CRC32_messageEntityBlockquote_f1ccaaac                            TLConstructor = -238245204  // f1ccaaac
 	CRC32_messageEntityBlockquote_20df5d0                             TLConstructor = 34469328    // 20df5d0
+	CRC32_messageEntityFormattedDate                                  TLConstructor = -1874147385 // 904ac7c7
 	CRC32_inputChannelEmpty                                           TLConstructor = -292807034  // ee8c1e86
 	CRC32_inputChannel                                                TLConstructor = -212145112  // f35aec28
 	CRC32_inputChannelFromMessage                                     TLConstructor = 1536380829  // 5b934f9d
@@ -903,13 +911,16 @@ const (
 	CRC32_updates_channelDifference                                   TLConstructor = 543450958   // 2064674e
 	CRC32_channelMessagesFilterEmpty                                  TLConstructor = -1798033689 // 94d42ee7
 	CRC32_channelMessagesFilter                                       TLConstructor = -847783593  // cd77d957
+	CRC32_channelParticipant_1bd54456                                 TLConstructor = 466961494   // 1bd54456
 	CRC32_channelParticipant_cb397619                                 TLConstructor = -885426663  // cb397619
 	CRC32_channelParticipant_c00c07c0                                 TLConstructor = -1072953408 // c00c07c0
+	CRC32_channelParticipantSelf_a9478a1a                             TLConstructor = -1454929382 // a9478a1a
 	CRC32_channelParticipantSelf_4f607bef                             TLConstructor = 1331723247  // 4f607bef
 	CRC32_channelParticipantSelf_35a8bfa7                             TLConstructor = 900251559   // 35a8bfa7
 	CRC32_channelParticipantCreator                                   TLConstructor = 803602899   // 2fe601d3
 	CRC32_channelParticipantAdmin                                     TLConstructor = 885242707   // 34c3bb53
-	CRC32_channelParticipantBanned                                    TLConstructor = 1844969806  // 6df8014e
+	CRC32_channelParticipantBanned_d5f0ad91                           TLConstructor = -705647215  // d5f0ad91
+	CRC32_channelParticipantBanned_6df8014e                           TLConstructor = 1844969806  // 6df8014e
 	CRC32_channelParticipantLeft                                      TLConstructor = 453242886   // 1b03f006
 	CRC32_channelParticipantsRecent                                   TLConstructor = -566281095  // de3f3c79
 	CRC32_channelParticipantsAdmins                                   TLConstructor = -1268741783 // b4608969
@@ -1182,6 +1193,7 @@ const (
 	CRC32_channelAdminLogEventActionToggleSignatureProfiles           TLConstructor = 1621597305  // 60a79c79
 	CRC32_channelAdminLogEventActionParticipantSubExtend              TLConstructor = 1684286899  // 64642db3
 	CRC32_channelAdminLogEventActionToggleAutotranslation             TLConstructor = -988285058  // c517f77e
+	CRC32_channelAdminLogEventActionParticipantEditRank               TLConstructor = 1476834540  // 5806b4ec
 	CRC32_channelAdminLogEvent                                        TLConstructor = 531458253   // 1fad68cd
 	CRC32_channels_adminLogResults                                    TLConstructor = -309659827  // ed8af74d
 	CRC32_channelAdminLogEventsFilter                                 TLConstructor = -368018716  // ea107ae4
@@ -1317,6 +1329,7 @@ const (
 	CRC32_inputFolderPeer                                             TLConstructor = -70073706   // fbd2c296
 	CRC32_folderPeer                                                  TLConstructor = -373643672  // e9baa668
 	CRC32_messages_searchCounter                                      TLConstructor = -398136321  // e844ebff
+	CRC32_urlAuthResultRequest_f8f8eb1e                               TLConstructor = -117904610  // f8f8eb1e
 	CRC32_urlAuthResultRequest_32fabf1a                               TLConstructor = 855293722   // 32fabf1a
 	CRC32_urlAuthResultRequest_92d33a0e                               TLConstructor = -1831650802 // 92d33a0e
 	CRC32_urlAuthResultAccepted_623a8fa0                              TLConstructor = 1648005024  // 623a8fa0
@@ -2437,8 +2450,10 @@ const (
 	CRC32_messages_getSearchCounters_1bbcf300                         TLConstructor = 465367808   // 1bbcf300
 	CRC32_messages_getSearchCounters_ae7cc1                           TLConstructor = 11435201    // ae7cc1
 	CRC32_messages_getSearchCounters_732eef00                         TLConstructor = 1932455680  // 732eef00
-	CRC32_messages_requestUrlAuth                                     TLConstructor = 428848198   // 198fb446
-	CRC32_messages_acceptUrlAuth                                      TLConstructor = -1322487515 // b12c7125
+	CRC32_messages_requestUrlAuth_894cc99c                            TLConstructor = -1991456356 // 894cc99c
+	CRC32_messages_requestUrlAuth_198fb446                            TLConstructor = 428848198   // 198fb446
+	CRC32_messages_acceptUrlAuth_67a3f0de                             TLConstructor = 1738797278  // 67a3f0de
+	CRC32_messages_acceptUrlAuth_b12c7125                             TLConstructor = -1322487515 // b12c7125
 	CRC32_messages_hidePeerSettingsBar                                TLConstructor = 1336717624  // 4facb138
 	CRC32_messages_getScheduledHistory                                TLConstructor = -183077365  // f516760b
 	CRC32_messages_getScheduledMessages                               TLConstructor = -1111817116 // bdbb0464
@@ -2481,7 +2496,8 @@ const (
 	CRC32_messages_getSearchResultsPositions_6e9583a3                 TLConstructor = 1855292323  // 6e9583a3
 	CRC32_messages_hideChatJoinRequest                                TLConstructor = 2145904661  // 7fe7e815
 	CRC32_messages_hideAllChatJoinRequests                            TLConstructor = -528091926  // e085f4ea
-	CRC32_messages_toggleNoForwards                                   TLConstructor = -1323389022 // b11eafa2
+	CRC32_messages_toggleNoForwards_b2081a35                          TLConstructor = -1308091851 // b2081a35
+	CRC32_messages_toggleNoForwards_b11eafa2                          TLConstructor = -1323389022 // b11eafa2
 	CRC32_messages_saveDefaultSendAs                                  TLConstructor = -855777386  // ccfddf96
 	CRC32_messages_sendReaction_d30d78d4                              TLConstructor = -754091820  // d30d78d4
 	CRC32_messages_sendReaction_25690ce4                              TLConstructor = 627641572   // 25690ce4
@@ -2606,6 +2622,11 @@ const (
 	CRC32_messages_deleteTopicHistory                                 TLConstructor = -763269360  // d2816f10
 	CRC32_messages_getEmojiGameInfo                                   TLConstructor = -75592537   // fb7e8ca7
 	CRC32_messages_summarizeText                                      TLConstructor = -1656683294 // 9d4104e2
+	CRC32_messages_editChatCreator                                    TLConstructor = -146556841  // f743b857
+	CRC32_messages_getFutureChatCreatorAfterLeave                     TLConstructor = 998051494   // 3b7d0ea6
+	CRC32_messages_editChatParticipantRank                            TLConstructor = -1609616720 // a00f32b0
+	CRC32_messages_declineUrlAuth                                     TLConstructor = 893610940   // 35436bbc
+	CRC32_messages_checkUrlAuthMatchCode                              TLConstructor = -911967477  // c9a47b0b
 	CRC32_updates_getState                                            TLConstructor = -304838614  // edd4882a
 	CRC32_updates_getDifference_19c2f763                              TLConstructor = 432207715   // 19c2f763
 	CRC32_updates_getDifference_25939651                              TLConstructor = 630429265   // 25939651
@@ -2668,7 +2689,8 @@ const (
 	CRC32_channels_getFullChannel                                     TLConstructor = 141781513   // 8736a09
 	CRC32_channels_createChannel_91006707                             TLConstructor = -1862244601 // 91006707
 	CRC32_channels_createChannel_3d5fb10f                             TLConstructor = 1029681423  // 3d5fb10f
-	CRC32_channels_editAdmin                                          TLConstructor = -751007486  // d33c8902
+	CRC32_channels_editAdmin_9a98ad68                                 TLConstructor = -1701270168 // 9a98ad68
+	CRC32_channels_editAdmin_d33c8902                                 TLConstructor = -751007486  // d33c8902
 	CRC32_channels_editTitle                                          TLConstructor = 1450044624  // 566decd0
 	CRC32_channels_editPhoto                                          TLConstructor = -248621111  // f12e57c9
 	CRC32_channels_checkUsername                                      TLConstructor = 283557164   // 10e6bd2c
@@ -2690,7 +2712,6 @@ const (
 	CRC32_channels_getLeftChannels                                    TLConstructor = -2092831552 // 8341ecc0
 	CRC32_channels_getGroupsForDiscussion                             TLConstructor = -170208392  // f5dad378
 	CRC32_channels_setDiscussionGroup                                 TLConstructor = 1079520178  // 40582bb2
-	CRC32_channels_editCreator                                        TLConstructor = -1892102881 // 8f38cd1f
 	CRC32_channels_editLocation                                       TLConstructor = 1491484525  // 58e63f6d
 	CRC32_channels_toggleSlowMode                                     TLConstructor = -304832784  // edd49ef0
 	CRC32_channels_getInactiveChannels                                TLConstructor = 300429806   // 11e831ee
@@ -2725,7 +2746,6 @@ const (
 	CRC32_channels_getMessageAuthor                                   TLConstructor = -320691994  // ece2a0e6
 	CRC32_channels_checkSearchPostsFlood                              TLConstructor = 576090389   // 22567115
 	CRC32_channels_setMainProfileTab                                  TLConstructor = 897842353   // 3583fcb1
-	CRC32_channels_getFutureCreatorAfterLeave                         TLConstructor = -1610016593 // a00918af
 	CRC32_bots_sendCustomRequest                                      TLConstructor = -1440257555 // aa2769ed
 	CRC32_bots_answerWebhookJSONQuery                                 TLConstructor = -434028723  // e6213f4d
 	CRC32_bots_setBotCommands                                         TLConstructor = 85399130    // 517165a
@@ -2997,6 +3017,8 @@ const (
 	CRC32_smsjobs_getSmsJob                                           TLConstructor = 2005766191  // 778d902f
 	CRC32_smsjobs_finishJob                                           TLConstructor = 1327415076  // 4f1ebf24
 	CRC32_fragment_getCollectibleInfo                                 TLConstructor = -1105295942 // be1e85ba
+	CRC32_channels_editCreator                                        TLConstructor = -1892102881 // 8f38cd1f
+	CRC32_channels_getFutureCreatorAfterLeave                         TLConstructor = -1610016593 // a00918af
 	CRC32_phone_sendGroupCallMessage87893014                          TLConstructor = -2021052396 // 87893014
 	CRC32_stories_getPeerMaxIDs535983C3                               TLConstructor = 1398375363  // 535983c3
 	CRC32_channels_createForumTopic                                   TLConstructor = -200539612  // f40c0224

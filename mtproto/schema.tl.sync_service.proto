@@ -2,10 +2,10 @@
  * WARNING! All changes made in this file will be lost!
  * Created from 'scheme.tl' by 'mtprotoc'
  *
- * Copyright (c) 2025-present,  Teamgram Authors.
+ * Copyright (c) 2026 The Teamgram Authors (https://teamgram.net).
  *  All rights reserved.
  *
- * Author: Benqi (wubenqi@gmail.com)
+ * Author: teamgramio (teamgram.io@gmail.com)
  */
 
 syntax = "proto3";
@@ -1998,6 +1998,7 @@ message TL_messages_requestUrlAuth {
   google.protobuf.Int32Value msg_id = 4;
   google.protobuf.Int32Value button_id = 5;
   google.protobuf.StringValue url = 6;
+  google.protobuf.StringValue in_app_origin = 7;
 }
 
 message TL_messages_acceptUrlAuth {
@@ -2008,6 +2009,7 @@ message TL_messages_acceptUrlAuth {
   google.protobuf.Int32Value msg_id = 6;
   google.protobuf.Int32Value button_id = 7;
   google.protobuf.StringValue url = 8;
+  google.protobuf.StringValue match_code = 9;
 }
 
 message TL_messages_hidePeerSettingsBar {
@@ -2267,6 +2269,7 @@ message TL_messages_toggleNoForwards {
   TLConstructor constructor = 1;
   InputPeer peer = 3;
   Bool enabled = 4;
+  google.protobuf.Int32Value request_msg_id = 5;
 }
 
 message TL_messages_saveDefaultSendAs {
@@ -2926,6 +2929,36 @@ message TL_messages_summarizeText {
   google.protobuf.StringValue to_lang = 5;
 }
 
+message TL_messages_editChatCreator {
+  TLConstructor constructor = 1;
+  InputPeer peer = 3;
+  InputUser user_id = 4;
+  InputCheckPasswordSRP password = 5;
+}
+
+message TL_messages_getFutureChatCreatorAfterLeave {
+  TLConstructor constructor = 1;
+  InputPeer peer = 3;
+}
+
+message TL_messages_editChatParticipantRank {
+  TLConstructor constructor = 1;
+  InputPeer peer = 3;
+  InputPeer participant = 4;
+  string rank = 5;
+}
+
+message TL_messages_declineUrlAuth {
+  TLConstructor constructor = 1;
+  string url = 3;
+}
+
+message TL_messages_checkUrlAuthMatchCode {
+  TLConstructor constructor = 1;
+  string url = 3;
+  string match_code = 4;
+}
+
 message TL_updates_getState {
   TLConstructor constructor = 1;
 }
@@ -3240,7 +3273,8 @@ message TL_channels_editAdmin {
   InputChannel channel = 3;
   InputUser user_id = 4;
   ChatAdminRights admin_rights = 5;
-  string rank = 6;
+  google.protobuf.StringValue rank_FLAGSTRING = 6;
+  string rank_STRING = 7;
 }
 
 message TL_channels_editTitle {
@@ -3367,13 +3401,6 @@ message TL_channels_setDiscussionGroup {
   TLConstructor constructor = 1;
   InputChannel broadcast = 3;
   InputChannel group = 4;
-}
-
-message TL_channels_editCreator {
-  TLConstructor constructor = 1;
-  InputChannel channel = 3;
-  InputUser user_id = 4;
-  InputCheckPasswordSRP password = 5;
 }
 
 message TL_channels_editLocation {
@@ -3550,11 +3577,6 @@ message TL_channels_setMainProfileTab {
   TLConstructor constructor = 1;
   InputChannel channel = 3;
   ProfileTab tab = 4;
-}
-
-message TL_channels_getFutureCreatorAfterLeave {
-  TLConstructor constructor = 1;
-  InputChannel channel = 3;
 }
 
 message TL_bots_sendCustomRequest {
@@ -5023,6 +5045,18 @@ message TL_fragment_getCollectibleInfo {
   InputCollectible collectible = 3;
 }
 
+message TL_channels_editCreator {
+  TLConstructor constructor = 1;
+  InputChannel channel = 3;
+  InputUser user_id = 4;
+  InputCheckPasswordSRP password = 5;
+}
+
+message TL_channels_getFutureCreatorAfterLeave {
+  TLConstructor constructor = 1;
+  InputChannel channel = 3;
+}
+
 message TL_phone_sendGroupCallMessage87893014 {
   TLConstructor constructor = 1;
   InputGroupCall call = 3;
@@ -5863,7 +5897,6 @@ service RPCChannels {
       returns (messages_Chats) {}
   rpc channels_setDiscussionGroup(TL_channels_setDiscussionGroup)
       returns (Bool) {}
-  rpc channels_editCreator(TL_channels_editCreator) returns (Updates) {}
   rpc channels_editLocation(TL_channels_editLocation) returns (Bool) {}
   rpc channels_toggleSlowMode(TL_channels_toggleSlowMode) returns (Updates) {}
   rpc channels_getInactiveChannels(TL_channels_getInactiveChannels)
@@ -5872,6 +5905,7 @@ service RPCChannels {
       returns (messages_AffectedHistory) {}
   rpc channels_toggleParticipantsHidden(TL_channels_toggleParticipantsHidden)
       returns (Updates) {}
+  rpc channels_editCreator(TL_channels_editCreator) returns (Updates) {}
   rpc channels_getFutureCreatorAfterLeave(
       TL_channels_getFutureCreatorAfterLeave) returns (User) {}
   rpc channels_inviteToChannel199F3A6C(TL_channels_inviteToChannel199F3A6C)
@@ -5933,6 +5967,11 @@ service RPCChats {
   rpc messages_getMessageReadParticipants31C1C44F(
       TL_messages_getMessageReadParticipants31C1C44F)
       returns (Vector_ReadParticipantDate) {}
+  rpc messages_editChatCreator(TL_messages_editChatCreator) returns (Updates) {}
+  rpc messages_getFutureChatCreatorAfterLeave(
+      TL_messages_getFutureChatCreatorAfterLeave) returns (User) {}
+  rpc messages_editChatParticipantRank(TL_messages_editChatParticipantRank)
+      returns (Updates) {}
   rpc channels_convertToGigagroup(TL_channels_convertToGigagroup)
       returns (Updates) {}
   rpc channels_setEmojiStickers(TL_channels_setEmojiStickers) returns (Bool) {}
@@ -6848,6 +6887,9 @@ service RPCSeamless {
       returns (UrlAuthResult) {}
   rpc messages_acceptUrlAuth(TL_messages_acceptUrlAuth)
       returns (UrlAuthResult) {}
+  rpc messages_declineUrlAuth(TL_messages_declineUrlAuth) returns (Bool) {}
+  rpc messages_checkUrlAuthMatchCode(TL_messages_checkUrlAuthMatchCode)
+      returns (Bool) {}
 }
 
 service RPCSecretChats {
