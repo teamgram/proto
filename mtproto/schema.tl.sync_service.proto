@@ -259,6 +259,24 @@ message TL_auth_finishPasskeyLogin {
   google.protobuf.Int64Value from_auth_key_id = 5;
 }
 
+message TL_auth_initFirebasePnvLogin {
+  TLConstructor constructor = 1;
+  int32 api_id = 3;
+  string api_hash = 4;
+}
+
+message TL_auth_finishFirebasePnvLogin {
+  TLConstructor constructor = 1;
+  string google_token = 3;
+}
+
+message TL_auth_firebasePnvSignUp {
+  TLConstructor constructor = 1;
+  bool no_joined_notifications = 3;
+  string first_name = 4;
+  string last_name = 5;
+}
+
 message TL_account_registerDevice {
   TLConstructor constructor = 1;
   bool no_muted = 3;
@@ -1336,20 +1354,21 @@ message TL_messages_forwardMessages {
   bool drop_media_captions = 7;
   bool noforwards = 8;
   bool allow_paid_floodskip = 9;
-  InputPeer from_peer = 10;
-  repeated int32 id = 11;
-  repeated int64 random_id = 12;
-  InputPeer to_peer = 13;
-  google.protobuf.Int32Value top_msg_id = 14;
-  InputReplyTo reply_to = 15;
-  google.protobuf.Int32Value schedule_date = 16;
-  google.protobuf.Int32Value schedule_repeat_period = 17;
-  InputPeer send_as = 18;
-  InputQuickReplyShortcut quick_reply_shortcut = 19;
-  google.protobuf.Int64Value effect = 20;
-  google.protobuf.Int32Value video_timestamp = 21;
-  google.protobuf.Int64Value allow_paid_stars = 22;
-  SuggestedPost suggested_post = 23;
+  bool from_ephemeral = 10;
+  InputPeer from_peer = 11;
+  repeated int32 id = 12;
+  repeated int64 random_id = 13;
+  InputPeer to_peer = 14;
+  google.protobuf.Int32Value top_msg_id = 15;
+  InputReplyTo reply_to = 16;
+  google.protobuf.Int32Value schedule_date = 17;
+  google.protobuf.Int32Value schedule_repeat_period = 18;
+  InputPeer send_as = 19;
+  InputQuickReplyShortcut quick_reply_shortcut = 20;
+  google.protobuf.Int64Value effect = 21;
+  google.protobuf.Int32Value video_timestamp = 22;
+  google.protobuf.Int64Value allow_paid_stars = 23;
+  SuggestedPost suggested_post = 24;
 }
 
 message TL_messages_reportSpam {
@@ -5365,16 +5384,20 @@ message TL_communities_getParticipantJoinedChats {
 
 message TL_ephemeral_sendMessage {
   TLConstructor constructor = 1;
-  InputPeer peer = 3;
-  InputUser receiver_id = 4;
-  google.protobuf.Int64Value query_id = 5;
-  string message = 6;
-  repeated MessageEntity entities = 7;
-  InputMedia media = 8;
-  ReplyMarkup reply_markup = 9;
-  InputRichMessage rich_message = 10;
-  int64 random_id = 11;
-  InputReplyTo reply_to = 12;
+  bool invert_media = 3;
+  bool welcome = 4;
+  bool anchor = 5;
+  bool noforwards = 6;
+  InputPeer peer = 7;
+  InputUser receiver_id = 8;
+  google.protobuf.Int64Value query_id = 9;
+  string message = 10;
+  repeated MessageEntity entities = 11;
+  InputMedia media = 12;
+  ReplyMarkup reply_markup = 13;
+  InputRichMessage rich_message = 14;
+  int64 random_id = 15;
+  InputReplyTo reply_to = 16;
 }
 
 message TL_ephemeral_deleteMessage {
@@ -5397,6 +5420,37 @@ message TL_ephemeral_getCallbackAnswer {
   InputPeer peer = 3;
   int32 id = 4;
   bytes data = 5;
+}
+
+message TL_ephemeral_editMessage {
+  TLConstructor constructor = 1;
+  bool invert_media = 3;
+  bool welcome = 4;
+  InputPeer peer = 5;
+  InputUser receiver_id = 6;
+  int32 id = 7;
+  google.protobuf.StringValue message = 8;
+  InputMedia media = 9;
+  repeated MessageEntity entities = 10;
+  ReplyMarkup reply_markup = 11;
+  InputRichMessage rich_message = 12;
+}
+
+message TL_ephemeral_deleteWelcomeMessage {
+  TLConstructor constructor = 1;
+  InputPeer peer = 3;
+  int32 id = 4;
+}
+
+message TL_ephemeral_deleteAllWelcomeMessages {
+  TLConstructor constructor = 1;
+  InputPeer peer = 3;
+}
+
+message TL_ephemeral_getWelcomeMessages {
+  TLConstructor constructor = 1;
+  InputPeer peer = 3;
+  int64 hash = 4;
 }
 
 message TL_account_toggleWebBrowserSettingsException2D0A0571 {
@@ -6065,6 +6119,12 @@ service RPCAuthorization {
   rpc auth_resetLoginEmail(TL_auth_resetLoginEmail) returns (auth_SentCode) {}
   rpc auth_reportMissingCode(TL_auth_reportMissingCode) returns (Bool) {}
   rpc auth_checkPaidAuth(TL_auth_checkPaidAuth) returns (auth_SentCode) {}
+  rpc auth_initFirebasePnvLogin(TL_auth_initFirebasePnvLogin)
+      returns (auth_FirebasePnvIntent) {}
+  rpc auth_finishFirebasePnvLogin(TL_auth_finishFirebasePnvLogin)
+      returns (auth_Authorization) {}
+  rpc auth_firebasePnvSignUp(TL_auth_firebasePnvSignUp)
+      returns (auth_Authorization) {}
   rpc account_sendVerifyEmailCode(TL_account_sendVerifyEmailCode)
       returns (account_SentEmailCode) {}
   rpc account_verifyEmail32DA4CF(TL_account_verifyEmail32DA4CF)
@@ -6582,6 +6642,13 @@ service RPCEphemeral {
       returns (ReportResult) {}
   rpc ephemeral_getCallbackAnswer(TL_ephemeral_getCallbackAnswer)
       returns (messages_BotCallbackAnswer) {}
+  rpc ephemeral_editMessage(TL_ephemeral_editMessage) returns (Updates) {}
+  rpc ephemeral_deleteWelcomeMessage(TL_ephemeral_deleteWelcomeMessage)
+      returns (Bool) {}
+  rpc ephemeral_deleteAllWelcomeMessages(TL_ephemeral_deleteAllWelcomeMessages)
+      returns (Bool) {}
+  rpc ephemeral_getWelcomeMessages(TL_ephemeral_getWelcomeMessages)
+      returns (ephemeral_WelcomeMessages) {}
 }
 
 service RPCFactChecks {

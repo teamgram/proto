@@ -1152,6 +1152,63 @@ message TL_businessWorkHours {
   BusinessWorkHours data2 = 1;
 }
 
+// ButtonType <--
+//  + TL_buttonTypeDefault
+//  + TL_buttonTypeRequestPhone
+//  + TL_buttonTypeRequestGeoLocation
+//  + TL_buttonTypeRequestPoll
+//  + TL_buttonTypeRequestPeer
+//  + TL_inputButtonTypeRequestPeer
+//  + TL_buttonTypeSimpleWebView
+//
+message ButtonType {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  Bool quiz = 3;
+  int32 button_id = 4;
+  RequestPeerType peer_type = 5;
+  int32 max_quantity = 6;
+  bool name_requested = 7;
+  bool username_requested = 8;
+  bool photo_requested = 9;
+  string url = 10;
+}
+
+// TL_buttonTypeDefault
+message TL_buttonTypeDefault {
+  ButtonType data2 = 1;
+}
+
+// TL_buttonTypeRequestPhone
+message TL_buttonTypeRequestPhone {
+  ButtonType data2 = 1;
+}
+
+// TL_buttonTypeRequestGeoLocation
+message TL_buttonTypeRequestGeoLocation {
+  ButtonType data2 = 1;
+}
+
+// TL_buttonTypeRequestPoll
+message TL_buttonTypeRequestPoll {
+  ButtonType data2 = 1;
+}
+
+// TL_buttonTypeRequestPeer
+message TL_buttonTypeRequestPeer {
+  ButtonType data2 = 1;
+}
+
+// TL_inputButtonTypeRequestPeer
+message TL_inputButtonTypeRequestPeer {
+  ButtonType data2 = 1;
+}
+
+// TL_buttonTypeSimpleWebView
+message TL_buttonTypeSimpleWebView {
+  ButtonType data2 = 1;
+}
+
 // CdnConfig <--
 //  + TL_cdnConfig
 //
@@ -1917,6 +1974,7 @@ message ChatAdminRights {
   bool manage_direct_messages = 18;
   bool manage_ranks = 19;
   bool manage_linked_peers = 20;
+  bool manage_welcome_messages = 21;
 }
 
 // TL_chatAdminRights
@@ -2001,74 +2059,75 @@ message ChatFull {
   bool can_set_username = 3;
   bool has_scheduled = 4;
   bool translations_disabled = 5;
-  int64 id = 6;
-  string about = 7;
-  ChatParticipants participants = 8;
-  Photo chat_photo = 9;
-  PeerNotifySettings notify_settings = 10;
-  ExportedChatInvite exported_invite = 11;
-  repeated BotInfo bot_info = 12;
-  google.protobuf.Int32Value pinned_msg_id = 13;
-  google.protobuf.Int32Value folder_id = 14;
-  InputGroupCall call = 15;
-  google.protobuf.Int32Value ttl_period = 16;
-  Peer groupcall_default_join_as = 17;
-  google.protobuf.StringValue theme_emoticon = 18;
-  google.protobuf.Int32Value requests_pending = 19;
-  repeated int64 recent_requesters = 20;
-  ChatReactions available_reactions_FLAGCHATREACTIONS = 21;
-  google.protobuf.Int32Value reactions_limit = 22;
-  bool can_view_participants = 23;
-  bool can_set_stickers = 24;
-  bool hidden_prehistory = 25;
-  bool can_set_location = 26;
-  bool can_view_stats = 27;
-  bool blocked = 28;
-  bool can_delete_channel = 29;
-  bool antispam = 30;
-  bool participants_hidden = 31;
-  bool stories_pinned_available = 32;
-  bool view_forum_as_messages = 33;
-  bool restricted_sponsored = 34;
-  bool can_view_revenue = 35;
-  bool paid_media_allowed = 36;
-  bool can_view_stars_revenue = 37;
-  bool paid_reactions_available = 38;
-  bool stargifts_available = 39;
-  bool paid_messages_available = 40;
-  google.protobuf.Int32Value participants_count = 41;
-  google.protobuf.Int32Value admins_count = 42;
-  google.protobuf.Int32Value kicked_count = 43;
-  google.protobuf.Int32Value banned_count = 44;
-  google.protobuf.Int32Value online_count = 45;
-  int32 read_inbox_max_id = 46;
-  int32 read_outbox_max_id = 47;
-  int32 unread_count = 48;
-  google.protobuf.Int64Value migrated_from_chat_id = 49;
-  google.protobuf.Int32Value migrated_from_max_id = 50;
-  StickerSet stickerset = 51;
-  google.protobuf.Int32Value available_min_id = 52;
-  google.protobuf.Int64Value linked_chat_id = 53;
-  ChannelLocation location = 54;
-  google.protobuf.Int32Value slowmode_seconds = 55;
-  google.protobuf.Int32Value slowmode_next_send_date = 56;
-  google.protobuf.Int32Value stats_dc = 57;
-  int32 pts = 58;
-  repeated string pending_suggestions = 59;
-  Peer default_send_as = 60;
-  PeerStories stories = 61;
-  WallPaper wallpaper = 62;
-  google.protobuf.Int32Value boosts_applied = 63;
-  google.protobuf.Int32Value boosts_unrestrict = 64;
-  StickerSet emojiset = 65;
-  BotVerification bot_verification = 66;
-  google.protobuf.Int32Value stargifts_count = 67;
-  google.protobuf.Int64Value send_paid_messages_stars = 68;
-  ProfileTab main_tab = 69;
-  google.protobuf.Int64Value guard_bot_id = 70;
-  repeated CommunityPeer linked_peers = 71;
-  google.protobuf.Int32Value peer_link_requests_pending = 72;
-  repeated string available_reactions_FLAGVECTORSTRING = 73;
+  bool has_welcome_messages = 6;
+  int64 id = 7;
+  string about = 8;
+  ChatParticipants participants = 9;
+  Photo chat_photo = 10;
+  PeerNotifySettings notify_settings = 11;
+  ExportedChatInvite exported_invite = 12;
+  repeated BotInfo bot_info = 13;
+  google.protobuf.Int32Value pinned_msg_id = 14;
+  google.protobuf.Int32Value folder_id = 15;
+  InputGroupCall call = 16;
+  google.protobuf.Int32Value ttl_period = 17;
+  Peer groupcall_default_join_as = 18;
+  google.protobuf.StringValue theme_emoticon = 19;
+  google.protobuf.Int32Value requests_pending = 20;
+  repeated int64 recent_requesters = 21;
+  ChatReactions available_reactions_FLAGCHATREACTIONS = 22;
+  google.protobuf.Int32Value reactions_limit = 23;
+  bool can_view_participants = 24;
+  bool can_set_stickers = 25;
+  bool hidden_prehistory = 26;
+  bool can_set_location = 27;
+  bool can_view_stats = 28;
+  bool blocked = 29;
+  bool can_delete_channel = 30;
+  bool antispam = 31;
+  bool participants_hidden = 32;
+  bool stories_pinned_available = 33;
+  bool view_forum_as_messages = 34;
+  bool restricted_sponsored = 35;
+  bool can_view_revenue = 36;
+  bool paid_media_allowed = 37;
+  bool can_view_stars_revenue = 38;
+  bool paid_reactions_available = 39;
+  bool stargifts_available = 40;
+  bool paid_messages_available = 41;
+  google.protobuf.Int32Value participants_count = 42;
+  google.protobuf.Int32Value admins_count = 43;
+  google.protobuf.Int32Value kicked_count = 44;
+  google.protobuf.Int32Value banned_count = 45;
+  google.protobuf.Int32Value online_count = 46;
+  int32 read_inbox_max_id = 47;
+  int32 read_outbox_max_id = 48;
+  int32 unread_count = 49;
+  google.protobuf.Int64Value migrated_from_chat_id = 50;
+  google.protobuf.Int32Value migrated_from_max_id = 51;
+  StickerSet stickerset = 52;
+  google.protobuf.Int32Value available_min_id = 53;
+  google.protobuf.Int64Value linked_chat_id = 54;
+  ChannelLocation location = 55;
+  google.protobuf.Int32Value slowmode_seconds = 56;
+  google.protobuf.Int32Value slowmode_next_send_date = 57;
+  google.protobuf.Int32Value stats_dc = 58;
+  int32 pts = 59;
+  repeated string pending_suggestions = 60;
+  Peer default_send_as = 61;
+  PeerStories stories = 62;
+  WallPaper wallpaper = 63;
+  google.protobuf.Int32Value boosts_applied = 64;
+  google.protobuf.Int32Value boosts_unrestrict = 65;
+  StickerSet emojiset = 66;
+  BotVerification bot_verification = 67;
+  google.protobuf.Int32Value stargifts_count = 68;
+  google.protobuf.Int64Value send_paid_messages_stars = 69;
+  ProfileTab main_tab = 70;
+  google.protobuf.Int64Value guard_bot_id = 71;
+  repeated CommunityPeer linked_peers = 72;
+  google.protobuf.Int32Value peer_link_requests_pending = 73;
+  repeated string available_reactions_FLAGVECTORSTRING = 74;
 }
 
 // TL_chatFull
@@ -3203,22 +3262,29 @@ message TL_encryptedMessageService {
 
 // EphemeralMessage <--
 //  + TL_ephemeralMessage
+//  + TL_ephemeralMessage
 //
 message EphemeralMessage {
   string predicate_name = 1;
   TLConstructor constructor = 2;
   bool out = 3;
-  int32 id = 4;
-  Peer from_id = 5;
-  Peer peer_id = 6;
-  int64 receiver_id = 7;
-  google.protobuf.Int32Value top_msg_id = 8;
-  int32 date = 9;
-  string message = 10;
-  repeated MessageEntity entities = 11;
-  MessageMedia media = 12;
-  ReplyMarkup reply_markup = 13;
-  MessageReplyHeader reply_to = 14;
+  bool welcome_template = 4;
+  bool invert_media = 5;
+  bool noforwards = 6;
+  int32 id = 7;
+  Peer from_id = 8;
+  Peer peer_id = 9;
+  int64 receiver_id = 10;
+  google.protobuf.Int32Value top_msg_id = 11;
+  int32 date = 12;
+  string message = 13;
+  repeated MessageEntity entities = 14;
+  MessageMedia media = 15;
+  ReplyMarkup reply_markup = 16;
+  MessageReplyHeader reply_to = 17;
+  RichMessage rich_message = 18;
+  google.protobuf.Int64Value chat_instance = 19;
+  google.protobuf.Int32Value anchor_msg_id = 20;
 }
 
 // TL_ephemeralMessage
@@ -3839,6 +3905,98 @@ message InlineBotWebView {
 // TL_inlineBotWebView
 message TL_inlineBotWebView {
   InlineBotWebView data2 = 1;
+}
+
+// InlineButtonType <--
+//  + TL_inlineButtonTypeUrl
+//  + TL_inlineButtonTypeUrlAuth
+//  + TL_inputInlineButtonTypeUrlAuth
+//  + TL_inlineButtonTypeWebView
+//  + TL_inlineButtonTypeCallback
+//  + TL_inlineButtonTypeGame
+//  + TL_inlineButtonTypeBuy
+//  + TL_inlineButtonTypeSwitchInline
+//  + TL_inlineButtonTypeUserProfile
+//  + TL_inputInlineButtonTypeUserProfile
+//  + TL_inlineButtonTypeCopy
+//  + TL_inlineButtonTypeDisabled
+//
+message InlineButtonType {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string url = 3;
+  google.protobuf.StringValue fwd_text = 4;
+  int32 button_id = 5;
+  bool request_write_access = 6;
+  InputUser bot = 7;
+  bool requires_password = 8;
+  bytes data = 9;
+  bool same_peer = 10;
+  string query = 11;
+  repeated InlineQueryPeerType peer_types = 12;
+  int64 user_id_INT64 = 13;
+  InputUser user_id_INPUTUSER = 14;
+  string copy_text = 15;
+}
+
+// TL_inlineButtonTypeUrl
+message TL_inlineButtonTypeUrl {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeUrlAuth
+message TL_inlineButtonTypeUrlAuth {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inputInlineButtonTypeUrlAuth
+message TL_inputInlineButtonTypeUrlAuth {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeWebView
+message TL_inlineButtonTypeWebView {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeCallback
+message TL_inlineButtonTypeCallback {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeGame
+message TL_inlineButtonTypeGame {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeBuy
+message TL_inlineButtonTypeBuy {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeSwitchInline
+message TL_inlineButtonTypeSwitchInline {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeUserProfile
+message TL_inlineButtonTypeUserProfile {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inputInlineButtonTypeUserProfile
+message TL_inputInlineButtonTypeUserProfile {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeCopy
+message TL_inlineButtonTypeCopy {
+  InlineButtonType data2 = 1;
+}
+
+// TL_inlineButtonTypeDisabled
+message TL_inlineButtonTypeDisabled {
+  InlineButtonType data2 = 1;
 }
 
 // InlineQueryPeerType <--
@@ -4718,6 +4876,7 @@ message TL_inputGroupCallInviteMessage {
 //  + TL_inputInvoiceStarGiftDropOriginalDetails
 //  + TL_inputInvoiceStarGiftAuctionBid
 //  + TL_inputInvoiceStarGiftResale
+//  + TL_inputInvoiceStarGiftResale
 //  + TL_inputInvoiceStarGift
 //  + TL_inputInvoiceStarGiftUpgrade
 //  + TL_inputInvoiceStarGiftTransfer
@@ -4744,10 +4903,11 @@ message InputInvoice {
   InputUser bot = 18;
   int64 stars = 19;
   bool ton = 20;
-  bool update_bid = 21;
-  int64 bid_amount = 22;
-  InputUser to_id_INPUTUSER = 23;
-  StarsTopupOption option_STARSTOPUPOPTION = 24;
+  bool show_name = 21;
+  bool update_bid = 22;
+  int64 bid_amount = 23;
+  InputUser to_id_INPUTUSER = 24;
+  StarsTopupOption option_STARSTOPUPOPTION = 25;
 }
 
 // TL_inputInvoiceMessage
@@ -6258,6 +6418,7 @@ message TL_joinChatBotResultWebView {
 
 // KeyboardButton <--
 //  + TL_keyboardButton
+//  + TL_keyboardButton
 //  + TL_keyboardButtonUrl
 //  + TL_keyboardButtonCallback
 //  + TL_keyboardButtonRequestPhone
@@ -6301,25 +6462,26 @@ message KeyboardButton {
   TLConstructor constructor = 2;
   KeyboardButtonStyle style = 3;
   string text = 4;
-  string url = 5;
-  bool requires_password = 6;
-  bytes data = 7;
-  bool same_peer = 8;
-  string query = 9;
-  repeated InlineQueryPeerType peer_types = 10;
-  google.protobuf.StringValue fwd_text = 11;
-  int32 button_id = 12;
-  bool request_write_access = 13;
-  InputUser bot = 14;
-  Bool quiz = 15;
-  InputUser user_id_INPUTUSER = 16;
-  int64 user_id_INT64 = 17;
-  RequestPeerType peer_type = 18;
-  int32 max_quantity = 19;
-  bool name_requested = 20;
-  bool username_requested = 21;
-  bool photo_requested = 22;
-  string copy_text = 23;
+  ButtonType type = 5;
+  string url = 6;
+  bool requires_password = 7;
+  bytes data = 8;
+  bool same_peer = 9;
+  string query = 10;
+  repeated InlineQueryPeerType peer_types = 11;
+  google.protobuf.StringValue fwd_text = 12;
+  int32 button_id = 13;
+  bool request_write_access = 14;
+  InputUser bot = 15;
+  Bool quiz = 16;
+  InputUser user_id_INPUTUSER = 17;
+  int64 user_id_INT64 = 18;
+  RequestPeerType peer_type = 19;
+  int32 max_quantity = 20;
+  bool name_requested = 21;
+  bool username_requested = 22;
+  bool photo_requested = 23;
+  string copy_text = 24;
 }
 
 // TL_keyboardButton
@@ -6441,6 +6603,36 @@ message KeyboardButtonStyle {
 // TL_keyboardButtonStyle
 message TL_keyboardButtonStyle {
   KeyboardButtonStyle data2 = 1;
+}
+
+// KeyboardInlineButton <--
+//  + TL_keyboardInlineButton
+//
+message KeyboardInlineButton {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  KeyboardButtonStyle style = 3;
+  string text = 4;
+  InlineButtonType type = 5;
+}
+
+// TL_keyboardInlineButton
+message TL_keyboardInlineButton {
+  KeyboardInlineButton data2 = 1;
+}
+
+// KeyboardInlineButtonRow <--
+//  + TL_keyboardInlineButtonRow
+//
+message KeyboardInlineButtonRow {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated KeyboardInlineButton buttons = 3;
+}
+
+// TL_keyboardInlineButtonRow
+message TL_keyboardInlineButtonRow {
+  KeyboardInlineButtonRow data2 = 1;
 }
 
 // LabeledPrice <--
@@ -6813,6 +7005,8 @@ message TL_messageService {
 //  + TL_messageActionPollDeleteAnswer
 //  + TL_messageActionManagedBotCreated
 //  + TL_messageActionChangeCommunity
+//  + TL_messageActionChatJoinedViaCommunity
+//  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGift
 //  + TL_messageActionStarGift
@@ -6978,13 +7172,14 @@ message MessageAction {
   Bool new_value = 129;
   PollAnswer answer = 130;
   int64 bot_id = 131;
-  google.protobuf.Int64Value community_id = 132;
-  int32 months = 133;
-  string emoticon = 134;
-  google.protobuf.Int64Value resale_stars = 135;
-  int64 convert_stars_INT64 = 136;
-  string domain_STRING = 137;
-  BizDataRaw biz_data = 138;
+  google.protobuf.Int64Value community_id_FLAGINT64 = 132;
+  int64 community_id_INT64 = 133;
+  int32 months = 134;
+  string emoticon = 135;
+  google.protobuf.Int64Value resale_stars = 136;
+  int64 convert_stars_INT64 = 137;
+  string domain_STRING = 138;
+  BizDataRaw biz_data = 139;
   string title = 200;
 }
 
@@ -7325,6 +7520,11 @@ message TL_messageActionManagedBotCreated {
 
 // TL_messageActionChangeCommunity
 message TL_messageActionChangeCommunity {
+  MessageAction data2 = 1;
+}
+
+// TL_messageActionChatJoinedViaCommunity
+message TL_messageActionChatJoinedViaCommunity {
   MessageAction data2 = 1;
 }
 
@@ -8438,6 +8638,9 @@ message TL_page {
 //  + TL_pageBlockThinking
 //  + TL_inputPageBlockMap
 //  + TL_pageBlockBlockquoteBlocks
+//  + TL_pageBlockButtonRow
+//  + TL_pageBlockDocument
+//  + TL_pageBlockBlockquote
 //  + TL_pageBlockOrderedList
 //
 message PageBlock {
@@ -8449,47 +8652,54 @@ message PageBlock {
   string language = 6;
   string name = 7;
   repeated PageListItem items_VECTORPAGELISTITEM = 8;
-  RichText caption_RICHTEXT = 9;
-  bool spoiler = 10;
-  int64 photo_id = 11;
-  PageCaption caption_PAGECAPTION = 12;
-  google.protobuf.StringValue url_FLAGSTRING = 13;
-  google.protobuf.Int64Value webpage_id_FLAGINT64 = 14;
-  bool autoplay = 15;
-  bool loop = 16;
-  int64 video_id = 17;
-  PageBlock cover = 18;
-  bool full_width = 19;
-  bool allow_scrolling = 20;
-  google.protobuf.StringValue html = 21;
-  google.protobuf.Int64Value poster_photo_id = 22;
-  google.protobuf.Int32Value w_FLAGINT32 = 23;
-  google.protobuf.Int32Value h_FLAGINT32 = 24;
-  string url_STRING = 25;
-  int64 webpage_id_INT64 = 26;
-  int64 author_photo_id = 27;
-  string author_STRING = 28;
-  int32 date = 29;
-  repeated PageBlock blocks = 30;
-  repeated PageBlock items_VECTORPAGEBLOCK = 31;
-  Chat channel = 32;
-  int64 audio_id = 33;
-  bool bordered = 34;
-  bool striped = 35;
-  RichText title = 36;
-  repeated PageTableRow rows = 37;
-  bool reversed = 38;
-  repeated PageListOrderedItem items_VECTORPAGELISTORDEREDITEM = 39;
-  google.protobuf.Int32Value start = 40;
-  google.protobuf.StringValue type = 41;
-  bool open = 42;
-  repeated PageRelatedArticle articles = 43;
-  GeoPoint geo_GEOPOINT = 44;
-  int32 zoom = 45;
-  int32 w_INT32 = 46;
-  int32 h_INT32 = 47;
-  string source = 48;
-  InputGeoPoint geo_INPUTGEOPOINT = 49;
+  bool collapsed = 9;
+  RichText caption_RICHTEXT = 10;
+  bool spoiler = 11;
+  int64 photo_id = 12;
+  PageCaption caption_PAGECAPTION = 13;
+  google.protobuf.StringValue url_FLAGSTRING = 14;
+  google.protobuf.Int64Value webpage_id_FLAGINT64 = 15;
+  bool autoplay = 16;
+  bool loop = 17;
+  int64 video_id = 18;
+  PageBlock cover = 19;
+  bool full_width = 20;
+  bool allow_scrolling = 21;
+  google.protobuf.StringValue html = 22;
+  google.protobuf.Int64Value poster_photo_id = 23;
+  google.protobuf.Int32Value w_FLAGINT32 = 24;
+  google.protobuf.Int32Value h_FLAGINT32 = 25;
+  string url_STRING = 26;
+  int64 webpage_id_INT64 = 27;
+  int64 author_photo_id = 28;
+  string author_STRING = 29;
+  int32 date = 30;
+  repeated PageBlock blocks = 31;
+  repeated PageBlock items_VECTORPAGEBLOCK = 32;
+  Chat channel = 33;
+  int64 audio_id = 34;
+  bool bordered = 35;
+  bool striped = 36;
+  bool compact = 37;
+  RichText title = 38;
+  repeated PageTableRow rows = 39;
+  bool reversed = 40;
+  repeated PageListOrderedItem items_VECTORPAGELISTORDEREDITEM = 41;
+  google.protobuf.Int32Value start = 42;
+  google.protobuf.StringValue type = 43;
+  bool open = 44;
+  repeated PageRelatedArticle articles = 45;
+  GeoPoint geo_GEOPOINT = 46;
+  int32 zoom = 47;
+  int32 w_INT32 = 48;
+  int32 h_INT32 = 49;
+  string source = 50;
+  InputGeoPoint geo_INPUTGEOPOINT = 51;
+  bool align_left = 52;
+  bool align_center = 53;
+  bool align_right = 54;
+  repeated PageButton buttons = 55;
+  int64 document_id = 56;
 }
 
 // TL_pageBlockUnsupported
@@ -8685,6 +8895,32 @@ message TL_inputPageBlockMap {
 // TL_pageBlockBlockquoteBlocks
 message TL_pageBlockBlockquoteBlocks {
   PageBlock data2 = 1;
+}
+
+// TL_pageBlockButtonRow
+message TL_pageBlockButtonRow {
+  PageBlock data2 = 1;
+}
+
+// TL_pageBlockDocument
+message TL_pageBlockDocument {
+  PageBlock data2 = 1;
+}
+
+// PageButton <--
+//  + TL_pageButton
+//
+message PageButton {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  RichText text = 3;
+  InlineButtonType type = 4;
+  RichButtonStyle style = 5;
+}
+
+// TL_pageButton
+message TL_pageButton {
+  PageButton data2 = 1;
 }
 
 // PageCaption <--
@@ -10129,6 +10365,7 @@ message TL_recentStory {
 //  + TL_replyKeyboardForceReply
 //  + TL_replyKeyboardMarkup
 //  + TL_replyInlineMarkup
+//  + TL_replyInlineMarkup
 //
 message ReplyMarkup {
   string predicate_name = 1;
@@ -10138,7 +10375,9 @@ message ReplyMarkup {
   google.protobuf.StringValue placeholder = 5;
   bool resize = 6;
   bool persistent = 7;
-  repeated KeyboardButtonRow rows = 8;
+  bool force_reply = 8;
+  repeated KeyboardButtonRow rows_VECTORKEYBOARDBUTTONROW = 9;
+  repeated KeyboardInlineButtonRow rows_VECTORKEYBOARDINLINEBUTTONROW = 10;
 }
 
 // TL_replyKeyboardHide
@@ -10374,6 +10613,23 @@ message TL_restrictionReason {
   RestrictionReason data2 = 1;
 }
 
+// RichButtonStyle <--
+//  + TL_richButtonStyle
+//
+message RichButtonStyle {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool bg_primary = 3;
+  bool bg_danger = 4;
+  bool bg_success = 5;
+  bool link = 6;
+}
+
+// TL_richButtonStyle
+message TL_richButtonStyle {
+  RichButtonStyle data2 = 1;
+}
+
 // RichMessage <--
 //  + TL_richMessage
 //
@@ -10423,6 +10679,7 @@ message TL_richMessage {
 //  + TL_textMentionName
 //  + TL_textDate
 //  + TL_textDiff
+//  + TL_textButton
 //
 message RichText {
   string predicate_name = 1;
@@ -10449,6 +10706,8 @@ message RichText {
   bool day_of_week = 22;
   int32 date = 23;
   RichText old_text = 24;
+  InlineButtonType type = 25;
+  RichButtonStyle style = 26;
 }
 
 // TL_textEmpty
@@ -10598,6 +10857,11 @@ message TL_textDate {
 
 // TL_textDiff
 message TL_textDiff {
+  RichText data2 = 1;
+}
+
+// TL_textButton
+message TL_textButton {
   RichText data2 = 1;
 }
 
@@ -11130,6 +11394,10 @@ message TL_sendAsPeer {
 //  + TL_sendMessageTextDraftAction
 //  + TL_inputSendMessageRichMessageDraftAction
 //  + TL_sendMessageRichMessageDraftAction
+//  + TL_sendMessageStopDraftAction
+//  + TL_sendMessageTextDraftAction
+//  + TL_inputSendMessageRichMessageDraftAction
+//  + TL_sendMessageRichMessageDraftAction
 //
 message SendMessageAction {
   string predicate_name = 1;
@@ -11138,10 +11406,12 @@ message SendMessageAction {
   string emoticon = 4;
   int32 msg_id = 5;
   DataJSON interaction = 6;
-  int64 random_id = 7;
-  TextWithEntities text = 8;
-  InputRichMessage rich_message_INPUTRICHMESSAGE = 9;
-  RichMessage rich_message_RICHMESSAGE = 10;
+  bool can_stop = 7;
+  bool keep_on_stop = 8;
+  int64 random_id = 9;
+  TextWithEntities text = 10;
+  InputRichMessage rich_message_INPUTRICHMESSAGE = 11;
+  RichMessage rich_message_RICHMESSAGE = 12;
 }
 
 // TL_sendMessageTypingAction
@@ -11246,6 +11516,11 @@ message TL_inputSendMessageRichMessageDraftAction {
 
 // TL_sendMessageRichMessageDraftAction
 message TL_sendMessageRichMessageDraftAction {
+  SendMessageAction data2 = 1;
+}
+
+// TL_sendMessageStopDraftAction
+message TL_sendMessageStopDraftAction {
   SendMessageAction data2 = 1;
 }
 
@@ -12922,6 +13197,7 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateNewEphemeralMessage
 //  + TL_updateDeleteEphemeralMessages
 //  + TL_updateEditEphemeralMessage
+//  + TL_updateEphemeralBotCallbackQuery
 //  + TL_updateBotStarsSubscription
 //  + TL_updateBotChatInviteRequester
 //  + TL_updateMessagePoll
@@ -13025,7 +13301,7 @@ message Update {
   string id_STRING = 63;
   InputBotInlineMessageID msg_id_FLAGINPUTBOTINLINEMESSAGEID = 64;
   int32 msg_id_INT32 = 65;
-  int64 chat_instance = 66;
+  int64 chat_instance_INT64 = 66;
   bytes data_FLAGBYTES = 67;
   google.protobuf.StringValue game_short_name = 68;
   Peer saved_peer_id = 69;
@@ -13144,23 +13420,24 @@ message Update {
   WebDomainException exception_WEBDOMAINEXCEPTION = 182;
   EphemeralMessage message_EPHEMERALMESSAGE = 183;
   repeated int32 ids = 184;
-  bool canceled = 185;
-  bool payment_failed = 186;
-  bool restored = 187;
-  google.protobuf.Int64Value chat_id_FLAGINT64 = 188;
-  TextWithEntities message_TEXTWITHENTITIES = 189;
-  BroadcastRevenueBalances balances = 190;
-  Bool private_BOOL = 191;
-  int64 balance_INT64 = 192;
-  string invoice_slug = 193;
-  int32 until_date = 194;
-  MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 195;
-  Bool blocked_BOOL = 196;
-  UserProfilePhoto photo = 197;
-  Bool previous = 198;
-  google.protobuf.Int32Value topic_id_FLAGINT32 = 199;
-  string username = 200;
-  BizDataRaw biz_data = 201;
+  google.protobuf.Int64Value chat_instance_FLAGINT64 = 185;
+  bool canceled = 186;
+  bool payment_failed = 187;
+  bool restored = 188;
+  google.protobuf.Int64Value chat_id_FLAGINT64 = 189;
+  TextWithEntities message_TEXTWITHENTITIES = 190;
+  BroadcastRevenueBalances balances = 191;
+  Bool private_BOOL = 192;
+  int64 balance_INT64 = 193;
+  string invoice_slug = 194;
+  int32 until_date = 195;
+  MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 196;
+  Bool blocked_BOOL = 197;
+  UserProfilePhoto photo = 198;
+  Bool previous = 199;
+  google.protobuf.Int32Value topic_id_FLAGINT32 = 200;
+  string username = 201;
+  BizDataRaw biz_data = 202;
 }
 
 // TL_updateNewMessage
@@ -13975,6 +14252,11 @@ message TL_updateDeleteEphemeralMessages {
 
 // TL_updateEditEphemeralMessage
 message TL_updateEditEphemeralMessage {
+  Update data2 = 1;
+}
+
+// TL_updateEphemeralBotCallbackQuery
+message TL_updateEphemeralBotCallbackQuery {
   Update data2 = 1;
 }
 
@@ -15460,6 +15742,21 @@ message TL_auth_exportedAuthorization {
   auth_ExportedAuthorization data2 = 1;
 }
 
+// auth_FirebasePnvIntent <--
+//  + TL_auth_firebasePnvIntent
+//
+message auth_FirebasePnvIntent {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string nonce = 3;
+  string digital_credential_payload = 4;
+}
+
+// TL_auth_firebasePnvIntent
+message TL_auth_firebasePnvIntent {
+  auth_FirebasePnvIntent data2 = 1;
+}
+
 // auth_LoggedOut <--
 //  + TL_auth_loggedOut
 //
@@ -16121,6 +16418,27 @@ message TL_contacts_topPeers {
 // TL_contacts_topPeersDisabled
 message TL_contacts_topPeersDisabled {
   contacts_TopPeers data2 = 1;
+}
+
+// ephemeral_WelcomeMessages <--
+//  + TL_ephemeral_welcomeMessagesNotModified
+//  + TL_ephemeral_welcomeMessages
+//
+message ephemeral_WelcomeMessages {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 hash = 3;
+  repeated EphemeralMessage messages = 4;
+}
+
+// TL_ephemeral_welcomeMessagesNotModified
+message TL_ephemeral_welcomeMessagesNotModified {
+  ephemeral_WelcomeMessages data2 = 1;
+}
+
+// TL_ephemeral_welcomeMessages
+message TL_ephemeral_welcomeMessages {
+  ephemeral_WelcomeMessages data2 = 1;
 }
 
 // fragment_CollectibleInfo <--
