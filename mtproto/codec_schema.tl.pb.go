@@ -23329,6 +23329,9 @@ func (m *BotVerification) CalcByteSize(layer int32) int {
 func (m *BotVerification) Decode(dBuf *DecodeBuf) error {
 	m.Constructor = TLConstructor(dBuf.Int())
 	switch uint32(m.Constructor) {
+	case 0xf72e0ed9:
+		m2 := MakeTLBotVerification(m)
+		m2.Decode(dBuf)
 	case 0xf93cd45c:
 		m2 := MakeTLBotVerification(m)
 		m2.Decode(dBuf)
@@ -23370,8 +23373,15 @@ func (m *TLBotVerification) GetBotId() int64  { return m.Data2.BotId }
 func (m *TLBotVerification) SetIcon(v int64) { m.Data2.Icon = v }
 func (m *TLBotVerification) GetIcon() int64  { return m.Data2.Icon }
 
-func (m *TLBotVerification) SetDescription(v string) { m.Data2.Description = v }
-func (m *TLBotVerification) GetDescription() string  { return m.Data2.Description }
+func (m *TLBotVerification) SetDescription_TEXTWITHENTITIES(v *TextWithEntities) {
+	m.Data2.Description_TEXTWITHENTITIES = v
+}
+func (m *TLBotVerification) GetDescription_TEXTWITHENTITIES() *TextWithEntities {
+	return m.Data2.Description_TEXTWITHENTITIES
+}
+
+func (m *TLBotVerification) SetDescription_STRING(v string) { m.Data2.Description_STRING = v }
+func (m *TLBotVerification) GetDescription_STRING() string  { return m.Data2.Description_STRING }
 
 func (m *TLBotVerification) GetPredicateName() string {
 	return Predicate_botVerification
@@ -23380,12 +23390,20 @@ func (m *TLBotVerification) GetPredicateName() string {
 func (m *TLBotVerification) Encode(x *EncodeBuf, layer int32) error {
 	clazzId := GetClazzID(Predicate_botVerification, int(layer))
 	switch uint32(clazzId) {
+	case 0xf72e0ed9:
+		x.UInt(0xf72e0ed9)
+
+		x.Long(m.GetBotId())
+		x.Long(m.GetIcon())
+		m.GetDescription_TEXTWITHENTITIES().Encode(x, layer)
+
+		return nil
 	case 0xf93cd45c:
 		x.UInt(0xf93cd45c)
 
 		x.Long(m.GetBotId())
 		x.Long(m.GetIcon())
-		x.String(m.GetDescription())
+		x.String(m.GetDescription_STRING())
 
 		return nil
 
@@ -23400,10 +23418,19 @@ func (m *TLBotVerification) CalcByteSize(layer int32) int {
 
 func (m *TLBotVerification) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Data2.Constructor) {
+	case 0xf72e0ed9:
+		m.SetBotId(dBuf.Long())
+		m.SetIcon(dBuf.Long())
+
+		m2 := &TextWithEntities{}
+		m2.Decode(dBuf)
+		m.SetDescription_TEXTWITHENTITIES(m2)
+
+		return dBuf.GetError()
 	case 0xf93cd45c:
 		m.SetBotId(dBuf.Long())
 		m.SetIcon(dBuf.Long())
-		m.SetDescription(dBuf.String())
+		m.SetDescription_STRING(dBuf.String())
 		return dBuf.GetError()
 
 	default:
@@ -23446,6 +23473,9 @@ func (m *BotVerifierSettings) CalcByteSize(layer int32) int {
 func (m *BotVerifierSettings) Decode(dBuf *DecodeBuf) error {
 	m.Constructor = TLConstructor(dBuf.Int())
 	switch uint32(m.Constructor) {
+	case 0xa12aefff:
+		m2 := MakeTLBotVerifierSettings(m)
+		m2.Decode(dBuf)
 	case 0xb0cd6617:
 		m2 := MakeTLBotVerifierSettings(m)
 		m2.Decode(dBuf)
@@ -23495,11 +23525,18 @@ func (m *TLBotVerifierSettings) GetIcon() int64  { return m.Data2.Icon }
 func (m *TLBotVerifierSettings) SetCompany(v string) { m.Data2.Company = v }
 func (m *TLBotVerifierSettings) GetCompany() string  { return m.Data2.Company }
 
-func (m *TLBotVerifierSettings) SetCustomDescription(v *wrapperspb.StringValue) {
-	m.Data2.CustomDescription = v
+func (m *TLBotVerifierSettings) SetCustomDescription_FLAGTEXTWITHENTITIES(v *TextWithEntities) {
+	m.Data2.CustomDescription_FLAGTEXTWITHENTITIES = v
 }
-func (m *TLBotVerifierSettings) GetCustomDescription() *wrapperspb.StringValue {
-	return m.Data2.CustomDescription
+func (m *TLBotVerifierSettings) GetCustomDescription_FLAGTEXTWITHENTITIES() *TextWithEntities {
+	return m.Data2.CustomDescription_FLAGTEXTWITHENTITIES
+}
+
+func (m *TLBotVerifierSettings) SetCustomDescription_FLAGSTRING(v *wrapperspb.StringValue) {
+	m.Data2.CustomDescription_FLAGSTRING = v
+}
+func (m *TLBotVerifierSettings) GetCustomDescription_FLAGSTRING() *wrapperspb.StringValue {
+	return m.Data2.CustomDescription_FLAGSTRING
 }
 
 func (m *TLBotVerifierSettings) GetPredicateName() string {
@@ -23509,8 +23546,8 @@ func (m *TLBotVerifierSettings) GetPredicateName() string {
 func (m *TLBotVerifierSettings) Encode(x *EncodeBuf, layer int32) error {
 	clazzId := GetClazzID(Predicate_botVerifierSettings, int(layer))
 	switch uint32(clazzId) {
-	case 0xb0cd6617:
-		x.UInt(0xb0cd6617)
+	case 0xa12aefff:
+		x.UInt(0xa12aefff)
 
 		// set flags
 		var getFlags = func() uint32 {
@@ -23520,7 +23557,7 @@ func (m *TLBotVerifierSettings) Encode(x *EncodeBuf, layer int32) error {
 				flags |= 1 << 1
 			}
 
-			if m.GetCustomDescription() != nil {
+			if m.GetCustomDescription_FLAGTEXTWITHENTITIES() != nil {
 				flags |= 1 << 0
 			}
 
@@ -23532,8 +23569,36 @@ func (m *TLBotVerifierSettings) Encode(x *EncodeBuf, layer int32) error {
 		x.UInt(flags)
 		x.Long(m.GetIcon())
 		x.String(m.GetCompany())
-		if m.GetCustomDescription() != nil {
-			x.String(m.GetCustomDescription().Value)
+		if m.GetCustomDescription_FLAGTEXTWITHENTITIES() != nil {
+			m.GetCustomDescription_FLAGTEXTWITHENTITIES().Encode(x, layer)
+		}
+
+		return nil
+	case 0xb0cd6617:
+		x.UInt(0xb0cd6617)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetCanModifyCustomDescription() == true {
+				flags |= 1 << 1
+			}
+
+			if m.GetCustomDescription_FLAGSTRING() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Long(m.GetIcon())
+		x.String(m.GetCompany())
+		if m.GetCustomDescription_FLAGSTRING() != nil {
+			x.String(m.GetCustomDescription_FLAGSTRING().Value)
 		}
 
 		return nil
@@ -23549,6 +23614,20 @@ func (m *TLBotVerifierSettings) CalcByteSize(layer int32) int {
 
 func (m *TLBotVerifierSettings) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Data2.Constructor) {
+	case 0xa12aefff:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 1)) != 0 {
+			m.SetCanModifyCustomDescription(true)
+		}
+		m.SetIcon(dBuf.Long())
+		m.SetCompany(dBuf.String())
+		if (flags & (1 << 0)) != 0 {
+			m4 := &TextWithEntities{}
+			m4.Decode(dBuf)
+			m.SetCustomDescription_FLAGTEXTWITHENTITIES(m4)
+		}
+		return dBuf.GetError()
 	case 0xb0cd6617:
 		var flags = dBuf.UInt()
 		_ = flags
@@ -23558,7 +23637,7 @@ func (m *TLBotVerifierSettings) Decode(dBuf *DecodeBuf) error {
 		m.SetIcon(dBuf.Long())
 		m.SetCompany(dBuf.String())
 		if (flags & (1 << 0)) != 0 {
-			m.SetCustomDescription(&wrapperspb.StringValue{Value: dBuf.String()})
+			m.SetCustomDescription_FLAGSTRING(&wrapperspb.StringValue{Value: dBuf.String()})
 		}
 
 		return dBuf.GetError()
@@ -59102,6 +59181,118 @@ func (m *TLContactsTopPeersDisabled) CalcByteSize(layer int32) int {
 func (m *TLContactsTopPeersDisabled) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Data2.Constructor) {
 	case 0xb52c939d:
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// CurrencyRate <--
+//  + TL_CurrencyRate
+//
+
+func (m *CurrencyRate) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_currencyRate:
+		t := m.To_CurrencyRate()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *CurrencyRate) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *CurrencyRate) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x30d9743c:
+		m2 := MakeTLCurrencyRate(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_CurrencyRate
+func (m *CurrencyRate) To_CurrencyRate() *TLCurrencyRate {
+	m.PredicateName = Predicate_currencyRate
+	return &TLCurrencyRate{
+		Data2: m,
+	}
+}
+
+// MakeTLCurrencyRate
+func MakeTLCurrencyRate(data2 *CurrencyRate) *TLCurrencyRate {
+	if data2 == nil {
+		return &TLCurrencyRate{Data2: &CurrencyRate{
+			PredicateName: Predicate_currencyRate,
+		}}
+	} else {
+		data2.PredicateName = Predicate_currencyRate
+		return &TLCurrencyRate{Data2: data2}
+	}
+}
+
+func (m *TLCurrencyRate) To_CurrencyRate() *CurrencyRate {
+	m.Data2.PredicateName = Predicate_currencyRate
+	return m.Data2
+}
+
+func (m *TLCurrencyRate) SetCurrency(v string) { m.Data2.Currency = v }
+func (m *TLCurrencyRate) GetCurrency() string  { return m.Data2.Currency }
+
+func (m *TLCurrencyRate) SetRate(v float64) { m.Data2.Rate = v }
+func (m *TLCurrencyRate) GetRate() float64  { return m.Data2.Rate }
+
+func (m *TLCurrencyRate) GetPredicateName() string {
+	return Predicate_currencyRate
+}
+
+func (m *TLCurrencyRate) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_currencyRate, int(layer))
+	switch uint32(clazzId) {
+	case 0x30d9743c:
+		x.UInt(0x30d9743c)
+
+		x.String(m.GetCurrency())
+		x.Double(m.GetRate())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_currencyRate, layer)
+	}
+}
+
+func (m *TLCurrencyRate) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLCurrencyRate) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x30d9743c:
+		m.SetCurrency(dBuf.String())
+		m.SetRate(dBuf.Double())
 		return dBuf.GetError()
 
 	default:
@@ -105974,6 +106165,215 @@ func (m *TLInputWallPaperNoFile) Decode(dBuf *DecodeBuf) error {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// InputWalletReplacement <--
+//  + TL_InputWalletNew
+//  + TL_InputWalletImported
+//
+
+func (m *InputWalletReplacement) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_inputWalletNew:
+		t := m.To_InputWalletNew()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_inputWalletImported:
+		t := m.To_InputWalletImported()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *InputWalletReplacement) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *InputWalletReplacement) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x63a440dc:
+		m2 := MakeTLInputWalletNew(m)
+		m2.Decode(dBuf)
+	case 0x66a66a3b:
+		m2 := MakeTLInputWalletImported(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_InputWalletNew
+func (m *InputWalletReplacement) To_InputWalletNew() *TLInputWalletNew {
+	m.PredicateName = Predicate_inputWalletNew
+	return &TLInputWalletNew{
+		Data2: m,
+	}
+}
+
+// To_InputWalletImported
+func (m *InputWalletReplacement) To_InputWalletImported() *TLInputWalletImported {
+	m.PredicateName = Predicate_inputWalletImported
+	return &TLInputWalletImported{
+		Data2: m,
+	}
+}
+
+// MakeTLInputWalletNew
+func MakeTLInputWalletNew(data2 *InputWalletReplacement) *TLInputWalletNew {
+	if data2 == nil {
+		return &TLInputWalletNew{Data2: &InputWalletReplacement{
+			PredicateName: Predicate_inputWalletNew,
+		}}
+	} else {
+		data2.PredicateName = Predicate_inputWalletNew
+		return &TLInputWalletNew{Data2: data2}
+	}
+}
+
+func (m *TLInputWalletNew) To_InputWalletReplacement() *InputWalletReplacement {
+	m.Data2.PredicateName = Predicate_inputWalletNew
+	return m.Data2
+}
+
+func (m *TLInputWalletNew) GetPredicateName() string {
+	return Predicate_inputWalletNew
+}
+
+func (m *TLInputWalletNew) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_inputWalletNew, int(layer))
+	switch uint32(clazzId) {
+	case 0x63a440dc:
+		x.UInt(0x63a440dc)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_inputWalletNew, layer)
+	}
+}
+
+func (m *TLInputWalletNew) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLInputWalletNew) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x63a440dc:
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLInputWalletImported
+func MakeTLInputWalletImported(data2 *InputWalletReplacement) *TLInputWalletImported {
+	if data2 == nil {
+		return &TLInputWalletImported{Data2: &InputWalletReplacement{
+			PredicateName: Predicate_inputWalletImported,
+		}}
+	} else {
+		data2.PredicateName = Predicate_inputWalletImported
+		return &TLInputWalletImported{Data2: data2}
+	}
+}
+
+func (m *TLInputWalletImported) To_InputWalletReplacement() *InputWalletReplacement {
+	m.Data2.PredicateName = Predicate_inputWalletImported
+	return m.Data2
+}
+
+// // flags
+func (m *TLInputWalletImported) SetPublicKey(v []byte) { m.Data2.PublicKey = v }
+func (m *TLInputWalletImported) GetPublicKey() []byte  { return m.Data2.PublicKey }
+
+func (m *TLInputWalletImported) SetAnchorPublicKey(v []byte) { m.Data2.AnchorPublicKey = v }
+func (m *TLInputWalletImported) GetAnchorPublicKey() []byte  { return m.Data2.AnchorPublicKey }
+
+func (m *TLInputWalletImported) SetProof(v *WalletOwnershipProof) { m.Data2.Proof = v }
+func (m *TLInputWalletImported) GetProof() *WalletOwnershipProof  { return m.Data2.Proof }
+
+func (m *TLInputWalletImported) GetPredicateName() string {
+	return Predicate_inputWalletImported
+}
+
+func (m *TLInputWalletImported) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_inputWalletImported, int(layer))
+	switch uint32(clazzId) {
+	case 0x66a66a3b:
+		x.UInt(0x66a66a3b)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetAnchorPublicKey() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.StringBytes(m.GetPublicKey())
+		if m.GetAnchorPublicKey() != nil {
+			x.StringBytes(m.GetAnchorPublicKey())
+		}
+
+		m.GetProof().Encode(x, layer)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_inputWalletImported, layer)
+	}
+}
+
+func (m *TLInputWalletImported) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLInputWalletImported) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x66a66a3b:
+		var flags = dBuf.UInt()
+		_ = flags
+		m.SetPublicKey(dBuf.StringBytes())
+		if (flags & (1 << 0)) != 0 {
+			m.SetAnchorPublicKey(dBuf.StringBytes())
+		}
+
+		m3 := &WalletOwnershipProof{}
+		m3.Decode(dBuf)
+		m.SetProof(m3)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // InputWebDocument <--
 //  + TL_InputWebDocument
 //
@@ -121253,6 +121653,8 @@ func (m *TLMessageService) Decode(dBuf *DecodeBuf) error {
 //  + TL_MessageActionManagedBotCreated
 //  + TL_MessageActionChangeCommunity
 //  + TL_MessageActionChatJoinedViaCommunity
+//  + TL_MessageActionGramTransfer
+//  + TL_MessageActionWalletTonConnectRequest
 //  + TL_MessageActionSetSameChatWallPaper
 //  + TL_MessageActionAttachMenuBotAllowed
 //  + TL_MessageActionBizDataRaw
@@ -121681,6 +122083,18 @@ func (m *MessageAction) Encode(x *EncodeBuf, layer int32) error {
 		if err != nil {
 			return err
 		}
+	case Predicate_messageActionGramTransfer:
+		t := m.To_MessageActionGramTransfer()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_messageActionWalletTonConnectRequest:
+		t := m.To_MessageActionWalletTonConnectRequest()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
 	case Predicate_messageActionSetSameChatWallPaper:
 		t := m.To_MessageActionSetSameChatWallPaper()
 		err := t.Encode(x, layer)
@@ -122010,6 +122424,12 @@ func (m *MessageAction) Decode(dBuf *DecodeBuf) error {
 		m2.Decode(dBuf)
 	case 0x4a8bfe80:
 		m2 := MakeTLMessageActionChatJoinedViaCommunity(m)
+		m2.Decode(dBuf)
+	case 0x9329ea33:
+		m2 := MakeTLMessageActionGramTransfer(m)
+		m2.Decode(dBuf)
+	case 0x69b8c4bf:
+		m2 := MakeTLMessageActionWalletTonConnectRequest(m)
 		m2.Decode(dBuf)
 	case 0xc0787d6d:
 		m2 := MakeTLMessageActionSetSameChatWallPaper(m)
@@ -122575,6 +122995,22 @@ func (m *MessageAction) To_MessageActionChangeCommunity() *TLMessageActionChange
 func (m *MessageAction) To_MessageActionChatJoinedViaCommunity() *TLMessageActionChatJoinedViaCommunity {
 	m.PredicateName = Predicate_messageActionChatJoinedViaCommunity
 	return &TLMessageActionChatJoinedViaCommunity{
+		Data2: m,
+	}
+}
+
+// To_MessageActionGramTransfer
+func (m *MessageAction) To_MessageActionGramTransfer() *TLMessageActionGramTransfer {
+	m.PredicateName = Predicate_messageActionGramTransfer
+	return &TLMessageActionGramTransfer{
+		Data2: m,
+	}
+}
+
+// To_MessageActionWalletTonConnectRequest
+func (m *MessageAction) To_MessageActionWalletTonConnectRequest() *TLMessageActionWalletTonConnectRequest {
+	m.PredicateName = Predicate_messageActionWalletTonConnectRequest
+	return &TLMessageActionWalletTonConnectRequest{
 		Data2: m,
 	}
 }
@@ -130733,6 +131169,256 @@ func (m *TLMessageActionChatJoinedViaCommunity) Decode(dBuf *DecodeBuf) error {
 	}
 }
 
+// MakeTLMessageActionGramTransfer
+func MakeTLMessageActionGramTransfer(data2 *MessageAction) *TLMessageActionGramTransfer {
+	if data2 == nil {
+		return &TLMessageActionGramTransfer{Data2: &MessageAction{
+			PredicateName: Predicate_messageActionGramTransfer,
+		}}
+	} else {
+		data2.PredicateName = Predicate_messageActionGramTransfer
+		return &TLMessageActionGramTransfer{Data2: data2}
+	}
+}
+
+func (m *TLMessageActionGramTransfer) To_MessageAction() *MessageAction {
+	m.Data2.PredicateName = Predicate_messageActionGramTransfer
+	return m.Data2
+}
+
+// // flags
+func (m *TLMessageActionGramTransfer) SetCommentEncrypted(v bool) { m.Data2.CommentEncrypted = v }
+func (m *TLMessageActionGramTransfer) GetCommentEncrypted() bool  { return m.Data2.CommentEncrypted }
+
+func (m *TLMessageActionGramTransfer) SetAmount_INT64(v int64) { m.Data2.Amount_INT64 = v }
+func (m *TLMessageActionGramTransfer) GetAmount_INT64() int64  { return m.Data2.Amount_INT64 }
+
+func (m *TLMessageActionGramTransfer) SetPeerAddress(v string) { m.Data2.PeerAddress = v }
+func (m *TLMessageActionGramTransfer) GetPeerAddress() string  { return m.Data2.PeerAddress }
+
+func (m *TLMessageActionGramTransfer) SetTransactionId_STRING(v string) {
+	m.Data2.TransactionId_STRING = v
+}
+func (m *TLMessageActionGramTransfer) GetTransactionId_STRING() string {
+	return m.Data2.TransactionId_STRING
+}
+
+func (m *TLMessageActionGramTransfer) SetComment(v *wrapperspb.StringValue) { m.Data2.Comment = v }
+func (m *TLMessageActionGramTransfer) GetComment() *wrapperspb.StringValue  { return m.Data2.Comment }
+
+func (m *TLMessageActionGramTransfer) GetPredicateName() string {
+	return Predicate_messageActionGramTransfer
+}
+
+func (m *TLMessageActionGramTransfer) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_messageActionGramTransfer, int(layer))
+	switch uint32(clazzId) {
+	case 0x9329ea33:
+		x.UInt(0x9329ea33)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetCommentEncrypted() == true {
+				flags |= 1 << 1
+			}
+
+			if m.GetComment() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Long(m.GetAmount_INT64())
+		x.String(m.GetPeerAddress())
+		x.String(m.GetTransactionId_STRING())
+		if m.GetComment() != nil {
+			x.String(m.GetComment().Value)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_messageActionGramTransfer, layer)
+	}
+}
+
+func (m *TLMessageActionGramTransfer) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLMessageActionGramTransfer) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x9329ea33:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 1)) != 0 {
+			m.SetCommentEncrypted(true)
+		}
+		m.SetAmount_INT64(dBuf.Long())
+		m.SetPeerAddress(dBuf.String())
+		m.SetTransactionId_STRING(dBuf.String())
+		if (flags & (1 << 0)) != 0 {
+			m.SetComment(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLMessageActionWalletTonConnectRequest
+func MakeTLMessageActionWalletTonConnectRequest(data2 *MessageAction) *TLMessageActionWalletTonConnectRequest {
+	if data2 == nil {
+		return &TLMessageActionWalletTonConnectRequest{Data2: &MessageAction{
+			PredicateName: Predicate_messageActionWalletTonConnectRequest,
+		}}
+	} else {
+		data2.PredicateName = Predicate_messageActionWalletTonConnectRequest
+		return &TLMessageActionWalletTonConnectRequest{Data2: data2}
+	}
+}
+
+func (m *TLMessageActionWalletTonConnectRequest) To_MessageAction() *MessageAction {
+	m.Data2.PredicateName = Predicate_messageActionWalletTonConnectRequest
+	return m.Data2
+}
+
+// // flags
+func (m *TLMessageActionWalletTonConnectRequest) SetAccepted(v bool) { m.Data2.Accepted = v }
+func (m *TLMessageActionWalletTonConnectRequest) GetAccepted() bool  { return m.Data2.Accepted }
+
+func (m *TLMessageActionWalletTonConnectRequest) SetDeclined(v bool) { m.Data2.Declined = v }
+func (m *TLMessageActionWalletTonConnectRequest) GetDeclined() bool  { return m.Data2.Declined }
+
+func (m *TLMessageActionWalletTonConnectRequest) SetSessionId(v int64) { m.Data2.SessionId = v }
+func (m *TLMessageActionWalletTonConnectRequest) GetSessionId() int64  { return m.Data2.SessionId }
+
+func (m *TLMessageActionWalletTonConnectRequest) SetExpires(v int32) { m.Data2.Expires = v }
+func (m *TLMessageActionWalletTonConnectRequest) GetExpires() int32  { return m.Data2.Expires }
+
+func (m *TLMessageActionWalletTonConnectRequest) SetTopic(v *wrapperspb.StringValue) {
+	m.Data2.Topic = v
+}
+func (m *TLMessageActionWalletTonConnectRequest) GetTopic() *wrapperspb.StringValue {
+	return m.Data2.Topic
+}
+
+func (m *TLMessageActionWalletTonConnectRequest) SetTraceId(v *wrapperspb.StringValue) {
+	m.Data2.TraceId = v
+}
+func (m *TLMessageActionWalletTonConnectRequest) GetTraceId() *wrapperspb.StringValue {
+	return m.Data2.TraceId
+}
+
+func (m *TLMessageActionWalletTonConnectRequest) SetDappName(v *wrapperspb.StringValue) {
+	m.Data2.DappName = v
+}
+func (m *TLMessageActionWalletTonConnectRequest) GetDappName() *wrapperspb.StringValue {
+	return m.Data2.DappName
+}
+
+func (m *TLMessageActionWalletTonConnectRequest) GetPredicateName() string {
+	return Predicate_messageActionWalletTonConnectRequest
+}
+
+func (m *TLMessageActionWalletTonConnectRequest) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_messageActionWalletTonConnectRequest, int(layer))
+	switch uint32(clazzId) {
+	case 0x69b8c4bf:
+		x.UInt(0x69b8c4bf)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetAccepted() == true {
+				flags |= 1 << 2
+			}
+			if m.GetDeclined() == true {
+				flags |= 1 << 3
+			}
+
+			if m.GetTopic() != nil {
+				flags |= 1 << 0
+			}
+			if m.GetTraceId() != nil {
+				flags |= 1 << 1
+			}
+			if m.GetDappName() != nil {
+				flags |= 1 << 4
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Long(m.GetSessionId())
+		x.Int(m.GetExpires())
+		if m.GetTopic() != nil {
+			x.String(m.GetTopic().Value)
+		}
+
+		if m.GetTraceId() != nil {
+			x.String(m.GetTraceId().Value)
+		}
+
+		if m.GetDappName() != nil {
+			x.String(m.GetDappName().Value)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_messageActionWalletTonConnectRequest, layer)
+	}
+}
+
+func (m *TLMessageActionWalletTonConnectRequest) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLMessageActionWalletTonConnectRequest) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x69b8c4bf:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 2)) != 0 {
+			m.SetAccepted(true)
+		}
+		if (flags & (1 << 3)) != 0 {
+			m.SetDeclined(true)
+		}
+		m.SetSessionId(dBuf.Long())
+		m.SetExpires(dBuf.Int())
+		if (flags & (1 << 0)) != 0 {
+			m.SetTopic(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 1)) != 0 {
+			m.SetTraceId(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 4)) != 0 {
+			m.SetDappName(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
 // MakeTLMessageActionSetSameChatWallPaper
 func MakeTLMessageActionSetSameChatWallPaper(data2 *MessageAction) *TLMessageActionSetSameChatWallPaper {
 	if data2 == nil {
@@ -130886,9 +131572,9 @@ func (m *TLMessageActionBizDataRaw) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Data2.Constructor) {
 	case 0x2ffdf1b7:
 
-		m123 := &BizDataRaw{}
-		m123.Decode(dBuf)
-		m.SetBizData(m123)
+		m131 := &BizDataRaw{}
+		m131.Decode(dBuf)
+		m.SetBizData(m131)
 
 		return dBuf.GetError()
 
@@ -131436,6 +132122,7 @@ func (m *TLMessageBoxListSlice) Decode(dBuf *DecodeBuf) error {
 //  + TL_MessageEntityDiffInsert
 //  + TL_MessageEntityDiffReplace
 //  + TL_MessageEntityDiffDelete
+//  + TL_MessageEntityTonAddress
 //
 
 func (m *MessageEntity) Encode(x *EncodeBuf, layer int32) error {
@@ -131597,6 +132284,12 @@ func (m *MessageEntity) Encode(x *EncodeBuf, layer int32) error {
 		if err != nil {
 			return err
 		}
+	case Predicate_messageEntityTonAddress:
+		t := m.To_MessageEntityTonAddress()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
 
 	default:
 		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
@@ -131689,6 +132382,9 @@ func (m *MessageEntity) Decode(dBuf *DecodeBuf) error {
 		m2.Decode(dBuf)
 	case 0x652c1c5:
 		m2 := MakeTLMessageEntityDiffDelete(m)
+		m2.Decode(dBuf)
+	case 0xfdabbfcd:
+		m2 := MakeTLMessageEntityTonAddress(m)
 		m2.Decode(dBuf)
 
 	default:
@@ -131893,6 +132589,14 @@ func (m *MessageEntity) To_MessageEntityDiffReplace() *TLMessageEntityDiffReplac
 func (m *MessageEntity) To_MessageEntityDiffDelete() *TLMessageEntityDiffDelete {
 	m.PredicateName = Predicate_messageEntityDiffDelete
 	return &TLMessageEntityDiffDelete{
+		Data2: m,
+	}
+}
+
+// To_MessageEntityTonAddress
+func (m *MessageEntity) To_MessageEntityTonAddress() *TLMessageEntityTonAddress {
+	m.PredicateName = Predicate_messageEntityTonAddress
+	return &TLMessageEntityTonAddress{
 		Data2: m,
 	}
 }
@@ -133508,6 +134212,65 @@ func (m *TLMessageEntityDiffDelete) CalcByteSize(layer int32) int {
 func (m *TLMessageEntityDiffDelete) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Data2.Constructor) {
 	case 0x652c1c5:
+		m.SetOffset(dBuf.Int())
+		m.SetLength(dBuf.Int())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLMessageEntityTonAddress
+func MakeTLMessageEntityTonAddress(data2 *MessageEntity) *TLMessageEntityTonAddress {
+	if data2 == nil {
+		return &TLMessageEntityTonAddress{Data2: &MessageEntity{
+			PredicateName: Predicate_messageEntityTonAddress,
+		}}
+	} else {
+		data2.PredicateName = Predicate_messageEntityTonAddress
+		return &TLMessageEntityTonAddress{Data2: data2}
+	}
+}
+
+func (m *TLMessageEntityTonAddress) To_MessageEntity() *MessageEntity {
+	m.Data2.PredicateName = Predicate_messageEntityTonAddress
+	return m.Data2
+}
+
+func (m *TLMessageEntityTonAddress) SetOffset(v int32) { m.Data2.Offset = v }
+func (m *TLMessageEntityTonAddress) GetOffset() int32  { return m.Data2.Offset }
+
+func (m *TLMessageEntityTonAddress) SetLength(v int32) { m.Data2.Length = v }
+func (m *TLMessageEntityTonAddress) GetLength() int32  { return m.Data2.Length }
+
+func (m *TLMessageEntityTonAddress) GetPredicateName() string {
+	return Predicate_messageEntityTonAddress
+}
+
+func (m *TLMessageEntityTonAddress) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_messageEntityTonAddress, int(layer))
+	switch uint32(clazzId) {
+	case 0xfdabbfcd:
+		x.UInt(0xfdabbfcd)
+
+		x.Int(m.GetOffset())
+		x.Int(m.GetLength())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_messageEntityTonAddress, layer)
+	}
+}
+
+func (m *TLMessageEntityTonAddress) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLMessageEntityTonAddress) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xfdabbfcd:
 		m.SetOffset(dBuf.Int())
 		m.SetLength(dBuf.Int())
 		return dBuf.GetError()
@@ -158913,6 +159676,899 @@ func (m *TLNull) Decode(dBuf *DecodeBuf) error {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// OnrampAvailability <--
+//  + TL_OnrampAvailability
+//
+
+func (m *OnrampAvailability) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_onrampAvailability:
+		t := m.To_OnrampAvailability()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *OnrampAvailability) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *OnrampAvailability) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xf9c84973:
+		m2 := MakeTLOnrampAvailability(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_OnrampAvailability
+func (m *OnrampAvailability) To_OnrampAvailability() *TLOnrampAvailability {
+	m.PredicateName = Predicate_onrampAvailability
+	return &TLOnrampAvailability{
+		Data2: m,
+	}
+}
+
+// MakeTLOnrampAvailability
+func MakeTLOnrampAvailability(data2 *OnrampAvailability) *TLOnrampAvailability {
+	if data2 == nil {
+		return &TLOnrampAvailability{Data2: &OnrampAvailability{
+			PredicateName: Predicate_onrampAvailability,
+		}}
+	} else {
+		data2.PredicateName = Predicate_onrampAvailability
+		return &TLOnrampAvailability{Data2: data2}
+	}
+}
+
+func (m *TLOnrampAvailability) To_OnrampAvailability() *OnrampAvailability {
+	m.Data2.PredicateName = Predicate_onrampAvailability
+	return m.Data2
+}
+
+// // flags
+func (m *TLOnrampAvailability) SetAllowed(v bool) { m.Data2.Allowed = v }
+func (m *TLOnrampAvailability) GetAllowed() bool  { return m.Data2.Allowed }
+
+func (m *TLOnrampAvailability) SetBuyAllowed(v bool) { m.Data2.BuyAllowed = v }
+func (m *TLOnrampAvailability) GetBuyAllowed() bool  { return m.Data2.BuyAllowed }
+
+func (m *TLOnrampAvailability) SetCountryCode(v string) { m.Data2.CountryCode = v }
+func (m *TLOnrampAvailability) GetCountryCode() string  { return m.Data2.CountryCode }
+
+func (m *TLOnrampAvailability) SetState(v *wrapperspb.StringValue) { m.Data2.State = v }
+func (m *TLOnrampAvailability) GetState() *wrapperspb.StringValue  { return m.Data2.State }
+
+func (m *TLOnrampAvailability) SetMethods(v []*OnrampMethodAvailability) { m.Data2.Methods = v }
+func (m *TLOnrampAvailability) GetMethods() []*OnrampMethodAvailability  { return m.Data2.Methods }
+
+func (m *TLOnrampAvailability) GetPredicateName() string {
+	return Predicate_onrampAvailability
+}
+
+func (m *TLOnrampAvailability) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_onrampAvailability, int(layer))
+	switch uint32(clazzId) {
+	case 0xf9c84973:
+		x.UInt(0xf9c84973)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetAllowed() == true {
+				flags |= 1 << 0
+			}
+			if m.GetBuyAllowed() == true {
+				flags |= 1 << 1
+			}
+
+			if m.GetState() != nil {
+				flags |= 1 << 2
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetCountryCode())
+		if m.GetState() != nil {
+			x.String(m.GetState().Value)
+		}
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list5 := m.GetMethods()
+			x.Int(int32(len(list5)))
+			for _, v := range list5 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_onrampAvailability, layer)
+	}
+}
+
+func (m *TLOnrampAvailability) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLOnrampAvailability) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xf9c84973:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetAllowed(true)
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.SetBuyAllowed(true)
+		}
+		m.SetCountryCode(dBuf.String())
+		if (flags & (1 << 2)) != 0 {
+			m.SetState(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		c5 := dBuf.Int()
+		if c5 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 5, c5)
+			return dBuf.GetError()
+		}
+		l5 := dBuf.Int()
+		if l5 < 0 || l5 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l5)
+		}
+		v5 := make([]*OnrampMethodAvailability, l5)
+		for i := int32(0); i < l5; i++ {
+			v5[i] = &OnrampMethodAvailability{}
+			v5[i].Decode(dBuf)
+		}
+		m.SetMethods(v5)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// OnrampLimits <--
+//  + TL_OnrampLimits
+//
+
+func (m *OnrampLimits) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_onrampLimits:
+		t := m.To_OnrampLimits()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *OnrampLimits) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *OnrampLimits) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x7be2677e:
+		m2 := MakeTLOnrampLimits(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_OnrampLimits
+func (m *OnrampLimits) To_OnrampLimits() *TLOnrampLimits {
+	m.PredicateName = Predicate_onrampLimits
+	return &TLOnrampLimits{
+		Data2: m,
+	}
+}
+
+// MakeTLOnrampLimits
+func MakeTLOnrampLimits(data2 *OnrampLimits) *TLOnrampLimits {
+	if data2 == nil {
+		return &TLOnrampLimits{Data2: &OnrampLimits{
+			PredicateName: Predicate_onrampLimits,
+		}}
+	} else {
+		data2.PredicateName = Predicate_onrampLimits
+		return &TLOnrampLimits{Data2: data2}
+	}
+}
+
+func (m *TLOnrampLimits) To_OnrampLimits() *OnrampLimits {
+	m.Data2.PredicateName = Predicate_onrampLimits
+	return m.Data2
+}
+
+func (m *TLOnrampLimits) SetBaseCurrency(v string) { m.Data2.BaseCurrency = v }
+func (m *TLOnrampLimits) GetBaseCurrency() string  { return m.Data2.BaseCurrency }
+
+func (m *TLOnrampLimits) SetBaseMinAmount(v string) { m.Data2.BaseMinAmount = v }
+func (m *TLOnrampLimits) GetBaseMinAmount() string  { return m.Data2.BaseMinAmount }
+
+func (m *TLOnrampLimits) SetBaseMaxAmount(v string) { m.Data2.BaseMaxAmount = v }
+func (m *TLOnrampLimits) GetBaseMaxAmount() string  { return m.Data2.BaseMaxAmount }
+
+func (m *TLOnrampLimits) SetCryptoMinAmount(v string) { m.Data2.CryptoMinAmount = v }
+func (m *TLOnrampLimits) GetCryptoMinAmount() string  { return m.Data2.CryptoMinAmount }
+
+func (m *TLOnrampLimits) SetCryptoMaxAmount(v string) { m.Data2.CryptoMaxAmount = v }
+func (m *TLOnrampLimits) GetCryptoMaxAmount() string  { return m.Data2.CryptoMaxAmount }
+
+func (m *TLOnrampLimits) SetPaymentMethod(v string) { m.Data2.PaymentMethod = v }
+func (m *TLOnrampLimits) GetPaymentMethod() string  { return m.Data2.PaymentMethod }
+
+func (m *TLOnrampLimits) GetPredicateName() string {
+	return Predicate_onrampLimits
+}
+
+func (m *TLOnrampLimits) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_onrampLimits, int(layer))
+	switch uint32(clazzId) {
+	case 0x7be2677e:
+		x.UInt(0x7be2677e)
+
+		x.String(m.GetBaseCurrency())
+		x.String(m.GetBaseMinAmount())
+		x.String(m.GetBaseMaxAmount())
+		x.String(m.GetCryptoMinAmount())
+		x.String(m.GetCryptoMaxAmount())
+		x.String(m.GetPaymentMethod())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_onrampLimits, layer)
+	}
+}
+
+func (m *TLOnrampLimits) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLOnrampLimits) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x7be2677e:
+		m.SetBaseCurrency(dBuf.String())
+		m.SetBaseMinAmount(dBuf.String())
+		m.SetBaseMaxAmount(dBuf.String())
+		m.SetCryptoMinAmount(dBuf.String())
+		m.SetCryptoMaxAmount(dBuf.String())
+		m.SetPaymentMethod(dBuf.String())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// OnrampMethodAvailability <--
+//  + TL_OnrampMethodAvailability
+//
+
+func (m *OnrampMethodAvailability) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_onrampMethodAvailability:
+		t := m.To_OnrampMethodAvailability()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *OnrampMethodAvailability) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *OnrampMethodAvailability) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x9ec8c6a8:
+		m2 := MakeTLOnrampMethodAvailability(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_OnrampMethodAvailability
+func (m *OnrampMethodAvailability) To_OnrampMethodAvailability() *TLOnrampMethodAvailability {
+	m.PredicateName = Predicate_onrampMethodAvailability
+	return &TLOnrampMethodAvailability{
+		Data2: m,
+	}
+}
+
+// MakeTLOnrampMethodAvailability
+func MakeTLOnrampMethodAvailability(data2 *OnrampMethodAvailability) *TLOnrampMethodAvailability {
+	if data2 == nil {
+		return &TLOnrampMethodAvailability{Data2: &OnrampMethodAvailability{
+			PredicateName: Predicate_onrampMethodAvailability,
+		}}
+	} else {
+		data2.PredicateName = Predicate_onrampMethodAvailability
+		return &TLOnrampMethodAvailability{Data2: data2}
+	}
+}
+
+func (m *TLOnrampMethodAvailability) To_OnrampMethodAvailability() *OnrampMethodAvailability {
+	m.Data2.PredicateName = Predicate_onrampMethodAvailability
+	return m.Data2
+}
+
+// // flags
+func (m *TLOnrampMethodAvailability) SetAvailable(v bool) { m.Data2.Available = v }
+func (m *TLOnrampMethodAvailability) GetAvailable() bool  { return m.Data2.Available }
+
+func (m *TLOnrampMethodAvailability) SetPaymentMethod(v string) { m.Data2.PaymentMethod = v }
+func (m *TLOnrampMethodAvailability) GetPaymentMethod() string  { return m.Data2.PaymentMethod }
+
+func (m *TLOnrampMethodAvailability) GetPredicateName() string {
+	return Predicate_onrampMethodAvailability
+}
+
+func (m *TLOnrampMethodAvailability) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_onrampMethodAvailability, int(layer))
+	switch uint32(clazzId) {
+	case 0x9ec8c6a8:
+		x.UInt(0x9ec8c6a8)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetAvailable() == true {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetPaymentMethod())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_onrampMethodAvailability, layer)
+	}
+}
+
+func (m *TLOnrampMethodAvailability) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLOnrampMethodAvailability) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x9ec8c6a8:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetAvailable(true)
+		}
+		m.SetPaymentMethod(dBuf.String())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// OnrampProviderInfo <--
+//  + TL_OnrampProviderInfo
+//
+
+func (m *OnrampProviderInfo) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_onrampProviderInfo:
+		t := m.To_OnrampProviderInfo()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *OnrampProviderInfo) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *OnrampProviderInfo) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xdc27582:
+		m2 := MakeTLOnrampProviderInfo(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_OnrampProviderInfo
+func (m *OnrampProviderInfo) To_OnrampProviderInfo() *TLOnrampProviderInfo {
+	m.PredicateName = Predicate_onrampProviderInfo
+	return &TLOnrampProviderInfo{
+		Data2: m,
+	}
+}
+
+// MakeTLOnrampProviderInfo
+func MakeTLOnrampProviderInfo(data2 *OnrampProviderInfo) *TLOnrampProviderInfo {
+	if data2 == nil {
+		return &TLOnrampProviderInfo{Data2: &OnrampProviderInfo{
+			PredicateName: Predicate_onrampProviderInfo,
+		}}
+	} else {
+		data2.PredicateName = Predicate_onrampProviderInfo
+		return &TLOnrampProviderInfo{Data2: data2}
+	}
+}
+
+func (m *TLOnrampProviderInfo) To_OnrampProviderInfo() *OnrampProviderInfo {
+	m.Data2.PredicateName = Predicate_onrampProviderInfo
+	return m.Data2
+}
+
+// // flags
+func (m *TLOnrampProviderInfo) SetSupportsBaseCurrencies(v bool) { m.Data2.SupportsBaseCurrencies = v }
+func (m *TLOnrampProviderInfo) GetSupportsBaseCurrencies() bool {
+	return m.Data2.SupportsBaseCurrencies
+}
+
+func (m *TLOnrampProviderInfo) SetSupportsLimits(v bool) { m.Data2.SupportsLimits = v }
+func (m *TLOnrampProviderInfo) GetSupportsLimits() bool  { return m.Data2.SupportsLimits }
+
+func (m *TLOnrampProviderInfo) SetSupportsQuote(v bool) { m.Data2.SupportsQuote = v }
+func (m *TLOnrampProviderInfo) GetSupportsQuote() bool  { return m.Data2.SupportsQuote }
+
+func (m *TLOnrampProviderInfo) SetId(v string) { m.Data2.Id = v }
+func (m *TLOnrampProviderInfo) GetId() string  { return m.Data2.Id }
+
+func (m *TLOnrampProviderInfo) SetName(v string) { m.Data2.Name = v }
+func (m *TLOnrampProviderInfo) GetName() string  { return m.Data2.Name }
+
+func (m *TLOnrampProviderInfo) SetCryptoCurrencies(v []string) { m.Data2.CryptoCurrencies = v }
+func (m *TLOnrampProviderInfo) GetCryptoCurrencies() []string  { return m.Data2.CryptoCurrencies }
+
+func (m *TLOnrampProviderInfo) GetPredicateName() string {
+	return Predicate_onrampProviderInfo
+}
+
+func (m *TLOnrampProviderInfo) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_onrampProviderInfo, int(layer))
+	switch uint32(clazzId) {
+	case 0xdc27582:
+		x.UInt(0xdc27582)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetSupportsBaseCurrencies() == true {
+				flags |= 1 << 0
+			}
+			if m.GetSupportsLimits() == true {
+				flags |= 1 << 1
+			}
+			if m.GetSupportsQuote() == true {
+				flags |= 1 << 2
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetId())
+		x.String(m.GetName())
+
+		x.VectorString(m.GetCryptoCurrencies())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_onrampProviderInfo, layer)
+	}
+}
+
+func (m *TLOnrampProviderInfo) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLOnrampProviderInfo) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xdc27582:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetSupportsBaseCurrencies(true)
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.SetSupportsLimits(true)
+		}
+		if (flags & (1 << 2)) != 0 {
+			m.SetSupportsQuote(true)
+		}
+		m.SetId(dBuf.String())
+		m.SetName(dBuf.String())
+
+		m.SetCryptoCurrencies(dBuf.VectorString())
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// OnrampQuote <--
+//  + TL_OnrampQuote
+//
+
+func (m *OnrampQuote) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_onrampQuote:
+		t := m.To_OnrampQuote()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *OnrampQuote) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *OnrampQuote) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x7a8011e9:
+		m2 := MakeTLOnrampQuote(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_OnrampQuote
+func (m *OnrampQuote) To_OnrampQuote() *TLOnrampQuote {
+	m.PredicateName = Predicate_onrampQuote
+	return &TLOnrampQuote{
+		Data2: m,
+	}
+}
+
+// MakeTLOnrampQuote
+func MakeTLOnrampQuote(data2 *OnrampQuote) *TLOnrampQuote {
+	if data2 == nil {
+		return &TLOnrampQuote{Data2: &OnrampQuote{
+			PredicateName: Predicate_onrampQuote,
+		}}
+	} else {
+		data2.PredicateName = Predicate_onrampQuote
+		return &TLOnrampQuote{Data2: data2}
+	}
+}
+
+func (m *TLOnrampQuote) To_OnrampQuote() *OnrampQuote {
+	m.Data2.PredicateName = Predicate_onrampQuote
+	return m.Data2
+}
+
+func (m *TLOnrampQuote) SetBaseCurrency(v string) { m.Data2.BaseCurrency = v }
+func (m *TLOnrampQuote) GetBaseCurrency() string  { return m.Data2.BaseCurrency }
+
+func (m *TLOnrampQuote) SetBaseAmount(v string) { m.Data2.BaseAmount = v }
+func (m *TLOnrampQuote) GetBaseAmount() string  { return m.Data2.BaseAmount }
+
+func (m *TLOnrampQuote) SetCryptoCurrency(v string) { m.Data2.CryptoCurrency = v }
+func (m *TLOnrampQuote) GetCryptoCurrency() string  { return m.Data2.CryptoCurrency }
+
+func (m *TLOnrampQuote) SetCryptoAmount(v string) { m.Data2.CryptoAmount = v }
+func (m *TLOnrampQuote) GetCryptoAmount() string  { return m.Data2.CryptoAmount }
+
+func (m *TLOnrampQuote) SetCryptoPrice(v string) { m.Data2.CryptoPrice = v }
+func (m *TLOnrampQuote) GetCryptoPrice() string  { return m.Data2.CryptoPrice }
+
+func (m *TLOnrampQuote) SetFeeAmount(v string) { m.Data2.FeeAmount = v }
+func (m *TLOnrampQuote) GetFeeAmount() string  { return m.Data2.FeeAmount }
+
+func (m *TLOnrampQuote) SetExtraFeeAmount(v string) { m.Data2.ExtraFeeAmount = v }
+func (m *TLOnrampQuote) GetExtraFeeAmount() string  { return m.Data2.ExtraFeeAmount }
+
+func (m *TLOnrampQuote) SetNetworkFeeAmount(v string) { m.Data2.NetworkFeeAmount = v }
+func (m *TLOnrampQuote) GetNetworkFeeAmount() string  { return m.Data2.NetworkFeeAmount }
+
+func (m *TLOnrampQuote) SetTotalAmount(v string) { m.Data2.TotalAmount = v }
+func (m *TLOnrampQuote) GetTotalAmount() string  { return m.Data2.TotalAmount }
+
+func (m *TLOnrampQuote) SetPaymentMethod(v string) { m.Data2.PaymentMethod = v }
+func (m *TLOnrampQuote) GetPaymentMethod() string  { return m.Data2.PaymentMethod }
+
+func (m *TLOnrampQuote) SetExpiresDate(v int32) { m.Data2.ExpiresDate = v }
+func (m *TLOnrampQuote) GetExpiresDate() int32  { return m.Data2.ExpiresDate }
+
+func (m *TLOnrampQuote) GetPredicateName() string {
+	return Predicate_onrampQuote
+}
+
+func (m *TLOnrampQuote) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_onrampQuote, int(layer))
+	switch uint32(clazzId) {
+	case 0x7a8011e9:
+		x.UInt(0x7a8011e9)
+
+		x.String(m.GetBaseCurrency())
+		x.String(m.GetBaseAmount())
+		x.String(m.GetCryptoCurrency())
+		x.String(m.GetCryptoAmount())
+		x.String(m.GetCryptoPrice())
+		x.String(m.GetFeeAmount())
+		x.String(m.GetExtraFeeAmount())
+		x.String(m.GetNetworkFeeAmount())
+		x.String(m.GetTotalAmount())
+		x.String(m.GetPaymentMethod())
+		x.Int(m.GetExpiresDate())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_onrampQuote, layer)
+	}
+}
+
+func (m *TLOnrampQuote) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLOnrampQuote) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x7a8011e9:
+		m.SetBaseCurrency(dBuf.String())
+		m.SetBaseAmount(dBuf.String())
+		m.SetCryptoCurrency(dBuf.String())
+		m.SetCryptoAmount(dBuf.String())
+		m.SetCryptoPrice(dBuf.String())
+		m.SetFeeAmount(dBuf.String())
+		m.SetExtraFeeAmount(dBuf.String())
+		m.SetNetworkFeeAmount(dBuf.String())
+		m.SetTotalAmount(dBuf.String())
+		m.SetPaymentMethod(dBuf.String())
+		m.SetExpiresDate(dBuf.Int())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// OnrampSession <--
+//  + TL_OnrampSession
+//
+
+func (m *OnrampSession) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_onrampSession:
+		t := m.To_OnrampSession()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *OnrampSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *OnrampSession) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xd1e42e24:
+		m2 := MakeTLOnrampSession(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_OnrampSession
+func (m *OnrampSession) To_OnrampSession() *TLOnrampSession {
+	m.PredicateName = Predicate_onrampSession
+	return &TLOnrampSession{
+		Data2: m,
+	}
+}
+
+// MakeTLOnrampSession
+func MakeTLOnrampSession(data2 *OnrampSession) *TLOnrampSession {
+	if data2 == nil {
+		return &TLOnrampSession{Data2: &OnrampSession{
+			PredicateName: Predicate_onrampSession,
+		}}
+	} else {
+		data2.PredicateName = Predicate_onrampSession
+		return &TLOnrampSession{Data2: data2}
+	}
+}
+
+func (m *TLOnrampSession) To_OnrampSession() *OnrampSession {
+	m.Data2.PredicateName = Predicate_onrampSession
+	return m.Data2
+}
+
+func (m *TLOnrampSession) SetProvider(v string) { m.Data2.Provider = v }
+func (m *TLOnrampSession) GetProvider() string  { return m.Data2.Provider }
+
+func (m *TLOnrampSession) SetSessionId(v string) { m.Data2.SessionId = v }
+func (m *TLOnrampSession) GetSessionId() string  { return m.Data2.SessionId }
+
+func (m *TLOnrampSession) SetUrl(v string) { m.Data2.Url = v }
+func (m *TLOnrampSession) GetUrl() string  { return m.Data2.Url }
+
+func (m *TLOnrampSession) SetExpiresDate(v int32) { m.Data2.ExpiresDate = v }
+func (m *TLOnrampSession) GetExpiresDate() int32  { return m.Data2.ExpiresDate }
+
+func (m *TLOnrampSession) GetPredicateName() string {
+	return Predicate_onrampSession
+}
+
+func (m *TLOnrampSession) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_onrampSession, int(layer))
+	switch uint32(clazzId) {
+	case 0xd1e42e24:
+		x.UInt(0xd1e42e24)
+
+		x.String(m.GetProvider())
+		x.String(m.GetSessionId())
+		x.String(m.GetUrl())
+		x.Int(m.GetExpiresDate())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_onrampSession, layer)
+	}
+}
+
+func (m *TLOnrampSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLOnrampSession) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xd1e42e24:
+		m.SetProvider(dBuf.String())
+		m.SetSessionId(dBuf.String())
+		m.SetUrl(dBuf.String())
+		m.SetExpiresDate(dBuf.Int())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // OutboxReadDate <--
 //  + TL_OutboxReadDate
 //
@@ -167056,6 +168712,143 @@ func (m *TLPaymentsConnectedStarRefBots) Decode(dBuf *DecodeBuf) error {
 			v2[i].Decode(dBuf)
 		}
 		m.SetUsers(v2)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Payments_CurrencyRates <--
+//  + TL_PaymentsCurrencyRates
+//
+
+func (m *Payments_CurrencyRates) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_payments_currencyRates:
+		t := m.To_PaymentsCurrencyRates()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Payments_CurrencyRates) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Payments_CurrencyRates) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xbbcce4c2:
+		m2 := MakeTLPaymentsCurrencyRates(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_PaymentsCurrencyRates
+func (m *Payments_CurrencyRates) To_PaymentsCurrencyRates() *TLPaymentsCurrencyRates {
+	m.PredicateName = Predicate_payments_currencyRates
+	return &TLPaymentsCurrencyRates{
+		Data2: m,
+	}
+}
+
+// MakeTLPaymentsCurrencyRates
+func MakeTLPaymentsCurrencyRates(data2 *Payments_CurrencyRates) *TLPaymentsCurrencyRates {
+	if data2 == nil {
+		return &TLPaymentsCurrencyRates{Data2: &Payments_CurrencyRates{
+			PredicateName: Predicate_payments_currencyRates,
+		}}
+	} else {
+		data2.PredicateName = Predicate_payments_currencyRates
+		return &TLPaymentsCurrencyRates{Data2: data2}
+	}
+}
+
+func (m *TLPaymentsCurrencyRates) To_Payments_CurrencyRates() *Payments_CurrencyRates {
+	m.Data2.PredicateName = Predicate_payments_currencyRates
+	return m.Data2
+}
+
+func (m *TLPaymentsCurrencyRates) SetRates(v []*CurrencyRate) { m.Data2.Rates = v }
+func (m *TLPaymentsCurrencyRates) GetRates() []*CurrencyRate  { return m.Data2.Rates }
+
+func (m *TLPaymentsCurrencyRates) GetPredicateName() string {
+	return Predicate_payments_currencyRates
+}
+
+func (m *TLPaymentsCurrencyRates) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_payments_currencyRates, int(layer))
+	switch uint32(clazzId) {
+	case 0xbbcce4c2:
+		x.UInt(0xbbcce4c2)
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list0 := m.GetRates()
+			x.Int(int32(len(list0)))
+			for _, v := range list0 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_payments_currencyRates, layer)
+	}
+}
+
+func (m *TLPaymentsCurrencyRates) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsCurrencyRates) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xbbcce4c2:
+		c0 := dBuf.Int()
+		if c0 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 0, c0)
+			return dBuf.GetError()
+		}
+		l0 := dBuf.Int()
+		if l0 < 0 || l0 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l0)
+		}
+		v0 := make([]*CurrencyRate, l0)
+		for i := int32(0); i < l0; i++ {
+			v0[i] = &CurrencyRate{}
+			v0[i].Decode(dBuf)
+		}
+		m.SetRates(v0)
 
 		return dBuf.GetError()
 
@@ -193140,6 +194933,7 @@ func (m *TLRichMessage) Decode(dBuf *DecodeBuf) error {
 //  + TL_TextDate
 //  + TL_TextDiff
 //  + TL_TextButton
+//  + TL_TextTonAddress
 //
 
 func (m *RichText) Encode(x *EncodeBuf, layer int32) error {
@@ -193337,6 +195131,12 @@ func (m *RichText) Encode(x *EncodeBuf, layer int32) error {
 		if err != nil {
 			return err
 		}
+	case Predicate_textTonAddress:
+		t := m.To_TextTonAddress()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
 
 	default:
 		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
@@ -193444,6 +195244,9 @@ func (m *RichText) Decode(dBuf *DecodeBuf) error {
 		m2.Decode(dBuf)
 	case 0xafc79cd6:
 		m2 := MakeTLTextButton(m)
+		m2.Decode(dBuf)
+	case 0x3cd2a36a:
+		m2 := MakeTLTextTonAddress(m)
 		m2.Decode(dBuf)
 
 	default:
@@ -193696,6 +195499,14 @@ func (m *RichText) To_TextDiff() *TLTextDiff {
 func (m *RichText) To_TextButton() *TLTextButton {
 	m.PredicateName = Predicate_textButton
 	return &TLTextButton{
+		Data2: m,
+	}
+}
+
+// To_TextTonAddress
+func (m *RichText) To_TextTonAddress() *TLTextTonAddress {
+	m.PredicateName = Predicate_textTonAddress
+	return &TLTextTonAddress{
 		Data2: m,
 	}
 }
@@ -195653,6 +197464,64 @@ func (m *TLTextButton) Decode(dBuf *DecodeBuf) error {
 			m23.Decode(dBuf)
 			m.SetStyle(m23)
 		}
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLTextTonAddress
+func MakeTLTextTonAddress(data2 *RichText) *TLTextTonAddress {
+	if data2 == nil {
+		return &TLTextTonAddress{Data2: &RichText{
+			PredicateName: Predicate_textTonAddress,
+		}}
+	} else {
+		data2.PredicateName = Predicate_textTonAddress
+		return &TLTextTonAddress{Data2: data2}
+	}
+}
+
+func (m *TLTextTonAddress) To_RichText() *RichText {
+	m.Data2.PredicateName = Predicate_textTonAddress
+	return m.Data2
+}
+
+func (m *TLTextTonAddress) SetText_RICHTEXT(v *RichText) { m.Data2.Text_RICHTEXT = v }
+func (m *TLTextTonAddress) GetText_RICHTEXT() *RichText  { return m.Data2.Text_RICHTEXT }
+
+func (m *TLTextTonAddress) GetPredicateName() string {
+	return Predicate_textTonAddress
+}
+
+func (m *TLTextTonAddress) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_textTonAddress, int(layer))
+	switch uint32(clazzId) {
+	case 0x3cd2a36a:
+		x.UInt(0x3cd2a36a)
+
+		m.GetText_RICHTEXT().Encode(x, layer)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_textTonAddress, layer)
+	}
+}
+
+func (m *TLTextTonAddress) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLTextTonAddress) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x3cd2a36a:
+
+		m0 := &RichText{}
+		m0.Decode(dBuf)
+		m.SetText_RICHTEXT(m0)
+
 		return dBuf.GetError()
 
 	default:
@@ -230480,6 +232349,847 @@ func (m *TLTodoList) Decode(dBuf *DecodeBuf) error {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// TonConnectManifest <--
+//  + TL_TonConnectManifest
+//
+
+func (m *TonConnectManifest) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_tonConnectManifest:
+		t := m.To_TonConnectManifest()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *TonConnectManifest) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TonConnectManifest) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x12229264:
+		m2 := MakeTLTonConnectManifest(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_TonConnectManifest
+func (m *TonConnectManifest) To_TonConnectManifest() *TLTonConnectManifest {
+	m.PredicateName = Predicate_tonConnectManifest
+	return &TLTonConnectManifest{
+		Data2: m,
+	}
+}
+
+// MakeTLTonConnectManifest
+func MakeTLTonConnectManifest(data2 *TonConnectManifest) *TLTonConnectManifest {
+	if data2 == nil {
+		return &TLTonConnectManifest{Data2: &TonConnectManifest{
+			PredicateName: Predicate_tonConnectManifest,
+		}}
+	} else {
+		data2.PredicateName = Predicate_tonConnectManifest
+		return &TLTonConnectManifest{Data2: data2}
+	}
+}
+
+func (m *TLTonConnectManifest) To_TonConnectManifest() *TonConnectManifest {
+	m.Data2.PredicateName = Predicate_tonConnectManifest
+	return m.Data2
+}
+
+// // flags
+func (m *TLTonConnectManifest) SetUrl(v string) { m.Data2.Url = v }
+func (m *TLTonConnectManifest) GetUrl() string  { return m.Data2.Url }
+
+func (m *TLTonConnectManifest) SetName(v string) { m.Data2.Name = v }
+func (m *TLTonConnectManifest) GetName() string  { return m.Data2.Name }
+
+func (m *TLTonConnectManifest) SetIcon(v *WebDocument) { m.Data2.Icon = v }
+func (m *TLTonConnectManifest) GetIcon() *WebDocument  { return m.Data2.Icon }
+
+func (m *TLTonConnectManifest) GetPredicateName() string {
+	return Predicate_tonConnectManifest
+}
+
+func (m *TLTonConnectManifest) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_tonConnectManifest, int(layer))
+	switch uint32(clazzId) {
+	case 0x12229264:
+		x.UInt(0x12229264)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetIcon() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetUrl())
+		x.String(m.GetName())
+		if m.GetIcon() != nil {
+			m.GetIcon().Encode(x, layer)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_tonConnectManifest, layer)
+	}
+}
+
+func (m *TLTonConnectManifest) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLTonConnectManifest) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x12229264:
+		var flags = dBuf.UInt()
+		_ = flags
+		m.SetUrl(dBuf.String())
+		m.SetName(dBuf.String())
+		if (flags & (1 << 0)) != 0 {
+			m3 := &WebDocument{}
+			m3.Decode(dBuf)
+			m.SetIcon(m3)
+		}
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// TonConnectNextEventId <--
+//  + TL_TonConnectNextEventId
+//
+
+func (m *TonConnectNextEventId) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_tonConnectNextEventId:
+		t := m.To_TonConnectNextEventId()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *TonConnectNextEventId) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TonConnectNextEventId) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x582464e3:
+		m2 := MakeTLTonConnectNextEventId(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_TonConnectNextEventId
+func (m *TonConnectNextEventId) To_TonConnectNextEventId() *TLTonConnectNextEventId {
+	m.PredicateName = Predicate_tonConnectNextEventId
+	return &TLTonConnectNextEventId{
+		Data2: m,
+	}
+}
+
+// MakeTLTonConnectNextEventId
+func MakeTLTonConnectNextEventId(data2 *TonConnectNextEventId) *TLTonConnectNextEventId {
+	if data2 == nil {
+		return &TLTonConnectNextEventId{Data2: &TonConnectNextEventId{
+			PredicateName: Predicate_tonConnectNextEventId,
+		}}
+	} else {
+		data2.PredicateName = Predicate_tonConnectNextEventId
+		return &TLTonConnectNextEventId{Data2: data2}
+	}
+}
+
+func (m *TLTonConnectNextEventId) To_TonConnectNextEventId() *TonConnectNextEventId {
+	m.Data2.PredicateName = Predicate_tonConnectNextEventId
+	return m.Data2
+}
+
+func (m *TLTonConnectNextEventId) SetEventId(v int64) { m.Data2.EventId = v }
+func (m *TLTonConnectNextEventId) GetEventId() int64  { return m.Data2.EventId }
+
+func (m *TLTonConnectNextEventId) GetPredicateName() string {
+	return Predicate_tonConnectNextEventId
+}
+
+func (m *TLTonConnectNextEventId) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_tonConnectNextEventId, int(layer))
+	switch uint32(clazzId) {
+	case 0x582464e3:
+		x.UInt(0x582464e3)
+
+		x.Long(m.GetEventId())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_tonConnectNextEventId, layer)
+	}
+}
+
+func (m *TLTonConnectNextEventId) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLTonConnectNextEventId) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x582464e3:
+		m.SetEventId(dBuf.Long())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// TonConnectRequest <--
+//  + TL_TonConnectRequest
+//
+
+func (m *TonConnectRequest) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_tonConnectRequest:
+		t := m.To_TonConnectRequest()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *TonConnectRequest) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TonConnectRequest) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xa15f8513:
+		m2 := MakeTLTonConnectRequest(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_TonConnectRequest
+func (m *TonConnectRequest) To_TonConnectRequest() *TLTonConnectRequest {
+	m.PredicateName = Predicate_tonConnectRequest
+	return &TLTonConnectRequest{
+		Data2: m,
+	}
+}
+
+// MakeTLTonConnectRequest
+func MakeTLTonConnectRequest(data2 *TonConnectRequest) *TLTonConnectRequest {
+	if data2 == nil {
+		return &TLTonConnectRequest{Data2: &TonConnectRequest{
+			PredicateName: Predicate_tonConnectRequest,
+		}}
+	} else {
+		data2.PredicateName = Predicate_tonConnectRequest
+		return &TLTonConnectRequest{Data2: data2}
+	}
+}
+
+func (m *TLTonConnectRequest) To_TonConnectRequest() *TonConnectRequest {
+	m.Data2.PredicateName = Predicate_tonConnectRequest
+	return m.Data2
+}
+
+// // flags
+func (m *TLTonConnectRequest) SetSessionId(v int64) { m.Data2.SessionId = v }
+func (m *TLTonConnectRequest) GetSessionId() int64  { return m.Data2.SessionId }
+
+func (m *TLTonConnectRequest) SetMsgId(v int32) { m.Data2.MsgId = v }
+func (m *TLTonConnectRequest) GetMsgId() int32  { return m.Data2.MsgId }
+
+func (m *TLTonConnectRequest) SetBody(v []byte) { m.Data2.Body = v }
+func (m *TLTonConnectRequest) GetBody() []byte  { return m.Data2.Body }
+
+func (m *TLTonConnectRequest) SetExpires(v int32) { m.Data2.Expires = v }
+func (m *TLTonConnectRequest) GetExpires() int32  { return m.Data2.Expires }
+
+func (m *TLTonConnectRequest) SetTopic(v *wrapperspb.StringValue) { m.Data2.Topic = v }
+func (m *TLTonConnectRequest) GetTopic() *wrapperspb.StringValue  { return m.Data2.Topic }
+
+func (m *TLTonConnectRequest) SetTraceId(v *wrapperspb.StringValue) { m.Data2.TraceId = v }
+func (m *TLTonConnectRequest) GetTraceId() *wrapperspb.StringValue  { return m.Data2.TraceId }
+
+func (m *TLTonConnectRequest) GetPredicateName() string {
+	return Predicate_tonConnectRequest
+}
+
+func (m *TLTonConnectRequest) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_tonConnectRequest, int(layer))
+	switch uint32(clazzId) {
+	case 0xa15f8513:
+		x.UInt(0xa15f8513)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetTopic() != nil {
+				flags |= 1 << 0
+			}
+			if m.GetTraceId() != nil {
+				flags |= 1 << 1
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Long(m.GetSessionId())
+		x.Int(m.GetMsgId())
+		x.StringBytes(m.GetBody())
+		x.Int(m.GetExpires())
+		if m.GetTopic() != nil {
+			x.String(m.GetTopic().Value)
+		}
+
+		if m.GetTraceId() != nil {
+			x.String(m.GetTraceId().Value)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_tonConnectRequest, layer)
+	}
+}
+
+func (m *TLTonConnectRequest) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLTonConnectRequest) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xa15f8513:
+		var flags = dBuf.UInt()
+		_ = flags
+		m.SetSessionId(dBuf.Long())
+		m.SetMsgId(dBuf.Int())
+		m.SetBody(dBuf.StringBytes())
+		m.SetExpires(dBuf.Int())
+		if (flags & (1 << 0)) != 0 {
+			m.SetTopic(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 1)) != 0 {
+			m.SetTraceId(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// TonConnectSession <--
+//  + TL_TonConnectSession
+//
+
+func (m *TonConnectSession) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_tonConnectSession:
+		t := m.To_TonConnectSession()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *TonConnectSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TonConnectSession) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x126556c6:
+		m2 := MakeTLTonConnectSession(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_TonConnectSession
+func (m *TonConnectSession) To_TonConnectSession() *TLTonConnectSession {
+	m.PredicateName = Predicate_tonConnectSession
+	return &TLTonConnectSession{
+		Data2: m,
+	}
+}
+
+// MakeTLTonConnectSession
+func MakeTLTonConnectSession(data2 *TonConnectSession) *TLTonConnectSession {
+	if data2 == nil {
+		return &TLTonConnectSession{Data2: &TonConnectSession{
+			PredicateName: Predicate_tonConnectSession,
+		}}
+	} else {
+		data2.PredicateName = Predicate_tonConnectSession
+		return &TLTonConnectSession{Data2: data2}
+	}
+}
+
+func (m *TLTonConnectSession) To_TonConnectSession() *TonConnectSession {
+	m.Data2.PredicateName = Predicate_tonConnectSession
+	return m.Data2
+}
+
+// // flags
+func (m *TLTonConnectSession) SetPending(v bool) { m.Data2.Pending = v }
+func (m *TLTonConnectSession) GetPending() bool  { return m.Data2.Pending }
+
+func (m *TLTonConnectSession) SetClosing(v bool) { m.Data2.Closing = v }
+func (m *TLTonConnectSession) GetClosing() bool  { return m.Data2.Closing }
+
+func (m *TLTonConnectSession) SetClosed(v bool) { m.Data2.Closed = v }
+func (m *TLTonConnectSession) GetClosed() bool  { return m.Data2.Closed }
+
+func (m *TLTonConnectSession) SetId(v int64) { m.Data2.Id = v }
+func (m *TLTonConnectSession) GetId() int64  { return m.Data2.Id }
+
+func (m *TLTonConnectSession) SetDappClientId(v string) { m.Data2.DappClientId = v }
+func (m *TLTonConnectSession) GetDappClientId() string  { return m.Data2.DappClientId }
+
+func (m *TLTonConnectSession) SetClientId(v *wrapperspb.StringValue) { m.Data2.ClientId = v }
+func (m *TLTonConnectSession) GetClientId() *wrapperspb.StringValue  { return m.Data2.ClientId }
+
+func (m *TLTonConnectSession) SetNonce(v []byte) { m.Data2.Nonce = v }
+func (m *TLTonConnectSession) GetNonce() []byte  { return m.Data2.Nonce }
+
+func (m *TLTonConnectSession) SetManifest(v *TonConnectManifest) { m.Data2.Manifest = v }
+func (m *TLTonConnectSession) GetManifest() *TonConnectManifest  { return m.Data2.Manifest }
+
+func (m *TLTonConnectSession) SetManifestError(v *wrapperspb.Int32Value) { m.Data2.ManifestError = v }
+func (m *TLTonConnectSession) GetManifestError() *wrapperspb.Int32Value  { return m.Data2.ManifestError }
+
+func (m *TLTonConnectSession) SetDate(v int32) { m.Data2.Date = v }
+func (m *TLTonConnectSession) GetDate() int32  { return m.Data2.Date }
+
+func (m *TLTonConnectSession) GetPredicateName() string {
+	return Predicate_tonConnectSession
+}
+
+func (m *TLTonConnectSession) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_tonConnectSession, int(layer))
+	switch uint32(clazzId) {
+	case 0x126556c6:
+		x.UInt(0x126556c6)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetPending() == true {
+				flags |= 1 << 0
+			}
+			if m.GetClosing() == true {
+				flags |= 1 << 1
+			}
+			if m.GetClosed() == true {
+				flags |= 1 << 2
+			}
+
+			if m.GetClientId() != nil {
+				flags |= 1 << 3
+			}
+
+			if m.GetManifest() != nil {
+				flags |= 1 << 4
+			}
+			if m.GetManifestError() != nil {
+				flags |= 1 << 5
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Long(m.GetId())
+		x.String(m.GetDappClientId())
+		if m.GetClientId() != nil {
+			x.String(m.GetClientId().Value)
+		}
+
+		x.StringBytes(m.GetNonce())
+		if m.GetManifest() != nil {
+			m.GetManifest().Encode(x, layer)
+		}
+
+		if m.GetManifestError() != nil {
+			x.Int(m.GetManifestError().Value)
+		}
+
+		x.Int(m.GetDate())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_tonConnectSession, layer)
+	}
+}
+
+func (m *TLTonConnectSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLTonConnectSession) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x126556c6:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetPending(true)
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.SetClosing(true)
+		}
+		if (flags & (1 << 2)) != 0 {
+			m.SetClosed(true)
+		}
+		m.SetId(dBuf.Long())
+		m.SetDappClientId(dBuf.String())
+		if (flags & (1 << 3)) != 0 {
+			m.SetClientId(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		m.SetNonce(dBuf.StringBytes())
+		if (flags & (1 << 4)) != 0 {
+			m8 := &TonConnectManifest{}
+			m8.Decode(dBuf)
+			m.SetManifest(m8)
+		}
+		if (flags & (1 << 5)) != 0 {
+			m.SetManifestError(&wrapperspb.Int32Value{Value: dBuf.Int()})
+		}
+
+		m.SetDate(dBuf.Int())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Toncenter_ApiResponse <--
+//  + TL_ToncenterApiResponse
+//
+
+func (m *Toncenter_ApiResponse) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_toncenter_apiResponse:
+		t := m.To_ToncenterApiResponse()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Toncenter_ApiResponse) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Toncenter_ApiResponse) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xac8dfe19:
+		m2 := MakeTLToncenterApiResponse(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_ToncenterApiResponse
+func (m *Toncenter_ApiResponse) To_ToncenterApiResponse() *TLToncenterApiResponse {
+	m.PredicateName = Predicate_toncenter_apiResponse
+	return &TLToncenterApiResponse{
+		Data2: m,
+	}
+}
+
+// MakeTLToncenterApiResponse
+func MakeTLToncenterApiResponse(data2 *Toncenter_ApiResponse) *TLToncenterApiResponse {
+	if data2 == nil {
+		return &TLToncenterApiResponse{Data2: &Toncenter_ApiResponse{
+			PredicateName: Predicate_toncenter_apiResponse,
+		}}
+	} else {
+		data2.PredicateName = Predicate_toncenter_apiResponse
+		return &TLToncenterApiResponse{Data2: data2}
+	}
+}
+
+func (m *TLToncenterApiResponse) To_Toncenter_ApiResponse() *Toncenter_ApiResponse {
+	m.Data2.PredicateName = Predicate_toncenter_apiResponse
+	return m.Data2
+}
+
+func (m *TLToncenterApiResponse) SetResponse(v *DataJSON) { m.Data2.Response = v }
+func (m *TLToncenterApiResponse) GetResponse() *DataJSON  { return m.Data2.Response }
+
+func (m *TLToncenterApiResponse) GetPredicateName() string {
+	return Predicate_toncenter_apiResponse
+}
+
+func (m *TLToncenterApiResponse) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_toncenter_apiResponse, int(layer))
+	switch uint32(clazzId) {
+	case 0xac8dfe19:
+		x.UInt(0xac8dfe19)
+
+		m.GetResponse().Encode(x, layer)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_toncenter_apiResponse, layer)
+	}
+}
+
+func (m *TLToncenterApiResponse) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLToncenterApiResponse) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xac8dfe19:
+
+		m0 := &DataJSON{}
+		m0.Decode(dBuf)
+		m.SetResponse(m0)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Toncenter_StreamingUrl <--
+//  + TL_ToncenterStreamingUrl
+//
+
+func (m *Toncenter_StreamingUrl) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_toncenter_streamingUrl:
+		t := m.To_ToncenterStreamingUrl()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Toncenter_StreamingUrl) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Toncenter_StreamingUrl) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x19887601:
+		m2 := MakeTLToncenterStreamingUrl(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_ToncenterStreamingUrl
+func (m *Toncenter_StreamingUrl) To_ToncenterStreamingUrl() *TLToncenterStreamingUrl {
+	m.PredicateName = Predicate_toncenter_streamingUrl
+	return &TLToncenterStreamingUrl{
+		Data2: m,
+	}
+}
+
+// MakeTLToncenterStreamingUrl
+func MakeTLToncenterStreamingUrl(data2 *Toncenter_StreamingUrl) *TLToncenterStreamingUrl {
+	if data2 == nil {
+		return &TLToncenterStreamingUrl{Data2: &Toncenter_StreamingUrl{
+			PredicateName: Predicate_toncenter_streamingUrl,
+		}}
+	} else {
+		data2.PredicateName = Predicate_toncenter_streamingUrl
+		return &TLToncenterStreamingUrl{Data2: data2}
+	}
+}
+
+func (m *TLToncenterStreamingUrl) To_Toncenter_StreamingUrl() *Toncenter_StreamingUrl {
+	m.Data2.PredicateName = Predicate_toncenter_streamingUrl
+	return m.Data2
+}
+
+func (m *TLToncenterStreamingUrl) SetUrl(v string) { m.Data2.Url = v }
+func (m *TLToncenterStreamingUrl) GetUrl() string  { return m.Data2.Url }
+
+func (m *TLToncenterStreamingUrl) SetExpires(v int32) { m.Data2.Expires = v }
+func (m *TLToncenterStreamingUrl) GetExpires() int32  { return m.Data2.Expires }
+
+func (m *TLToncenterStreamingUrl) GetPredicateName() string {
+	return Predicate_toncenter_streamingUrl
+}
+
+func (m *TLToncenterStreamingUrl) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_toncenter_streamingUrl, int(layer))
+	switch uint32(clazzId) {
+	case 0x19887601:
+		x.UInt(0x19887601)
+
+		x.String(m.GetUrl())
+		x.Int(m.GetExpires())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_toncenter_streamingUrl, layer)
+	}
+}
+
+func (m *TLToncenterStreamingUrl) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLToncenterStreamingUrl) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x19887601:
+		m.SetUrl(dBuf.String())
+		m.SetExpires(dBuf.Int())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // TopPeer <--
 //  + TL_TopPeer
 //
@@ -231710,6 +234420,11 @@ func (m *TLTrue) Decode(dBuf *DecodeBuf) error {
 //  + TL_UpdateEditEphemeralMessage
 //  + TL_UpdateEphemeralBotCallbackQuery
 //  + TL_UpdateBotStarsSubscription
+//  + TL_UpdateWalletState
+//  + TL_UpdateSentWalletTransaction
+//  + TL_UpdateWalletGaslessInfo
+//  + TL_UpdateWalletTonConnectSession
+//  + TL_UpdateWalletTonConnectPendingDisconnect
 //  + TL_UpdateChannelPinnedTopic
 //  + TL_UpdateChannelPinnedTopics
 //  + TL_UpdateBroadcastRevenueTransactions
@@ -232718,6 +235433,36 @@ func (m *Update) Encode(x *EncodeBuf, layer int32) error {
 		if err != nil {
 			return err
 		}
+	case Predicate_updateWalletState:
+		t := m.To_UpdateWalletState()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_updateSentWalletTransaction:
+		t := m.To_UpdateSentWalletTransaction()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_updateWalletGaslessInfo:
+		t := m.To_UpdateWalletGaslessInfo()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_updateWalletTonConnectSession:
+		t := m.To_UpdateWalletTonConnectSession()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_updateWalletTonConnectPendingDisconnect:
+		t := m.To_UpdateWalletTonConnectPendingDisconnect()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
 	case Predicate_updateChannelPinnedTopic:
 		t := m.To_UpdateChannelPinnedTopic()
 		err := t.Encode(x, layer)
@@ -233350,6 +236095,21 @@ func (m *Update) Decode(dBuf *DecodeBuf) error {
 		m2.Decode(dBuf)
 	case 0x6c0d8e23:
 		m2 := MakeTLUpdateBotStarsSubscription(m)
+		m2.Decode(dBuf)
+	case 0x6ac3f2aa:
+		m2 := MakeTLUpdateWalletState(m)
+		m2.Decode(dBuf)
+	case 0xb1434d4a:
+		m2 := MakeTLUpdateSentWalletTransaction(m)
+		m2.Decode(dBuf)
+	case 0xa8ae1cac:
+		m2 := MakeTLUpdateWalletGaslessInfo(m)
+		m2.Decode(dBuf)
+	case 0x50a38e0e:
+		m2 := MakeTLUpdateWalletTonConnectSession(m)
+		m2.Decode(dBuf)
+	case 0xd1ee8199:
+		m2 := MakeTLUpdateWalletTonConnectPendingDisconnect(m)
 		m2.Decode(dBuf)
 	case 0x192efbe3:
 		m2 := MakeTLUpdateChannelPinnedTopic(m)
@@ -234698,6 +237458,46 @@ func (m *Update) To_UpdateEphemeralBotCallbackQuery() *TLUpdateEphemeralBotCallb
 func (m *Update) To_UpdateBotStarsSubscription() *TLUpdateBotStarsSubscription {
 	m.PredicateName = Predicate_updateBotStarsSubscription
 	return &TLUpdateBotStarsSubscription{
+		Data2: m,
+	}
+}
+
+// To_UpdateWalletState
+func (m *Update) To_UpdateWalletState() *TLUpdateWalletState {
+	m.PredicateName = Predicate_updateWalletState
+	return &TLUpdateWalletState{
+		Data2: m,
+	}
+}
+
+// To_UpdateSentWalletTransaction
+func (m *Update) To_UpdateSentWalletTransaction() *TLUpdateSentWalletTransaction {
+	m.PredicateName = Predicate_updateSentWalletTransaction
+	return &TLUpdateSentWalletTransaction{
+		Data2: m,
+	}
+}
+
+// To_UpdateWalletGaslessInfo
+func (m *Update) To_UpdateWalletGaslessInfo() *TLUpdateWalletGaslessInfo {
+	m.PredicateName = Predicate_updateWalletGaslessInfo
+	return &TLUpdateWalletGaslessInfo{
+		Data2: m,
+	}
+}
+
+// To_UpdateWalletTonConnectSession
+func (m *Update) To_UpdateWalletTonConnectSession() *TLUpdateWalletTonConnectSession {
+	m.PredicateName = Predicate_updateWalletTonConnectSession
+	return &TLUpdateWalletTonConnectSession{
+		Data2: m,
+	}
+}
+
+// To_UpdateWalletTonConnectPendingDisconnect
+func (m *Update) To_UpdateWalletTonConnectPendingDisconnect() *TLUpdateWalletTonConnectPendingDisconnect {
+	m.PredicateName = Predicate_updateWalletTonConnectPendingDisconnect
+	return &TLUpdateWalletTonConnectPendingDisconnect{
 		Data2: m,
 	}
 }
@@ -246990,8 +249790,12 @@ func (m *TLUpdateStarGiftAuctionState) To_Update() *Update {
 func (m *TLUpdateStarGiftAuctionState) SetGiftId(v int64) { m.Data2.GiftId = v }
 func (m *TLUpdateStarGiftAuctionState) GetGiftId() int64  { return m.Data2.GiftId }
 
-func (m *TLUpdateStarGiftAuctionState) SetState(v *StarGiftAuctionState) { m.Data2.State = v }
-func (m *TLUpdateStarGiftAuctionState) GetState() *StarGiftAuctionState  { return m.Data2.State }
+func (m *TLUpdateStarGiftAuctionState) SetState_STARGIFTAUCTIONSTATE(v *StarGiftAuctionState) {
+	m.Data2.State_STARGIFTAUCTIONSTATE = v
+}
+func (m *TLUpdateStarGiftAuctionState) GetState_STARGIFTAUCTIONSTATE() *StarGiftAuctionState {
+	return m.Data2.State_STARGIFTAUCTIONSTATE
+}
 
 func (m *TLUpdateStarGiftAuctionState) GetPredicateName() string {
 	return Predicate_updateStarGiftAuctionState
@@ -247004,7 +249808,7 @@ func (m *TLUpdateStarGiftAuctionState) Encode(x *EncodeBuf, layer int32) error {
 		x.UInt(0x48e246c2)
 
 		x.Long(m.GetGiftId())
-		m.GetState().Encode(x, layer)
+		m.GetState_STARGIFTAUCTIONSTATE().Encode(x, layer)
 
 		return nil
 
@@ -247024,7 +249828,7 @@ func (m *TLUpdateStarGiftAuctionState) Decode(dBuf *DecodeBuf) error {
 
 		m145 := &StarGiftAuctionState{}
 		m145.Decode(dBuf)
-		m.SetState(m145)
+		m.SetState_STARGIFTAUCTIONSTATE(m145)
 
 		return dBuf.GetError()
 
@@ -248323,6 +251127,366 @@ func (m *TLUpdateBotStarsSubscription) Decode(dBuf *DecodeBuf) error {
 	}
 }
 
+// MakeTLUpdateWalletState
+func MakeTLUpdateWalletState(data2 *Update) *TLUpdateWalletState {
+	if data2 == nil {
+		return &TLUpdateWalletState{Data2: &Update{
+			PredicateName: Predicate_updateWalletState,
+		}}
+	} else {
+		data2.PredicateName = Predicate_updateWalletState
+		return &TLUpdateWalletState{Data2: data2}
+	}
+}
+
+func (m *TLUpdateWalletState) To_Update() *Update {
+	m.Data2.PredicateName = Predicate_updateWalletState
+	return m.Data2
+}
+
+func (m *TLUpdateWalletState) SetState_WALLETSTATE(v *WalletState) { m.Data2.State_WALLETSTATE = v }
+func (m *TLUpdateWalletState) GetState_WALLETSTATE() *WalletState  { return m.Data2.State_WALLETSTATE }
+
+func (m *TLUpdateWalletState) GetPredicateName() string {
+	return Predicate_updateWalletState
+}
+
+func (m *TLUpdateWalletState) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_updateWalletState, int(layer))
+	switch uint32(clazzId) {
+	case 0x6ac3f2aa:
+		x.UInt(0x6ac3f2aa)
+
+		m.GetState_WALLETSTATE().Encode(x, layer)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_updateWalletState, layer)
+	}
+}
+
+func (m *TLUpdateWalletState) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLUpdateWalletState) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x6ac3f2aa:
+
+		m145 := &WalletState{}
+		m145.Decode(dBuf)
+		m.SetState_WALLETSTATE(m145)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLUpdateSentWalletTransaction
+func MakeTLUpdateSentWalletTransaction(data2 *Update) *TLUpdateSentWalletTransaction {
+	if data2 == nil {
+		return &TLUpdateSentWalletTransaction{Data2: &Update{
+			PredicateName: Predicate_updateSentWalletTransaction,
+		}}
+	} else {
+		data2.PredicateName = Predicate_updateSentWalletTransaction
+		return &TLUpdateSentWalletTransaction{Data2: data2}
+	}
+}
+
+func (m *TLUpdateSentWalletTransaction) To_Update() *Update {
+	m.Data2.PredicateName = Predicate_updateSentWalletTransaction
+	return m.Data2
+}
+
+// // flags
+func (m *TLUpdateSentWalletTransaction) SetGasless(v bool) { m.Data2.Gasless = v }
+func (m *TLUpdateSentWalletTransaction) GetGasless() bool  { return m.Data2.Gasless }
+
+func (m *TLUpdateSentWalletTransaction) SetMsgHash(v string) { m.Data2.MsgHash = v }
+func (m *TLUpdateSentWalletTransaction) GetMsgHash() string  { return m.Data2.MsgHash }
+
+func (m *TLUpdateSentWalletTransaction) SetTransaction(v *WalletTransaction) { m.Data2.Transaction = v }
+func (m *TLUpdateSentWalletTransaction) GetTransaction() *WalletTransaction {
+	return m.Data2.Transaction
+}
+
+func (m *TLUpdateSentWalletTransaction) GetPredicateName() string {
+	return Predicate_updateSentWalletTransaction
+}
+
+func (m *TLUpdateSentWalletTransaction) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_updateSentWalletTransaction, int(layer))
+	switch uint32(clazzId) {
+	case 0xb1434d4a:
+		x.UInt(0xb1434d4a)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetGasless() == true {
+				flags |= 1 << 0
+			}
+
+			if m.GetTransaction() != nil {
+				flags |= 1 << 1
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetMsgHash())
+		if m.GetTransaction() != nil {
+			m.GetTransaction().Encode(x, layer)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_updateSentWalletTransaction, layer)
+	}
+}
+
+func (m *TLUpdateSentWalletTransaction) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLUpdateSentWalletTransaction) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xb1434d4a:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetGasless(true)
+		}
+		m.SetMsgHash(dBuf.String())
+		if (flags & (1 << 1)) != 0 {
+			m160 := &WalletTransaction{}
+			m160.Decode(dBuf)
+			m.SetTransaction(m160)
+		}
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLUpdateWalletGaslessInfo
+func MakeTLUpdateWalletGaslessInfo(data2 *Update) *TLUpdateWalletGaslessInfo {
+	if data2 == nil {
+		return &TLUpdateWalletGaslessInfo{Data2: &Update{
+			PredicateName: Predicate_updateWalletGaslessInfo,
+		}}
+	} else {
+		data2.PredicateName = Predicate_updateWalletGaslessInfo
+		return &TLUpdateWalletGaslessInfo{Data2: data2}
+	}
+}
+
+func (m *TLUpdateWalletGaslessInfo) To_Update() *Update {
+	m.Data2.PredicateName = Predicate_updateWalletGaslessInfo
+	return m.Data2
+}
+
+// // flags
+func (m *TLUpdateWalletGaslessInfo) SetAvailable(v bool) { m.Data2.Available = v }
+func (m *TLUpdateWalletGaslessInfo) GetAvailable() bool  { return m.Data2.Available }
+
+func (m *TLUpdateWalletGaslessInfo) SetLeft(v int32) { m.Data2.Left = v }
+func (m *TLUpdateWalletGaslessInfo) GetLeft() int32  { return m.Data2.Left }
+
+func (m *TLUpdateWalletGaslessInfo) SetResetAt(v int32) { m.Data2.ResetAt = v }
+func (m *TLUpdateWalletGaslessInfo) GetResetAt() int32  { return m.Data2.ResetAt }
+
+func (m *TLUpdateWalletGaslessInfo) SetMinAmount(v int64) { m.Data2.MinAmount = v }
+func (m *TLUpdateWalletGaslessInfo) GetMinAmount() int64  { return m.Data2.MinAmount }
+
+func (m *TLUpdateWalletGaslessInfo) SetRelayerAddress(v string) { m.Data2.RelayerAddress = v }
+func (m *TLUpdateWalletGaslessInfo) GetRelayerAddress() string  { return m.Data2.RelayerAddress }
+
+func (m *TLUpdateWalletGaslessInfo) GetPredicateName() string {
+	return Predicate_updateWalletGaslessInfo
+}
+
+func (m *TLUpdateWalletGaslessInfo) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_updateWalletGaslessInfo, int(layer))
+	switch uint32(clazzId) {
+	case 0xa8ae1cac:
+		x.UInt(0xa8ae1cac)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetAvailable() == true {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Int(m.GetLeft())
+		x.Int(m.GetResetAt())
+		x.Long(m.GetMinAmount())
+		x.String(m.GetRelayerAddress())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_updateWalletGaslessInfo, layer)
+	}
+}
+
+func (m *TLUpdateWalletGaslessInfo) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLUpdateWalletGaslessInfo) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xa8ae1cac:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetAvailable(true)
+		}
+		m.SetLeft(dBuf.Int())
+		m.SetResetAt(dBuf.Int())
+		m.SetMinAmount(dBuf.Long())
+		m.SetRelayerAddress(dBuf.String())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLUpdateWalletTonConnectSession
+func MakeTLUpdateWalletTonConnectSession(data2 *Update) *TLUpdateWalletTonConnectSession {
+	if data2 == nil {
+		return &TLUpdateWalletTonConnectSession{Data2: &Update{
+			PredicateName: Predicate_updateWalletTonConnectSession,
+		}}
+	} else {
+		data2.PredicateName = Predicate_updateWalletTonConnectSession
+		return &TLUpdateWalletTonConnectSession{Data2: data2}
+	}
+}
+
+func (m *TLUpdateWalletTonConnectSession) To_Update() *Update {
+	m.Data2.PredicateName = Predicate_updateWalletTonConnectSession
+	return m.Data2
+}
+
+func (m *TLUpdateWalletTonConnectSession) SetSession(v *TonConnectSession) { m.Data2.Session = v }
+func (m *TLUpdateWalletTonConnectSession) GetSession() *TonConnectSession  { return m.Data2.Session }
+
+func (m *TLUpdateWalletTonConnectSession) GetPredicateName() string {
+	return Predicate_updateWalletTonConnectSession
+}
+
+func (m *TLUpdateWalletTonConnectSession) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_updateWalletTonConnectSession, int(layer))
+	switch uint32(clazzId) {
+	case 0x50a38e0e:
+		x.UInt(0x50a38e0e)
+
+		m.GetSession().Encode(x, layer)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_updateWalletTonConnectSession, layer)
+	}
+}
+
+func (m *TLUpdateWalletTonConnectSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLUpdateWalletTonConnectSession) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x50a38e0e:
+
+		m166 := &TonConnectSession{}
+		m166.Decode(dBuf)
+		m.SetSession(m166)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLUpdateWalletTonConnectPendingDisconnect
+func MakeTLUpdateWalletTonConnectPendingDisconnect(data2 *Update) *TLUpdateWalletTonConnectPendingDisconnect {
+	if data2 == nil {
+		return &TLUpdateWalletTonConnectPendingDisconnect{Data2: &Update{
+			PredicateName: Predicate_updateWalletTonConnectPendingDisconnect,
+		}}
+	} else {
+		data2.PredicateName = Predicate_updateWalletTonConnectPendingDisconnect
+		return &TLUpdateWalletTonConnectPendingDisconnect{Data2: data2}
+	}
+}
+
+func (m *TLUpdateWalletTonConnectPendingDisconnect) To_Update() *Update {
+	m.Data2.PredicateName = Predicate_updateWalletTonConnectPendingDisconnect
+	return m.Data2
+}
+
+func (m *TLUpdateWalletTonConnectPendingDisconnect) SetSessionIds(v []int64) { m.Data2.SessionIds = v }
+func (m *TLUpdateWalletTonConnectPendingDisconnect) GetSessionIds() []int64 {
+	return m.Data2.SessionIds
+}
+
+func (m *TLUpdateWalletTonConnectPendingDisconnect) GetPredicateName() string {
+	return Predicate_updateWalletTonConnectPendingDisconnect
+}
+
+func (m *TLUpdateWalletTonConnectPendingDisconnect) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_updateWalletTonConnectPendingDisconnect, int(layer))
+	switch uint32(clazzId) {
+	case 0xd1ee8199:
+		x.UInt(0xd1ee8199)
+
+		x.VectorLong(m.GetSessionIds())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_updateWalletTonConnectPendingDisconnect, layer)
+	}
+}
+
+func (m *TLUpdateWalletTonConnectPendingDisconnect) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLUpdateWalletTonConnectPendingDisconnect) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xd1ee8199:
+
+		m.SetSessionIds(dBuf.VectorLong())
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
 // MakeTLUpdateChannelPinnedTopic
 func MakeTLUpdateChannelPinnedTopic(data2 *Update) *TLUpdateChannelPinnedTopic {
 	if data2 == nil {
@@ -248585,9 +251749,9 @@ func (m *TLUpdateBroadcastRevenueTransactions) Decode(dBuf *DecodeBuf) error {
 		m28.Decode(dBuf)
 		m.SetPeer_PEER(m28)
 
-		m158 := &BroadcastRevenueBalances{}
-		m158.Decode(dBuf)
-		m.SetBalances(m158)
+		m168 := &BroadcastRevenueBalances{}
+		m168.Decode(dBuf)
+		m.SetBalances(m168)
 
 		return dBuf.GetError()
 
@@ -248785,13 +251949,13 @@ func (m *TLUpdateUserPhoto) Decode(dBuf *DecodeBuf) error {
 		m.SetUserId(dBuf.Long())
 		m.SetDate_INT32(dBuf.Int())
 
-		m161 := &UserProfilePhoto{}
-		m161.Decode(dBuf)
-		m.SetPhoto(m161)
+		m171 := &UserProfilePhoto{}
+		m171.Decode(dBuf)
+		m.SetPhoto(m171)
 
-		m162 := &Bool{}
-		m162.Decode(dBuf)
-		m.SetPrevious(m162)
+		m172 := &Bool{}
+		m172.Decode(dBuf)
+		m.SetPrevious(m172)
 
 		return dBuf.GetError()
 
@@ -248847,9 +252011,9 @@ func (m *TLUpdateBizDataRaw) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Data2.Constructor) {
 	case 0x83ce7a0e:
 
-		m164 := &BizDataRaw{}
-		m164.Decode(dBuf)
-		m.SetBizData(m164)
+		m174 := &BizDataRaw{}
+		m174.Decode(dBuf)
+		m.SetBizData(m174)
 
 		return dBuf.GetError()
 
@@ -268004,6 +271168,12 @@ func (m *TLUsername) GetEditable() bool  { return m.Data2.Editable }
 func (m *TLUsername) SetActive(v bool) { m.Data2.Active = v }
 func (m *TLUsername) GetActive() bool  { return m.Data2.Active }
 
+func (m *TLUsername) SetDeletable(v bool) { m.Data2.Deletable = v }
+func (m *TLUsername) GetDeletable() bool  { return m.Data2.Deletable }
+
+func (m *TLUsername) SetExpired(v bool) { m.Data2.Expired = v }
+func (m *TLUsername) GetExpired() bool  { return m.Data2.Expired }
+
 func (m *TLUsername) SetUsername(v string) { m.Data2.Username = v }
 func (m *TLUsername) GetUsername() string  { return m.Data2.Username }
 
@@ -268026,6 +271196,12 @@ func (m *TLUsername) Encode(x *EncodeBuf, layer int32) error {
 			}
 			if m.GetActive() == true {
 				flags |= 1 << 1
+			}
+			if m.GetDeletable() == true {
+				flags |= 1 << 2
+			}
+			if m.GetExpired() == true {
+				flags |= 1 << 3
 			}
 
 			return flags
@@ -268057,6 +271233,12 @@ func (m *TLUsername) Decode(dBuf *DecodeBuf) error {
 		}
 		if (flags & (1 << 1)) != 0 {
 			m.SetActive(true)
+		}
+		if (flags & (1 << 2)) != 0 {
+			m.SetDeletable(true)
+		}
+		if (flags & (1 << 3)) != 0 {
+			m.SetExpired(true)
 		}
 		m.SetUsername(dBuf.String())
 		return dBuf.GetError()
@@ -269776,6 +272958,3112 @@ func (m *TLWallPaperSettings) Decode(dBuf *DecodeBuf) error {
 		if (flags & (1 << 4)) != 0 {
 			m.SetRotation(&wrapperspb.Int32Value{Value: dBuf.Int()})
 		}
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// WalletOwnershipProof <--
+//  + TL_WalletOwnershipProof
+//
+
+func (m *WalletOwnershipProof) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_walletOwnershipProof:
+		t := m.To_WalletOwnershipProof()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *WalletOwnershipProof) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *WalletOwnershipProof) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x60bccb0d:
+		m2 := MakeTLWalletOwnershipProof(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletOwnershipProof
+func (m *WalletOwnershipProof) To_WalletOwnershipProof() *TLWalletOwnershipProof {
+	m.PredicateName = Predicate_walletOwnershipProof
+	return &TLWalletOwnershipProof{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletOwnershipProof
+func MakeTLWalletOwnershipProof(data2 *WalletOwnershipProof) *TLWalletOwnershipProof {
+	if data2 == nil {
+		return &TLWalletOwnershipProof{Data2: &WalletOwnershipProof{
+			PredicateName: Predicate_walletOwnershipProof,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletOwnershipProof
+		return &TLWalletOwnershipProof{Data2: data2}
+	}
+}
+
+func (m *TLWalletOwnershipProof) To_WalletOwnershipProof() *WalletOwnershipProof {
+	m.Data2.PredicateName = Predicate_walletOwnershipProof
+	return m.Data2
+}
+
+func (m *TLWalletOwnershipProof) SetTimestamp(v int32) { m.Data2.Timestamp = v }
+func (m *TLWalletOwnershipProof) GetTimestamp() int32  { return m.Data2.Timestamp }
+
+func (m *TLWalletOwnershipProof) SetSignature(v []byte) { m.Data2.Signature = v }
+func (m *TLWalletOwnershipProof) GetSignature() []byte  { return m.Data2.Signature }
+
+func (m *TLWalletOwnershipProof) GetPredicateName() string {
+	return Predicate_walletOwnershipProof
+}
+
+func (m *TLWalletOwnershipProof) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletOwnershipProof, int(layer))
+	switch uint32(clazzId) {
+	case 0x60bccb0d:
+		x.UInt(0x60bccb0d)
+
+		x.Int(m.GetTimestamp())
+		x.StringBytes(m.GetSignature())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletOwnershipProof, layer)
+	}
+}
+
+func (m *TLWalletOwnershipProof) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletOwnershipProof) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x60bccb0d:
+		m.SetTimestamp(dBuf.Int())
+		m.SetSignature(dBuf.StringBytes())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// WalletState <--
+//  + TL_WalletStateEmpty
+//  + TL_WalletState
+//
+
+func (m *WalletState) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_walletStateEmpty:
+		t := m.To_WalletStateEmpty()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_walletState:
+		t := m.To_WalletState()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *WalletState) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *WalletState) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x9cb9b2ec:
+		m2 := MakeTLWalletStateEmpty(m)
+		m2.Decode(dBuf)
+	case 0x95c5346b:
+		m2 := MakeTLWalletState(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletStateEmpty
+func (m *WalletState) To_WalletStateEmpty() *TLWalletStateEmpty {
+	m.PredicateName = Predicate_walletStateEmpty
+	return &TLWalletStateEmpty{
+		Data2: m,
+	}
+}
+
+// To_WalletState
+func (m *WalletState) To_WalletState() *TLWalletState {
+	m.PredicateName = Predicate_walletState
+	return &TLWalletState{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletStateEmpty
+func MakeTLWalletStateEmpty(data2 *WalletState) *TLWalletStateEmpty {
+	if data2 == nil {
+		return &TLWalletStateEmpty{Data2: &WalletState{
+			PredicateName: Predicate_walletStateEmpty,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletStateEmpty
+		return &TLWalletStateEmpty{Data2: data2}
+	}
+}
+
+func (m *TLWalletStateEmpty) To_WalletState() *WalletState {
+	m.Data2.PredicateName = Predicate_walletStateEmpty
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletStateEmpty) SetCreating(v bool) { m.Data2.Creating = v }
+func (m *TLWalletStateEmpty) GetCreating() bool  { return m.Data2.Creating }
+
+func (m *TLWalletStateEmpty) GetPredicateName() string {
+	return Predicate_walletStateEmpty
+}
+
+func (m *TLWalletStateEmpty) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletStateEmpty, int(layer))
+	switch uint32(clazzId) {
+	case 0x9cb9b2ec:
+		x.UInt(0x9cb9b2ec)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetCreating() == true {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletStateEmpty, layer)
+	}
+}
+
+func (m *TLWalletStateEmpty) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletStateEmpty) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x9cb9b2ec:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetCreating(true)
+		}
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLWalletState
+func MakeTLWalletState(data2 *WalletState) *TLWalletState {
+	if data2 == nil {
+		return &TLWalletState{Data2: &WalletState{
+			PredicateName: Predicate_walletState,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletState
+		return &TLWalletState{Data2: data2}
+	}
+}
+
+func (m *TLWalletState) To_WalletState() *WalletState {
+	m.Data2.PredicateName = Predicate_walletState
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletState) SetBackupEnabled(v bool) { m.Data2.BackupEnabled = v }
+func (m *TLWalletState) GetBackupEnabled() bool  { return m.Data2.BackupEnabled }
+
+func (m *TLWalletState) SetCanExportPhrase(v bool) { m.Data2.CanExportPhrase = v }
+func (m *TLWalletState) GetCanExportPhrase() bool  { return m.Data2.CanExportPhrase }
+
+func (m *TLWalletState) SetCanEnableBackup(v bool) { m.Data2.CanEnableBackup = v }
+func (m *TLWalletState) GetCanEnableBackup() bool  { return m.Data2.CanEnableBackup }
+
+func (m *TLWalletState) SetAddress(v string) { m.Data2.Address = v }
+func (m *TLWalletState) GetAddress() string  { return m.Data2.Address }
+
+func (m *TLWalletState) SetPublicKey(v []byte) { m.Data2.PublicKey = v }
+func (m *TLWalletState) GetPublicKey() []byte  { return m.Data2.PublicKey }
+
+func (m *TLWalletState) SetBalance(v int64) { m.Data2.Balance = v }
+func (m *TLWalletState) GetBalance() int64  { return m.Data2.Balance }
+
+func (m *TLWalletState) GetPredicateName() string {
+	return Predicate_walletState
+}
+
+func (m *TLWalletState) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletState, int(layer))
+	switch uint32(clazzId) {
+	case 0x95c5346b:
+		x.UInt(0x95c5346b)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetBackupEnabled() == true {
+				flags |= 1 << 0
+			}
+			if m.GetCanExportPhrase() == true {
+				flags |= 1 << 1
+			}
+			if m.GetCanEnableBackup() == true {
+				flags |= 1 << 2
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetAddress())
+		x.StringBytes(m.GetPublicKey())
+		x.Long(m.GetBalance())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletState, layer)
+	}
+}
+
+func (m *TLWalletState) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletState) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x95c5346b:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetBackupEnabled(true)
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.SetCanExportPhrase(true)
+		}
+		if (flags & (1 << 2)) != 0 {
+			m.SetCanEnableBackup(true)
+		}
+		m.SetAddress(dBuf.String())
+		m.SetPublicKey(dBuf.StringBytes())
+		m.SetBalance(dBuf.Long())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// WalletTransaction <--
+//  + TL_WalletTransaction
+//
+
+func (m *WalletTransaction) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_walletTransaction:
+		t := m.To_WalletTransaction()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *WalletTransaction) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *WalletTransaction) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x952dc143:
+		m2 := MakeTLWalletTransaction(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletTransaction
+func (m *WalletTransaction) To_WalletTransaction() *TLWalletTransaction {
+	m.PredicateName = Predicate_walletTransaction
+	return &TLWalletTransaction{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletTransaction
+func MakeTLWalletTransaction(data2 *WalletTransaction) *TLWalletTransaction {
+	if data2 == nil {
+		return &TLWalletTransaction{Data2: &WalletTransaction{
+			PredicateName: Predicate_walletTransaction,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletTransaction
+		return &TLWalletTransaction{Data2: data2}
+	}
+}
+
+func (m *TLWalletTransaction) To_WalletTransaction() *WalletTransaction {
+	m.Data2.PredicateName = Predicate_walletTransaction
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletTransaction) SetIncoming(v bool) { m.Data2.Incoming = v }
+func (m *TLWalletTransaction) GetIncoming() bool  { return m.Data2.Incoming }
+
+func (m *TLWalletTransaction) SetGasless(v bool) { m.Data2.Gasless = v }
+func (m *TLWalletTransaction) GetGasless() bool  { return m.Data2.Gasless }
+
+func (m *TLWalletTransaction) SetFailed(v bool) { m.Data2.Failed = v }
+func (m *TLWalletTransaction) GetFailed() bool  { return m.Data2.Failed }
+
+func (m *TLWalletTransaction) SetKeyChange(v bool) { m.Data2.KeyChange = v }
+func (m *TLWalletTransaction) GetKeyChange() bool  { return m.Data2.KeyChange }
+
+func (m *TLWalletTransaction) SetCommentEncrypted(v bool) { m.Data2.CommentEncrypted = v }
+func (m *TLWalletTransaction) GetCommentEncrypted() bool  { return m.Data2.CommentEncrypted }
+
+func (m *TLWalletTransaction) SetId(v string) { m.Data2.Id = v }
+func (m *TLWalletTransaction) GetId() string  { return m.Data2.Id }
+
+func (m *TLWalletTransaction) SetAmount(v int64) { m.Data2.Amount = v }
+func (m *TLWalletTransaction) GetAmount() int64  { return m.Data2.Amount }
+
+func (m *TLWalletTransaction) SetFee(v int64) { m.Data2.Fee = v }
+func (m *TLWalletTransaction) GetFee() int64  { return m.Data2.Fee }
+
+func (m *TLWalletTransaction) SetDate(v int32) { m.Data2.Date = v }
+func (m *TLWalletTransaction) GetDate() int32  { return m.Data2.Date }
+
+func (m *TLWalletTransaction) SetPeer(v *WalletTransactionPeer) { m.Data2.Peer = v }
+func (m *TLWalletTransaction) GetPeer() *WalletTransactionPeer  { return m.Data2.Peer }
+
+func (m *TLWalletTransaction) SetComment(v *wrapperspb.StringValue) { m.Data2.Comment = v }
+func (m *TLWalletTransaction) GetComment() *wrapperspb.StringValue  { return m.Data2.Comment }
+
+func (m *TLWalletTransaction) SetTxHash(v *wrapperspb.StringValue) { m.Data2.TxHash = v }
+func (m *TLWalletTransaction) GetTxHash() *wrapperspb.StringValue  { return m.Data2.TxHash }
+
+func (m *TLWalletTransaction) SetNft(v *Wallet_NftItem) { m.Data2.Nft = v }
+func (m *TLWalletTransaction) GetNft() *Wallet_NftItem  { return m.Data2.Nft }
+
+func (m *TLWalletTransaction) GetPredicateName() string {
+	return Predicate_walletTransaction
+}
+
+func (m *TLWalletTransaction) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletTransaction, int(layer))
+	switch uint32(clazzId) {
+	case 0x952dc143:
+		x.UInt(0x952dc143)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetIncoming() == true {
+				flags |= 1 << 0
+			}
+			if m.GetGasless() == true {
+				flags |= 1 << 1
+			}
+			if m.GetFailed() == true {
+				flags |= 1 << 2
+			}
+			if m.GetKeyChange() == true {
+				flags |= 1 << 5
+			}
+			if m.GetCommentEncrypted() == true {
+				flags |= 1 << 6
+			}
+
+			if m.GetComment() != nil {
+				flags |= 1 << 3
+			}
+			if m.GetTxHash() != nil {
+				flags |= 1 << 4
+			}
+			if m.GetNft() != nil {
+				flags |= 1 << 7
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetId())
+		x.Long(m.GetAmount())
+		x.Long(m.GetFee())
+		x.Int(m.GetDate())
+		m.GetPeer().Encode(x, layer)
+		if m.GetComment() != nil {
+			x.String(m.GetComment().Value)
+		}
+
+		if m.GetTxHash() != nil {
+			x.String(m.GetTxHash().Value)
+		}
+
+		if m.GetNft() != nil {
+			m.GetNft().Encode(x, layer)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletTransaction, layer)
+	}
+}
+
+func (m *TLWalletTransaction) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTransaction) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x952dc143:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetIncoming(true)
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.SetGasless(true)
+		}
+		if (flags & (1 << 2)) != 0 {
+			m.SetFailed(true)
+		}
+		if (flags & (1 << 5)) != 0 {
+			m.SetKeyChange(true)
+		}
+		if (flags & (1 << 6)) != 0 {
+			m.SetCommentEncrypted(true)
+		}
+		m.SetId(dBuf.String())
+		m.SetAmount(dBuf.Long())
+		m.SetFee(dBuf.Long())
+		m.SetDate(dBuf.Int())
+
+		m10 := &WalletTransactionPeer{}
+		m10.Decode(dBuf)
+		m.SetPeer(m10)
+
+		if (flags & (1 << 3)) != 0 {
+			m.SetComment(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 4)) != 0 {
+			m.SetTxHash(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 7)) != 0 {
+			m13 := &Wallet_NftItem{}
+			m13.Decode(dBuf)
+			m.SetNft(m13)
+		}
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// WalletTransactionPeer <--
+//  + TL_WalletTransactionPeerUser
+//  + TL_WalletTransactionPeerAddress
+//  + TL_WalletTransactionPeerOnramp
+//  + TL_WalletTransactionPeerUnsupported
+//
+
+func (m *WalletTransactionPeer) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_walletTransactionPeerUser:
+		t := m.To_WalletTransactionPeerUser()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_walletTransactionPeerAddress:
+		t := m.To_WalletTransactionPeerAddress()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_walletTransactionPeerOnramp:
+		t := m.To_WalletTransactionPeerOnramp()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+	case Predicate_walletTransactionPeerUnsupported:
+		t := m.To_WalletTransactionPeerUnsupported()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *WalletTransactionPeer) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *WalletTransactionPeer) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xd4ea706d:
+		m2 := MakeTLWalletTransactionPeerUser(m)
+		m2.Decode(dBuf)
+	case 0x62cc1bc:
+		m2 := MakeTLWalletTransactionPeerAddress(m)
+		m2.Decode(dBuf)
+	case 0xe595186e:
+		m2 := MakeTLWalletTransactionPeerOnramp(m)
+		m2.Decode(dBuf)
+	case 0x728bed5a:
+		m2 := MakeTLWalletTransactionPeerUnsupported(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletTransactionPeerUser
+func (m *WalletTransactionPeer) To_WalletTransactionPeerUser() *TLWalletTransactionPeerUser {
+	m.PredicateName = Predicate_walletTransactionPeerUser
+	return &TLWalletTransactionPeerUser{
+		Data2: m,
+	}
+}
+
+// To_WalletTransactionPeerAddress
+func (m *WalletTransactionPeer) To_WalletTransactionPeerAddress() *TLWalletTransactionPeerAddress {
+	m.PredicateName = Predicate_walletTransactionPeerAddress
+	return &TLWalletTransactionPeerAddress{
+		Data2: m,
+	}
+}
+
+// To_WalletTransactionPeerOnramp
+func (m *WalletTransactionPeer) To_WalletTransactionPeerOnramp() *TLWalletTransactionPeerOnramp {
+	m.PredicateName = Predicate_walletTransactionPeerOnramp
+	return &TLWalletTransactionPeerOnramp{
+		Data2: m,
+	}
+}
+
+// To_WalletTransactionPeerUnsupported
+func (m *WalletTransactionPeer) To_WalletTransactionPeerUnsupported() *TLWalletTransactionPeerUnsupported {
+	m.PredicateName = Predicate_walletTransactionPeerUnsupported
+	return &TLWalletTransactionPeerUnsupported{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletTransactionPeerUser
+func MakeTLWalletTransactionPeerUser(data2 *WalletTransactionPeer) *TLWalletTransactionPeerUser {
+	if data2 == nil {
+		return &TLWalletTransactionPeerUser{Data2: &WalletTransactionPeer{
+			PredicateName: Predicate_walletTransactionPeerUser,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletTransactionPeerUser
+		return &TLWalletTransactionPeerUser{Data2: data2}
+	}
+}
+
+func (m *TLWalletTransactionPeerUser) To_WalletTransactionPeer() *WalletTransactionPeer {
+	m.Data2.PredicateName = Predicate_walletTransactionPeerUser
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletTransactionPeerUser) SetUserId(v int64) { m.Data2.UserId = v }
+func (m *TLWalletTransactionPeerUser) GetUserId() int64  { return m.Data2.UserId }
+
+func (m *TLWalletTransactionPeerUser) SetAddress(v string) { m.Data2.Address = v }
+func (m *TLWalletTransactionPeerUser) GetAddress() string  { return m.Data2.Address }
+
+func (m *TLWalletTransactionPeerUser) SetDomain(v *wrapperspb.StringValue) { m.Data2.Domain = v }
+func (m *TLWalletTransactionPeerUser) GetDomain() *wrapperspb.StringValue  { return m.Data2.Domain }
+
+func (m *TLWalletTransactionPeerUser) GetPredicateName() string {
+	return Predicate_walletTransactionPeerUser
+}
+
+func (m *TLWalletTransactionPeerUser) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletTransactionPeerUser, int(layer))
+	switch uint32(clazzId) {
+	case 0xd4ea706d:
+		x.UInt(0xd4ea706d)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetDomain() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Long(m.GetUserId())
+		x.String(m.GetAddress())
+		if m.GetDomain() != nil {
+			x.String(m.GetDomain().Value)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletTransactionPeerUser, layer)
+	}
+}
+
+func (m *TLWalletTransactionPeerUser) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTransactionPeerUser) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xd4ea706d:
+		var flags = dBuf.UInt()
+		_ = flags
+		m.SetUserId(dBuf.Long())
+		m.SetAddress(dBuf.String())
+		if (flags & (1 << 0)) != 0 {
+			m.SetDomain(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLWalletTransactionPeerAddress
+func MakeTLWalletTransactionPeerAddress(data2 *WalletTransactionPeer) *TLWalletTransactionPeerAddress {
+	if data2 == nil {
+		return &TLWalletTransactionPeerAddress{Data2: &WalletTransactionPeer{
+			PredicateName: Predicate_walletTransactionPeerAddress,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletTransactionPeerAddress
+		return &TLWalletTransactionPeerAddress{Data2: data2}
+	}
+}
+
+func (m *TLWalletTransactionPeerAddress) To_WalletTransactionPeer() *WalletTransactionPeer {
+	m.Data2.PredicateName = Predicate_walletTransactionPeerAddress
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletTransactionPeerAddress) SetAddress(v string) { m.Data2.Address = v }
+func (m *TLWalletTransactionPeerAddress) GetAddress() string  { return m.Data2.Address }
+
+func (m *TLWalletTransactionPeerAddress) SetDomain(v *wrapperspb.StringValue) { m.Data2.Domain = v }
+func (m *TLWalletTransactionPeerAddress) GetDomain() *wrapperspb.StringValue  { return m.Data2.Domain }
+
+func (m *TLWalletTransactionPeerAddress) GetPredicateName() string {
+	return Predicate_walletTransactionPeerAddress
+}
+
+func (m *TLWalletTransactionPeerAddress) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletTransactionPeerAddress, int(layer))
+	switch uint32(clazzId) {
+	case 0x62cc1bc:
+		x.UInt(0x62cc1bc)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetDomain() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetAddress())
+		if m.GetDomain() != nil {
+			x.String(m.GetDomain().Value)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletTransactionPeerAddress, layer)
+	}
+}
+
+func (m *TLWalletTransactionPeerAddress) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTransactionPeerAddress) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x62cc1bc:
+		var flags = dBuf.UInt()
+		_ = flags
+		m.SetAddress(dBuf.String())
+		if (flags & (1 << 0)) != 0 {
+			m.SetDomain(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLWalletTransactionPeerOnramp
+func MakeTLWalletTransactionPeerOnramp(data2 *WalletTransactionPeer) *TLWalletTransactionPeerOnramp {
+	if data2 == nil {
+		return &TLWalletTransactionPeerOnramp{Data2: &WalletTransactionPeer{
+			PredicateName: Predicate_walletTransactionPeerOnramp,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletTransactionPeerOnramp
+		return &TLWalletTransactionPeerOnramp{Data2: data2}
+	}
+}
+
+func (m *TLWalletTransactionPeerOnramp) To_WalletTransactionPeer() *WalletTransactionPeer {
+	m.Data2.PredicateName = Predicate_walletTransactionPeerOnramp
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletTransactionPeerOnramp) SetAddress(v string) { m.Data2.Address = v }
+func (m *TLWalletTransactionPeerOnramp) GetAddress() string  { return m.Data2.Address }
+
+func (m *TLWalletTransactionPeerOnramp) SetDomain(v *wrapperspb.StringValue) { m.Data2.Domain = v }
+func (m *TLWalletTransactionPeerOnramp) GetDomain() *wrapperspb.StringValue  { return m.Data2.Domain }
+
+func (m *TLWalletTransactionPeerOnramp) SetProviderName(v string) { m.Data2.ProviderName = v }
+func (m *TLWalletTransactionPeerOnramp) GetProviderName() string  { return m.Data2.ProviderName }
+
+func (m *TLWalletTransactionPeerOnramp) GetPredicateName() string {
+	return Predicate_walletTransactionPeerOnramp
+}
+
+func (m *TLWalletTransactionPeerOnramp) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletTransactionPeerOnramp, int(layer))
+	switch uint32(clazzId) {
+	case 0xe595186e:
+		x.UInt(0xe595186e)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetDomain() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetAddress())
+		if m.GetDomain() != nil {
+			x.String(m.GetDomain().Value)
+		}
+
+		x.String(m.GetProviderName())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletTransactionPeerOnramp, layer)
+	}
+}
+
+func (m *TLWalletTransactionPeerOnramp) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTransactionPeerOnramp) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xe595186e:
+		var flags = dBuf.UInt()
+		_ = flags
+		m.SetAddress(dBuf.String())
+		if (flags & (1 << 0)) != 0 {
+			m.SetDomain(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		m.SetProviderName(dBuf.String())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+// MakeTLWalletTransactionPeerUnsupported
+func MakeTLWalletTransactionPeerUnsupported(data2 *WalletTransactionPeer) *TLWalletTransactionPeerUnsupported {
+	if data2 == nil {
+		return &TLWalletTransactionPeerUnsupported{Data2: &WalletTransactionPeer{
+			PredicateName: Predicate_walletTransactionPeerUnsupported,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletTransactionPeerUnsupported
+		return &TLWalletTransactionPeerUnsupported{Data2: data2}
+	}
+}
+
+func (m *TLWalletTransactionPeerUnsupported) To_WalletTransactionPeer() *WalletTransactionPeer {
+	m.Data2.PredicateName = Predicate_walletTransactionPeerUnsupported
+	return m.Data2
+}
+
+func (m *TLWalletTransactionPeerUnsupported) GetPredicateName() string {
+	return Predicate_walletTransactionPeerUnsupported
+}
+
+func (m *TLWalletTransactionPeerUnsupported) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletTransactionPeerUnsupported, int(layer))
+	switch uint32(clazzId) {
+	case 0x728bed5a:
+		x.UInt(0x728bed5a)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletTransactionPeerUnsupported, layer)
+	}
+}
+
+func (m *TLWalletTransactionPeerUnsupported) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTransactionPeerUnsupported) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x728bed5a:
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// WalletUserAddress <--
+//  + TL_WalletUserAddress
+//
+
+func (m *WalletUserAddress) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_walletUserAddress:
+		t := m.To_WalletUserAddress()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *WalletUserAddress) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *WalletUserAddress) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xfe78eecc:
+		m2 := MakeTLWalletUserAddress(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletUserAddress
+func (m *WalletUserAddress) To_WalletUserAddress() *TLWalletUserAddress {
+	m.PredicateName = Predicate_walletUserAddress
+	return &TLWalletUserAddress{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletUserAddress
+func MakeTLWalletUserAddress(data2 *WalletUserAddress) *TLWalletUserAddress {
+	if data2 == nil {
+		return &TLWalletUserAddress{Data2: &WalletUserAddress{
+			PredicateName: Predicate_walletUserAddress,
+		}}
+	} else {
+		data2.PredicateName = Predicate_walletUserAddress
+		return &TLWalletUserAddress{Data2: data2}
+	}
+}
+
+func (m *TLWalletUserAddress) To_WalletUserAddress() *WalletUserAddress {
+	m.Data2.PredicateName = Predicate_walletUserAddress
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletUserAddress) SetUserId(v *wrapperspb.Int64Value) { m.Data2.UserId = v }
+func (m *TLWalletUserAddress) GetUserId() *wrapperspb.Int64Value  { return m.Data2.UserId }
+
+func (m *TLWalletUserAddress) SetAddress(v string) { m.Data2.Address = v }
+func (m *TLWalletUserAddress) GetAddress() string  { return m.Data2.Address }
+
+func (m *TLWalletUserAddress) SetPublicKey(v []byte) { m.Data2.PublicKey = v }
+func (m *TLWalletUserAddress) GetPublicKey() []byte  { return m.Data2.PublicKey }
+
+func (m *TLWalletUserAddress) GetPredicateName() string {
+	return Predicate_walletUserAddress
+}
+
+func (m *TLWalletUserAddress) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_walletUserAddress, int(layer))
+	switch uint32(clazzId) {
+	case 0xfe78eecc:
+		x.UInt(0xfe78eecc)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetUserId() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		if m.GetUserId() != nil {
+			x.Long(m.GetUserId().Value)
+		}
+
+		x.String(m.GetAddress())
+		x.StringBytes(m.GetPublicKey())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_walletUserAddress, layer)
+	}
+}
+
+func (m *TLWalletUserAddress) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletUserAddress) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xfe78eecc:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetUserId(&wrapperspb.Int64Value{Value: dBuf.Long()})
+		}
+
+		m.SetAddress(dBuf.String())
+		m.SetPublicKey(dBuf.StringBytes())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_EncryptedSecretPhrasePart <--
+//  + TL_WalletEncryptedSecretPhrasePart
+//
+
+func (m *Wallet_EncryptedSecretPhrasePart) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_encryptedSecretPhrasePart:
+		t := m.To_WalletEncryptedSecretPhrasePart()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_EncryptedSecretPhrasePart) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_EncryptedSecretPhrasePart) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x18e82537:
+		m2 := MakeTLWalletEncryptedSecretPhrasePart(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletEncryptedSecretPhrasePart
+func (m *Wallet_EncryptedSecretPhrasePart) To_WalletEncryptedSecretPhrasePart() *TLWalletEncryptedSecretPhrasePart {
+	m.PredicateName = Predicate_wallet_encryptedSecretPhrasePart
+	return &TLWalletEncryptedSecretPhrasePart{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletEncryptedSecretPhrasePart
+func MakeTLWalletEncryptedSecretPhrasePart(data2 *Wallet_EncryptedSecretPhrasePart) *TLWalletEncryptedSecretPhrasePart {
+	if data2 == nil {
+		return &TLWalletEncryptedSecretPhrasePart{Data2: &Wallet_EncryptedSecretPhrasePart{
+			PredicateName: Predicate_wallet_encryptedSecretPhrasePart,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_encryptedSecretPhrasePart
+		return &TLWalletEncryptedSecretPhrasePart{Data2: data2}
+	}
+}
+
+func (m *TLWalletEncryptedSecretPhrasePart) To_Wallet_EncryptedSecretPhrasePart() *Wallet_EncryptedSecretPhrasePart {
+	m.Data2.PredicateName = Predicate_wallet_encryptedSecretPhrasePart
+	return m.Data2
+}
+
+func (m *TLWalletEncryptedSecretPhrasePart) SetData(v []byte) { m.Data2.Data = v }
+func (m *TLWalletEncryptedSecretPhrasePart) GetData() []byte  { return m.Data2.Data }
+
+func (m *TLWalletEncryptedSecretPhrasePart) GetPredicateName() string {
+	return Predicate_wallet_encryptedSecretPhrasePart
+}
+
+func (m *TLWalletEncryptedSecretPhrasePart) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_encryptedSecretPhrasePart, int(layer))
+	switch uint32(clazzId) {
+	case 0x18e82537:
+		x.UInt(0x18e82537)
+
+		x.StringBytes(m.GetData())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_encryptedSecretPhrasePart, layer)
+	}
+}
+
+func (m *TLWalletEncryptedSecretPhrasePart) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletEncryptedSecretPhrasePart) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x18e82537:
+		m.SetData(dBuf.StringBytes())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_ExistingBalance <--
+//  + TL_WalletExistingBalance
+//
+
+func (m *Wallet_ExistingBalance) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_existingBalance:
+		t := m.To_WalletExistingBalance()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_ExistingBalance) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_ExistingBalance) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xbde90a8d:
+		m2 := MakeTLWalletExistingBalance(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletExistingBalance
+func (m *Wallet_ExistingBalance) To_WalletExistingBalance() *TLWalletExistingBalance {
+	m.PredicateName = Predicate_wallet_existingBalance
+	return &TLWalletExistingBalance{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletExistingBalance
+func MakeTLWalletExistingBalance(data2 *Wallet_ExistingBalance) *TLWalletExistingBalance {
+	if data2 == nil {
+		return &TLWalletExistingBalance{Data2: &Wallet_ExistingBalance{
+			PredicateName: Predicate_wallet_existingBalance,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_existingBalance
+		return &TLWalletExistingBalance{Data2: data2}
+	}
+}
+
+func (m *TLWalletExistingBalance) To_Wallet_ExistingBalance() *Wallet_ExistingBalance {
+	m.Data2.PredicateName = Predicate_wallet_existingBalance
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletExistingBalance) SetHasBalance(v bool) { m.Data2.HasBalance = v }
+func (m *TLWalletExistingBalance) GetHasBalance() bool  { return m.Data2.HasBalance }
+
+func (m *TLWalletExistingBalance) SetUrl(v string) { m.Data2.Url = v }
+func (m *TLWalletExistingBalance) GetUrl() string  { return m.Data2.Url }
+
+func (m *TLWalletExistingBalance) GetPredicateName() string {
+	return Predicate_wallet_existingBalance
+}
+
+func (m *TLWalletExistingBalance) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_existingBalance, int(layer))
+	switch uint32(clazzId) {
+	case 0xbde90a8d:
+		x.UInt(0xbde90a8d)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetHasBalance() == true {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.String(m.GetUrl())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_existingBalance, layer)
+	}
+}
+
+func (m *TLWalletExistingBalance) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletExistingBalance) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xbde90a8d:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetHasBalance(true)
+		}
+		m.SetUrl(dBuf.String())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_HolderDc <--
+//  + TL_WalletHolderDc
+//
+
+func (m *Wallet_HolderDc) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_holderDc:
+		t := m.To_WalletHolderDc()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_HolderDc) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_HolderDc) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xf9d612ef:
+		m2 := MakeTLWalletHolderDc(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletHolderDc
+func (m *Wallet_HolderDc) To_WalletHolderDc() *TLWalletHolderDc {
+	m.PredicateName = Predicate_wallet_holderDc
+	return &TLWalletHolderDc{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletHolderDc
+func MakeTLWalletHolderDc(data2 *Wallet_HolderDc) *TLWalletHolderDc {
+	if data2 == nil {
+		return &TLWalletHolderDc{Data2: &Wallet_HolderDc{
+			PredicateName: Predicate_wallet_holderDc,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_holderDc
+		return &TLWalletHolderDc{Data2: data2}
+	}
+}
+
+func (m *TLWalletHolderDc) To_Wallet_HolderDc() *Wallet_HolderDc {
+	m.Data2.PredicateName = Predicate_wallet_holderDc
+	return m.Data2
+}
+
+func (m *TLWalletHolderDc) SetDc(v int32) { m.Data2.Dc = v }
+func (m *TLWalletHolderDc) GetDc() int32  { return m.Data2.Dc }
+
+func (m *TLWalletHolderDc) SetPublicKey(v []byte) { m.Data2.PublicKey = v }
+func (m *TLWalletHolderDc) GetPublicKey() []byte  { return m.Data2.PublicKey }
+
+func (m *TLWalletHolderDc) GetPredicateName() string {
+	return Predicate_wallet_holderDc
+}
+
+func (m *TLWalletHolderDc) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_holderDc, int(layer))
+	switch uint32(clazzId) {
+	case 0xf9d612ef:
+		x.UInt(0xf9d612ef)
+
+		x.Int(m.GetDc())
+		x.StringBytes(m.GetPublicKey())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_holderDc, layer)
+	}
+}
+
+func (m *TLWalletHolderDc) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletHolderDc) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xf9d612ef:
+		m.SetDc(dBuf.Int())
+		m.SetPublicKey(dBuf.StringBytes())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_NftAttribute <--
+//  + TL_WalletNftAttribute
+//
+
+func (m *Wallet_NftAttribute) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_nftAttribute:
+		t := m.To_WalletNftAttribute()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_NftAttribute) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_NftAttribute) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x4c1ef10e:
+		m2 := MakeTLWalletNftAttribute(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletNftAttribute
+func (m *Wallet_NftAttribute) To_WalletNftAttribute() *TLWalletNftAttribute {
+	m.PredicateName = Predicate_wallet_nftAttribute
+	return &TLWalletNftAttribute{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletNftAttribute
+func MakeTLWalletNftAttribute(data2 *Wallet_NftAttribute) *TLWalletNftAttribute {
+	if data2 == nil {
+		return &TLWalletNftAttribute{Data2: &Wallet_NftAttribute{
+			PredicateName: Predicate_wallet_nftAttribute,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_nftAttribute
+		return &TLWalletNftAttribute{Data2: data2}
+	}
+}
+
+func (m *TLWalletNftAttribute) To_Wallet_NftAttribute() *Wallet_NftAttribute {
+	m.Data2.PredicateName = Predicate_wallet_nftAttribute
+	return m.Data2
+}
+
+func (m *TLWalletNftAttribute) SetTraitType(v string) { m.Data2.TraitType = v }
+func (m *TLWalletNftAttribute) GetTraitType() string  { return m.Data2.TraitType }
+
+func (m *TLWalletNftAttribute) SetValue(v string) { m.Data2.Value = v }
+func (m *TLWalletNftAttribute) GetValue() string  { return m.Data2.Value }
+
+func (m *TLWalletNftAttribute) GetPredicateName() string {
+	return Predicate_wallet_nftAttribute
+}
+
+func (m *TLWalletNftAttribute) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_nftAttribute, int(layer))
+	switch uint32(clazzId) {
+	case 0x4c1ef10e:
+		x.UInt(0x4c1ef10e)
+
+		x.String(m.GetTraitType())
+		x.String(m.GetValue())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_nftAttribute, layer)
+	}
+}
+
+func (m *TLWalletNftAttribute) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletNftAttribute) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x4c1ef10e:
+		m.SetTraitType(dBuf.String())
+		m.SetValue(dBuf.String())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_NftItem <--
+//  + TL_WalletNftItem
+//
+
+func (m *Wallet_NftItem) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_nftItem:
+		t := m.To_WalletNftItem()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_NftItem) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_NftItem) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x3441fd1c:
+		m2 := MakeTLWalletNftItem(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletNftItem
+func (m *Wallet_NftItem) To_WalletNftItem() *TLWalletNftItem {
+	m.PredicateName = Predicate_wallet_nftItem
+	return &TLWalletNftItem{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletNftItem
+func MakeTLWalletNftItem(data2 *Wallet_NftItem) *TLWalletNftItem {
+	if data2 == nil {
+		return &TLWalletNftItem{Data2: &Wallet_NftItem{
+			PredicateName: Predicate_wallet_nftItem,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_nftItem
+		return &TLWalletNftItem{Data2: data2}
+	}
+}
+
+func (m *TLWalletNftItem) To_Wallet_NftItem() *Wallet_NftItem {
+	m.Data2.PredicateName = Predicate_wallet_nftItem
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletNftItem) SetCollectionAddress(v *wrapperspb.StringValue) {
+	m.Data2.CollectionAddress = v
+}
+func (m *TLWalletNftItem) GetCollectionAddress() *wrapperspb.StringValue {
+	return m.Data2.CollectionAddress
+}
+
+func (m *TLWalletNftItem) SetAddress(v string) { m.Data2.Address = v }
+func (m *TLWalletNftItem) GetAddress() string  { return m.Data2.Address }
+
+func (m *TLWalletNftItem) SetOwnerAddress(v string) { m.Data2.OwnerAddress = v }
+func (m *TLWalletNftItem) GetOwnerAddress() string  { return m.Data2.OwnerAddress }
+
+func (m *TLWalletNftItem) SetIndex(v string) { m.Data2.Index = v }
+func (m *TLWalletNftItem) GetIndex() string  { return m.Data2.Index }
+
+func (m *TLWalletNftItem) SetName(v *wrapperspb.StringValue) { m.Data2.Name = v }
+func (m *TLWalletNftItem) GetName() *wrapperspb.StringValue  { return m.Data2.Name }
+
+func (m *TLWalletNftItem) SetDescription(v *wrapperspb.StringValue) { m.Data2.Description = v }
+func (m *TLWalletNftItem) GetDescription() *wrapperspb.StringValue  { return m.Data2.Description }
+
+func (m *TLWalletNftItem) SetImage(v *WebDocument) { m.Data2.Image = v }
+func (m *TLWalletNftItem) GetImage() *WebDocument  { return m.Data2.Image }
+
+func (m *TLWalletNftItem) SetImageSmall(v *WebDocument) { m.Data2.ImageSmall = v }
+func (m *TLWalletNftItem) GetImageSmall() *WebDocument  { return m.Data2.ImageSmall }
+
+func (m *TLWalletNftItem) SetContentUrl(v *WebDocument) { m.Data2.ContentUrl = v }
+func (m *TLWalletNftItem) GetContentUrl() *WebDocument  { return m.Data2.ContentUrl }
+
+func (m *TLWalletNftItem) SetLottie(v *WebDocument) { m.Data2.Lottie = v }
+func (m *TLWalletNftItem) GetLottie() *WebDocument  { return m.Data2.Lottie }
+
+func (m *TLWalletNftItem) SetAttributes(v []*Wallet_NftAttribute) { m.Data2.Attributes = v }
+func (m *TLWalletNftItem) GetAttributes() []*Wallet_NftAttribute  { return m.Data2.Attributes }
+
+func (m *TLWalletNftItem) SetExtra(v *DataJSON) { m.Data2.Extra = v }
+func (m *TLWalletNftItem) GetExtra() *DataJSON  { return m.Data2.Extra }
+
+func (m *TLWalletNftItem) GetPredicateName() string {
+	return Predicate_wallet_nftItem
+}
+
+func (m *TLWalletNftItem) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_nftItem, int(layer))
+	switch uint32(clazzId) {
+	case 0x3441fd1c:
+		x.UInt(0x3441fd1c)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetCollectionAddress() != nil {
+				flags |= 1 << 0
+			}
+
+			if m.GetName() != nil {
+				flags |= 1 << 1
+			}
+			if m.GetDescription() != nil {
+				flags |= 1 << 2
+			}
+			if m.GetImage() != nil {
+				flags |= 1 << 3
+			}
+			if m.GetImageSmall() != nil {
+				flags |= 1 << 4
+			}
+			if m.GetContentUrl() != nil {
+				flags |= 1 << 5
+			}
+			if m.GetLottie() != nil {
+				flags |= 1 << 6
+			}
+			if m.GetAttributes() != nil {
+				flags |= 1 << 7
+			}
+			if m.GetExtra() != nil {
+				flags |= 1 << 8
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		if m.GetCollectionAddress() != nil {
+			x.String(m.GetCollectionAddress().Value)
+		}
+
+		x.String(m.GetAddress())
+		x.String(m.GetOwnerAddress())
+		x.String(m.GetIndex())
+		if m.GetName() != nil {
+			x.String(m.GetName().Value)
+		}
+
+		if m.GetDescription() != nil {
+			x.String(m.GetDescription().Value)
+		}
+
+		if m.GetImage() != nil {
+			m.GetImage().Encode(x, layer)
+		}
+
+		if m.GetImageSmall() != nil {
+			m.GetImageSmall().Encode(x, layer)
+		}
+
+		if m.GetContentUrl() != nil {
+			m.GetContentUrl().Encode(x, layer)
+		}
+
+		if m.GetLottie() != nil {
+			m.GetLottie().Encode(x, layer)
+		}
+
+		if m.GetAttributes() != nil {
+			x.Int(int32(CRC32_vector))
+			{
+				var (
+					sz     = int32(0)
+					offset = x.GetOffset()
+				)
+				list11 := m.GetAttributes()
+				x.Int(int32(len(list11)))
+				for _, v := range list11 {
+					err := v.Encode(x, layer)
+					if err == nil {
+						sz += 1
+					}
+				}
+				x.IntOffset(offset, sz)
+			}
+		}
+		if m.GetExtra() != nil {
+			m.GetExtra().Encode(x, layer)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_nftItem, layer)
+	}
+}
+
+func (m *TLWalletNftItem) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletNftItem) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x3441fd1c:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetCollectionAddress(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		m.SetAddress(dBuf.String())
+		m.SetOwnerAddress(dBuf.String())
+		m.SetIndex(dBuf.String())
+		if (flags & (1 << 1)) != 0 {
+			m.SetName(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.SetDescription(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 3)) != 0 {
+			m7 := &WebDocument{}
+			m7.Decode(dBuf)
+			m.SetImage(m7)
+		}
+		if (flags & (1 << 4)) != 0 {
+			m8 := &WebDocument{}
+			m8.Decode(dBuf)
+			m.SetImageSmall(m8)
+		}
+		if (flags & (1 << 5)) != 0 {
+			m9 := &WebDocument{}
+			m9.Decode(dBuf)
+			m.SetContentUrl(m9)
+		}
+		if (flags & (1 << 6)) != 0 {
+			m10 := &WebDocument{}
+			m10.Decode(dBuf)
+			m.SetLottie(m10)
+		}
+		if (flags & (1 << 7)) != 0 {
+			c11 := dBuf.Int()
+			if c11 != int32(CRC32_vector) {
+				// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 11, c11)
+				return dBuf.GetError()
+			}
+			l11 := dBuf.Int()
+			if l11 < 0 || l11 > maxVectorLen {
+				return fmt.Errorf("invalid vector length: %d", l11)
+			}
+			v11 := make([]*Wallet_NftAttribute, l11)
+			for i := int32(0); i < l11; i++ {
+				v11[i] = &Wallet_NftAttribute{}
+				v11[i].Decode(dBuf)
+			}
+			m.SetAttributes(v11)
+		}
+		if (flags & (1 << 8)) != 0 {
+			m12 := &DataJSON{}
+			m12.Decode(dBuf)
+			m.SetExtra(m12)
+		}
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_NftItems <--
+//  + TL_WalletNftItems
+//
+
+func (m *Wallet_NftItems) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_nftItems:
+		t := m.To_WalletNftItems()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_NftItems) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_NftItems) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x794d486f:
+		m2 := MakeTLWalletNftItems(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletNftItems
+func (m *Wallet_NftItems) To_WalletNftItems() *TLWalletNftItems {
+	m.PredicateName = Predicate_wallet_nftItems
+	return &TLWalletNftItems{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletNftItems
+func MakeTLWalletNftItems(data2 *Wallet_NftItems) *TLWalletNftItems {
+	if data2 == nil {
+		return &TLWalletNftItems{Data2: &Wallet_NftItems{
+			PredicateName: Predicate_wallet_nftItems,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_nftItems
+		return &TLWalletNftItems{Data2: data2}
+	}
+}
+
+func (m *TLWalletNftItems) To_Wallet_NftItems() *Wallet_NftItems {
+	m.Data2.PredicateName = Predicate_wallet_nftItems
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletNftItems) SetItems(v []*Wallet_NftItem) { m.Data2.Items = v }
+func (m *TLWalletNftItems) GetItems() []*Wallet_NftItem  { return m.Data2.Items }
+
+func (m *TLWalletNftItems) SetNextOffset(v *wrapperspb.StringValue) { m.Data2.NextOffset = v }
+func (m *TLWalletNftItems) GetNextOffset() *wrapperspb.StringValue  { return m.Data2.NextOffset }
+
+func (m *TLWalletNftItems) GetPredicateName() string {
+	return Predicate_wallet_nftItems
+}
+
+func (m *TLWalletNftItems) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_nftItems, int(layer))
+	switch uint32(clazzId) {
+	case 0x794d486f:
+		x.UInt(0x794d486f)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetNextOffset() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list1 := m.GetItems()
+			x.Int(int32(len(list1)))
+			for _, v := range list1 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		if m.GetNextOffset() != nil {
+			x.String(m.GetNextOffset().Value)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_nftItems, layer)
+	}
+}
+
+func (m *TLWalletNftItems) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletNftItems) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x794d486f:
+		var flags = dBuf.UInt()
+		_ = flags
+		c1 := dBuf.Int()
+		if c1 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 1, c1)
+			return dBuf.GetError()
+		}
+		l1 := dBuf.Int()
+		if l1 < 0 || l1 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l1)
+		}
+		v1 := make([]*Wallet_NftItem, l1)
+		for i := int32(0); i < l1; i++ {
+			v1[i] = &Wallet_NftItem{}
+			v1[i].Decode(dBuf)
+		}
+		m.SetItems(v1)
+
+		if (flags & (1 << 0)) != 0 {
+			m.SetNextOffset(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_ProofChallenge <--
+//  + TL_WalletProofChallenge
+//
+
+func (m *Wallet_ProofChallenge) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_proofChallenge:
+		t := m.To_WalletProofChallenge()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_ProofChallenge) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_ProofChallenge) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x99e41707:
+		m2 := MakeTLWalletProofChallenge(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletProofChallenge
+func (m *Wallet_ProofChallenge) To_WalletProofChallenge() *TLWalletProofChallenge {
+	m.PredicateName = Predicate_wallet_proofChallenge
+	return &TLWalletProofChallenge{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletProofChallenge
+func MakeTLWalletProofChallenge(data2 *Wallet_ProofChallenge) *TLWalletProofChallenge {
+	if data2 == nil {
+		return &TLWalletProofChallenge{Data2: &Wallet_ProofChallenge{
+			PredicateName: Predicate_wallet_proofChallenge,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_proofChallenge
+		return &TLWalletProofChallenge{Data2: data2}
+	}
+}
+
+func (m *TLWalletProofChallenge) To_Wallet_ProofChallenge() *Wallet_ProofChallenge {
+	m.Data2.PredicateName = Predicate_wallet_proofChallenge
+	return m.Data2
+}
+
+func (m *TLWalletProofChallenge) SetPayload(v string) { m.Data2.Payload = v }
+func (m *TLWalletProofChallenge) GetPayload() string  { return m.Data2.Payload }
+
+func (m *TLWalletProofChallenge) SetExpires(v int32) { m.Data2.Expires = v }
+func (m *TLWalletProofChallenge) GetExpires() int32  { return m.Data2.Expires }
+
+func (m *TLWalletProofChallenge) SetDomain(v string) { m.Data2.Domain = v }
+func (m *TLWalletProofChallenge) GetDomain() string  { return m.Data2.Domain }
+
+func (m *TLWalletProofChallenge) GetPredicateName() string {
+	return Predicate_wallet_proofChallenge
+}
+
+func (m *TLWalletProofChallenge) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_proofChallenge, int(layer))
+	switch uint32(clazzId) {
+	case 0x99e41707:
+		x.UInt(0x99e41707)
+
+		x.String(m.GetPayload())
+		x.Int(m.GetExpires())
+		x.String(m.GetDomain())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_proofChallenge, layer)
+	}
+}
+
+func (m *TLWalletProofChallenge) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletProofChallenge) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x99e41707:
+		m.SetPayload(dBuf.String())
+		m.SetExpires(dBuf.Int())
+		m.SetDomain(dBuf.String())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_SecretPhraseParts <--
+//  + TL_WalletSecretPhraseParts
+//
+
+func (m *Wallet_SecretPhraseParts) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_secretPhraseParts:
+		t := m.To_WalletSecretPhraseParts()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_SecretPhraseParts) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_SecretPhraseParts) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xe6d0ef01:
+		m2 := MakeTLWalletSecretPhraseParts(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletSecretPhraseParts
+func (m *Wallet_SecretPhraseParts) To_WalletSecretPhraseParts() *TLWalletSecretPhraseParts {
+	m.PredicateName = Predicate_wallet_secretPhraseParts
+	return &TLWalletSecretPhraseParts{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletSecretPhraseParts
+func MakeTLWalletSecretPhraseParts(data2 *Wallet_SecretPhraseParts) *TLWalletSecretPhraseParts {
+	if data2 == nil {
+		return &TLWalletSecretPhraseParts{Data2: &Wallet_SecretPhraseParts{
+			PredicateName: Predicate_wallet_secretPhraseParts,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_secretPhraseParts
+		return &TLWalletSecretPhraseParts{Data2: data2}
+	}
+}
+
+func (m *TLWalletSecretPhraseParts) To_Wallet_SecretPhraseParts() *Wallet_SecretPhraseParts {
+	m.Data2.PredicateName = Predicate_wallet_secretPhraseParts
+	return m.Data2
+}
+
+func (m *TLWalletSecretPhraseParts) SetToken(v string) { m.Data2.Token = v }
+func (m *TLWalletSecretPhraseParts) GetToken() string  { return m.Data2.Token }
+
+func (m *TLWalletSecretPhraseParts) SetDcs(v []int32) { m.Data2.Dcs = v }
+func (m *TLWalletSecretPhraseParts) GetDcs() []int32  { return m.Data2.Dcs }
+
+func (m *TLWalletSecretPhraseParts) GetPredicateName() string {
+	return Predicate_wallet_secretPhraseParts
+}
+
+func (m *TLWalletSecretPhraseParts) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_secretPhraseParts, int(layer))
+	switch uint32(clazzId) {
+	case 0xe6d0ef01:
+		x.UInt(0xe6d0ef01)
+
+		x.String(m.GetToken())
+
+		x.VectorInt(m.GetDcs())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_secretPhraseParts, layer)
+	}
+}
+
+func (m *TLWalletSecretPhraseParts) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletSecretPhraseParts) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xe6d0ef01:
+		m.SetToken(dBuf.String())
+
+		m.SetDcs(dBuf.VectorInt())
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_TonConnectChallenge <--
+//  + TL_WalletTonConnectChallenge
+//
+
+func (m *Wallet_TonConnectChallenge) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_tonConnectChallenge:
+		t := m.To_WalletTonConnectChallenge()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_TonConnectChallenge) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_TonConnectChallenge) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x4bc89693:
+		m2 := MakeTLWalletTonConnectChallenge(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletTonConnectChallenge
+func (m *Wallet_TonConnectChallenge) To_WalletTonConnectChallenge() *TLWalletTonConnectChallenge {
+	m.PredicateName = Predicate_wallet_tonConnectChallenge
+	return &TLWalletTonConnectChallenge{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletTonConnectChallenge
+func MakeTLWalletTonConnectChallenge(data2 *Wallet_TonConnectChallenge) *TLWalletTonConnectChallenge {
+	if data2 == nil {
+		return &TLWalletTonConnectChallenge{Data2: &Wallet_TonConnectChallenge{
+			PredicateName: Predicate_wallet_tonConnectChallenge,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_tonConnectChallenge
+		return &TLWalletTonConnectChallenge{Data2: data2}
+	}
+}
+
+func (m *TLWalletTonConnectChallenge) To_Wallet_TonConnectChallenge() *Wallet_TonConnectChallenge {
+	m.Data2.PredicateName = Predicate_wallet_tonConnectChallenge
+	return m.Data2
+}
+
+func (m *TLWalletTonConnectChallenge) SetChallenge(v []byte) { m.Data2.Challenge = v }
+func (m *TLWalletTonConnectChallenge) GetChallenge() []byte  { return m.Data2.Challenge }
+
+func (m *TLWalletTonConnectChallenge) SetEventId(v int64) { m.Data2.EventId = v }
+func (m *TLWalletTonConnectChallenge) GetEventId() int64  { return m.Data2.EventId }
+
+func (m *TLWalletTonConnectChallenge) GetPredicateName() string {
+	return Predicate_wallet_tonConnectChallenge
+}
+
+func (m *TLWalletTonConnectChallenge) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_tonConnectChallenge, int(layer))
+	switch uint32(clazzId) {
+	case 0x4bc89693:
+		x.UInt(0x4bc89693)
+
+		x.StringBytes(m.GetChallenge())
+		x.Long(m.GetEventId())
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_tonConnectChallenge, layer)
+	}
+}
+
+func (m *TLWalletTonConnectChallenge) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectChallenge) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x4bc89693:
+		m.SetChallenge(dBuf.StringBytes())
+		m.SetEventId(dBuf.Long())
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_TonConnectPending <--
+//  + TL_WalletTonConnectPending
+//
+
+func (m *Wallet_TonConnectPending) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_tonConnectPending:
+		t := m.To_WalletTonConnectPending()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_TonConnectPending) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_TonConnectPending) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x85c0f124:
+		m2 := MakeTLWalletTonConnectPending(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletTonConnectPending
+func (m *Wallet_TonConnectPending) To_WalletTonConnectPending() *TLWalletTonConnectPending {
+	m.PredicateName = Predicate_wallet_tonConnectPending
+	return &TLWalletTonConnectPending{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletTonConnectPending
+func MakeTLWalletTonConnectPending(data2 *Wallet_TonConnectPending) *TLWalletTonConnectPending {
+	if data2 == nil {
+		return &TLWalletTonConnectPending{Data2: &Wallet_TonConnectPending{
+			PredicateName: Predicate_wallet_tonConnectPending,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_tonConnectPending
+		return &TLWalletTonConnectPending{Data2: data2}
+	}
+}
+
+func (m *TLWalletTonConnectPending) To_Wallet_TonConnectPending() *Wallet_TonConnectPending {
+	m.Data2.PredicateName = Predicate_wallet_tonConnectPending
+	return m.Data2
+}
+
+func (m *TLWalletTonConnectPending) SetSession(v *TonConnectSession) { m.Data2.Session = v }
+func (m *TLWalletTonConnectPending) GetSession() *TonConnectSession  { return m.Data2.Session }
+
+func (m *TLWalletTonConnectPending) SetRequests(v []*TonConnectRequest) { m.Data2.Requests = v }
+func (m *TLWalletTonConnectPending) GetRequests() []*TonConnectRequest  { return m.Data2.Requests }
+
+func (m *TLWalletTonConnectPending) GetPredicateName() string {
+	return Predicate_wallet_tonConnectPending
+}
+
+func (m *TLWalletTonConnectPending) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_tonConnectPending, int(layer))
+	switch uint32(clazzId) {
+	case 0x85c0f124:
+		x.UInt(0x85c0f124)
+
+		m.GetSession().Encode(x, layer)
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list1 := m.GetRequests()
+			x.Int(int32(len(list1)))
+			for _, v := range list1 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_tonConnectPending, layer)
+	}
+}
+
+func (m *TLWalletTonConnectPending) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectPending) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x85c0f124:
+
+		m0 := &TonConnectSession{}
+		m0.Decode(dBuf)
+		m.SetSession(m0)
+
+		c1 := dBuf.Int()
+		if c1 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 1, c1)
+			return dBuf.GetError()
+		}
+		l1 := dBuf.Int()
+		if l1 < 0 || l1 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l1)
+		}
+		v1 := make([]*TonConnectRequest, l1)
+		for i := int32(0); i < l1; i++ {
+			v1[i] = &TonConnectRequest{}
+			v1[i].Decode(dBuf)
+		}
+		m.SetRequests(v1)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_TonConnectSessions <--
+//  + TL_WalletTonConnectSessions
+//
+
+func (m *Wallet_TonConnectSessions) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_tonConnectSessions:
+		t := m.To_WalletTonConnectSessions()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_TonConnectSessions) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_TonConnectSessions) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0xe1f6896:
+		m2 := MakeTLWalletTonConnectSessions(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletTonConnectSessions
+func (m *Wallet_TonConnectSessions) To_WalletTonConnectSessions() *TLWalletTonConnectSessions {
+	m.PredicateName = Predicate_wallet_tonConnectSessions
+	return &TLWalletTonConnectSessions{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletTonConnectSessions
+func MakeTLWalletTonConnectSessions(data2 *Wallet_TonConnectSessions) *TLWalletTonConnectSessions {
+	if data2 == nil {
+		return &TLWalletTonConnectSessions{Data2: &Wallet_TonConnectSessions{
+			PredicateName: Predicate_wallet_tonConnectSessions,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_tonConnectSessions
+		return &TLWalletTonConnectSessions{Data2: data2}
+	}
+}
+
+func (m *TLWalletTonConnectSessions) To_Wallet_TonConnectSessions() *Wallet_TonConnectSessions {
+	m.Data2.PredicateName = Predicate_wallet_tonConnectSessions
+	return m.Data2
+}
+
+func (m *TLWalletTonConnectSessions) SetSessions(v []*TonConnectSession) { m.Data2.Sessions = v }
+func (m *TLWalletTonConnectSessions) GetSessions() []*TonConnectSession  { return m.Data2.Sessions }
+
+func (m *TLWalletTonConnectSessions) GetPredicateName() string {
+	return Predicate_wallet_tonConnectSessions
+}
+
+func (m *TLWalletTonConnectSessions) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_tonConnectSessions, int(layer))
+	switch uint32(clazzId) {
+	case 0xe1f6896:
+		x.UInt(0xe1f6896)
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list0 := m.GetSessions()
+			x.Int(int32(len(list0)))
+			for _, v := range list0 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_tonConnectSessions, layer)
+	}
+}
+
+func (m *TLWalletTonConnectSessions) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectSessions) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0xe1f6896:
+		c0 := dBuf.Int()
+		if c0 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 0, c0)
+			return dBuf.GetError()
+		}
+		l0 := dBuf.Int()
+		if l0 < 0 || l0 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l0)
+		}
+		v0 := make([]*TonConnectSession, l0)
+		for i := int32(0); i < l0; i++ {
+			v0[i] = &TonConnectSession{}
+			v0[i].Decode(dBuf)
+		}
+		m.SetSessions(v0)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_Transactions <--
+//  + TL_WalletTransactions
+//
+
+func (m *Wallet_Transactions) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_transactions:
+		t := m.To_WalletTransactions()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_Transactions) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_Transactions) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x4322d5a5:
+		m2 := MakeTLWalletTransactions(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletTransactions
+func (m *Wallet_Transactions) To_WalletTransactions() *TLWalletTransactions {
+	m.PredicateName = Predicate_wallet_transactions
+	return &TLWalletTransactions{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletTransactions
+func MakeTLWalletTransactions(data2 *Wallet_Transactions) *TLWalletTransactions {
+	if data2 == nil {
+		return &TLWalletTransactions{Data2: &Wallet_Transactions{
+			PredicateName: Predicate_wallet_transactions,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_transactions
+		return &TLWalletTransactions{Data2: data2}
+	}
+}
+
+func (m *TLWalletTransactions) To_Wallet_Transactions() *Wallet_Transactions {
+	m.Data2.PredicateName = Predicate_wallet_transactions
+	return m.Data2
+}
+
+// // flags
+func (m *TLWalletTransactions) SetBalance(v int64) { m.Data2.Balance = v }
+func (m *TLWalletTransactions) GetBalance() int64  { return m.Data2.Balance }
+
+func (m *TLWalletTransactions) SetTransactions(v []*WalletTransaction) { m.Data2.Transactions = v }
+func (m *TLWalletTransactions) GetTransactions() []*WalletTransaction  { return m.Data2.Transactions }
+
+func (m *TLWalletTransactions) SetNextOffset(v *wrapperspb.StringValue) { m.Data2.NextOffset = v }
+func (m *TLWalletTransactions) GetNextOffset() *wrapperspb.StringValue  { return m.Data2.NextOffset }
+
+func (m *TLWalletTransactions) SetChats(v []*Chat) { m.Data2.Chats = v }
+func (m *TLWalletTransactions) GetChats() []*Chat  { return m.Data2.Chats }
+
+func (m *TLWalletTransactions) SetUsers(v []*User) { m.Data2.Users = v }
+func (m *TLWalletTransactions) GetUsers() []*User  { return m.Data2.Users }
+
+func (m *TLWalletTransactions) GetPredicateName() string {
+	return Predicate_wallet_transactions
+}
+
+func (m *TLWalletTransactions) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_transactions, int(layer))
+	switch uint32(clazzId) {
+	case 0x4322d5a5:
+		x.UInt(0x4322d5a5)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetNextOffset() != nil {
+				flags |= 1 << 0
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		x.Long(m.GetBalance())
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list2 := m.GetTransactions()
+			x.Int(int32(len(list2)))
+			for _, v := range list2 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		if m.GetNextOffset() != nil {
+			x.String(m.GetNextOffset().Value)
+		}
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list4 := m.GetChats()
+			x.Int(int32(len(list4)))
+			for _, v := range list4 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list5 := m.GetUsers()
+			x.Int(int32(len(list5)))
+			for _, v := range list5 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_transactions, layer)
+	}
+}
+
+func (m *TLWalletTransactions) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTransactions) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x4322d5a5:
+		var flags = dBuf.UInt()
+		_ = flags
+		m.SetBalance(dBuf.Long())
+		c2 := dBuf.Int()
+		if c2 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 2, c2)
+			return dBuf.GetError()
+		}
+		l2 := dBuf.Int()
+		if l2 < 0 || l2 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l2)
+		}
+		v2 := make([]*WalletTransaction, l2)
+		for i := int32(0); i < l2; i++ {
+			v2[i] = &WalletTransaction{}
+			v2[i].Decode(dBuf)
+		}
+		m.SetTransactions(v2)
+
+		if (flags & (1 << 0)) != 0 {
+			m.SetNextOffset(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		c4 := dBuf.Int()
+		if c4 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 4, c4)
+			return dBuf.GetError()
+		}
+		l4 := dBuf.Int()
+		if l4 < 0 || l4 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l4)
+		}
+		v4 := make([]*Chat, l4)
+		for i := int32(0); i < l4; i++ {
+			v4[i] = &Chat{}
+			v4[i].Decode(dBuf)
+		}
+		m.SetChats(v4)
+
+		c5 := dBuf.Int()
+		if c5 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 5, c5)
+			return dBuf.GetError()
+		}
+		l5 := dBuf.Int()
+		if l5 < 0 || l5 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l5)
+		}
+		v5 := make([]*User, l5)
+		for i := int32(0); i < l5; i++ {
+			v5[i] = &User{}
+			v5[i].Decode(dBuf)
+		}
+		m.SetUsers(v5)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// Wallet_UserAddresses <--
+//  + TL_WalletUserAddresses
+//
+
+func (m *Wallet_UserAddresses) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_wallet_userAddresses:
+		t := m.To_WalletUserAddresses()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *Wallet_UserAddresses) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *Wallet_UserAddresses) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x928e7b55:
+		m2 := MakeTLWalletUserAddresses(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_WalletUserAddresses
+func (m *Wallet_UserAddresses) To_WalletUserAddresses() *TLWalletUserAddresses {
+	m.PredicateName = Predicate_wallet_userAddresses
+	return &TLWalletUserAddresses{
+		Data2: m,
+	}
+}
+
+// MakeTLWalletUserAddresses
+func MakeTLWalletUserAddresses(data2 *Wallet_UserAddresses) *TLWalletUserAddresses {
+	if data2 == nil {
+		return &TLWalletUserAddresses{Data2: &Wallet_UserAddresses{
+			PredicateName: Predicate_wallet_userAddresses,
+		}}
+	} else {
+		data2.PredicateName = Predicate_wallet_userAddresses
+		return &TLWalletUserAddresses{Data2: data2}
+	}
+}
+
+func (m *TLWalletUserAddresses) To_Wallet_UserAddresses() *Wallet_UserAddresses {
+	m.Data2.PredicateName = Predicate_wallet_userAddresses
+	return m.Data2
+}
+
+func (m *TLWalletUserAddresses) SetAddresses(v []*WalletUserAddress) { m.Data2.Addresses = v }
+func (m *TLWalletUserAddresses) GetAddresses() []*WalletUserAddress  { return m.Data2.Addresses }
+
+func (m *TLWalletUserAddresses) SetUsers(v []*User) { m.Data2.Users = v }
+func (m *TLWalletUserAddresses) GetUsers() []*User  { return m.Data2.Users }
+
+func (m *TLWalletUserAddresses) GetPredicateName() string {
+	return Predicate_wallet_userAddresses
+}
+
+func (m *TLWalletUserAddresses) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_wallet_userAddresses, int(layer))
+	switch uint32(clazzId) {
+	case 0x928e7b55:
+		x.UInt(0x928e7b55)
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list0 := m.GetAddresses()
+			x.Int(int32(len(list0)))
+			for _, v := range list0 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list1 := m.GetUsers()
+			x.Int(int32(len(list1)))
+			for _, v := range list1 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_wallet_userAddresses, layer)
+	}
+}
+
+func (m *TLWalletUserAddresses) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletUserAddresses) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x928e7b55:
+		c0 := dBuf.Int()
+		if c0 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 0, c0)
+			return dBuf.GetError()
+		}
+		l0 := dBuf.Int()
+		if l0 < 0 || l0 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l0)
+		}
+		v0 := make([]*WalletUserAddress, l0)
+		for i := int32(0); i < l0; i++ {
+			v0[i] = &WalletUserAddress{}
+			v0[i].Decode(dBuf)
+		}
+		m.SetAddresses(v0)
+
+		c1 := dBuf.Int()
+		if c1 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 1, c1)
+			return dBuf.GetError()
+		}
+		l1 := dBuf.Int()
+		if l1 < 0 || l1 > maxVectorLen {
+			return fmt.Errorf("invalid vector length: %d", l1)
+		}
+		v1 := make([]*User, l1)
+		for i := int32(0); i < l1; i++ {
+			v1[i] = &User{}
+			v1[i].Decode(dBuf)
+		}
+		m.SetUsers(v1)
 
 		return dBuf.GetError()
 
@@ -274482,10 +280770,66 @@ func (m *TLAuthFinishPasskeyLogin) Decode(dBuf *DecodeBuf) error {
 	return dBuf.GetError()
 }
 
+// TLAuthCancelWebTokenAuthorization
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLAuthCancelWebTokenAuthorization) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x490dada1:
+		x.UInt(0x490dada1)
+
+		// no flags
+
+		x.String(m.GetWebAuthToken())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLAuthCancelWebTokenAuthorization) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLAuthCancelWebTokenAuthorization) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x490dada1:
+
+		// not has flags
+
+		m.WebAuthToken = dBuf.String()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
 // TLAuthInitFirebasePnvLogin
 // /////////////////////////////////////////////////////////////////////////////
 func (m *TLAuthInitFirebasePnvLogin) Encode(x *EncodeBuf, layer int32) error {
 	switch uint32(m.Constructor) {
+	case 0x644f15c0:
+		x.UInt(0x644f15c0)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetExceptIds() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		if m.GetExceptIds() != nil {
+			x.VectorLong(m.GetExceptIds())
+		}
+		x.Int(m.GetApiId())
+		x.String(m.GetApiHash())
+
 	case 0x777df37a:
 		x.UInt(0x777df37a)
 
@@ -274507,6 +280851,18 @@ func (m *TLAuthInitFirebasePnvLogin) CalcByteSize(layer int32) int {
 
 func (m *TLAuthInitFirebasePnvLogin) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Constructor) {
+	case 0x644f15c0:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.ExceptIds = dBuf.VectorLong()
+		}
+		m.ApiId = dBuf.Int()
+		m.ApiHash = dBuf.String()
+		return dBuf.GetError()
 	case 0x777df37a:
 
 		// not has flags
@@ -313510,6 +319866,35 @@ func (m *TLBotsUpdateStarRefProgram) Decode(dBuf *DecodeBuf) error {
 // /////////////////////////////////////////////////////////////////////////////
 func (m *TLBotsSetCustomVerification) Encode(x *EncodeBuf, layer int32) error {
 	switch uint32(m.Constructor) {
+	case 0xf4946757:
+		x.UInt(0xf4946757)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetEnabled() == true {
+			flags |= 1 << 1
+		}
+		if m.GetBot() != nil {
+			flags |= 1 << 0
+		}
+
+		if m.GetCustomDescription_FLAGTEXTWITHENTITIES() != nil {
+			flags |= 1 << 2
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		if m.GetBot() != nil {
+			m.GetBot().Encode(x, layer)
+		}
+
+		m.GetPeer().Encode(x, layer)
+		if m.GetCustomDescription_FLAGTEXTWITHENTITIES() != nil {
+			m.GetCustomDescription_FLAGTEXTWITHENTITIES().Encode(x, layer)
+		}
+
 	case 0x8b89dfbd:
 		x.UInt(0x8b89dfbd)
 
@@ -313523,7 +319908,7 @@ func (m *TLBotsSetCustomVerification) Encode(x *EncodeBuf, layer int32) error {
 			flags |= 1 << 0
 		}
 
-		if m.GetCustomDescription() != nil {
+		if m.GetCustomDescription_FLAGSTRING() != nil {
 			flags |= 1 << 2
 		}
 
@@ -313535,8 +319920,8 @@ func (m *TLBotsSetCustomVerification) Encode(x *EncodeBuf, layer int32) error {
 		}
 
 		m.GetPeer().Encode(x, layer)
-		if m.GetCustomDescription() != nil {
-			x.String(m.GetCustomDescription().Value)
+		if m.GetCustomDescription_FLAGSTRING() != nil {
+			x.String(m.GetCustomDescription_FLAGSTRING().Value)
 		}
 
 	default:
@@ -313552,6 +319937,31 @@ func (m *TLBotsSetCustomVerification) CalcByteSize(layer int32) int {
 
 func (m *TLBotsSetCustomVerification) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Constructor) {
+	case 0xf4946757:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 1)) != 0 {
+			m.Enabled = true
+		}
+		if (flags & (1 << 0)) != 0 {
+			m3 := &InputUser{}
+			m3.Decode(dBuf)
+			m.Bot = m3
+		}
+
+		m4 := &InputPeer{}
+		m4.Decode(dBuf)
+		m.Peer = m4
+
+		if (flags & (1 << 2)) != 0 {
+			m5 := &TextWithEntities{}
+			m5.Decode(dBuf)
+			m.CustomDescription_FLAGTEXTWITHENTITIES = m5
+		}
+		return dBuf.GetError()
 	case 0x8b89dfbd:
 
 		flags := dBuf.UInt()
@@ -313572,7 +319982,7 @@ func (m *TLBotsSetCustomVerification) Decode(dBuf *DecodeBuf) error {
 		m.Peer = m4
 
 		if (flags & (1 << 2)) != 0 {
-			m.CustomDescription = &wrapperspb.StringValue{Value: dBuf.String()}
+			m.CustomDescription_FLAGSTRING = &wrapperspb.StringValue{Value: dBuf.String()}
 		}
 
 		return dBuf.GetError()
@@ -313650,6 +320060,21 @@ func (m *TLBotsGetBotRecommendations) Decode(dBuf *DecodeBuf) error {
 // /////////////////////////////////////////////////////////////////////////////
 func (m *TLBotsCheckUsername) Encode(x *EncodeBuf, layer int32) error {
 	switch uint32(m.Constructor) {
+	case 0xe3ac4c61:
+		x.UInt(0xe3ac4c61)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetAdditional() == true {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.String(m.GetUsername())
+
 	case 0x87f2219b:
 		x.UInt(0x87f2219b)
 
@@ -313670,6 +320095,17 @@ func (m *TLBotsCheckUsername) CalcByteSize(layer int32) int {
 
 func (m *TLBotsCheckUsername) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Constructor) {
+	case 0xe3ac4c61:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.Additional = true
+		}
+		m.Username = dBuf.String()
+		return dBuf.GetError()
 	case 0x87f2219b:
 
 		// not has flags
@@ -314042,6 +320478,90 @@ func (m *TLBotsSetJoinChatResults) Decode(dBuf *DecodeBuf) error {
 		m2.Decode(dBuf)
 		m.Result = m2
 
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLBotsAddUsername
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLBotsAddUsername) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x3501c08a:
+		x.UInt(0x3501c08a)
+
+		// no flags
+
+		m.GetBot().Encode(x, layer)
+		x.String(m.GetUsername())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLBotsAddUsername) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLBotsAddUsername) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x3501c08a:
+
+		// not has flags
+
+		m1 := &InputUser{}
+		m1.Decode(dBuf)
+		m.Bot = m1
+
+		m.Username = dBuf.String()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLBotsRemoveUsername
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLBotsRemoveUsername) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xc704147d:
+		x.UInt(0xc704147d)
+
+		// no flags
+
+		m.GetBot().Encode(x, layer)
+		x.String(m.GetUsername())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLBotsRemoveUsername) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLBotsRemoveUsername) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xc704147d:
+
+		// not has flags
+
+		m1 := &InputUser{}
+		m1.Decode(dBuf)
+		m.Bot = m1
+
+		m.Username = dBuf.String()
 		return dBuf.GetError()
 
 	default:
@@ -318240,6 +324760,460 @@ func (m *TLPaymentsCraftStarGift) Decode(dBuf *DecodeBuf) error {
 			v1[i].Decode(dBuf)
 		}
 		m.Stargift = v1
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLPaymentsGetCurrencyRates
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLPaymentsGetCurrencyRates) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xd35983e8:
+		x.UInt(0xd35983e8)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLPaymentsGetCurrencyRates) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsGetCurrencyRates) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xd35983e8:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLPaymentsGetOnrampProviders
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLPaymentsGetOnrampProviders) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x3f3e00dc:
+		x.UInt(0x3f3e00dc)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetCryptoCurrency() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		if m.GetCryptoCurrency() != nil {
+			x.String(m.GetCryptoCurrency().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLPaymentsGetOnrampProviders) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsGetOnrampProviders) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x3f3e00dc:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.CryptoCurrency = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLPaymentsGetOnrampBaseCurrencies
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLPaymentsGetOnrampBaseCurrencies) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x1c8bedf3:
+		x.UInt(0x1c8bedf3)
+
+		// no flags
+
+		x.String(m.GetProvider())
+		x.String(m.GetCryptoCurrency())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLPaymentsGetOnrampBaseCurrencies) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsGetOnrampBaseCurrencies) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x1c8bedf3:
+
+		// not has flags
+
+		m.Provider = dBuf.String()
+		m.CryptoCurrency = dBuf.String()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLPaymentsGetOnrampAvailability
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLPaymentsGetOnrampAvailability) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x2ec29951:
+		x.UInt(0x2ec29951)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetBaseCurrency() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.String(m.GetProvider())
+		x.String(m.GetCryptoCurrency())
+		if m.GetBaseCurrency() != nil {
+			x.String(m.GetBaseCurrency().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLPaymentsGetOnrampAvailability) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsGetOnrampAvailability) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x2ec29951:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		m.Provider = dBuf.String()
+		m.CryptoCurrency = dBuf.String()
+		if (flags & (1 << 0)) != 0 {
+			m.BaseCurrency = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLPaymentsGetOnrampLimits
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLPaymentsGetOnrampLimits) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x80e851fd:
+		x.UInt(0x80e851fd)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetPaymentMethod() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.String(m.GetProvider())
+		x.String(m.GetCryptoCurrency())
+		x.String(m.GetBaseCurrency())
+		if m.GetPaymentMethod() != nil {
+			x.String(m.GetPaymentMethod().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLPaymentsGetOnrampLimits) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsGetOnrampLimits) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x80e851fd:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		m.Provider = dBuf.String()
+		m.CryptoCurrency = dBuf.String()
+		m.BaseCurrency = dBuf.String()
+		if (flags & (1 << 0)) != 0 {
+			m.PaymentMethod = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLPaymentsGetOnrampQuote
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLPaymentsGetOnrampQuote) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xe06645fa:
+		x.UInt(0xe06645fa)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetBaseAmount() != nil {
+			flags |= 1 << 0
+		}
+		if m.GetCryptoAmount() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetPaymentMethod() != nil {
+			flags |= 1 << 2
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.String(m.GetProvider())
+		x.String(m.GetCryptoCurrency())
+		x.String(m.GetBaseCurrency())
+		if m.GetBaseAmount() != nil {
+			x.String(m.GetBaseAmount().Value)
+		}
+
+		if m.GetCryptoAmount() != nil {
+			x.String(m.GetCryptoAmount().Value)
+		}
+
+		if m.GetPaymentMethod() != nil {
+			x.String(m.GetPaymentMethod().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLPaymentsGetOnrampQuote) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsGetOnrampQuote) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xe06645fa:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		m.Provider = dBuf.String()
+		m.CryptoCurrency = dBuf.String()
+		m.BaseCurrency = dBuf.String()
+		if (flags & (1 << 0)) != 0 {
+			m.BaseAmount = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 1)) != 0 {
+			m.CryptoAmount = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.PaymentMethod = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLPaymentsCreateOnrampSession
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLPaymentsCreateOnrampSession) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xa2197cf6:
+		x.UInt(0xa2197cf6)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetPaymentMethod() != nil {
+			flags |= 1 << 0
+		}
+		if m.GetBaseCurrency() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetBaseAmount() != nil {
+			flags |= 1 << 2
+		}
+		if m.GetMemo() != nil {
+			flags |= 1 << 3
+		}
+		if m.GetTheme() != nil {
+			flags |= 1 << 4
+		}
+		if m.GetSuccessReturnUrl() != nil {
+			flags |= 1 << 5
+		}
+		if m.GetFailReturnUrl() != nil {
+			flags |= 1 << 6
+		}
+		if m.GetCryptoAmount() != nil {
+			flags |= 1 << 7
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.String(m.GetProvider())
+		x.String(m.GetCryptoCurrency())
+		x.String(m.GetAddress())
+		if m.GetPaymentMethod() != nil {
+			x.String(m.GetPaymentMethod().Value)
+		}
+
+		if m.GetBaseCurrency() != nil {
+			x.String(m.GetBaseCurrency().Value)
+		}
+
+		if m.GetBaseAmount() != nil {
+			x.String(m.GetBaseAmount().Value)
+		}
+
+		if m.GetMemo() != nil {
+			x.String(m.GetMemo().Value)
+		}
+
+		if m.GetTheme() != nil {
+			x.String(m.GetTheme().Value)
+		}
+
+		if m.GetSuccessReturnUrl() != nil {
+			x.String(m.GetSuccessReturnUrl().Value)
+		}
+
+		if m.GetFailReturnUrl() != nil {
+			x.String(m.GetFailReturnUrl().Value)
+		}
+
+		if m.GetCryptoAmount() != nil {
+			x.String(m.GetCryptoAmount().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLPaymentsCreateOnrampSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLPaymentsCreateOnrampSession) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xa2197cf6:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		m.Provider = dBuf.String()
+		m.CryptoCurrency = dBuf.String()
+		m.Address = dBuf.String()
+		if (flags & (1 << 0)) != 0 {
+			m.PaymentMethod = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 1)) != 0 {
+			m.BaseCurrency = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.BaseAmount = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 3)) != 0 {
+			m.Memo = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 4)) != 0 {
+			m.Theme = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 5)) != 0 {
+			m.SuccessReturnUrl = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 6)) != 0 {
+			m.FailReturnUrl = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 7)) != 0 {
+			m.CryptoAmount = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
 
 		return dBuf.GetError()
 
@@ -328959,6 +335933,1354 @@ func (m *TLEphemeralGetWelcomeMessages) Decode(dBuf *DecodeBuf) error {
 	return dBuf.GetError()
 }
 
+// TLToncenterPerformApiRequest
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLToncenterPerformApiRequest) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x8d7bdd61:
+		x.UInt(0x8d7bdd61)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetPost() == true {
+			flags |= 1 << 0
+		}
+
+		if m.GetQuery() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetPayload() != nil {
+			flags |= 1 << 2
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.String(m.GetEndpoint())
+		if m.GetQuery() != nil {
+			x.String(m.GetQuery().Value)
+		}
+
+		if m.GetPayload() != nil {
+			x.String(m.GetPayload().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLToncenterPerformApiRequest) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLToncenterPerformApiRequest) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x8d7bdd61:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.Post = true
+		}
+		m.Endpoint = dBuf.String()
+		if (flags & (1 << 1)) != 0 {
+			m.Query = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.Payload = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLToncenterGetStreamingUrl
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLToncenterGetStreamingUrl) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xcdaf63c7:
+		x.UInt(0xcdaf63c7)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLToncenterGetStreamingUrl) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLToncenterGetStreamingUrl) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xcdaf63c7:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetState
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetState) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xab83b33a:
+		x.UInt(0xab83b33a)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetState) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetState) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xab83b33a:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetUserAddresses
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetUserAddresses) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x5275dfdd:
+		x.UInt(0x5275dfdd)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetForce() == true {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+
+		x.Int(int32(CRC32_vector))
+		{
+			var (
+				sz     = int32(0)
+				offset = x.GetOffset()
+			)
+			list3 := m.GetId()
+			x.Int(int32(len(list3)))
+			for _, v := range list3 {
+				err := v.Encode(x, layer)
+				if err == nil {
+					sz += 1
+				}
+			}
+			x.IntOffset(offset, sz)
+		}
+
+		x.VectorString(m.GetAddresses())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetUserAddresses) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetUserAddresses) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x5275dfdd:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.Force = true
+		}
+		c3 := dBuf.Int()
+		if c3 != int32(CRC32_vector) {
+			// dBuf.err = fmt.Errorf("invalid CRC32_vector, c%d: %d", 3, c3)
+			return dBuf.GetError()
+		}
+		l3 := dBuf.Int()
+		if l3 < 0 || l3 > maxVectorLen {
+			dBuf.err = fmt.Errorf("invalid vector length: %d", l3)
+			return dBuf.err
+		}
+		v3 := make([]*InputUser, l3)
+		for i := int32(0); i < l3; i++ {
+			v3[i] = &InputUser{}
+			v3[i].Decode(dBuf)
+		}
+		m.Id = v3
+
+		m.Addresses = dBuf.VectorString()
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetTransactions
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetTransactions) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xa8830a83:
+		x.UInt(0xa8830a83)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetInbound() == true {
+			flags |= 1 << 0
+		}
+		if m.GetOutbound() == true {
+			flags |= 1 << 1
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.String(m.GetOffset())
+		x.Int(m.GetLimit())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetTransactions) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetTransactions) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xa8830a83:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.Inbound = true
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.Outbound = true
+		}
+		m.Offset = dBuf.String()
+		m.Limit = dBuf.Int()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetTransactionsByIDs
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetTransactionsByIDs) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x811ceab6:
+		x.UInt(0x811ceab6)
+
+		// no flags
+
+		x.VectorString(m.GetId())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetTransactionsByIDs) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetTransactionsByIDs) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x811ceab6:
+
+		// not has flags
+
+		m.Id = dBuf.VectorString()
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetTransactionsByMsgHash
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetTransactionsByMsgHash) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xa6bb795d:
+		x.UInt(0xa6bb795d)
+
+		// no flags
+
+		x.VectorString(m.GetMsgHash())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetTransactionsByMsgHash) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetTransactionsByMsgHash) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xa6bb795d:
+
+		// not has flags
+
+		m.MsgHash = dBuf.VectorString()
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletExportSecretPhrase
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletExportSecretPhrase) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x9077c9ac:
+		x.UInt(0x9077c9ac)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetPassword() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		if m.GetPassword() != nil {
+			m.GetPassword().Encode(x, layer)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletExportSecretPhrase) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletExportSecretPhrase) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x9077c9ac:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m2 := &InputCheckPasswordSRP{}
+			m2.Decode(dBuf)
+			m.Password = m2
+		}
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletFetchEncryptedSecretPhrasePart
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletFetchEncryptedSecretPhrasePart) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xf53925cf:
+		x.UInt(0xf53925cf)
+
+		// no flags
+
+		x.String(m.GetToken())
+		x.StringBytes(m.GetPublicKey())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletFetchEncryptedSecretPhrasePart) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletFetchEncryptedSecretPhrasePart) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xf53925cf:
+
+		// not has flags
+
+		m.Token = dBuf.String()
+		m.PublicKey = dBuf.StringBytes()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletReplaceWallet
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletReplaceWallet) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xd8c72eec:
+		x.UInt(0xd8c72eec)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetPassword() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		m.GetWallet().Encode(x, layer)
+		if m.GetPassword() != nil {
+			m.GetPassword().Encode(x, layer)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletReplaceWallet) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletReplaceWallet) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xd8c72eec:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+
+		m2 := &InputWalletReplacement{}
+		m2.Decode(dBuf)
+		m.Wallet = m2
+
+		if (flags & (1 << 0)) != 0 {
+			m3 := &InputCheckPasswordSRP{}
+			m3.Decode(dBuf)
+			m.Password = m3
+		}
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletDisableBackup
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletDisableBackup) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xb0bf0da:
+		x.UInt(0xb0bf0da)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetPassword() != nil {
+			flags |= 1 << 0
+		}
+		if m.GetNewPublicKey() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetProof() != nil {
+			flags |= 1 << 2
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		if m.GetPassword() != nil {
+			m.GetPassword().Encode(x, layer)
+		}
+
+		if m.GetNewPublicKey() != nil {
+			x.StringBytes(m.GetNewPublicKey())
+		}
+
+		if m.GetProof() != nil {
+			m.GetProof().Encode(x, layer)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletDisableBackup) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletDisableBackup) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xb0bf0da:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m2 := &InputCheckPasswordSRP{}
+			m2.Decode(dBuf)
+			m.Password = m2
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.NewPublicKey = dBuf.StringBytes()
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m4 := &WalletOwnershipProof{}
+			m4.Decode(dBuf)
+			m.Proof = m4
+		}
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetBackupHolderDcs
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetBackupHolderDcs) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xd179d494:
+		x.UInt(0xd179d494)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetBackupHolderDcs) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetBackupHolderDcs) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xd179d494:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletEnableBackup
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletEnableBackup) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x4500c525:
+		x.UInt(0x4500c525)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetNewPublicKey() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetProof() != nil {
+			flags |= 1 << 2
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+
+		x.VectorBytes(m.GetParts())
+
+		if m.GetNewPublicKey() != nil {
+			x.StringBytes(m.GetNewPublicKey())
+		}
+
+		if m.GetProof() != nil {
+			m.GetProof().Encode(x, layer)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletEnableBackup) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletEnableBackup) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x4500c525:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+
+		m.Parts = dBuf.VectorBytes()
+
+		if (flags & (1 << 1)) != 0 {
+			m.NewPublicKey = dBuf.StringBytes()
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m4 := &WalletOwnershipProof{}
+			m4.Decode(dBuf)
+			m.Proof = m4
+		}
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetProofChallenge
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetProofChallenge) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x2025e697:
+		x.UInt(0x2025e697)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetProofChallenge) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetProofChallenge) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x2025e697:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletSendTransfer
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletSendTransfer) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xd9e5d9e2:
+		x.UInt(0xd9e5d9e2)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetDataGasless() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.StringBytes(m.GetDataNormal())
+		if m.GetDataGasless() != nil {
+			x.StringBytes(m.GetDataGasless())
+		}
+
+		m.GetUserId().Encode(x, layer)
+		x.Long(m.GetRandomId())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletSendTransfer) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletSendTransfer) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xd9e5d9e2:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		m.DataNormal = dBuf.StringBytes()
+		if (flags & (1 << 0)) != 0 {
+			m.DataGasless = dBuf.StringBytes()
+		}
+
+		m4 := &InputUser{}
+		m4.Decode(dBuf)
+		m.UserId = m4
+
+		m.RandomId = dBuf.Long()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetGaslessInfo
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetGaslessInfo) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x742df0a1:
+		x.UInt(0x742df0a1)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetGaslessInfo) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetGaslessInfo) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x742df0a1:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetExistingWaltBalance
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetExistingWaltBalance) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x691f4360:
+		x.UInt(0x691f4360)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetExistingWaltBalance) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetExistingWaltBalance) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x691f4360:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletGetNfts
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletGetNfts) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x8c12f3a4:
+		x.UInt(0x8c12f3a4)
+
+		// no flags
+
+		x.String(m.GetOffset())
+		x.Int(m.GetLimit())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletGetNfts) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletGetNfts) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x8c12f3a4:
+
+		// not has flags
+
+		m.Offset = dBuf.String()
+		m.Limit = dBuf.Int()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectCreateSession
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectCreateSession) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xcc931046:
+		x.UInt(0xcc931046)
+
+		// no flags
+
+		x.String(m.GetDappClientId())
+		x.String(m.GetManifestUrl())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectCreateSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectCreateSession) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xcc931046:
+
+		// not has flags
+
+		m.DappClientId = dBuf.String()
+		m.ManifestUrl = dBuf.String()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectRegisterKey
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectRegisterKey) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x338bcf1c:
+		x.UInt(0x338bcf1c)
+
+		// no flags
+
+		x.Long(m.GetSessionId())
+		x.String(m.GetClientId())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectRegisterKey) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectRegisterKey) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x338bcf1c:
+
+		// not has flags
+
+		m.SessionId = dBuf.Long()
+		m.ClientId = dBuf.String()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectSubmitConnectResult
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectSubmitConnectResult) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xc2c00779:
+		x.UInt(0xc2c00779)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetError() == true {
+			flags |= 1 << 0
+		}
+
+		if m.GetTraceId() != nil {
+			flags |= 1 << 1
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.Long(m.GetSessionId())
+		x.StringBytes(m.GetChallengeAnswer())
+		x.StringBytes(m.GetBody())
+		if m.GetTraceId() != nil {
+			x.String(m.GetTraceId().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectSubmitConnectResult) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectSubmitConnectResult) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xc2c00779:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.Error = true
+		}
+		m.SessionId = dBuf.Long()
+		m.ChallengeAnswer = dBuf.StringBytes()
+		m.Body = dBuf.StringBytes()
+		if (flags & (1 << 1)) != 0 {
+			m.TraceId = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectGetPending
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectGetPending) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x11aee065:
+		x.UInt(0x11aee065)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetDappClientId() != nil {
+			flags |= 1 << 0
+		}
+		if m.GetSessionId() != nil {
+			flags |= 1 << 1
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		if m.GetDappClientId() != nil {
+			x.String(m.GetDappClientId().Value)
+		}
+
+		if m.GetSessionId() != nil {
+			x.Long(m.GetSessionId().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectGetPending) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectGetPending) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x11aee065:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.DappClientId = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 1)) != 0 {
+			m.SessionId = &wrapperspb.Int64Value{Value: dBuf.Long()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectClaimRequest
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectClaimRequest) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x66b57b41:
+		x.UInt(0x66b57b41)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetDeclined() == true {
+			flags |= 1 << 1
+		}
+
+		if m.GetChallengeAnswer() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.Long(m.GetSessionId())
+		x.Int(m.GetMsgId())
+		x.String(m.GetAppRequestId())
+		if m.GetChallengeAnswer() != nil {
+			x.StringBytes(m.GetChallengeAnswer())
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectClaimRequest) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectClaimRequest) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x66b57b41:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 1)) != 0 {
+			m.Declined = true
+		}
+		m.SessionId = dBuf.Long()
+		m.MsgId = dBuf.Int()
+		m.AppRequestId = dBuf.String()
+		if (flags & (1 << 0)) != 0 {
+			m.ChallengeAnswer = dBuf.StringBytes()
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectSubmitResponse
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectSubmitResponse) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xfac67d3c:
+		x.UInt(0xfac67d3c)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetTraceId() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.Long(m.GetSessionId())
+		x.Int(m.GetMsgId())
+		x.StringBytes(m.GetBody())
+		if m.GetTraceId() != nil {
+			x.String(m.GetTraceId().Value)
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectSubmitResponse) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectSubmitResponse) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xfac67d3c:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		m.SessionId = dBuf.Long()
+		m.MsgId = dBuf.Int()
+		m.Body = dBuf.StringBytes()
+		if (flags & (1 << 0)) != 0 {
+			m.TraceId = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectNextEventId
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectNextEventId) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0x775d7244:
+		x.UInt(0x775d7244)
+
+		// no flags
+
+		x.Long(m.GetSessionId())
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectNextEventId) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectNextEventId) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0x775d7244:
+
+		// not has flags
+
+		m.SessionId = dBuf.Long()
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectCloseSession
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectCloseSession) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xd63f61ce:
+		x.UInt(0xd63f61ce)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetBody() != nil {
+			flags |= 1 << 0
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		x.Long(m.GetSessionId())
+		if m.GetBody() != nil {
+			x.StringBytes(m.GetBody())
+		}
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectCloseSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectCloseSession) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xd63f61ce:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		m.SessionId = dBuf.Long()
+		if (flags & (1 << 0)) != 0 {
+			m.Body = dBuf.StringBytes()
+		}
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
+// TLWalletTonConnectGetSessions
+// /////////////////////////////////////////////////////////////////////////////
+func (m *TLWalletTonConnectGetSessions) Encode(x *EncodeBuf, layer int32) error {
+	switch uint32(m.Constructor) {
+	case 0xa7ffb56e:
+		x.UInt(0xa7ffb56e)
+
+		// no flags
+
+	default:
+		// log.Errorf("")
+	}
+
+	return nil
+}
+
+func (m *TLWalletTonConnectGetSessions) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLWalletTonConnectGetSessions) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Constructor) {
+	case 0xa7ffb56e:
+
+		// not has flags
+
+		return dBuf.GetError()
+
+	default:
+		// log.Errorf("")
+	}
+	return dBuf.GetError()
+}
+
 // TLAccountToggleWebBrowserSettingsException2D0A0571
 // /////////////////////////////////////////////////////////////////////////////
 func (m *TLAccountToggleWebBrowserSettingsException2D0A0571) Encode(x *EncodeBuf, layer int32) error {
@@ -333869,6 +342191,65 @@ func (m *Vector_StarsGiveawayOption) CalcByteSize(layer int32) int {
 	return 0
 }
 
+// Vector_OnrampProviderInfo
+// /////////////////////////////////////////////////////////////////////////////
+func (m *Vector_OnrampProviderInfo) Encode(x *EncodeBuf, layer int32) error {
+	x.Int(int32(CRC32_vector))
+	{
+		var (
+			sz     = int32(0)
+			offset = x.GetOffset()
+		)
+		x.Int(int32(len(m.Datas)))
+		for _, v := range m.Datas {
+			err := v.Encode(x, layer)
+			if err == nil {
+				sz += 1
+			}
+		}
+		x.IntOffset(offset, sz)
+	}
+
+	return nil
+}
+
+func (m *Vector_OnrampProviderInfo) Decode(dBuf *DecodeBuf) error {
+	dBuf.Int() // TODO(@benqi): Check crc32 invalid
+	l1 := dBuf.Int()
+	if l1 < 0 || l1 > maxVectorLen {
+		return fmt.Errorf("invalid vector length: %d", l1)
+	}
+	m.Datas = make([]*OnrampProviderInfo, l1)
+	for i := int32(0); i < l1; i++ {
+		m.Datas[i] = new(OnrampProviderInfo)
+		(*m.Datas[i]).Decode(dBuf)
+	}
+
+	return dBuf.GetError()
+}
+
+func (m *Vector_OnrampProviderInfo) CalcByteSize(layer int32) int {
+	return 0
+}
+
+// Vector_String
+// /////////////////////////////////////////////////////////////////////////////
+func (m *Vector_String) Encode(x *EncodeBuf, layer int32) error {
+	x.VectorString(m.Datas)
+
+	return nil
+}
+
+func (m *Vector_String) Decode(dBuf *DecodeBuf) error {
+	m.Datas = dBuf.VectorString()
+
+	return dBuf.GetError()
+}
+
+func (m *Vector_String) CalcByteSize(layer int32) int {
+	return 0
+}
+
 // Vector_LangPackString
 // /////////////////////////////////////////////////////////////////////////////
 func (m *Vector_LangPackString) Encode(x *EncodeBuf, layer int32) error {
@@ -334033,6 +342414,47 @@ func (m *Vector_RecentStory) CalcByteSize(layer int32) int {
 	return 0
 }
 
+// Vector_Wallet_HolderDc
+// /////////////////////////////////////////////////////////////////////////////
+func (m *Vector_Wallet_HolderDc) Encode(x *EncodeBuf, layer int32) error {
+	x.Int(int32(CRC32_vector))
+	{
+		var (
+			sz     = int32(0)
+			offset = x.GetOffset()
+		)
+		x.Int(int32(len(m.Datas)))
+		for _, v := range m.Datas {
+			err := v.Encode(x, layer)
+			if err == nil {
+				sz += 1
+			}
+		}
+		x.IntOffset(offset, sz)
+	}
+
+	return nil
+}
+
+func (m *Vector_Wallet_HolderDc) Decode(dBuf *DecodeBuf) error {
+	dBuf.Int() // TODO(@benqi): Check crc32 invalid
+	l1 := dBuf.Int()
+	if l1 < 0 || l1 > maxVectorLen {
+		return fmt.Errorf("invalid vector length: %d", l1)
+	}
+	m.Datas = make([]*Wallet_HolderDc, l1)
+	for i := int32(0); i < l1; i++ {
+		m.Datas[i] = new(Wallet_HolderDc)
+		(*m.Datas[i]).Decode(dBuf)
+	}
+
+	return dBuf.GetError()
+}
+
+func (m *Vector_Wallet_HolderDc) CalcByteSize(layer int32) int {
+	return 0
+}
+
 // Vector_Bool
 // /////////////////////////////////////////////////////////////////////////////
 func (m *Vector_Bool) Encode(x *EncodeBuf, layer int32) error {
@@ -334112,24 +342534,6 @@ func (m *Vector_DialogFilter) Decode(dBuf *DecodeBuf) error {
 }
 
 func (m *Vector_DialogFilter) CalcByteSize(layer int32) int {
-	return 0
-}
-
-// Vector_String
-// /////////////////////////////////////////////////////////////////////////////
-func (m *Vector_String) Encode(x *EncodeBuf, layer int32) error {
-	x.VectorString(m.Datas)
-
-	return nil
-}
-
-func (m *Vector_String) Decode(dBuf *DecodeBuf) error {
-	m.Datas = dBuf.VectorString()
-
-	return dBuf.GetError()
-}
-
-func (m *Vector_String) CalcByteSize(layer int32) int {
 	return 0
 }
 

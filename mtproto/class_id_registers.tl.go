@@ -1052,9 +1052,19 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 602479523
 		return o
 	},
+	-147976487: func() TLObject { // 0xf72e0ed9
+		o := MakeTLBotVerification(nil)
+		o.Data2.Constructor = -147976487
+		return o
+	},
 	-113453988: func() TLObject { // 0xf93cd45c
 		o := MakeTLBotVerification(nil)
 		o.Data2.Constructor = -113453988
+		return o
+	},
+	-1591021569: func() TLObject { // 0xa12aefff
+		o := MakeTLBotVerifierSettings(nil)
+		o.Data2.Constructor = -1591021569
 		return o
 	},
 	-1328716265: func() TLObject { // 0xb0cd6617
@@ -2160,6 +2170,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1255369827: func() TLObject { // 0xb52c939d
 		o := MakeTLContactsTopPeersDisabled(nil)
 		o.Data2.Constructor = -1255369827
+		return o
+	},
+	819557436: func() TLObject { // 0x30d9743c
+		o := MakeTLCurrencyRate(nil)
+		o.Data2.Constructor = 819557436
 		return o
 	},
 	2104790276: func() TLObject { // 0x7d748d04
@@ -4322,6 +4337,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1770371538
 		return o
 	},
+	1671708892: func() TLObject { // 0x63a440dc
+		o := MakeTLInputWalletNew(nil)
+		o.Data2.Constructor = 1671708892
+		return o
+	},
+	1722182203: func() TLObject { // 0x66a66a3b
+		o := MakeTLInputWalletImported(nil)
+		o.Data2.Constructor = 1722182203
+		return o
+	},
 	-1678949555: func() TLObject { // 0x9bed434d
 		o := MakeTLInputWebDocument(nil)
 		o.Data2.Constructor = -1678949555
@@ -5332,6 +5357,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1250688640
 		return o
 	},
+	-1825969613: func() TLObject { // 0x9329ea33
+		o := MakeTLMessageActionGramTransfer(nil)
+		o.Data2.Constructor = -1825969613
+		return o
+	},
+	1773716671: func() TLObject { // 0x69b8c4bf
+		o := MakeTLMessageActionWalletTonConnectRequest(nil)
+		o.Data2.Constructor = 1773716671
+		return o
+	},
 	-1065845395: func() TLObject { // 0xc0787d6d
 		o := MakeTLMessageActionSetSameChatWallPaper(nil)
 		o.Data2.Constructor = -1065845395
@@ -5490,6 +5525,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	106086853: func() TLObject { // 0x652c1c5
 		o := MakeTLMessageEntityDiffDelete(nil)
 		o.Data2.Constructor = 106086853
+		return o
+	},
+	-39075891: func() TLObject { // 0xfdabbfcd
+		o := MakeTLMessageEntityTonAddress(nil)
+		o.Data2.Constructor = -39075891
 		return o
 	},
 	-1386050360: func() TLObject { // 0xad628cc8
@@ -6522,6 +6562,36 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1450380236
 		return o
 	},
+	-104314509: func() TLObject { // 0xf9c84973
+		o := MakeTLOnrampAvailability(nil)
+		o.Data2.Constructor = -104314509
+		return o
+	},
+	2078435198: func() TLObject { // 0x7be2677e
+		o := MakeTLOnrampLimits(nil)
+		o.Data2.Constructor = 2078435198
+		return o
+	},
+	-1631009112: func() TLObject { // 0x9ec8c6a8
+		o := MakeTLOnrampMethodAvailability(nil)
+		o.Data2.Constructor = -1631009112
+		return o
+	},
+	230847874: func() TLObject { // 0xdc27582
+		o := MakeTLOnrampProviderInfo(nil)
+		o.Data2.Constructor = 230847874
+		return o
+	},
+	2055213545: func() TLObject { // 0x7a8011e9
+		o := MakeTLOnrampQuote(nil)
+		o.Data2.Constructor = 2055213545
+		return o
+	},
+	-773575132: func() TLObject { // 0xd1e42e24
+		o := MakeTLOnrampSession(nil)
+		o.Data2.Constructor = -773575132
+		return o
+	},
 	1001931436: func() TLObject { // 0x3bb842ac
 		o := MakeTLOutboxReadDate(nil)
 		o.Data2.Constructor = 1001931436
@@ -6895,6 +6965,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1730811363: func() TLObject { // 0x98d5ea1d
 		o := MakeTLPaymentsConnectedStarRefBots(nil)
 		o.Data2.Constructor = -1730811363
+		return o
+	},
+	-1144199998: func() TLObject { // 0xbbcce4c2
+		o := MakeTLPaymentsCurrencyRates(nil)
+		o.Data2.Constructor = -1144199998
 		return o
 	},
 	-1362048039: func() TLObject { // 0xaed0cbd9
@@ -8135,6 +8210,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1345872682: func() TLObject { // 0xafc79cd6
 		o := MakeTLTextButton(nil)
 		o.Data2.Constructor = -1345872682
+		return o
+	},
+	1020437354: func() TLObject { // 0x3cd2a36a
+		o := MakeTLTextTonAddress(nil)
+		o.Data2.Constructor = 1020437354
 		return o
 	},
 	289586518: func() TLObject { // 0x1142bd56
@@ -9502,6 +9582,36 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1236871718
 		return o
 	},
+	304255588: func() TLObject { // 0x12229264
+		o := MakeTLTonConnectManifest(nil)
+		o.Data2.Constructor = 304255588
+		return o
+	},
+	1478780131: func() TLObject { // 0x582464e3
+		o := MakeTLTonConnectNextEventId(nil)
+		o.Data2.Constructor = 1478780131
+		return o
+	},
+	-1587575533: func() TLObject { // 0xa15f8513
+		o := MakeTLTonConnectRequest(nil)
+		o.Data2.Constructor = -1587575533
+		return o
+	},
+	308631238: func() TLObject { // 0x126556c6
+		o := MakeTLTonConnectSession(nil)
+		o.Data2.Constructor = 308631238
+		return o
+	},
+	-1399980519: func() TLObject { // 0xac8dfe19
+		o := MakeTLToncenterApiResponse(nil)
+		o.Data2.Constructor = -1399980519
+		return o
+	},
+	428373505: func() TLObject { // 0x19887601
+		o := MakeTLToncenterStreamingUrl(nil)
+		o.Data2.Constructor = 428373505
+		return o
+	},
 	-305282981: func() TLObject { // 0xedcdc05b
 		o := MakeTLTopPeer(nil)
 		o.Data2.Constructor = -305282981
@@ -10527,6 +10637,31 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 1812827683
 		return o
 	},
+	1791226538: func() TLObject { // 0x6ac3f2aa
+		o := MakeTLUpdateWalletState(nil)
+		o.Data2.Constructor = 1791226538
+		return o
+	},
+	-1320989366: func() TLObject { // 0xb1434d4a
+		o := MakeTLUpdateSentWalletTransaction(nil)
+		o.Data2.Constructor = -1320989366
+		return o
+	},
+	-1464984404: func() TLObject { // 0xa8ae1cac
+		o := MakeTLUpdateWalletGaslessInfo(nil)
+		o.Data2.Constructor = -1464984404
+		return o
+	},
+	1352896014: func() TLObject { // 0x50a38e0e
+		o := MakeTLUpdateWalletTonConnectSession(nil)
+		o.Data2.Constructor = 1352896014
+		return o
+	},
+	-772898407: func() TLObject { // 0xd1ee8199
+		o := MakeTLUpdateWalletTonConnectPendingDisconnect(nil)
+		o.Data2.Constructor = -772898407
+		return o
+	},
 	422509539: func() TLObject { // 0x192efbe3
 		o := MakeTLUpdateChannelPinnedTopic(nil)
 		o.Data2.Constructor = 422509539
@@ -11017,6 +11152,116 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 499236004
 		return o
 	},
+	1622985485: func() TLObject { // 0x60bccb0d
+		o := MakeTLWalletOwnershipProof(nil)
+		o.Data2.Constructor = 1622985485
+		return o
+	},
+	-1665551636: func() TLObject { // 0x9cb9b2ec
+		o := MakeTLWalletStateEmpty(nil)
+		o.Data2.Constructor = -1665551636
+		return o
+	},
+	-1782238101: func() TLObject { // 0x95c5346b
+		o := MakeTLWalletState(nil)
+		o.Data2.Constructor = -1782238101
+		return o
+	},
+	-1792163517: func() TLObject { // 0x952dc143
+		o := MakeTLWalletTransaction(nil)
+		o.Data2.Constructor = -1792163517
+		return o
+	},
+	-722833299: func() TLObject { // 0xd4ea706d
+		o := MakeTLWalletTransactionPeerUser(nil)
+		o.Data2.Constructor = -722833299
+		return o
+	},
+	103596476: func() TLObject { // 0x62cc1bc
+		o := MakeTLWalletTransactionPeerAddress(nil)
+		o.Data2.Constructor = 103596476
+		return o
+	},
+	-443213714: func() TLObject { // 0xe595186e
+		o := MakeTLWalletTransactionPeerOnramp(nil)
+		o.Data2.Constructor = -443213714
+		return o
+	},
+	1921772890: func() TLObject { // 0x728bed5a
+		o := MakeTLWalletTransactionPeerUnsupported(nil)
+		o.Data2.Constructor = 1921772890
+		return o
+	},
+	-25628980: func() TLObject { // 0xfe78eecc
+		o := MakeTLWalletUserAddress(nil)
+		o.Data2.Constructor = -25628980
+		return o
+	},
+	417867063: func() TLObject { // 0x18e82537
+		o := MakeTLWalletEncryptedSecretPhrasePart(nil)
+		o.Data2.Constructor = 417867063
+		return o
+	},
+	-1108800883: func() TLObject { // 0xbde90a8d
+		o := MakeTLWalletExistingBalance(nil)
+		o.Data2.Constructor = -1108800883
+		return o
+	},
+	-103410961: func() TLObject { // 0xf9d612ef
+		o := MakeTLWalletHolderDc(nil)
+		o.Data2.Constructor = -103410961
+		return o
+	},
+	1277096206: func() TLObject { // 0x4c1ef10e
+		o := MakeTLWalletNftAttribute(nil)
+		o.Data2.Constructor = 1277096206
+		return o
+	},
+	876739868: func() TLObject { // 0x3441fd1c
+		o := MakeTLWalletNftItem(nil)
+		o.Data2.Constructor = 876739868
+		return o
+	},
+	2035107951: func() TLObject { // 0x794d486f
+		o := MakeTLWalletNftItems(nil)
+		o.Data2.Constructor = 2035107951
+		return o
+	},
+	-1713105145: func() TLObject { // 0x99e41707
+		o := MakeTLWalletProofChallenge(nil)
+		o.Data2.Constructor = -1713105145
+		return o
+	},
+	-422514943: func() TLObject { // 0xe6d0ef01
+		o := MakeTLWalletSecretPhraseParts(nil)
+		o.Data2.Constructor = -422514943
+		return o
+	},
+	1271436947: func() TLObject { // 0x4bc89693
+		o := MakeTLWalletTonConnectChallenge(nil)
+		o.Data2.Constructor = 1271436947
+		return o
+	},
+	-2050952924: func() TLObject { // 0x85c0f124
+		o := MakeTLWalletTonConnectPending(nil)
+		o.Data2.Constructor = -2050952924
+		return o
+	},
+	236939414: func() TLObject { // 0xe1f6896
+		o := MakeTLWalletTonConnectSessions(nil)
+		o.Data2.Constructor = 236939414
+		return o
+	},
+	1126356389: func() TLObject { // 0x4322d5a5
+		o := MakeTLWalletTransactions(nil)
+		o.Data2.Constructor = 1126356389
+		return o
+	},
+	-1836156075: func() TLObject { // 0x928e7b55
+		o := MakeTLWalletUserAddresses(nil)
+		o.Data2.Constructor = -1836156075
+		return o
+	},
 	-1493633966: func() TLObject { // 0xa6f8f452
 		o := MakeTLWebAuthorization(nil)
 		o.Data2.Constructor = -1493633966
@@ -11402,6 +11647,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1739084537: func() TLObject { // 0x9857ad07
 		return &TLAuthFinishPasskeyLogin{
 			Constructor: -1739084537,
+		}
+	},
+	1225633185: func() TLObject { // 0x490dada1
+		return &TLAuthCancelWebTokenAuthorization{
+			Constructor: 1225633185,
+		}
+	},
+	1682904512: func() TLObject { // 0x644f15c0
+		return &TLAuthInitFirebasePnvLogin{
+			Constructor: 1682904512,
 		}
 	},
 	2004743034: func() TLObject { // 0x777df37a
@@ -14884,6 +15139,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 			Constructor: 2005621427,
 		}
 	},
+	-191600809: func() TLObject { // 0xf4946757
+		return &TLBotsSetCustomVerification{
+			Constructor: -191600809,
+		}
+	},
 	-1953898563: func() TLObject { // 0x8b89dfbd
 		return &TLBotsSetCustomVerification{
 			Constructor: -1953898563,
@@ -14897,6 +15157,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	676707937: func() TLObject { // 0x2855be61
 		return &TLBotsGetBotRecommendations{
 			Constructor: 676707937,
+		}
+	},
+	-475247519: func() TLObject { // 0xe3ac4c61
+		return &TLBotsCheckUsername{
+			Constructor: -475247519,
 		}
 	},
 	-2014174821: func() TLObject { // 0x87f2219b
@@ -14937,6 +15202,16 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-417708016: func() TLObject { // 0xe71a4810
 		return &TLBotsSetJoinChatResults{
 			Constructor: -417708016,
+		}
+	},
+	889307274: func() TLObject { // 0x3501c08a
+		return &TLBotsAddUsername{
+			Constructor: 889307274,
+		}
+	},
+	-956033923: func() TLObject { // 0xc704147d
+		return &TLBotsRemoveUsername{
+			Constructor: -956033923,
 		}
 	},
 	924093883: func() TLObject { // 0x37148dbb
@@ -15367,6 +15642,41 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-1325832113: func() TLObject { // 0xb0f9684f
 		return &TLPaymentsCraftStarGift{
 			Constructor: -1325832113,
+		}
+	},
+	-749108248: func() TLObject { // 0xd35983e8
+		return &TLPaymentsGetCurrencyRates{
+			Constructor: -749108248,
+		}
+	},
+	1061028060: func() TLObject { // 0x3f3e00dc
+		return &TLPaymentsGetOnrampProviders{
+			Constructor: 1061028060,
+		}
+	},
+	478932467: func() TLObject { // 0x1c8bedf3
+		return &TLPaymentsGetOnrampBaseCurrencies{
+			Constructor: 478932467,
+		}
+	},
+	784505169: func() TLObject { // 0x2ec29951
+		return &TLPaymentsGetOnrampAvailability{
+			Constructor: 784505169,
+		}
+	},
+	-2132258307: func() TLObject { // 0x80e851fd
+		return &TLPaymentsGetOnrampLimits{
+			Constructor: -2132258307,
+		}
+	},
+	-530168326: func() TLObject { // 0xe06645fa
+		return &TLPaymentsGetOnrampQuote{
+			Constructor: -530168326,
+		}
+	},
+	-1575387914: func() TLObject { // 0xa2197cf6
+		return &TLPaymentsCreateOnrampSession{
+			Constructor: -1575387914,
 		}
 	},
 	-1876841625: func() TLObject { // 0x9021ab67
@@ -16277,6 +16587,141 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	-610614899: func() TLObject { // 0xdb9ac18d
 		return &TLEphemeralGetWelcomeMessages{
 			Constructor: -610614899,
+		}
+	},
+	-1921262239: func() TLObject { // 0x8d7bdd61
+		return &TLToncenterPerformApiRequest{
+			Constructor: -1921262239,
+		}
+	},
+	-844143673: func() TLObject { // 0xcdaf63c7
+		return &TLToncenterGetStreamingUrl{
+			Constructor: -844143673,
+		}
+	},
+	-1417432262: func() TLObject { // 0xab83b33a
+		return &TLWalletGetState{
+			Constructor: -1417432262,
+		}
+	},
+	1383456733: func() TLObject { // 0x5275dfdd
+		return &TLWalletGetUserAddresses{
+			Constructor: 1383456733,
+		}
+	},
+	-1467807101: func() TLObject { // 0xa8830a83
+		return &TLWalletGetTransactions{
+			Constructor: -1467807101,
+		}
+	},
+	-2128811338: func() TLObject { // 0x811ceab6
+		return &TLWalletGetTransactionsByIDs{
+			Constructor: -2128811338,
+		}
+	},
+	-1497663139: func() TLObject { // 0xa6bb795d
+		return &TLWalletGetTransactionsByMsgHash{
+			Constructor: -1497663139,
+		}
+	},
+	-1871197780: func() TLObject { // 0x9077c9ac
+		return &TLWalletExportSecretPhrase{
+			Constructor: -1871197780,
+		}
+	},
+	-180804145: func() TLObject { // 0xf53925cf
+		return &TLWalletFetchEncryptedSecretPhrasePart{
+			Constructor: -180804145,
+		}
+	},
+	-658034964: func() TLObject { // 0xd8c72eec
+		return &TLWalletReplaceWallet{
+			Constructor: -658034964,
+		}
+	},
+	185331930: func() TLObject { // 0xb0bf0da
+		return &TLWalletDisableBackup{
+			Constructor: 185331930,
+		}
+	},
+	-780544876: func() TLObject { // 0xd179d494
+		return &TLWalletGetBackupHolderDcs{
+			Constructor: -780544876,
+		}
+	},
+	1157678373: func() TLObject { // 0x4500c525
+		return &TLWalletEnableBackup{
+			Constructor: 1157678373,
+		}
+	},
+	539354775: func() TLObject { // 0x2025e697
+		return &TLWalletGetProofChallenge{
+			Constructor: 539354775,
+		}
+	},
+	-639247902: func() TLObject { // 0xd9e5d9e2
+		return &TLWalletSendTransfer{
+			Constructor: -639247902,
+		}
+	},
+	1949167777: func() TLObject { // 0x742df0a1
+		return &TLWalletGetGaslessInfo{
+			Constructor: 1949167777,
+		}
+	},
+	1763656544: func() TLObject { // 0x691f4360
+		return &TLWalletGetExistingWaltBalance{
+			Constructor: 1763656544,
+		}
+	},
+	-1944915036: func() TLObject { // 0x8c12f3a4
+		return &TLWalletGetNfts{
+			Constructor: -1944915036,
+		}
+	},
+	-862777274: func() TLObject { // 0xcc931046
+		return &TLWalletTonConnectCreateSession{
+			Constructor: -862777274,
+		}
+	},
+	864800540: func() TLObject { // 0x338bcf1c
+		return &TLWalletTonConnectRegisterKey{
+			Constructor: 864800540,
+		}
+	},
+	-1027602567: func() TLObject { // 0xc2c00779
+		return &TLWalletTonConnectSubmitConnectResult{
+			Constructor: -1027602567,
+		}
+	},
+	296673381: func() TLObject { // 0x11aee065
+		return &TLWalletTonConnectGetPending{
+			Constructor: 296673381,
+		}
+	},
+	1723169601: func() TLObject { // 0x66b57b41
+		return &TLWalletTonConnectClaimRequest{
+			Constructor: 1723169601,
+		}
+	},
+	-87655108: func() TLObject { // 0xfac67d3c
+		return &TLWalletTonConnectSubmitResponse{
+			Constructor: -87655108,
+		}
+	},
+	2002612804: func() TLObject { // 0x775d7244
+		return &TLWalletTonConnectNextEventId{
+			Constructor: 2002612804,
+		}
+	},
+	-700489266: func() TLObject { // 0xd63f61ce
+		return &TLWalletTonConnectCloseSession{
+			Constructor: -700489266,
+		}
+	},
+	-1476414098: func() TLObject { // 0xa7ffb56e
+		return &TLWalletTonConnectGetSessions{
+			Constructor: -1476414098,
 		}
 	},
 	755631473: func() TLObject { // 0x2d0a0571

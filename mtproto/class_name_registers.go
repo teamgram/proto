@@ -199,6 +199,8 @@ const (
 	Predicate_messageActionManagedBotCreated                     = "messageActionManagedBotCreated"
 	Predicate_messageActionChangeCommunity                       = "messageActionChangeCommunity"
 	Predicate_messageActionChatJoinedViaCommunity                = "messageActionChatJoinedViaCommunity"
+	Predicate_messageActionGramTransfer                          = "messageActionGramTransfer"
+	Predicate_messageActionWalletTonConnectRequest               = "messageActionWalletTonConnectRequest"
 	Predicate_dialog                                             = "dialog"
 	Predicate_dialogFolder                                       = "dialogFolder"
 	Predicate_dialogCommunity                                    = "dialogCommunity"
@@ -442,6 +444,11 @@ const (
 	Predicate_updateEditEphemeralMessage                         = "updateEditEphemeralMessage"
 	Predicate_updateEphemeralBotCallbackQuery                    = "updateEphemeralBotCallbackQuery"
 	Predicate_updateBotStarsSubscription                         = "updateBotStarsSubscription"
+	Predicate_updateWalletState                                  = "updateWalletState"
+	Predicate_updateSentWalletTransaction                        = "updateSentWalletTransaction"
+	Predicate_updateWalletGaslessInfo                            = "updateWalletGaslessInfo"
+	Predicate_updateWalletTonConnectSession                      = "updateWalletTonConnectSession"
+	Predicate_updateWalletTonConnectPendingDisconnect            = "updateWalletTonConnectPendingDisconnect"
 	Predicate_updates_state                                      = "updates_state"
 	Predicate_updates_differenceEmpty                            = "updates_differenceEmpty"
 	Predicate_updates_difference                                 = "updates_difference"
@@ -649,6 +656,7 @@ const (
 	Predicate_messageEntityDiffInsert                            = "messageEntityDiffInsert"
 	Predicate_messageEntityDiffReplace                           = "messageEntityDiffReplace"
 	Predicate_messageEntityDiffDelete                            = "messageEntityDiffDelete"
+	Predicate_messageEntityTonAddress                            = "messageEntityTonAddress"
 	Predicate_inputChannelEmpty                                  = "inputChannelEmpty"
 	Predicate_inputChannel                                       = "inputChannel"
 	Predicate_inputChannelFromMessage                            = "inputChannelFromMessage"
@@ -794,6 +802,7 @@ const (
 	Predicate_textDate                                           = "textDate"
 	Predicate_textDiff                                           = "textDiff"
 	Predicate_textButton                                         = "textButton"
+	Predicate_textTonAddress                                     = "textTonAddress"
 	Predicate_pageBlockUnsupported                               = "pageBlockUnsupported"
 	Predicate_pageBlockTitle                                     = "pageBlockTitle"
 	Predicate_pageBlockSubtitle                                  = "pageBlockSubtitle"
@@ -1591,7 +1600,6 @@ const (
 	Predicate_inputPasskeyResponseRegister                       = "inputPasskeyResponseRegister"
 	Predicate_inputPasskeyResponseLogin                          = "inputPasskeyResponseLogin"
 	Predicate_inputPasskeyCredentialPublicKey                    = "inputPasskeyCredentialPublicKey"
-	Predicate_inputPasskeyCredentialFirebasePNV                  = "inputPasskeyCredentialFirebasePNV"
 	Predicate_starGiftBackground                                 = "starGiftBackground"
 	Predicate_starGiftAuctionRound                               = "starGiftAuctionRound"
 	Predicate_starGiftAuctionRoundExtendable                     = "starGiftAuctionRoundExtendable"
@@ -1667,6 +1675,44 @@ const (
 	Predicate_pageButton                                         = "pageButton"
 	Predicate_ephemeral_welcomeMessagesNotModified               = "ephemeral_welcomeMessagesNotModified"
 	Predicate_ephemeral_welcomeMessages                          = "ephemeral_welcomeMessages"
+	Predicate_currencyRate                                       = "currencyRate"
+	Predicate_payments_currencyRates                             = "payments_currencyRates"
+	Predicate_toncenter_apiResponse                              = "toncenter_apiResponse"
+	Predicate_toncenter_streamingUrl                             = "toncenter_streamingUrl"
+	Predicate_onrampMethodAvailability                           = "onrampMethodAvailability"
+	Predicate_onrampProviderInfo                                 = "onrampProviderInfo"
+	Predicate_onrampAvailability                                 = "onrampAvailability"
+	Predicate_onrampLimits                                       = "onrampLimits"
+	Predicate_onrampQuote                                        = "onrampQuote"
+	Predicate_onrampSession                                      = "onrampSession"
+	Predicate_walletStateEmpty                                   = "walletStateEmpty"
+	Predicate_walletState                                        = "walletState"
+	Predicate_walletUserAddress                                  = "walletUserAddress"
+	Predicate_wallet_userAddresses                               = "wallet_userAddresses"
+	Predicate_walletTransactionPeerUser                          = "walletTransactionPeerUser"
+	Predicate_walletTransactionPeerAddress                       = "walletTransactionPeerAddress"
+	Predicate_walletTransactionPeerOnramp                        = "walletTransactionPeerOnramp"
+	Predicate_walletTransactionPeerUnsupported                   = "walletTransactionPeerUnsupported"
+	Predicate_walletTransaction                                  = "walletTransaction"
+	Predicate_wallet_transactions                                = "wallet_transactions"
+	Predicate_wallet_secretPhraseParts                           = "wallet_secretPhraseParts"
+	Predicate_wallet_encryptedSecretPhrasePart                   = "wallet_encryptedSecretPhrasePart"
+	Predicate_wallet_holderDc                                    = "wallet_holderDc"
+	Predicate_wallet_proofChallenge                              = "wallet_proofChallenge"
+	Predicate_walletOwnershipProof                               = "walletOwnershipProof"
+	Predicate_inputWalletNew                                     = "inputWalletNew"
+	Predicate_inputWalletImported                                = "inputWalletImported"
+	Predicate_tonConnectManifest                                 = "tonConnectManifest"
+	Predicate_tonConnectSession                                  = "tonConnectSession"
+	Predicate_wallet_tonConnectChallenge                         = "wallet_tonConnectChallenge"
+	Predicate_tonConnectNextEventId                              = "tonConnectNextEventId"
+	Predicate_tonConnectRequest                                  = "tonConnectRequest"
+	Predicate_wallet_tonConnectPending                           = "wallet_tonConnectPending"
+	Predicate_wallet_tonConnectSessions                          = "wallet_tonConnectSessions"
+	Predicate_wallet_existingBalance                             = "wallet_existingBalance"
+	Predicate_wallet_nftAttribute                                = "wallet_nftAttribute"
+	Predicate_wallet_nftItem                                     = "wallet_nftItem"
+	Predicate_wallet_nftItems                                    = "wallet_nftItems"
 	Predicate_auth_firebasePnvIntent                             = "auth_firebasePnvIntent"
 	Predicate_invokeAfterMsg                                     = "invokeAfterMsg"
 	Predicate_invokeAfterMsgs                                    = "invokeAfterMsgs"
@@ -1705,6 +1751,7 @@ const (
 	Predicate_auth_checkPaidAuth                                 = "auth_checkPaidAuth"
 	Predicate_auth_initPasskeyLogin                              = "auth_initPasskeyLogin"
 	Predicate_auth_finishPasskeyLogin                            = "auth_finishPasskeyLogin"
+	Predicate_auth_cancelWebTokenAuthorization                   = "auth_cancelWebTokenAuthorization"
 	Predicate_auth_initFirebasePnvLogin                          = "auth_initFirebasePnvLogin"
 	Predicate_auth_finishFirebasePnvLogin                        = "auth_finishFirebasePnvLogin"
 	Predicate_auth_firebasePnvSignUp                             = "auth_firebasePnvSignUp"
@@ -2267,6 +2314,8 @@ const (
 	Predicate_bots_getAccessSettings                             = "bots_getAccessSettings"
 	Predicate_bots_editAccessSettings                            = "bots_editAccessSettings"
 	Predicate_bots_setJoinChatResults                            = "bots_setJoinChatResults"
+	Predicate_bots_addUsername                                   = "bots_addUsername"
+	Predicate_bots_removeUsername                                = "bots_removeUsername"
 	Predicate_payments_getPaymentForm                            = "payments_getPaymentForm"
 	Predicate_payments_getPaymentReceipt                         = "payments_getPaymentReceipt"
 	Predicate_payments_validateRequestedInfo                     = "payments_validateRequestedInfo"
@@ -2332,6 +2381,13 @@ const (
 	Predicate_payments_getStarGiftUpgradeAttributes              = "payments_getStarGiftUpgradeAttributes"
 	Predicate_payments_getCraftStarGifts                         = "payments_getCraftStarGifts"
 	Predicate_payments_craftStarGift                             = "payments_craftStarGift"
+	Predicate_payments_getCurrencyRates                          = "payments_getCurrencyRates"
+	Predicate_payments_getOnrampProviders                        = "payments_getOnrampProviders"
+	Predicate_payments_getOnrampBaseCurrencies                   = "payments_getOnrampBaseCurrencies"
+	Predicate_payments_getOnrampAvailability                     = "payments_getOnrampAvailability"
+	Predicate_payments_getOnrampLimits                           = "payments_getOnrampLimits"
+	Predicate_payments_getOnrampQuote                            = "payments_getOnrampQuote"
+	Predicate_payments_createOnrampSession                       = "payments_createOnrampSession"
 	Predicate_stickers_createStickerSet                          = "stickers_createStickerSet"
 	Predicate_stickers_removeStickerFromSet                      = "stickers_removeStickerFromSet"
 	Predicate_stickers_changeStickerPosition                     = "stickers_changeStickerPosition"
@@ -2481,6 +2537,34 @@ const (
 	Predicate_ephemeral_deleteWelcomeMessage                     = "ephemeral_deleteWelcomeMessage"
 	Predicate_ephemeral_deleteAllWelcomeMessages                 = "ephemeral_deleteAllWelcomeMessages"
 	Predicate_ephemeral_getWelcomeMessages                       = "ephemeral_getWelcomeMessages"
+	Predicate_toncenter_performApiRequest                        = "toncenter_performApiRequest"
+	Predicate_toncenter_getStreamingUrl                          = "toncenter_getStreamingUrl"
+	Predicate_wallet_getState                                    = "wallet_getState"
+	Predicate_wallet_getUserAddresses                            = "wallet_getUserAddresses"
+	Predicate_wallet_getTransactions                             = "wallet_getTransactions"
+	Predicate_wallet_getTransactionsByIDs                        = "wallet_getTransactionsByIDs"
+	Predicate_wallet_getTransactionsByMsgHash                    = "wallet_getTransactionsByMsgHash"
+	Predicate_wallet_exportSecretPhrase                          = "wallet_exportSecretPhrase"
+	Predicate_wallet_fetchEncryptedSecretPhrasePart              = "wallet_fetchEncryptedSecretPhrasePart"
+	Predicate_wallet_replaceWallet                               = "wallet_replaceWallet"
+	Predicate_wallet_disableBackup                               = "wallet_disableBackup"
+	Predicate_wallet_getBackupHolderDcs                          = "wallet_getBackupHolderDcs"
+	Predicate_wallet_enableBackup                                = "wallet_enableBackup"
+	Predicate_wallet_getProofChallenge                           = "wallet_getProofChallenge"
+	Predicate_wallet_sendTransfer                                = "wallet_sendTransfer"
+	Predicate_wallet_getGaslessInfo                              = "wallet_getGaslessInfo"
+	Predicate_wallet_getExistingWaltBalance                      = "wallet_getExistingWaltBalance"
+	Predicate_wallet_getNfts                                     = "wallet_getNfts"
+	Predicate_wallet_tonConnectCreateSession                     = "wallet_tonConnectCreateSession"
+	Predicate_wallet_tonConnectRegisterKey                       = "wallet_tonConnectRegisterKey"
+	Predicate_wallet_tonConnectSubmitConnectResult               = "wallet_tonConnectSubmitConnectResult"
+	Predicate_wallet_tonConnectGetPending                        = "wallet_tonConnectGetPending"
+	Predicate_wallet_tonConnectClaimRequest                      = "wallet_tonConnectClaimRequest"
+	Predicate_wallet_tonConnectSubmitResponse                    = "wallet_tonConnectSubmitResponse"
+	Predicate_wallet_tonConnectNextEventId                       = "wallet_tonConnectNextEventId"
+	Predicate_wallet_tonConnectCloseSession                      = "wallet_tonConnectCloseSession"
+	Predicate_wallet_tonConnectGetSessions                       = "wallet_tonConnectGetSessions"
+	Predicate_inputPasskeyCredentialFirebasePNV                  = "inputPasskeyCredentialFirebasePNV"
 	Predicate_keyboardButtonUrl                                  = "keyboardButtonUrl"
 	Predicate_keyboardButtonCallback                             = "keyboardButtonCallback"
 	Predicate_keyboardButtonRequestPhone                         = "keyboardButtonRequestPhone"
@@ -2705,6 +2789,7 @@ const (
 
 var clazzNameRegisters2 = map[string]map[int]int32{
 	Predicate_boolFalse: {
+		230: -1132882121, // bc799737
 		229: -1132882121, // bc799737
 		228: -1132882121, // bc799737
 		227: -1132882121, // bc799737
@@ -2800,6 +2885,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_boolTrue: {
+		230: -1720552011, // 997275b5
 		229: -1720552011, // 997275b5
 		228: -1720552011, // 997275b5
 		227: -1720552011, // 997275b5
@@ -2895,6 +2981,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_true: {
+		230: 1072550713, // 3fedd339
 		229: 1072550713, // 3fedd339
 		228: 1072550713, // 3fedd339
 		227: 1072550713, // 3fedd339
@@ -2990,6 +3077,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_error: {
+		230: -994444869, // c4b9f9bb
 		229: -994444869, // c4b9f9bb
 		228: -994444869, // c4b9f9bb
 		227: -994444869, // c4b9f9bb
@@ -3085,6 +3173,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_null: {
+		230: 1450380236, // 56730bcc
 		229: 1450380236, // 56730bcc
 		228: 1450380236, // 56730bcc
 		227: 1450380236, // 56730bcc
@@ -3180,6 +3269,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerEmpty: {
+		230: 2134579434, // 7f3b18ea
 		229: 2134579434, // 7f3b18ea
 		228: 2134579434, // 7f3b18ea
 		227: 2134579434, // 7f3b18ea
@@ -3274,6 +3364,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerSelf: {
+		230: 2107670217, // 7da07ec9
 		229: 2107670217, // 7da07ec9
 		228: 2107670217, // 7da07ec9
 		227: 2107670217, // 7da07ec9
@@ -3368,6 +3459,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerChat: {
+		230: 900291769, // 35a95cb9
 		229: 900291769, // 35a95cb9
 		228: 900291769, // 35a95cb9
 		227: 900291769, // 35a95cb9
@@ -3462,6 +3554,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerUser: {
+		230: -571955892, // dde8a54c
 		229: -571955892, // dde8a54c
 		228: -571955892, // dde8a54c
 		227: -571955892, // dde8a54c
@@ -3556,6 +3649,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerChannel: {
+		230: 666680316, // 27bcbbfc
 		229: 666680316, // 27bcbbfc
 		228: 666680316, // 27bcbbfc
 		227: 666680316, // 27bcbbfc
@@ -3650,6 +3744,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerUserFromMessage: {
+		230: -1468331492, // a87b0a1c
 		229: -1468331492, // a87b0a1c
 		228: -1468331492, // a87b0a1c
 		227: -1468331492, // a87b0a1c
@@ -3744,6 +3839,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerChannelFromMessage: {
+		230: -1121318848, // bd2a0840
 		229: -1121318848, // bd2a0840
 		228: -1121318848, // bd2a0840
 		227: -1121318848, // bd2a0840
@@ -3838,6 +3934,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputUserEmpty: {
+		230: -1182234929, // b98886cf
 		229: -1182234929, // b98886cf
 		228: -1182234929, // b98886cf
 		227: -1182234929, // b98886cf
@@ -3932,6 +4029,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputUserSelf: {
+		230: -138301121, // f7c1b13f
 		229: -138301121, // f7c1b13f
 		228: -138301121, // f7c1b13f
 		227: -138301121, // f7c1b13f
@@ -4026,6 +4124,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputUser: {
+		230: -233744186, // f21158c6
 		229: -233744186, // f21158c6
 		228: -233744186, // f21158c6
 		227: -233744186, // f21158c6
@@ -4120,6 +4219,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputUserFromMessage: {
+		230: 497305826, // 1da448e2
 		229: 497305826, // 1da448e2
 		228: 497305826, // 1da448e2
 		227: 497305826, // 1da448e2
@@ -4214,6 +4314,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPhoneContact: {
+		230: 1780335806, // 6a1dc4be
 		229: 1780335806, // 6a1dc4be
 		228: 1780335806, // 6a1dc4be
 		227: 1780335806, // 6a1dc4be
@@ -4308,6 +4409,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputFile: {
+		230: -181407105, // f52ff27f
 		229: -181407105, // f52ff27f
 		228: -181407105, // f52ff27f
 		227: -181407105, // f52ff27f
@@ -4402,6 +4504,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputFileBig: {
+		230: -95482955, // fa4f0bb5
 		229: -95482955, // fa4f0bb5
 		228: -95482955, // fa4f0bb5
 		227: -95482955, // fa4f0bb5
@@ -4496,6 +4599,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputFileStoryDocument: {
+		230: 1658620744, // 62dc8b48
 		229: 1658620744, // 62dc8b48
 		228: 1658620744, // 62dc8b48
 		227: 1658620744, // 62dc8b48
@@ -4543,6 +4647,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaEmpty: {
+		230: -1771768449, // 9664f57f
 		229: -1771768449, // 9664f57f
 		228: -1771768449, // 9664f57f
 		227: -1771768449, // 9664f57f
@@ -4637,6 +4742,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaUploadedPhoto: {
+		230: 2105767386, // 7d8375da
 		229: 2105767386, // 7d8375da
 		228: 2105767386, // 7d8375da
 		227: 2105767386, // 7d8375da
@@ -4731,6 +4837,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaPhoto: {
+		230: -475053004,  // e3af4434
 		229: -475053004,  // e3af4434
 		228: -475053004,  // e3af4434
 		227: -475053004,  // e3af4434
@@ -4825,6 +4932,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaGeoPoint: {
+		230: -104578748, // f9c44144
 		229: -104578748, // f9c44144
 		228: -104578748, // f9c44144
 		227: -104578748, // f9c44144
@@ -4919,6 +5027,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaContact: {
+		230: -122978821, // f8ab7dfb
 		229: -122978821, // f8ab7dfb
 		228: -122978821, // f8ab7dfb
 		227: -122978821, // f8ab7dfb
@@ -5013,6 +5122,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaUploadedDocument: {
+		230: 58495792,   // 37c9330
 		229: 58495792,   // 37c9330
 		228: 58495792,   // 37c9330
 		227: 58495792,   // 37c9330
@@ -5107,6 +5217,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaDocument: {
+		230: -1468646731, // a8763ab5
 		229: -1468646731, // a8763ab5
 		228: -1468646731, // a8763ab5
 		227: -1468646731, // a8763ab5
@@ -5201,6 +5312,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaVenue: {
+		230: -1052959727, // c13d1c11
 		229: -1052959727, // c13d1c11
 		228: -1052959727, // c13d1c11
 		227: -1052959727, // c13d1c11
@@ -5295,6 +5407,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaPhotoExternal: {
+		230: -440664550, // e5bbfe1a
 		229: -440664550, // e5bbfe1a
 		228: -440664550, // e5bbfe1a
 		227: -440664550, // e5bbfe1a
@@ -5389,6 +5502,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaDocumentExternal: {
+		230: 2006319353, // 779600f9
 		229: 2006319353, // 779600f9
 		228: 2006319353, // 779600f9
 		227: 2006319353, // 779600f9
@@ -5483,6 +5597,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaGame: {
+		230: -750828557, // d33f43f3
 		229: -750828557, // d33f43f3
 		228: -750828557, // d33f43f3
 		227: -750828557, // d33f43f3
@@ -5577,6 +5692,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaInvoice: {
+		230: 1080028941,  // 405fef0d
 		229: 1080028941,  // 405fef0d
 		228: 1080028941,  // 405fef0d
 		227: 1080028941,  // 405fef0d
@@ -5671,6 +5787,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaGeoLive: {
+		230: -1759532989, // 971fa843
 		229: -1759532989, // 971fa843
 		228: -1759532989, // 971fa843
 		227: -1759532989, // 971fa843
@@ -5765,6 +5882,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaPoll: {
+		230: -2009448184, // 883a4108
 		229: -2009448184, // 883a4108
 		228: -2009448184, // 883a4108
 		227: -2009448184, // 883a4108
@@ -5859,6 +5977,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaDice: {
+		230: -428884101, // e66fbf7b
 		229: -428884101, // e66fbf7b
 		228: -428884101, // e66fbf7b
 		227: -428884101, // e66fbf7b
@@ -5953,6 +6072,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaStory: {
+		230: -1979852936, // 89fdd778
 		229: -1979852936, // 89fdd778
 		228: -1979852936, // 89fdd778
 		227: -1979852936, // 89fdd778
@@ -6026,6 +6146,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaWebPage: {
+		230: -1038383031, // c21b8849
 		229: -1038383031, // c21b8849
 		228: -1038383031, // c21b8849
 		227: -1038383031, // c21b8849
@@ -6093,6 +6214,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaPaidMedia: {
+		230: -1005571194, // c4103386
 		229: -1005571194, // c4103386
 		228: -1005571194, // c4103386
 		227: -1005571194, // c4103386
@@ -6143,6 +6265,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaTodo: {
+		230: -1614454818, // 9fc55fde
 		229: -1614454818, // 9fc55fde
 		228: -1614454818, // 9fc55fde
 		227: -1614454818, // 9fc55fde
@@ -6171,6 +6294,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaStakeDice: {
+		230: -207018934, // f3a9244a
 		229: -207018934, // f3a9244a
 		228: -207018934, // f3a9244a
 		227: -207018934, // f3a9244a
@@ -6183,6 +6307,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChatPhotoEmpty: {
+		230: 480546647, // 1ca48f57
 		229: 480546647, // 1ca48f57
 		228: 480546647, // 1ca48f57
 		227: 480546647, // 1ca48f57
@@ -6277,6 +6402,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChatUploadedPhoto: {
+		230: -1110593856, // bdcdaec0
 		229: -1110593856, // bdcdaec0
 		228: -1110593856, // bdcdaec0
 		227: -1110593856, // bdcdaec0
@@ -6371,6 +6497,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChatPhoto: {
+		230: -1991004873, // 8953ad37
 		229: -1991004873, // 8953ad37
 		228: -1991004873, // 8953ad37
 		227: -1991004873, // 8953ad37
@@ -6465,6 +6592,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGeoPointEmpty: {
+		230: -457104426, // e4c123d6
 		229: -457104426, // e4c123d6
 		228: -457104426, // e4c123d6
 		227: -457104426, // e4c123d6
@@ -6559,6 +6687,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGeoPoint: {
+		230: 1210199983, // 48222faf
 		229: 1210199983, // 48222faf
 		228: 1210199983, // 48222faf
 		227: 1210199983, // 48222faf
@@ -6653,6 +6782,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPhotoEmpty: {
+		230: 483901197, // 1cd7bf0d
 		229: 483901197, // 1cd7bf0d
 		228: 483901197, // 1cd7bf0d
 		227: 483901197, // 1cd7bf0d
@@ -6747,6 +6877,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPhoto: {
+		230: 1001634122, // 3bb3b94a
 		229: 1001634122, // 3bb3b94a
 		228: 1001634122, // 3bb3b94a
 		227: 1001634122, // 3bb3b94a
@@ -6841,6 +6972,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputFileLocation: {
+		230: -539317279, // dfdaabe1
 		229: -539317279, // dfdaabe1
 		228: -539317279, // dfdaabe1
 		227: -539317279, // dfdaabe1
@@ -6935,6 +7067,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputEncryptedFileLocation: {
+		230: -182231723, // f5235d55
 		229: -182231723, // f5235d55
 		228: -182231723, // f5235d55
 		227: -182231723, // f5235d55
@@ -7029,6 +7162,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputDocumentFileLocation: {
+		230: -1160743548, // bad07584
 		229: -1160743548, // bad07584
 		228: -1160743548, // bad07584
 		227: -1160743548, // bad07584
@@ -7123,6 +7257,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSecureFileLocation: {
+		230: -876089816, // cbc7ee28
 		229: -876089816, // cbc7ee28
 		228: -876089816, // cbc7ee28
 		227: -876089816, // cbc7ee28
@@ -7217,6 +7352,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputTakeoutFileLocation: {
+		230: 700340377, // 29be5899
 		229: 700340377, // 29be5899
 		228: 700340377, // 29be5899
 		227: 700340377, // 29be5899
@@ -7311,6 +7447,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPhotoFileLocation: {
+		230: 1075322878, // 40181ffe
 		229: 1075322878, // 40181ffe
 		228: 1075322878, // 40181ffe
 		227: 1075322878, // 40181ffe
@@ -7405,6 +7542,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPhotoLegacyFileLocation: {
+		230: -667654413, // d83466f3
 		229: -667654413, // d83466f3
 		228: -667654413, // d83466f3
 		227: -667654413, // d83466f3
@@ -7499,6 +7637,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerPhotoFileLocation: {
+		230: 925204121, // 37257e99
 		229: 925204121, // 37257e99
 		228: 925204121, // 37257e99
 		227: 925204121, // 37257e99
@@ -7593,6 +7732,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetThumb: {
+		230: -1652231205, // 9d84f3db
 		229: -1652231205, // 9d84f3db
 		228: -1652231205, // 9d84f3db
 		227: -1652231205, // 9d84f3db
@@ -7687,6 +7827,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGroupCallStream: {
+		230: 93890858, // 598a92a
 		229: 93890858, // 598a92a
 		228: 93890858, // 598a92a
 		227: 93890858, // 598a92a
@@ -7781,6 +7922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerUser: {
+		230: 1498486562, // 59511722
 		229: 1498486562, // 59511722
 		228: 1498486562, // 59511722
 		227: 1498486562, // 59511722
@@ -7875,6 +8017,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerChat: {
+		230: 918946202, // 36c6019a
 		229: 918946202, // 36c6019a
 		228: 918946202, // 36c6019a
 		227: 918946202, // 36c6019a
@@ -7969,6 +8112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerChannel: {
+		230: -1566230754, // a2a5371e
 		229: -1566230754, // a2a5371e
 		228: -1566230754, // a2a5371e
 		227: -1566230754, // a2a5371e
@@ -8063,6 +8207,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_fileUnknown: {
+		230: -1432995067, // aa963b05
 		229: -1432995067, // aa963b05
 		228: -1432995067, // aa963b05
 		227: -1432995067, // aa963b05
@@ -8157,6 +8302,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_filePartial: {
+		230: 1086091090, // 40bc6f52
 		229: 1086091090, // 40bc6f52
 		228: 1086091090, // 40bc6f52
 		227: 1086091090, // 40bc6f52
@@ -8251,6 +8397,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_fileJpeg: {
+		230: 8322574, // 7efe0e
 		229: 8322574, // 7efe0e
 		228: 8322574, // 7efe0e
 		227: 8322574, // 7efe0e
@@ -8345,6 +8492,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_fileGif: {
+		230: -891180321, // cae1aadf
 		229: -891180321, // cae1aadf
 		228: -891180321, // cae1aadf
 		227: -891180321, // cae1aadf
@@ -8439,6 +8587,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_filePng: {
+		230: 172975040, // a4f63c0
 		229: 172975040, // a4f63c0
 		228: 172975040, // a4f63c0
 		227: 172975040, // a4f63c0
@@ -8533,6 +8682,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_filePdf: {
+		230: -1373745011, // ae1e508d
 		229: -1373745011, // ae1e508d
 		228: -1373745011, // ae1e508d
 		227: -1373745011, // ae1e508d
@@ -8627,6 +8777,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_fileMp3: {
+		230: 1384777335, // 528a0677
 		229: 1384777335, // 528a0677
 		228: 1384777335, // 528a0677
 		227: 1384777335, // 528a0677
@@ -8721,6 +8872,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_fileMov: {
+		230: 1258941372, // 4b09ebbc
 		229: 1258941372, // 4b09ebbc
 		228: 1258941372, // 4b09ebbc
 		227: 1258941372, // 4b09ebbc
@@ -8815,6 +8967,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_fileMp4: {
+		230: -1278304028, // b3cea0e4
 		229: -1278304028, // b3cea0e4
 		228: -1278304028, // b3cea0e4
 		227: -1278304028, // b3cea0e4
@@ -8909,6 +9062,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storage_fileWebp: {
+		230: 276907596, // 1081464c
 		229: 276907596, // 1081464c
 		228: 276907596, // 1081464c
 		227: 276907596, // 1081464c
@@ -9003,6 +9157,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userEmpty: {
+		230: -742634630, // d3bc4b7a
 		229: -742634630, // d3bc4b7a
 		228: -742634630, // d3bc4b7a
 		227: -742634630, // d3bc4b7a
@@ -9097,6 +9252,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_user: {
+		230: -1313289085, // b1b8cc83
 		229: -1313289085, // b1b8cc83
 		228: -1313289085, // b1b8cc83
 		227: 829899656,   // 31774388
@@ -9191,6 +9347,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userProfilePhotoEmpty: {
+		230: 1326562017, // 4f11bae1
 		229: 1326562017, // 4f11bae1
 		228: 1326562017, // 4f11bae1
 		227: 1326562017, // 4f11bae1
@@ -9285,6 +9442,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userProfilePhoto: {
+		230: -2100168954, // 82d1f706
 		229: -2100168954, // 82d1f706
 		228: -2100168954, // 82d1f706
 		227: -2100168954, // 82d1f706
@@ -9379,6 +9537,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userStatusEmpty: {
+		230: 164646985, // 9d05049
 		229: 164646985, // 9d05049
 		228: 164646985, // 9d05049
 		227: 164646985, // 9d05049
@@ -9473,6 +9632,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userStatusOnline: {
+		230: -306628279, // edb93949
 		229: -306628279, // edb93949
 		228: -306628279, // edb93949
 		227: -306628279, // edb93949
@@ -9567,6 +9727,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userStatusOffline: {
+		230: 9203775, // 8c703f
 		229: 9203775, // 8c703f
 		228: 9203775, // 8c703f
 		227: 9203775, // 8c703f
@@ -9661,6 +9822,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userStatusRecently: {
+		230: 2065268168, // 7b197dc8
 		229: 2065268168, // 7b197dc8
 		228: 2065268168, // 7b197dc8
 		227: 2065268168, // 7b197dc8
@@ -9755,6 +9917,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userStatusLastWeek: {
+		230: 1410997530, // 541a1d1a
 		229: 1410997530, // 541a1d1a
 		228: 1410997530, // 541a1d1a
 		227: 1410997530, // 541a1d1a
@@ -9849,6 +10012,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userStatusLastMonth: {
+		230: 1703516023, // 65899777
 		229: 1703516023, // 65899777
 		228: 1703516023, // 65899777
 		227: 1703516023, // 65899777
@@ -9943,6 +10107,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatEmpty: {
+		230: 693512293, // 29562865
 		229: 693512293, // 29562865
 		228: 693512293, // 29562865
 		227: 693512293, // 29562865
@@ -10037,6 +10202,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chat: {
+		230: 1103884886, // 41cbf256
 		229: 1103884886, // 41cbf256
 		228: 1103884886, // 41cbf256
 		227: 1103884886, // 41cbf256
@@ -10131,6 +10297,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatForbidden: {
+		230: 1704108455, // 6592a1a7
 		229: 1704108455, // 6592a1a7
 		228: 1704108455, // 6592a1a7
 		227: 1704108455, // 6592a1a7
@@ -10225,6 +10392,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channel: {
+		230: -727763770,  // d49f34c6
 		229: -727763770,  // d49f34c6
 		228: -727763770,  // d49f34c6
 		227: 473084188,   // 1c32b11c
@@ -10319,6 +10487,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelForbidden: {
+		230: 399807445, // 17d493d5
 		229: 399807445, // 17d493d5
 		228: 399807445, // 17d493d5
 		227: 399807445, // 17d493d5
@@ -10413,16 +10582,19 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_communityForbidden: {
+		230: -46343496, // fd3cdab8
 		229: -46343496, // fd3cdab8
 		228: -46343496, // fd3cdab8
 
 	},
 	Predicate_community: {
+		230: 1710221652, // 65efe954
 		229: 1710221652, // 65efe954
 		228: 1710221652, // 65efe954
 
 	},
 	Predicate_chatFull: {
+		230: 640893467,  // 2633421b
 		229: 640893467,  // 2633421b
 		228: 640893467,  // 2633421b
 		227: 640893467,  // 2633421b
@@ -10517,6 +10689,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelFull: {
+		230: -1605464774, // a04e8d3a
 		229: -1605464774, // a04e8d3a
 		228: -1605464774, // a04e8d3a
 		227: -1605464774, // a04e8d3a
@@ -10611,11 +10784,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_communityFull: {
+		230: -877157113, // cbb7a507
 		229: -877157113, // cbb7a507
 		228: -877157113, // cbb7a507
 
 	},
 	Predicate_chatParticipant: {
+		230: 954703838,   // 38e79fde
 		229: 954703838,   // 38e79fde
 		228: 954703838,   // 38e79fde
 		227: 954703838,   // 38e79fde
@@ -10710,6 +10885,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatParticipantCreator: {
+		230: -503814216, // e1f867b8
 		229: -503814216, // e1f867b8
 		228: -503814216, // e1f867b8
 		227: -503814216, // e1f867b8
@@ -10804,6 +10980,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatParticipantAdmin: {
+		230: 56677842,    // 360d5d2
 		229: 56677842,    // 360d5d2
 		228: 56677842,    // 360d5d2
 		227: 56677842,    // 360d5d2
@@ -10898,6 +11075,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatParticipantsForbidden: {
+		230: -2023500831, // 8763d3e1
 		229: -2023500831, // 8763d3e1
 		228: -2023500831, // 8763d3e1
 		227: -2023500831, // 8763d3e1
@@ -10992,6 +11170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatParticipants: {
+		230: 1018991608, // 3cbc93f8
 		229: 1018991608, // 3cbc93f8
 		228: 1018991608, // 3cbc93f8
 		227: 1018991608, // 3cbc93f8
@@ -11086,6 +11265,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatPhotoEmpty: {
+		230: 935395612, // 37c1011c
 		229: 935395612, // 37c1011c
 		228: 935395612, // 37c1011c
 		227: 935395612, // 37c1011c
@@ -11180,6 +11360,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatPhoto: {
+		230: 476978193, // 1c6e1c11
 		229: 476978193, // 1c6e1c11
 		228: 476978193, // 1c6e1c11
 		227: 476978193, // 1c6e1c11
@@ -11274,6 +11455,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEmpty: {
+		230: -1868117372, // 90a6ca84
 		229: -1868117372, // 90a6ca84
 		228: -1868117372, // 90a6ca84
 		227: -1868117372, // 90a6ca84
@@ -11368,6 +11550,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_message: {
+		230: 1979759059,  // 7600b9d3
 		229: 1979759059,  // 7600b9d3
 		228: 1979759059,  // 7600b9d3
 		227: 1979759059,  // 7600b9d3
@@ -11462,6 +11645,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageService: {
+		230: 2055212554, // 7a800e0a
 		229: 2055212554, // 7a800e0a
 		228: 2055212554, // 7a800e0a
 		227: 2055212554, // 7a800e0a
@@ -11556,6 +11740,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaEmpty: {
+		230: 1038967584, // 3ded6320
 		229: 1038967584, // 3ded6320
 		228: 1038967584, // 3ded6320
 		227: 1038967584, // 3ded6320
@@ -11650,6 +11835,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaPhoto: {
+		230: -501814429, // e216eb63
 		229: -501814429, // e216eb63
 		228: -501814429, // e216eb63
 		227: -501814429, // e216eb63
@@ -11744,6 +11930,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaGeo: {
+		230: 1457575028, // 56e0d474
 		229: 1457575028, // 56e0d474
 		228: 1457575028, // 56e0d474
 		227: 1457575028, // 56e0d474
@@ -11838,6 +12025,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaContact: {
+		230: 1882335561, // 70322949
 		229: 1882335561, // 70322949
 		228: 1882335561, // 70322949
 		227: 1882335561, // 70322949
@@ -11932,6 +12120,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaUnsupported: {
+		230: -1618676578, // 9f84f49e
 		229: -1618676578, // 9f84f49e
 		228: -1618676578, // 9f84f49e
 		227: -1618676578, // 9f84f49e
@@ -12026,6 +12215,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaDocument: {
+		230: 1389939929,  // 52d8ccd9
 		229: 1389939929,  // 52d8ccd9
 		228: 1389939929,  // 52d8ccd9
 		227: 1389939929,  // 52d8ccd9
@@ -12120,6 +12310,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaWebPage: {
+		230: -571405253,  // ddf10c3b
 		229: -571405253,  // ddf10c3b
 		228: -571405253,  // ddf10c3b
 		227: -571405253,  // ddf10c3b
@@ -12214,6 +12405,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaVenue: {
+		230: 784356159, // 2ec0533f
 		229: 784356159, // 2ec0533f
 		228: 784356159, // 2ec0533f
 		227: 784356159, // 2ec0533f
@@ -12308,6 +12500,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaGame: {
+		230: -38694904, // fdb19008
 		229: -38694904, // fdb19008
 		228: -38694904, // fdb19008
 		227: -38694904, // fdb19008
@@ -12402,6 +12595,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaInvoice: {
+		230: -156940077,  // f6a548d3
 		229: -156940077,  // f6a548d3
 		228: -156940077,  // f6a548d3
 		227: -156940077,  // f6a548d3
@@ -12496,6 +12690,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaGeoLive: {
+		230: -1186937242, // b940c666
 		229: -1186937242, // b940c666
 		228: -1186937242, // b940c666
 		227: -1186937242, // b940c666
@@ -12590,6 +12785,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaPoll: {
+		230: 2000637542, // 773f4e66
 		229: 2000637542, // 773f4e66
 		228: 2000637542, // 773f4e66
 		227: 2000637542, // 773f4e66
@@ -12684,6 +12880,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaDice: {
+		230: 147581959,  // 8cbec07
 		229: 147581959,  // 8cbec07
 		228: 147581959,  // 8cbec07
 		227: 147581959,  // 8cbec07
@@ -12778,6 +12975,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaStory: {
+		230: 1758159491, // 68cb6283
 		229: 1758159491, // 68cb6283
 		228: 1758159491, // 68cb6283
 		227: 1758159491, // 68cb6283
@@ -12851,6 +13049,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaGiveaway: {
+		230: -1442366485, // aa073beb
 		229: -1442366485, // aa073beb
 		228: -1442366485, // aa073beb
 		227: -1442366485, // aa073beb
@@ -12918,6 +13117,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaGiveawayResults: {
+		230: -827703647, // ceaa3ea1
 		229: -827703647, // ceaa3ea1
 		228: -827703647, // ceaa3ea1
 		227: -827703647, // ceaa3ea1
@@ -12983,6 +13183,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaPaidMedia: {
+		230: -1467669359, // a8852491
 		229: -1467669359, // a8852491
 		228: -1467669359, // a8852491
 		227: -1467669359, // a8852491
@@ -13033,6 +13234,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaToDo: {
+		230: -1974226924, // 8a53b014
 		229: -1974226924, // 8a53b014
 		228: -1974226924, // 8a53b014
 		227: -1974226924, // 8a53b014
@@ -13061,6 +13263,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageMediaVideoStream: {
+		230: -899896439, // ca5cab89
 		229: -899896439, // ca5cab89
 		228: -899896439, // ca5cab89
 		227: -899896439, // ca5cab89
@@ -13077,6 +13280,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionEmpty: {
+		230: -1230047312, // b6aef7b0
 		229: -1230047312, // b6aef7b0
 		228: -1230047312, // b6aef7b0
 		227: -1230047312, // b6aef7b0
@@ -13171,6 +13375,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatCreate: {
+		230: -1119368275, // bd47cbad
 		229: -1119368275, // bd47cbad
 		228: -1119368275, // bd47cbad
 		227: -1119368275, // bd47cbad
@@ -13265,6 +13470,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatEditTitle: {
+		230: -1247687078, // b5a1ce5a
 		229: -1247687078, // b5a1ce5a
 		228: -1247687078, // b5a1ce5a
 		227: -1247687078, // b5a1ce5a
@@ -13359,6 +13565,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatEditPhoto: {
+		230: 2144015272, // 7fcb13a8
 		229: 2144015272, // 7fcb13a8
 		228: 2144015272, // 7fcb13a8
 		227: 2144015272, // 7fcb13a8
@@ -13453,6 +13660,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatDeletePhoto: {
+		230: -1780220945, // 95e3fbef
 		229: -1780220945, // 95e3fbef
 		228: -1780220945, // 95e3fbef
 		227: -1780220945, // 95e3fbef
@@ -13547,6 +13755,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatAddUser: {
+		230: 365886720, // 15cefd00
 		229: 365886720, // 15cefd00
 		228: 365886720, // 15cefd00
 		227: 365886720, // 15cefd00
@@ -13641,6 +13850,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatDeleteUser: {
+		230: -1539362612, // a43f30cc
 		229: -1539362612, // a43f30cc
 		228: -1539362612, // a43f30cc
 		227: -1539362612, // a43f30cc
@@ -13735,6 +13945,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatJoinedByLink: {
+		230: 51520707, // 31224c3
 		229: 51520707, // 31224c3
 		228: 51520707, // 31224c3
 		227: 51520707, // 31224c3
@@ -13829,6 +14040,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChannelCreate: {
+		230: -1781355374, // 95d2ac92
 		229: -1781355374, // 95d2ac92
 		228: -1781355374, // 95d2ac92
 		227: -1781355374, // 95d2ac92
@@ -13923,6 +14135,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatMigrateTo: {
+		230: -519864430, // e1037f92
 		229: -519864430, // e1037f92
 		228: -519864430, // e1037f92
 		227: -519864430, // e1037f92
@@ -14017,6 +14230,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChannelMigrateFrom: {
+		230: -365344535, // ea3948e9
 		229: -365344535, // ea3948e9
 		228: -365344535, // ea3948e9
 		227: -365344535, // ea3948e9
@@ -14111,6 +14325,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPinMessage: {
+		230: -1799538451, // 94bd38ed
 		229: -1799538451, // 94bd38ed
 		228: -1799538451, // 94bd38ed
 		227: -1799538451, // 94bd38ed
@@ -14205,6 +14420,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionHistoryClear: {
+		230: -1615153660, // 9fbab604
 		229: -1615153660, // 9fbab604
 		228: -1615153660, // 9fbab604
 		227: -1615153660, // 9fbab604
@@ -14299,6 +14515,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGameScore: {
+		230: -1834538890, // 92a72876
 		229: -1834538890, // 92a72876
 		228: -1834538890, // 92a72876
 		227: -1834538890, // 92a72876
@@ -14393,6 +14610,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPaymentSentMe: {
+		230: -6288180,    // ffa00ccc
 		229: -6288180,    // ffa00ccc
 		228: -6288180,    // ffa00ccc
 		227: -6288180,    // ffa00ccc
@@ -14487,6 +14705,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPaymentSent: {
+		230: -970673810,  // c624b16e
 		229: -970673810,  // c624b16e
 		228: -970673810,  // c624b16e
 		227: -970673810,  // c624b16e
@@ -14581,6 +14800,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPhoneCall: {
+		230: -2132731265, // 80e11a7f
 		229: -2132731265, // 80e11a7f
 		228: -2132731265, // 80e11a7f
 		227: -2132731265, // 80e11a7f
@@ -14675,6 +14895,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionScreenshotTaken: {
+		230: 1200788123, // 4792929b
 		229: 1200788123, // 4792929b
 		228: 1200788123, // 4792929b
 		227: 1200788123, // 4792929b
@@ -14769,6 +14990,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionCustomAction: {
+		230: -85549226, // fae69f56
 		229: -85549226, // fae69f56
 		228: -85549226, // fae69f56
 		227: -85549226, // fae69f56
@@ -14863,6 +15085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionBotAllowed: {
+		230: -988359047,  // c516d679
 		229: -988359047,  // c516d679
 		228: -988359047,  // c516d679
 		227: -988359047,  // c516d679
@@ -14957,6 +15180,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSecureValuesSentMe: {
+		230: 455635795, // 1b287353
 		229: 455635795, // 1b287353
 		228: 455635795, // 1b287353
 		227: 455635795, // 1b287353
@@ -15051,6 +15275,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSecureValuesSent: {
+		230: -648257196, // d95c6154
 		229: -648257196, // d95c6154
 		228: -648257196, // d95c6154
 		227: -648257196, // d95c6154
@@ -15145,6 +15370,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionContactSignUp: {
+		230: -202219658, // f3f25f76
 		229: -202219658, // f3f25f76
 		228: -202219658, // f3f25f76
 		227: -202219658, // f3f25f76
@@ -15239,6 +15465,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGeoProximityReached: {
+		230: -1730095465, // 98e0d697
 		229: -1730095465, // 98e0d697
 		228: -1730095465, // 98e0d697
 		227: -1730095465, // 98e0d697
@@ -15333,6 +15560,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGroupCall: {
+		230: 2047704898, // 7a0d7f42
 		229: 2047704898, // 7a0d7f42
 		228: 2047704898, // 7a0d7f42
 		227: 2047704898, // 7a0d7f42
@@ -15427,6 +15655,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionInviteToGroupCall: {
+		230: 1345295095, // 502f92f7
 		229: 1345295095, // 502f92f7
 		228: 1345295095, // 502f92f7
 		227: 1345295095, // 502f92f7
@@ -15521,6 +15750,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSetMessagesTTL: {
+		230: 1007897979,  // 3c134d7b
 		229: 1007897979,  // 3c134d7b
 		228: 1007897979,  // 3c134d7b
 		227: 1007897979,  // 3c134d7b
@@ -15615,6 +15845,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGroupCallScheduled: {
+		230: -1281329567, // b3a07661
 		229: -1281329567, // b3a07661
 		228: -1281329567, // b3a07661
 		227: -1281329567, // b3a07661
@@ -15709,6 +15940,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSetChatTheme: {
+		230: -1189364422, // b91bbd3a
 		229: -1189364422, // b91bbd3a
 		228: -1189364422, // b91bbd3a
 		227: -1189364422, // b91bbd3a
@@ -15803,6 +16035,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChatJoinedByRequest: {
+		230: -339958837, // ebbca3cb
 		229: -339958837, // ebbca3cb
 		228: -339958837, // ebbca3cb
 		227: -339958837, // ebbca3cb
@@ -15897,6 +16130,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionWebViewDataSentMe: {
+		230: 1205698681, // 47dd8079
 		229: 1205698681, // 47dd8079
 		228: 1205698681, // 47dd8079
 		227: 1205698681, // 47dd8079
@@ -15990,6 +16224,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionWebViewDataSent: {
+		230: -1262252875, // b4c38cb5
 		229: -1262252875, // b4c38cb5
 		228: -1262252875, // b4c38cb5
 		227: -1262252875, // b4c38cb5
@@ -16083,6 +16318,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGiftPremium: {
+		230: 1223234306,  // 48e91302
 		229: 1223234306,  // 48e91302
 		228: 1223234306,  // 48e91302
 		227: 1223234306,  // 48e91302
@@ -16172,6 +16408,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionTopicCreate: {
+		230: 228168278, // d999256
 		229: 228168278, // d999256
 		228: 228168278, // d999256
 		227: 228168278, // d999256
@@ -16257,6 +16494,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionTopicEdit: {
+		230: -1064024032, // c0944820
 		229: -1064024032, // c0944820
 		228: -1064024032, // c0944820
 		227: -1064024032, // c0944820
@@ -16342,6 +16580,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSuggestProfilePhoto: {
+		230: 1474192222, // 57de635e
 		229: 1474192222, // 57de635e
 		228: 1474192222, // 57de635e
 		227: 1474192222, // 57de635e
@@ -16424,6 +16663,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionRequestedPeer: {
+		230: 827428507, // 31518e9b
 		229: 827428507, // 31518e9b
 		228: 827428507, // 31518e9b
 		227: 827428507, // 31518e9b
@@ -16505,6 +16745,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSetChatWallPaper: {
+		230: 1348510708,  // 5060a3f4
 		229: 1348510708,  // 5060a3f4
 		228: 1348510708,  // 5060a3f4
 		227: 1348510708,  // 5060a3f4
@@ -16580,6 +16821,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGiftCode: {
+		230: 834962247,  // 31c48347
 		229: 834962247,  // 31c48347
 		228: 834962247,  // 31c48347
 		227: 834962247,  // 31c48347
@@ -16647,6 +16889,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGiveawayLaunch: {
+		230: -1475391004, // a80f51e4
 		229: -1475391004, // a80f51e4
 		228: -1475391004, // a80f51e4
 		227: -1475391004, // a80f51e4
@@ -16714,6 +16957,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGiveawayResults: {
+		230: -2015170219, // 87e2f155
 		229: -2015170219, // 87e2f155
 		228: -2015170219, // 87e2f155
 		227: -2015170219, // 87e2f155
@@ -16780,6 +17024,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionBoostApply: {
+		230: -872240531, // cc02aa6d
 		229: -872240531, // cc02aa6d
 		228: -872240531, // cc02aa6d
 		227: -872240531, // cc02aa6d
@@ -16839,6 +17084,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionRequestedPeerSentMe: {
+		230: -1816979384, // 93b31848
 		229: -1816979384, // 93b31848
 		228: -1816979384, // 93b31848
 		227: -1816979384, // 93b31848
@@ -16895,6 +17141,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPaymentRefunded: {
+		230: 1102307842, // 41b3e202
 		229: 1102307842, // 41b3e202
 		228: 1102307842, // 41b3e202
 		227: 1102307842, // 41b3e202
@@ -16944,6 +17191,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGiftStars: {
+		230: 1171632161, // 45d5b021
 		229: 1171632161, // 45d5b021
 		228: 1171632161, // 45d5b021
 		227: 1171632161, // 45d5b021
@@ -16992,6 +17240,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPrizeStars: {
+		230: -1341372510, // b00c47a2
 		229: -1341372510, // b00c47a2
 		228: -1341372510, // b00c47a2
 		227: -1341372510, // b00c47a2
@@ -17038,6 +17287,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionStarGift: {
+		230: -366202413,  // ea2c31d3
 		229: -366202413,  // ea2c31d3
 		228: -366202413,  // ea2c31d3
 		227: -366202413,  // ea2c31d3
@@ -17082,6 +17332,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionStarGiftUnique: {
+		230: 2115768711,  // 7e1c1187
 		229: 2115768711,  // 7e1c1187
 		228: -423422686,  // e6c31522
 		227: -423422686,  // e6c31522
@@ -17119,6 +17370,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPaidMessagesRefunded: {
+		230: -1407246387, // ac1f1fcd
 		229: -1407246387, // ac1f1fcd
 		228: -1407246387, // ac1f1fcd
 		227: -1407246387, // ac1f1fcd
@@ -17151,6 +17403,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPaidMessagesPrice: {
+		230: -2068281992, // 84b88578
 		229: -2068281992, // 84b88578
 		228: -2068281992, // 84b88578
 		227: -2068281992, // 84b88578
@@ -17183,6 +17436,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionConferenceCall: {
+		230: 805187450, // 2ffe2f7a
 		229: 805187450, // 2ffe2f7a
 		228: 805187450, // 2ffe2f7a
 		227: 805187450, // 2ffe2f7a
@@ -17214,6 +17468,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionTodoCompletions: {
+		230: -864265079, // cc7c5c89
 		229: -864265079, // cc7c5c89
 		228: -864265079, // cc7c5c89
 		227: -864265079, // cc7c5c89
@@ -17242,6 +17497,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionTodoAppendTasks: {
+		230: -940721021, // c7edbc83
 		229: -940721021, // c7edbc83
 		228: -940721021, // c7edbc83
 		227: -940721021, // c7edbc83
@@ -17270,6 +17526,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSuggestedPostApproval: {
+		230: -293988970, // ee7a1596
 		229: -293988970, // ee7a1596
 		228: -293988970, // ee7a1596
 		227: -293988970, // ee7a1596
@@ -17297,6 +17554,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSuggestedPostSuccess: {
+		230: -1780625559, // 95ddcf69
 		229: -1780625559, // 95ddcf69
 		228: -1780625559, // 95ddcf69
 		227: -1780625559, // 95ddcf69
@@ -17324,6 +17582,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSuggestedPostRefund: {
+		230: 1777932024, // 69f916f8
 		229: 1777932024, // 69f916f8
 		228: 1777932024, // 69f916f8
 		227: 1777932024, // 69f916f8
@@ -17351,6 +17610,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionGiftTon: {
+		230: -1465661799, // a8a3c699
 		229: -1465661799, // a8a3c699
 		228: -1465661799, // a8a3c699
 		227: -1465661799, // a8a3c699
@@ -17378,6 +17638,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionSuggestBirthday: {
+		230: 747579941, // 2c8f2a25
 		229: 747579941, // 2c8f2a25
 		228: 747579941, // 2c8f2a25
 		227: 747579941, // 2c8f2a25
@@ -17395,6 +17656,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionStarGiftPurchaseOffer: {
+		230: 2000845012, // 774278d4
 		229: 2000845012, // 774278d4
 		228: 2000845012, // 774278d4
 		227: 2000845012, // 774278d4
@@ -17408,6 +17670,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionStarGiftPurchaseOfferDeclined: {
+		230: 1940760427, // 73ada76b
 		229: 1940760427, // 73ada76b
 		228: 1940760427, // 73ada76b
 		227: 1940760427, // 73ada76b
@@ -17421,6 +17684,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionNewCreatorPending: {
+		230: -1333866363, // b07ed085
 		229: -1333866363, // b07ed085
 		228: -1333866363, // b07ed085
 		227: -1333866363, // b07ed085
@@ -17432,6 +17696,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChangeCreator: {
+		230: -511160261, // e188503b
 		229: -511160261, // e188503b
 		228: -511160261, // e188503b
 		227: -511160261, // e188503b
@@ -17443,6 +17708,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionNoForwardsToggle: {
+		230: -1082301070, // bf7d6572
 		229: -1082301070, // bf7d6572
 		228: -1082301070, // bf7d6572
 		227: -1082301070, // bf7d6572
@@ -17453,6 +17719,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionNoForwardsRequest: {
+		230: 1042781114, // 3e2793ba
 		229: 1042781114, // 3e2793ba
 		228: 1042781114, // 3e2793ba
 		227: 1042781114, // 3e2793ba
@@ -17463,6 +17730,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPollAppendAnswer: {
+		230: -1650340500, // 9da1cd6c
 		229: -1650340500, // 9da1cd6c
 		228: -1650340500, // 9da1cd6c
 		227: -1650340500, // 9da1cd6c
@@ -17472,6 +17740,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionPollDeleteAnswer: {
+		230: 966161628, // 399674dc
 		229: 966161628, // 399674dc
 		228: 966161628, // 399674dc
 		227: 966161628, // 399674dc
@@ -17481,6 +17750,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionManagedBotCreated: {
+		230: 375414334, // 16605e3e
 		229: 375414334, // 16605e3e
 		228: 375414334, // 16605e3e
 		227: 375414334, // 16605e3e
@@ -17490,15 +17760,26 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageActionChangeCommunity: {
+		230: 1562426088, // 5d20bae8
 		229: 1562426088, // 5d20bae8
 		228: 1562426088, // 5d20bae8
 
 	},
 	Predicate_messageActionChatJoinedViaCommunity: {
+		230: 1250688640, // 4a8bfe80
 		229: 1250688640, // 4a8bfe80
 
 	},
+	Predicate_messageActionGramTransfer: {
+		230: -1825969613, // 9329ea33
+
+	},
+	Predicate_messageActionWalletTonConnectRequest: {
+		230: 1773716671, // 69b8c4bf
+
+	},
 	Predicate_dialog: {
+		230: -58066957,   // fc89f7f3
 		229: -58066957,   // fc89f7f3
 		228: -58066957,   // fc89f7f3
 		227: -58066957,   // fc89f7f3
@@ -17593,6 +17874,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogFolder: {
+		230: 1908216652, // 71bd134c
 		229: 1908216652, // 71bd134c
 		228: 1908216652, // 71bd134c
 		227: 1908216652, // 71bd134c
@@ -17687,11 +17969,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogCommunity: {
+		230: -141948557, // f78a0973
 		229: -141948557, // f78a0973
 		228: -141948557, // f78a0973
 
 	},
 	Predicate_photoEmpty: {
+		230: 590459437, // 2331b22d
 		229: 590459437, // 2331b22d
 		228: 590459437, // 2331b22d
 		227: 590459437, // 2331b22d
@@ -17786,6 +18070,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photo: {
+		230: -82216347, // fb197a65
 		229: -82216347, // fb197a65
 		228: -82216347, // fb197a65
 		227: -82216347, // fb197a65
@@ -17880,6 +18165,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photoSizeEmpty: {
+		230: 236446268, // e17e23c
 		229: 236446268, // e17e23c
 		228: 236446268, // e17e23c
 		227: 236446268, // e17e23c
@@ -17974,6 +18260,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photoSize: {
+		230: 1976012384, // 75c78e60
 		229: 1976012384, // 75c78e60
 		228: 1976012384, // 75c78e60
 		227: 1976012384, // 75c78e60
@@ -18068,6 +18355,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photoCachedSize: {
+		230: 35527382, // 21e1ad6
 		229: 35527382, // 21e1ad6
 		228: 35527382, // 21e1ad6
 		227: 35527382, // 21e1ad6
@@ -18162,6 +18450,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photoStrippedSize: {
+		230: -525288402, // e0b0bc2e
 		229: -525288402, // e0b0bc2e
 		228: -525288402, // e0b0bc2e
 		227: -525288402, // e0b0bc2e
@@ -18256,6 +18545,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photoSizeProgressive: {
+		230: -96535659, // fa3efb95
 		229: -96535659, // fa3efb95
 		228: -96535659, // fa3efb95
 		227: -96535659, // fa3efb95
@@ -18350,6 +18640,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photoPathSize: {
+		230: -668906175, // d8214d41
 		229: -668906175, // d8214d41
 		228: -668906175, // d8214d41
 		227: -668906175, // d8214d41
@@ -18444,6 +18735,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_geoPointEmpty: {
+		230: 286776671, // 1117dd5f
 		229: 286776671, // 1117dd5f
 		228: 286776671, // 1117dd5f
 		227: 286776671, // 1117dd5f
@@ -18538,6 +18830,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_geoPoint: {
+		230: -1297942941, // b2a2f663
 		229: -1297942941, // b2a2f663
 		228: -1297942941, // b2a2f663
 		227: -1297942941, // b2a2f663
@@ -18632,6 +18925,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCode: {
+		230: 1577067778, // 5e002502
 		229: 1577067778, // 5e002502
 		228: 1577067778, // 5e002502
 		227: 1577067778, // 5e002502
@@ -18726,6 +19020,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeSuccess: {
+		230: 596704836, // 2390fe44
 		229: 596704836, // 2390fe44
 		228: 596704836, // 2390fe44
 		227: 596704836, // 2390fe44
@@ -18807,6 +19102,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodePaymentRequired: {
+		230: -125665601, // f8827ebf
 		229: -125665601, // f8827ebf
 		228: -125665601, // f8827ebf
 		227: -125665601, // f8827ebf
@@ -18839,6 +19135,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_authorization: {
+		230: 782418132, // 2ea2c0d4
 		229: 782418132, // 2ea2c0d4
 		228: 782418132, // 2ea2c0d4
 		227: 782418132, // 2ea2c0d4
@@ -18933,6 +19230,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_authorizationSignUpRequired: {
+		230: 1148485274, // 44747e9a
 		229: 1148485274, // 44747e9a
 		228: 1148485274, // 44747e9a
 		227: 1148485274, // 44747e9a
@@ -19027,6 +19325,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_exportedAuthorization: {
+		230: -1271602504, // b434e2b8
 		229: -1271602504, // b434e2b8
 		228: -1271602504, // b434e2b8
 		227: -1271602504, // b434e2b8
@@ -19121,6 +19420,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputNotifyPeer: {
+		230: -1195615476, // b8bc5b0c
 		229: -1195615476, // b8bc5b0c
 		228: -1195615476, // b8bc5b0c
 		227: -1195615476, // b8bc5b0c
@@ -19215,6 +19515,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputNotifyUsers: {
+		230: 423314455, // 193b4417
 		229: 423314455, // 193b4417
 		228: 423314455, // 193b4417
 		227: 423314455, // 193b4417
@@ -19309,6 +19610,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputNotifyChats: {
+		230: 1251338318, // 4a95e84e
 		229: 1251338318, // 4a95e84e
 		228: 1251338318, // 4a95e84e
 		227: 1251338318, // 4a95e84e
@@ -19403,6 +19705,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputNotifyBroadcasts: {
+		230: -1311015810, // b1db7c7e
 		229: -1311015810, // b1db7c7e
 		228: -1311015810, // b1db7c7e
 		227: -1311015810, // b1db7c7e
@@ -19497,6 +19800,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputNotifyForumTopic: {
+		230: 1548122514, // 5c467992
 		229: 1548122514, // 5c467992
 		228: 1548122514, // 5c467992
 		227: 1548122514, // 5c467992
@@ -19582,11 +19886,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputNotifyCommunity: {
+		230: 666573532, // 27bb1adc
 		229: 666573532, // 27bb1adc
 		228: 666573532, // 27bb1adc
 
 	},
 	Predicate_inputPeerNotifySettings: {
+		230: -892638494,  // cacb6ae2
 		229: -892638494,  // cacb6ae2
 		228: -892638494,  // cacb6ae2
 		227: -892638494,  // cacb6ae2
@@ -19681,6 +19987,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerNotifySettings: {
+		230: -1721619444, // 99622c0c
 		229: -1721619444, // 99622c0c
 		228: -1721619444, // 99622c0c
 		227: -1721619444, // 99622c0c
@@ -19775,6 +20082,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerSettings: {
+		230: -193510921,  // f47741f7
 		229: -193510921,  // f47741f7
 		228: -193510921,  // f47741f7
 		227: -193510921,  // f47741f7
@@ -19869,6 +20177,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_wallPaper: {
+		230: -1539849235, // a437c3ed
 		229: -1539849235, // a437c3ed
 		228: -1539849235, // a437c3ed
 		227: -1539849235, // a437c3ed
@@ -19963,6 +20272,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_wallPaperNoFile: {
+		230: -528465642, // e0804116
 		229: -528465642, // e0804116
 		228: -528465642, // e0804116
 		227: -528465642, // e0804116
@@ -20057,6 +20367,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonSpam: {
+		230: 1490799288, // 58dbcab8
 		229: 1490799288, // 58dbcab8
 		228: 1490799288, // 58dbcab8
 		227: 1490799288, // 58dbcab8
@@ -20151,6 +20462,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonViolence: {
+		230: 505595789, // 1e22c78d
 		229: 505595789, // 1e22c78d
 		228: 505595789, // 1e22c78d
 		227: 505595789, // 1e22c78d
@@ -20245,6 +20557,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonPornography: {
+		230: 777640226, // 2e59d922
 		229: 777640226, // 2e59d922
 		228: 777640226, // 2e59d922
 		227: 777640226, // 2e59d922
@@ -20339,6 +20652,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonChildAbuse: {
+		230: -1376497949, // adf44ee3
 		229: -1376497949, // adf44ee3
 		228: -1376497949, // adf44ee3
 		227: -1376497949, // adf44ee3
@@ -20433,6 +20747,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonOther: {
+		230: -1041980751, // c1e4a2b1
 		229: -1041980751, // c1e4a2b1
 		228: -1041980751, // c1e4a2b1
 		227: -1041980751, // c1e4a2b1
@@ -20527,6 +20842,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonCopyright: {
+		230: -1685456582, // 9b89f93a
 		229: -1685456582, // 9b89f93a
 		228: -1685456582, // 9b89f93a
 		227: -1685456582, // 9b89f93a
@@ -20621,6 +20937,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonGeoIrrelevant: {
+		230: -606798099, // dbd4feed
 		229: -606798099, // dbd4feed
 		228: -606798099, // dbd4feed
 		227: -606798099, // dbd4feed
@@ -20715,6 +21032,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonFake: {
+		230: -170010905, // f5ddd6e7
 		229: -170010905, // f5ddd6e7
 		228: -170010905, // f5ddd6e7
 		227: -170010905, // f5ddd6e7
@@ -20809,6 +21127,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonIllegalDrugs: {
+		230: 177124030, // a8eb2be
 		229: 177124030, // a8eb2be
 		228: 177124030, // a8eb2be
 		227: 177124030, // a8eb2be
@@ -20903,6 +21222,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReportReasonPersonalDetails: {
+		230: -1631091139, // 9ec7863d
 		229: -1631091139, // 9ec7863d
 		228: -1631091139, // 9ec7863d
 		227: -1631091139, // 9ec7863d
@@ -20997,6 +21317,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_userFull: {
+		230: 114026053,   // 6cbe645
 		229: 114026053,   // 6cbe645
 		228: 114026053,   // 6cbe645
 		227: 114026053,   // 6cbe645
@@ -21091,6 +21412,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contact: {
+		230: 341499403, // 145ade0b
 		229: 341499403, // 145ade0b
 		228: 341499403, // 145ade0b
 		227: 341499403, // 145ade0b
@@ -21185,6 +21507,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_importedContact: {
+		230: -1052885936, // c13e3c50
 		229: -1052885936, // c13e3c50
 		228: -1052885936, // c13e3c50
 		227: -1052885936, // c13e3c50
@@ -21279,6 +21602,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contactStatus: {
+		230: 383348795, // 16d9703b
 		229: 383348795, // 16d9703b
 		228: 383348795, // 16d9703b
 		227: 383348795, // 16d9703b
@@ -21373,6 +21697,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_contactsNotModified: {
+		230: -1219778094, // b74ba9d2
 		229: -1219778094, // b74ba9d2
 		228: -1219778094, // b74ba9d2
 		227: -1219778094, // b74ba9d2
@@ -21467,6 +21792,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_contacts: {
+		230: -353862078, // eae87e42
 		229: -353862078, // eae87e42
 		228: -353862078, // eae87e42
 		227: -353862078, // eae87e42
@@ -21561,6 +21887,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_importedContacts: {
+		230: 2010127419, // 77d01c3b
 		229: 2010127419, // 77d01c3b
 		228: 2010127419, // 77d01c3b
 		227: 2010127419, // 77d01c3b
@@ -21655,6 +21982,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_blocked: {
+		230: 182326673, // ade1591
 		229: 182326673, // ade1591
 		228: 182326673, // ade1591
 		227: 182326673, // ade1591
@@ -21749,6 +22077,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_blockedSlice: {
+		230: -513392236, // e1664194
 		229: -513392236, // e1664194
 		228: -513392236, // e1664194
 		227: -513392236, // e1664194
@@ -21843,6 +22172,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_dialogs: {
+		230: 364538944, // 15ba6c40
 		229: 364538944, // 15ba6c40
 		228: 364538944, // 15ba6c40
 		227: 364538944, // 15ba6c40
@@ -21937,6 +22267,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_dialogsSlice: {
+		230: 1910543603, // 71e094f3
 		229: 1910543603, // 71e094f3
 		228: 1910543603, // 71e094f3
 		227: 1910543603, // 71e094f3
@@ -22031,6 +22362,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_dialogsNotModified: {
+		230: -253500010, // f0e3e596
 		229: -253500010, // f0e3e596
 		228: -253500010, // f0e3e596
 		227: -253500010, // f0e3e596
@@ -22125,6 +22457,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_messages: {
+		230: 494135274,   // 1d73e7ea
 		229: 494135274,   // 1d73e7ea
 		228: 494135274,   // 1d73e7ea
 		227: 494135274,   // 1d73e7ea
@@ -22219,6 +22552,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_messagesSlice: {
+		230: 1595959062, // 5f206716
 		229: 1595959062, // 5f206716
 		228: 1595959062, // 5f206716
 		227: 1595959062, // 5f206716
@@ -22313,6 +22647,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_channelMessages: {
+		230: -948520370, // c776ba4e
 		229: -948520370, // c776ba4e
 		228: -948520370, // c776ba4e
 		227: -948520370, // c776ba4e
@@ -22407,6 +22742,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_messagesNotModified: {
+		230: 1951620897, // 74535f21
 		229: 1951620897, // 74535f21
 		228: 1951620897, // 74535f21
 		227: 1951620897, // 74535f21
@@ -22501,6 +22837,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_chats: {
+		230: 1694474197, // 64ff9fd5
 		229: 1694474197, // 64ff9fd5
 		228: 1694474197, // 64ff9fd5
 		227: 1694474197, // 64ff9fd5
@@ -22595,6 +22932,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_chatsSlice: {
+		230: -1663561404, // 9cd81144
 		229: -1663561404, // 9cd81144
 		228: -1663561404, // 9cd81144
 		227: -1663561404, // 9cd81144
@@ -22689,6 +23027,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_chatFull: {
+		230: -438840932, // e5d7d19c
 		229: -438840932, // e5d7d19c
 		228: -438840932, // e5d7d19c
 		227: -438840932, // e5d7d19c
@@ -22783,6 +23122,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_affectedHistory: {
+		230: -1269012015, // b45c69d1
 		229: -1269012015, // b45c69d1
 		228: -1269012015, // b45c69d1
 		227: -1269012015, // b45c69d1
@@ -22877,6 +23217,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterEmpty: {
+		230: 1474492012, // 57e2f66c
 		229: 1474492012, // 57e2f66c
 		228: 1474492012, // 57e2f66c
 		227: 1474492012, // 57e2f66c
@@ -22971,6 +23312,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterPhotos: {
+		230: -1777752804, // 9609a51c
 		229: -1777752804, // 9609a51c
 		228: -1777752804, // 9609a51c
 		227: -1777752804, // 9609a51c
@@ -23065,6 +23407,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterVideo: {
+		230: -1614803355, // 9fc00e65
 		229: -1614803355, // 9fc00e65
 		228: -1614803355, // 9fc00e65
 		227: -1614803355, // 9fc00e65
@@ -23159,6 +23502,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterPhotoVideo: {
+		230: 1458172132, // 56e9f0e4
 		229: 1458172132, // 56e9f0e4
 		228: 1458172132, // 56e9f0e4
 		227: 1458172132, // 56e9f0e4
@@ -23253,6 +23597,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterDocument: {
+		230: -1629621880, // 9eddf188
 		229: -1629621880, // 9eddf188
 		228: -1629621880, // 9eddf188
 		227: -1629621880, // 9eddf188
@@ -23347,6 +23692,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterUrl: {
+		230: 2129714567, // 7ef0dd87
 		229: 2129714567, // 7ef0dd87
 		228: 2129714567, // 7ef0dd87
 		227: 2129714567, // 7ef0dd87
@@ -23441,6 +23787,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterGif: {
+		230: -3644025, // ffc86587
 		229: -3644025, // ffc86587
 		228: -3644025, // ffc86587
 		227: -3644025, // ffc86587
@@ -23535,6 +23882,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterVoice: {
+		230: 1358283666, // 50f5c392
 		229: 1358283666, // 50f5c392
 		228: 1358283666, // 50f5c392
 		227: 1358283666, // 50f5c392
@@ -23629,6 +23977,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterMusic: {
+		230: 928101534, // 3751b49e
 		229: 928101534, // 3751b49e
 		228: 928101534, // 3751b49e
 		227: 928101534, // 3751b49e
@@ -23723,6 +24072,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterChatPhotos: {
+		230: 975236280, // 3a20ecb8
 		229: 975236280, // 3a20ecb8
 		228: 975236280, // 3a20ecb8
 		227: 975236280, // 3a20ecb8
@@ -23817,6 +24167,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterPhoneCalls: {
+		230: -2134272152, // 80c99768
 		229: -2134272152, // 80c99768
 		228: -2134272152, // 80c99768
 		227: -2134272152, // 80c99768
@@ -23911,6 +24262,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterRoundVoice: {
+		230: 2054952868, // 7a7c17a4
 		229: 2054952868, // 7a7c17a4
 		228: 2054952868, // 7a7c17a4
 		227: 2054952868, // 7a7c17a4
@@ -24005,6 +24357,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterRoundVideo: {
+		230: -1253451181, // b549da53
 		229: -1253451181, // b549da53
 		228: -1253451181, // b549da53
 		227: -1253451181, // b549da53
@@ -24099,6 +24452,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterMyMentions: {
+		230: -1040652646, // c1f8e69a
 		229: -1040652646, // c1f8e69a
 		228: -1040652646, // c1f8e69a
 		227: -1040652646, // c1f8e69a
@@ -24193,6 +24547,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterGeo: {
+		230: -419271411, // e7026d0d
 		229: -419271411, // e7026d0d
 		228: -419271411, // e7026d0d
 		227: -419271411, // e7026d0d
@@ -24287,6 +24642,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterContacts: {
+		230: -530392189, // e062db83
 		229: -530392189, // e062db83
 		228: -530392189, // e062db83
 		227: -530392189, // e062db83
@@ -24381,6 +24737,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterPinned: {
+		230: 464520273, // 1bb00451
 		229: 464520273, // 1bb00451
 		228: 464520273, // 1bb00451
 		227: 464520273, // 1bb00451
@@ -24475,6 +24832,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagesFilterPoll: {
+		230: -97793782, // fa2bc90a
 		229: -97793782, // fa2bc90a
 		228: -97793782, // fa2bc90a
 		227: -97793782, // fa2bc90a
@@ -24484,6 +24842,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewMessage: {
+		230: 522914557, // 1f2b0afd
 		229: 522914557, // 1f2b0afd
 		228: 522914557, // 1f2b0afd
 		227: 522914557, // 1f2b0afd
@@ -24578,6 +24937,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateMessageID: {
+		230: 1318109142, // 4e90bfd6
 		229: 1318109142, // 4e90bfd6
 		228: 1318109142, // 4e90bfd6
 		227: 1318109142, // 4e90bfd6
@@ -24672,6 +25032,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDeleteMessages: {
+		230: -1576161051, // a20db0e5
 		229: -1576161051, // a20db0e5
 		228: -1576161051, // a20db0e5
 		227: -1576161051, // a20db0e5
@@ -24766,6 +25127,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateUserTyping: {
+		230: 706199388,   // 2a17bf5c
 		229: 706199388,   // 2a17bf5c
 		228: 706199388,   // 2a17bf5c
 		227: 706199388,   // 2a17bf5c
@@ -24860,6 +25222,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatUserTyping: {
+		230: -2092401936, // 83487af0
 		229: -2092401936, // 83487af0
 		228: -2092401936, // 83487af0
 		227: -2092401936, // 83487af0
@@ -24954,6 +25317,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatParticipants: {
+		230: 125178264, // 7761198
 		229: 125178264, // 7761198
 		228: 125178264, // 7761198
 		227: 125178264, // 7761198
@@ -25048,6 +25412,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateUserStatus: {
+		230: -440534818, // e5bdf8de
 		229: -440534818, // e5bdf8de
 		228: -440534818, // e5bdf8de
 		227: -440534818, // e5bdf8de
@@ -25142,6 +25507,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateUserName: {
+		230: -1484486364, // a7848924
 		229: -1484486364, // a7848924
 		228: -1484486364, // a7848924
 		227: -1484486364, // a7848924
@@ -25236,6 +25602,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewAuthorization: {
+		230: -1991136273, // 8951abef
 		229: -1991136273, // 8951abef
 		228: -1991136273, // 8951abef
 		227: -1991136273, // 8951abef
@@ -25306,6 +25673,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewEncryptedMessage: {
+		230: 314359194, // 12bcbd9a
 		229: 314359194, // 12bcbd9a
 		228: 314359194, // 12bcbd9a
 		227: 314359194, // 12bcbd9a
@@ -25400,6 +25768,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateEncryptedChatTyping: {
+		230: 386986326, // 1710f156
 		229: 386986326, // 1710f156
 		228: 386986326, // 1710f156
 		227: 386986326, // 1710f156
@@ -25494,6 +25863,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateEncryption: {
+		230: -1264392051, // b4a2e88d
 		229: -1264392051, // b4a2e88d
 		228: -1264392051, // b4a2e88d
 		227: -1264392051, // b4a2e88d
@@ -25588,6 +25958,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateEncryptedMessagesRead: {
+		230: 956179895, // 38fe25b7
 		229: 956179895, // 38fe25b7
 		228: 956179895, // 38fe25b7
 		227: 956179895, // 38fe25b7
@@ -25682,6 +26053,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatParticipantAdd: {
+		230: 1037718609, // 3dda5451
 		229: 1037718609, // 3dda5451
 		228: 1037718609, // 3dda5451
 		227: 1037718609, // 3dda5451
@@ -25776,6 +26148,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatParticipantDelete: {
+		230: -483443337, // e32f3d77
 		229: -483443337, // e32f3d77
 		228: -483443337, // e32f3d77
 		227: -483443337, // e32f3d77
@@ -25870,6 +26243,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDcOptions: {
+		230: -1906403213, // 8e5e9873
 		229: -1906403213, // 8e5e9873
 		228: -1906403213, // 8e5e9873
 		227: -1906403213, // 8e5e9873
@@ -25964,6 +26338,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNotifySettings: {
+		230: -1094555409, // bec268ef
 		229: -1094555409, // bec268ef
 		228: -1094555409, // bec268ef
 		227: -1094555409, // bec268ef
@@ -26058,6 +26433,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateServiceNotification: {
+		230: -337352679, // ebe46819
 		229: -337352679, // ebe46819
 		228: -337352679, // ebe46819
 		227: -337352679, // ebe46819
@@ -26152,6 +26528,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePrivacy: {
+		230: -298113238, // ee3b272a
 		229: -298113238, // ee3b272a
 		228: -298113238, // ee3b272a
 		227: -298113238, // ee3b272a
@@ -26246,6 +26623,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateUserPhone: {
+		230: 88680979, // 5492a13
 		229: 88680979, // 5492a13
 		228: 88680979, // 5492a13
 		227: 88680979, // 5492a13
@@ -26340,6 +26718,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadHistoryInbox: {
+		230: -1635468135, // 9e84bc99
 		229: -1635468135, // 9e84bc99
 		228: -1635468135, // 9e84bc99
 		227: -1635468135, // 9e84bc99
@@ -26434,6 +26813,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadHistoryOutbox: {
+		230: 791617983, // 2f2f21bf
 		229: 791617983, // 2f2f21bf
 		228: 791617983, // 2f2f21bf
 		227: 791617983, // 2f2f21bf
@@ -26528,6 +26908,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateWebPage: {
+		230: 2139689491, // 7f891213
 		229: 2139689491, // 7f891213
 		228: 2139689491, // 7f891213
 		227: 2139689491, // 7f891213
@@ -26622,6 +27003,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadMessagesContents: {
+		230: -131960447, // f8227181
 		229: -131960447, // f8227181
 		228: -131960447, // f8227181
 		227: -131960447, // f8227181
@@ -26716,6 +27098,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelTooLong: {
+		230: 277713951, // 108d941f
 		229: 277713951, // 108d941f
 		228: 277713951, // 108d941f
 		227: 277713951, // 108d941f
@@ -26810,6 +27193,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannel: {
+		230: 1666927625, // 635b4c09
 		229: 1666927625, // 635b4c09
 		228: 1666927625, // 635b4c09
 		227: 1666927625, // 635b4c09
@@ -26904,6 +27288,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewChannelMessage: {
+		230: 1656358105, // 62ba04d9
 		229: 1656358105, // 62ba04d9
 		228: 1656358105, // 62ba04d9
 		227: 1656358105, // 62ba04d9
@@ -26998,6 +27383,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadChannelInbox: {
+		230: -1842450928, // 922e6e10
 		229: -1842450928, // 922e6e10
 		228: -1842450928, // 922e6e10
 		227: -1842450928, // 922e6e10
@@ -27092,6 +27478,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDeleteChannelMessages: {
+		230: -1020437742, // c32d5b12
 		229: -1020437742, // c32d5b12
 		228: -1020437742, // c32d5b12
 		227: -1020437742, // c32d5b12
@@ -27186,6 +27573,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelMessageViews: {
+		230: -232346616, // f226ac08
 		229: -232346616, // f226ac08
 		228: -232346616, // f226ac08
 		227: -232346616, // f226ac08
@@ -27280,6 +27668,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatParticipantAdmin: {
+		230: -674602590, // d7ca61a2
 		229: -674602590, // d7ca61a2
 		228: -674602590, // d7ca61a2
 		227: -674602590, // d7ca61a2
@@ -27374,6 +27763,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewStickerSet: {
+		230: 1753886890, // 688a30aa
 		229: 1753886890, // 688a30aa
 		228: 1753886890, // 688a30aa
 		227: 1753886890, // 688a30aa
@@ -27468,6 +27858,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStickerSetsOrder: {
+		230: 196268545, // bb2d201
 		229: 196268545, // bb2d201
 		228: 196268545, // bb2d201
 		227: 196268545, // bb2d201
@@ -27562,6 +27953,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStickerSets: {
+		230: 834816008,  // 31c24808
 		229: 834816008,  // 31c24808
 		228: 834816008,  // 31c24808
 		227: 834816008,  // 31c24808
@@ -27656,6 +28048,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateSavedGifs: {
+		230: -1821035490, // 9375341e
 		229: -1821035490, // 9375341e
 		228: -1821035490, // 9375341e
 		227: -1821035490, // 9375341e
@@ -27750,6 +28143,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotInlineQuery: {
+		230: 1232025500, // 496f379c
 		229: 1232025500, // 496f379c
 		228: 1232025500, // 496f379c
 		227: 1232025500, // 496f379c
@@ -27844,6 +28238,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotInlineSend: {
+		230: 317794823, // 12f12a07
 		229: 317794823, // 12f12a07
 		228: 317794823, // 12f12a07
 		227: 317794823, // 12f12a07
@@ -27938,6 +28333,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateEditChannelMessage: {
+		230: 457133559, // 1b3f4df7
 		229: 457133559, // 1b3f4df7
 		228: 457133559, // 1b3f4df7
 		227: 457133559, // 1b3f4df7
@@ -28032,6 +28428,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotCallbackQuery: {
+		230: -1177566067, // b9cfc48d
 		229: -1177566067, // b9cfc48d
 		228: -1177566067, // b9cfc48d
 		227: -1177566067, // b9cfc48d
@@ -28126,6 +28523,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateEditMessage: {
+		230: -469536605, // e40370a3
 		229: -469536605, // e40370a3
 		228: -469536605, // e40370a3
 		227: -469536605, // e40370a3
@@ -28220,6 +28618,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateInlineBotCallbackQuery: {
+		230: 1763610706, // 691e9052
 		229: 1763610706, // 691e9052
 		228: 1763610706, // 691e9052
 		227: 1763610706, // 691e9052
@@ -28314,6 +28713,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadChannelOutbox: {
+		230: -1218471511, // b75f99a9
 		229: -1218471511, // b75f99a9
 		228: -1218471511, // b75f99a9
 		227: -1218471511, // b75f99a9
@@ -28408,6 +28808,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDraftMessage: {
+		230: -302247650, // edfc111e
 		229: -302247650, // edfc111e
 		228: -302247650, // edfc111e
 		227: -302247650, // edfc111e
@@ -28502,6 +28903,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadFeaturedStickers: {
+		230: 1461528386, // 571d2742
 		229: 1461528386, // 571d2742
 		228: 1461528386, // 571d2742
 		227: 1461528386, // 571d2742
@@ -28596,6 +28998,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateRecentStickers: {
+		230: -1706939360, // 9a422c20
 		229: -1706939360, // 9a422c20
 		228: -1706939360, // 9a422c20
 		227: -1706939360, // 9a422c20
@@ -28690,6 +29093,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateConfig: {
+		230: -1574314746, // a229dd06
 		229: -1574314746, // a229dd06
 		228: -1574314746, // a229dd06
 		227: -1574314746, // a229dd06
@@ -28784,6 +29188,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePtsChanged: {
+		230: 861169551, // 3354678f
 		229: 861169551, // 3354678f
 		228: 861169551, // 3354678f
 		227: 861169551, // 3354678f
@@ -28878,6 +29283,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelWebPage: {
+		230: 791390623, // 2f2ba99f
 		229: 791390623, // 2f2ba99f
 		228: 791390623, // 2f2ba99f
 		227: 791390623, // 2f2ba99f
@@ -28972,6 +29378,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDialogPinned: {
+		230: 1852826908, // 6e6fe51c
 		229: 1852826908, // 6e6fe51c
 		228: 1852826908, // 6e6fe51c
 		227: 1852826908, // 6e6fe51c
@@ -29066,6 +29473,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePinnedDialogs: {
+		230: -99664734, // fa0f3ca2
 		229: -99664734, // fa0f3ca2
 		228: -99664734, // fa0f3ca2
 		227: -99664734, // fa0f3ca2
@@ -29160,6 +29568,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotWebhookJSON: {
+		230: -2095595325, // 8317c0c3
 		229: -2095595325, // 8317c0c3
 		228: -2095595325, // 8317c0c3
 		227: -2095595325, // 8317c0c3
@@ -29254,6 +29663,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotWebhookJSONQuery: {
+		230: -1684914010, // 9b9240a6
 		229: -1684914010, // 9b9240a6
 		228: -1684914010, // 9b9240a6
 		227: -1684914010, // 9b9240a6
@@ -29348,6 +29758,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotShippingQuery: {
+		230: -1246823043, // b5aefd7d
 		229: -1246823043, // b5aefd7d
 		228: -1246823043, // b5aefd7d
 		227: -1246823043, // b5aefd7d
@@ -29442,6 +29853,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotPrecheckoutQuery: {
+		230: -1934976362, // 8caa9a96
 		229: -1934976362, // 8caa9a96
 		228: -1934976362, // 8caa9a96
 		227: -1934976362, // 8caa9a96
@@ -29536,6 +29948,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePhoneCall: {
+		230: -1425052898, // ab0f6b1e
 		229: -1425052898, // ab0f6b1e
 		228: -1425052898, // ab0f6b1e
 		227: -1425052898, // ab0f6b1e
@@ -29630,6 +30043,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateLangPackTooLong: {
+		230: 1180041828, // 46560264
 		229: 1180041828, // 46560264
 		228: 1180041828, // 46560264
 		227: 1180041828, // 46560264
@@ -29724,6 +30138,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateLangPack: {
+		230: 1442983757, // 56022f4d
 		229: 1442983757, // 56022f4d
 		228: 1442983757, // 56022f4d
 		227: 1442983757, // 56022f4d
@@ -29818,6 +30233,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateFavedStickers: {
+		230: -451831443, // e511996d
 		229: -451831443, // e511996d
 		228: -451831443, // e511996d
 		227: -451831443, // e511996d
@@ -29912,6 +30328,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelReadMessagesContents: {
+		230: 636691703,  // 25f324f7
 		229: 636691703,  // 25f324f7
 		228: 636691703,  // 25f324f7
 		227: 636691703,  // 25f324f7
@@ -30006,6 +30423,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateContactsReset: {
+		230: 1887741886, // 7084a7be
 		229: 1887741886, // 7084a7be
 		228: 1887741886, // 7084a7be
 		227: 1887741886, // 7084a7be
@@ -30100,6 +30518,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelAvailableMessages: {
+		230: -1304443240, // b23fc698
 		229: -1304443240, // b23fc698
 		228: -1304443240, // b23fc698
 		227: -1304443240, // b23fc698
@@ -30194,6 +30613,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDialogUnreadMark: {
+		230: -1235684802, // b658f23e
 		229: -1235684802, // b658f23e
 		228: -1235684802, // b658f23e
 		227: -1235684802, // b658f23e
@@ -30288,6 +30708,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateMessagePoll: {
+		230: -699641301,  // d64c522b
 		229: -699641301,  // d64c522b
 		228: -699641301,  // d64c522b
 		227: -699641301,  // d64c522b
@@ -30382,6 +30803,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatDefaultBannedRights: {
+		230: 1421875280, // 54c01850
 		229: 1421875280, // 54c01850
 		228: 1421875280, // 54c01850
 		227: 1421875280, // 54c01850
@@ -30476,6 +30898,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateFolderPeers: {
+		230: 422972864, // 19360dc0
 		229: 422972864, // 19360dc0
 		228: 422972864, // 19360dc0
 		227: 422972864, // 19360dc0
@@ -30570,6 +30993,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePeerSettings: {
+		230: 1786671974, // 6a7e7366
 		229: 1786671974, // 6a7e7366
 		228: 1786671974, // 6a7e7366
 		227: 1786671974, // 6a7e7366
@@ -30664,6 +31088,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePeerLocated: {
+		230: -1263546448, // b4afcfb0
 		229: -1263546448, // b4afcfb0
 		228: -1263546448, // b4afcfb0
 		227: -1263546448, // b4afcfb0
@@ -30758,6 +31183,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewScheduledMessage: {
+		230: 967122427, // 39a51dfb
 		229: 967122427, // 39a51dfb
 		228: 967122427, // 39a51dfb
 		227: 967122427, // 39a51dfb
@@ -30852,6 +31278,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDeleteScheduledMessages: {
+		230: -223929981,  // f2a71983
 		229: -223929981,  // f2a71983
 		228: -223929981,  // f2a71983
 		227: -223929981,  // f2a71983
@@ -30946,6 +31373,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateTheme: {
+		230: -2112423005, // 8216fba3
 		229: -2112423005, // 8216fba3
 		228: -2112423005, // 8216fba3
 		227: -2112423005, // 8216fba3
@@ -31040,6 +31468,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateGeoLiveViewed: {
+		230: -2027964103, // 871fb939
 		229: -2027964103, // 871fb939
 		228: -2027964103, // 871fb939
 		227: -2027964103, // 871fb939
@@ -31134,6 +31563,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateLoginToken: {
+		230: 1448076945, // 564fe691
 		229: 1448076945, // 564fe691
 		228: 1448076945, // 564fe691
 		227: 1448076945, // 564fe691
@@ -31228,6 +31658,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateMessagePollVote: {
+		230: 1989799956, // 7699f014
 		229: 1989799956, // 7699f014
 		228: 1989799956, // 7699f014
 		227: 1989799956, // 7699f014
@@ -31322,6 +31753,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDialogFilter: {
+		230: 654302845, // 26ffde7d
 		229: 654302845, // 26ffde7d
 		228: 654302845, // 26ffde7d
 		227: 654302845, // 26ffde7d
@@ -31416,6 +31848,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDialogFilterOrder: {
+		230: -1512627963, // a5d72105
 		229: -1512627963, // a5d72105
 		228: -1512627963, // a5d72105
 		227: -1512627963, // a5d72105
@@ -31510,6 +31943,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDialogFilters: {
+		230: 889491791, // 3504914f
 		229: 889491791, // 3504914f
 		228: 889491791, // 3504914f
 		227: 889491791, // 3504914f
@@ -31604,6 +32038,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePhoneCallSignalingData: {
+		230: 643940105, // 2661bf09
 		229: 643940105, // 2661bf09
 		228: 643940105, // 2661bf09
 		227: 643940105, // 2661bf09
@@ -31698,6 +32133,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelMessageForwards: {
+		230: -761649164, // d29a27f4
 		229: -761649164, // d29a27f4
 		228: -761649164, // d29a27f4
 		227: -761649164, // d29a27f4
@@ -31792,6 +32228,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadChannelDiscussionInbox: {
+		230: -693004986, // d6b19546
 		229: -693004986, // d6b19546
 		228: -693004986, // d6b19546
 		227: -693004986, // d6b19546
@@ -31886,6 +32323,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadChannelDiscussionOutbox: {
+		230: 1767677564, // 695c9e7c
 		229: 1767677564, // 695c9e7c
 		228: 1767677564, // 695c9e7c
 		227: 1767677564, // 695c9e7c
@@ -31980,6 +32418,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePeerBlocked: {
+		230: -337610926, // ebe07752
 		229: -337610926, // ebe07752
 		228: -337610926, // ebe07752
 		227: -337610926, // ebe07752
@@ -32074,6 +32513,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelUserTyping: {
+		230: -1937192669, // 8c88c923
 		229: -1937192669, // 8c88c923
 		228: -1937192669, // 8c88c923
 		227: -1937192669, // 8c88c923
@@ -32166,6 +32606,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePinnedMessages: {
+		230: -309990731, // ed85eab5
 		229: -309990731, // ed85eab5
 		228: -309990731, // ed85eab5
 		227: -309990731, // ed85eab5
@@ -32260,6 +32701,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePinnedChannelMessages: {
+		230: 1538885128, // 5bb98608
 		229: 1538885128, // 5bb98608
 		228: 1538885128, // 5bb98608
 		227: 1538885128, // 5bb98608
@@ -32354,6 +32796,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChat: {
+		230: -124097970, // f89a6a4e
 		229: -124097970, // f89a6a4e
 		228: -124097970, // f89a6a4e
 		227: -124097970, // f89a6a4e
@@ -32448,6 +32891,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateGroupCallParticipants: {
+		230: -219423922, // f2ebdb4e
 		229: -219423922, // f2ebdb4e
 		228: -219423922, // f2ebdb4e
 		227: -219423922, // f2ebdb4e
@@ -32542,6 +32986,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateGroupCall: {
+		230: -1658710304, // 9d2216e0
 		229: -1658710304, // 9d2216e0
 		228: -1658710304, // 9d2216e0
 		227: -1658710304, // 9d2216e0
@@ -32636,6 +33081,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePeerHistoryTTL: {
+		230: -1147422299, // bb9bb9a5
 		229: -1147422299, // bb9bb9a5
 		228: -1147422299, // bb9bb9a5
 		227: -1147422299, // bb9bb9a5
@@ -32730,6 +33176,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatParticipant: {
+		230: -796432838, // d087663a
 		229: -796432838, // d087663a
 		228: -796432838, // d087663a
 		227: -796432838, // d087663a
@@ -32824,6 +33271,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelParticipant: {
+		230: -1738720581, // 985d3abb
 		229: -1738720581, // 985d3abb
 		228: -1738720581, // 985d3abb
 		227: -1738720581, // 985d3abb
@@ -32918,6 +33366,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotStopped: {
+		230: -997782967, // c4870a49
 		229: -997782967, // c4870a49
 		228: -997782967, // c4870a49
 		227: -997782967, // c4870a49
@@ -33012,6 +33461,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateGroupCallConnection: {
+		230: 192428418, // b783982
 		229: 192428418, // b783982
 		228: 192428418, // b783982
 		227: 192428418, // b783982
@@ -33106,6 +33556,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotCommands: {
+		230: 1299263278, // 4d712f2e
 		229: 1299263278, // 4d712f2e
 		228: 1299263278, // 4d712f2e
 		227: 1299263278, // 4d712f2e
@@ -33200,6 +33651,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePendingJoinRequests: {
+		230: 1885586395, // 7063c3db
 		229: 1885586395, // 7063c3db
 		228: 1885586395, // 7063c3db
 		227: 1885586395, // 7063c3db
@@ -33294,6 +33746,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotChatInviteRequester: {
+		230: 2092125561, // 7cb34d79
 		229: 2092125561, // 7cb34d79
 		228: 2092125561, // 7cb34d79
 		227: 2092125561, // 7cb34d79
@@ -33388,6 +33841,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateMessageReactions: {
+		230: 506035194,  // 1e297bfa
 		229: 506035194,  // 1e297bfa
 		228: 506035194,  // 1e297bfa
 		227: 506035194,  // 1e297bfa
@@ -33482,6 +33936,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateAttachMenuBots: {
+		230: 397910539, // 17b7a20b
 		229: 397910539, // 17b7a20b
 		228: 397910539, // 17b7a20b
 		227: 397910539, // 17b7a20b
@@ -33575,6 +34030,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateWebViewResultSent: {
+		230: 361936797, // 1592b79d
 		229: 361936797, // 1592b79d
 		228: 361936797, // 1592b79d
 		227: 361936797, // 1592b79d
@@ -33668,6 +34124,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotMenuButton: {
+		230: 347625491, // 14b85813
 		229: 347625491, // 14b85813
 		228: 347625491, // 14b85813
 		227: 347625491, // 14b85813
@@ -33761,6 +34218,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateSavedRingtones: {
+		230: 1960361625, // 74d8be99
 		229: 1960361625, // 74d8be99
 		228: 1960361625, // 74d8be99
 		227: 1960361625, // 74d8be99
@@ -33854,6 +34312,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateTranscribedAudio: {
+		230: 8703322, // 84cd5a
 		229: 8703322, // 84cd5a
 		228: 8703322, // 84cd5a
 		227: 8703322, // 84cd5a
@@ -33944,6 +34403,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadFeaturedEmojiStickers: {
+		230: -78886548, // fb4c496c
 		229: -78886548, // fb4c496c
 		228: -78886548, // fb4c496c
 		227: -78886548, // fb4c496c
@@ -34033,6 +34493,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateUserEmojiStatus: {
+		230: 674706841, // 28373599
 		229: 674706841, // 28373599
 		228: 674706841, // 28373599
 		227: 674706841, // 28373599
@@ -34121,6 +34582,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateRecentEmojiStatuses: {
+		230: 821314523, // 30f443db
 		229: 821314523, // 30f443db
 		228: 821314523, // 30f443db
 		227: 821314523, // 30f443db
@@ -34209,6 +34671,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateRecentReactions: {
+		230: 1870160884, // 6f7863f4
 		229: 1870160884, // 6f7863f4
 		228: 1870160884, // 6f7863f4
 		227: 1870160884, // 6f7863f4
@@ -34297,6 +34760,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateMoveStickerSetToTop: {
+		230: -2030252155, // 86fccf85
 		229: -2030252155, // 86fccf85
 		228: -2030252155, // 86fccf85
 		227: -2030252155, // 86fccf85
@@ -34385,6 +34849,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateMessageExtendedMedia: {
+		230: -710666460, // d5a41724
 		229: -710666460, // d5a41724
 		228: -710666460, // d5a41724
 		227: -710666460, // d5a41724
@@ -34472,6 +34937,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateUser: {
+		230: 542282808, // 20529438
 		229: 542282808, // 20529438
 		228: 542282808, // 20529438
 		227: 542282808, // 20529438
@@ -34554,6 +35020,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateAutoSaveSettings: {
+		230: -335171433, // ec05b097
 		229: -335171433, // ec05b097
 		228: -335171433, // ec05b097
 		227: -335171433, // ec05b097
@@ -34635,6 +35102,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStory: {
+		230: 1974712216, // 75b3b798
 		229: 1974712216, // 75b3b798
 		228: 1974712216, // 75b3b798
 		227: 1974712216, // 75b3b798
@@ -34708,6 +35176,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadStories: {
+		230: -145845461, // f74e932b
 		229: -145845461, // f74e932b
 		228: -145845461, // f74e932b
 		227: -145845461, // f74e932b
@@ -34781,6 +35250,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStoryID: {
+		230: 468923833, // 1bf335b9
 		229: 468923833, // 1bf335b9
 		228: 468923833, // 1bf335b9
 		227: 468923833, // 1bf335b9
@@ -34854,6 +35324,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStoriesStealthMode: {
+		230: 738741697, // 2c084dc1
 		229: 738741697, // 2c084dc1
 		228: 738741697, // 2c084dc1
 		227: 738741697, // 2c084dc1
@@ -34926,6 +35397,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateSentStoryReaction: {
+		230: 2103604867, // 7d627683
 		229: 2103604867, // 7d627683
 		228: 2103604867, // 7d627683
 		227: 2103604867, // 7d627683
@@ -34998,6 +35470,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotChatBoost: {
+		230: -1873947492, // 904dd49c
 		229: -1873947492, // 904dd49c
 		228: -1873947492, // 904dd49c
 		227: -1873947492, // 904dd49c
@@ -35064,6 +35537,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChannelViewForumAsMessages: {
+		230: 129403168, // 7b68920
 		229: 129403168, // 7b68920
 		228: 129403168, // 7b68920
 		227: 129403168, // 7b68920
@@ -35130,6 +35604,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePeerWallpaper: {
+		230: -1371598819, // ae3f101d
 		229: -1371598819, // ae3f101d
 		228: -1371598819, // ae3f101d
 		227: -1371598819, // ae3f101d
@@ -35196,6 +35671,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotMessageReaction: {
+		230: -1407069234, // ac21d3ce
 		229: -1407069234, // ac21d3ce
 		228: -1407069234, // ac21d3ce
 		227: -1407069234, // ac21d3ce
@@ -35261,6 +35737,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotMessageReactions: {
+		230: 164329305, // 9cb7759
 		229: 164329305, // 9cb7759
 		228: 164329305, // 9cb7759
 		227: 164329305, // 9cb7759
@@ -35326,6 +35803,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateSavedDialogPinned: {
+		230: -1364222348, // aeaf9e74
 		229: -1364222348, // aeaf9e74
 		228: -1364222348, // aeaf9e74
 		227: -1364222348, // aeaf9e74
@@ -35389,6 +35867,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePinnedSavedDialogs: {
+		230: 1751942566, // 686c85a6
 		229: 1751942566, // 686c85a6
 		228: 1751942566, // 686c85a6
 		227: 1751942566, // 686c85a6
@@ -35452,6 +35931,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateSavedReactionTags: {
+		230: 969307186, // 39c67432
 		229: 969307186, // 39c67432
 		228: 969307186, // 39c67432
 		227: 969307186, // 39c67432
@@ -35514,6 +35994,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateSmsJob: {
+		230: -245208620, // f16269d4
 		229: -245208620, // f16269d4
 		228: -245208620, // f16269d4
 		227: -245208620, // f16269d4
@@ -35572,6 +36053,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateQuickReplies: {
+		230: -112784718, // f9470ab2
 		229: -112784718, // f9470ab2
 		228: -112784718, // f9470ab2
 		227: -112784718, // f9470ab2
@@ -35629,6 +36111,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewQuickReply: {
+		230: -180508905, // f53da717
 		229: -180508905, // f53da717
 		228: -180508905, // f53da717
 		227: -180508905, // f53da717
@@ -35686,6 +36169,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDeleteQuickReply: {
+		230: 1407644140, // 53e6f1ec
 		229: 1407644140, // 53e6f1ec
 		228: 1407644140, // 53e6f1ec
 		227: 1407644140, // 53e6f1ec
@@ -35743,6 +36227,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateQuickReplyMessage: {
+		230: 1040518415, // 3e050d0f
 		229: 1040518415, // 3e050d0f
 		228: 1040518415, // 3e050d0f
 		227: 1040518415, // 3e050d0f
@@ -35800,6 +36285,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDeleteQuickReplyMessages: {
+		230: 1450174413, // 566fe7cd
 		229: 1450174413, // 566fe7cd
 		228: 1450174413, // 566fe7cd
 		227: 1450174413, // 566fe7cd
@@ -35857,6 +36343,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotBusinessConnect: {
+		230: -1964652166, // 8ae5c97a
 		229: -1964652166, // 8ae5c97a
 		228: -1964652166, // 8ae5c97a
 		227: -1964652166, // 8ae5c97a
@@ -35913,6 +36400,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotNewBusinessMessage: {
+		230: -1646578564, // 9ddb347c
 		229: -1646578564, // 9ddb347c
 		228: -1646578564, // 9ddb347c
 		227: -1646578564, // 9ddb347c
@@ -35969,6 +36457,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotEditBusinessMessage: {
+		230: 132077692, // 7df587c
 		229: 132077692, // 7df587c
 		228: 132077692, // 7df587c
 		227: 132077692, // 7df587c
@@ -36025,6 +36514,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotDeleteBusinessMessage: {
+		230: -1607821266, // a02a982e
 		229: -1607821266, // a02a982e
 		228: -1607821266, // a02a982e
 		227: -1607821266, // a02a982e
@@ -36081,6 +36571,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewStoryReaction: {
+		230: 405070859, // 1824e40b
 		229: 405070859, // 1824e40b
 		228: 405070859, // 1824e40b
 		227: 405070859, // 1824e40b
@@ -36136,6 +36627,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStarsBalance: {
+		230: 1317053305, // 4e80a379
 		229: 1317053305, // 4e80a379
 		228: 1317053305, // 4e80a379
 		227: 1317053305, // 4e80a379
@@ -36188,6 +36680,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBusinessBotCallbackQuery: {
+		230: 513998247, // 1ea2fda7
 		229: 513998247, // 1ea2fda7
 		228: 513998247, // 1ea2fda7
 		227: 513998247, // 1ea2fda7
@@ -36239,6 +36732,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStarsRevenueStatus: {
+		230: -1518030823, // a584b019
 		229: -1518030823, // a584b019
 		228: -1518030823, // a584b019
 		227: -1518030823, // a584b019
@@ -36290,6 +36784,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotPurchasedPaidMedia: {
+		230: 675009298, // 283bd312
 		229: 675009298, // 283bd312
 		228: 675009298, // 283bd312
 		227: 675009298, // 283bd312
@@ -36336,6 +36831,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePaidReactionPrivacy: {
+		230: -1955438642, // 8b725fce
 		229: -1955438642, // 8b725fce
 		228: -1955438642, // 8b725fce
 		227: -1955438642, // 8b725fce
@@ -36382,6 +36878,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateSentPhoneCode: {
+		230: 1347068303, // 504aa18f
 		229: 1347068303, // 504aa18f
 		228: 1347068303, // 504aa18f
 		227: 1347068303, // 504aa18f
@@ -36414,6 +36911,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateGroupCallChainBlocks: {
+		230: -1535694705, // a477288f
 		229: -1535694705, // a477288f
 		228: -1535694705, // a477288f
 		227: -1535694705, // a477288f
@@ -36445,6 +36943,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadMonoForumInbox: {
+		230: 2008081266, // 77b0e372
 		229: 2008081266, // 77b0e372
 		228: 2008081266, // 77b0e372
 		227: 2008081266, // 77b0e372
@@ -36474,6 +36973,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateReadMonoForumOutbox: {
+		230: -1532521610, // a4a79376
 		229: -1532521610, // a4a79376
 		228: -1532521610, // a4a79376
 		227: -1532521610, // a4a79376
@@ -36503,6 +37003,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateMonoForumNoPaidException: {
+		230: -1618924792, // 9f812b08
 		229: -1618924792, // 9f812b08
 		228: -1618924792, // 9f812b08
 		227: -1618924792, // 9f812b08
@@ -36530,6 +37031,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateGroupCallMessage: {
+		230: -667783411, // d8326f0d
 		229: -667783411, // d8326f0d
 		228: -667783411, // d8326f0d
 		227: -667783411, // d8326f0d
@@ -36547,6 +37049,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateGroupCallEncryptedMessage: {
+		230: -917002394, // c957a766
 		229: -917002394, // c957a766
 		228: -917002394, // c957a766
 		227: -917002394, // c957a766
@@ -36564,6 +37067,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePinnedForumTopic: {
+		230: 1748708434, // 683b2c52
 		229: 1748708434, // 683b2c52
 		228: 1748708434, // 683b2c52
 		227: 1748708434, // 683b2c52
@@ -36581,6 +37085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatePinnedForumTopics: {
+		230: -554613808, // def143d0
 		229: -554613808, // def143d0
 		228: -554613808, // def143d0
 		227: -554613808, // def143d0
@@ -36598,6 +37103,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateDeleteGroupCallMessages: {
+		230: 1048963372, // 3e85e92c
 		229: 1048963372, // 3e85e92c
 		228: 1048963372, // 3e85e92c
 		227: 1048963372, // 3e85e92c
@@ -36614,6 +37120,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStarGiftAuctionState: {
+		230: 1222788802, // 48e246c2
 		229: 1222788802, // 48e246c2
 		228: 1222788802, // 48e246c2
 		227: 1222788802, // 48e246c2
@@ -36629,6 +37136,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStarGiftAuctionUserState: {
+		230: -598150370, // dc58f31e
 		229: -598150370, // dc58f31e
 		228: -598150370, // dc58f31e
 		227: -598150370, // dc58f31e
@@ -36644,6 +37152,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateEmojiGameInfo: {
+		230: -73640838, // fb9c547a
 		229: -73640838, // fb9c547a
 		228: -73640838, // fb9c547a
 		227: -73640838, // fb9c547a
@@ -36656,6 +37165,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateStarGiftCraftFail: {
+		230: -1408818108, // ac072444
 		229: -1408818108, // ac072444
 		228: -1408818108, // ac072444
 		227: -1408818108, // ac072444
@@ -36667,6 +37177,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateChatParticipantRank: {
+		230: -1115461703, // bd8367b9
 		229: -1115461703, // bd8367b9
 		228: -1115461703, // bd8367b9
 		227: -1115461703, // bd8367b9
@@ -36677,6 +37188,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateManagedBot: {
+		230: 1216408986, // 4880ed9a
 		229: 1216408986, // 4880ed9a
 		228: 1216408986, // 4880ed9a
 		227: 1216408986, // 4880ed9a
@@ -36686,6 +37198,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateBotGuestChatQuery: {
+		230: -841742019, // cdd4093d
 		229: -841742019, // cdd4093d
 		228: -841742019, // cdd4093d
 		227: -841742019, // cdd4093d
@@ -36694,6 +37207,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateAiComposeTones: {
+		230: -1945136645, // 8c0f91fb
 		229: -1945136645, // 8c0f91fb
 		228: -1945136645, // 8c0f91fb
 		227: -1945136645, // 8c0f91fb
@@ -36702,6 +37216,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateJoinChatWebViewDecision: {
+		230: -1112768912, // bdac7e70
 		229: -1112768912, // bdac7e70
 		228: -1112768912, // bdac7e70
 		227: -1112768912, // bdac7e70
@@ -36709,6 +37224,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewBotConnection: {
+		230: -1306491994, // b22083a6
 		229: -1306491994, // b22083a6
 		228: -1306491994, // b22083a6
 		227: -1306491994, // b22083a6
@@ -36716,6 +37232,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateWebBrowserSettings: {
+		230: -1013306658, // c39a2ade
 		229: -1013306658, // c39a2ade
 		228: -1013306658, // c39a2ade
 		227: -1013306658, // c39a2ade
@@ -36723,6 +37240,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateWebBrowserException: {
+		230: 335872721, // 140502d1
 		229: 335872721, // 140502d1
 		228: 335872721, // 140502d1
 		227: 335872721, // 140502d1
@@ -36730,30 +37248,56 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateNewEphemeralMessage: {
+		230: 549239713, // 20bcbba1
 		229: 549239713, // 20bcbba1
 		228: 549239713, // 20bcbba1
 
 	},
 	Predicate_updateDeleteEphemeralMessages: {
+		230: 1457257720, // 56dbfcf8
 		229: 1457257720, // 56dbfcf8
 		228: 1457257720, // 56dbfcf8
 
 	},
 	Predicate_updateEditEphemeralMessage: {
+		230: 1270583041, // 4bbb8f01
 		229: 1270583041, // 4bbb8f01
 		228: 1270583041, // 4bbb8f01
 
 	},
 	Predicate_updateEphemeralBotCallbackQuery: {
+		230: 2081454550, // 7c1079d6
 		229: 2081454550, // 7c1079d6
 
 	},
 	Predicate_updateBotStarsSubscription: {
+		230: 1812827683, // 6c0d8e23
 		229: 1812827683, // 6c0d8e23
 		228: 1812827683, // 6c0d8e23
 
 	},
+	Predicate_updateWalletState: {
+		230: 1791226538, // 6ac3f2aa
+
+	},
+	Predicate_updateSentWalletTransaction: {
+		230: -1320989366, // b1434d4a
+
+	},
+	Predicate_updateWalletGaslessInfo: {
+		230: -1464984404, // a8ae1cac
+
+	},
+	Predicate_updateWalletTonConnectSession: {
+		230: 1352896014, // 50a38e0e
+
+	},
+	Predicate_updateWalletTonConnectPendingDisconnect: {
+		230: -772898407, // d1ee8199
+
+	},
 	Predicate_updates_state: {
+		230: -1519637954, // a56c2a3e
 		229: -1519637954, // a56c2a3e
 		228: -1519637954, // a56c2a3e
 		227: -1519637954, // a56c2a3e
@@ -36848,6 +37392,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_differenceEmpty: {
+		230: 1567990072, // 5d75a138
 		229: 1567990072, // 5d75a138
 		228: 1567990072, // 5d75a138
 		227: 1567990072, // 5d75a138
@@ -36942,6 +37487,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_difference: {
+		230: 16030880, // f49ca0
 		229: 16030880, // f49ca0
 		228: 16030880, // f49ca0
 		227: 16030880, // f49ca0
@@ -37036,6 +37582,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_differenceSlice: {
+		230: -1459938943, // a8fb1981
 		229: -1459938943, // a8fb1981
 		228: -1459938943, // a8fb1981
 		227: -1459938943, // a8fb1981
@@ -37130,6 +37677,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_differenceTooLong: {
+		230: 1258196845, // 4afe8f6d
 		229: 1258196845, // 4afe8f6d
 		228: 1258196845, // 4afe8f6d
 		227: 1258196845, // 4afe8f6d
@@ -37224,6 +37772,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatesTooLong: {
+		230: -484987010, // e317af7e
 		229: -484987010, // e317af7e
 		228: -484987010, // e317af7e
 		227: -484987010, // e317af7e
@@ -37318,6 +37867,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateShortMessage: {
+		230: 826001400, // 313bc7f8
 		229: 826001400, // 313bc7f8
 		228: 826001400, // 313bc7f8
 		227: 826001400, // 313bc7f8
@@ -37412,6 +37962,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateShortChatMessage: {
+		230: 1299050149, // 4d6deea5
 		229: 1299050149, // 4d6deea5
 		228: 1299050149, // 4d6deea5
 		227: 1299050149, // 4d6deea5
@@ -37506,6 +38057,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateShort: {
+		230: 2027216577, // 78d4dec1
 		229: 2027216577, // 78d4dec1
 		228: 2027216577, // 78d4dec1
 		227: 2027216577, // 78d4dec1
@@ -37600,6 +38152,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updatesCombined: {
+		230: 1918567619, // 725b04c3
 		229: 1918567619, // 725b04c3
 		228: 1918567619, // 725b04c3
 		227: 1918567619, // 725b04c3
@@ -37694,6 +38247,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates: {
+		230: 1957577280, // 74ae4240
 		229: 1957577280, // 74ae4240
 		228: 1957577280, // 74ae4240
 		227: 1957577280, // 74ae4240
@@ -37788,6 +38342,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updateShortSentMessage: {
+		230: -1877614335, // 9015e101
 		229: -1877614335, // 9015e101
 		228: -1877614335, // 9015e101
 		227: -1877614335, // 9015e101
@@ -37882,6 +38437,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_photos: {
+		230: -1916114267, // 8dca6aa5
 		229: -1916114267, // 8dca6aa5
 		228: -1916114267, // 8dca6aa5
 		227: -1916114267, // 8dca6aa5
@@ -37976,6 +38532,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_photosSlice: {
+		230: 352657236, // 15051f54
 		229: 352657236, // 15051f54
 		228: 352657236, // 15051f54
 		227: 352657236, // 15051f54
@@ -38070,6 +38627,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_photo: {
+		230: 539045032, // 20212ca8
 		229: 539045032, // 20212ca8
 		228: 539045032, // 20212ca8
 		227: 539045032, // 20212ca8
@@ -38164,6 +38722,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_file: {
+		230: 157948117, // 96a18d5
 		229: 157948117, // 96a18d5
 		228: 157948117, // 96a18d5
 		227: 157948117, // 96a18d5
@@ -38258,6 +38817,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_fileCdnRedirect: {
+		230: -242427324, // f18cda44
 		229: -242427324, // f18cda44
 		228: -242427324, // f18cda44
 		227: -242427324, // f18cda44
@@ -38352,6 +38912,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dcOption: {
+		230: 414687501, // 18b7a10d
 		229: 414687501, // 18b7a10d
 		228: 414687501, // 18b7a10d
 		227: 414687501, // 18b7a10d
@@ -38446,6 +39007,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_config: {
+		230: -870702050, // cc1a241e
 		229: -870702050, // cc1a241e
 		228: -870702050, // cc1a241e
 		227: -870702050, // cc1a241e
@@ -38540,6 +39102,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_nearestDc: {
+		230: -1910892683, // 8e1a1775
 		229: -1910892683, // 8e1a1775
 		228: -1910892683, // 8e1a1775
 		227: -1910892683, // 8e1a1775
@@ -38634,6 +39197,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_appUpdate: {
+		230: -860107216, // ccbbce30
 		229: -860107216, // ccbbce30
 		228: -860107216, // ccbbce30
 		227: -860107216, // ccbbce30
@@ -38728,6 +39292,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_noAppUpdate: {
+		230: -1000708810, // c45a6536
 		229: -1000708810, // c45a6536
 		228: -1000708810, // c45a6536
 		227: -1000708810, // c45a6536
@@ -38822,6 +39387,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_inviteText: {
+		230: 415997816, // 18cb9f78
 		229: 415997816, // 18cb9f78
 		228: 415997816, // 18cb9f78
 		227: 415997816, // 18cb9f78
@@ -38916,6 +39482,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedChatEmpty: {
+		230: -1417756512, // ab7ec0a0
 		229: -1417756512, // ab7ec0a0
 		228: -1417756512, // ab7ec0a0
 		227: -1417756512, // ab7ec0a0
@@ -39010,6 +39577,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedChatWaiting: {
+		230: 1722964307, // 66b25953
 		229: 1722964307, // 66b25953
 		228: 1722964307, // 66b25953
 		227: 1722964307, // 66b25953
@@ -39104,6 +39672,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedChatRequested: {
+		230: 1223809356, // 48f1d94c
 		229: 1223809356, // 48f1d94c
 		228: 1223809356, // 48f1d94c
 		227: 1223809356, // 48f1d94c
@@ -39198,6 +39767,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedChat: {
+		230: 1643173063, // 61f0d4c7
 		229: 1643173063, // 61f0d4c7
 		228: 1643173063, // 61f0d4c7
 		227: 1643173063, // 61f0d4c7
@@ -39292,6 +39862,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedChatDiscarded: {
+		230: 505183301, // 1e1c7c45
 		229: 505183301, // 1e1c7c45
 		228: 505183301, // 1e1c7c45
 		227: 505183301, // 1e1c7c45
@@ -39386,6 +39957,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputEncryptedChat: {
+		230: -247351839, // f141b5e1
 		229: -247351839, // f141b5e1
 		228: -247351839, // f141b5e1
 		227: -247351839, // f141b5e1
@@ -39480,6 +40052,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedFileEmpty: {
+		230: -1038136962, // c21f497e
 		229: -1038136962, // c21f497e
 		228: -1038136962, // c21f497e
 		227: -1038136962, // c21f497e
@@ -39574,6 +40147,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedFile: {
+		230: -1476358952, // a8008cd8
 		229: -1476358952, // a8008cd8
 		228: -1476358952, // a8008cd8
 		227: -1476358952, // a8008cd8
@@ -39668,6 +40242,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputEncryptedFileEmpty: {
+		230: 406307684, // 1837c364
 		229: 406307684, // 1837c364
 		228: 406307684, // 1837c364
 		227: 406307684, // 1837c364
@@ -39762,6 +40337,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputEncryptedFileUploaded: {
+		230: 1690108678, // 64bd0306
 		229: 1690108678, // 64bd0306
 		228: 1690108678, // 64bd0306
 		227: 1690108678, // 64bd0306
@@ -39856,6 +40432,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputEncryptedFile: {
+		230: 1511503333, // 5a17b5e5
 		229: 1511503333, // 5a17b5e5
 		228: 1511503333, // 5a17b5e5
 		227: 1511503333, // 5a17b5e5
@@ -39950,6 +40527,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputEncryptedFileBigUploaded: {
+		230: 767652808, // 2dc173c8
 		229: 767652808, // 2dc173c8
 		228: 767652808, // 2dc173c8
 		227: 767652808, // 2dc173c8
@@ -40044,6 +40622,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedMessage: {
+		230: -317144808, // ed18c118
 		229: -317144808, // ed18c118
 		228: -317144808, // ed18c118
 		227: -317144808, // ed18c118
@@ -40138,6 +40717,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_encryptedMessageService: {
+		230: 594758406, // 23734b06
 		229: 594758406, // 23734b06
 		228: 594758406, // 23734b06
 		227: 594758406, // 23734b06
@@ -40232,6 +40812,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_dhConfigNotModified: {
+		230: -1058912715, // c0e24635
 		229: -1058912715, // c0e24635
 		228: -1058912715, // c0e24635
 		227: -1058912715, // c0e24635
@@ -40326,6 +40907,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_dhConfig: {
+		230: 740433629, // 2c221edd
 		229: 740433629, // 2c221edd
 		228: 740433629, // 2c221edd
 		227: 740433629, // 2c221edd
@@ -40420,6 +41002,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sentEncryptedMessage: {
+		230: 1443858741, // 560f8935
 		229: 1443858741, // 560f8935
 		228: 1443858741, // 560f8935
 		227: 1443858741, // 560f8935
@@ -40514,6 +41097,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sentEncryptedFile: {
+		230: -1802240206, // 9493ff32
 		229: -1802240206, // 9493ff32
 		228: -1802240206, // 9493ff32
 		227: -1802240206, // 9493ff32
@@ -40608,6 +41192,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputDocumentEmpty: {
+		230: 1928391342, // 72f0eaae
 		229: 1928391342, // 72f0eaae
 		228: 1928391342, // 72f0eaae
 		227: 1928391342, // 72f0eaae
@@ -40702,6 +41287,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputDocument: {
+		230: 448771445, // 1abfb575
 		229: 448771445, // 1abfb575
 		228: 448771445, // 1abfb575
 		227: 448771445, // 1abfb575
@@ -40796,6 +41382,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentEmpty: {
+		230: 922273905, // 36f8c871
 		229: 922273905, // 36f8c871
 		228: 922273905, // 36f8c871
 		227: 922273905, // 36f8c871
@@ -40890,6 +41477,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_document: {
+		230: -1881881384, // 8fd4c4d8
 		229: -1881881384, // 8fd4c4d8
 		228: -1881881384, // 8fd4c4d8
 		227: -1881881384, // 8fd4c4d8
@@ -40984,6 +41572,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_support: {
+		230: 398898678, // 17c6b5f6
 		229: 398898678, // 17c6b5f6
 		228: 398898678, // 17c6b5f6
 		227: 398898678, // 17c6b5f6
@@ -41078,6 +41667,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notifyPeer: {
+		230: -1613493288, // 9fd40bd8
 		229: -1613493288, // 9fd40bd8
 		228: -1613493288, // 9fd40bd8
 		227: -1613493288, // 9fd40bd8
@@ -41172,6 +41762,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notifyUsers: {
+		230: -1261946036, // b4c83b4c
 		229: -1261946036, // b4c83b4c
 		228: -1261946036, // b4c83b4c
 		227: -1261946036, // b4c83b4c
@@ -41266,6 +41857,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notifyChats: {
+		230: -1073230141, // c007cec3
 		229: -1073230141, // c007cec3
 		228: -1073230141, // c007cec3
 		227: -1073230141, // c007cec3
@@ -41360,6 +41952,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notifyBroadcasts: {
+		230: -703403793, // d612e8ef
 		229: -703403793, // d612e8ef
 		228: -703403793, // d612e8ef
 		227: -703403793, // d612e8ef
@@ -41454,6 +42047,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notifyForumTopic: {
+		230: 577659656, // 226e6308
 		229: 577659656, // 226e6308
 		228: 577659656, // 226e6308
 		227: 577659656, // 226e6308
@@ -41539,11 +42133,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notifyCommunity: {
+		230: -1103664743, // be376999
 		229: -1103664743, // be376999
 		228: -1103664743, // be376999
 
 	},
 	Predicate_sendMessageTypingAction: {
+		230: 381645902, // 16bf744e
 		229: 381645902, // 16bf744e
 		228: 381645902, // 16bf744e
 		227: 381645902, // 16bf744e
@@ -41638,6 +42234,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageCancelAction: {
+		230: -44119819, // fd5ec8f5
 		229: -44119819, // fd5ec8f5
 		228: -44119819, // fd5ec8f5
 		227: -44119819, // fd5ec8f5
@@ -41732,6 +42329,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageRecordVideoAction: {
+		230: -1584933265, // a187d66f
 		229: -1584933265, // a187d66f
 		228: -1584933265, // a187d66f
 		227: -1584933265, // a187d66f
@@ -41826,6 +42424,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageUploadVideoAction: {
+		230: -378127636, // e9763aec
 		229: -378127636, // e9763aec
 		228: -378127636, // e9763aec
 		227: -378127636, // e9763aec
@@ -41920,6 +42519,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageRecordAudioAction: {
+		230: -718310409, // d52f73f7
 		229: -718310409, // d52f73f7
 		228: -718310409, // d52f73f7
 		227: -718310409, // d52f73f7
@@ -42014,6 +42614,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageUploadAudioAction: {
+		230: -212740181, // f351d7ab
 		229: -212740181, // f351d7ab
 		228: -212740181, // f351d7ab
 		227: -212740181, // f351d7ab
@@ -42108,6 +42709,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageUploadPhotoAction: {
+		230: -774682074, // d1d34a26
 		229: -774682074, // d1d34a26
 		228: -774682074, // d1d34a26
 		227: -774682074, // d1d34a26
@@ -42202,6 +42804,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageUploadDocumentAction: {
+		230: -1441998364, // aa0cd9e4
 		229: -1441998364, // aa0cd9e4
 		228: -1441998364, // aa0cd9e4
 		227: -1441998364, // aa0cd9e4
@@ -42296,6 +42899,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageGeoLocationAction: {
+		230: 393186209, // 176f8ba1
 		229: 393186209, // 176f8ba1
 		228: 393186209, // 176f8ba1
 		227: 393186209, // 176f8ba1
@@ -42390,6 +42994,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageChooseContactAction: {
+		230: 1653390447, // 628cbc6f
 		229: 1653390447, // 628cbc6f
 		228: 1653390447, // 628cbc6f
 		227: 1653390447, // 628cbc6f
@@ -42484,6 +43089,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageGamePlayAction: {
+		230: -580219064, // dd6a8f48
 		229: -580219064, // dd6a8f48
 		228: -580219064, // dd6a8f48
 		227: -580219064, // dd6a8f48
@@ -42578,6 +43184,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageRecordRoundAction: {
+		230: -1997373508, // 88f27fbc
 		229: -1997373508, // 88f27fbc
 		228: -1997373508, // 88f27fbc
 		227: -1997373508, // 88f27fbc
@@ -42672,6 +43279,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageUploadRoundAction: {
+		230: 608050278, // 243e1c66
 		229: 608050278, // 243e1c66
 		228: 608050278, // 243e1c66
 		227: 608050278, // 243e1c66
@@ -42766,6 +43374,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_speakingInGroupCallAction: {
+		230: -651419003, // d92c2285
 		229: -651419003, // d92c2285
 		228: -651419003, // d92c2285
 		227: -651419003, // d92c2285
@@ -42860,6 +43469,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageHistoryImportAction: {
+		230: -606432698, // dbda9246
 		229: -606432698, // dbda9246
 		228: -606432698, // dbda9246
 		227: -606432698, // dbda9246
@@ -42954,6 +43564,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageChooseStickerAction: {
+		230: -1336228175, // b05ac6b1
 		229: -1336228175, // b05ac6b1
 		228: -1336228175, // b05ac6b1
 		227: -1336228175, // b05ac6b1
@@ -43048,6 +43659,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageEmojiInteraction: {
+		230: 630664139, // 25972bcb
 		229: 630664139, // 25972bcb
 		228: 630664139, // 25972bcb
 		227: 630664139, // 25972bcb
@@ -43142,6 +43754,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageEmojiInteractionSeen: {
+		230: -1234857938, // b665902e
 		229: -1234857938, // b665902e
 		228: -1234857938, // b665902e
 		227: -1234857938, // b665902e
@@ -43236,6 +43849,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendMessageTextDraftAction: {
+		230: 909162586, // 3630b85a
 		229: 909162586, // 3630b85a
 		228: 929929052, // 376d975c
 		227: 929929052, // 376d975c
@@ -43253,22 +43867,26 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSendMessageRichMessageDraftAction: {
+		230: -1455962178, // a937c7be
 		229: -1455962178, // a937c7be
 		228: -491635887,  // e2b23b51
 		227: -491635887,  // e2b23b51
 
 	},
 	Predicate_sendMessageRichMessageDraftAction: {
+		230: 1381386387,  // 52564893
 		229: 1381386387,  // 52564893
 		228: -1563745031, // a2cb24f9
 		227: -1563745031, // a2cb24f9
 
 	},
 	Predicate_sendMessageStopDraftAction: {
+		230: -67566928, // fbf902b0
 		229: -67566928, // fbf902b0
 
 	},
 	Predicate_contacts_found: {
+		230: -1290580579, // b3134d9d
 		229: -1290580579, // b3134d9d
 		228: -1290580579, // b3134d9d
 		227: -1290580579, // b3134d9d
@@ -43363,6 +43981,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyStatusTimestamp: {
+		230: 1335282456, // 4f96cb18
 		229: 1335282456, // 4f96cb18
 		228: 1335282456, // 4f96cb18
 		227: 1335282456, // 4f96cb18
@@ -43457,6 +44076,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyChatInvite: {
+		230: -1107622874, // bdfb0426
 		229: -1107622874, // bdfb0426
 		228: -1107622874, // bdfb0426
 		227: -1107622874, // bdfb0426
@@ -43551,6 +44171,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyPhoneCall: {
+		230: -88417185, // fabadc5f
 		229: -88417185, // fabadc5f
 		228: -88417185, // fabadc5f
 		227: -88417185, // fabadc5f
@@ -43645,6 +44266,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyPhoneP2P: {
+		230: -610373422, // db9e70d2
 		229: -610373422, // db9e70d2
 		228: -610373422, // db9e70d2
 		227: -610373422, // db9e70d2
@@ -43739,6 +44361,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyForwards: {
+		230: -1529000952, // a4dd4c08
 		229: -1529000952, // a4dd4c08
 		228: -1529000952, // a4dd4c08
 		227: -1529000952, // a4dd4c08
@@ -43833,6 +44456,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyProfilePhoto: {
+		230: 1461304012, // 5719bacc
 		229: 1461304012, // 5719bacc
 		228: 1461304012, // 5719bacc
 		227: 1461304012, // 5719bacc
@@ -43927,6 +44551,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyPhoneNumber: {
+		230: 55761658, // 352dafa
 		229: 55761658, // 352dafa
 		228: 55761658, // 352dafa
 		227: 55761658, // 352dafa
@@ -44021,6 +44646,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyAddedByPhone: {
+		230: -786326563, // d1219bdd
 		229: -786326563, // d1219bdd
 		228: -786326563, // d1219bdd
 		227: -786326563, // d1219bdd
@@ -44115,6 +44741,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyVoiceMessages: {
+		230: -1360618136, // aee69d68
 		229: -1360618136, // aee69d68
 		228: -1360618136, // aee69d68
 		227: -1360618136, // aee69d68
@@ -44204,6 +44831,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyAbout: {
+		230: 941870144, // 3823cc40
 		229: 941870144, // 3823cc40
 		228: 941870144, // 3823cc40
 		227: 941870144, // 3823cc40
@@ -44278,6 +44906,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyBirthday: {
+		230: -698740276, // d65a11cc
 		229: -698740276, // d65a11cc
 		228: -698740276, // d65a11cc
 		227: -698740276, // d65a11cc
@@ -44334,6 +44963,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyStarGiftsAutoSave: {
+		230: -512548031, // e1732341
 		229: -512548031, // e1732341
 		228: -512548031, // e1732341
 		227: -512548031, // e1732341
@@ -44374,6 +45004,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeyNoPaidMessages: {
+		230: -1111124044, // bdc597b4
 		229: -1111124044, // bdc597b4
 		228: -1111124044, // bdc597b4
 		227: -1111124044, // bdc597b4
@@ -44407,6 +45038,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyKeySavedMusic: {
+		230: 1304334886, // 4dbe9226
 		229: 1304334886, // 4dbe9226
 		228: 1304334886, // 4dbe9226
 		227: 1304334886, // 4dbe9226
@@ -44423,6 +45055,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyStatusTimestamp: {
+		230: -1137792208, // bc2eab30
 		229: -1137792208, // bc2eab30
 		228: -1137792208, // bc2eab30
 		227: -1137792208, // bc2eab30
@@ -44517,6 +45150,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyChatInvite: {
+		230: 1343122938, // 500e6dfa
 		229: 1343122938, // 500e6dfa
 		228: 1343122938, // 500e6dfa
 		227: 1343122938, // 500e6dfa
@@ -44611,6 +45245,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyPhoneCall: {
+		230: 1030105979, // 3d662b7b
 		229: 1030105979, // 3d662b7b
 		228: 1030105979, // 3d662b7b
 		227: 1030105979, // 3d662b7b
@@ -44705,6 +45340,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyPhoneP2P: {
+		230: 961092808, // 39491cc8
 		229: 961092808, // 39491cc8
 		228: 961092808, // 39491cc8
 		227: 961092808, // 39491cc8
@@ -44799,6 +45435,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyForwards: {
+		230: 1777096355, // 69ec56a3
 		229: 1777096355, // 69ec56a3
 		228: 1777096355, // 69ec56a3
 		227: 1777096355, // 69ec56a3
@@ -44893,6 +45530,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyProfilePhoto: {
+		230: -1777000467, // 96151fed
 		229: -1777000467, // 96151fed
 		228: -1777000467, // 96151fed
 		227: -1777000467, // 96151fed
@@ -44987,6 +45625,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyPhoneNumber: {
+		230: -778378131, // d19ae46d
 		229: -778378131, // d19ae46d
 		228: -778378131, // d19ae46d
 		227: -778378131, // d19ae46d
@@ -45081,6 +45720,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyAddedByPhone: {
+		230: 1124062251, // 42ffd42b
 		229: 1124062251, // 42ffd42b
 		228: 1124062251, // 42ffd42b
 		227: 1124062251, // 42ffd42b
@@ -45175,6 +45815,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyVoiceMessages: {
+		230: 110621716, // 697f414
 		229: 110621716, // 697f414
 		228: 110621716, // 697f414
 		227: 110621716, // 697f414
@@ -45264,6 +45905,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyAbout: {
+		230: -1534675103, // a486b761
 		229: -1534675103, // a486b761
 		228: -1534675103, // a486b761
 		227: -1534675103, // a486b761
@@ -45338,6 +45980,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyBirthday: {
+		230: 536913176, // 2000a518
 		229: 536913176, // 2000a518
 		228: 536913176, // 2000a518
 		227: 536913176, // 2000a518
@@ -45394,6 +46037,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyStarGiftsAutoSave: {
+		230: 749010424, // 2ca4fdf8
 		229: 749010424, // 2ca4fdf8
 		228: 749010424, // 2ca4fdf8
 		227: 749010424, // 2ca4fdf8
@@ -45434,6 +46078,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeyNoPaidMessages: {
+		230: 399722706, // 17d348d2
 		229: 399722706, // 17d348d2
 		228: 399722706, // 17d348d2
 		227: 399722706, // 17d348d2
@@ -45467,6 +46112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyKeySavedMusic: {
+		230: -8759525, // ff7a571b
 		229: -8759525, // ff7a571b
 		228: -8759525, // ff7a571b
 		227: -8759525, // ff7a571b
@@ -45483,6 +46129,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueAllowContacts: {
+		230: 218751099, // d09e07b
 		229: 218751099, // d09e07b
 		228: 218751099, // d09e07b
 		227: 218751099, // d09e07b
@@ -45577,6 +46224,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueAllowAll: {
+		230: 407582158, // 184b35ce
 		229: 407582158, // 184b35ce
 		228: 407582158, // 184b35ce
 		227: 407582158, // 184b35ce
@@ -45671,6 +46319,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueAllowUsers: {
+		230: 320652927, // 131cc67f
 		229: 320652927, // 131cc67f
 		228: 320652927, // 131cc67f
 		227: 320652927, // 131cc67f
@@ -45765,6 +46414,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueDisallowContacts: {
+		230: 195371015, // ba52007
 		229: 195371015, // ba52007
 		228: 195371015, // ba52007
 		227: 195371015, // ba52007
@@ -45859,6 +46509,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueDisallowAll: {
+		230: -697604407, // d66b66c9
 		229: -697604407, // d66b66c9
 		228: -697604407, // d66b66c9
 		227: -697604407, // d66b66c9
@@ -45953,6 +46604,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueDisallowUsers: {
+		230: -1877932953, // 90110467
 		229: -1877932953, // 90110467
 		228: -1877932953, // 90110467
 		227: -1877932953, // 90110467
@@ -46047,6 +46699,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueAllowChatParticipants: {
+		230: -2079962673, // 840649cf
 		229: -2079962673, // 840649cf
 		228: -2079962673, // 840649cf
 		227: -2079962673, // 840649cf
@@ -46141,6 +46794,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueDisallowChatParticipants: {
+		230: -380694650, // e94f0f86
 		229: -380694650, // e94f0f86
 		228: -380694650, // e94f0f86
 		227: -380694650, // e94f0f86
@@ -46235,6 +46889,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueAllowCloseFriends: {
+		230: 793067081, // 2f453e49
 		229: 793067081, // 2f453e49
 		228: 793067081, // 2f453e49
 		227: 793067081, // 2f453e49
@@ -46308,6 +46963,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueAllowPremium: {
+		230: 2009975281, // 77cdc9f1
 		229: 2009975281, // 77cdc9f1
 		228: 2009975281, // 77cdc9f1
 		227: 2009975281, // 77cdc9f1
@@ -46364,6 +47020,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueAllowBots: {
+		230: 1515179237, // 5a4fcce5
 		229: 1515179237, // 5a4fcce5
 		228: 1515179237, // 5a4fcce5
 		227: 1515179237, // 5a4fcce5
@@ -46404,6 +47061,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPrivacyValueDisallowBots: {
+		230: -991594219, // c4e57915
 		229: -991594219, // c4e57915
 		228: -991594219, // c4e57915
 		227: -991594219, // c4e57915
@@ -46444,6 +47102,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueAllowContacts: {
+		230: -123988, // fffe1bac
 		229: -123988, // fffe1bac
 		228: -123988, // fffe1bac
 		227: -123988, // fffe1bac
@@ -46538,6 +47197,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueAllowAll: {
+		230: 1698855810, // 65427b82
 		229: 1698855810, // 65427b82
 		228: 1698855810, // 65427b82
 		227: 1698855810, // 65427b82
@@ -46632,6 +47292,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueAllowUsers: {
+		230: -1198497870, // b8905fb2
 		229: -1198497870, // b8905fb2
 		228: -1198497870, // b8905fb2
 		227: -1198497870, // b8905fb2
@@ -46726,6 +47387,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueDisallowContacts: {
+		230: -125240806, // f888fa1a
 		229: -125240806, // f888fa1a
 		228: -125240806, // f888fa1a
 		227: -125240806, // f888fa1a
@@ -46820,6 +47482,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueDisallowAll: {
+		230: -1955338397, // 8b73e763
 		229: -1955338397, // 8b73e763
 		228: -1955338397, // 8b73e763
 		227: -1955338397, // 8b73e763
@@ -46914,6 +47577,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueDisallowUsers: {
+		230: -463335103, // e4621141
 		229: -463335103, // e4621141
 		228: -463335103, // e4621141
 		227: -463335103, // e4621141
@@ -47008,6 +47672,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueAllowChatParticipants: {
+		230: 1796427406, // 6b134e8e
 		229: 1796427406, // 6b134e8e
 		228: 1796427406, // 6b134e8e
 		227: 1796427406, // 6b134e8e
@@ -47102,6 +47767,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueDisallowChatParticipants: {
+		230: 1103656293, // 41c87565
 		229: 1103656293, // 41c87565
 		228: 1103656293, // 41c87565
 		227: 1103656293, // 41c87565
@@ -47196,6 +47862,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueAllowCloseFriends: {
+		230: -135735141, // f7e8d89b
 		229: -135735141, // f7e8d89b
 		228: -135735141, // f7e8d89b
 		227: -135735141, // f7e8d89b
@@ -47269,6 +47936,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueAllowPremium: {
+		230: -320241333, // ece9814b
 		229: -320241333, // ece9814b
 		228: -320241333, // ece9814b
 		227: -320241333, // ece9814b
@@ -47325,6 +47993,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueAllowBots: {
+		230: 558242653, // 21461b5d
 		229: 558242653, // 21461b5d
 		228: 558242653, // 21461b5d
 		227: 558242653, // 21461b5d
@@ -47365,6 +48034,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_privacyValueDisallowBots: {
+		230: -156895185, // f6a5f82f
 		229: -156895185, // f6a5f82f
 		228: -156895185, // f6a5f82f
 		227: -156895185, // f6a5f82f
@@ -47405,6 +48075,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_privacyRules: {
+		230: 1352683077, // 50a04e45
 		229: 1352683077, // 50a04e45
 		228: 1352683077, // 50a04e45
 		227: 1352683077, // 50a04e45
@@ -47499,6 +48170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_accountDaysTTL: {
+		230: -1194283041, // b8d0afdf
 		229: -1194283041, // b8d0afdf
 		228: -1194283041, // b8d0afdf
 		227: -1194283041, // b8d0afdf
@@ -47593,6 +48265,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeImageSize: {
+		230: 1815593308, // 6c37c15c
 		229: 1815593308, // 6c37c15c
 		228: 1815593308, // 6c37c15c
 		227: 1815593308, // 6c37c15c
@@ -47687,6 +48360,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeAnimated: {
+		230: 297109817, // 11b58939
 		229: 297109817, // 11b58939
 		228: 297109817, // 11b58939
 		227: 297109817, // 11b58939
@@ -47781,6 +48455,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeSticker: {
+		230: 1662637586, // 6319d612
 		229: 1662637586, // 6319d612
 		228: 1662637586, // 6319d612
 		227: 1662637586, // 6319d612
@@ -47875,6 +48550,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeVideo: {
+		230: 1137015880, // 43c57c48
 		229: 1137015880, // 43c57c48
 		228: 1137015880, // 43c57c48
 		227: 1137015880, // 43c57c48
@@ -47969,6 +48645,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeAudio: {
+		230: -1739392570, // 9852f9c6
 		229: -1739392570, // 9852f9c6
 		228: -1739392570, // 9852f9c6
 		227: -1739392570, // 9852f9c6
@@ -48063,6 +48740,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeFilename: {
+		230: 358154344, // 15590068
 		229: 358154344, // 15590068
 		228: 358154344, // 15590068
 		227: 358154344, // 15590068
@@ -48157,6 +48835,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeHasStickers: {
+		230: -1744710921, // 9801d2f7
 		229: -1744710921, // 9801d2f7
 		228: -1744710921, // 9801d2f7
 		227: -1744710921, // 9801d2f7
@@ -48251,6 +48930,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_documentAttributeCustomEmoji: {
+		230: -48981863, // fd149899
 		229: -48981863, // fd149899
 		228: -48981863, // fd149899
 		227: -48981863, // fd149899
@@ -48340,6 +49020,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_stickersNotModified: {
+		230: -244016606, // f1749a22
 		229: -244016606, // f1749a22
 		228: -244016606, // f1749a22
 		227: -244016606, // f1749a22
@@ -48434,6 +49115,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_stickers: {
+		230: 816245886, // 30a6ec7e
 		229: 816245886, // 30a6ec7e
 		228: 816245886, // 30a6ec7e
 		227: 816245886, // 30a6ec7e
@@ -48528,6 +49210,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickerPack: {
+		230: 313694676, // 12b299d4
 		229: 313694676, // 12b299d4
 		228: 313694676, // 12b299d4
 		227: 313694676, // 12b299d4
@@ -48622,6 +49305,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_allStickersNotModified: {
+		230: -395967805, // e86602c3
 		229: -395967805, // e86602c3
 		228: -395967805, // e86602c3
 		227: -395967805, // e86602c3
@@ -48716,6 +49400,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_allStickers: {
+		230: -843329861, // cdbbcebb
 		229: -843329861, // cdbbcebb
 		228: -843329861, // cdbbcebb
 		227: -843329861, // cdbbcebb
@@ -48810,6 +49495,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_affectedMessages: {
+		230: -2066640507, // 84d19185
 		229: -2066640507, // 84d19185
 		228: -2066640507, // 84d19185
 		227: -2066640507, // 84d19185
@@ -48904,6 +49590,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageEmpty: {
+		230: 555358088,  // 211a1788
 		229: 555358088,  // 211a1788
 		228: 555358088,  // 211a1788
 		227: 555358088,  // 211a1788
@@ -48998,6 +49685,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPagePending: {
+		230: -1328464313, // b0d13e47
 		229: -1328464313, // b0d13e47
 		228: -1328464313, // b0d13e47
 		227: -1328464313, // b0d13e47
@@ -49092,6 +49780,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPage: {
+		230: -392411726, // e89c45b2
 		229: -392411726, // e89c45b2
 		228: -392411726, // e89c45b2
 		227: -392411726, // e89c45b2
@@ -49186,6 +49875,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageNotModified: {
+		230: 1930545681, // 7311ca11
 		229: 1930545681, // 7311ca11
 		228: 1930545681, // 7311ca11
 		227: 1930545681, // 7311ca11
@@ -49280,6 +49970,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_authorization: {
+		230: -1392388579, // ad01d61d
 		229: -1392388579, // ad01d61d
 		228: -1392388579, // ad01d61d
 		227: -1392388579, // ad01d61d
@@ -49374,6 +50065,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_authorizations: {
+		230: 1275039392, // 4bff8ea0
 		229: 1275039392, // 4bff8ea0
 		228: 1275039392, // 4bff8ea0
 		227: 1275039392, // 4bff8ea0
@@ -49468,6 +50160,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_password: {
+		230: -1787080453, // 957b50fb
 		229: -1787080453, // 957b50fb
 		228: -1787080453, // 957b50fb
 		227: -1787080453, // 957b50fb
@@ -49562,6 +50255,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_passwordSettings: {
+		230: -1705233435, // 9a5c33e5
 		229: -1705233435, // 9a5c33e5
 		228: -1705233435, // 9a5c33e5
 		227: -1705233435, // 9a5c33e5
@@ -49656,6 +50350,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_passwordInputSettings: {
+		230: -1036572727, // c23727c9
 		229: -1036572727, // c23727c9
 		228: -1036572727, // c23727c9
 		227: -1036572727, // c23727c9
@@ -49750,6 +50445,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_passwordRecovery: {
+		230: 326715557, // 137948a5
 		229: 326715557, // 137948a5
 		228: 326715557, // 137948a5
 		227: 326715557, // 137948a5
@@ -49844,6 +50540,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_receivedNotifyMessage: {
+		230: -1551583367, // a384b779
 		229: -1551583367, // a384b779
 		228: -1551583367, // a384b779
 		227: -1551583367, // a384b779
@@ -49938,6 +50635,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatInviteExported: {
+		230: -1574126186, // a22cbd96
 		229: -1574126186, // a22cbd96
 		228: -1574126186, // a22cbd96
 		227: -1574126186, // a22cbd96
@@ -50032,6 +50730,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatInvitePublicJoinRequests: {
+		230: -317687113, // ed107ab7
 		229: -317687113, // ed107ab7
 		228: -317687113, // ed107ab7
 		227: -317687113, // ed107ab7
@@ -50123,6 +50822,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatInviteAlready: {
+		230: 1516793212, // 5a686d7c
 		229: 1516793212, // 5a686d7c
 		228: 1516793212, // 5a686d7c
 		227: 1516793212, // 5a686d7c
@@ -50217,6 +50917,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatInvite: {
+		230: 1553807106, // 5c9d3702
 		229: 1553807106, // 5c9d3702
 		228: 1553807106, // 5c9d3702
 		227: 1553807106, // 5c9d3702
@@ -50311,6 +51012,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatInvitePeek: {
+		230: 1634294960, // 61695cb0
 		229: 1634294960, // 61695cb0
 		228: 1634294960, // 61695cb0
 		227: 1634294960, // 61695cb0
@@ -50405,6 +51107,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetEmpty: {
+		230: -4838507, // ffb62b95
 		229: -4838507, // ffb62b95
 		228: -4838507, // ffb62b95
 		227: -4838507, // ffb62b95
@@ -50499,6 +51202,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetID: {
+		230: -1645763991, // 9de7a269
 		229: -1645763991, // 9de7a269
 		228: -1645763991, // 9de7a269
 		227: -1645763991, // 9de7a269
@@ -50593,6 +51297,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetShortName: {
+		230: -2044933984, // 861cc8a0
 		229: -2044933984, // 861cc8a0
 		228: -2044933984, // 861cc8a0
 		227: -2044933984, // 861cc8a0
@@ -50687,6 +51392,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetAnimatedEmoji: {
+		230: 42402760, // 28703c8
 		229: 42402760, // 28703c8
 		228: 42402760, // 28703c8
 		227: 42402760, // 28703c8
@@ -50781,6 +51487,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetDice: {
+		230: -427863538, // e67f520e
 		229: -427863538, // e67f520e
 		228: -427863538, // e67f520e
 		227: -427863538, // e67f520e
@@ -50875,6 +51582,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetAnimatedEmojiAnimations: {
+		230: 215889721, // cde3739
 		229: 215889721, // cde3739
 		228: 215889721, // cde3739
 		227: 215889721, // cde3739
@@ -50969,6 +51677,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetPremiumGifts: {
+		230: -930399486, // c88b3b02
 		229: -930399486, // c88b3b02
 		228: -930399486, // c88b3b02
 		227: -930399486, // c88b3b02
@@ -51058,6 +51767,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetEmojiGenericAnimations: {
+		230: 80008398, // 4c4d4ce
 		229: 80008398, // 4c4d4ce
 		228: 80008398, // 4c4d4ce
 		227: 80008398, // 4c4d4ce
@@ -51146,6 +51856,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetEmojiDefaultStatuses: {
+		230: 701560302, // 29d0f5ee
 		229: 701560302, // 29d0f5ee
 		228: 701560302, // 29d0f5ee
 		227: 701560302, // 29d0f5ee
@@ -51234,6 +51945,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetEmojiDefaultTopicIcons: {
+		230: 1153562857, // 44c1f8e9
 		229: 1153562857, // 44c1f8e9
 		228: 1153562857, // 44c1f8e9
 		227: 1153562857, // 44c1f8e9
@@ -51319,6 +52031,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetEmojiChannelDefaultStatuses: {
+		230: 1232373075, // 49748553
 		229: 1232373075, // 49748553
 		228: 1232373075, // 49748553
 		227: 1232373075, // 49748553
@@ -51383,6 +52096,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetTonGifts: {
+		230: 485912992, // 1cf671a0
 		229: 485912992, // 1cf671a0
 		228: 485912992, // 1cf671a0
 		227: 485912992, // 1cf671a0
@@ -51410,6 +52124,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickerSet: {
+		230: 768691932,  // 2dd14edc
 		229: 768691932,  // 2dd14edc
 		228: 768691932,  // 2dd14edc
 		227: 768691932,  // 2dd14edc
@@ -51504,6 +52219,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_stickerSet: {
+		230: 1846886166,  // 6e153f16
 		229: 1846886166,  // 6e153f16
 		228: 1846886166,  // 6e153f16
 		227: 1846886166,  // 6e153f16
@@ -51598,6 +52314,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_stickerSetNotModified: {
+		230: -738646805, // d3f924eb
 		229: -738646805, // d3f924eb
 		228: -738646805, // d3f924eb
 		227: -738646805, // d3f924eb
@@ -51692,6 +52409,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommand: {
+		230: -1739401518, // 9852d6d2
 		229: -1739401518, // 9852d6d2
 		228: -1739401518, // 9852d6d2
 		227: -1032140601, // c27ac8c7
@@ -51786,6 +52504,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInfo: {
+		230: 1300890265,  // 4d8a0299
 		229: 1300890265,  // 4d8a0299
 		228: 1300890265,  // 4d8a0299
 		227: 1300890265,  // 4d8a0299
@@ -51880,6 +52599,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_keyboardButton: {
+		230: 795322159,   // 2f67a72f
 		229: 795322159,   // 2f67a72f
 		228: 2098662655,  // 7d170cff
 		227: 2098662655,  // 7d170cff
@@ -51974,6 +52694,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_keyboardButtonRow: {
+		230: 2002815875, // 77608b83
 		229: 2002815875, // 77608b83
 		228: 2002815875, // 77608b83
 		227: 2002815875, // 77608b83
@@ -52068,6 +52789,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_replyKeyboardHide: {
+		230: -1606526075, // a03e5b85
 		229: -1606526075, // a03e5b85
 		228: -1606526075, // a03e5b85
 		227: -1606526075, // a03e5b85
@@ -52162,6 +52884,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_replyKeyboardForceReply: {
+		230: -2035021048, // 86b40b08
 		229: -2035021048, // 86b40b08
 		228: -2035021048, // 86b40b08
 		227: -2035021048, // 86b40b08
@@ -52256,6 +52979,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_replyKeyboardMarkup: {
+		230: -2049074735, // 85dd99d1
 		229: -2049074735, // 85dd99d1
 		228: -2049074735, // 85dd99d1
 		227: -2049074735, // 85dd99d1
@@ -52350,6 +53074,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_replyInlineMarkup: {
+		230: -1297000592, // b2b15770
 		229: -1297000592, // b2b15770
 		228: 1218642516,  // 48a30254
 		227: 1218642516,  // 48a30254
@@ -52444,6 +53169,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityUnknown: {
+		230: -1148011883, // bb92ba95
 		229: -1148011883, // bb92ba95
 		228: -1148011883, // bb92ba95
 		227: -1148011883, // bb92ba95
@@ -52538,6 +53264,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityMention: {
+		230: -100378723, // fa04579d
 		229: -100378723, // fa04579d
 		228: -100378723, // fa04579d
 		227: -100378723, // fa04579d
@@ -52632,6 +53359,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityHashtag: {
+		230: 1868782349, // 6f635b0d
 		229: 1868782349, // 6f635b0d
 		228: 1868782349, // 6f635b0d
 		227: 1868782349, // 6f635b0d
@@ -52726,6 +53454,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityBotCommand: {
+		230: 1827637959, // 6cef8ac7
 		229: 1827637959, // 6cef8ac7
 		228: 1827637959, // 6cef8ac7
 		227: 1827637959, // 6cef8ac7
@@ -52820,6 +53549,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityUrl: {
+		230: 1859134776, // 6ed02538
 		229: 1859134776, // 6ed02538
 		228: 1859134776, // 6ed02538
 		227: 1859134776, // 6ed02538
@@ -52914,6 +53644,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityEmail: {
+		230: 1692693954, // 64e475c2
 		229: 1692693954, // 64e475c2
 		228: 1692693954, // 64e475c2
 		227: 1692693954, // 64e475c2
@@ -53008,6 +53739,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityBold: {
+		230: -1117713463, // bd610bc9
 		229: -1117713463, // bd610bc9
 		228: -1117713463, // bd610bc9
 		227: -1117713463, // bd610bc9
@@ -53102,6 +53834,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityItalic: {
+		230: -2106619040, // 826f8b60
 		229: -2106619040, // 826f8b60
 		228: -2106619040, // 826f8b60
 		227: -2106619040, // 826f8b60
@@ -53196,6 +53929,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityCode: {
+		230: 681706865, // 28a20571
 		229: 681706865, // 28a20571
 		228: 681706865, // 28a20571
 		227: 681706865, // 28a20571
@@ -53290,6 +54024,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityPre: {
+		230: 1938967520, // 73924be0
 		229: 1938967520, // 73924be0
 		228: 1938967520, // 73924be0
 		227: 1938967520, // 73924be0
@@ -53384,6 +54119,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityTextUrl: {
+		230: 1990644519, // 76a6d327
 		229: 1990644519, // 76a6d327
 		228: 1990644519, // 76a6d327
 		227: 1990644519, // 76a6d327
@@ -53478,6 +54214,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityMentionName: {
+		230: -595914432, // dc7b1140
 		229: -595914432, // dc7b1140
 		228: -595914432, // dc7b1140
 		227: -595914432, // dc7b1140
@@ -53572,6 +54309,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessageEntityMentionName: {
+		230: 546203849, // 208e68c9
 		229: 546203849, // 208e68c9
 		228: 546203849, // 208e68c9
 		227: 546203849, // 208e68c9
@@ -53666,6 +54404,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityPhone: {
+		230: -1687559349, // 9b69e34b
 		229: -1687559349, // 9b69e34b
 		228: -1687559349, // 9b69e34b
 		227: -1687559349, // 9b69e34b
@@ -53760,6 +54499,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityCashtag: {
+		230: 1280209983, // 4c4e743f
 		229: 1280209983, // 4c4e743f
 		228: 1280209983, // 4c4e743f
 		227: 1280209983, // 4c4e743f
@@ -53854,6 +54594,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityUnderline: {
+		230: -1672577397, // 9c4e7e8b
 		229: -1672577397, // 9c4e7e8b
 		228: -1672577397, // 9c4e7e8b
 		227: -1672577397, // 9c4e7e8b
@@ -53948,6 +54689,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityStrike: {
+		230: -1090087980, // bf0693d4
 		229: -1090087980, // bf0693d4
 		228: -1090087980, // bf0693d4
 		227: -1090087980, // bf0693d4
@@ -54042,6 +54784,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityBankCard: {
+		230: 1981704948, // 761e6af4
 		229: 1981704948, // 761e6af4
 		228: 1981704948, // 761e6af4
 		227: 1981704948, // 761e6af4
@@ -54136,6 +54879,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntitySpoiler: {
+		230: 852137487, // 32ca960f
 		229: 852137487, // 32ca960f
 		228: 852137487, // 32ca960f
 		227: 852137487, // 32ca960f
@@ -54230,6 +54974,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityCustomEmoji: {
+		230: -925956616, // c8cf05f8
 		229: -925956616, // c8cf05f8
 		228: -925956616, // c8cf05f8
 		227: -925956616, // c8cf05f8
@@ -54319,6 +55064,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityBlockquote: {
+		230: -238245204, // f1ccaaac
 		229: -238245204, // f1ccaaac
 		228: -238245204, // f1ccaaac
 		227: -238245204, // f1ccaaac
@@ -54413,6 +55159,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityFormattedDate: {
+		230: -1874147385, // 904ac7c7
 		229: -1874147385, // 904ac7c7
 		228: -1874147385, // 904ac7c7
 		227: -1874147385, // 904ac7c7
@@ -54423,6 +55170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityDiffInsert: {
+		230: 1903653142, // 71777116
 		229: 1903653142, // 71777116
 		228: 1903653142, // 71777116
 		227: 1903653142, // 71777116
@@ -54432,6 +55180,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityDiffReplace: {
+		230: -960371289, // c6c1e5a7
 		229: -960371289, // c6c1e5a7
 		228: -960371289, // c6c1e5a7
 		227: -960371289, // c6c1e5a7
@@ -54441,6 +55190,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageEntityDiffDelete: {
+		230: 106086853, // 652c1c5
 		229: 106086853, // 652c1c5
 		228: 106086853, // 652c1c5
 		227: 106086853, // 652c1c5
@@ -54449,7 +55199,12 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		224: 106086853, // 652c1c5
 
 	},
+	Predicate_messageEntityTonAddress: {
+		230: -39075891, // fdabbfcd
+
+	},
 	Predicate_inputChannelEmpty: {
+		230: -292807034, // ee8c1e86
 		229: -292807034, // ee8c1e86
 		228: -292807034, // ee8c1e86
 		227: -292807034, // ee8c1e86
@@ -54544,6 +55299,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChannel: {
+		230: -212145112, // f35aec28
 		229: -212145112, // f35aec28
 		228: -212145112, // f35aec28
 		227: -212145112, // f35aec28
@@ -54638,6 +55394,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChannelFromMessage: {
+		230: 1536380829, // 5b934f9d
 		229: 1536380829, // 5b934f9d
 		228: 1536380829, // 5b934f9d
 		227: 1536380829, // 5b934f9d
@@ -54732,6 +55489,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_resolvedPeer: {
+		230: 2131196633, // 7f077ad9
 		229: 2131196633, // 7f077ad9
 		228: 2131196633, // 7f077ad9
 		227: 2131196633, // 7f077ad9
@@ -54826,6 +55584,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageRange: {
+		230: 182649427, // ae30253
 		229: 182649427, // ae30253
 		228: 182649427, // ae30253
 		227: 182649427, // ae30253
@@ -54920,6 +55679,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_channelDifferenceEmpty: {
+		230: 1041346555, // 3e11affb
 		229: 1041346555, // 3e11affb
 		228: 1041346555, // 3e11affb
 		227: 1041346555, // 3e11affb
@@ -55014,6 +55774,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_channelDifferenceTooLong: {
+		230: -1531132162, // a4bcc6fe
 		229: -1531132162, // a4bcc6fe
 		228: -1531132162, // a4bcc6fe
 		227: -1531132162, // a4bcc6fe
@@ -55108,6 +55869,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_channelDifference: {
+		230: 543450958, // 2064674e
 		229: 543450958, // 2064674e
 		228: 543450958, // 2064674e
 		227: 543450958, // 2064674e
@@ -55202,6 +55964,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelMessagesFilterEmpty: {
+		230: -1798033689, // 94d42ee7
 		229: -1798033689, // 94d42ee7
 		228: -1798033689, // 94d42ee7
 		227: -1798033689, // 94d42ee7
@@ -55296,6 +56059,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelMessagesFilter: {
+		230: -847783593, // cd77d957
 		229: -847783593, // cd77d957
 		228: -847783593, // cd77d957
 		227: -847783593, // cd77d957
@@ -55390,6 +56154,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipant: {
+		230: 466961494,   // 1bd54456
 		229: 466961494,   // 1bd54456
 		228: 466961494,   // 1bd54456
 		227: 466961494,   // 1bd54456
@@ -55484,6 +56249,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantSelf: {
+		230: -1454929382, // a9478a1a
 		229: -1454929382, // a9478a1a
 		228: -1454929382, // a9478a1a
 		227: -1454929382, // a9478a1a
@@ -55578,6 +56344,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantCreator: {
+		230: 803602899, // 2fe601d3
 		229: 803602899, // 2fe601d3
 		228: 803602899, // 2fe601d3
 		227: 803602899, // 2fe601d3
@@ -55672,6 +56439,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantAdmin: {
+		230: 885242707, // 34c3bb53
 		229: 885242707, // 34c3bb53
 		228: 885242707, // 34c3bb53
 		227: 885242707, // 34c3bb53
@@ -55766,6 +56534,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantBanned: {
+		230: -705647215, // d5f0ad91
 		229: -705647215, // d5f0ad91
 		228: -705647215, // d5f0ad91
 		227: -705647215, // d5f0ad91
@@ -55860,6 +56629,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantLeft: {
+		230: 453242886, // 1b03f006
 		229: 453242886, // 1b03f006
 		228: 453242886, // 1b03f006
 		227: 453242886, // 1b03f006
@@ -55954,6 +56724,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsRecent: {
+		230: -566281095, // de3f3c79
 		229: -566281095, // de3f3c79
 		228: -566281095, // de3f3c79
 		227: -566281095, // de3f3c79
@@ -56048,6 +56819,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsAdmins: {
+		230: -1268741783, // b4608969
 		229: -1268741783, // b4608969
 		228: -1268741783, // b4608969
 		227: -1268741783, // b4608969
@@ -56142,6 +56914,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsKicked: {
+		230: -1548400251, // a3b54985
 		229: -1548400251, // a3b54985
 		228: -1548400251, // a3b54985
 		227: -1548400251, // a3b54985
@@ -56236,6 +57009,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsBots: {
+		230: -1328445861, // b0d1865b
 		229: -1328445861, // b0d1865b
 		228: -1328445861, // b0d1865b
 		227: -1328445861, // b0d1865b
@@ -56330,6 +57104,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsBanned: {
+		230: 338142689, // 1427a5e1
 		229: 338142689, // 1427a5e1
 		228: 338142689, // 1427a5e1
 		227: 338142689, // 1427a5e1
@@ -56424,6 +57199,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsSearch: {
+		230: 106343499, // 656ac4b
 		229: 106343499, // 656ac4b
 		228: 106343499, // 656ac4b
 		227: 106343499, // 656ac4b
@@ -56518,6 +57294,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsContacts: {
+		230: -1150621555, // bb6ae88d
 		229: -1150621555, // bb6ae88d
 		228: -1150621555, // bb6ae88d
 		227: -1150621555, // bb6ae88d
@@ -56612,6 +57389,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelParticipantsMentions: {
+		230: -531931925, // e04b5ceb
 		229: -531931925, // e04b5ceb
 		228: -531931925, // e04b5ceb
 		227: -531931925, // e04b5ceb
@@ -56706,6 +57484,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_channelParticipants: {
+		230: -1699676497, // 9ab0feaf
 		229: -1699676497, // 9ab0feaf
 		228: -1699676497, // 9ab0feaf
 		227: -1699676497, // 9ab0feaf
@@ -56800,6 +57579,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_channelParticipantsNotModified: {
+		230: -266911767, // f0173fe9
 		229: -266911767, // f0173fe9
 		228: -266911767, // f0173fe9
 		227: -266911767, // f0173fe9
@@ -56894,6 +57674,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_channelParticipant: {
+		230: -541588713, // dfb80317
 		229: -541588713, // dfb80317
 		228: -541588713, // dfb80317
 		227: -541588713, // dfb80317
@@ -56988,6 +57769,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_termsOfService: {
+		230: 2013922064, // 780a0310
 		229: 2013922064, // 780a0310
 		228: 2013922064, // 780a0310
 		227: 2013922064, // 780a0310
@@ -57082,6 +57864,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savedGifsNotModified: {
+		230: -402498398, // e8025ca2
 		229: -402498398, // e8025ca2
 		228: -402498398, // e8025ca2
 		227: -402498398, // e8025ca2
@@ -57176,6 +57959,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savedGifs: {
+		230: -2069878259, // 84a02a0d
 		229: -2069878259, // 84a02a0d
 		228: -2069878259, // 84a02a0d
 		227: -2069878259, // 84a02a0d
@@ -57270,6 +58054,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageMediaAuto: {
+		230: 864077702, // 3380c786
 		229: 864077702, // 3380c786
 		228: 864077702, // 3380c786
 		227: 864077702, // 3380c786
@@ -57364,6 +58149,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageText: {
+		230: 1036876423, // 3dcd7a87
 		229: 1036876423, // 3dcd7a87
 		228: 1036876423, // 3dcd7a87
 		227: 1036876423, // 3dcd7a87
@@ -57458,6 +58244,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageMediaGeo: {
+		230: -1768777083, // 96929a85
 		229: -1768777083, // 96929a85
 		228: -1768777083, // 96929a85
 		227: -1768777083, // 96929a85
@@ -57552,6 +58339,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageMediaVenue: {
+		230: 1098628881, // 417bbf11
 		229: 1098628881, // 417bbf11
 		228: 1098628881, // 417bbf11
 		227: 1098628881, // 417bbf11
@@ -57646,6 +58434,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageMediaContact: {
+		230: -1494368259, // a6edbffd
 		229: -1494368259, // a6edbffd
 		228: -1494368259, // a6edbffd
 		227: -1494368259, // a6edbffd
@@ -57740,6 +58529,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageGame: {
+		230: 1262639204, // 4b425864
 		229: 1262639204, // 4b425864
 		228: 1262639204, // 4b425864
 		227: 1262639204, // 4b425864
@@ -57834,6 +58624,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageMediaInvoice: {
+		230: -672693723, // d7e78225
 		229: -672693723, // d7e78225
 		228: -672693723, // d7e78225
 		227: -672693723, // d7e78225
@@ -57928,6 +58719,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageMediaWebPage: {
+		230: -1109605104, // bddcc510
 		229: -1109605104, // bddcc510
 		228: -1109605104, // bddcc510
 		227: -1109605104, // bddcc510
@@ -57995,12 +58787,14 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageRichMessage: {
+		230: -1271007892, // b43df56c
 		229: -1271007892, // b43df56c
 		228: -1271007892, // b43df56c
 		227: -1271007892, // b43df56c
 
 	},
 	Predicate_inputBotInlineResult: {
+		230: -2000710887, // 88bf9319
 		229: -2000710887, // 88bf9319
 		228: -2000710887, // 88bf9319
 		227: -2000710887, // 88bf9319
@@ -58095,6 +58889,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineResultPhoto: {
+		230: -1462213465, // a8d864a7
 		229: -1462213465, // a8d864a7
 		228: -1462213465, // a8d864a7
 		227: -1462213465, // a8d864a7
@@ -58189,6 +58984,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineResultDocument: {
+		230: -459324, // fff8fdc4
 		229: -459324, // fff8fdc4
 		228: -459324, // fff8fdc4
 		227: -459324, // fff8fdc4
@@ -58283,6 +59079,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineResultGame: {
+		230: 1336154098, // 4fa417f2
 		229: 1336154098, // 4fa417f2
 		228: 1336154098, // 4fa417f2
 		227: 1336154098, // 4fa417f2
@@ -58377,6 +59174,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageMediaAuto: {
+		230: 1984755728, // 764cf810
 		229: 1984755728, // 764cf810
 		228: 1984755728, // 764cf810
 		227: 1984755728, // 764cf810
@@ -58471,6 +59269,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageText: {
+		230: -1937807902, // 8c7f65e2
 		229: -1937807902, // 8c7f65e2
 		228: -1937807902, // 8c7f65e2
 		227: -1937807902, // 8c7f65e2
@@ -58565,6 +59364,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageMediaGeo: {
+		230: 85477117, // 51846fd
 		229: 85477117, // 51846fd
 		228: 85477117, // 51846fd
 		227: 85477117, // 51846fd
@@ -58659,6 +59459,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageMediaVenue: {
+		230: -1970903652, // 8a86659c
 		229: -1970903652, // 8a86659c
 		228: -1970903652, // 8a86659c
 		227: -1970903652, // 8a86659c
@@ -58753,6 +59554,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageMediaContact: {
+		230: 416402882, // 18d1cdc2
 		229: 416402882, // 18d1cdc2
 		228: 416402882, // 18d1cdc2
 		227: 416402882, // 18d1cdc2
@@ -58847,6 +59649,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageMediaInvoice: {
+		230: 894081801, // 354a9b09
 		229: 894081801, // 354a9b09
 		228: 894081801, // 354a9b09
 		227: 894081801, // 354a9b09
@@ -58941,6 +59744,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageMediaWebPage: {
+		230: -2137335386, // 809ad9a6
 		229: -2137335386, // 809ad9a6
 		228: -2137335386, // 809ad9a6
 		227: -2137335386, // 809ad9a6
@@ -59008,12 +59812,14 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMessageRichMessage: {
+		230: 174161531, // a617e7b
 		229: 174161531, // a617e7b
 		228: 174161531, // a617e7b
 		227: 174161531, // a617e7b
 
 	},
 	Predicate_botInlineResult: {
+		230: 295067450, // 11965f3a
 		229: 295067450, // 11965f3a
 		228: 295067450, // 11965f3a
 		227: 295067450, // 11965f3a
@@ -59108,6 +59914,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botInlineMediaResult: {
+		230: 400266251, // 17db940b
 		229: 400266251, // 17db940b
 		228: 400266251, // 17db940b
 		227: 400266251, // 17db940b
@@ -59202,6 +60009,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_botResults: {
+		230: -534646026,  // e021f2f6
 		229: -534646026,  // e021f2f6
 		228: -534646026,  // e021f2f6
 		227: -534646026,  // e021f2f6
@@ -59296,6 +60104,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_exportedMessageLink: {
+		230: 1571494644, // 5dab1af4
 		229: 1571494644, // 5dab1af4
 		228: 1571494644, // 5dab1af4
 		227: 1571494644, // 5dab1af4
@@ -59390,6 +60199,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageFwdHeader: {
+		230: 1313731771, // 4e4df4bb
 		229: 1313731771, // 4e4df4bb
 		228: 1313731771, // 4e4df4bb
 		227: 1313731771, // 4e4df4bb
@@ -59484,6 +60294,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_codeTypeSms: {
+		230: 1923290508, // 72a3158c
 		229: 1923290508, // 72a3158c
 		228: 1923290508, // 72a3158c
 		227: 1923290508, // 72a3158c
@@ -59578,6 +60389,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_codeTypeCall: {
+		230: 1948046307, // 741cd3e3
 		229: 1948046307, // 741cd3e3
 		228: 1948046307, // 741cd3e3
 		227: 1948046307, // 741cd3e3
@@ -59672,6 +60484,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_codeTypeFlashCall: {
+		230: 577556219, // 226ccefb
 		229: 577556219, // 226ccefb
 		228: 577556219, // 226ccefb
 		227: 577556219, // 226ccefb
@@ -59766,6 +60579,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_codeTypeMissedCall: {
+		230: -702884114, // d61ad6ee
 		229: -702884114, // d61ad6ee
 		228: -702884114, // d61ad6ee
 		227: -702884114, // d61ad6ee
@@ -59860,6 +60674,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_codeTypeFragmentSms: {
+		230: 116234636, // 6ed998c
 		229: 116234636, // 6ed998c
 		228: 116234636, // 6ed998c
 		227: 116234636, // 6ed998c
@@ -59943,6 +60758,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeApp: {
+		230: 1035688326, // 3dbb5986
 		229: 1035688326, // 3dbb5986
 		228: 1035688326, // 3dbb5986
 		227: 1035688326, // 3dbb5986
@@ -60037,6 +60853,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeSms: {
+		230: -1073693790, // c000bba2
 		229: -1073693790, // c000bba2
 		228: -1073693790, // c000bba2
 		227: -1073693790, // c000bba2
@@ -60131,6 +60948,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeCall: {
+		230: 1398007207, // 5353e5a7
 		229: 1398007207, // 5353e5a7
 		228: 1398007207, // 5353e5a7
 		227: 1398007207, // 5353e5a7
@@ -60225,6 +61043,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeFlashCall: {
+		230: -1425815847, // ab03c6d9
 		229: -1425815847, // ab03c6d9
 		228: -1425815847, // ab03c6d9
 		227: -1425815847, // ab03c6d9
@@ -60319,6 +61138,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeMissedCall: {
+		230: -2113903484, // 82006484
 		229: -2113903484, // 82006484
 		228: -2113903484, // 82006484
 		227: -2113903484, // 82006484
@@ -60413,6 +61233,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeEmailCode: {
+		230: -196020837, // f450f59b
 		229: -196020837, // f450f59b
 		228: -196020837, // f450f59b
 		227: -196020837, // f450f59b
@@ -60501,6 +61322,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeSetUpEmailRequired: {
+		230: -1521934870, // a5491dea
 		229: -1521934870, // a5491dea
 		228: -1521934870, // a5491dea
 		227: -1521934870, // a5491dea
@@ -60589,6 +61411,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeFragmentSms: {
+		230: -648651719, // d9565c39
 		229: -648651719, // d9565c39
 		228: -648651719, // d9565c39
 		227: -648651719, // d9565c39
@@ -60672,6 +61495,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeFirebaseSms: {
+		230: 10475318,   // 9fd736
 		229: 10475318,   // 9fd736
 		228: 10475318,   // 9fd736
 		227: 10475318,   // 9fd736
@@ -60753,6 +61577,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeSmsWord: {
+		230: -1542017919, // a416ac81
 		229: -1542017919, // a416ac81
 		228: -1542017919, // a416ac81
 		227: -1542017919, // a416ac81
@@ -60807,6 +61632,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sentCodeTypeSmsPhrase: {
+		230: -1284008785, // b37794af
 		229: -1284008785, // b37794af
 		228: -1284008785, // b37794af
 		227: -1284008785, // b37794af
@@ -60861,6 +61687,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_botCallbackAnswer: {
+		230: 911761060, // 36585ea4
 		229: 911761060, // 36585ea4
 		228: 911761060, // 36585ea4
 		227: 911761060, // 36585ea4
@@ -60955,6 +61782,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_messageEditData: {
+		230: 649453030, // 26b5dde6
 		229: 649453030, // 26b5dde6
 		228: 649453030, // 26b5dde6
 		227: 649453030, // 26b5dde6
@@ -61049,6 +61877,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageID: {
+		230: -1995686519, // 890c3d89
 		229: -1995686519, // 890c3d89
 		228: -1995686519, // 890c3d89
 		227: -1995686519, // 890c3d89
@@ -61143,6 +61972,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotInlineMessageID64: {
+		230: -1227287081, // b6d915d7
 		229: -1227287081, // b6d915d7
 		228: -1227287081, // b6d915d7
 		227: -1227287081, // b6d915d7
@@ -61237,6 +62067,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineBotSwitchPM: {
+		230: 1008755359, // 3c20629f
 		229: 1008755359, // 3c20629f
 		228: 1008755359, // 3c20629f
 		227: 1008755359, // 3c20629f
@@ -61331,6 +62162,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_peerDialogs: {
+		230: 863093588, // 3371c354
 		229: 863093588, // 3371c354
 		228: 863093588, // 3371c354
 		227: 863093588, // 3371c354
@@ -61425,6 +62257,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeer: {
+		230: -305282981, // edcdc05b
 		229: -305282981, // edcdc05b
 		228: -305282981, // edcdc05b
 		227: -305282981, // edcdc05b
@@ -61519,6 +62352,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryBotsPM: {
+		230: -1419371685, // ab661b5b
 		229: -1419371685, // ab661b5b
 		228: -1419371685, // ab661b5b
 		227: -1419371685, // ab661b5b
@@ -61613,6 +62447,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryBotsInline: {
+		230: 344356834, // 148677e2
 		229: 344356834, // 148677e2
 		228: 344356834, // 148677e2
 		227: 344356834, // 148677e2
@@ -61707,6 +62542,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryCorrespondents: {
+		230: 104314861, // 637b7ed
 		229: 104314861, // 637b7ed
 		228: 104314861, // 637b7ed
 		227: 104314861, // 637b7ed
@@ -61801,6 +62637,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryGroups: {
+		230: -1122524854, // bd17a14a
 		229: -1122524854, // bd17a14a
 		228: -1122524854, // bd17a14a
 		227: -1122524854, // bd17a14a
@@ -61895,6 +62732,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryChannels: {
+		230: 371037736, // 161d9628
 		229: 371037736, // 161d9628
 		228: 371037736, // 161d9628
 		227: 371037736, // 161d9628
@@ -61989,6 +62827,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryPhoneCalls: {
+		230: 511092620, // 1e76a78c
 		229: 511092620, // 1e76a78c
 		228: 511092620, // 1e76a78c
 		227: 511092620, // 1e76a78c
@@ -62083,6 +62922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryForwardUsers: {
+		230: -1472172887, // a8406ca9
 		229: -1472172887, // a8406ca9
 		228: -1472172887, // a8406ca9
 		227: -1472172887, // a8406ca9
@@ -62177,6 +63017,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryForwardChats: {
+		230: -68239120, // fbeec0f0
 		229: -68239120, // fbeec0f0
 		228: -68239120, // fbeec0f0
 		227: -68239120, // fbeec0f0
@@ -62271,6 +63112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryBotsApp: {
+		230: -39945236, // fd9e7bec
 		229: -39945236, // fd9e7bec
 		228: -39945236, // fd9e7bec
 		227: -39945236, // fd9e7bec
@@ -62319,6 +63161,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryBotsGuestChat: {
+		230: 1814361053, // 6c24f3dd
 		229: 1814361053, // 6c24f3dd
 		228: 1814361053, // 6c24f3dd
 		227: 1814361053, // 6c24f3dd
@@ -62327,6 +63170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_topPeerCategoryPeers: {
+		230: -75283823, // fb834291
 		229: -75283823, // fb834291
 		228: -75283823, // fb834291
 		227: -75283823, // fb834291
@@ -62421,6 +63265,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_topPeersNotModified: {
+		230: -567906571, // de266ef5
 		229: -567906571, // de266ef5
 		228: -567906571, // de266ef5
 		227: -567906571, // de266ef5
@@ -62515,6 +63360,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_topPeers: {
+		230: 1891070632, // 70b772a8
 		229: 1891070632, // 70b772a8
 		228: 1891070632, // 70b772a8
 		227: 1891070632, // 70b772a8
@@ -62609,6 +63455,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_topPeersDisabled: {
+		230: -1255369827, // b52c939d
 		229: -1255369827, // b52c939d
 		228: -1255369827, // b52c939d
 		227: -1255369827, // b52c939d
@@ -62703,6 +63550,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_draftMessageEmpty: {
+		230: 453805082, // 1b0c841a
 		229: 453805082, // 1b0c841a
 		228: 453805082, // 1b0c841a
 		227: 453805082, // 1b0c841a
@@ -62797,6 +63645,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_draftMessage: {
+		230: 1627271828,  // 60fe3294
 		229: 1627271828,  // 60fe3294
 		228: 1627271828,  // 60fe3294
 		227: 1627271828,  // 60fe3294
@@ -62891,6 +63740,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_featuredStickersNotModified: {
+		230: -958657434, // c6dc0c66
 		229: -958657434, // c6dc0c66
 		228: -958657434, // c6dc0c66
 		227: -958657434, // c6dc0c66
@@ -62985,6 +63835,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_featuredStickers: {
+		230: -1103615738, // be382906
 		229: -1103615738, // be382906
 		228: -1103615738, // be382906
 		227: -1103615738, // be382906
@@ -63079,6 +63930,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_recentStickersNotModified: {
+		230: 186120336, // b17f890
 		229: 186120336, // b17f890
 		228: 186120336, // b17f890
 		227: 186120336, // b17f890
@@ -63173,6 +64025,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_recentStickers: {
+		230: -1999405994, // 88d37c56
 		229: -1999405994, // 88d37c56
 		228: -1999405994, // 88d37c56
 		227: -1999405994, // 88d37c56
@@ -63267,6 +64120,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_archivedStickers: {
+		230: 1338747336, // 4fcba9c8
 		229: 1338747336, // 4fcba9c8
 		228: 1338747336, // 4fcba9c8
 		227: 1338747336, // 4fcba9c8
@@ -63361,6 +64215,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_stickerSetInstallResultSuccess: {
+		230: 946083368, // 38641628
 		229: 946083368, // 38641628
 		228: 946083368, // 38641628
 		227: 946083368, // 38641628
@@ -63455,6 +64310,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_stickerSetInstallResultArchive: {
+		230: 904138920, // 35e410a8
 		229: 904138920, // 35e410a8
 		228: 904138920, // 35e410a8
 		227: 904138920, // 35e410a8
@@ -63549,6 +64405,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickerSetCovered: {
+		230: 1678812626, // 6410a5d2
 		229: 1678812626, // 6410a5d2
 		228: 1678812626, // 6410a5d2
 		227: 1678812626, // 6410a5d2
@@ -63643,6 +64500,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickerSetMultiCovered: {
+		230: 872932635, // 3407e51b
 		229: 872932635, // 3407e51b
 		228: 872932635, // 3407e51b
 		227: 872932635, // 3407e51b
@@ -63737,6 +64595,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickerSetFullCovered: {
+		230: 1087454222, // 40d13c0e
 		229: 1087454222, // 40d13c0e
 		228: 1087454222, // 40d13c0e
 		227: 1087454222, // 40d13c0e
@@ -63826,6 +64685,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickerSetNoCovered: {
+		230: 2008112412, // 77b15d1c
 		229: 2008112412, // 77b15d1c
 		228: 2008112412, // 77b15d1c
 		227: 2008112412, // 77b15d1c
@@ -63908,6 +64768,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_maskCoords: {
+		230: -1361650766, // aed6dbb2
 		229: -1361650766, // aed6dbb2
 		228: -1361650766, // aed6dbb2
 		227: -1361650766, // aed6dbb2
@@ -64002,6 +64863,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickeredMediaPhoto: {
+		230: 1251549527, // 4a992157
 		229: 1251549527, // 4a992157
 		228: 1251549527, // 4a992157
 		227: 1251549527, // 4a992157
@@ -64096,6 +64958,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickeredMediaDocument: {
+		230: 70813275, // 438865b
 		229: 70813275, // 438865b
 		228: 70813275, // 438865b
 		227: 70813275, // 438865b
@@ -64190,6 +65053,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_game: {
+		230: -1107729093, // bdf9653b
 		229: -1107729093, // bdf9653b
 		228: -1107729093, // bdf9653b
 		227: -1107729093, // bdf9653b
@@ -64284,6 +65148,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGameID: {
+		230: 53231223, // 32c3e77
 		229: 53231223, // 32c3e77
 		228: 53231223, // 32c3e77
 		227: 53231223, // 32c3e77
@@ -64378,6 +65243,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGameShortName: {
+		230: -1020139510, // c331e80a
 		229: -1020139510, // c331e80a
 		228: -1020139510, // c331e80a
 		227: -1020139510, // c331e80a
@@ -64472,6 +65338,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_highScore: {
+		230: 1940093419, // 73a379eb
 		229: 1940093419, // 73a379eb
 		228: 1940093419, // 73a379eb
 		227: 1940093419, // 73a379eb
@@ -64566,6 +65433,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_highScores: {
+		230: -1707344487, // 9a3bfd99
 		229: -1707344487, // 9a3bfd99
 		228: -1707344487, // 9a3bfd99
 		227: -1707344487, // 9a3bfd99
@@ -64660,6 +65528,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textEmpty: {
+		230: -599948721, // dc3d824f
 		229: -599948721, // dc3d824f
 		228: -599948721, // dc3d824f
 		227: -599948721, // dc3d824f
@@ -64754,6 +65623,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textPlain: {
+		230: 1950782688, // 744694e0
 		229: 1950782688, // 744694e0
 		228: 1950782688, // 744694e0
 		227: 1950782688, // 744694e0
@@ -64848,6 +65718,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textBold: {
+		230: 1730456516, // 6724abc4
 		229: 1730456516, // 6724abc4
 		228: 1730456516, // 6724abc4
 		227: 1730456516, // 6724abc4
@@ -64942,6 +65813,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textItalic: {
+		230: -653089380, // d912a59c
 		229: -653089380, // d912a59c
 		228: -653089380, // d912a59c
 		227: -653089380, // d912a59c
@@ -65036,6 +65908,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textUnderline: {
+		230: -1054465340, // c12622c4
 		229: -1054465340, // c12622c4
 		228: -1054465340, // c12622c4
 		227: -1054465340, // c12622c4
@@ -65130,6 +66003,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textStrike: {
+		230: -1678197867, // 9bf8bb95
 		229: -1678197867, // 9bf8bb95
 		228: -1678197867, // 9bf8bb95
 		227: -1678197867, // 9bf8bb95
@@ -65224,6 +66098,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textFixed: {
+		230: 1816074681, // 6c3f19b9
 		229: 1816074681, // 6c3f19b9
 		228: 1816074681, // 6c3f19b9
 		227: 1816074681, // 6c3f19b9
@@ -65318,6 +66193,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textUrl: {
+		230: 1009288385, // 3c2884c1
 		229: 1009288385, // 3c2884c1
 		228: 1009288385, // 3c2884c1
 		227: 1009288385, // 3c2884c1
@@ -65412,6 +66288,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textEmail: {
+		230: -564523562, // de5a0dd6
 		229: -564523562, // de5a0dd6
 		228: -564523562, // de5a0dd6
 		227: -564523562, // de5a0dd6
@@ -65506,6 +66383,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textConcat: {
+		230: 2120376535, // 7e6260d7
 		229: 2120376535, // 7e6260d7
 		228: 2120376535, // 7e6260d7
 		227: 2120376535, // 7e6260d7
@@ -65600,6 +66478,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textSubscript: {
+		230: -311786236, // ed6a8504
 		229: -311786236, // ed6a8504
 		228: -311786236, // ed6a8504
 		227: -311786236, // ed6a8504
@@ -65694,6 +66573,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textSuperscript: {
+		230: -939827711, // c7fb5e01
 		229: -939827711, // c7fb5e01
 		228: -939827711, // c7fb5e01
 		227: -939827711, // c7fb5e01
@@ -65788,6 +66668,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textMarked: {
+		230: 55281185, // 34b8621
 		229: 55281185, // 34b8621
 		228: 55281185, // 34b8621
 		227: 55281185, // 34b8621
@@ -65882,6 +66763,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textPhone: {
+		230: 483104362, // 1ccb966a
 		229: 483104362, // 1ccb966a
 		228: 483104362, // 1ccb966a
 		227: 483104362, // 1ccb966a
@@ -65976,6 +66858,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textImage: {
+		230: 136105807, // 81ccf4f
 		229: 136105807, // 81ccf4f
 		228: 136105807, // 81ccf4f
 		227: 136105807, // 81ccf4f
@@ -66070,6 +66953,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textAnchor: {
+		230: 894777186, // 35553762
 		229: 894777186, // 35553762
 		228: 894777186, // 35553762
 		227: 894777186, // 35553762
@@ -66164,93 +67048,113 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textMath: {
+		230: -1657885545, // 9d2eac97
 		229: -1657885545, // 9d2eac97
 		228: -1657885545, // 9d2eac97
 		227: -1657885545, // 9d2eac97
 
 	},
 	Predicate_textCustomEmoji: {
+		230: -1570679104, // a26156c0
 		229: -1570679104, // a26156c0
 		228: -1570679104, // a26156c0
 		227: -1570679104, // a26156c0
 
 	},
 	Predicate_textSpoiler: {
+		230: 1277844834, // 4c2a5d62
 		229: 1277844834, // 4c2a5d62
 		228: 1277844834, // 4c2a5d62
 		227: 1277844834, // 4c2a5d62
 
 	},
 	Predicate_textMention: {
+		230: -853225660, // cd24cf44
 		229: -853225660, // cd24cf44
 		228: -853225660, // cd24cf44
 		227: -853225660, // cd24cf44
 
 	},
 	Predicate_textHashtag: {
+		230: 1368728810, // 519524ea
 		229: 1368728810, // 519524ea
 		228: 1368728810, // 519524ea
 		227: 1368728810, // 519524ea
 
 	},
 	Predicate_textBotCommand: {
+		230: 50276819, // 2ff29d3
 		229: 50276819, // 2ff29d3
 		228: 50276819, // 2ff29d3
 		227: 50276819, // 2ff29d3
 
 	},
 	Predicate_textCashtag: {
+		230: 2073958401, // 7b9e1801
 		229: 2073958401, // 7b9e1801
 		228: 2073958401, // 7b9e1801
 		227: 2073958401, // 7b9e1801
 
 	},
 	Predicate_textAutoUrl: {
+		230: -1402305622, // ac6a83aa
 		229: -1402305622, // ac6a83aa
 		228: -1402305622, // ac6a83aa
 		227: -1402305622, // ac6a83aa
 
 	},
 	Predicate_textAutoEmail: {
+		230: -984177571, // c556a45d
 		229: -984177571, // c556a45d
 		228: -984177571, // c556a45d
 		227: -984177571, // c556a45d
 
 	},
 	Predicate_textAutoPhone: {
+		230: 616720265, // 24c26789
 		229: 616720265, // 24c26789
 		228: 616720265, // 24c26789
 		227: 616720265, // 24c26789
 
 	},
 	Predicate_textBankCard: {
+		230: -1185513171, // b956812d
 		229: -1185513171, // b956812d
 		228: -1185513171, // b956812d
 		227: -1185513171, // b956812d
 
 	},
 	Predicate_textMentionName: {
+		230: 27917308, // 1a9fbfc
 		229: 27917308, // 1a9fbfc
 		228: 27917308, // 1a9fbfc
 		227: 27917308, // 1a9fbfc
 
 	},
 	Predicate_textDate: {
+		230: -1514906069, // a5b45e2b
 		229: -1514906069, // a5b45e2b
 		228: -1514906069, // a5b45e2b
 		227: -1514906069, // a5b45e2b
 
 	},
 	Predicate_textDiff: {
+		230: -1769551024, // 9686cb50
 		229: -1769551024, // 9686cb50
 		228: -1769551024, // 9686cb50
 
 	},
 	Predicate_textButton: {
+		230: -1345872682, // afc79cd6
 		229: -1345872682, // afc79cd6
 
 	},
+	Predicate_textTonAddress: {
+		230: 1020437354, // 3cd2a36a
+
+	},
 	Predicate_pageBlockUnsupported: {
+		230: 324435594, // 13567e8a
 		229: 324435594, // 13567e8a
 		228: 324435594, // 13567e8a
 		227: 324435594, // 13567e8a
@@ -66345,6 +67249,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockTitle: {
+		230: 1890305021, // 70abc3fd
 		229: 1890305021, // 70abc3fd
 		228: 1890305021, // 70abc3fd
 		227: 1890305021, // 70abc3fd
@@ -66439,6 +67344,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockSubtitle: {
+		230: -1879401953, // 8ffa9a1f
 		229: -1879401953, // 8ffa9a1f
 		228: -1879401953, // 8ffa9a1f
 		227: -1879401953, // 8ffa9a1f
@@ -66533,6 +67439,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockAuthorDate: {
+		230: -1162877472, // baafe5e0
 		229: -1162877472, // baafe5e0
 		228: -1162877472, // baafe5e0
 		227: -1162877472, // baafe5e0
@@ -66627,6 +67534,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockHeader: {
+		230: -1076861716, // bfd064ec
 		229: -1076861716, // bfd064ec
 		228: -1076861716, // bfd064ec
 		227: -1076861716, // bfd064ec
@@ -66721,6 +67629,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockSubheader: {
+		230: -248793375, // f12bb6e1
 		229: -248793375, // f12bb6e1
 		228: -248793375, // f12bb6e1
 		227: -248793375, // f12bb6e1
@@ -66815,6 +67724,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockParagraph: {
+		230: 1182402406, // 467a0766
 		229: 1182402406, // 467a0766
 		228: 1182402406, // 467a0766
 		227: 1182402406, // 467a0766
@@ -66909,6 +67819,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockPreformatted: {
+		230: -1066346178, // c070d93e
 		229: -1066346178, // c070d93e
 		228: -1066346178, // c070d93e
 		227: -1066346178, // c070d93e
@@ -67003,6 +67914,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockFooter: {
+		230: 1216809369, // 48870999
 		229: 1216809369, // 48870999
 		228: 1216809369, // 48870999
 		227: 1216809369, // 48870999
@@ -67097,6 +68009,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockDivider: {
+		230: -618614392, // db20b188
 		229: -618614392, // db20b188
 		228: -618614392, // db20b188
 		227: -618614392, // db20b188
@@ -67191,6 +68104,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockAnchor: {
+		230: -837994576, // ce0d37b0
 		229: -837994576, // ce0d37b0
 		228: -837994576, // ce0d37b0
 		227: -837994576, // ce0d37b0
@@ -67285,6 +68199,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockList: {
+		230: -454524911, // e4e88011
 		229: -454524911, // e4e88011
 		228: -454524911, // e4e88011
 		227: -454524911, // e4e88011
@@ -67379,6 +68294,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockBlockquote: {
+		230: 1724999435, // 66d1670b
 		229: 1724999435, // 66d1670b
 		228: 641563686,  // 263d7c26
 		227: 641563686,  // 263d7c26
@@ -67473,6 +68389,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockPullquote: {
+		230: 1329878739, // 4f4456d3
 		229: 1329878739, // 4f4456d3
 		228: 1329878739, // 4f4456d3
 		227: 1329878739, // 4f4456d3
@@ -67567,6 +68484,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockPhoto: {
+		230: 391759200, // 1759c560
 		229: 391759200, // 1759c560
 		228: 391759200, // 1759c560
 		227: 391759200, // 1759c560
@@ -67661,6 +68579,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockVideo: {
+		230: 2089805750, // 7c8fe7b6
 		229: 2089805750, // 7c8fe7b6
 		228: 2089805750, // 7c8fe7b6
 		227: 2089805750, // 7c8fe7b6
@@ -67755,6 +68674,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockCover: {
+		230: 972174080, // 39f23300
 		229: 972174080, // 39f23300
 		228: 972174080, // 39f23300
 		227: 972174080, // 39f23300
@@ -67849,6 +68769,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockEmbed: {
+		230: -1468953147, // a8718dc5
 		229: -1468953147, // a8718dc5
 		228: -1468953147, // a8718dc5
 		227: -1468953147, // a8718dc5
@@ -67943,6 +68864,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockEmbedPost: {
+		230: -229005301, // f259a80b
 		229: -229005301, // f259a80b
 		228: -229005301, // f259a80b
 		227: -229005301, // f259a80b
@@ -68037,6 +68959,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockCollage: {
+		230: 1705048653, // 65a0fa4d
 		229: 1705048653, // 65a0fa4d
 		228: 1705048653, // 65a0fa4d
 		227: 1705048653, // 65a0fa4d
@@ -68131,6 +69054,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockSlideshow: {
+		230: 52401552, // 31f9590
 		229: 52401552, // 31f9590
 		228: 52401552, // 31f9590
 		227: 52401552, // 31f9590
@@ -68225,6 +69149,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockChannel: {
+		230: -283684427, // ef1751b5
 		229: -283684427, // ef1751b5
 		228: -283684427, // ef1751b5
 		227: -283684427, // ef1751b5
@@ -68319,6 +69244,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockAudio: {
+		230: -2143067670, // 804361ea
 		229: -2143067670, // 804361ea
 		228: -2143067670, // 804361ea
 		227: -2143067670, // 804361ea
@@ -68413,6 +69339,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockKicker: {
+		230: 504660880, // 1e148390
 		229: 504660880, // 1e148390
 		228: 504660880, // 1e148390
 		227: 504660880, // 1e148390
@@ -68507,6 +69434,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockTable: {
+		230: -1085412734, // bf4dea82
 		229: -1085412734, // bf4dea82
 		228: -1085412734, // bf4dea82
 		227: -1085412734, // bf4dea82
@@ -68601,6 +69529,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockOrderedList: {
+		230: 534181569,   // 1fd6f6c1
 		229: 534181569,   // 1fd6f6c1
 		228: 534181569,   // 1fd6f6c1
 		227: 534181569,   // 1fd6f6c1
@@ -68695,6 +69624,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockDetails: {
+		230: 1987480557, // 76768bed
 		229: 1987480557, // 76768bed
 		228: 1987480557, // 76768bed
 		227: 1987480557, // 76768bed
@@ -68789,6 +69719,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockRelatedArticles: {
+		230: 370236054, // 16115a96
 		229: 370236054, // 16115a96
 		228: 370236054, // 16115a96
 		227: 370236054, // 16115a96
@@ -68883,6 +69814,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockMap: {
+		230: -1538310410, // a44f3ef6
 		229: -1538310410, // a44f3ef6
 		228: -1538310410, // a44f3ef6
 		227: -1538310410, // a44f3ef6
@@ -68977,74 +69909,87 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageBlockHeading1: {
+		230: -1157691601, // baff072f
 		229: -1157691601, // baff072f
 		228: -1157691601, // baff072f
 		227: -1157691601, // baff072f
 
 	},
 	Predicate_pageBlockHeading2: {
+		230: 158018284, // 96b2aec
 		229: 158018284, // 96b2aec
 		228: 158018284, // 96b2aec
 		227: 158018284, // 96b2aec
 
 	},
 	Predicate_pageBlockHeading3: {
+		230: 1743204781, // 67e731ad
 		229: 1743204781, // 67e731ad
 		228: 1743204781, // 67e731ad
 		227: 1743204781, // 67e731ad
 
 	},
 	Predicate_pageBlockHeading4: {
+		230: -1254983893, // b532772b
 		229: -1254983893, // b532772b
 		228: -1254983893, // b532772b
 		227: -1254983893, // b532772b
 
 	},
 	Predicate_pageBlockHeading5: {
+		230: -608277398, // dbbe6c6a
 		229: -608277398, // dbbe6c6a
 		228: -608277398, // dbbe6c6a
 		227: -608277398, // dbbe6c6a
 
 	},
 	Predicate_pageBlockHeading6: {
+		230: 1747599785, // 682a41a9
 		229: 1747599785, // 682a41a9
 		228: 1747599785, // 682a41a9
 		227: 1747599785, // 682a41a9
 
 	},
 	Predicate_pageBlockMath: {
+		230: 1493699616, // 59080c20
 		229: 1493699616, // 59080c20
 		228: 1493699616, // 59080c20
 		227: 1493699616, // 59080c20
 
 	},
 	Predicate_pageBlockThinking: {
+		230: 1009361890, // 3c29a3e2
 		229: 1009361890, // 3c29a3e2
 		228: 1009361890, // 3c29a3e2
 		227: 1009361890, // 3c29a3e2
 
 	},
 	Predicate_inputPageBlockMap: {
+		230: 1464557951, // 574b617f
 		229: 1464557951, // 574b617f
 		228: 1464557951, // 574b617f
 		227: 1464557951, // 574b617f
 
 	},
 	Predicate_pageBlockBlockquoteBlocks: {
+		230: 242108356, // e6e47c4
 		229: 242108356, // e6e47c4
 		228: 242108356, // e6e47c4
 		227: 242108356, // e6e47c4
 
 	},
 	Predicate_pageBlockButtonRow: {
+		230: 1835270936, // 6d640318
 		229: 1835270936, // 6d640318
 
 	},
 	Predicate_pageBlockDocument: {
+		230: 955923363, // 38fa3ba3
 		229: 955923363, // 38fa3ba3
 
 	},
 	Predicate_phoneCallDiscardReasonMissed: {
+		230: -2048646399, // 85e42301
 		229: -2048646399, // 85e42301
 		228: -2048646399, // 85e42301
 		227: -2048646399, // 85e42301
@@ -69139,6 +70084,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallDiscardReasonDisconnect: {
+		230: -527056480, // e095c1a0
 		229: -527056480, // e095c1a0
 		228: -527056480, // e095c1a0
 		227: -527056480, // e095c1a0
@@ -69233,6 +70179,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallDiscardReasonHangup: {
+		230: 1471006352, // 57adc690
 		229: 1471006352, // 57adc690
 		228: 1471006352, // 57adc690
 		227: 1471006352, // 57adc690
@@ -69327,6 +70274,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallDiscardReasonBusy: {
+		230: -84416311, // faf7e8c9
 		229: -84416311, // faf7e8c9
 		228: -84416311, // faf7e8c9
 		227: -84416311, // faf7e8c9
@@ -69421,6 +70369,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallDiscardReasonMigrateConferenceCall: {
+		230: -1615072777, // 9fbbf1f7
 		229: -1615072777, // 9fbbf1f7
 		228: -1615072777, // 9fbbf1f7
 		227: -1615072777, // 9fbbf1f7
@@ -69452,6 +70401,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dataJSON: {
+		230: 2104790276, // 7d748d04
 		229: 2104790276, // 7d748d04
 		228: 2104790276, // 7d748d04
 		227: 2104790276, // 7d748d04
@@ -69546,6 +70496,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_labeledPrice: {
+		230: -886477832, // cb296bf8
 		229: -886477832, // cb296bf8
 		228: -886477832, // cb296bf8
 		227: -886477832, // cb296bf8
@@ -69640,6 +70591,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invoice: {
+		230: 77522308,   // 49ee584
 		229: 77522308,   // 49ee584
 		228: 77522308,   // 49ee584
 		227: 77522308,   // 49ee584
@@ -69734,6 +70686,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_paymentCharge: {
+		230: -368917890, // ea02c27e
 		229: -368917890, // ea02c27e
 		228: -368917890, // ea02c27e
 		227: -368917890, // ea02c27e
@@ -69828,6 +70781,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_postAddress: {
+		230: 512535275, // 1e8caaeb
 		229: 512535275, // 1e8caaeb
 		228: 512535275, // 1e8caaeb
 		227: 512535275, // 1e8caaeb
@@ -69922,6 +70876,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_paymentRequestedInfo: {
+		230: -1868808300, // 909c3f94
 		229: -1868808300, // 909c3f94
 		228: -1868808300, // 909c3f94
 		227: -1868808300, // 909c3f94
@@ -70016,6 +70971,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_paymentSavedCredentialsCard: {
+		230: -842892769, // cdc27a1f
 		229: -842892769, // cdc27a1f
 		228: -842892769, // cdc27a1f
 		227: -842892769, // cdc27a1f
@@ -70110,6 +71066,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webDocument: {
+		230: 475467473, // 1c570ed1
 		229: 475467473, // 1c570ed1
 		228: 475467473, // 1c570ed1
 		227: 475467473, // 1c570ed1
@@ -70204,6 +71161,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webDocumentNoProxy: {
+		230: -104284986, // f9c8bcc6
 		229: -104284986, // f9c8bcc6
 		228: -104284986, // f9c8bcc6
 		227: -104284986, // f9c8bcc6
@@ -70298,6 +71256,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputWebDocument: {
+		230: -1678949555, // 9bed434d
 		229: -1678949555, // 9bed434d
 		228: -1678949555, // 9bed434d
 		227: -1678949555, // 9bed434d
@@ -70392,6 +71351,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputWebFileLocation: {
+		230: -1036396922, // c239d686
 		229: -1036396922, // c239d686
 		228: -1036396922, // c239d686
 		227: -1036396922, // c239d686
@@ -70486,6 +71446,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputWebFileGeoPointLocation: {
+		230: -1625153079, // 9f2221c9
 		229: -1625153079, // 9f2221c9
 		228: -1625153079, // 9f2221c9
 		227: -1625153079, // 9f2221c9
@@ -70580,6 +71541,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputWebFileAudioAlbumThumbLocation: {
+		230: -193992412, // f46fe924
 		229: -193992412, // f46fe924
 		228: -193992412, // f46fe924
 		227: -193992412, // f46fe924
@@ -70669,6 +71631,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_webFile: {
+		230: 568808380, // 21e753bc
 		229: 568808380, // 21e753bc
 		228: 568808380, // 21e753bc
 		227: 568808380, // 21e753bc
@@ -70763,6 +71726,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_paymentForm: {
+		230: -1610250415, // a0058751
 		229: -1610250415, // a0058751
 		228: -1610250415, // a0058751
 		227: -1610250415, // a0058751
@@ -70857,6 +71821,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_paymentFormStars: {
+		230: 2079764828, // 7bf6b15c
 		229: 2079764828, // 7bf6b15c
 		228: 2079764828, // 7bf6b15c
 		227: 2079764828, // 7bf6b15c
@@ -70909,6 +71874,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_paymentFormStarGift: {
+		230: -1272590367, // b425cfe1
 		229: -1272590367, // b425cfe1
 		228: -1272590367, // b425cfe1
 		227: -1272590367, // b425cfe1
@@ -70953,6 +71919,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_validatedRequestedInfo: {
+		230: -784000893, // d1451883
 		229: -784000893, // d1451883
 		228: -784000893, // d1451883
 		227: -784000893, // d1451883
@@ -71047,6 +72014,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_paymentResult: {
+		230: 1314881805, // 4e5f810d
 		229: 1314881805, // 4e5f810d
 		228: 1314881805, // 4e5f810d
 		227: 1314881805, // 4e5f810d
@@ -71141,6 +72109,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_paymentVerificationNeeded: {
+		230: -666824391, // d8411139
 		229: -666824391, // d8411139
 		228: -666824391, // d8411139
 		227: -666824391, // d8411139
@@ -71235,6 +72204,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_paymentReceipt: {
+		230: 1891958275, // 70c4fe03
 		229: 1891958275, // 70c4fe03
 		228: 1891958275, // 70c4fe03
 		227: 1891958275, // 70c4fe03
@@ -71329,6 +72299,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_paymentReceiptStars: {
+		230: -625215430, // dabbf83a
 		229: -625215430, // dabbf83a
 		228: -625215430, // dabbf83a
 		227: -625215430, // dabbf83a
@@ -71381,6 +72352,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_savedInfo: {
+		230: -74456004, // fb8fe43c
 		229: -74456004, // fb8fe43c
 		228: -74456004, // fb8fe43c
 		227: -74456004, // fb8fe43c
@@ -71475,6 +72447,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPaymentCredentialsSaved: {
+		230: -1056001329, // c10eb2cf
 		229: -1056001329, // c10eb2cf
 		228: -1056001329, // c10eb2cf
 		227: -1056001329, // c10eb2cf
@@ -71569,6 +72542,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPaymentCredentials: {
+		230: 873977640, // 3417d728
 		229: 873977640, // 3417d728
 		228: 873977640, // 3417d728
 		227: 873977640, // 3417d728
@@ -71663,6 +72637,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPaymentCredentialsApplePay: {
+		230: 178373535, // aa1c39f
 		229: 178373535, // aa1c39f
 		228: 178373535, // aa1c39f
 		227: 178373535, // aa1c39f
@@ -71757,6 +72732,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPaymentCredentialsGooglePay: {
+		230: -1966921727, // 8ac32801
 		229: -1966921727, // 8ac32801
 		228: -1966921727, // 8ac32801
 		227: -1966921727, // 8ac32801
@@ -71851,6 +72827,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_tmpPassword: {
+		230: -614138572, // db64fd34
 		229: -614138572, // db64fd34
 		228: -614138572, // db64fd34
 		227: -614138572, // db64fd34
@@ -71945,6 +72922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_shippingOption: {
+		230: -1239335713, // b6213cdf
 		229: -1239335713, // b6213cdf
 		228: -1239335713, // b6213cdf
 		227: -1239335713, // b6213cdf
@@ -72039,6 +73017,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStickerSetItem: {
+		230: 853188252, // 32da9e9c
 		229: 853188252, // 32da9e9c
 		228: 853188252, // 32da9e9c
 		227: 853188252, // 32da9e9c
@@ -72133,6 +73112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPhoneCall: {
+		230: 506920429, // 1e36fded
 		229: 506920429, // 1e36fded
 		228: 506920429, // 1e36fded
 		227: 506920429, // 1e36fded
@@ -72227,6 +73207,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallEmpty: {
+		230: 1399245077, // 5366c915
 		229: 1399245077, // 5366c915
 		228: 1399245077, // 5366c915
 		227: 1399245077, // 5366c915
@@ -72321,6 +73302,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallWaiting: {
+		230: -987599081, // c5226f17
 		229: -987599081, // c5226f17
 		228: -987599081, // c5226f17
 		227: -987599081, // c5226f17
@@ -72415,6 +73397,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallRequested: {
+		230: 347139340,  // 14b0ed0c
 		229: 347139340,  // 14b0ed0c
 		228: 347139340,  // 14b0ed0c
 		227: 347139340,  // 14b0ed0c
@@ -72509,6 +73492,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallAccepted: {
+		230: 912311057, // 3660c311
 		229: 912311057, // 3660c311
 		228: 912311057, // 3660c311
 		227: 912311057, // 3660c311
@@ -72603,6 +73587,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCall: {
+		230: 810769141,   // 30535af5
 		229: 810769141,   // 30535af5
 		228: 810769141,   // 30535af5
 		227: 810769141,   // 30535af5
@@ -72697,6 +73682,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallDiscarded: {
+		230: 1355435489, // 50ca4de1
 		229: 1355435489, // 50ca4de1
 		228: 1355435489, // 50ca4de1
 		227: 1355435489, // 50ca4de1
@@ -72791,6 +73777,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneConnection: {
+		230: -1665063993, // 9cc123c7
 		229: -1665063993, // 9cc123c7
 		228: -1665063993, // 9cc123c7
 		227: -1665063993, // 9cc123c7
@@ -72885,6 +73872,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneConnectionWebrtc: {
+		230: 1667228533, // 635fe375
 		229: 1667228533, // 635fe375
 		228: 1667228533, // 635fe375
 		227: 1667228533, // 635fe375
@@ -72979,6 +73967,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phoneCallProtocol: {
+		230: -58224696, // fc878fc8
 		229: -58224696, // fc878fc8
 		228: -58224696, // fc878fc8
 		227: -58224696, // fc878fc8
@@ -73073,6 +74062,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_phoneCall: {
+		230: -326966976, // ec82e140
 		229: -326966976, // ec82e140
 		228: -326966976, // ec82e140
 		227: -326966976, // ec82e140
@@ -73167,6 +74157,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_cdnFileReuploadNeeded: {
+		230: -290921362, // eea8e46e
 		229: -290921362, // eea8e46e
 		228: -290921362, // eea8e46e
 		227: -290921362, // eea8e46e
@@ -73261,6 +74252,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_cdnFile: {
+		230: -1449145777, // a99fca4f
 		229: -1449145777, // a99fca4f
 		228: -1449145777, // a99fca4f
 		227: -1449145777, // a99fca4f
@@ -73355,6 +74347,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_cdnPublicKey: {
+		230: -914167110, // c982eaba
 		229: -914167110, // c982eaba
 		228: -914167110, // c982eaba
 		227: -914167110, // c982eaba
@@ -73449,6 +74442,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_cdnConfig: {
+		230: 1462101002, // 5725e40a
 		229: 1462101002, // 5725e40a
 		228: 1462101002, // 5725e40a
 		227: 1462101002, // 5725e40a
@@ -73543,6 +74537,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langPackString: {
+		230: -892239370, // cad181f6
 		229: -892239370, // cad181f6
 		228: -892239370, // cad181f6
 		227: -892239370, // cad181f6
@@ -73637,6 +74632,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langPackStringPluralized: {
+		230: 1816636575, // 6c47ac9f
 		229: 1816636575, // 6c47ac9f
 		228: 1816636575, // 6c47ac9f
 		227: 1816636575, // 6c47ac9f
@@ -73731,6 +74727,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langPackStringDeleted: {
+		230: 695856818, // 2979eeb2
 		229: 695856818, // 2979eeb2
 		228: 695856818, // 2979eeb2
 		227: 695856818, // 2979eeb2
@@ -73825,6 +74822,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langPackDifference: {
+		230: -209337866, // f385c1f6
 		229: -209337866, // f385c1f6
 		228: -209337866, // f385c1f6
 		227: -209337866, // f385c1f6
@@ -73919,6 +74917,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langPackLanguage: {
+		230: -288727837, // eeca5ce3
 		229: -288727837, // eeca5ce3
 		228: -288727837, // eeca5ce3
 		227: -288727837, // eeca5ce3
@@ -74013,6 +75012,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeTitle: {
+		230: -421545947, // e6dfb825
 		229: -421545947, // e6dfb825
 		228: -421545947, // e6dfb825
 		227: -421545947, // e6dfb825
@@ -74107,6 +75107,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeAbout: {
+		230: 1427671598, // 55188a2e
 		229: 1427671598, // 55188a2e
 		228: 1427671598, // 55188a2e
 		227: 1427671598, // 55188a2e
@@ -74201,6 +75202,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeUsername: {
+		230: 1783299128, // 6a4afc38
 		229: 1783299128, // 6a4afc38
 		228: 1783299128, // 6a4afc38
 		227: 1783299128, // 6a4afc38
@@ -74295,6 +75297,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangePhoto: {
+		230: 1129042607, // 434bd2af
 		229: 1129042607, // 434bd2af
 		228: 1129042607, // 434bd2af
 		227: 1129042607, // 434bd2af
@@ -74389,6 +75392,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleInvites: {
+		230: 460916654, // 1b7907ae
 		229: 460916654, // 1b7907ae
 		228: 460916654, // 1b7907ae
 		227: 460916654, // 1b7907ae
@@ -74483,6 +75487,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleSignatures: {
+		230: 648939889, // 26ae0971
 		229: 648939889, // 26ae0971
 		228: 648939889, // 26ae0971
 		227: 648939889, // 26ae0971
@@ -74577,6 +75582,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionUpdatePinned: {
+		230: -370660328, // e9e82c18
 		229: -370660328, // e9e82c18
 		228: -370660328, // e9e82c18
 		227: -370660328, // e9e82c18
@@ -74671,6 +75677,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionEditMessage: {
+		230: 1889215493, // 709b2405
 		229: 1889215493, // 709b2405
 		228: 1889215493, // 709b2405
 		227: 1889215493, // 709b2405
@@ -74765,6 +75772,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionDeleteMessage: {
+		230: 1121994683, // 42e047bb
 		229: 1121994683, // 42e047bb
 		228: 1121994683, // 42e047bb
 		227: 1121994683, // 42e047bb
@@ -74859,6 +75867,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantJoin: {
+		230: 405815507, // 183040d3
 		229: 405815507, // 183040d3
 		228: 405815507, // 183040d3
 		227: 405815507, // 183040d3
@@ -74953,6 +75962,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantLeave: {
+		230: -124291086, // f89777f2
 		229: -124291086, // f89777f2
 		228: -124291086, // f89777f2
 		227: -124291086, // f89777f2
@@ -75047,6 +76057,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantInvite: {
+		230: -484690728, // e31c34d8
 		229: -484690728, // e31c34d8
 		228: -484690728, // e31c34d8
 		227: -484690728, // e31c34d8
@@ -75141,6 +76152,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantToggleBan: {
+		230: -422036098, // e6d83d7e
 		229: -422036098, // e6d83d7e
 		228: -422036098, // e6d83d7e
 		227: -422036098, // e6d83d7e
@@ -75235,6 +76247,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantToggleAdmin: {
+		230: -714643696, // d5676710
 		229: -714643696, // d5676710
 		228: -714643696, // d5676710
 		227: -714643696, // d5676710
@@ -75329,6 +76342,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeStickerSet: {
+		230: -1312568665, // b1c3caa7
 		229: -1312568665, // b1c3caa7
 		228: -1312568665, // b1c3caa7
 		227: -1312568665, // b1c3caa7
@@ -75423,6 +76437,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionTogglePreHistoryHidden: {
+		230: 1599903217, // 5f5c95f1
 		229: 1599903217, // 5f5c95f1
 		228: 1599903217, // 5f5c95f1
 		227: 1599903217, // 5f5c95f1
@@ -75517,6 +76532,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionDefaultBannedRights: {
+		230: 771095562, // 2df5fc0a
 		229: 771095562, // 2df5fc0a
 		228: 771095562, // 2df5fc0a
 		227: 771095562, // 2df5fc0a
@@ -75611,6 +76627,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionStopPoll: {
+		230: -1895328189, // 8f079643
 		229: -1895328189, // 8f079643
 		228: -1895328189, // 8f079643
 		227: -1895328189, // 8f079643
@@ -75705,6 +76722,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeLinkedChat: {
+		230: 84703944, // 50c7ac8
 		229: 84703944, // 50c7ac8
 		228: 84703944, // 50c7ac8
 		227: 84703944, // 50c7ac8
@@ -75799,6 +76817,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeLocation: {
+		230: 241923758, // e6b76ae
 		229: 241923758, // e6b76ae
 		228: 241923758, // e6b76ae
 		227: 241923758, // e6b76ae
@@ -75893,6 +76912,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleSlowMode: {
+		230: 1401984889, // 53909779
 		229: 1401984889, // 53909779
 		228: 1401984889, // 53909779
 		227: 1401984889, // 53909779
@@ -75987,6 +77007,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionStartGroupCall: {
+		230: 589338437, // 23209745
 		229: 589338437, // 23209745
 		228: 589338437, // 23209745
 		227: 589338437, // 23209745
@@ -76081,6 +77102,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionDiscardGroupCall: {
+		230: -610299584, // db9f9140
 		229: -610299584, // db9f9140
 		228: -610299584, // db9f9140
 		227: -610299584, // db9f9140
@@ -76175,6 +77197,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantMute: {
+		230: -115071790, // f92424d2
 		229: -115071790, // f92424d2
 		228: -115071790, // f92424d2
 		227: -115071790, // f92424d2
@@ -76269,6 +77292,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantUnmute: {
+		230: -431740480, // e64429c0
 		229: -431740480, // e64429c0
 		228: -431740480, // e64429c0
 		227: -431740480, // e64429c0
@@ -76363,6 +77387,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleGroupCallSetting: {
+		230: 1456906823, // 56d6a247
 		229: 1456906823, // 56d6a247
 		228: 1456906823, // 56d6a247
 		227: 1456906823, // 56d6a247
@@ -76457,6 +77482,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantJoinByInvite: {
+		230: -23084712,  // fe9fc158
 		229: -23084712,  // fe9fc158
 		228: -23084712,  // fe9fc158
 		227: -23084712,  // fe9fc158
@@ -76551,6 +77577,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionExportedInviteDelete: {
+		230: 1515256996, // 5a50fca4
 		229: 1515256996, // 5a50fca4
 		228: 1515256996, // 5a50fca4
 		227: 1515256996, // 5a50fca4
@@ -76645,6 +77672,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionExportedInviteRevoke: {
+		230: 1091179342, // 410a134e
 		229: 1091179342, // 410a134e
 		228: 1091179342, // 410a134e
 		227: 1091179342, // 410a134e
@@ -76739,6 +77767,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionExportedInviteEdit: {
+		230: -384910503, // e90ebb59
 		229: -384910503, // e90ebb59
 		228: -384910503, // e90ebb59
 		227: -384910503, // e90ebb59
@@ -76833,6 +77862,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantVolume: {
+		230: 1048537159, // 3e7f6847
 		229: 1048537159, // 3e7f6847
 		228: 1048537159, // 3e7f6847
 		227: 1048537159, // 3e7f6847
@@ -76927,6 +77957,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeHistoryTTL: {
+		230: 1855199800, // 6e941a38
 		229: 1855199800, // 6e941a38
 		228: 1855199800, // 6e941a38
 		227: 1855199800, // 6e941a38
@@ -77021,6 +78052,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantJoinByRequest: {
+		230: -1347021750, // afb6144a
 		229: -1347021750, // afb6144a
 		228: -1347021750, // afb6144a
 		227: -1347021750, // afb6144a
@@ -77115,6 +78147,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleNoForwards: {
+		230: -886388890, // cb2ac766
 		229: -886388890, // cb2ac766
 		228: -886388890, // cb2ac766
 		227: -886388890, // cb2ac766
@@ -77209,6 +78242,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionSendMessage: {
+		230: 663693416, // 278f2868
 		229: 663693416, // 278f2868
 		228: 663693416, // 278f2868
 		227: 663693416, // 278f2868
@@ -77303,6 +78337,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeAvailableReactions: {
+		230: -1102180616, // be4e0ef8
 		229: -1102180616, // be4e0ef8
 		228: -1102180616, // be4e0ef8
 		227: -1102180616, // be4e0ef8
@@ -77397,6 +78432,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeUsernames: {
+		230: -263212119, // f04fb3a9
 		229: -263212119, // f04fb3a9
 		228: -263212119, // f04fb3a9
 		227: -263212119, // f04fb3a9
@@ -77482,6 +78518,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleForum: {
+		230: 46949251, // 2cc6383
 		229: 46949251, // 2cc6383
 		228: 46949251, // 2cc6383
 		227: 46949251, // 2cc6383
@@ -77567,6 +78604,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionCreateTopic: {
+		230: 1483767080, // 58707d28
 		229: 1483767080, // 58707d28
 		228: 1483767080, // 58707d28
 		227: 1483767080, // 58707d28
@@ -77652,6 +78690,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionEditTopic: {
+		230: -261103096, // f06fe208
 		229: -261103096, // f06fe208
 		228: -261103096, // f06fe208
 		227: -261103096, // f06fe208
@@ -77737,6 +78776,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionDeleteTopic: {
+		230: -1374254839, // ae168909
 		229: -1374254839, // ae168909
 		228: -1374254839, // ae168909
 		227: -1374254839, // ae168909
@@ -77822,6 +78862,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionPinTopic: {
+		230: 1569535291, // 5d8d353b
 		229: 1569535291, // 5d8d353b
 		228: 1569535291, // 5d8d353b
 		227: 1569535291, // 5d8d353b
@@ -77907,6 +78948,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleAntiSpam: {
+		230: 1693675004, // 64f36dfc
 		229: 1693675004, // 64f36dfc
 		228: 1693675004, // 64f36dfc
 		227: 1693675004, // 64f36dfc
@@ -77990,6 +79032,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangePeerColor: {
+		230: 1469507456, // 5796e780
 		229: 1469507456, // 5796e780
 		228: 1469507456, // 5796e780
 		227: 1469507456, // 5796e780
@@ -78055,6 +79098,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeProfilePeerColor: {
+		230: 1581742885, // 5e477b25
 		229: 1581742885, // 5e477b25
 		228: 1581742885, // 5e477b25
 		227: 1581742885, // 5e477b25
@@ -78120,6 +79164,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeWallpaper: {
+		230: 834362706, // 31bb5d52
 		229: 834362706, // 31bb5d52
 		228: 834362706, // 31bb5d52
 		227: 834362706, // 31bb5d52
@@ -78185,6 +79230,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeEmojiStatus: {
+		230: 1051328177, // 3ea9feb1
 		229: 1051328177, // 3ea9feb1
 		228: 1051328177, // 3ea9feb1
 		227: 1051328177, // 3ea9feb1
@@ -78250,6 +79296,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionChangeEmojiStickerSet: {
+		230: 1188577451, // 46d840ab
 		229: 1188577451, // 46d840ab
 		228: 1188577451, // 46d840ab
 		227: 1188577451, // 46d840ab
@@ -78309,6 +79356,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleSignatureProfiles: {
+		230: 1621597305, // 60a79c79
 		229: 1621597305, // 60a79c79
 		228: 1621597305, // 60a79c79
 		227: 1621597305, // 60a79c79
@@ -78356,6 +79404,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantSubExtend: {
+		230: 1684286899, // 64642db3
 		229: 1684286899, // 64642db3
 		228: 1684286899, // 64642db3
 		227: 1684286899, // 64642db3
@@ -78402,6 +79451,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionToggleAutotranslation: {
+		230: -988285058, // c517f77e
 		229: -988285058, // c517f77e
 		228: -988285058, // c517f77e
 		227: -988285058, // c517f77e
@@ -78432,6 +79482,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventActionParticipantEditRank: {
+		230: 1476834540, // 5806b4ec
 		229: 1476834540, // 5806b4ec
 		228: 1476834540, // 5806b4ec
 		227: 1476834540, // 5806b4ec
@@ -78442,6 +79493,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEvent: {
+		230: 531458253, // 1fad68cd
 		229: 531458253, // 1fad68cd
 		228: 531458253, // 1fad68cd
 		227: 531458253, // 1fad68cd
@@ -78536,6 +79588,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_adminLogResults: {
+		230: -309659827, // ed8af74d
 		229: -309659827, // ed8af74d
 		228: -309659827, // ed8af74d
 		227: -309659827, // ed8af74d
@@ -78630,6 +79683,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelAdminLogEventsFilter: {
+		230: -368018716, // ea107ae4
 		229: -368018716, // ea107ae4
 		228: -368018716, // ea107ae4
 		227: -368018716, // ea107ae4
@@ -78724,6 +79778,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_popularContact: {
+		230: 1558266229, // 5ce14175
 		229: 1558266229, // 5ce14175
 		228: 1558266229, // 5ce14175
 		227: 1558266229, // 5ce14175
@@ -78818,6 +79873,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_favedStickersNotModified: {
+		230: -1634752813, // 9e8fa6d3
 		229: -1634752813, // 9e8fa6d3
 		228: -1634752813, // 9e8fa6d3
 		227: -1634752813, // 9e8fa6d3
@@ -78912,6 +79968,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_favedStickers: {
+		230: 750063767, // 2cb51097
 		229: 750063767, // 2cb51097
 		228: 750063767, // 2cb51097
 		227: 750063767, // 2cb51097
@@ -79006,6 +80063,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_recentMeUrlUnknown: {
+		230: 1189204285, // 46e1d13d
 		229: 1189204285, // 46e1d13d
 		228: 1189204285, // 46e1d13d
 		227: 1189204285, // 46e1d13d
@@ -79100,6 +80158,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_recentMeUrlUser: {
+		230: -1188296222, // b92c09e2
 		229: -1188296222, // b92c09e2
 		228: -1188296222, // b92c09e2
 		227: -1188296222, // b92c09e2
@@ -79194,6 +80253,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_recentMeUrlChat: {
+		230: -1294306862, // b2da71d2
 		229: -1294306862, // b2da71d2
 		228: -1294306862, // b2da71d2
 		227: -1294306862, // b2da71d2
@@ -79288,6 +80348,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_recentMeUrlChatInvite: {
+		230: -347535331, // eb49081d
 		229: -347535331, // eb49081d
 		228: -347535331, // eb49081d
 		227: -347535331, // eb49081d
@@ -79382,6 +80443,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_recentMeUrlStickerSet: {
+		230: -1140172836, // bc0a57dc
 		229: -1140172836, // bc0a57dc
 		228: -1140172836, // bc0a57dc
 		227: -1140172836, // bc0a57dc
@@ -79476,6 +80538,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_recentMeUrls: {
+		230: 235081943, // e0310d7
 		229: 235081943, // e0310d7
 		228: 235081943, // e0310d7
 		227: 235081943, // e0310d7
@@ -79570,6 +80633,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSingleMedia: {
+		230: 482797855, // 1cc6e91f
 		229: 482797855, // 1cc6e91f
 		228: 482797855, // 1cc6e91f
 		227: 482797855, // 1cc6e91f
@@ -79664,6 +80728,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webAuthorization: {
+		230: -1493633966, // a6f8f452
 		229: -1493633966, // a6f8f452
 		228: -1493633966, // a6f8f452
 		227: -1493633966, // a6f8f452
@@ -79758,6 +80823,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_webAuthorizations: {
+		230: -313079300, // ed56c9fc
 		229: -313079300, // ed56c9fc
 		228: -313079300, // ed56c9fc
 		227: -313079300, // ed56c9fc
@@ -79852,6 +80918,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessageID: {
+		230: -1502174430, // a676a322
 		229: -1502174430, // a676a322
 		228: -1502174430, // a676a322
 		227: -1502174430, // a676a322
@@ -79946,6 +81013,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessageReplyTo: {
+		230: -1160215659, // bad88395
 		229: -1160215659, // bad88395
 		228: -1160215659, // bad88395
 		227: -1160215659, // bad88395
@@ -80040,6 +81108,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessagePinned: {
+		230: -2037963464, // 86872538
 		229: -2037963464, // 86872538
 		228: -2037963464, // 86872538
 		227: -2037963464, // 86872538
@@ -80134,6 +81203,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessageCallbackQuery: {
+		230: -1392895362, // acfa1a7e
 		229: -1392895362, // acfa1a7e
 		228: -1392895362, // acfa1a7e
 		227: -1392895362, // acfa1a7e
@@ -80228,6 +81298,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputDialogPeer: {
+		230: -55902537, // fcaafeb7
 		229: -55902537, // fcaafeb7
 		228: -55902537, // fcaafeb7
 		227: -55902537, // fcaafeb7
@@ -80322,6 +81393,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputDialogPeerFolder: {
+		230: 1684014375, // 64600527
 		229: 1684014375, // 64600527
 		228: 1684014375, // 64600527
 		227: 1684014375, // 64600527
@@ -80416,11 +81488,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputDialogPeerCommunity: {
+		230: 1777300164, // 69ef72c4
 		229: 1777300164, // 69ef72c4
 		228: 1777300164, // 69ef72c4
 
 	},
 	Predicate_dialogPeer: {
+		230: -445792507, // e56dbf05
 		229: -445792507, // e56dbf05
 		228: -445792507, // e56dbf05
 		227: -445792507, // e56dbf05
@@ -80515,6 +81589,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogPeerFolder: {
+		230: 1363483106, // 514519e2
 		229: 1363483106, // 514519e2
 		228: 1363483106, // 514519e2
 		227: 1363483106, // 514519e2
@@ -80609,11 +81684,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogPeerCommunity: {
+		230: 795199716, // 2f65c8e4
 		229: 795199716, // 2f65c8e4
 		228: 795199716, // 2f65c8e4
 
 	},
 	Predicate_messages_foundStickerSetsNotModified: {
+		230: 223655517, // d54b65d
 		229: 223655517, // d54b65d
 		228: 223655517, // d54b65d
 		227: 223655517, // d54b65d
@@ -80708,6 +81785,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_foundStickerSets: {
+		230: -1963942446, // 8af09dd2
 		229: -1963942446, // 8af09dd2
 		228: -1963942446, // 8af09dd2
 		227: -1963942446, // 8af09dd2
@@ -80802,6 +81880,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_fileHash: {
+		230: -207944868, // f39b035c
 		229: -207944868, // f39b035c
 		228: -207944868, // f39b035c
 		227: -207944868, // f39b035c
@@ -80896,6 +81975,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputClientProxy: {
+		230: 1968737087, // 75588b3f
 		229: 1968737087, // 75588b3f
 		228: 1968737087, // 75588b3f
 		227: 1968737087, // 75588b3f
@@ -80990,6 +82070,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_termsOfServiceUpdateEmpty: {
+		230: -483352705, // e3309f7f
 		229: -483352705, // e3309f7f
 		228: -483352705, // e3309f7f
 		227: -483352705, // e3309f7f
@@ -81084,6 +82165,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_termsOfServiceUpdate: {
+		230: 686618977, // 28ecf961
 		229: 686618977, // 28ecf961
 		228: 686618977, // 28ecf961
 		227: 686618977, // 28ecf961
@@ -81178,6 +82260,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSecureFileUploaded: {
+		230: 859091184, // 3334b0f0
 		229: 859091184, // 3334b0f0
 		228: 859091184, // 3334b0f0
 		227: 859091184, // 3334b0f0
@@ -81272,6 +82355,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSecureFile: {
+		230: 1399317950, // 5367e5be
 		229: 1399317950, // 5367e5be
 		228: 1399317950, // 5367e5be
 		227: 1399317950, // 5367e5be
@@ -81366,6 +82450,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureFileEmpty: {
+		230: 1679398724, // 64199744
 		229: 1679398724, // 64199744
 		228: 1679398724, // 64199744
 		227: 1679398724, // 64199744
@@ -81460,6 +82545,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureFile: {
+		230: 2097791614, // 7d09c27e
 		229: 2097791614, // 7d09c27e
 		228: 2097791614, // 7d09c27e
 		227: 2097791614, // 7d09c27e
@@ -81554,6 +82640,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureData: {
+		230: -1964327229, // 8aeabec3
 		229: -1964327229, // 8aeabec3
 		228: -1964327229, // 8aeabec3
 		227: -1964327229, // 8aeabec3
@@ -81648,6 +82735,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_securePlainPhone: {
+		230: 2103482845, // 7d6099dd
 		229: 2103482845, // 7d6099dd
 		228: 2103482845, // 7d6099dd
 		227: 2103482845, // 7d6099dd
@@ -81742,6 +82830,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_securePlainEmail: {
+		230: 569137759, // 21ec5a5f
 		229: 569137759, // 21ec5a5f
 		228: 569137759, // 21ec5a5f
 		227: 569137759, // 21ec5a5f
@@ -81836,6 +82925,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypePersonalDetails: {
+		230: -1658158621, // 9d2a81e3
 		229: -1658158621, // 9d2a81e3
 		228: -1658158621, // 9d2a81e3
 		227: -1658158621, // 9d2a81e3
@@ -81930,6 +83020,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypePassport: {
+		230: 1034709504, // 3dac6a00
 		229: 1034709504, // 3dac6a00
 		228: 1034709504, // 3dac6a00
 		227: 1034709504, // 3dac6a00
@@ -82024,6 +83115,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeDriverLicense: {
+		230: 115615172, // 6e425c4
 		229: 115615172, // 6e425c4
 		228: 115615172, // 6e425c4
 		227: 115615172, // 6e425c4
@@ -82118,6 +83210,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeIdentityCard: {
+		230: -1596951477, // a0d0744b
 		229: -1596951477, // a0d0744b
 		228: -1596951477, // a0d0744b
 		227: -1596951477, // a0d0744b
@@ -82212,6 +83305,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeInternalPassport: {
+		230: -1717268701, // 99a48f23
 		229: -1717268701, // 99a48f23
 		228: -1717268701, // 99a48f23
 		227: -1717268701, // 99a48f23
@@ -82306,6 +83400,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeAddress: {
+		230: -874308058, // cbe31e26
 		229: -874308058, // cbe31e26
 		228: -874308058, // cbe31e26
 		227: -874308058, // cbe31e26
@@ -82400,6 +83495,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeUtilityBill: {
+		230: -63531698, // fc36954e
 		229: -63531698, // fc36954e
 		228: -63531698, // fc36954e
 		227: -63531698, // fc36954e
@@ -82494,6 +83590,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeBankStatement: {
+		230: -1995211763, // 89137c0d
 		229: -1995211763, // 89137c0d
 		228: -1995211763, // 89137c0d
 		227: -1995211763, // 89137c0d
@@ -82588,6 +83685,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeRentalAgreement: {
+		230: -1954007928, // 8b883488
 		229: -1954007928, // 8b883488
 		228: -1954007928, // 8b883488
 		227: -1954007928, // 8b883488
@@ -82682,6 +83780,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypePassportRegistration: {
+		230: -1713143702, // 99e3806a
 		229: -1713143702, // 99e3806a
 		228: -1713143702, // 99e3806a
 		227: -1713143702, // 99e3806a
@@ -82776,6 +83875,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeTemporaryRegistration: {
+		230: -368907213, // ea02ec33
 		229: -368907213, // ea02ec33
 		228: -368907213, // ea02ec33
 		227: -368907213, // ea02ec33
@@ -82870,6 +83970,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypePhone: {
+		230: -1289704741, // b320aadb
 		229: -1289704741, // b320aadb
 		228: -1289704741, // b320aadb
 		227: -1289704741, // b320aadb
@@ -82964,6 +84065,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueTypeEmail: {
+		230: -1908627474, // 8e3ca7ee
 		229: -1908627474, // 8e3ca7ee
 		228: -1908627474, // 8e3ca7ee
 		227: -1908627474, // 8e3ca7ee
@@ -83058,6 +84160,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValue: {
+		230: 411017418, // 187fa0ca
 		229: 411017418, // 187fa0ca
 		228: 411017418, // 187fa0ca
 		227: 411017418, // 187fa0ca
@@ -83152,6 +84255,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSecureValue: {
+		230: -618540889, // db21d0a7
 		229: -618540889, // db21d0a7
 		228: -618540889, // db21d0a7
 		227: -618540889, // db21d0a7
@@ -83246,6 +84350,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueHash: {
+		230: -316748368, // ed1ecdb0
 		229: -316748368, // ed1ecdb0
 		228: -316748368, // ed1ecdb0
 		227: -316748368, // ed1ecdb0
@@ -83340,6 +84445,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorData: {
+		230: -391902247, // e8a40bd9
 		229: -391902247, // e8a40bd9
 		228: -391902247, // e8a40bd9
 		227: -391902247, // e8a40bd9
@@ -83434,6 +84540,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorFrontSide: {
+		230: 12467706, // be3dfa
 		229: 12467706, // be3dfa
 		228: 12467706, // be3dfa
 		227: 12467706, // be3dfa
@@ -83528,6 +84635,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorReverseSide: {
+		230: -2037765467, // 868a2aa5
 		229: -2037765467, // 868a2aa5
 		228: -2037765467, // 868a2aa5
 		227: -2037765467, // 868a2aa5
@@ -83622,6 +84730,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorSelfie: {
+		230: -449327402, // e537ced6
 		229: -449327402, // e537ced6
 		228: -449327402, // e537ced6
 		227: -449327402, // e537ced6
@@ -83716,6 +84825,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorFile: {
+		230: 2054162547, // 7a700873
 		229: 2054162547, // 7a700873
 		228: 2054162547, // 7a700873
 		227: 2054162547, // 7a700873
@@ -83810,6 +84920,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorFiles: {
+		230: 1717706985, // 666220e9
 		229: 1717706985, // 666220e9
 		228: 1717706985, // 666220e9
 		227: 1717706985, // 666220e9
@@ -83904,6 +85015,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueError: {
+		230: -2036501105, // 869d758f
 		229: -2036501105, // 869d758f
 		228: -2036501105, // 869d758f
 		227: -2036501105, // 869d758f
@@ -83998,6 +85110,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorTranslationFile: {
+		230: -1592506512, // a1144770
 		229: -1592506512, // a1144770
 		228: -1592506512, // a1144770
 		227: -1592506512, // a1144770
@@ -84092,6 +85205,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureValueErrorTranslationFiles: {
+		230: 878931416, // 34636dd8
 		229: 878931416, // 34636dd8
 		228: 878931416, // 34636dd8
 		227: 878931416, // 34636dd8
@@ -84186,6 +85300,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureCredentialsEncrypted: {
+		230: 871426631, // 33f0ea47
 		229: 871426631, // 33f0ea47
 		228: 871426631, // 33f0ea47
 		227: 871426631, // 33f0ea47
@@ -84280,6 +85395,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_authorizationForm: {
+		230: -1389486888, // ad2e1cd8
 		229: -1389486888, // ad2e1cd8
 		228: -1389486888, // ad2e1cd8
 		227: -1389486888, // ad2e1cd8
@@ -84374,6 +85490,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_sentEmailCode: {
+		230: -2128640689, // 811f854f
 		229: -2128640689, // 811f854f
 		228: -2128640689, // 811f854f
 		227: -2128640689, // 811f854f
@@ -84468,6 +85585,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_deepLinkInfoEmpty: {
+		230: 1722786150, // 66afa166
 		229: 1722786150, // 66afa166
 		228: 1722786150, // 66afa166
 		227: 1722786150, // 66afa166
@@ -84562,6 +85680,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_deepLinkInfo: {
+		230: 1783556146, // 6a4ee832
 		229: 1783556146, // 6a4ee832
 		228: 1783556146, // 6a4ee832
 		227: 1783556146, // 6a4ee832
@@ -84656,6 +85775,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_savedPhoneContact: {
+		230: 289586518, // 1142bd56
 		229: 289586518, // 1142bd56
 		228: 289586518, // 1142bd56
 		227: 289586518, // 1142bd56
@@ -84750,6 +85870,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_takeout: {
+		230: 1304052993, // 4dba4501
 		229: 1304052993, // 4dba4501
 		228: 1304052993, // 4dba4501
 		227: 1304052993, // 4dba4501
@@ -84844,6 +85965,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_passwordKdfAlgoUnknown: {
+		230: -732254058, // d45ab096
 		229: -732254058, // d45ab096
 		228: -732254058, // d45ab096
 		227: -732254058, // d45ab096
@@ -84938,6 +86060,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_passwordKdfAlgoModPow: {
+		230: 982592842, // 3a912d4a
 		229: 982592842, // 3a912d4a
 		228: 982592842, // 3a912d4a
 		227: 982592842, // 3a912d4a
@@ -85032,6 +86155,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_securePasswordKdfAlgoUnknown: {
+		230: 4883767, // 4a8537
 		229: 4883767, // 4a8537
 		228: 4883767, // 4a8537
 		227: 4883767, // 4a8537
@@ -85126,6 +86250,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_securePasswordKdfAlgoPBKDF2: {
+		230: -1141711456, // bbf2dda0
 		229: -1141711456, // bbf2dda0
 		228: -1141711456, // bbf2dda0
 		227: -1141711456, // bbf2dda0
@@ -85220,6 +86345,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_securePasswordKdfAlgoSHA512: {
+		230: -2042159726, // 86471d92
 		229: -2042159726, // 86471d92
 		228: -2042159726, // 86471d92
 		227: -2042159726, // 86471d92
@@ -85314,6 +86440,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureSecretSettings: {
+		230: 354925740, // 1527bcac
 		229: 354925740, // 1527bcac
 		228: 354925740, // 1527bcac
 		227: 354925740, // 1527bcac
@@ -85408,6 +86535,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputCheckPasswordEmpty: {
+		230: -1736378792, // 9880f658
 		229: -1736378792, // 9880f658
 		228: -1736378792, // 9880f658
 		227: -1736378792, // 9880f658
@@ -85502,6 +86630,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputCheckPasswordSRP: {
+		230: -763367294, // d27ff082
 		229: -763367294, // d27ff082
 		228: -763367294, // d27ff082
 		227: -763367294, // d27ff082
@@ -85596,6 +86725,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureRequiredType: {
+		230: -2103600678, // 829d99da
 		229: -2103600678, // 829d99da
 		228: -2103600678, // 829d99da
 		227: -2103600678, // 829d99da
@@ -85690,6 +86820,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_secureRequiredTypeOneOf: {
+		230: 41187252, // 27477b4
 		229: 41187252, // 27477b4
 		228: 41187252, // 27477b4
 		227: 41187252, // 27477b4
@@ -85784,6 +86915,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_passportConfigNotModified: {
+		230: -1078332329, // bfb9f457
 		229: -1078332329, // bfb9f457
 		228: -1078332329, // bfb9f457
 		227: -1078332329, // bfb9f457
@@ -85878,6 +87010,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_passportConfig: {
+		230: -1600596305, // a098d6af
 		229: -1600596305, // a098d6af
 		228: -1600596305, // a098d6af
 		227: -1600596305, // a098d6af
@@ -85972,6 +87105,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputAppEvent: {
+		230: 488313413, // 1d1b1245
 		229: 488313413, // 1d1b1245
 		228: 488313413, // 1d1b1245
 		227: 488313413, // 1d1b1245
@@ -86066,6 +87200,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_jsonObjectValue: {
+		230: -1059185703, // c0de1bd9
 		229: -1059185703, // c0de1bd9
 		228: -1059185703, // c0de1bd9
 		227: -1059185703, // c0de1bd9
@@ -86160,6 +87295,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_jsonNull: {
+		230: 1064139624, // 3f6d7b68
 		229: 1064139624, // 3f6d7b68
 		228: 1064139624, // 3f6d7b68
 		227: 1064139624, // 3f6d7b68
@@ -86254,6 +87390,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_jsonBool: {
+		230: -952869270, // c7345e6a
 		229: -952869270, // c7345e6a
 		228: -952869270, // c7345e6a
 		227: -952869270, // c7345e6a
@@ -86348,6 +87485,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_jsonNumber: {
+		230: 736157604, // 2be0dfa4
 		229: 736157604, // 2be0dfa4
 		228: 736157604, // 2be0dfa4
 		227: 736157604, // 2be0dfa4
@@ -86442,6 +87580,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_jsonString: {
+		230: -1222740358, // b71e767a
 		229: -1222740358, // b71e767a
 		228: -1222740358, // b71e767a
 		227: -1222740358, // b71e767a
@@ -86536,6 +87675,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_jsonArray: {
+		230: -146520221, // f7444763
 		229: -146520221, // f7444763
 		228: -146520221, // f7444763
 		227: -146520221, // f7444763
@@ -86630,6 +87770,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_jsonObject: {
+		230: -1715350371, // 99c1d49d
 		229: -1715350371, // 99c1d49d
 		228: -1715350371, // 99c1d49d
 		227: -1715350371, // 99c1d49d
@@ -86724,6 +87865,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageTableCell: {
+		230: 878078826, // 34566b6a
 		229: 878078826, // 34566b6a
 		228: 878078826, // 34566b6a
 		227: 878078826, // 34566b6a
@@ -86818,6 +87960,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageTableRow: {
+		230: -524237339, // e0c0c5e5
 		229: -524237339, // e0c0c5e5
 		228: -524237339, // e0c0c5e5
 		227: -524237339, // e0c0c5e5
@@ -86912,6 +88055,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageCaption: {
+		230: 1869903447, // 6f747657
 		229: 1869903447, // 6f747657
 		228: 1869903447, // 6f747657
 		227: 1869903447, // 6f747657
@@ -87006,6 +88150,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageListItemText: {
+		230: 794323004,   // 2f58683c
 		229: 794323004,   // 2f58683c
 		228: 794323004,   // 2f58683c
 		227: 794323004,   // 2f58683c
@@ -87100,6 +88245,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageListItemBlocks: {
+		230: 1674209194, // 63ca67aa
 		229: 1674209194, // 63ca67aa
 		228: 1674209194, // 63ca67aa
 		227: 1674209194, // 63ca67aa
@@ -87194,6 +88340,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageListOrderedItemText: {
+		230: 352522633,  // 15031189
 		229: 352522633,  // 15031189
 		228: 352522633,  // 15031189
 		227: 352522633,  // 15031189
@@ -87288,6 +88435,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageListOrderedItemBlocks: {
+		230: -1879910928, // 8ff2d5f0
 		229: -1879910928, // 8ff2d5f0
 		228: -1879910928, // 8ff2d5f0
 		227: -1879910928, // 8ff2d5f0
@@ -87382,6 +88530,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pageRelatedArticle: {
+		230: -1282352120, // b390dc08
 		229: -1282352120, // b390dc08
 		228: -1282352120, // b390dc08
 		227: -1282352120, // b390dc08
@@ -87476,6 +88625,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_page: {
+		230: -1738178803, // 98657f0d
 		229: -1738178803, // 98657f0d
 		228: -1738178803, // 98657f0d
 		227: -1738178803, // 98657f0d
@@ -87570,6 +88720,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_supportName: {
+		230: -1945767479, // 8c05f1c9
 		229: -1945767479, // 8c05f1c9
 		228: -1945767479, // 8c05f1c9
 		227: -1945767479, // 8c05f1c9
@@ -87664,6 +88815,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_userInfoEmpty: {
+		230: -206688531, // f3ae2eed
 		229: -206688531, // f3ae2eed
 		228: -206688531, // f3ae2eed
 		227: -206688531, // f3ae2eed
@@ -87758,6 +88910,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_userInfo: {
+		230: 32192344, // 1eb3758
 		229: 32192344, // 1eb3758
 		228: 32192344, // 1eb3758
 		227: 32192344, // 1eb3758
@@ -87852,6 +89005,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pollAnswer: {
+		230: 1266514026, // 4b7d786a
 		229: 1266514026, // 4b7d786a
 		228: 1266514026, // 4b7d786a
 		227: 1266514026, // 4b7d786a
@@ -87946,6 +89100,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPollAnswer: {
+		230: 429911446, // 199fed96
 		229: 429911446, // 199fed96
 		228: 429911446, // 199fed96
 		227: 429911446, // 199fed96
@@ -87955,6 +89110,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_poll: {
+		230: -1771164225, // 966e2dbf
 		229: -1771164225, // 966e2dbf
 		228: -1771164225, // 966e2dbf
 		227: -1771164225, // 966e2dbf
@@ -88049,6 +89205,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pollAnswerVoters: {
+		230: 910500618, // 3645230a
 		229: 910500618, // 3645230a
 		228: 910500618, // 3645230a
 		227: 910500618, // 3645230a
@@ -88143,6 +89300,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pollResults: {
+		230: -1166298786, // ba7bb15e
 		229: -1166298786, // ba7bb15e
 		228: -1166298786, // ba7bb15e
 		227: -1166298786, // ba7bb15e
@@ -88237,6 +89395,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatOnlines: {
+		230: -264117680, // f041e250
 		229: -264117680, // f041e250
 		228: -264117680, // f041e250
 		227: -264117680, // f041e250
@@ -88331,6 +89490,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsURL: {
+		230: 1202287072, // 47a971e0
 		229: 1202287072, // 47a971e0
 		228: 1202287072, // 47a971e0
 		227: 1202287072, // 47a971e0
@@ -88425,6 +89585,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatAdminRights: {
+		230: 1605510357, // 5fb224d5
 		229: 1605510357, // 5fb224d5
 		228: 1605510357, // 5fb224d5
 		227: 1605510357, // 5fb224d5
@@ -88519,6 +89680,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatBannedRights: {
+		230: -1626209256, // 9f120418
 		229: -1626209256, // 9f120418
 		228: -1626209256, // 9f120418
 		227: -1626209256, // 9f120418
@@ -88613,6 +89775,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputWallPaper: {
+		230: -433014407, // e630b979
 		229: -433014407, // e630b979
 		228: -433014407, // e630b979
 		227: -433014407, // e630b979
@@ -88707,6 +89870,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputWallPaperSlug: {
+		230: 1913199744, // 72091c80
 		229: 1913199744, // 72091c80
 		228: 1913199744, // 72091c80
 		227: 1913199744, // 72091c80
@@ -88801,6 +89965,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputWallPaperNoFile: {
+		230: -1770371538, // 967a462e
 		229: -1770371538, // 967a462e
 		228: -1770371538, // 967a462e
 		227: -1770371538, // 967a462e
@@ -88895,6 +90060,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_wallPapersNotModified: {
+		230: 471437699, // 1c199183
 		229: 471437699, // 1c199183
 		228: 471437699, // 1c199183
 		227: 471437699, // 1c199183
@@ -88989,6 +90155,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_wallPapers: {
+		230: -842824308, // cdc3858c
 		229: -842824308, // cdc3858c
 		228: -842824308, // cdc3858c
 		227: -842824308, // cdc3858c
@@ -89083,6 +90250,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_codeSettings: {
+		230: -1390068360, // ad253d78
 		229: -1390068360, // ad253d78
 		228: -1390068360, // ad253d78
 		227: -1390068360, // ad253d78
@@ -89177,6 +90345,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_wallPaperSettings: {
+		230: 925826256, // 372efcd0
 		229: 925826256, // 372efcd0
 		228: 925826256, // 372efcd0
 		227: 925826256, // 372efcd0
@@ -89271,6 +90440,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_autoDownloadSettings: {
+		230: -1163561432, // baa57628
 		229: -1163561432, // baa57628
 		228: -1163561432, // baa57628
 		227: -1163561432, // baa57628
@@ -89365,6 +90535,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_autoDownloadSettings: {
+		230: 1674235686, // 63cacf26
 		229: 1674235686, // 63cacf26
 		228: 1674235686, // 63cacf26
 		227: 1674235686, // 63cacf26
@@ -89459,6 +90630,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiKeyword: {
+		230: -709641735, // d5b3b9f9
 		229: -709641735, // d5b3b9f9
 		228: -709641735, // d5b3b9f9
 		227: -709641735, // d5b3b9f9
@@ -89553,6 +90725,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiKeywordDeleted: {
+		230: 594408994, // 236df622
 		229: 594408994, // 236df622
 		228: 594408994, // 236df622
 		227: 594408994, // 236df622
@@ -89647,6 +90820,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiKeywordsDifference: {
+		230: 1556570557, // 5cc761bd
 		229: 1556570557, // 5cc761bd
 		228: 1556570557, // 5cc761bd
 		227: 1556570557, // 5cc761bd
@@ -89741,6 +90915,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiURL: {
+		230: -1519029347, // a575739d
 		229: -1519029347, // a575739d
 		228: -1519029347, // a575739d
 		227: -1519029347, // a575739d
@@ -89835,6 +91010,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiLanguage: {
+		230: -1275374751, // b3fb5361
 		229: -1275374751, // b3fb5361
 		228: -1275374751, // b3fb5361
 		227: -1275374751, // b3fb5361
@@ -89929,6 +91105,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_folder: {
+		230: -11252123, // ff544e65
 		229: -11252123, // ff544e65
 		228: -11252123, // ff544e65
 		227: -11252123, // ff544e65
@@ -90023,6 +91200,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputFolderPeer: {
+		230: -70073706, // fbd2c296
 		229: -70073706, // fbd2c296
 		228: -70073706, // fbd2c296
 		227: -70073706, // fbd2c296
@@ -90117,6 +91295,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_folderPeer: {
+		230: -373643672, // e9baa668
 		229: -373643672, // e9baa668
 		228: -373643672, // e9baa668
 		227: -373643672, // e9baa668
@@ -90211,6 +91390,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchCounter: {
+		230: -398136321, // e844ebff
 		229: -398136321, // e844ebff
 		228: -398136321, // e844ebff
 		227: -398136321, // e844ebff
@@ -90305,6 +91485,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_urlAuthResultRequest: {
+		230: 1020666860,  // 3cd623ec
 		229: 1020666860,  // 3cd623ec
 		228: 1020666860,  // 3cd623ec
 		227: 1020666860,  // 3cd623ec
@@ -90399,6 +91580,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_urlAuthResultAccepted: {
+		230: 1648005024,  // 623a8fa0
 		229: 1648005024,  // 623a8fa0
 		228: 1648005024,  // 623a8fa0
 		227: 1648005024,  // 623a8fa0
@@ -90493,6 +91675,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_urlAuthResultDefault: {
+		230: -1445536993, // a9d6db1f
 		229: -1445536993, // a9d6db1f
 		228: -1445536993, // a9d6db1f
 		227: -1445536993, // a9d6db1f
@@ -90587,6 +91770,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelLocationEmpty: {
+		230: -1078612597, // bfb5ad8b
 		229: -1078612597, // bfb5ad8b
 		228: -1078612597, // bfb5ad8b
 		227: -1078612597, // bfb5ad8b
@@ -90681,6 +91865,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channelLocation: {
+		230: 547062491, // 209b82db
 		229: 547062491, // 209b82db
 		228: 547062491, // 209b82db
 		227: 547062491, // 209b82db
@@ -90775,6 +91960,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerLocated: {
+		230: -901375139, // ca461b5d
 		229: -901375139, // ca461b5d
 		228: -901375139, // ca461b5d
 		227: -901375139, // ca461b5d
@@ -90869,6 +92055,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerSelfLocated: {
+		230: -118740917, // f8ec284b
 		229: -118740917, // f8ec284b
 		228: -118740917, // f8ec284b
 		227: -118740917, // f8ec284b
@@ -90963,6 +92150,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_restrictionReason: {
+		230: -797791052, // d072acb4
 		229: -797791052, // d072acb4
 		228: -797791052, // d072acb4
 		227: -797791052, // d072acb4
@@ -91057,6 +92245,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputTheme: {
+		230: 1012306921, // 3c5693e9
 		229: 1012306921, // 3c5693e9
 		228: 1012306921, // 3c5693e9
 		227: 1012306921, // 3c5693e9
@@ -91151,6 +92340,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputThemeSlug: {
+		230: -175567375, // f5890df1
 		229: -175567375, // f5890df1
 		228: -175567375, // f5890df1
 		227: -175567375, // f5890df1
@@ -91245,6 +92435,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_theme: {
+		230: -1609668650, // a00e67d6
 		229: -1609668650, // a00e67d6
 		228: -1609668650, // a00e67d6
 		227: -1609668650, // a00e67d6
@@ -91339,6 +92530,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_themesNotModified: {
+		230: -199313886, // f41eb622
 		229: -199313886, // f41eb622
 		228: -199313886, // f41eb622
 		227: -199313886, // f41eb622
@@ -91433,6 +92625,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_themes: {
+		230: -1707242387, // 9a3d8c6d
 		229: -1707242387, // 9a3d8c6d
 		228: -1707242387, // 9a3d8c6d
 		227: -1707242387, // 9a3d8c6d
@@ -91527,6 +92720,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_loginToken: {
+		230: 1654593920, // 629f1980
 		229: 1654593920, // 629f1980
 		228: 1654593920, // 629f1980
 		227: 1654593920, // 629f1980
@@ -91621,6 +92815,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_loginTokenMigrateTo: {
+		230: 110008598, // 68e9916
 		229: 110008598, // 68e9916
 		228: 110008598, // 68e9916
 		227: 110008598, // 68e9916
@@ -91715,6 +92910,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_loginTokenSuccess: {
+		230: 957176926, // 390d5c5e
 		229: 957176926, // 390d5c5e
 		228: 957176926, // 390d5c5e
 		227: 957176926, // 390d5c5e
@@ -91809,6 +93005,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_contentSettings: {
+		230: 1474462241, // 57e28221
 		229: 1474462241, // 57e28221
 		228: 1474462241, // 57e28221
 		227: 1474462241, // 57e28221
@@ -91903,6 +93100,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_inactiveChats: {
+		230: -1456996667, // a927fec5
 		229: -1456996667, // a927fec5
 		228: -1456996667, // a927fec5
 		227: -1456996667, // a927fec5
@@ -91997,6 +93195,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_baseThemeClassic: {
+		230: -1012849566, // c3a12462
 		229: -1012849566, // c3a12462
 		228: -1012849566, // c3a12462
 		227: -1012849566, // c3a12462
@@ -92091,6 +93290,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_baseThemeDay: {
+		230: -69724536, // fbd81688
 		229: -69724536, // fbd81688
 		228: -69724536, // fbd81688
 		227: -69724536, // fbd81688
@@ -92185,6 +93385,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_baseThemeNight: {
+		230: -1212997976, // b7b31ea8
 		229: -1212997976, // b7b31ea8
 		228: -1212997976, // b7b31ea8
 		227: -1212997976, // b7b31ea8
@@ -92279,6 +93480,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_baseThemeTinted: {
+		230: 1834973166, // 6d5f77ee
 		229: 1834973166, // 6d5f77ee
 		228: 1834973166, // 6d5f77ee
 		227: 1834973166, // 6d5f77ee
@@ -92373,6 +93575,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_baseThemeArctic: {
+		230: 1527845466, // 5b11125a
 		229: 1527845466, // 5b11125a
 		228: 1527845466, // 5b11125a
 		227: 1527845466, // 5b11125a
@@ -92467,6 +93670,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputThemeSettings: {
+		230: -1881255857, // 8fde504f
 		229: -1881255857, // 8fde504f
 		228: -1881255857, // 8fde504f
 		227: -1881255857, // 8fde504f
@@ -92561,6 +93765,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_themeSettings: {
+		230: -94849324, // fa58b6d4
 		229: -94849324, // fa58b6d4
 		228: -94849324, // fa58b6d4
 		227: -94849324, // fa58b6d4
@@ -92655,6 +93860,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageAttributeTheme: {
+		230: 1421174295, // 54b56617
 		229: 1421174295, // 54b56617
 		228: 1421174295, // 54b56617
 		227: 1421174295, // 54b56617
@@ -92749,6 +93955,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageAttributeStory: {
+		230: 781501415,   // 2e94c3e7
 		229: 781501415,   // 2e94c3e7
 		228: 781501415,   // 2e94c3e7
 		227: 781501415,   // 2e94c3e7
@@ -92822,6 +94029,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageAttributeStickerSet: {
+		230: 1355547603, // 50cc03d3
 		229: 1355547603, // 50cc03d3
 		228: 1355547603, // 50cc03d3
 		227: 1355547603, // 50cc03d3
@@ -92877,6 +94085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageAttributeUniqueStarGift: {
+		230: -814781000, // cf6f6db8
 		229: -814781000, // cf6f6db8
 		228: -814781000, // cf6f6db8
 		227: -814781000, // cf6f6db8
@@ -92913,6 +94122,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageAttributeStarGiftCollection: {
+		230: 835375875, // 31cad303
 		229: 835375875, // 31cad303
 		228: 835375875, // 31cad303
 		227: 835375875, // 31cad303
@@ -92935,6 +94145,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageAttributeStarGiftAuction: {
+		230: 29770178, // 1c641c2
 		229: 29770178, // 1c641c2
 		228: 29770178, // 1c641c2
 		227: 29770178, // 1c641c2
@@ -92950,6 +94161,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webPageAttributeAiComposeTone: {
+		230: 2005007896, // 7781fe18
 		229: 2005007896, // 7781fe18
 		228: 2005007896, // 7781fe18
 		227: 2005007896, // 7781fe18
@@ -92958,6 +94170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_votesList: {
+		230: 1218005070, // 4899484e
 		229: 1218005070, // 4899484e
 		228: 1218005070, // 4899484e
 		227: 1218005070, // 4899484e
@@ -93052,6 +94265,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bankCardOpenUrl: {
+		230: -177732982, // f568028a
 		229: -177732982, // f568028a
 		228: -177732982, // f568028a
 		227: -177732982, // f568028a
@@ -93146,6 +94360,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_bankCardData: {
+		230: 1042605427, // 3e24e573
 		229: 1042605427, // 3e24e573
 		228: 1042605427, // 3e24e573
 		227: 1042605427, // 3e24e573
@@ -93240,6 +94455,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogFilter: {
+		230: -1438177711, // aa472651
 		229: -1438177711, // aa472651
 		228: -1438177711, // aa472651
 		227: -1438177711, // aa472651
@@ -93334,6 +94550,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogFilterDefault: {
+		230: 909284270, // 363293ae
 		229: 909284270, // 363293ae
 		228: 909284270, // 363293ae
 		227: 909284270, // 363293ae
@@ -93424,6 +94641,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogFilterChatlist: {
+		230: -1772913705, // 96537bd7
 		229: -1772913705, // 96537bd7
 		228: -1772913705, // 96537bd7
 		227: -1772913705, // 96537bd7
@@ -93499,6 +94717,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_dialogFilterSuggested: {
+		230: 2004110666, // 77744d4a
 		229: 2004110666, // 77744d4a
 		228: 2004110666, // 77744d4a
 		227: 2004110666, // 77744d4a
@@ -93593,6 +94812,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsDateRangeDays: {
+		230: -1237848657, // b637edaf
 		229: -1237848657, // b637edaf
 		228: -1237848657, // b637edaf
 		227: -1237848657, // b637edaf
@@ -93687,6 +94907,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsAbsValueAndPrev: {
+		230: -884757282, // cb43acde
 		229: -884757282, // cb43acde
 		228: -884757282, // cb43acde
 		227: -884757282, // cb43acde
@@ -93781,6 +95002,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsPercentValue: {
+		230: -875679776, // cbce2fe0
 		229: -875679776, // cbce2fe0
 		228: -875679776, // cbce2fe0
 		227: -875679776, // cbce2fe0
@@ -93875,6 +95097,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsGraphAsync: {
+		230: 1244130093, // 4a27eb2d
 		229: 1244130093, // 4a27eb2d
 		228: 1244130093, // 4a27eb2d
 		227: 1244130093, // 4a27eb2d
@@ -93969,6 +95192,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsGraphError: {
+		230: -1092839390, // bedc9822
 		229: -1092839390, // bedc9822
 		228: -1092839390, // bedc9822
 		227: -1092839390, // bedc9822
@@ -94063,6 +95287,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsGraph: {
+		230: -1901828938, // 8ea464b6
 		229: -1901828938, // 8ea464b6
 		228: -1901828938, // 8ea464b6
 		227: -1901828938, // 8ea464b6
@@ -94157,6 +95382,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_broadcastStats: {
+		230: 963421692,   // 396ca5fc
 		229: 963421692,   // 396ca5fc
 		228: 963421692,   // 396ca5fc
 		227: 963421692,   // 396ca5fc
@@ -94251,6 +95477,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_promoDataEmpty: {
+		230: -1728664459, // 98f6ac75
 		229: -1728664459, // 98f6ac75
 		228: -1728664459, // 98f6ac75
 		227: -1728664459, // 98f6ac75
@@ -94345,6 +95572,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_promoData: {
+		230: 145021050,   // 8a4d87a
 		229: 145021050,   // 8a4d87a
 		228: 145021050,   // 8a4d87a
 		227: 145021050,   // 8a4d87a
@@ -94439,6 +95667,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_videoSize: {
+		230: -567037804, // de33b094
 		229: -567037804, // de33b094
 		228: -567037804, // de33b094
 		227: -567037804, // de33b094
@@ -94533,6 +95762,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_videoSizeEmojiMarkup: {
+		230: -128171716, // f85c413c
 		229: -128171716, // f85c413c
 		228: -128171716, // f85c413c
 		227: -128171716, // f85c413c
@@ -94614,6 +95844,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_videoSizeStickerMarkup: {
+		230: 228623102, // da082fe
 		229: 228623102, // da082fe
 		228: 228623102, // da082fe
 		227: 228623102, // da082fe
@@ -94695,6 +95926,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsGroupTopPoster: {
+		230: -1660637285, // 9d04af9b
 		229: -1660637285, // 9d04af9b
 		228: -1660637285, // 9d04af9b
 		227: -1660637285, // 9d04af9b
@@ -94789,6 +96021,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsGroupTopAdmin: {
+		230: -682079097, // d7584c87
 		229: -682079097, // d7584c87
 		228: -682079097, // d7584c87
 		227: -682079097, // d7584c87
@@ -94883,6 +96116,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_statsGroupTopInviter: {
+		230: 1398765469, // 535f779d
 		229: 1398765469, // 535f779d
 		228: 1398765469, // 535f779d
 		227: 1398765469, // 535f779d
@@ -94977,6 +96211,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_megagroupStats: {
+		230: -276825834, // ef7ff916
 		229: -276825834, // ef7ff916
 		228: -276825834, // ef7ff916
 		227: -276825834, // ef7ff916
@@ -95071,6 +96306,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_globalPrivacySettings: {
+		230: -29248689,   // fe41b34f
 		229: -29248689,   // fe41b34f
 		228: -29248689,   // fe41b34f
 		227: -29248689,   // fe41b34f
@@ -95165,6 +96401,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_countryCode: {
+		230: 1107543535, // 4203c5ef
 		229: 1107543535, // 4203c5ef
 		228: 1107543535, // 4203c5ef
 		227: 1107543535, // 4203c5ef
@@ -95259,6 +96496,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_country: {
+		230: -1014526429, // c3878e23
 		229: -1014526429, // c3878e23
 		228: -1014526429, // c3878e23
 		227: -1014526429, // c3878e23
@@ -95353,6 +96591,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_countriesListNotModified: {
+		230: -1815339214, // 93cc1f32
 		229: -1815339214, // 93cc1f32
 		228: -1815339214, // 93cc1f32
 		227: -1815339214, // 93cc1f32
@@ -95447,6 +96686,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_countriesList: {
+		230: -2016381538, // 87d0759e
 		229: -2016381538, // 87d0759e
 		228: -2016381538, // 87d0759e
 		227: -2016381538, // 87d0759e
@@ -95541,6 +96781,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageViews: {
+		230: 1163625789, // 455b853d
 		229: 1163625789, // 455b853d
 		228: 1163625789, // 455b853d
 		227: 1163625789, // 455b853d
@@ -95635,6 +96876,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_messageViews: {
+		230: -1228606141, // b6c4f543
 		229: -1228606141, // b6c4f543
 		228: -1228606141, // b6c4f543
 		227: -1228606141, // b6c4f543
@@ -95729,6 +96971,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_discussionMessage: {
+		230: -1506535550, // a6341782
 		229: -1506535550, // a6341782
 		228: -1506535550, // a6341782
 		227: -1506535550, // a6341782
@@ -95823,6 +97066,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageReplyHeader: {
+		230: 462937446,   // 1b97dd66
 		229: 462937446,   // 1b97dd66
 		228: 462937446,   // 1b97dd66
 		227: 462937446,   // 1b97dd66
@@ -95917,6 +97161,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageReplyStoryHeader: {
+		230: 240843065,   // e5af939
 		229: 240843065,   // e5af939
 		228: 240843065,   // e5af939
 		227: 240843065,   // e5af939
@@ -95990,6 +97235,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageReplies: {
+		230: -2083123262, // 83d60fc2
 		229: -2083123262, // 83d60fc2
 		228: -2083123262, // 83d60fc2
 		227: -2083123262, // 83d60fc2
@@ -96084,6 +97330,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerBlocked: {
+		230: -386039788, // e8fd8014
 		229: -386039788, // e8fd8014
 		228: -386039788, // e8fd8014
 		227: -386039788, // e8fd8014
@@ -96178,6 +97425,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_messageStats: {
+		230: 2145983508,  // 7fe91c14
 		229: 2145983508,  // 7fe91c14
 		228: 2145983508,  // 7fe91c14
 		227: 2145983508,  // 7fe91c14
@@ -96272,6 +97520,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCallDiscarded: {
+		230: 2004925620, // 7780bcb4
 		229: 2004925620, // 7780bcb4
 		228: 2004925620, // 7780bcb4
 		227: 2004925620, // 7780bcb4
@@ -96366,6 +97615,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCall: {
+		230: -273500649, // efb2b617
 		229: -273500649, // efb2b617
 		228: -273500649, // efb2b617
 		227: -273500649, // efb2b617
@@ -96460,6 +97710,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGroupCall: {
+		230: -659913713, // d8aa840f
 		229: -659913713, // d8aa840f
 		228: -659913713, // d8aa840f
 		227: -659913713, // d8aa840f
@@ -96554,6 +97805,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGroupCallSlug: {
+		230: -33127873, // fe06823f
 		229: -33127873, // fe06823f
 		228: -33127873, // fe06823f
 		227: -33127873, // fe06823f
@@ -96585,6 +97837,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputGroupCallInviteMessage: {
+		230: -1945083841, // 8c10603f
 		229: -1945083841, // 8c10603f
 		228: -1945083841, // 8c10603f
 		227: -1945083841, // 8c10603f
@@ -96616,6 +97869,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCallParticipant: {
+		230: 708691884,  // 2a3dc7ac
 		229: 708691884,  // 2a3dc7ac
 		228: 708691884,  // 2a3dc7ac
 		227: 708691884,  // 2a3dc7ac
@@ -96710,6 +97964,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_groupCall: {
+		230: -1636664659, // 9e727aad
 		229: -1636664659, // 9e727aad
 		228: -1636664659, // 9e727aad
 		227: -1636664659, // 9e727aad
@@ -96804,6 +98059,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_groupParticipants: {
+		230: -193506890, // f47751b6
 		229: -193506890, // f47751b6
 		228: -193506890, // f47751b6
 		227: -193506890, // f47751b6
@@ -96898,6 +98154,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineQueryPeerTypeSameBotPM: {
+		230: 813821341, // 3081ed9d
 		229: 813821341, // 3081ed9d
 		228: 813821341, // 3081ed9d
 		227: 813821341, // 3081ed9d
@@ -96992,6 +98249,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineQueryPeerTypePM: {
+		230: -2093215828, // 833c0fac
 		229: -2093215828, // 833c0fac
 		228: -2093215828, // 833c0fac
 		227: -2093215828, // 833c0fac
@@ -97086,6 +98344,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineQueryPeerTypeChat: {
+		230: -681130742, // d766c50a
 		229: -681130742, // d766c50a
 		228: -681130742, // d766c50a
 		227: -681130742, // d766c50a
@@ -97180,6 +98439,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineQueryPeerTypeMegagroup: {
+		230: 1589952067, // 5ec4be43
 		229: 1589952067, // 5ec4be43
 		228: 1589952067, // 5ec4be43
 		227: 1589952067, // 5ec4be43
@@ -97274,6 +98534,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineQueryPeerTypeBroadcast: {
+		230: 1664413338, // 6334ee9a
 		229: 1664413338, // 6334ee9a
 		228: 1664413338, // 6334ee9a
 		227: 1664413338, // 6334ee9a
@@ -97368,6 +98629,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineQueryPeerTypeBotPM: {
+		230: 238759180, // e3b2d0c
 		229: 238759180, // e3b2d0c
 		228: 238759180, // e3b2d0c
 		227: 238759180, // e3b2d0c
@@ -97443,6 +98705,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_historyImport: {
+		230: 375566091, // 1662af0b
 		229: 375566091, // 1662af0b
 		228: 375566091, // 1662af0b
 		227: 375566091, // 1662af0b
@@ -97537,6 +98800,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_historyImportParsed: {
+		230: 1578088377, // 5e0fb7b9
 		229: 1578088377, // 5e0fb7b9
 		228: 1578088377, // 5e0fb7b9
 		227: 1578088377, // 5e0fb7b9
@@ -97631,6 +98895,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_affectedFoundMessages: {
+		230: -275956116, // ef8d3e6c
 		229: -275956116, // ef8d3e6c
 		228: -275956116, // ef8d3e6c
 		227: -275956116, // ef8d3e6c
@@ -97725,6 +98990,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatInviteImporter: {
+		230: -1940201511, // 8c5adfd9
 		229: -1940201511, // 8c5adfd9
 		228: -1940201511, // 8c5adfd9
 		227: -1940201511, // 8c5adfd9
@@ -97819,6 +99085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_exportedChatInvites: {
+		230: -1111085620, // bdc62dcc
 		229: -1111085620, // bdc62dcc
 		228: -1111085620, // bdc62dcc
 		227: -1111085620, // bdc62dcc
@@ -97913,6 +99180,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_exportedChatInvite: {
+		230: 410107472, // 1871be50
 		229: 410107472, // 1871be50
 		228: 410107472, // 1871be50
 		227: 410107472, // 1871be50
@@ -98007,6 +99275,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_exportedChatInviteReplaced: {
+		230: 572915951, // 222600ef
 		229: 572915951, // 222600ef
 		228: 572915951, // 222600ef
 		227: 572915951, // 222600ef
@@ -98101,6 +99370,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_chatInviteImporters: {
+		230: -2118733814, // 81b6b00a
 		229: -2118733814, // 81b6b00a
 		228: -2118733814, // 81b6b00a
 		227: -2118733814, // 81b6b00a
@@ -98195,6 +99465,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatAdminWithInvites: {
+		230: -219353309, // f2ecef23
 		229: -219353309, // f2ecef23
 		228: -219353309, // f2ecef23
 		227: -219353309, // f2ecef23
@@ -98289,6 +99560,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_chatAdminsWithInvites: {
+		230: -1231326505, // b69b72d7
 		229: -1231326505, // b69b72d7
 		228: -1231326505, // b69b72d7
 		227: -1231326505, // b69b72d7
@@ -98383,6 +99655,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_checkedHistoryImportPeer: {
+		230: -1571952873, // a24de717
 		229: -1571952873, // a24de717
 		228: -1571952873, // a24de717
 		227: -1571952873, // a24de717
@@ -98477,6 +99750,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_joinAsPeers: {
+		230: -1343921601, // afe5623f
 		229: -1343921601, // afe5623f
 		228: -1343921601, // afe5623f
 		227: -1343921601, // afe5623f
@@ -98571,6 +99845,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_exportedGroupCallInvite: {
+		230: 541839704, // 204bd158
 		229: 541839704, // 204bd158
 		228: 541839704, // 204bd158
 		227: 541839704, // 204bd158
@@ -98665,6 +99940,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCallParticipantVideoSourceGroup: {
+		230: -592373577, // dcb118b7
 		229: -592373577, // dcb118b7
 		228: -592373577, // dcb118b7
 		227: -592373577, // dcb118b7
@@ -98759,6 +100035,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCallParticipantVideo: {
+		230: 1735736008, // 67753ac8
 		229: 1735736008, // 67753ac8
 		228: 1735736008, // 67753ac8
 		227: 1735736008, // 67753ac8
@@ -98853,6 +100130,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_suggestedShortName: {
+		230: -2046910401, // 85fea03f
 		229: -2046910401, // 85fea03f
 		228: -2046910401, // 85fea03f
 		227: -2046910401, // 85fea03f
@@ -98947,6 +100225,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommandScopeDefault: {
+		230: 795652779, // 2f6cb2ab
 		229: 795652779, // 2f6cb2ab
 		228: 795652779, // 2f6cb2ab
 		227: 795652779, // 2f6cb2ab
@@ -99041,6 +100320,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommandScopeUsers: {
+		230: 1011811544, // 3c4f04d8
 		229: 1011811544, // 3c4f04d8
 		228: 1011811544, // 3c4f04d8
 		227: 1011811544, // 3c4f04d8
@@ -99135,6 +100415,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommandScopeChats: {
+		230: 1877059713, // 6fe1a881
 		229: 1877059713, // 6fe1a881
 		228: 1877059713, // 6fe1a881
 		227: 1877059713, // 6fe1a881
@@ -99229,6 +100510,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommandScopeChatAdmins: {
+		230: -1180016534, // b9aa606a
 		229: -1180016534, // b9aa606a
 		228: -1180016534, // b9aa606a
 		227: -1180016534, // b9aa606a
@@ -99323,6 +100605,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommandScopePeer: {
+		230: -610432643, // db9d897d
 		229: -610432643, // db9d897d
 		228: -610432643, // db9d897d
 		227: -610432643, // db9d897d
@@ -99417,6 +100700,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommandScopePeerAdmins: {
+		230: 1071145937, // 3fd863d1
 		229: 1071145937, // 3fd863d1
 		228: 1071145937, // 3fd863d1
 		227: 1071145937, // 3fd863d1
@@ -99511,6 +100795,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botCommandScopePeerUser: {
+		230: 169026035, // a1321f3
 		229: 169026035, // a1321f3
 		228: 169026035, // a1321f3
 		227: 169026035, // a1321f3
@@ -99605,6 +100890,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetPasswordFailedWait: {
+		230: -478701471, // e3779861
 		229: -478701471, // e3779861
 		228: -478701471, // e3779861
 		227: -478701471, // e3779861
@@ -99699,6 +100985,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetPasswordRequestedWait: {
+		230: -370148227, // e9effc7d
 		229: -370148227, // e9effc7d
 		228: -370148227, // e9effc7d
 		227: -370148227, // e9effc7d
@@ -99793,6 +101080,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetPasswordOk: {
+		230: -383330754, // e926d63e
 		229: -383330754, // e926d63e
 		228: -383330754, // e926d63e
 		227: -383330754, // e926d63e
@@ -99887,6 +101175,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatTheme: {
+		230: -1008731132, // c3dffc04
 		229: -1008731132, // c3dffc04
 		228: -1008731132, // c3dffc04
 		227: -1008731132, // c3dffc04
@@ -99906,6 +101195,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatThemeUniqueGift: {
+		230: 878246344, // 3458f9c8
 		229: 878246344, // 3458f9c8
 		228: 878246344, // 3458f9c8
 		227: 878246344, // 3458f9c8
@@ -99925,6 +101215,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_chatThemesNotModified: {
+		230: -535699004, // e011e1c4
 		229: -535699004, // e011e1c4
 		228: -535699004, // e011e1c4
 		227: -535699004, // e011e1c4
@@ -99944,6 +101235,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_chatThemes: {
+		230: -1106673293, // be098173
 		229: -1106673293, // be098173
 		228: -1106673293, // be098173
 		227: -1106673293, // be098173
@@ -99963,6 +101255,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sponsoredMessage: {
+		230: 2109703795,  // 7dbf8673
 		229: 2109703795,  // 7dbf8673
 		228: 2109703795,  // 7dbf8673
 		227: 2109703795,  // 7dbf8673
@@ -100057,6 +101350,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sponsoredMessages: {
+		230: -2464403,   // ffda656d
 		229: -2464403,   // ffda656d
 		228: -2464403,   // ffda656d
 		227: -2464403,   // ffda656d
@@ -100151,6 +101445,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sponsoredMessagesEmpty: {
+		230: 406407439, // 1839490f
 		229: 406407439, // 1839490f
 		228: 406407439, // 1839490f
 		227: 406407439, // 1839490f
@@ -100236,6 +101531,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_searchResultsCalendarPeriod: {
+		230: -911191137, // c9b0539f
 		229: -911191137, // c9b0539f
 		228: -911191137, // c9b0539f
 		227: -911191137, // c9b0539f
@@ -100330,6 +101626,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchResultsCalendar: {
+		230: 343859772, // 147ee23c
 		229: 343859772, // 147ee23c
 		228: 343859772, // 147ee23c
 		227: 343859772, // 147ee23c
@@ -100424,6 +101721,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_searchResultPosition: {
+		230: 2137295719, // 7f648b67
 		229: 2137295719, // 7f648b67
 		228: 2137295719, // 7f648b67
 		227: 2137295719, // 7f648b67
@@ -100518,6 +101816,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchResultsPositions: {
+		230: 1404185519, // 53b22baf
 		229: 1404185519, // 53b22baf
 		228: 1404185519, // 53b22baf
 		227: 1404185519, // 53b22baf
@@ -100612,6 +101911,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_sendAsPeers: {
+		230: -191450938,  // f496b0c6
 		229: -191450938,  // f496b0c6
 		228: -191450938,  // f496b0c6
 		227: -191450938,  // f496b0c6
@@ -100706,6 +102006,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_userFull: {
+		230: 997004590, // 3b6d152e
 		229: 997004590, // 3b6d152e
 		228: 997004590, // 3b6d152e
 		227: 997004590, // 3b6d152e
@@ -100800,6 +102101,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_peerSettings: {
+		230: 1753266509, // 6880b94d
 		229: 1753266509, // 6880b94d
 		228: 1753266509, // 6880b94d
 		227: 1753266509, // 6880b94d
@@ -100894,6 +102196,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_loggedOut: {
+		230: -1012759713, // c3a2835f
 		229: -1012759713, // c3a2835f
 		228: -1012759713, // c3a2835f
 		227: -1012759713, // c3a2835f
@@ -100988,6 +102291,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionCount: {
+		230: -1546531968, // a3d1cb80
 		229: -1546531968, // a3d1cb80
 		228: -1546531968, // a3d1cb80
 		227: -1546531968, // a3d1cb80
@@ -101082,6 +102386,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageReactions: {
+		230: 171155211,  // a339f0b
 		229: 171155211,  // a339f0b
 		228: 171155211,  // a339f0b
 		227: 171155211,  // a339f0b
@@ -101176,6 +102481,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_messageReactionsList: {
+		230: 834488621, // 31bd492d
 		229: 834488621, // 31bd492d
 		228: 834488621, // 31bd492d
 		227: 834488621, // 31bd492d
@@ -101270,6 +102576,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_availableReaction: {
+		230: -1065882623, // c077ec01
 		229: -1065882623, // c077ec01
 		228: -1065882623, // c077ec01
 		227: -1065882623, // c077ec01
@@ -101364,6 +102671,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_availableReactionsNotModified: {
+		230: -1626924713, // 9f071957
 		229: -1626924713, // 9f071957
 		228: -1626924713, // 9f071957
 		227: -1626924713, // 9f071957
@@ -101458,6 +102766,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_availableReactions: {
+		230: 1989032621, // 768e3aad
 		229: 1989032621, // 768e3aad
 		228: 1989032621, // 768e3aad
 		227: 1989032621, // 768e3aad
@@ -101552,6 +102861,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messagePeerReaction: {
+		230: -1938180548, // 8c79b63c
 		229: -1938180548, // 8c79b63c
 		228: -1938180548, // 8c79b63c
 		227: -1938180548, // 8c79b63c
@@ -101646,6 +102956,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCallStreamChannel: {
+		230: -2132064081, // 80eb48af
 		229: -2132064081, // 80eb48af
 		228: -2132064081, // 80eb48af
 		227: -2132064081, // 80eb48af
@@ -101740,6 +103051,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_groupCallStreamChannels: {
+		230: -790330702, // d0e482b2
 		229: -790330702, // d0e482b2
 		228: -790330702, // d0e482b2
 		227: -790330702, // d0e482b2
@@ -101834,6 +103146,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_groupCallStreamRtmpUrl: {
+		230: 767505458, // 2dbf3432
 		229: 767505458, // 2dbf3432
 		228: 767505458, // 2dbf3432
 		227: 767505458, // 2dbf3432
@@ -101928,6 +103241,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuBotIconColor: {
+		230: 1165423600, // 4576f3f0
 		229: 1165423600, // 4576f3f0
 		228: 1165423600, // 4576f3f0
 		227: 1165423600, // 4576f3f0
@@ -102021,6 +103335,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuBotIcon: {
+		230: -1297663893, // b2a7386b
 		229: -1297663893, // b2a7386b
 		228: -1297663893, // b2a7386b
 		227: -1297663893, // b2a7386b
@@ -102114,6 +103429,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuBot: {
+		230: -653423106, // d90d8dfe
 		229: -653423106, // d90d8dfe
 		228: -653423106, // d90d8dfe
 		227: -653423106, // d90d8dfe
@@ -102207,6 +103523,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuBotsNotModified: {
+		230: -237467044, // f1d88a5c
 		229: -237467044, // f1d88a5c
 		228: -237467044, // f1d88a5c
 		227: -237467044, // f1d88a5c
@@ -102300,6 +103617,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuBots: {
+		230: 1011024320, // 3c4301c0
 		229: 1011024320, // 3c4301c0
 		228: 1011024320, // 3c4301c0
 		227: 1011024320, // 3c4301c0
@@ -102393,6 +103711,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuBotsBot: {
+		230: -1816172929, // 93bf667f
 		229: -1816172929, // 93bf667f
 		228: -1816172929, // 93bf667f
 		227: -1816172929, // 93bf667f
@@ -102486,6 +103805,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webViewResultUrl: {
+		230: 1294139288, // 4d22ff98
 		229: 1294139288, // 4d22ff98
 		228: 1294139288, // 4d22ff98
 		227: 1294139288, // 4d22ff98
@@ -102579,6 +103899,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webViewMessageSent: {
+		230: 211046684, // c94511c
 		229: 211046684, // c94511c
 		228: 211046684, // c94511c
 		227: 211046684, // c94511c
@@ -102672,6 +103993,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botMenuButtonDefault: {
+		230: 1966318984, // 7533a588
 		229: 1966318984, // 7533a588
 		228: 1966318984, // 7533a588
 		227: 1966318984, // 7533a588
@@ -102765,6 +104087,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botMenuButtonCommands: {
+		230: 1113113093, // 4258c205
 		229: 1113113093, // 4258c205
 		228: 1113113093, // 4258c205
 		227: 1113113093, // 4258c205
@@ -102858,6 +104181,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botMenuButton: {
+		230: -944407322, // c7b57ce6
 		229: -944407322, // c7b57ce6
 		228: -944407322, // c7b57ce6
 		227: -944407322, // c7b57ce6
@@ -102951,6 +104275,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_savedRingtonesNotModified: {
+		230: -67704655, // fbf6e8b1
 		229: -67704655, // fbf6e8b1
 		228: -67704655, // fbf6e8b1
 		227: -67704655, // fbf6e8b1
@@ -103044,6 +104369,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_savedRingtones: {
+		230: -1041683259, // c1e92cc5
 		229: -1041683259, // c1e92cc5
 		228: -1041683259, // c1e92cc5
 		227: -1041683259, // c1e92cc5
@@ -103137,6 +104463,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notificationSoundDefault: {
+		230: -1746354498, // 97e8bebe
 		229: -1746354498, // 97e8bebe
 		228: -1746354498, // 97e8bebe
 		227: -1746354498, // 97e8bebe
@@ -103230,6 +104557,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notificationSoundNone: {
+		230: 1863070943, // 6f0c34df
 		229: 1863070943, // 6f0c34df
 		228: 1863070943, // 6f0c34df
 		227: 1863070943, // 6f0c34df
@@ -103323,6 +104651,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notificationSoundLocal: {
+		230: -2096391452, // 830b9ae4
 		229: -2096391452, // 830b9ae4
 		228: -2096391452, // 830b9ae4
 		227: -2096391452, // 830b9ae4
@@ -103416,6 +104745,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_notificationSoundRingtone: {
+		230: -9666487, // ff6c8049
 		229: -9666487, // ff6c8049
 		228: -9666487, // ff6c8049
 		227: -9666487, // ff6c8049
@@ -103509,6 +104839,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_savedRingtone: {
+		230: -1222230163, // b7263f6d
 		229: -1222230163, // b7263f6d
 		228: -1222230163, // b7263f6d
 		227: -1222230163, // b7263f6d
@@ -103602,6 +104933,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_savedRingtoneConverted: {
+		230: 523271863, // 1f307eb7
 		229: 523271863, // 1f307eb7
 		228: 523271863, // 1f307eb7
 		227: 523271863, // 1f307eb7
@@ -103695,6 +105027,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuPeerTypeSameBotPM: {
+		230: 2104224014, // 7d6be90e
 		229: 2104224014, // 7d6be90e
 		228: 2104224014, // 7d6be90e
 		227: 2104224014, // 7d6be90e
@@ -103786,6 +105119,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuPeerTypeBotPM: {
+		230: -1020528102, // c32bfa1a
 		229: -1020528102, // c32bfa1a
 		228: -1020528102, // c32bfa1a
 		227: -1020528102, // c32bfa1a
@@ -103877,6 +105211,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuPeerTypePM: {
+		230: -247016673, // f146d31f
 		229: -247016673, // f146d31f
 		228: -247016673, // f146d31f
 		227: -247016673, // f146d31f
@@ -103968,6 +105303,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuPeerTypeChat: {
+		230: 84480319, // 509113f
 		229: 84480319, // 509113f
 		228: 84480319, // 509113f
 		227: 84480319, // 509113f
@@ -104059,6 +105395,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_attachMenuPeerTypeBroadcast: {
+		230: 2080104188, // 7bfbdefc
 		229: 2080104188, // 7bfbdefc
 		228: 2080104188, // 7bfbdefc
 		227: 2080104188, // 7bfbdefc
@@ -104150,6 +105487,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceMessage: {
+		230: -977967015, // c5b56859
 		229: -977967015, // c5b56859
 		228: -977967015, // c5b56859
 		227: -977967015, // c5b56859
@@ -104241,6 +105579,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceSlug: {
+		230: -1020867857, // c326caef
 		229: -1020867857, // c326caef
 		228: -1020867857, // c326caef
 		227: -1020867857, // c326caef
@@ -104332,6 +105671,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoicePremiumGiftCode: {
+		230: -1734841331, // 98986c0d
 		229: -1734841331, // 98986c0d
 		228: -1734841331, // 98986c0d
 		227: -1734841331, // 98986c0d
@@ -104399,6 +105739,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStars: {
+		230: 1710230755, // 65f00ce3
 		229: 1710230755, // 65f00ce3
 		228: 1710230755, // 65f00ce3
 		227: 1710230755, // 65f00ce3
@@ -104451,6 +105792,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceChatInviteSubscription: {
+		230: 887591921, // 34e793f1
 		229: 887591921, // 34e793f1
 		228: 887591921, // 34e793f1
 		227: 887591921, // 34e793f1
@@ -104498,6 +105840,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStarGift: {
+		230: -396206446, // e8625e92
 		229: -396206446, // e8625e92
 		228: -396206446, // e8625e92
 		227: -396206446, // e8625e92
@@ -104542,6 +105885,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStarGiftUpgrade: {
+		230: 1300335965, // 4d818d5d
 		229: 1300335965, // 4d818d5d
 		228: 1300335965, // 4d818d5d
 		227: 1300335965, // 4d818d5d
@@ -104579,6 +105923,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStarGiftTransfer: {
+		230: 1247763417,  // 4a5f5bd9
 		229: 1247763417,  // 4a5f5bd9
 		228: 1247763417,  // 4a5f5bd9
 		227: 1247763417,  // 4a5f5bd9
@@ -104616,6 +105961,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoicePremiumGiftStars: {
+		230: -625298705, // dabab2ef
 		229: -625298705, // dabab2ef
 		228: -625298705, // dabab2ef
 		227: -625298705, // dabab2ef
@@ -104649,6 +105995,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceBusinessBotTransferStars: {
+		230: -191267262, // f4997e42
 		229: -191267262, // f4997e42
 		228: -191267262, // f4997e42
 		227: -191267262, // f4997e42
@@ -104680,6 +106027,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStarGiftResale: {
+		230: -374290856,  // e9b0c658
 		229: -374290856,  // e9b0c658
 		228: -1012968668, // c39f5324
 		227: -1012968668, // c39f5324
@@ -104710,6 +106058,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStarGiftPrepaidUpgrade: {
+		230: -1710536520, // 9a0b48b8
 		229: -1710536520, // 9a0b48b8
 		228: -1710536520, // 9a0b48b8
 		227: -1710536520, // 9a0b48b8
@@ -104731,6 +106080,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoicePremiumAuthCode: {
+		230: 1048049172, // 3e77f614
 		229: 1048049172, // 3e77f614
 		228: 1048049172, // 3e77f614
 		227: 1048049172, // 3e77f614
@@ -104749,6 +106099,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStarGiftDropOriginalDetails: {
+		230: 153344209, // 923d8d1
 		229: 153344209, // 923d8d1
 		228: 153344209, // 923d8d1
 		227: 153344209, // 923d8d1
@@ -104767,6 +106118,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputInvoiceStarGiftAuctionBid: {
+		230: 516618768, // 1ecafa10
 		229: 516618768, // 1ecafa10
 		228: 516618768, // 1ecafa10
 		227: 516618768, // 1ecafa10
@@ -104782,6 +106134,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_exportedInvoice: {
+		230: -1362048039, // aed0cbd9
 		229: -1362048039, // aed0cbd9
 		228: -1362048039, // aed0cbd9
 		227: -1362048039, // aed0cbd9
@@ -104873,6 +106226,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_transcribedAudio: {
+		230: -809903785,  // cfb9d957
 		229: -809903785,  // cfb9d957
 		228: -809903785,  // cfb9d957
 		227: -809903785,  // cfb9d957
@@ -104963,6 +106317,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_premiumPromo: {
+		230: 1395946908,  // 5334759c
 		229: 1395946908,  // 5334759c
 		228: 1395946908,  // 5334759c
 		227: 1395946908,  // 5334759c
@@ -105053,6 +106408,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentPremiumSubscription: {
+		230: -1502273946, // a6751e66
 		229: -1502273946, // a6751e66
 		228: -1502273946, // a6751e66
 		227: -1502273946, // a6751e66
@@ -105142,6 +106498,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentGiftPremium: {
+		230: 1634697192, // 616f7fe8
 		229: 1634697192, // 616f7fe8
 		228: 1634697192, // 616f7fe8
 		227: 1634697192, // 616f7fe8
@@ -105231,6 +106588,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentPremiumGiftCode: {
+		230: -75955309,   // fb790393
 		229: -75955309,   // fb790393
 		228: -75955309,   // fb790393
 		227: -75955309,   // fb790393
@@ -105298,6 +106656,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentPremiumGiveaway: {
+		230: 369444042,  // 160544ca
 		229: 369444042,  // 160544ca
 		228: 369444042,  // 160544ca
 		227: 369444042,  // 160544ca
@@ -105365,6 +106724,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentStarsTopup: {
+		230: -106780981, // f9a2a6cb
 		229: -106780981, // f9a2a6cb
 		228: -106780981, // f9a2a6cb
 		227: -106780981, // f9a2a6cb
@@ -105413,6 +106773,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentStarsGift: {
+		230: 494149367, // 1d741ef7
 		229: 494149367, // 1d741ef7
 		228: 494149367, // 1d741ef7
 		227: 494149367, // 1d741ef7
@@ -105461,6 +106822,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentStarsGiveaway: {
+		230: 1964968186, // 751f08fa
 		229: 1964968186, // 751f08fa
 		228: 1964968186, // 751f08fa
 		227: 1964968186, // 751f08fa
@@ -105507,6 +106869,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStorePaymentAuthCode: {
+		230: 1069645911,  // 3fc18057
 		229: 1069645911,  // 3fc18057
 		228: 1069645911,  // 3fc18057
 		227: 1069645911,  // 3fc18057
@@ -105539,6 +106902,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_paymentFormMethod: {
+		230: -1996951013, // 88f8f21b
 		229: -1996951013, // 88f8f21b
 		228: -1996951013, // 88f8f21b
 		227: -1996951013, // 88f8f21b
@@ -105628,6 +106992,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiStatusEmpty: {
+		230: 769727150, // 2de11aae
 		229: 769727150, // 2de11aae
 		228: 769727150, // 2de11aae
 		227: 769727150, // 2de11aae
@@ -105716,6 +107081,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiStatus: {
+		230: -402717046,  // e7ff068a
 		229: -402717046,  // e7ff068a
 		228: -402717046,  // e7ff068a
 		227: -402717046,  // e7ff068a
@@ -105804,6 +107170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiStatusCollectible: {
+		230: 1904500795, // 7184603b
 		229: 1904500795, // 7184603b
 		228: 1904500795, // 7184603b
 		227: 1904500795, // 7184603b
@@ -105839,6 +107206,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputEmojiStatusCollectible: {
+		230: 118758847, // 7141dbf
 		229: 118758847, // 7141dbf
 		228: 118758847, // 7141dbf
 		227: 118758847, // 7141dbf
@@ -105874,6 +107242,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_emojiStatusesNotModified: {
+		230: -796072379, // d08ce645
 		229: -796072379, // d08ce645
 		228: -796072379, // d08ce645
 		227: -796072379, // d08ce645
@@ -105962,6 +107331,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_emojiStatuses: {
+		230: -1866176559, // 90c467d1
 		229: -1866176559, // 90c467d1
 		228: -1866176559, // 90c467d1
 		227: -1866176559, // 90c467d1
@@ -106050,6 +107420,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionEmpty: {
+		230: 2046153753, // 79f5d419
 		229: 2046153753, // 79f5d419
 		228: 2046153753, // 79f5d419
 		227: 2046153753, // 79f5d419
@@ -106138,6 +107509,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionEmoji: {
+		230: 455247544, // 1b2286b8
 		229: 455247544, // 1b2286b8
 		228: 455247544, // 1b2286b8
 		227: 455247544, // 1b2286b8
@@ -106226,6 +107598,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionCustomEmoji: {
+		230: -1992950669, // 8935fc73
 		229: -1992950669, // 8935fc73
 		228: -1992950669, // 8935fc73
 		227: -1992950669, // 8935fc73
@@ -106314,6 +107687,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionPaid: {
+		230: 1379771627, // 523da4eb
 		229: 1379771627, // 523da4eb
 		228: 1379771627, // 523da4eb
 		227: 1379771627, // 523da4eb
@@ -106361,6 +107735,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatReactionsNone: {
+		230: -352570692, // eafc32bc
 		229: -352570692, // eafc32bc
 		228: -352570692, // eafc32bc
 		227: -352570692, // eafc32bc
@@ -106449,6 +107824,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatReactionsAll: {
+		230: 1385335754, // 52928bca
 		229: 1385335754, // 52928bca
 		228: 1385335754, // 52928bca
 		227: 1385335754, // 52928bca
@@ -106537,6 +107913,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatReactionsSome: {
+		230: 1713193015, // 661d4037
 		229: 1713193015, // 661d4037
 		228: 1713193015, // 661d4037
 		227: 1713193015, // 661d4037
@@ -106625,6 +108002,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reactionsNotModified: {
+		230: -1334846497, // b06fdbdf
 		229: -1334846497, // b06fdbdf
 		228: -1334846497, // b06fdbdf
 		227: -1334846497, // b06fdbdf
@@ -106713,6 +108091,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reactions: {
+		230: -352454890, // eafdf716
 		229: -352454890, // eafdf716
 		228: -352454890, // eafdf716
 		227: -352454890, // eafdf716
@@ -106801,6 +108180,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emailVerifyPurposeLoginSetup: {
+		230: 1128644211, // 4345be73
 		229: 1128644211, // 4345be73
 		228: 1128644211, // 4345be73
 		227: 1128644211, // 4345be73
@@ -106889,6 +108269,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emailVerifyPurposeLoginChange: {
+		230: 1383932651, // 527d22eb
 		229: 1383932651, // 527d22eb
 		228: 1383932651, // 527d22eb
 		227: 1383932651, // 527d22eb
@@ -106977,6 +108358,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emailVerifyPurposePassport: {
+		230: -1141565819, // bbf51685
 		229: -1141565819, // bbf51685
 		228: -1141565819, // bbf51685
 		227: -1141565819, // bbf51685
@@ -107065,6 +108447,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emailVerificationCode: {
+		230: -1842457175, // 922e55a9
 		229: -1842457175, // 922e55a9
 		228: -1842457175, // 922e55a9
 		227: -1842457175, // 922e55a9
@@ -107153,6 +108536,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emailVerificationGoogle: {
+		230: -611279166, // db909ec2
 		229: -611279166, // db909ec2
 		228: -611279166, // db909ec2
 		227: -611279166, // db909ec2
@@ -107241,6 +108625,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emailVerificationApple: {
+		230: -1764723459, // 96d074fd
 		229: -1764723459, // 96d074fd
 		228: -1764723459, // 96d074fd
 		227: -1764723459, // 96d074fd
@@ -107329,6 +108714,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_emailVerified: {
+		230: 731303195, // 2b96cd1b
 		229: 731303195, // 2b96cd1b
 		228: 731303195, // 2b96cd1b
 		227: 731303195, // 2b96cd1b
@@ -107417,6 +108803,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_emailVerifiedLogin: {
+		230: -507835039, // e1bb0d61
 		229: -507835039, // e1bb0d61
 		228: -507835039, // e1bb0d61
 		227: -507835039, // e1bb0d61
@@ -107505,6 +108892,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premiumSubscriptionOption: {
+		230: 1596792306,  // 5f2d1df2
 		229: 1596792306,  // 5f2d1df2
 		228: 1596792306,  // 5f2d1df2
 		227: 1596792306,  // 5f2d1df2
@@ -107593,6 +108981,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sendAsPeer: {
+		230: -1206095820, // b81c7034
 		229: -1206095820, // b81c7034
 		228: -1206095820, // b81c7034
 		227: -1206095820, // b81c7034
@@ -107681,6 +109070,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageExtendedMediaPreview: {
+		230: -1386050360, // ad628cc8
 		229: -1386050360, // ad628cc8
 		228: -1386050360, // ad628cc8
 		227: -1386050360, // ad628cc8
@@ -107768,6 +109158,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageExtendedMedia: {
+		230: -297296796, // ee479c64
 		229: -297296796, // ee479c64
 		228: -297296796, // ee479c64
 		227: -297296796, // ee479c64
@@ -107855,6 +109246,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickerKeyword: {
+		230: -50416996, // fcfeb29c
 		229: -50416996, // fcfeb29c
 		228: -50416996, // fcfeb29c
 		227: -50416996, // fcfeb29c
@@ -107941,6 +109333,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_username: {
+		230: -1274595769, // b4073647
 		229: -1274595769, // b4073647
 		228: -1274595769, // b4073647
 		227: -1274595769, // b4073647
@@ -108026,6 +109419,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_forumTopicDeleted: {
+		230: 37687451, // 23f109b
 		229: 37687451, // 23f109b
 		228: 37687451, // 23f109b
 		227: 37687451, // 23f109b
@@ -108111,6 +109505,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_forumTopic: {
+		230: -52766699,  // fcdad815
 		229: -52766699,  // fcdad815
 		228: -52766699,  // fcdad815
 		227: -52766699,  // fcdad815
@@ -108196,6 +109591,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_forumTopics: {
+		230: 913709011, // 367617d3
 		229: 913709011, // 367617d3
 		228: 913709011, // 367617d3
 		227: 913709011, // 367617d3
@@ -108281,6 +109677,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_defaultHistoryTTL: {
+		230: 1135897376, // 43b46b20
 		229: 1135897376, // 43b46b20
 		228: 1135897376, // 43b46b20
 		227: 1135897376, // 43b46b20
@@ -108364,6 +109761,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_exportedContactToken: {
+		230: 1103040667, // 41bf109b
 		229: 1103040667, // 41bf109b
 		228: 1103040667, // 41bf109b
 		227: 1103040667, // 41bf109b
@@ -108447,6 +109845,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requestPeerTypeUser: {
+		230: 1597737472, // 5f3b8a00
 		229: 1597737472, // 5f3b8a00
 		228: 1597737472, // 5f3b8a00
 		227: 1597737472, // 5f3b8a00
@@ -108528,6 +109927,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requestPeerTypeChat: {
+		230: -906990053, // c9f06e1b
 		229: -906990053, // c9f06e1b
 		228: -906990053, // c9f06e1b
 		227: -906990053, // c9f06e1b
@@ -108609,6 +110009,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requestPeerTypeBroadcast: {
+		230: 865857388, // 339bef6c
 		229: 865857388, // 339bef6c
 		228: 865857388, // 339bef6c
 		227: 865857388, // 339bef6c
@@ -108690,6 +110091,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requestPeerTypeCreateBot: {
+		230: 1048699000, // 3e81e078
 		229: 1048699000, // 3e81e078
 		228: 1048699000, // 3e81e078
 		227: 1048699000, // 3e81e078
@@ -108699,6 +110101,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiListNotModified: {
+		230: 1209970170, // 481eadfa
 		229: 1209970170, // 481eadfa
 		228: 1209970170, // 481eadfa
 		227: 1209970170, // 481eadfa
@@ -108780,6 +110183,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiList: {
+		230: 2048790993, // 7a1e11d1
 		229: 2048790993, // 7a1e11d1
 		228: 2048790993, // 7a1e11d1
 		227: 2048790993, // 7a1e11d1
@@ -108861,6 +110265,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiGroup: {
+		230: 2056961449, // 7a9abda9
 		229: 2056961449, // 7a9abda9
 		228: 2056961449, // 7a9abda9
 		227: 2056961449, // 7a9abda9
@@ -108942,6 +110347,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiGroupGreeting: {
+		230: -2133693241, // 80d26cc7
 		229: -2133693241, // 80d26cc7
 		228: -2133693241, // 80d26cc7
 		227: -2133693241, // 80d26cc7
@@ -108996,6 +110402,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_emojiGroupPremium: {
+		230: 154914612, // 93bcf34
 		229: 154914612, // 93bcf34
 		228: 154914612, // 93bcf34
 		227: 154914612, // 93bcf34
@@ -109050,6 +110457,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_emojiGroupsNotModified: {
+		230: 1874111879, // 6fb4ad87
 		229: 1874111879, // 6fb4ad87
 		228: 1874111879, // 6fb4ad87
 		227: 1874111879, // 6fb4ad87
@@ -109131,6 +110539,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_emojiGroups: {
+		230: -2011186869, // 881fb94b
 		229: -2011186869, // 881fb94b
 		228: -2011186869, // 881fb94b
 		227: -2011186869, // 881fb94b
@@ -109212,6 +110621,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_textWithEntities: {
+		230: 1964978502, // 751f3146
 		229: 1964978502, // 751f3146
 		228: 1964978502, // 751f3146
 		227: 1964978502, // 751f3146
@@ -109293,6 +110703,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_translateResult: {
+		230: 870003448, // 33db32f8
 		229: 870003448, // 33db32f8
 		228: 870003448, // 33db32f8
 		227: 870003448, // 33db32f8
@@ -109374,6 +110785,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_autoSaveSettings: {
+		230: -934791986, // c84834ce
 		229: -934791986, // c84834ce
 		228: -934791986, // c84834ce
 		227: -934791986, // c84834ce
@@ -109455,6 +110867,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_autoSaveException: {
+		230: -2124403385, // 81602d47
 		229: -2124403385, // 81602d47
 		228: -2124403385, // 81602d47
 		227: -2124403385, // 81602d47
@@ -109536,6 +110949,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_autoSaveSettings: {
+		230: 1279133341, // 4c3e069d
 		229: 1279133341, // 4c3e069d
 		228: 1279133341, // 4c3e069d
 		227: 1279133341, // 4c3e069d
@@ -109617,6 +111031,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_appConfigNotModified: {
+		230: 2094949405, // 7cde641d
 		229: 2094949405, // 7cde641d
 		228: 2094949405, // 7cde641d
 		227: 2094949405, // 7cde641d
@@ -109697,6 +111112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_appConfig: {
+		230: -585598930, // dd18782e
 		229: -585598930, // dd18782e
 		228: -585598930, // dd18782e
 		227: -585598930, // dd18782e
@@ -109777,6 +111193,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotAppID: {
+		230: -1457472134, // a920bd7a
 		229: -1457472134, // a920bd7a
 		228: -1457472134, // a920bd7a
 		227: -1457472134, // a920bd7a
@@ -109856,6 +111273,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBotAppShortName: {
+		230: -1869872121, // 908c0407
 		229: -1869872121, // 908c0407
 		228: -1869872121, // 908c0407
 		227: -1869872121, // 908c0407
@@ -109935,6 +111353,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botAppNotModified: {
+		230: 1571189943, // 5da674b7
 		229: 1571189943, // 5da674b7
 		228: 1571189943, // 5da674b7
 		227: 1571189943, // 5da674b7
@@ -110014,6 +111433,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botApp: {
+		230: -1778593322, // 95fcd1d6
 		229: -1778593322, // 95fcd1d6
 		228: -1778593322, // 95fcd1d6
 		227: -1778593322, // 95fcd1d6
@@ -110093,6 +111513,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_botApp: {
+		230: -347034123, // eb50adf5
 		229: -347034123, // eb50adf5
 		228: -347034123, // eb50adf5
 		227: -347034123, // eb50adf5
@@ -110172,6 +111593,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inlineBotWebView: {
+		230: -1250781739, // b57295d5
 		229: -1250781739, // b57295d5
 		228: -1250781739, // b57295d5
 		227: -1250781739, // b57295d5
@@ -110251,6 +111673,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_readParticipantDate: {
+		230: 1246753138, // 4a4ff172
 		229: 1246753138, // 4a4ff172
 		228: 1246753138, // 4a4ff172
 		227: 1246753138, // 4a4ff172
@@ -110330,6 +111753,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChatlistDialogFilter: {
+		230: -203367885, // f3e0da33
 		229: -203367885, // f3e0da33
 		228: -203367885, // f3e0da33
 		227: -203367885, // f3e0da33
@@ -110405,6 +111829,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_exportedChatlistInvite: {
+		230: 206668204, // c5181ac
 		229: 206668204, // c5181ac
 		228: 206668204, // c5181ac
 		227: 206668204, // c5181ac
@@ -110480,6 +111905,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_exportedChatlistInvite: {
+		230: 283567014, // 10e6e3a6
 		229: 283567014, // 10e6e3a6
 		228: 283567014, // 10e6e3a6
 		227: 283567014, // 10e6e3a6
@@ -110555,6 +111981,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_exportedInvites: {
+		230: 279670215, // 10ab6dc7
 		229: 279670215, // 10ab6dc7
 		228: 279670215, // 10ab6dc7
 		227: 279670215, // 10ab6dc7
@@ -110630,6 +112057,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_chatlistInviteAlready: {
+		230: -91752871, // fa87f659
 		229: -91752871, // fa87f659
 		228: -91752871, // fa87f659
 		227: -91752871, // fa87f659
@@ -110705,6 +112133,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_chatlistInvite: {
+		230: -250687953, // f10ece2f
 		229: -250687953, // f10ece2f
 		228: -250687953, // f10ece2f
 		227: -250687953, // f10ece2f
@@ -110780,6 +112209,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_chatlistUpdates: {
+		230: -1816295539, // 93bd878d
 		229: -1816295539, // 93bd878d
 		228: -1816295539, // 93bd878d
 		227: -1816295539, // 93bd878d
@@ -110855,6 +112285,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_botInfo: {
+		230: -391678544, // e8a775b0
 		229: -391678544, // e8a775b0
 		228: -391678544, // e8a775b0
 		227: -391678544, // e8a775b0
@@ -110930,6 +112361,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messagePeerVote: {
+		230: -1228133028, // b6cc2d5c
 		229: -1228133028, // b6cc2d5c
 		228: -1228133028, // b6cc2d5c
 		227: -1228133028, // b6cc2d5c
@@ -111004,6 +112436,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messagePeerVoteInputOption: {
+		230: 1959634180, // 74cda504
 		229: 1959634180, // 74cda504
 		228: 1959634180, // 74cda504
 		227: 1959634180, // 74cda504
@@ -111078,6 +112511,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messagePeerVoteMultiple: {
+		230: 1177089766, // 4628f6e6
 		229: 1177089766, // 4628f6e6
 		228: 1177089766, // 4628f6e6
 		227: 1177089766, // 4628f6e6
@@ -111152,6 +112586,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyViews: {
+		230: -1923523370, // 8d595cd6
 		229: -1923523370, // 8d595cd6
 		228: -1923523370, // 8d595cd6
 		227: -1923523370, // 8d595cd6
@@ -111225,6 +112660,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyItemDeleted: {
+		230: 1374088783, // 51e6ee4f
 		229: 1374088783, // 51e6ee4f
 		228: 1374088783, // 51e6ee4f
 		227: 1374088783, // 51e6ee4f
@@ -111298,6 +112734,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyItemSkipped: {
+		230: -5388013, // ffadc913
 		229: -5388013, // ffadc913
 		228: -5388013, // ffadc913
 		227: -5388013, // ffadc913
@@ -111371,6 +112808,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyItem: {
+		230: 379894076,   // 16a4b93c
 		229: 379894076,   // 16a4b93c
 		228: 379894076,   // 16a4b93c
 		227: 379894076,   // 16a4b93c
@@ -111444,6 +112882,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_allStoriesNotModified: {
+		230: 291044926,  // 1158fe3e
 		229: 291044926,  // 1158fe3e
 		228: 291044926,  // 1158fe3e
 		227: 291044926,  // 1158fe3e
@@ -111517,6 +112956,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_allStories: {
+		230: 1862033025,  // 6efc5e81
 		229: 1862033025,  // 6efc5e81
 		228: 1862033025,  // 6efc5e81
 		227: 1862033025,  // 6efc5e81
@@ -111590,6 +113030,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_stories: {
+		230: 1673780490, // 63c3dd0a
 		229: 1673780490, // 63c3dd0a
 		228: 1673780490, // 63c3dd0a
 		227: 1673780490, // 63c3dd0a
@@ -111663,6 +113104,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyView: {
+		230: -1329730875, // b0bdeac5
 		229: -1329730875, // b0bdeac5
 		228: -1329730875, // b0bdeac5
 		227: -1329730875, // b0bdeac5
@@ -111736,6 +113178,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyViewPublicForward: {
+		230: -1870436597, // 9083670b
 		229: -1870436597, // 9083670b
 		228: -1870436597, // 9083670b
 		227: -1870436597, // 9083670b
@@ -111801,6 +113244,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyViewPublicRepost: {
+		230: -1116418231, // bd74cf49
 		229: -1116418231, // bd74cf49
 		228: -1116418231, // bd74cf49
 		227: -1116418231, // bd74cf49
@@ -111866,6 +113310,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_storyViewsList: {
+		230: 1507299269, // 59d78fc5
 		229: 1507299269, // 59d78fc5
 		228: 1507299269, // 59d78fc5
 		227: 1507299269, // 59d78fc5
@@ -111939,6 +113384,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_storyViews: {
+		230: -560009955, // de9eed1d
 		229: -560009955, // de9eed1d
 		228: -560009955, // de9eed1d
 		227: -560009955, // de9eed1d
@@ -112012,6 +113458,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReplyToMessage: {
+		230: 1003796418,  // 3bd4b7c2
 		229: 1003796418,  // 3bd4b7c2
 		228: 1003796418,  // 3bd4b7c2
 		227: 1003796418,  // 3bd4b7c2
@@ -112085,6 +113532,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReplyToStory: {
+		230: 1484862010, // 5881323a
 		229: 1484862010, // 5881323a
 		228: 1484862010, // 5881323a
 		227: 1484862010, // 5881323a
@@ -112158,6 +113606,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReplyToMonoForum: {
+		230: 1775660101, // 69d66c45
 		229: 1775660101, // 69d66c45
 		228: 1775660101, // 69d66c45
 		227: 1775660101, // 69d66c45
@@ -112187,11 +113636,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputReplyToEphemeralMessage: {
+		230: 1092204894, // 4119b95e
 		229: 1092204894, // 4119b95e
 		228: 1092204894, // 4119b95e
 
 	},
 	Predicate_exportedStoryLink: {
+		230: 1070138683, // 3fc9053b
 		229: 1070138683, // 3fc9053b
 		228: 1070138683, // 3fc9053b
 		227: 1070138683, // 3fc9053b
@@ -112265,6 +113716,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storiesStealthMode: {
+		230: 1898850301, // 712e27fd
 		229: 1898850301, // 712e27fd
 		228: 1898850301, // 712e27fd
 		227: 1898850301, // 712e27fd
@@ -112337,6 +113789,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaCoordinates: {
+		230: -808853502, // cfc9e002
 		229: -808853502, // cfc9e002
 		228: -808853502, // cfc9e002
 		227: -808853502, // cfc9e002
@@ -112409,6 +113862,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaVenue: {
+		230: -1098720356, // be82db9c
 		229: -1098720356, // be82db9c
 		228: -1098720356, // be82db9c
 		227: -1098720356, // be82db9c
@@ -112481,6 +113935,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaAreaVenue: {
+		230: -1300094593, // b282217f
 		229: -1300094593, // b282217f
 		228: -1300094593, // b282217f
 		227: -1300094593, // b282217f
@@ -112553,6 +114008,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaGeoPoint: {
+		230: -891992787, // cad5452d
 		229: -891992787, // cad5452d
 		228: -891992787, // cad5452d
 		227: -891992787, // cad5452d
@@ -112625,6 +114081,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaSuggestedReaction: {
+		230: 340088945, // 14455871
 		229: 340088945, // 14455871
 		228: 340088945, // 14455871
 		227: 340088945, // 14455871
@@ -112694,6 +114151,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaChannelPost: {
+		230: 1996756655, // 770416af
 		229: 1996756655, // 770416af
 		228: 1996756655, // 770416af
 		227: 1996756655, // 770416af
@@ -112759,6 +114217,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMediaAreaChannelPost: {
+		230: 577893055, // 2271f2bf
 		229: 577893055, // 2271f2bf
 		228: 577893055, // 2271f2bf
 		227: 577893055, // 2271f2bf
@@ -112824,6 +114283,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaUrl: {
+		230: 926421125, // 37381085
 		229: 926421125, // 37381085
 		228: 926421125, // 37381085
 		227: 926421125, // 37381085
@@ -112875,6 +114335,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaWeather: {
+		230: 1235637404, // 49a6549c
 		229: 1235637404, // 49a6549c
 		228: 1235637404, // 49a6549c
 		227: 1235637404, // 49a6549c
@@ -112923,6 +114384,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_mediaAreaStarGift: {
+		230: 1468491885, // 5787686d
 		229: 1468491885, // 5787686d
 		228: 1468491885, // 5787686d
 		227: 1468491885, // 5787686d
@@ -112959,6 +114421,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerStories: {
+		230: -1707742823, // 9a35e999
 		229: -1707742823, // 9a35e999
 		228: -1707742823, // 9a35e999
 		227: -1707742823, // 9a35e999
@@ -113028,6 +114491,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_peerStories: {
+		230: -890861720, // cae68768
 		229: -890861720, // cae68768
 		228: -890861720, // cae68768
 		227: -890861720, // cae68768
@@ -113097,6 +114561,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_webPage: {
+		230: -44166467, // fd5e12bd
 		229: -44166467, // fd5e12bd
 		228: -44166467, // fd5e12bd
 		227: -44166467, // fd5e12bd
@@ -113165,6 +114630,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premiumGiftCodeOption: {
+		230: 629052971, // 257e962b
 		229: 629052971, // 257e962b
 		228: 629052971, // 257e962b
 		227: 629052971, // 257e962b
@@ -113232,6 +114698,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_checkedGiftCode: {
+		230: -342343793,  // eb983f8f
 		229: -342343793,  // eb983f8f
 		228: -342343793,  // eb983f8f
 		227: -342343793,  // eb983f8f
@@ -113299,6 +114766,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_giveawayInfo: {
+		230: 1130879648, // 4367daa0
 		229: 1130879648, // 4367daa0
 		228: 1130879648, // 4367daa0
 		227: 1130879648, // 4367daa0
@@ -113366,6 +114834,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_giveawayInfoResults: {
+		230: -512366993, // e175e66f
 		229: -512366993, // e175e66f
 		228: -512366993, // e175e66f
 		227: -512366993, // e175e66f
@@ -113433,6 +114902,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_prepaidGiveaway: {
+		230: -1303143084, // b2539d54
 		229: -1303143084, // b2539d54
 		228: -1303143084, // b2539d54
 		227: -1303143084, // b2539d54
@@ -113500,6 +114970,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_prepaidStarsGiveaway: {
+		230: -1700956192, // 9a9d77e0
 		229: -1700956192, // 9a9d77e0
 		228: -1700956192, // 9a9d77e0
 		227: -1700956192, // 9a9d77e0
@@ -113546,6 +115017,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_boost: {
+		230: 1262359766, // 4b3e14d6
 		229: 1262359766, // 4b3e14d6
 		228: 1262359766, // 4b3e14d6
 		227: 1262359766, // 4b3e14d6
@@ -113613,6 +115085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_boostsList: {
+		230: -2030542532, // 86f8613c
 		229: -2030542532, // 86f8613c
 		228: -2030542532, // 86f8613c
 		227: -2030542532, // 86f8613c
@@ -113680,6 +115153,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_myBoost: {
+		230: -1001897636, // c448415c
 		229: -1001897636, // c448415c
 		228: -1001897636, // c448415c
 		227: -1001897636, // c448415c
@@ -113747,6 +115221,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_myBoosts: {
+		230: -1696454430, // 9ae228e2
 		229: -1696454430, // 9ae228e2
 		228: -1696454430, // 9ae228e2
 		227: -1696454430, // 9ae228e2
@@ -113814,6 +115289,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_boostsStatus: {
+		230: 1230586490, // 4959427a
 		229: 1230586490, // 4959427a
 		228: 1230586490, // 4959427a
 		227: 1230586490, // 4959427a
@@ -113881,6 +115357,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyFwdHeader: {
+		230: -1205411504, // b826e150
 		229: -1205411504, // b826e150
 		228: -1205411504, // b826e150
 		227: -1205411504, // b826e150
@@ -113947,6 +115424,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_postInteractionCountersMessage: {
+		230: -419066241, // e7058e7f
 		229: -419066241, // e7058e7f
 		228: -419066241, // e7058e7f
 		227: -419066241, // e7058e7f
@@ -114013,6 +115491,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_postInteractionCountersStory: {
+		230: -1974989273, // 8a480e27
 		229: -1974989273, // 8a480e27
 		228: -1974989273, // 8a480e27
 		227: -1974989273, // 8a480e27
@@ -114079,6 +115558,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_storyStats: {
+		230: 1355613820, // 50cd067c
 		229: 1355613820, // 50cd067c
 		228: 1355613820, // 50cd067c
 		227: 1355613820, // 50cd067c
@@ -114145,6 +115625,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_publicForwardMessage: {
+		230: 32685898, // 1f2bf4a
 		229: 32685898, // 1f2bf4a
 		228: 32685898, // 1f2bf4a
 		227: 32685898, // 1f2bf4a
@@ -114211,6 +115692,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_publicForwardStory: {
+		230: -302797360, // edf3add0
 		229: -302797360, // edf3add0
 		228: -302797360, // edf3add0
 		227: -302797360, // edf3add0
@@ -114277,6 +115759,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_publicForwards: {
+		230: -1828487648, // 93037e20
 		229: -1828487648, // 93037e20
 		228: -1828487648, // 93037e20
 		227: -1828487648, // 93037e20
@@ -114343,6 +115826,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerColor: {
+		230: -1253352753, // b54b5acf
 		229: -1253352753, // b54b5acf
 		228: -1253352753, // b54b5acf
 		227: -1253352753, // b54b5acf
@@ -114409,6 +115893,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_peerColorCollectible: {
+		230: -1178573926, // b9c0639a
 		229: -1178573926, // b9c0639a
 		228: -1178573926, // b9c0639a
 		227: -1178573926, // b9c0639a
@@ -114426,6 +115911,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPeerColorCollectible: {
+		230: -1192589655, // b8ea86a9
 		229: -1192589655, // b8ea86a9
 		228: -1192589655, // b8ea86a9
 		227: -1192589655, // b8ea86a9
@@ -114443,6 +115929,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_peerColorSet: {
+		230: 639736408, // 26219a58
 		229: 639736408, // 26219a58
 		228: 639736408, // 26219a58
 		227: 639736408, // 26219a58
@@ -114509,6 +115996,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_peerColorProfileSet: {
+		230: 1987928555, // 767d61eb
 		229: 1987928555, // 767d61eb
 		228: 1987928555, // 767d61eb
 		227: 1987928555, // 767d61eb
@@ -114575,6 +116063,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_peerColorOption: {
+		230: -1377014082, // adec6ebe
 		229: -1377014082, // adec6ebe
 		228: -1377014082, // adec6ebe
 		227: -1377014082, // adec6ebe
@@ -114641,6 +116130,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_peerColorsNotModified: {
+		230: 732034510, // 2ba1f5ce
 		229: 732034510, // 2ba1f5ce
 		228: 732034510, // 2ba1f5ce
 		227: 732034510, // 2ba1f5ce
@@ -114707,6 +116197,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_peerColors: {
+		230: 16313608, // f8ed08
 		229: 16313608, // f8ed08
 		228: 16313608, // f8ed08
 		227: 16313608, // f8ed08
@@ -114773,6 +116264,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyReaction: {
+		230: 1620104917, // 6090d6d5
 		229: 1620104917, // 6090d6d5
 		228: 1620104917, // 6090d6d5
 		227: 1620104917, // 6090d6d5
@@ -114838,6 +116330,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyReactionPublicForward: {
+		230: -1146411453, // bbab2643
 		229: -1146411453, // bbab2643
 		228: -1146411453, // bbab2643
 		227: -1146411453, // bbab2643
@@ -114903,6 +116396,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyReactionPublicRepost: {
+		230: -808644845, // cfcd0f13
 		229: -808644845, // cfcd0f13
 		228: -808644845, // cfcd0f13
 		227: -808644845, // cfcd0f13
@@ -114968,6 +116462,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_storyReactionsList: {
+		230: -1436583780, // aa5f789c
 		229: -1436583780, // aa5f789c
 		228: -1436583780, // aa5f789c
 		227: -1436583780, // aa5f789c
@@ -115033,6 +116528,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_savedDialog: {
+		230: -1115174036, // bd87cb6c
 		229: -1115174036, // bd87cb6c
 		228: -1115174036, // bd87cb6c
 		227: -1115174036, // bd87cb6c
@@ -115096,6 +116592,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_monoForumDialog: {
+		230: 1681948327, // 64407ea7
 		229: 1681948327, // 64407ea7
 		228: 1681948327, // 64407ea7
 		227: 1681948327, // 64407ea7
@@ -115125,6 +116622,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savedDialogs: {
+		230: -130358751, // f83ae221
 		229: -130358751, // f83ae221
 		228: -130358751, // f83ae221
 		227: -130358751, // f83ae221
@@ -115188,6 +116686,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savedDialogsSlice: {
+		230: 1153080793, // 44ba9dd9
 		229: 1153080793, // 44ba9dd9
 		228: 1153080793, // 44ba9dd9
 		227: 1153080793, // 44ba9dd9
@@ -115251,6 +116750,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savedDialogsNotModified: {
+		230: -1071681560, // c01f6fe8
 		229: -1071681560, // c01f6fe8
 		228: -1071681560, // c01f6fe8
 		227: -1071681560, // c01f6fe8
@@ -115314,6 +116814,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_savedReactionTag: {
+		230: -881854424, // cb6ff828
 		229: -881854424, // cb6ff828
 		228: -881854424, // cb6ff828
 		227: -881854424, // cb6ff828
@@ -115376,6 +116877,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savedReactionTagsNotModified: {
+		230: -2003084817, // 889b59ef
 		229: -2003084817, // 889b59ef
 		228: -2003084817, // 889b59ef
 		227: -2003084817, // 889b59ef
@@ -115438,6 +116940,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savedReactionTags: {
+		230: 844731658, // 3259950a
 		229: 844731658, // 3259950a
 		228: 844731658, // 3259950a
 		227: 844731658, // 3259950a
@@ -115500,6 +117003,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_outboxReadDate: {
+		230: 1001931436, // 3bb842ac
 		229: 1001931436, // 3bb842ac
 		228: 1001931436, // 3bb842ac
 		227: 1001931436, // 3bb842ac
@@ -115561,6 +117065,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_eligibleToJoin: {
+		230: -594852657, // dc8b44cf
 		229: -594852657, // dc8b44cf
 		228: -594852657, // dc8b44cf
 		227: -594852657, // dc8b44cf
@@ -115619,6 +117124,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_status: {
+		230: 720277905, // 2aee9191
 		229: 720277905, // 2aee9191
 		228: 720277905, // 2aee9191
 		227: 720277905, // 2aee9191
@@ -115677,6 +117183,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsJob: {
+		230: -425595208, // e6a1eeb8
 		229: -425595208, // e6a1eeb8
 		228: -425595208, // e6a1eeb8
 		227: -425595208, // e6a1eeb8
@@ -115735,6 +117242,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessWeeklyOpen: {
+		230: 302717625, // 120b1ab9
 		229: 302717625, // 120b1ab9
 		228: 302717625, // 120b1ab9
 		227: 302717625, // 120b1ab9
@@ -115792,6 +117300,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessWorkHours: {
+		230: -1936543592, // 8c92b098
 		229: -1936543592, // 8c92b098
 		228: -1936543592, // 8c92b098
 		227: -1936543592, // 8c92b098
@@ -115849,6 +117358,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessLocation: {
+		230: -1403249929, // ac5c1af7
 		229: -1403249929, // ac5c1af7
 		228: -1403249929, // ac5c1af7
 		227: -1403249929, // ac5c1af7
@@ -115906,6 +117416,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBusinessRecipients: {
+		230: 1871393450, // 6f8b32aa
 		229: 1871393450, // 6f8b32aa
 		228: 1871393450, // 6f8b32aa
 		227: 1871393450, // 6f8b32aa
@@ -115963,6 +117474,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessRecipients: {
+		230: 554733559, // 21108ff7
 		229: 554733559, // 21108ff7
 		228: 554733559, // 21108ff7
 		227: 554733559, // 21108ff7
@@ -116020,6 +117532,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessAwayMessageScheduleAlways: {
+		230: -910564679, // c9b9e2b9
 		229: -910564679, // c9b9e2b9
 		228: -910564679, // c9b9e2b9
 		227: -910564679, // c9b9e2b9
@@ -116077,6 +117590,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessAwayMessageScheduleOutsideWorkHours: {
+		230: -1007487743, // c3f2f501
 		229: -1007487743, // c3f2f501
 		228: -1007487743, // c3f2f501
 		227: -1007487743, // c3f2f501
@@ -116134,6 +117648,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessAwayMessageScheduleCustom: {
+		230: -867328308, // cc4d9ecc
 		229: -867328308, // cc4d9ecc
 		228: -867328308, // cc4d9ecc
 		227: -867328308, // cc4d9ecc
@@ -116191,6 +117706,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBusinessGreetingMessage: {
+		230: 26528571, // 194cb3b
 		229: 26528571, // 194cb3b
 		228: 26528571, // 194cb3b
 		227: 26528571, // 194cb3b
@@ -116248,6 +117764,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessGreetingMessage: {
+		230: -451302485, // e519abab
 		229: -451302485, // e519abab
 		228: -451302485, // e519abab
 		227: -451302485, // e519abab
@@ -116305,6 +117822,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBusinessAwayMessage: {
+		230: -2094959136, // 832175e0
 		229: -2094959136, // 832175e0
 		228: -2094959136, // 832175e0
 		227: -2094959136, // 832175e0
@@ -116362,6 +117880,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessAwayMessage: {
+		230: -283809188, // ef156a5c
 		229: -283809188, // ef156a5c
 		228: -283809188, // ef156a5c
 		227: -283809188, // ef156a5c
@@ -116419,6 +117938,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_timezone: {
+		230: -7173643, // ff9289f5
 		229: -7173643, // ff9289f5
 		228: -7173643, // ff9289f5
 		227: -7173643, // ff9289f5
@@ -116476,6 +117996,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_timezonesListNotModified: {
+		230: -1761146676, // 970708cc
 		229: -1761146676, // 970708cc
 		228: -1761146676, // 970708cc
 		227: -1761146676, // 970708cc
@@ -116533,6 +118054,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_timezonesList: {
+		230: 2071260529, // 7b74ed71
 		229: 2071260529, // 7b74ed71
 		228: 2071260529, // 7b74ed71
 		227: 2071260529, // 7b74ed71
@@ -116590,6 +118112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_quickReply: {
+		230: 110563371, // 697102b
 		229: 110563371, // 697102b
 		228: 110563371, // 697102b
 		227: 110563371, // 697102b
@@ -116647,6 +118170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputQuickReplyShortcut: {
+		230: 609840449, // 24596d41
 		229: 609840449, // 24596d41
 		228: 609840449, // 24596d41
 		227: 609840449, // 24596d41
@@ -116704,6 +118228,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputQuickReplyShortcutId: {
+		230: 18418929, // 1190cf1
 		229: 18418929, // 1190cf1
 		228: 18418929, // 1190cf1
 		227: 18418929, // 1190cf1
@@ -116761,6 +118286,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_quickReplies: {
+		230: -963811691, // c68d6695
 		229: -963811691, // c68d6695
 		228: -963811691, // c68d6695
 		227: -963811691, // c68d6695
@@ -116818,6 +118344,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_quickRepliesNotModified: {
+		230: 1603398491, // 5f91eb5b
 		229: 1603398491, // 5f91eb5b
 		228: 1603398491, // 5f91eb5b
 		227: 1603398491, // 5f91eb5b
@@ -116875,6 +118402,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_connectedBot: {
+		230: 54448129,    // 33ed001
 		229: 54448129,    // 33ed001
 		228: 54448129,    // 33ed001
 		227: 54448129,    // 33ed001
@@ -116932,6 +118460,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_connectedBots: {
+		230: 400029819, // 17d7f87b
 		229: 400029819, // 17d7f87b
 		228: 400029819, // 17d7f87b
 		227: 400029819, // 17d7f87b
@@ -116989,6 +118518,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_dialogFilters: {
+		230: 718878489, // 2ad93719
 		229: 718878489, // 2ad93719
 		228: 718878489, // 2ad93719
 		227: 718878489, // 2ad93719
@@ -117046,6 +118576,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_birthday: {
+		230: 1821253126, // 6c8e1e06
 		229: 1821253126, // 6c8e1e06
 		228: 1821253126, // 6c8e1e06
 		227: 1821253126, // 6c8e1e06
@@ -117102,6 +118633,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botBusinessConnection: {
+		230: -1892371723, // 8f34b2f5
 		229: -1892371723, // 8f34b2f5
 		228: -1892371723, // 8f34b2f5
 		227: -1892371723, // 8f34b2f5
@@ -117158,6 +118690,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBusinessIntro: {
+		230: 163867085, // 9c469cd
 		229: 163867085, // 9c469cd
 		228: 163867085, // 9c469cd
 		227: 163867085, // 9c469cd
@@ -117214,6 +118747,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessIntro: {
+		230: 1510606445, // 5a0a066d
 		229: 1510606445, // 5a0a066d
 		228: 1510606445, // 5a0a066d
 		227: 1510606445, // 5a0a066d
@@ -117270,6 +118804,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_myStickers: {
+		230: -83926371, // faff629d
 		229: -83926371, // faff629d
 		228: -83926371, // faff629d
 		227: -83926371, // faff629d
@@ -117326,6 +118861,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputCollectibleUsername: {
+		230: -476815191, // e39460a9
 		229: -476815191, // e39460a9
 		228: -476815191, // e39460a9
 		227: -476815191, // e39460a9
@@ -117382,6 +118918,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputCollectiblePhone: {
+		230: -1562241884, // a2e214a4
 		229: -1562241884, // a2e214a4
 		228: -1562241884, // a2e214a4
 		227: -1562241884, // a2e214a4
@@ -117438,6 +118975,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_fragment_collectibleInfo: {
+		230: 1857945489, // 6ebdff91
 		229: 1857945489, // 6ebdff91
 		228: 1857945489, // 6ebdff91
 		227: 1857945489, // 6ebdff91
@@ -117494,6 +119032,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBusinessBotRecipients: {
+		230: -991587810, // c4e5921e
 		229: -991587810, // c4e5921e
 		228: -991587810, // c4e5921e
 		227: -991587810, // c4e5921e
@@ -117550,6 +119089,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessBotRecipients: {
+		230: -1198722189, // b88cf373
 		229: -1198722189, // b88cf373
 		228: -1198722189, // b88cf373
 		227: -1198722189, // b88cf373
@@ -117606,6 +119146,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contactBirthday: {
+		230: 496600883, // 1d998733
 		229: 496600883, // 1d998733
 		228: 496600883, // 1d998733
 		227: 496600883, // 1d998733
@@ -117662,6 +119203,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_contactBirthdays: {
+		230: 290452237, // 114ff30d
 		229: 290452237, // 114ff30d
 		228: 290452237, // 114ff30d
 		227: 290452237, // 114ff30d
@@ -117718,6 +119260,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_missingInvitee: {
+		230: 1653379620, // 628c9224
 		229: 1653379620, // 628c9224
 		228: 1653379620, // 628c9224
 		227: 1653379620, // 628c9224
@@ -117774,6 +119317,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_invitedUsers: {
+		230: 2136862630, // 7f5defa6
 		229: 2136862630, // 7f5defa6
 		228: 2136862630, // 7f5defa6
 		227: 2136862630, // 7f5defa6
@@ -117830,6 +119374,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputBusinessChatLink: {
+		230: 292003751, // 11679fa7
 		229: 292003751, // 11679fa7
 		228: 292003751, // 11679fa7
 		227: 292003751, // 11679fa7
@@ -117886,6 +119431,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessChatLink: {
+		230: -1263638929, // b4ae666f
 		229: -1263638929, // b4ae666f
 		228: -1263638929, // b4ae666f
 		227: -1263638929, // b4ae666f
@@ -117942,6 +119488,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_businessChatLinks: {
+		230: -331111727, // ec43a2d1
 		229: -331111727, // ec43a2d1
 		228: -331111727, // ec43a2d1
 		227: -331111727, // ec43a2d1
@@ -117998,6 +119545,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resolvedBusinessChatLinks: {
+		230: -1708937439, // 9a23af21
 		229: -1708937439, // 9a23af21
 		228: -1708937439, // 9a23af21
 		227: -1708937439, // 9a23af21
@@ -118054,6 +119602,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requestedPeerUser: {
+		230: -701500310, // d62ff46a
 		229: -701500310, // d62ff46a
 		228: -701500310, // d62ff46a
 		227: -701500310, // d62ff46a
@@ -118110,6 +119659,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requestedPeerChat: {
+		230: 1929860175, // 7307544f
 		229: 1929860175, // 7307544f
 		228: 1929860175, // 7307544f
 		227: 1929860175, // 7307544f
@@ -118166,6 +119716,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requestedPeerChannel: {
+		230: -1952185372, // 8ba403e4
 		229: -1952185372, // 8ba403e4
 		228: -1952185372, // 8ba403e4
 		227: -1952185372, // 8ba403e4
@@ -118222,6 +119773,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sponsoredMessageReportOption: {
+		230: 1124938064, // 430d3150
 		229: 1124938064, // 430d3150
 		228: 1124938064, // 430d3150
 		227: 1124938064, // 430d3150
@@ -118278,6 +119830,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_sponsoredMessageReportResultChooseOption: {
+		230: -2073059774, // 846f9e42
 		229: -2073059774, // 846f9e42
 		228: -2073059774, // 846f9e42
 		227: -2073059774, // 846f9e42
@@ -118334,6 +119887,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_sponsoredMessageReportResultAdsHidden: {
+		230: 1044107055, // 3e3bcf2f
 		229: 1044107055, // 3e3bcf2f
 		228: 1044107055, // 3e3bcf2f
 		227: 1044107055, // 3e3bcf2f
@@ -118390,6 +119944,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_sponsoredMessageReportResultReported: {
+		230: -1384544183, // ad798849
 		229: -1384544183, // ad798849
 		228: -1384544183, // ad798849
 		227: -1384544183, // ad798849
@@ -118446,6 +120001,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionNotificationsFromContacts: {
+		230: -1161583078, // bac3a61a
 		229: -1161583078, // bac3a61a
 		228: -1161583078, // bac3a61a
 		227: -1161583078, // bac3a61a
@@ -118501,6 +120057,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionNotificationsFromAll: {
+		230: 1268654752, // 4b9e22a0
 		229: 1268654752, // 4b9e22a0
 		228: 1268654752, // 4b9e22a0
 		227: 1268654752, // 4b9e22a0
@@ -118556,6 +120113,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reactionsNotifySettings: {
+		230: 1910827608, // 71e4ea58
 		229: 1910827608, // 71e4ea58
 		228: 1910827608, // 71e4ea58
 		227: 1910827608, // 71e4ea58
@@ -118611,6 +120169,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_availableEffect: {
+		230: -1815879042, // 93c3e27e
 		229: -1815879042, // 93c3e27e
 		228: -1815879042, // 93c3e27e
 		227: -1815879042, // 93c3e27e
@@ -118664,6 +120223,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_availableEffectsNotModified: {
+		230: -772957605, // d1ed9a5b
 		229: -772957605, // d1ed9a5b
 		228: -772957605, // d1ed9a5b
 		227: -772957605, // d1ed9a5b
@@ -118717,6 +120277,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_availableEffects: {
+		230: -1109696146, // bddb616e
 		229: -1109696146, // bddb616e
 		228: -1109696146, // bddb616e
 		227: -1109696146, // bddb616e
@@ -118770,6 +120331,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_factCheck: {
+		230: -1197736753, // b89bfccf
 		229: -1197736753, // b89bfccf
 		228: -1197736753, // b89bfccf
 		227: -1197736753, // b89bfccf
@@ -118822,6 +120384,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeerUnsupported: {
+		230: -1779253276, // 95f2bfe4
 		229: -1779253276, // 95f2bfe4
 		228: -1779253276, // 95f2bfe4
 		227: -1779253276, // 95f2bfe4
@@ -118874,6 +120437,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeerAppStore: {
+		230: -1269320843, // b457b375
 		229: -1269320843, // b457b375
 		228: -1269320843, // b457b375
 		227: -1269320843, // b457b375
@@ -118926,6 +120490,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeerPlayMarket: {
+		230: 2069236235, // 7b560a0b
 		229: 2069236235, // 7b560a0b
 		228: 2069236235, // 7b560a0b
 		227: 2069236235, // 7b560a0b
@@ -118978,6 +120543,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeerPremiumBot: {
+		230: 621656824, // 250dbaf8
 		229: 621656824, // 250dbaf8
 		228: 621656824, // 250dbaf8
 		227: 621656824, // 250dbaf8
@@ -119030,6 +120596,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeerFragment: {
+		230: -382740222, // e92fd902
 		229: -382740222, // e92fd902
 		228: -382740222, // e92fd902
 		227: -382740222, // e92fd902
@@ -119082,6 +120649,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeer: {
+		230: -670195363, // d80da15d
 		229: -670195363, // d80da15d
 		228: -670195363, // d80da15d
 		227: -670195363, // d80da15d
@@ -119134,6 +120702,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeerAds: {
+		230: 1617438738, // 60682812
 		229: 1617438738, // 60682812
 		228: 1617438738, // 60682812
 		227: 1617438738, // 60682812
@@ -119184,6 +120753,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransactionPeerAPI: {
+		230: -110658899, // f9677aad
 		229: -110658899, // f9677aad
 		228: -110658899, // f9677aad
 		227: -110658899, // f9677aad
@@ -119225,6 +120795,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTopupOption: {
+		230: 198776256, // bd915c0
 		229: 198776256, // bd915c0
 		228: 198776256, // bd915c0
 		227: 198776256, // bd915c0
@@ -119277,6 +120848,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTransaction: {
+		230: 325426864,   // 13659eb0
 		229: 325426864,   // 13659eb0
 		228: 325426864,   // 13659eb0
 		227: 325426864,   // 13659eb0
@@ -119329,6 +120901,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starsStatus: {
+		230: 1822222573,  // 6c9ce8ed
 		229: 1822222573,  // 6c9ce8ed
 		228: 1822222573,  // 6c9ce8ed
 		227: 1822222573,  // 6c9ce8ed
@@ -119381,6 +120954,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_foundStory: {
+		230: -394605632, // e87acbc0
 		229: -394605632, // e87acbc0
 		228: -394605632, // e87acbc0
 		227: -394605632, // e87acbc0
@@ -119432,6 +121006,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_foundStories: {
+		230: -488736969, // e2de7737
 		229: -488736969, // e2de7737
 		228: -488736969, // e2de7737
 		227: -488736969, // e2de7737
@@ -119483,6 +121058,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_geoPointAddress: {
+		230: -565420653, // de4c5d93
 		229: -565420653, // de4c5d93
 		228: -565420653, // de4c5d93
 		227: -565420653, // de4c5d93
@@ -119534,6 +121110,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsRevenueStatus: {
+		230: -21080943,  // febe5491
 		229: -21080943,  // febe5491
 		228: -21080943,  // febe5491
 		227: -21080943,  // febe5491
@@ -119585,6 +121162,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starsRevenueStats: {
+		230: 1814066038, // 6c207376
 		229: 1814066038, // 6c207376
 		228: 1814066038, // 6c207376
 		227: 1814066038, // 6c207376
@@ -119636,6 +121214,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starsRevenueWithdrawalUrl: {
+		230: 497778871, // 1dab80b7
 		229: 497778871, // 1dab80b7
 		228: 497778871, // 1dab80b7
 		227: 497778871, // 1dab80b7
@@ -119687,6 +121266,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starsRevenueAdsAccountUrl: {
+		230: 961445665, // 394e7f21
 		229: 961445665, // 394e7f21
 		228: 961445665, // 394e7f21
 		227: 961445665, // 394e7f21
@@ -119737,6 +121317,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStarsTransaction: {
+		230: 543876817, // 206ae6d1
 		229: 543876817, // 206ae6d1
 		228: 543876817, // 206ae6d1
 		227: 543876817, // 206ae6d1
@@ -119787,6 +121368,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsGiftOption: {
+		230: 1577421297, // 5e0589f1
 		229: 1577421297, // 5e0589f1
 		228: 1577421297, // 5e0589f1
 		227: 1577421297, // 5e0589f1
@@ -119835,6 +121417,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_popularAppBots: {
+		230: 428978491, // 1991b13b
 		229: 428978491, // 1991b13b
 		228: 428978491, // 1991b13b
 		227: 428978491, // 1991b13b
@@ -119883,6 +121466,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botPreviewMedia: {
+		230: 602479523, // 23e91ba3
 		229: 602479523, // 23e91ba3
 		228: 602479523, // 23e91ba3
 		227: 602479523, // 23e91ba3
@@ -119931,6 +121515,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_previewInfo: {
+		230: 212278628, // ca71d64
 		229: 212278628, // ca71d64
 		228: 212278628, // ca71d64
 		227: 212278628, // ca71d64
@@ -119979,6 +121564,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsSubscriptionPricing: {
+		230: 88173912, // 5416d58
 		229: 88173912, // 5416d58
 		228: 88173912, // 5416d58
 		227: 88173912, // 5416d58
@@ -120026,6 +121612,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsSubscription: {
+		230: 779004698,  // 2e6eab1a
 		229: 779004698,  // 2e6eab1a
 		228: 779004698,  // 2e6eab1a
 		227: 779004698,  // 2e6eab1a
@@ -120073,6 +121660,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageReactor: {
+		230: 1269016922, // 4ba3a95a
 		229: 1269016922, // 4ba3a95a
 		228: 1269016922, // 4ba3a95a
 		227: 1269016922, // 4ba3a95a
@@ -120120,6 +121708,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsGiveawayOption: {
+		230: -1798404822, // 94ce852a
 		229: -1798404822, // 94ce852a
 		228: -1798404822, // 94ce852a
 		227: -1798404822, // 94ce852a
@@ -120166,6 +121755,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsGiveawayWinnersOption: {
+		230: 1411605001, // 54236209
 		229: 1411605001, // 54236209
 		228: 1411605001, // 54236209
 		227: 1411605001, // 54236209
@@ -120212,6 +121802,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGift: {
+		230: 825922887,   // 313a9547
 		229: 825922887,   // 313a9547
 		228: 825922887,   // 313a9547
 		227: 825922887,   // 313a9547
@@ -120256,6 +121847,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftUnique: {
+		230: -2047825459, // 85f0a9cd
 		229: -2047825459, // 85f0a9cd
 		228: -2047825459, // 85f0a9cd
 		227: -2047825459, // 85f0a9cd
@@ -120293,6 +121885,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftsNotModified: {
+		230: -1551326360, // a388a368
 		229: -1551326360, // a388a368
 		228: -1551326360, // a388a368
 		227: -1551326360, // a388a368
@@ -120337,6 +121930,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGifts: {
+		230: 785918357,   // 2ed82995
 		229: 785918357,   // 2ed82995
 		228: 785918357,   // 2ed82995
 		227: 785918357,   // 2ed82995
@@ -120381,6 +121975,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messageReportOption: {
+		230: 2030298073, // 7903e3d9
 		229: 2030298073, // 7903e3d9
 		228: 2030298073, // 7903e3d9
 		227: 2030298073, // 7903e3d9
@@ -120425,6 +122020,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reportResultChooseOption: {
+		230: -253435722, // f0e4e0b6
 		229: -253435722, // f0e4e0b6
 		228: -253435722, // f0e4e0b6
 		227: -253435722, // f0e4e0b6
@@ -120469,6 +122065,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reportResultAddComment: {
+		230: 1862904881, // 6f09ac31
 		229: 1862904881, // 6f09ac31
 		228: 1862904881, // 6f09ac31
 		227: 1862904881, // 6f09ac31
@@ -120513,6 +122110,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_reportResultReported: {
+		230: -1917633461, // 8db33c4b
 		229: -1917633461, // 8db33c4b
 		228: -1917633461, // 8db33c4b
 		227: -1917633461, // 8db33c4b
@@ -120557,6 +122155,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_botPreparedInlineMessage: {
+		230: -1899035375, // 8ecf0511
 		229: -1899035375, // 8ecf0511
 		228: -1899035375, // 8ecf0511
 		227: -1899035375, // 8ecf0511
@@ -120597,6 +122196,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_preparedInlineMessage: {
+		230: -11046771, // ff57708d
 		229: -11046771, // ff57708d
 		228: -11046771, // ff57708d
 		227: -11046771, // ff57708d
@@ -120637,6 +122237,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botAppSettings: {
+		230: -912582320, // c99b1950
 		229: -912582320, // c99b1950
 		228: -912582320, // c99b1950
 		227: -912582320, // c99b1950
@@ -120677,6 +122278,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starRefProgram: {
+		230: -586389774, // dd0c66f2
 		229: -586389774, // dd0c66f2
 		228: -586389774, // dd0c66f2
 		227: -586389774, // dd0c66f2
@@ -120715,6 +122317,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_connectedBotStarRef: {
+		230: 429997937, // 19a13f71
 		229: 429997937, // 19a13f71
 		228: 429997937, // 19a13f71
 		227: 429997937, // 19a13f71
@@ -120753,6 +122356,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_connectedStarRefBots: {
+		230: -1730811363, // 98d5ea1d
 		229: -1730811363, // 98d5ea1d
 		228: -1730811363, // 98d5ea1d
 		227: -1730811363, // 98d5ea1d
@@ -120791,6 +122395,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_suggestedStarRefBots: {
+		230: -1261053863, // b4d5d859
 		229: -1261053863, // b4d5d859
 		228: -1261053863, // b4d5d859
 		227: -1261053863, // b4d5d859
@@ -120829,6 +122434,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsAmount: {
+		230: -1145654109, // bbb6b4a3
 		229: -1145654109, // bbb6b4a3
 		228: -1145654109, // bbb6b4a3
 		227: -1145654109, // bbb6b4a3
@@ -120867,6 +122473,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsTonAmount: {
+		230: 1957618656, // 74aee3e0
 		229: 1957618656, // 74aee3e0
 		228: 1957618656, // 74aee3e0
 		227: 1957618656, // 74aee3e0
@@ -120894,6 +122501,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_foundStickersNotModified: {
+		230: 1611711796, // 6010c534
 		229: 1611711796, // 6010c534
 		228: 1611711796, // 6010c534
 		227: 1611711796, // 6010c534
@@ -120932,6 +122540,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_foundStickers: {
+		230: -2100698480, // 82c9e290
 		229: -2100698480, // 82c9e290
 		228: -2100698480, // 82c9e290
 		227: -2100698480, // 82c9e290
@@ -120970,6 +122579,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botVerifierSettings: {
+		230: -1591021569, // a12aefff
 		229: -1328716265, // b0cd6617
 		228: -1328716265, // b0cd6617
 		227: -1328716265, // b0cd6617
@@ -121007,6 +122617,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_botVerification: {
+		230: -147976487, // f72e0ed9
 		229: -113453988, // f93cd45c
 		228: -113453988, // f93cd45c
 		227: -113453988, // f93cd45c
@@ -121044,6 +122655,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeModel: {
+		230: 1448235490, // 565251e2
 		229: 1448235490, // 565251e2
 		228: 1448235490, // 565251e2
 		227: 1448235490, // 565251e2
@@ -121081,6 +122693,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributePattern: {
+		230: 1315997162, // 4e7085ea
 		229: 1315997162, // 4e7085ea
 		228: 1315997162, // 4e7085ea
 		227: 1315997162, // 4e7085ea
@@ -121118,6 +122731,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeBackdrop: {
+		230: -1624963868, // 9f2504e4
 		229: -1624963868, // 9f2504e4
 		228: -1624963868, // 9f2504e4
 		227: -1624963868, // 9f2504e4
@@ -121155,6 +122769,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeOriginalDetails: {
+		230: -524291476,  // e0bff26c
 		229: -524291476,  // e0bff26c
 		228: -524291476,  // e0bff26c
 		227: -524291476,  // e0bff26c
@@ -121192,6 +122807,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftUpgradePreview: {
+		230: 1038213101, // 3de1dfed
 		229: 1038213101, // 3de1dfed
 		228: 1038213101, // 3de1dfed
 		227: 1038213101, // 3de1dfed
@@ -121229,6 +122845,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_users: {
+		230: 1658259128, // 62d706b8
 		229: 1658259128, // 62d706b8
 		228: 1658259128, // 62d706b8
 		227: 1658259128, // 62d706b8
@@ -121266,6 +122883,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_usersSlice: {
+		230: 828000628, // 315a4974
 		229: 828000628, // 315a4974
 		228: 828000628, // 315a4974
 		227: 828000628, // 315a4974
@@ -121303,6 +122921,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_uniqueStarGift: {
+		230: 1097619176, // 416c56e8
 		229: 1097619176, // 416c56e8
 		228: 1097619176, // 416c56e8
 		227: 1097619176, // 416c56e8
@@ -121339,6 +122958,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_webPagePreview: {
+		230: -1936029524, // 8c9a88ac
 		229: -1936029524, // 8c9a88ac
 		228: -1936029524, // 8c9a88ac
 		227: -1936029524, // 8c9a88ac
@@ -121375,6 +122995,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_savedStarGift: {
+		230: 1105150972,  // 41df43fc
 		229: 1105150972,  // 41df43fc
 		228: 1105150972,  // 41df43fc
 		227: 1105150972,  // 41df43fc
@@ -121410,6 +123031,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_savedStarGifts: {
+		230: -1779201615, // 95f389b1
 		229: -1779201615, // 95f389b1
 		228: -1779201615, // 95f389b1
 		227: -1779201615, // 95f389b1
@@ -121445,6 +123067,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSavedStarGiftUser: {
+		230: 1764202389, // 69279795
 		229: 1764202389, // 69279795
 		228: 1764202389, // 69279795
 		227: 1764202389, // 69279795
@@ -121480,6 +123103,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSavedStarGiftChat: {
+		230: -251549057, // f101aa7f
 		229: -251549057, // f101aa7f
 		228: -251549057, // f101aa7f
 		227: -251549057, // f101aa7f
@@ -121515,6 +123139,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputSavedStarGiftSlug: {
+		230: 545636920, // 2085c238
 		229: 545636920, // 2085c238
 		228: 545636920, // 2085c238
 		227: 545636920, // 2085c238
@@ -121545,6 +123170,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftWithdrawalUrl: {
+		230: -2069218660, // 84aa3a9c
 		229: -2069218660, // 84aa3a9c
 		228: -2069218660, // 84aa3a9c
 		227: -2069218660, // 84aa3a9c
@@ -121580,6 +123206,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_paidReactionPrivacyDefault: {
+		230: 543872158, // 206ad49e
 		229: 543872158, // 206ad49e
 		228: 543872158, // 206ad49e
 		227: 543872158, // 206ad49e
@@ -121614,6 +123241,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_paidReactionPrivacyAnonymous: {
+		230: 520887001, // 1f0c1ad9
 		229: 520887001, // 1f0c1ad9
 		228: 520887001, // 1f0c1ad9
 		227: 520887001, // 1f0c1ad9
@@ -121648,6 +123276,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_paidReactionPrivacyPeer: {
+		230: -596837136, // dc6cfcf0
 		229: -596837136, // dc6cfcf0
 		228: -596837136, // dc6cfcf0
 		227: -596837136, // dc6cfcf0
@@ -121682,6 +123311,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_paidMessagesRevenue: {
+		230: 504403720, // 1e109708
 		229: 504403720, // 1e109708
 		228: 504403720, // 1e109708
 		227: 504403720, // 1e109708
@@ -121715,6 +123345,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requirementToContactEmpty: {
+		230: 84580409, // 50a9839
 		229: 84580409, // 50a9839
 		228: 84580409, // 50a9839
 		227: 84580409, // 50a9839
@@ -121748,6 +123379,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requirementToContactPremium: {
+		230: -444472087, // e581e4e9
 		229: -444472087, // e581e4e9
 		228: -444472087, // e581e4e9
 		227: -444472087, // e581e4e9
@@ -121781,6 +123413,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_requirementToContactPaidMessages: {
+		230: -1258914157, // b4f67e93
 		229: -1258914157, // b4f67e93
 		228: -1258914157, // b4f67e93
 		227: -1258914157, // b4f67e93
@@ -121814,6 +123447,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_businessBotRights: {
+		230: -1604170505, // a0624cf7
 		229: -1604170505, // a0624cf7
 		228: -1604170505, // a0624cf7
 		227: -1604170505, // a0624cf7
@@ -121846,6 +123480,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_disallowedGiftsSettings: {
+		230: 1911715524, // 71f276c4
 		229: 1911715524, // 71f276c4
 		228: 1911715524, // 71f276c4
 		227: 1911715524, // 71f276c4
@@ -121878,6 +123513,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_sponsoredPeer: {
+		230: -963180333, // c69708d3
 		229: -963180333, // c69708d3
 		228: -963180333, // c69708d3
 		227: -963180333, // c69708d3
@@ -121910,6 +123546,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_sponsoredPeersEmpty: {
+		230: -365775695, // ea32b4b1
 		229: -365775695, // ea32b4b1
 		228: -365775695, // ea32b4b1
 		227: -365775695, // ea32b4b1
@@ -121942,6 +123579,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_sponsoredPeers: {
+		230: -352114556, // eb032884
 		229: -352114556, // eb032884
 		228: -352114556, // eb032884
 		227: -352114556, // eb032884
@@ -121974,6 +123612,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeIdModel: {
+		230: 1219145276, // 48aaae3c
 		229: 1219145276, // 48aaae3c
 		228: 1219145276, // 48aaae3c
 		227: 1219145276, // 48aaae3c
@@ -122004,6 +123643,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeIdPattern: {
+		230: 1242965043, // 4a162433
 		229: 1242965043, // 4a162433
 		228: 1242965043, // 4a162433
 		227: 1242965043, // 4a162433
@@ -122034,6 +123674,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeIdBackdrop: {
+		230: 520210263, // 1f01c757
 		229: 520210263, // 1f01c757
 		228: 520210263, // 1f01c757
 		227: 520210263, // 1f01c757
@@ -122064,6 +123705,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeCounter: {
+		230: 783398488, // 2eb1b658
 		229: 783398488, // 2eb1b658
 		228: 783398488, // 2eb1b658
 		227: 783398488, // 2eb1b658
@@ -122094,6 +123736,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_resaleStarGifts: {
+		230: -1803939105, // 947a12df
 		229: -1803939105, // 947a12df
 		228: -1803939105, // 947a12df
 		227: -1803939105, // 947a12df
@@ -122124,6 +123767,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_canSendStoryCount: {
+		230: -1014513586, // c387c04e
 		229: -1014513586, // c387c04e
 		228: -1014513586, // c387c04e
 		227: -1014513586, // c387c04e
@@ -122154,6 +123798,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_pendingSuggestion: {
+		230: -404214254, // e7e82e12
 		229: -404214254, // e7e82e12
 		228: -404214254, // e7e82e12
 		227: -404214254, // e7e82e12
@@ -122184,6 +123829,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_todoItem: {
+		230: -878074577, // cba9a52f
 		229: -878074577, // cba9a52f
 		228: -878074577, // cba9a52f
 		227: -878074577, // cba9a52f
@@ -122212,6 +123858,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_todoList: {
+		230: 1236871718, // 49b92a26
 		229: 1236871718, // 49b92a26
 		228: 1236871718, // 49b92a26
 		227: 1236871718, // 49b92a26
@@ -122240,6 +123887,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_todoCompletion: {
+		230: 572241380,  // 221bb5e4
 		229: 572241380,  // 221bb5e4
 		228: 572241380,  // 221bb5e4
 		227: 572241380,  // 221bb5e4
@@ -122268,6 +123916,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_suggestedPost: {
+		230: 244201445, // e8e37e5
 		229: 244201445, // e8e37e5
 		228: 244201445, // e8e37e5
 		227: 244201445, // e8e37e5
@@ -122295,6 +123944,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starsRating: {
+		230: 453922567, // 1b0e4f07
 		229: 453922567, // 1b0e4f07
 		228: 453922567, // 1b0e4f07
 		227: 453922567, // 1b0e4f07
@@ -122318,6 +123968,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftCollection: {
+		230: -1653926992, // 9d6b13b0
 		229: -1653926992, // 9d6b13b0
 		228: -1653926992, // 9d6b13b0
 		227: -1653926992, // 9d6b13b0
@@ -122341,6 +123992,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftCollectionsNotModified: {
+		230: -1598402793, // a0ba4f17
 		229: -1598402793, // a0ba4f17
 		228: -1598402793, // a0ba4f17
 		227: -1598402793, // a0ba4f17
@@ -122364,6 +124016,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftCollections: {
+		230: -1977011469, // 8a2932f3
 		229: -1977011469, // 8a2932f3
 		228: -1977011469, // 8a2932f3
 		227: -1977011469, // 8a2932f3
@@ -122387,6 +124040,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_storyAlbum: {
+		230: -1826262950, // 9325705a
 		229: -1826262950, // 9325705a
 		228: -1826262950, // 9325705a
 		227: -1826262950, // 9325705a
@@ -122409,6 +124063,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_albumsNotModified: {
+		230: 1448008427, // 564edaeb
 		229: 1448008427, // 564edaeb
 		228: 1448008427, // 564edaeb
 		227: 1448008427, // 564edaeb
@@ -122431,6 +124086,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_albums: {
+		230: -1013417414, // c3987a3a
 		229: -1013417414, // c3987a3a
 		228: -1013417414, // c3987a3a
 		227: -1013417414, // c3987a3a
@@ -122453,6 +124109,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_searchPostsFlood: {
+		230: 1040931690, // 3e0b5b6a
 		229: 1040931690, // 3e0b5b6a
 		228: 1040931690, // 3e0b5b6a
 		227: 1040931690, // 3e0b5b6a
@@ -122475,6 +124132,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_uniqueStarGiftValueInfo: {
+		230: 1362093126, // 512fe446
 		229: 1362093126, // 512fe446
 		228: 1362093126, // 512fe446
 		227: 1362093126, // 512fe446
@@ -122496,6 +124154,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabPosts: {
+		230: -1181952362, // b98cd696
 		229: -1181952362, // b98cd696
 		228: -1181952362, // b98cd696
 		227: -1181952362, // b98cd696
@@ -122516,6 +124175,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabGifts: {
+		230: 1296815210, // 4d4bd46a
 		229: 1296815210, // 4d4bd46a
 		228: 1296815210, // 4d4bd46a
 		227: 1296815210, // 4d4bd46a
@@ -122536,6 +124196,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabMedia: {
+		230: 1925597525, // 72c64955
 		229: 1925597525, // 72c64955
 		228: 1925597525, // 72c64955
 		227: 1925597525, // 72c64955
@@ -122556,6 +124217,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabFiles: {
+		230: -1422681088, // ab339c00
 		229: -1422681088, // ab339c00
 		228: -1422681088, // ab339c00
 		227: -1422681088, // ab339c00
@@ -122576,6 +124238,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabMusic: {
+		230: -1624780178, // 9f27d26e
 		229: -1624780178, // 9f27d26e
 		228: -1624780178, // 9f27d26e
 		227: -1624780178, // 9f27d26e
@@ -122596,6 +124259,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabVoice: {
+		230: -461960914, // e477092e
 		229: -461960914, // e477092e
 		228: -461960914, // e477092e
 		227: -461960914, // e477092e
@@ -122616,6 +124280,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabLinks: {
+		230: -748329831, // d3656499
 		229: -748329831, // d3656499
 		228: -748329831, // d3656499
 		227: -748329831, // d3656499
@@ -122636,6 +124301,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_profileTabGifs: {
+		230: -1564412267, // a2c0f695
 		229: -1564412267, // a2c0f695
 		228: -1564412267, // a2c0f695
 		227: -1564412267, // a2c0f695
@@ -122656,6 +124322,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_savedMusicNotModified: {
+		230: -477656412, // e3878aa4
 		229: -477656412, // e3878aa4
 		228: -477656412, // e3878aa4
 		227: -477656412, // e3878aa4
@@ -122676,6 +124343,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_savedMusic: {
+		230: 883094167, // 34a2f297
 		229: 883094167, // 34a2f297
 		228: 883094167, // 34a2f297
 		227: 883094167, // 34a2f297
@@ -122696,6 +124364,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_savedMusicIdsNotModified: {
+		230: 1338514798, // 4fc81d6e
 		229: 1338514798, // 4fc81d6e
 		228: 1338514798, // 4fc81d6e
 		227: 1338514798, // 4fc81d6e
@@ -122716,6 +124385,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_savedMusicIds: {
+		230: -1718786506, // 998d6636
 		229: -1718786506, // 998d6636
 		228: -1718786506, // 998d6636
 		227: -1718786506, // 998d6636
@@ -122736,6 +124406,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_checkCanSendGiftResultOk: {
+		230: 927967149, // 374fa7ad
 		229: 927967149, // 374fa7ad
 		228: 927967149, // 374fa7ad
 		227: 927967149, // 374fa7ad
@@ -122756,6 +124427,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_checkCanSendGiftResultFail: {
+		230: -706379148, // d5e58274
 		229: -706379148, // d5e58274
 		228: -706379148, // d5e58274
 		227: -706379148, // d5e58274
@@ -122776,6 +124448,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChatThemeEmpty: {
+		230: -2094627709, // 83268483
 		229: -2094627709, // 83268483
 		228: -2094627709, // 83268483
 		227: -2094627709, // 83268483
@@ -122795,6 +124468,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChatTheme: {
+		230: -918689444, // c93de95c
 		229: -918689444, // c93de95c
 		228: -918689444, // c93de95c
 		227: -918689444, // c93de95c
@@ -122814,6 +124488,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputChatThemeUniqueGift: {
+		230: -2014978076, // 87e5dfe4
 		229: -2014978076, // 87e5dfe4
 		228: -2014978076, // 87e5dfe4
 		227: -2014978076, // 87e5dfe4
@@ -122833,6 +124508,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftUpgradePrice: {
+		230: -1712704739, // 99ea331d
 		229: -1712704739, // 99ea331d
 		228: -1712704739, // 99ea331d
 		227: -1712704739, // 99ea331d
@@ -122851,6 +124527,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCallMessage: {
+		230: 445316222, // 1a8afc7e
 		229: 445316222, // 1a8afc7e
 		228: 445316222, // 1a8afc7e
 		227: 445316222, // 1a8afc7e
@@ -122867,6 +124544,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_groupCallDonor: {
+		230: -297595771, // ee430c85
 		229: -297595771, // ee430c85
 		228: -297595771, // ee430c85
 		227: -297595771, // ee430c85
@@ -122883,6 +124561,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_groupCallStars: {
+		230: -1658995418, // 9d1dbd26
 		229: -1658995418, // 9d1dbd26
 		228: -1658995418, // 9d1dbd26
 		227: -1658995418, // 9d1dbd26
@@ -122899,6 +124578,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_recentStory: {
+		230: 1897752877, // 711d692d
 		229: 1897752877, // 711d692d
 		228: 1897752877, // 711d692d
 		227: 1897752877, // 711d692d
@@ -122915,6 +124595,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auctionBidLevel: {
+		230: 822231244, // 310240cc
 		229: 822231244, // 310240cc
 		228: 822231244, // 310240cc
 		227: 822231244, // 310240cc
@@ -122930,6 +124611,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAuctionStateNotModified: {
+		230: -30197422, // fe333952
 		229: -30197422, // fe333952
 		228: -30197422, // fe333952
 		227: -30197422, // fe333952
@@ -122945,6 +124627,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAuctionState: {
+		230: 1998212710, // 771a4e66
 		229: 1998212710, // 771a4e66
 		228: 1998212710, // 771a4e66
 		227: 1998212710, // 771a4e66
@@ -122960,6 +124643,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAuctionStateFinished: {
+		230: -1758614593, // 972dabbf
 		229: -1758614593, // 972dabbf
 		228: -1758614593, // 972dabbf
 		227: -1758614593, // 972dabbf
@@ -122975,6 +124659,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAuctionUserState: {
+		230: 787403204, // 2eeed1c4
 		229: 787403204, // 2eeed1c4
 		228: 787403204, // 2eeed1c4
 		227: 787403204, // 2eeed1c4
@@ -122990,6 +124675,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftAuctionState: {
+		230: 1798960364, // 6b39f4ec
 		229: 1798960364, // 6b39f4ec
 		228: 1798960364, // 6b39f4ec
 		227: 1798960364, // 6b39f4ec
@@ -123005,6 +124691,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAuctionAcquiredGift: {
+		230: 1118831432,  // 42b00348
 		229: 1118831432,  // 42b00348
 		228: 1118831432,  // 42b00348
 		227: 1118831432,  // 42b00348
@@ -123020,6 +124707,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftAuctionAcquiredGifts: {
+		230: 2103169520, // 7d5bd1f0
 		229: 2103169520, // 7d5bd1f0
 		228: 2103169520, // 7d5bd1f0
 		227: 2103169520, // 7d5bd1f0
@@ -123035,6 +124723,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftActiveAuctionState: {
+		230: -753154979, // d31bc45d
 		229: -753154979, // d31bc45d
 		228: -753154979, // d31bc45d
 		227: -753154979, // d31bc45d
@@ -123050,6 +124739,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftActiveAuctionsNotModified: {
+		230: -617358640, // db33dad0
 		229: -617358640, // db33dad0
 		228: -617358640, // db33dad0
 		227: -617358640, // db33dad0
@@ -123065,6 +124755,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftActiveAuctions: {
+		230: -1359565892, // aef6abbc
 		229: -1359565892, // aef6abbc
 		228: -1359565892, // aef6abbc
 		227: -1359565892, // aef6abbc
@@ -123080,6 +124771,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStarGiftAuction: {
+		230: 48327832, // 2e16c98
 		229: 48327832, // 2e16c98
 		228: 48327832, // 2e16c98
 		227: 48327832, // 2e16c98
@@ -123095,6 +124787,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputStarGiftAuctionSlug: {
+		230: 2058715912, // 7ab58308
 		229: 2058715912, // 7ab58308
 		228: 2058715912, // 7ab58308
 		227: 2058715912, // 7ab58308
@@ -123110,6 +124803,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_passkey: {
+		230: -1738457409, // 98613ebf
 		229: -1738457409, // 98613ebf
 		228: -1738457409, // 98613ebf
 		227: -1738457409, // 98613ebf
@@ -123124,6 +124818,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_passkeys: {
+		230: -119494116, // f8e0aa1c
 		229: -119494116, // f8e0aa1c
 		228: -119494116, // f8e0aa1c
 		227: -119494116, // f8e0aa1c
@@ -123138,6 +124833,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_passkeyRegistrationOptions: {
+		230: -513057567, // e16b5ce1
 		229: -513057567, // e16b5ce1
 		228: -513057567, // e16b5ce1
 		227: -513057567, // e16b5ce1
@@ -123152,6 +124848,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_passkeyLoginOptions: {
+		230: -503089271, // e2037789
 		229: -503089271, // e2037789
 		228: -503089271, // e2037789
 		227: -503089271, // e2037789
@@ -123166,6 +124863,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPasskeyResponseRegister: {
+		230: 1046713180, // 3e63935c
 		229: 1046713180, // 3e63935c
 		228: 1046713180, // 3e63935c
 		227: 1046713180, // 3e63935c
@@ -123180,6 +124878,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPasskeyResponseLogin: {
+		230: -1021329078, // c31fc14a
 		229: -1021329078, // c31fc14a
 		228: -1021329078, // c31fc14a
 		227: -1021329078, // c31fc14a
@@ -123194,6 +124893,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputPasskeyCredentialPublicKey: {
+		230: 1009235855, // 3c27b78f
 		229: 1009235855, // 3c27b78f
 		228: 1009235855, // 3c27b78f
 		227: 1009235855, // 3c27b78f
@@ -123207,19 +124907,8 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		219: 1009235855, // 3c27b78f
 
 	},
-	Predicate_inputPasskeyCredentialFirebasePNV: {
-		229: 1528613672, // 5b1ccb28
-		228: 1528613672, // 5b1ccb28
-		227: 1528613672, // 5b1ccb28
-		226: 1528613672, // 5b1ccb28
-		225: 1528613672, // 5b1ccb28
-		224: 1528613672, // 5b1ccb28
-		223: 1528613672, // 5b1ccb28
-		222: 1528613672, // 5b1ccb28
-		221: 1528613672, // 5b1ccb28
-
-	},
 	Predicate_starGiftBackground: {
+		230: -1342872680, // aff56398
 		229: -1342872680, // aff56398
 		228: -1342872680, // aff56398
 		227: -1342872680, // aff56398
@@ -123233,6 +124922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAuctionRound: {
+		230: 984483112, // 3aae0528
 		229: 984483112, // 3aae0528
 		228: 984483112, // 3aae0528
 		227: 984483112, // 3aae0528
@@ -123246,6 +124936,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAuctionRoundExtendable: {
+		230: 178266597, // aa021e5
 		229: 178266597, // aa021e5
 		228: 178266597, // aa021e5
 		227: 178266597, // aa021e5
@@ -123259,6 +124950,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_starGiftUpgradeAttributes: {
+		230: 1187439471, // 46c6e36f
 		229: 1187439471, // 46c6e36f
 		228: 1187439471, // 46c6e36f
 		227: 1187439471, // 46c6e36f
@@ -123272,6 +124964,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_emojiGameOutcome: {
+		230: -634726841, // da2ad647
 		229: -634726841, // da2ad647
 		228: -634726841, // da2ad647
 		227: -634726841, // da2ad647
@@ -123284,6 +124977,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_emojiGameUnavailable: {
+		230: 1508266805, // 59e65335
 		229: 1508266805, // 59e65335
 		228: 1508266805, // 59e65335
 		227: 1508266805, // 59e65335
@@ -123296,6 +124990,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_emojiGameDiceInfo: {
+		230: 1155883043, // 44e56023
 		229: 1155883043, // 44e56023
 		228: 1155883043, // 44e56023
 		227: 1155883043, // 44e56023
@@ -123308,6 +125003,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeRarity: {
+		230: 910391095, // 36437737
 		229: 910391095, // 36437737
 		228: 910391095, // 36437737
 		227: 910391095, // 36437737
@@ -123319,6 +125015,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeRarityUncommon: {
+		230: -607231095, // dbce6389
 		229: -607231095, // dbce6389
 		228: -607231095, // dbce6389
 		227: -607231095, // dbce6389
@@ -123330,6 +125027,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeRarityRare: {
+		230: -259174037, // f08d516b
 		229: -259174037, // f08d516b
 		228: -259174037, // f08d516b
 		227: -259174037, // f08d516b
@@ -123341,6 +125039,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeRarityEpic: {
+		230: 2029777832, // 78fbf3a8
 		229: 2029777832, // 78fbf3a8
 		228: 2029777832, // 78fbf3a8
 		227: 2029777832, // 78fbf3a8
@@ -123352,6 +125051,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_starGiftAttributeRarityLegendary: {
+		230: -822614104, // cef7e7a8
 		229: -822614104, // cef7e7a8
 		228: -822614104, // cef7e7a8
 		227: -822614104, // cef7e7a8
@@ -123363,6 +125063,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_keyboardButtonStyle: {
+		230: 1339896880, // 4fdd3430
 		229: 1339896880, // 4fdd3430
 		228: 1339896880, // 4fdd3430
 		227: 1339896880, // 4fdd3430
@@ -123374,6 +125075,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputMessageReadMetric: {
+		230: 1076577429, // 402b4495
 		229: 1076577429, // 402b4495
 		228: 1076577429, // 402b4495
 		227: 1076577429, // 402b4495
@@ -123383,6 +125085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_exportedBotToken: {
+		230: 1012971041, // 3c60b621
 		229: 1012971041, // 3c60b621
 		228: 1012971041, // 3c60b621
 		227: 1012971041, // 3c60b621
@@ -123392,6 +125095,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_requestedButton: {
+		230: -247743273, // f13bbcd7
 		229: -247743273, // f13bbcd7
 		228: -247743273, // f13bbcd7
 		227: -247743273, // f13bbcd7
@@ -123401,6 +125105,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_composedMessageWithAI: {
+		230: -1864913414, // 90d7adfa
 		229: -1864913414, // 90d7adfa
 		228: -1864913414, // 90d7adfa
 		227: -1864913414, // 90d7adfa
@@ -123410,6 +125115,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_pollStats: {
+		230: 697941741, // 2999beed
 		229: 697941741, // 2999beed
 		228: 697941741, // 2999beed
 		227: 697941741, // 2999beed
@@ -123418,6 +125124,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputAiComposeToneDefault: {
+		230: 535407039, // 1fe9a9bf
 		229: 535407039, // 1fe9a9bf
 		228: 535407039, // 1fe9a9bf
 		227: 535407039, // 1fe9a9bf
@@ -123426,6 +125133,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputAiComposeToneID: {
+		230: 125026432, // 773c080
 		229: 125026432, // 773c080
 		228: 125026432, // 773c080
 		227: 125026432, // 773c080
@@ -123434,6 +125142,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputAiComposeToneSlug: {
+		230: 530584407, // 1fa01357
 		229: 530584407, // 1fa01357
 		228: 530584407, // 1fa01357
 		227: 530584407, // 1fa01357
@@ -123442,11 +125151,13 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputAiComposeToneSingleUse: {
+		230: 235681199, // e0c35af
 		229: 235681199, // e0c35af
 		228: 235681199, // e0c35af
 
 	},
 	Predicate_aiComposeTone: {
+		230: -805945687, // cff63ea9
 		229: -805945687, // cff63ea9
 		228: -805945687, // cff63ea9
 		227: -805945687, // cff63ea9
@@ -123455,6 +125166,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aiComposeToneDefault: {
+		230: -1683135468, // 9bad6414
 		229: -1683135468, // 9bad6414
 		228: -1683135468, // 9bad6414
 		227: -1683135468, // 9bad6414
@@ -123463,6 +125175,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_tonesNotModified: {
+		230: -1040948989, // c1f46103
 		229: -1040948989, // c1f46103
 		228: -1040948989, // c1f46103
 		227: -1040948989, // c1f46103
@@ -123471,6 +125184,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_tones: {
+		230: 1822232318, // 6c9d0efe
 		229: 1822232318, // 6c9d0efe
 		228: 1822232318, // 6c9d0efe
 		227: 1822232318, // 6c9d0efe
@@ -123479,6 +125193,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aiComposeToneExample: {
+		230: -237623060, // f1d628ec
 		229: -237623060, // f1d628ec
 		228: -237623060, // f1d628ec
 		227: -237623060, // f1d628ec
@@ -123487,6 +125202,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_accessSettings: {
+		230: -585121901, // dd1fbf93
 		229: -585121901, // dd1fbf93
 		228: -585121901, // dd1fbf93
 		227: -585121901, // dd1fbf93
@@ -123495,6 +125211,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_chatInviteJoinResultOk: {
+		230: 1146512295, // 445663a7
 		229: 1146512295, // 445663a7
 		228: 1146512295, // 445663a7
 		227: 1146512295, // 445663a7
@@ -123502,6 +125219,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_chatInviteJoinResultWebView: {
+		230: 1640638931, // 61ca29d3
 		229: 1640638931, // 61ca29d3
 		228: 1640638931, // 61ca29d3
 		227: 793887543,  // 2f51c337
@@ -123509,6 +125227,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_joinChatBotResultApproved: {
+		230: -1374344599, // ae152a69
 		229: -1374344599, // ae152a69
 		228: -1374344599, // ae152a69
 		227: -1374344599, // ae152a69
@@ -123516,6 +125235,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_joinChatBotResultDeclined: {
+		230: 251265428, // efa0194
 		229: 251265428, // efa0194
 		228: 251265428, // efa0194
 		227: 251265428, // efa0194
@@ -123523,6 +125243,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_joinChatBotResultQueued: {
+		230: -1734105024, // 98a3a840
 		229: -1734105024, // 98a3a840
 		228: -1734105024, // 98a3a840
 		227: -1734105024, // 98a3a840
@@ -123530,6 +125251,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_joinChatBotResultWebView: {
+		230: -689719277, // d6e3b813
 		229: -689719277, // d6e3b813
 		228: -689719277, // d6e3b813
 		227: -689719277, // d6e3b813
@@ -123537,6 +125259,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_webDomainException: {
+		230: -1824741993, // 933ca597
 		229: -1824741993, // 933ca597
 		228: -1824741993, // 933ca597
 		227: -1824741993, // 933ca597
@@ -123544,6 +125267,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_webBrowserSettingsNotModified: {
+		230: -1021538482, // c31c8f4e
 		229: -1021538482, // c31c8f4e
 		228: -1021538482, // c31c8f4e
 		227: -1021538482, // c31c8f4e
@@ -123551,6 +125275,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_webBrowserSettings: {
+		230: 2045480115, // 79eb8cb3
 		229: 2045480115, // 79eb8cb3
 		228: 2045480115, // 79eb8cb3
 		227: 2045480115, // 79eb8cb3
@@ -123558,179 +125283,371 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_inputRichFilePhoto: {
+		230: -1694473685, // 9b00622b
 		229: -1694473685, // 9b00622b
 		228: -1694473685, // 9b00622b
 
 	},
 	Predicate_inputRichFileDocument: {
+		230: -2094522947, // 83281dbd
 		229: -2094522947, // 83281dbd
 		228: -2094522947, // 83281dbd
 
 	},
 	Predicate_inputRichMessage: {
+		230: -456898052, // e4c449fc
 		229: -456898052, // e4c449fc
 		228: -456898052, // e4c449fc
 		227: -456898052, // e4c449fc
 
 	},
 	Predicate_inputRichMessageHTML: {
+		230: -624196758, // dacb836a
 		229: -624196758, // dacb836a
 		228: -624196758, // dacb836a
 		227: -722815663, // d4eab551
 
 	},
 	Predicate_inputRichMessageMarkdown: {
+		230: 4937516,   // 4b572c
 		229: 4937516,   // 4b572c
 		228: 4937516,   // 4b572c
 		227: 162300294, // 9ac8186
 
 	},
 	Predicate_richMessage: {
+		230: -1158439541, // baf39d8b
 		229: -1158439541, // baf39d8b
 		228: -1158439541, // baf39d8b
 		227: -1158439541, // baf39d8b
 
 	},
 	Predicate_communityPeer: {
+		230: 1981030077, // 76141ebd
 		229: 1981030077, // 76141ebd
 		228: 1981030077, // 76141ebd
 
 	},
 	Predicate_communityPeerRequest: {
+		230: 2078997125, // 7beafa85
 		229: 2078997125, // 7beafa85
 		228: 2078997125, // 7beafa85
 
 	},
 	Predicate_communities_peerLinkRequests: {
+		230: 574926765, // 2244afad
 		229: 574926765, // 2244afad
 		228: 574926765, // 2244afad
 
 	},
 	Predicate_ephemeralMessage: {
+		230: -584597783, // dd27bee9
 		229: -584597783, // dd27bee9
 		228: -641278950, // d9c6dc1a
 
 	},
 	Predicate_communities_participantJoinedChats: {
+		230: -1921494742, // 8d78512a
 		229: -1921494742, // 8d78512a
 		228: -1921494742, // 8d78512a
 
 	},
 	Predicate_messages_translatedRichMessage: {
+		230: 1107532175, // 4203998f
 		229: 1107532175, // 4203998f
 		228: 1107532175, // 4203998f
 
 	},
 	Predicate_messages_composedRichMessageWithAI: {
+		230: 1279604680, // 4c4537c8
 		229: 1279604680, // 4c4537c8
 		228: 1279604680, // 4c4537c8
 
 	},
 	Predicate_buttonTypeDefault: {
+		230: -908226327, // c9dd90e9
 		229: -908226327, // c9dd90e9
 
 	},
 	Predicate_buttonTypeRequestPhone: {
+		230: -549636359, // df3d36f9
 		229: -549636359, // df3d36f9
 
 	},
 	Predicate_buttonTypeRequestGeoLocation: {
+		230: -1678843584, // 9beee140
 		229: -1678843584, // 9beee140
 
 	},
 	Predicate_buttonTypeRequestPoll: {
+		230: -1429209212, // aacfff84
 		229: -1429209212, // aacfff84
 
 	},
 	Predicate_buttonTypeRequestPeer: {
+		230: 1331208759, // 4f58a237
 		229: 1331208759, // 4f58a237
 
 	},
 	Predicate_inputButtonTypeRequestPeer: {
+		230: 1071802622, // 3fe268fe
 		229: 1071802622, // 3fe268fe
 
 	},
 	Predicate_buttonTypeSimpleWebView: {
+		230: -1072014982, // c01a597a
 		229: -1072014982, // c01a597a
 
 	},
 	Predicate_inlineButtonTypeUrl: {
+		230: -324732716, // eca4f8d4
 		229: -324732716, // eca4f8d4
 
 	},
 	Predicate_inlineButtonTypeUrlAuth: {
+		230: -1076875870, // bfd02da2
 		229: -1076875870, // bfd02da2
 
 	},
 	Predicate_inputInlineButtonTypeUrlAuth: {
+		230: -1721647948, // 9961bcb4
 		229: -1721647948, // 9961bcb4
 
 	},
 	Predicate_inlineButtonTypeWebView: {
+		230: 1003140532, // 3bcab5b4
 		229: 1003140532, // 3bcab5b4
 
 	},
 	Predicate_inlineButtonTypeCallback: {
+		230: 693484600, // 2955bc38
 		229: 693484600, // 2955bc38
 
 	},
 	Predicate_inlineButtonTypeGame: {
+		230: 1557360797, // 5cd3709d
 		229: 1557360797, // 5cd3709d
 
 	},
 	Predicate_inlineButtonTypeBuy: {
+		230: 1220204453, // 48bad7a5
 		229: 1220204453, // 48bad7a5
 
 	},
 	Predicate_inlineButtonTypeSwitchInline: {
+		230: -1820901387, // 93773ff5
 		229: -1820901387, // 93773ff5
 
 	},
 	Predicate_inlineButtonTypeUserProfile: {
+		230: 1067663311, // 3fa33fcf
 		229: 1067663311, // 3fa33fcf
 
 	},
 	Predicate_inputInlineButtonTypeUserProfile: {
+		230: 1408487002, // 53f3ce5a
 		229: 1408487002, // 53f3ce5a
 
 	},
 	Predicate_inlineButtonTypeCopy: {
+		230: -1273154958, // b41d3272
 		229: -1273154958, // b41d3272
 
 	},
 	Predicate_inlineButtonTypeDisabled: {
+		230: -1539808867, // a438619d
 		229: -1539808867, // a438619d
 
 	},
 	Predicate_keyboardInlineButton: {
+		230: 297902882, // 11c1a322
 		229: 297902882, // 11c1a322
 
 	},
 	Predicate_keyboardInlineButtonRow: {
+		230: 423758582, // 19420af6
 		229: 423758582, // 19420af6
 
 	},
 	Predicate_richButtonStyle: {
+		230: 63312061, // 3c610bd
 		229: 63312061, // 3c610bd
 
 	},
 	Predicate_pageButton: {
+		230: 1764381832, // 692a5488
 		229: 1764381832, // 692a5488
 
 	},
 	Predicate_ephemeral_welcomeMessagesNotModified: {
+		230: 1509940017, // 59ffdb31
 		229: 1509940017, // 59ffdb31
 
 	},
 	Predicate_ephemeral_welcomeMessages: {
+		230: 273664114, // 104fc872
 		229: 273664114, // 104fc872
 
 	},
+	Predicate_currencyRate: {
+		230: 819557436, // 30d9743c
+
+	},
+	Predicate_payments_currencyRates: {
+		230: -1144199998, // bbcce4c2
+
+	},
+	Predicate_toncenter_apiResponse: {
+		230: -1399980519, // ac8dfe19
+
+	},
+	Predicate_toncenter_streamingUrl: {
+		230: 428373505, // 19887601
+
+	},
+	Predicate_onrampMethodAvailability: {
+		230: -1631009112, // 9ec8c6a8
+
+	},
+	Predicate_onrampProviderInfo: {
+		230: 230847874, // dc27582
+
+	},
+	Predicate_onrampAvailability: {
+		230: -104314509, // f9c84973
+
+	},
+	Predicate_onrampLimits: {
+		230: 2078435198, // 7be2677e
+
+	},
+	Predicate_onrampQuote: {
+		230: 2055213545, // 7a8011e9
+
+	},
+	Predicate_onrampSession: {
+		230: -773575132, // d1e42e24
+
+	},
+	Predicate_walletStateEmpty: {
+		230: -1665551636, // 9cb9b2ec
+
+	},
+	Predicate_walletState: {
+		230: -1782238101, // 95c5346b
+
+	},
+	Predicate_walletUserAddress: {
+		230: -25628980, // fe78eecc
+
+	},
+	Predicate_wallet_userAddresses: {
+		230: -1836156075, // 928e7b55
+
+	},
+	Predicate_walletTransactionPeerUser: {
+		230: -722833299, // d4ea706d
+
+	},
+	Predicate_walletTransactionPeerAddress: {
+		230: 103596476, // 62cc1bc
+
+	},
+	Predicate_walletTransactionPeerOnramp: {
+		230: -443213714, // e595186e
+
+	},
+	Predicate_walletTransactionPeerUnsupported: {
+		230: 1921772890, // 728bed5a
+
+	},
+	Predicate_walletTransaction: {
+		230: -1792163517, // 952dc143
+
+	},
+	Predicate_wallet_transactions: {
+		230: 1126356389, // 4322d5a5
+
+	},
+	Predicate_wallet_secretPhraseParts: {
+		230: -422514943, // e6d0ef01
+
+	},
+	Predicate_wallet_encryptedSecretPhrasePart: {
+		230: 417867063, // 18e82537
+
+	},
+	Predicate_wallet_holderDc: {
+		230: -103410961, // f9d612ef
+
+	},
+	Predicate_wallet_proofChallenge: {
+		230: -1713105145, // 99e41707
+
+	},
+	Predicate_walletOwnershipProof: {
+		230: 1622985485, // 60bccb0d
+
+	},
+	Predicate_inputWalletNew: {
+		230: 1671708892, // 63a440dc
+
+	},
+	Predicate_inputWalletImported: {
+		230: 1722182203, // 66a66a3b
+
+	},
+	Predicate_tonConnectManifest: {
+		230: 304255588, // 12229264
+
+	},
+	Predicate_tonConnectSession: {
+		230: 308631238, // 126556c6
+
+	},
+	Predicate_wallet_tonConnectChallenge: {
+		230: 1271436947, // 4bc89693
+
+	},
+	Predicate_tonConnectNextEventId: {
+		230: 1478780131, // 582464e3
+
+	},
+	Predicate_tonConnectRequest: {
+		230: -1587575533, // a15f8513
+
+	},
+	Predicate_wallet_tonConnectPending: {
+		230: -2050952924, // 85c0f124
+
+	},
+	Predicate_wallet_tonConnectSessions: {
+		230: 236939414, // e1f6896
+
+	},
+	Predicate_wallet_existingBalance: {
+		230: -1108800883, // bde90a8d
+
+	},
+	Predicate_wallet_nftAttribute: {
+		230: 1277096206, // 4c1ef10e
+
+	},
+	Predicate_wallet_nftItem: {
+		230: 876739868, // 3441fd1c
+
+	},
+	Predicate_wallet_nftItems: {
+		230: 2035107951, // 794d486f
+
+	},
 	Predicate_auth_firebasePnvIntent: {
+		230: -547700724, // df5ac00c
 		229: -547700724, // df5ac00c
 
 	},
 	Predicate_invokeAfterMsg: {
+		230: -878758099, // cb9f372d
 		229: -878758099, // cb9f372d
 		228: -878758099, // cb9f372d
 		227: -878758099, // cb9f372d
@@ -123825,6 +125742,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeAfterMsgs: {
+		230: 1036301552, // 3dc4b4f0
 		229: 1036301552, // 3dc4b4f0
 		228: 1036301552, // 3dc4b4f0
 		227: 1036301552, // 3dc4b4f0
@@ -123919,6 +125837,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_initConnection: {
+		230: -1043505495, // c1cd5ea9
 		229: -1043505495, // c1cd5ea9
 		228: -1043505495, // c1cd5ea9
 		227: -1043505495, // c1cd5ea9
@@ -124014,6 +125933,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithLayer: {
+		230: -627372787, // da9b0d0d
 		229: -627372787, // da9b0d0d
 		228: -627372787, // da9b0d0d
 		227: -627372787, // da9b0d0d
@@ -124108,6 +126028,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithoutUpdates: {
+		230: -1080796745, // bf9459b7
 		229: -1080796745, // bf9459b7
 		228: -1080796745, // bf9459b7
 		227: -1080796745, // bf9459b7
@@ -124202,6 +126123,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithMessagesRange: {
+		230: 911373810, // 365275f2
 		229: 911373810, // 365275f2
 		228: 911373810, // 365275f2
 		227: 911373810, // 365275f2
@@ -124296,6 +126218,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithTakeout: {
+		230: -1398145746, // aca9fd2e
 		229: -1398145746, // aca9fd2e
 		228: -1398145746, // aca9fd2e
 		227: -1398145746, // aca9fd2e
@@ -124390,6 +126313,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithBusinessConnection: {
+		230: -584540274, // dd289f8e
 		229: -584540274, // dd289f8e
 		228: -584540274, // dd289f8e
 		227: -584540274, // dd289f8e
@@ -124446,6 +126370,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithGooglePlayIntegrity: {
+		230: 502868356, // 1df92984
 		229: 502868356, // 1df92984
 		228: 502868356, // 1df92984
 		227: 502868356, // 1df92984
@@ -124499,6 +126424,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithApnsSecret: {
+		230: 229528824, // dae54f8
 		229: 229528824, // dae54f8
 		228: 229528824, // dae54f8
 		227: 229528824, // dae54f8
@@ -124552,6 +126478,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_invokeWithReCaptcha: {
+		230: -1380249708, // adbb0f94
 		229: -1380249708, // adbb0f94
 		228: -1380249708, // adbb0f94
 		227: -1380249708, // adbb0f94
@@ -124586,6 +126513,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_sendCode: {
+		230: -1502141361, // a677244f
 		229: -1502141361, // a677244f
 		228: -1502141361, // a677244f
 		227: -1502141361, // a677244f
@@ -124680,6 +126608,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_signUp: {
+		230: -1429752041, // aac7b717
 		229: -1429752041, // aac7b717
 		228: -1429752041, // aac7b717
 		227: -1429752041, // aac7b717
@@ -124774,6 +126703,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_signIn: {
+		230: -1923962543, // 8d52a951
 		229: -1923962543, // 8d52a951
 		228: -1923962543, // 8d52a951
 		227: -1923962543, // 8d52a951
@@ -124868,6 +126798,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_logOut: {
+		230: 1047706137, // 3e72ba19
 		229: 1047706137, // 3e72ba19
 		228: 1047706137, // 3e72ba19
 		227: 1047706137, // 3e72ba19
@@ -124962,6 +126893,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_resetAuthorizations: {
+		230: -1616179942, // 9fab0d1a
 		229: -1616179942, // 9fab0d1a
 		228: -1616179942, // 9fab0d1a
 		227: -1616179942, // 9fab0d1a
@@ -125056,6 +126988,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_exportAuthorization: {
+		230: -440401971, // e5bfffcd
 		229: -440401971, // e5bfffcd
 		228: -440401971, // e5bfffcd
 		227: -440401971, // e5bfffcd
@@ -125150,6 +127083,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_importAuthorization: {
+		230: -1518699091, // a57a7dad
 		229: -1518699091, // a57a7dad
 		228: -1518699091, // a57a7dad
 		227: -1518699091, // a57a7dad
@@ -125244,6 +127178,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_bindTempAuthKey: {
+		230: -841733627, // cdd42a05
 		229: -841733627, // cdd42a05
 		228: -841733627, // cdd42a05
 		227: -841733627, // cdd42a05
@@ -125338,6 +127273,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_importBotAuthorization: {
+		230: 1738800940, // 67a3ff2c
 		229: 1738800940, // 67a3ff2c
 		228: 1738800940, // 67a3ff2c
 		227: 1738800940, // 67a3ff2c
@@ -125432,6 +127368,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_checkPassword: {
+		230: -779399914, // d18b4d16
 		229: -779399914, // d18b4d16
 		228: -779399914, // d18b4d16
 		227: -779399914, // d18b4d16
@@ -125526,6 +127463,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_requestPasswordRecovery: {
+		230: -661144474, // d897bc66
 		229: -661144474, // d897bc66
 		228: -661144474, // d897bc66
 		227: -661144474, // d897bc66
@@ -125620,6 +127558,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_recoverPassword: {
+		230: 923364464, // 37096c70
 		229: 923364464, // 37096c70
 		228: 923364464, // 37096c70
 		227: 923364464, // 37096c70
@@ -125714,6 +127653,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_resendCode: {
+		230: -890997469, // cae47523
 		229: -890997469, // cae47523
 		228: -890997469, // cae47523
 		227: -890997469, // cae47523
@@ -125808,6 +127748,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_cancelCode: {
+		230: 520357240, // 1f040578
 		229: 520357240, // 1f040578
 		228: 520357240, // 1f040578
 		227: 520357240, // 1f040578
@@ -125902,6 +127843,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_dropTempAuthKeys: {
+		230: -1907842680, // 8e48a188
 		229: -1907842680, // 8e48a188
 		228: -1907842680, // 8e48a188
 		227: -1907842680, // 8e48a188
@@ -125996,6 +127938,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_exportLoginToken: {
+		230: -1210022402, // b7e085fe
 		229: -1210022402, // b7e085fe
 		228: -1210022402, // b7e085fe
 		227: -1210022402, // b7e085fe
@@ -126090,6 +128033,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_importLoginToken: {
+		230: -1783866140, // 95ac5ce4
 		229: -1783866140, // 95ac5ce4
 		228: -1783866140, // 95ac5ce4
 		227: -1783866140, // 95ac5ce4
@@ -126184,6 +128128,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_acceptLoginToken: {
+		230: -392909491, // e894ad4d
 		229: -392909491, // e894ad4d
 		228: -392909491, // e894ad4d
 		227: -392909491, // e894ad4d
@@ -126278,6 +128223,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_checkRecoveryPassword: {
+		230: 221691769, // d36bf79
 		229: 221691769, // d36bf79
 		228: 221691769, // d36bf79
 		227: 221691769, // d36bf79
@@ -126372,6 +128318,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_importWebTokenAuthorization: {
+		230: 767062953, // 2db873a9
 		229: 767062953, // 2db873a9
 		228: 767062953, // 2db873a9
 		227: 767062953, // 2db873a9
@@ -126455,6 +128402,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_requestFirebaseSms: {
+		230: -1908857314, // 8e39261e
 		229: -1908857314, // 8e39261e
 		228: -1908857314, // 8e39261e
 		227: -1908857314, // 8e39261e
@@ -126536,6 +128484,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_resetLoginEmail: {
+		230: 2123760019, // 7e960193
 		229: 2123760019, // 7e960193
 		228: 2123760019, // 7e960193
 		227: 2123760019, // 7e960193
@@ -126613,6 +128562,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_reportMissingCode: {
+		230: -878841866, // cb9deff6
 		229: -878841866, // cb9deff6
 		228: -878841866, // cb9deff6
 		227: -878841866, // cb9deff6
@@ -126667,6 +128617,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_checkPaidAuth: {
+		230: 1457889180, // 56e59f9c
 		229: 1457889180, // 56e59f9c
 		228: 1457889180, // 56e59f9c
 		227: 1457889180, // 56e59f9c
@@ -126685,6 +128636,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_initPasskeyLogin: {
+		230: 1368051895, // 518ad0b7
 		229: 1368051895, // 518ad0b7
 		228: 1368051895, // 518ad0b7
 		227: 1368051895, // 518ad0b7
@@ -126699,6 +128651,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_auth_finishPasskeyLogin: {
+		230: -1739084537, // 9857ad07
 		229: -1739084537, // 9857ad07
 		228: -1739084537, // 9857ad07
 		227: -1739084537, // 9857ad07
@@ -126712,19 +128665,27 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		219: -1739084537, // 9857ad07
 
 	},
+	Predicate_auth_cancelWebTokenAuthorization: {
+		230: 1225633185, // 490dada1
+
+	},
 	Predicate_auth_initFirebasePnvLogin: {
+		230: 1682904512, // 644f15c0
 		229: 2004743034, // 777df37a
 
 	},
 	Predicate_auth_finishFirebasePnvLogin: {
+		230: 746916172, // 2c85094c
 		229: 746916172, // 2c85094c
 
 	},
 	Predicate_auth_firebasePnvSignUp: {
+		230: 2017422166, // 783f6b56
 		229: 2017422166, // 783f6b56
 
 	},
 	Predicate_account_registerDevice: {
+		230: -326762118, // ec86017a
 		229: -326762118, // ec86017a
 		228: -326762118, // ec86017a
 		227: -326762118, // ec86017a
@@ -126820,6 +128781,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_unregisterDevice: {
+		230: 1779249670, // 6a0d3206
 		229: 1779249670, // 6a0d3206
 		228: 1779249670, // 6a0d3206
 		227: 1779249670, // 6a0d3206
@@ -126915,6 +128877,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateNotifySettings: {
+		230: -2067899501, // 84be5b93
 		229: -2067899501, // 84be5b93
 		228: -2067899501, // 84be5b93
 		227: -2067899501, // 84be5b93
@@ -127009,6 +128972,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getNotifySettings: {
+		230: 313765169, // 12b3ad31
 		229: 313765169, // 12b3ad31
 		228: 313765169, // 12b3ad31
 		227: 313765169, // 12b3ad31
@@ -127103,6 +129067,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetNotifySettings: {
+		230: -612493497, // db7e1747
 		229: -612493497, // db7e1747
 		228: -612493497, // db7e1747
 		227: -612493497, // db7e1747
@@ -127197,6 +129162,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateProfile: {
+		230: 2018596725, // 78515775
 		229: 2018596725, // 78515775
 		228: 2018596725, // 78515775
 		227: 2018596725, // 78515775
@@ -127291,6 +129257,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateStatus: {
+		230: 1713919532, // 6628562c
 		229: 1713919532, // 6628562c
 		228: 1713919532, // 6628562c
 		227: 1713919532, // 6628562c
@@ -127385,6 +129352,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getWallPapers: {
+		230: 127302966, // 7967d36
 		229: 127302966, // 7967d36
 		228: 127302966, // 7967d36
 		227: 127302966, // 7967d36
@@ -127479,6 +129447,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_reportPeer: {
+		230: -977650298, // c5ba3d86
 		229: -977650298, // c5ba3d86
 		228: -977650298, // c5ba3d86
 		227: -977650298, // c5ba3d86
@@ -127573,6 +129542,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_checkUsername: {
+		230: 655677548, // 2714d86c
 		229: 655677548, // 2714d86c
 		228: 655677548, // 2714d86c
 		227: 655677548, // 2714d86c
@@ -127667,6 +129637,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateUsername: {
+		230: 1040964988, // 3e0bdd7c
 		229: 1040964988, // 3e0bdd7c
 		228: 1040964988, // 3e0bdd7c
 		227: 1040964988, // 3e0bdd7c
@@ -127761,6 +129732,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getPrivacy: {
+		230: -623130288, // dadbc950
 		229: -623130288, // dadbc950
 		228: -623130288, // dadbc950
 		227: -623130288, // dadbc950
@@ -127855,6 +129827,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setPrivacy: {
+		230: -906486552, // c9f81ce8
 		229: -906486552, // c9f81ce8
 		228: -906486552, // c9f81ce8
 		227: -906486552, // c9f81ce8
@@ -127949,6 +129922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_deleteAccount: {
+		230: -1564422284, // a2c0cf74
 		229: -1564422284, // a2c0cf74
 		228: -1564422284, // a2c0cf74
 		227: -1564422284, // a2c0cf74
@@ -128043,6 +130017,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getAccountTTL: {
+		230: 150761757, // 8fc711d
 		229: 150761757, // 8fc711d
 		228: 150761757, // 8fc711d
 		227: 150761757, // 8fc711d
@@ -128137,6 +130112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setAccountTTL: {
+		230: 608323678, // 2442485e
 		229: 608323678, // 2442485e
 		228: 608323678, // 2442485e
 		227: 608323678, // 2442485e
@@ -128231,6 +130207,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_sendChangePhoneCode: {
+		230: -2108208411, // 82574ae5
 		229: -2108208411, // 82574ae5
 		228: -2108208411, // 82574ae5
 		227: -2108208411, // 82574ae5
@@ -128325,6 +130302,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_changePhone: {
+		230: 1891839707, // 70c32edb
 		229: 1891839707, // 70c32edb
 		228: 1891839707, // 70c32edb
 		227: 1891839707, // 70c32edb
@@ -128419,6 +130397,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateDeviceLocked: {
+		230: 954152242, // 38df3532
 		229: 954152242, // 38df3532
 		228: 954152242, // 38df3532
 		227: 954152242, // 38df3532
@@ -128513,6 +130492,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getAuthorizations: {
+		230: -484392616, // e320c158
 		229: -484392616, // e320c158
 		228: -484392616, // e320c158
 		227: -484392616, // e320c158
@@ -128607,6 +130587,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetAuthorization: {
+		230: -545786948, // df77f3bc
 		229: -545786948, // df77f3bc
 		228: -545786948, // df77f3bc
 		227: -545786948, // df77f3bc
@@ -128701,6 +130682,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getPassword: {
+		230: 1418342645, // 548a30f5
 		229: 1418342645, // 548a30f5
 		228: 1418342645, // 548a30f5
 		227: 1418342645, // 548a30f5
@@ -128795,6 +130777,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getPasswordSettings: {
+		230: -1663767815, // 9cd4eaf9
 		229: -1663767815, // 9cd4eaf9
 		228: -1663767815, // 9cd4eaf9
 		227: -1663767815, // 9cd4eaf9
@@ -128889,6 +130872,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updatePasswordSettings: {
+		230: -1516564433, // a59b102f
 		229: -1516564433, // a59b102f
 		228: -1516564433, // a59b102f
 		227: -1516564433, // a59b102f
@@ -128983,6 +130967,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_sendConfirmPhoneCode: {
+		230: 457157256, // 1b3faa88
 		229: 457157256, // 1b3faa88
 		228: 457157256, // 1b3faa88
 		227: 457157256, // 1b3faa88
@@ -129077,6 +131062,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_confirmPhone: {
+		230: 1596029123, // 5f2178c3
 		229: 1596029123, // 5f2178c3
 		228: 1596029123, // 5f2178c3
 		227: 1596029123, // 5f2178c3
@@ -129171,6 +131157,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getTmpPassword: {
+		230: 1151208273, // 449e0b51
 		229: 1151208273, // 449e0b51
 		228: 1151208273, // 449e0b51
 		227: 1151208273, // 449e0b51
@@ -129265,6 +131252,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getWebAuthorizations: {
+		230: 405695855, // 182e6d6f
 		229: 405695855, // 182e6d6f
 		228: 405695855, // 182e6d6f
 		227: 405695855, // 182e6d6f
@@ -129359,6 +131347,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetWebAuthorization: {
+		230: 755087855, // 2d01b9ef
 		229: 755087855, // 2d01b9ef
 		228: 755087855, // 2d01b9ef
 		227: 755087855, // 2d01b9ef
@@ -129453,6 +131442,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetWebAuthorizations: {
+		230: 1747789204, // 682d2594
 		229: 1747789204, // 682d2594
 		228: 1747789204, // 682d2594
 		227: 1747789204, // 682d2594
@@ -129547,6 +131537,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getAllSecureValues: {
+		230: -1299661699, // b288bc7d
 		229: -1299661699, // b288bc7d
 		228: -1299661699, // b288bc7d
 		227: -1299661699, // b288bc7d
@@ -129641,6 +131632,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getSecureValue: {
+		230: 1936088002, // 73665bc2
 		229: 1936088002, // 73665bc2
 		228: 1936088002, // 73665bc2
 		227: 1936088002, // 73665bc2
@@ -129735,6 +131727,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_saveSecureValue: {
+		230: -1986010339, // 899fe31d
 		229: -1986010339, // 899fe31d
 		228: -1986010339, // 899fe31d
 		227: -1986010339, // 899fe31d
@@ -129829,6 +131822,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_deleteSecureValue: {
+		230: -1199522741, // b880bc4b
 		229: -1199522741, // b880bc4b
 		228: -1199522741, // b880bc4b
 		227: -1199522741, // b880bc4b
@@ -129923,6 +131917,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getAuthorizationForm: {
+		230: -1456907910, // a929597a
 		229: -1456907910, // a929597a
 		228: -1456907910, // a929597a
 		227: -1456907910, // a929597a
@@ -130017,6 +132012,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_acceptAuthorization: {
+		230: -202552205, // f3ed4c73
 		229: -202552205, // f3ed4c73
 		228: -202552205, // f3ed4c73
 		227: -202552205, // f3ed4c73
@@ -130111,6 +132107,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_sendVerifyPhoneCode: {
+		230: -1516022023, // a5a356f9
 		229: -1516022023, // a5a356f9
 		228: -1516022023, // a5a356f9
 		227: -1516022023, // a5a356f9
@@ -130205,6 +132202,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_verifyPhone: {
+		230: 1305716726, // 4dd3a7f6
 		229: 1305716726, // 4dd3a7f6
 		228: 1305716726, // 4dd3a7f6
 		227: 1305716726, // 4dd3a7f6
@@ -130299,6 +132297,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_sendVerifyEmailCode: {
+		230: -1730136133, // 98e037bb
 		229: -1730136133, // 98e037bb
 		228: -1730136133, // 98e037bb
 		227: -1730136133, // 98e037bb
@@ -130393,6 +132392,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_verifyEmail32DA4CF: {
+		230: 53322959, // 32da4cf
 		229: 53322959, // 32da4cf
 		228: 53322959, // 32da4cf
 		227: 53322959, // 32da4cf
@@ -130481,6 +132481,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_initTakeoutSession: {
+		230: -1896617296, // 8ef3eab0
 		229: -1896617296, // 8ef3eab0
 		228: -1896617296, // 8ef3eab0
 		227: -1896617296, // 8ef3eab0
@@ -130575,6 +132576,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_finishTakeoutSession: {
+		230: 489050862, // 1d2652ee
 		229: 489050862, // 1d2652ee
 		228: 489050862, // 1d2652ee
 		227: 489050862, // 1d2652ee
@@ -130669,6 +132671,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_confirmPasswordEmail: {
+		230: -1881204448, // 8fdf1920
 		229: -1881204448, // 8fdf1920
 		228: -1881204448, // 8fdf1920
 		227: -1881204448, // 8fdf1920
@@ -130763,6 +132766,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resendPasswordEmail: {
+		230: 2055154197, // 7a7f2a15
 		229: 2055154197, // 7a7f2a15
 		228: 2055154197, // 7a7f2a15
 		227: 2055154197, // 7a7f2a15
@@ -130857,6 +132861,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_cancelPasswordEmail: {
+		230: -1043606090, // c1cbd5b6
 		229: -1043606090, // c1cbd5b6
 		228: -1043606090, // c1cbd5b6
 		227: -1043606090, // c1cbd5b6
@@ -130951,6 +132956,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getContactSignUpNotification: {
+		230: -1626880216, // 9f07c728
 		229: -1626880216, // 9f07c728
 		228: -1626880216, // 9f07c728
 		227: -1626880216, // 9f07c728
@@ -131045,6 +133051,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setContactSignUpNotification: {
+		230: -806076575, // cff43f61
 		229: -806076575, // cff43f61
 		228: -806076575, // cff43f61
 		227: -806076575, // cff43f61
@@ -131139,6 +133146,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getNotifyExceptions: {
+		230: 1398240377, // 53577479
 		229: 1398240377, // 53577479
 		228: 1398240377, // 53577479
 		227: 1398240377, // 53577479
@@ -131233,6 +133241,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getWallPaper: {
+		230: -57811990, // fc8ddbea
 		229: -57811990, // fc8ddbea
 		228: -57811990, // fc8ddbea
 		227: -57811990, // fc8ddbea
@@ -131327,6 +133336,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_uploadWallPaper: {
+		230: -476410109, // e39a8f03
 		229: -476410109, // e39a8f03
 		228: -476410109, // e39a8f03
 		227: -476410109, // e39a8f03
@@ -131421,6 +133431,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_saveWallPaper: {
+		230: 1817860919, // 6c5a5b37
 		229: 1817860919, // 6c5a5b37
 		228: 1817860919, // 6c5a5b37
 		227: 1817860919, // 6c5a5b37
@@ -131515,6 +133526,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_installWallPaper: {
+		230: -18000023, // feed5769
 		229: -18000023, // feed5769
 		228: -18000023, // feed5769
 		227: -18000023, // feed5769
@@ -131609,6 +133621,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetWallPapers: {
+		230: -1153722364, // bb3b9804
 		229: -1153722364, // bb3b9804
 		228: -1153722364, // bb3b9804
 		227: -1153722364, // bb3b9804
@@ -131703,6 +133716,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getAutoDownloadSettings: {
+		230: 1457130303, // 56da0b3f
 		229: 1457130303, // 56da0b3f
 		228: 1457130303, // 56da0b3f
 		227: 1457130303, // 56da0b3f
@@ -131797,6 +133811,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_saveAutoDownloadSettings: {
+		230: 1995661875, // 76f36233
 		229: 1995661875, // 76f36233
 		228: 1995661875, // 76f36233
 		227: 1995661875, // 76f36233
@@ -131891,6 +133906,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_uploadTheme: {
+		230: 473805619, // 1c3db333
 		229: 473805619, // 1c3db333
 		228: 473805619, // 1c3db333
 		227: 473805619, // 1c3db333
@@ -131985,6 +134001,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_createTheme: {
+		230: 1697530880, // 652e4400
 		229: 1697530880, // 652e4400
 		228: 1697530880, // 652e4400
 		227: 1697530880, // 652e4400
@@ -132079,6 +134096,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateTheme: {
+		230: 737414348, // 2bf40ccc
 		229: 737414348, // 2bf40ccc
 		228: 737414348, // 2bf40ccc
 		227: 737414348, // 2bf40ccc
@@ -132173,6 +134191,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_saveTheme: {
+		230: -229175188, // f257106c
 		229: -229175188, // f257106c
 		228: -229175188, // f257106c
 		227: -229175188, // f257106c
@@ -132267,6 +134286,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_installTheme: {
+		230: -953697477, // c727bb3b
 		229: -953697477, // c727bb3b
 		228: -953697477, // c727bb3b
 		227: -953697477, // c727bb3b
@@ -132362,6 +134382,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getTheme: {
+		230: 978872812,   // 3a5869ec
 		229: 978872812,   // 3a5869ec
 		228: 978872812,   // 3a5869ec
 		227: 978872812,   // 3a5869ec
@@ -132456,6 +134477,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getThemes: {
+		230: 1913054296, // 7206e458
 		229: 1913054296, // 7206e458
 		228: 1913054296, // 7206e458
 		227: 1913054296, // 7206e458
@@ -132550,6 +134572,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setContentSettings: {
+		230: -1250643605, // b574b16b
 		229: -1250643605, // b574b16b
 		228: -1250643605, // b574b16b
 		227: -1250643605, // b574b16b
@@ -132644,6 +134667,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getContentSettings: {
+		230: -1952756306, // 8b9b4dae
 		229: -1952756306, // 8b9b4dae
 		228: -1952756306, // 8b9b4dae
 		227: -1952756306, // 8b9b4dae
@@ -132738,6 +134762,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getMultiWallPapers: {
+		230: 1705865692, // 65ad71dc
 		229: 1705865692, // 65ad71dc
 		228: 1705865692, // 65ad71dc
 		227: 1705865692, // 65ad71dc
@@ -132832,6 +134857,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getGlobalPrivacySettings: {
+		230: -349483786, // eb2b4cf6
 		229: -349483786, // eb2b4cf6
 		228: -349483786, // eb2b4cf6
 		227: -349483786, // eb2b4cf6
@@ -132926,6 +134952,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setGlobalPrivacySettings: {
+		230: 517647042, // 1edaaac2
 		229: 517647042, // 1edaaac2
 		228: 517647042, // 1edaaac2
 		227: 517647042, // 1edaaac2
@@ -133020,6 +135047,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_reportProfilePhoto: {
+		230: -91437323, // fa8cc6f5
 		229: -91437323, // fa8cc6f5
 		228: -91437323, // fa8cc6f5
 		227: -91437323, // fa8cc6f5
@@ -133114,6 +135142,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resetPassword: {
+		230: -1828139493, // 9308ce1b
 		229: -1828139493, // 9308ce1b
 		228: -1828139493, // 9308ce1b
 		227: -1828139493, // 9308ce1b
@@ -133208,6 +135237,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_declinePasswordReset: {
+		230: 1284770294, // 4c9409f6
 		229: 1284770294, // 4c9409f6
 		228: 1284770294, // 4c9409f6
 		227: 1284770294, // 4c9409f6
@@ -133302,6 +135332,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getChatThemes: {
+		230: -700916087, // d638de89
 		229: -700916087, // d638de89
 		228: -700916087, // d638de89
 		227: -700916087, // d638de89
@@ -133396,6 +135427,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setAuthorizationTTL: {
+		230: -1081501024, // bf899aa0
 		229: -1081501024, // bf899aa0
 		228: -1081501024, // bf899aa0
 		227: -1081501024, // bf899aa0
@@ -133490,6 +135522,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_changeAuthorizationSettings: {
+		230: 1089766498, // 40f48462
 		229: 1089766498, // 40f48462
 		228: 1089766498, // 40f48462
 		227: 1089766498, // 40f48462
@@ -133584,6 +135617,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getSavedRingtones: {
+		230: -510647672, // e1902288
 		229: -510647672, // e1902288
 		228: -510647672, // e1902288
 		227: -510647672, // e1902288
@@ -133677,6 +135711,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_saveRingtone: {
+		230: 1038768899, // 3dea5b03
 		229: 1038768899, // 3dea5b03
 		228: 1038768899, // 3dea5b03
 		227: 1038768899, // 3dea5b03
@@ -133770,6 +135805,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_uploadRingtone: {
+		230: -2095414366, // 831a83a2
 		229: -2095414366, // 831a83a2
 		228: -2095414366, // 831a83a2
 		227: -2095414366, // 831a83a2
@@ -133863,6 +135899,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateEmojiStatus: {
+		230: -70001045, // fbd3de6b
 		229: -70001045, // fbd3de6b
 		228: -70001045, // fbd3de6b
 		227: -70001045, // fbd3de6b
@@ -133951,6 +135988,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getDefaultEmojiStatuses: {
+		230: -696962170, // d6753386
 		229: -696962170, // d6753386
 		228: -696962170, // d6753386
 		227: -696962170, // d6753386
@@ -134039,6 +136077,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getRecentEmojiStatuses: {
+		230: 257392901, // f578105
 		229: 257392901, // f578105
 		228: 257392901, // f578105
 		227: 257392901, // f578105
@@ -134127,6 +136166,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_clearRecentEmojiStatuses: {
+		230: 404757166, // 18201aae
 		229: 404757166, // 18201aae
 		228: 404757166, // 18201aae
 		227: 404757166, // 18201aae
@@ -134215,6 +136255,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_reorderUsernames: {
+		230: -279966037, // ef500eab
 		229: -279966037, // ef500eab
 		228: -279966037, // ef500eab
 		227: -279966037, // ef500eab
@@ -134300,6 +136341,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_toggleUsername: {
+		230: 1490465654, // 58d6b376
 		229: 1490465654, // 58d6b376
 		228: 1490465654, // 58d6b376
 		227: 1490465654, // 58d6b376
@@ -134385,6 +136427,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getDefaultProfilePhotoEmojis: {
+		230: -495647960, // e2750328
 		229: -495647960, // e2750328
 		228: -495647960, // e2750328
 		227: -495647960, // e2750328
@@ -134466,6 +136509,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getDefaultGroupPhotoEmojis: {
+		230: -1856479058, // 915860ae
 		229: -1856479058, // 915860ae
 		228: -1856479058, // 915860ae
 		227: -1856479058, // 915860ae
@@ -134547,6 +136591,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getAutoSaveSettings: {
+		230: -1379156774, // adcbbcda
 		229: -1379156774, // adcbbcda
 		228: -1379156774, // adcbbcda
 		227: -1379156774, // adcbbcda
@@ -134628,6 +136673,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_saveAutoSaveSettings: {
+		230: -694451359, // d69b8361
 		229: -694451359, // d69b8361
 		228: -694451359, // d69b8361
 		227: -694451359, // d69b8361
@@ -134709,6 +136755,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_deleteAutoSaveExceptions: {
+		230: 1404829728, // 53bc0020
 		229: 1404829728, // 53bc0020
 		228: 1404829728, // 53bc0020
 		227: 1404829728, // 53bc0020
@@ -134790,6 +136837,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_invalidateSignInCodes: {
+		230: -896866118, // ca8ae8ba
 		229: -896866118, // ca8ae8ba
 		228: -896866118, // ca8ae8ba
 		227: -896866118, // ca8ae8ba
@@ -134864,6 +136912,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateColor: {
+		230: 1749885262,  // 684d214e
 		229: 1749885262,  // 684d214e
 		228: 1749885262,  // 684d214e
 		227: 1749885262,  // 684d214e
@@ -134931,6 +136980,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getDefaultBackgroundEmojis: {
+		230: -1509246514, // a60ab9ce
 		229: -1509246514, // a60ab9ce
 		228: -1509246514, // a60ab9ce
 		227: -1509246514, // a60ab9ce
@@ -134998,6 +137048,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getChannelDefaultEmojiStatuses: {
+		230: 1999087573, // 7727a7d5
 		229: 1999087573, // 7727a7d5
 		228: 1999087573, // 7727a7d5
 		227: 1999087573, // 7727a7d5
@@ -135062,6 +137113,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getChannelRestrictedStatusEmojis: {
+		230: 900325589, // 35a9e0d5
 		229: 900325589, // 35a9e0d5
 		228: 900325589, // 35a9e0d5
 		227: 900325589, // 35a9e0d5
@@ -135127,6 +137179,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateBusinessWorkHours: {
+		230: 1258348646, // 4b00e066
 		229: 1258348646, // 4b00e066
 		228: 1258348646, // 4b00e066
 		227: 1258348646, // 4b00e066
@@ -135184,6 +137237,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateBusinessLocation: {
+		230: -1637149926, // 9e6b131a
 		229: -1637149926, // 9e6b131a
 		228: -1637149926, // 9e6b131a
 		227: -1637149926, // 9e6b131a
@@ -135241,6 +137295,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateBusinessGreetingMessage: {
+		230: 1724755908, // 66cdafc4
 		229: 1724755908, // 66cdafc4
 		228: 1724755908, // 66cdafc4
 		227: 1724755908, // 66cdafc4
@@ -135298,6 +137353,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateBusinessAwayMessage: {
+		230: -1570078811, // a26a7fa5
 		229: -1570078811, // a26a7fa5
 		228: -1570078811, // a26a7fa5
 		227: -1570078811, // a26a7fa5
@@ -135355,6 +137411,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateConnectedBot: {
+		230: 1721797758,  // 66a08c7e
 		229: 1721797758,  // 66a08c7e
 		228: 1721797758,  // 66a08c7e
 		227: 1721797758,  // 66a08c7e
@@ -135412,6 +137469,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getConnectedBots: {
+		230: 1319421967, // 4ea4c80f
 		229: 1319421967, // 4ea4c80f
 		228: 1319421967, // 4ea4c80f
 		227: 1319421967, // 4ea4c80f
@@ -135469,6 +137527,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getBotBusinessConnection: {
+		230: 1990746736, // 76a86270
 		229: 1990746736, // 76a86270
 		228: 1990746736, // 76a86270
 		227: 1990746736, // 76a86270
@@ -135525,6 +137584,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateBusinessIntro: {
+		230: -1508585420, // a614d034
 		229: -1508585420, // a614d034
 		228: -1508585420, // a614d034
 		227: -1508585420, // a614d034
@@ -135581,6 +137641,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_toggleConnectedBotPaused: {
+		230: 1684934807, // 646e1097
 		229: 1684934807, // 646e1097
 		228: 1684934807, // 646e1097
 		227: 1684934807, // 646e1097
@@ -135637,6 +137698,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_disablePeerConnectedBot: {
+		230: 1581481689, // 5e437ed9
 		229: 1581481689, // 5e437ed9
 		228: 1581481689, // 5e437ed9
 		227: 1581481689, // 5e437ed9
@@ -135693,6 +137755,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateBirthday: {
+		230: -865203183, // cc6e0c11
 		229: -865203183, // cc6e0c11
 		228: -865203183, // cc6e0c11
 		227: -865203183, // cc6e0c11
@@ -135749,6 +137812,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_createBusinessChatLink: {
+		230: -2007898482, // 8851e68e
 		229: -2007898482, // 8851e68e
 		228: -2007898482, // 8851e68e
 		227: -2007898482, // 8851e68e
@@ -135805,6 +137869,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_editBusinessChatLink: {
+		230: -1942744913, // 8c3410af
 		229: -1942744913, // 8c3410af
 		228: -1942744913, // 8c3410af
 		227: -1942744913, // 8c3410af
@@ -135861,6 +137926,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_deleteBusinessChatLink: {
+		230: 1611085428, // 60073674
 		229: 1611085428, // 60073674
 		228: 1611085428, // 60073674
 		227: 1611085428, // 60073674
@@ -135917,6 +137983,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getBusinessChatLinks: {
+		230: 1869667809, // 6f70dde1
 		229: 1869667809, // 6f70dde1
 		228: 1869667809, // 6f70dde1
 		227: 1869667809, // 6f70dde1
@@ -135973,6 +138040,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_resolveBusinessChatLink: {
+		230: 1418913262, // 5492e5ee
 		229: 1418913262, // 5492e5ee
 		228: 1418913262, // 5492e5ee
 		227: 1418913262, // 5492e5ee
@@ -136029,6 +138097,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updatePersonalChannel: {
+		230: -649919008, // d94305e0
 		229: -649919008, // d94305e0
 		228: -649919008, // d94305e0
 		227: -649919008, // d94305e0
@@ -136085,6 +138154,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_toggleSponsoredMessages: {
+		230: -1176919155, // b9d9a38d
 		229: -1176919155, // b9d9a38d
 		228: -1176919155, // b9d9a38d
 		227: -1176919155, // b9d9a38d
@@ -136140,6 +138210,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getReactionsNotifySettings: {
+		230: 115172684, // 6dd654c
 		229: 115172684, // 6dd654c
 		228: 115172684, // 6dd654c
 		227: 115172684, // 6dd654c
@@ -136195,6 +138266,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setReactionsNotifySettings: {
+		230: 829220168, // 316ce548
 		229: 829220168, // 316ce548
 		228: 829220168, // 316ce548
 		227: 829220168, // 316ce548
@@ -136250,6 +138322,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getCollectibleEmojiStatuses: {
+		230: 779830595, // 2e7b4543
 		229: 779830595, // 2e7b4543
 		228: 779830595, // 2e7b4543
 		227: 779830595, // 2e7b4543
@@ -136285,6 +138358,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getPaidMessagesRevenue: {
+		230: 431639143,  // 19ba4a67
 		229: 431639143,  // 19ba4a67
 		228: 431639143,  // 19ba4a67
 		227: 431639143,  // 19ba4a67
@@ -136318,6 +138392,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_toggleNoPaidMessagesException: {
+		230: -30483850, // fe2eda76
 		229: -30483850, // fe2eda76
 		228: -30483850, // fe2eda76
 		227: -30483850, // fe2eda76
@@ -136346,6 +138421,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_setMainProfileTab: {
+		230: 1575909552, // 5dee78b0
 		229: 1575909552, // 5dee78b0
 		228: 1575909552, // 5dee78b0
 		227: 1575909552, // 5dee78b0
@@ -136366,6 +138442,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_saveMusic: {
+		230: -1301859671, // b26732a9
 		229: -1301859671, // b26732a9
 		228: -1301859671, // b26732a9
 		227: -1301859671, // b26732a9
@@ -136386,6 +138463,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getSavedMusicIds: {
+		230: -526557265, // e09d5faf
 		229: -526557265, // e09d5faf
 		228: -526557265, // e09d5faf
 		227: -526557265, // e09d5faf
@@ -136406,6 +138484,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getUniqueGiftChatThemes: {
+		230: -466818615, // e42ce9c9
 		229: -466818615, // e42ce9c9
 		228: -466818615, // e42ce9c9
 		227: -466818615, // e42ce9c9
@@ -136425,6 +138504,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_initPasskeyRegistration: {
+		230: 1117079528, // 429547e8
 		229: 1117079528, // 429547e8
 		228: 1117079528, // 429547e8
 		227: 1117079528, // 429547e8
@@ -136439,6 +138519,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_registerPasskey: {
+		230: 1437867990, // 55b41fd6
 		229: 1437867990, // 55b41fd6
 		228: 1437867990, // 55b41fd6
 		227: 1437867990, // 55b41fd6
@@ -136453,6 +138534,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getPasskeys: {
+		230: -367063982, // ea1f0c52
 		229: -367063982, // ea1f0c52
 		228: -367063982, // ea1f0c52
 		227: -367063982, // ea1f0c52
@@ -136467,6 +138549,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_deletePasskey: {
+		230: -172665281, // f5b5563f
 		229: -172665281, // f5b5563f
 		228: -172665281, // f5b5563f
 		227: -172665281, // f5b5563f
@@ -136481,6 +138564,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_confirmBotConnection: {
+		230: 1743593320, // 67ed1f68
 		229: 1743593320, // 67ed1f68
 		228: 1743593320, // 67ed1f68
 		227: 1743593320, // 67ed1f68
@@ -136488,6 +138572,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_getWebBrowserSettings: {
+		230: 1449482088, // 56655768
 		229: 1449482088, // 56655768
 		228: 1449482088, // 56655768
 		227: 1449482088, // 56655768
@@ -136495,6 +138580,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_updateWebBrowserSettings: {
+		230: -1696627970, // 9adf82fe
 		229: -1696627970, // 9adf82fe
 		228: -1696627970, // 9adf82fe
 		227: -1696627970, // 9adf82fe
@@ -136502,12 +138588,14 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_account_toggleWebBrowserSettingsException60ED4229: {
+		230: 1626161705, // 60ed4229
 		229: 1626161705, // 60ed4229
 		228: 1626161705, // 60ed4229
 		227: 1626161705, // 60ed4229
 
 	},
 	Predicate_account_deleteWebBrowserSettingsExceptions: {
+		230: -2036304291, // 86a0765d
 		229: -2036304291, // 86a0765d
 		228: -2036304291, // 86a0765d
 		227: -2036304291, // 86a0765d
@@ -136515,6 +138603,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_getUsers: {
+		230: 227648840, // d91a548
 		229: 227648840, // d91a548
 		228: 227648840, // d91a548
 		227: 227648840, // d91a548
@@ -136609,6 +138698,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_getFullUser: {
+		230: -1240508136, // b60f5918
 		229: -1240508136, // b60f5918
 		228: -1240508136, // b60f5918
 		227: -1240508136, // b60f5918
@@ -136703,6 +138793,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_setSecureValueErrors: {
+		230: -1865902923, // 90c894b5
 		229: -1865902923, // 90c894b5
 		228: -1865902923, // 90c894b5
 		227: -1865902923, // 90c894b5
@@ -136797,6 +138888,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_getRequirementsToContact: {
+		230: -660962397, // d89a83a3
 		229: -660962397, // d89a83a3
 		228: -660962397, // d89a83a3
 		227: -660962397, // d89a83a3
@@ -136830,6 +138922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_getSavedMusic: {
+		230: 2022539235, // 788d7fe3
 		229: 2022539235, // 788d7fe3
 		228: 2022539235, // 788d7fe3
 		227: 2022539235, // 788d7fe3
@@ -136850,6 +138943,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_getSavedMusicByID: {
+		230: 1970513129, // 7573a4e9
 		229: 1970513129, // 7573a4e9
 		228: 1970513129, // 7573a4e9
 		227: 1970513129, // 7573a4e9
@@ -136870,6 +138964,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_users_suggestBirthday: {
+		230: -61656206, // fc533372
 		229: -61656206, // fc533372
 		228: -61656206, // fc533372
 		227: -61656206, // fc533372
@@ -136887,6 +138982,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getContactIDs: {
+		230: 2061264541, // 7adc669d
 		229: 2061264541, // 7adc669d
 		228: 2061264541, // 7adc669d
 		227: 2061264541, // 7adc669d
@@ -136981,6 +139077,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getStatuses: {
+		230: -995929106, // c4a353ee
 		229: -995929106, // c4a353ee
 		228: -995929106, // c4a353ee
 		227: -995929106, // c4a353ee
@@ -137075,6 +139172,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getContacts: {
+		230: 1574346258, // 5dd69e12
 		229: 1574346258, // 5dd69e12
 		228: 1574346258, // 5dd69e12
 		227: 1574346258, // 5dd69e12
@@ -137169,6 +139267,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_importContacts: {
+		230: 746589157, // 2c800be5
 		229: 746589157, // 2c800be5
 		228: 746589157, // 2c800be5
 		227: 746589157, // 2c800be5
@@ -137263,6 +139362,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_deleteContacts: {
+		230: 157945344, // 96a0e00
 		229: 157945344, // 96a0e00
 		228: 157945344, // 96a0e00
 		227: 157945344, // 96a0e00
@@ -137357,6 +139457,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_deleteByPhones: {
+		230: 269745566, // 1013fd9e
 		229: 269745566, // 1013fd9e
 		228: 269745566, // 1013fd9e
 		227: 269745566, // 1013fd9e
@@ -137451,6 +139552,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_block: {
+		230: 774801204,  // 2e2e8734
 		229: 774801204,  // 2e2e8734
 		228: 774801204,  // 2e2e8734
 		227: 774801204,  // 2e2e8734
@@ -137545,6 +139647,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_unblock: {
+		230: -1252994264, // b550d328
 		229: -1252994264, // b550d328
 		228: -1252994264, // b550d328
 		227: -1252994264, // b550d328
@@ -137639,6 +139742,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getBlocked: {
+		230: -1702457472, // 9a868f80
 		229: -1702457472, // 9a868f80
 		228: -1702457472, // 9a868f80
 		227: -1702457472, // 9a868f80
@@ -137733,6 +139837,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_search: {
+		230: 99978511,  // 5f58d0f
 		229: 99978511,  // 5f58d0f
 		228: 99978511,  // 5f58d0f
 		227: 99978511,  // 5f58d0f
@@ -137827,6 +139932,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_resolveUsername: {
+		230: 1918565308, // 725afbbc
 		229: 1918565308, // 725afbbc
 		228: 1918565308, // 725afbbc
 		227: 1918565308, // 725afbbc
@@ -137921,6 +140027,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getTopPeers: {
+		230: -1758168906, // 973478b6
 		229: -1758168906, // 973478b6
 		228: -1758168906, // 973478b6
 		227: -1758168906, // 973478b6
@@ -138015,6 +140122,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_resetTopPeerRating: {
+		230: 451113900, // 1ae373ac
 		229: 451113900, // 1ae373ac
 		228: 451113900, // 1ae373ac
 		227: 451113900, // 1ae373ac
@@ -138109,6 +140217,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_resetSaved: {
+		230: -2020263951, // 879537f1
 		229: -2020263951, // 879537f1
 		228: -2020263951, // 879537f1
 		227: -2020263951, // 879537f1
@@ -138203,6 +140312,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getSaved: {
+		230: -2098076769, // 82f1e39f
 		229: -2098076769, // 82f1e39f
 		228: -2098076769, // 82f1e39f
 		227: -2098076769, // 82f1e39f
@@ -138297,6 +140407,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_toggleTopPeers: {
+		230: -2062238246, // 8514bdda
 		229: -2062238246, // 8514bdda
 		228: -2062238246, // 8514bdda
 		227: -2062238246, // 8514bdda
@@ -138391,6 +140502,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_addContact: {
+		230: -642109868, // d9ba2e54
 		229: -642109868, // d9ba2e54
 		228: -642109868, // d9ba2e54
 		227: -642109868, // d9ba2e54
@@ -138485,6 +140597,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_acceptContact: {
+		230: -130964977, // f831a20f
 		229: -130964977, // f831a20f
 		228: -130964977, // f831a20f
 		227: -130964977, // f831a20f
@@ -138579,6 +140692,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getLocated: {
+		230: -750207932, // d348bc44
 		229: -750207932, // d348bc44
 		228: -750207932, // d348bc44
 		227: -750207932, // d348bc44
@@ -138673,6 +140787,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_blockFromReplies: {
+		230: 698914348, // 29a8962c
 		229: 698914348, // 29a8962c
 		228: 698914348, // 29a8962c
 		227: 698914348, // 29a8962c
@@ -138767,6 +140882,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_resolvePhone: {
+		230: -1963375804, // 8af94344
 		229: -1963375804, // 8af94344
 		228: -1963375804, // 8af94344
 		227: -1963375804, // 8af94344
@@ -138861,6 +140977,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_exportContactToken: {
+		230: -127582169, // f8654027
 		229: -127582169, // f8654027
 		228: -127582169, // f8654027
 		227: -127582169, // f8654027
@@ -138944,6 +141061,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_importContactToken: {
+		230: 318789512, // 13005788
 		229: 318789512, // 13005788
 		228: 318789512, // 13005788
 		227: 318789512, // 13005788
@@ -139027,6 +141145,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_editCloseFriends: {
+		230: -1167653392, // ba6705f0
 		229: -1167653392, // ba6705f0
 		228: -1167653392, // ba6705f0
 		227: -1167653392, // ba6705f0
@@ -139100,6 +141219,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_setBlocked: {
+		230: -1798939530, // 94c65c76
 		229: -1798939530, // 94c65c76
 		228: -1798939530, // 94c65c76
 		227: -1798939530, // 94c65c76
@@ -139172,6 +141292,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getBirthdays: {
+		230: -621959068, // daeda864
 		229: -621959068, // daeda864
 		228: -621959068, // daeda864
 		227: -621959068, // daeda864
@@ -139228,6 +141349,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_getSponsoredPeers: {
+		230: -1228356717, // b6c8c393
 		229: -1228356717, // b6c8c393
 		228: -1228356717, // b6c8c393
 		227: -1228356717, // b6c8c393
@@ -139260,6 +141382,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_contacts_updateContactNote: {
+		230: 329212923, // 139f63fb
 		229: 329212923, // 139f63fb
 		228: 329212923, // 139f63fb
 		227: 329212923, // 139f63fb
@@ -139277,6 +141400,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMessages: {
+		230: 1673946374, // 63c66506
 		229: 1673946374, // 63c66506
 		228: 1673946374, // 63c66506
 		227: 1673946374, // 63c66506
@@ -139372,6 +141496,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDialogs: {
+		230: -1594569905, // a0f4cb4f
 		229: -1594569905, // a0f4cb4f
 		228: -1594569905, // a0f4cb4f
 		227: -1594569905, // a0f4cb4f
@@ -139466,6 +141591,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getHistory: {
+		230: 1143203525, // 4423e6c5
 		229: 1143203525, // 4423e6c5
 		228: 1143203525, // 4423e6c5
 		227: 1143203525, // 4423e6c5
@@ -139560,6 +141686,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_search: {
+		230: 703497338,   // 29ee847a
 		229: 703497338,   // 29ee847a
 		228: 703497338,   // 29ee847a
 		227: 703497338,   // 29ee847a
@@ -139654,6 +141781,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readHistory: {
+		230: 238054714, // e306d3a
 		229: 238054714, // e306d3a
 		228: 238054714, // e306d3a
 		227: 238054714, // e306d3a
@@ -139748,6 +141876,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteHistory: {
+		230: -1332768214, // b08f922a
 		229: -1332768214, // b08f922a
 		228: -1332768214, // b08f922a
 		227: -1332768214, // b08f922a
@@ -139842,6 +141971,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteMessages: {
+		230: -443640366, // e58e95d2
 		229: -443640366, // e58e95d2
 		228: -443640366, // e58e95d2
 		227: -443640366, // e58e95d2
@@ -139936,6 +142066,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_receivedMessages: {
+		230: 94983360, // 5a954c0
 		229: 94983360, // 5a954c0
 		228: 94983360, // 5a954c0
 		227: 94983360, // 5a954c0
@@ -140030,6 +142161,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setTyping: {
+		230: 1486110434, // 58943ee2
 		229: 1486110434, // 58943ee2
 		228: 1486110434, // 58943ee2
 		227: 1486110434, // 58943ee2
@@ -140124,6 +142256,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendMessage: {
+		230: -17526942,   // fef48f62
 		229: -17526942,   // fef48f62
 		228: -17526942,   // fef48f62
 		227: -17526942,   // fef48f62
@@ -140218,6 +142351,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendMedia: {
+		230: 53536639,    // 330e77f
 		229: 53536639,    // 330e77f
 		228: 53536639,    // 330e77f
 		227: 53536639,    // 330e77f
@@ -140312,6 +142446,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_forwardMessages: {
+		230: 326126204,   // 13704a7c
 		229: 326126204,   // 13704a7c
 		228: 326126204,   // 13704a7c
 		227: 326126204,   // 13704a7c
@@ -140406,6 +142541,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportSpam: {
+		230: -820669733, // cf1592db
 		229: -820669733, // cf1592db
 		228: -820669733, // cf1592db
 		227: -820669733, // cf1592db
@@ -140500,6 +142636,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPeerSettings: {
+		230: -270948702, // efd9a6a2
 		229: -270948702, // efd9a6a2
 		228: -270948702, // efd9a6a2
 		227: -270948702, // efd9a6a2
@@ -140594,6 +142731,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportFC78AF9B: {
+		230: -59199589, // fc78af9b
 		229: -59199589, // fc78af9b
 		228: -59199589, // fc78af9b
 		227: -59199589, // fc78af9b
@@ -140638,6 +142776,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getChats: {
+		230: 1240027791, // 49e9528f
 		229: 1240027791, // 49e9528f
 		228: 1240027791, // 49e9528f
 		227: 1240027791, // 49e9528f
@@ -140732,6 +142871,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getFullChat: {
+		230: -1364194508, // aeb00b34
 		229: -1364194508, // aeb00b34
 		228: -1364194508, // aeb00b34
 		227: -1364194508, // aeb00b34
@@ -140826,6 +142966,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editChatTitle: {
+		230: 1937260541, // 73783ffd
 		229: 1937260541, // 73783ffd
 		228: 1937260541, // 73783ffd
 		227: 1937260541, // 73783ffd
@@ -140920,6 +143061,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editChatPhoto: {
+		230: 903730804, // 35ddd674
 		229: 903730804, // 35ddd674
 		228: 903730804, // 35ddd674
 		227: 903730804, // 35ddd674
@@ -141014,6 +143156,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_addChatUserCBC6D107: {
+		230: -876162809, // cbc6d107
 		229: -876162809, // cbc6d107
 		228: -876162809, // cbc6d107
 		227: -876162809, // cbc6d107
@@ -141070,6 +143213,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteChatUser: {
+		230: -1575461717, // a2185cab
 		229: -1575461717, // a2185cab
 		228: -1575461717, // a2185cab
 		227: -1575461717, // a2185cab
@@ -141164,6 +143308,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_createChat92CEDDD4: {
+		230: -1831936556, // 92ceddd4
 		229: -1831936556, // 92ceddd4
 		228: -1831936556, // 92ceddd4
 		227: -1831936556, // 92ceddd4
@@ -141220,6 +143365,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDhConfig: {
+		230: 651135312, // 26cf8950
 		229: 651135312, // 26cf8950
 		228: 651135312, // 26cf8950
 		227: 651135312, // 26cf8950
@@ -141314,6 +143460,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_requestEncryption: {
+		230: -162681021, // f64daf43
 		229: -162681021, // f64daf43
 		228: -162681021, // f64daf43
 		227: -162681021, // f64daf43
@@ -141408,6 +143555,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_acceptEncryption: {
+		230: 1035731989, // 3dbc0415
 		229: 1035731989, // 3dbc0415
 		228: 1035731989, // 3dbc0415
 		227: 1035731989, // 3dbc0415
@@ -141502,6 +143650,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_discardEncryption: {
+		230: -208425312, // f393aea0
 		229: -208425312, // f393aea0
 		228: -208425312, // f393aea0
 		227: -208425312, // f393aea0
@@ -141596,6 +143745,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setEncryptedTyping: {
+		230: 2031374829, // 791451ed
 		229: 2031374829, // 791451ed
 		228: 2031374829, // 791451ed
 		227: 2031374829, // 791451ed
@@ -141690,6 +143840,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readEncryptedHistory: {
+		230: 2135648522, // 7f4b690a
 		229: 2135648522, // 7f4b690a
 		228: 2135648522, // 7f4b690a
 		227: 2135648522, // 7f4b690a
@@ -141784,6 +143935,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendEncrypted: {
+		230: 1157265941, // 44fa7a15
 		229: 1157265941, // 44fa7a15
 		228: 1157265941, // 44fa7a15
 		227: 1157265941, // 44fa7a15
@@ -141878,6 +144030,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendEncryptedFile: {
+		230: 1431914525, // 5559481d
 		229: 1431914525, // 5559481d
 		228: 1431914525, // 5559481d
 		227: 1431914525, // 5559481d
@@ -141972,6 +144125,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendEncryptedService: {
+		230: 852769188, // 32d439a4
 		229: 852769188, // 32d439a4
 		228: 852769188, // 32d439a4
 		227: 852769188, // 32d439a4
@@ -142066,6 +144220,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_receivedQueue: {
+		230: 1436924774, // 55a5bb66
 		229: 1436924774, // 55a5bb66
 		228: 1436924774, // 55a5bb66
 		227: 1436924774, // 55a5bb66
@@ -142160,6 +144315,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportEncryptedSpam: {
+		230: 1259113487, // 4b0c8c0f
 		229: 1259113487, // 4b0c8c0f
 		228: 1259113487, // 4b0c8c0f
 		227: 1259113487, // 4b0c8c0f
@@ -142254,6 +144410,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readMessageContents: {
+		230: 916930423, // 36a73f77
 		229: 916930423, // 36a73f77
 		228: 916930423, // 36a73f77
 		227: 916930423, // 36a73f77
@@ -142348,6 +144505,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getStickers: {
+		230: -710552671, // d5a5d3a1
 		229: -710552671, // d5a5d3a1
 		228: -710552671, // d5a5d3a1
 		227: -710552671, // d5a5d3a1
@@ -142442,6 +144600,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAllStickers: {
+		230: -1197432408, // b8a0a1a8
 		229: -1197432408, // b8a0a1a8
 		228: -1197432408, // b8a0a1a8
 		227: -1197432408, // b8a0a1a8
@@ -142536,6 +144695,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getWebPagePreview570D6F6F: {
+		230: 1460498287, // 570d6f6f
 		229: 1460498287, // 570d6f6f
 		228: 1460498287, // 570d6f6f
 		227: 1460498287, // 570d6f6f
@@ -142572,6 +144732,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_exportChatInvite: {
+		230: -1537876336, // a455de90
 		229: -1537876336, // a455de90
 		228: -1537876336, // a455de90
 		227: -1537876336, // a455de90
@@ -142666,6 +144827,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_checkChatInvite: {
+		230: 1051570619, // 3eadb1bb
 		229: 1051570619, // 3eadb1bb
 		228: 1051570619, // 3eadb1bb
 		227: 1051570619, // 3eadb1bb
@@ -142760,6 +144922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_importChatInviteDE91436E: {
+		230: -560905362, // de91436e
 		229: -560905362, // de91436e
 		228: -560905362, // de91436e
 		227: -560905362, // de91436e
@@ -142767,6 +144930,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getStickerSet: {
+		230: -928977804, // c8a0ec74
 		229: -928977804, // c8a0ec74
 		228: -928977804, // c8a0ec74
 		227: -928977804, // c8a0ec74
@@ -142862,6 +145026,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_installStickerSet: {
+		230: -946871200, // c78fe460
 		229: -946871200, // c78fe460
 		228: -946871200, // c78fe460
 		227: -946871200, // c78fe460
@@ -142956,6 +145121,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_uninstallStickerSet: {
+		230: -110209570, // f96e55de
 		229: -110209570, // f96e55de
 		228: -110209570, // f96e55de
 		227: -110209570, // f96e55de
@@ -143050,6 +145216,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_startBot: {
+		230: -421563528, // e6df7378
 		229: -421563528, // e6df7378
 		228: -421563528, // e6df7378
 		227: -421563528, // e6df7378
@@ -143144,6 +145311,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMessagesViews: {
+		230: 1468322785, // 5784d3e1
 		229: 1468322785, // 5784d3e1
 		228: 1468322785, // 5784d3e1
 		227: 1468322785, // 5784d3e1
@@ -143238,6 +145406,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editChatAdmin: {
+		230: -1470377534, // a85bd1c2
 		229: -1470377534, // a85bd1c2
 		228: -1470377534, // a85bd1c2
 		227: -1470377534, // a85bd1c2
@@ -143332,6 +145501,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_migrateChat: {
+		230: -1568189671, // a2875319
 		229: -1568189671, // a2875319
 		228: -1568189671, // a2875319
 		227: -1568189671, // a2875319
@@ -143426,6 +145596,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchGlobal: {
+		230: 1629922364, // 6126a43c
 		229: 1629922364, // 6126a43c
 		228: 1629922364, // 6126a43c
 		227: 1271290010, // 4bc6589a
@@ -143520,6 +145691,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reorderStickerSets: {
+		230: 2016638777, // 78337739
 		229: 2016638777, // 78337739
 		228: 2016638777, // 78337739
 		227: 2016638777, // 78337739
@@ -143614,6 +145786,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDocumentByHash: {
+		230: -1309538785, // b1f2061f
 		229: -1309538785, // b1f2061f
 		228: -1309538785, // b1f2061f
 		227: -1309538785, // b1f2061f
@@ -143708,6 +145881,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSavedGifs: {
+		230: 1559270965, // 5cf09635
 		229: 1559270965, // 5cf09635
 		228: 1559270965, // 5cf09635
 		227: 1559270965, // 5cf09635
@@ -143802,6 +145976,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_saveGif: {
+		230: 846868683, // 327a30cb
 		229: 846868683, // 327a30cb
 		228: 846868683, // 327a30cb
 		227: 846868683, // 327a30cb
@@ -143896,6 +146071,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getInlineBotResults: {
+		230: 1364105629, // 514e999d
 		229: 1364105629, // 514e999d
 		228: 1364105629, // 514e999d
 		227: 1364105629, // 514e999d
@@ -143990,6 +146166,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setInlineBotResults: {
+		230: -1156406247, // bb12a419
 		229: -1156406247, // bb12a419
 		228: -1156406247, // bb12a419
 		227: -1156406247, // bb12a419
@@ -144084,6 +146261,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendInlineBotResult: {
+		230: -1060145594, // c0cf7646
 		229: -1060145594, // c0cf7646
 		228: -1060145594, // c0cf7646
 		227: -1060145594, // c0cf7646
@@ -144178,6 +146356,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMessageEditData: {
+		230: -39416522, // fda68d36
 		229: -39416522, // fda68d36
 		228: -39416522, // fda68d36
 		227: -39416522, // fda68d36
@@ -144272,6 +146451,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editMessage: {
+		230: -1324947860, // b106e66c
 		229: -1324947860, // b106e66c
 		228: -1324947860, // b106e66c
 		227: -1324947860, // b106e66c
@@ -144366,6 +146546,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editInlineBotMessage: {
+		230: -1541162159, // a423bb51
 		229: -1541162159, // a423bb51
 		228: -1541162159, // a423bb51
 		227: -1541162159, // a423bb51
@@ -144460,6 +146641,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getBotCallbackAnswer: {
+		230: -1824339449, // 9342ca07
 		229: -1824339449, // 9342ca07
 		228: -1824339449, // 9342ca07
 		227: -1824339449, // 9342ca07
@@ -144554,6 +146736,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setBotCallbackAnswer: {
+		230: -712043766, // d58f130a
 		229: -712043766, // d58f130a
 		228: -712043766, // d58f130a
 		227: -712043766, // d58f130a
@@ -144648,6 +146831,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPeerDialogs: {
+		230: -462373635, // e470bcfd
 		229: -462373635, // e470bcfd
 		228: -462373635, // e470bcfd
 		227: -462373635, // e470bcfd
@@ -144742,6 +146926,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_saveDraft: {
+		230: -1391484580, // ad0fa15c
 		229: -1391484580, // ad0fa15c
 		228: -1391484580, // ad0fa15c
 		227: -1391484580, // ad0fa15c
@@ -144836,6 +147021,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAllDrafts: {
+		230: 1782549861, // 6a3f8d65
 		229: 1782549861, // 6a3f8d65
 		228: 1782549861, // 6a3f8d65
 		227: 1782549861, // 6a3f8d65
@@ -144930,6 +147116,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getFeaturedStickers: {
+		230: 1685588756, // 64780b14
 		229: 1685588756, // 64780b14
 		228: 1685588756, // 64780b14
 		227: 1685588756, // 64780b14
@@ -145024,6 +147211,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readFeaturedStickers: {
+		230: 1527873830, // 5b118126
 		229: 1527873830, // 5b118126
 		228: 1527873830, // 5b118126
 		227: 1527873830, // 5b118126
@@ -145118,6 +147306,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getRecentStickers: {
+		230: -1649852357, // 9da9403b
 		229: -1649852357, // 9da9403b
 		228: -1649852357, // 9da9403b
 		227: -1649852357, // 9da9403b
@@ -145212,6 +147401,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_saveRecentSticker: {
+		230: 958863608, // 392718f8
 		229: 958863608, // 392718f8
 		228: 958863608, // 392718f8
 		227: 958863608, // 392718f8
@@ -145306,6 +147496,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_clearRecentStickers: {
+		230: -1986437075, // 8999602d
 		229: -1986437075, // 8999602d
 		228: -1986437075, // 8999602d
 		227: -1986437075, // 8999602d
@@ -145400,6 +147591,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getArchivedStickers: {
+		230: 1475442322, // 57f17692
 		229: 1475442322, // 57f17692
 		228: 1475442322, // 57f17692
 		227: 1475442322, // 57f17692
@@ -145494,6 +147686,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMaskStickers: {
+		230: 1678738104, // 640f82b8
 		229: 1678738104, // 640f82b8
 		228: 1678738104, // 640f82b8
 		227: 1678738104, // 640f82b8
@@ -145588,6 +147781,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAttachedStickers: {
+		230: -866424884, // cc5b67cc
 		229: -866424884, // cc5b67cc
 		228: -866424884, // cc5b67cc
 		227: -866424884, // cc5b67cc
@@ -145682,6 +147876,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setGameScore: {
+		230: -1896289088, // 8ef8ecc0
 		229: -1896289088, // 8ef8ecc0
 		228: -1896289088, // 8ef8ecc0
 		227: -1896289088, // 8ef8ecc0
@@ -145776,6 +147971,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setInlineGameScore: {
+		230: 363700068, // 15ad9f64
 		229: 363700068, // 15ad9f64
 		228: 363700068, // 15ad9f64
 		227: 363700068, // 15ad9f64
@@ -145870,6 +148066,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getGameHighScores: {
+		230: -400399203, // e822649d
 		229: -400399203, // e822649d
 		228: -400399203, // e822649d
 		227: -400399203, // e822649d
@@ -145964,6 +148161,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getInlineGameHighScores: {
+		230: 258170395, // f635e1b
 		229: 258170395, // f635e1b
 		228: 258170395, // f635e1b
 		227: 258170395, // f635e1b
@@ -146058,6 +148256,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getCommonChats: {
+		230: -468934396, // e40ca104
 		229: -468934396, // e40ca104
 		228: -468934396, // e40ca104
 		227: -468934396, // e40ca104
@@ -146152,6 +148351,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getWebPage8D9692A3: {
+		230: -1919511901, // 8d9692a3
 		229: -1919511901, // 8d9692a3
 		228: -1919511901, // 8d9692a3
 		227: -1919511901, // 8d9692a3
@@ -146220,6 +148420,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleDialogPin: {
+		230: -1489903017, // a731e257
 		229: -1489903017, // a731e257
 		228: -1489903017, // a731e257
 		227: -1489903017, // a731e257
@@ -146314,6 +148515,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reorderPinnedDialogs: {
+		230: 991616823, // 3b1adf37
 		229: 991616823, // 3b1adf37
 		228: 991616823, // 3b1adf37
 		227: 991616823, // 3b1adf37
@@ -146408,6 +148610,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPinnedDialogs: {
+		230: -692498958, // d6b94df2
 		229: -692498958, // d6b94df2
 		228: -692498958, // d6b94df2
 		227: -692498958, // d6b94df2
@@ -146502,6 +148705,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setBotShippingResults: {
+		230: -436833542, // e5f672fa
 		229: -436833542, // e5f672fa
 		228: -436833542, // e5f672fa
 		227: -436833542, // e5f672fa
@@ -146596,6 +148800,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setBotPrecheckoutResults: {
+		230: 163765653, // 9c2dd95
 		229: 163765653, // 9c2dd95
 		228: 163765653, // 9c2dd95
 		227: 163765653, // 9c2dd95
@@ -146690,6 +148895,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_uploadMedia: {
+		230: 345405816,  // 14967978
 		229: 345405816,  // 14967978
 		228: 345405816,  // 14967978
 		227: 345405816,  // 14967978
@@ -146784,6 +148990,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendScreenshotNotification: {
+		230: -1589618665, // a1405817
 		229: -1589618665, // a1405817
 		228: -1589618665, // a1405817
 		227: -1589618665, // a1405817
@@ -146878,6 +149085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getFavedStickers: {
+		230: 82946729, // 4f1aaa9
 		229: 82946729, // 4f1aaa9
 		228: 82946729, // 4f1aaa9
 		227: 82946729, // 4f1aaa9
@@ -146972,6 +149180,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_faveSticker: {
+		230: -1174420133, // b9ffc55b
 		229: -1174420133, // b9ffc55b
 		228: -1174420133, // b9ffc55b
 		227: -1174420133, // b9ffc55b
@@ -147066,6 +149275,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getUnreadMentions: {
+		230: -251140208, // f107e790
 		229: -251140208, // f107e790
 		228: -251140208, // f107e790
 		227: -251140208, // f107e790
@@ -147160,6 +149370,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readMentions: {
+		230: 921026381, // 36e5bf4d
 		229: 921026381, // 36e5bf4d
 		228: 921026381, // 36e5bf4d
 		227: 921026381, // 36e5bf4d
@@ -147254,6 +149465,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getRecentLocations: {
+		230: 1881817312, // 702a40e0
 		229: 1881817312, // 702a40e0
 		228: 1881817312, // 702a40e0
 		227: 1881817312, // 702a40e0
@@ -147348,6 +149560,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendMultiMedia: {
+		230: 469278068,   // 1bf89d74
 		229: 469278068,   // 1bf89d74
 		228: 469278068,   // 1bf89d74
 		227: 469278068,   // 1bf89d74
@@ -147442,6 +149655,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_uploadEncryptedFile: {
+		230: 1347929239, // 5057c497
 		229: 1347929239, // 5057c497
 		228: 1347929239, // 5057c497
 		227: 1347929239, // 5057c497
@@ -147536,6 +149750,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchStickerSets: {
+		230: 896555914, // 35705b8a
 		229: 896555914, // 35705b8a
 		228: 896555914, // 35705b8a
 		227: 896555914, // 35705b8a
@@ -147630,6 +149845,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSplitRanges: {
+		230: 486505992, // 1cff7e08
 		229: 486505992, // 1cff7e08
 		228: 486505992, // 1cff7e08
 		227: 486505992, // 1cff7e08
@@ -147724,6 +149940,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_markDialogUnread: {
+		230: -1940912392, // 8c5006f8
 		229: -1940912392, // 8c5006f8
 		228: -1940912392, // 8c5006f8
 		227: -1940912392, // 8c5006f8
@@ -147818,6 +150035,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDialogUnreadMarks: {
+		230: 555754018, // 21202222
 		229: 555754018, // 21202222
 		228: 555754018, // 21202222
 		227: 555754018, // 21202222
@@ -147912,6 +150130,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_clearAllDrafts: {
+		230: 2119757468, // 7e58ee9c
 		229: 2119757468, // 7e58ee9c
 		228: 2119757468, // 7e58ee9c
 		227: 2119757468, // 7e58ee9c
@@ -148006,6 +150225,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_updatePinnedMessage: {
+		230: -760547348, // d2aaf7ec
 		229: -760547348, // d2aaf7ec
 		228: -760547348, // d2aaf7ec
 		227: -760547348, // d2aaf7ec
@@ -148100,6 +150320,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendVote: {
+		230: 283795844, // 10ea6184
 		229: 283795844, // 10ea6184
 		228: 283795844, // 10ea6184
 		227: 283795844, // 10ea6184
@@ -148194,6 +150415,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPollResults: {
+		230: -308026565, // eda3e33b
 		229: -308026565, // eda3e33b
 		228: -308026565, // eda3e33b
 		227: -308026565, // eda3e33b
@@ -148288,6 +150510,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getOnlines: {
+		230: 1848369232, // 6e2be050
 		229: 1848369232, // 6e2be050
 		228: 1848369232, // 6e2be050
 		227: 1848369232, // 6e2be050
@@ -148382,6 +150605,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editChatAbout: {
+		230: -554301545, // def60797
 		229: -554301545, // def60797
 		228: -554301545, // def60797
 		227: -554301545, // def60797
@@ -148476,6 +150700,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editChatDefaultBannedRights: {
+		230: -1517917375, // a5866b41
 		229: -1517917375, // a5866b41
 		228: -1517917375, // a5866b41
 		227: -1517917375, // a5866b41
@@ -148570,6 +150795,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiKeywords: {
+		230: 899735650, // 35a0e062
 		229: 899735650, // 35a0e062
 		228: 899735650, // 35a0e062
 		227: 899735650, // 35a0e062
@@ -148664,6 +150890,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiKeywordsDifference: {
+		230: 352892591, // 1508b6af
 		229: 352892591, // 1508b6af
 		228: 352892591, // 1508b6af
 		227: 352892591, // 1508b6af
@@ -148758,6 +150985,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiKeywordsLanguages: {
+		230: 1318675378, // 4e9963b2
 		229: 1318675378, // 4e9963b2
 		228: 1318675378, // 4e9963b2
 		227: 1318675378, // 4e9963b2
@@ -148852,6 +151080,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiURL: {
+		230: -709817306, // d5b10c26
 		229: -709817306, // d5b10c26
 		228: -709817306, // d5b10c26
 		227: -709817306, // d5b10c26
@@ -148946,6 +151175,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSearchCounters: {
+		230: 465367808,  // 1bbcf300
 		229: 465367808,  // 1bbcf300
 		228: 465367808,  // 1bbcf300
 		227: 465367808,  // 1bbcf300
@@ -149040,6 +151270,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_requestUrlAuth: {
+		230: -1991456356, // 894cc99c
 		229: -1991456356, // 894cc99c
 		228: -1991456356, // 894cc99c
 		227: -1991456356, // 894cc99c
@@ -149134,6 +151365,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_acceptUrlAuth: {
+		230: 1738797278,  // 67a3f0de
 		229: 1738797278,  // 67a3f0de
 		228: 1738797278,  // 67a3f0de
 		227: 1738797278,  // 67a3f0de
@@ -149228,6 +151460,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_hidePeerSettingsBar: {
+		230: 1336717624, // 4facb138
 		229: 1336717624, // 4facb138
 		228: 1336717624, // 4facb138
 		227: 1336717624, // 4facb138
@@ -149322,6 +151555,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getScheduledHistory: {
+		230: -183077365, // f516760b
 		229: -183077365, // f516760b
 		228: -183077365, // f516760b
 		227: -183077365, // f516760b
@@ -149416,6 +151650,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getScheduledMessages: {
+		230: -1111817116, // bdbb0464
 		229: -1111817116, // bdbb0464
 		228: -1111817116, // bdbb0464
 		227: -1111817116, // bdbb0464
@@ -149510,6 +151745,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendScheduledMessages: {
+		230: -1120369398, // bd38850a
 		229: -1120369398, // bd38850a
 		228: -1120369398, // bd38850a
 		227: -1120369398, // bd38850a
@@ -149604,6 +151840,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteScheduledMessages: {
+		230: 1504586518, // 59ae2b16
 		229: 1504586518, // 59ae2b16
 		228: 1504586518, // 59ae2b16
 		227: 1504586518, // 59ae2b16
@@ -149698,6 +151935,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPollVotes: {
+		230: -1200736242, // b86e380e
 		229: -1200736242, // b86e380e
 		228: -1200736242, // b86e380e
 		227: -1200736242, // b86e380e
@@ -149792,6 +152030,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleStickerSets: {
+		230: -1257951254, // b5052fea
 		229: -1257951254, // b5052fea
 		228: -1257951254, // b5052fea
 		227: -1257951254, // b5052fea
@@ -149886,6 +152125,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDialogFiltersEFD48C89: {
+		230: -271283063, // efd48c89
 		229: -271283063, // efd48c89
 		228: -271283063, // efd48c89
 		227: -271283063, // efd48c89
@@ -149943,6 +152183,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSuggestedDialogFilters: {
+		230: -1566780372, // a29cd42c
 		229: -1566780372, // a29cd42c
 		228: -1566780372, // a29cd42c
 		227: -1566780372, // a29cd42c
@@ -150037,6 +152278,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_updateDialogFilter: {
+		230: 450142282, // 1ad4a04a
 		229: 450142282, // 1ad4a04a
 		228: 450142282, // 1ad4a04a
 		227: 450142282, // 1ad4a04a
@@ -150131,6 +152373,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_updateDialogFiltersOrder: {
+		230: -983318044, // c563c1e4
 		229: -983318044, // c563c1e4
 		228: -983318044, // c563c1e4
 		227: -983318044, // c563c1e4
@@ -150225,6 +152468,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getOldFeaturedStickers: {
+		230: 2127598753, // 7ed094a1
 		229: 2127598753, // 7ed094a1
 		228: 2127598753, // 7ed094a1
 		227: 2127598753, // 7ed094a1
@@ -150319,6 +152563,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getReplies: {
+		230: 584962828, // 22ddd30c
 		229: 584962828, // 22ddd30c
 		228: 584962828, // 22ddd30c
 		227: 584962828, // 22ddd30c
@@ -150413,6 +152658,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDiscussionMessage: {
+		230: 1147761405, // 446972fd
 		229: 1147761405, // 446972fd
 		228: 1147761405, // 446972fd
 		227: 1147761405, // 446972fd
@@ -150507,6 +152753,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readDiscussion: {
+		230: -147740172, // f731a9f4
 		229: -147740172, // f731a9f4
 		228: -147740172, // f731a9f4
 		227: -147740172, // f731a9f4
@@ -150601,6 +152848,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_unpinAllMessages: {
+		230: 103667527,  // 62dd747
 		229: 103667527,  // 62dd747
 		228: 103667527,  // 62dd747
 		227: 103667527,  // 62dd747
@@ -150695,6 +152943,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteChat: {
+		230: 1540419152, // 5bd0ee50
 		229: 1540419152, // 5bd0ee50
 		228: 1540419152, // 5bd0ee50
 		227: 1540419152, // 5bd0ee50
@@ -150789,6 +153038,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deletePhoneCallHistory: {
+		230: -104078327, // f9cbe409
 		229: -104078327, // f9cbe409
 		228: -104078327, // f9cbe409
 		227: -104078327, // f9cbe409
@@ -150883,6 +153133,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_checkHistoryImport: {
+		230: 1140726259, // 43fe19f3
 		229: 1140726259, // 43fe19f3
 		228: 1140726259, // 43fe19f3
 		227: 1140726259, // 43fe19f3
@@ -150977,6 +153228,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_initHistoryImport: {
+		230: 873008187, // 34090c3b
 		229: 873008187, // 34090c3b
 		228: 873008187, // 34090c3b
 		227: 873008187, // 34090c3b
@@ -151071,6 +153323,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_uploadImportedMedia: {
+		230: 713433234, // 2a862092
 		229: 713433234, // 2a862092
 		228: 713433234, // 2a862092
 		227: 713433234, // 2a862092
@@ -151165,6 +153418,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_startHistoryImport: {
+		230: -1271008444, // b43df344
 		229: -1271008444, // b43df344
 		228: -1271008444, // b43df344
 		227: -1271008444, // b43df344
@@ -151259,6 +153513,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getExportedChatInvites: {
+		230: -1565154314, // a2b5a3f6
 		229: -1565154314, // a2b5a3f6
 		228: -1565154314, // a2b5a3f6
 		227: -1565154314, // a2b5a3f6
@@ -151353,6 +153608,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getExportedChatInvite: {
+		230: 1937010524, // 73746f5c
 		229: 1937010524, // 73746f5c
 		228: 1937010524, // 73746f5c
 		227: 1937010524, // 73746f5c
@@ -151447,6 +153703,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editExportedChatInvite: {
+		230: -1110823051, // bdca2f75
 		229: -1110823051, // bdca2f75
 		228: -1110823051, // bdca2f75
 		227: -1110823051, // bdca2f75
@@ -151541,6 +153798,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteRevokedExportedChatInvites: {
+		230: 1452833749, // 56987bd5
 		229: 1452833749, // 56987bd5
 		228: 1452833749, // 56987bd5
 		227: 1452833749, // 56987bd5
@@ -151635,6 +153893,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteExportedChatInvite: {
+		230: -731601877, // d464a42b
 		229: -731601877, // d464a42b
 		228: -731601877, // d464a42b
 		227: -731601877, // d464a42b
@@ -151729,6 +153988,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAdminsWithInvites: {
+		230: 958457583, // 3920e6ef
 		229: 958457583, // 3920e6ef
 		228: 958457583, // 3920e6ef
 		227: 958457583, // 3920e6ef
@@ -151823,6 +154083,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getChatInviteImporters: {
+		230: -553329330, // df04dd4e
 		229: -553329330, // df04dd4e
 		228: -553329330, // df04dd4e
 		227: -553329330, // df04dd4e
@@ -151917,6 +154178,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setHistoryTTL: {
+		230: -1207017500, // b80e5fe4
 		229: -1207017500, // b80e5fe4
 		228: -1207017500, // b80e5fe4
 		227: -1207017500, // b80e5fe4
@@ -152011,6 +154273,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_checkHistoryImportPeer: {
+		230: 1573261059, // 5dc60f03
 		229: 1573261059, // 5dc60f03
 		228: 1573261059, // 5dc60f03
 		227: 1573261059, // 5dc60f03
@@ -152105,6 +154368,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setChatTheme: {
+		230: 135398089,  // 81202c9
 		229: 135398089,  // 81202c9
 		228: 135398089,  // 81202c9
 		227: 135398089,  // 81202c9
@@ -152199,6 +154463,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMessageReadParticipants31C1C44F: {
+		230: 834782287, // 31c1c44f
 		229: 834782287, // 31c1c44f
 		228: 834782287, // 31c1c44f
 		227: 834782287, // 31c1c44f
@@ -152278,6 +154543,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSearchResultsCalendar: {
+		230: 1789130429, // 6aa3f6bd
 		229: 1789130429, // 6aa3f6bd
 		228: 1789130429, // 6aa3f6bd
 		227: 1789130429, // 6aa3f6bd
@@ -152372,6 +154638,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSearchResultsPositions: {
+		230: -1669386480, // 9c7f2f10
 		229: -1669386480, // 9c7f2f10
 		228: -1669386480, // 9c7f2f10
 		227: -1669386480, // 9c7f2f10
@@ -152466,6 +154733,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_hideChatJoinRequest: {
+		230: 2145904661, // 7fe7e815
 		229: 2145904661, // 7fe7e815
 		228: 2145904661, // 7fe7e815
 		227: 2145904661, // 7fe7e815
@@ -152560,6 +154828,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_hideAllChatJoinRequests: {
+		230: -528091926, // e085f4ea
 		229: -528091926, // e085f4ea
 		228: -528091926, // e085f4ea
 		227: -528091926, // e085f4ea
@@ -152654,6 +154923,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleNoForwards: {
+		230: -1308091851, // b2081a35
 		229: -1308091851, // b2081a35
 		228: -1308091851, // b2081a35
 		227: -1308091851, // b2081a35
@@ -152748,6 +155018,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_saveDefaultSendAs: {
+		230: -855777386, // ccfddf96
 		229: -855777386, // ccfddf96
 		228: -855777386, // ccfddf96
 		227: -855777386, // ccfddf96
@@ -152842,6 +155113,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendReaction: {
+		230: -754091820, // d30d78d4
 		229: -754091820, // d30d78d4
 		228: -754091820, // d30d78d4
 		227: -754091820, // d30d78d4
@@ -152936,6 +155208,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMessagesReactions: {
+		230: -1950707482, // 8bba90e6
 		229: -1950707482, // 8bba90e6
 		228: -1950707482, // 8bba90e6
 		227: -1950707482, // 8bba90e6
@@ -153030,6 +155303,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMessageReactionsList: {
+		230: 1176190792, // 461b3f48
 		229: 1176190792, // 461b3f48
 		228: 1176190792, // 461b3f48
 		227: 1176190792, // 461b3f48
@@ -153124,6 +155398,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setChatAvailableReactions: {
+		230: -2041895551, // 864b2581
 		229: -2041895551, // 864b2581
 		228: -2041895551, // 864b2581
 		227: -2041895551, // 864b2581
@@ -153218,6 +155493,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAvailableReactions: {
+		230: 417243308, // 18dea0ac
 		229: 417243308, // 18dea0ac
 		228: 417243308, // 18dea0ac
 		227: 417243308, // 18dea0ac
@@ -153312,6 +155588,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setDefaultReaction: {
+		230: 1330094102, // 4f47a016
 		229: 1330094102, // 4f47a016
 		228: 1330094102, // 4f47a016
 		227: 1330094102, // 4f47a016
@@ -153406,6 +155683,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_translateText: {
+		230: -1511079099, // a5eec345
 		229: -1511079099, // a5eec345
 		228: -1511079099, // a5eec345
 		227: -1511079099, // a5eec345
@@ -153500,6 +155778,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getUnreadReactions: {
+		230: -1115713364, // bd7f90ac
 		229: -1115713364, // bd7f90ac
 		228: -1115713364, // bd7f90ac
 		227: -1115713364, // bd7f90ac
@@ -153594,6 +155873,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readReactions: {
+		230: -1631301741, // 9ec44f93
 		229: -1631301741, // 9ec44f93
 		228: -1631301741, // 9ec44f93
 		227: -1631301741, // 9ec44f93
@@ -153688,6 +155968,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchSentMedia: {
+		230: 276705696, // 107e31a0
 		229: 276705696, // 107e31a0
 		228: 276705696, // 107e31a0
 		227: 276705696, // 107e31a0
@@ -153782,6 +156063,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAttachMenuBots: {
+		230: 385663691, // 16fcc2cb
 		229: 385663691, // 16fcc2cb
 		228: 385663691, // 16fcc2cb
 		227: 385663691, // 16fcc2cb
@@ -153875,6 +156157,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAttachMenuBot: {
+		230: 1998676370, // 77216192
 		229: 1998676370, // 77216192
 		228: 1998676370, // 77216192
 		227: 1998676370, // 77216192
@@ -153968,6 +156251,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleBotInAttachMenu: {
+		230: 1777704297, // 69f59d69
 		229: 1777704297, // 69f59d69
 		228: 1777704297, // 69f59d69
 		227: 1777704297, // 69f59d69
@@ -154061,6 +156345,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_requestWebView: {
+		230: 647873217,   // 269dc2c1
 		229: 647873217,   // 269dc2c1
 		228: 647873217,   // 269dc2c1
 		227: 647873217,   // 269dc2c1
@@ -154154,6 +156439,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_prolongWebView: {
+		230: -1328014717, // b0d81a83
 		229: -1328014717, // b0d81a83
 		228: -1328014717, // b0d81a83
 		227: -1328014717, // b0d81a83
@@ -154247,6 +156533,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_requestSimpleWebView413A3E73: {
+		230: 1094336115, // 413a3e73
 		229: 1094336115, // 413a3e73
 		228: 1094336115, // 413a3e73
 		227: 1094336115, // 413a3e73
@@ -154297,6 +156584,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendWebViewResultMessage: {
+		230: 172168437, // a4314f5
 		229: 172168437, // a4314f5
 		228: 172168437, // a4314f5
 		227: 172168437, // a4314f5
@@ -154390,6 +156678,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendWebViewData: {
+		230: -603831608, // dc0242c8
 		229: -603831608, // dc0242c8
 		228: -603831608, // dc0242c8
 		227: -603831608, // dc0242c8
@@ -154483,6 +156772,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_transcribeAudio: {
+		230: 647928393, // 269e9a49
 		229: 647928393, // 269e9a49
 		228: 647928393, // 269e9a49
 		227: 647928393, // 269e9a49
@@ -154573,6 +156863,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_rateTranscribedAudio: {
+		230: 2132608815, // 7f1d072f
 		229: 2132608815, // 7f1d072f
 		228: 2132608815, // 7f1d072f
 		227: 2132608815, // 7f1d072f
@@ -154663,6 +156954,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getCustomEmojiDocuments: {
+		230: -643100844, // d9ab0f54
 		229: -643100844, // d9ab0f54
 		228: -643100844, // d9ab0f54
 		227: -643100844, // d9ab0f54
@@ -154752,6 +157044,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiStickers: {
+		230: -67329649, // fbfca18f
 		229: -67329649, // fbfca18f
 		228: -67329649, // fbfca18f
 		227: -67329649, // fbfca18f
@@ -154841,6 +157134,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getFeaturedEmojiStickers: {
+		230: 248473398, // ecf6736
 		229: 248473398, // ecf6736
 		228: 248473398, // ecf6736
 		227: 248473398, // ecf6736
@@ -154930,6 +157224,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportReaction: {
+		230: 1063567478, // 3f64c076
 		229: 1063567478, // 3f64c076
 		228: 1063567478, // 3f64c076
 		227: 1063567478, // 3f64c076
@@ -155018,6 +157313,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getTopReactions: {
+		230: -1149164102, // bb8125ba
 		229: -1149164102, // bb8125ba
 		228: -1149164102, // bb8125ba
 		227: -1149164102, // bb8125ba
@@ -155106,6 +157402,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getRecentReactions: {
+		230: 960896434, // 39461db2
 		229: 960896434, // 39461db2
 		228: 960896434, // 39461db2
 		227: 960896434, // 39461db2
@@ -155194,6 +157491,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_clearRecentReactions: {
+		230: -1644236876, // 9dfeefb4
 		229: -1644236876, // 9dfeefb4
 		228: -1644236876, // 9dfeefb4
 		227: -1644236876, // 9dfeefb4
@@ -155282,6 +157580,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getExtendedMedia: {
+		230: -2064119788, // 84f80814
 		229: -2064119788, // 84f80814
 		228: -2064119788, // 84f80814
 		227: -2064119788, // 84f80814
@@ -155369,6 +157668,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setDefaultHistoryTTL: {
+		230: -1632299963, // 9eb51445
 		229: -1632299963, // 9eb51445
 		228: -1632299963, // 9eb51445
 		227: -1632299963, // 9eb51445
@@ -155452,6 +157752,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDefaultHistoryTTL: {
+		230: 1703637384, // 658b7188
 		229: 1703637384, // 658b7188
 		228: 1703637384, // 658b7188
 		227: 1703637384, // 658b7188
@@ -155535,6 +157836,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendBotRequestedPeer: {
+		230: 1818030759,  // 6c5cf2a7
 		229: 1818030759,  // 6c5cf2a7
 		228: 1818030759,  // 6c5cf2a7
 		227: 1818030759,  // 6c5cf2a7
@@ -155616,6 +157918,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiGroups: {
+		230: 1955122779, // 7488ce5b
 		229: 1955122779, // 7488ce5b
 		228: 1955122779, // 7488ce5b
 		227: 1955122779, // 7488ce5b
@@ -155697,6 +158000,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiStatusGroups: {
+		230: 785209037, // 2ecd56cd
 		229: 785209037, // 2ecd56cd
 		228: 785209037, // 2ecd56cd
 		227: 785209037, // 2ecd56cd
@@ -155778,6 +158082,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiProfilePhotoGroups: {
+		230: 564480243, // 21a548f3
 		229: 564480243, // 21a548f3
 		228: 564480243, // 21a548f3
 		227: 564480243, // 21a548f3
@@ -155859,6 +158164,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchCustomEmoji: {
+		230: 739360983, // 2c11c0d7
 		229: 739360983, // 2c11c0d7
 		228: 739360983, // 2c11c0d7
 		227: 739360983, // 2c11c0d7
@@ -155940,6 +158246,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_togglePeerTranslations: {
+		230: -461589127, // e47cb579
 		229: -461589127, // e47cb579
 		228: -461589127, // e47cb579
 		227: -461589127, // e47cb579
@@ -156021,6 +158328,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getBotApp: {
+		230: 889046467, // 34fdc5c3
 		229: 889046467, // 34fdc5c3
 		228: 889046467, // 34fdc5c3
 		227: 889046467, // 34fdc5c3
@@ -156100,6 +158408,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_requestAppWebView53618BCE: {
+		230: 1398901710, // 53618bce
 		229: 1398901710, // 53618bce
 		228: 1398901710, // 53618bce
 		227: 1398901710, // 53618bce
@@ -156150,6 +158459,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setChatWallPaper: {
+		230: -1879389471, // 8ffacae1
 		229: -1879389471, // 8ffacae1
 		228: -1879389471, // 8ffacae1
 		227: -1879389471, // 8ffacae1
@@ -156225,6 +158535,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchEmojiStickerSets: {
+		230: -1833678516, // 92b4494c
 		229: -1833678516, // 92b4494c
 		228: -1833678516, // 92b4494c
 		227: -1833678516, // 92b4494c
@@ -156291,6 +158602,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSavedDialogs: {
+		230: 512883865,  // 1e91fc99
 		229: 512883865,  // 1e91fc99
 		228: 512883865,  // 1e91fc99
 		227: 512883865,  // 1e91fc99
@@ -156354,6 +158666,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSavedHistory: {
+		230: -1718964215, // 998ab009
 		229: -1718964215, // 998ab009
 		228: -1718964215, // 998ab009
 		227: -1718964215, // 998ab009
@@ -156417,6 +158730,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteSavedHistory: {
+		230: 1304758367, // 4dc5085f
 		229: 1304758367, // 4dc5085f
 		228: 1304758367, // 4dc5085f
 		227: 1304758367, // 4dc5085f
@@ -156480,6 +158794,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPinnedSavedDialogs: {
+		230: -700607264, // d63d94e0
 		229: -700607264, // d63d94e0
 		228: -700607264, // d63d94e0
 		227: -700607264, // d63d94e0
@@ -156543,6 +158858,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleSavedDialogPin: {
+		230: -1400783906, // ac81bbde
 		229: -1400783906, // ac81bbde
 		228: -1400783906, // ac81bbde
 		227: -1400783906, // ac81bbde
@@ -156606,6 +158922,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reorderPinnedSavedDialogs: {
+		230: -1955502713, // 8b716587
 		229: -1955502713, // 8b716587
 		228: -1955502713, // 8b716587
 		227: -1955502713, // 8b716587
@@ -156669,6 +158986,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSavedReactionTags: {
+		230: 909631579,  // 3637e05b
 		229: 909631579,  // 3637e05b
 		228: 909631579,  // 3637e05b
 		227: 909631579,  // 3637e05b
@@ -156731,6 +159049,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_updateSavedReactionTag: {
+		230: 1613331948, // 60297dec
 		229: 1613331948, // 60297dec
 		228: 1613331948, // 60297dec
 		227: 1613331948, // 60297dec
@@ -156793,6 +159112,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getDefaultTagReactions: {
+		230: -1107741656, // bdf93428
 		229: -1107741656, // bdf93428
 		228: -1107741656, // bdf93428
 		227: -1107741656, // bdf93428
@@ -156855,6 +159175,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getOutboxReadDate: {
+		230: -1941176739, // 8c4bfe5d
 		229: -1941176739, // 8c4bfe5d
 		228: -1941176739, // 8c4bfe5d
 		227: -1941176739, // 8c4bfe5d
@@ -156916,6 +159237,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getQuickReplies: {
+		230: -729550168, // d483f2a8
 		229: -729550168, // d483f2a8
 		228: -729550168, // d483f2a8
 		227: -729550168, // d483f2a8
@@ -156973,6 +159295,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reorderQuickReplies: {
+		230: 1613961479, // 60331907
 		229: 1613961479, // 60331907
 		228: 1613961479, // 60331907
 		227: 1613961479, // 60331907
@@ -157030,6 +159353,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_checkQuickReplyShortcut: {
+		230: -237962285, // f1d0fbd3
 		229: -237962285, // f1d0fbd3
 		228: -237962285, // f1d0fbd3
 		227: -237962285, // f1d0fbd3
@@ -157087,6 +159411,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editQuickReplyShortcut: {
+		230: 1543519471, // 5c003cef
 		229: 1543519471, // 5c003cef
 		228: 1543519471, // 5c003cef
 		227: 1543519471, // 5c003cef
@@ -157144,6 +159469,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteQuickReplyShortcut: {
+		230: 1019234112, // 3cc04740
 		229: 1019234112, // 3cc04740
 		228: 1019234112, // 3cc04740
 		227: 1019234112, // 3cc04740
@@ -157201,6 +159527,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getQuickReplyMessages: {
+		230: -1801153085, // 94a495c3
 		229: -1801153085, // 94a495c3
 		228: -1801153085, // 94a495c3
 		227: -1801153085, // 94a495c3
@@ -157258,6 +159585,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendQuickReplyMessages: {
+		230: 1819610593, // 6c750de1
 		229: 1819610593, // 6c750de1
 		228: 1819610593, // 6c750de1
 		227: 1819610593, // 6c750de1
@@ -157315,6 +159643,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteQuickReplyMessages: {
+		230: -519706352, // e105e910
 		229: -519706352, // e105e910
 		228: -519706352, // e105e910
 		227: -519706352, // e105e910
@@ -157372,6 +159701,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleDialogFilterTags: {
+		230: -47326647, // fd2dda49
 		229: -47326647, // fd2dda49
 		228: -47326647, // fd2dda49
 		227: -47326647, // fd2dda49
@@ -157429,6 +159759,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getMyStickers: {
+		230: -793386500, // d0b5e1fc
 		229: -793386500, // d0b5e1fc
 		228: -793386500, // d0b5e1fc
 		227: -793386500, // d0b5e1fc
@@ -157485,6 +159816,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiStickerGroups: {
+		230: 500711669, // 1dd840f5
 		229: 500711669, // 1dd840f5
 		228: 500711669, // 1dd840f5
 		227: 500711669, // 1dd840f5
@@ -157539,6 +159871,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getAvailableEffects: {
+		230: -559805895, // dea20a39
 		229: -559805895, // dea20a39
 		228: -559805895, // dea20a39
 		227: -559805895, // dea20a39
@@ -157592,6 +159925,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editFactCheck: {
+		230: 92925557, // 589ee75
 		229: 92925557, // 589ee75
 		228: 92925557, // 589ee75
 		227: 92925557, // 589ee75
@@ -157644,6 +159978,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteFactCheck: {
+		230: -774204404, // d1da940c
 		229: -774204404, // d1da940c
 		228: -774204404, // d1da940c
 		227: -774204404, // d1da940c
@@ -157696,6 +160031,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getFactCheck: {
+		230: -1177696786, // b9cdc5ee
 		229: -1177696786, // b9cdc5ee
 		228: -1177696786, // b9cdc5ee
 		227: -1177696786, // b9cdc5ee
@@ -157748,6 +160084,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_requestMainWebView: {
+		230: -908059013, // c9e01e7b
 		229: -908059013, // c9e01e7b
 		228: -908059013, // c9e01e7b
 		227: -908059013, // c9e01e7b
@@ -157796,6 +160133,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_sendPaidReaction: {
+		230: 1488702288,  // 58bbcb50
 		229: 1488702288,  // 58bbcb50
 		228: 1488702288,  // 58bbcb50
 		227: 1488702288,  // 58bbcb50
@@ -157843,6 +160181,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_togglePaidReactionPrivacy: {
+		230: 1129874869,  // 435885b5
 		229: 1129874869,  // 435885b5
 		228: 1129874869,  // 435885b5
 		227: 1129874869,  // 435885b5
@@ -157890,6 +160229,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPaidReactionPrivacy: {
+		230: 1193563562, // 472455aa
 		229: 1193563562, // 472455aa
 		228: 1193563562, // 472455aa
 		227: 1193563562, // 472455aa
@@ -157936,6 +160276,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_viewSponsoredMessage: {
+		230: 647902787,  // 269e3643
 		229: 647902787,  // 269e3643
 		228: 647902787,  // 269e3643
 		227: 647902787,  // 269e3643
@@ -157977,6 +160318,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_clickSponsoredMessage: {
+		230: -2110454402, // 8235057e
 		229: -2110454402, // 8235057e
 		228: -2110454402, // 8235057e
 		227: -2110454402, // 8235057e
@@ -158018,6 +160360,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportSponsoredMessage: {
+		230: 315355332, // 12cbf0c4
 		229: 315355332, // 12cbf0c4
 		228: 315355332, // 12cbf0c4
 		227: 315355332, // 12cbf0c4
@@ -158059,6 +160402,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSponsoredMessages: {
+		230: 1030547536,  // 3d6ce850
 		229: 1030547536,  // 3d6ce850
 		228: 1030547536,  // 3d6ce850
 		227: 1030547536,  // 3d6ce850
@@ -158100,6 +160444,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_savePreparedInlineMessage: {
+		230: -232816849, // f21f7f2f
 		229: -232816849, // f21f7f2f
 		228: -232816849, // f21f7f2f
 		227: -232816849, // f21f7f2f
@@ -158140,6 +160485,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPreparedInlineMessage: {
+		230: -2055291464, // 857ebdb8
 		229: -2055291464, // 857ebdb8
 		228: -2055291464, // 857ebdb8
 		227: -2055291464, // 857ebdb8
@@ -158180,6 +160526,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_searchStickers: {
+		230: 699516522, // 29b1c66a
 		229: 699516522, // 29b1c66a
 		228: 699516522, // 29b1c66a
 		227: 699516522, // 29b1c66a
@@ -158218,6 +160565,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportMessagesDelivery: {
+		230: 1517122453, // 5a6d7395
 		229: 1517122453, // 5a6d7395
 		228: 1517122453, // 5a6d7395
 		227: 1517122453, // 5a6d7395
@@ -158255,6 +160603,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getSavedDialogsByID: {
+		230: 1869585558, // 6f6f9c96
 		229: 1869585558, // 6f6f9c96
 		228: 1869585558, // 6f6f9c96
 		227: 1869585558, // 6f6f9c96
@@ -158284,6 +160633,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readSavedHistory: {
+		230: -1169540261, // ba4a3b5b
 		229: -1169540261, // ba4a3b5b
 		228: -1169540261, // ba4a3b5b
 		227: -1169540261, // ba4a3b5b
@@ -158313,6 +160663,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleTodoCompleted: {
+		230: -740282076, // d3e03124
 		229: -740282076, // d3e03124
 		228: -740282076, // d3e03124
 		227: -740282076, // d3e03124
@@ -158341,6 +160692,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_appendTodoList: {
+		230: 564531287, // 21a61057
 		229: 564531287, // 21a61057
 		228: 564531287, // 21a61057
 		227: 564531287, // 21a61057
@@ -158369,6 +160721,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_toggleSuggestedPostApproval: {
+		230: -2130229924, // 8107455c
 		229: -2130229924, // 8107455c
 		228: -2130229924, // 8107455c
 		227: -2130229924, // 8107455c
@@ -158396,6 +160749,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getForumTopics: {
+		230: 1000635391, // 3ba47bff
 		229: 1000635391, // 3ba47bff
 		228: 1000635391, // 3ba47bff
 		227: 1000635391, // 3ba47bff
@@ -158413,6 +160767,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getForumTopicsByID: {
+		230: -1358280184, // af0a4a08
 		229: -1358280184, // af0a4a08
 		228: -1358280184, // af0a4a08
 		227: -1358280184, // af0a4a08
@@ -158430,6 +160785,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editForumTopic: {
+		230: -825487052, // cecc1134
 		229: -825487052, // cecc1134
 		228: -825487052, // cecc1134
 		227: -825487052, // cecc1134
@@ -158447,6 +160803,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_updatePinnedForumTopic: {
+		230: 392032849, // 175df251
 		229: 392032849, // 175df251
 		228: 392032849, // 175df251
 		227: 392032849, // 175df251
@@ -158464,6 +160821,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reorderPinnedForumTopics: {
+		230: 242762224, // e7841f0
 		229: 242762224, // e7841f0
 		228: 242762224, // e7841f0
 		227: 242762224, // e7841f0
@@ -158481,6 +160839,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_createForumTopic: {
+		230: 798540757, // 2f98c3d5
 		229: 798540757, // 2f98c3d5
 		228: 798540757, // 2f98c3d5
 		227: 798540757, // 2f98c3d5
@@ -158498,6 +160857,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteTopicHistory: {
+		230: -763269360, // d2816f10
 		229: -763269360, // d2816f10
 		228: -763269360, // d2816f10
 		227: -763269360, // d2816f10
@@ -158515,6 +160875,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getEmojiGameInfo: {
+		230: -75592537, // fb7e8ca7
 		229: -75592537, // fb7e8ca7
 		228: -75592537, // fb7e8ca7
 		227: -75592537, // fb7e8ca7
@@ -158527,6 +160888,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_summarizeText: {
+		230: -1413754042, // abbbd346
 		229: -1413754042, // abbbd346
 		228: -1413754042, // abbbd346
 		227: -1413754042, // abbbd346
@@ -158539,6 +160901,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editChatCreator: {
+		230: -146556841, // f743b857
 		229: -146556841, // f743b857
 		228: -146556841, // f743b857
 		227: -146556841, // f743b857
@@ -158549,6 +160912,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getFutureChatCreatorAfterLeave: {
+		230: 998051494, // 3b7d0ea6
 		229: 998051494, // 3b7d0ea6
 		228: 998051494, // 3b7d0ea6
 		227: 998051494, // 3b7d0ea6
@@ -158559,6 +160923,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_editChatParticipantRank: {
+		230: -1609616720, // a00f32b0
 		229: -1609616720, // a00f32b0
 		228: -1609616720, // a00f32b0
 		227: -1609616720, // a00f32b0
@@ -158569,6 +160934,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_declineUrlAuth: {
+		230: 893610940, // 35436bbc
 		229: 893610940, // 35436bbc
 		228: 893610940, // 35436bbc
 		227: 893610940, // 35436bbc
@@ -158579,6 +160945,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_checkUrlAuthMatchCode: {
+		230: -911967477, // c9a47b0b
 		229: -911967477, // c9a47b0b
 		228: -911967477, // c9a47b0b
 		227: -911967477, // c9a47b0b
@@ -158589,6 +160956,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_composeMessageWithAI: {
+		230: -622017143, // daecc589
 		229: -622017143, // daecc589
 		228: -622017143, // daecc589
 		227: -622017143, // daecc589
@@ -158598,6 +160966,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportReadMetrics: {
+		230: 1080542694, // 4067c5e6
 		229: 1080542694, // 4067c5e6
 		228: 1080542694, // 4067c5e6
 		227: 1080542694, // 4067c5e6
@@ -158607,6 +160976,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_reportMusicListen: {
+		230: -574826471, // ddbcd819
 		229: -574826471, // ddbcd819
 		228: -574826471, // ddbcd819
 		227: -574826471, // ddbcd819
@@ -158616,6 +160986,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_addPollAnswer: {
+		230: 431770477, // 19bc4b6d
 		229: 431770477, // 19bc4b6d
 		228: 431770477, // 19bc4b6d
 		227: 431770477, // 19bc4b6d
@@ -158625,6 +160996,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deletePollAnswer: {
+		230: -1400568411, // ac8505a5
 		229: -1400568411, // ac8505a5
 		228: -1400568411, // ac8505a5
 		227: -1400568411, // ac8505a5
@@ -158634,6 +161006,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getUnreadPollVotes: {
+		230: 1126722802, // 43286cf2
 		229: 1126722802, // 43286cf2
 		228: 1126722802, // 43286cf2
 		227: 1126722802, // 43286cf2
@@ -158643,6 +161016,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_readPollVotes: {
+		230: 388019416, // 1720b4d8
 		229: 388019416, // 1720b4d8
 		228: 388019416, // 1720b4d8
 		227: 388019416, // 1720b4d8
@@ -158652,6 +161026,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_setBotGuestChatResult: {
+		230: -1192163613, // b8f106e3
 		229: -1192163613, // b8f106e3
 		228: -1192163613, // b8f106e3
 		227: -1192163613, // b8f106e3
@@ -158660,6 +161035,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteParticipantReactions: {
+		230: -1598550792, // a0b80cf8
 		229: -1598550792, // a0b80cf8
 		228: -1598550792, // a0b80cf8
 		227: -1598550792, // a0b80cf8
@@ -158668,6 +161044,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_deleteParticipantReaction: {
+		230: -474482644, // e3b7f82c
 		229: -474482644, // e3b7f82c
 		228: -474482644, // e3b7f82c
 		227: -474482644, // e3b7f82c
@@ -158676,6 +161053,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getPersonalChannelHistory: {
+		230: 1442515350, // 55fb0996
 		229: 1442515350, // 55fb0996
 		228: 1442515350, // 55fb0996
 		227: 1442515350, // 55fb0996
@@ -158684,27 +161062,32 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_messages_getRichMessage: {
+		230: 1343580623, // 501569cf
 		229: 1343580623, // 501569cf
 		228: 1343580623, // 501569cf
 		227: 1343580623, // 501569cf
 
 	},
 	Predicate_messages_translateRichMessage: {
+		230: 441720836, // 1a542004
 		229: 441720836, // 1a542004
 		228: 441720836, // 1a542004
 
 	},
 	Predicate_messages_composeRichMessageWithAI: {
+		230: -1921325393, // 8d7ae6af
 		229: -1921325393, // 8d7ae6af
 		228: -1921325393, // 8d7ae6af
 
 	},
 	Predicate_messages_requestChatJoinWebView: {
+		230: -1163991431, // ba9ee679
 		229: -1163991431, // ba9ee679
 		228: -1163991431, // ba9ee679
 
 	},
 	Predicate_updates_getState: {
+		230: -304838614, // edd4882a
 		229: -304838614, // edd4882a
 		228: -304838614, // edd4882a
 		227: -304838614, // edd4882a
@@ -158799,6 +161182,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_getDifference: {
+		230: 432207715, // 19c2f763
 		229: 432207715, // 19c2f763
 		228: 432207715, // 19c2f763
 		227: 432207715, // 19c2f763
@@ -158893,6 +161277,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_updates_getChannelDifference: {
+		230: 51854712, // 3173d78
 		229: 51854712, // 3173d78
 		228: 51854712, // 3173d78
 		227: 51854712, // 3173d78
@@ -158987,6 +161372,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_updateProfilePhoto: {
+		230: 166207545,  // 9e82039
 		229: 166207545,  // 9e82039
 		228: 166207545,  // 9e82039
 		227: 166207545,  // 9e82039
@@ -159081,6 +161467,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_uploadProfilePhoto: {
+		230: 59286453,    // 388a3b5
 		229: 59286453,    // 388a3b5
 		228: 59286453,    // 388a3b5
 		227: 59286453,    // 388a3b5
@@ -159175,6 +161562,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_deletePhotos: {
+		230: -2016444625, // 87cf7f2f
 		229: -2016444625, // 87cf7f2f
 		228: -2016444625, // 87cf7f2f
 		227: -2016444625, // 87cf7f2f
@@ -159269,6 +161657,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_getUserPhotos: {
+		230: -1848823128, // 91cd32a8
 		229: -1848823128, // 91cd32a8
 		228: -1848823128, // 91cd32a8
 		227: -1848823128, // 91cd32a8
@@ -159363,6 +161752,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_photos_uploadContactProfilePhoto: {
+		230: -515093903,  // e14c4a71
 		229: -515093903,  // e14c4a71
 		228: -515093903,  // e14c4a71
 		227: -515093903,  // e14c4a71
@@ -159445,6 +161835,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_saveFilePart: {
+		230: -1291540959, // b304a621
 		229: -1291540959, // b304a621
 		228: -1291540959, // b304a621
 		227: -1291540959, // b304a621
@@ -159539,6 +161930,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_getFile: {
+		230: -1101843010, // be5335be
 		229: -1101843010, // be5335be
 		228: -1101843010, // be5335be
 		227: -1101843010, // be5335be
@@ -159633,6 +162025,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_saveBigFilePart: {
+		230: -562337987, // de7b673d
 		229: -562337987, // de7b673d
 		228: -562337987, // de7b673d
 		227: -562337987, // de7b673d
@@ -159727,6 +162120,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_getWebFile: {
+		230: 619086221, // 24e6818d
 		229: 619086221, // 24e6818d
 		228: 619086221, // 24e6818d
 		227: 619086221, // 24e6818d
@@ -159821,6 +162215,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_getCdnFile: {
+		230: 962554330, // 395f69da
 		229: 962554330, // 395f69da
 		228: 962554330, // 395f69da
 		227: 962554330, // 395f69da
@@ -159915,6 +162310,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_reuploadCdnFile: {
+		230: -1691921240, // 9b2754a8
 		229: -1691921240, // 9b2754a8
 		228: -1691921240, // 9b2754a8
 		227: -1691921240, // 9b2754a8
@@ -160009,6 +162405,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_getCdnFileHashes: {
+		230: -1847836879, // 91dc3f31
 		229: -1847836879, // 91dc3f31
 		228: -1847836879, // 91dc3f31
 		227: -1847836879, // 91dc3f31
@@ -160103,6 +162500,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_upload_getFileHashes: {
+		230: -1856595926, // 9156982a
 		229: -1856595926, // 9156982a
 		228: -1856595926, // 9156982a
 		227: -1856595926, // 9156982a
@@ -160197,6 +162595,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getConfig: {
+		230: -990308245, // c4f9186b
 		229: -990308245, // c4f9186b
 		228: -990308245, // c4f9186b
 		227: -990308245, // c4f9186b
@@ -160291,6 +162690,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getNearestDc: {
+		230: 531836966, // 1fb33026
 		229: 531836966, // 1fb33026
 		228: 531836966, // 1fb33026
 		227: 531836966, // 1fb33026
@@ -160385,6 +162785,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getAppUpdate: {
+		230: 1378703997, // 522d5a7d
 		229: 1378703997, // 522d5a7d
 		228: 1378703997, // 522d5a7d
 		227: 1378703997, // 522d5a7d
@@ -160479,6 +162880,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getInviteText: {
+		230: 1295590211, // 4d392343
 		229: 1295590211, // 4d392343
 		228: 1295590211, // 4d392343
 		227: 1295590211, // 4d392343
@@ -160573,6 +162975,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getSupport: {
+		230: -1663104819, // 9cdf08cd
 		229: -1663104819, // 9cdf08cd
 		228: -1663104819, // 9cdf08cd
 		227: -1663104819, // 9cdf08cd
@@ -160667,6 +163070,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_setBotUpdatesStatus: {
+		230: -333262899, // ec22cfcd
 		229: -333262899, // ec22cfcd
 		228: -333262899, // ec22cfcd
 		227: -333262899, // ec22cfcd
@@ -160761,6 +163165,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getCdnConfig: {
+		230: 1375900482, // 52029342
 		229: 1375900482, // 52029342
 		228: 1375900482, // 52029342
 		227: 1375900482, // 52029342
@@ -160855,6 +163260,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getRecentMeUrls: {
+		230: 1036054804, // 3dc0f114
 		229: 1036054804, // 3dc0f114
 		228: 1036054804, // 3dc0f114
 		227: 1036054804, // 3dc0f114
@@ -160949,6 +163355,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getTermsOfServiceUpdate: {
+		230: 749019089, // 2ca51fd1
 		229: 749019089, // 2ca51fd1
 		228: 749019089, // 2ca51fd1
 		227: 749019089, // 2ca51fd1
@@ -161043,6 +163450,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_acceptTermsOfService: {
+		230: -294455398, // ee72f79a
 		229: -294455398, // ee72f79a
 		228: -294455398, // ee72f79a
 		227: -294455398, // ee72f79a
@@ -161137,6 +163545,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getDeepLinkInfo: {
+		230: 1072547679, // 3fedc75f
 		229: 1072547679, // 3fedc75f
 		228: 1072547679, // 3fedc75f
 		227: 1072547679, // 3fedc75f
@@ -161231,6 +163640,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getAppConfig61E3F854: {
+		230: 1642330196, // 61e3f854
 		229: 1642330196, // 61e3f854
 		228: 1642330196, // 61e3f854
 		227: 1642330196, // 61e3f854
@@ -161311,6 +163721,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_saveAppLog: {
+		230: 1862465352, // 6f02f748
 		229: 1862465352, // 6f02f748
 		228: 1862465352, // 6f02f748
 		227: 1862465352, // 6f02f748
@@ -161405,6 +163816,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getPassportConfig: {
+		230: -966677240, // c661ad08
 		229: -966677240, // c661ad08
 		228: -966677240, // c661ad08
 		227: -966677240, // c661ad08
@@ -161499,6 +163911,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getSupportName: {
+		230: -748624084, // d360e72c
 		229: -748624084, // d360e72c
 		228: -748624084, // d360e72c
 		227: -748624084, // d360e72c
@@ -161593,6 +164006,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getUserInfo: {
+		230: 59377875, // 38a08d3
 		229: 59377875, // 38a08d3
 		228: 59377875, // 38a08d3
 		227: 59377875, // 38a08d3
@@ -161687,6 +164101,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_editUserInfo: {
+		230: 1723407216, // 66b91b70
 		229: 1723407216, // 66b91b70
 		228: 1723407216, // 66b91b70
 		227: 1723407216, // 66b91b70
@@ -161781,6 +164196,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getPromoData: {
+		230: -1063816159, // c0977421
 		229: -1063816159, // c0977421
 		228: -1063816159, // c0977421
 		227: -1063816159, // c0977421
@@ -161875,6 +164291,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_hidePromoData: {
+		230: 505748629, // 1e251c95
 		229: 505748629, // 1e251c95
 		228: 505748629, // 1e251c95
 		227: 505748629, // 1e251c95
@@ -161969,6 +164386,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_dismissSuggestion: {
+		230: -183649631, // f50dbaa1
 		229: -183649631, // f50dbaa1
 		228: -183649631, // f50dbaa1
 		227: -183649631, // f50dbaa1
@@ -162063,6 +164481,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getCountriesList: {
+		230: 1935116200, // 735787a8
 		229: 1935116200, // 735787a8
 		228: 1935116200, // 735787a8
 		227: 1935116200, // 735787a8
@@ -162157,6 +164576,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getPremiumPromo: {
+		230: -1206152236, // b81b93d4
 		229: -1206152236, // b81b93d4
 		228: -1206152236, // b81b93d4
 		227: -1206152236, // b81b93d4
@@ -162247,6 +164667,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getPeerColors: {
+		230: -629083089, // da80f42f
 		229: -629083089, // da80f42f
 		228: -629083089, // da80f42f
 		227: -629083089, // da80f42f
@@ -162313,6 +164734,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getPeerProfileColors: {
+		230: -1412453891, // abcfa9fd
 		229: -1412453891, // abcfa9fd
 		228: -1412453891, // abcfa9fd
 		227: -1412453891, // abcfa9fd
@@ -162379,6 +164801,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_help_getTimezonesList: {
+		230: 1236468288, // 49b30240
 		229: 1236468288, // 49b30240
 		228: 1236468288, // 49b30240
 		227: 1236468288, // 49b30240
@@ -162436,6 +164859,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_readHistory: {
+		230: -871347913, // cc104937
 		229: -871347913, // cc104937
 		228: -871347913, // cc104937
 		227: -871347913, // cc104937
@@ -162530,6 +164954,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_deleteMessages: {
+		230: -2067661490, // 84c1fd4e
 		229: -2067661490, // 84c1fd4e
 		228: -2067661490, // 84c1fd4e
 		227: -2067661490, // 84c1fd4e
@@ -162624,6 +165049,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_reportSpam: {
+		230: -196443371, // f44a8315
 		229: -196443371, // f44a8315
 		228: -196443371, // f44a8315
 		227: -196443371, // f44a8315
@@ -162718,6 +165144,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getMessages: {
+		230: -1383294429, // ad8c9a23
 		229: -1383294429, // ad8c9a23
 		228: -1383294429, // ad8c9a23
 		227: -1383294429, // ad8c9a23
@@ -162813,6 +165240,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getParticipants: {
+		230: 2010044880, // 77ced9d0
 		229: 2010044880, // 77ced9d0
 		228: 2010044880, // 77ced9d0
 		227: 2010044880, // 77ced9d0
@@ -162907,6 +165335,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getParticipant: {
+		230: -1599378234, // a0ab6cc6
 		229: -1599378234, // a0ab6cc6
 		228: -1599378234, // a0ab6cc6
 		227: -1599378234, // a0ab6cc6
@@ -163001,6 +165430,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getChannels: {
+		230: 176122811, // a7f6bbb
 		229: 176122811, // a7f6bbb
 		228: 176122811, // a7f6bbb
 		227: 176122811, // a7f6bbb
@@ -163095,6 +165525,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getFullChannel: {
+		230: 141781513, // 8736a09
 		229: 141781513, // 8736a09
 		228: 141781513, // 8736a09
 		227: 141781513, // 8736a09
@@ -163189,6 +165620,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_createChannel: {
+		230: -1862244601, // 91006707
 		229: -1862244601, // 91006707
 		228: -1862244601, // 91006707
 		227: -1862244601, // 91006707
@@ -163283,6 +165715,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_editAdmin: {
+		230: -1701270168, // 9a98ad68
 		229: -1701270168, // 9a98ad68
 		228: -1701270168, // 9a98ad68
 		227: -1701270168, // 9a98ad68
@@ -163377,6 +165810,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_editTitle: {
+		230: 1450044624, // 566decd0
 		229: 1450044624, // 566decd0
 		228: 1450044624, // 566decd0
 		227: 1450044624, // 566decd0
@@ -163471,6 +165905,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_editPhoto: {
+		230: -248621111, // f12e57c9
 		229: -248621111, // f12e57c9
 		228: -248621111, // f12e57c9
 		227: -248621111, // f12e57c9
@@ -163565,6 +166000,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_checkUsername: {
+		230: 283557164, // 10e6bd2c
 		229: 283557164, // 10e6bd2c
 		228: 283557164, // 10e6bd2c
 		227: 283557164, // 10e6bd2c
@@ -163659,6 +166095,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_updateUsername: {
+		230: 890549214, // 3514b3de
 		229: 890549214, // 3514b3de
 		228: 890549214, // 3514b3de
 		227: 890549214, // 3514b3de
@@ -163753,6 +166190,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_joinChannel7F6A1E22: {
+		230: 2137660962, // 7f6a1e22
 		229: 2137660962, // 7f6a1e22
 		228: 2137660962, // 7f6a1e22
 		227: 2137660962, // 7f6a1e22
@@ -163760,6 +166198,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_leaveChannel: {
+		230: -130635115, // f836aa95
 		229: -130635115, // f836aa95
 		228: -130635115, // f836aa95
 		227: -130635115, // f836aa95
@@ -163854,6 +166293,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_inviteToChannelC9E33D54: {
+		230: -907854508, // c9e33d54
 		229: -907854508, // c9e33d54
 		228: -907854508, // c9e33d54
 		227: -907854508, // c9e33d54
@@ -163910,6 +166350,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_deleteChannel: {
+		230: -1072619549, // c0111fe3
 		229: -1072619549, // c0111fe3
 		228: -1072619549, // c0111fe3
 		227: -1072619549, // c0111fe3
@@ -164004,6 +166445,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_exportMessageLink: {
+		230: -432034325, // e63fadeb
 		229: -432034325, // e63fadeb
 		228: -432034325, // e63fadeb
 		227: -432034325, // e63fadeb
@@ -164098,6 +166540,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleSignatures: {
+		230: 1099781276, // 418d549c
 		229: 1099781276, // 418d549c
 		228: 1099781276, // 418d549c
 		227: 1099781276, // 418d549c
@@ -164192,6 +166635,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getAdminedPublicChannels: {
+		230: -122669393, // f8b036af
 		229: -122669393, // f8b036af
 		228: -122669393, // f8b036af
 		227: -122669393, // f8b036af
@@ -164286,6 +166730,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_editBanned: {
+		230: -1763259007, // 96e6cd81
 		229: -1763259007, // 96e6cd81
 		228: -1763259007, // 96e6cd81
 		227: -1763259007, // 96e6cd81
@@ -164380,6 +166825,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getAdminLog: {
+		230: 870184064, // 33ddf480
 		229: 870184064, // 33ddf480
 		228: 870184064, // 33ddf480
 		227: 870184064, // 33ddf480
@@ -164474,6 +166920,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_setStickers: {
+		230: -359881479, // ea8ca4f9
 		229: -359881479, // ea8ca4f9
 		228: -359881479, // ea8ca4f9
 		227: -359881479, // ea8ca4f9
@@ -164568,6 +167015,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_readMessageContents: {
+		230: -357180360, // eab5dc38
 		229: -357180360, // eab5dc38
 		228: -357180360, // eab5dc38
 		227: -357180360, // eab5dc38
@@ -164662,6 +167110,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_deleteHistory9BAA9647: {
+		230: -1683319225, // 9baa9647
 		229: -1683319225, // 9baa9647
 		228: -1683319225, // 9baa9647
 		227: -1683319225, // 9baa9647
@@ -164755,6 +167204,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_togglePreHistoryHidden: {
+		230: -356796084, // eabbb94c
 		229: -356796084, // eabbb94c
 		228: -356796084, // eabbb94c
 		227: -356796084, // eabbb94c
@@ -164849,6 +167299,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getLeftChannels: {
+		230: -2092831552, // 8341ecc0
 		229: -2092831552, // 8341ecc0
 		228: -2092831552, // 8341ecc0
 		227: -2092831552, // 8341ecc0
@@ -164943,6 +167394,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getGroupsForDiscussion: {
+		230: -170208392, // f5dad378
 		229: -170208392, // f5dad378
 		228: -170208392, // f5dad378
 		227: -170208392, // f5dad378
@@ -165037,6 +167489,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_setDiscussionGroup: {
+		230: 1079520178, // 40582bb2
 		229: 1079520178, // 40582bb2
 		228: 1079520178, // 40582bb2
 		227: 1079520178, // 40582bb2
@@ -165131,6 +167584,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_editLocation: {
+		230: 1491484525, // 58e63f6d
 		229: 1491484525, // 58e63f6d
 		228: 1491484525, // 58e63f6d
 		227: 1491484525, // 58e63f6d
@@ -165225,6 +167679,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleSlowMode: {
+		230: -304832784, // edd49ef0
 		229: -304832784, // edd49ef0
 		228: -304832784, // edd49ef0
 		227: -304832784, // edd49ef0
@@ -165319,6 +167774,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getInactiveChannels: {
+		230: 300429806, // 11e831ee
 		229: 300429806, // 11e831ee
 		228: 300429806, // 11e831ee
 		227: 300429806, // 11e831ee
@@ -165413,6 +167869,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_convertToGigagroup: {
+		230: 187239529, // b290c69
 		229: 187239529, // b290c69
 		228: 187239529, // b290c69
 		227: 187239529, // b290c69
@@ -165507,6 +167964,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getSendAs: {
+		230: -410672065, // e785a43f
 		229: -410672065, // e785a43f
 		228: -410672065, // e785a43f
 		227: -410672065, // e785a43f
@@ -165601,6 +168059,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_deleteParticipantHistory: {
+		230: 913655003, // 367544db
 		229: 913655003, // 367544db
 		228: 913655003, // 367544db
 		227: 913655003, // 367544db
@@ -165695,6 +168154,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleJoinToSend: {
+		230: -456419968, // e4cb9580
 		229: -456419968, // e4cb9580
 		228: -456419968, // e4cb9580
 		227: -456419968, // e4cb9580
@@ -165786,6 +168246,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleJoinRequest: {
+		230: 248260120,  // ecc2618
 		229: 248260120,  // ecc2618
 		228: 248260120,  // ecc2618
 		227: 248260120,  // ecc2618
@@ -165877,6 +168338,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_reorderUsernames: {
+		230: -1268978403, // b45ced1d
 		229: -1268978403, // b45ced1d
 		228: -1268978403, // b45ced1d
 		227: -1268978403, // b45ced1d
@@ -165962,6 +168424,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleUsername: {
+		230: 1358053637, // 50f24105
 		229: 1358053637, // 50f24105
 		228: 1358053637, // 50f24105
 		227: 1358053637, // 50f24105
@@ -166047,6 +168510,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_deactivateAllUsernames: {
+		230: 170155475, // a245dd3
 		229: 170155475, // a245dd3
 		228: 170155475, // a245dd3
 		227: 170155475, // a245dd3
@@ -166132,6 +168596,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleForum: {
+		230: 1073174324,  // 3ff75734
 		229: 1073174324,  // 3ff75734
 		228: 1073174324,  // 3ff75734
 		227: 1073174324,  // 3ff75734
@@ -166217,6 +168682,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleAntiSpam: {
+		230: 1760814315, // 68f3e4eb
 		229: 1760814315, // 68f3e4eb
 		228: 1760814315, // 68f3e4eb
 		227: 1760814315, // 68f3e4eb
@@ -166300,6 +168766,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_reportAntiSpamFalsePositive: {
+		230: -1471109485, // a850a693
 		229: -1471109485, // a850a693
 		228: -1471109485, // a850a693
 		227: -1471109485, // a850a693
@@ -166383,6 +168850,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleParticipantsHidden: {
+		230: 1785624660, // 6a6e7854
 		229: 1785624660, // 6a6e7854
 		228: 1785624660, // 6a6e7854
 		227: 1785624660, // 6a6e7854
@@ -166465,6 +168933,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_updateColor: {
+		230: -659933583, // d8aa3671
 		229: -659933583, // d8aa3671
 		228: -659933583, // d8aa3671
 		227: -659933583, // d8aa3671
@@ -166532,6 +169001,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleViewForumAsMessages: {
+		230: -1757889771, // 9738bb15
 		229: -1757889771, // 9738bb15
 		228: -1757889771, // 9738bb15
 		227: -1757889771, // 9738bb15
@@ -166598,6 +169068,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getChannelRecommendations: {
+		230: 631707458,   // 25a71742
 		229: 631707458,   // 25a71742
 		228: 631707458,   // 25a71742
 		227: 631707458,   // 25a71742
@@ -166664,6 +169135,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_updateEmojiStatus: {
+		230: -254548312, // f0d3e6a8
 		229: -254548312, // f0d3e6a8
 		228: -254548312, // f0d3e6a8
 		227: -254548312, // f0d3e6a8
@@ -166729,6 +169201,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_setBoostsToUnblockRestrictions: {
+		230: -1388733202, // ad399cee
 		229: -1388733202, // ad399cee
 		228: -1388733202, // ad399cee
 		227: -1388733202, // ad399cee
@@ -166788,6 +169261,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_setEmojiStickers: {
+		230: 1020866743, // 3cd930b7
 		229: 1020866743, // 3cd930b7
 		228: 1020866743, // 3cd930b7
 		227: 1020866743, // 3cd930b7
@@ -166847,6 +169321,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_restrictSponsoredMessages: {
+		230: -1696000743, // 9ae91519
 		229: -1696000743, // 9ae91519
 		228: -1696000743, // 9ae91519
 		227: -1696000743, // 9ae91519
@@ -166903,6 +169378,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_searchPosts: {
+		230: -221973939, // f2c4f24d
 		229: -221973939, // f2c4f24d
 		228: -221973939, // f2c4f24d
 		227: -221973939, // f2c4f24d
@@ -166956,6 +169432,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_updatePaidMessagesPrice: {
+		230: 1259483771, // 4b12327b
 		229: 1259483771, // 4b12327b
 		228: 1259483771, // 4b12327b
 		227: 1259483771, // 4b12327b
@@ -166989,6 +169466,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_toggleAutotranslation: {
+		230: 377471137, // 167fc0a1
 		229: 377471137, // 167fc0a1
 		228: 377471137, // 167fc0a1
 		227: 377471137, // 167fc0a1
@@ -167019,6 +169497,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_getMessageAuthor: {
+		230: -320691994, // ece2a0e6
 		229: -320691994, // ece2a0e6
 		228: -320691994, // ece2a0e6
 		227: -320691994, // ece2a0e6
@@ -167048,6 +169527,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_checkSearchPostsFlood: {
+		230: 576090389, // 22567115
 		229: 576090389, // 22567115
 		228: 576090389, // 22567115
 		227: 576090389, // 22567115
@@ -167070,6 +169550,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_channels_setMainProfileTab: {
+		230: 897842353, // 3583fcb1
 		229: 897842353, // 3583fcb1
 		228: 897842353, // 3583fcb1
 		227: 897842353, // 3583fcb1
@@ -167090,6 +169571,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_sendCustomRequest: {
+		230: -1440257555, // aa2769ed
 		229: -1440257555, // aa2769ed
 		228: -1440257555, // aa2769ed
 		227: -1440257555, // aa2769ed
@@ -167184,6 +169666,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_answerWebhookJSONQuery: {
+		230: -434028723, // e6213f4d
 		229: -434028723, // e6213f4d
 		228: -434028723, // e6213f4d
 		227: -434028723, // e6213f4d
@@ -167278,6 +169761,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_setBotCommands: {
+		230: 85399130, // 517165a
 		229: 85399130, // 517165a
 		228: 85399130, // 517165a
 		227: 85399130, // 517165a
@@ -167372,6 +169856,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_resetBotCommands: {
+		230: 1032708345, // 3d8de0f9
 		229: 1032708345, // 3d8de0f9
 		228: 1032708345, // 3d8de0f9
 		227: 1032708345, // 3d8de0f9
@@ -167466,6 +169951,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getBotCommands: {
+		230: -481554986, // e34c0dd6
 		229: -481554986, // e34c0dd6
 		228: -481554986, // e34c0dd6
 		227: -481554986, // e34c0dd6
@@ -167560,6 +170046,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_setBotMenuButton: {
+		230: 1157944655, // 4504d54f
 		229: 1157944655, // 4504d54f
 		228: 1157944655, // 4504d54f
 		227: 1157944655, // 4504d54f
@@ -167653,6 +170140,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getBotMenuButton: {
+		230: -1671369944, // 9c60eb28
 		229: -1671369944, // 9c60eb28
 		228: -1671369944, // 9c60eb28
 		227: -1671369944, // 9c60eb28
@@ -167746,6 +170234,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_setBotBroadcastDefaultAdminRights: {
+		230: 2021942497, // 788464e1
 		229: 2021942497, // 788464e1
 		228: 2021942497, // 788464e1
 		227: 2021942497, // 788464e1
@@ -167839,6 +170328,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_setBotGroupDefaultAdminRights: {
+		230: -1839281686, // 925ec9ea
 		229: -1839281686, // 925ec9ea
 		228: -1839281686, // 925ec9ea
 		227: -1839281686, // 925ec9ea
@@ -167932,6 +170422,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_setBotInfo: {
+		230: 282013987,   // 10cf3123
 		229: 282013987,   // 10cf3123
 		228: 282013987,   // 10cf3123
 		227: 282013987,   // 10cf3123
@@ -168011,6 +170502,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getBotInfoDCD914FD: {
+		230: -589753091, // dcd914fd
 		229: -589753091, // dcd914fd
 		228: -589753091, // dcd914fd
 		227: -589753091, // dcd914fd
@@ -168086,6 +170578,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_reorderUsernames: {
+		230: -1760972350, // 9709b1c2
 		229: -1760972350, // 9709b1c2
 		228: -1760972350, // 9709b1c2
 		227: -1760972350, // 9709b1c2
@@ -168161,6 +170654,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_toggleUsername: {
+		230: 87861619, // 53ca973
 		229: 87861619, // 53ca973
 		228: 87861619, // 53ca973
 		227: 87861619, // 53ca973
@@ -168236,6 +170730,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_canSendMessage: {
+		230: 324662502, // 1359f4e6
 		229: 324662502, // 1359f4e6
 		228: 324662502, // 1359f4e6
 		227: 324662502, // 1359f4e6
@@ -168307,6 +170802,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_allowSendMessage: {
+		230: -248323089, // f132e3ef
 		229: -248323089, // f132e3ef
 		228: -248323089, // f132e3ef
 		227: -248323089, // f132e3ef
@@ -168378,6 +170874,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_invokeWebViewCustomMethod: {
+		230: 142591463, // 87fc5e7
 		229: 142591463, // 87fc5e7
 		228: 142591463, // 87fc5e7
 		227: 142591463, // 87fc5e7
@@ -168449,6 +170946,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getPopularAppBots: {
+		230: -1034878574, // c2510192
 		229: -1034878574, // c2510192
 		228: -1034878574, // c2510192
 		227: -1034878574, // c2510192
@@ -168497,6 +170995,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_addPreviewMedia: {
+		230: 397326170, // 17aeb75a
 		229: 397326170, // 17aeb75a
 		228: 397326170, // 17aeb75a
 		227: 397326170, // 17aeb75a
@@ -168545,6 +171044,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_editPreviewMedia: {
+		230: -2061148049, // 8525606f
 		229: -2061148049, // 8525606f
 		228: -2061148049, // 8525606f
 		227: -2061148049, // 8525606f
@@ -168593,6 +171093,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_deletePreviewMedia: {
+		230: 755054003, // 2d0135b3
 		229: 755054003, // 2d0135b3
 		228: 755054003, // 2d0135b3
 		227: 755054003, // 2d0135b3
@@ -168641,6 +171142,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_reorderPreviewMedias: {
+		230: -1238895702, // b627f3aa
 		229: -1238895702, // b627f3aa
 		228: -1238895702, // b627f3aa
 		227: -1238895702, // b627f3aa
@@ -168689,6 +171191,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getPreviewInfo: {
+		230: 1111143341, // 423ab3ad
 		229: 1111143341, // 423ab3ad
 		228: 1111143341, // 423ab3ad
 		227: 1111143341, // 423ab3ad
@@ -168737,6 +171240,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getPreviewMedias: {
+		230: -1566222003, // a2a5594d
 		229: -1566222003, // a2a5594d
 		228: -1566222003, // a2a5594d
 		227: -1566222003, // a2a5594d
@@ -168785,6 +171289,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_updateUserEmojiStatus: {
+		230: -308334395, // ed9f30c5
 		229: -308334395, // ed9f30c5
 		228: -308334395, // ed9f30c5
 		227: -308334395, // ed9f30c5
@@ -168825,6 +171330,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_toggleUserEmojiStatusPermission: {
+		230: 115237778, // 6de6392
 		229: 115237778, // 6de6392
 		228: 115237778, // 6de6392
 		227: 115237778, // 6de6392
@@ -168865,6 +171371,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_checkDownloadFileParams: {
+		230: 1342666121, // 50077589
 		229: 1342666121, // 50077589
 		228: 1342666121, // 50077589
 		227: 1342666121, // 50077589
@@ -168905,6 +171412,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getAdminedBots: {
+		230: -1334764157, // b0711d83
 		229: -1334764157, // b0711d83
 		228: -1334764157, // b0711d83
 		227: -1334764157, // b0711d83
@@ -168943,6 +171451,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_updateStarRefProgram: {
+		230: 2005621427, // 778b5ab3
 		229: 2005621427, // 778b5ab3
 		228: 2005621427, // 778b5ab3
 		227: 2005621427, // 778b5ab3
@@ -168981,6 +171490,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_setCustomVerification: {
+		230: -191600809,  // f4946757
 		229: -1953898563, // 8b89dfbd
 		228: -1953898563, // 8b89dfbd
 		227: -1953898563, // 8b89dfbd
@@ -169018,6 +171528,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getBotRecommendations: {
+		230: -1581840363, // a1b70815
 		229: -1581840363, // a1b70815
 		228: -1581840363, // a1b70815
 		227: -1581840363, // a1b70815
@@ -169055,6 +171566,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_checkUsername: {
+		230: -475247519,  // e3ac4c61
 		229: -2014174821, // 87f2219b
 		228: -2014174821, // 87f2219b
 		227: -2014174821, // 87f2219b
@@ -169064,6 +171576,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_createBot: {
+		230: -441352405, // e5b17f2b
 		229: -441352405, // e5b17f2b
 		228: -441352405, // e5b17f2b
 		227: -441352405, // e5b17f2b
@@ -169073,6 +171586,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_exportBotToken: {
+		230: -1123182101, // bd0d99eb
 		229: -1123182101, // bd0d99eb
 		228: -1123182101, // bd0d99eb
 		227: -1123182101, // bd0d99eb
@@ -169082,6 +171596,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_requestWebViewButton: {
+		230: 832742238, // 31a2a35e
 		229: 832742238, // 31a2a35e
 		228: 832742238, // 31a2a35e
 		227: 832742238, // 31a2a35e
@@ -169091,6 +171606,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getRequestedWebViewButton: {
+		230: -1088047117, // bf25b7f3
 		229: -1088047117, // bf25b7f3
 		228: -1088047117, // bf25b7f3
 		227: -1088047117, // bf25b7f3
@@ -169100,6 +171616,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_getAccessSettings: {
+		230: 557339555, // 213853a3
 		229: 557339555, // 213853a3
 		228: 557339555, // 213853a3
 		227: 557339555, // 213853a3
@@ -169108,6 +171625,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_editAccessSettings: {
+		230: 830553304, // 31813cd8
 		229: 830553304, // 31813cd8
 		228: 830553304, // 31813cd8
 		227: 830553304, // 31813cd8
@@ -169116,13 +171634,23 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_bots_setJoinChatResults: {
+		230: -417708016, // e71a4810
 		229: -417708016, // e71a4810
 		228: -417708016, // e71a4810
 		227: -417708016, // e71a4810
 		226: -417708016, // e71a4810
 
 	},
+	Predicate_bots_addUsername: {
+		230: 889307274, // 3501c08a
+
+	},
+	Predicate_bots_removeUsername: {
+		230: -956033923, // c704147d
+
+	},
 	Predicate_payments_getPaymentForm: {
+		230: 924093883,   // 37148dbb
 		229: 924093883,   // 37148dbb
 		228: 924093883,   // 37148dbb
 		227: 924093883,   // 37148dbb
@@ -169217,6 +171745,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getPaymentReceipt: {
+		230: 611897804, // 2478d1cc
 		229: 611897804, // 2478d1cc
 		228: 611897804, // 2478d1cc
 		227: 611897804, // 2478d1cc
@@ -169311,6 +171840,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_validateRequestedInfo: {
+		230: -1228345045, // b6c8f12b
 		229: -1228345045, // b6c8f12b
 		228: -1228345045, // b6c8f12b
 		227: -1228345045, // b6c8f12b
@@ -169405,6 +171935,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_sendPaymentForm: {
+		230: 755192367, // 2d03522f
 		229: 755192367, // 2d03522f
 		228: 755192367, // 2d03522f
 		227: 755192367, // 2d03522f
@@ -169499,6 +172030,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getSavedInfo: {
+		230: 578650699, // 227d824b
 		229: 578650699, // 227d824b
 		228: 578650699, // 227d824b
 		227: 578650699, // 227d824b
@@ -169593,6 +172125,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_clearSavedInfo: {
+		230: -667062079, // d83d70c1
 		229: -667062079, // d83d70c1
 		228: -667062079, // d83d70c1
 		227: -667062079, // d83d70c1
@@ -169687,6 +172220,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getBankCardData: {
+		230: 779736953, // 2e79d779
 		229: 779736953, // 2e79d779
 		228: 779736953, // 2e79d779
 		227: 779736953, // 2e79d779
@@ -169781,6 +172315,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_exportInvoice: {
+		230: 261206117, // f91b065
 		229: 261206117, // f91b065
 		228: 261206117, // f91b065
 		227: 261206117, // f91b065
@@ -169872,6 +172407,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_assignAppStoreTransaction: {
+		230: -2131921795, // 80ed747d
 		229: -2131921795, // 80ed747d
 		228: -2131921795, // 80ed747d
 		227: -2131921795, // 80ed747d
@@ -169962,6 +172498,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_assignPlayMarketTransaction: {
+		230: -537046829, // dffd50d3
 		229: -537046829, // dffd50d3
 		228: -537046829, // dffd50d3
 		227: -537046829, // dffd50d3
@@ -170052,6 +172589,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getPremiumGiftCodeOptions: {
+		230: 660060756, // 2757ba54
 		229: 660060756, // 2757ba54
 		228: 660060756, // 2757ba54
 		227: 660060756, // 2757ba54
@@ -170119,6 +172657,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_checkGiftCode: {
+		230: -1907247935, // 8e51b4c1
 		229: -1907247935, // 8e51b4c1
 		228: -1907247935, // 8e51b4c1
 		227: -1907247935, // 8e51b4c1
@@ -170186,6 +172725,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_applyGiftCode: {
+		230: -152934316, // f6e26854
 		229: -152934316, // f6e26854
 		228: -152934316, // f6e26854
 		227: -152934316, // f6e26854
@@ -170253,6 +172793,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getGiveawayInfo: {
+		230: -198994907, // f4239425
 		229: -198994907, // f4239425
 		228: -198994907, // f4239425
 		227: -198994907, // f4239425
@@ -170320,6 +172861,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_launchPrepaidGiveaway: {
+		230: 1609928480, // 5ff58f20
 		229: 1609928480, // 5ff58f20
 		228: 1609928480, // 5ff58f20
 		227: 1609928480, // 5ff58f20
@@ -170387,6 +172929,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsTopupOptions: {
+		230: -1072773165, // c00ec7d3
 		229: -1072773165, // c00ec7d3
 		228: -1072773165, // c00ec7d3
 		227: -1072773165, // c00ec7d3
@@ -170439,6 +172982,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsStatus: {
+		230: 1319744447, // 4ea9b3bf
 		229: 1319744447, // 4ea9b3bf
 		228: 1319744447, // 4ea9b3bf
 		227: 1319744447, // 4ea9b3bf
@@ -170491,6 +173035,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsTransactions: {
+		230: 1775912279,  // 69da4557
 		229: 1775912279,  // 69da4557
 		228: 1775912279,  // 69da4557
 		227: 1775912279,  // 69da4557
@@ -170543,6 +173088,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_sendStarsForm: {
+		230: 2040056084, // 7998c914
 		229: 2040056084, // 7998c914
 		228: 2040056084, // 7998c914
 		227: 2040056084, // 7998c914
@@ -170595,6 +173141,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_refundStarsCharge: {
+		230: 632196938, // 25ae8f4a
 		229: 632196938, // 25ae8f4a
 		228: 632196938, // 25ae8f4a
 		227: 632196938, // 25ae8f4a
@@ -170647,6 +173194,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsRevenueStats: {
+		230: -652215594, // d91ffad6
 		229: -652215594, // d91ffad6
 		228: -652215594, // d91ffad6
 		227: -652215594, // d91ffad6
@@ -170698,6 +173246,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsRevenueWithdrawalUrl: {
+		230: 607378578, // 2433dc92
 		229: 607378578, // 2433dc92
 		228: 607378578, // 2433dc92
 		227: 607378578, // 2433dc92
@@ -170749,6 +173298,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsRevenueAdsAccountUrl: {
+		230: -774377531, // d1d7efc5
 		229: -774377531, // d1d7efc5
 		228: -774377531, // d1d7efc5
 		227: -774377531, // d1d7efc5
@@ -170799,6 +173349,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsTransactionsByID: {
+		230: 768218808, // 2dca16b8
 		229: 768218808, // 2dca16b8
 		228: 768218808, // 2dca16b8
 		227: 768218808, // 2dca16b8
@@ -170849,6 +173400,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsGiftOptions: {
+		230: -741774392, // d3c96bc8
 		229: -741774392, // d3c96bc8
 		228: -741774392, // d3c96bc8
 		227: -741774392, // d3c96bc8
@@ -170897,6 +173449,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsSubscriptions: {
+		230: 52761285, // 32512c5
 		229: 52761285, // 32512c5
 		228: 52761285, // 32512c5
 		227: 52761285, // 32512c5
@@ -170944,6 +173497,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_changeStarsSubscription: {
+		230: -948500360, // c7770878
 		229: -948500360, // c7770878
 		228: -948500360, // c7770878
 		227: -948500360, // c7770878
@@ -170991,6 +173545,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_fulfillStarsSubscription: {
+		230: -866391117, // cc5bebb3
 		229: -866391117, // cc5bebb3
 		228: -866391117, // cc5bebb3
 		227: -866391117, // cc5bebb3
@@ -171038,6 +173593,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarsGiveawayOptions: {
+		230: -1122042562, // bd1efd3e
 		229: -1122042562, // bd1efd3e
 		228: -1122042562, // bd1efd3e
 		227: -1122042562, // bd1efd3e
@@ -171084,6 +173640,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGifts: {
+		230: -1000983152, // c4563590
 		229: -1000983152, // c4563590
 		228: -1000983152, // c4563590
 		227: -1000983152, // c4563590
@@ -171128,6 +173685,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_saveStarGift: {
+		230: 707422588,   // 2a2a697c
 		229: 707422588,   // 2a2a697c
 		228: 707422588,   // 2a2a697c
 		227: 707422588,   // 2a2a697c
@@ -171172,6 +173730,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_convertStarGift: {
+		230: 1958676331, // 74bf076b
 		229: 1958676331, // 74bf076b
 		228: 1958676331, // 74bf076b
 		227: 1958676331, // 74bf076b
@@ -171216,6 +173775,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_botCancelStarsSubscription: {
+		230: 1845102114, // 6dfa0622
 		229: 1845102114, // 6dfa0622
 		228: 1845102114, // 6dfa0622
 		227: 1845102114, // 6dfa0622
@@ -171256,6 +173816,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getConnectedStarRefBots: {
+		230: 1483318611, // 5869a553
 		229: 1483318611, // 5869a553
 		228: 1483318611, // 5869a553
 		227: 1483318611, // 5869a553
@@ -171294,6 +173855,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getConnectedStarRefBot: {
+		230: -1210476304, // b7d998f0
 		229: -1210476304, // b7d998f0
 		228: -1210476304, // b7d998f0
 		227: -1210476304, // b7d998f0
@@ -171332,6 +173894,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getSuggestedStarRefBots: {
+		230: 225134839, // d6b48f7
 		229: 225134839, // d6b48f7
 		228: 225134839, // d6b48f7
 		227: 225134839, // d6b48f7
@@ -171370,6 +173933,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_connectStarRefBot: {
+		230: 2127901834, // 7ed5348a
 		229: 2127901834, // 7ed5348a
 		228: 2127901834, // 7ed5348a
 		227: 2127901834, // 7ed5348a
@@ -171408,6 +173972,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_editConnectedStarRefBot: {
+		230: -453204829, // e4fca4a3
 		229: -453204829, // e4fca4a3
 		228: -453204829, // e4fca4a3
 		227: -453204829, // e4fca4a3
@@ -171446,6 +174011,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGiftUpgradePreview: {
+		230: -1667580751, // 9c9abcb1
 		229: -1667580751, // 9c9abcb1
 		228: -1667580751, // 9c9abcb1
 		227: -1667580751, // 9c9abcb1
@@ -171483,6 +174049,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_upgradeStarGift: {
+		230: -1361648395, // aed6e4f5
 		229: -1361648395, // aed6e4f5
 		228: -1361648395, // aed6e4f5
 		227: -1361648395, // aed6e4f5
@@ -171520,6 +174087,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_transferStarGift: {
+		230: 2132285290, // 7f18176a
 		229: 2132285290, // 7f18176a
 		228: 2132285290, // 7f18176a
 		227: 2132285290, // 7f18176a
@@ -171557,6 +174125,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getUniqueStarGift: {
+		230: -1583919758, // a1974d72
 		229: -1583919758, // a1974d72
 		228: -1583919758, // a1974d72
 		227: -1583919758, // a1974d72
@@ -171593,6 +174162,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getSavedStarGifts: {
+		230: -1558583959, // a319e569
 		229: -1558583959, // a319e569
 		228: -1558583959, // a319e569
 		227: -1558583959, // a319e569
@@ -171628,6 +174198,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getSavedStarGift: {
+		230: -1269456634, // b455a106
 		229: -1269456634, // b455a106
 		228: -1269456634, // b455a106
 		227: -1269456634, // b455a106
@@ -171663,6 +174234,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGiftWithdrawalUrl: {
+		230: -798059608, // d06e93a8
 		229: -798059608, // d06e93a8
 		228: -798059608, // d06e93a8
 		227: -798059608, // d06e93a8
@@ -171698,6 +174270,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_toggleChatStarGiftNotifications: {
+		230: 1626009505, // 60eaefa1
 		229: 1626009505, // 60eaefa1
 		228: 1626009505, // 60eaefa1
 		227: 1626009505, // 60eaefa1
@@ -171733,6 +174306,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_toggleStarGiftsPinnedToTop: {
+		230: 353626032, // 1513e7b0
 		229: 353626032, // 1513e7b0
 		228: 353626032, // 1513e7b0
 		227: 353626032, // 1513e7b0
@@ -171766,6 +174340,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_canPurchaseStore: {
+		230: 1339842215, // 4fdc5ea7
 		229: 1339842215, // 4fdc5ea7
 		228: 1339842215, // 4fdc5ea7
 		227: 1339842215, // 4fdc5ea7
@@ -171798,6 +174373,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getResaleStarGifts: {
+		230: 2053087798, // 7a5fa236
 		229: 2053087798, // 7a5fa236
 		228: 2053087798, // 7a5fa236
 		227: 2053087798, // 7a5fa236
@@ -171828,6 +174404,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_updateStarGiftPrice: {
+		230: -306287413, // edbe6ccb
 		229: -306287413, // edbe6ccb
 		228: -306287413, // edbe6ccb
 		227: -306287413, // edbe6ccb
@@ -171858,6 +174435,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_createStarGiftCollection: {
+		230: 524947079, // 1f4a0e87
 		229: 524947079, // 1f4a0e87
 		228: 524947079, // 1f4a0e87
 		227: 524947079, // 1f4a0e87
@@ -171881,6 +174459,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_updateStarGiftCollection: {
+		230: 1339932391, // 4fddbee7
 		229: 1339932391, // 4fddbee7
 		228: 1339932391, // 4fddbee7
 		227: 1339932391, // 4fddbee7
@@ -171904,6 +174483,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_reorderStarGiftCollections: {
+		230: -1020594996, // c32af4cc
 		229: -1020594996, // c32af4cc
 		228: -1020594996, // c32af4cc
 		227: -1020594996, // c32af4cc
@@ -171927,6 +174507,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_deleteStarGiftCollection: {
+		230: -1386854168, // ad5648e8
 		229: -1386854168, // ad5648e8
 		228: -1386854168, // ad5648e8
 		227: -1386854168, // ad5648e8
@@ -171950,6 +174531,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGiftCollections: {
+		230: -1743023651, // 981b91dd
 		229: -1743023651, // 981b91dd
 		228: -1743023651, // 981b91dd
 		227: -1743023651, // 981b91dd
@@ -171973,6 +174555,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getUniqueStarGiftValueInfo: {
+		230: 1130737515, // 4365af6b
 		229: 1130737515, // 4365af6b
 		228: 1130737515, // 4365af6b
 		227: 1130737515, // 4365af6b
@@ -171994,6 +174577,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_checkCanSendGift: {
+		230: -1060835895, // c0c4edc9
 		229: -1060835895, // c0c4edc9
 		228: -1060835895, // c0c4edc9
 		227: -1060835895, // c0c4edc9
@@ -172014,6 +174598,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGiftAuctionState: {
+		230: 1553986774, // 5c9ff4d6
 		229: 1553986774, // 5c9ff4d6
 		228: 1553986774, // 5c9ff4d6
 		227: 1553986774, // 5c9ff4d6
@@ -172029,6 +174614,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGiftAuctionAcquiredGifts: {
+		230: 1805831148, // 6ba2cbec
 		229: 1805831148, // 6ba2cbec
 		228: 1805831148, // 6ba2cbec
 		227: 1805831148, // 6ba2cbec
@@ -172044,6 +174630,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGiftActiveAuctions: {
+		230: -1513074355, // a5d0514d
 		229: -1513074355, // a5d0514d
 		228: -1513074355, // a5d0514d
 		227: -1513074355, // a5d0514d
@@ -172059,6 +174646,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_resolveStarGiftOffer: {
+		230: -372344804, // e9ce781c
 		229: -372344804, // e9ce781c
 		228: -372344804, // e9ce781c
 		227: -372344804, // e9ce781c
@@ -172072,6 +174660,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_sendStarGiftOffer: {
+		230: -1883739327, // 8fb86b41
 		229: -1883739327, // 8fb86b41
 		228: -1883739327, // 8fb86b41
 		227: -1883739327, // 8fb86b41
@@ -172085,6 +174674,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getStarGiftUpgradeAttributes: {
+		230: 1828948824, // 6d038b58
 		229: 1828948824, // 6d038b58
 		228: 1828948824, // 6d038b58
 		227: 1828948824, // 6d038b58
@@ -172098,6 +174688,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_getCraftStarGifts: {
+		230: -49947392, // fd05dd00
 		229: -49947392, // fd05dd00
 		228: -49947392, // fd05dd00
 		227: -49947392, // fd05dd00
@@ -172109,6 +174700,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_payments_craftStarGift: {
+		230: -1325832113, // b0f9684f
 		229: -1325832113, // b0f9684f
 		228: -1325832113, // b0f9684f
 		227: -1325832113, // b0f9684f
@@ -172119,7 +174711,36 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 		222: -1325832113, // b0f9684f
 
 	},
+	Predicate_payments_getCurrencyRates: {
+		230: -749108248, // d35983e8
+
+	},
+	Predicate_payments_getOnrampProviders: {
+		230: 1061028060, // 3f3e00dc
+
+	},
+	Predicate_payments_getOnrampBaseCurrencies: {
+		230: 478932467, // 1c8bedf3
+
+	},
+	Predicate_payments_getOnrampAvailability: {
+		230: 784505169, // 2ec29951
+
+	},
+	Predicate_payments_getOnrampLimits: {
+		230: -2132258307, // 80e851fd
+
+	},
+	Predicate_payments_getOnrampQuote: {
+		230: -530168326, // e06645fa
+
+	},
+	Predicate_payments_createOnrampSession: {
+		230: -1575387914, // a2197cf6
+
+	},
 	Predicate_stickers_createStickerSet: {
+		230: -1876841625, // 9021ab67
 		229: -1876841625, // 9021ab67
 		228: -1876841625, // 9021ab67
 		227: -1876841625, // 9021ab67
@@ -172214,6 +174835,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_removeStickerFromSet: {
+		230: -143257775, // f7760f51
 		229: -143257775, // f7760f51
 		228: -143257775, // f7760f51
 		227: -143257775, // f7760f51
@@ -172308,6 +174930,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_changeStickerPosition: {
+		230: -4795190, // ffb6d4ca
 		229: -4795190, // ffb6d4ca
 		228: -4795190, // ffb6d4ca
 		227: -4795190, // ffb6d4ca
@@ -172402,6 +175025,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_addStickerToSet: {
+		230: -2041315650, // 8653febe
 		229: -2041315650, // 8653febe
 		228: -2041315650, // 8653febe
 		227: -2041315650, // 8653febe
@@ -172496,6 +175120,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_setStickerSetThumb: {
+		230: -1486204014, // a76a5392
 		229: -1486204014, // a76a5392
 		228: -1486204014, // a76a5392
 		227: -1486204014, // a76a5392
@@ -172590,6 +175215,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_checkShortName: {
+		230: 676017721, // 284b3639
 		229: 676017721, // 284b3639
 		228: 676017721, // 284b3639
 		227: 676017721, // 284b3639
@@ -172684,6 +175310,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_suggestShortName: {
+		230: 1303364867, // 4dafc503
 		229: 1303364867, // 4dafc503
 		228: 1303364867, // 4dafc503
 		227: 1303364867, // 4dafc503
@@ -172778,6 +175405,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_changeSticker: {
+		230: -179077444, // f5537ebc
 		229: -179077444, // f5537ebc
 		228: -179077444, // f5537ebc
 		227: -179077444, // f5537ebc
@@ -172858,6 +175486,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_renameStickerSet: {
+		230: 306912256, // 124b1c00
 		229: 306912256, // 124b1c00
 		228: 306912256, // 124b1c00
 		227: 306912256, // 124b1c00
@@ -172938,6 +175567,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_deleteStickerSet: {
+		230: -2022685804, // 87704394
 		229: -2022685804, // 87704394
 		228: -2022685804, // 87704394
 		227: -2022685804, // 87704394
@@ -173018,6 +175648,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stickers_replaceSticker: {
+		230: 1184253338, // 4696459a
 		229: 1184253338, // 4696459a
 		228: 1184253338, // 4696459a
 		227: 1184253338, // 4696459a
@@ -173074,6 +175705,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getCallConfig: {
+		230: 1430593449, // 55451fa9
 		229: 1430593449, // 55451fa9
 		228: 1430593449, // 55451fa9
 		227: 1430593449, // 55451fa9
@@ -173168,6 +175800,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_requestCall: {
+		230: 1124046573,  // 42ff96ed
 		229: 1124046573,  // 42ff96ed
 		228: 1124046573,  // 42ff96ed
 		227: 1124046573,  // 42ff96ed
@@ -173262,6 +175895,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_acceptCall: {
+		230: 1003664544, // 3bd2b4a0
 		229: 1003664544, // 3bd2b4a0
 		228: 1003664544, // 3bd2b4a0
 		227: 1003664544, // 3bd2b4a0
@@ -173356,6 +175990,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_confirmCall: {
+		230: 788404002, // 2efe1722
 		229: 788404002, // 2efe1722
 		228: 788404002, // 2efe1722
 		227: 788404002, // 2efe1722
@@ -173450,6 +176085,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_receivedCall: {
+		230: 399855457, // 17d54f61
 		229: 399855457, // 17d54f61
 		228: 399855457, // 17d54f61
 		227: 399855457, // 17d54f61
@@ -173544,6 +176180,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_discardCall: {
+		230: -1295269440, // b2cbc1c0
 		229: -1295269440, // b2cbc1c0
 		228: -1295269440, // b2cbc1c0
 		227: -1295269440, // b2cbc1c0
@@ -173638,6 +176275,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_setCallRating: {
+		230: 1508562471, // 59ead627
 		229: 1508562471, // 59ead627
 		228: 1508562471, // 59ead627
 		227: 1508562471, // 59ead627
@@ -173732,6 +176370,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_saveCallDebug: {
+		230: 662363518, // 277add7e
 		229: 662363518, // 277add7e
 		228: 662363518, // 277add7e
 		227: 662363518, // 277add7e
@@ -173826,6 +176465,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_sendSignalingData: {
+		230: -8744061, // ff7a9383
 		229: -8744061, // ff7a9383
 		228: -8744061, // ff7a9383
 		227: -8744061, // ff7a9383
@@ -173920,6 +176560,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_createGroupCall: {
+		230: 1221445336, // 48cdc6d8
 		229: 1221445336, // 48cdc6d8
 		228: 1221445336, // 48cdc6d8
 		227: 1221445336, // 48cdc6d8
@@ -174014,6 +176655,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_joinGroupCall: {
+		230: -1883951017, // 8fb53057
 		229: -1883951017, // 8fb53057
 		228: -1883951017, // 8fb53057
 		227: -1883951017, // 8fb53057
@@ -174108,6 +176750,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_leaveGroupCall: {
+		230: 1342404601, // 500377f9
 		229: 1342404601, // 500377f9
 		228: 1342404601, // 500377f9
 		227: 1342404601, // 500377f9
@@ -174202,6 +176845,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_inviteToGroupCall: {
+		230: 2067345760, // 7b393160
 		229: 2067345760, // 7b393160
 		228: 2067345760, // 7b393160
 		227: 2067345760, // 7b393160
@@ -174296,6 +176940,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_discardGroupCall: {
+		230: 2054648117, // 7a777135
 		229: 2054648117, // 7a777135
 		228: 2054648117, // 7a777135
 		227: 2054648117, // 7a777135
@@ -174390,6 +177035,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_toggleGroupCallSettings: {
+		230: -1757179150, // 974392f2
 		229: -1757179150, // 974392f2
 		228: -1757179150, // 974392f2
 		227: -1757179150, // 974392f2
@@ -174484,6 +177130,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getGroupCall: {
+		230: 68699611, // 41845db
 		229: 68699611, // 41845db
 		228: 68699611, // 41845db
 		227: 68699611, // 41845db
@@ -174578,6 +177225,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getGroupParticipants: {
+		230: -984033109, // c558d8ab
 		229: -984033109, // c558d8ab
 		228: -984033109, // c558d8ab
 		227: -984033109, // c558d8ab
@@ -174672,6 +177320,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_checkGroupCall: {
+		230: -1248003721, // b59cf977
 		229: -1248003721, // b59cf977
 		228: -1248003721, // b59cf977
 		227: -1248003721, // b59cf977
@@ -174766,6 +177415,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_toggleGroupCallRecord: {
+		230: -248985848, // f128c708
 		229: -248985848, // f128c708
 		228: -248985848, // f128c708
 		227: -248985848, // f128c708
@@ -174860,6 +177510,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_editGroupCallParticipant: {
+		230: -1524155713, // a5273abf
 		229: -1524155713, // a5273abf
 		228: -1524155713, // a5273abf
 		227: -1524155713, // a5273abf
@@ -174954,6 +177605,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_editGroupCallTitle: {
+		230: 480685066, // 1ca6ac0a
 		229: 480685066, // 1ca6ac0a
 		228: 480685066, // 1ca6ac0a
 		227: 480685066, // 1ca6ac0a
@@ -175048,6 +177700,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getGroupCallJoinAs: {
+		230: -277077702, // ef7c213a
 		229: -277077702, // ef7c213a
 		228: -277077702, // ef7c213a
 		227: -277077702, // ef7c213a
@@ -175142,6 +177795,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_exportGroupCallInvite: {
+		230: -425040769, // e6aa647f
 		229: -425040769, // e6aa647f
 		228: -425040769, // e6aa647f
 		227: -425040769, // e6aa647f
@@ -175236,6 +177890,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_toggleGroupCallStartSubscription: {
+		230: 563885286, // 219c34e6
 		229: 563885286, // 219c34e6
 		228: 563885286, // 219c34e6
 		227: 563885286, // 219c34e6
@@ -175330,6 +177985,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_startScheduledGroupCall: {
+		230: 1451287362, // 5680e342
 		229: 1451287362, // 5680e342
 		228: 1451287362, // 5680e342
 		227: 1451287362, // 5680e342
@@ -175424,6 +178080,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_saveDefaultGroupCallJoinAs: {
+		230: 1465786252, // 575e1f8c
 		229: 1465786252, // 575e1f8c
 		228: 1465786252, // 575e1f8c
 		227: 1465786252, // 575e1f8c
@@ -175518,6 +178175,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_joinGroupCallPresentation: {
+		230: -873829436, // cbea6bc4
 		229: -873829436, // cbea6bc4
 		228: -873829436, // cbea6bc4
 		227: -873829436, // cbea6bc4
@@ -175612,6 +178270,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_leaveGroupCallPresentation: {
+		230: 475058500, // 1c50d144
 		229: 475058500, // 1c50d144
 		228: 475058500, // 1c50d144
 		227: 475058500, // 1c50d144
@@ -175706,6 +178365,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getGroupCallStreamChannels: {
+		230: 447879488, // 1ab21940
 		229: 447879488, // 1ab21940
 		228: 447879488, // 1ab21940
 		227: 447879488, // 1ab21940
@@ -175800,6 +178460,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getGroupCallStreamRtmpUrl: {
+		230: 1525991226, // 5af4c73a
 		229: 1525991226, // 5af4c73a
 		228: 1525991226, // 5af4c73a
 		227: 1525991226, // 5af4c73a
@@ -175894,6 +178555,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_saveCallLog: {
+		230: 1092913030, // 41248786
 		229: 1092913030, // 41248786
 		228: 1092913030, // 41248786
 		227: 1092913030, // 41248786
@@ -175985,6 +178647,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_createConferenceCall7D0444BB: {
+		230: 2097431739, // 7d0444bb
 		229: 2097431739, // 7d0444bb
 		228: 2097431739, // 7d0444bb
 		227: 2097431739, // 7d0444bb
@@ -176016,6 +178679,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_deleteConferenceCallParticipants: {
+		230: -1935276763, // 8ca60525
 		229: -1935276763, // 8ca60525
 		228: -1935276763, // 8ca60525
 		227: -1935276763, // 8ca60525
@@ -176047,6 +178711,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_sendConferenceCallBroadcast: {
+		230: -965732096, // c6701900
 		229: -965732096, // c6701900
 		228: -965732096, // c6701900
 		227: -965732096, // c6701900
@@ -176078,6 +178743,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_inviteConferenceCallParticipant: {
+		230: -1124981115, // bcf22685
 		229: -1124981115, // bcf22685
 		228: -1124981115, // bcf22685
 		227: -1124981115, // bcf22685
@@ -176109,6 +178775,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_declineConferenceCallInvite: {
+		230: 1011325297, // 3c479971
 		229: 1011325297, // 3c479971
 		228: 1011325297, // 3c479971
 		227: 1011325297, // 3c479971
@@ -176140,6 +178807,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getGroupCallChainBlocks: {
+		230: -291534682, // ee9f88a6
 		229: -291534682, // ee9f88a6
 		228: -291534682, // ee9f88a6
 		227: -291534682, // ee9f88a6
@@ -176171,6 +178839,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_sendGroupCallMessageB1D11410: {
+		230: -1311697904, // b1d11410
 		229: -1311697904, // b1d11410
 		228: -1311697904, // b1d11410
 		227: -1311697904, // b1d11410
@@ -176187,6 +178856,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_sendGroupCallEncryptedMessage: {
+		230: -441473683, // e5afa56d
 		229: -441473683, // e5afa56d
 		228: -441473683, // e5afa56d
 		227: -441473683, // e5afa56d
@@ -176204,6 +178874,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_deleteGroupCallMessages: {
+		230: -162573065, // f64f54f7
 		229: -162573065, // f64f54f7
 		228: -162573065, // f64f54f7
 		227: -162573065, // f64f54f7
@@ -176220,6 +178891,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_deleteGroupCallParticipantMessages: {
+		230: 499117216, // 1dbfeca0
 		229: 499117216, // 1dbfeca0
 		228: 499117216, // 1dbfeca0
 		227: 499117216, // 1dbfeca0
@@ -176236,6 +178908,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_getGroupCallStars: {
+		230: 1868784386, // 6f636302
 		229: 1868784386, // 6f636302
 		228: 1868784386, // 6f636302
 		227: 1868784386, // 6f636302
@@ -176252,6 +178925,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_phone_saveDefaultSendAs: {
+		230: 1097313745, // 4167add1
 		229: 1097313745, // 4167add1
 		228: 1097313745, // 4167add1
 		227: 1097313745, // 4167add1
@@ -176268,6 +178942,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langpack_getLangPack: {
+		230: -219008246,  // f2f2330a
 		229: -219008246,  // f2f2330a
 		228: -219008246,  // f2f2330a
 		227: -219008246,  // f2f2330a
@@ -176363,6 +179038,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langpack_getStrings: {
+		230: -269862909, // efea3803
 		229: -269862909, // efea3803
 		228: -269862909, // efea3803
 		227: -269862909, // efea3803
@@ -176458,6 +179134,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langpack_getDifference: {
+		230: -845657435, // cd984aa5
 		229: -845657435, // cd984aa5
 		228: -845657435, // cd984aa5
 		227: -845657435, // cd984aa5
@@ -176552,6 +179229,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langpack_getLanguages: {
+		230: 1120311183,  // 42c6978f
 		229: 1120311183,  // 42c6978f
 		228: 1120311183,  // 42c6978f
 		227: 1120311183,  // 42c6978f
@@ -176647,6 +179325,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_langpack_getLanguage: {
+		230: 1784243458, // 6a596502
 		229: 1784243458, // 6a596502
 		228: 1784243458, // 6a596502
 		227: 1784243458, // 6a596502
@@ -176741,6 +179420,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_folders_editPeerFolders: {
+		230: 1749536939, // 6847d0ab
 		229: 1749536939, // 6847d0ab
 		228: 1749536939, // 6847d0ab
 		227: 1749536939, // 6847d0ab
@@ -176835,6 +179515,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_getBroadcastStats: {
+		230: -1421720550, // ab42441a
 		229: -1421720550, // ab42441a
 		228: -1421720550, // ab42441a
 		227: -1421720550, // ab42441a
@@ -176929,6 +179610,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_loadAsyncGraph: {
+		230: 1646092192, // 621d5fa0
 		229: 1646092192, // 621d5fa0
 		228: 1646092192, // 621d5fa0
 		227: 1646092192, // 621d5fa0
@@ -177023,6 +179705,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_getMegagroupStats: {
+		230: -589330937, // dcdf8607
 		229: -589330937, // dcdf8607
 		228: -589330937, // dcdf8607
 		227: -589330937, // dcdf8607
@@ -177117,6 +179800,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_getMessagePublicForwards5F150144: {
+		230: 1595212100, // 5f150144
 		229: 1595212100, // 5f150144
 		228: 1595212100, // 5f150144
 		227: 1595212100, // 5f150144
@@ -177182,6 +179866,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_getMessageStats: {
+		230: -1226791947, // b6e0a3f5
 		229: -1226791947, // b6e0a3f5
 		228: -1226791947, // b6e0a3f5
 		227: -1226791947, // b6e0a3f5
@@ -177276,6 +179961,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_getStoryStats: {
+		230: 927985472, // 374fef40
 		229: 927985472, // 374fef40
 		228: 927985472, // 374fef40
 		227: 927985472, // 374fef40
@@ -177342,6 +180028,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_getStoryPublicForwards: {
+		230: -1505526026, // a6437ef6
 		229: -1505526026, // a6437ef6
 		228: -1505526026, // a6437ef6
 		227: -1505526026, // a6437ef6
@@ -177408,6 +180095,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stats_getPollStats: {
+		230: -1031931288, // c27dfa68
 		229: -1031931288, // c27dfa68
 		228: -1031931288, // c27dfa68
 		227: -1031931288, // c27dfa68
@@ -177416,6 +180104,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_exportChatlistInvite: {
+		230: -2072885362, // 8472478e
 		229: -2072885362, // 8472478e
 		228: -2072885362, // 8472478e
 		227: -2072885362, // 8472478e
@@ -177491,6 +180180,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_deleteExportedInvite: {
+		230: 1906072670, // 719c5c5e
 		229: 1906072670, // 719c5c5e
 		228: 1906072670, // 719c5c5e
 		227: 1906072670, // 719c5c5e
@@ -177566,6 +180256,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_editExportedInvite: {
+		230: 1698543165, // 653db63d
 		229: 1698543165, // 653db63d
 		228: 1698543165, // 653db63d
 		227: 1698543165, // 653db63d
@@ -177641,6 +180332,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_getExportedInvites: {
+		230: -838608253, // ce03da83
 		229: -838608253, // ce03da83
 		228: -838608253, // ce03da83
 		227: -838608253, // ce03da83
@@ -177716,6 +180408,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_checkChatlistInvite: {
+		230: 1103171583, // 41c10fff
 		229: 1103171583, // 41c10fff
 		228: 1103171583, // 41c10fff
 		227: 1103171583, // 41c10fff
@@ -177791,6 +180484,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_joinChatlistInvite: {
+		230: -1498291302, // a6b1e39a
 		229: -1498291302, // a6b1e39a
 		228: -1498291302, // a6b1e39a
 		227: -1498291302, // a6b1e39a
@@ -177866,6 +180560,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_getChatlistUpdates: {
+		230: -1992190687, // 89419521
 		229: -1992190687, // 89419521
 		228: -1992190687, // 89419521
 		227: -1992190687, // 89419521
@@ -177941,6 +180636,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_joinChatlistUpdates: {
+		230: -527828747, // e089f8f5
 		229: -527828747, // e089f8f5
 		228: -527828747, // e089f8f5
 		227: -527828747, // e089f8f5
@@ -178016,6 +180712,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_hideChatlistUpdates: {
+		230: 1726252795, // 66e486fb
 		229: 1726252795, // 66e486fb
 		228: 1726252795, // 66e486fb
 		227: 1726252795, // 66e486fb
@@ -178091,6 +180788,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_getLeaveChatlistSuggestions: {
+		230: -37955820, // fdbcd714
 		229: -37955820, // fdbcd714
 		228: -37955820, // fdbcd714
 		227: -37955820, // fdbcd714
@@ -178166,6 +180864,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_chatlists_leaveChatlist: {
+		230: 1962598714, // 74fae13a
 		229: 1962598714, // 74fae13a
 		228: 1962598714, // 74fae13a
 		227: 1962598714, // 74fae13a
@@ -178241,6 +180940,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_canSendStory30EB63F0: {
+		230: 820732912, // 30eb63f0
 		229: 820732912, // 30eb63f0
 		228: 820732912, // 30eb63f0
 		227: 820732912, // 30eb63f0
@@ -178271,6 +180971,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_sendStory: {
+		230: -1885443944, // 8f9e6898
 		229: -1885443944, // 8f9e6898
 		228: -1885443944, // 8f9e6898
 		227: -1885443944, // 8f9e6898
@@ -178344,6 +181045,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_editStory: {
+		230: 744728363,   // 2c63a72b
 		229: 744728363,   // 2c63a72b
 		228: 744728363,   // 2c63a72b
 		227: 744728363,   // 2c63a72b
@@ -178417,6 +181119,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_deleteStories: {
+		230: -1369842849, // ae59db5f
 		229: -1369842849, // ae59db5f
 		228: -1369842849, // ae59db5f
 		227: -1369842849, // ae59db5f
@@ -178490,6 +181193,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_togglePinned: {
+		230: -1703566865, // 9a75a1ef
 		229: -1703566865, // 9a75a1ef
 		228: -1703566865, // 9a75a1ef
 		227: -1703566865, // 9a75a1ef
@@ -178563,6 +181267,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getAllStories: {
+		230: -290400731, // eeb0d625
 		229: -290400731, // eeb0d625
 		228: -290400731, // eeb0d625
 		227: -290400731, // eeb0d625
@@ -178636,6 +181341,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getPinnedStories: {
+		230: 1478600156, // 5821a5dc
 		229: 1478600156, // 5821a5dc
 		228: 1478600156, // 5821a5dc
 		227: 1478600156, // 5821a5dc
@@ -178709,6 +181415,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getStoriesArchive: {
+		230: -1271586794, // b4352016
 		229: -1271586794, // b4352016
 		228: -1271586794, // b4352016
 		227: -1271586794, // b4352016
@@ -178782,6 +181489,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getStoriesByID: {
+		230: 1467271796, // 5774ca74
 		229: 1467271796, // 5774ca74
 		228: 1467271796, // 5774ca74
 		227: 1467271796, // 5774ca74
@@ -178855,6 +181563,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_toggleAllStoriesHidden: {
+		230: 2082822084, // 7c2557c4
 		229: 2082822084, // 7c2557c4
 		228: 2082822084, // 7c2557c4
 		227: 2082822084, // 7c2557c4
@@ -178928,6 +181637,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_readStories: {
+		230: -1521034552, // a556dac8
 		229: -1521034552, // a556dac8
 		228: -1521034552, // a556dac8
 		227: -1521034552, // a556dac8
@@ -179001,6 +181711,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_incrementStoryViews: {
+		230: -1308456197, // b2028afb
 		229: -1308456197, // b2028afb
 		228: -1308456197, // b2028afb
 		227: -1308456197, // b2028afb
@@ -179074,6 +181785,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getStoryViewsList: {
+		230: 2127707223, // 7ed23c57
 		229: 2127707223, // 7ed23c57
 		228: 2127707223, // 7ed23c57
 		227: 2127707223, // 7ed23c57
@@ -179147,6 +181859,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getStoriesViews: {
+		230: 685862088,   // 28e16cc8
 		229: 685862088,   // 28e16cc8
 		228: 685862088,   // 28e16cc8
 		227: 685862088,   // 28e16cc8
@@ -179220,6 +181933,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_exportStoryLink: {
+		230: 2072899360, // 7b8def20
 		229: 2072899360, // 7b8def20
 		228: 2072899360, // 7b8def20
 		227: 2072899360, // 7b8def20
@@ -179293,6 +182007,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_report19D8EB45: {
+		230: 433646405, // 19d8eb45
 		229: 433646405, // 19d8eb45
 		228: 433646405, // 19d8eb45
 		227: 433646405, // 19d8eb45
@@ -179337,6 +182052,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_activateStealthMode: {
+		230: 1471926630, // 57bbd166
 		229: 1471926630, // 57bbd166
 		228: 1471926630, // 57bbd166
 		227: 1471926630, // 57bbd166
@@ -179409,6 +182125,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_sendReaction: {
+		230: 2144810674, // 7fd736b2
 		229: 2144810674, // 7fd736b2
 		228: 2144810674, // 7fd736b2
 		227: 2144810674, // 7fd736b2
@@ -179481,6 +182198,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getPeerStories: {
+		230: 743103056, // 2c4ada50
 		229: 743103056, // 2c4ada50
 		228: 743103056, // 2c4ada50
 		227: 743103056, // 2c4ada50
@@ -179550,6 +182268,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getAllReadPeerStories: {
+		230: -1688541191, // 9b5ae7f9
 		229: -1688541191, // 9b5ae7f9
 		228: -1688541191, // 9b5ae7f9
 		227: -1688541191, // 9b5ae7f9
@@ -179619,6 +182338,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getPeerMaxIDs78499170: {
+		230: 2018087280, // 78499170
 		229: 2018087280, // 78499170
 		228: 2018087280, // 78499170
 		227: 2018087280, // 78499170
@@ -179635,6 +182355,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getChatsToSend: {
+		230: -1519744160, // a56a8b60
 		229: -1519744160, // a56a8b60
 		228: -1519744160, // a56a8b60
 		227: -1519744160, // a56a8b60
@@ -179704,6 +182425,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_togglePeerStoriesHidden: {
+		230: -1123805756, // bd0415c4
 		229: -1123805756, // bd0415c4
 		228: -1123805756, // bd0415c4
 		227: -1123805756, // bd0415c4
@@ -179773,6 +182495,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getStoryReactionsList: {
+		230: -1179482081, // b9b2881f
 		229: -1179482081, // b9b2881f
 		228: -1179482081, // b9b2881f
 		227: -1179482081, // b9b2881f
@@ -179838,6 +182561,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_togglePinnedToTop: {
+		230: 187268763, // b297e9b
 		229: 187268763, // b297e9b
 		228: 187268763, // b297e9b
 		227: 187268763, // b297e9b
@@ -179893,6 +182617,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_searchPosts: {
+		230: -780072697, // d1810907
 		229: -780072697, // d1810907
 		228: -780072697, // d1810907
 		227: -780072697, // d1810907
@@ -179944,6 +182669,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_createAlbum: {
+		230: -1553754395, // a36396e5
 		229: -1553754395, // a36396e5
 		228: -1553754395, // a36396e5
 		227: -1553754395, // a36396e5
@@ -179966,6 +182692,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_updateAlbum: {
+		230: 1582455222, // 5e5259b6
 		229: 1582455222, // 5e5259b6
 		228: 1582455222, // 5e5259b6
 		227: 1582455222, // 5e5259b6
@@ -179988,6 +182715,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_reorderAlbums: {
+		230: -2060059687, // 8535fbd9
 		229: -2060059687, // 8535fbd9
 		228: -2060059687, // 8535fbd9
 		227: -2060059687, // 8535fbd9
@@ -180010,6 +182738,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_deleteAlbum: {
+		230: -1925949744, // 8d3456d0
 		229: -1925949744, // 8d3456d0
 		228: -1925949744, // 8d3456d0
 		227: -1925949744, // 8d3456d0
@@ -180032,6 +182761,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getAlbums: {
+		230: 632548039, // 25b3eac7
 		229: 632548039, // 25b3eac7
 		228: 632548039, // 25b3eac7
 		227: 632548039, // 25b3eac7
@@ -180054,6 +182784,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_getAlbumStories: {
+		230: -1400869535, // ac806d61
 		229: -1400869535, // ac806d61
 		228: -1400869535, // ac806d61
 		227: -1400869535, // ac806d61
@@ -180076,6 +182807,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_stories_startLive: {
+		230: -798372642, // d069ccde
 		229: -798372642, // d069ccde
 		228: -798372642, // d069ccde
 		227: -798372642, // d069ccde
@@ -180092,6 +182824,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_getBoostsList: {
+		230: 1626764896, // 60f67660
 		229: 1626764896, // 60f67660
 		228: 1626764896, // 60f67660
 		227: 1626764896, // 60f67660
@@ -180159,6 +182892,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_getMyBoosts: {
+		230: 199719754, // be77b4a
 		229: 199719754, // be77b4a
 		228: 199719754, // be77b4a
 		227: 199719754, // be77b4a
@@ -180226,6 +182960,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_applyBoost: {
+		230: 1803396934, // 6b7da746
 		229: 1803396934, // 6b7da746
 		228: 1803396934, // 6b7da746
 		227: 1803396934, // 6b7da746
@@ -180293,6 +183028,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_getBoostsStatus: {
+		230: 70197089, // 42f1f61
 		229: 70197089, // 42f1f61
 		228: 70197089, // 42f1f61
 		227: 70197089, // 42f1f61
@@ -180360,6 +183096,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_premium_getUserBoosts: {
+		230: 965037343, // 39854d1f
 		229: 965037343, // 39854d1f
 		228: 965037343, // 39854d1f
 		227: 965037343, // 39854d1f
@@ -180426,6 +183163,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_isEligibleToJoin: {
+		230: 249313744, // edc39d0
 		229: 249313744, // edc39d0
 		228: 249313744, // edc39d0
 		227: 249313744, // edc39d0
@@ -180484,6 +183222,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_join: {
+		230: -1488007635, // a74ece2d
 		229: -1488007635, // a74ece2d
 		228: -1488007635, // a74ece2d
 		227: -1488007635, // a74ece2d
@@ -180542,6 +183281,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_leave: {
+		230: -1734824589, // 9898ad73
 		229: -1734824589, // 9898ad73
 		228: -1734824589, // 9898ad73
 		227: -1734824589, // 9898ad73
@@ -180600,6 +183340,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_updateSettings: {
+		230: 155164863, // 93fa0bf
 		229: 155164863, // 93fa0bf
 		228: 155164863, // 93fa0bf
 		227: 155164863, // 93fa0bf
@@ -180658,6 +183399,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_getStatus: {
+		230: 279353576, // 10a698e8
 		229: 279353576, // 10a698e8
 		228: 279353576, // 10a698e8
 		227: 279353576, // 10a698e8
@@ -180716,6 +183458,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_getSmsJob: {
+		230: 2005766191, // 778d902f
 		229: 2005766191, // 778d902f
 		228: 2005766191, // 778d902f
 		227: 2005766191, // 778d902f
@@ -180774,6 +183517,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_smsjobs_finishJob: {
+		230: 1327415076, // 4f1ebf24
 		229: 1327415076, // 4f1ebf24
 		228: 1327415076, // 4f1ebf24
 		227: 1327415076, // 4f1ebf24
@@ -180832,6 +183576,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_fragment_getCollectibleInfo: {
+		230: -1105295942, // be1e85ba
 		229: -1105295942, // be1e85ba
 		228: -1105295942, // be1e85ba
 		227: -1105295942, // be1e85ba
@@ -180888,6 +183633,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_createTone: {
+		230: 1252538643, // 4aa83913
 		229: 1252538643, // 4aa83913
 		228: 1252538643, // 4aa83913
 		227: 1252538643, // 4aa83913
@@ -180896,6 +183642,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_updateTone: {
+		230: -1875128487, // 903bcf59
 		229: -1875128487, // 903bcf59
 		228: -1875128487, // 903bcf59
 		227: -1875128487, // 903bcf59
@@ -180904,6 +183651,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_saveTone: {
+		230: 394447793, // 1782cbb1
 		229: 394447793, // 1782cbb1
 		228: 394447793, // 1782cbb1
 		227: 394447793, // 1782cbb1
@@ -180912,6 +183660,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_deleteTone: {
+		230: -583454358, // dd39316a
 		229: -583454358, // dd39316a
 		228: -583454358, // dd39316a
 		227: -583454358, // dd39316a
@@ -180920,6 +183669,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_getTone: {
+		230: -1293370877, // b2e8ba03
 		229: -1293370877, // b2e8ba03
 		228: -1293370877, // b2e8ba03
 		227: -1293370877, // b2e8ba03
@@ -180928,6 +183678,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_getTones: {
+		230: -1412066815, // abd59201
 		229: -1412066815, // abd59201
 		228: -1412066815, // abd59201
 		227: -1412066815, // abd59201
@@ -180936,6 +183687,7 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_aicompose_getToneExample: {
+		230: -776688876, // d1b4ab14
 		229: -776688876, // d1b4ab14
 		228: -776688876, // d1b4ab14
 		227: -776688876, // d1b4ab14
@@ -180944,84 +183696,221 @@ var clazzNameRegisters2 = map[string]map[int]int32{
 
 	},
 	Predicate_communities_create: {
+		230: -1506256404, // a63859ec
 		229: -1506256404, // a63859ec
 		228: -1506256404, // a63859ec
 
 	},
 	Predicate_communities_togglePeerLink: {
+		230: 1936576490, // 736dcfea
 		229: 1936576490, // 736dcfea
 		228: 1936576490, // 736dcfea
 
 	},
 	Predicate_communities_getJoinedCommunities: {
+		230: -1503401936, // a663e830
 		229: -1503401936, // a663e830
 		228: -1503401936, // a663e830
 
 	},
 	Predicate_communities_toggleCommunityCollapsedInDialogs: {
+		230: -681122838, // d766e3ea
 		229: -681122838, // d766e3ea
 		228: -681122838, // d766e3ea
 
 	},
 	Predicate_communities_getPeerLinkRequests: {
+		230: -1820904636, // 93773344
 		229: -1820904636, // 93773344
 		228: -1820904636, // 93773344
 
 	},
 	Predicate_communities_togglePeerLinkRequestApproval: {
+		230: -1937630808, // 8c8219a8
 		229: -1937630808, // 8c8219a8
 		228: -1937630808, // 8c8219a8
 
 	},
 	Predicate_communities_toggleAllPeerLinkRequestApproval: {
+		230: -1075585731, // bfe3dd3d
 		229: -1075585731, // bfe3dd3d
 		228: -1075585731, // bfe3dd3d
 
 	},
 	Predicate_communities_toggleParticipantBanned: {
+		230: -1721258737, // 9967ad0f
 		229: -1721258737, // 9967ad0f
 		228: -1721258737, // 9967ad0f
 
 	},
 	Predicate_communities_getParticipantJoinedChats: {
+		230: -125916245, // f87eabab
 		229: -125916245, // f87eabab
 		228: -125916245, // f87eabab
 
 	},
 	Predicate_ephemeral_sendMessage: {
+		230: -1165140171, // ba8d5f35
 		229: -1165140171, // ba8d5f35
 		228: 1758187679,  // 68cbd09f
 
 	},
 	Predicate_ephemeral_deleteMessage: {
+		230: -1829312617, // 92f6e797
 		229: -1829312617, // 92f6e797
 		228: -1547643631, // a3c0d511
 
 	},
 	Predicate_ephemeral_reportMessage: {
+		230: -2029718849, // 8704f2bf
 		229: -2029718849, // 8704f2bf
 		228: -2029718849, // 8704f2bf
 
 	},
 	Predicate_ephemeral_getCallbackAnswer: {
+		230: 1067738312, // 3fa464c8
 		229: 1067738312, // 3fa464c8
 		228: 1067738312, // 3fa464c8
 
 	},
 	Predicate_ephemeral_editMessage: {
+		230: -811830693, // cf9c725b
 		229: -811830693, // cf9c725b
 
 	},
 	Predicate_ephemeral_deleteWelcomeMessage: {
+		230: -394090015, // e882a9e1
 		229: -394090015, // e882a9e1
 
 	},
 	Predicate_ephemeral_deleteAllWelcomeMessages: {
+		230: 1934595873, // 734f9721
 		229: 1934595873, // 734f9721
 
 	},
 	Predicate_ephemeral_getWelcomeMessages: {
+		230: -610614899, // db9ac18d
 		229: -610614899, // db9ac18d
+
+	},
+	Predicate_toncenter_performApiRequest: {
+		230: -1921262239, // 8d7bdd61
+
+	},
+	Predicate_toncenter_getStreamingUrl: {
+		230: -844143673, // cdaf63c7
+
+	},
+	Predicate_wallet_getState: {
+		230: -1417432262, // ab83b33a
+
+	},
+	Predicate_wallet_getUserAddresses: {
+		230: 1383456733, // 5275dfdd
+
+	},
+	Predicate_wallet_getTransactions: {
+		230: -1467807101, // a8830a83
+
+	},
+	Predicate_wallet_getTransactionsByIDs: {
+		230: -2128811338, // 811ceab6
+
+	},
+	Predicate_wallet_getTransactionsByMsgHash: {
+		230: -1497663139, // a6bb795d
+
+	},
+	Predicate_wallet_exportSecretPhrase: {
+		230: -1871197780, // 9077c9ac
+
+	},
+	Predicate_wallet_fetchEncryptedSecretPhrasePart: {
+		230: -180804145, // f53925cf
+
+	},
+	Predicate_wallet_replaceWallet: {
+		230: -658034964, // d8c72eec
+
+	},
+	Predicate_wallet_disableBackup: {
+		230: 185331930, // b0bf0da
+
+	},
+	Predicate_wallet_getBackupHolderDcs: {
+		230: -780544876, // d179d494
+
+	},
+	Predicate_wallet_enableBackup: {
+		230: 1157678373, // 4500c525
+
+	},
+	Predicate_wallet_getProofChallenge: {
+		230: 539354775, // 2025e697
+
+	},
+	Predicate_wallet_sendTransfer: {
+		230: -639247902, // d9e5d9e2
+
+	},
+	Predicate_wallet_getGaslessInfo: {
+		230: 1949167777, // 742df0a1
+
+	},
+	Predicate_wallet_getExistingWaltBalance: {
+		230: 1763656544, // 691f4360
+
+	},
+	Predicate_wallet_getNfts: {
+		230: -1944915036, // 8c12f3a4
+
+	},
+	Predicate_wallet_tonConnectCreateSession: {
+		230: -862777274, // cc931046
+
+	},
+	Predicate_wallet_tonConnectRegisterKey: {
+		230: 864800540, // 338bcf1c
+
+	},
+	Predicate_wallet_tonConnectSubmitConnectResult: {
+		230: -1027602567, // c2c00779
+
+	},
+	Predicate_wallet_tonConnectGetPending: {
+		230: 296673381, // 11aee065
+
+	},
+	Predicate_wallet_tonConnectClaimRequest: {
+		230: 1723169601, // 66b57b41
+
+	},
+	Predicate_wallet_tonConnectSubmitResponse: {
+		230: -87655108, // fac67d3c
+
+	},
+	Predicate_wallet_tonConnectNextEventId: {
+		230: 2002612804, // 775d7244
+
+	},
+	Predicate_wallet_tonConnectCloseSession: {
+		230: -700489266, // d63f61ce
+
+	},
+	Predicate_wallet_tonConnectGetSessions: {
+		230: -1476414098, // a7ffb56e
+
+	},
+	Predicate_inputPasskeyCredentialFirebasePNV: {
+		229: 1528613672, // 5b1ccb28
+		228: 1528613672, // 5b1ccb28
+		227: 1528613672, // 5b1ccb28
+		226: 1528613672, // 5b1ccb28
+		225: 1528613672, // 5b1ccb28
+		224: 1528613672, // 5b1ccb28
+		223: 1528613672, // 5b1ccb28
+		222: 1528613672, // 5b1ccb28
+		221: 1528613672, // 5b1ccb28
 
 	},
 	Predicate_keyboardButtonUrl: {
@@ -185907,6 +188796,8 @@ var clazzIdNameRegisters2 = map[int32]string{
 	375414334:   Predicate_messageActionManagedBotCreated,                     // 16605e3e
 	1562426088:  Predicate_messageActionChangeCommunity,                       // 5d20bae8
 	1250688640:  Predicate_messageActionChatJoinedViaCommunity,                // 4a8bfe80
+	-1825969613: Predicate_messageActionGramTransfer,                          // 9329ea33
+	1773716671:  Predicate_messageActionWalletTonConnectRequest,               // 69b8c4bf
 	-58066957:   Predicate_dialog,                                             // fc89f7f3
 	1908216652:  Predicate_dialogFolder,                                       // 71bd134c
 	-141948557:  Predicate_dialogCommunity,                                    // f78a0973
@@ -186150,6 +189041,11 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1270583041:  Predicate_updateEditEphemeralMessage,                         // 4bbb8f01
 	2081454550:  Predicate_updateEphemeralBotCallbackQuery,                    // 7c1079d6
 	1812827683:  Predicate_updateBotStarsSubscription,                         // 6c0d8e23
+	1791226538:  Predicate_updateWalletState,                                  // 6ac3f2aa
+	-1320989366: Predicate_updateSentWalletTransaction,                        // b1434d4a
+	-1464984404: Predicate_updateWalletGaslessInfo,                            // a8ae1cac
+	1352896014:  Predicate_updateWalletTonConnectSession,                      // 50a38e0e
+	-772898407:  Predicate_updateWalletTonConnectPendingDisconnect,            // d1ee8199
 	-1519637954: Predicate_updates_state,                                      // a56c2a3e
 	1567990072:  Predicate_updates_differenceEmpty,                            // 5d75a138
 	16030880:    Predicate_updates_difference,                                 // f49ca0
@@ -186357,6 +189253,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1903653142:  Predicate_messageEntityDiffInsert,                            // 71777116
 	-960371289:  Predicate_messageEntityDiffReplace,                           // c6c1e5a7
 	106086853:   Predicate_messageEntityDiffDelete,                            // 652c1c5
+	-39075891:   Predicate_messageEntityTonAddress,                            // fdabbfcd
 	-292807034:  Predicate_inputChannelEmpty,                                  // ee8c1e86
 	-212145112:  Predicate_inputChannel,                                       // f35aec28
 	1536380829:  Predicate_inputChannelFromMessage,                            // 5b934f9d
@@ -186502,6 +189399,7 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-1514906069: Predicate_textDate,                                           // a5b45e2b
 	-1769551024: Predicate_textDiff,                                           // 9686cb50
 	-1345872682: Predicate_textButton,                                         // afc79cd6
+	1020437354:  Predicate_textTonAddress,                                     // 3cd2a36a
 	324435594:   Predicate_pageBlockUnsupported,                               // 13567e8a
 	1890305021:  Predicate_pageBlockTitle,                                     // 70abc3fd
 	-1879401953: Predicate_pageBlockSubtitle,                                  // 8ffa9a1f
@@ -187208,8 +190106,8 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1957618656:  Predicate_starsTonAmount,                                     // 74aee3e0
 	1611711796:  Predicate_messages_foundStickersNotModified,                  // 6010c534
 	-2100698480: Predicate_messages_foundStickers,                             // 82c9e290
-	-1328716265: Predicate_botVerifierSettings,                                // b0cd6617
-	-113453988:  Predicate_botVerification,                                    // f93cd45c
+	-1591021569: Predicate_botVerifierSettings,                                // a12aefff
+	-147976487:  Predicate_botVerification,                                    // f72e0ed9
 	1448235490:  Predicate_starGiftAttributeModel,                             // 565251e2
 	1315997162:  Predicate_starGiftAttributePattern,                           // 4e7085ea
 	-1624963868: Predicate_starGiftAttributeBackdrop,                          // 9f2504e4
@@ -187299,7 +190197,6 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1046713180:  Predicate_inputPasskeyResponseRegister,                       // 3e63935c
 	-1021329078: Predicate_inputPasskeyResponseLogin,                          // c31fc14a
 	1009235855:  Predicate_inputPasskeyCredentialPublicKey,                    // 3c27b78f
-	1528613672:  Predicate_inputPasskeyCredentialFirebasePNV,                  // 5b1ccb28
 	-1342872680: Predicate_starGiftBackground,                                 // aff56398
 	984483112:   Predicate_starGiftAuctionRound,                               // 3aae0528
 	178266597:   Predicate_starGiftAuctionRoundExtendable,                     // aa021e5
@@ -187375,6 +190272,44 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1764381832:  Predicate_pageButton,                                         // 692a5488
 	1509940017:  Predicate_ephemeral_welcomeMessagesNotModified,               // 59ffdb31
 	273664114:   Predicate_ephemeral_welcomeMessages,                          // 104fc872
+	819557436:   Predicate_currencyRate,                                       // 30d9743c
+	-1144199998: Predicate_payments_currencyRates,                             // bbcce4c2
+	-1399980519: Predicate_toncenter_apiResponse,                              // ac8dfe19
+	428373505:   Predicate_toncenter_streamingUrl,                             // 19887601
+	-1631009112: Predicate_onrampMethodAvailability,                           // 9ec8c6a8
+	230847874:   Predicate_onrampProviderInfo,                                 // dc27582
+	-104314509:  Predicate_onrampAvailability,                                 // f9c84973
+	2078435198:  Predicate_onrampLimits,                                       // 7be2677e
+	2055213545:  Predicate_onrampQuote,                                        // 7a8011e9
+	-773575132:  Predicate_onrampSession,                                      // d1e42e24
+	-1665551636: Predicate_walletStateEmpty,                                   // 9cb9b2ec
+	-1782238101: Predicate_walletState,                                        // 95c5346b
+	-25628980:   Predicate_walletUserAddress,                                  // fe78eecc
+	-1836156075: Predicate_wallet_userAddresses,                               // 928e7b55
+	-722833299:  Predicate_walletTransactionPeerUser,                          // d4ea706d
+	103596476:   Predicate_walletTransactionPeerAddress,                       // 62cc1bc
+	-443213714:  Predicate_walletTransactionPeerOnramp,                        // e595186e
+	1921772890:  Predicate_walletTransactionPeerUnsupported,                   // 728bed5a
+	-1792163517: Predicate_walletTransaction,                                  // 952dc143
+	1126356389:  Predicate_wallet_transactions,                                // 4322d5a5
+	-422514943:  Predicate_wallet_secretPhraseParts,                           // e6d0ef01
+	417867063:   Predicate_wallet_encryptedSecretPhrasePart,                   // 18e82537
+	-103410961:  Predicate_wallet_holderDc,                                    // f9d612ef
+	-1713105145: Predicate_wallet_proofChallenge,                              // 99e41707
+	1622985485:  Predicate_walletOwnershipProof,                               // 60bccb0d
+	1671708892:  Predicate_inputWalletNew,                                     // 63a440dc
+	1722182203:  Predicate_inputWalletImported,                                // 66a66a3b
+	304255588:   Predicate_tonConnectManifest,                                 // 12229264
+	308631238:   Predicate_tonConnectSession,                                  // 126556c6
+	1271436947:  Predicate_wallet_tonConnectChallenge,                         // 4bc89693
+	1478780131:  Predicate_tonConnectNextEventId,                              // 582464e3
+	-1587575533: Predicate_tonConnectRequest,                                  // a15f8513
+	-2050952924: Predicate_wallet_tonConnectPending,                           // 85c0f124
+	236939414:   Predicate_wallet_tonConnectSessions,                          // e1f6896
+	-1108800883: Predicate_wallet_existingBalance,                             // bde90a8d
+	1277096206:  Predicate_wallet_nftAttribute,                                // 4c1ef10e
+	876739868:   Predicate_wallet_nftItem,                                     // 3441fd1c
+	2035107951:  Predicate_wallet_nftItems,                                    // 794d486f
 	-547700724:  Predicate_auth_firebasePnvIntent,                             // df5ac00c
 	-878758099:  Predicate_invokeAfterMsg,                                     // cb9f372d
 	1036301552:  Predicate_invokeAfterMsgs,                                    // 3dc4b4f0
@@ -187413,7 +190348,8 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1457889180:  Predicate_auth_checkPaidAuth,                                 // 56e59f9c
 	1368051895:  Predicate_auth_initPasskeyLogin,                              // 518ad0b7
 	-1739084537: Predicate_auth_finishPasskeyLogin,                            // 9857ad07
-	2004743034:  Predicate_auth_initFirebasePnvLogin,                          // 777df37a
+	1225633185:  Predicate_auth_cancelWebTokenAuthorization,                   // 490dada1
+	1682904512:  Predicate_auth_initFirebasePnvLogin,                          // 644f15c0
 	746916172:   Predicate_auth_finishFirebasePnvLogin,                        // 2c85094c
 	2017422166:  Predicate_auth_firebasePnvSignUp,                             // 783f6b56
 	-326762118:  Predicate_account_registerDevice,                             // ec86017a
@@ -187965,9 +190901,9 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1342666121:  Predicate_bots_checkDownloadFileParams,                       // 50077589
 	-1334764157: Predicate_bots_getAdminedBots,                                // b0711d83
 	2005621427:  Predicate_bots_updateStarRefProgram,                          // 778b5ab3
-	-1953898563: Predicate_bots_setCustomVerification,                         // 8b89dfbd
+	-191600809:  Predicate_bots_setCustomVerification,                         // f4946757
 	-1581840363: Predicate_bots_getBotRecommendations,                         // a1b70815
-	-2014174821: Predicate_bots_checkUsername,                                 // 87f2219b
+	-475247519:  Predicate_bots_checkUsername,                                 // e3ac4c61
 	-441352405:  Predicate_bots_createBot,                                     // e5b17f2b
 	-1123182101: Predicate_bots_exportBotToken,                                // bd0d99eb
 	832742238:   Predicate_bots_requestWebViewButton,                          // 31a2a35e
@@ -187975,6 +190911,8 @@ var clazzIdNameRegisters2 = map[int32]string{
 	557339555:   Predicate_bots_getAccessSettings,                             // 213853a3
 	830553304:   Predicate_bots_editAccessSettings,                            // 31813cd8
 	-417708016:  Predicate_bots_setJoinChatResults,                            // e71a4810
+	889307274:   Predicate_bots_addUsername,                                   // 3501c08a
+	-956033923:  Predicate_bots_removeUsername,                                // c704147d
 	924093883:   Predicate_payments_getPaymentForm,                            // 37148dbb
 	611897804:   Predicate_payments_getPaymentReceipt,                         // 2478d1cc
 	-1228345045: Predicate_payments_validateRequestedInfo,                     // b6c8f12b
@@ -188040,6 +190978,13 @@ var clazzIdNameRegisters2 = map[int32]string{
 	1828948824:  Predicate_payments_getStarGiftUpgradeAttributes,              // 6d038b58
 	-49947392:   Predicate_payments_getCraftStarGifts,                         // fd05dd00
 	-1325832113: Predicate_payments_craftStarGift,                             // b0f9684f
+	-749108248:  Predicate_payments_getCurrencyRates,                          // d35983e8
+	1061028060:  Predicate_payments_getOnrampProviders,                        // 3f3e00dc
+	478932467:   Predicate_payments_getOnrampBaseCurrencies,                   // 1c8bedf3
+	784505169:   Predicate_payments_getOnrampAvailability,                     // 2ec29951
+	-2132258307: Predicate_payments_getOnrampLimits,                           // 80e851fd
+	-530168326:  Predicate_payments_getOnrampQuote,                            // e06645fa
+	-1575387914: Predicate_payments_createOnrampSession,                       // a2197cf6
 	-1876841625: Predicate_stickers_createStickerSet,                          // 9021ab67
 	-143257775:  Predicate_stickers_removeStickerFromSet,                      // f7760f51
 	-4795190:    Predicate_stickers_changeStickerPosition,                     // ffb6d4ca
@@ -188189,6 +191134,39 @@ var clazzIdNameRegisters2 = map[int32]string{
 	-394090015:  Predicate_ephemeral_deleteWelcomeMessage,                     // e882a9e1
 	1934595873:  Predicate_ephemeral_deleteAllWelcomeMessages,                 // 734f9721
 	-610614899:  Predicate_ephemeral_getWelcomeMessages,                       // db9ac18d
+	-1921262239: Predicate_toncenter_performApiRequest,                        // 8d7bdd61
+	-844143673:  Predicate_toncenter_getStreamingUrl,                          // cdaf63c7
+	-1417432262: Predicate_wallet_getState,                                    // ab83b33a
+	1383456733:  Predicate_wallet_getUserAddresses,                            // 5275dfdd
+	-1467807101: Predicate_wallet_getTransactions,                             // a8830a83
+	-2128811338: Predicate_wallet_getTransactionsByIDs,                        // 811ceab6
+	-1497663139: Predicate_wallet_getTransactionsByMsgHash,                    // a6bb795d
+	-1871197780: Predicate_wallet_exportSecretPhrase,                          // 9077c9ac
+	-180804145:  Predicate_wallet_fetchEncryptedSecretPhrasePart,              // f53925cf
+	-658034964:  Predicate_wallet_replaceWallet,                               // d8c72eec
+	185331930:   Predicate_wallet_disableBackup,                               // b0bf0da
+	-780544876:  Predicate_wallet_getBackupHolderDcs,                          // d179d494
+	1157678373:  Predicate_wallet_enableBackup,                                // 4500c525
+	539354775:   Predicate_wallet_getProofChallenge,                           // 2025e697
+	-639247902:  Predicate_wallet_sendTransfer,                                // d9e5d9e2
+	1949167777:  Predicate_wallet_getGaslessInfo,                              // 742df0a1
+	1763656544:  Predicate_wallet_getExistingWaltBalance,                      // 691f4360
+	-1944915036: Predicate_wallet_getNfts,                                     // 8c12f3a4
+	-862777274:  Predicate_wallet_tonConnectCreateSession,                     // cc931046
+	864800540:   Predicate_wallet_tonConnectRegisterKey,                       // 338bcf1c
+	-1027602567: Predicate_wallet_tonConnectSubmitConnectResult,               // c2c00779
+	296673381:   Predicate_wallet_tonConnectGetPending,                        // 11aee065
+	1723169601:  Predicate_wallet_tonConnectClaimRequest,                      // 66b57b41
+	-87655108:   Predicate_wallet_tonConnectSubmitResponse,                    // fac67d3c
+	2002612804:  Predicate_wallet_tonConnectNextEventId,                       // 775d7244
+	-700489266:  Predicate_wallet_tonConnectCloseSession,                      // d63f61ce
+	-1476414098: Predicate_wallet_tonConnectGetSessions,                       // a7ffb56e
+	-1328716265: Predicate_botVerifierSettings,                                // b0cd6617
+	-113453988:  Predicate_botVerification,                                    // f93cd45c
+	1528613672:  Predicate_inputPasskeyCredentialFirebasePNV,                  // 5b1ccb28
+	2004743034:  Predicate_auth_initFirebasePnvLogin,                          // 777df37a
+	-1953898563: Predicate_bots_setCustomVerification,                         // 8b89dfbd
+	-2014174821: Predicate_bots_checkUsername,                                 // 87f2219b
 	-423422686:  Predicate_messageActionStarGiftUnique,                        // e6c31522
 	929929052:   Predicate_sendMessageTextDraftAction,                         // 376d975c
 	-491635887:  Predicate_inputSendMessageRichMessageDraftAction,             // e2b23b51

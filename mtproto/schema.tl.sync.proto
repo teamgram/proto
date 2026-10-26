@@ -863,13 +863,15 @@ message TL_botPreviewMedia {
 
 // BotVerification <--
 //  + TL_botVerification
+//  + TL_botVerification
 //
 message BotVerification {
   string predicate_name = 1;
   TLConstructor constructor = 2;
   int64 bot_id = 3;
   int64 icon = 4;
-  string description = 5;
+  TextWithEntities description_TEXTWITHENTITIES = 5;
+  string description_STRING = 6;
 }
 
 // TL_botVerification
@@ -879,6 +881,7 @@ message TL_botVerification {
 
 // BotVerifierSettings <--
 //  + TL_botVerifierSettings
+//  + TL_botVerifierSettings
 //
 message BotVerifierSettings {
   string predicate_name = 1;
@@ -886,7 +889,8 @@ message BotVerifierSettings {
   bool can_modify_custom_description = 3;
   int64 icon = 4;
   string company = 5;
-  google.protobuf.StringValue custom_description = 6;
+  TextWithEntities custom_description_FLAGTEXTWITHENTITIES = 6;
+  google.protobuf.StringValue custom_description_FLAGSTRING = 7;
 }
 
 // TL_botVerifierSettings
@@ -2587,6 +2591,21 @@ message ContactStatus {
 // TL_contactStatus
 message TL_contactStatus {
   ContactStatus data2 = 1;
+}
+
+// CurrencyRate <--
+//  + TL_currencyRate
+//
+message CurrencyRate {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string currency = 3;
+  double rate = 4;
+}
+
+// TL_currencyRate
+message TL_currencyRate {
+  CurrencyRate data2 = 1;
 }
 
 // DataJSON <--
@@ -6236,6 +6255,28 @@ message TL_inputWallPaperNoFile {
   InputWallPaper data2 = 1;
 }
 
+// InputWalletReplacement <--
+//  + TL_inputWalletNew
+//  + TL_inputWalletImported
+//
+message InputWalletReplacement {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bytes public_key = 3;
+  bytes anchor_public_key = 4;
+  WalletOwnershipProof proof = 5;
+}
+
+// TL_inputWalletNew
+message TL_inputWalletNew {
+  InputWalletReplacement data2 = 1;
+}
+
+// TL_inputWalletImported
+message TL_inputWalletImported {
+  InputWalletReplacement data2 = 1;
+}
+
 // InputWebDocument <--
 //  + TL_inputWebDocument
 //
@@ -7006,6 +7047,8 @@ message TL_messageService {
 //  + TL_messageActionManagedBotCreated
 //  + TL_messageActionChangeCommunity
 //  + TL_messageActionChatJoinedViaCommunity
+//  + TL_messageActionGramTransfer
+//  + TL_messageActionWalletTonConnectRequest
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGiftUnique
 //  + TL_messageActionStarGift
@@ -7174,12 +7217,20 @@ message MessageAction {
   int64 bot_id = 131;
   google.protobuf.Int64Value community_id_FLAGINT64 = 132;
   int64 community_id_INT64 = 133;
-  int32 months = 134;
-  string emoticon = 135;
-  google.protobuf.Int64Value resale_stars = 136;
-  int64 convert_stars_INT64 = 137;
-  string domain_STRING = 138;
-  BizDataRaw biz_data = 139;
+  bool comment_encrypted = 134;
+  string peer_address = 135;
+  google.protobuf.StringValue comment = 136;
+  int64 session_id = 137;
+  int32 expires = 138;
+  google.protobuf.StringValue topic = 139;
+  google.protobuf.StringValue trace_id = 140;
+  google.protobuf.StringValue dapp_name = 141;
+  int32 months = 142;
+  string emoticon = 143;
+  google.protobuf.Int64Value resale_stars = 144;
+  int64 convert_stars_INT64 = 145;
+  string domain_STRING = 146;
+  BizDataRaw biz_data = 147;
   string title = 200;
 }
 
@@ -7528,6 +7579,16 @@ message TL_messageActionChatJoinedViaCommunity {
   MessageAction data2 = 1;
 }
 
+// TL_messageActionGramTransfer
+message TL_messageActionGramTransfer {
+  MessageAction data2 = 1;
+}
+
+// TL_messageActionWalletTonConnectRequest
+message TL_messageActionWalletTonConnectRequest {
+  MessageAction data2 = 1;
+}
+
 // TL_messageActionSetSameChatWallPaper
 message TL_messageActionSetSameChatWallPaper {
   MessageAction data2 = 1;
@@ -7629,6 +7690,7 @@ message TL_messageBoxListSlice {
 //  + TL_messageEntityDiffInsert
 //  + TL_messageEntityDiffReplace
 //  + TL_messageEntityDiffDelete
+//  + TL_messageEntityTonAddress
 //  + TL_messageEntityBlockquote
 //
 message MessageEntity {
@@ -7774,6 +7836,11 @@ message TL_messageEntityDiffReplace {
 
 // TL_messageEntityDiffDelete
 message TL_messageEntityDiffDelete {
+  MessageEntity data2 = 1;
+}
+
+// TL_messageEntityTonAddress
+message TL_messageEntityTonAddress {
   MessageEntity data2 = 1;
 }
 
@@ -8561,6 +8628,118 @@ message TL_notifyForumTopic {
 // TL_notifyCommunity
 message TL_notifyCommunity {
   NotifyPeer data2 = 1;
+}
+
+// OnrampAvailability <--
+//  + TL_onrampAvailability
+//
+message OnrampAvailability {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool allowed = 3;
+  bool buy_allowed = 4;
+  string country_code = 5;
+  google.protobuf.StringValue state = 6;
+  repeated OnrampMethodAvailability methods = 7;
+}
+
+// TL_onrampAvailability
+message TL_onrampAvailability {
+  OnrampAvailability data2 = 1;
+}
+
+// OnrampLimits <--
+//  + TL_onrampLimits
+//
+message OnrampLimits {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string base_currency = 3;
+  string base_min_amount = 4;
+  string base_max_amount = 5;
+  string crypto_min_amount = 6;
+  string crypto_max_amount = 7;
+  string payment_method = 8;
+}
+
+// TL_onrampLimits
+message TL_onrampLimits {
+  OnrampLimits data2 = 1;
+}
+
+// OnrampMethodAvailability <--
+//  + TL_onrampMethodAvailability
+//
+message OnrampMethodAvailability {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool available = 3;
+  string payment_method = 4;
+}
+
+// TL_onrampMethodAvailability
+message TL_onrampMethodAvailability {
+  OnrampMethodAvailability data2 = 1;
+}
+
+// OnrampProviderInfo <--
+//  + TL_onrampProviderInfo
+//
+message OnrampProviderInfo {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool supports_base_currencies = 3;
+  bool supports_limits = 4;
+  bool supports_quote = 5;
+  string id = 6;
+  string name = 7;
+  repeated string crypto_currencies = 8;
+}
+
+// TL_onrampProviderInfo
+message TL_onrampProviderInfo {
+  OnrampProviderInfo data2 = 1;
+}
+
+// OnrampQuote <--
+//  + TL_onrampQuote
+//
+message OnrampQuote {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string base_currency = 3;
+  string base_amount = 4;
+  string crypto_currency = 5;
+  string crypto_amount = 6;
+  string crypto_price = 7;
+  string fee_amount = 8;
+  string extra_fee_amount = 9;
+  string network_fee_amount = 10;
+  string total_amount = 11;
+  string payment_method = 12;
+  int32 expires_date = 13;
+}
+
+// TL_onrampQuote
+message TL_onrampQuote {
+  OnrampQuote data2 = 1;
+}
+
+// OnrampSession <--
+//  + TL_onrampSession
+//
+message OnrampSession {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string provider = 3;
+  string session_id = 4;
+  string url = 5;
+  int32 expires_date = 6;
+}
+
+// TL_onrampSession
+message TL_onrampSession {
+  OnrampSession data2 = 1;
 }
 
 // OutboxReadDate <--
@@ -10680,6 +10859,7 @@ message TL_richMessage {
 //  + TL_textDate
 //  + TL_textDiff
 //  + TL_textButton
+//  + TL_textTonAddress
 //
 message RichText {
   string predicate_name = 1;
@@ -10862,6 +11042,11 @@ message TL_textDiff {
 
 // TL_textButton
 message TL_textButton {
+  RichText data2 = 1;
+}
+
+// TL_textTonAddress
+message TL_textTonAddress {
   RichText data2 = 1;
 }
 
@@ -12935,6 +13120,78 @@ message TL_todoList {
   TodoList data2 = 1;
 }
 
+// TonConnectManifest <--
+//  + TL_tonConnectManifest
+//
+message TonConnectManifest {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string url = 3;
+  string name = 4;
+  WebDocument icon = 5;
+}
+
+// TL_tonConnectManifest
+message TL_tonConnectManifest {
+  TonConnectManifest data2 = 1;
+}
+
+// TonConnectNextEventId <--
+//  + TL_tonConnectNextEventId
+//
+message TonConnectNextEventId {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 event_id = 3;
+}
+
+// TL_tonConnectNextEventId
+message TL_tonConnectNextEventId {
+  TonConnectNextEventId data2 = 1;
+}
+
+// TonConnectRequest <--
+//  + TL_tonConnectRequest
+//
+message TonConnectRequest {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 session_id = 3;
+  int32 msg_id = 4;
+  bytes body = 5;
+  int32 expires = 6;
+  google.protobuf.StringValue topic = 7;
+  google.protobuf.StringValue trace_id = 8;
+}
+
+// TL_tonConnectRequest
+message TL_tonConnectRequest {
+  TonConnectRequest data2 = 1;
+}
+
+// TonConnectSession <--
+//  + TL_tonConnectSession
+//
+message TonConnectSession {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool pending = 3;
+  bool closing = 4;
+  bool closed = 5;
+  int64 id = 6;
+  string dapp_client_id = 7;
+  google.protobuf.StringValue client_id = 8;
+  bytes nonce = 9;
+  TonConnectManifest manifest = 10;
+  google.protobuf.Int32Value manifest_error = 11;
+  int32 date = 12;
+}
+
+// TL_tonConnectSession
+message TL_tonConnectSession {
+  TonConnectSession data2 = 1;
+}
+
 // TopPeer <--
 //  + TL_topPeer
 //
@@ -13199,6 +13456,11 @@ message TL_topPeerCategoryPeers {
 //  + TL_updateEditEphemeralMessage
 //  + TL_updateEphemeralBotCallbackQuery
 //  + TL_updateBotStarsSubscription
+//  + TL_updateWalletState
+//  + TL_updateSentWalletTransaction
+//  + TL_updateWalletGaslessInfo
+//  + TL_updateWalletTonConnectSession
+//  + TL_updateWalletTonConnectPendingDisconnect
 //  + TL_updateBotChatInviteRequester
 //  + TL_updateMessagePoll
 //  + TL_updateMessagePollVote
@@ -13406,7 +13668,7 @@ message Update {
   bytes encrypted_message = 168;
   int32 topic_id_INT32 = 169;
   int64 gift_id = 170;
-  StarGiftAuctionState state = 171;
+  StarGiftAuctionState state_STARGIFTAUCTIONSTATE = 171;
   StarGiftAuctionUserState user_state = 172;
   messages_EmojiGameInfo info_MESSAGES_EMOJIGAMEINFO = 173;
   string rank = 174;
@@ -13424,20 +13686,31 @@ message Update {
   bool canceled = 186;
   bool payment_failed = 187;
   bool restored = 188;
-  google.protobuf.Int64Value chat_id_FLAGINT64 = 189;
-  TextWithEntities message_TEXTWITHENTITIES = 190;
-  BroadcastRevenueBalances balances = 191;
-  Bool private_BOOL = 192;
-  int64 balance_INT64 = 193;
-  string invoice_slug = 194;
-  int32 until_date = 195;
-  MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 196;
-  Bool blocked_BOOL = 197;
-  UserProfilePhoto photo = 198;
-  Bool previous = 199;
-  google.protobuf.Int32Value topic_id_FLAGINT32 = 200;
-  string username = 201;
-  BizDataRaw biz_data = 202;
+  WalletState state_WALLETSTATE = 189;
+  bool gasless = 190;
+  string msg_hash = 191;
+  WalletTransaction transaction = 192;
+  bool available = 193;
+  int32 left = 194;
+  int32 reset_at = 195;
+  int64 min_amount = 196;
+  string relayer_address = 197;
+  TonConnectSession session = 198;
+  repeated int64 session_ids = 199;
+  google.protobuf.Int64Value chat_id_FLAGINT64 = 200;
+  TextWithEntities message_TEXTWITHENTITIES = 201;
+  BroadcastRevenueBalances balances = 202;
+  Bool private_BOOL = 203;
+  int64 balance_INT64 = 204;
+  string invoice_slug = 205;
+  int32 until_date = 206;
+  MessageExtendedMedia extended_media_MESSAGEEXTENDEDMEDIA = 207;
+  Bool blocked_BOOL = 208;
+  UserProfilePhoto photo = 209;
+  Bool previous = 210;
+  google.protobuf.Int32Value topic_id_FLAGINT32 = 211;
+  string username = 212;
+  BizDataRaw biz_data = 213;
 }
 
 // TL_updateNewMessage
@@ -14265,6 +14538,31 @@ message TL_updateBotStarsSubscription {
   Update data2 = 1;
 }
 
+// TL_updateWalletState
+message TL_updateWalletState {
+  Update data2 = 1;
+}
+
+// TL_updateSentWalletTransaction
+message TL_updateSentWalletTransaction {
+  Update data2 = 1;
+}
+
+// TL_updateWalletGaslessInfo
+message TL_updateWalletGaslessInfo {
+  Update data2 = 1;
+}
+
+// TL_updateWalletTonConnectSession
+message TL_updateWalletTonConnectSession {
+  Update data2 = 1;
+}
+
+// TL_updateWalletTonConnectPendingDisconnect
+message TL_updateWalletTonConnectPendingDisconnect {
+  Update data2 = 1;
+}
+
 // TL_updateChannelPinnedTopic
 message TL_updateChannelPinnedTopic {
   Update data2 = 1;
@@ -14785,7 +15083,9 @@ message Username {
   TLConstructor constructor = 2;
   bool editable = 3;
   bool active = 4;
-  string username = 5;
+  bool deletable = 5;
+  bool expired = 6;
+  string username = 7;
 }
 
 // TL_username
@@ -14889,6 +15189,124 @@ message WallPaperSettings {
 // TL_wallPaperSettings
 message TL_wallPaperSettings {
   WallPaperSettings data2 = 1;
+}
+
+// WalletOwnershipProof <--
+//  + TL_walletOwnershipProof
+//
+message WalletOwnershipProof {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int32 timestamp = 3;
+  bytes signature = 4;
+}
+
+// TL_walletOwnershipProof
+message TL_walletOwnershipProof {
+  WalletOwnershipProof data2 = 1;
+}
+
+// WalletState <--
+//  + TL_walletStateEmpty
+//  + TL_walletState
+//
+message WalletState {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool creating = 3;
+  bool backup_enabled = 4;
+  bool can_export_phrase = 5;
+  bool can_enable_backup = 6;
+  string address = 7;
+  bytes public_key = 8;
+  int64 balance = 9;
+}
+
+// TL_walletStateEmpty
+message TL_walletStateEmpty {
+  WalletState data2 = 1;
+}
+
+// TL_walletState
+message TL_walletState {
+  WalletState data2 = 1;
+}
+
+// WalletTransaction <--
+//  + TL_walletTransaction
+//
+message WalletTransaction {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool incoming = 3;
+  bool gasless = 4;
+  bool failed = 5;
+  bool key_change = 6;
+  bool comment_encrypted = 7;
+  string id = 8;
+  int64 amount = 9;
+  int64 fee = 10;
+  int32 date = 11;
+  WalletTransactionPeer peer = 12;
+  google.protobuf.StringValue comment = 13;
+  google.protobuf.StringValue tx_hash = 14;
+  wallet_NftItem nft = 15;
+}
+
+// TL_walletTransaction
+message TL_walletTransaction {
+  WalletTransaction data2 = 1;
+}
+
+// WalletTransactionPeer <--
+//  + TL_walletTransactionPeerUser
+//  + TL_walletTransactionPeerAddress
+//  + TL_walletTransactionPeerOnramp
+//  + TL_walletTransactionPeerUnsupported
+//
+message WalletTransactionPeer {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 user_id = 3;
+  string address = 4;
+  google.protobuf.StringValue domain = 5;
+  string provider_name = 6;
+}
+
+// TL_walletTransactionPeerUser
+message TL_walletTransactionPeerUser {
+  WalletTransactionPeer data2 = 1;
+}
+
+// TL_walletTransactionPeerAddress
+message TL_walletTransactionPeerAddress {
+  WalletTransactionPeer data2 = 1;
+}
+
+// TL_walletTransactionPeerOnramp
+message TL_walletTransactionPeerOnramp {
+  WalletTransactionPeer data2 = 1;
+}
+
+// TL_walletTransactionPeerUnsupported
+message TL_walletTransactionPeerUnsupported {
+  WalletTransactionPeer data2 = 1;
+}
+
+// WalletUserAddress <--
+//  + TL_walletUserAddress
+//
+message WalletUserAddress {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  google.protobuf.Int64Value user_id = 3;
+  string address = 4;
+  bytes public_key = 5;
+}
+
+// TL_walletUserAddress
+message TL_walletUserAddress {
+  WalletUserAddress data2 = 1;
 }
 
 // WebAuthorization <--
@@ -18230,6 +18648,20 @@ message TL_payments_connectedStarRefBots {
   payments_ConnectedStarRefBots data2 = 1;
 }
 
+// payments_CurrencyRates <--
+//  + TL_payments_currencyRates
+//
+message payments_CurrencyRates {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated CurrencyRate rates = 3;
+}
+
+// TL_payments_currencyRates
+message TL_payments_currencyRates {
+  payments_CurrencyRates data2 = 1;
+}
+
 // payments_ExportedInvoice <--
 //  + TL_payments_exportedInvoice
 //
@@ -19511,6 +19943,35 @@ message TL_stories_userStories {
   stories_UserStories data2 = 1;
 }
 
+// toncenter_ApiResponse <--
+//  + TL_toncenter_apiResponse
+//
+message toncenter_ApiResponse {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  DataJSON response = 3;
+}
+
+// TL_toncenter_apiResponse
+message TL_toncenter_apiResponse {
+  toncenter_ApiResponse data2 = 1;
+}
+
+// toncenter_StreamingUrl <--
+//  + TL_toncenter_streamingUrl
+//
+message toncenter_StreamingUrl {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string url = 3;
+  int32 expires = 4;
+}
+
+// TL_toncenter_streamingUrl
+message TL_toncenter_streamingUrl {
+  toncenter_StreamingUrl data2 = 1;
+}
+
 // updates_ChannelDifference <--
 //  + TL_updates_channelDifferenceEmpty
 //  + TL_updates_channelDifferenceTooLong
@@ -19726,4 +20187,211 @@ message TL_users_users {
 // TL_users_usersSlice
 message TL_users_usersSlice {
   users_Users data2 = 1;
+}
+
+// wallet_EncryptedSecretPhrasePart <--
+//  + TL_wallet_encryptedSecretPhrasePart
+//
+message wallet_EncryptedSecretPhrasePart {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bytes data = 3;
+}
+
+// TL_wallet_encryptedSecretPhrasePart
+message TL_wallet_encryptedSecretPhrasePart {
+  wallet_EncryptedSecretPhrasePart data2 = 1;
+}
+
+// wallet_ExistingBalance <--
+//  + TL_wallet_existingBalance
+//
+message wallet_ExistingBalance {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bool has_balance = 3;
+  string url = 4;
+}
+
+// TL_wallet_existingBalance
+message TL_wallet_existingBalance {
+  wallet_ExistingBalance data2 = 1;
+}
+
+// wallet_HolderDc <--
+//  + TL_wallet_holderDc
+//
+message wallet_HolderDc {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int32 dc = 3;
+  bytes public_key = 4;
+}
+
+// TL_wallet_holderDc
+message TL_wallet_holderDc {
+  wallet_HolderDc data2 = 1;
+}
+
+// wallet_NftAttribute <--
+//  + TL_wallet_nftAttribute
+//
+message wallet_NftAttribute {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string trait_type = 3;
+  string value = 4;
+}
+
+// TL_wallet_nftAttribute
+message TL_wallet_nftAttribute {
+  wallet_NftAttribute data2 = 1;
+}
+
+// wallet_NftItem <--
+//  + TL_wallet_nftItem
+//
+message wallet_NftItem {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  google.protobuf.StringValue collection_address = 3;
+  string address = 4;
+  string owner_address = 5;
+  string index = 6;
+  google.protobuf.StringValue name = 7;
+  google.protobuf.StringValue description = 8;
+  WebDocument image = 9;
+  WebDocument image_small = 10;
+  WebDocument content_url = 11;
+  WebDocument lottie = 12;
+  repeated wallet_NftAttribute attributes = 13;
+  DataJSON extra = 14;
+}
+
+// TL_wallet_nftItem
+message TL_wallet_nftItem {
+  wallet_NftItem data2 = 1;
+}
+
+// wallet_NftItems <--
+//  + TL_wallet_nftItems
+//
+message wallet_NftItems {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated wallet_NftItem items = 3;
+  google.protobuf.StringValue next_offset = 4;
+}
+
+// TL_wallet_nftItems
+message TL_wallet_nftItems {
+  wallet_NftItems data2 = 1;
+}
+
+// wallet_ProofChallenge <--
+//  + TL_wallet_proofChallenge
+//
+message wallet_ProofChallenge {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string payload = 3;
+  int32 expires = 4;
+  string domain = 5;
+}
+
+// TL_wallet_proofChallenge
+message TL_wallet_proofChallenge {
+  wallet_ProofChallenge data2 = 1;
+}
+
+// wallet_SecretPhraseParts <--
+//  + TL_wallet_secretPhraseParts
+//
+message wallet_SecretPhraseParts {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  string token = 3;
+  repeated int32 dcs = 4;
+}
+
+// TL_wallet_secretPhraseParts
+message TL_wallet_secretPhraseParts {
+  wallet_SecretPhraseParts data2 = 1;
+}
+
+// wallet_TonConnectChallenge <--
+//  + TL_wallet_tonConnectChallenge
+//
+message wallet_TonConnectChallenge {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  bytes challenge = 3;
+  int64 event_id = 4;
+}
+
+// TL_wallet_tonConnectChallenge
+message TL_wallet_tonConnectChallenge {
+  wallet_TonConnectChallenge data2 = 1;
+}
+
+// wallet_TonConnectPending <--
+//  + TL_wallet_tonConnectPending
+//
+message wallet_TonConnectPending {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  TonConnectSession session = 3;
+  repeated TonConnectRequest requests = 4;
+}
+
+// TL_wallet_tonConnectPending
+message TL_wallet_tonConnectPending {
+  wallet_TonConnectPending data2 = 1;
+}
+
+// wallet_TonConnectSessions <--
+//  + TL_wallet_tonConnectSessions
+//
+message wallet_TonConnectSessions {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated TonConnectSession sessions = 3;
+}
+
+// TL_wallet_tonConnectSessions
+message TL_wallet_tonConnectSessions {
+  wallet_TonConnectSessions data2 = 1;
+}
+
+// wallet_Transactions <--
+//  + TL_wallet_transactions
+//
+message wallet_Transactions {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 balance = 3;
+  repeated WalletTransaction transactions = 4;
+  google.protobuf.StringValue next_offset = 5;
+  repeated Chat chats = 6;
+  repeated User users = 7;
+}
+
+// TL_wallet_transactions
+message TL_wallet_transactions {
+  wallet_Transactions data2 = 1;
+}
+
+// wallet_UserAddresses <--
+//  + TL_wallet_userAddresses
+//
+message wallet_UserAddresses {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  repeated WalletUserAddress addresses = 3;
+  repeated User users = 4;
+}
+
+// TL_wallet_userAddresses
+message TL_wallet_userAddresses {
+  wallet_UserAddresses data2 = 1;
 }
