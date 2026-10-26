@@ -11,7 +11,7 @@ func (m *ReplyMarkup) ToForwardMessage() (replyMarkup *ReplyMarkup) {
 		return
 	}
 
-	for _, row := range m.GetRows() {
+	for _, row := range m.GetRows_VECTORKEYBOARDBUTTONROW() {
 		for _, button := range row.GetButtons() {
 			if button.GetPredicateName() != Predicate_keyboardButtonUrl {
 				return
