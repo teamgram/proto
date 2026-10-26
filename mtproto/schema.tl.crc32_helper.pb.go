@@ -1400,6 +1400,7 @@ const (
 	CRC32_inputFolderPeer                                             TLConstructor = -70073706   // fbd2c296
 	CRC32_folderPeer                                                  TLConstructor = -373643672  // e9baa668
 	CRC32_messages_searchCounter                                      TLConstructor = -398136321  // e844ebff
+	CRC32_urlAuthResultRequest_bdca6167                               TLConstructor = -1110810265 // bdca6167
 	CRC32_urlAuthResultRequest_3cd623ec                               TLConstructor = 1020666860  // 3cd623ec
 	CRC32_urlAuthResultRequest_f8f8eb1e                               TLConstructor = -117904610  // f8f8eb1e
 	CRC32_urlAuthResultRequest_32fabf1a                               TLConstructor = 855293722   // 32fabf1a
@@ -2189,6 +2190,7 @@ const (
 	CRC32_wallet_nftItem                                              TLConstructor = 876739868   // 3441fd1c
 	CRC32_wallet_nftItems                                             TLConstructor = 2035107951  // 794d486f
 	CRC32_auth_firebasePnvIntent                                      TLConstructor = -547700724  // df5ac00c
+	CRC32_inputTonConnectOauthSession                                 TLConstructor = 1654613710  // 629f66ce
 	CRC32_inputPasskeyCredentialFirebasePNV                           TLConstructor = 1528613672  // 5b1ccb28
 	CRC32_keyboardButtonUrl_d80c25ec                                  TLConstructor = -670292500  // d80c25ec
 	CRC32_keyboardButtonUrl_258aff05                                  TLConstructor = 629866245   // 258aff05
@@ -2696,6 +2698,7 @@ const (
 	CRC32_messages_getSearchCounters_732eef00                         TLConstructor = 1932455680  // 732eef00
 	CRC32_messages_requestUrlAuth_894cc99c                            TLConstructor = -1991456356 // 894cc99c
 	CRC32_messages_requestUrlAuth_198fb446                            TLConstructor = 428848198   // 198fb446
+	CRC32_messages_acceptUrlAuth_18dd4e92                             TLConstructor = 417156754   // 18dd4e92
 	CRC32_messages_acceptUrlAuth_67a3f0de                             TLConstructor = 1738797278  // 67a3f0de
 	CRC32_messages_acceptUrlAuth_b12c7125                             TLConstructor = -1322487515 // b12c7125
 	CRC32_messages_hidePeerSettingsBar                                TLConstructor = 1336717624  // 4facb138

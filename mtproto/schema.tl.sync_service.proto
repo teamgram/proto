@@ -2071,6 +2071,7 @@ message TL_messages_acceptUrlAuth {
   google.protobuf.Int32Value button_id = 7;
   google.protobuf.StringValue url = 8;
   google.protobuf.StringValue match_code = 9;
+  InputTonConnectOauthSession tonconnect_session = 10;
 }
 
 message TL_messages_hidePeerSettingsBar {

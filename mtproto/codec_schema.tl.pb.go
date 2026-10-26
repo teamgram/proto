@@ -105579,6 +105579,132 @@ func (m *TLInputThemeSettings) Decode(dBuf *DecodeBuf) error {
 }
 
 ///////////////////////////////////////////////////////////////////////////////
+// InputTonConnectOauthSession <--
+//  + TL_InputTonConnectOauthSession
+//
+
+func (m *InputTonConnectOauthSession) Encode(x *EncodeBuf, layer int32) error {
+	predicateName := m.PredicateName
+	if predicateName == "" {
+		if n, ok := clazzIdNameRegisters2[int32(m.Constructor)]; ok {
+			predicateName = n
+		}
+	}
+
+	switch predicateName {
+	case Predicate_inputTonConnectOauthSession:
+		t := m.To_InputTonConnectOauthSession()
+		err := t.Encode(x, layer)
+		if err != nil {
+			return err
+		}
+
+	default:
+		return fmt.Errorf("invalid predicate error: %s", m.PredicateName)
+	}
+
+	return nil
+}
+
+func (m *InputTonConnectOauthSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *InputTonConnectOauthSession) Decode(dBuf *DecodeBuf) error {
+	m.Constructor = TLConstructor(dBuf.Int())
+	switch uint32(m.Constructor) {
+	case 0x629f66ce:
+		m2 := MakeTLInputTonConnectOauthSession(m)
+		m2.Decode(dBuf)
+
+	default:
+		return fmt.Errorf("invalid constructorId: 0x%x", uint32(m.Constructor))
+	}
+	return dBuf.GetError()
+}
+
+// To_InputTonConnectOauthSession
+func (m *InputTonConnectOauthSession) To_InputTonConnectOauthSession() *TLInputTonConnectOauthSession {
+	m.PredicateName = Predicate_inputTonConnectOauthSession
+	return &TLInputTonConnectOauthSession{
+		Data2: m,
+	}
+}
+
+// MakeTLInputTonConnectOauthSession
+func MakeTLInputTonConnectOauthSession(data2 *InputTonConnectOauthSession) *TLInputTonConnectOauthSession {
+	if data2 == nil {
+		return &TLInputTonConnectOauthSession{Data2: &InputTonConnectOauthSession{
+			PredicateName: Predicate_inputTonConnectOauthSession,
+		}}
+	} else {
+		data2.PredicateName = Predicate_inputTonConnectOauthSession
+		return &TLInputTonConnectOauthSession{Data2: data2}
+	}
+}
+
+func (m *TLInputTonConnectOauthSession) To_InputTonConnectOauthSession() *InputTonConnectOauthSession {
+	m.Data2.PredicateName = Predicate_inputTonConnectOauthSession
+	return m.Data2
+}
+
+func (m *TLInputTonConnectOauthSession) SetSessionId(v int64) { m.Data2.SessionId = v }
+func (m *TLInputTonConnectOauthSession) GetSessionId() int64  { return m.Data2.SessionId }
+
+func (m *TLInputTonConnectOauthSession) SetChallengeAnswer(v []byte) { m.Data2.ChallengeAnswer = v }
+func (m *TLInputTonConnectOauthSession) GetChallengeAnswer() []byte  { return m.Data2.ChallengeAnswer }
+
+func (m *TLInputTonConnectOauthSession) SetBody(v []byte) { m.Data2.Body = v }
+func (m *TLInputTonConnectOauthSession) GetBody() []byte  { return m.Data2.Body }
+
+func (m *TLInputTonConnectOauthSession) SetProof(v *WalletOwnershipProof) { m.Data2.Proof = v }
+func (m *TLInputTonConnectOauthSession) GetProof() *WalletOwnershipProof  { return m.Data2.Proof }
+
+func (m *TLInputTonConnectOauthSession) GetPredicateName() string {
+	return Predicate_inputTonConnectOauthSession
+}
+
+func (m *TLInputTonConnectOauthSession) Encode(x *EncodeBuf, layer int32) error {
+	clazzId := GetClazzID(Predicate_inputTonConnectOauthSession, int(layer))
+	switch uint32(clazzId) {
+	case 0x629f66ce:
+		x.UInt(0x629f66ce)
+
+		x.Long(m.GetSessionId())
+		x.StringBytes(m.GetChallengeAnswer())
+		x.StringBytes(m.GetBody())
+		m.GetProof().Encode(x, layer)
+
+		return nil
+
+	default:
+		return fmt.Errorf("not found clazzId by (%s, %d)", Predicate_inputTonConnectOauthSession, layer)
+	}
+}
+
+func (m *TLInputTonConnectOauthSession) CalcByteSize(layer int32) int {
+	return 0
+}
+
+func (m *TLInputTonConnectOauthSession) Decode(dBuf *DecodeBuf) error {
+	switch uint32(m.Data2.Constructor) {
+	case 0x629f66ce:
+		m.SetSessionId(dBuf.Long())
+		m.SetChallengeAnswer(dBuf.StringBytes())
+		m.SetBody(dBuf.StringBytes())
+
+		m3 := &WalletOwnershipProof{}
+		m3.Decode(dBuf)
+		m.SetProof(m3)
+
+		return dBuf.GetError()
+
+	default:
+		return fmt.Errorf("invalid constructor: %x", uint32(m.Data2.Constructor))
+	}
+}
+
+///////////////////////////////////////////////////////////////////////////////
 // InputUser <--
 //  + TL_InputUserEmpty
 //  + TL_InputUserSelf
@@ -255525,6 +255651,9 @@ func (m *UrlAuthResult) CalcByteSize(layer int32) int {
 func (m *UrlAuthResult) Decode(dBuf *DecodeBuf) error {
 	m.Constructor = TLConstructor(dBuf.Int())
 	switch uint32(m.Constructor) {
+	case 0xbdca6167:
+		m2 := MakeTLUrlAuthResultRequest(m)
+		m2.Decode(dBuf)
 	case 0x3cd623ec:
 		m2 := MakeTLUrlAuthResultRequest(m)
 		m2.Decode(dBuf)
@@ -255607,6 +255736,9 @@ func (m *TLUrlAuthResultRequest) GetMatchCodesFirst() bool  { return m.Data2.Mat
 func (m *TLUrlAuthResultRequest) SetIsApp(v bool) { m.Data2.IsApp = v }
 func (m *TLUrlAuthResultRequest) GetIsApp() bool  { return m.Data2.IsApp }
 
+func (m *TLUrlAuthResultRequest) SetRequestWallet(v bool) { m.Data2.RequestWallet = v }
+func (m *TLUrlAuthResultRequest) GetRequestWallet() bool  { return m.Data2.RequestWallet }
+
 func (m *TLUrlAuthResultRequest) SetBot(v *User) { m.Data2.Bot = v }
 func (m *TLUrlAuthResultRequest) GetBot() *User  { return m.Data2.Bot }
 
@@ -255638,6 +255770,12 @@ func (m *TLUrlAuthResultRequest) GetVerifiedAppName() *wrapperspb.StringValue {
 	return m.Data2.VerifiedAppName
 }
 
+func (m *TLUrlAuthResultRequest) SetTcSessionId(v *wrapperspb.Int64Value) { m.Data2.TcSessionId = v }
+func (m *TLUrlAuthResultRequest) GetTcSessionId() *wrapperspb.Int64Value  { return m.Data2.TcSessionId }
+
+func (m *TLUrlAuthResultRequest) SetTcClientId(v *wrapperspb.StringValue) { m.Data2.TcClientId = v }
+func (m *TLUrlAuthResultRequest) GetTcClientId() *wrapperspb.StringValue  { return m.Data2.TcClientId }
+
 func (m *TLUrlAuthResultRequest) GetPredicateName() string {
 	return Predicate_urlAuthResultRequest
 }
@@ -255645,6 +255783,101 @@ func (m *TLUrlAuthResultRequest) GetPredicateName() string {
 func (m *TLUrlAuthResultRequest) Encode(x *EncodeBuf, layer int32) error {
 	clazzId := GetClazzID(Predicate_urlAuthResultRequest, int(layer))
 	switch uint32(clazzId) {
+	case 0xbdca6167:
+		x.UInt(0xbdca6167)
+
+		// set flags
+		var getFlags = func() uint32 {
+			var flags uint32 = 0
+
+			if m.GetRequestWriteAccess() == true {
+				flags |= 1 << 0
+			}
+			if m.GetRequestPhoneNumber() == true {
+				flags |= 1 << 1
+			}
+			if m.GetMatchCodesFirst() == true {
+				flags |= 1 << 5
+			}
+			if m.GetIsApp() == true {
+				flags |= 1 << 6
+			}
+			if m.GetRequestWallet() == true {
+				flags |= 1 << 8
+			}
+
+			if m.GetBrowser() != nil {
+				flags |= 1 << 2
+			}
+			if m.GetPlatform() != nil {
+				flags |= 1 << 2
+			}
+			if m.GetIp() != nil {
+				flags |= 1 << 2
+			}
+			if m.GetRegion() != nil {
+				flags |= 1 << 2
+			}
+			if m.GetMatchCodes() != nil {
+				flags |= 1 << 3
+			}
+			if m.GetUserIdHint() != nil {
+				flags |= 1 << 4
+			}
+			if m.GetVerifiedAppName() != nil {
+				flags |= 1 << 7
+			}
+			if m.GetTcSessionId() != nil {
+				flags |= 1 << 9
+			}
+			if m.GetTcClientId() != nil {
+				flags |= 1 << 10
+			}
+
+			return flags
+		}
+
+		// set flags
+		var flags = getFlags()
+		x.UInt(flags)
+		m.GetBot().Encode(x, layer)
+		x.String(m.GetDomain())
+		if m.GetBrowser() != nil {
+			x.String(m.GetBrowser().Value)
+		}
+
+		if m.GetPlatform() != nil {
+			x.String(m.GetPlatform().Value)
+		}
+
+		if m.GetIp() != nil {
+			x.String(m.GetIp().Value)
+		}
+
+		if m.GetRegion() != nil {
+			x.String(m.GetRegion().Value)
+		}
+
+		if m.GetMatchCodes() != nil {
+			x.VectorString(m.GetMatchCodes())
+		}
+		if m.GetUserIdHint() != nil {
+			x.Long(m.GetUserIdHint().Value)
+		}
+
+		if m.GetVerifiedAppName() != nil {
+			x.String(m.GetVerifiedAppName().Value)
+		}
+
+		if m.GetTcSessionId() != nil {
+			x.Long(m.GetTcSessionId().Value)
+		}
+
+		if m.GetTcClientId() != nil {
+			x.String(m.GetTcClientId().Value)
+		}
+
+		return nil
 	case 0x3cd623ec:
 		x.UInt(0x3cd623ec)
 
@@ -255876,6 +256109,66 @@ func (m *TLUrlAuthResultRequest) CalcByteSize(layer int32) int {
 
 func (m *TLUrlAuthResultRequest) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Data2.Constructor) {
+	case 0xbdca6167:
+		var flags = dBuf.UInt()
+		_ = flags
+		if (flags & (1 << 0)) != 0 {
+			m.SetRequestWriteAccess(true)
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.SetRequestPhoneNumber(true)
+		}
+		if (flags & (1 << 5)) != 0 {
+			m.SetMatchCodesFirst(true)
+		}
+		if (flags & (1 << 6)) != 0 {
+			m.SetIsApp(true)
+		}
+		if (flags & (1 << 8)) != 0 {
+			m.SetRequestWallet(true)
+		}
+
+		m6 := &User{}
+		m6.Decode(dBuf)
+		m.SetBot(m6)
+
+		m.SetDomain(dBuf.String())
+		if (flags & (1 << 2)) != 0 {
+			m.SetBrowser(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.SetPlatform(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.SetIp(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.SetRegion(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 3)) != 0 {
+			m.SetMatchCodes(dBuf.VectorString())
+		}
+		if (flags & (1 << 4)) != 0 {
+			m.SetUserIdHint(&wrapperspb.Int64Value{Value: dBuf.Long()})
+		}
+
+		if (flags & (1 << 7)) != 0 {
+			m.SetVerifiedAppName(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		if (flags & (1 << 9)) != 0 {
+			m.SetTcSessionId(&wrapperspb.Int64Value{Value: dBuf.Long()})
+		}
+
+		if (flags & (1 << 10)) != 0 {
+			m.SetTcClientId(&wrapperspb.StringValue{Value: dBuf.String()})
+		}
+
+		return dBuf.GetError()
 	case 0x3cd623ec:
 		var flags = dBuf.UInt()
 		_ = flags
@@ -255892,9 +256185,9 @@ func (m *TLUrlAuthResultRequest) Decode(dBuf *DecodeBuf) error {
 			m.SetIsApp(true)
 		}
 
-		m5 := &User{}
-		m5.Decode(dBuf)
-		m.SetBot(m5)
+		m6 := &User{}
+		m6.Decode(dBuf)
+		m.SetBot(m6)
 
 		m.SetDomain(dBuf.String())
 		if (flags & (1 << 2)) != 0 {
@@ -255938,9 +256231,9 @@ func (m *TLUrlAuthResultRequest) Decode(dBuf *DecodeBuf) error {
 			m.SetMatchCodesFirst(true)
 		}
 
-		m5 := &User{}
-		m5.Decode(dBuf)
-		m.SetBot(m5)
+		m6 := &User{}
+		m6.Decode(dBuf)
+		m.SetBot(m6)
 
 		m.SetDomain(dBuf.String())
 		if (flags & (1 << 2)) != 0 {
@@ -255977,9 +256270,9 @@ func (m *TLUrlAuthResultRequest) Decode(dBuf *DecodeBuf) error {
 			m.SetRequestPhoneNumber(true)
 		}
 
-		m5 := &User{}
-		m5.Decode(dBuf)
-		m.SetBot(m5)
+		m6 := &User{}
+		m6.Decode(dBuf)
+		m.SetBot(m6)
 
 		m.SetDomain(dBuf.String())
 		if (flags & (1 << 2)) != 0 {
@@ -256006,9 +256299,9 @@ func (m *TLUrlAuthResultRequest) Decode(dBuf *DecodeBuf) error {
 			m.SetRequestWriteAccess(true)
 		}
 
-		m5 := &User{}
-		m5.Decode(dBuf)
-		m.SetBot(m5)
+		m6 := &User{}
+		m6.Decode(dBuf)
+		m.SetBot(m6)
 
 		m.SetDomain(dBuf.String())
 		return dBuf.GetError()
@@ -302749,6 +303042,64 @@ func (m *TLMessagesRequestUrlAuth) Decode(dBuf *DecodeBuf) error {
 // /////////////////////////////////////////////////////////////////////////////
 func (m *TLMessagesAcceptUrlAuth) Encode(x *EncodeBuf, layer int32) error {
 	switch uint32(m.Constructor) {
+	case 0x18dd4e92:
+		x.UInt(0x18dd4e92)
+
+		// set flags
+		var flags uint32 = 0
+
+		if m.GetWriteAllowed() == true {
+			flags |= 1 << 0
+		}
+		if m.GetSharePhoneNumber() == true {
+			flags |= 1 << 3
+		}
+		if m.GetPeer() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetMsgId() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetButtonId() != nil {
+			flags |= 1 << 1
+		}
+		if m.GetUrl() != nil {
+			flags |= 1 << 2
+		}
+		if m.GetMatchCode() != nil {
+			flags |= 1 << 4
+		}
+		if m.GetTonconnectSession() != nil {
+			flags |= 1 << 5
+		}
+
+		x.UInt(flags)
+
+		// flags Debug by @benqi
+		if m.GetPeer() != nil {
+			m.GetPeer().Encode(x, layer)
+		}
+
+		if m.GetMsgId() != nil {
+			x.Int(m.GetMsgId().Value)
+		}
+
+		if m.GetButtonId() != nil {
+			x.Int(m.GetButtonId().Value)
+		}
+
+		if m.GetUrl() != nil {
+			x.String(m.GetUrl().Value)
+		}
+
+		if m.GetMatchCode() != nil {
+			x.String(m.GetMatchCode().Value)
+		}
+
+		if m.GetTonconnectSession() != nil {
+			m.GetTonconnectSession().Encode(x, layer)
+		}
+
 	case 0x67a3f0de:
 		x.UInt(0x67a3f0de)
 
@@ -302857,6 +303208,45 @@ func (m *TLMessagesAcceptUrlAuth) CalcByteSize(layer int32) int {
 
 func (m *TLMessagesAcceptUrlAuth) Decode(dBuf *DecodeBuf) error {
 	switch uint32(m.Constructor) {
+	case 0x18dd4e92:
+
+		flags := dBuf.UInt()
+		_ = flags
+
+		// flags Debug by @benqi
+		if (flags & (1 << 0)) != 0 {
+			m.WriteAllowed = true
+		}
+		if (flags & (1 << 3)) != 0 {
+			m.SharePhoneNumber = true
+		}
+		if (flags & (1 << 1)) != 0 {
+			m4 := &InputPeer{}
+			m4.Decode(dBuf)
+			m.Peer = m4
+		}
+		if (flags & (1 << 1)) != 0 {
+			m.MsgId = &wrapperspb.Int32Value{Value: dBuf.Int()}
+		}
+
+		if (flags & (1 << 1)) != 0 {
+			m.ButtonId = &wrapperspb.Int32Value{Value: dBuf.Int()}
+		}
+
+		if (flags & (1 << 2)) != 0 {
+			m.Url = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 4)) != 0 {
+			m.MatchCode = &wrapperspb.StringValue{Value: dBuf.String()}
+		}
+
+		if (flags & (1 << 5)) != 0 {
+			m9 := &InputTonConnectOauthSession{}
+			m9.Decode(dBuf)
+			m.TonconnectSession = m9
+		}
+		return dBuf.GetError()
 	case 0x67a3f0de:
 
 		flags := dBuf.UInt()

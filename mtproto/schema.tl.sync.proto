@@ -6192,6 +6192,23 @@ message TL_inputThemeSettings {
   InputThemeSettings data2 = 1;
 }
 
+// InputTonConnectOauthSession <--
+//  + TL_inputTonConnectOauthSession
+//
+message InputTonConnectOauthSession {
+  string predicate_name = 1;
+  TLConstructor constructor = 2;
+  int64 session_id = 3;
+  bytes challenge_answer = 4;
+  bytes body = 5;
+  WalletOwnershipProof proof = 6;
+}
+
+// TL_inputTonConnectOauthSession
+message TL_inputTonConnectOauthSession {
+  InputTonConnectOauthSession data2 = 1;
+}
+
 // InputUser <--
 //  + TL_inputUserEmpty
 //  + TL_inputUserSelf
@@ -14699,6 +14716,7 @@ message TL_updateAccountResetAuthorization {
 //  + TL_urlAuthResultRequest
 //  + TL_urlAuthResultRequest
 //  + TL_urlAuthResultRequest
+//  + TL_urlAuthResultRequest
 //  + TL_urlAuthResultAccepted
 //
 message UrlAuthResult {
@@ -14708,17 +14726,20 @@ message UrlAuthResult {
   bool request_phone_number = 4;
   bool match_codes_first = 5;
   bool is_app = 6;
-  User bot = 7;
-  string domain = 8;
-  google.protobuf.StringValue browser = 9;
-  google.protobuf.StringValue platform = 10;
-  google.protobuf.StringValue ip = 11;
-  google.protobuf.StringValue region = 12;
-  repeated string match_codes = 13;
-  google.protobuf.Int64Value user_id_hint = 14;
-  google.protobuf.StringValue verified_app_name = 15;
-  google.protobuf.StringValue url_FLAGSTRING = 16;
-  string url_STRING = 17;
+  bool request_wallet = 7;
+  User bot = 8;
+  string domain = 9;
+  google.protobuf.StringValue browser = 10;
+  google.protobuf.StringValue platform = 11;
+  google.protobuf.StringValue ip = 12;
+  google.protobuf.StringValue region = 13;
+  repeated string match_codes = 14;
+  google.protobuf.Int64Value user_id_hint = 15;
+  google.protobuf.StringValue verified_app_name = 16;
+  google.protobuf.Int64Value tc_session_id = 17;
+  google.protobuf.StringValue tc_client_id = 18;
+  google.protobuf.StringValue url_FLAGSTRING = 19;
+  string url_STRING = 20;
 }
 
 // TL_urlAuthResultRequest

@@ -4302,6 +4302,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = -1881255857
 		return o
 	},
+	1654613710: func() TLObject { // 0x629f66ce
+		o := MakeTLInputTonConnectOauthSession(nil)
+		o.Data2.Constructor = 1654613710
+		return o
+	},
 	-1182234929: func() TLObject { // 0xb98886cf
 		o := MakeTLInputUserEmpty(nil)
 		o.Data2.Constructor = -1182234929
@@ -10812,6 +10817,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 		o.Data2.Constructor = 568808380
 		return o
 	},
+	-1110810265: func() TLObject { // 0xbdca6167
+		o := MakeTLUrlAuthResultRequest(nil)
+		o.Data2.Constructor = -1110810265
+		return o
+	},
 	1020666860: func() TLObject { // 0x3cd623ec
 		o := MakeTLUrlAuthResultRequest(nil)
 		o.Data2.Constructor = 1020666860
@@ -13422,6 +13432,11 @@ var clazzIdRegisters2 = map[int32]func() TLObject{
 	428848198: func() TLObject { // 0x198fb446
 		return &TLMessagesRequestUrlAuth{
 			Constructor: 428848198,
+		}
+	},
+	417156754: func() TLObject { // 0x18dd4e92
+		return &TLMessagesAcceptUrlAuth{
+			Constructor: 417156754,
 		}
 	},
 	1738797278: func() TLObject { // 0x67a3f0de
